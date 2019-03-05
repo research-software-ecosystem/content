@@ -1,0 +1,184 @@
+{
+    "name": "FastME", 
+    "description": "Distance algorithms to infer phylogenies. It's based on balanced minimum evolution, which is the very principle of NJ. It includes Nearest Neighbor Interchange (NNI) and also Subtree Pruning and Regrafting (SPR), while remaining as fast as NJ and providing a number of facilities: distance estimation for DNA and proteins with various models and options, bootstrapping, and parallel computations.", 
+    "homepage": "http://www.atgc-montpellier.fr/fastme/", 
+    "biotoolsID": "fastme", 
+    "biotoolsCURIE": "biotools:fastme", 
+    "version": [
+        "2.1.4"
+    ], 
+    "otherID": [], 
+    "function": [
+        {
+            "operation": [
+                {
+                    "uri": "http://edamontology.org/operation_0540", 
+                    "term": "Phylogenetic tree generation (from molecular sequences)"
+                }, 
+                {
+                    "uri": "http://edamontology.org/operation_0324", 
+                    "term": "Phylogenetic tree analysis"
+                }
+            ], 
+            "input": [
+                {
+                    "data": {
+                        "uri": "http://edamontology.org/data_2044", 
+                        "term": "Sequence"
+                    }, 
+                    "format": [
+                        {
+                            "uri": "http://edamontology.org/format_1423", 
+                            "term": "Phylip distance matrix"
+                        }, 
+                        {
+                            "uri": "http://edamontology.org/format_1997", 
+                            "term": "PHYLIP format"
+                        }
+                    ]
+                }
+            ], 
+            "output": [
+                {
+                    "data": {
+                        "uri": "http://edamontology.org/data_0872", 
+                        "term": "Phylogenetic tree"
+                    }, 
+                    "format": [
+                        {
+                            "uri": "http://edamontology.org/format_1445", 
+                            "term": "Phylip tree distance format"
+                        }, 
+                        {
+                            "uri": "http://edamontology.org/format_1910", 
+                            "term": "newick"
+                        }
+                    ]
+                }
+            ], 
+            "note": null, 
+            "cmd": null
+        }
+    ], 
+    "toolType": [
+        "Command-line tool", 
+        "Web application"
+    ], 
+    "topic": [
+        {
+            "uri": "http://edamontology.org/topic_3293", 
+            "term": "Phylogenetics"
+        }
+    ], 
+    "operatingSystem": [
+        "Linux", 
+        "Windows", 
+        "Mac"
+    ], 
+    "language": [], 
+    "license": "GPL-3.0", 
+    "collectionID": [], 
+    "maturity": "Mature", 
+    "cost": "Free of charge", 
+    "accessibility": [], 
+    "elixirPlatform": [], 
+    "elixirNode": [], 
+    "link": [], 
+    "download": [
+        {
+            "url": "http://www.atgc-montpellier.fr/download/sources/fastme/fastme-2.1.4.tar.gz", 
+            "type": "Source code", 
+            "note": null, 
+            "version": null
+        }
+    ], 
+    "documentation": [
+        {
+            "url": "http://www.atgc-montpellier.fr/fastme/usersguide.php", 
+            "type": "General", 
+            "note": null
+        }
+    ], 
+    "publication": [
+        {
+            "doi": "10.1093/molbev/msv150", 
+            "pmid": null, 
+            "pmcid": null, 
+            "type": "Primary", 
+            "version": null, 
+            "metadata": {
+                "title": "FastME 2.0: A comprehensive, accurate, and fast distance-based phylogeny inference program", 
+                "abstract": "Â© The Author 2015. Published by Oxford University Press on behalf of the Society for Molecular Biology and Evolution.FastME provides distance algorithms to infer phylogenies. FastME is based on balanced minimum evolution, which is the very principle of Neighbor Joining (NJ). FastME improves over NJ by performing topological moves using fast, sophisticated algorithms. The first version of FastME only included Nearest Neighbor Interchange. The new 2.0 version also includes Subtree Pruning and Regrafting, while remaining as fast as NJ and providing a number of facilities: Distance estimation for DNA and proteins with various models and options, bootstrapping, and parallel computations.", 
+                "date": "2015-10-01T00:00:00Z", 
+                "citationCount": 54, 
+                "authors": [
+                    {
+                        "name": "Lefort V."
+                    }, 
+                    {
+                        "name": "Desper R."
+                    }, 
+                    {
+                        "name": "Gascuel O."
+                    }
+                ], 
+                "journal": "Molecular Biology and Evolution"
+            }
+        }, 
+        {
+            "doi": "10.1089/106652702761034136", 
+            "pmid": null, 
+            "pmcid": null, 
+            "type": "Other", 
+            "version": null, 
+            "metadata": {
+                "title": "Fast and accurate phylogeny reconstruction algorithms based on the Minimum-Evolution principle", 
+                "abstract": "The Minimum Evolution (ME) approach to phylogeny estimation has been shown to be statistically consistent when it is used in conjunction with ordinary least-squares (OLS) fitting of a metric to a tree structure. The traditional approach to using ME has been to start with the Neighbor Joining (NJ) topology for a given matrix and then do a topological search from that starting point. The first stage requires O(n 3) time, where n is the number of taxa, while the current implementations of the second are in O(p n3) or more, where p is the number of swaps performed by the program. In this paper, we examine a greedy approach to minimum evolution which produces a starting topology in O(n2) time. Moreover, we provide an algorithm that searches for the best topology using nearest neighbor interchanges (NNIs), where the cost of doing p NNIs is O(n2 + p n), i.e., O(n2) in practice because p is always much smaller than n. The Greedy Minimum Evolution (GME) algorithm, when used in combination with NNIs, produces trees which are fairly close to NJ trees in terms of topological accuracy. We also examine ME under a balanced weighting scheme, where sibling subtrees have equal weight, as opposed to the standard \"unweighted\" OLS, where all taxa have the same weight so that the weight of a subtree is equal to the number of its taxa. The balanced minimum evolution scheme (BME) runs slower than the OLS version, requiring O(n2 x diam(T)) operations to build the starting tree and O(p n x diam(T)) to perform the NNIs, where diam(T) is the topological diameter of the output tree. In the usual Yule-Harding distribution on phylogenetic trees, the diameter expectation is in log(n), so our algorithms are in practice faster that NJ. Moreover, this BME scheme yields a very significant improvement over NJ and other distance-based algorithms, especially with large trees, in terms of topological accuracy.", 
+                "date": "2002-12-01T00:00:00Z", 
+                "citationCount": 260, 
+                "authors": [
+                    {
+                        "name": "Desper R."
+                    }, 
+                    {
+                        "name": "Gascuel O."
+                    }
+                ], 
+                "journal": "Journal of Computational Biology"
+            }
+        }
+    ], 
+    "credit": [
+        {
+            "name": "lirmm.fr", 
+            "email": null, 
+            "url": null, 
+            "orcidid": null, 
+            "typeEntity": "Institute", 
+            "typeRole": [
+                "Provider"
+            ], 
+            "note": null
+        }, 
+        {
+            "name": null, 
+            "email": "vincent.lefort@lirmm.fr", 
+            "url": null, 
+            "orcidid": null, 
+            "typeEntity": "Person", 
+            "typeRole": [
+                "Primary contact"
+            ], 
+            "note": null
+        }
+    ], 
+    "owner": "correia@lirmm.fr", 
+    "additionDate": "2016-03-25T13:24:42Z", 
+    "lastUpdate": "2018-12-10T12:58:52Z", 
+    "editPermission": {
+        "type": "private", 
+        "authors": []
+    }, 
+    "validated": 1, 
+    "homepage_status": 0
+}
