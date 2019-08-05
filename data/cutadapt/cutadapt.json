@@ -1,30 +1,57 @@
 {
     "name": "Cutadapt", 
-    "description": "A tool for removing adapter sequences from high-throughput sequencing data.", 
-    "homepage": "https://cutadapt.readthedocs.io/en/stable/", 
+    "description": "Find and remove adapter sequences, primers, poly-A tails and other types of unwanted sequence from your high-throughput sequencing reads.", 
+    "homepage": "https://pypi.python.org/pypi/cutadapt", 
     "biotoolsID": "cutadapt", 
     "biotoolsCURIE": "biotools:cutadapt", 
     "version": [], 
     "otherID": [], 
+    "relation": [], 
     "function": [
         {
             "operation": [
                 {
-                    "uri": "http://edamontology.org/operation_2403", 
-                    "term": "Sequence analysis"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_0369", 
-                    "term": "Sequence cutting"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3695", 
-                    "term": "Filtering"
+                    "uri": "http://edamontology.org/operation_3192", 
+                    "term": "Sequence trimming"
                 }
             ], 
-            "input": [], 
-            "output": [], 
-            "note": null, 
+            "input": [
+                {
+                    "data": {
+                        "uri": "http://edamontology.org/data_3495", 
+                        "term": "RNA sequence"
+                    }, 
+                    "format": [
+                        {
+                            "uri": "http://edamontology.org/format_1930", 
+                            "term": "FASTQ"
+                        }, 
+                        {
+                            "uri": "http://edamontology.org/format_1929", 
+                            "term": "FASTA"
+                        }
+                    ]
+                }
+            ], 
+            "output": [
+                {
+                    "data": {
+                        "uri": "http://edamontology.org/data_3495", 
+                        "term": "RNA sequence"
+                    }, 
+                    "format": [
+                        {
+                            "uri": "http://edamontology.org/format_1930", 
+                            "term": "FASTQ"
+                        }, 
+                        {
+                            "uri": "http://edamontology.org/format_1929", 
+                            "term": "FASTA"
+                        }
+                    ]
+                }
+            ], 
+            "note": "Cutadapt searches for the adapter in all reads and removes it when it finds it. All reads that were present in the input file will also be present in the output file, some of them trimmed, some of them not. The input file format is recognized from the file name extension. Cutadapt searches for the adapter in all reads and removes it when it finds it. All reads that were present in the input file will also be present in the output file, some of them trimmed, some of them not.", 
             "cmd": null
         }
     ], 
@@ -46,19 +73,30 @@
         }
     ], 
     "operatingSystem": [
-        "Linux"
+        "Linux", 
+        "Windows", 
+        "Mac"
     ], 
     "language": [
         "Python"
     ], 
     "license": "MIT", 
-    "collectionID": [], 
+    "collectionID": [
+        "galaxyPasteur", 
+        "Animal and Crop Genomics"
+    ], 
     "maturity": "Mature", 
     "cost": null, 
     "accessibility": [], 
     "elixirPlatform": [], 
     "elixirNode": [], 
-    "link": [], 
+    "link": [
+        {
+            "url": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/mvalade/cutadapt_v2/cutadapt/1.6", 
+            "type": "Galaxy service", 
+            "note": null
+        }
+    ], 
     "download": [], 
     "documentation": [
         {
@@ -73,6 +111,14 @@
             "pmid": null, 
             "pmcid": null, 
             "type": "Primary", 
+            "version": null, 
+            "metadata": null
+        }, 
+        {
+            "doi": "10.7490/f1000research.1114334.1", 
+            "pmid": null, 
+            "pmcid": null, 
+            "type": "Other", 
             "version": null, 
             "metadata": null
         }
@@ -92,13 +138,14 @@
     ], 
     "owner": "seqwiki_import", 
     "additionDate": "2017-01-13T13:14:15Z", 
-    "lastUpdate": "2018-12-10T12:58:53Z", 
+    "lastUpdate": "2019-02-16T12:27:30Z", 
     "editPermission": {
         "type": "group", 
         "authors": [
             "ELIXIR-EE"
         ]
     }, 
-    "validated": 1, 
-    "homepage_status": 0
+    "validated": 0, 
+    "homepage_status": 0, 
+    "elixir_badge": 0
 }
