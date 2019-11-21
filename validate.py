@@ -34,8 +34,6 @@ for root, dirs, files in os.walk(root_folder, topdown=False):
             print('JSON error')
             exit(1)
           data = json.loads(json_data) 
-          if has_biotoolsID(data):
-            print('Tool from file', file.name, 'has id:', data['biotoolsID'])
-          else:
+          if not(has_biotoolsID(data)):
             print('Tool from file', file.name, ' has no id')
             exit(1)
