@@ -10,7 +10,7 @@ import requests
 
 user_pass = os.environ['BT_CRED']
 bt_user = user_pass.split('||')[0]
-bt_pass = user_pass.split('||')[1]
+print(bt_user)
 
 http_settings = {
 
