@@ -17,8 +17,8 @@ http_settings = {
     'tool': '/t',
     'validate': '/validate',
     'json': '?format=json',
-    'username': 'Pub2tools',
-    'password' :  os.environ['BT_PASS']
+    'username': os.environ['BT_USER'],
+    'password': os.environ['BT_PASS']
 
 }
 
