@@ -40,10 +40,19 @@ def validate_main(root_folder):
 def process_file_types(filename):
   #OpenEBench
   if filename.find('.oeb.') != -1:
-    print('OpenEBench files, not for validation.')
+    print('OpenEBench files, not for validation:', filename)
 
-  if filename.find('data/') != -1 and (filename.find('.json')) != -1:
+  #bio.tools
+  if (
+      filename.find('data/') != -1 and 
+      filename.find('.json') != -1 and
+      filename.find('.oeb.') == -1
+  ):
     print('Need to validate:', filename)
 
 for line in sys.stdin:
     process_file_types(line.strip())
+
+print("Env variables")
+print(os.environ['HOME'])
+print(os.environ['DB_URL'])
