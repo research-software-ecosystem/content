@@ -37,6 +37,13 @@ def validate_main(root_folder):
 
 # root_folder = sys.argv[1].strip()
 
-for line in sys.stdin:
-    sys.stdout.write('To validate: ' + line)
+def process_file_types(filename):
+  #OpenEBench
+  if filename.find('.oeb.') != -1:
+    print('OpenEBench files, not for validation.')
 
+  if filename.find('data/') != -1 and (filename.find('.json')) != -1:
+    print('Need to validate:', filename)
+
+for line in sys.stdin:
+    process_file_types(line.strip())
