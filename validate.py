@@ -31,11 +31,12 @@ def validate_main(root_folder):
             print('Tool from file', file.name, ' has no id')
             exit(1)
 
-if (len(sys.argv) != 2):
-    print("error")
-    exit(1)
+# if (len(sys.argv) != 2):
+#     print("error")
+#     exit(1)
 
-root_folder = sys.argv[1].strip()
+# root_folder = sys.argv[1].strip()
 
-print("All good by default.")
+for line in sys.stdin:
+    sys.stdout.write('To validate: ' + line)
 
