@@ -77,8 +77,31 @@ def login_prod(http_settings):
 
     return token
 
+def tool_in_biotools(biotoolsID, http_settings):
+    url = '{h}{t}/{id}{f}'.format(
+        h=http_settings['host_prod'], t=http_settings['tool'], id=biotoolsID, v=http_settings['validate'], f=http_settings['json'])
+    r = requests.get(url = url) 
+    if r.status_code >= 200 and r.status_code <= 299:
+        return True
+    return False
 
-def validate_tool(tool, token, http_settings):
+
+def validate_tool_add(tool, token, http_settings):
+    url = '{h}{t}{v}{f}'.format(
+        h=http_settings['host_prod'], t=http_settings['tool'] ,v=http_settings['validate'], f=http_settings['json'])
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + token
+    }
+
+    r = requests.post(url, headers=headers, data=json.dumps(tool))
+    if r.status_code >= 200 and r.status_code <= 299:
+        return (True, r.text)
+
+    return (False, r.text)
+
+
+def validate_tool_update(tool, token, http_settings):
     url = '{h}{t}/{id}{v}{f}'.format(
         h=http_settings['host_prod'], t=http_settings['tool'], id=tool['biotoolsID'] ,v=http_settings['validate'], f=http_settings['json'])
     headers = {
@@ -91,6 +114,26 @@ def validate_tool(tool, token, http_settings):
         return (True, r.text)
 
     return (False, r.text)
+
+def validate_tool(tool, token, http_settings):
+    # Maybe there is a way to know from git / GitHub
+    # something like create file, update file
+    # if the tool is new or not
+    # for now we look at the id which is not optimal
+    # the git request should somehow determine if it is 
+    # a new tool or an existing tool
+    if tool.get('biotoolsID') == None:
+        print('No bio.tools id, validating adding tool...')
+        return validate_tool_add(tool, token, http_settings)
+
+    print('Checking if tool exists in bio.tools, with biotoolsID:',tool['biotoolsID'])
+    if tool_in_biotools(tool['biotoolsID'], http_settings):
+        print('Validating tool update for tool with biotoolsID:', tool['biotoolsID'])
+        return validate_tool_update(tool, token, http_settings)
+    else:
+        print('Tool is not in bio.tools, trying to validate adding new tool with biotoolsID', tool['biotoolsID'])
+        return validate_tool_add(tool, token, http_settings)
+    
 
 
 def read_tool(filename):
