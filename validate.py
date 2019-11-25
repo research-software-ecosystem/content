@@ -14,18 +14,11 @@ def is_json(myjson):
     return False
   return True
 
-
-if (len(sys.argv) != 2):
-    print("error")
-    exit(1)
-
-root_folder = sys.argv[1].strip()
-
 def has_biotoolsID(tool):
   return tool.get('biotoolsID') != None
 
-
-for root, dirs, files in os.walk(root_folder, topdown=False):
+def validate_main(root_folder):
+  for root, dirs, files in os.walk(root_folder, topdown=False):
     for file in files:
       if not(file.lower().endswith('.oeb.json')):
         with open(os.path.join(root, file), 'r') as file:
@@ -37,3 +30,12 @@ for root, dirs, files in os.walk(root_folder, topdown=False):
           if not(has_biotoolsID(data)):
             print('Tool from file', file.name, ' has no id')
             exit(1)
+
+if (len(sys.argv) != 2):
+    print("error")
+    exit(1)
+
+root_folder = sys.argv[1].strip()
+
+print("All good by default.")
+
