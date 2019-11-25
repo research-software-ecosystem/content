@@ -8,6 +8,10 @@ import requests
 # code has to fail or exit with status of 1
 # e.g. exit(1)
 
+user_pass = os.environ['BT_CRED']
+bt_user = user_pass.split('||')[0]
+bt_pass = user_pass.split('||')[1]
+
 http_settings = {
 
     'host_prod':'https://bio.tools/api',
@@ -17,8 +21,8 @@ http_settings = {
     'tool': '/t',
     'validate': '/validate',
     'json': '?format=json',
-    'username': os.environ['BT_USER'],
-    'password': os.environ['BT_PASS']
+    'username': bt_user,
+    'password': bt_pass
 
 }
 
