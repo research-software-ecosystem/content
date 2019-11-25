@@ -1,11 +1,27 @@
 import json
 import os
 import sys
+import requests
 
 # Toy validating script
 # In order for Travis CI to fail the 
 # code has to fail or exit with status of 1
 # e.g. exit(1)
+
+http_settings = {
+
+    'host_prod':'https://bio.tools/api',
+    'host_local':'http://localhost:8000/api',
+    'host_dev':'https://dev.bio.tools/api',
+    'login': '/rest-auth/login/',
+    'tool': '/t',
+    'validate': '/validate',
+    'json': '?format=json',
+    'username': os.environ['BT_USER'],
+    'password' :  os.environ['BT_PASS']
+
+}
+
 
 def is_json(myjson):
   try:
@@ -37,6 +53,22 @@ def validate_main(root_folder):
 
 # root_folder = sys.argv[1].strip()
 
+def login_prod(http_settings):
+
+    headers_token = {
+        'Content-Type': 'application/json'
+    }
+
+    user = json.dumps({
+        'username': http_settings['username'],
+        'password': http_settings['password']
+    })
+
+    token_r = requests.post(http_settings['host_prod'] + http_settings['login'] + http_settings['json'], headers=headers_token, data=user)
+    token = json.loads(token_r.text)['key']
+
+    return token
+
 def process_file_types(filename):
   #OpenEBench
   if filename.find('.oeb.') != -1:
@@ -53,6 +85,6 @@ def process_file_types(filename):
 for line in sys.stdin:
     process_file_types(line.strip())
 
-print("Env variables")
-print(os.environ['HOME'])
-print(os.environ['DB_URL'])
+
+print('Trying to login...')
+print(login_prod(http_settings))
