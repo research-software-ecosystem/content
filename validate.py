@@ -124,14 +124,11 @@ def is_bt_file_type(filename):
     return False
         
 print('Started processing...')
-print('Login in bio.tools ...')
-token = login_prod(http_settings)
-print('Logged in!')
-print('Processing files...')
+print('Checking if any bio.tools files...')
 bt_tool_files = []
 for line in sys.stdin:
     filename = line.strip()
-    print('Processing file:<{f}>'.format(f=filename))
+    print('Checking file:<{f}>'.format(f=filename))
     is_bt = is_bt_file_type(filename)
     if is_bt:
         bt_tool_files.append(filename)
@@ -140,6 +137,12 @@ if len(bt_tool_files) == 0:
     print('No bio.tools files to process')
     print('DONE.')
     exit(0)
+
+print('Found bio.tools files.')
+print('Login in bio.tools ...')
+token = login_prod(http_settings)
+print('Logged in!')
+print('Processing files...')
 
 for filename in bt_tool_files:
     tool = read_tool(filename)
