@@ -1,1 +1,411 @@
-{"credit":[{"email":"bio-bwa-help@sourceforge.net","name":"bwa team","typeEntity":"Person","typeRoles":["Primary contact"]},{"email":"me@liheng.org","name":"Heng Li","typeEntity":"Person","typeRoles":["Contributor"],"url":"http://www.liheng.org/"}],"documentation":[{"url":"http://bio-bwa.sourceforge.net/bwa.shtml"}],"download":[{"url":"https://gitlab.com/sibyllewohlgemuth/cwl_files/raw/master/bwa_index.cwl"},{"url":"https://gitlab.com/sibyllewohlgemuth/cwl_files/raw/master/bwa_mem.cwl"},{"type":"Container file","url":"https://docker-ui.genouest.org/app/#/container/bioconda/bwa"},{"type":"Container file","url":"https://anaconda.org/bioconda/bwa"}],"function":[{"input":[{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTA","uri":"http://edamontology.org/format_1929"}]}],"note":"Index database sequences in the FASTA format. database","operation":[{"term":"Genome indexing","uri":"http://edamontology.org/operation_3211"}],"output":[{"data":{"term":"Genome index","uri":"http://edamontology.org/data_3210"}}]},{"input":[{"data":{"term":"Genome index","uri":"http://edamontology.org/data_3210"}},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTQ","uri":"http://edamontology.org/format_1930"}]}],"note":"Align 70bp-1Mbp query sequences with the BWA-MEM algorithm. Briefly, the algorithm works by seeding alignments with maximal exact matches (MEMs) and then extending seeds with the affine-gap Smith-Waterman algorithm (SW). The BWA-MEM algorithm performs local alignment. It may produce multiple primary alignments for different part of a query sequence. This is a crucial feature for long sequences. However, some tools such as Picards markDuplicates does not work with split alignments. One may consider to use option -M to flag shorter split hits as secondary.","operation":[{"term":"Sequence alignment","uri":"http://edamontology.org/operation_0292"}],"output":[{"data":{"term":"Alignment","uri":"http://edamontology.org/data_1916"}}]},{"input":[{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTA search results format","uri":"http://edamontology.org/format_1332"}]},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTQ","uri":"http://edamontology.org/format_1930"}]}],"note":"Find the SA coordinates of the input reads. reference sequence query sequence","operation":[{"term":"Read mapping","uri":"http://edamontology.org/operation_3198"},{"term":"Sequence alignment","uri":"http://edamontology.org/operation_0292"}],"output":[{"data":{"term":"Sequence coordinates","uri":"http://edamontology.org/data_2012"}}]},{"input":[{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTA","uri":"http://edamontology.org/format_1929"}]},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTQ","uri":"http://edamontology.org/format_1930"}]},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"}}],"note":"Generate alignments in the SAM format given single-end reads. Repetitive hits will be randomly chosen reference sequence query sequence","operation":[{"term":"Generation","uri":"http://edamontology.org/operation_3429"},{"term":"Sequence alignment","uri":"http://edamontology.org/operation_0292"}],"output":[{"data":{"term":"Sequence alignment","uri":"http://edamontology.org/data_0863"},"format":[{"term":"SAM","uri":"http://edamontology.org/format_2573"}]}]},{"input":[{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTA","uri":"http://edamontology.org/format_1929"}]},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"}},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTQ","uri":"http://edamontology.org/format_1930"}]}],"note":"Generate alignments in the SAM format given paired-end reads. Repetitive read pairs will be placed randomly. reference sequence","operation":[{"term":"Generation","uri":"http://edamontology.org/operation_3429"},{"term":"Sequence alignment","uri":"http://edamontology.org/operation_0292"}],"output":[{"data":{"term":"Sequence alignment","uri":"http://edamontology.org/data_0863"},"format":[{"term":"SAM","uri":"http://edamontology.org/format_2573"}]}]},{"input":[{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTA","uri":"http://edamontology.org/format_1929"}]},{"data":{"term":"Sequence","uri":"http://edamontology.org/data_2044"},"format":[{"term":"FASTQ","uri":"http://edamontology.org/format_1930"}]}],"note":"Align query sequences in the in.fq file reference sequence","operation":[{"term":"Sequence alignment","uri":"http://edamontology.org/operation_0292"}],"output":[{"data":{"term":"Sequence alignment","uri":"http://edamontology.org/data_0863"}}]}],"labels":{"collectionID":["BWA"],"language":["C"],"license":"MIT","maturity":"Mature","operatingSystem":["Linux","Mac"],"toolType":["Command-line tool","Workbench"],"topic":[{"term":"Mapping","uri":"http://edamontology.org/topic_0102"}]},"publication":[{"doi":"10.1093/bioinformatics/btp324","pmcid":"PMC2705234","pmid":"19451168","type":"Primary"},{"doi":"10.1186/1471-2105-14-184","pmcid":"PMC3694458","pmid":"23758764"},{"abstract":"© 2017 Elsevier Inc.Massive data produced due to the advent of next-generation sequencing (NGS) technology is widely used for biological researches and medical diagnosis. The crucial step in NGS analysis is read alignment or mapping which is computationally intensive and complex. The mapping bias tends to affect the downstream analysis, including detection of polymorphisms. In order to provide guidelines to the biologist for suitable selection of aligners; we have evaluated and benchmarked 5 different aligners (BWA, Bowtie2, NovoAlign, Smalt and Stampy) and their mapping bias based on characteristics of 5 microbial genomes. Two million simulated read pairs of various sizes (36 bp, 50 bp, 72 bp, 100 bp, 125 bp, 150 bp, 200 bp, 250 bp and 300 bp) were aligned. Specific alignment features such as sensitivity of mapping, percentage of properly paired reads, alignment time and effect of tandem repeats on incorrectly mapped reads were evaluated. BWA showed faster alignment followed by Bowtie2 and Smalt. NovoAlign and Stampy were comparatively slower. Most of the aligners showed high sensitivity towards long reads (> 100 bp) mapping. On the other hand NovoAlign showed higher sensitivity towards both short reads (36 bp, 50 bp, 72 bp) and long reads (> 100 bp) mappings; It also showed higher sensitivity towards mapping a complex genome like Plasmodium falciparum. The percentage of properly paired reads aligned by NovoAlign, BWA and Stampy were markedly higher. None of the aligners outperforms the others in the benchmark, however the aligners perform differently with genome characteristics. We expect that the results from this study will be useful for the end user to choose aligner, thus enhance the accuracy of read mapping.","authors":["Thankaswamy-Kosalai S.","Sen P.","Nookaew I."],"cit_count":10,"doi":"10.1016/j.ygeno.2017.03.001","journal":"Genomics","pmid":"28286147","title":"Evaluation and assessment of read-mapping by multiple next-generation sequencing aligners based on genome-wide characteristics","year":"2017-07-01"},{"doi":"10.1186/1471-2164-15-264","pmcid":"PMC4051166","pmid":"24708189"},{"abstract":"Motivation: Next-generation sequencing has become an important tool in molecular biology. Various protocols to investigate genomic, transcriptomic and epigenomic features across virtually all species and tissues have been devised. For most of these experiments, one of the first crucial steps of bioinformatic analysis is the mapping of reads to reference genomes. Results: Here, we present thorough benchmarks of our read aligner segemehl in comparison with other state-of-the-art methods. Furthermore, we introduce the tool lack to rescue unmapped RNA-seq reads which works in conjunction with segemehl and many other frequently used split-read aligners. © The Author 2014.","authors":["Otto C.","Stadler P.F.","Hoffmann S."],"cit_count":25,"doi":"10.1093/bioinformatics/btu146","journal":"Bioinformatics","pmid":"24626854","title":"Lacking alignments? The next-generation sequencing mapper segemehl revisited","year":"2014-07-01"},{"abstract":"Motivation: Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashingbased software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time. Results: We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both. Availability: http://bio-bwa.sourceforge.net. Contact: rd@sanger.ac.uk © The Author(s) 2010. Published by Oxford University Press.","authors":["Li H.","Durbin R."],"cit_count":3512,"doi":"10.1093/bioinformatics/btp698","journal":"Bioinformatics","pmid":"20080505","title":"Fast and accurate long-read alignment with Burrows-Wheeler transform","year":"2010-01-15"}],"summary":{"biotoolsCURIE":"biotools:bwa","biotoolsID":"bwa","description":"Fast, accurate, memory-efficient aligner for short and long sequencing reads","homepage":"http://bio-bwa.sourceforge.net","name":"BWA"}}
+
+{
+    "credit": [
+        {
+            "email": "bio-bwa-help@sourceforge.net",
+            "name": "bwa team",
+            "typeEntity": "Person",
+            "typeRoles": [
+                "Primary contact"
+            ]
+        },
+        {
+            "email": "me@liheng.org",
+            "name": "Heng Li",
+            "typeEntity": "Person",
+            "typeRoles": [
+                "Contributor"
+            ],
+            "url": "http://www.liheng.org/"
+        }
+    ],
+    "documentation": [
+        {
+            "url": "http://bio-bwa.sourceforge.net/bwa.shtml"
+        }
+    ],
+    "download": [
+        {
+            "url": "https://gitlab.com/sibyllewohlgemuth/cwl_files/raw/master/bwa_index.cwl"
+        },
+        {
+            "url": "https://gitlab.com/sibyllewohlgemuth/cwl_files/raw/master/bwa_mem.cwl"
+        },
+        {
+            "type": "Container file",
+            "url": "https://docker-ui.genouest.org/app/#/container/bioconda/bwa"
+        },
+        {
+            "type": "Container file",
+            "url": "https://anaconda.org/bioconda/bwa"
+        }
+    ],
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Index database sequences in the FASTA format. database",
+            "operation": [
+                {
+                    "term": "Genome indexing",
+                    "uri": "http://edamontology.org/operation_3211"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Genome index",
+                        "uri": "http://edamontology.org/data_3210"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Genome index",
+                        "uri": "http://edamontology.org/data_3210"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "Align 70bp-1Mbp query sequences with the BWA-MEM algorithm. Briefly, the algorithm works by seeding alignments with maximal exact matches (MEMs) and then extending seeds with the affine-gap Smith-Waterman algorithm (SW). The BWA-MEM algorithm performs local alignment. It may produce multiple primary alignments for different part of a query sequence. This is a crucial feature for long sequences. However, some tools such as Picards markDuplicates does not work with split alignments. One may consider to use option -M to flag shorter split hits as secondary.",
+            "operation": [
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Alignment",
+                        "uri": "http://edamontology.org/data_1916"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA search results format",
+                            "uri": "http://edamontology.org/format_1332"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "Find the SA coordinates of the input reads. reference sequence query sequence",
+            "operation": [
+                {
+                    "term": "Read mapping",
+                    "uri": "http://edamontology.org/operation_3198"
+                },
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence coordinates",
+                        "uri": "http://edamontology.org/data_2012"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    }
+                }
+            ],
+            "note": "Generate alignments in the SAM format given single-end reads. Repetitive hits will be randomly chosen reference sequence query sequence",
+            "operation": [
+                {
+                    "term": "Generation",
+                    "uri": "http://edamontology.org/operation_3429"
+                },
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    },
+                    "format": [
+                        {
+                            "term": "SAM",
+                            "uri": "http://edamontology.org/format_2573"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "Generate alignments in the SAM format given paired-end reads. Repetitive read pairs will be placed randomly. reference sequence",
+            "operation": [
+                {
+                    "term": "Generation",
+                    "uri": "http://edamontology.org/operation_3429"
+                },
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    },
+                    "format": [
+                        {
+                            "term": "SAM",
+                            "uri": "http://edamontology.org/format_2573"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "Align query sequences in the in.fq file reference sequence",
+            "operation": [
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    }
+                }
+            ]
+        }
+    ],
+    "labels": {
+        "collectionID": [
+            "BWA"
+        ],
+        "language": [
+            "C"
+        ],
+        "license": "MIT",
+        "maturity": "Mature",
+        "operatingSystem": [
+            "Linux",
+            "Mac"
+        ],
+        "toolType": [
+            "Command-line tool",
+            "Workbench"
+        ],
+        "topic": [
+            {
+                "term": "Mapping",
+                "uri": "http://edamontology.org/topic_0102"
+            }
+        ]
+    },
+    "publication": [
+        {
+            "doi": "10.1093/bioinformatics/btp324",
+            "pmcid": "PMC2705234",
+            "pmid": "19451168",
+            "type": "Primary"
+        },
+        {
+            "doi": "10.1186/1471-2105-14-184",
+            "pmcid": "PMC3694458",
+            "pmid": "23758764"
+        },
+        {
+            "abstract": "© 2017 Elsevier Inc.Massive data produced due to the advent of next-generation sequencing (NGS) technology is widely used for biological researches and medical diagnosis. The crucial step in NGS analysis is read alignment or mapping which is computationally intensive and complex. The mapping bias tends to affect the downstream analysis, including detection of polymorphisms. In order to provide guidelines to the biologist for suitable selection of aligners; we have evaluated and benchmarked 5 different aligners (BWA, Bowtie2, NovoAlign, Smalt and Stampy) and their mapping bias based on characteristics of 5 microbial genomes. Two million simulated read pairs of various sizes (36 bp, 50 bp, 72 bp, 100 bp, 125 bp, 150 bp, 200 bp, 250 bp and 300 bp) were aligned. Specific alignment features such as sensitivity of mapping, percentage of properly paired reads, alignment time and effect of tandem repeats on incorrectly mapped reads were evaluated. BWA showed faster alignment followed by Bowtie2 and Smalt. NovoAlign and Stampy were comparatively slower. Most of the aligners showed high sensitivity towards long reads (> 100 bp) mapping. On the other hand NovoAlign showed higher sensitivity towards both short reads (36 bp, 50 bp, 72 bp) and long reads (> 100 bp) mappings; It also showed higher sensitivity towards mapping a complex genome like Plasmodium falciparum. The percentage of properly paired reads aligned by NovoAlign, BWA and Stampy were markedly higher. None of the aligners outperforms the others in the benchmark, however the aligners perform differently with genome characteristics. We expect that the results from this study will be useful for the end user to choose aligner, thus enhance the accuracy of read mapping.",
+            "authors": [
+                "Thankaswamy-Kosalai S.",
+                "Sen P.",
+                "Nookaew I."
+            ],
+            "cit_count": 10,
+            "doi": "10.1016/j.ygeno.2017.03.001",
+            "journal": "Genomics",
+            "pmid": "28286147",
+            "title": "Evaluation and assessment of read-mapping by multiple next-generation sequencing aligners based on genome-wide characteristics",
+            "year": "2017-07-01"
+        },
+        {
+            "doi": "10.1186/1471-2164-15-264",
+            "pmcid": "PMC4051166",
+            "pmid": "24708189"
+        },
+        {
+            "abstract": "Motivation: Next-generation sequencing has become an important tool in molecular biology. Various protocols to investigate genomic, transcriptomic and epigenomic features across virtually all species and tissues have been devised. For most of these experiments, one of the first crucial steps of bioinformatic analysis is the mapping of reads to reference genomes. Results: Here, we present thorough benchmarks of our read aligner segemehl in comparison with other state-of-the-art methods. Furthermore, we introduce the tool lack to rescue unmapped RNA-seq reads which works in conjunction with segemehl and many other frequently used split-read aligners. © The Author 2014.",
+            "authors": [
+                "Otto C.",
+                "Stadler P.F.",
+                "Hoffmann S."
+            ],
+            "cit_count": 25,
+            "doi": "10.1093/bioinformatics/btu146",
+            "journal": "Bioinformatics",
+            "pmid": "24626854",
+            "title": "Lacking alignments? The next-generation sequencing mapper segemehl revisited",
+            "year": "2014-07-01"
+        },
+        {
+            "abstract": "Motivation: Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashingbased software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time. Results: We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both. Availability: http://bio-bwa.sourceforge.net. Contact: rd@sanger.ac.uk © The Author(s) 2010. Published by Oxford University Press.",
+            "authors": [
+                "Li H.",
+                "Durbin R."
+            ],
+            "cit_count": 3512,
+            "doi": "10.1093/bioinformatics/btp698",
+            "journal": "Bioinformatics",
+            "pmid": "20080505",
+            "title": "Fast and accurate long-read alignment with Burrows-Wheeler transform",
+            "year": "2010-01-15"
+        }
+    ],
+    "summary": {
+        "biotoolsCURIE": "biotools:bwa",
+        "biotoolsID": "bwa",
+        "description": "Fast, accurate, memory-efficient aligner for short and long sequencing reads",
+        "homepage": "http://bio-bwa.sourceforge.net",
+        "name": "BWA"
+    }
+}
