@@ -3,7 +3,7 @@ import os
 import sys
 import requests
 from boltons.iterutils import remap
-from unidiff import PatchSet
+#from unidiff import PatchSet
 
 
 # Toy validating script
