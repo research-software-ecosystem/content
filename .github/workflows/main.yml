@@ -1,0 +1,24 @@
+name: bio.tools content CI
+
+on: 
+  push:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 12 * * *'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Validate JSON files
+      run: |
+        git checkout -b "bioschemas_dump_$(date --iso-8601=ns)"
+        pip install -r scripts/bioschemas/requirements.txt
+        cd scripts/bioschemas
+        python crawl_and_lift.py
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git commit -a -m "reformat y files"
+        git push --set-upstream origin "reformat_biotools_${{ github.sha }}"
