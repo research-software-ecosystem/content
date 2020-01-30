@@ -3,6 +3,8 @@ import os
 import sys
 import requests
 from boltons.iterutils import remap
+from unidiff import PatchSet
+
 
 # Toy validating script
 # In order for Travis CI to fail the
@@ -13,9 +15,7 @@ user_pass = os.environ['BT_CRED']
 bt_user = user_pass.split(',')[0]
 bt_pass = user_pass.split(',')[1]
 
-
 http_settings = {
-
     'host_prod': 'https://bio.tools/api',
     'login': '/rest-auth/login/',
     'tool': '/t',
@@ -23,9 +23,7 @@ http_settings = {
     'json': '?format=json',
     'username': bt_user,
     'password': bt_pass
-
 }
-
 
 def is_json(myjson):
     try:
@@ -169,6 +167,17 @@ def is_bt_file_type(filename):
 print('Started processing...')
 print('Checking if any bio.tools files...')
 bt_tool_files = []
+# data = sys.stdin.read()
+# patch = PatchSet(data)
+
+# for p in patch:
+#     print(p.source_file)
+#     print(p.target_file)
+#     print(p.is_added_file)
+#     print(p.is_modified_file)
+#     print(p.is_removed_file)
+#     print('---------------')
+#exit(0)
 for line in sys.stdin:
     filename = line.strip()
     print('Checking file:<{f}>'.format(f=filename))
