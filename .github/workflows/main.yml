@@ -15,7 +15,9 @@ jobs:
     - name: Validate JSON files
       run: |
         git checkout -b "bioschemas_dump"
-        pip install wheel bdist_wheel
+        virtualenv -p python3 venv
+        . venv/bin/activate
+        pip install wheel
         pip install -r scripts/bioschemas/requirements.txt
         cd scripts/bioschemas
         python crawl_and_lift.py
