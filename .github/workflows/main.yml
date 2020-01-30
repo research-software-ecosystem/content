@@ -15,7 +15,10 @@ jobs:
     - name: dump bio.tools in bioschemas format
       run: |
         git checkout -b "bioschemas_dump"
-        sudo apt install python3-pip hub
+        sudo apt update
+        sudo apt install snapd
+        sudo snap install hub --classic
+        sudo apt install python3-pip
         sudo pip3 install virtualenv 
         virtualenv -p python3 venv
         . venv/bin/activate
