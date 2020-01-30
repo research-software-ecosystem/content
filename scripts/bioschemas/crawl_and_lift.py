@@ -357,4 +357,4 @@ def crawl_biotools(collection="", limit=-1, dump=False):
     return graph
 
 if __name__ == '__main__':
-    crawl_biotools(limit=100, dump=True)
+    crawl_biotools(limit=-1, dump=True)
