@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Validate JSON files
+    - name: dump bio.tools in bioschemas format
       run: |
         git checkout -b "bioschemas_dump"
-        sudo apt install python3-pip
+        sudo apt install python3-pip hub
         sudo pip3 install virtualenv 
         virtualenv -p python3 venv
         . venv/bin/activate
@@ -27,3 +27,4 @@ jobs:
         git config --local user.name "Tools Platform Ecosystem bot"
         git commit -a -m "reformat y files"
         git push --set-upstream origin "bioschemas_dump"
+        hub pull-request
