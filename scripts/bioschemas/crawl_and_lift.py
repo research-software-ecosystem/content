@@ -250,6 +250,7 @@ def rdfize(json_entry):
                     
         for item in entry['documentation']:
             if 'type' in item.keys() and item['type']:
+                item['url'] = item['url'].replace('|', '%7C')
                 if 'API' in item['type']:
                     if not 'hasApiDoc' in entry.keys():
                         entry['hasApiDoc'] = [{"@id": item['url']}]
