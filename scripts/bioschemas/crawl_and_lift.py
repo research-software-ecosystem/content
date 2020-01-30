@@ -1,9 +1,7 @@
 import urllib3
-import requests
 import json
 import os
 from rdflib import ConjunctiveGraph
-from jinja2 import Template
 from json import JSONDecodeError
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
