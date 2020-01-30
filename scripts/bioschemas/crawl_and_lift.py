@@ -334,8 +334,11 @@ def crawl_biotools(collection="", limit=-1, dump=False):
                 if dump:
                     temp_graph = ConjunctiveGraph()
                     temp_graph.parse(data=jsonld, format='json-ld')
-                    os.makedirs('./bio.tools.dataset/'+tool['biotoolsID'], exist_ok=True)
-                    temp_graph.serialize(format="json-ld", auto_compact=True, destination=str('./bio.tools.dataset/'+tool['biotoolsID']+'/'+tool['biotoolsID']+'.bioschemas.jsonld'))
+                    # os.makedirs('./bio.tools.dataset/'+tool['biotoolsID'], exist_ok=True)
+                    # temp_graph.serialize(format="json-ld", auto_compact=True, destination=str(
+                    #     './bio.tools.dataset/' + tool['biotoolsID'] + '/' + tool['biotoolsID'] + '.bioschemas.jsonld'))
+                    os.makedirs('../../data/' + tool['biotoolsID'], exist_ok=True)
+                    temp_graph.serialize(format="json-ld", auto_compact=True, destination=str('../../data/'+tool['biotoolsID']+'/'+tool['biotoolsID']+'.bioschemas.jsonld'))
 
                     # with open('./bio.tools.dataset/'+tool['biotoolsID']+'/'+tool['biotoolsID']+'.json', 'w') as outfile:
                     #     json.dump(entry['list'], outfile, indent=True, sort_keys=True)
