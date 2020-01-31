@@ -12,12 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
     - name: dump bio.tools in bioschemas format
       run: |
         git checkout -b "bioschemas_dump_${{ github.run_id }}"
-        sudo apt update
-        sudo apt install snapd
-        sudo snap install hub --classic
         sudo apt install python3-pip
         sudo pip3 install virtualenv 
         virtualenv -p python3 venv
