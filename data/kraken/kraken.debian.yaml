@@ -1,0 +1,41 @@
+identifiers:
+  - biotools: kraken
+  - doi: 10.1186/gb-2014-15-3-r46
+  - debian: kraken2
+  - bioconda: kraken2
+  - omictools: OMICS_04481
+homepage: https://www.ccb.jhu.edu/software/kraken2/
+summary: taxonomic classification system using exact k-mer matches
+description: >
+   Kraken 2 is the newest version of Kraken, a taxonomic classification
+   system using exact k-mer matches to achieve high accuracy and fast
+   classification speeds. This classifier matches each k-mer within a query
+   sequence to the lowest common ancestor (LCA) of all genomes containing
+   the given k-mer. The k-mer assignments inform the classification
+   algorithm. [see: Kraken 1's Webpage for more details].
+   .
+   Kraken 2 provides significant improvements to Kraken 1, with faster
+   database build times, smaller database sizes, and faster classification
+   speeds. These improvements were achieved by the following updates to the
+   Kraken classification program:
+   .
+    1. Storage of Minimizers: Instead of storing/querying entire k-mers,
+       Kraken 2 stores minimizers (l-mers) of each k-mer. The length of
+       each l-mer must be ≤ the k-mer length. Each k-mer is treated by
+       Kraken 2 as if its LCA is the same as its minimizer's LCA.
+    2. Introduction of Spaced Seeds: Kraken 2 also uses spaced seeds to
+       store and query minimizers to improve classification accuracy.
+    3. Database Structure: While Kraken 1 saved an indexed and sorted list
+       of k-mer/LCA pairs, Kraken 2 uses a compact hash table. This hash
+       table is a probabilistic data structure that allows for faster
+       queries and lower memory requirements. However, this data structure
+       does have a <1% chance of returning the incorrect LCA or returning
+       an LCA for a non-inserted minimizer. Users can compensate for this
+       possibility by using Kraken's confidence scoring thresholds.
+    4. Protein Databases: Kraken 2 allows for databases built from amino
+       acid sequences. When queried, Kraken 2 performs a six-frame
+       translated search of the query sequences against the database.
+    5. 16S Databases: Kraken 2 also provides support for databases not
+       based on NCBI's taxonomy. Currently, these include the 16S
+       databases: Greengenes, SILVA, and RDP.
+version: 2.0.8~beta
