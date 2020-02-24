@@ -1,0 +1,49 @@
+identifiers:
+  - biotools: kmc
+  - doi: 10.1093/bioinformatics/btv022
+  - debian: kmc
+  - bioconda: kmc
+  - scicrunch: SCR_001245
+  - omictools: OMICS_02095
+homepage: http://sun.aei.polsl.pl/kmc
+summary: count kmers in genomic sequences
+description: >
+  The kmc software is designed for counting k-mers (sequences of
+  consecutive k symbols) in a set of reads. K-mer counting is
+  important for many bioinformatics applications, e.g. developing de Bruijn
+  graph assemblers.
+  .
+  Building de Bruijn graphs is a commonly used approach for genome
+  assembly with data from second-generation sequencing.
+  Unfortunately, sequencing errors (frequent in practice)
+  result in huge memory requirements for de Bruijn graphs, as well
+  as long build time. One of the popular approaches to handle this
+  problem is filtering the input reads in such a way that unique k-mers
+  (very likely obtained as a result of an error) are discarded.
+  .
+  Thus, KMC scans the raw reads and produces a compact representation
+  of all non-unique reads accompanied with number of their occurrences.
+  The algorithm implemented in KMC makes use mostly of disk space rather
+  than RAM, which allows one to use KMC even on rather typical personal
+  computers. When run on high-end servers (what is necessary for KMC
+  competitors) it outperforms them in both memory requirements and
+  speed of computation. The disk space necessary for computation is in
+  order of the size of input data (usually it is smaller).
+version: 2.3
+edam:
+  version: unknown
+  topics:
+    - Sequence composition, complexity and repeats
+  scopes:
+    - name: summary
+      function:
+        - k-mer counting
+      input:
+        - data: Sequence
+          formats:
+            - FASTQ
+            - FASTA
+      output:
+        - data: Base word frequencies table
+          formats:
+            - Textual format

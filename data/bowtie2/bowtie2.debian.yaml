@@ -1,0 +1,83 @@
+identifiers:
+  - biotools: bowtie2
+  - doi: 10.1038/nmeth.1923
+  - debian: bowtie2
+  - bioconda: bowtie2
+  - scicrunch: SCR_005476
+  - omictools: OMICS_31633
+homepage: http://bowtie-bio.sourceforge.net/bowtie2
+summary: ultrafast memory-efficient short read aligner
+description: >
+  is an ultrafast and memory-efficient tool for aligning sequencing reads
+  to long reference sequences. It is particularly good at aligning reads
+  of about 50 up to 100s or 1,000s of characters, and particularly good
+  at aligning to relatively long (e.g. mammalian) genomes.
+  .
+  Bowtie 2 indexes the genome with an FM Index to keep its memory footprint
+  small: for the human genome, its memory footprint is typically
+  around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes
+version: 2.3.5.1
+edam:
+  version: unknown
+  topics:
+    - Genomics
+  scopes:
+    - name: summary
+      function:
+        - Genome indexing
+        - Sequence alignment
+      input:
+        - data: Nucleic acid sequence (raw)
+          formats:
+            - FASTA
+            - FASTQ
+      output:
+        - data: Sequence alignment (nucleic acid)
+          formats:
+            - SAM
+    - name: bowtie-build
+      function:
+        - Genome indexing
+      input:
+        - data: Nucleic acid sequence (raw)
+          formats:
+            - FASTA
+      output:
+        - data: Genome index
+          formats:
+            - ebwt
+            - ebwtl
+    - name: bowtie-inspect
+      function:
+        - Sequence retrieval
+        - Metadata retrieval
+        - Data index analysis
+      input:
+        - data: Genome index
+          formats:
+            - ebtw
+            - ebtwl
+      output:
+        - data: Nucleic acid sequence (raw)
+    - name: bowtie
+      function:
+        - Sequence database search (by sequence using word-based methods)
+        - Sequence alignment generation
+      input:
+        - data: Genome index
+          formats:
+            - ebtw
+            - ebtwl
+        - data: Nucleic acid sequence (raw)
+          formats:
+            - plain text format (unformatted)
+            - FASTA
+            - FASTQ
+      output:
+        - data: Sequence alignment (nucleic acid)
+          formats:
+            - SAM
+        - data: Sequence alignment report
+          formats:
+            - plain text format (unformatted)
+            - Bowtie alignment report format
