@@ -4,7 +4,7 @@ on:
   push:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '00 12 * * *'
+    - cron:  '00 20 * * *'
 jobs:
   build:
 
@@ -13,22 +13,22 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: geertvdc/setup-hub@master
-    - name: dump bio.tools in bioschemas format
+    - name: import bio.tools using the API
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git checkout -b "bioschemas_dump_${{ github.run_id }}"
+        git checkout -b "biotools_dump_${{ github.run_id }}"
         sudo apt install python3-pip
         sudo pip3 install virtualenv 
         virtualenv -p python3 venv
         . venv/bin/activate
         pip install wheel
-        pip install -r scripts/bioschemas/requirements.txt
-        cd scripts/bioschemas
+        pip install -r scripts/biotools-import/requirements.txt
+        cd scripts/biotools-import
         python crawl_and_lift.py
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        git commit -a -m "Dump bio.tools as bioschemas on $(date)"
-        git push --set-upstream origin "bioschemas_dump_${{ github.run_id }}"
-        hub pull-request -m "Dump bio.tools as bioschemas on $(date)"
+        git commit -a -m "import from bio.tools on $(date)"
+        git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
+        hub pull-request -m "import from bio.tools on $(date)"
