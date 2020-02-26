@@ -1,5 +1,4 @@
 import json
-import os
 import ruamel.yaml as yaml
 import argparse
 import os
@@ -106,11 +105,12 @@ def enrich_dois(path):
         # if doi doesn't exist
         if len(extract_doi_from_debian(parsed_yaml)) == 0:
             identifiers.append({'doi': dois.pop()})
+
         for doi in dois:
             for i in range(len(identifiers)):
                 if ('doi' in identifiers[i]):
                     # check if it's a single string, not an array
-                    if type(identifiers[i]) == list:
+                    if type(identifiers[i]['doi']) == list:
                         identifiers[i]['doi'].append(doi)
                     else:
                         identifiers[i]['doi'] = [identifiers[i]['doi'], doi]
@@ -143,7 +143,7 @@ def enrich_dois(path):
             parsed_yaml = parse_yaml(file)
             dois = extract_doi_from_bioconda_yaml(parsed_yaml)
             bioconda_dois = dois
-
+        print(dois)
         all_doies.update(dois)
 
     if len(all_doies) > 0:
@@ -157,6 +157,4 @@ def enrich_dois(path):
             elif file.endswith(file_types['yaml']):
                 enrich_files(write_dois_bioconda, bioconda_dois, file)
 
-
-# [enrich_dois(x[0]) for x in os.walk(args.path)]
 [enrich_dois(f.path) for f in os.scandir(args.path) if f.is_dir()]
