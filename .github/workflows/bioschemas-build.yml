@@ -29,5 +29,9 @@ jobs:
         git config --local user.name "Tools Platform Ecosystem bot"
         cd ../../data
         git add .
-        git commit -m "build bioschemas on $(date)"
-        git push origin master
+        if git commit -m "build bioschemas on $(date)"; then
+            git push origin master
+            echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"            
+        fi
