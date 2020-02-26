@@ -5,7 +5,7 @@ import glob
 import argparse
 
 import requests
-
+from boltons.iterutils import remap
 
 def clean():
     for data_file in glob.glob(r"../../data/*/*.json"):
@@ -45,8 +45,10 @@ def retrieve(filters=None):
             if not os.path.isdir(directory):
                 os.mkdir(directory)
             with open(os.path.join(directory, tpe_id + ".json"), "w") as write_file:
+                drop_false = lambda path, key, value: bool(value)
+                tool_cleaned = remap(tool, visit=drop_false)
                 json.dump(
-                    tool, write_file, sort_keys=True, indent=4, separators=(",", ": ")
+                    tool_cleaned, write_file, sort_keys=True, indent=4, separators=(",", ": ")
                 )
             nb_tools += 1
             print(f"import tool #{nb_tools}: {tool_id} in folder {directory}")
