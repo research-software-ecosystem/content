@@ -1,70 +1,145 @@
 {
-    "name": "riboSeed", 
-    "description": "Prokaryotic genome assembly polisher -- uses targeted subassembly to resolve gaps caused by repeated rDNA operons.", 
-    "homepage": "https://github.com/nickp60/riboSeed/", 
-    "biotoolsID": "riboSeed", 
-    "biotoolsCURIE": "biotools:riboSeed", 
-    "version": [], 
-    "otherID": [], 
-    "relation": [], 
+    "accessibility": [
+        "Open access"
+    ],
+    "additionDate": "2019-10-29T14:41:43Z",
+    "biotoolsCURIE": "biotools:riboSeed",
+    "biotoolsID": "riboSeed",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "name": "Leighton Pritchard",
+            "orcidid": "https://orcid.org/0000-0002-8392-2822",
+            "typeEntity": "Person"
+        },
+        {
+            "email": "nickp60@gmail.com",
+            "name": "Nicholas Waters",
+            "orcidid": "https://orcid.org/0000-0002-9035-2143",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://orcid.org/0000-0002-9035-2143"
+        }
+    ],
+    "description": "Prokaryotic genome assembly polisher -- uses targeted subassembly to resolve gaps caused by repeated rDNA operons.",
+    "download": [
+        {
+            "type": "Downloads page",
+            "url": "https://github.com/nickp60/riboSeed/releases",
+            "version": "current and 0.4.90"
+        },
+        {
+            "type": "Source code",
+            "url": "https://github.com/nickp60/riboSeed/"
+        },
+        {
+            "type": "VM image",
+            "url": "https://hub.docker.com/r/nickp60/riboseed"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "nickp60"
+        ],
+        "type": "group"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0525", 
-                    "term": "Genome assembly"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3183", 
-                    "term": "Localised reassembly"
-                }
-            ], 
+            "cmd": "ribo run -r reference.fasta -F forward_reads.fq -R reverse_reads.fq -o results",
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_1246", 
-                        "term": "Sequence cluster (nucleic acid)"
-                    }, 
-                    "format": []
+                        "term": "Sequence cluster (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1246"
+                    }
                 }
-            ], 
+            ],
+            "note": "Choose an appropriate reference genome, (try out https://github.com/nickp60/plentyofbugs), add in some reads, and off you go",
+            "operation": [
+                {
+                    "term": "Genome assembly",
+                    "uri": "http://edamontology.org/operation_0525"
+                },
+                {
+                    "term": "Localised reassembly",
+                    "uri": "http://edamontology.org/operation_3183"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_0925", 
-                        "term": "Sequence assembly"
-                    }, 
-                    "format": []
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    }
                 }
-            ], 
-            "note": "Choose an appropriate reference genome, (try out https://github.com/nickp60/plentyofbugs), add in some reads, and off you go", 
-            "cmd": "ribo run -r reference.fasta -F forward_reads.fq -R reverse_reads.fq -o results"
+            ]
         }
-    ], 
-    "toolType": [], 
-    "topic": [], 
-    "operatingSystem": [], 
-    "language": [], 
-    "license": null, 
-    "collectionID": [], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [], 
-    "download": [], 
-    "documentation": [], 
-    "publication": [], 
-    "credit": [], 
-    "owner": "nickp60", 
-    "additionDate": "2019-10-29T14:41:43Z", 
-    "lastUpdate": "2019-10-31T23:47:56Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "homepage": "https://github.com/nickp60/riboSeed/",
+    "lastUpdate": "2020-01-13T23:30:52Z",
+    "license": "MIT",
+    "link": [
+        {
+            "note": "Source code repo",
+            "type": "Repository",
+            "url": "https://github.com/nickp60/riboSeed"
+        },
+        {
+            "note": "Docker Hub",
+            "type": "Other",
+            "url": "https://hub.docker.com/r/nickp60/riboseed"
+        },
+        {
+            "note": "Documentation",
+            "type": "Helpdesk",
+            "url": "https://riboseed.readthedocs.io/en/latest/index.html"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "riboSeed",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "nickp60",
+    "publication": [
+        {
+            "doi": "10.1093/nar/gky212",
+            "pmcid": "PMC6009695",
+            "pmid": "29608703"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "spades",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "samtools",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "bamtools",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "biopython",
+            "type": "uses"
+        }
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Workflow"
+    ],
+    "topic": [
+        {
+            "term": "Sequence assembly",
+            "uri": "http://edamontology.org/topic_0196"
+        }
+    ],
+    "version": [
+        "0.4.90"
+    ]
 }

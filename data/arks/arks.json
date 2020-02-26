@@ -1,153 +1,119 @@
 {
-    "name": "ARKS", 
-    "description": "Scaffolding genome sequence assemblies using 10X Genomics GemCode/Chromium data. This project is a new kmer-based (alignment free) implementation of ARCS. It provides improved runtime performance over the original ARCS implementation by removing the requirement to perform alignments with bwa mem.", 
-    "homepage": "https://github.com/bcgsc/arks", 
-    "biotoolsID": "arks", 
-    "biotoolsCURIE": "biotools:arks", 
-    "version": [], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2018-07-30T09:50:41Z",
+    "biotoolsCURIE": "biotools:arks",
+    "biotoolsID": "arks",
+    "credit": [
+        {
+            "email": "rwarren@bcgsc.ca",
+            "name": "Ren\u00e9 L. Warren",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "Scaffolding genome sequence assemblies using 10X Genomics GemCode/Chromium data. This project is a new kmer-based (alignment free) implementation of ARCS. It provides improved runtime performance over the original ARCS implementation by removing the requirement to perform alignments with bwa mem.",
+    "documentation": [
+        {
+            "type": "General",
+            "url": "https://github.com/bcgsc/arks/blob/master/README.md"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
     "function": [
         {
             "operation": [
                 {
-                    "uri": "http://edamontology.org/operation_0524", 
-                    "term": "De-novo assembly"
+                    "term": "De-novo assembly",
+                    "uri": "http://edamontology.org/operation_0524"
                 }
-            ], 
-            "input": [], 
-            "output": [], 
-            "note": null, 
-            "cmd": null
-        }, 
+            ]
+        },
         {
             "operation": [
                 {
-                    "uri": "http://edamontology.org/operation_3216", 
-                    "term": "Scaffolding"
+                    "term": "Scaffolding",
+                    "uri": "http://edamontology.org/operation_3216"
                 }
-            ], 
-            "input": [], 
-            "output": [], 
-            "note": null, 
-            "cmd": null
-        }, 
+            ]
+        },
         {
             "operation": [
                 {
-                    "uri": "http://edamontology.org/operation_3198", 
-                    "term": "Read mapping"
+                    "term": "Read mapping",
+                    "uri": "http://edamontology.org/operation_3198"
                 }
-            ], 
-            "input": [], 
-            "output": [], 
-            "note": null, 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0622", 
-            "term": "Genomics"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3168", 
-            "term": "Next generation sequencing"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Windows", 
-        "Mac"
-    ], 
+    ],
+    "homepage": "https://github.com/bcgsc/arks",
     "language": [
         "C++"
-    ], 
-    "license": "GPL-3.0", 
-    "collectionID": [], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
+    ],
+    "lastUpdate": "2018-12-10T12:59:00Z",
+    "license": "GPL-3.0",
     "link": [
         {
-            "url": "http://www.bcgsc.ca/platform/bioinfo/software/links", 
-            "type": "Mirror", 
-            "note": null
+            "type": "Mirror",
+            "url": "http://www.bcgsc.ca/platform/bioinfo/software/links"
         }
-    ], 
-    "download": [], 
-    "documentation": [
-        {
-            "url": "https://github.com/bcgsc/arks/blob/master/README.md", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "name": "ARKS",
+    "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+    ],
+    "owner": "shadi.m",
     "publication": [
         {
-            "doi": "10.1186/s12859-018-2243-x", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1186/s12859-018-2243-x",
             "metadata": {
-                "title": "ARKS: Chromosome-scale scaffolding of human genome drafts with linked read kmers", 
-                "abstract": "© 2018 The Author(s). Background: The long-range sequencing information captured by linked reads, such as those available from 10× Genomics (10xG), helps resolve genome sequence repeats, and yields accurate and contiguous draft genome assemblies. We introduce ARKS, an alignment-free linked read genome scaffolding methodology that uses linked reads to organize genome assemblies further into contiguous drafts. Our approach departs from other read alignment-dependent linked read scaffolders, including our own (ARCS), and uses a kmer-based mapping approach. The kmer mapping strategy has several advantages over read alignment methods, including better usability and faster processing, as it precludes the need for input sequence formatting and draft sequence assembly indexing. The reliance on kmers instead of read alignments for pairing sequences relaxes the workflow requirements, and drastically reduces the run time. Results: Here, we show how linked reads, when used in conjunction with Hi-C data for scaffolding, improve a draft human genome assembly of PacBio long-read data five-fold (baseline vs. ARKS NG50 = 4.6 vs. 23.1 Mbp, respectively). We also demonstrate how the method provides further improvements of a megabase-scale Supernova human genome assembly (NG50 = 14.74 Mbp vs. 25.94 Mbp before and after ARKS), which itself exclusively uses linked read data for assembly, with an execution speed six to nine times faster than competitive linked read scaffolders (~ 10.5 h compared to 75.7 h, on average). Following ARKS scaffolding of a human genome 10xG Supernova assembly (of cell line NA12878), fewer than 9 scaffolds cover each chromosome, except the largest (chromosome 1, n = 13). Conclusions: ARKS uses a kmer mapping strategy instead of linked read alignments to record and associate the barcode information needed to order and orient draft assembly sequences. The simplified workflow, when compared to that of our initial implementation, ARCS, markedly improves run time performances on experimental human genome datasets. Furthermore, the novel distance estimator in ARKS utilizes barcoding information from linked reads to estimate gap sizes. It accomplishes this by modeling the relationship between known distances of a region within contigs and calculating associated Jaccard indices. ARKS has the potential to provide correct, chromosome-scale genome assemblies, promptly. We expect ARKS to have broad utility in helping refine draft genomes.", 
-                "date": "2018-06-20T00:00:00Z", 
-                "citationCount": 0, 
+                "abstract": "\u00a9 2018 The Author(s). Background: The long-range sequencing information captured by linked reads, such as those available from 10\u00d7 Genomics (10xG), helps resolve genome sequence repeats, and yields accurate and contiguous draft genome assemblies. We introduce ARKS, an alignment-free linked read genome scaffolding methodology that uses linked reads to organize genome assemblies further into contiguous drafts. Our approach departs from other read alignment-dependent linked read scaffolders, including our own (ARCS), and uses a kmer-based mapping approach. The kmer mapping strategy has several advantages over read alignment methods, including better usability and faster processing, as it precludes the need for input sequence formatting and draft sequence assembly indexing. The reliance on kmers instead of read alignments for pairing sequences relaxes the workflow requirements, and drastically reduces the run time. Results: Here, we show how linked reads, when used in conjunction with Hi-C data for scaffolding, improve a draft human genome assembly of PacBio long-read data five-fold (baseline vs. ARKS NG50 = 4.6 vs. 23.1 Mbp, respectively). We also demonstrate how the method provides further improvements of a megabase-scale Supernova human genome assembly (NG50 = 14.74 Mbp vs. 25.94 Mbp before and after ARKS), which itself exclusively uses linked read data for assembly, with an execution speed six to nine times faster than competitive linked read scaffolders (~ 10.5 h compared to 75.7 h, on average). Following ARKS scaffolding of a human genome 10xG Supernova assembly (of cell line NA12878), fewer than 9 scaffolds cover each chromosome, except the largest (chromosome 1, n = 13). Conclusions: ARKS uses a kmer mapping strategy instead of linked read alignments to record and associate the barcode information needed to order and orient draft assembly sequences. The simplified workflow, when compared to that of our initial implementation, ARCS, markedly improves run time performances on experimental human genome datasets. Furthermore, the novel distance estimator in ARKS utilizes barcoding information from linked reads to estimate gap sizes. It accomplishes this by modeling the relationship between known distances of a region within contigs and calculating associated Jaccard indices. ARKS has the potential to provide correct, chromosome-scale genome assemblies, promptly. We expect ARKS to have broad utility in helping refine draft genomes.",
                 "authors": [
                     {
                         "name": "Coombe L."
-                    }, 
+                    },
                     {
                         "name": "Zhang J."
-                    }, 
+                    },
                     {
                         "name": "Vandervalk B.P."
-                    }, 
+                    },
                     {
                         "name": "Chu J."
-                    }, 
+                    },
                     {
                         "name": "Jackman S.D."
-                    }, 
+                    },
                     {
                         "name": "Birol I."
-                    }, 
+                    },
                     {
                         "name": "Warren R.L."
                     }
-                ], 
-                "journal": "BMC Bioinformatics"
-            }
+                ],
+                "date": "2018-06-20T00:00:00Z",
+                "journal": "BMC Bioinformatics",
+                "title": "ARKS: Chromosome-scale scaffolding of human genome drafts with linked read kmers"
+            },
+            "type": "Primary"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "name": "René L. Warren", 
-            "email": "rwarren@bcgsc.ca", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Genomics",
+            "uri": "http://edamontology.org/topic_0622"
+        },
+        {
+            "term": "Next generation sequencing",
+            "uri": "http://edamontology.org/topic_3168"
         }
-    ], 
-    "owner": "shadi.m", 
-    "additionDate": "2018-07-30T09:50:41Z", 
-    "lastUpdate": "2018-12-10T12:59:00Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 1, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 1
 }
