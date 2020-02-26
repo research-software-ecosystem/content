@@ -1,3 +1,4 @@
+ 
 name: spread doi among sources
 
 on: 
@@ -12,23 +13,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: import bio.tools using the API
+    - name: spread doi among sources
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         sudo apt install python3-pip
         sudo apt install python3-setuptools
-        sudo pip3 install virtualenv 
-	sudo pip3 install ruamel.yaml
+        sudo pip3 install virtualenv
         virtualenv -p python3 venv
-        . venv/bin/activate
-        pip install wheel
-        pip install -r scripts/biotools-import/requirements.txt
+        . venv/bin/activate	
+        pip3 install setuptools wheel
+        pip3 install ruamel.yaml
         pwd
         cd scripts/doi-collector
-        python doi_collector.py {path}/data/
+        python3 doi_collector.py $GITHUB_WORKSPACE/data/
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        git commit -a -m "import from bio.tools on $(date)"
+        git commit -a -m "spread doi amongs sources"
         git push origin master
