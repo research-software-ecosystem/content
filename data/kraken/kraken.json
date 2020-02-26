@@ -1,151 +1,123 @@
 {
-    "name": "Kraken", 
-    "description": "System for assigning taxonomic labels to short DNA sequences, usually obtained through metagenomic studies. Previous attempts by other bioinformatics software to accomplish this task have often used sequence alignment or machine learning techniques that were quite slow, leading to the development of less sensitive but much faster abundance estimation programs. It aims to achieve high sensitivity and high speed by utilizing exact alignments of k-mers and a novel classification algorithm.", 
-    "homepage": "https://ccb.jhu.edu/software/kraken/", 
-    "biotoolsID": "kraken", 
-    "biotoolsCURIE": "biotools:kraken", 
-    "version": [
-        "-0.10.5-beta"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2016-04-12T13:45:52Z",
+    "biotoolsCURIE": "biotools:kraken",
+    "biotoolsID": "kraken",
+    "credit": [
+        {
+            "name": "ebi.ac.uk",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ],
+            "url": "http://www.ebi.ac.uk/"
+        },
+        {
+            "email": "dwood@cs.jhu.edu",
+            "name": "Derrick Wood",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://groups.google.com/forum/#!forum/kraken-users"
+        }
+    ],
+    "description": "System for assigning taxonomic labels to short DNA sequences, usually obtained through metagenomic studies. Previous attempts by other bioinformatics software to accomplish this task have often used sequence alignment or machine learning techniques that were quite slow, leading to the development of less sensitive but much faster abundance estimation programs. It aims to achieve high sensitivity and high speed by utilizing exact alignments of k-mers and a novel classification algorithm.",
+    "documentation": [
+        {
+            "type": "General",
+            "url": "https://ccb.jhu.edu/software/kraken/MANUAL.html"
+        }
+    ],
+    "download": [
+        {
+            "type": "Source code",
+            "url": "https://ccb.jhu.edu/software/kraken/dl/kraken-0.10.5-beta.tgz"
+        },
+        {
+            "type": "Binaries",
+            "url": "https://ccb.jhu.edu/software/kraken/"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_3460", 
-                    "term": "Taxonomic classification"
-                }
-            ], 
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_2546", 
-                            "term": "FASTA-like"
+                            "term": "FASTA-like",
+                            "uri": "http://edamontology.org/format_2546"
                         }
                     ]
                 }
-            ], 
+            ],
+            "note": "Classify short reads using NCBI bacterial, archaeal, and viral genomes in RefSeq sequence data should be in fasta format Format: code (classified,unclassified), sequence ID, taxonomy ID (if classified), seq length, space-delimited list indicating the LCA mapping of each $k$-mer in the sequence (taxonomyID:kmer count).\n\nEx:\n\nU       SRR443846.6494977       0       202     0:172\n\nC       r752098.1       286     100     136845:1 286:3 0:32 1415630:1 0:33\n\nU       SRR443846.9310139       0       202     0:172",
+            "operation": [
+                {
+                    "term": "Taxonomic classification",
+                    "uri": "http://edamontology.org/operation_3460"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3028", 
-                        "term": "Taxonomy"
-                    }, 
+                        "term": "Taxonomy",
+                        "uri": "http://edamontology.org/data_3028"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_3475", 
-                            "term": "TSV"
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
                         }
                     ]
                 }
-            ], 
-            "note": "Classify short reads using NCBI bacterial, archaeal, and viral genomes in RefSeq sequence data should be in fasta format Format: code (classified,unclassified), sequence ID, taxonomy ID (if classified), seq length, space-delimited list indicating the LCA mapping of each $k$-mer in the sequence (taxonomyID:kmer count).\n\nEx:\n\nU       SRR443846.6494977       0       202     0:172\n\nC       r752098.1       286     100     136845:1 286:3 0:32 1415630:1 0:33\n\nU       SRR443846.9310139       0       202     0:172", 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0637", 
-            "term": "Taxonomy"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3174", 
-            "term": "Metagenomics"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux"
-    ], 
+    ],
+    "homepage": "https://ccb.jhu.edu/software/kraken/",
     "language": [
-        "C++", 
+        "C++",
         "Perl"
-    ], 
-    "license": "GFDL-1.3", 
-    "collectionID": [], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
+    ],
+    "lastUpdate": "2019-03-14T13:49:59Z",
+    "license": "GFDL-1.3",
     "link": [
         {
-            "url": "http://github.com/DerrickWood/kraken", 
-            "type": "Repository", 
-            "note": null
+            "type": "Repository",
+            "url": "http://github.com/DerrickWood/kraken"
         }
-    ], 
-    "download": [
-        {
-            "url": "https://ccb.jhu.edu/software/kraken/dl/kraken-0.10.5-beta.tgz", 
-            "type": "Source code", 
-            "note": null, 
-            "version": null
-        }, 
-        {
-            "url": "https://ccb.jhu.edu/software/kraken/", 
-            "type": "Binaries", 
-            "note": null, 
-            "version": null
-        }
-    ], 
-    "documentation": [
-        {
-            "url": "https://ccb.jhu.edu/software/kraken/MANUAL.html", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "name": "Kraken",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "owner": "hudenise@ebi.ac.uk",
     "publication": [
         {
-            "doi": "10.1186/gb-2014-15-3-r46", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
-            "metadata": null
+            "doi": "10.1186/gb-2014-15-3-r46",
+            "type": "Primary"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "name": "ebi.ac.uk", 
-            "email": null, 
-            "url": "http://www.ebi.ac.uk/", 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
+            "term": "Taxonomy",
+            "uri": "http://edamontology.org/topic_0637"
+        },
         {
-            "name": "Derrick Wood", 
-            "email": "dwood@cs.jhu.edu", 
-            "url": "https://groups.google.com/forum/#!forum/kraken-users", 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Metagenomics",
+            "uri": "http://edamontology.org/topic_3174"
         }
-    ], 
-    "owner": "hudenise@ebi.ac.uk", 
-    "additionDate": "2016-04-12T13:45:52Z", 
-    "lastUpdate": "2019-03-14T13:49:59Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "version": [
+        "-0.10.5-beta"
+    ]
 }

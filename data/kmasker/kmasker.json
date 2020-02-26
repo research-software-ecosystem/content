@@ -1,520 +1,497 @@
 {
-    "name": "Kmasker", 
-    "description": "Kmasker plants is a tool for the automatic detection of sequence regions with meaningful k-mer characteristics. This can be sequences with highly abundant k-mer patterns (repeats), regions with diverging k-mer patterns between two studied WGS samples or segments with high target specificity.", 
-    "homepage": "https://kmasker.ipk-gatersleben.de/", 
-    "biotoolsID": "Kmasker", 
-    "biotoolsCURIE": "biotools:Kmasker", 
-    "version": [
-        "1.1.0", 
-        "1.1.1"
-    ], 
-    "otherID": [], 
-    "relation": [
-        {
-            "biotoolsID": "jellyfish", 
-            "type": "uses"
-        }, 
-        {
-            "biotoolsID": "blast", 
-            "type": "uses"
-        }, 
-        {
-            "biotoolsID": "cats", 
-            "type": "includedIn"
-        }
-    ], 
-    "function": [
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0379", 
-                    "term": "Repeat sequence detection"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1361", 
-                        "term": "Position frequency matrix"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3665", 
-                            "term": "K-mer countgraph"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3002", 
-                        "term": "Annotation track"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1975", 
-                            "term": "GFF3"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Mask repeats with Kmasker", 
-            "cmd": "Kmasker --run --fasta query.fasta --kindex At1"
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_3472", 
-                    "term": "k-mer counting"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0850", 
-                        "term": "Sequence set"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "output": [], 
-            "note": "Outputs Jellyfish index, called KINDEX in Kmasker", 
-            "cmd": "Kmasker --build --seq sequence.fastq --gs 135 --in At1 --cn arabidopsis"
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2451", 
-                    "term": "Sequence comparison"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3002", 
-                        "term": "Annotation track"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1975", 
-                            "term": "GFF3"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3002", 
-                        "term": "Annotation track"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1975", 
-                            "term": "GFF3"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1361", 
-                        "term": "Position frequency matrix"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3665", 
-                            "term": "K-mer countgraph"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1361", 
-                        "term": "Position frequency matrix"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3665", 
-                            "term": "K-mer countgraph"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Compare k-mer counts across different libraries and annotate the sequence parts.", 
-            "cmd": "Kmasker --run --fasta query.fasta --kindex At1 Hv1"
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0463", 
-                    "term": "miRNA target prediction"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2977", 
-                        "term": "Nucleic acid sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Check input sequence for long sequence stretches with low repetitiveness. As a results candidate sequences with good target specificity and functionality are selected.", 
-            "cmd": "Kmasker --run --fish --fasta query.fasta --kindex At1"
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2428", 
-                    "term": "Validation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3495", 
-                        "term": "RNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1772", 
-                        "term": "Score"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3475", 
-                            "term": "TSV"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Check a set of gRNAs for their specificity in CRISPR/cas application. As a result for each given gRNA a score is calculated reflecting its target specififity.", 
-            "cmd": "Kmasker --run --krispr --fasta candidate_grna.fasta --kindex Hv1"
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0237", 
-                    "term": "Repeat sequence analysis"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3002", 
-                        "term": "Annotation track"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1975", 
-                            "term": "GFF3"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0857", 
-                        "term": "Sequence search results"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1333", 
-                            "term": "BLAST results"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2914", 
-                        "term": "Sequence features metadata"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1975", 
-                            "term": "GFF3"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Annotation of calculated repeats based on existing repeat libraries.", 
-            "cmd": "Kmasker --explore --annotate --fasta query.fasta --gff kmasker_result.gff --feature KRC --dbfasta mipsREdat_9.3p_ALL.fasta"
-        }
-    ], 
-    "toolType": [
-        "Command-line tool", 
-        "Web service"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0780", 
-            "term": "Plant biology"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_0157", 
-            "term": "Sequence composition, complexity and repeats"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3511", 
-            "term": "Nucleic acid sites, features and motifs"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_0797", 
-            "term": "Comparative genomics"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Mac"
-    ], 
-    "language": [
-        "R", 
-        "C++", 
-        "Perl", 
-        "Python"
-    ], 
-    "license": "GPL-3.0", 
-    "collectionID": [], 
-    "maturity": "Mature", 
-    "cost": "Free of charge", 
     "accessibility": [
         "Open access"
-    ], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [
-        {
-            "url": "https://github.com/tschmutzer/kmasker", 
-            "type": "Repository", 
-            "note": "Source Code Repository"
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/issues", 
-            "type": "Issue tracker", 
-            "note": null
-        }
-    ], 
-    "download": [
-        {
-            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release.zip", 
-            "type": "Binary package", 
-            "note": null, 
-            "version": "1.1.0"
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release_source.tar", 
-            "type": "Source package", 
-            "note": null, 
-            "version": "1.1.0"
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/releases", 
-            "type": "Downloads page", 
-            "note": null, 
-            "version": null
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.1/kmasker_release.zip", 
-            "type": "Binary package", 
-            "note": null, 
-            "version": "1.1.1"
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.1/kmasker_release_source.tar", 
-            "type": "Source package", 
-            "note": null, 
-            "version": "1.1.1"
-        }
-    ], 
-    "documentation": [
-        {
-            "url": "https://github.com/tschmutzer/kmasker/blob/master/README.md", 
-            "type": "Manual", 
-            "note": null
-        }, 
-        {
-            "url": "https://github.com/tschmutzer/kmasker/blob/master/INSTALL.md", 
-            "type": "Installation instructions", 
-            "note": null
-        }
-    ], 
-    "publication": [], 
+    ],
+    "additionDate": "2019-10-22T13:49:39Z",
+    "biotoolsCURIE": "biotools:Kmasker",
+    "biotoolsID": "Kmasker",
+    "cost": "Free of charge",
     "credit": [
         {
-            "name": "Thomas Schmutzer", 
-            "email": "thomas.schmutzer@landw.uni-halle.de", 
-            "url": "https://www.landw.uni-halle.de/prof/biom_ai/schmutzer/", 
-            "orcidid": "https://orcid.org/0000-0003-1073-6719", 
-            "typeEntity": "Person", 
+            "email": "thomas.schmutzer@landw.uni-halle.de",
+            "name": "Thomas Schmutzer",
+            "orcidid": "https://orcid.org/0000-0003-1073-6719",
+            "typeEntity": "Person",
             "typeRole": [
-                "Primary contact", 
-                "Developer", 
+                "Primary contact",
+                "Developer",
                 "Documentor"
-            ], 
-            "note": null
-        }, 
+            ],
+            "url": "https://www.landw.uni-halle.de/prof/biom_ai/schmutzer/"
+        },
         {
-            "name": "Chris Ulpinnis", 
-            "email": "chris.ulpinnis@ipb-halle.de", 
-            "url": "https://www.ipb-halle.de/mitarbeiter/chris-ulpinnis/", 
-            "orcidid": "https://orcid.org/0000-0001-5444-9282", 
-            "typeEntity": "Person", 
+            "email": "chris.ulpinnis@ipb-halle.de",
+            "name": "Chris Ulpinnis",
+            "orcidid": "https://orcid.org/0000-0001-5444-9282",
+            "typeEntity": "Person",
             "typeRole": [
-                "Primary contact", 
-                "Developer", 
+                "Primary contact",
+                "Developer",
                 "Maintainer"
-            ], 
-            "note": null
-        }, 
+            ],
+            "url": "https://www.ipb-halle.de/mitarbeiter/chris-ulpinnis/"
+        },
         {
-            "name": "IPK-Gatersleben Research Group Bioinformatics and Information Technology", 
-            "email": null, 
-            "url": "https://www.ipk-gatersleben.de/en/breeding-research/bioinformatics-and-information-technology/", 
-            "orcidid": null, 
-            "typeEntity": "Division", 
-            "typeRole": [], 
-            "note": null
-        }, 
+            "name": "IPK-Gatersleben Research Group Bioinformatics and Information Technology",
+            "typeEntity": "Division",
+            "url": "https://www.ipk-gatersleben.de/en/breeding-research/bioinformatics-and-information-technology/"
+        },
         {
-            "name": "Sebastian Beier", 
-            "email": "beiers@ipk-gatersleben.de", 
-            "url": null, 
-            "orcidid": "https://orcid.org/0000-0002-2177-8781", 
-            "typeEntity": "Person", 
+            "email": "beiers@ipk-gatersleben.de",
+            "name": "Sebastian Beier",
+            "orcidid": "https://orcid.org/0000-0002-2177-8781",
+            "typeEntity": "Person",
             "typeRole": [
-                "Developer", 
+                "Developer",
                 "Contributor"
-            ], 
-            "note": null
-        }, 
+            ]
+        },
         {
-            "name": "Markus Schwalbe", 
-            "email": null, 
-            "url": "https://monami.hs-mittweida.de/frontdoor/index/index/searchtype/all/start/0/rows/100/facetNumber_author_facet/all/facetNumber_subject/all/subjectfq/CRISPR%2FCas-Methode/docId/10555", 
-            "orcidid": null, 
-            "typeEntity": "Person", 
+            "name": "Markus Schwalbe",
+            "typeEntity": "Person",
             "typeRole": [
-                "Developer", 
+                "Developer",
                 "Contributor"
-            ], 
-            "note": null
+            ],
+            "url": "https://monami.hs-mittweida.de/frontdoor/index/index/searchtype/all/start/0/rows/100/facetNumber_author_facet/all/facetNumber_subject/all/subjectfq/CRISPR%2FCas-Methode/docId/10555"
         }
-    ], 
-    "owner": "culpinnis", 
-    "additionDate": "2019-10-22T13:49:39Z", 
-    "lastUpdate": "2019-10-24T14:17:45Z", 
+    ],
+    "description": "Kmasker plants is a tool for the automatic detection of sequence regions with meaningful k-mer characteristics. This can be sequences with highly abundant k-mer patterns (repeats), regions with diverging k-mer patterns between two studied WGS samples or segments with high target specificity.",
+    "documentation": [
+        {
+            "type": "User manual",
+            "url": "https://github.com/tschmutzer/kmasker/blob/master/README.md"
+        },
+        {
+            "type": "Installation instructions",
+            "url": "https://github.com/tschmutzer/kmasker/blob/master/INSTALL.md"
+        }
+    ],
+    "download": [
+        {
+            "type": "Software package",
+            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release.zip",
+            "version": "1.1.0"
+        },
+        {
+            "type": "Software package",
+            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release_source.tar",
+            "version": "1.1.0"
+        },
+        {
+            "type": "Downloads page",
+            "url": "https://github.com/tschmutzer/kmasker/releases"
+        },
+        {
+            "type": "Software package",
+            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.1/kmasker_release.zip",
+            "version": "1.1.1"
+        },
+        {
+            "type": "Software package",
+            "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.1/kmasker_release_source.tar",
+            "version": "1.1.1"
+        }
+    ],
     "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "Kmasker --run --fasta query.fasta --kindex At1",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Mask repeats with Kmasker",
+            "operation": [
+                {
+                    "term": "Repeat sequence detection",
+                    "uri": "http://edamontology.org/operation_0379"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Position frequency matrix",
+                        "uri": "http://edamontology.org/data_1361"
+                    },
+                    "format": [
+                        {
+                            "term": "K-mer countgraph",
+                            "uri": "http://edamontology.org/format_3665"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --build --seq sequence.fastq --gs 135 --in At1 --cn arabidopsis",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence set",
+                        "uri": "http://edamontology.org/data_0850"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Outputs Jellyfish index, called KINDEX in Kmasker",
+            "operation": [
+                {
+                    "term": "k-mer counting",
+                    "uri": "http://edamontology.org/operation_3472"
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --run --fasta query.fasta --kindex At1 Hv1",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Compare k-mer counts across different libraries and annotate the sequence parts.",
+            "operation": [
+                {
+                    "term": "Sequence comparison",
+                    "uri": "http://edamontology.org/operation_2451"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Position frequency matrix",
+                        "uri": "http://edamontology.org/data_1361"
+                    },
+                    "format": [
+                        {
+                            "term": "K-mer countgraph",
+                            "uri": "http://edamontology.org/format_3665"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Position frequency matrix",
+                        "uri": "http://edamontology.org/data_1361"
+                    },
+                    "format": [
+                        {
+                            "term": "K-mer countgraph",
+                            "uri": "http://edamontology.org/format_3665"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --run --fish --fasta query.fasta --kindex At1",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Check input sequence for long sequence stretches with low repetitiveness. As a results candidate sequences with good target specificity and functionality are selected.",
+            "operation": [
+                {
+                    "term": "miRNA target prediction",
+                    "uri": "http://edamontology.org/operation_0463"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --run --krispr --fasta candidate_grna.fasta --kindex Hv1",
+            "input": [
+                {
+                    "data": {
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Check a set of gRNAs for their specificity in CRISPR/cas application. As a result for each given gRNA a score is calculated reflecting its target specififity.",
+            "operation": [
+                {
+                    "term": "Validation",
+                    "uri": "http://edamontology.org/operation_2428"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Score",
+                        "uri": "http://edamontology.org/data_1772"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --explore --annotate --fasta query.fasta --gff kmasker_result.gff --feature KRC --dbfasta mipsREdat_9.3p_ALL.fasta",
+            "input": [
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": [
+                        {
+                            "term": "BLAST results",
+                            "uri": "http://edamontology.org/format_1333"
+                        }
+                    ]
+                }
+            ],
+            "note": "Annotation of calculated repeats based on existing repeat libraries.",
+            "operation": [
+                {
+                    "term": "Repeat sequence analysis",
+                    "uri": "http://edamontology.org/operation_0237"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence features metadata",
+                        "uri": "http://edamontology.org/data_2914"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://kmasker.ipk-gatersleben.de/",
+    "language": [
+        "R",
+        "C++",
+        "Perl",
+        "Python"
+    ],
+    "lastUpdate": "2020-01-15T10:22:51Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "note": "Source Code Repository",
+            "type": "Repository",
+            "url": "https://github.com/tschmutzer/kmasker"
+        },
+        {
+            "type": "Issue tracker",
+            "url": "https://github.com/tschmutzer/kmasker/issues"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "Kmasker",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "culpinnis",
+    "publication": [
+        {
+            "doi": "10.1111/TPJ.14645",
+            "pmid": "31823436",
+            "type": "Primary"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "jellyfish",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "blast",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "cats",
+            "type": "includedIn"
+        }
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Web service"
+    ],
+    "topic": [
+        {
+            "term": "Plant biology",
+            "uri": "http://edamontology.org/topic_0780"
+        },
+        {
+            "term": "Sequence composition, complexity and repeats",
+            "uri": "http://edamontology.org/topic_0157"
+        },
+        {
+            "term": "Nucleic acid sites, features and motifs",
+            "uri": "http://edamontology.org/topic_3511"
+        },
+        {
+            "term": "Comparative genomics",
+            "uri": "http://edamontology.org/topic_0797"
+        }
+    ],
+    "version": [
+        "1.1.0",
+        "1.1.1"
+    ]
 }

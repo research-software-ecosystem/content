@@ -1,302 +1,270 @@
 {
-    "name": "PROTEOFORMER", 
-    "description": "Proteogenomic pipeline integrating ribosome profiling (RIBO-seq) data in the search for new proteoforms in proteomic validation data. The pipeline does a genome-wide construction of candidate translation products based on ribosome occupancy.", 
-    "homepage": "https://github.com/Biobix/proteoformer", 
-    "biotoolsID": "proteoformer", 
-    "biotoolsCURIE": "biotools:proteoformer", 
-    "version": [
-        "1.0", 
-        "2.0"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "accessibility": [
+        "Open access"
+    ],
+    "additionDate": "2016-05-17T10:17:55Z",
+    "biotoolsCURIE": "biotools:proteoformer",
+    "biotoolsID": "proteoformer",
+    "collectionID": [
+        "BIG N2N",
+        "Proteomics",
+        "BioBix",
+        "UGent"
+    ],
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "Steven.Verbruggen@UGent.be",
+            "name": "Steven Verbruggen",
+            "note": "Main developer of the 2.0 version",
+            "orcidid": "https://orcid.org/0000-0001-9441-9539",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact",
+                "Developer",
+                "Documentor",
+                "Maintainer"
+            ]
+        },
+        {
+            "email": "Gerben.Menschaert@ugent.be",
+            "name": "Gerben Menschaert",
+            "note": "PI of this project",
+            "orcidid": "https://orcid.org/0000-0002-7575-2085",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact",
+                "Contributor"
+            ]
+        },
+        {
+            "name": "Jeroen Crapp\u00e9",
+            "note": "Main developer of the 1.0 version",
+            "orcidid": "https://orcid.org/0000-0003-1677-9533",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "name": "Elvis Ndah",
+            "note": "Main developer of the 1.0 version",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "name": "Sandra Steyaert",
+            "note": "Contributor to the 1.0 version",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
+            "name": "Alexander Koch",
+            "note": "Contributor to the 1.0 version",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
+            "name": "Ghent University",
+            "typeEntity": "Institute",
+            "url": "https://www.ugent.be/en"
+        },
+        {
+            "name": "BioBix",
+            "typeEntity": "Division",
+            "url": "http://www.biobix.be/"
+        }
+    ],
+    "description": "Proteogenomic pipeline integrating ribosome profiling (RIBO-seq) data in the search for new proteoforms in proteomic validation data. The pipeline does a genome-wide construction of candidate translation products based on ribosome occupancy.",
+    "documentation": [
+        {
+            "note": "Full elaborate documentation on usage and installation with lots of examples. Main documentation source.",
+            "type": "User manual",
+            "url": "https://github.com/Biobix/proteoformer/blob/master/README.md"
+        },
+        {
+            "note": "GPU 3.0 license",
+            "type": "Terms of use",
+            "url": "https://github.com/Biobix/proteoformer/blob/master/LICENSE"
+        }
+    ],
+    "download": [
+        {
+            "note": "GitHub repo",
+            "type": "Source code",
+            "url": "https://github.com/Biobix/proteoformer",
+            "version": "2.0"
+        },
+        {
+            "note": "Galaxy wrapper files",
+            "type": "Tool wrapper (Galaxy)",
+            "url": "https://github.com/Biobix/proteoformer/tree/master/Galaxy%20files",
+            "version": "1.0"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "proteomics.bio.tools",
+            "StevenVerbruggen"
+        ],
+        "type": "group"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2423", 
-                    "term": "Prediction and recognition"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3563", 
-                    "term": "RNA-seq read count analysis"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3225", 
-                    "term": "Variant classification"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_0362", 
-                    "term": "Genome annotation"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_2284", 
-                    "term": "Nucleic acid density plotting"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3198", 
-                    "term": "Read mapping"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3182", 
-                    "term": "Genome alignment"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3800", 
-                    "term": "RNA-Seq quantification"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3661", 
-                    "term": "SNP annotation"
-                }
-            ], 
+            "cmd": "perl mapping.pl --help",
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3496", 
-                        "term": "RNA sequence (raw)"
-                    }, 
+                        "term": "RNA sequence (raw)",
+                        "uri": "http://edamontology.org/data_3496"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1930", 
-                            "term": "FASTQ"
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
                         }
                     ]
                 }
-            ], 
+            ],
+            "operation": [
+                {
+                    "term": "Prediction and recognition",
+                    "uri": "http://edamontology.org/operation_2423"
+                },
+                {
+                    "term": "RNA-seq read count analysis",
+                    "uri": "http://edamontology.org/operation_3563"
+                },
+                {
+                    "term": "Variant classification",
+                    "uri": "http://edamontology.org/operation_3225"
+                },
+                {
+                    "term": "Genome annotation",
+                    "uri": "http://edamontology.org/operation_0362"
+                },
+                {
+                    "term": "Nucleic acid density plotting",
+                    "uri": "http://edamontology.org/operation_2284"
+                },
+                {
+                    "term": "Read mapping",
+                    "uri": "http://edamontology.org/operation_3198"
+                },
+                {
+                    "term": "Genome alignment",
+                    "uri": "http://edamontology.org/operation_3182"
+                },
+                {
+                    "term": "RNA-Seq quantification",
+                    "uri": "http://edamontology.org/operation_3800"
+                },
+                {
+                    "term": "SNP annotation",
+                    "uri": "http://edamontology.org/operation_3661"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2080", 
-                        "term": "Database search results"
-                    }, 
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_3621", 
-                            "term": "SQLite format"
+                            "term": "SQLite format",
+                            "uri": "http://edamontology.org/format_3621"
                         }
                     ]
-                }, 
+                },
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2886", 
-                        "term": "Protein sequence record"
-                    }, 
+                        "term": "Protein sequence record",
+                        "uri": "http://edamontology.org/data_2886"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 }
-            ], 
-            "note": null, 
-            "cmd": "perl mapping.pl --help"
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0121", 
-            "term": "Proteomics"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3120", 
-            "term": "Protein variants"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3308", 
-            "term": "Transcriptomics"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Mac"
-    ], 
+    ],
+    "homepage": "https://github.com/Biobix/proteoformer",
     "language": [
-        "R", 
-        "Perl", 
-        "SQL", 
+        "R",
+        "Perl",
+        "SQL",
         "Python"
-    ], 
-    "license": "GPL-3.0", 
-    "collectionID": [
-        "BIG N2N", 
-        "Proteomics", 
-        "BioBix", 
-        "UGent"
-    ], 
-    "maturity": "Mature", 
-    "cost": "Free of charge", 
-    "accessibility": [
-        "Open access"
-    ], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
+    ],
+    "lastUpdate": "2019-06-17T11:30:23Z",
+    "license": "GPL-3.0",
     "link": [
         {
-            "url": "https://github.com/Biobix/proteoformer", 
-            "type": "Repository", 
-            "note": "GitHub tool repo (PROTEOFORMER version 2.0)"
-        }, 
+            "note": "GitHub tool repo (PROTEOFORMER version 2.0)",
+            "type": "Repository",
+            "url": "https://github.com/Biobix/proteoformer"
+        },
         {
-            "url": "http://galaxy.ugent.be/", 
-            "type": "Galaxy service", 
-            "note": "Galaxy service of PROTEOFORMER version 1.0 (the Galaxy service of PROTEOFORMER version 2.0 is under way)"
-        }, 
+            "note": "Galaxy service of PROTEOFORMER version 1.0 (the Galaxy service of PROTEOFORMER version 2.0 is under way)",
+            "type": "Galaxy service",
+            "url": "http://galaxy.ugent.be/"
+        },
         {
-            "url": "http://www.biobix.be/research/downloads/proteoformer/", 
-            "type": "Other", 
-            "note": "Explanation of the tool on the lab's website"
+            "note": "Explanation of the tool on the lab's website",
+            "type": "Other",
+            "url": "http://www.biobix.be/research/downloads/proteoformer/"
         }
-    ], 
-    "download": [
-        {
-            "url": "https://github.com/Biobix/proteoformer", 
-            "type": "Source code", 
-            "note": "GitHub repo", 
-            "version": "2.0"
-        }, 
-        {
-            "url": "https://github.com/Biobix/proteoformer/tree/master/Galaxy%20files", 
-            "type": "Tool wrapper (galaxy)", 
-            "note": "Galaxy wrapper files", 
-            "version": "1.0"
-        }
-    ], 
-    "documentation": [
-        {
-            "url": "https://github.com/Biobix/proteoformer/blob/master/README.md", 
-            "type": "Manual", 
-            "note": "Full elaborate documentation on usage and installation with lots of examples. Main documentation source."
-        }, 
-        {
-            "url": "https://github.com/Biobix/proteoformer/blob/master/LICENSE", 
-            "type": "Terms of use", 
-            "note": "GPU 3.0 license"
-        }
-    ], 
+    ],
+    "maturity": "Mature",
+    "name": "PROTEOFORMER",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "Katrijn.Vannerum@ugent.be",
     "publication": [
         {
-            "doi": "10.1093/nar/gku1283", 
-            "pmid": "25510491", 
-            "pmcid": "PMC4357689", 
-            "type": "Primary", 
-            "version": "1.0", 
-            "metadata": null
-        }, 
+            "doi": "10.1093/nar/gku1283",
+            "pmcid": "PMC4357689",
+            "pmid": "25510491",
+            "type": "Primary",
+            "version": "1.0"
+        },
         {
-            "doi": "10.1074/mcp.RA118.001218", 
-            "pmid": "31040227", 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": "2.0", 
-            "metadata": null
+            "doi": "10.1074/mcp.RA118.001218",
+            "pmid": "31040227",
+            "type": "Primary",
+            "version": "2.0"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "name": "Steven Verbruggen", 
-            "email": "Steven.Verbruggen@UGent.be", 
-            "url": null, 
-            "orcidid": "https://orcid.org/0000-0001-9441-9539", 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact", 
-                "Developer", 
-                "Documentor", 
-                "Maintainer"
-            ], 
-            "note": "Main developer of the 2.0 version"
-        }, 
+            "term": "Proteomics",
+            "uri": "http://edamontology.org/topic_0121"
+        },
         {
-            "name": "Gerben Menschaert", 
-            "email": "Gerben.Menschaert@ugent.be", 
-            "url": null, 
-            "orcidid": "https://orcid.org/0000-0002-7575-2085", 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact", 
-                "Contributor"
-            ], 
-            "note": "PI of this project"
-        }, 
+            "term": "Protein variants",
+            "uri": "http://edamontology.org/topic_3120"
+        },
         {
-            "name": "Jeroen CrappÃ©", 
-            "email": null, 
-            "url": null, 
-            "orcidid": "https://orcid.org/0000-0003-1677-9533", 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Developer"
-            ], 
-            "note": "Main developer of the 1.0 version"
-        }, 
-        {
-            "name": "Elvis Ndah", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Developer"
-            ], 
-            "note": "Main developer of the 1.0 version"
-        }, 
-        {
-            "name": "Sandra Steyaert", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Contributor"
-            ], 
-            "note": "Contributor to the 1.0 version"
-        }, 
-        {
-            "name": "Alexander Koch", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Contributor"
-            ], 
-            "note": "Contributor to the 1.0 version"
-        }, 
-        {
-            "name": "Ghent University", 
-            "email": null, 
-            "url": "https://www.ugent.be/en", 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [], 
-            "note": null
-        }, 
-        {
-            "name": "BioBix", 
-            "email": null, 
-            "url": "http://www.biobix.be/", 
-            "orcidid": null, 
-            "typeEntity": "Division", 
-            "typeRole": [], 
-            "note": null
+            "term": "Transcriptomics",
+            "uri": "http://edamontology.org/topic_3308"
         }
-    ], 
-    "owner": "Katrijn.Vannerum@ugent.be", 
-    "additionDate": "2016-05-17T10:17:55Z", 
-    "lastUpdate": "2019-06-17T11:30:23Z", 
-    "editPermission": {
-        "type": "group", 
-        "authors": [
-            "proteomics.bio.tools", 
-            "StevenVerbruggen"
-        ]
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "version": [
+        "1.0",
+        "2.0"
+    ]
 }

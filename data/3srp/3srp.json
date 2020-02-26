@@ -1,308 +1,318 @@
 {
-    "name": "3SRP", 
-    "description": "A Snakemake-based pipeline for 3' sequencing RNA profiling data analysis ...", 
-    "homepage": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/DGE-pipeline", 
-    "biotoolsID": "3SRP", 
-    "biotoolsCURIE": "biotools:3SRP", 
-    "version": [
-        "1.0"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "accessibility": [
+        "Open access"
+    ],
+    "additionDate": "2019-08-30T10:28:42Z",
+    "biotoolsCURIE": "biotools:3SRP",
+    "biotoolsID": "3SRP",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "eric.charpentier@univ-nantes.fr",
+            "name": "Eric Charpentier",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact",
+                "Developer",
+                "Support"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr/qui-sommes-nous-/membres/"
+        },
+        {
+            "email": "pf-bird@univ-nantes.fr",
+            "name": "BiRD",
+            "typeEntity": "Division",
+            "typeRole": [
+                "Provider",
+                "Support"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr"
+        },
+        {
+            "email": "solenne.dumont@univ-nantes.fr",
+            "name": "Solenne Dumont",
+            "orcidid": "https://orcid.org/0000-0003-3237-7382",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr/qui-sommes-nous-/membres/"
+        },
+        {
+            "email": "dimitri.meistermann@univ-nantes.fr",
+            "name": "Dimitri MEISTERMANN",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "name": "Broad Institute",
+            "note": "Some scripts of the pipeline regarding sample demultiplexing and UMI counting have been adapated and modified from this paper:\nXiong, Y., Soumillon, M., Wu, J. et al. A Comparison of mRNA Sequencing with Random Primed and 3\u2032-Directed Libraries. Sci Rep 7, 14626 (2017).",
+            "typeEntity": "Institute"
+        },
+        {
+            "email": "philippe.bordron@univ-nantes.fr",
+            "name": "Philippe Bordron",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "audrey.bihouee@univ-nantes.fr",
+            "name": "Audrey Bihou\u00e9e",
+            "orcidid": "https://orcid.org/0000-0002-8689-2083",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        }
+    ],
+    "description": "A Snakemake-based pipeline for 3' sequencing RNA profiling data analysis.  This 3\u2019 Digital gene expression sequencing technique allows a precise and low-cost transcriptome profiling.\n\nThe main steps of the pipeline are:\n- Samples demultiplexing transform the raw paired-end fastq files into a single-end fastq file for each sample.\n- Alignment on refseq reference transcriptome is performed using bwa.\n- Aligned reads are parsed and UMI are counted for each gene in each sample to create an expression matrix.\nIf secondary analysis has been asked (providing a comparisons file), the expression matrix is normalized and differentially expressed genes (DEG) are searched using deseq2.\n- If DEG are found, annotation is performed using the database GO and KEGG.\n- A report is provided listing the main quality controls performed and the results found.",
+    "documentation": [
+        {
+            "type": "General",
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/DGE-pipeline/blob/master/README.md"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "audrey.bihouee",
+            "echarpentier"
+        ],
+        "type": "group"
+    },
+    "elixirNode": [
+        "France"
+    ],
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2935", 
-                    "term": "Clustering profile plotting"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3563", 
-                    "term": "RNA-seq read count analysis"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3223", 
-                    "term": "Differential gene expression analysis"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_0531", 
-                    "term": "Heat map generation"
-                }
-            ], 
+            "cmd": "python SCRIPTS/make_dge_config.py -s TESTDATA/samplesheet.tsv -r TESTDATA/REFERENCES/ -w RESULTS -f TESTDATA/fastqFiles.txt -c TESTDATA/conditions.tsv --minGenes 0 --minReads 0 > config.json ; \nsnakemake -rp --config conf=\"config.json\"",
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3495", 
-                        "term": "RNA sequence"
-                    }, 
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1931", 
-                            "term": "FASTQ-illumina"
+                            "term": "FASTQ-illumina",
+                            "uri": "http://edamontology.org/format_1931"
                         }
                     ]
                 }
-            ], 
+            ],
+            "note": "First generate a configuration file and then run the pipeline with the Snakemake engine.",
+            "operation": [
+                {
+                    "term": "Clustering profile plotting",
+                    "uri": "http://edamontology.org/operation_2935"
+                },
+                {
+                    "term": "RNA-seq read count analysis",
+                    "uri": "http://edamontology.org/operation_3563"
+                },
+                {
+                    "term": "Differential gene expression analysis",
+                    "uri": "http://edamontology.org/operation_3223"
+                },
+                {
+                    "term": "Heat map generation",
+                    "uri": "http://edamontology.org/operation_0531"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3768", 
-                        "term": "Clustered expression profiles"
-                    }, 
+                        "term": "Clustered expression profiles",
+                        "uri": "http://edamontology.org/data_3768"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_3603", 
-                            "term": "PNG"
-                        }, 
+                            "term": "PNG",
+                            "uri": "http://edamontology.org/format_3603"
+                        },
                         {
-                            "uri": "http://edamontology.org/format_3508", 
-                            "term": "PDF"
+                            "term": "PDF",
+                            "uri": "http://edamontology.org/format_3508"
                         }
                     ]
-                }, 
+                },
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3112", 
-                        "term": "Gene expression matrix"
-                    }, 
+                        "term": "Gene expression matrix",
+                        "uri": "http://edamontology.org/data_3112"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_3751", 
-                            "term": "DSV"
+                            "term": "DSV",
+                            "uri": "http://edamontology.org/format_3751"
                         }
                     ]
-                }, 
+                },
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2048", 
-                        "term": "Report"
-                    }, 
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_2331", 
-                            "term": "HTML"
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
                         }
                     ]
                 }
-            ], 
-            "note": "First generate a configuration file and then run the pipeline with the Snakemake engine.", 
-            "cmd": "python SCRIPTS/make_dge_config.py -s TESTDATA/samplesheet.tsv -r TESTDATA/REFERENCES/ -w RESULTS -f TESTDATA/fastqFiles.txt -c TESTDATA/conditions.tsv --minGenes 0 --minReads 0 > config.json ; \nsnakemake -rp --config conf=\"config.json\""
+            ]
         }
-    ], 
-    "toolType": [
-        "Workflow"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_3308", 
-            "term": "Transcriptomics"
-        }
-    ], 
+    ],
+    "homepage": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/srp-pipeline",
+    "language": [
+        "R",
+        "Python"
+    ],
+    "lastUpdate": "2020-02-07T13:46:28.551888Z",
+    "maturity": "Emerging",
+    "name": "3SRP",
     "operatingSystem": [
         "Linux"
-    ], 
-    "language": [
-        "R", 
-        "Python"
-    ], 
-    "license": null, 
-    "collectionID": [], 
-    "maturity": "Emerging", 
-    "cost": "Free of charge", 
-    "accessibility": [
-        "Open access"
-    ], 
-    "elixirPlatform": [], 
-    "elixirNode": [
-        "France"
-    ], 
-    "link": [], 
-    "download": [], 
-    "documentation": [
-        {
-            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/DGE-pipeline/blob/master/README.md", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "owner": "alban.gaignard@univ-nantes.fr",
     "publication": [
         {
-            "doi": "10.1038/s41467-017-02107-w", 
-            "pmid": "29367672", 
-            "pmcid": "PMC5783949", 
-            "type": "Usage", 
-            "version": null, 
-            "metadata": null
-        }, 
+            "doi": "10.1038/s41467-017-02107-w",
+            "pmcid": "PMC5783949",
+            "pmid": "29367672",
+            "type": "Usage"
+        },
         {
-            "doi": "10.3389/fimmu.2017.02014", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": null, 
-            "version": null, 
+            "doi": "10.3389/fimmu.2017.02014",
             "metadata": {
-                "title": "Effects of MicroRNA on regulatory T Cells and implications for adoptive cellular therapy to ameliorate graft-versus-host disease", 
-                "abstract": "© 2018 Hippen, Loschi, Nicholls, MacDonald and Blazar.Regulatory T cells (Tregs) are key mediators of the immune system. MicroRNAs (miRNAs) are a family of ~22 nucleotide non-coding RNAs that are processed from longer precursors by the RNases Drosha and Dicer. miRNA regulates protein expression posttranscriptionally through mRNA destabilization or translational silencing. A critical role for miRNA in Treg function was initially discovered when both Dicer and Drosha knockout (KO) mice were found to develop a fatal autoimmune disease phenotypically similar to Foxp3 KO mice.", 
-                "date": "2018-01-31T00:00:00Z", 
-                "citationCount": 6, 
+                "abstract": "\u00a9 2018 Hippen, Loschi, Nicholls, MacDonald and Blazar.Regulatory T cells (Tregs) are key mediators of the immune system. MicroRNAs (miRNAs) are a family of ~22 nucleotide non-coding RNAs that are processed from longer precursors by the RNases Drosha and Dicer. miRNA regulates protein expression posttranscriptionally through mRNA destabilization or translational silencing. A critical role for miRNA in Treg function was initially discovered when both Dicer and Drosha knockout (KO) mice were found to develop a fatal autoimmune disease phenotypically similar to Foxp3 KO mice.",
                 "authors": [
                     {
                         "name": "Hippen K.L."
-                    }, 
+                    },
                     {
                         "name": "Loschi M."
-                    }, 
+                    },
                     {
                         "name": "Nicholls J."
-                    }, 
+                    },
                     {
                         "name": "MacDonald K.P.A."
-                    }, 
+                    },
                     {
                         "name": "Blazar B.R."
                     }
-                ], 
-                "journal": "Frontiers in Immunology"
-            }
-        }, 
+                ],
+                "citationCount": 7,
+                "date": "2018-01-31T00:00:00Z",
+                "journal": "Frontiers in Immunology",
+                "title": "Effects of MicroRNA on regulatory T Cells and implications for adoptive cellular therapy to ameliorate graft-versus-host disease"
+            },
+            "type": "Usage"
+        },
         {
-            "doi": "10.1016/j.jaut.2017.10.005", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": null, 
-            "version": null, 
+            "doi": "10.1016/j.jaut.2017.10.005",
             "metadata": {
-                "title": "An intermediate level of CD161 expression defines a novel activated, inflammatory, and pathogenic subset of CD8 + T cells involved in multiple sclerosis", 
-                "abstract": "© 2017 The Authors Several lines of evidence support a key role for CD8 + T cells in central nervous system tissue damage of patients with multiple sclerosis. However, the precise phenotype of the circulating CD8 + T cells that may be recruited from the peripheral blood to invade the CNS remains largely undefined to date. It has been suggested that IL-17 secreting CD8 (Tc17) T cells may be involved, and in humans these cells are characterized by the expression of CD161. We focused our study on a unique and recently described subset of CD8 T cells characterized by an intermediate expression of CD161 as its role in neuroinflammation has not been investigated to date. The frequency, phenotype, and function of CD8 + T cells with an intermediate CD161 expression level were characterized ex-vivo, in vitro, and in situ using RNAseq, RT-PCR, flow cytometry, TCR sequencing, and immunohistofluorescence of cells derived from healthy volunteers (n = 61), MS subjects (n = 90), as well as inflammatory (n = 15) and non-inflammatory controls (n = 6). We report here that CD8 + CD161 int T cells present characteristics of effector cells, up-regulate cell-adhesion molecules and have an increased ability to cross the blood-brain barrier and to secrete IL-17, IFNγ GM-CSF, and IL-22. We further demonstrate that these cells are recruited and enriched in the CNS of MS subjects where they produce IL-17. In the peripheral blood, RNAseq, RT-PCR, high-throughput TCR repertoire analyses, and flow cytometry confirmed an increased effector and transmigration pattern of these cells in MS patients, with the presence of supernumerary clones compared to healthy controls. Our data demonstrate that intermediate levels of CD161 expression identifies activated and effector CD8 + T cells with pathogenic properties that are recruited to MS lesions. This suggests that CD161 may represent a biomarker and a valid target for the treatment of neuroinflammation.", 
-                "date": "2018-03-01T00:00:00Z", 
-                "citationCount": 3, 
+                "abstract": "\u00a9 2017 The Authors Several lines of evidence support a key role for CD8 + T cells in central nervous system tissue damage of patients with multiple sclerosis. However, the precise phenotype of the circulating CD8 + T cells that may be recruited from the peripheral blood to invade the CNS remains largely undefined to date. It has been suggested that IL-17 secreting CD8 (Tc17) T cells may be involved, and in humans these cells are characterized by the expression of CD161. We focused our study on a unique and recently described subset of CD8 T cells characterized by an intermediate expression of CD161 as its role in neuroinflammation has not been investigated to date. The frequency, phenotype, and function of CD8 + T cells with an intermediate CD161 expression level were characterized ex-vivo, in vitro, and in situ using RNAseq, RT-PCR, flow cytometry, TCR sequencing, and immunohistofluorescence of cells derived from healthy volunteers (n = 61), MS subjects (n = 90), as well as inflammatory (n = 15) and non-inflammatory controls (n = 6). We report here that CD8 + CD161 int T cells present characteristics of effector cells, up-regulate cell-adhesion molecules and have an increased ability to cross the blood-brain barrier and to secrete IL-17, IFN\u03b3 GM-CSF, and IL-22. We further demonstrate that these cells are recruited and enriched in the CNS of MS subjects where they produce IL-17. In the peripheral blood, RNAseq, RT-PCR, high-throughput TCR repertoire analyses, and flow cytometry confirmed an increased effector and transmigration pattern of these cells in MS patients, with the presence of supernumerary clones compared to healthy controls. Our data demonstrate that intermediate levels of CD161 expression identifies activated and effector CD8 + T cells with pathogenic properties that are recruited to MS lesions. This suggests that CD161 may represent a biomarker and a valid target for the treatment of neuroinflammation.",
                 "authors": [
                     {
                         "name": "Nicol B."
-                    }, 
+                    },
                     {
                         "name": "Salou M."
-                    }, 
+                    },
                     {
                         "name": "Vogel I."
-                    }, 
+                    },
                     {
                         "name": "Garcia A."
-                    }, 
+                    },
                     {
                         "name": "Dugast E."
-                    }, 
+                    },
                     {
                         "name": "Morille J."
-                    }, 
+                    },
                     {
                         "name": "Kilens S."
-                    }, 
+                    },
                     {
                         "name": "Charpentier E."
-                    }, 
+                    },
                     {
                         "name": "Donnart A."
-                    }, 
+                    },
                     {
                         "name": "Nedellec S."
-                    }, 
+                    },
                     {
                         "name": "Jacq-Foucher M."
-                    }, 
+                    },
                     {
                         "name": "Le Frere F."
-                    }, 
+                    },
                     {
                         "name": "Wiertlewski S."
-                    }, 
+                    },
                     {
                         "name": "Bourreille A."
-                    }, 
+                    },
                     {
                         "name": "Brouard S."
-                    }, 
+                    },
                     {
                         "name": "Michel L."
-                    }, 
+                    },
                     {
                         "name": "David L."
-                    }, 
+                    },
                     {
                         "name": "Gourraud P.-A."
-                    }, 
+                    },
                     {
                         "name": "Degauque N."
-                    }, 
+                    },
                     {
                         "name": "Nicot A.B."
-                    }, 
+                    },
                     {
                         "name": "Berthelot L."
-                    }, 
+                    },
                     {
                         "name": "Laplaud D.-A."
                     }
-                ], 
-                "journal": "Journal of Autoimmunity"
-            }
-        }, 
+                ],
+                "citationCount": 4,
+                "date": "2018-03-01T00:00:00Z",
+                "journal": "Journal of Autoimmunity",
+                "title": "An intermediate level of CD161 expression defines a novel activated, inflammatory, and pathogenic subset of CD8 + T cells involved in multiple sclerosis"
+            },
+            "type": "Usage"
+        },
         {
-            "doi": "10.1172/jci.insight.90088", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": null, 
-            "version": null, 
-            "metadata": null
+            "doi": "10.1172/jci.insight.90088",
+            "type": "Usage"
+        },
+        {
+            "doi": "10.1038/s41598-017-14892-x",
+            "pmcid": "PMC5676863",
+            "pmid": "29116112",
+            "type": "Method"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Workflow"
+    ],
+    "topic": [
         {
-            "name": "Eric Charpentier", 
-            "email": "eric.charpentier@univ-nantes.fr", 
-            "url": "https://pf-bird.univ-nantes.fr/qui-sommes-nous-/membres/", 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact", 
-                "Developer"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "BiRD", 
-            "email": "pf-bird@univ-nantes.fr", 
-            "url": "https://pf-bird.univ-nantes.fr", 
-            "orcidid": null, 
-            "typeEntity": "Division", 
-            "typeRole": [
-                "Provider", 
-                "Support"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Solenne Dumont", 
-            "email": "solenne.dumont@univ-nantes.fr", 
-            "url": "https://pf-bird.univ-nantes.fr/qui-sommes-nous-/membres/", 
-            "orcidid": "https://orcid.org/0000-0003-3237-7382", 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Developer"
-            ], 
-            "note": null
+            "term": "Transcriptomics",
+            "uri": "http://edamontology.org/topic_3308"
         }
-    ], 
-    "owner": "alban.gaignard@univ-nantes.fr", 
-    "additionDate": "2019-08-30T10:28:42Z", 
-    "lastUpdate": "2019-10-04T10:15:23Z", 
-    "editPermission": {
-        "type": "group", 
-        "authors": [
-            "audrey.bihouee"
-        ]
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "version": [
+        "1.0"
+    ]
 }

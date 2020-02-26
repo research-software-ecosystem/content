@@ -1,157 +1,133 @@
 {
-    "name": "NetSurfP", 
-    "description": "Protein Surface Accessibility and Secondary Structure Predictions.", 
-    "homepage": "http://cbs.dtu.dk/services/NetSurfP/", 
-    "biotoolsID": "netsurfp", 
-    "biotoolsCURIE": "biotools:netsurfp", 
-    "version": [
-        "1.1"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2015-06-29T10:13:50Z",
+    "biotoolsCURIE": "biotools:netsurfp",
+    "biotoolsID": "netsurfp",
+    "cost": "Free of charge (with restrictions)",
+    "credit": [
+        {
+            "name": "CBS",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "bent@cbs.dtu.dk",
+            "name": "Bent Petersen",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "Protein Surface Accessibility and Secondary Structure Predictions.",
+    "documentation": [
+        {
+            "type": "General",
+            "url": "http://www.cbs.dtu.dk/services/NetSurfP/instructions.php"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0267", 
-                    "term": "Protein secondary structure prediction"
-                }
-            ], 
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2044", 
-                        "term": "Sequence"
-                    }, 
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 }
-            ], 
+            ],
+            "note": "predicts the surface accessibility and secondary structure of amino acids in an amino acid sequence",
+            "operation": [
+                {
+                    "term": "Protein secondary structure prediction",
+                    "uri": "http://edamontology.org/operation_0267"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2085", 
-                        "term": "Structure report"
-                    }, 
+                        "term": "Structure report",
+                        "uri": "http://edamontology.org/data_2085"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_2330", 
-                            "term": "Textual format"
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
                         }
                     ]
                 }
-            ], 
-            "note": "predicts the surface accessibility and secondary structure of amino acids in an amino acid sequence", 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool", 
-        "Web application"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0082", 
-            "term": "Structure prediction"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Windows", 
-        "Mac"
-    ], 
-    "language": [], 
-    "license": "Other", 
-    "collectionID": [], 
-    "maturity": "Emerging", 
-    "cost": "Free of charge (with restrictions)", 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
+    ],
+    "homepage": "http://cbs.dtu.dk/services/NetSurfP/",
+    "lastUpdate": "2018-12-10T12:58:49Z",
+    "license": "Other",
     "link": [
         {
-            "url": "http://cbs.dtu.dk/services", 
-            "type": "Registry", 
-            "note": null
+            "type": "Software catalogue",
+            "url": "http://cbs.dtu.dk/services"
         }
-    ], 
-    "download": [], 
-    "documentation": [
-        {
-            "url": "http://www.cbs.dtu.dk/services/NetSurfP/instructions.php", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "maturity": "Emerging",
+    "name": "NetSurfP",
+    "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+    ],
+    "owner": "CBS",
     "publication": [
         {
-            "doi": "10.1186/1472-6807-9-51", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1186/1472-6807-9-51",
             "metadata": {
-                "title": "A generic method for assignment of reliability scores applied to solvent accessibility predictions", 
-                "abstract": "Background. Estimation of the reliability of specific real value predictions is nontrivial and the efficacy of this is often questionable. It is important to know if you can trust a given prediction and therefore the best methods associate a prediction with a reliability score or index. For discrete qualitative predictions, the reliability is conventionally estimated as the difference between output scores of selected classes. Such an approach is not feasible for methods that predict a biological feature as a single real value rather than a classification. As a solution to this challenge, we have implemented a method that predicts the relative surface accessibility of an amino acid and simultaneously predicts the reliability for each prediction, in the form of a Z-score. Results. An ensemble of artificial neural networks has been trained on a set of experimentally solved protein structures to predict the relative exposure of the amino acids. The method assigns a reliability score to each surface accessibility prediction as an inherent part of the training process. This is in contrast to the most commonly used procedures where reliabilities are obtained by post-processing the output. Conclusion. The performance of the neural networks was evaluated on a commonly used set of sequences known as the CB513 set. An overall Pearson's correlation coefficient of 0.72 was obtained, which is comparable to the performance of the currently best public available method, Real-SPINE. Both methods associate a reliability score with the individual predictions. However, our implementation of reliability scores in the form of a Z-score is shown to be the more informative measure for discriminating good predictions from bad ones in the entire range from completely buried to fully exposed amino acids. This is evident when comparing the Pearson's correlation coefficient for the upper 20% of predictions sorted according to reliability. For this subset, values of 0.79 and 0.74 are obtained using our and the compared method, respectively. This tendency is true for any selected subset. Â© 2009 Petersen et al; licensee BioMed Central Ltd.", 
-                "date": "2009-08-26T00:00:00Z", 
-                "citationCount": 369, 
+                "abstract": "Background. Estimation of the reliability of specific real value predictions is nontrivial and the efficacy of this is often questionable. It is important to know if you can trust a given prediction and therefore the best methods associate a prediction with a reliability score or index. For discrete qualitative predictions, the reliability is conventionally estimated as the difference between output scores of selected classes. Such an approach is not feasible for methods that predict a biological feature as a single real value rather than a classification. As a solution to this challenge, we have implemented a method that predicts the relative surface accessibility of an amino acid and simultaneously predicts the reliability for each prediction, in the form of a Z-score. Results. An ensemble of artificial neural networks has been trained on a set of experimentally solved protein structures to predict the relative exposure of the amino acids. The method assigns a reliability score to each surface accessibility prediction as an inherent part of the training process. This is in contrast to the most commonly used procedures where reliabilities are obtained by post-processing the output. Conclusion. The performance of the neural networks was evaluated on a commonly used set of sequences known as the CB513 set. An overall Pearson's correlation coefficient of 0.72 was obtained, which is comparable to the performance of the currently best public available method, Real-SPINE. Both methods associate a reliability score with the individual predictions. However, our implementation of reliability scores in the form of a Z-score is shown to be the more informative measure for discriminating good predictions from bad ones in the entire range from completely buried to fully exposed amino acids. This is evident when comparing the Pearson's correlation coefficient for the upper 20% of predictions sorted according to reliability. For this subset, values of 0.79 and 0.74 are obtained using our and the compared method, respectively. This tendency is true for any selected subset. \u00a9 2009 Petersen et al; licensee BioMed Central Ltd.",
                 "authors": [
                     {
                         "name": "Petersen B."
-                    }, 
+                    },
                     {
                         "name": "Petersen T.N."
-                    }, 
+                    },
                     {
                         "name": "Andersen P."
-                    }, 
+                    },
                     {
                         "name": "Nielsen M."
-                    }, 
+                    },
                     {
                         "name": "Lundegaard C."
                     }
-                ], 
-                "journal": "BMC Structural Biology"
-            }
+                ],
+                "citationCount": 369,
+                "date": "2009-08-26T00:00:00Z",
+                "journal": "BMC Structural Biology",
+                "title": "A generic method for assignment of reliability scores applied to solvent accessibility predictions"
+            },
+            "type": "Primary"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Web application"
+    ],
+    "topic": [
         {
-            "name": "CBS", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Bent Petersen", 
-            "email": "bent@cbs.dtu.dk", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Structure prediction",
+            "uri": "http://edamontology.org/topic_0082"
         }
-    ], 
-    "owner": "CBS", 
-    "additionDate": "2015-06-29T10:13:50Z", 
-    "lastUpdate": "2018-12-10T12:58:49Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 1, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 1,
+    "version": [
+        "1.1"
+    ]
 }
