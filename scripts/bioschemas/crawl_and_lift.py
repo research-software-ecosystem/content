@@ -323,7 +323,7 @@ def process_tools():
         temp_graph.serialize(
             format="json-ld",
             auto_compact=True,
-            destination=os.path.join(directory, tpe_id + ".json")
+            destination=os.path.join(directory, tpe_id + "bioschemas.jsonld")
         )
 
 
