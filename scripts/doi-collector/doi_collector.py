@@ -143,7 +143,6 @@ def enrich_dois(path):
             parsed_yaml = parse_yaml(file)
             dois = extract_doi_from_bioconda_yaml(parsed_yaml)
             bioconda_dois = dois
-        print(dois)
         all_doies.update(dois)
 
     if len(all_doies) > 0:
