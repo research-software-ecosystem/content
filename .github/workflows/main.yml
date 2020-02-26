@@ -1,4 +1,4 @@
-name: bio.tools content CI
+name: import bio.tools contents
 
 on: 
   push:
@@ -12,13 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: geertvdc/setup-hub@master
     - name: import bio.tools using the API
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git checkout -b "biotools_dump_${{ github.run_id }}"
         sudo apt install python3-pip
         sudo apt install python3-setuptools
         sudo pip3 install virtualenv 
@@ -31,5 +29,4 @@ jobs:
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         git commit -a -m "import from bio.tools on $(date)"
-        git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
-        hub pull-request -m "import from bio.tools on $(date)"
+        git push origin master
