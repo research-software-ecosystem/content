@@ -28,7 +28,11 @@ jobs:
         pwd
         cd scripts/doi-collector
         python3 doi_collector.py $GITHUB_WORKSPACE/data/
+        echo "configuring user email"
         git config --local user.email "tpe-bot@github.com"
+        echo "configuring user name"
         git config --local user.name "Tools Platform Ecosystem bot"
+        echo "commit"
         git commit -a -m "spread doi amongs sources"
+        echo "push"
         git push origin master
