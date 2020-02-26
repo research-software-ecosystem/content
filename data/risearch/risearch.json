@@ -1,150 +1,154 @@
 {
-    "name": "RIsearch", 
-    "description": "Fast search for RNA-RNA interactions.", 
-    "homepage": "http://rth.dk/resources/risearch", 
-    "biotoolsID": "risearch", 
-    "biotoolsCURIE": "biotools:risearch", 
-    "version": [
-        "1.1"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "accessibility": [],
+    "additionDate": "2015-03-10T13:03:17Z",
+    "biotoolsCURIE": "biotools:risearch",
+    "biotoolsID": "risearch",
+    "collectionID": [],
+    "confidence_flag": null,
+    "cost": null,
+    "credit": [
+        {
+            "email": null,
+            "gridid": null,
+            "name": "RTH",
+            "note": null,
+            "orcidid": null,
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ],
+            "url": null
+        },
+        {
+            "email": "wenzel@rth.dk",
+            "gridid": null,
+            "name": "Anne Wenzel",
+            "note": null,
+            "orcidid": null,
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": null
+        }
+    ],
+    "description": "Fast search for RNA-RNA interactions.",
+    "documentation": [
+        {
+            "note": null,
+            "type": "General",
+            "url": "https://rth.dk/resources/risearch/"
+        }
+    ],
+    "download": [],
+    "editPermission": {
+        "authors": [],
+        "type": "private"
+    },
+    "elixirNode": [],
+    "elixirPlatform": [],
+    "elixir_badge": 0,
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0258", 
-                    "term": "Sequence alignment analysis"
-                }
-            ], 
+            "cmd": null,
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3495", 
-                        "term": "RNA sequence"
-                    }, 
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
-                }, 
+                },
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_3495", 
-                        "term": "RNA sequence"
-                    }, 
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 }
-            ], 
+            ],
+            "note": "RNA RNA interaction prediction",
+            "operation": [
+                {
+                    "term": "Sequence alignment analysis",
+                    "uri": "http://edamontology.org/operation_0258"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_1588", 
-                        "term": "DNA base pair stacking energies data"
-                    }, 
+                        "term": "DNA base pair stacking energies data",
+                        "uri": "http://edamontology.org/data_1588"
+                    },
                     "format": []
                 }
-            ], 
-            "note": "RNA RNA interaction prediction", 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0097", 
-            "term": "Nucleic acid structure analysis"
-        }
-    ], 
+    ],
+    "homepage": "http://rth.dk/resources/risearch",
+    "homepage_status": 0,
+    "language": [],
+    "lastUpdate": "2019-03-12T15:50:50Z",
+    "license": null,
+    "link": [],
+    "maturity": null,
+    "name": "RIsearch",
     "operatingSystem": [
-        "Linux", 
+        "Linux",
         "Mac"
-    ], 
-    "language": [], 
-    "license": null, 
-    "collectionID": [], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [], 
-    "download": [], 
-    "documentation": [
-        {
-            "url": "https://rth.dk/resources/risearch/", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "otherID": [],
+    "owner": "RTH",
     "publication": [
         {
-            "doi": "10.1093/bioinformatics/bts519", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1093/bioinformatics/bts519",
             "metadata": {
-                "title": "RIsearch: Fast RNA-RNA interaction search using a simplified nearest-neighbor energy model", 
-                "abstract": "Motivation: Regulatory, non-coding RNAs often function by forming a duplex with other RNAs. It is therefore of interest to predict putative RNA-RNA duplexes in silico on a genome-wide scale. Current computational methods for predicting these interactions range from fast complementary-based searches to those that take intramolecular binding into account. Together these methods constitute a trade-off between speed and accuracy, while leaving room for improvement within the context of genome-wide screens. A fast pre-filtering of putative duplexes would therefore be desirable.Results: We present RIsearch, an implementation of a simplified Turner energy model for fast computation of hybridization, which significantly reduces runtime while maintaining accuracy. Its time complexity for sequences of lengths m and n is with a much smaller pre-factor than other tools. We show that this energy model is an accurate approximation of the full energy model for near-complementary RNA-RNA duplexes. RIsearch uses a Smith-Waterman-like algorithm using a dinucleotide scoring matrix which approximates the Turner nearest-neighbor energies. We show in benchmarks that we achieve a speed improvement of at least 2.4× compared with RNAplex, the currently fastest method for searching near-complementary regions. RIsearch shows a prediction accuracy similar to RNAplex on two datasets of known bacterial short RNA (sRNA)-messenger RNA (mRNA) and eukaryotic microRNA (miRNA)-mRNA interactions. Using RIsearch as a pre-filter in genome-wide screens reduces the number of binding site candidates reported by miRNA target prediction programs, such as TargetScanS and miRanda, by up to 70. Likewise, substantial filtering was performed on bacterial RNA-RNA interaction data. © 2012 The Author.", 
-                "date": "2012-11-01T00:00:00Z", 
-                "citationCount": 32, 
+                "abstract": "Motivation: Regulatory, non-coding RNAs often function by forming a duplex with other RNAs. It is therefore of interest to predict putative RNA-RNA duplexes in silico on a genome-wide scale. Current computational methods for predicting these interactions range from fast complementary-based searches to those that take intramolecular binding into account. Together these methods constitute a trade-off between speed and accuracy, while leaving room for improvement within the context of genome-wide screens. A fast pre-filtering of putative duplexes would therefore be desirable.Results: We present RIsearch, an implementation of a simplified Turner energy model for fast computation of hybridization, which significantly reduces runtime while maintaining accuracy. Its time complexity for sequences of lengths m and n is with a much smaller pre-factor than other tools. We show that this energy model is an accurate approximation of the full energy model for near-complementary RNA-RNA duplexes. RIsearch uses a Smith-Waterman-like algorithm using a dinucleotide scoring matrix which approximates the Turner nearest-neighbor energies. We show in benchmarks that we achieve a speed improvement of at least 2.4\u00d7 compared with RNAplex, the currently fastest method for searching near-complementary regions. RIsearch shows a prediction accuracy similar to RNAplex on two datasets of known bacterial short RNA (sRNA)-messenger RNA (mRNA) and eukaryotic microRNA (miRNA)-mRNA interactions. Using RIsearch as a pre-filter in genome-wide screens reduces the number of binding site candidates reported by miRNA target prediction programs, such as TargetScanS and miRanda, by up to 70. Likewise, substantial filtering was performed on bacterial RNA-RNA interaction data. \u00a9 2012 The Author.",
                 "authors": [
                     {
                         "name": "Wenzel A."
-                    }, 
+                    },
                     {
                         "name": "Akbasli E."
-                    }, 
+                    },
                     {
                         "name": "Gorodkin J."
                     }
-                ], 
-                "journal": "Bioinformatics"
-            }
+                ],
+                "citationCount": 32,
+                "date": "2012-11-01T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "RIsearch: Fast RNA-RNA interaction search using a simplified nearest-neighbor energy model"
+            },
+            "note": null,
+            "pmcid": null,
+            "pmid": null,
+            "type": "Primary",
+            "version": null
         }
-    ], 
-    "credit": [
+    ],
+    "relation": [],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "name": "RTH", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Anne Wenzel", 
-            "email": "wenzel@rth.dk", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Nucleic acid structure analysis",
+            "uri": "http://edamontology.org/topic_0097"
         }
-    ], 
-    "owner": "RTH", 
-    "additionDate": "2015-03-10T13:03:17Z", 
-    "lastUpdate": "2019-03-12T15:50:50Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 0,
+    "version": [
+        "1.1"
+    ]
 }

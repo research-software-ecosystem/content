@@ -1,732 +1,736 @@
 {
-    "name": "HMMER3", 
-    "description": "This tool is used for searching sequence databases for homologs of protein sequences, and for making protein sequence alignments. It implements methods using probabilistic models called profile hidden Markov models. The new HMMER3 project, HMMER is now as fast as BLAST for protein search.", 
-    "homepage": "http://hmmer.org/", 
-    "biotoolsID": "hmmer3", 
-    "biotoolsCURIE": "biotools:hmmer3", 
-    "version": [
-        "3.1b1"
-    ], 
-    "otherID": [], 
-    "relation": [], 
-    "function": [
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0335", 
-                    "term": "Formatting"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0863", 
-                        "term": "Sequence alignment"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0863", 
-                        "term": "Sequence alignment"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "alimask is used to apply a mask line to a multiple sequence alignment, based on provided alignment or model coordinates.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0492", 
-                    "term": "Multiple sequence alignment"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0850", 
-                        "term": "Sequence set"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1916", 
-                        "term": "Alignment"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1961", 
-                            "term": "Stockholm format"
-                        }
-                    ]
-                }
-            ], 
-            "note": "Align sequences to a profile HMM The < hmmfile > should contain only a single profile.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0296", 
-                    "term": "Sequence profile generation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0863", 
-                        "term": "Sequence alignment"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Construct profile HMM(s) from multiple sequence alignment(s).", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0336", 
-                    "term": "Format validation"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_3434", 
-                    "term": "Conversion"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1370", 
-                            "term": "HMMER format"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3329", 
-                            "term": "HMMER3"
-                        }
-                    ]
-                }
-            ], 
-            "note": "The hmmconvert utility converts an input profile file to different HMMER formats.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0230", 
-                    "term": "Sequence generation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2044", 
-                        "term": "Sequence"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Sample sequences from a profile HMM.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2422", 
-                    "term": "Data retrieval"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0968", 
-                        "term": "Keyword"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Retrieve profile HMM(s) from a file.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2238", 
-                    "term": "Statistical calculation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1361", 
-                        "term": "Position frequency matrix"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Given an HMM, produce data required to build an HMM logo.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2421", 
-                    "term": "Database search"
-                }
-            ], 
-            "input": [], 
-            "output": [], 
-            "note": "Daemon for searching a protein query against a protein database.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0335", 
-                    "term": "Formatting"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_3329", 
-                            "term": "HMMER3"
-                        }
-                    ]
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2048", 
-                        "term": "Report"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0955", 
-                        "term": "Data index"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Prepare an HMM database for hmmscan.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2421", 
-                    "term": "Database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2976", 
-                        "term": "Protein sequence"
-                    }, 
-                    "format": [
-                        {
-                            "uri": "http://edamontology.org/format_1927", 
-                            "term": "EMBL format"
-                        }, 
-                        {
-                            "uri": "http://edamontology.org/format_1936", 
-                            "term": "GenBank format"
-                        }, 
-                        {
-                            "uri": "http://edamontology.org/format_1963", 
-                            "term": "UniProtKB format"
-                        }, 
-                        {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
-                        }
-                    ]
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0957", 
-                        "term": "Database metadata"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2080", 
-                        "term": "Database search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Search protein sequence(s) against a protein profile database. query sequence to search the target database of profiles Needs to have those four auxiliary binary files generated by hmmpress. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2421", 
-                    "term": "Database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0850", 
-                        "term": "Sequence set"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2080", 
-                        "term": "Database search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Search profile(s) against a sequence database. Query profile to search the target database of sequences. Sequence database. Ranked lists of the sequences with the most significant matches to the profile.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_3481", 
-                    "term": "Probabilistic sequence generation"
-                }, 
-                {
-                    "uri": "http://edamontology.org/operation_2238", 
-                    "term": "Statistical calculation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2048", 
-                        "term": "Report"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Collect score distributions on random sequences. The output is a table of numbers, one row for each model. Four different parametric fits to the score data are tested: (1) maximum likelihood fits to both location (mu/tau) and slope (lambda) parameters; (2) assuming lambda=log 2, maximum likelihood fit to the location parameter only; (3) same but assuming an edge- corrected lambda, using current procedures in H3 [Eddy, 2008]; and (4) using both parameters determined by H3s current procedures.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2238", 
-                    "term": "Statistical calculation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2048", 
-                        "term": "Report"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Display summary statistics for a profile file. Tabular file of summary statistics for each profile.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0338", 
-                    "term": "Sequence database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2976", 
-                        "term": "Protein sequence"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1233", 
-                        "term": "Sequence set (protein)"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0857", 
-                        "term": "Sequence search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Iteratively search sequence(s) against a protein database. database sequence The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0335", 
-                    "term": "Formatting"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3494", 
-                        "term": "DNA sequence"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2044", 
-                        "term": "Sequence"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Build a HMMER binary database file from a sequence file. This binary file may be used as a target database for the DNA search tool nhmmer.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0338", 
-                    "term": "Sequence database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2977", 
-                        "term": "Nucleic acid sequence"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1234", 
-                        "term": "Sequence set (nucleic acid)"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0857", 
-                        "term": "Sequence search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Search DNA/RNA queries against a DNA/RNA sequence database. nucleic sequence database", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2421", 
-                    "term": "Database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2977", 
-                        "term": "Nucleic acid sequence"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1364", 
-                        "term": "Hidden Markov model"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2080", 
-                        "term": "Database search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Search nucleotide sequence(s) against collections of nucleotide profiles. The <hmmdb> needs to be pressed using hmmpress before it can be searched with hmmscan. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.", 
-            "cmd": null
-        }, 
-        {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0338", 
-                    "term": "Sequence database search"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_2976", 
-                        "term": "Protein sequence"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_1233", 
-                        "term": "Sequence set (protein)"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0857", 
-                        "term": "Sequence search results"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Search protein sequence(s) against a protein sequence database. database of sequences Ranked lists of the sequences with the most significant matches to the query. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.", 
-            "cmd": null
-        }
-    ], 
-    "toolType": [
-        "Command-line tool", 
-        "Web application"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0080", 
-            "term": "Sequence analysis"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_0160", 
-            "term": "Sequence sites, features and motifs"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_0623", 
-            "term": "Gene and protein families"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Windows", 
-        "Mac"
-    ], 
-    "language": [
-        "Perl", 
-        "C"
-    ], 
-    "license": "Other", 
+    "accessibility": [],
+    "additionDate": "2015-04-03T13:17:38Z",
+    "biotoolsCURIE": "biotools:hmmer3",
+    "biotoolsID": "hmmer3",
     "collectionID": [
-        "HMMER", 
+        "HMMER",
         "Animal and Crop Genomics"
-    ], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [
+    ],
+    "confidence_flag": null,
+    "cost": null,
+    "credit": [
         {
-            "url": "https://github.com/EddyRivasLab/hmmer", 
-            "type": "Repository", 
-            "note": null
-        }, 
-        {
-            "url": "https://github.com/EddyRivasLab/hmmer/issues", 
-            "type": "Issue tracker", 
-            "note": null
+            "email": "sean@eddylab.org",
+            "gridid": null,
+            "name": "Sean Eddy",
+            "note": null,
+            "orcidid": "http://orcid.org/0000-0001-6676-4706",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": null
         }
-    ], 
-    "download": [], 
+    ],
+    "description": "This tool is used for searching sequence databases for homologs of protein sequences, and for making protein sequence alignments. It implements methods using probabilistic models called profile hidden Markov models. The new HMMER3 project, HMMER is now as fast as BLAST for protein search.",
     "documentation": [
         {
-            "url": "http://eddylab.org/software/hmmer3/3.1b2/Userguide.pdf", 
-            "type": "Manual", 
-            "note": "HMMER User Guide"
-        }, 
+            "note": "HMMER User Guide",
+            "type": "User manual",
+            "url": "http://eddylab.org/software/hmmer3/3.1b2/Userguide.pdf"
+        },
         {
-            "url": "http://hmmer.org/documentation.html", 
-            "type": "General", 
-            "note": null
+            "note": null,
+            "type": "General",
+            "url": "http://hmmer.org/documentation.html"
         }
-    ], 
+    ],
+    "download": [],
+    "editPermission": {
+        "authors": [
+            "animalandcropgenomics"
+        ],
+        "type": "group"
+    },
+    "elixirNode": [],
+    "elixirPlatform": [],
+    "elixir_badge": 0,
+    "function": [
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "alimask is used to apply a mask line to a multiple sequence alignment, based on provided alignment or model coordinates.",
+            "operation": [
+                {
+                    "term": "Formatting",
+                    "uri": "http://edamontology.org/operation_0335"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence set",
+                        "uri": "http://edamontology.org/data_0850"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Align sequences to a profile HMM The < hmmfile > should contain only a single profile.",
+            "operation": [
+                {
+                    "term": "Multiple sequence alignment",
+                    "uri": "http://edamontology.org/operation_0492"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Alignment",
+                        "uri": "http://edamontology.org/data_1916"
+                    },
+                    "format": [
+                        {
+                            "term": "Stockholm format",
+                            "uri": "http://edamontology.org/format_1961"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence alignment",
+                        "uri": "http://edamontology.org/data_0863"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Construct profile HMM(s) from multiple sequence alignment(s).",
+            "operation": [
+                {
+                    "term": "Sequence profile generation",
+                    "uri": "http://edamontology.org/operation_0296"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": [
+                        {
+                            "term": "HMMER format",
+                            "uri": "http://edamontology.org/format_1370"
+                        }
+                    ]
+                }
+            ],
+            "note": "The hmmconvert utility converts an input profile file to different HMMER formats.",
+            "operation": [
+                {
+                    "term": "Format validation",
+                    "uri": "http://edamontology.org/operation_0336"
+                },
+                {
+                    "term": "Conversion",
+                    "uri": "http://edamontology.org/operation_3434"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": [
+                        {
+                            "term": "HMMER3",
+                            "uri": "http://edamontology.org/format_3329"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Sample sequences from a profile HMM.",
+            "operation": [
+                {
+                    "term": "Sequence generation",
+                    "uri": "http://edamontology.org/operation_0230"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Keyword",
+                        "uri": "http://edamontology.org/data_0968"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Retrieve profile HMM(s) from a file.",
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Given an HMM, produce data required to build an HMM logo.",
+            "operation": [
+                {
+                    "term": "Statistical calculation",
+                    "uri": "http://edamontology.org/operation_2238"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Position frequency matrix",
+                        "uri": "http://edamontology.org/data_1361"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [],
+            "note": "Daemon for searching a protein query against a protein database.",
+            "operation": [
+                {
+                    "term": "Database search",
+                    "uri": "http://edamontology.org/operation_2421"
+                }
+            ],
+            "output": []
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": [
+                        {
+                            "term": "HMMER3",
+                            "uri": "http://edamontology.org/format_3329"
+                        }
+                    ]
+                }
+            ],
+            "note": "Prepare an HMM database for hmmscan.",
+            "operation": [
+                {
+                    "term": "Formatting",
+                    "uri": "http://edamontology.org/operation_0335"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Data index",
+                        "uri": "http://edamontology.org/data_0955"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": [
+                        {
+                            "term": "EMBL format",
+                            "uri": "http://edamontology.org/format_1927"
+                        },
+                        {
+                            "term": "GenBank format",
+                            "uri": "http://edamontology.org/format_1936"
+                        },
+                        {
+                            "term": "UniProtKB format",
+                            "uri": "http://edamontology.org/format_1963"
+                        },
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Database metadata",
+                        "uri": "http://edamontology.org/data_0957"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Search protein sequence(s) against a protein profile database. query sequence to search the target database of profiles Needs to have those four auxiliary binary files generated by hmmpress. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.",
+            "operation": [
+                {
+                    "term": "Database search",
+                    "uri": "http://edamontology.org/operation_2421"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Sequence set",
+                        "uri": "http://edamontology.org/data_0850"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Search profile(s) against a sequence database. Query profile to search the target database of sequences. Sequence database. Ranked lists of the sequences with the most significant matches to the profile.",
+            "operation": [
+                {
+                    "term": "Database search",
+                    "uri": "http://edamontology.org/operation_2421"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Collect score distributions on random sequences. The output is a table of numbers, one row for each model. Four different parametric fits to the score data are tested: (1) maximum likelihood fits to both location (mu/tau) and slope (lambda) parameters; (2) assuming lambda=log 2, maximum likelihood fit to the location parameter only; (3) same but assuming an edge- corrected lambda, using current procedures in H3 [Eddy, 2008]; and (4) using both parameters determined by H3s current procedures.",
+            "operation": [
+                {
+                    "term": "Probabilistic sequence generation",
+                    "uri": "http://edamontology.org/operation_3481"
+                },
+                {
+                    "term": "Statistical calculation",
+                    "uri": "http://edamontology.org/operation_2238"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Display summary statistics for a profile file. Tabular file of summary statistics for each profile.",
+            "operation": [
+                {
+                    "term": "Statistical calculation",
+                    "uri": "http://edamontology.org/operation_2238"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (protein)",
+                        "uri": "http://edamontology.org/data_1233"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Iteratively search sequence(s) against a protein database. database sequence The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.",
+            "operation": [
+                {
+                    "term": "Sequence database search",
+                    "uri": "http://edamontology.org/operation_0338"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Build a HMMER binary database file from a sequence file. This binary file may be used as a target database for the DNA search tool nhmmer.",
+            "operation": [
+                {
+                    "term": "Formatting",
+                    "uri": "http://edamontology.org/operation_0335"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1234"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Search DNA/RNA queries against a DNA/RNA sequence database. nucleic sequence database",
+            "operation": [
+                {
+                    "term": "Sequence database search",
+                    "uri": "http://edamontology.org/operation_0338"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Hidden Markov model",
+                        "uri": "http://edamontology.org/data_1364"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Search nucleotide sequence(s) against collections of nucleotide profiles. The <hmmdb> needs to be pressed using hmmpress before it can be searched with hmmscan. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.",
+            "operation": [
+                {
+                    "term": "Database search",
+                    "uri": "http://edamontology.org/operation_2421"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
+                    },
+                    "format": []
+                }
+            ]
+        },
+        {
+            "cmd": null,
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": []
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (protein)",
+                        "uri": "http://edamontology.org/data_1233"
+                    },
+                    "format": []
+                }
+            ],
+            "note": "Search protein sequence(s) against a protein sequence database. database of sequences Ranked lists of the sequences with the most significant matches to the query. The output format is designed to be human-readable, but is often so voluminous that reading it is impractical.",
+            "operation": [
+                {
+                    "term": "Sequence database search",
+                    "uri": "http://edamontology.org/operation_0338"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": []
+                }
+            ]
+        }
+    ],
+    "homepage": "http://hmmer.org/",
+    "homepage_status": 0,
+    "language": [
+        "Perl",
+        "C"
+    ],
+    "lastUpdate": "2019-03-13T13:07:29Z",
+    "license": "Other",
+    "link": [
+        {
+            "note": null,
+            "type": "Repository",
+            "url": "https://github.com/EddyRivasLab/hmmer"
+        },
+        {
+            "note": null,
+            "type": "Issue tracker",
+            "url": "https://github.com/EddyRivasLab/hmmer/issues"
+        }
+    ],
+    "maturity": null,
+    "name": "HMMER3",
+    "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+    ],
+    "otherID": [],
+    "owner": "ELIXIR-FR",
     "publication": [
         {
-            "doi": "10.1093/nar/gkr367", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1093/nar/gkr367",
             "metadata": {
-                "title": null, 
-                "abstract": null, 
-                "date": null, 
-                "citationCount": 0, 
+                "abstract": null,
                 "authors": [
                     {
                         "name": "Finn R.D."
-                    }, 
+                    },
                     {
                         "name": "Clements J."
-                    }, 
+                    },
                     {
                         "name": "Eddy S.R."
                     }
-                ], 
-                "journal": null
-            }
-        }, 
+                ],
+                "citationCount": 0,
+                "date": null,
+                "journal": null,
+                "title": null
+            },
+            "note": null,
+            "pmcid": null,
+            "pmid": null,
+            "type": "Primary",
+            "version": null
+        },
         {
-            "doi": "10.1371/journal.pcbi.1002195", 
-            "pmid": "22039361", 
-            "pmcid": "PMC3197634", 
-            "type": "Primary", 
-            "version": null, 
-            "metadata": null
+            "doi": "10.1371/journal.pcbi.1002195",
+            "metadata": null,
+            "note": null,
+            "pmcid": "PMC3197634",
+            "pmid": "22039361",
+            "type": "Primary",
+            "version": null
         }
-    ], 
-    "credit": [
+    ],
+    "relation": [],
+    "toolType": [
+        "Command-line tool",
+        "Web application"
+    ],
+    "topic": [
         {
-            "name": "Sean Eddy", 
-            "email": "sean@eddylab.org", 
-            "url": null, 
-            "orcidid": "http://orcid.org/0000-0001-6676-4706", 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
+        },
+        {
+            "term": "Sequence sites, features and motifs",
+            "uri": "http://edamontology.org/topic_0160"
+        },
+        {
+            "term": "Gene and protein families",
+            "uri": "http://edamontology.org/topic_0623"
         }
-    ], 
-    "owner": "ELIXIR-FR", 
-    "additionDate": "2015-04-03T13:17:38Z", 
-    "lastUpdate": "2019-03-13T13:07:29Z", 
-    "editPermission": {
-        "type": "group", 
-        "authors": [
-            "animalandcropgenomics"
-        ]
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 0,
+    "version": [
+        "3.1b1"
+    ]
 }
