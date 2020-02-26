@@ -1,0 +1,33 @@
+name: build bioschemas jsonld from bio.tools files
+
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: publish bio.tools data as bioschemas files
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv 
+        virtualenv -p python3 venv
+        . venv/bin/activate
+        pip install wheel
+        pip install -r scripts/bioschemas/requirements.txt
+        cd scripts/bioschemas
+        python biotools_to_bioschemas.py
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        cd ../../data
+        git add .
+        git commit -m "build bioschemas on $(date)"
+        git push origin master
