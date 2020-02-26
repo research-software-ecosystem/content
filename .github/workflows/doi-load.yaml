@@ -1,0 +1,32 @@
+name: import bio.tools contents
+
+on: 
+  push:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 20 * * *'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: import bio.tools using the API
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv 
+        virtualenv -p python3 venv
+        . venv/bin/activate
+        pip install wheel
+        pip install -r scripts/biotools-import/requirements.txt
+        cd scripts/doi-collector
+        python doi_collector.py {path}/data/
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git commit -a -m "import from bio.tools on $(date)"
+        git push origin master
