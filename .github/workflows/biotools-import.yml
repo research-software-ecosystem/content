@@ -4,7 +4,8 @@ on:
   push:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '00 20 * * *'
+    - cron:  '00 18 * * *'
+
 jobs:
   build:
 
@@ -12,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
     - name: import bio.tools using the API
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
@@ -28,5 +30,12 @@ jobs:
         python import.py
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        git commit -a -m "import from bio.tools on $(date)"
-        git push origin master
+        cd ../../data
+        git add .
+        if git commit -m "import from bio.tools on $(date)"; then
+          git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
+          hub pull-request -m "import from bio.tools on $(date)"
+          echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"
+        fi

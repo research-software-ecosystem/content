@@ -1,9 +1,9 @@
 name: build bioschemas jsonld from bio.tools files
 
-on: 
-  push:
-    branches:
-      - master
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
 jobs:
   build:
 
@@ -30,7 +30,7 @@ jobs:
         cd ../../data
         git add .
         if git commit -m "build bioschemas on $(date)"; then
-            git push origin master
+            git push origin HEAD
             echo "successfully created new data"
         else
             echo "nothing new to add, exiting"            
