@@ -1,186 +1,158 @@
 {
-    "name": "Oases", 
-    "description": "De novo transcriptome assembler designed to produce transcripts from short read sequencing technologies. It uploads a preliminary assembly produced by Velvet, and clusters the contigs into small groups, called loci. It then exploits the paired-end read and long read information, when available, to construct transcript isoforms.", 
-    "homepage": "https://github.com/dzerbino/oases", 
-    "biotoolsID": "oases", 
-    "biotoolsCURIE": "biotools:oases", 
-    "version": [], 
-    "otherID": [], 
-    "relation": [], 
-    "function": [
+    "additionDate": "2017-01-13T13:15:44Z",
+    "biotoolsCURIE": "biotools:oases",
+    "biotoolsID": "oases",
+    "cost": "Free of charge",
+    "credit": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_3258", 
-                    "term": "Transcriptome assembly"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0925", 
-                        "term": "Sequence assembly"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0925", 
-                        "term": "Sequence assembly"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "Single assembly (to run Oases it is recommended to run an array of single- k assemblies, for different values of k (i.e. the hash length). These assemblies are then merged into a final assembly.) Each single- k assembly consists of a simple Velvet run, followed by an Oases run.", 
-            "cmd": null
-        }, 
+            "email": "marcel.schulz@molgen.mpg.de",
+            "name": "Marcel Schulz",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_3436", 
-                    "term": "Aggregation"
-                }
-            ], 
-            "input": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_0925", 
-                        "term": "Sequence assembly"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "output": [
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3495", 
-                        "term": "RNA sequence"
-                    }, 
-                    "format": []
-                }, 
-                {
-                    "data": {
-                        "uri": "http://edamontology.org/data_3181", 
-                        "term": "Sequence assembly report"
-                    }, 
-                    "format": []
-                }
-            ], 
-            "note": "After running the previous process for different values of k it is necessary to merge the results of all these assemblies (contained in transcripts.fa files) into a single, non redundant assembly. (outputs of previous function) redicted transcript sequences explains the composition of these transcripts,", 
-            "cmd": null
+            "email": "dzerbino@soe.ucsc.edu",
+            "name": "Daniel Zerbino",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
         }
-    ], 
-    "toolType": [
-        "Workflow"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_3308", 
-            "term": "Transcriptomics"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3673", 
-            "term": "Whole genome sequencing"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_3170", 
-            "term": "RNA-seq"
-        }, 
-        {
-            "uri": "http://edamontology.org/topic_0196", 
-            "term": "Sequence assembly"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Mac"
-    ], 
-    "language": [
-        "Python", 
-        "C"
-    ], 
-    "license": "GPL-3.0", 
-    "collectionID": [], 
-    "maturity": "Mature", 
-    "cost": "Free of charge", 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [], 
-    "download": [], 
+    ],
+    "description": "De novo transcriptome assembler designed to produce transcripts from short read sequencing technologies. It uploads a preliminary assembly produced by Velvet, and clusters the contigs into small groups, called loci. It then exploits the paired-end read and long read information, when available, to construct transcript isoforms.",
     "documentation": [
         {
-            "url": "https://github.com/dzerbino/oases/blob/master/README.md", 
-            "type": "General", 
-            "note": null
+            "type": "General",
+            "url": "https://github.com/dzerbino/oases/blob/master/README.md"
         }
-    ], 
+    ],
+    "editPermission": {
+        "authors": [
+            "ELIXIR-EE"
+        ],
+        "type": "group"
+    },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    }
+                }
+            ],
+            "note": "Single assembly (to run Oases it is recommended to run an array of single- k assemblies, for different values of k (i.e. the hash length). These assemblies are then merged into a final assembly.) Each single- k assembly consists of a simple Velvet run, followed by an Oases run.",
+            "operation": [
+                {
+                    "term": "Transcriptome assembly",
+                    "uri": "http://edamontology.org/operation_3258"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    }
+                }
+            ],
+            "note": "After running the previous process for different values of k it is necessary to merge the results of all these assemblies (contained in transcripts.fa files) into a single, non redundant assembly. (outputs of previous function) redicted transcript sequences explains the composition of these transcripts,",
+            "operation": [
+                {
+                    "term": "Aggregation",
+                    "uri": "http://edamontology.org/operation_3436"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Sequence assembly report",
+                        "uri": "http://edamontology.org/data_3181"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/dzerbino/oases",
+    "language": [
+        "Python",
+        "C"
+    ],
+    "lastUpdate": "2019-02-04T13:41:26Z",
+    "license": "GPL-3.0",
+    "maturity": "Mature",
+    "name": "Oases",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "seqwiki_import",
     "publication": [
         {
-            "doi": "10.1093/bioinformatics/bts094", 
-            "pmid": "22368243", 
-            "pmcid": null, 
-            "type": null, 
-            "version": null, 
+            "doi": "10.1093/bioinformatics/bts094",
             "metadata": {
-                "title": "Oases: Robust de novo RNA-seq assembly across the dynamic range of expression levels", 
-                "abstract": "Motivation: High-throughput sequencing has made the analysis of new model organisms more affordable. Although assembling a new genome can still be costly and difficult, it is possible to use RNAseq to sequence mRNA. In the absence of a known genome, it is necessary to assemble these sequences de novo, taking into account possible alternative isoforms and the dynamic range of expression values. Results: We present a software package named Oases designed to heuristically assemble RNA-seq reads in the absence of a reference genome, across a broad spectrum of expression values and in presence of alternative isoforms. It achieves this by using an array of hash lengths, a dynamic filtering of noise, a robust resolution of alternative splicing events and the efficient merging of multiple assemblies. It was tested on human and mouse RNA-seq data and is shown to improve significantly on the transABySS and Trinity de novo transcriptome assemblers. Â© The Author(s) 2012. Published by Oxford University Press.", 
-                "date": "2012-04-01T00:00:00Z", 
-                "citationCount": 781, 
+                "abstract": "Motivation: High-throughput sequencing has made the analysis of new model organisms more affordable. Although assembling a new genome can still be costly and difficult, it is possible to use RNAseq to sequence mRNA. In the absence of a known genome, it is necessary to assemble these sequences de novo, taking into account possible alternative isoforms and the dynamic range of expression values. Results: We present a software package named Oases designed to heuristically assemble RNA-seq reads in the absence of a reference genome, across a broad spectrum of expression values and in presence of alternative isoforms. It achieves this by using an array of hash lengths, a dynamic filtering of noise, a robust resolution of alternative splicing events and the efficient merging of multiple assemblies. It was tested on human and mouse RNA-seq data and is shown to improve significantly on the transABySS and Trinity de novo transcriptome assemblers. \u00a9 The Author(s) 2012. Published by Oxford University Press.",
                 "authors": [
                     {
                         "name": "Schulz M.H."
-                    }, 
+                    },
                     {
                         "name": "Zerbino D.R."
-                    }, 
+                    },
                     {
                         "name": "Vingron M."
-                    }, 
+                    },
                     {
                         "name": "Birney E."
                     }
-                ], 
-                "journal": "Bioinformatics"
-            }
+                ],
+                "citationCount": 781,
+                "date": "2012-04-01T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "Oases: Robust de novo RNA-seq assembly across the dynamic range of expression levels"
+            },
+            "pmid": "22368243"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Workflow"
+    ],
+    "topic": [
         {
-            "name": "Marcel Schulz", 
-            "email": "marcel.schulz@molgen.mpg.de", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
-        }, 
+            "term": "Transcriptomics",
+            "uri": "http://edamontology.org/topic_3308"
+        },
         {
-            "name": "Daniel Zerbino", 
-            "email": "dzerbino@soe.ucsc.edu", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Whole genome sequencing",
+            "uri": "http://edamontology.org/topic_3673"
+        },
+        {
+            "term": "RNA-seq",
+            "uri": "http://edamontology.org/topic_3170"
+        },
+        {
+            "term": "Sequence assembly",
+            "uri": "http://edamontology.org/topic_0196"
         }
-    ], 
-    "owner": "seqwiki_import", 
-    "additionDate": "2017-01-13T13:15:44Z", 
-    "lastUpdate": "2019-02-04T13:41:26Z", 
-    "editPermission": {
-        "type": "group", 
-        "authors": [
-            "ELIXIR-EE"
-        ]
-    }, 
-    "validated": 1, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 1
 }

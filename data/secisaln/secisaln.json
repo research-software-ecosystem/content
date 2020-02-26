@@ -1,157 +1,114 @@
 {
-    "name": "SECISaln", 
-    "description": "Predict a SECIS element in the query sequence, split it into its constituent parts and align these against a precompiled database of eukaryotic SECIS elements.", 
-    "homepage": "http://big.crg.cat/services/secisaln", 
-    "biotoolsID": "secisaln", 
-    "biotoolsCURIE": "biotools:secisaln", 
-    "version": [
-        "1"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2016-04-22T13:46:58Z",
+    "biotoolsCURIE": "biotools:secisaln",
+    "biotoolsID": "secisaln",
+    "credit": [
+        {
+            "name": "Charles Chapple",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "name": "Marco Mariotti",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
+            "name": "Lab Roderic Guigo Group",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "name": "crg.eu",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "didac.santesmasses@crg.eu",
+            "name": "Didac Santesmasses & Charles Chapple",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "Predict a SECIS element in the query sequence, split it into its constituent parts and align these against a precompiled database of eukaryotic SECIS elements.",
+    "editPermission": {
+        "type": "private"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0361", 
-                    "term": "Sequence annotation"
-                }
-            ], 
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2977", 
-                        "term": "Nucleic acid sequence"
-                    }, 
-                    "format": []
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    }
                 }
-            ], 
+            ],
+            "note": "SECISaln will predict a eukaryotic SECIS element in a nucleotide sequence, split it into its structural units and then align each unit against the SECISes in our database. SECISaln can distiguish between typeI and typeII SECIS elements and will align the submitted sequence against others of the same type. All sequences used by SECISaln have been collected from either GenBank or EGO\n\nSECISaln is not intended to replace SECISearch as a SECIS element predictor. In fact, SECISaln uses SECISearch to predict SECIS elements. The objective of this tool is to provide researchers with an easy way to compare structural features of SECIS elements. It should only be used on sequences known to contain a SECIS element. The pattern used by SECISaln to recognise SECIS elements is very permissive and would result in false positives when run on unknown sequences.",
+            "operation": [
+                {
+                    "term": "Sequence annotation",
+                    "uri": "http://edamontology.org/operation_0361"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_0869", 
-                        "term": "Sequence-profile alignment"
-                    }, 
-                    "format": []
+                        "term": "Sequence-profile alignment",
+                        "uri": "http://edamontology.org/data_0869"
+                    }
                 }
-            ], 
-            "note": "SECISaln will predict a eukaryotic SECIS element in a nucleotide sequence, split it into its structural units and then align each unit against the SECISes in our database. SECISaln can distiguish between typeI and typeII SECIS elements and will align the submitted sequence against others of the same type. All sequences used by SECISaln have been collected from either GenBank or EGO\n\nSECISaln is not intended to replace SECISearch as a SECIS element predictor. In fact, SECISaln uses SECISearch to predict SECIS elements. The objective of this tool is to provide researchers with an easy way to compare structural features of SECIS elements. It should only be used on sequences known to contain a SECIS element. The pattern used by SECISaln to recognise SECIS elements is very permissive and would result in false positives when run on unknown sequences.", 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Web application"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0160", 
-            "term": "Sequence sites, features and motifs"
-        }
-    ], 
-    "operatingSystem": [], 
-    "language": [], 
-    "license": null, 
-    "collectionID": [], 
-    "maturity": null, 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [], 
-    "download": [], 
-    "documentation": [], 
+    ],
+    "homepage": "http://big.crg.cat/services/secisaln",
+    "lastUpdate": "2018-12-10T12:58:52Z",
+    "name": "SECISaln",
+    "owner": "francisco.camara@crg.eu",
     "publication": [
         {
-            "doi": "10.1093/bioinformatics/btp020", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1093/bioinformatics/btp020",
             "metadata": {
-                "title": "SECISaln, a web-based tool for the creation of structure-based alignments of eukaryotic SECIS elements", 
-                "abstract": "Summary: Selenoproteins contain the 21st amino acid selenocysteine which is encoded by an inframe UGA codon, usually read as a stop. In eukaryotes, its co-translational recoding requires the presence of an RNA stem-loop structure, the SECIS element in the 3 untranslated region of (UTR) selenoprotein mRNAs. Despite little sequence conservation, SECIS elements share the same overall secondary structure. Until recently, the lack of a significantly high number of selenoprotein mRNA sequences hampered the identification of other potential sequence conservation. In this work, the web-based tool SECISaln provides for the first time an extensive structure-based sequence alignment of SECIS elements resulting from the well-defined secondary structure of the SECIS RNA and the increased size of the eukaryotic selenoproteome. We have used SECISaln to improve our knowledge of SECIS secondary structure and to discover novel, conserved nucleotide positions and we believe it will be a useful tool for the selenoprotein and RNA scientific communities. Â© 2009 The Author(s).", 
-                "date": "2009-03-01T00:00:00Z", 
-                "citationCount": 28, 
+                "abstract": "Summary: Selenoproteins contain the 21st amino acid selenocysteine which is encoded by an inframe UGA codon, usually read as a stop. In eukaryotes, its co-translational recoding requires the presence of an RNA stem-loop structure, the SECIS element in the 3 untranslated region of (UTR) selenoprotein mRNAs. Despite little sequence conservation, SECIS elements share the same overall secondary structure. Until recently, the lack of a significantly high number of selenoprotein mRNA sequences hampered the identification of other potential sequence conservation. In this work, the web-based tool SECISaln provides for the first time an extensive structure-based sequence alignment of SECIS elements resulting from the well-defined secondary structure of the SECIS RNA and the increased size of the eukaryotic selenoproteome. We have used SECISaln to improve our knowledge of SECIS secondary structure and to discover novel, conserved nucleotide positions and we believe it will be a useful tool for the selenoprotein and RNA scientific communities. \u00a9 2009 The Author(s).",
                 "authors": [
                     {
                         "name": "Chapple C.E."
-                    }, 
+                    },
                     {
                         "name": "Guigo R."
-                    }, 
+                    },
                     {
                         "name": "Krol A."
                     }
-                ], 
-                "journal": "Bioinformatics"
-            }
+                ],
+                "citationCount": 28,
+                "date": "2009-03-01T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "SECISaln, a web-based tool for the creation of structure-based alignments of eukaryotic SECIS elements"
+            },
+            "type": "Primary"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Web application"
+    ],
+    "topic": [
         {
-            "name": "Charles Chapple", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Developer"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Marco Mariotti", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": null, 
-            "typeRole": [
-                "Contributor"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Lab Roderic Guigo Group", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "crg.eu", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Didac Santesmasses & Charles Chapple", 
-            "email": "didac.santesmasses@crg.eu", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Sequence sites, features and motifs",
+            "uri": "http://edamontology.org/topic_0160"
         }
-    ], 
-    "owner": "francisco.camara@crg.eu", 
-    "additionDate": "2016-04-22T13:46:58Z", 
-    "lastUpdate": "2018-12-10T12:58:52Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 1, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 1,
+    "version": [
+        "1"
+    ]
 }

@@ -1,95 +1,77 @@
 {
-    "name": "FASTX::Reader", 
-    "description": "a Perl module to parse FASTA/FASTQ files", 
-    "homepage": "https://metacpan.org/pod/FASTX::Reader", 
-    "biotoolsID": "FASTXReader", 
-    "biotoolsCURIE": "biotools:FASTXReader", 
-    "version": [
-        "0.6"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2019-08-15T10:32:00Z",
+    "biotoolsCURIE": "biotools:FASTXReader",
+    "biotoolsID": "FASTXReader",
+    "description": "a Perl module to parse FASTA/FASTQ files",
+    "download": [
+        {
+            "type": "Software package",
+            "url": "https://cpan.metacpan.org/authors/id/P/PR/PROCH/FASTX-Reader-0.60.tar.gz",
+            "version": "0.6"
+        }
+    ],
+    "editPermission": {
+        "type": "public"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_2422", 
-                    "term": "Data retrieval"
-                }
-            ], 
+            "cmd": "#!/usr/bin/env perl\nuse FASTX::Reader\nmy $reader = FASTX::Reader->new( filename => 'input.fastq' );\nwhile (my $read = $reader->getRead() ) {\n   print $read{name} , \" (\", $read{comment}, \")\\n\";\n   print $read{seq} , \"\\t\", $read{qual}, \"\\n\";\n}",
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2044", 
-                        "term": "Sequence"
-                    }, 
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_1930", 
-                            "term": "FASTQ"
-                        }, 
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        },
                         {
-                            "uri": "http://edamontology.org/format_1929", 
-                            "term": "FASTA"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 }
-            ], 
-            "output": [], 
-            "note": null, 
-            "cmd": "#!/usr/bin/env perl\nuse FASTX::Reader\nmy $reader = FASTX::Reader->new( filename => 'input.fastq' );\nwhile (my $read = $reader->getRead() ) {\n   print $read{name} , \" (\", $read{comment}, \")\\n\";\n   print $read{seq} , \"\\t\", $read{qual}, \"\\n\";\n}"
+            ],
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                }
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0080", 
-            "term": "Sequence analysis"
-        }
-    ], 
-    "operatingSystem": [
-        "Linux", 
-        "Windows", 
-        "Mac"
-    ], 
+    ],
+    "homepage": "https://metacpan.org/pod/FASTX::Reader",
     "language": [
         "Perl"
-    ], 
-    "license": "MIT", 
-    "collectionID": [], 
-    "maturity": "Mature", 
-    "cost": null, 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
+    ],
+    "lastUpdate": "2019-08-15T10:32:27Z",
+    "license": "MIT",
     "link": [
         {
-            "url": "https://github.com/telatin/FASTQ-Parser", 
-            "type": "Repository", 
-            "note": null
+            "type": "Repository",
+            "url": "https://github.com/telatin/FASTQ-Parser"
         }
-    ], 
-    "download": [
+    ],
+    "maturity": "Mature",
+    "name": "FASTX::Reader",
+    "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+    ],
+    "owner": "telatin",
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "url": "https://cpan.metacpan.org/authors/id/P/PR/PROCH/FASTX-Reader-0.60.tar.gz", 
-            "type": "Source package", 
-            "note": null, 
-            "version": "0.6"
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
         }
-    ], 
-    "documentation": [], 
-    "publication": [], 
-    "credit": [], 
-    "owner": "telatin", 
-    "additionDate": "2019-08-15T10:32:00Z", 
-    "lastUpdate": "2019-08-15T10:32:27Z", 
-    "editPermission": {
-        "type": "public", 
-        "authors": []
-    }, 
-    "validated": 0, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "version": [
+        "0.6"
+    ]
 }

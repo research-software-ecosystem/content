@@ -1,161 +1,131 @@
 {
-    "name": "DSK", 
-    "description": "K-mer counting software, similar to Jellyfish. Jellyfish is very fast but limited to large-memory servers and k 32. This software supports large values of k, and runs with (almost-)arbitrarily low memory usage and reasonably low temporary disk usage. It can count k-mers of large Illumina datasets on laptops and desktop computers.", 
-    "homepage": "http://minia.genouest.org/dsk/", 
-    "biotoolsID": "dsk", 
-    "biotoolsCURIE": "biotools:dsk", 
-    "version": [
-        "1.6906"
-    ], 
-    "otherID": [], 
-    "relation": [], 
+    "additionDate": "2015-01-21T15:12:21Z",
+    "biotoolsCURIE": "biotools:dsk",
+    "biotoolsID": "dsk",
+    "collectionID": [
+        "GATB"
+    ],
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "name": "GenOuest",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "chikhi@psu.edu",
+            "name": "Rayan Chikhi",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
+        {
+            "email": "guillaume.rizk@irisa.fr",
+            "name": "Guillaume Rizk",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
+        {
+            "email": "lavenier@irisa.fr",
+            "name": "Dominique Lavenier",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "K-mer counting software, similar to Jellyfish. Jellyfish is very fast but limited to large-memory servers and k 32. This software supports large values of k, and runs with (almost-)arbitrarily low memory usage and reasonably low temporary disk usage. It can count k-mers of large Illumina datasets on laptops and desktop computers.",
+    "documentation": [
+        {
+            "type": "General",
+            "url": "http://minia.genouest.org/dsk/"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
     "function": [
         {
-            "operation": [
-                {
-                    "uri": "http://edamontology.org/operation_0236", 
-                    "term": "Sequence composition calculation"
-                }
-            ], 
             "input": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_2975", 
-                        "term": "Nucleic acid sequence (raw)"
-                    }, 
+                        "term": "Nucleic acid sequence (raw)",
+                        "uri": "http://edamontology.org/data_2975"
+                    },
                     "format": [
                         {
-                            "uri": "http://edamontology.org/format_2182", 
-                            "term": "FASTQ-like format (text)"
+                            "term": "FASTQ-like format (text)",
+                            "uri": "http://edamontology.org/format_2182"
                         }
                     ]
                 }
-            ], 
+            ],
+            "note": "K-mer counting",
+            "operation": [
+                {
+                    "term": "Sequence composition calculation",
+                    "uri": "http://edamontology.org/operation_0236"
+                }
+            ],
             "output": [
                 {
                     "data": {
-                        "uri": "http://edamontology.org/data_1261", 
-                        "term": "Sequence composition report"
-                    }, 
-                    "format": []
+                        "term": "Sequence composition report",
+                        "uri": "http://edamontology.org/data_1261"
+                    }
                 }
-            ], 
-            "note": "K-mer counting", 
-            "cmd": null
+            ]
         }
-    ], 
-    "toolType": [
-        "Command-line tool"
-    ], 
-    "topic": [
-        {
-            "uri": "http://edamontology.org/topic_0080", 
-            "term": "Sequence analysis"
-        }
-    ], 
+    ],
+    "homepage": "http://minia.genouest.org/dsk/",
+    "lastUpdate": "2018-12-10T12:58:49Z",
+    "license": "CECILL-2.0",
+    "maturity": "Mature",
+    "name": "DSK",
     "operatingSystem": [
         "Linux"
-    ], 
-    "language": [], 
-    "license": "CECILL-2.0", 
-    "collectionID": [
-        "GATB"
-    ], 
-    "maturity": "Mature", 
-    "cost": "Free of charge", 
-    "accessibility": [], 
-    "elixirPlatform": [], 
-    "elixirNode": [], 
-    "link": [], 
-    "download": [], 
-    "documentation": [
-        {
-            "url": "http://minia.genouest.org/dsk/", 
-            "type": "General", 
-            "note": null
-        }
-    ], 
+    ],
+    "owner": "GenOuest",
     "publication": [
         {
-            "doi": "10.1093/bioinformatics/btt020", 
-            "pmid": null, 
-            "pmcid": null, 
-            "type": "Primary", 
-            "version": null, 
+            "doi": "10.1093/bioinformatics/btt020",
             "metadata": {
-                "title": "DSK: K-mer counting with very low memory usage", 
-                "abstract": "Summary: Counting all the k-mers (substrings of length k) in DNA/RNA sequencing reads is the preliminary step of many bioinformatics applications. However, state of the art k-mer counting methods require that a large data structure resides in memory. Such structure typically grows with the number of distinct k-mers to count. We present a new streaming algorithm for k-mer counting, called DSK (disk streaming of k-mers), which only requires a fixed user-defined amount of memory and disk space. This approach realizes a memory, time and disk trade-off. The multi-set of all k-mers present in the reads is partitioned, and partitions are saved to disk. Then, each partition is separately loaded in memory in a temporary hash table. The k-mer counts are returned by traversing each hash table. Low-abundance k-mers are optionally filtered. DSK is the first approach that is able to count all the 27-mers of a human genome dataset using only 4.0 GB of memory and moderate disk space (160 GB), in 17.9 h. DSK can replace a popular k-mer counting software (Jellyfish) on small-memory servers. Â© 2013 The Author Published by Oxford University Press. All rights reserved.", 
-                "date": "2013-03-01T00:00:00Z", 
-                "citationCount": 93, 
+                "abstract": "Summary: Counting all the k-mers (substrings of length k) in DNA/RNA sequencing reads is the preliminary step of many bioinformatics applications. However, state of the art k-mer counting methods require that a large data structure resides in memory. Such structure typically grows with the number of distinct k-mers to count. We present a new streaming algorithm for k-mer counting, called DSK (disk streaming of k-mers), which only requires a fixed user-defined amount of memory and disk space. This approach realizes a memory, time and disk trade-off. The multi-set of all k-mers present in the reads is partitioned, and partitions are saved to disk. Then, each partition is separately loaded in memory in a temporary hash table. The k-mer counts are returned by traversing each hash table. Low-abundance k-mers are optionally filtered. DSK is the first approach that is able to count all the 27-mers of a human genome dataset using only 4.0 GB of memory and moderate disk space (160 GB), in 17.9 h. DSK can replace a popular k-mer counting software (Jellyfish) on small-memory servers. \u00a9 2013 The Author Published by Oxford University Press. All rights reserved.",
                 "authors": [
                     {
                         "name": "Rizk G."
-                    }, 
+                    },
                     {
                         "name": "Lavenier D."
-                    }, 
+                    },
                     {
                         "name": "Chikhi R."
                     }
-                ], 
-                "journal": "Bioinformatics"
-            }
+                ],
+                "citationCount": 93,
+                "date": "2013-03-01T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "DSK: K-mer counting with very low memory usage"
+            },
+            "type": "Primary"
         }
-    ], 
-    "credit": [
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
         {
-            "name": "GenOuest", 
-            "email": null, 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Institute", 
-            "typeRole": [
-                "Provider"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Rayan Chikhi", 
-            "email": "chikhi@psu.edu", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Guillaume Rizk", 
-            "email": "guillaume.rizk@irisa.fr", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
-        }, 
-        {
-            "name": "Dominique Lavenier", 
-            "email": "lavenier@irisa.fr", 
-            "url": null, 
-            "orcidid": null, 
-            "typeEntity": "Person", 
-            "typeRole": [
-                "Primary contact"
-            ], 
-            "note": null
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
         }
-    ], 
-    "owner": "GenOuest", 
-    "additionDate": "2015-01-21T15:12:21Z", 
-    "lastUpdate": "2018-12-10T12:58:49Z", 
-    "editPermission": {
-        "type": "private", 
-        "authors": []
-    }, 
-    "validated": 1, 
-    "homepage_status": 0, 
-    "elixir_badge": 0
+    ],
+    "validated": 1,
+    "version": [
+        "1.6906"
+    ]
 }
