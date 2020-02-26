@@ -2,9 +2,7 @@ import json
 import ruamel.yaml as yaml
 import argparse
 import os
-import tempfile
-import shutil
-import atexit
+import sys
 
 
 class readable_dir(argparse.Action):
@@ -17,10 +15,6 @@ class readable_dir(argparse.Action):
         else:
             raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
 
-
-ldir = tempfile.mkdtemp()
-atexit.register(lambda dir=ldir: shutil.rmtree(ldir))
-
 parser = argparse.ArgumentParser(description='test', fromfile_prefix_chars="@")
 parser.add_argument("path", help="path to metadata dir, e.g. /content/data/", type=str, action=readable_dir)
 args = parser.parse_args()
@@ -28,7 +22,6 @@ args = parser.parse_args()
 
 def enrich_dois(path):
     dirname = os.path.basename(os.path.normpath(path))
-    print(dirname)
     file_types = {'json': '.json', 'yaml': '.yaml', 'debian': '.debian.yaml'}
     files = ["bioconda_" + dirname + file_types['yaml'], dirname + file_types['json'],
              dirname + file_types['debian']]
@@ -41,10 +34,7 @@ def enrich_dois(path):
 
     def parse_yaml(file):
         with open(file, 'r') as stream:
-            try:
                 return yaml.safe_load(stream)
-            except yaml.YAMLError as exc:
-                os._exit(-1)
 
     def parse_json(file):
         with open(file) as f:
@@ -134,7 +124,13 @@ def enrich_dois(path):
             json_dois = dois
 
         elif file.endswith(file_types['debian']):
-            parsed_yaml = parse_yaml(file)
+            try:
+                parsed_yaml = parse_yaml(file)
+            except yaml.YAMLError as exc:
+                print("unable to parse " + file, file=sys.stderr)
+                print(exc, file=sys.stderr)
+                files.remove(file)
+                continue
             dois = extract_doi_from_debian(parsed_yaml)
             debian_dois = dois
 
