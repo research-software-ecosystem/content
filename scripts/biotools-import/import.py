@@ -45,7 +45,9 @@ def retrieve(filters=None):
             if not os.path.isdir(directory):
                 os.mkdir(directory)
             with open(os.path.join(directory, tpe_id + ".json"), "w") as write_file:
-                json.dump(tool, write_file)
+                json.dump(
+                    tool, write_file, sort_keys=True, indent=4, separators=(",", ": ")
+                )
             nb_tools += 1
             print(f"import tool #{nb_tools}: {tool_id} in folder {directory}")
         i += 1
