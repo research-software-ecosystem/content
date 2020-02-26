@@ -1,4 +1,4 @@
-name: import bio.tools contents
+name: spread doi among sources
 
 on: 
   push:
@@ -24,6 +24,7 @@ jobs:
         . venv/bin/activate
         pip install wheel
         pip install -r scripts/biotools-import/requirements.txt
+        pwd
         cd scripts/doi-collector
         python doi_collector.py {path}/data/
         git config --local user.email "tpe-bot@github.com"
