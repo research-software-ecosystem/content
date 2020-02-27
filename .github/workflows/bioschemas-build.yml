@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
     - uses: geertvdc/setup-hub@master
     - name: test if pull-request (automated) or pull-request comment with "bioschemas"
       if: github.event_name == 'pull_request' && github.event.action == 'unassigned'
