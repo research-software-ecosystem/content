@@ -20,10 +20,10 @@ parser.add_argument("path", help="path to metadata dir, e.g. /content/data/", ty
 args = parser.parse_args()
 
 
-def validate_debian_files(path, valid_files_counter):
+def validate_debian_files(path):
     dirname = os.path.basename(os.path.normpath(path))
     file = path + '/' + dirname + '.debian.yaml'
-
+    global valid_files_counter
     def parse_yaml(file):
         with open(file, 'r') as stream:
             return yaml.safe_load(stream)
@@ -39,7 +39,7 @@ def validate_debian_files(path, valid_files_counter):
 
 invalid_files = []
 valid_files_counter = 0
-[validate_debian_files(f.path, valid_files_counter) for f in os.scandir(args.path) if f.is_dir()]
+[validate_debian_files(f.path) for f in os.scandir(args.path) if f.is_dir()]
 
 print(valid_files_counter, " files are valid")
 if len(invalid_files) > 0:
