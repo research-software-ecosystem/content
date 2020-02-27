@@ -5,26 +5,29 @@ on:
     types: [assigned, opened, synchronize, reopened]
 
 jobs:
-  build:
+  build-bioschemas:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run:
+        pip install -r scripts/bioschemas/requirements.txt
     - name: publish bio.tools data as bioschemas files
+      run: |
+        cd scripts/bioschemas
+        python biotools_to_bioschemas.py
+    - name: commit new data
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        sudo apt install python3-pip
-        sudo apt install python3-setuptools
-        sudo pip3 install virtualenv 
-        virtualenv -p python3 venv
-        . venv/bin/activate
-        pip install wheel
-        pip install -r scripts/bioschemas/requirements.txt
-        cd scripts/bioschemas
-        python biotools_to_bioschemas.py
+      run: |  
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         cd ../../data

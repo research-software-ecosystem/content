@@ -1,35 +1,34 @@
 name: import bio.tools contents
 
 on: 
-  push:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '00 18 * * *'
+    - cron:  '00 10 * * *'
 
 jobs:
-  build:
-
+  import-biotools:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - uses: geertvdc/setup-hub@master
-    - name: import bio.tools using the API
-      env:
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        sudo apt install python3-pip
-        sudo apt install python3-setuptools
-        sudo pip3 install virtualenv 
-        virtualenv -p python3 venv
-        . venv/bin/activate
-        pip install wheel
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run:
         pip install -r scripts/biotools-import/requirements.txt
+    - name: import bio.tools using the API
+      run: |
         cd scripts/biotools-import
         python import.py
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
+    - name: commit new data and push to new PR
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |  
         cd ../../data
         git add .
         if git commit -m "import from bio.tools on $(date)"; then
