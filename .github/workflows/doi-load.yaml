@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
     - name: spread doi among sources
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
@@ -28,11 +29,15 @@ jobs:
         pwd
         cd scripts/doi-collector
         python3 doi_collector.py $GITHUB_WORKSPACE/data/
-        echo "configuring user email"
+        cd ../../data
         git config --local user.email "tpe-bot@github.com"
-        echo "configuring user name"
         git config --local user.name "Tools Platform Ecosystem bot"
-        echo "commit"
-        git commit -a -m "spread doi amongs sources"
-        echo "push"
-        git push origin master
+        git add .
+        if git commit -m "spread dois on $(date)"; then
+          git checkout -b doi_update${{ github.run_id }}
+          git push --set-upstream origin "doi_update${{ github.run_id }}"
+          hub pull-request -m "spread dois on $(date)"
+          echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"
+        fi
