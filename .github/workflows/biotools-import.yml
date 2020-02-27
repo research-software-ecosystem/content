@@ -22,14 +22,14 @@ jobs:
       run: |
         cd scripts/biotools-import
         python import.py
-        git config --local user.email "tpe-bot@github.com"
-        git config --local user.name "Tools Platform Ecosystem bot"
     - name: commit new data and push to new PR
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |  
-        cd ../../data
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        cd data
         git add .
         if git commit -m "import from bio.tools on $(date)"; then
           git push --set-upstream origin "biotools_dump_${{ github.run_id }}"

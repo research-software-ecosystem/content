@@ -27,10 +27,10 @@ jobs:
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |  
+      run: |
+        cd data
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        cd ../../data
         git add .
         if git commit -m "build bioschemas on $(date)"; then
             git push origin HEAD
