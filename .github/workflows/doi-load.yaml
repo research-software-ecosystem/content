@@ -33,9 +33,10 @@ jobs:
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         git add .
-        if git commit -m "spread doi values on $(date)"; then
-          git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
-          hub pull-request -m "spread doi values on $(date)"
+        if git commit -m "spread dois on $(date)"; then
+          git checkout -b doi_update${{ github.run_id }}
+          git push --set-upstream origin "doi_update${{ github.run_id }}"
+          hub pull-request -m "spread dois on $(date)"
           echo "successfully created new data"
         else
             echo "nothing new to add, exiting"
