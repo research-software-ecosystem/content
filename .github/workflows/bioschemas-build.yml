@@ -3,8 +3,11 @@ name: build bioschemas jsonld from bio.tools files
 on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
 
 jobs:
+
   build-bioschemas:
 
     runs-on: ubuntu-latest
@@ -12,6 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: geertvdc/setup-hub@master
+    - name: test if pull-request (automated) or pull-request comment with "bioschemas"
+      if: github.event_name == 'pull_request' && github.event.action == 'unassigned'
+      uses: Khan/pull-request-comment-trigger@1.0.0
+      with:
+        # The string to look for in pull-request descriptions and comments. For example "#build/android"
+        trigger: bioschemas
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
