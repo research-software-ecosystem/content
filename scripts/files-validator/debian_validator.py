@@ -1,4 +1,4 @@
-import ruamel.yaml as yaml
+import yaml
 import argparse
 import os
 import sys
