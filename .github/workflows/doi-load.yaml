@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
     - name: spread doi among sources
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
@@ -32,9 +33,9 @@ jobs:
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         git add .
-        if git commit -m "import from bio.tools on $(date)"; then
+        if git commit -m "spread doi values on $(date)"; then
           git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
-          hub pull-request -m "import from bio.tools on $(date)"
+          hub pull-request -m "spread doi values on $(date)"
           echo "successfully created new data"
         else
             echo "nothing new to add, exiting"
