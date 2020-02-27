@@ -29,6 +29,8 @@ jobs:
         cd scripts/doi-collector
         python3 doi_collector.py $GITHUB_WORKSPACE/data/
         cd ../../data
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
         git add .
         if git commit -m "import from bio.tools on $(date)"; then
           git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
