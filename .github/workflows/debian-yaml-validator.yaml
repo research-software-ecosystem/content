@@ -1,0 +1,24 @@
+name: validate debian yaml files
+
+on: 
+  push:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 20 * * *'
+jobs:
+  validate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: spread doi among sources
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv
+        virtualenv -p python3 venv
+        . venv/bin/activate	
+        pip3 install setuptools wheel
+        cd scripts/files-validator/
+        python3 debian_validator.py $GITHUB_WORKSPACE/data/
