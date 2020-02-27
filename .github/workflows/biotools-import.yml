@@ -1,9 +1,9 @@
 name: import bio.tools contents
 
 on: 
+  push:
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '30 * * * *'
+    - cron: '0 0 * * * '
 
 jobs:
   import-biotools:
@@ -32,7 +32,8 @@ jobs:
         cd data
         git add .
         if git commit -m "import from bio.tools on $(date)"; then
-          git push --set-upstream origin "biotools_dump_${{ github.run_id }}"
+          git checkout -b biotools_import_${{ github.run_id }}
+          git push --set-upstream origin "biotools_import_${{ github.run_id }}"
           hub pull-request -m "import from bio.tools on $(date)"
           echo "successfully created new data"
         else
