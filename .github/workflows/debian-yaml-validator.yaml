@@ -12,13 +12,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: spread doi among sources
+    - name: validate debian yaml files
       run: |
         sudo apt install python3-pip
         sudo apt install python3-setuptools
         sudo pip3 install virtualenv
         virtualenv -p python3 venv
         . venv/bin/activate	
-        pip3 install setuptools wheel
         cd scripts/files-validator/
         python3 debian_validator.py $GITHUB_WORKSPACE/data/
