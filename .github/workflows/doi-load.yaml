@@ -1,0 +1,43 @@
+ 
+name: spread doi among sources
+
+on: 
+  push:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 20 * * *'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
+    - name: spread doi among sources
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv
+        virtualenv -p python3 venv
+        . venv/bin/activate	
+        pip3 install setuptools wheel
+        pip3 install ruamel.yaml
+        pwd
+        cd scripts/doi-collector
+        python3 doi_collector.py $GITHUB_WORKSPACE/data/
+        cd ../../data
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git add .
+        if git commit -m "spread dois on $(date)"; then
+          git checkout -b doi_update${{ github.run_id }}
+          git push --set-upstream origin "doi_update${{ github.run_id }}"
+          hub pull-request -m "spread dois on $(date)"
+          echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"
+        fi
