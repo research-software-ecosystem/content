@@ -51,6 +51,6 @@ def get_changeg_biotools(branch1, branch2, path):
 
 
 statistics = get_changeg_biotools(args.branch1, args.branch2, args.path)
-message = "Detected differences in biotools between this PR and original bio-tools/content master branch!  \n"
+message = " Differences in biotools between this PR and original bio-tools/content master branch!  \n"
 message += " BioTools affected:\n"
 print(message, "added:", statistics['added'], "modified:", statistics['modified'], "deleted:", statistics['deleted'])
