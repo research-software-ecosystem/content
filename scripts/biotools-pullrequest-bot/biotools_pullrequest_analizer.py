@@ -21,7 +21,6 @@ parser.add_argument("path", help="path to metadata dir, e.g. /content/data/", ty
 parser.add_argument("branch1", help="name of branch 1", type=str)
 parser.add_argument("branch2", help="name of branch 1", type=str)
 args = parser.parse_args()
-print(args)
 
 
 def get_changeg_biotools(branch1, branch2, path):
