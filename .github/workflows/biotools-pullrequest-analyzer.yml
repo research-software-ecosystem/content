@@ -21,7 +21,8 @@ jobs:
         git fetch biotools-content${{ github.run_id }}
         git fetch origin
         pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE biotools-content${{ github.run_id }}/master origin/${{ github.head_ref }})
-        echo $pr_comment
+        ### instruct GitHub Actions to populate variable on next step
+        echo "::set-env name=pr_comment::$pr_comment"
     - uses: mshick/add-pr-comment@v1
       with:
         message: |
