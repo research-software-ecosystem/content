@@ -19,3 +19,7 @@ jobs:
         pip3 install gitpython
         pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE master ${{ github.payload.pull_request.head.ref }})
         echo $pr_comment
+    - uses: github-actions-up-and-running/pr-comment@v1.0.0
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        message: $pr_comment
