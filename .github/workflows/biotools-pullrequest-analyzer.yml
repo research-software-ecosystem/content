@@ -17,7 +17,7 @@ jobs:
         sudo apt install python3-pip
         sudo apt install python3-setuptools
         pip3 install gitpython
-        pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE master ${{ github.payload.pull_request.head.ref }})
+        pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE master ${{ github.head_ref }})
         echo $pr_comment
     - uses: github-actions-up-and-running/pr-comment@v1.0.0
       with:
