@@ -15,9 +15,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         sudo apt install python3-pip
-        sudo apt install python3-setuptools
+        sudo apt install python3-setuptools git
         pip3 install gitpython
-        pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE master ${{ github.head_ref }})
+        git remote add biotools-content https://github.com/bio-tools/content.git
+        git fetch biotools-content
+        pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE biotools-content/master ${{ github.head_ref }})
         echo $pr_comment
     - uses: github-actions-up-and-running/pr-comment@v1.0.0
       with:
