@@ -1,0 +1,46 @@
+name: build bioschemas jsonld from bio.tools files
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+
+  build-bioschemas:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - uses: geertvdc/setup-hub@master
+    - name: test if pull-request (automated) or pull-request comment with "bioschemas"
+      if: github.event_name == 'pull_request' && github.event.action == 'unassigned'
+      uses: Khan/pull-request-comment-trigger@1.0.0
+      with:
+        # The string to look for in pull-request descriptions and comments. For example "#build/android"
+        trigger: runbiotools
+    - name: checkout bio.tools registry
+      uses: actions/checkout@v2
+        with:
+          # Repository name with owner. For example, actions/checkout
+          # Default: ${{ github.repository }}
+          repository: 'bio-tools/biotoolsRegistry'
+          path: biotoolsRegistry
+    - name: build and run docker containers for bio.tools registry
+      run:
+        cd ${{ github.repository }}/biotoolsRegistry
+        docker-compose build
+        docker-compose up -d
+        docker cp initial_db.sql biotools-mysql:/root
+        docker cp load_initial_db.sh biotools-mysql:/root
+        docker exec biotools-mysql bash /root/load_initial_db.sh
+        docker exec biotools-backend python manage.py makemigrations
+        docker exec biotools-backend python manage.py migrate
+        docker exec biotools-backend python manage.py es_purge
+        docker exec biotools-backend python manage.py es_regenerate
+    - name: test that bio.tools registry is up and running
+      run:
+        cd /tmp
+        wget --spider http://localhost:8000
