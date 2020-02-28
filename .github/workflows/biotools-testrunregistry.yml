@@ -1,4 +1,4 @@
-name: build bioschemas jsonld from bio.tools files
+name: launch a test bio.tools server and perform import tests
 
 on:
   issue_comment:
@@ -29,7 +29,7 @@ jobs:
         repository: 'bio-tools/biotoolsRegistry'
         path: biotoolsRegistry
     - name: build and run docker containers for bio.tools registry
-      run:
+      run: |
         cd ${{ github.repository }}/biotoolsRegistry
         docker-compose build
         docker-compose up -d
