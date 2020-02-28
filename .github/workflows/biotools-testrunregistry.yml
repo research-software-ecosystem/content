@@ -30,12 +30,17 @@ jobs:
         path: ${{ github.repository }}/biotoolsRegistry
     - name: Shutdown Ubuntu MySQL (SUDO)
       run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
-    - name: build and run docker containers for bio.tools registry
+    - name: build docker containers for bio.tools registry
       run: |
-        mktemp
         cd ${{ github.repository }}/biotoolsRegistry
         docker-compose build
+    - name: run docker containers for bio.tools registry
+      run: |
+        cd ${{ github.repository }}/biotoolsRegistry
         docker-compose up -d
+    - name: setup running docker containers for bio.tools registry
+      run: |
+        cd ${{ github.repository }}/biotoolsRegistry
         docker cp initial_db.sql biotools-mysql:/root
         docker cp load_initial_db.sh biotools-mysql:/root
         docker exec biotools-mysql bash /root/load_initial_db.sh
