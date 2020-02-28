@@ -1,0 +1,23 @@
+name: analize how many biotools have change on pullrequest
+
+on:
+  pull_request:
+
+jobs:
+  analize:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
+    - name: analize biotools difference
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv
+        virtualenv -p python3 venv
+        . venv/bin/activate
+        pr_comment=$(python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analizer.py $GITHUB_WORKSPACE master ${{ github.payload.pull_request.head.ref }})
+        echo $pr_comment
