@@ -15,11 +15,11 @@ class readable_dir(argparse.Action):
             raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
 
 
-parser = argparse.ArgumentParser(description='this script will return the difference among biotools between branches',
+parser = argparse.ArgumentParser(description='this script will return the biotools difference between branches',
                                  fromfile_prefix_chars="@")
 parser.add_argument("path", help="path to metadata dir, e.g. /content/data/", type=str, action=readable_dir)
 parser.add_argument("branch1", help="name of branch 1", type=str)
-parser.add_argument("branch2", help="name of branch 1", type=str)
+parser.add_argument("branch2", help="name of branch 2", type=str)
 args = parser.parse_args()
 
 
@@ -51,5 +51,6 @@ def get_changeg_biotools(branch1, branch2, path):
 
 
 statistics = get_changeg_biotools(args.branch1, args.branch2, args.path)
-message = " BioTools affected:\n"
+message = "Detected differences in biotools between this PR and original bio-tools/content master branch!  \n"
+message += " BioTools affected:\n"
 print(message, "added:", statistics['added'], "modified:", statistics['modified'], "deleted:", statistics['deleted'])
