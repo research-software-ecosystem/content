@@ -22,6 +22,8 @@ jobs:
         git fetch origin
         python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analyzer.py $GITHUB_WORKSPACE biotools-content${{ github.run_id }}/master origin/${{ github.head_ref }} > output.txt
         cat output.txt
+        git remote -v
+        echo ${{ github.event.number }}
     - name: Upload output
       uses: actions/upload-artifact@v1
       with:
