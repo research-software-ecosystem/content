@@ -20,6 +20,8 @@ jobs:
         git remote add biotools-content${{ github.run_id }} https://github.com/bio-tools/content.git
         git fetch biotools-content${{ github.run_id }}
         git fetch origin
+        echo ${{ github.event.number }}
+        git remote -v
         python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analyzer.py $GITHUB_WORKSPACE biotools-content${{ github.run_id }}/master origin/${{ github.head_ref }} > output.txt
         cat output.txt
     - name: Upload output
