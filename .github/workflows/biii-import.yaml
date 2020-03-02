@@ -28,18 +28,18 @@ jobs:
         cd scripts/neubias
         python biseEU_LD_export.py -td http://test.biii.eu -dump
     - name: commit new data and push to new PR
-        env:
-          GITHUB_USER: ${{ secrets.GITHUB_USER }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --local user.email "tpe-bot@github.com"
-          git config --local user.name "Tools Platform Ecosystem bot"
-          cd data
-          git add .
-          if git commit -m "import from neubias biii.eu on $(date)"; then
-            git checkout -b biii_import_${{ github.run_id }}
-            hub pull-request -m "import from biii.eu on $(date)"
-            echo "successfully created new data"
-          else
-              echo "nothing new to add, exiting"
-          fi
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        cd data
+        git add .
+        if git commit -m "import from neubias biii.eu on $(date)"; then
+          git checkout -b biii_import_${{ github.run_id }}
+          hub pull-request -m "import from biii.eu on $(date)"
+          echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"
+        fi
