@@ -1,0 +1,43 @@
+name: build bioschemas jsonld from bio.tools files
+
+on: 
+  push:
+  schedule:
+    - cron: '50 17 * * * '
+
+jobs:
+
+  build-bioschemas:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run:
+        pip install -r scripts/bioschemas/requirements.txt
+    - name: publish bio.tools data as bioschemas files
+      run: |
+        cd scripts/bioschemas
+        python biotools_to_bioschemas.py
+    - name: commit new data
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd data
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git add .
+        if git commit -m "build bioschemas on $(date)"; then
+            git push origin HEAD
+            echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"            
+        fi
