@@ -1,9 +1,9 @@
-name: build bioschemas jsonld from bio.tools files
+name: import Neubias biii.eu content
 
 on: 
   push:
   schedule:
-    - cron: '10 18 * * * '
+    - cron: '18 09 * * * '
 
 jobs:
 
@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run:
         pip install -r scripts/bioschemas/requirements.txt
-    - name: publish bio.tools data as bioschemas files
+    - name: dump Neubias biii.eu data as bioschemas and raw files
       run: |
         cd scripts/neubias
         python biseEU_LD_export.py -td http://test.biii.eu -dump
