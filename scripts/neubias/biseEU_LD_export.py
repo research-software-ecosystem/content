@@ -82,7 +82,7 @@ def main():
             # node_ld = get_node_as_linked_data(s['nid'], connection)
             node_ld = get_node_as_bioschema(s['nid'], connection)
 
-            tpe_id = s['title'].lower().replace(' ', '-').replace('/', '-')
+            tpe_id = s['title'].lower().replace('/', '').replace(' ', '-')
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
@@ -113,7 +113,7 @@ def main():
             # node_ld = get_node_as_linked_data(s['nid'], connection)
             node_ld = get_node_as_bioschema(s['nid'], connection)
 
-            tpe_id = s['title'].lower().replace(' ', '-')
+            tpe_id = s['title'].lower().replace('/', '').replace(' ', '-')
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
