@@ -15,7 +15,7 @@ RDF export tool for the NeuBIAS Bise.eu registry.
 Sample Usage :
     python biseEU_LD_export.py -u <USERNAME> -p <PASSWORD> -td http://dev-bise2.pantheonsite.io -px <PROXY_URL> -id 67
     python biseEU_LD_export.py -u <USERNAME> -p <PASSWORD> -td http://dev-bise2.pantheonsite.io -px <PROXY_URL> -test
-    python biseEU_LD_export.py -u <USERNAME> -p <PASSWORD> -td http://dev-bise2.pantheonsite.io -px <PROXY_URL> -dump  
+    python biseEU_LD_export.py -u <USERNAME> -p <PASSWORD> -td http://dev-bise2.pantheonsite.io -px <PROXY_URL> -dump
                                  """, formatter_class=RawTextHelpFormatter)
 #parser.add_argument('-px', '--proxy', metavar='proxy', type=str, help='your proxy URL, including the proxy port',
 #                    dest='px', required=False)
@@ -82,7 +82,7 @@ def main():
             # node_ld = get_node_as_linked_data(s['nid'], connection)
             node_ld = get_node_as_bioschema(s['nid'], connection)
 
-            tpe_id = s['title'].lower().replace(' ', '-')
+            tpe_id = s['title'].lower().replace(' ', '-').replace('/', '-')
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
