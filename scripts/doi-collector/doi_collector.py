@@ -32,6 +32,8 @@ def enrich_dois(path):
     bioconda_dois = set()
     debian_dois = set()
 
+    non_primary_dois = set()
+
     def parse_yaml(file):
         with open(file, 'r') as stream:
                 return yaml.safe_load(stream)
@@ -48,6 +50,8 @@ def enrich_dois(path):
             for publication in publications:
                 if ('type' in publication and 'doi' in publication and publication['type'] == 'Primary'):
                     dois.add(publication['doi'])
+                elif ('type' in publication and 'doi' in publication and publication['type'] != 'Primary'):
+                    non_primary_dois.add(publication['doi'])
             return dois
         else:
             return []
@@ -72,6 +76,7 @@ def enrich_dois(path):
 
     def write_dois_json(json_dois, file):
         parsed_json = parse_json(file)
+        json_dois = json_dois.difference(non_primary_dois)
         if 'publication' not in parsed_json:
             parsed_json['publication'] = [{'doi': json_dois.pop(), 'type': 'Primary'}]
 
