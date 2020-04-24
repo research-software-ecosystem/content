@@ -5,6 +5,9 @@
     "additionDate": "2018-02-02T09:49:44Z",
     "biotoolsCURIE": "biotools:v-pipe",
     "biotoolsID": "v-pipe",
+    "collectionID": [
+        "COVID-19"
+    ],
     "cost": "Free of charge",
     "credit": [
         {
@@ -85,7 +88,7 @@
         {
             "note": "Getting Started",
             "type": "User manual",
-            "url": "https://github.com/cbg-ethz/V-pipe/wiki/getting_started"
+            "url": "https://github.com/cbg-ethz/V-pipe/wiki/getting-started"
         },
         {
             "note": "User configurable options",
@@ -106,6 +109,16 @@
             "note": "Video introduction to V-pipe",
             "type": "Training material",
             "url": "https://youtu.be/qHEUVJZsgE4"
+        },
+        {
+            "note": "Output files",
+            "type": "User manual",
+            "url": "https://github.com/cbg-ethz/V-pipe/wiki/output"
+        },
+        {
+            "note": "Tutorial: how to use V-pipe (specifically for SARS-CoV-2 data).",
+            "type": "Training material",
+            "url": "https://cbg-ethz.github.io/V-pipe/tutorial/sars-cov2/"
         }
     ],
     "download": [
@@ -118,8 +131,12 @@
     "editPermission": {
         "type": "private"
     },
+    "elixirNode": [
+        "Switzerland"
+    ],
     "function": [
         {
+            "cmd": "curl -O 'https://raw.githubusercontent.com/cbg-ethz/V-pipe/master/utils/quick_install.sh'\nbash quick_install.sh -b sars-cov2 -p V-pipe-installation/ -w working/\ncd V-pipe-installation/working/\nmkdir -p samples/patient_1/20200409/raw_data\ncp ~/Download/reads_R{1,2}.fastq.gz samples/patient_1/20200409/raw_data/\n./vpipe -p --cores 2\n\nls samples/patient_1/20200409/variants/SNVs/snvs.vcf\nls samples//variants/SNVs/REGION_*/support/*.fasgz",
             "input": [
                 {
                     "data": {
@@ -128,7 +145,12 @@
                     }
                 }
             ],
+            "note": "Please consult wiki or tutorial for the directory structure of the raw reads input.",
             "operation": [
+                {
+                    "term": "Read pre-processing",
+                    "uri": "http://edamontology.org/operation_3219"
+                },
                 {
                     "term": "Sequence alignment",
                     "uri": "http://edamontology.org/operation_0292"
@@ -143,7 +165,17 @@
                     "data": {
                         "term": "Genotype/phenotype report",
                         "uri": "http://edamontology.org/data_0920"
-                    }
+                    },
+                    "format": [
+                        {
+                            "term": "VCF",
+                            "uri": "http://edamontology.org/format_3016"
+                        },
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
                 }
             ]
         }
@@ -153,7 +185,7 @@
         "Shell",
         "Python"
     ],
-    "lastUpdate": "2019-06-04T11:19:08Z",
+    "lastUpdate": "2020-04-09T16:18:54Z",
     "license": "Apache-2.0",
     "link": [
         {
@@ -205,7 +237,7 @@
                         "name": "Beerenwinkel N."
                     }
                 ],
-                "citationCount": 14,
+                "citationCount": 30,
                 "date": "2017-07-15T00:00:00Z",
                 "journal": "Virus Research",
                 "title": "Recent advances in inferring viral diversity from high-throughput sequencing data"
@@ -221,8 +253,242 @@
         },
         {
             "doi": "10.1093/infdis/jiz094",
+            "metadata": {
+                "abstract": "\u00a9 2019 The Author(s) 2019.Background: Human immunodeficiency virus type 1 (HIV-1) genetic diversity increases over the course of infection and can be used to infer the time since infection and, consequently, infection recency, which are crucial for HIV-1 surveillance and the understanding of viral pathogenesis. Methods: We considered 313 HIV-infected individuals for whom reliable estimates of infection dates and next-generation sequencing (NGS)-derived nucleotide frequency data were available. Fractions of ambiguous nucleotides, obtained by population sequencing, were available for 207 samples. We assessed whether the average pairwise diversity calculated using NGS sequences provided a more exact prediction of the time since infection and classification of infection recency (<1 year after infection), compared with the fraction of ambiguous nucleotides. Results: NGS-derived average pairwise diversity classified an infection as recent with a sensitivity of 88% and a specificity of 85%. When considering only the 207 samples for which fractions of ambiguous nucleotides were available, the NGS-derived average pairwise diversity exhibited a higher sensitivity (90% vs 78%) and specificity (95% vs 67%) than the fraction of ambiguous nucleotides. Additionally, the average pairwise diversity could be used to estimate the time since infection with a mean absolute error of 0.84 years, compared with 1.03 years for the fraction of ambiguous nucleotides. Conclusions: Viral diversity based on NGS data is more precise than that based on population sequencing in its ability to predict infection recency and provides an estimated time since infection that has a mean absolute error of <1 year.",
+                "authors": [
+                    {
+                        "name": "Carlisle L.A."
+                    },
+                    {
+                        "name": "Turk T."
+                    },
+                    {
+                        "name": "Kusejko K."
+                    },
+                    {
+                        "name": "Metzner K.J."
+                    },
+                    {
+                        "name": "Leemann C."
+                    },
+                    {
+                        "name": "Schenkel C.D."
+                    },
+                    {
+                        "name": "Bachmann N."
+                    },
+                    {
+                        "name": "Posada S."
+                    },
+                    {
+                        "name": "Beerenwinkel N."
+                    },
+                    {
+                        "name": "Boni J."
+                    },
+                    {
+                        "name": "Yerly S."
+                    },
+                    {
+                        "name": "Klimkait T."
+                    },
+                    {
+                        "name": "Perreau M."
+                    },
+                    {
+                        "name": "Braun D.L."
+                    },
+                    {
+                        "name": "Rauch A."
+                    },
+                    {
+                        "name": "Calmy A."
+                    },
+                    {
+                        "name": "Cavassini M."
+                    },
+                    {
+                        "name": "Battegay M."
+                    },
+                    {
+                        "name": "Vernazza P."
+                    },
+                    {
+                        "name": "Bernasconi E."
+                    },
+                    {
+                        "name": "Gunthard H.F."
+                    },
+                    {
+                        "name": "Kouyos R.D."
+                    },
+                    {
+                        "name": "Anagnostopoulos A."
+                    },
+                    {
+                        "name": "Battegay M."
+                    },
+                    {
+                        "name": "Bernasconi E."
+                    },
+                    {
+                        "name": "Boni J."
+                    },
+                    {
+                        "name": "Braun D.L."
+                    },
+                    {
+                        "name": "Bucher H.C."
+                    },
+                    {
+                        "name": "Calmy A."
+                    },
+                    {
+                        "name": "Cavassini M."
+                    },
+                    {
+                        "name": "Ciuffi A."
+                    },
+                    {
+                        "name": "Dollenmaier G."
+                    },
+                    {
+                        "name": "Egger M."
+                    },
+                    {
+                        "name": "Elzi L."
+                    },
+                    {
+                        "name": "Fehr J."
+                    },
+                    {
+                        "name": "Fellay J."
+                    },
+                    {
+                        "name": "Furrer H."
+                    },
+                    {
+                        "name": "Fux C.A."
+                    },
+                    {
+                        "name": "Gunthard H.F."
+                    },
+                    {
+                        "name": "Haerry D."
+                    },
+                    {
+                        "name": "Hasse B."
+                    },
+                    {
+                        "name": "Hirsch H.H."
+                    },
+                    {
+                        "name": "Hoffmann M."
+                    },
+                    {
+                        "name": "Hosli I."
+                    },
+                    {
+                        "name": "Huber M."
+                    },
+                    {
+                        "name": "Kahlert C."
+                    },
+                    {
+                        "name": "Kaiser L."
+                    },
+                    {
+                        "name": "Keiser O."
+                    },
+                    {
+                        "name": "Klimkait T."
+                    },
+                    {
+                        "name": "Kouyos R.D."
+                    },
+                    {
+                        "name": "Kovari H."
+                    },
+                    {
+                        "name": "Ledergerber B."
+                    },
+                    {
+                        "name": "Martinetti G."
+                    },
+                    {
+                        "name": "Martinez De Tejada B."
+                    },
+                    {
+                        "name": "Marzolini C."
+                    },
+                    {
+                        "name": "Metzner K.J."
+                    },
+                    {
+                        "name": "Muller N."
+                    },
+                    {
+                        "name": "Nicca D."
+                    },
+                    {
+                        "name": "Paioni P."
+                    },
+                    {
+                        "name": "Pantaleo G."
+                    },
+                    {
+                        "name": "Perreau M."
+                    },
+                    {
+                        "name": "Rauch A."
+                    },
+                    {
+                        "name": "Rudin C."
+                    },
+                    {
+                        "name": "Scherrer A.U."
+                    },
+                    {
+                        "name": "Schmid P."
+                    },
+                    {
+                        "name": "Speck R."
+                    },
+                    {
+                        "name": "Stockle M."
+                    },
+                    {
+                        "name": "Tarr P."
+                    },
+                    {
+                        "name": "Trkola A."
+                    },
+                    {
+                        "name": "Vernazza P."
+                    },
+                    {
+                        "name": "Wandeler G."
+                    },
+                    {
+                        "name": "Weber R."
+                    },
+                    {
+                        "name": "Yerly S."
+                    }
+                ],
+                "citationCount": 1,
+                "date": "2019-01-01T00:00:00Z",
+                "journal": "Journal of Infectious Diseases",
+                "title": "Viral Diversity Based on Next-Generation Sequencing of HIV-1 Provides Precise Estimates of Infection Recency and Time since Infection"
+            },
             "pmid": "30835266",
             "type": "Usage"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "shorah",
+            "type": "uses"
         }
     ],
     "toolType": [
