@@ -307,7 +307,7 @@ def get_biotools_files_in_repo():
 
 def process_tools():
     """
-    Go through all bio.tools entries and produce an RDF graph representation (BioSchemas / JSON-LD).  
+    Go through all bio.tools entries and produce an RDF graph representation (BioSchemas / JSON-LD).
     """
     tool_files = get_biotools_files_in_repo()
     for tool_file in tool_files:
@@ -323,7 +323,7 @@ def process_tools():
         temp_graph.serialize(
             format="json-ld",
             auto_compact=True,
-            destination=os.path.join(directory, tpe_id + "bioschemas.jsonld")
+            destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld")
         )
 
 
