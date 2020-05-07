@@ -44,7 +44,7 @@ def retrieve(filters=None):
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
-            with open(os.path.join(directory, tpe_id + ".json"), "w") as write_file:
+            with open(os.path.join(directory, tpe_id + ".biotools.json"), "w") as write_file:
                 drop_false = lambda path, key, value: bool(value)
                 tool_cleaned = remap(tool, visit=drop_false)
                 json.dump(
