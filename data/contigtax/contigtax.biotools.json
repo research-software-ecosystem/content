@@ -1,0 +1,103 @@
+{
+    "accessibility": [
+        "Open access"
+    ],
+    "additionDate": "2020-06-01T12:16:30Z",
+    "biotoolsCURIE": "biotools:contigtax",
+    "biotoolsID": "contigtax",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "john.sundh@scilifelab.se",
+            "name": "John Sundh",
+            "orcidid": "https://orcid.org/0000-0003-3053-9392",
+            "typeEntity": "Person",
+            "url": "https://nbis.se/about/staff/john-sundh/"
+        }
+    ],
+    "description": "Assigns taxonomy to metagenomic contigs.",
+    "documentation": [
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://github.com/NBISweden/contigtax/wiki"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "elixirNode": [
+        "Sweden"
+    ],
+    "elixirPlatform": [
+        "Tools"
+    ],
+    "function": [
+        {
+            "cmd": "1. Download fasta file\n```\ncontigtax download uniref100\n```\n\n2. Download NCBI taxonomy\n```\ncontigtax download taxonomy\n```\n\n3. Reformat fasta file and create taxonmap\n```\ncontigtax format uniref100/uniref100.fasta.gz uniref100/uniref100.reformat.fasta.gz\n```\n\n4. Build diamond database\n```\ncontigtax build uniref100/uniref100.reformat.fasta.gz uniref100/prot.accession2taxid.gz taxonomy/nodes.dmp\n```\n\n5. Search (here assembled contigs are in file `assembly.fa`)\n```\ncontigtax search -p 4 assembly.fa uniref100/diamond.dmnd assembly.tsv.gz\n```\n\n6. Assign (here output from the `contigtax search` step are in file `assembly.tsv.gz`)\n```\ncontigtax assign -p 4 assembly.tsv.gz assembly.taxonomy.tsv\n```",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    }
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                },
+                {
+                    "term": "Taxonomic classification",
+                    "uri": "http://edamontology.org/operation_3460"
+                },
+                {
+                    "term": "Sequence alignment",
+                    "uri": "http://edamontology.org/operation_0292"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/NBISweden/contigtax",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2020-06-01T19:41:27.057662Z",
+    "license": "MIT",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/NBISweden/contigtax"
+        }
+    ],
+    "name": "contigtax",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "johnne",
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Metagenomics",
+            "uri": "http://edamontology.org/topic_3174"
+        }
+    ],
+    "version": [
+        "v0.5.9"
+    ]
+}
