@@ -10,47 +10,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout contents registry
-      if: github.actor == github.event.repository.owner.login
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
-        path: ./content
+    # - name: checkout contents registry
+    #   if: github.actor == github.event.repository.owner.login
+    #   uses: actions/checkout@v2
+    #   with:
+    #     ref: ${{ github.head_ref }}
+    #     path: ./content
     - name: checkout bio.tools registry
       uses: actions/checkout@v2
       with:
         # Repository name with owner. For example, actions/checkout
         # Default: ${{ github.repository }}
         repository: 'bio-tools/biotoolsRegistry'
-        path: ./biotoolsRegistry
+        path: biotoolsRegistry
     - name: Shutdown Ubuntu MySQL (SUDO)
       run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
     - name: Add dummy email backend to django settings
-      working-directory: ./biotoolsRegistry
+      working-directory: biotoolsRegistry
       run: |
         echo "EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'" >> backend/elixirapp/settings.py
     - name: build docker containers for bio.tools registry
-      working-directory: ./biotoolsRegistry
+      working-directory: biotoolsRegistry
       run: |
         docker-compose build
     - name: start docker containers for bio.tools registry
-      working-directory: ./biotoolsRegistry
+      working-directory: biotoolsRegistry
       run: |
           docker-compose up -d
-    - name: debug
-      working-directory: ./content
-      run: |
-          ls
     - name: copy wait for mysql script
-      working-directory: ./content
       run: |
           docker cp scripts/runbiotools/wait_mysql.sh biotools-mysql:/root
     - name: chmod to executable wait for mysql script
-      working-directory: content
       run: |
           docker exec biotools-mysql chmod +x /root/wait_mysql.sh
     - name: execute wait for mysql script
-      working-directory: content
       run: |
           docker exec biotools-mysql /root/wait_mysql.sh
     - name: test that bio.tools registry is up and running
