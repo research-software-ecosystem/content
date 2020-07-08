@@ -16,6 +16,9 @@ jobs:
     #   with:
     #     ref: ${{ github.head_ref }}
     #     path: ./content
+    - name: debug pre checkout
+      run: |
+          ls
     - name: checkout bio.tools registry
       uses: actions/checkout@v2
       with:
@@ -23,6 +26,9 @@ jobs:
         # Default: ${{ github.repository }}
         repository: 'bio-tools/biotoolsRegistry'
         path: biotoolsRegistry
+    - name: debug post checkout
+      run: |
+          ls
     - name: Shutdown Ubuntu MySQL (SUDO)
       run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
     - name: Add dummy email backend to django settings
