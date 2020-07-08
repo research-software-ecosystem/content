@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - name: checkout contents registry
-    #   if: github.actor == github.event.repository.owner.login
-    #   uses: actions/checkout@v2
-    #   with:
-    #     ref: ${{ github.head_ref }}
-    #     path: ./content
+    - name: checkout contents registry
+      if: github.actor == github.event.repository.owner.login
+      uses: actions/checkout@v2
+      with:
+        path: content
     - name: debug pre checkout
       run: |
           ls
