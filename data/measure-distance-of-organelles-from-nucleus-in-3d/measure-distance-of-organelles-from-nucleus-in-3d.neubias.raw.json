@@ -1,0 +1,216 @@
+{
+    "body": [
+        {
+            "format": "markdown",
+            "processed": "<p>A simple workflow is described in the following for measuring subcellular localizations of organelle by the distance from the nucleus. For example, you can quantify how far some type of vesicles or protein aggregates are apart from the nucleus border. This workflow is for analyzing 3D data.</p>\n\n<h2>Data requirements:</h2>\n\n<ul>\n<li>3D data, 2 channels</li>\n<li>Channel 1: nucleus stain\n= Channel 2: stain for marker you want to quantify the distance to nucleus for</li>\n</ul>\n\n<h2>Workflow:</h2>\n\n<ol>\n<li>Nucleus detection: Imaris</li>\n</ol>\n\n<p>- Add a new SURFACE object, name it \"nuclei\"\n- Follow the object detection wizard to segment nucleus objects</p>\n\n<ol start=\"2\">\n<li>Marker object detection: Imaris</li>\n</ol>\n\n<p>- Add a new SURFACE object\n- Follow the object detection wizard to segment nucleus objects</p>\n\n<ol start=\"3\">\n<li>Creating of distance map channel: Imaris</li>\n</ol>\n\n<p>- In the image processing menu, go to SurfacesFunctions>>Distance Transformation</p>\n\n<ol start=\"4\">\n<li>MATLAB:</li>\n</ol>\n\n<p>- select nucleus objects and \"distance outside objects\"\n- A new image channel should be created now by the Matlab script</p>\n\n<ol start=\"5\">\n<li>Distance measurement</li>\n</ol>\n\n<ul>\n<li>The generated distance map channel represents the distance from the nucleus border in pixel values. Thus, the distance of an organelle from the nucleus is equivalent to its mean gray value of the distance map channel.<br />\nFor distance measurement, just export the mean gray value of the distance channel for each object.</li>\n</ul>\n\n<p>** Please note:**<br />\nIn the described workflow, the distance is always calculated to the closest nucleus border. This could be also the nucleus of a neighboring cell, which generates some error. A more complex approach to avoid this error would incorporate a cell segmentation step to assign certain organelle objects to certain cells. Therefore, a cell region marker is needed.</p>\n",
+            "summary": "",
+            "value": "A simple workflow is described in the following for measuring subcellular localizations of organelle by the distance from the nucleus. For example, you can quantify how far some type of vesicles or protein aggregates are apart from the nucleus border. This workflow is for analyzing 3D data.\r\n\r\n## Data requirements:\r\n\r\n- 3D data, 2 channels\r\n- Channel 1: nucleus stain\r\n= Channel 2: stain for marker you want to quantify the distance to nucleus for\r\n\r\n\r\n## Workflow:\r\n\r\n1. Nucleus detection: Imaris\r\n- Add a new SURFACE object, name it \"nuclei\"\r\n- Follow the object detection wizard to segment nucleus objects\r\n\r\n2. Marker object detection: Imaris\r\n- Add a new SURFACE object\r\n- Follow the object detection wizard to segment nucleus objects\r\n\r\n3. Creating of distance map channel: Imaris\r\n- In the image processing menu, go to SurfacesFunctions>>Distance Transformation\r\n\r\n4. MATLAB:  \r\n- select nucleus objects and \"distance outside objects\"\r\n- A new image channel should be created now by the Matlab script\r\n\r\n5. Distance measurement\r\n\r\n- The generated distance map channel represents the distance from the nucleus border in pixel values. Thus, the distance of an organelle from the nucleus is equivalent to its mean gray value of the distance map channel.  \r\nFor distance measurement, just export the mean gray value of the distance channel for each object.\r\n\r\n** Please note:**  \r\nIn the described workflow, the distance is always calculated to the closest nucleus border. This could be also the nucleus of a neighboring cell, which generates some error. A more complex approach to avoid this error would incorporate a cell segmentation step to assign certain organelle objects to certain cells. Therefore, a cell region marker is needed.\r\n\r\n\r\n\r\n"
+        }
+    ],
+    "changed": [
+        {
+            "value": 1528502932
+        }
+    ],
+    "created": [
+        {
+            "value": 1418049886
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true
+        }
+    ],
+    "field_attribution_instructions": [],
+    "field_free_tagging": [
+        {
+            "target_id": 4716,
+            "target_type": "taxonomy_term",
+            "target_uuid": "17211db6-4b39-486e-9222-e90581b2cc3e",
+            "url": "/taxonomy/term/4716"
+        }
+    ],
+    "field_give_feedback_on_this_soft": [
+        {
+            "cid": 0,
+            "comment_count": 0,
+            "last_comment_name": null,
+            "last_comment_timestamp": 1505205184,
+            "last_comment_uid": 164,
+            "status": 2
+        }
+    ],
+    "field_has_author": [
+        {
+            "value": "Christoph M\u00f6hl"
+        }
+    ],
+    "field_has_biological_terms": [
+        {
+            "target_id": 4504,
+            "target_type": "taxonomy_term",
+            "target_uuid": "691b20d0-2be3-487d-9bf9-ef663f7bee94",
+            "url": "/taxonomy/term/4504"
+        }
+    ],
+    "field_has_comparison": [],
+    "field_has_documentation": [],
+    "field_has_doi": [],
+    "field_has_entry_curator": [
+        {
+            "target_id": 180,
+            "target_type": "user",
+            "target_uuid": "7d0d095d-6eff-487e-ace2-eac881705e7f",
+            "url": "/user/180"
+        }
+    ],
+    "field_has_function": [
+        {
+            "target_id": 4148,
+            "target_type": "taxonomy_term",
+            "target_uuid": "http://edamontology.org/operation_Distance_transform",
+            "url": "/distance-transform"
+        }
+    ],
+    "field_has_implementation": [],
+    "field_has_interaction_level": [
+        {
+            "target_id": 3572,
+            "target_type": "taxonomy_term",
+            "target_uuid": "551f908e-bb43-410a-9420-9d98f12442a0",
+            "url": "/taxonomy/term/3572"
+        }
+    ],
+    "field_has_license": [],
+    "field_has_location": [],
+    "field_has_programming_language": [],
+    "field_has_reference_publication": [],
+    "field_has_topic": [],
+    "field_has_usage_example": [],
+    "field_image": [],
+    "field_is_compatible_with": [],
+    "field_is_covered_by_training_mat": [],
+    "field_is_dependent_of": [
+        {
+            "target_id": 87,
+            "target_type": "node",
+            "target_uuid": "38d0318e-1624-47bc-991e-78b3569fdff4",
+            "url": "/imaris"
+        },
+        {
+            "target_id": 101,
+            "target_type": "node",
+            "target_uuid": "ed988460-a4e6-4d70-9406-d5a18b11789d",
+            "url": "/matlab"
+        }
+    ],
+    "field_license_openness": [
+        {
+            "target_id": 3575,
+            "target_type": "taxonomy_term",
+            "target_uuid": "06a4d439-36c4-4f19-9b3a-95f50a53da20",
+            "url": "/taxonomy/term/3575"
+        }
+    ],
+    "field_platform": [],
+    "field_supported_image_dimension": [
+        {
+            "target_id": 3562,
+            "target_type": "taxonomy_term",
+            "target_uuid": "20313d78-9a2a-4c67-9a1b-74ef51a5525d",
+            "url": "/taxonomy/term/3562"
+        }
+    ],
+    "field_type": [
+        {
+            "target_id": 3568,
+            "target_type": "taxonomy_term",
+            "target_uuid": "d9054ede-19e4-4c81-9c3d-98b334337a53",
+            "url": "/taxonomy/term/3568"
+        }
+    ],
+    "field_workflow_steps": [],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "nid": [
+        {
+            "value": 216
+        }
+    ],
+    "path": [
+        {
+            "alias": "/measure-distance-organelles-nucleus-3d",
+            "langcode": "en",
+            "pid": 175
+        }
+    ],
+    "promote": [
+        {
+            "value": true
+        }
+    ],
+    "revision_log": [],
+    "revision_timestamp": [
+        {
+            "value": 1528502932
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true
+        }
+    ],
+    "revision_uid": [
+        {
+            "target_id": 94,
+            "target_type": "user",
+            "target_uuid": "aa749c9e-5b9a-4fdf-83ce-6b94538fe57c",
+            "url": "/user/94"
+        }
+    ],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "sticky": [
+        {
+            "value": false
+        }
+    ],
+    "synonyms": [],
+    "title": [
+        {
+            "value": "Measure distance of organelles from nucleus in 3D"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "software",
+            "target_type": "node_type",
+            "target_uuid": "54008715-4695-438a-9893-5da3c88d8f5d"
+        }
+    ],
+    "uid": [
+        {
+            "target_id": 164,
+            "target_type": "user",
+            "target_uuid": "7aac9c32-3f48-4476-89f1-363eb4e99f2b",
+            "url": "/user/164"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "6a0c6c62-c8bc-4df8-bbde-3f1eea6c48b8"
+        }
+    ],
+    "vid": [
+        {
+            "value": 1997
+        }
+    ]
+}
