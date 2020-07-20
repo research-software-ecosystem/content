@@ -1,5 +1,5 @@
 # Bioinformatics Tools Ecosystem contents repository
-This is a (currently experimental) repository for bioinformatis tool descriptions for https://bio.tools.  The purpose of this repository is to act as a central place for the exchange of tool metadata. 
+This is a (currently experimental) repository for the centralisation of bioinformatics tool descriptions. The purpose of this repository is to act as a central place for the exchange of tool metadata for multiple projects, including bio.tools, Biocontainers, Bioconda, OpenEBench, Debian Med, BIII.eu, etc.
 
 # jobs status
 
