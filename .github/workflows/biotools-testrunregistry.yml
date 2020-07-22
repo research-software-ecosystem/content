@@ -82,5 +82,6 @@ jobs:
       run: |
         curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
     - name: upload tools
+      working-directory: content
       run: |
         python3 scripts/runbiotools/tools_upload.py uploadbot botbotbot
