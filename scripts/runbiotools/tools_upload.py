@@ -39,6 +39,7 @@ def login(user, password):
     payload = {'username':user,'password':password}
     response = requests.post(HOST+'api/rest-auth/login/', headers=HEADERS, json=payload)
     token = response.json()['key']
+    return token
 
 def run_upload(token):
     headers = HEADERS
