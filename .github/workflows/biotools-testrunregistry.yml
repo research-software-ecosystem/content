@@ -81,10 +81,6 @@ jobs:
     - name: create user to upload data to server
       run: |
         curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
-    - name: copy tool upload script
-      working-directory: content
-      run: |
-        docker cp scripts/runbiotools/tools_upload.py biotools-backend:/root
     - name: upload tools
       run: |
-        docker exec biotools-backend python3 /root/tools_upload.py uploadbot botbotbot
+        python3 scripts/runbiotools/tools_upload.py uploadbot botbotbot
