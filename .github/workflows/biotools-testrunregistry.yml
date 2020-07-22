@@ -84,7 +84,7 @@ jobs:
     - name: copy tool upload script
       working-directory: content
       run: |
-          docker cp scripts/runbiotools/tools_upload.py biotools-mysql:/root
+          docker cp scripts/runbiotools/tools_upload.py biotools-backend:/root
     - name: upload tools
       run: |
         curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
