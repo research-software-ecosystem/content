@@ -35,7 +35,6 @@ def run_upload(token):
             soup = BeautifulSoup(response.text, "html.parser")
             messages = [','.join(error_el.contents) for error_el in soup.find_all(class_='exception_value')]
             logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {"; ".join(messages)}')
-            logging.error(f'request headers are: {headers}')
         except:
             logging.error(f'error while uploading {biotools_json_file}', exc_info=True)
 
