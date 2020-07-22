@@ -298,12 +298,39 @@ def rdfize(json_entry):
 
 def get_biotools_files_in_repo():
     tools = []
-    for data_file in glob.glob(r"../../data/*/*.json"):
-        filename_ext = os.path.basename(data_file).split(".")
-        if len(filename_ext) == 2 and filename_ext[1] == "json":
-            tools.append(data_file)
+    for data_file in glob.glob("../../data/*/*.biotools.json"):
+        tools.append(data_file)
+        # filename_ext = os.path.basename(data_file).split(".")
+        # print(filename_ext)
+        # if len(filename_ext) == 3 and filename_ext[2] == "json":
     return tools
 
+def process_tools_by_id(id="SPROUT"):
+    """
+    Go through all bio.tools entries and produce an RDF graph representation (BioSchemas / JSON-LD).
+    """
+    tool_files = get_biotools_files_in_repo()
+    for tool_file in tool_files:
+        if id in tool_file:
+            print(tool_file)
+            tool = json.load(open(tool_file))
+            if "biotoolsID" in tool.keys():
+                tool_id = tool["biotoolsID"]
+                tpe_id = tool_id.lower()
+                print(tool_id)
+                print(tpe_id)
+                directory = os.path.join("..", "..", "data", tpe_id)
+                dest = os.path.join(directory, tpe_id + ".bioschemas.jsonld")
+
+                jsonld = rdfize(tool)
+                temp_graph = ConjunctiveGraph()
+                temp_graph.parse(data=jsonld, format="json-ld")
+                temp_graph.serialize(
+                    format="json-ld",
+                    auto_compact=True,
+                    destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld")
+                )
+                print(f'generated markup at {dest}')
 
 def process_tools():
     """
@@ -329,3 +356,4 @@ def process_tools():
 
 if __name__ == "__main__":
     process_tools()
+    # process_tools_by_id()
