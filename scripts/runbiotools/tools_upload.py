@@ -56,6 +56,7 @@ def run_upload(token):
             logging.debug(f'done uploading {biotools_json_file}')
         except requests.exceptions.HTTPError:
             logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {response.text}')
+            logging.error(f'request headers are: {headers}')
         except:
             logging.error(f'error while uploading {biotools_json_file}', exc_info=True)
 
