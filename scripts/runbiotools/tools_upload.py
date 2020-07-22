@@ -6,6 +6,7 @@ import logging
 import argparse
 
 import requests
+from bs4 import BeautifulSoup
 
 HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 HOST = 'http://localhost:8000/'
@@ -31,7 +32,9 @@ def run_upload(token):
             logging.debug(response.json())
             logging.debug(f'done uploading {biotools_json_file}')
         except requests.exceptions.HTTPError:
-            logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {response.text}')
+            soup = BeautifulSoup(response.text)
+            messages = [error_el.string for error_el in soup.find_all('pre.exception_value')]
+            logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {", ".join(messages)}')
             logging.error(f'request headers are: {headers}')
         except:
             logging.error(f'error while uploading {biotools_json_file}', exc_info=True)
