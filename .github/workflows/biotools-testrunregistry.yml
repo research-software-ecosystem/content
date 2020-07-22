@@ -35,17 +35,17 @@ jobs:
     - name: start docker containers for bio.tools registry
       working-directory: biotoolsRegistry
       run: |
-          docker-compose up -d
+        docker-compose up -d
     - name: copy wait for mysql script
       working-directory: content
       run: |
-          docker cp scripts/runbiotools/wait_mysql.sh biotools-mysql:/root
+        docker cp scripts/runbiotools/wait_mysql.sh biotools-mysql:/root
     - name: chmod to executable wait for mysql script
       run: |
-          docker exec biotools-mysql chmod +x /root/wait_mysql.sh
+        docker exec biotools-mysql chmod +x /root/wait_mysql.sh
     - name: execute wait for mysql script
       run: |
-          docker exec biotools-mysql /root/wait_mysql.sh
+        docker exec biotools-mysql /root/wait_mysql.sh
     - name: test that bio.tools registry is up and running
       run: |
         wget --spider http://localhost:8000
@@ -58,7 +58,7 @@ jobs:
     - name: copy database init SQL
       working-directory: biotoolsRegistry
       run: |
-          docker cp initial_db.sql biotools-mysql:/root
+        docker cp initial_db.sql biotools-mysql:/root
     #- name: copy "modified" database init script
     #  working-directory: content
     #  run: |
@@ -84,8 +84,7 @@ jobs:
     - name: copy tool upload script
       working-directory: content
       run: |
-          docker cp scripts/runbiotools/tools_upload.py biotools-backend:/root
+        docker cp scripts/runbiotools/tools_upload.py biotools-backend:/root
     - name: upload tools
       run: |
-        curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
         docker exec biotools-backend python3 /root/tools_upload.py uploadbot botbotbot
