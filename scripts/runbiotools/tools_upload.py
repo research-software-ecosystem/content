@@ -7,6 +7,7 @@ import argparse
 
 import requests
 from bs4 import BeautifulSoup
+from boltons.iterutils import remap
 
 HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 HOST = 'http://localhost:8000/'
