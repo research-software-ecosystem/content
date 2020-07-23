@@ -71,6 +71,9 @@ jobs:
       run: |
         docker exec biotools-backend python manage.py makemigrations
         docker exec biotools-backend python manage.py migrate
+    - name: update EDAM
+      run: |
+        docker exec biotools-backend bash /elixir/application/backend/data/edam/update_edam.sh
     - name: purge and reload elasticsearch
       run: |
         docker exec biotools-backend python manage.py es_purge
