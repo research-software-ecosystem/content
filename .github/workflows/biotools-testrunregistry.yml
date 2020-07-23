@@ -91,9 +91,9 @@ jobs:
     - name: run createsuperuser script
       run: |
         docker exec biotools-backend /root/createsuperuser.sh
-    - name: install BeautifulSoup
-      run: |
-        pip3 install beautifulsoup4
+    - name: Install dependencies
+      run:
+        pip install -r scripts/biotools-import/requirements.txt
     - name: upload tools
       working-directory: content
       run: |
