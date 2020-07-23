@@ -85,6 +85,9 @@ jobs:
       working-directory: content
       run: |
         docker cp scripts/runbiotools/createsuperuser.sh biotools-backend:/root
+    - name: chmod to executable createsuperuser script
+      run: |
+        docker exec biotools-backend chmod +x /root/createsuperuser.sh
     - name: run createsuperuser script
       run: |
         docker exec biotools-backend /root/createsuperuser.sh
