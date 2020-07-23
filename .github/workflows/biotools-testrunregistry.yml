@@ -81,9 +81,13 @@ jobs:
     - name: test that bio.tools registry is up and running
       run: |
         wget --spider http://localhost:8000
-    - name: create user to upload data to server
+    - name: copy createsuperuser script
+      working-directory: biotoolsRegistry
       run: |
-        curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
+        docker cp scripts/runbiotools/createsuperuser.sh biotools-backend:/root
+    - name: run createsuperuser script
+      run: |
+        docker exec biotools-backend /root/createsuperuser.sh
     - name: install BeautifulSoup
       run: |
         pip3 install beautifulsoup4
