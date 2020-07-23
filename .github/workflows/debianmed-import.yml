@@ -1,0 +1,30 @@
+name: import debian-med contents
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  import-debianmed:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: geertvdc/setup-hub@master
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.8"
+    - name: checkout bio.tools registry
+      uses: actions/checkout@v2
+      with:
+        # Repository name with owner. For example, actions/checkout
+        # Default: ${{ github.repository }}
+        repository: 'bio-tools/biotoolsConnect'
+        path: biotoolsConnect
+    - name: install pgsql client
+      run: |
+        sudo apt-get install postgresql-client
+    - name: run script
+      working-directory: biotoolsConnect
+      run: |
+        cd DebianMed
+        . edam.sh
