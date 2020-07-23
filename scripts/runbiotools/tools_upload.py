@@ -23,12 +23,15 @@ def run_upload(token):
     print(token)
     url = HOST + '/api/tool/validate/'
     #register tools
+    tools_ok = []
+    tools_ko = []
     for biotools_json_file in glob.glob('../content/data/*/*.biotools.json'):
         try:
             logging.debug(f'uploading {biotools_json_file}...')
             payload_dict=json.load(open(biotools_json_file))
             response = requests.post(url, headers=headers, json=payload_dict)
             response.raise_for_status()
+            tools_ok = payload_dict["biotoolsID"]
             logging.debug(response.json())
             logging.debug(f'done uploading {biotools_json_file}')
         except requests.exceptions.HTTPError:
@@ -38,9 +41,12 @@ def run_upload(token):
             else:
                 messages = response.text
             logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {messages}')
+            tools_ko = payload_dict["biotoolsID"]
         except:
             logging.error(f'error while uploading {biotools_json_file}', exc_info=True)
-
+    logging.error('Tools upload finished')
+    logging.error(f"Tools OK: {len(tools_ok)}")
+    logging.error(f"Tools KO: {len(tools_ko)}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Bulk upload github tools to a test bio.tools server')
