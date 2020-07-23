@@ -17,7 +17,7 @@ def login(user, password):
     token = response.json()['key']
     return token
 
-def run_upload(token):
+def run_upload(token, user):
     headers = HEADERS
     headers.update({'Authorization':f'Token {token}'})
     print(token)
@@ -29,6 +29,7 @@ def run_upload(token):
         try:
             logging.debug(f'uploading {biotools_json_file}...')
             payload_dict=json.load(open(biotools_json_file))
+            payload_dict["editPermission"]["authors"] = [user]
             response = requests.post(url, headers=headers, json=payload_dict)
             response.raise_for_status()
             tools_ok = payload_dict["biotoolsID"]
@@ -54,4 +55,4 @@ if __name__ == "__main__":
     parser.add_argument('password', type=str, help='bio.tools password')
     args = parser.parse_args()
     token = login(args.login, args.password)
-    run_upload(token)
+    run_upload(token, args.login)
