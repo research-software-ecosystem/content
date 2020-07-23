@@ -34,10 +34,10 @@ def run_upload(token):
         except requests.exceptions.HTTPError:
             if response.status_code==500:
                 soup = BeautifulSoup(response.text, "html.parser")
-                messages = [','.join(error_el.contents) for error_el in soup.find_all(class_='exception_value')]
+                messages = "; ".join([','.join(error_el.contents) for error_el in soup.find_all(class_='exception_value')])
             else:
                 messages = response.text
-            logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {"; ".join(messages)}')
+            logging.error(f'error while uploading {biotools_json_file} (status {response.status_code}): {messages}')
         except:
             logging.error(f'error while uploading {biotools_json_file}', exc_info=True)
 
