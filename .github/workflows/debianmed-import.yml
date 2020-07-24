@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: "3.8"
-    - name: checkout bio.tools registry
+    - name: checkout biotoolsConnect
       uses: actions/checkout@v2
       with:
         # Repository name with owner. For example, actions/checkout
@@ -31,8 +31,7 @@ jobs:
       run: |
         cd DebianMed
         . edam.sh -j
-        pwd
-        ls
-        ls ..
-        python edamJson2biotools.py edam.json ../content/data
+        python edamJson2biotools.py edam.json ../../data
+        cd ../../data
+        git status
 
