@@ -1,47 +1,38 @@
-identifiers:
-  - biotools: dindel
-  - doi: 10.1101/gr.112326.110
-  - debian: dindel
-  - scicrunch: SCR_001827
-  - omictools: OMICS_08897
-homepage: https://github.com/genome/dindel-tgi
-summary: determines indel calls from short-read data
-description: >
-  Dindel is a program for calling small indels from short-read sequence
-  data ('next generation sequence data'). It currently is designed to
-  handle only Illumina data.
-  .
-  Dindel requires a BAM file containing the read-alignments as input. It
-  then extracts candidate indels from the BAM file, and realigns the reads
-  to candidate haplotypes consisting of these candidate indels. If there
-  is sufficient evidence for an alternative haplotype to the reference,
-  it will call an indel.
-  .
-  It is possible to test indels discovered with other methods using Dindel,
-  for instance longer indels obtained through assembly methods. Dindel
-  will then realign both mapped and unmapped reads to see if the candidate
-  indel is supported by the reads.
-  .
-  Dindel outputs both genotype likelihoods and includes a script to
-  convert these to a VCF file with indel and SNP calls.
-  .
-  There is basic support for outputting realigned BAM files for each
-  realignment-window. These realigned BAM files can be used to call SNPs
+description: Dindel is a program for calling small indels from short-read sequence
+  data ('next generation sequence data'). It currently is designed to handle only
+  Illumina data. . Dindel requires a BAM file containing the read-alignments as input.
+  It then extracts candidate indels from the BAM file, and realigns the reads to candidate
+  haplotypes consisting of these candidate indels. If there is sufficient evidence
+  for an alternative haplotype to the reference, it will call an indel. . It is possible
+  to test indels discovered with other methods using Dindel, for instance longer indels
+  obtained through assembly methods. Dindel will then realign both mapped and unmapped
+  reads to see if the candidate indel is supported by the reads. . Dindel outputs
+  both genotype likelihoods and includes a script to convert these to a VCF file with
+  indel and SNP calls. . There is basic support for outputting realigned BAM files
+  for each realignment-window. These realigned BAM files can be used to call SNPs
   near (candidate) indels.
-version: 1.01-wu1-3
 edam:
-  version: unknown
-  topics:
-    - DNA structural variation
   scopes:
-    - name: summary
-      function:
-        - Indel detection
-      input:
-        - data: Sequence alignment (nucleic acid)
-          formats:
-            - BAM
-      output:
-        - data: Sequence variations
-          formats:
-            - VCF
+  - function:
+    - Indel detection
+    input:
+    - data: Sequence alignment (nucleic acid)
+      formats:
+      - BAM
+    name: summary
+    output:
+    - data: Sequence variations
+      formats:
+      - VCF
+  topics:
+  - DNA structural variation
+  version: unknown
+homepage: https://github.com/genome/dindel-tgi
+identifiers:
+  biotools: dindel
+  debian: dindel
+  doi: 10.1101/gr.112326.110
+  omictools: OMICS_08897
+  scicrunch: SCR_001827
+summary: determines indel calls from short-read data
+version: 1.01-wu1-3
