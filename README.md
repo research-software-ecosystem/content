@@ -7,4 +7,6 @@ This is a (currently experimental) repository for the centralisation of bioinfor
 
 ![import Neubias biii.eu content](https://github.com/bio-tools/content/workflows/import%20Neubias%20biii.eu%20content/badge.svg)
 
+![import debian-med contents](https://github.com/bio-tools/content/workflows/import%20debian-med%20contents/badge.svg)
+
 **IMPORTANT : this repo is a sandbox: do not use it for production purposes!  It's entire contents may change, be reorganised or even deleted without notice.**
