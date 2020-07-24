@@ -1,115 +1,79 @@
-identifiers:
-  - biotools: bowtie
-  - doi: 10.1186/gb-2009-10-3-r25
-  - debian: bowtie
-  - bioconda: bowtie
-  - scicrunch: SCR_005476
-  - omictools: OMICS_00653
-homepage: http://bowtie-bio.sourceforge.net/
-summary: Ultrafast memory-efficient short read aligner
-description: >
-  This package addresses the problem to interpret the results from the
-  latest (2010) DNA sequencing technologies. Those will yield fairly
-  short stretches and those cannot be interpreted directly. It is the
-  challenge for tools like Bowtie to give a chromosomal location to the
-  short stretches of DNA sequenced per run.
-  .
-  Bowtie aligns short DNA sequences (reads) to the human genome at a rate
-  of over 25 million 35-bp reads per hour. Bowtie indexes the genome with
-  a Burrows-Wheeler index to keep its memory footprint small: typically
-  about 2.2 GB for the human genome (2.9 GB for paired-end).
-version: 1.2.3
+description: 'This package addresses the problem to interpret the results from the
+  latest (2010) DNA sequencing technologies. Those will yield fairly short stretches
+  and those cannot be interpreted directly. It is the challenge for tools like Bowtie
+  to give a chromosomal location to the short stretches of DNA sequenced per run.
+  . Bowtie aligns short DNA sequences (reads) to the human genome at a rate of over
+  25 million 35-bp reads per hour. Bowtie indexes the genome with a Burrows-Wheeler
+  index to keep its memory footprint small: typically about 2.2 GB for the human genome
+  (2.9 GB for paired-end).'
 edam:
-  version: unknown
-  topics:
-    - Genomics
   scopes:
-    - name: summary
-      function:
-        - Genome indexing
-        - Sequence alignment generation
-      input:
-        - data: Nucleic acid sequence (raw)
-          formats:
-            - FASTA
-            - FASTQ
-      output:
-        - data: Sequence alignment (nucleic acid)
-          formats:
-            - SAM
-    - name: bowtie-build
-      function:
-        - G
-        - e
-        - n
-        - o
-        - m
-        - e
-        -  
-        - i
-        - n
-        - d
-        - e
-        - x
-        - i
-        - n
-        - g
-        -  
-        - (
-        - B
-        - u
-        - r
-        - r
-        - o
-        - w
-        - s
-        - -
-        - W
-        - h
-        - e
-        - e
-        - l
-        - e
-        - r
-        - )
-      input:
-        - data: Nucleic acid sequence (raw)
-          formats:
-            - FASTA
-      output:
-        - data: Genome index
-          formats:
-            - Bowtie index format EBWT
-            - Bowtie long index format EBTWL
-    - name: bowtie-inspect
-      function:
-        - Sequence retrieval
-        - Metadata retrieval
-        - Data index analysis
-      input:
-        - data: Genome index
-          formats:
-            - Bowtie index format EBWT
-            - Bowtie long index format EBTWL
-      output:
-        - data: Nucleic acid sequence (raw)
-          formats:
-            - FASTA
-            - plain text format (unformatted)
-    - name: bowtie
-      function:
-        - Sequence database search (by sequence using word-based methods)
-        - Sequence alignment generation
-      input:
-        - data: Genome index
-        - data: Nucleic acid sequence (raw)
-          formats:
-            - plain text format (unformatted)
-            - FASTA
-            - FASTQ
-      output:
-        - data: Sequence alignment (nucleic acid)
-        - data: Sequence alignment report
-          formats:
-            - SAM
-            - Bowtie alignment report format
+  - function:
+    - Genome indexing
+    - Sequence alignment generation
+    input:
+    - data: Nucleic acid sequence (raw)
+      format:
+      - FASTA
+      - FASTQ
+    name: summary
+    output:
+    - data: Sequence alignment (nucleic acid)
+      format:
+      - SAM
+  - function: Genome indexing (Burrows-Wheeler)
+    input:
+    - data: Nucleic acid sequence (raw)
+      format:
+      - FASTA
+    name: bowtie-build
+    output:
+    - data: Genome index
+      format:
+      - Bowtie index format EBWT
+      - Bowtie long index format EBTWL
+  - function:
+    - Sequence retrieval
+    - Metadata retrieval
+    - Data index analysis
+    input:
+    - data: Genome index
+      format:
+      - Bowtie index format EBWT
+      - Bowtie long index format EBTWL
+    name: bowtie-inspect
+    output:
+    - data: Nucleic acid sequence (raw)
+      format:
+      - FASTA
+      - plain text format (unformatted)
+  - function:
+    - Sequence database search (by sequence using word-based methods)
+    - Sequence alignment generation
+    input:
+    - data: Genome index
+    - data: Nucleic acid sequence (raw)
+      format:
+      - plain text format (unformatted)
+      - FASTA
+      - FASTQ
+    name: bowtie
+    output:
+    - data: Sequence alignment (nucleic acid)
+    - data: Sequence alignment report
+      format:
+      - SAM
+      - Bowtie alignment report format
+  topics:
+  - Genomics
+  version: unknown
+homepage: http://bowtie-bio.sourceforge.net/
+identifiers:
+  bioconda: bowtie
+  biotools: bowtie
+  debian: bowtie
+  doi: 10.1186/gb-2009-10-3-r25
+  omictools: OMICS_00653
+  scicrunch: SCR_005476
+summary: Ultrafast memory-efficient short read aligner
+version: 1.2.3
