@@ -3,10 +3,12 @@ This is a (currently experimental) repository for the centralisation of bioinfor
 
 # jobs status
 
-![launch a test bio.tools server and perform import tests](https://github.com/bio-tools/content/workflows/launch%20a%20test%20bio.tools%20server%20and%20perform%20import%20tests/badge.svg)
+![import bio.tools contents](https://github.com/bio-tools/content/workflows/import%20bio.tools%20contents/badge.svg)
 
 ![import Neubias biii.eu content](https://github.com/bio-tools/content/workflows/import%20Neubias%20biii.eu%20content/badge.svg)
 
 ![import debian-med contents](https://github.com/bio-tools/content/workflows/import%20debian-med%20contents/badge.svg)
+
+![launch a test bio.tools server and perform import tests](https://github.com/bio-tools/content/workflows/launch%20a%20test%20bio.tools%20server%20and%20perform%20import%20tests/badge.svg)
 
 **IMPORTANT : this repo is a sandbox: do not use it for production purposes!  It's entire contents may change, be reorganised or even deleted without notice.**
