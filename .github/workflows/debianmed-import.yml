@@ -34,4 +34,20 @@ jobs:
         python edamJson2biotools.py edam.json ../../data
         cd ../../data
         git status
-
+    - name: commit new data and push to new PR
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        cd data
+        git add .
+        if git commit -m "import from Debian Med on $(date)"; then
+          git checkout -b debianmed_import_${{ github.run_id }}
+          git push --set-upstream origin "debianmed_import_${{ github.run_id }}"
+          hub pull-request -m "import from Debian Med on $(date)"
+          echo "successfully created new data"
+        else
+          echo "nothing new to add, exiting"
+        fi
