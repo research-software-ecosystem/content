@@ -71,6 +71,9 @@ jobs:
       run: |
         docker exec biotools-backend python manage.py makemigrations
         docker exec biotools-backend python manage.py migrate
+    - name: update EDAM
+      run: |
+        docker exec biotools-backend bash /elixir/application/backend/data/edam/update_edam.sh
     - name: purge and reload elasticsearch
       run: |
         docker exec biotools-backend python manage.py es_purge
@@ -78,13 +81,21 @@ jobs:
     - name: test that bio.tools registry is up and running
       run: |
         wget --spider http://localhost:8000
-    - name: create user to upload data to server
-      run: |
-        curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"username":"uploadbot", "password1":"botbotbot", "password2":"botbotbot", "email":"uploadbot@example.com"}' "http://localhost:8000/api/rest-auth/registration/"
-    - name: copy tool upload script
+    - name: copy createsuperuser script
       working-directory: content
       run: |
-        docker cp scripts/runbiotools/tools_upload.py biotools-backend:/root
-    - name: upload tools
+        docker cp scripts/runbiotools/createsuperuser.sh biotools-backend:/root
+    - name: chmod to executable createsuperuser script
       run: |
-        docker exec biotools-backend python3 /root/tools_upload.py uploadbot botbotbot
+        docker exec biotools-backend chmod +x /root/createsuperuser.sh
+    - name: run createsuperuser script
+      run: |
+        docker exec biotools-backend /root/createsuperuser.sh
+    - name: Install dependencies
+      working-directory: content
+      run: |
+        pip3 install -r scripts/runbiotools/requirements.txt
+    - name: upload tools
+      working-directory: content
+      run: |
+        python3 scripts/runbiotools/tools_upload.py uploadbot botbotbot
