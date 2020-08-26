@@ -1,8 +1,7 @@
-import json
 import os
 import glob
 from rdflib import ConjunctiveGraph
-from json import JSONDecodeError
+from tabulate import tabulate
 
 def get_bioschemas_files_in_repo():
     tools = []
@@ -31,6 +30,41 @@ def process_tools():
         destination="bioschemas-dump.ttl"
         #destination=os.path.join(directory, tpe_id + "bioschemas.jsonld")
     )
+
+    show_stats(rdf_graph)
+
+def show_stats(rdf_graph):
+    """
+    Display Bioschemas classes and properties counts.
+    """
+
+    ### display used classes
+    classes_counts = """
+    SELECT ?c (count(?c) as ?count) WHERE {
+        ?s rdf:type ?c .
+    } 
+    GROUP BY ?p
+    ORDER BY DESC(?c)
+    """
+
+    res = rdf_graph.query(classes_counts)
+    print()
+    print("Used ontology classes")
+    print(tabulate(res))
+
+    ### display used properties
+    property_counts = """
+    SELECT ?p (count(?p) as ?count) WHERE {
+        ?s ?p ?o .
+    } 
+    GROUP BY ?p
+    ORDER BY DESC(?count)
+    """
+
+    res = rdf_graph.query(property_counts)
+    print()
+    print("Used ontology properties")
+    print(tabulate(res))
 
 if __name__ == "__main__":
     process_tools()
