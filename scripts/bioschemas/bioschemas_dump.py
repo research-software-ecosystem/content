@@ -5,7 +5,7 @@ from tabulate import tabulate
 
 def get_bioschemas_files_in_repo():
     tools = []
-    for data_file in glob.glob(r"../../data/*/*bioschemas.jsonld"):
+    for data_file in glob.glob(r"../../data/*/*.bioschemas.jsonld"):
         #print(data_file)
         filename_ext = os.path.basename(data_file).split(".")
         if len(filename_ext) == 2 and filename_ext[1] == "jsonld":
