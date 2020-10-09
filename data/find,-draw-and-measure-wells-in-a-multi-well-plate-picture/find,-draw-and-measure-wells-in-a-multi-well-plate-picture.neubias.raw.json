@@ -1,0 +1,243 @@
+{
+    "body": [
+        {
+            "format": "markdown",
+            "processed": "<p>This macro recognizes wells in a picture from a multi-well plate (it works also on a picture of a single well). It is used to segment a picture to determine the number of \"Colony Forming Units\" in each individual well of a plate.</p>\n\n<p>The steps are the following:</p>\n\n<ol>\n<li>Makes a 8-bit B&amp;W picture, inverts it (=> borders will look white instead of black), resizes it (optional, this is to speed-up convolution thereafter) and find edges.</li>\n<li>Convolves the obtained picture with a kernel corresponding to a thick white circle of the size of the wells. The resulting image has big \"blobs\" or \"particles\" corresponding roughly to the centers of the well.</li>\n<li>The image is thresholded to remove particles not corresponding to strong hits and \"Analyze particle\" is run.</li>\n<li>The measured parameter is the center of mass of the particles which gives the center of the well. These are saved in an array.</li>\n<li>Circles are drawn and added to the ROI manager. The centers of the circles are the identified centers of mass of the particles and their radius is the expected radius of the wells in the original image.</li>\n</ol>\n",
+            "summary": "",
+            "value": "This macro recognizes wells in a picture from a multi-well plate (it works also on a picture of a single well). It is used to segment a picture to determine the number of \"Colony Forming Units\" in each individual well of a plate.\r\n\r\nThe steps are the following:\r\n\r\n1. Makes a 8-bit B&W picture, inverts it (=> borders will look white instead of black), resizes it (optional, this is to speed-up convolution thereafter) and find edges.\r\n2. Convolves the obtained picture with a kernel corresponding to a thick white circle of the size of the wells. The resulting image has big \"blobs\" or \"particles\" corresponding roughly to the centers of the well.\r\n3. The image is thresholded to remove particles not corresponding to strong hits and \"Analyze particle\" is run.\r\n4. The measured parameter is the center of mass of the particles which gives the center of the well. These are saved in an array.\r\n5. Circles are drawn and added to the ROI manager. The centers of the circles are the identified centers of mass of the particles and their radius is the expected radius of the wells in the original image."
+        }
+    ],
+    "changed": [
+        {
+            "value": 1528159700
+        }
+    ],
+    "created": [
+        {
+            "value": 1418123448
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true
+        }
+    ],
+    "field_attribution_instructions": [],
+    "field_free_tagging": [
+        {
+            "target_id": 4698,
+            "target_type": "taxonomy_term",
+            "target_uuid": "b8acf69c-641e-440d-b7dd-f8bceb8ea547",
+            "url": "/taxonomy/term/4698"
+        }
+    ],
+    "field_give_feedback_on_this_soft": [
+        {
+            "cid": 0,
+            "comment_count": 0,
+            "last_comment_name": null,
+            "last_comment_timestamp": 1505205293,
+            "last_comment_uid": 164,
+            "status": 2
+        }
+    ],
+    "field_has_author": [
+        {
+            "value": "Laurent Gelman"
+        }
+    ],
+    "field_has_biological_terms": [],
+    "field_has_comparison": [],
+    "field_has_documentation": [],
+    "field_has_doi": [],
+    "field_has_entry_curator": [
+        {
+            "target_id": 196
+        }
+    ],
+    "field_has_function": [
+        {
+            "target_id": 4004,
+            "target_type": "taxonomy_term",
+            "target_uuid": "http://edamontology.org/operation_Image_segmentation",
+            "url": "/image-segmentation"
+        }
+    ],
+    "field_has_implementation": [],
+    "field_has_interaction_level": [
+        {
+            "target_id": 3574,
+            "target_type": "taxonomy_term",
+            "target_uuid": "a22a3a50-0fbb-41ee-944a-38e0b86ac077",
+            "url": "/taxonomy/term/3574"
+        }
+    ],
+    "field_has_license": [],
+    "field_has_location": [
+        {
+            "options": [],
+            "title": "Gist",
+            "uri": "https://gist.github.com/lgelman/6eec8ed4184ba4a0f2d8/974932b411041144fc4ab7e10406f4d5abb3be43"
+        }
+    ],
+    "field_has_programming_language": [
+        {
+            "target_id": 3594,
+            "target_type": "taxonomy_term",
+            "target_uuid": "4ef04c63-6b56-40a5-a7bc-7a4561189679",
+            "url": "/taxonomy/term/3594"
+        }
+    ],
+    "field_has_reference_publication": [],
+    "field_has_topic": [],
+    "field_has_usage_example": [],
+    "field_image": [
+        {
+            "alt": "",
+            "height": 1432,
+            "target_id": 446,
+            "target_type": "file",
+            "target_uuid": "b3990468-cec6-478e-8589-5471fb63807a",
+            "title": "",
+            "url": "http://test.biii.eu/sites/default/files/2018-06/multiwell24.jpg",
+            "width": 2100
+        }
+    ],
+    "field_is_compatible_with": [],
+    "field_is_covered_by_training_mat": [],
+    "field_is_dependent_of": [
+        {
+            "target_id": 38,
+            "target_type": "node",
+            "target_uuid": "8d651867-b19b-48eb-8294-243a8230d1c0",
+            "url": "/imagej"
+        }
+    ],
+    "field_license_openness": [
+        {
+            "target_id": 3575,
+            "target_type": "taxonomy_term",
+            "target_uuid": "06a4d439-36c4-4f19-9b3a-95f50a53da20",
+            "url": "/taxonomy/term/3575"
+        }
+    ],
+    "field_platform": [
+        {
+            "target_id": 32,
+            "target_type": "taxonomy_term",
+            "target_uuid": "e5fa2325-a315-46a2-a7e6-85f5ffda2ddd",
+            "url": "/taxonomy/term/32"
+        },
+        {
+            "target_id": 29,
+            "target_type": "taxonomy_term",
+            "target_uuid": "11021caa-a45d-4287-a01d-dc148498e120",
+            "url": "/taxonomy/term/29"
+        },
+        {
+            "target_id": 31,
+            "target_type": "taxonomy_term",
+            "target_uuid": "68f9790f-8330-48f4-9404-4ad5c9a7de5d",
+            "url": "/taxonomy/term/31"
+        }
+    ],
+    "field_supported_image_dimension": [
+        {
+            "target_id": 3561,
+            "target_type": "taxonomy_term",
+            "target_uuid": "92973a3c-32a3-4d2b-b290-62bd0d78a3fb",
+            "url": "/taxonomy/term/3561"
+        }
+    ],
+    "field_type": [
+        {
+            "target_id": 8,
+            "target_type": "taxonomy_term",
+            "target_uuid": "e4860247-2929-4f76-9bfb-6f1a95391204",
+            "url": "/taxonomy/term/8"
+        }
+    ],
+    "field_workflow_steps": [],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "nid": [
+        {
+            "value": 249
+        }
+    ],
+    "path": [
+        {
+            "alias": "/find-draw-and-measure-wells-multi-well-plate-picture",
+            "langcode": "en",
+            "pid": 208
+        }
+    ],
+    "promote": [
+        {
+            "value": true
+        }
+    ],
+    "revision_log": [],
+    "revision_timestamp": [
+        {
+            "value": 1528159700
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true
+        }
+    ],
+    "revision_uid": [
+        {
+            "target_id": 94,
+            "target_type": "user",
+            "target_uuid": "aa749c9e-5b9a-4fdf-83ce-6b94538fe57c",
+            "url": "/user/94"
+        }
+    ],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "sticky": [
+        {
+            "value": false
+        }
+    ],
+    "synonyms": [],
+    "title": [
+        {
+            "value": "Find, Draw and Measure Wells in a Multi-Well Plate Picture"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "software",
+            "target_type": "node_type",
+            "target_uuid": "54008715-4695-438a-9893-5da3c88d8f5d"
+        }
+    ],
+    "uid": [
+        {
+            "target_id": 164,
+            "target_type": "user",
+            "target_uuid": "7aac9c32-3f48-4476-89f1-363eb4e99f2b",
+            "url": "/user/164"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "52a2065d-6571-42d7-bf67-587227f60e30"
+        }
+    ],
+    "vid": [
+        {
+            "value": 1961
+        }
+    ]
+}
