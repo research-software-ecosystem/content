@@ -1,0 +1,280 @@
+{
+    "body": [
+        {
+            "format": "markdown",
+            "processed": "<p>This C routine is based on the following two papers:</p>\n\n<ul>\n<li>M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal   Processing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.</li>\n<li>M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.</li>\n</ul>\n\n<p>It implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by</p>\n\n<pre><code>A = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\n</code></pre>\n\n<p>will result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be <code>output(x) = input(A x)</code>, it should be easy to modify the code (mainly: remove the call to <code>invertTrsf()</code> and assign <code>invTRsf = trsf)</code>. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.</p>\n\n<p>The input volume (the volume to transform) is given by <code>inPtr</code>, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the <code>affineTransform()</code> routine is called.</p>\n\n<p>All routines are local, with the exception of the routine to call, named <code>affineTransform()</code>, and the routine <code>errorReport()</code>. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c.</p>\n",
+            "summary": "",
+            "value": "This C routine is based on the following two papers:\r\n\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal\tProcessing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.\r\n\r\nIt implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by\r\n\r\n```\r\nA = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\r\n```\r\nwill result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be `output(x) = input(A x)`, it should be easy to modify the code (mainly: remove the call to `invertTrsf()` and assign `invTRsf = trsf)`. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.\r\n\r\nThe input volume (the volume to transform) is given by `inPtr`, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the `affineTransform()` routine is called.\r\n\r\nAll routines are local, with the exception of the routine to call, named `affineTransform()`, and the routine `errorReport()`. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c."
+        }
+    ],
+    "changed": [
+        {
+            "value": 1539876765
+        }
+    ],
+    "created": [
+        {
+            "value": 1381496923
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true
+        }
+    ],
+    "field_attribution_instructions": [],
+    "field_free_tagging": [
+        {
+            "target_id": 4529,
+            "target_type": "taxonomy_term",
+            "target_uuid": "3949ed91-12c1-4109-9af7-ec4779f129f3",
+            "url": "/taxonomy/term/4529"
+        },
+        {
+            "target_id": 4530,
+            "target_type": "taxonomy_term",
+            "target_uuid": "c04a40d8-40fa-4077-8ba1-0dc393a8443d",
+            "url": "/taxonomy/term/4530"
+        },
+        {
+            "target_id": 4531,
+            "target_type": "taxonomy_term",
+            "target_uuid": "b9cc15c5-25e5-4b18-b6cd-8de7a5af93da",
+            "url": "/taxonomy/term/4531"
+        },
+        {
+            "target_id": 4532,
+            "target_type": "taxonomy_term",
+            "target_uuid": "bf5ce0d0-dee1-4f0d-86b9-e39cc229d310",
+            "url": "/taxonomy/term/4532"
+        },
+        {
+            "target_id": 4533,
+            "target_type": "taxonomy_term",
+            "target_uuid": "e12d4768-0ddb-486c-8fdd-9407d7a8fd4e",
+            "url": "/taxonomy/term/4533"
+        },
+        {
+            "target_id": 4534,
+            "target_type": "taxonomy_term",
+            "target_uuid": "60d3d46b-da2c-4a25-b4c7-629004a7135d",
+            "url": "/taxonomy/term/4534"
+        }
+    ],
+    "field_give_feedback_on_this_soft": [
+        {
+            "cid": 0,
+            "comment_count": 0,
+            "last_comment_name": null,
+            "last_comment_timestamp": 1505206417,
+            "last_comment_uid": 164,
+            "status": 2
+        }
+    ],
+    "field_has_author": [],
+    "field_has_biological_terms": [],
+    "field_has_comparison": [],
+    "field_has_documentation": [
+        {
+            "options": [],
+            "title": "",
+            "uri": "http://bigwww.epfl.ch/thevenaz/affine/"
+        }
+    ],
+    "field_has_doi": [],
+    "field_has_entry_curator": [
+        {
+            "target_id": 98,
+            "target_type": "user",
+            "target_uuid": "2ae7ecac-ed23-4375-8a06-79f6a294e65b",
+            "url": "/user/98"
+        }
+    ],
+    "field_has_function": [
+        {
+            "target_id": 4104,
+            "target_type": "taxonomy_term",
+            "target_uuid": "http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId",
+            "url": "/affine-transformation"
+        },
+        {
+            "target_id": 4353
+        },
+        {
+            "target_id": 4053,
+            "target_type": "taxonomy_term",
+            "target_uuid": "http://edamontology.org/operation_Image_processing",
+            "url": "/image-processing"
+        }
+    ],
+    "field_has_implementation": [
+        {
+            "target_id": 4339,
+            "target_type": "taxonomy_term",
+            "target_uuid": "f1c052f1-81ff-4315-986e-e5eef75cb95c",
+            "url": "/taxonomy/term/4339"
+        }
+    ],
+    "field_has_interaction_level": [
+        {
+            "target_id": 3574,
+            "target_type": "taxonomy_term",
+            "target_uuid": "a22a3a50-0fbb-41ee-944a-38e0b86ac077",
+            "url": "/taxonomy/term/3574"
+        }
+    ],
+    "field_has_license": [],
+    "field_has_location": [
+        {
+            "options": [],
+            "title": "",
+            "uri": "http://bigwww.epfl.ch/thevenaz/affine/"
+        }
+    ],
+    "field_has_programming_language": [],
+    "field_has_reference_publication": [],
+    "field_has_topic": [],
+    "field_has_usage_example": [],
+    "field_image": [
+        {
+            "alt": "",
+            "height": 256,
+            "target_id": 351,
+            "target_type": "file",
+            "target_uuid": "6c4262f2-ad4f-43b9-aa3a-fa7a3119c21d",
+            "title": "",
+            "url": "http://test.biii.eu/sites/default/files/2018-05/Components-icon_4.png",
+            "width": 256
+        }
+    ],
+    "field_is_compatible_with": [],
+    "field_is_covered_by_training_mat": [],
+    "field_is_dependent_of": [],
+    "field_license_openness": [
+        {
+            "target_id": 3575,
+            "target_type": "taxonomy_term",
+            "target_uuid": "06a4d439-36c4-4f19-9b3a-95f50a53da20",
+            "url": "/taxonomy/term/3575"
+        }
+    ],
+    "field_platform": [
+        {
+            "target_id": 32,
+            "target_type": "taxonomy_term",
+            "target_uuid": "e5fa2325-a315-46a2-a7e6-85f5ffda2ddd",
+            "url": "/taxonomy/term/32"
+        },
+        {
+            "target_id": 29,
+            "target_type": "taxonomy_term",
+            "target_uuid": "11021caa-a45d-4287-a01d-dc148498e120",
+            "url": "/taxonomy/term/29"
+        },
+        {
+            "target_id": 31,
+            "target_type": "taxonomy_term",
+            "target_uuid": "68f9790f-8330-48f4-9404-4ad5c9a7de5d",
+            "url": "/taxonomy/term/31"
+        }
+    ],
+    "field_supported_image_dimension": [
+        {
+            "target_id": 3561,
+            "target_type": "taxonomy_term",
+            "target_uuid": "92973a3c-32a3-4d2b-b290-62bd0d78a3fb",
+            "url": "/taxonomy/term/3561"
+        }
+    ],
+    "field_type": [
+        {
+            "target_id": 8,
+            "target_type": "taxonomy_term",
+            "target_uuid": "e4860247-2929-4f76-9bfb-6f1a95391204",
+            "url": "/taxonomy/term/8"
+        }
+    ],
+    "field_workflow_steps": [],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "nid": [
+        {
+            "value": 523
+        }
+    ],
+    "path": [
+        {
+            "alias": "/affine-transformation-software",
+            "langcode": "en",
+            "pid": 480
+        }
+    ],
+    "promote": [
+        {
+            "value": true
+        }
+    ],
+    "revision_log": [],
+    "revision_timestamp": [
+        {
+            "value": 1526327884
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true
+        }
+    ],
+    "revision_uid": [
+        {
+            "target_id": 94,
+            "target_type": "user",
+            "target_uuid": "aa749c9e-5b9a-4fdf-83ce-6b94538fe57c",
+            "url": "/user/94"
+        }
+    ],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "sticky": [
+        {
+            "value": false
+        }
+    ],
+    "synonyms": [],
+    "title": [
+        {
+            "value": "Affine transformation software"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "software",
+            "target_type": "node_type",
+            "target_uuid": "54008715-4695-438a-9893-5da3c88d8f5d"
+        }
+    ],
+    "uid": [
+        {
+            "target_id": 164,
+            "target_type": "user",
+            "target_uuid": "7aac9c32-3f48-4476-89f1-363eb4e99f2b",
+            "url": "/user/164"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "acad0462-d4cd-423e-94a8-4f9ad9080f83"
+        }
+    ],
+    "vid": [
+        {
+            "value": 1739
+        }
+    ]
+}
