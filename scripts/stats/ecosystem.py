@@ -54,6 +54,10 @@ class BioContainersSource(Source):
     SOURCE = 'BioContainers'
     SOURCE_PATH_TEMPLATE = 'biocontainers.json'
 
+class BiiiSource(Source):
+    SOURCE = 'Biii'
+    SOURCE_PATH_TEMPLATE = '{biotools_id}.neubias.raw.json'
+
 
 SOURCE_CLASSES = [
     BioToolsSource,
@@ -62,7 +66,8 @@ SOURCE_CLASSES = [
     OEBMetricsSource,
     DebianSource,
     BioCondaSource,
-    BioContainersSource
+    BioContainersSource,
+    BiiiSource
 ]
 
 
