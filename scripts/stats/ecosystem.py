@@ -102,7 +102,7 @@ class Repository(object):
         df = pd.DataFrame.from_dict(rows, orient='index', columns=[source_class.SOURCE for source_class in SOURCE_CLASSES])
         print(df)
         print(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size().reset_index(name='Count') )
-        plot(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size())
+        plot(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size(), show_counts=True)
         pyplot.savefig('global_upset.png')
 
 if __name__ == "__main__":
