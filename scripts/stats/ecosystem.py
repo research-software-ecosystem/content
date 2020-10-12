@@ -1,6 +1,7 @@
 import glob
 import os
-
+import tempfile
+import argparse
 
 from matplotlib import pyplot
 import pandas as pd
@@ -95,19 +96,24 @@ class Repository(object):
             entry = Entry(self, biotools_id)
             self.entries.append(entry)
 
-    def generate_counts(self):
+    def generate_report(self, report_path=tempfile.gettempdir()):
+        try:
+            os.mkdir(report_path)
+        except FileExistsError:
+            pass
         rows = {}
         for entry in self.entries:
             rows[entry.biotools_id] = [source.is_available() for source in entry.sources.values()]
         df = pd.DataFrame.from_dict(rows, orient='index', columns=[source_class.SOURCE for source_class in SOURCE_CLASSES])
-        print(df)
-        print(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size().reset_index(name='Count') )
         plot(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size(), show_counts=True)
-        pyplot.savefig('global_upset.png')
+        with open(os.path.join(report_path, 'ecosystem.md'),'w') as md_file:
+            df.replace({True: '✓', False: '🗙'}).to_markdown(buf=md_file, tablefmt='github')
+        pyplot.savefig(os.path.join(report_path,'global_upset.png'))
 
 if __name__ == "__main__":
     repo = Repository('../..')
     repo.load()
-    for entry in repo.entries:
-        print(f"{entry.biotools_id : <100}: {'|'.join(['✓' if source.is_available() else '🗙' for source in entry.sources.values()])}")
-    repo.generate_counts()
+    parser = argparse.ArgumentParser(description='Generate contents report on the Tools Platform Ecosystem')
+    parser.add_argument('path', type=str, help='path to the report directory')
+    args = parser.parse_args()
+    repo.generate_report(report_path=args.path)
