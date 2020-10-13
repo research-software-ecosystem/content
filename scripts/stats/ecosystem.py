@@ -106,10 +106,18 @@ class Repository(object):
             rows[entry.biotools_id] = [source.is_available() for source in entry.sources.values()]
         df = pd.DataFrame.from_dict(rows, orient='index', columns=[source_class.SOURCE for source_class in SOURCE_CLASSES])
         plot(df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size(), show_counts=True)
-        with open(os.path.join(report_path, 'ecosystem.md'),'w') as md_file:
+        with open(os.path.join(report_path, 'detailed_counts.md'),'w') as md_file:
             df.replace({True: '✓', False: '🗙'}).to_markdown(buf=md_file, tablefmt='github')
+        with open(os.path.join(report_path, 'summary.md'),'w') as md_file:
+            summary_df = df.groupby([source_class.SOURCE for source_class in SOURCE_CLASSES]).size()
+            pretty_index = []
+            for idx_row in summary_df.index:
+                pretty_index.append(['No ' + summary_df.index.names[cell_idx] if cell==False else summary_df.index.names[cell_idx] for cell_idx, cell in enumerate(idx_row)])
+            summary_df.reindex(pretty_index)
+            summary_df.to_markdown(buf=md_file, tablefmt='github')
         pyplot.savefig(os.path.join(report_path,'global_upset.png'))
-
+        print(df[(df["biotools"]==False) & (df["bioschemas"]==False) & (df["OEB"]==False) & (df["OEB Metrics"]==False) & (df["Debian"]==False) & (df["BioConda"]==False) & (df["BioContainers"]==False) & (df["Biii"]==False)])
+        print(df[(df["biotools"]==True) & (df["bioschemas"]==True) & (df["OEB"]==True) & (df["OEB Metrics"]==True) & (df["Debian"]==True) & (df["BioConda"]==True) & (df["BioContainers"]==True) & (df["Biii"]==False)])
 if __name__ == "__main__":
     repo = Repository('../..')
     repo.load()
