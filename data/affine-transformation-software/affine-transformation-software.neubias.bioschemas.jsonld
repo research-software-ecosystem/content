@@ -5,14 +5,14 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "http://biii.eu/node/523",
+  "@id": "http://biii.eu/affine-transformation-software",
   "@type": "http://schema.org/SoftwareApplication",
   "http://schema.org/applicationCategory": [
     {
-      "@id": "http://edamontology.org/operation_Image_processing"
+      "@id": "http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId"
     },
     {
-      "@id": "http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId"
+      "@id": "http://edamontology.org/operation_Image_processing"
     }
   ],
   "http://schema.org/dateCreated": "2013-10-11T13:08:43",
@@ -20,10 +20,10 @@
   "http://schema.org/description": "This C routine is based on the following two papers:\r\n\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal\tProcessing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.\r\n\r\nIt implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by\r\n\r\n```\r\nA = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\r\n```\r\nwill result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be `output(x) = input(A x)`, it should be easy to modify the code (mainly: remove the call to `invertTrsf()` and assign `invTRsf = trsf)`. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.\r\n\r\nThe input volume (the volume to transform) is given by `inPtr`, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the `affineTransform()` routine is called.\r\n\r\nAll routines are local, with the exception of the routine to call, named `affineTransform()`, and the routine `errorReport()`. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c.",
   "http://schema.org/featureList": [
     {
-      "@id": "http://edamontology.org/operation_Image_processing"
+      "@id": "http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId"
     },
     {
-      "@id": "http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId"
+      "@id": "http://edamontology.org/operation_Image_processing"
     }
   ],
   "http://schema.org/name": "Affine transformation software"
