@@ -27,6 +27,7 @@ parser.add_argument('-id', '--node_id', metavar='node_id', type=str, help='the I
 parser.add_argument('-dump', '--dump_all', help='RDF dump all Bise resources in RDF', dest='dump', action='store_true', required=False)
 parser.add_argument('-test', '--test_dump', help='test the RDF dump on the first 10 Bise resources in RDF', dest='test', action='store_true', required=False)
 
+ns = "http://biii.eu"
 
 def main():
     #print('NeuBIAS LD export tool - v0.1a')
@@ -234,7 +235,19 @@ def rdfize_bioschema_tool(json_entry):
     out = {}
     # this data export only apply to softwares, so we check first if the type is a software
     if str(entry["type"][0]["target_id"]) == 'software':
-        out["@id"] = "http://biii.eu/node/" + str(entry["nid"][0]["value"])
+        #out["@id"] = "http://biii.eu/node/" + str(entry["nid"][0]["value"])
+
+        if entry['path'][0]['alias']:
+            tpe_id = entry['path'][0]['alias']
+            tool_uri = ns + tpe_id
+            # print(f'Tool URI = {tool_uri}')
+        else:
+            tpe_id = entry['title'][0]['value'].lower().replace('/', '').replace(' ', '-')
+            tool_uri = ns + "/" + tpe_id
+            # print(f'Tool URI = {tool_uri}')
+
+        out["@id"] =  tool_uri
+
         out["@type"] = "SoftwareApplication"
 
         if entry["body"] and entry["body"][0] and entry["body"][0]["value"]:
@@ -316,7 +329,7 @@ def rdfize(json_entry):
 
         ctx = {
             "@context": {
-                "@base": "http://biii.eu/node/",
+                "@base": "http://biii.eu/",
                 "nb": "http://bise-eu.info/core-ontology#",
                 "dc": "http://dcterms/",
                 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -353,7 +366,11 @@ def rdfize(json_entry):
                 "hasImplementation": "nb:hasImplementation"
             }
         }
-        entry["@id"] = str(entry["nid"][0]["value"])
+        #entry["@id"] = str(entry["nid"][0]["value"])
+
+        print(json.dumps(entry, indent=True))
+
+        entry["@id"] = str(entry["path"][0]["alias"])
         entry["@type"] = str(entry["type"][0]["target_id"])
         entry.update(ctx)
 
