@@ -23,6 +23,7 @@ parser.add_argument('-td', '--target_drupal_url', metavar='target_drupal_url', t
                     dest='td', required=True)
 #parser.add_argument('-u', '--username', metavar='username', type=str, help='username', dest='u', required=True)
 #parser.add_argument('-p', '--password', metavar='password', type=str, help='password', dest='p', required=True)
+parser.add_argument('-e', '--extract_only', help='only crawl and dump raw JSON entry, as provided by the Drupal website', dest='e', action='store_true', required=False)
 parser.add_argument('-id', '--node_id', metavar='node_id', type=str, help='the ID of the Bise resource to be exported', dest='id', required=False)
 parser.add_argument('-dump', '--dump_all', help='RDF dump all Bise resources in RDF', dest='dump', action='store_true', required=False)
 parser.add_argument('-test', '--test_dump', help='test the RDF dump on the first 10 Bise resources in RDF', dest='test', action='store_true', required=False)
@@ -80,26 +81,29 @@ def main():
                     'utf-8') + ' ['.encode('utf-8') + str(round(count * 100 / total)).encode(
                     'utf-8') + '% done]\n'.encode('utf-8'))
             sys.stdout.flush()
-            # node_ld = get_node_as_linked_data(s['nid'], connection)
-            node_ld = get_node_as_bioschema(s['nid'], connection)
 
             tpe_id = s['title'].lower().replace('/', '').replace(' ', '-')
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
 
-            temp_graph = ConjunctiveGraph()
-            temp_graph.parse(data=node_ld, format="json-ld")
-            temp_graph.serialize(
-                format="json-ld",
-                auto_compact=True,
-                destination=os.path.join(directory, tpe_id + ".neubias.bioschemas.jsonld")
-            )
+            ### if not extracting only raw metadata == if we transform metadata into bioschemas
+            if not args.e:
+                # node_ld = get_node_as_linked_data(s['nid'], connection)
+                node_ld = get_node_as_bioschema(s['nid'], connection)
+
+                temp_graph = ConjunctiveGraph()
+                temp_graph.parse(data=node_ld, format="json-ld")
+                temp_graph.serialize(
+                    format="json-ld",
+                    auto_compact=True,
+                    destination=os.path.join(directory, tpe_id + ".neubias.bioschemas.jsonld")
+                )
 
             with open(os.path.join(directory, tpe_id + ".neubias.raw.json"), "w") as write_file:
                 json.dump(get_raw_node(s['nid'], connection), write_file, indent=4, sort_keys=True, separators=(",", ": "))
 
-            import_to_graph(graph, node_ld)
+            #import_to_graph(graph, node_ld)
             count += 1
 
 
@@ -111,27 +115,30 @@ def main():
         for s in softwares:
             sys.stdout.buffer.write('Exporting '.encode('utf-8') + s['title'].encode('utf-8') + ': '.encode('utf-8') + s['nid'].encode('utf-8') + ' ['.encode('utf-8') + str(round(count * 100 / total)).encode('utf-8') + '% done]\n'.encode('utf-8'))
             sys.stdout.flush()
-            # node_ld = get_node_as_linked_data(s['nid'], connection)
-            node_ld = get_node_as_bioschema(s['nid'], connection)
 
             tpe_id = s['title'].lower().replace('/', '').replace(' ', '-')
             directory = os.path.join("..", "..", "data", tpe_id)
             if not os.path.isdir(directory):
                 os.mkdir(directory)
 
-            temp_graph = ConjunctiveGraph()
-            temp_graph.parse(data=node_ld, format="json-ld")
-            temp_graph.serialize(
-                format="json-ld",
-                auto_compact=True,
-                destination=os.path.join(directory, tpe_id + ".neubias.bioschemas.jsonld")
-            )
+            ### if not extracting only raw metadata == if we transform metadata into bioschemas
+            if not args.e:
+                # node_ld = get_node_as_linked_data(s['nid'], connection)
+                node_ld = get_node_as_bioschema(s['nid'], connection)
+
+                temp_graph = ConjunctiveGraph()
+                temp_graph.parse(data=node_ld, format="json-ld")
+                temp_graph.serialize(
+                    format="json-ld",
+                    auto_compact=True,
+                    destination=os.path.join(directory, tpe_id + ".neubias.bioschemas.jsonld")
+                )
 
             with open(os.path.join(directory, tpe_id + ".neubias.raw.json"), "w") as write_file:
                 json.dump(get_raw_node(s['nid'], connection), write_file, indent=4, sort_keys=True,
                           separators=(",", ": "))
 
-            import_to_graph(graph, node_ld)
+            #import_to_graph(graph, node_ld)
             count += 1
 
 
