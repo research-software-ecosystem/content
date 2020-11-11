@@ -56,8 +56,11 @@ def enrich_dois(path):
         else:
             return []
 
-    def get_doi_identifiers_from_yaml(parsed_yaml):
+    def get_doi_identifiers_from_yaml(parsed_yaml, isDebian=False):
         if 'identifiers' in parsed_yaml:
+            if isDebian:
+                # if doi entry exist return it, otherwise empty array
+                return parsed_yaml['identifiers']['doi'] if "doi" in parsed_yaml['identifiers'] else []
             return filter(lambda identifier: 'doi' in identifier, parsed_yaml['identifiers'])
 
     def extract_doi_from_bioconda_yaml(parsed_yaml):
@@ -66,12 +69,10 @@ def enrich_dois(path):
             map(lambda identifier_doi: identifier_doi.split(':')[1], get_doi_identifiers_from_yaml(parsed_yaml)))
 
     def extract_doi_from_debian(parsed_yaml):
-        dois = list(map(lambda identifier_doi: identifier_doi['doi'], get_doi_identifiers_from_yaml(parsed_yaml)))
+        dois = list(get_doi_identifiers_from_yaml(parsed_yaml, True))
         # if doi doesn't exist, return empty array
         if len(dois) == 0:
             return []
-        if type(dois[0]) == list:
-            return dois[0]
         return dois
 
     def write_dois_json(json_dois, file):
@@ -98,17 +99,11 @@ def enrich_dois(path):
         parsed_yaml = parse_yaml(file)
         identifiers = parsed_yaml['identifiers']
         # if doi doesn't exist
-        if len(extract_doi_from_debian(parsed_yaml)) == 0:
-            identifiers.append({'doi': dois.pop()})
+        if 'doi' not in identifiers:
+            identifiers['doi'] = [dois.pop()]
 
         for doi in dois:
-            for i in range(len(identifiers)):
-                if ('doi' in identifiers[i]):
-                    # check if it's a single string, not an array
-                    if type(identifiers[i]['doi']) == list:
-                        identifiers[i]['doi'].append(doi)
-                    else:
-                        identifiers[i]['doi'] = [identifiers[i]['doi'], doi]
+            identifiers['doi'].append(doi)
 
         parsed_yaml['identifiers'] = identifiers
 
@@ -138,7 +133,6 @@ def enrich_dois(path):
                 continue
             dois = extract_doi_from_debian(parsed_yaml)
             debian_dois = dois
-
 
         elif file.endswith(file_types['yaml']):
             parsed_yaml = parse_yaml(file)
