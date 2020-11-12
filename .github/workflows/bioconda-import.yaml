@@ -1,0 +1,43 @@
+ 
+name: bioconda import
+
+on: 
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        name: bioconda/bioconda-recipes
+    - uses: geertvdc/setup-hub@master
+    - name: spread doi among sources
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo apt install python3-pip
+        sudo apt install python3-setuptools
+        sudo pip3 install virtualenv
+        virtualenv -p python3 venv
+        . venv/bin/activate	
+        pip3 install setuptools wheel ruamel.yaml
+        pwd
+        pwd
+        pwd
+        ls
+        python3 scripts/bioconda-import/doi_collector.py $GITHUB_WORKSPACE/data/
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git add $GITHUB_WORKSPACE/data
+        if git commit -m "bioconda import on $(date)"; then
+          git checkout -b bioconda_import{{ github.run_id }}
+          git push --set-upstream origin "bioconda_import{{ github.run_id }}"
+          hub pull-request -m "bioconda import on $(date)"
+          echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"
+        fi

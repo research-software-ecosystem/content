@@ -5,8 +5,7 @@ import os
 import yaml
 
 import pickle
-
-#from ruamel.yaml import YAML
+import argparse
 from pathlib import Path
 
 import jinja2
@@ -24,10 +23,12 @@ def parse_biotools(directory):
     data = dict()
     for root, dirs, files in os.walk(directory):
         for filename in files:
-            if not filename.endswith("oeb.json") and filename.endswith(".json"):
+            if filename.startswith("bioconda_") and filename.endswith(".json"):
                 filepath = os.path.join(root, filename)
                 with open(filepath, 'r') as f:
+                    # print(filepath)
                     biotools = json.load(f)
+                    # print(biotools)
                     bio_id = biotools['biotoolsID'].lower()
                     data[bio_id] = {'data': biotools, 'path': filepath}
     return data
@@ -38,10 +39,11 @@ def parse_bioconda(directory):
     """
 
     data = dict()
+    # print(Path(directory).glob('./*/meta.yaml'))
     for p in Path(directory).glob('./*/meta.yaml'):
-        #print(p.absolute())
+        # print(p.absolute())
         template = jinja2.Template(p.read_text())
-        #print(template.render())
+        # print(template.render())
         conda = yaml.safe_load(template.render({'os': os, 'compiler': fake, 'environ': '', 'cdt': fake, 'pin_compatible': fake, 'pin_subpackage': fake, 'exact': fake}))
         extras = conda.get('extra', None)
         #if conda['package']['name'].strip() != 'deeptools':
@@ -49,14 +51,13 @@ def parse_bioconda(directory):
         identifiers = defaultdict(list)
         if extras:
             ids = extras.get('identifiers', None)
-            print(ids)
             #print(ids)
             if ids:
                 for id in ids:
                     n, c = id.split(':', 1)
                     identifiers[n].append(c)
         data[str(p.absolute())] = dict({'recipe': conda, 'ids': identifiers})
-        #print(conda['package']['name'], str(identifiers))
+        # print(conda['package']['name'], str(identifiers))
 
     return data
     """
@@ -107,18 +108,34 @@ def merge(tools, conda, content_path):
                 #print(bio, name, tools[bio]['path'])
                 continue
 
+
+class readable_dir(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        prospective_dir = values
+        if not os.path.isdir(prospective_dir):
+            raise argparse.ArgumentTypeError("readable_dir:{0} is not a valid path".format(prospective_dir))
+        if os.access(prospective_dir, os.R_OK):
+            setattr(namespace, self.dest, prospective_dir)
+        else:
+            raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
+
+parser = argparse.ArgumentParser(description='test', fromfile_prefix_chars="@")
+parser.add_argument("biotools", help="path to metadata dir, e.g. /content/data/", type=str, action=readable_dir)
+parser.add_argument("bioconda", help="path to bioconda recipes, e.g. /bioconda-recipes/recipes", type=str, action=readable_dir)
+args = parser.parse_args()
+print(args)
 if __name__ == '__main__':
-    content_path = '/home/bag/projects/code/content/data'
+    content_path = '/home/oleg/content/data'
 
     if not os.path.exists('./tools_data.pkl'):
-        tools = parse_biotools('/home/bag/projects/code/content/data')
-        pickle.dump(tools, open( "./tools_data.pkl", "wb" ))
+        tools = parse_biotools(args.biotools)
+        pickle.dump(tools, open("./tools_data.pkl", "wb"))
     else:
         tools = pickle.load(open('./tools_data.pkl', 'rb'))
     if not os.path.exists('./conda_data.pkl'):
-        conda = parse_bioconda('/home/bag/projects/code/bioconda-recipes/recipes')
+        conda = parse_bioconda(args.bioconda)
         pickle.dump(conda, open( "./conda_data.pkl", "wb" ))
     else:
         conda = pickle.load(open('./conda_data.pkl', 'rb'))
-    merge(tools, conda, content_path)
 
+    merge(tools, conda, content_path)
