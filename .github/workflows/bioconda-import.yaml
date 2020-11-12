@@ -27,8 +27,8 @@ jobs:
         virtualenv -p python3 venv
         . venv/bin/activate	
         pip3 install setuptools wheel jinja2 pyyaml
-        python3 $GITHUB_WORKSPACE/content/scripts/bioconda-import/bioconda_importer.py $GITHUB_WORKSPACE/content/data/ $GITHUB_WORKSPACE/bioconda/recipes
-        cd $GITHUB_WORKSPACE/content/data
+        python3 ${{ github.workspace }}/content/scripts/bioconda-import/bioconda_importer.py ${{ github.workspace }}/content/data/ ${{ github.workspace }}/bioconda/recipes
+        cd ${{ github.workspace }}/content/data
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         git status
