@@ -34,8 +34,8 @@ jobs:
         git status
 
         if git commit -m "bioconda import on $(date)"; then
-          git checkout -b bioconda_import{{ github.run_id }}
-          git push --set-upstream origin "bioconda_import{{ github.run_id }}"
+          git checkout -b bioconda_import${{ github.run_id }}
+          git push --set-upstream origin "bioconda_import${{ github.run_id }}"
           hub pull-request -m "bioconda import on $(date)"
           echo "successfully created new data"
         else
