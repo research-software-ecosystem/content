@@ -14,26 +14,28 @@ jobs:
       with:
         repository: bioconda/bioconda-recipes
         path: bioconda
+    - uses: actions/checkout@v2
+      with:
+        path: content
     - uses: geertvdc/setup-hub@master
     - name: import bioconda tools
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        sudo apt install python3-pip
-        sudo apt install python3-setuptools
         sudo pip3 install virtualenv
         virtualenv -p python3 venv
         . venv/bin/activate	
         pip3 install setuptools wheel jinja2 pyyaml
         pwd
-        pwd
-        pwd
         ls
-        python3 $GITHUB_WORKSPACE/scripts/bioconda-import/bioconda_importer.py $GITHUB_WORKSPACE/content/data/ $GITHUB_WORKSPACE/bioconda/bioconda-recipes
+        ls bioconda/
+        ls $GITHUB_WORKSPACE/bioconda/
+        ls $GITHUB_WORKSPACE/bioconda/bioconda-recipes
+        python3 $GITHUB_WORKSPACE/content/scripts/bioconda-import/bioconda_importer.py $GITHUB_WORKSPACE/content/data/ $GITHUB_WORKSPACE/bioconda/bioconda-recipes
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        git add $GITHUB_WORKSPACE/data
+        git add $GITHUB_WORKSPACE/content/data
         if git commit -m "bioconda import on $(date)"; then
           git checkout -b bioconda_import{{ github.run_id }}
           git push --set-upstream origin "bioconda_import{{ github.run_id }}"
