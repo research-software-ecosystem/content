@@ -14,7 +14,7 @@ jobs:
       with:
         name: bioconda/bioconda-recipes
     - uses: geertvdc/setup-hub@master
-    - name: spread doi among sources
+    - name: import bioconda tools
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +29,7 @@ jobs:
         pwd
         pwd
         ls
-        python3 scripts/bioconda-import/doi_collector.py $GITHUB_WORKSPACE/data/
+        python3 scripts/bioconda-import/bioconda_importer.py $GITHUB_WORKSPACE/data/
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         git add $GITHUB_WORKSPACE/data
