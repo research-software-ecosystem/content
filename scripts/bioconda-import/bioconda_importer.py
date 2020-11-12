@@ -10,11 +10,12 @@ from pathlib import Path
 
 import jinja2
 
-from jinja2 import Environment
 from collections import defaultdict
+
 
 def fake(foo, **args):
     pass
+
 
 def parse_biotools(directory):
     """
@@ -22,16 +23,17 @@ def parse_biotools(directory):
     """
     data = dict()
     for root, dirs, files in os.walk(directory):
+        excluded = ["raw.json", "oeb.json", "biocontainers.json"]
         for filename in files:
-            if filename.startswith("bioconda_") and filename.endswith(".json"):
+            if not filename.endswith(tuple(excluded)) and filename.endswith(".json"):
                 filepath = os.path.join(root, filename)
                 with open(filepath, 'r') as f:
-                    # print(filepath)
                     biotools = json.load(f)
                     # print(biotools)
                     bio_id = biotools['biotoolsID'].lower()
                     data[bio_id] = {'data': biotools, 'path': filepath}
     return data
+
 
 def parse_bioconda(directory):
     """
@@ -44,14 +46,16 @@ def parse_bioconda(directory):
         # print(p.absolute())
         template = jinja2.Template(p.read_text())
         # print(template.render())
-        conda = yaml.safe_load(template.render({'os': os, 'compiler': fake, 'environ': '', 'cdt': fake, 'pin_compatible': fake, 'pin_subpackage': fake, 'exact': fake}))
+        conda = yaml.safe_load(template.render(
+            {'os': os, 'compiler': fake, 'environ': '', 'cdt': fake, 'pin_compatible': fake, 'pin_subpackage': fake,
+             'exact': fake}))
         extras = conda.get('extra', None)
-        #if conda['package']['name'].strip() != 'deeptools':
+        # if conda['package']['name'].strip() != 'deeptools':
         #    continue
         identifiers = defaultdict(list)
         if extras:
             ids = extras.get('identifiers', None)
-            #print(ids)
+            # print(ids)
             if ids:
                 for id in ids:
                     n, c = id.split(':', 1)
@@ -72,7 +76,8 @@ def parse_bioconda(directory):
                     print(conda['package']['name'])
                     data[filepath] = conda
     """
-    #return data
+    # return data
+
 
 def create_metadata(conda, path, biotools_id):
     data = conda['recipe']['package']
@@ -95,17 +100,17 @@ def merge(tools, conda, content_path):
             bio = ids.get('biotools', None)
             if bio:
                 # fix me ... recipes with multiple biotools, ids
-                #assert len(bio) == 1
+                # assert len(bio) == 1
                 bio = bio[0].lower()
                 path = os.path.join(content_path, bio)
                 if not tools.get(bio, None):
                     print('None bio.tools entry', bio)
-                    #if not os.path.exists(path):
+                    # if not os.path.exists(path):
                     #    os.mkdir(path)
-                    #create_metadata(data, '%s/bioconda_%s.yaml' % (path, bio), bio)
+                    # create_metadata(data, '%s/bioconda_%s.yaml' % (path, bio), bio)
                     continue
                 create_metadata(data, '%s/bioconda_%s.yaml' % (path, bio), bio)
-                #print(bio, name, tools[bio]['path'])
+                # print(bio, name, tools[bio]['path'])
                 continue
 
 
@@ -119,13 +124,15 @@ class readable_dir(argparse.Action):
         else:
             raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
 
+
 parser = argparse.ArgumentParser(description='test', fromfile_prefix_chars="@")
-parser.add_argument("biotools", help="path to metadata dir, e.g. /content/data/", type=str, action=readable_dir)
-parser.add_argument("bioconda", help="path to bioconda recipes, e.g. /bioconda-recipes/recipes", type=str, action=readable_dir)
+parser.add_argument("biotools", help="path to metadata dir, e.g. content/data/", type=str, action=readable_dir)
+parser.add_argument("bioconda", help="path to bioconda recipes, e.g. bioconda-recipes/recipes", type=str,
+                    action=readable_dir)
 args = parser.parse_args()
 print(args)
 if __name__ == '__main__':
-    content_path = '/home/oleg/content/data'
+    content_path = args.biotools
 
     if not os.path.exists('./tools_data.pkl'):
         tools = parse_biotools(args.biotools)
@@ -134,7 +141,7 @@ if __name__ == '__main__':
         tools = pickle.load(open('./tools_data.pkl', 'rb'))
     if not os.path.exists('./conda_data.pkl'):
         conda = parse_bioconda(args.bioconda)
-        pickle.dump(conda, open( "./conda_data.pkl", "wb" ))
+        pickle.dump(conda, open("./conda_data.pkl", "wb"))
     else:
         conda = pickle.load(open('./conda_data.pkl', 'rb'))
 
