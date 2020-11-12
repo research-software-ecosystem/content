@@ -28,9 +28,11 @@ jobs:
         . venv/bin/activate	
         pip3 install setuptools wheel jinja2 pyyaml
         python3 $GITHUB_WORKSPACE/content/scripts/bioconda-import/bioconda_importer.py $GITHUB_WORKSPACE/content/data/ $GITHUB_WORKSPACE/bioconda/recipes
+        cd $GITHUB_WORKSPACE/content/data
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
-        git add $GITHUB_WORKSPACE/content/data
+        git status
+        git add .
         if git commit -m "bioconda import on $(date)"; then
           git checkout -b bioconda_import{{ github.run_id }}
           git push --set-upstream origin "bioconda_import{{ github.run_id }}"
