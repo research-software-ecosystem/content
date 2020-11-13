@@ -1,84 +1,164 @@
-description: 'is an ultrafast and memory-efficient tool for aligning sequencing reads
-  to long reference sequences. It is particularly good at aligning reads of about
-  50 up to 100s or 1,000s of characters, and particularly good at aligning to relatively
-  long (e.g. mammalian) genomes. . Bowtie 2 indexes the genome with an FM Index to
-  keep its memory footprint small: for the human genome, its memory footprint is typically
-  around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes'
-edam:
-  scopes:
-  - function:
-    - Genome indexing
-    - Sequence alignment
-    input:
-    - data: Nucleic acid sequence (raw)
-      format:
-      - FASTA
-      - FASTQ
-    name: summary
-    output:
-    - data: Sequence alignment (nucleic acid)
-      format:
-      - SAM
-  - function:
-    - Genome indexing
-    input:
-    - data: Nucleic acid sequence (raw)
-      format:
-      - FASTA
-    name: bowtie-build
-    output:
-    - data: Genome index
-      format:
-      - ebwt
-      - ebwtl
-  - function:
-    - Sequence retrieval
-    - Metadata retrieval
-    - Data index analysis
-    input:
-    - data: Genome index
-      format:
-      - ebtw
-      - ebtwl
-    name: bowtie-inspect
-    output:
-    - data: Nucleic acid sequence (raw)
-      output:
-      - FASTA
-      - plain text format (unformatted)
-  - function:
-    - Sequence database search (by sequence using word-based methods)
-    - Sequence alignment generation
-    input:
-    - data: Genome index
-      format:
-      - ebtw
-      - ebtwl
-    - data: Nucleic acid sequence (raw)
-      format:
-      - plain text format (unformatted)
-      - FASTA
-      - FASTQ
-    name: bowtie
-    output:
-    - data: Sequence alignment (nucleic acid)
-      format:
-      - SAM
-    - data: Sequence alignment report
-      format:
-      - plain text format (unformatted)
-      - Bowtie alignment report format
-  topics:
-  - Genomics
-  version: unknown
-homepage: http://bowtie-bio.sourceforge.net/bowtie2
-identifiers:
-  bioconda: bowtie2
-  biotools: bowtie2
-  debian: bowtie2
-  doi:
-  - 10.1038/nmeth.1923
-  omictools: OMICS_31633
-  scicrunch: SCR_005476
-summary: ultrafast memory-efficient short read aligner
+package: bowtie2
+distribution: debian
+release: sid
+component: main
 version: 2.4.2
+source: bowtie2
+homepage: http://bowtie-bio.sourceforge.net/bowtie2
+license: unknown
+blend: debian-med
+description_md5: a4a641e19bb5b2750860b5cde2b844a2
+topics:
+- Genomics
+edam_scopes:
+- name: summary
+  input:
+  - data: Nucleic acid sequence (raw)
+    format:
+    - FASTA
+    - FASTQ
+  output:
+  - data: Sequence alignment (nucleic acid)
+    format:
+    - SAM
+  function:
+  - Genome indexing
+  - Sequence alignment
+- name: bowtie-build
+  input:
+  - data: Nucleic acid sequence (raw)
+    format:
+    - FASTA
+  output:
+  - data: Genome index
+    format:
+    - ebwt
+    - ebwtl
+  function:
+  - Genome indexing
+- name: bowtie-inspect
+  input:
+  - data: Genome index
+    format:
+    - ebtw
+    - ebtwl
+  output:
+  - data: Nucleic acid sequence (raw)
+    output:
+    - FASTA
+    - plain text format (unformatted)
+  function:
+  - Sequence retrieval
+  - Metadata retrieval
+  - Data index analysis
+- name: bowtie
+  input:
+  - data: Genome index
+    format:
+    - ebtw
+    - ebtwl
+  - data: Nucleic acid sequence (raw)
+    format:
+    - plain text format (unformatted)
+    - FASTA
+    - FASTQ
+  output:
+  - data: Sequence alignment (nucleic acid)
+    format:
+    - SAM
+  - data: Sequence alignment report
+    format:
+    - plain text format (unformatted)
+    - Bowtie alignment report format
+  function:
+  - Sequence database search (by sequence using word-based methods)
+  - Sequence alignment generation
+registries:
+- entry: bowtie2
+  name: bio.tools
+- entry: bowtie2
+  name: conda:bioconda
+- entry: OMICS_31633
+  name: OMICtools
+- entry: SCR_005476
+  name: SciCrunch
+bib:
+- key: doi
+  value: 10.1038/nmeth.1923
+popcon:
+- insts: 306
+  olde: 261
+  recent: 15
+  vote: 30
+descr:
+- package: bowtie2
+  description: Ultraschnelles und speichersparendes Alignmentprogramm für kurze DNA-Sequenzen
+  long_description: " Bowtie 2 ist ein ultraschnelles und speichersparendes Werkzeug\
+    \ für\n Alignment zwischen kurzen DNA-Sequenzen (Reads) zu langen\n Referenzsequenzen.\
+    \ Es ist besonders gut beim Ausrichten von Reads von etwa\n 50 bis Hunderte oder\
+    \ Tausende Zeichen und besonders gut beim Ausrichten an\n relativ großen Genomen\
+    \ (z.B. von Säugetieren).\n .\n Bowtie 2 indiziert das Genom mit einem FM-Index,\
+    \ um den Speicherbedarf\n gering zu halten; für das menschliche Genom beträgt\
+    \ der Speicherbedarf etwa\n 3,2 GB. Bowtie 2 unterstützt Modi für Gaps sowie lokale\
+    \ und\n »Paired-End«-Alignments.\n"
+  release: sid
+  description_md5: a4a641e19bb5b2750860b5cde2b844a2
+  license: unknown
+  blend: debian-med
+- package: bowtie2
+  description: ultrafast memory-efficient short read aligner
+  long_description: " is an ultrafast and memory-efficient tool for aligning sequencing\
+    \ reads\n to long reference sequences. It is particularly good at aligning reads\n\
+    \ of about 50 up to 100s or 1,000s of characters, and particularly good\n at aligning\
+    \ to relatively long (e.g. mammalian) genomes.\n .\n Bowtie 2 indexes the genome\
+    \ with an FM Index to keep its memory footprint\n small: for the human genome,\
+    \ its memory footprint is typically\n around 3.2 GB. Bowtie 2 supports gapped,\
+    \ local, and paired-end alignment modes\n"
+  release: sid
+  description_md5: a4a641e19bb5b2750860b5cde2b844a2
+  license: unknown
+  blend: debian-med
+- package: bowtie2
+  description: allineatore di letture brevi ultraveloce ed efficiente
+  long_description: " Uno strumento ultraveloce che usa la memoria in maniera efficiente\
+    \ per\n allineare letture di sequenziamento a sequenze lunghe di riferimento.\
+    \ È\n particolarmente adatto per allineare letture da circa 50 fino a centinaia\
+    \ o\n migliaia di caratteri e particolarmente adatto per allineare a genomi\n\
+    \ relativamente lunghi (es. mammiferi).\n .\n Bowtie 2 indicizza il genoma con\
+    \ un indice FM per mantenere bassa\n l'impronta di memoria: per il genoma umano,\
+    \ la sua impronta di memoria è\n tipicamente intorno a 3,2 GB. Bowtie 2 gestisce\
+    \ le modalità di allineamento\n con gap, locali e a estremità accoppiate.\n"
+  release: sid
+  description_md5: a4a641e19bb5b2750860b5cde2b844a2
+  license: unknown
+  blend: debian-med
+- package: bowtie2
+  description: Ultrahurtig og hukommelseseffektiv short read-sammenligner
+  long_description: " Bowtie 2 er et ultrahurtigt og hukommelseseffektivt værktøj\
+    \ til\n sammenligning af sekventeringslæsninger til lange referencesekvenser.\
+    \ Det\n er især velegnet til at justere læsninger fra omkring 50'erne op til\n\
+    \ 100'erne eller tusindvis af tegn, og særligt velegnet til at tilpasse til\n\
+    \ relativt lange (f.eks pattedyrs) arvemasser.\n .\n Bowtie 2 indekserer arvemassen\
+    \ med et FM-indeks til at holde sin\n hukommelsesaftryk lavt: for den menneskelige\
+    \ arvemasse er dets\n hukommelsesaftryk typisk omkring 3,2 GB. Bowtie 2 understøtter\n\
+    \ tilpasningstilstande for gapped, lokale og parret ende (paired-end).\n"
+  release: sid
+  description_md5: a4a641e19bb5b2750860b5cde2b844a2
+  license: unknown
+  blend: debian-med
+- package: bowtie2
+  description: aligneur ultra-rapide de lectures courtes avec une faible empreinte
+    mémoire
+  long_description: " Ce paquet est un outil à faible empreinte mémoire et ultra-rapide\
+    \ pour\n l'alignement de lectures de séquençage à séquences longues de référence.\
+    \ Il\n est particulièrement performant pour l'alignement de lectures d'environ\
+    \ 50\n symboles et\n jusqu'à des centaines ou des milliers de symboles, et particulièrement\n\
+    \ performant pour l'alignement de génomes relativement longs (par exemple, le\n\
+    \ génome de mammifères).\n .\n Bowtie 2 indexe le génome avec un FM-index pour\
+    \ garder une faible empreinte\n mémoire : pour le génome humain, son empreinte\
+    \ en mémoire vive\n est typiquement d'environ 3,2 Go. Bowtie 2 gère les modes\n\
+    \ d'alignement écarté, local, et par paire.\n"
+  release: sid
+  description_md5: a4a641e19bb5b2750860b5cde2b844a2
+  license: unknown
+  blend: debian-med
