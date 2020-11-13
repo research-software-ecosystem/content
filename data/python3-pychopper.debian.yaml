@@ -1,0 +1,47 @@
+package: python3-pychopper
+distribution: debian
+release: sid
+component: main
+version: 2.5.0
+source: pychopper
+homepage: https://github.com/nanoporetech/pychopper
+license: unknown
+blend: debian-med
+description_md5: c82f4d6ea954d4a2adb49d0cbebcb404
+registries:
+- entry: pychopper
+  name: conda:bioconda
+popcon:
+- insts: 1
+  recent: 1
+descr:
+- package: python3-pychopper
+  description: identify, orient and trim full-length Nanopore cDNA reads
+  long_description: " Pychopper v2 is a Python module to identify, orient and trim\
+    \ full-length\n Nanopore cDNA reads. It is also able to rescue fused reads and\
+    \ provides\n the script 'cdna_classifier.py'.  The general approach of Pychopper\
+    \ v2\n is the following:\n .\n  * Pychopper first identifies alignment hits of\
+    \ the primers across the\n    length of the sequence. The default method for doing\
+    \ this is using\n    nhmmscan with the pre-trained strand specific profile HMMs,\
+    \ included\n    with the package. Alternatively, one can use the edlib backend,\n\
+    \    which uses a combination of global and local alignment to identify\n    the\
+    \ primers within the read.\n  * After identifying the primer hits by either of\
+    \ the backends, the\n    reads are divided into segments defined by two consecutive\
+    \ primer\n    hits. The score of a segment is its length if the configuration\
+    \ of\n    the flanking primer hits is valid (such as SPP,-VNP for forward reads)\n\
+    \    or zero otherwise.\n  * The segments are assigned to rescued reads using\
+    \ a dynamic programming\n    algorithm maximizing the sum of used segment scores\
+    \ (hence the amount\n    of rescued bases). A crucial observation about the algorithm\
+    \ is that\n    if a segment is included as a rescued read, then the next segment\n\
+    \    must be excluded as one of the primer hits defining it was \"used\n    up\"\
+    \ by the previous segment. This put constraints on the dynamic\n    programming\
+    \ graph. The arrows in read define the optimal path for\n    rescuing two fused\
+    \ reads with the a total score of l1 + l3.\n .\n A crucial parameter of Pychopper\
+    \ v2 is -q, which determines the\n stringency of primer alignment (E-value in\
+    \ the case of the pHMM\n backend). This can be explicitly specified by the user,\
+    \ however by\n default it is optimized on a random sample of input reads to produce\n\
+    \ the maximum number of classified reads.\n"
+  release: sid
+  description_md5: c82f4d6ea954d4a2adb49d0cbebcb404
+  license: unknown
+  blend: debian-med
