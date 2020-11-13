@@ -23,14 +23,15 @@ jobs:
       run: |
         sudo apt-get install postgresql-client
     - name: install pyyaml
+      working-directory: biotoolsConnect
       run: |
-        pip3 install pyyaml
+        cd DebianMed
+        pip3 install -r requirements.txt
     - name: run script
       working-directory: biotoolsConnect
       run: |
         cd DebianMed
-        . edam.sh -j
-        python edamJson2biotools.py edam.json ../../data
+        python query_deb.py ../../data
         cd ../../data
         git status
     - name: commit new data and push to new PR
