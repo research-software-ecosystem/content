@@ -1,29 +1,104 @@
-description: Segemehl is a software to map short sequencer reads to reference genomes.
-  Segemehl implements a matching strategy based on enhanced suffix arrays (ESA). Segemehl
-  accepts fasta and fastq queries (gzip'ed and bgzip'ed). In addition to the alignment
-  of reads from standard DNA- and RNA-seq protocols, it also allows the mapping of
-  bisulfite converted reads (Lister and Cokus) and implements a split read mapping
-  strategy. The output of segemehl is a SAM or BAM formatted alignment file. In the
-  case of split-read mapping, additional BED files are written to the disc. These
-  BED files may be summarized with the postprocessing tool haarz. In the case of the
-  alignment of bisulfite converted reads, raw methylation rates may also be called
-  with haarz. . In brief, for each suffix of a read, segemehl aims to find the best-scoring
-  seed. Seeds might contain insertions, deletions, and mismatches (differences). The
-  number of differences allowed within a single seed is user-controlled and is crucial
-  for the runtime of the program. Subsequently, seeds that undercut the user-defined
-  E-value are passed on to an exact semi-global alignment procedure. Finally, reads
-  with a minimum accuracy of percent are reported to the user.
-edam:
-  topics: null
-  version: unknown
-homepage: http://www.bioinf.uni-leipzig.de/Software/segemehl/
-identifiers:
-  bioconda: segemehl
-  biotools: segemehl
-  debian: segemehl
-  doi:
-  - 10.1371/journal.pcbi.1000502
-  omictools: OMICS_00683
-  scicrunch: SCR_005494
-summary: short read mapping with gaps
+package: segemehl
+distribution: debian
+release: sid
+component: main
 version: 0.3.4
+source: segemehl
+homepage: http://www.bioinf.uni-leipzig.de/Software/segemehl/
+license: unknown
+blend: debian-med
+description_md5: b08b0f83dc3de0c96f519821508bbd5f
+registries:
+- entry: segemehl
+  name: bio.tools
+- entry: segemehl
+  name: conda:bioconda
+- entry: OMICS_00683
+  name: OMICtools
+- entry: SCR_005494
+  name: SciCrunch
+bib:
+- key: doi
+  value: 10.1371/journal.pcbi.1000502
+- key: doi
+  rank: 1
+  value: 10.1186/gb-2014-15-2-r34
+- key: doi
+  rank: 2
+  value: 10.1093/bioinformatics/bts254
+popcon:
+- insts: 29
+  olde: 26
+  recent: 1
+  vote: 2
+descr:
+- package: segemehl
+  description: short read mapping with gaps
+  long_description: " Segemehl is a software to map short sequencer reads to reference\n\
+    \ genomes. Segemehl implements a matching strategy based on enhanced\n suffix\
+    \ arrays (ESA). Segemehl accepts fasta and fastq queries (gzip'ed\n and bgzip'ed).\
+    \ In addition to the alignment of reads from standard DNA-\n and RNA-seq protocols,\
+    \ it also allows the mapping of bisulfite converted\n reads (Lister and Cokus)\
+    \ and implements a split read mapping strategy.\n The output of segemehl is a\
+    \ SAM or BAM formatted alignment file. In the\n case of split-read mapping, additional\
+    \ BED files are written to the\n disc. These BED files may be summarized with\
+    \ the postprocessing tool\n haarz. In the case of the alignment of bisulfite converted\
+    \ reads, raw\n methylation rates may also be called with haarz.\n .\n In brief,\
+    \ for each suffix of a read, segemehl aims to find the\n best-scoring seed. Seeds\
+    \ might contain insertions, deletions, and\n mismatches (differences). The number\
+    \ of differences allowed within a\n single seed is user-controlled and is crucial\
+    \ for the runtime of the\n program.  Subsequently, seeds that undercut the user-defined\
+    \ E-value are\n passed on to an exact semi-global alignment procedure. Finally,\
+    \ reads\n with a minimum accuracy of percent are reported to the user.\n"
+  release: sid
+  description_md5: b08b0f83dc3de0c96f519821508bbd5f
+  license: unknown
+  blend: debian-med
+- package: segemehl
+  description: Kort læs-kortlægning med gaps
+  long_description: " Segemehl er et program til kortlægning af korte sekvenslæsninger\
+    \ som referencegenomer. Segemehl implementerer en matchende strategi baseret på\
+    \ forbedret suffikstabeller (ESA). Segemehl accepterer fasta og hurtige forespørgsler\
+    \ (gzip'ede og bgzip'ede). Udover opstillingen af ​​læsninger fra DNA- og RNA-seq\
+    \ protokoller, tillader det også kortlægning af bisulfitomdannede læsninger (Lister\
+    \ og Cokus) og implementerer en split-read kortlægningsstrategi. Resultatet fra\
+    \ Segemehl er en SAM eller BAM formateret sammenligningsfil. I tilfælde af split-read-kortlægning,\
+    \ er yderligere BED-filer skrevet til disk. Disse BED-filer kan opsummeres med\
+    \ efterbehandlingsværktøjet haarz. I tilfælde af justering af bisulfit-konverterede\
+    \ læsninger kan rå methyleringshastigheder også kaldes med haarz.\n .\n Kort sagt,\
+    \ for hvert suffiks af en læsning forsøger Segemehl at finde den\n bedst bedømmende\
+    \ seed. Seed kan indeholde indsætninger, sletninger og\n uoverensstemmelser (forskelle).\
+    \ Antallet af forskelle tilladt i en enkelt\n seed er brugerstyret og er afgørende\
+    \ for kørselstiden af programmet.\n Derefter sendes seed, der underkaster den\
+    \ brugerdefinerede E-værdi til en\n præcis semiglobal sammenligningsprocedure.\
+    \ Læser med en minimumsnøjagtighed\n  i procent rapporteret til brugeren.\n"
+  release: sid
+  description_md5: b08b0f83dc3de0c96f519821508bbd5f
+  license: unknown
+  blend: debian-med
+- package: segemehl
+  description: associations de lectures courtes avec des trous
+  long_description: " Segemehl est un logiciel pour associer des lectures courtes\
+    \ de séquençage à des\n génomes de référence. Segemehl met en œuvre une stratégie\
+    \ d'association basée sur\n ESA (enhanced suffix array — tableau des suffixes\
+    \ amélioré). Segemehl accepte des\n requêtes fasta et fastq (compressées avec\
+    \ gzip ou bzip). En plus de l’alignement\n des lectures à partir des protocoles\
+    \ standard DNA- et RNA-seq, il permet aussi\n l'association des lectures de séquençage\
+    \ avec bisulfite (Lister et Cokus) et met\n en œuvre une stratégie d’association\
+    \ de lectures « split ». La sortie de segemehl\n est un fichier d’alignement au\
+    \ format SAM ou BAM. Dans le cas d'une association\n « split-read », des fichiers\
+    \ BED supplémentaires sont écrits sur le disque. Ces\n fichiers BED peuvent être\
+    \ synthétisés avec l’outil de post-traitement haarz. Dans\n le cas d’alignement\
+    \ de lectures de transformées au bisulfite, les taux de\n méthylation bruts peuvent\
+    \ aussi être appelés avec haarz.\n .\n En résumé, pour chaque suffixe de lecture,\
+    \ segemehl cherche la graine (seed) de\n plus haut score. Les graines peuvent\
+    \ contenir des insertions, suppressions et\n écarts (différences). Le nombre de\
+    \ différences permises à l’intérieur d’une\n graine seule est contrôlé par l’utilisateur\
+    \ et est crucial pour l’exécution du\n programme. Consécutivement, les graines\
+    \ qui affaiblissent les « E-value »\n définies par l’utilisateur sont transmises\
+    \ à une procédure d’alignement semi-\n global précis. Finalement les lectures\
+    \ avec une précision minimale de pourcentage\n sont rapportées à l’utilisateur.\n"
+  release: sid
+  description_md5: b08b0f83dc3de0c96f519821508bbd5f
+  license: unknown
+  blend: debian-med

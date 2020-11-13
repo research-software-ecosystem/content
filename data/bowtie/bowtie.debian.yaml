@@ -1,80 +1,176 @@
-description: 'This package addresses the problem to interpret the results from the
-  latest (2010) DNA sequencing technologies. Those will yield fairly short stretches
-  and those cannot be interpreted directly. It is the challenge for tools like Bowtie
-  to give a chromosomal location to the short stretches of DNA sequenced per run.
-  . Bowtie aligns short DNA sequences (reads) to the human genome at a rate of over
-  25 million 35-bp reads per hour. Bowtie indexes the genome with a Burrows-Wheeler
-  index to keep its memory footprint small: typically about 2.2 GB for the human genome
-  (2.9 GB for paired-end).'
-edam:
-  scopes:
-  - function:
-    - Genome indexing
-    - Sequence alignment generation
-    input:
-    - data: Nucleic acid sequence (raw)
-      format:
-      - FASTA
-      - FASTQ
-    name: summary
-    output:
-    - data: Sequence alignment (nucleic acid)
-      format:
-      - SAM
-  - function: Genome indexing (Burrows-Wheeler)
-    input:
-    - data: Nucleic acid sequence (raw)
-      format:
-      - FASTA
-    name: bowtie-build
-    output:
-    - data: Genome index
-      format:
-      - Bowtie index format EBWT
-      - Bowtie long index format EBTWL
-  - function:
-    - Sequence retrieval
-    - Metadata retrieval
-    - Data index analysis
-    input:
-    - data: Genome index
-      format:
-      - Bowtie index format EBWT
-      - Bowtie long index format EBTWL
-    name: bowtie-inspect
-    output:
-    - data: Nucleic acid sequence (raw)
-      format:
-      - FASTA
-      - plain text format (unformatted)
-  - function:
-    - Sequence database search (by sequence using word-based methods)
-    - Sequence alignment generation
-    input:
-    - data: Genome index
-    - data: Nucleic acid sequence (raw)
-      format:
-      - plain text format (unformatted)
-      - FASTA
-      - FASTQ
-    name: bowtie
-    output:
-    - data: Sequence alignment (nucleic acid)
-    - data: Sequence alignment report
-      format:
-      - SAM
-      - Bowtie alignment report format
-  topics:
-  - Genomics
-  version: unknown
-homepage: http://bowtie-bio.sourceforge.net/
-identifiers:
-  bioconda: bowtie
-  biotools: bowtie
-  debian: bowtie
-  doi:
-  - 10.1186/gb-2009-10-3-r25
-  omictools: OMICS_00653
-  scicrunch: SCR_005476
-summary: Ultrafast memory-efficient short read aligner
+package: bowtie
+distribution: debian
+release: sid
+component: main
 version: 1.3.0
+source: bowtie
+homepage: http://bowtie-bio.sourceforge.net/
+license: unknown
+blend: debian-med
+description_md5: 0321cd443ac01259f647358becd22626
+topics:
+- Genomics
+edam_scopes:
+- name: summary
+  input:
+  - data: Nucleic acid sequence (raw)
+    format:
+    - FASTA
+    - FASTQ
+  output:
+  - data: Sequence alignment (nucleic acid)
+    format:
+    - SAM
+  function:
+  - Genome indexing
+  - Sequence alignment generation
+- name: bowtie-build
+  input:
+  - data: Nucleic acid sequence (raw)
+    format:
+    - FASTA
+  output:
+  - data: Genome index
+    format:
+    - Bowtie index format EBWT
+    - Bowtie long index format EBTWL
+  function: Genome indexing (Burrows-Wheeler)
+- name: bowtie-inspect
+  input:
+  - data: Genome index
+    format:
+    - Bowtie index format EBWT
+    - Bowtie long index format EBTWL
+  output:
+  - data: Nucleic acid sequence (raw)
+    format:
+    - FASTA
+    - plain text format (unformatted)
+  function:
+  - Sequence retrieval
+  - Metadata retrieval
+  - Data index analysis
+- name: bowtie
+  input:
+  - data: Genome index
+  - data: Nucleic acid sequence (raw)
+    format:
+    - plain text format (unformatted)
+    - FASTA
+    - FASTQ
+  output:
+  - data: Sequence alignment (nucleic acid)
+  - data: Sequence alignment report
+    format:
+    - SAM
+    - Bowtie alignment report format
+  function:
+  - Sequence database search (by sequence using word-based methods)
+  - Sequence alignment generation
+registries:
+- entry: bowtie
+  name: bio.tools
+- entry: bowtie
+  name: conda:bioconda
+- entry: OMICS_00653
+  name: OMICtools
+- entry: SCR_005476
+  name: SciCrunch
+bib:
+- key: doi
+  value: 10.1186/gb-2009-10-3-r25
+tags:
+- tag: biology::nuceleic-acids
+- tag: field::biology:bioinformatics
+- tag: implemented-in::c++
+- tag: interface::commandline
+- tag: role::program
+- tag: science::calculation
+- tag: scope::utility
+- tag: use::analysing
+- tag: use::comparing
+- tag: works-with::biological-sequence
+popcon:
+- insts: 371
+  olde: 320
+  recent: 28
+  vote: 23
+descr:
+- package: bowtie
+  description: Ultraschnelles und speichersparendes Alignmentprogramm für kurze DNA-Sequenzen
+  long_description: " Dieses Paket beschäftigt sich mit dem Problem die Resultate\
+    \ der neuesten\n (2010) DNA-Sequenziertechniken zu interpretieren. Diese Techniken\
+    \ ergeben\n ziemlich kurze Sequenzen, die nicht direkt interpretiert werden können.\
+    \ Es\n ist die Aufgabe für Werkzeuge wie Bowtie den chromosomalen Ort (Locus)\
+    \ der\n kurzen DNA-Sequenzen festzustellen.\n .\n Bowtie führt Alignments kurzer\
+    \ DNA-Sequenzen (Reads) mit dem menschlichen\n Genom durch, mit einer Rate von\
+    \ über 25 Millionen Reads (mit einer Länge\n von 35 Basenpaaren) pro Stunde. Bowtie\
+    \ indiziert das Genom mit einer\n Burrows-Wheeler-Transformation, um den Speicherverbrauch\
+    \ gering zu halten;\n normalerweise etwa 2,2 GB für das menschliche Genom (2,9\
+    \ GB für »paired-\n end«).\n"
+  release: sid
+  description_md5: 0321cd443ac01259f647358becd22626
+  license: unknown
+  blend: debian-med
+- package: bowtie
+  description: Ultrafast memory-efficient short read aligner
+  long_description: " This package addresses the problem to interpret the results\
+    \ from the\n latest (2010) DNA sequencing technologies. Those will yield fairly\n\
+    \ short stretches and those cannot be interpreted directly. It is the\n challenge\
+    \ for tools like Bowtie to give a chromosomal location to the\n short stretches\
+    \ of DNA sequenced per run.\n .\n Bowtie aligns short DNA sequences (reads) to\
+    \ the human genome at a rate\n of over 25 million 35-bp reads per hour. Bowtie\
+    \ indexes the genome with\n a Burrows-Wheeler index to keep its memory footprint\
+    \ small: typically\n about 2.2 GB for the human genome (2.9 GB for paired-end).\n"
+  release: sid
+  description_md5: 0321cd443ac01259f647358becd22626
+  license: unknown
+  blend: debian-med
+- package: bowtie
+  description: allineatore di letture brevi ultraveloce ed efficiente in termini di
+    memoria
+  long_description: " Questo pacchetto affronta il problema di interpretare i risultati\
+    \ delle più\n recenti (2010) tecnologie di sequenziamento del DNA. Esse restituiscono\n\
+    \ pezzi piuttosto corti che non possono essere interpretate direttamente. La\n\
+    \ sfida per gli strumenti come Bowtie è quella di fornire una posizione nei\n\
+    \ cromosomi per i brevi frammenti di DNA sequenziati in ogni corsa.\n .\n Bowtie\
+    \ allinea sequenze (letture) brevi di DNA al genoma umano a una\n velocità di\
+    \ oltre 25 milioni di 35 bp all'ora. Bowtie indicizza il genoma\n con un indice\
+    \ Burrows-Wheeler per mantenere piccola la propria impronta di\n memoria: tipicamente\
+    \ circa 2,2 GB per il genoma umano (2,9 GB per le\n estremità accoppiate).\n"
+  release: sid
+  description_md5: 0321cd443ac01259f647358becd22626
+  license: unknown
+  blend: debian-med
+- package: bowtie
+  description: Ultrahurtig og hukommelseseffektiv short read-sammenligner
+  long_description: " Denne pakke adresserer problemet med at fortolke resultaterne\
+    \ fra de\n seneste (2010) DNA-sekvensteknologier. Disse vil resultere i ret så\
+    \ korte\n stræk og disse kan ikke fortolkes direkte. Det er udfordringen for\n\
+    \ værktøjer såsom Bowtie at give en kromosonplacering til korte stræk af DNA\n\
+    \ sekventeret per kørsel.\n .\n Bowtie sammenligner korte DNA-sekvenser (læsninger)\
+    \ for den menneskelige\n arvemasse med en hastighed på mere end 25 millioner 35-bp\
+    \ læsninger per\n time. Bowtie indekserer arvemassen med et Burrows-Wheeler-indeks\
+    \ for at\n holde hukommelsesaftrykket lavt: Typisk omkring 2,2 GB for den menneskelige\n\
+    \ arvemasse (2,9 GB for paired-end).\n"
+  release: sid
+  description_md5: 0321cd443ac01259f647358becd22626
+  license: unknown
+  blend: debian-med
+- package: bowtie
+  description: aligneur ultra-rapide de lectures courtes avec une faible empreinte
+    mémoire
+  long_description: " Ce paquet aborde le problème de l'interprétation des résultats\
+    \ des\n dernières technologies (2010) de séquençage de l'ADN.\n Celles-ci produiront\
+    \ des étirements assez courts et qui ne peuvent pas\n directement être interprétés.\
+    \ C'est le défi d'outils comme Bowtie de donner\n un emplacement chromosomique\
+    \ aux courts étirements de l'ADN séquencé à\n chaque exécution.\n .\n Bowtie aligne\
+    \ des (lectures de) séquences d'ADN du génome humain à un débit\n de 25 millions\
+    \ de lectures de paires de bases 35 par heure. Le paquet\n Bowtie indexe le génome\
+    \ humain avec un indice de Burrows-Wheeler pour\n garder une faible empreinte\
+    \ mémoire : typiquement environ 2,2 Go\n pour le génome humain (2,9 Go pour le\
+    \ séquençage à partir des deux\n extrémités).\n"
+  release: sid
+  description_md5: 0321cd443ac01259f647358becd22626
+  license: unknown
+  blend: debian-med
