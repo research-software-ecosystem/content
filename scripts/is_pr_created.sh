@@ -1,13 +1,15 @@
 #!/bin/bash
 # get all PRs with specified label
 RESULT=`curl -s https://api.github.com/search/issues?q=is:pr%20label:$1%20repo:OlegZharkov/content`
-# check if PR is created by github-actions bot
-TOTAL_COUNT=`jq '.items[]|select(.user.login == "github-actions[bot]")' <<< $RESULT`
+# check if PR is created by github-actions bot and return pull request-number
+PR_NUMBER=`jq '.items[]|select(.user.login == "github-actions[bot]")|.number' <<< $RESULT`
 
-echo $TOTAL_COUNT
+echo $PR_NUMBER
 
-if [ -z $TOTAL_COUNT ]; then
-  exit 1
+# check if $PR_NUMBER is defined
+if [ ! -z $PR_NUMBER ]; then
+    gh pr checkout $PR_NUMBER
+    exit 0
 else
-  exit 0
+  exit 1
 fi
