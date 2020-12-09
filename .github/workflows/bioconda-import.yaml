@@ -36,9 +36,11 @@ jobs:
         #  git checkout -b bioconda_import-${{ github.run_id }}
         #   git push --set-upstream origin "bioconda_import${{ github.run_id }}"
         #   hub pull-request -m "bioconda import on $(date)" -l "bioconda-import"
-          hub pr list -s open
-        
-          echo "successfully created new data"
+          if  ${{ github.workspace }}/content/scripts/is_pr_created.sh bioconda-import123; then
+             echo "PR is created!"
+          else
+            echo "PR is not created!"
+          fi
         else
             echo "nothing new to add, exiting"
         fi
