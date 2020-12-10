@@ -1,11 +1,8 @@
- 
 name: bioconda import
 
 on:
-  workflow_dispatch:
-  #schedule:
-  #  # * is a special character in YAML so you have to quote this string
-  #  - cron:  '0 0 * * 5'
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
   build:
@@ -25,22 +22,29 @@ jobs:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        # since we're switching branches, preserve original git-utils scripts
+        mv ${{ github.workspace }}/content/scripts/git-utils ${{ github.workspace }}/git-utils
+
+        cd ${{ github.workspace }}/content/data
+
+        if ${{ github.workspace }}/git-utils/checkout-pr-if-exist.sh bioconda-import; then
+          IS_PR_CREATED=true
+        else
+          IS_PR_CREATED=false
+        fi
+
+        # Run importing script
         sudo pip3 install virtualenv
         virtualenv -p python3 venv
-        . venv/bin/activate	
+        . venv/bin/activate
         pip3 install setuptools wheel jinja2 pyyaml
         python3 ${{ github.workspace }}/content/scripts/bioconda-import/bioconda_importer.py ${{ github.workspace }}/content/data/ ${{ github.workspace }}/bioconda/recipes/
-        cd ${{ github.workspace }}/content/data
-        git config --local user.email "tpe-bot@github.com"
-        git config --local user.name "Tools Platform Ecosystem bot"
-        git add .
-        git status
 
-        if git commit -m "bioconda import on $(date)"; then
-          git checkout -b bioconda_import${{ github.run_id }}
-          git push --set-upstream origin "bioconda_import${{ github.run_id }}"
-          hub pull-request -m "bioconda import on $(date)"
-          echo "successfully created new data"
-        else
-            echo "nothing new to add, exiting"
-        fi
+        ${{ github.workspace }}/git-utils/import-changes.sh $IS_PR_CREATED bioconda-import
+
+    - name: Cache multiple paths
+      uses: actions/cache@v2
+      with:
+        path: |
+          .venv/
+        key: ${{ runner.os }}-bioconda-import

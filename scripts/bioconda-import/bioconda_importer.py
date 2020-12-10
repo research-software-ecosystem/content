@@ -84,7 +84,6 @@ def create_metadata(conda, path, biotools_id):
     data.update(conda['recipe']['about'])
     extra = conda['recipe'].get('extra', None)
     if extra:
-        print('####', extra)
         identifiers = extra.get('identifiers', None)
         if extra.get('identifiers', None):
             data.update({'identifiers': extra['identifiers']})
