@@ -57,10 +57,11 @@ def enrich_dois(path):
             return []
 
     def get_doi_identifiers_from_yaml(parsed_yaml, isDebian=False):
+        if isDebian:
+            # if doi entry exist return it, otherwise empty array
+            print([item['value'] for item in parsed_yaml.get('bib', []) if item["key"]=="doi"])
+            return [item['value'] for item in parsed_yaml.get('bib', []) if item["key"]=="doi"]
         if 'identifiers' in parsed_yaml:
-            if isDebian:
-                # if doi entry exist return it, otherwise empty array
-                return [item['value'] for item in parsed_yaml['bib'] if item["key"]=="doi"]
             return filter(lambda identifier: 'doi' in identifier, parsed_yaml['identifiers'])
 
     def extract_doi_from_bioconda_yaml(parsed_yaml):
