@@ -25,7 +25,7 @@ jobs:
     - name: import bio.tools using the API
       run: |
         cd ${{ github.workspace }}/content/data
-        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh bioconda-import; then
+        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh biotools-import; then
           IS_PR_CREATED=true
         else
           IS_PR_CREATED=false
@@ -42,4 +42,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd ${{ github.workspace }}/content/data
-        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED bioconda-import
+        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED biotools-import
