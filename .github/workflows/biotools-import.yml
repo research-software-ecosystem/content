@@ -1,7 +1,8 @@
 name: import bio.tools
 
 on:
-  push
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
   import-biotools:
@@ -41,7 +42,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd ${{ github.workspace }}/content/data
-        #test
-        echo "test" >>  ${{ github.workspace }}/content/data/3-d-density-kernel-estimation/3-d-density-kernel-estimation.neubias.bioschemas.jsonld
-
         ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED bioconda-import
