@@ -1,9 +1,7 @@
 name: bioconda import
 
 on:
-  schedule:
-    - cron: "0 0 * * 0"
-  workflow_dispatch:
+  push
 
 jobs:
   build:
@@ -11,6 +9,10 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: bioconda/content-ecosystem-utils
+        path: content-ecosystem-utils
     - uses: actions/checkout@v2
       with:
         repository: bioconda/bioconda-recipes
@@ -23,12 +25,9 @@ jobs:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # since we're switching branches, preserve original git-utils scripts
-        mv ${{ github.workspace }}/content/scripts/git-utils ${{ github.workspace }}/git-utils
-
         cd ${{ github.workspace }}/content/data
 
-        if ${{ github.workspace }}/git-utils/checkout-pr-if-exist.sh bioconda-import; then
+        if ${{ github.workspace }}/content-ecosystem-utils/git-utils/checkout-pr-if-exist.sh bioconda-import; then
           IS_PR_CREATED=true
         else
           IS_PR_CREATED=false
@@ -39,9 +38,10 @@ jobs:
         virtualenv -p python3 venv
         . venv/bin/activate
         pip3 install setuptools wheel jinja2 pyyaml
-        python3 ${{ github.workspace }}/content/scripts/bioconda-import/bioconda_importer.py ${{ github.workspace }}/content/data/ ${{ github.workspace }}/bioconda/recipes/
+        python3 ${{ github.workspace }}/content-ecosystem-utils/scripts/bioconda-import/bioconda_importer.py ${{ github.workspace }}/content/data/ ${{ github.workspace }}/bioconda/recipes/
+        echo "test" >>  ${{ github.workspace }}/content/data/3-d-density-kernel-estimation/3-d-density-kernel-estimation.neubias.bioschemas.jsonld
 
-        ${{ github.workspace }}/git-utils/import-changes.sh $IS_PR_CREATED bioconda-import
+        ${{ github.workspace }}/content-ecosystem-utils/git-utils/import-changes.sh $IS_PR_CREATED bioconda-import
 
     - name: Cache multiple paths
       uses: actions/cache@v2
