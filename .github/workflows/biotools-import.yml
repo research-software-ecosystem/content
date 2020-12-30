@@ -3,38 +3,43 @@ name: import bio.tools
 on:
   schedule:
     - cron: "0 0 * * 0"
-  workflow_dispatch:
 
 jobs:
   import-biotools:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: content
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
         python-version: "3.7"
     - name: Install dependencies
       run:
-        pip install -r scripts/biotools-import/requirements.txt
+        pip install -r ${{ github.workspace }}/content-ecosystem-utils/scripts/biotools-import/requirements.txt
     - name: import bio.tools using the API
       run: |
-        cd scripts/biotools-import
+        cd ${{ github.workspace }}/content/data
+        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh biotools-import; then
+          IS_PR_CREATED=true
+        else
+          IS_PR_CREATED=false
+        fi
+
+        cd ${{ github.workspace }}/content-ecosystem-utils/scripts/biotools-import
         python import.py
-    - name: commit new data and push to new PR
+
+        echo "IS_PR_CREATED=$IS_PR_CREATED" >> $GITHUB_ENV
+
+    - name: commit new data and push to PR
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |  
-        git config --local user.email "tpe-bot@github.com"
-        git config --local user.name "Tools Platform Ecosystem bot"
-        cd data
-        git add .
-        if git commit -m "import from bio.tools on $(date)"; then
-          git checkout -b biotools_import_${{ github.run_id }}
-          git push --set-upstream origin "biotools_import_${{ github.run_id }}"
-          hub pull-request -m "import from bio.tools on $(date)"
-          echo "successfully created new data"
-        else
-            echo "nothing new to add, exiting"
-        fi
+      run: |
+        cd ${{ github.workspace }}/content/data
+        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED biotools-import
