@@ -1,25 +1,15 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2016-04-22T13:39:38Z",
     "biotoolsCURIE": "biotools:sqtlseeker",
     "biotoolsID": "sqtlseeker",
+    "collectionID": [
+        "RIS3CAT VEIS"
+    ],
     "cost": "Free of charge",
     "credit": [
         {
-            "name": "Jean Monlong",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer"
-            ]
-        },
-        {
-            "name": "R.Guigo Group: Computational Biology of RNA processing @ CRG, Barcelona.",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
-        },
-        {
-            "name": "crg.eu",
+            "name": "R. Guig\u00f3 Lab: Computational Biology of RNA processing @ CRG, Barcelona.",
             "typeEntity": "Institute",
             "typeRole": [
                 "Provider"
@@ -30,32 +20,27 @@
             "name": "Diego Garrido",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact"
+                "Developer"
             ]
         }
     ],
-    "description": "sQTLseekeR consists of a pipeline for splicing quantitative trait loci (sQTL) mapping.\nThe pipeline performs the following analysis steps:\n1) Index the genotype file, 2) Preprocess the transcript expression data, 3) Test for association between splicing ratios and genetic variants in cis (nominal pass)\n4) Obtain an empirical P-value for each phenotype (permutation pass, optional)\n5) Control for multiple testing",
-    "documentation": [
-        {
-            "type": [
-                "General"
-            ],
-            "url": "https://github.com/jmonlong/sQTLseekeR"
-        }
-    ],
+    "description": "Nextflow pipeline for splicing quantitative trait loci (sQTL) mapping based on sQTLseekeR2.\nThe pipeline performs the following analysis steps: 1) Index the genotype file, 2) Preprocess the transcript expression data, 3) Test for association between splicing ratios (a multivariate phenotype) and genetic variants in cis (nominal pass), 4) Obtain an empirical P-value for each phenotype (permutation pass, optional), 5) Control for multiple testing.",
     "download": [
         {
             "type": "Source code",
-            "url": "https://github.com/jmonlong/sQTLseekeR"
+            "url": "https://github.com/guigolab/sQTLseekeR2/releases",
+            "version": "1.0.0"
         },
         {
-            "type": "Binaries",
-            "url": "https://github.com/jmonlong/sQTLseekeR"
+            "type": "Software package",
+            "url": "https://github.com/guigolab/sQTLseekeR2",
+            "version": "1.0.0"
         }
     ],
     "editPermission": {
         "authors": [
-            "francisco.camara@crg.eu"
+            "francisco.camara@crg.eu",
+            "guigolab"
         ],
         "type": "group"
     },
@@ -67,57 +52,43 @@
     ],
     "function": [
         {
-            "note": "sQTLseekeR is a R package to detect splicing QTLs (sQTLs), which are variants associated with change in the splicing pattern of a gene. Here, splicing patterns are modeled by the relative expression of the transcripts of a gene.\n\nFor more information about the method and performance see article : Monlong, J. et al. Identification of genetic variants associated with alternative splicing using sQTLseekeR. Nat. Commun. 5:4698 doi: 10.1038/ncomms5698 (2014).",
+            "note": "sQTLseekeR2 is an enhanced version of sQTLseekeR, an R package to detect splicing QTLs (sQTLs). sQTLs are genetic variants associated with changes in the splicing patterns. In sQTLseekeR, splicing patterns are defined by the relative expression of the transcripts of a gene (a multivariate phenotype).\n\nFor more information about the method and performance see: Garrido-Mart\u00edn, D. et al. Identification and analysis of splicing quantitative trait loci across multiple tissues in the human genome. BiorXiv. doi: 10.1101/2020.05.29.123703  (2020) and Monlong, J. et al. Identification of genetic variants associated with alternative splicing using sQTLseekeR. Nat. Commun. 5:4698 doi: 10.1038/ncomms5698 (2014).",
             "operation": [
                 {
-                    "term": "Sequence analysis",
-                    "uri": "http://edamontology.org/operation_2403"
+                    "term": "Analysis",
+                    "uri": "http://edamontology.org/operation_2945"
                 }
             ]
         }
     ],
-    "homepage": "https://github.com/dgarrimar/sqtlseeker2-nf",
+    "homepage": "https://github.com/guigolab/sqtlseeker2-nf",
     "language": [
         "R"
     ],
-    "lastUpdate": "2020-07-24T10:26:14Z",
+    "lastUpdate": "2021-01-15T10:28:09.715102Z",
+    "license": "GPL-3.0",
     "link": [
         {
             "type": [
                 "Repository"
             ],
-            "url": "https://github.com/dgarrimar/sqtlseeker2-nf"
+            "url": "https://github.com/guigolab/sqtlseeker2-nf"
         }
     ],
-    "name": "sQTLseekeR",
+    "name": "sqtlseeker2-nf",
     "operatingSystem": [
         "Linux"
     ],
-    "owner": "admin",
+    "owner": "guigolab",
     "publication": [
         {
+            "doi": "10.1101/2020.05.29.123703",
+            "type": [
+                "Primary"
+            ]
+        },
+        {
             "doi": "10.1038/ncomms5698",
-            "metadata": {
-                "abstract": "Identification of genetic variants affecting splicing in RNA sequencing population studies is still in its infancy. Splicing phenotype is more complex than gene expression and ought to be treated as a multivariate phenotype to be recapitulated completely. Here we represent the splicing pattern of a gene as the distribution of the relative abundances of a gene\u00e2(tm) s alternative transcript isoforms. We develop a statistical framework that uses a distance-based approach to compute the variability of splicing ratios across observations, and a non-parametric analogue to multivariate analysis of variance. We implement this approach in the R package sQTLseekeR and use it to analyze RNA-Seq data from the Geuvadis project in 465 individuals. We identify hundreds of single nucleotide polymorphisms (SNPs) as splicing QTLs (sQTLs), including some falling in genome-wide association study SNPs. By developing the appropriate metrics, we show that sQTLseekeR compares favorably with existing methods that rely on univariate approaches, predicting variants that behave as expected from mutations affecting splicing. \u00a9 2014 Macmillan Publishers Limited.",
-                "authors": [
-                    {
-                        "name": "Monlong J."
-                    },
-                    {
-                        "name": "Calvo M."
-                    },
-                    {
-                        "name": "Ferreira P.G."
-                    },
-                    {
-                        "name": "Guigo R."
-                    }
-                ],
-                "citationCount": 50,
-                "date": "2014-08-20T00:00:00Z",
-                "journal": "Nature Communications",
-                "title": "Identification of genetic variants associated with alternative splicing using sQTLseekeR"
-            },
             "type": [
                 "Primary"
             ]
@@ -134,6 +105,6 @@
     ],
     "validated": 1,
     "version": [
-        "2.0"
+        "1.0.0"
     ]
 }
