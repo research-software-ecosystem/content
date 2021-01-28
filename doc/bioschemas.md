@@ -1,21 +1,21 @@
-# BioSchemas content
+# Bioschemas content
 
 ## Introduction
-The following GitHub [action](https://github.com/bio-tools/content/actions/runs/225548502/workflow) acts as a crawler to produce BioSchemas markup from [bio.tools](https://bio.tools). It is based on this [script](https://github.com/bio-tools/content/blob/master/scripts/bioschemas/biotools_to_bioschemas.py) which leverages  the [Bioschemas Tools profile](https://bioschemas.org/profiles/Tool/0.4-DRAFT-2019_07_19). 
+The following [GitHub Action](https://github.com/bio-tools/content/actions/runs/225548502/workflow) acts as a crawler to produce Bioschemas markup from [_bio.tools_](https://bio.tools). It is based on [this script](https://github.com/bio-tools/content/blob/master/scripts/bioschemas/biotools_to_bioschemas.py) which leverages  the [Bioschemas Tool profile](https://bioschemas.org/profiles/Tool/0.4-DRAFT-2019_07_19). 
 
-This work has been initiated in the 2020 Elixir Tools platform hackathon held in Paris. 
+This work has been initiated in Jan 2020 at the ELIXIR Tools Platform hackathon held in Paris. 
 
 ## Main realizations
-- json-ld serialization in the GitHub "Content" repository (https://github.com/bio-tools/content). An example entry is available here: https://github.com/bio-tools/content/blob/master/data/adam/adam.bioschemas.jsonld
-- this code is now integrated in bio.tools through a REST api: http://bio.tools/api/jaspar?format=jsonld
-- automation through GitHub actions https://github.com/bio-tools/content/actions/runs/225548502 
+- JSON-LD serialization in the _bio.tools_ "Content" repository (https://github.com/bio-tools/content). An example entry is available here: https://github.com/bio-tools/content/blob/master/data/adam/adam.bioschemas.jsonld
+- this code is now integrated in _bio.tools_ through a REST API: http://bio.tools/api/jaspar?format=jsonld
+- automation through GitHub Actions https://github.com/bio-tools/content/actions/runs/225548502 
 - an experimental SPARQL endpoint (Virtuoso) to play with the dataset: https://134.158.247.76/sparql 
 
 ## Querying Bioschemas semantic annotations
 Although Schema.org and Bioschemas metadata are focusing on findability through search engines, they can also be considered as knowledge graphs and queried with the SPARQL query language. 
 
 Here are some sample queries: 
-#### Query 1: BioSchemas properties used in bio.tools (sorted: most used first)
+#### Query 1: Bioschemas properties used in _bio.tools_ (sorted: most used first)
 ```
 SELECT ?p (COUNT(?s) AS ?count ) { ?s ?p ?o } GROUP BY ?p ORDER BY DESC(?count)
 ```
