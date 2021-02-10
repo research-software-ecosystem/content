@@ -1,6 +1,8 @@
 name: bioconda import
 
-on: push
+on:
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
   build:
@@ -16,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         path: content
-    - name: import bioconda tools
+    - name: import biocontainers annotations
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
