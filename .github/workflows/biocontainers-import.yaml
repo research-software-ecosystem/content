@@ -15,10 +15,6 @@ jobs:
         ref: 'biocontainers-annotation-import'
     - uses: actions/checkout@v2
       with:
-        repository: bioconda/bioconda-recipes
-        path: bioconda
-    - uses: actions/checkout@v2
-      with:
         path: content
     - name: import bioconda tools
       env:
@@ -39,7 +35,7 @@ jobs:
         virtualenv -p python3 venv
         . venv/bin/activate
         pip3 install setuptools wheel jinja2 pyyaml
-        python3 ${{ github.workspace }}/scripts/biocontainers-annotations-import/biocontainers-importer.py ${{ github.workspace }}/content/data/ $BIOCONTAINERS_URL
+        python3 ${{ github.workspace }}/content-ecosystem-utils/scripts/biocontainers-annotations-import/biocontainers-importer.py ${{ github.workspace }}/content/data/ $BIOCONTAINERS_URL
 
         ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED biocontainers-import
 
