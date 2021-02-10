@@ -1,0 +1,53 @@
+name: bioconda import
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
+    - uses: actions/checkout@v2
+      with:
+        repository: bioconda/bioconda-recipes
+        path: bioconda
+    - uses: actions/checkout@v2
+      with:
+        path: content
+    - name: import bioconda tools
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BIOCONTAINERS_URL: https://raw.githubusercontent.com/BioContainers/tools-metadata/master/annotations.yaml
+      run: |
+        cd ${{ github.workspace }}/content/data
+
+        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh bioconda-import; then
+          IS_PR_CREATED=true
+        else
+          IS_PR_CREATED=false
+        fi
+
+        # Run importing script
+        sudo pip3 install virtualenv
+        virtualenv -p python3 venv
+        . venv/bin/activate
+        pip3 install setuptools wheel jinja2 pyyaml
+        python3 ${{ github.workspace }}/content-ecosystem-utils/scripts/bioconda-import/bioconda_importer.py ${{ github.workspace }}/content/data/ $BIOCONTAINERS_URL
+
+        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED biocontainers-import
+
+    - name: Cache multiple paths
+      uses: actions/cache@v2
+      with:
+        path: |
+          .venv/
+        key: ${{ runner.os }}-biocontainers-import
