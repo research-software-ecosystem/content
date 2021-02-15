@@ -1,8 +1,8 @@
 name: bioconda import
 
 on:
-  schedule:
-    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}/content/data
 
-        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh bioconda-import; then
+        if ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/checkout-pr-if-exist.sh biocontainers-import; then
           IS_PR_CREATED=true
         else
           IS_PR_CREATED=false
