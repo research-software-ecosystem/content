@@ -53,7 +53,7 @@ class BioCondaSource(Source):
 
 class BioContainersSource(Source):
     SOURCE = 'BioContainers'
-    SOURCE_PATH_TEMPLATE = 'biocontainers.json'
+    SOURCE_PATH_TEMPLATE = '{biotools_id}.biocontainers.yaml'
 
 class BiiiSource(Source):
     SOURCE = 'Biii'
