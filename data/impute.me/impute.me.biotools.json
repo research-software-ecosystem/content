@@ -4,17 +4,37 @@
     "biotoolsCURIE": "biotools:impute.me",
     "biotoolsID": "impute.me",
     "confidence_flag": "tool",
+    "cost": "Free of charge",
     "description": "An open source, non-profit tool for using data from DTC genetic testing to calculate and interpret polygenic risk scores.\n\nThis is the code behind the www.impute.me site. It contains algorithms for imputing personal genomes, as well as a range of custom-made analysis for genetics-based disease and health.\n\nNon-profit web-based engine that will analyze common direct-to-consumer genetic data such as 23andme and ancestry-com. Provides cutting edge- trait and disease genetic scores, based on advanced polygenic risk scoring.\n\nAdvanced analysis of your DNA: Beyond one SNP at the time",
     "editPermission": {
-        "type": "public"
+        "type": "private"
     },
+    "elixirNode": [
+        "Denmark"
+    ],
     "function": [
         {
-            "operation": [
+            "cmd": "docker exec -it <dockerid> R -e \"prepare_individual_genome('/home/ubuntu/data/yourgenomefile.zip')\"",
+            "input": [
                 {
-                    "term": "Standardisation and normalisation",
-                    "uri": "http://edamontology.org/operation_3435"
-                },
+                    "data": {
+                        "term": "Raw microarray data",
+                        "uri": "http://edamontology.org/data_3110"
+                    },
+                    "format": [
+                        {
+                            "term": "plain text format (unformatted)",
+                            "uri": "http://edamontology.org/format_1964"
+                        },
+                        {
+                            "term": "VCF",
+                            "uri": "http://edamontology.org/format_3016"
+                        }
+                    ]
+                }
+            ],
+            "note": "Run polygenic risk scoring algorithm on personal genetics data",
+            "operation": [
                 {
                     "term": "Imputation",
                     "uri": "http://edamontology.org/operation_3557"
@@ -22,6 +42,28 @@
                 {
                     "term": "Genotyping",
                     "uri": "http://edamontology.org/operation_3196"
+                },
+                {
+                    "term": "Genetic variation analysis",
+                    "uri": "http://edamontology.org/operation_3197"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Z-value",
+                        "uri": "http://edamontology.org/data_1668"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "GEN",
+                            "uri": "http://edamontology.org/format_3812"
+                        }
+                    ]
                 }
             ]
         }
@@ -30,7 +72,7 @@
     "language": [
         "R"
     ],
-    "lastUpdate": "2020-12-14T09:45:01.336387Z",
+    "lastUpdate": "2021-03-15T18:33:51.749229Z",
     "license": "LGPL-3.0",
     "link": [
         {
@@ -38,17 +80,29 @@
                 "Repository"
             ],
             "url": "https://github.com/lassefolkersen/impute-me"
+        },
+        {
+            "type": [
+                "Service"
+            ],
+            "url": "https://hub.docker.com/repository/docker/lassefolkersen/impute-me"
         }
     ],
+    "maturity": "Mature",
     "name": "impute.me",
-    "owner": "Pub2Tools",
+    "owner": "lassefolkersen",
     "publication": [
         {
-            "doi": "10.1101/861831"
+            "doi": "10.3389/fgene.2020.00578",
+            "pmid": "32714365",
+            "type": [
+                "Primary"
+            ]
         }
     ],
     "toolType": [
-        "Web application"
+        "Web application",
+        "Desktop application"
     ],
     "topic": [
         {
@@ -71,5 +125,6 @@
             "term": "GWAS study",
             "uri": "http://edamontology.org/topic_3517"
         }
-    ]
+    ],
+    "validated": 1
 }
