@@ -59,3 +59,13 @@ ORDER BY DESC(?contributors)
 ```
 [Run this query](https://134.158.247.76/sparql?default-graph-uri=&query=SELECT++%3Ftype+%28COUNT%28%3Fc%29+as+%3Fcontributors%29+WHERE+%7B%0D%0A%3Fx+rdf%3Atype+%3Chttp%3A%2F%2Fschema.org%2FSoftwareApplication%3E+%3B%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Fname%3E+%3Fname+%3B+%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2FadditionalType%3E+%3Ftype+%3B%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Fcontributor%3E+%3Fc+.%0D%0A%7D+GROUP+BY+%3Ftype%0D%0AORDER+BY+DESC%28%3Fcontributors%29&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
+#### Query 5 : Most used licenses 
+```
+SELECT  ?license (COUNT(?license) as ?c) WHERE {
+?x rdf:type <http://schema.org/SoftwareApplication> ;
+   <http://schema.org/name> ?name ; 
+   <http://schema.org/license> ?license .
+} GROUP BY ?license
+ORDER BY DESC(?c)
+```
+[Run this query](https://134.158.247.76/sparql?default-graph-uri=&query=SELECT++%3Flicense+%28COUNT%28%3Flicense%29+as+%3Fc%29+WHERE+%7B%0D%0A%3Fx+rdf%3Atype+%3Chttp%3A%2F%2Fschema.org%2FSoftwareApplication%3E+%3B%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Fname%3E+%3Fname+%3B+%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Flicense%3E+%3Flicense+.%0D%0A%7D+GROUP+BY+%3Flicense%0D%0AORDER+BY+DESC%28%3Fc%29&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
