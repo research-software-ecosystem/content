@@ -4,6 +4,7 @@
     "biotoolsCURIE": "biotools:IDSM",
     "biotoolsID": "IDSM",
     "collectionID": [
+        "ELIXIR-CZ",
         "IOCB CAS CZ"
     ],
     "cost": "Free of charge",
@@ -11,25 +12,29 @@
         {
             "email": "jakub.galgonek@uochb.cas.cz",
             "name": "Jakub Galgonek",
+            "orcidid": "http://orcid.org/0000-0002-7038-544X",
             "typeEntity": "Person",
             "typeRole": [
+                "Primary contact",
                 "Maintainer",
                 "Developer"
             ]
         },
         {
             "name": "Mirek Kratochv\u00edl",
+            "orcidid": "https://orcid.org/0000-0001-7356-4075",
             "typeEntity": "Person",
             "typeRole": [
-                "Maintainer"
+                "Developer"
             ]
         },
         {
             "name": "IOCB CAS",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
+            "typeEntity": "Institute"
+        },
+        {
+            "name": "ELIXIR-CZ",
+            "typeEntity": "Consortium"
         }
     ],
     "description": "Integrated Database of Small Molecules",
@@ -38,11 +43,14 @@
             "type": [
                 "User manual"
             ],
-            "url": "https://idsm.elixir-czech.cz/sparql/manual.html"
+            "url": "https://idsm.elixir-czech.cz/sparql/doc/manual.html"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "ELIXIR-CZ"
+        ],
+        "type": "group"
     },
     "elixirNode": [
         "Czech Republic"
@@ -55,13 +63,13 @@
             "input": [
                 {
                     "data": {
-                        "term": "Small molecule structure",
-                        "uri": "http://edamontology.org/data_1463"
+                        "term": "Query script",
+                        "uri": "http://edamontology.org/data_3786"
                     },
                     "format": [
                         {
-                            "term": "Chemical formula format",
-                            "uri": "http://edamontology.org/format_2035"
+                            "term": "SPARQL",
+                            "uri": "http://edamontology.org/format_3790"
                         }
                     ]
                 }
@@ -75,21 +83,45 @@
             "output": [
                 {
                     "data": {
-                        "term": "Small molecule report",
-                        "uri": "http://edamontology.org/data_0962"
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
                     },
                     "format": [
+                        {
+                            "term": "RDF/XML",
+                            "uri": "http://edamontology.org/format_3261"
+                        },
+                        {
+                            "term": "Turtle",
+                            "uri": "http://edamontology.org/format_3255"
+                        },
+                        {
+                            "term": "N-Triples",
+                            "uri": "http://edamontology.org/format_3256"
+                        },
+                        {
+                            "term": "N-Quads",
+                            "uri": "http://edamontology.org/format_3956"
+                        },
+                        {
+                            "term": "XML",
+                            "uri": "http://edamontology.org/format_2332"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
                         {
                             "term": "CSV",
                             "uri": "http://edamontology.org/format_3752"
                         },
                         {
-                            "term": "HTML",
-                            "uri": "http://edamontology.org/format_2331"
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
                         },
                         {
-                            "term": "SPARQL",
-                            "uri": "http://edamontology.org/format_3790"
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
                         }
                     ]
                 }
@@ -97,34 +129,35 @@
         }
     ],
     "homepage": "https://idsm.elixir-czech.cz/",
-    "lastUpdate": "2020-06-16T10:55:23Z",
-    "license": "Other",
+    "language": [
+        "Java",
+        "C",
+        "SQL",
+        "JavaScript"
+    ],
+    "lastUpdate": "2021-05-26T13:20:31.409779Z",
     "maturity": "Mature",
     "name": "IDSM",
-    "owner": "ELIXIR-CZ",
+    "owner": "galgonek",
     "publication": [
         {
-            "doi": "10.1186/s13321-018-0282-y",
+            "doi": "10.1186/s13321-021-00515-1",
             "metadata": {
-                "abstract": "\u00a9 2018, The Author(s).Background: Structure search is one of the valuable capabilities of small-molecule databases. Fingerprint-based screening methods are usually employed to enhance the search performance by reducing the number of calls to the verification procedure. In substructure search, fingerprints are designed to capture important structural aspects of the molecule to aid the decision about whether the molecule contains a given substructure. Currently available cartridges typically provide acceptable search performance for processing user queries, but do not scale satisfactorily with dataset size. Results: We present Sachem, a new open-source chemical cartridge that implements two substructure search methods: The first is a performance-oriented reimplementation of substructure indexing based on the OrChem fingerprint, and the second is a novel method that employs newly designed fingerprints stored in inverted indices. We assessed the performance of both methods on small, medium, and large datasets containing 1, 10, and 94 million compounds, respectively. Comparison of Sachem with other freely available cartridges revealed improvements in overall performance, scaling potential and screen-out efficiency. Conclusions: The Sachem cartridge allows efficient substructure searches in databases of all sizes. The sublinear performance scaling of the second method and the ability to efficiently query large amounts of pre-extracted information may together open the door to new applications for substructure searches.",
+                "abstract": "\u00a9 2021, The Author(s).The Resource Description Framework (RDF), together with well-defined ontologies, significantly increases data interoperability and usability. The SPARQL query language was introduced to retrieve requested RDF data and to explore links between them. Among other useful features, SPARQL supports federated queries that combine multiple independent data source endpoints. This allows users to obtain insights that are not possible using only a single data source. Owing to all of these useful features, many biological and chemical databases present their data in RDF, and support SPARQL querying. In our project, we primary focused on PubChem, ChEMBL and ChEBI small-molecule datasets. These datasets are already being exported to RDF by their creators. However, none of them has an official and currently supported SPARQL endpoint. This omission makes it difficult to construct complex or federated queries that could access all of the datasets, thus underutilising the main advantage of the availability of RDF data. Our goal is to address this gap by integrating the datasets into one database called the Integrated Database of Small Molecules (IDSM) that will be accessible through a SPARQL endpoint. Beyond that, we will also focus on increasing mutual interoperability of the datasets. To realise the endpoint, we decided to implement an in-house developed SPARQL engine based on the PostgreSQL relational database for data storage. In our approach, data are stored in the traditional relational form, and the SPARQL engine translates incoming SPARQL queries into equivalent SQL queries. An important feature of the engine is that it optimises the resulting SQL queries. Together with optimisations performed by PostgreSQL, this allows efficient evaluations of SPARQL queries. The endpoint provides not only querying in the dataset, but also the compound substructure and similarity search supported by our Sachem project. Although the endpoint is accessible from an internet browser, it is mainly intended to be used for programmatic access by other services, for example as a part of federated queries. For regular users, we offer a rich web application called ChemWebRDF using the endpoint. The application is publicly available at https://idsm.elixir-czech.cz/chemweb/.",
                 "authors": [
                     {
-                        "name": "Kratochvil M."
+                        "name": "Galgonek J."
                     },
                     {
                         "name": "Vondrasek J."
-                    },
-                    {
-                        "name": "Galgonek J."
                     }
                 ],
-                "citationCount": 5,
-                "date": "2018-12-01T00:00:00Z",
+                "date": "2021-12-01T00:00:00Z",
                 "journal": "Journal of Cheminformatics",
-                "title": "Sachem: a chemical cartridge for high-performance substructure search"
+                "title": "IDSM ChemWebRDF: SPARQLing small-molecule datasets"
             },
             "type": [
-                "Method"
+                "Primary"
             ]
         },
         {
@@ -142,27 +175,31 @@
                         "name": "Galgonek J."
                     }
                 ],
-                "citationCount": 2,
+                "citationCount": 3,
                 "date": "2019-01-01T00:00:00Z",
                 "journal": "Journal of Cheminformatics",
                 "title": "Interoperable chemical structure search service"
-            },
-            "type": [
-                "Primary"
-            ]
+            }
         }
     ],
     "toolType": [
-        "Database portal"
+        "SPARQL endpoint",
+        "Web application",
+        "Database portal",
+        "Web service"
     ],
     "topic": [
         {
-            "term": "Compound libraries and screening",
-            "uri": "http://edamontology.org/topic_3343"
+            "term": "Chemical biology",
+            "uri": "http://edamontology.org/topic_3369"
         },
         {
             "term": "Cheminformatics",
             "uri": "http://edamontology.org/topic_2258"
+        },
+        {
+            "term": "Compound libraries and screening",
+            "uri": "http://edamontology.org/topic_3343"
         }
     ],
     "validated": 1
