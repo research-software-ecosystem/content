@@ -1,14 +1,14 @@
 |                                                          |     0 |
 |----------------------------------------------------------|-------|
 | (False, False, False, False, False, False, False, False) |    30 |
-| (False, False, False, False, False, False, False, True)  |  1240 |
-| (False, False, False, False, False, False, True, False)  |  3445 |
+| (False, False, False, False, False, False, False, True)  |  1239 |
+| (False, False, False, False, False, False, True, False)  |  3433 |
 | (False, False, False, False, False, False, True, True)   |    11 |
 | (False, False, False, False, False, True, True, False)   |    10 |
 | (False, False, False, True, False, False, False, False)  |     3 |
 | (False, False, False, True, False, False, False, True)   |     1 |
-| (False, False, False, True, False, False, True, False)   |  4361 |
-| (False, False, False, True, False, False, True, True)    |     5 |
+| (False, False, False, True, False, False, True, False)   |  4327 |
+| (False, False, False, True, False, False, True, True)    |     4 |
 | (False, False, False, True, False, True, False, False)   |     4 |
 | (False, False, False, True, False, True, True, False)    |    16 |
 | (False, False, True, True, False, False, False, False)   |    90 |
@@ -17,15 +17,12 @@
 | (False, True, True, True, False, False, False, False)    |  1143 |
 | (False, True, True, True, False, False, True, False)     |     2 |
 | (False, True, True, True, True, False, True, False)      |     1 |
-| (True, False, False, False, False, False, False, False)  |   410 |
-| (True, False, False, True, False, False, False, False)   |  3868 |
-| (True, False, False, True, False, False, False, True)    |     4 |
-| (True, False, False, True, False, False, True, False)    |   128 |
-| (True, False, False, True, False, True, True, False)     |     2 |
-| (True, True, False, True, False, False, False, False)    |   976 |
-| (True, True, False, True, False, False, False, True)     |     1 |
-| (True, True, False, True, False, False, True, False)     |    52 |
-| (True, True, False, True, False, True, True, False)      |     5 |
+| (True, True, False, False, False, False, False, False)   |   339 |
+| (True, True, False, True, False, False, False, False)    |  5254 |
+| (True, True, False, True, False, False, False, True)     |     6 |
+| (True, True, False, True, False, False, True, False)     |   226 |
+| (True, True, False, True, False, False, True, True)      |     1 |
+| (True, True, False, True, False, True, True, False)      |     7 |
 | (True, True, False, True, True, False, True, False)      |     1 |
 | (True, True, False, True, True, True, True, False)       |     2 |
 | (True, True, True, True, False, False, False, False)     | 14062 |
