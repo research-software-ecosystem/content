@@ -3,6 +3,7 @@ import glob
 from rdflib import ConjunctiveGraph
 from tabulate import tabulate
 
+
 def get_bioschemas_files_in_repo():
     tools = []
     for data_file in glob.glob(r"../../data/*/*.bioschemas.jsonld"):
@@ -28,10 +29,11 @@ def process_tools():
     rdf_graph.serialize(
         format="turtle",
         destination="bioschemas-dump.ttl"
-        #destination=os.path.join(directory, tpe_id + "bioschemas.jsonld")
+        # destination=os.path.join(directory, tpe_id + "bioschemas.jsonld")
     )
 
     show_stats(rdf_graph)
+
 
 def show_stats(rdf_graph):
     """
@@ -65,6 +67,7 @@ def show_stats(rdf_graph):
     print()
     print("Used ontology properties")
     print(tabulate(res))
+
 
 if __name__ == "__main__":
     process_tools()

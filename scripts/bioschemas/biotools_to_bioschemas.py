@@ -22,9 +22,12 @@ def rdfize(json_entry):
                 "edam": "http://edamontology.org/",
                 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
                 "sc": "http://schema.org/",
+                "dct": "http://purl.org/dc/terms/",
                 "bsc": "http://bioschemas.org/",
                 "description": "sc:description",
                 "name": "sc:name",
+                "identifier": "sc:identifier",
+                "sameAs": "sc:sameAs",
                 "homepage": "sc:url",
                 "toolType": "sc:additionalType",
                 "primaryContact": "biotools:primaryContact",
@@ -35,15 +38,16 @@ def rdfize(json_entry):
                 "hasPublication": "sc:citation",
                 "hasTopic": "sc:applicationSubCategory",
                 "hasOperation": "sc:featureList",
-                "hasInputData": "edam:has_input",
-                "hasOutputData": "edam:has_output",
+                "hasInputData": "bsc:input",
+                "hasOutputData": "bsc:output",
                 "license": "sc:license",
-                "version": "sc:version",
+                "version": "sc:softwareVersion",
                 "isAccessibleForFree": "sc:isAccessibleForFree",
                 "operatingSystem": "sc:operatingSystem",
                 "hasApiDoc": "sc:softwareHelp",
                 "hasGenDoc": "sc:softwareHelp",
                 "hasTermsOfUse": "sc:termsOfService",
+                "conformsTo": "dct:conformsTo",
             }
         }
         entry.update(ctx)
@@ -57,18 +61,23 @@ def rdfize(json_entry):
         entry["contributor"] = []
         entry["provider"] = []
         entry["funder"] = []
+        entry[
+            "conformsTo"
+        ] = "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT"
 
         if entry.get("credit"):
             for credit in entry["credit"]:
                 # print(credit)
-
                 ## Retrieving FUNDERS
                 if "typeEntity" in credit.keys() and credit["typeEntity"]:
                     if "Funding agency" in credit["typeEntity"]:
                         sType = "schema:Organization"
                         if "orcidid" in credit.keys() and credit["orcidid"] != None:
                             if not "funder" in entry.keys():
-                                entry["funder"] = {"@id": credit["orcidid"], "@type": sType}
+                                entry["funder"] = {
+                                    "@id": credit["orcidid"],
+                                    "@type": sType,
+                                }
                             else:
                                 entry["funder"].append(
                                     {"@id": credit["orcidid"], "@type": sType}
@@ -250,17 +259,29 @@ def rdfize(json_entry):
 
                 if item.get("input"):
                     for input in item["input"]:
+                        input_object = {
+                            "@type": "FormalParameter",
+                            "name": input["data"]["term"],
+                            "identifier": input["data"]["uri"],
+                            "sameAs": input["data"]["uri"],
+                        }
                         if not "hasInputData" in entry.keys():
-                            entry["hasInputData"] = [{"@id": input["data"]["uri"]}]
+                            entry["hasInputData"] = [input_object]
                         else:
-                            entry["hasInputData"].append({"@id": input["data"]["uri"]})
+                            entry["hasInputData"].append(input_object)
 
                 if item.get("output"):
                     for output in item["output"]:
+                        output_object = {
+                            "@type": "FormalParameter",
+                            "name": output["data"]["term"],
+                            "identifier": output["data"]["uri"],
+                            "sameAs": output["data"]["uri"],
+                        }
                         if not "hasOutputData" in entry.keys():
-                            entry["hasOutputData"] = [{"@id": output["data"]["uri"]}]
+                            entry["hasOutputData"] = [output_object]
                         else:
-                            entry["hasOutputData"].append({"@id": output["data"]["uri"]})
+                            entry["hasOutputData"].append(output_object)
 
         if entry.get("topic"):
             for item in entry["topic"]:
@@ -313,6 +334,7 @@ def get_biotools_files_in_repo():
         # if len(filename_ext) == 3 and filename_ext[2] == "json":
     return tools
 
+
 def process_tools_by_id(id="SPROUT"):
     """
     Go through all bio.tools entries and produce an RDF graph representation (BioSchemas / JSON-LD).
@@ -320,13 +342,13 @@ def process_tools_by_id(id="SPROUT"):
     tool_files = get_biotools_files_in_repo()
     for tool_file in tool_files:
         if id in tool_file:
-            #print(tool_file)
+            # print(tool_file)
             tool = json.load(open(tool_file))
             if "biotoolsID" in tool.keys():
                 tool_id = tool["biotoolsID"]
                 tpe_id = tool_id.lower()
-                #print(tool_id)
-                #print(tpe_id)
+                # print(tool_id)
+                # print(tpe_id)
                 directory = os.path.join("..", "..", "data", tpe_id)
                 dest = os.path.join(directory, tpe_id + ".bioschemas.jsonld")
 
@@ -336,9 +358,10 @@ def process_tools_by_id(id="SPROUT"):
                 temp_graph.serialize(
                     format="json-ld",
                     auto_compact=True,
-                    destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld")
+                    destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld"),
                 )
-                print(f'generated markup at {dest}')
+                print(f"generated markup at {dest}")
+
 
 def process_tools():
     """
@@ -358,7 +381,7 @@ def process_tools():
         temp_graph.serialize(
             format="json-ld",
             auto_compact=True,
-            destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld")
+            destination=os.path.join(directory, tpe_id + ".bioschemas.jsonld"),
         )
 
 
