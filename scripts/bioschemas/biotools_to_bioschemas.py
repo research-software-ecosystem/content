@@ -24,6 +24,7 @@ def rdfize(json_entry):
                 "sc": "http://schema.org/",
                 "dct": "http://purl.org/dc/terms/",
                 "bsc": "http://bioschemas.org/",
+                "bsct": "http://bioschemas.org/types/",
                 "description": "sc:description",
                 "name": "sc:name",
                 "identifier": "sc:identifier",
@@ -260,7 +261,7 @@ def rdfize(json_entry):
                 if item.get("input"):
                     for input in item["input"]:
                         input_object = {
-                            "@type": "FormalParameter",
+                            "@type": "bsct:FormalParameter",
                             "name": input["data"]["term"],
                             "identifier": input["data"]["uri"],
                             "sameAs": input["data"]["uri"],
@@ -273,7 +274,7 @@ def rdfize(json_entry):
                 if item.get("output"):
                     for output in item["output"]:
                         output_object = {
-                            "@type": "FormalParameter",
+                            "@type": "bsct:FormalParameter",
                             "name": output["data"]["term"],
                             "identifier": output["data"]["uri"],
                             "sameAs": output["data"]["uri"],
