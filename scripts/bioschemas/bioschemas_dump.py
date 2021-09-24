@@ -45,13 +45,13 @@ def show_stats(rdf_graph):
     SELECT ?c (count(?c) as ?count) WHERE {
         ?s rdf:type ?c .
     } 
-    GROUP BY ?p
-    ORDER BY DESC(?c)
+    GROUP BY ?c
+    ORDER BY DESC(?count)
     """
 
     res = rdf_graph.query(classes_counts)
     print()
-    print("Used ontology classes")
+    print("Used classes")
     print(tabulate(res))
 
     ### display used properties
@@ -65,7 +65,7 @@ def show_stats(rdf_graph):
 
     res = rdf_graph.query(property_counts)
     print()
-    print("Used ontology properties")
+    print("Used properties")
     print(tabulate(res))
 
 
