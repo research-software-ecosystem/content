@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -10,14 +12,28 @@
   },
   "@graph": [
     {
+      "@id": "http://orcid.org/0000-0002-4517-1562",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1038/nmeth.1937",
+      "@type": "sc:CreativeWork"
+    },
+    {
       "@id": "https://bio.tools/segway",
       "@type": "sc:SoftwareApplication",
-      "edam:has_input": {
-        "@id": "edam:data_3108"
+      "bsc:input": {
+        "@id": "_:N727b12e42d594a1b82e03fe5597da9e3"
       },
-      "edam:has_output": {
-        "@id": "edam:data_3002"
-      },
+      "bsc:output": [
+        {
+          "@id": "_:Nfe548c9ca2b5479f9823d34cd9349dab"
+        },
+        {
+          "@id": "_:N2eba0899952040b58cf0395b8083ee06"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Command-line tool",
       "sc:applicationSubCategory": [
         {
@@ -28,26 +44,26 @@
         }
       ],
       "sc:author": [
-        "Eric Roberts",
         {
           "@id": "http://orcid.org/0000-0002-4517-1562"
-        }
+        },
+        "Eric Roberts"
       ],
       "sc:citation": [
+        "pubmed:22426492",
+        "pmcid:PMC3340533",
         {
           "@id": "https://doi.org/10.1038/nmeth.1937"
         },
-        "pubmed:22426492",
-        "pubmed:23221638",
-        "pmcid:PMC3340533"
+        "pubmed:23221638"
       ],
       "sc:description": "Novel method for analyzing multiple tracks of functional genomics data which uses a dynamic Bayesian network (DBN) model, which enables it to analyze the entire genome at 1-bp resolution even in the face of heterogeneous patterns of missing data. This method is the first application of DBN techniques to genome-scale data and the first genomic segmentation method designed for use with the maximum resolution data available from ChIP-seq experiments without downsampling.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_3432"
+          "@id": "edam:operation_0362"
         },
         {
-          "@id": "edam:operation_0362"
+          "@id": "edam:operation_3432"
         }
       ],
       "sc:isAccessibleForFree": true,
@@ -55,30 +71,43 @@
       "sc:name": "Segway",
       "sc:operatingSystem": "Linux",
       "sc:provider": [
-        "University of Toronto",
-        "Princess Margaret Cancer Centre"
+        "Princess Margaret Cancer Centre",
+        "University of Toronto"
       ],
       "sc:softwareHelp": [
         {
-          "@id": "http://segway.hoffmanlab.org/"
+          "@id": "http://segway.readthedocs.io/"
         },
         {
           "@id": "https://bitbucket.org/hoffmanlab/segway/"
         },
         {
-          "@id": "http://segway.readthedocs.io/"
+          "@id": "http://segway.hoffmanlab.org/"
         }
       ],
-      "sc:url": "http://segway.hoffmanlab.org/",
-      "sc:version": "1.4.0"
+      "sc:softwareVersion": "1.4.0",
+      "sc:url": "http://segway.hoffmanlab.org/"
     },
     {
-      "@id": "http://orcid.org/0000-0002-4517-1562",
-      "@type": "schema:Person"
+      "@id": "_:Nfe548c9ca2b5479f9823d34cd9349dab",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
     },
     {
-      "@id": "https://doi.org/10.1038/nmeth.1937",
-      "@type": "sc:CreativeWork"
+      "@id": "_:N2eba0899952040b58cf0395b8083ee06",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "_:N727b12e42d594a1b82e03fe5597da9e3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3108",
+      "sc:name": "Experimental measurement",
+      "sc:sameAs": "http://edamontology.org/data_3108"
     }
   ]
 }

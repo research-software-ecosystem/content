@@ -2,40 +2,68 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "https://bio.tools/goenrichment",
-  "@type": "sc:SoftwareApplication",
-  "edam:has_input": [
+  "@graph": [
     {
-      "@id": "edam:data_0582"
+      "@id": "https://bio.tools/goenrichment",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Nb08b28f89cd6445497c5f3f420e1805b"
+        },
+        {
+          "@id": "_:N60b609b469c444668cd8ad803b129738"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:Nc41cb105a40a4cc59f9ca5296a5c0ca7"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3308"
+      },
+      "sc:author": "Daniel Faria",
+      "sc:description": "GOEnrichment is a tool for performing GO enrichment analysis of gene sets, such as those obtained from RNA-seq or Microarray experiments, to help characterize them at the functional level. It is available in Galaxy Europe and as a stand-alone tool.\nGOEnrichment is flexible in that it allows the user to use any version of the Gene Ontology and any GO annotation file they desire. To enable the use of GO slims, it is accompanied by a sister tool GOSlimmer, which can convert annotation files from full GO to any specified GO slim.\nThe tool features an optional graph clustering algorithm to reduce the redundancy in the set of enriched GO terms and simplify its output.\nIt was developed by the BioData.pt / ELIXIR-PT team at the Instituto Gulbenkian de Ciência.",
+      "sc:featureList": {
+        "@id": "edam:operation_2436"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Apache-2.0",
+      "sc:name": "GOEnrichment",
+      "sc:softwareHelp": {
+        "@id": "https://galaxyproject.github.io/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html"
+      },
+      "sc:softwareVersion": "2.0",
+      "sc:url": "https://github.com/DanFaria/GOEnrichment"
     },
     {
-      "@id": "edam:data_2603"
+      "@id": "_:Nb08b28f89cd6445497c5f3f420e1805b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0582",
+      "sc:name": "Ontology",
+      "sc:sameAs": "http://edamontology.org/data_0582"
+    },
+    {
+      "@id": "_:N60b609b469c444668cd8ad803b129738",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    },
+    {
+      "@id": "_:Nc41cb105a40a4cc59f9ca5296a5c0ca7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3754",
+      "sc:name": "GO-term enrichment data",
+      "sc:sameAs": "http://edamontology.org/data_3754"
     }
-  ],
-  "edam:has_output": {
-    "@id": "edam:data_3754"
-  },
-  "sc:additionalType": "Command-line tool",
-  "sc:applicationSubCategory": {
-    "@id": "edam:topic_3308"
-  },
-  "sc:author": "Daniel Faria",
-  "sc:description": "GOEnrichment is a tool for performing GO enrichment analysis of gene sets, such as those obtained from RNA-seq or Microarray experiments, to help characterize them at the functional level. It is available in Galaxy Europe and as a stand-alone tool.\nGOEnrichment is flexible in that it allows the user to use any version of the Gene Ontology and any GO annotation file they desire. To enable the use of GO slims, it is accompanied by a sister tool GOSlimmer, which can convert annotation files from full GO to any specified GO slim.\nThe tool features an optional graph clustering algorithm to reduce the redundancy in the set of enriched GO terms and simplify its output.\nIt was developed by the BioData.pt / ELIXIR-PT team at the Instituto Gulbenkian de Ciência.",
-  "sc:featureList": {
-    "@id": "edam:operation_2436"
-  },
-  "sc:isAccessibleForFree": true,
-  "sc:license": "Apache-2.0",
-  "sc:name": "GOEnrichment",
-  "sc:softwareHelp": {
-    "@id": "https://galaxyproject.github.io/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html"
-  },
-  "sc:url": "https://github.com/DanFaria/GOEnrichment",
-  "sc:version": "2.0"
+  ]
 }

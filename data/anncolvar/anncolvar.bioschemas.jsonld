@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -17,22 +19,23 @@
       "@id": "https://bio.tools/Anncolvar",
       "@type": "sc:SoftwareApplication",
       "biotools:primaryContact": "Vojtech Spiwok",
-      "edam:has_input": {
-        "@id": "edam:data_3870"
+      "bsc:input": {
+        "@id": "_:N8097abcb55c14c58b8927bcca724c7e3"
       },
-      "edam:has_output": {
-        "@id": "edam:data_2087"
+      "bsc:output": {
+        "@id": "_:N461a252c9bb34d61a147bda673f50772"
       },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Command-line tool",
       "sc:applicationSubCategory": {
         "@id": "edam:topic_3892"
       },
       "sc:citation": [
+        "pubmed:31058167",
         {
           "@id": "https://doi.org/10.3389/fmolb.2019.00025"
         },
-        "pmcid:PMC6482212",
-        "pubmed:31058167"
+        "pmcid:PMC6482212"
       ],
       "sc:description": "Anncolvar builds a feed-forward neural network for approximation of a collective variable of a molecular system. Molecular simulations are slow due to fact that a studied system tends to stay in local energy minima. Methods such as metadynamics address this problem by application of artificial forces acting on collective variables. Collective variables are some descriptors of the state of the molecular system. For example, when simulation binding of a ligand to protein it is possible to use their distance as a collective variable and by applying force onto this collective variable you can accelerate binding and unbinding. However, some sophisticated collective variables are difficult to calculate. For this purpose we developed Anncolvar to approximate such collective variables using artificial neural network.",
       "sc:featureList": {
@@ -50,14 +53,28 @@
           "@id": "https://github.com/spiwokv/anncolvar/blob/master/README.rst"
         }
       ],
-      "sc:url": "https://github.com/spiwokv/anncolvar",
-      "sc:version": [
-        "v0.5",
-        "v0.2",
-        "v0.4",
+      "sc:softwareVersion": [
         "v0.6",
-        "v0.3"
-      ]
+        "v0.5",
+        "v0.4",
+        "v0.3",
+        "v0.2"
+      ],
+      "sc:url": "https://github.com/spiwokv/anncolvar"
+    },
+    {
+      "@id": "_:N8097abcb55c14c58b8927bcca724c7e3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3870",
+      "sc:name": "Trajectory data",
+      "sc:sameAs": "http://edamontology.org/data_3870"
+    },
+    {
+      "@id": "_:N461a252c9bb34d61a147bda673f50772",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2087",
+      "sc:name": "Molecular property",
+      "sc:sameAs": "http://edamontology.org/data_2087"
     }
   ]
 }

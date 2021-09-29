@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -10,14 +12,23 @@
   },
   "@graph": [
     {
+      "@id": "https://doi.org/10.1093/nar/gks553",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "http://orcid.org/0000-0001-9539-2606",
+      "@type": "schema:Person"
+    },
+    {
       "@id": "https://bio.tools/bips",
       "@type": "sc:SoftwareApplication",
-      "edam:has_input": {
-        "@id": "edam:data_2974"
+      "bsc:input": {
+        "@id": "_:Ndddf18f4adfa4705a79934cc4f8ff134"
       },
-      "edam:has_output": {
-        "@id": "edam:data_2600"
+      "bsc:output": {
+        "@id": "_:N4536f2436a9348c3b8933634a9a65850"
       },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Web API",
       "sc:applicationSubCategory": {
         "@id": "edam:topic_2259"
@@ -26,11 +37,11 @@
         "@id": "http://orcid.org/0000-0001-9539-2606"
       },
       "sc:citation": [
-        "pmcid:PMC3394316",
         "pubmed:22689642",
         {
           "@id": "https://doi.org/10.1093/nar/gks553"
-        }
+        },
+        "pmcid:PMC3394316"
       ],
       "sc:description": "The web server where you can predict putative interactions between proteins based on homologs found in Protein-Protein interaction databases. It relies on data integrated in BIANA. You just need to insert your sequences of interest or list of protein identifiers, and the tool will infer interactions based on homology. Predicted partners can be restricted to proteins added in your list or to the complete BIANA database.",
       "sc:featureList": {
@@ -38,24 +49,30 @@
       },
       "sc:name": "BIPS",
       "sc:operatingSystem": [
-        "Windows",
         "Linux",
-        "Mac"
+        "Mac",
+        "Windows"
       ],
       "sc:provider": "upf.edu",
       "sc:softwareHelp": {
         "@id": "http://sbi.imim.es/web/index.php/research/servers/bips"
       },
-      "sc:url": "http://sbi.imim.es/BIPS.php",
-      "sc:version": "1"
+      "sc:softwareVersion": "1",
+      "sc:url": "http://sbi.imim.es/BIPS.php"
     },
     {
-      "@id": "https://doi.org/10.1093/nar/gks553",
-      "@type": "sc:CreativeWork"
+      "@id": "_:Ndddf18f4adfa4705a79934cc4f8ff134",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2974",
+      "sc:name": "Protein sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2974"
     },
     {
-      "@id": "http://orcid.org/0000-0001-9539-2606",
-      "@type": "schema:Person"
+      "@id": "_:N4536f2436a9348c3b8933634a9a65850",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
     }
   ]
 }

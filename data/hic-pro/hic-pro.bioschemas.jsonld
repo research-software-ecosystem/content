@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -9,10 +11,6 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "http://orcid.org/0000-0003-1678-7410",
-      "@type": "schema:Person"
-    },
     {
       "@id": "https://doi.org/10.1186/s13059-015-0831-x",
       "@type": "sc:CreativeWork"
@@ -23,9 +21,10 @@
       "biotools:primaryContact": {
         "@id": "http://orcid.org/0000-0003-1678-7410"
       },
-      "edam:has_input": {
-        "@id": "edam:data_2044"
+      "bsc:input": {
+        "@id": "_:N728e39d8cb3d46cfafc26092bc1283c0"
       },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Command-line tool",
       "sc:applicationSubCategory": {
         "@id": "edam:topic_3070"
@@ -35,10 +34,10 @@
       },
       "sc:citation": [
         "pmcid:PMC4665391",
-        "pubmed:26619908",
         {
           "@id": "https://doi.org/10.1186/s13059-015-0831-x"
-        }
+        },
+        "pubmed:26619908"
       ],
       "sc:description": "This tool was designed to process Hi-C data, from raw fastq files (paired-end Illumina data) to the normalized contact maps. Since version 2.7.0, it can analyze data from digestion protocols as well as data from protocols that do not require restriction enzyme such as DNase Hi-C. The pipeline is flexible, scalable and optimized. It can operate either on a single laptop or on a computational cluster using the PBS-Torque scheduler.",
       "sc:featureList": {
@@ -46,26 +45,37 @@
       },
       "sc:name": "HiC-Pro",
       "sc:operatingSystem": [
-        "Linux",
-        "Mac"
+        "Mac",
+        "Linux"
       ],
       "sc:provider": [
-        "curie.fr",
-        "Institut Curie"
+        "Institut Curie",
+        "curie.fr"
       ],
       "sc:softwareHelp": [
+        {
+          "@id": "https://github.com/nservant/HiC-Pro/blob/master/LICENSE"
+        },
         {
           "@id": "http://nservant.github.io/HiC-Pro/"
         },
         {
           "@id": "https://github.com/nservant/HiC-Pro/blob/master/README.rst"
-        },
-        {
-          "@id": "https://github.com/nservant/HiC-Pro/blob/master/LICENSE"
         }
       ],
-      "sc:url": "https://github.com/nservant/HiC-Pro",
-      "sc:version": "2.7.8"
+      "sc:softwareVersion": "2.7.8",
+      "sc:url": "https://github.com/nservant/HiC-Pro"
+    },
+    {
+      "@id": "_:N728e39d8cb3d46cfafc26092bc1283c0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2044",
+      "sc:name": "Sequence",
+      "sc:sameAs": "http://edamontology.org/data_2044"
+    },
+    {
+      "@id": "http://orcid.org/0000-0003-1678-7410",
+      "@type": "schema:Person"
     }
   ]
 }

@@ -2,51 +2,72 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "https://bio.tools/barrnap",
-  "@type": "sc:SoftwareApplication",
-  "biotools:primaryContact": [
-    "Australia",
-    "Torsten Seemann"
-  ],
-  "edam:has_input": {
-    "@id": "edam:data_3494"
-  },
-  "edam:has_output": {
-    "@id": "edam:data_1255"
-  },
-  "sc:additionalType": "Command-line tool",
-  "sc:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0622"
+      "@id": "https://bio.tools/barrnap",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Torsten Seemann",
+        "Australia"
+      ],
+      "bsc:input": {
+        "@id": "_:Nd7ee2012a2d24a868bfe00480d1b8ae6"
+      },
+      "bsc:output": {
+        "@id": "_:N3105d321e4f4458f910a21a853571ae6"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:topic_0621"
+        }
+      ],
+      "sc:author": "Torsten Seemann",
+      "sc:description": "Predict the location of ribosomal RNA genes in genomes. It supports bacteria (5S,23S,16S), archaea (5S,5.8S,23S,16S), mitochondria (12S,16S) and eukaryotes (5S,5.8S,28S,18S).",
+      "sc:featureList": {
+        "@id": "edam:operation_2454"
+      },
+      "sc:license": "GPL-3.0",
+      "sc:name": "Barrnap",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac"
+      ],
+      "sc:provider": [
+        "University of Melbourne, Australia",
+        "unimelb.edu.au"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://github.com/tseemann/barrnap/blob/master/README.md"
+      },
+      "sc:softwareVersion": "1",
+      "sc:url": "https://github.com/tseemann/barrnap"
     },
     {
-      "@id": "edam:topic_0621"
+      "@id": "_:Nd7ee2012a2d24a868bfe00480d1b8ae6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3494",
+      "sc:name": "DNA sequence",
+      "sc:sameAs": "http://edamontology.org/data_3494"
+    },
+    {
+      "@id": "_:N3105d321e4f4458f910a21a853571ae6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1255",
+      "sc:name": "Sequence features",
+      "sc:sameAs": "http://edamontology.org/data_1255"
     }
-  ],
-  "sc:author": "Torsten Seemann",
-  "sc:description": "Predict the location of ribosomal RNA genes in genomes. It supports bacteria (5S,23S,16S), archaea (5S,5.8S,23S,16S), mitochondria (12S,16S) and eukaryotes (5S,5.8S,28S,18S).",
-  "sc:featureList": {
-    "@id": "edam:operation_2454"
-  },
-  "sc:license": "GPL-3.0",
-  "sc:name": "Barrnap",
-  "sc:operatingSystem": [
-    "Mac",
-    "Linux"
-  ],
-  "sc:provider": [
-    "University of Melbourne, Australia",
-    "unimelb.edu.au"
-  ],
-  "sc:softwareHelp": {
-    "@id": "https://github.com/tseemann/barrnap/blob/master/README.md"
-  },
-  "sc:url": "https://github.com/tseemann/barrnap",
-  "sc:version": "1"
+  ]
 }

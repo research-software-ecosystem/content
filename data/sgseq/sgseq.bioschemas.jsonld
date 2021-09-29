@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -10,27 +12,24 @@
   },
   "@graph": [
     {
-      "@id": "https://doi.org/10.1371/journal.pone.0156132",
-      "@type": "sc:CreativeWork"
-    },
-    {
       "@id": "https://bio.tools/sgseq",
       "@type": "sc:SoftwareApplication",
       "biotools:primaryContact": "Leonard Goldstein",
-      "edam:has_input": {
-        "@id": "edam:data_3495"
+      "bsc:input": {
+        "@id": "_:N7f52739fede145598c682e147631d09f"
       },
-      "edam:has_output": [
+      "bsc:output": [
         {
-          "@id": "edam:data_2884"
+          "@id": "_:Nd093fe69dd1e46a8990ba67babf042a7"
         },
         {
-          "@id": "edam:data_1636"
+          "@id": "_:N2e695e3bfbfd4157b7c9ac08d4cf67ca"
         }
       ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": [
-        "Library",
-        "Command-line tool"
+        "Command-line tool",
+        "Library"
       ],
       "sc:applicationSubCategory": [
         {
@@ -42,10 +41,10 @@
       ],
       "sc:citation": [
         "pubmed:27218464",
+        "pmcid:PMC4878813",
         {
           "@id": "https://doi.org/10.1371/journal.pone.0156132"
-        },
-        "pmcid:PMC4878813"
+        }
       ],
       "sc:description": "Package for analyzing splice events from RNA-seq data. Input data are sequence reads mapped to a reference genome in BAM format. Genes are represented as a genome-wide splice graph, which can be obtained from existing annotation or can be predicted from the data. Splice events are identified from the graph and are quantified locally using structurally compatible reads at the start or end of each splice variant.",
       "sc:featureList": {
@@ -54,15 +53,40 @@
       "sc:license": "Artistic-2.0",
       "sc:name": "SGSeq",
       "sc:operatingSystem": [
-        "Windows",
+        "Mac",
         "Linux",
-        "Mac"
+        "Windows"
       ],
       "sc:softwareHelp": {
         "@id": "http://bioconductor.org/packages/release/bioc/html/SGSeq.html"
       },
-      "sc:url": "http://bioconductor.org/packages/release/bioc/html/SGSeq.html",
-      "sc:version": "1.8.1"
+      "sc:softwareVersion": "1.8.1",
+      "sc:url": "http://bioconductor.org/packages/release/bioc/html/SGSeq.html"
+    },
+    {
+      "@id": "_:Nd093fe69dd1e46a8990ba67babf042a7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:N2e695e3bfbfd4157b7c9ac08d4cf67ca",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1636",
+      "sc:name": "Heat map",
+      "sc:sameAs": "http://edamontology.org/data_1636"
+    },
+    {
+      "@id": "_:N7f52739fede145598c682e147631d09f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3495",
+      "sc:name": "RNA sequence",
+      "sc:sameAs": "http://edamontology.org/data_3495"
+    },
+    {
+      "@id": "https://doi.org/10.1371/journal.pone.0156132",
+      "@type": "sc:CreativeWork"
     }
   ]
 }

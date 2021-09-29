@@ -2,6 +2,8 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -9,10 +11,6 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "https://doi.org/10.1017/CBO9781139151399",
-      "@type": "sc:CreativeWork"
-    },
     {
       "@id": "https://doi.org/10.1016/S0168-9525(00)02024-2",
       "@type": "sc:CreativeWork"
@@ -22,19 +20,24 @@
       "@type": "sc:CreativeWork"
     },
     {
+      "@id": "https://doi.org/10.1017/CBO9781139151399",
+      "@type": "sc:CreativeWork"
+    },
+    {
       "@id": "https://bio.tools/backtranseq",
       "@type": "sc:SoftwareApplication",
-      "edam:has_input": [
+      "bsc:input": [
         {
-          "@id": "edam:data_2886"
+          "@id": "_:N4bb35c4a0190433d9191e8f06d3840eb"
         },
         {
-          "@id": "edam:data_1597"
+          "@id": "_:N4be49d7333604922a4896ae181240de3"
         }
       ],
-      "edam:has_output": {
-        "@id": "edam:data_0849"
+      "bsc:output": {
+        "@id": "_:N866c9c85b99e4f9c8dbb40b566aea5f3"
       },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Command-line tool",
       "sc:applicationSubCategory": {
         "@id": "edam:topic_0203"
@@ -51,45 +54,66 @@
         }
       ],
       "sc:contributor": [
-        "EMBOSS Contributors",
         "Wellcome Trust",
-        "UK MRC",
-        "UK BBSRC"
+        "EMBOSS Contributors",
+        "UK BBSRC",
+        "UK MRC"
       ],
       "sc:description": "Back-translate a protein sequence to a nucleotide sequence.",
       "sc:featureList": {
         "@id": "edam:operation_0371"
       },
       "sc:funder": [
-        "Wellcome Trust",
+        "UK BBSRC",
         "UK MRC",
-        "UK BBSRC"
+        "Wellcome Trust"
       ],
       "sc:isAccessibleForFree": true,
       "sc:license": "GPL-3.0",
       "sc:name": "backtranseq",
       "sc:operatingSystem": [
-        "Mac",
+        "Linux",
         "Windows",
-        "Linux"
+        "Mac"
       ],
       "sc:provider": [
-        "EMBL-EBI",
-        "EMBOSS"
+        "EMBOSS",
+        "EMBL-EBI"
       ],
       "sc:softwareHelp": [
         {
-          "@id": "http://emboss.open-bio.org/rel/rel6/apps/backtranseq.html"
+          "@id": "http://emboss.open-bio.org/html/dev/ch01s01.html"
         },
         {
           "@id": "http://emboss.open-bio.org/html/use/pr02s04.html"
         },
         {
-          "@id": "http://emboss.open-bio.org/html/dev/ch01s01.html"
+          "@id": "http://emboss.open-bio.org/rel/rel6/apps/backtranseq.html"
         }
       ],
-      "sc:url": "http://emboss.open-bio.org/rel/rel6/apps/backtranseq.html",
-      "sc:version": "r6"
+      "sc:softwareVersion": "r6",
+      "sc:url": "http://emboss.open-bio.org/rel/rel6/apps/backtranseq.html"
+    },
+    {
+      "@id": "_:N4bb35c4a0190433d9191e8f06d3840eb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2886",
+      "sc:name": "Protein sequence record",
+      "sc:sameAs": "http://edamontology.org/data_2886"
+    },
+    {
+      "@id": "_:N4be49d7333604922a4896ae181240de3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1597",
+      "sc:name": "Codon usage table",
+      "sc:sameAs": "http://edamontology.org/data_1597"
+    },
+    {
+      "@id": "_:N866c9c85b99e4f9c8dbb40b566aea5f3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0849",
+      "sc:name": "Sequence record",
+      "sc:sameAs": "http://edamontology.org/data_0849"
     }
   ]
 }

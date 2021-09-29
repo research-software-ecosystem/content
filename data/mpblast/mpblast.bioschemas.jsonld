@@ -2,48 +2,69 @@
   "@context": {
     "biotools": "https://bio.tools/ontology/",
     "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "dct": "http://purl.org/dc/terms/",
     "edam": "http://edamontology.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "https://bio.tools/mpblast",
-  "@type": "sc:SoftwareApplication",
-  "biotools:primaryContact": "Ian Korf",
-  "edam:has_input": {
-    "@id": "edam:data_2044"
-  },
-  "edam:has_output": {
-    "@id": "edam:data_0857"
-  },
-  "sc:additionalType": "Command-line tool",
-  "sc:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0080"
+      "@id": "https://bio.tools/mpblast",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Ian Korf",
+      "bsc:input": {
+        "@id": "_:N6060130e67704cc2928f980a359d7248"
+      },
+      "bsc:output": {
+        "@id": "_:N5033caf69b6549a5a3593e80e6653b2f"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0080"
+        },
+        {
+          "@id": "edam:topic_0219"
+        }
+      ],
+      "sc:citation": "pubmed:11159321",
+      "sc:description": "Software that increases the throughput of batch BLASTN searches by multiplexing (concatenating) query sequences and thereby reducing the number of actual database searches performed.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0346"
+        },
+        {
+          "@id": "edam:operation_0292"
+        }
+      ],
+      "sc:name": "MPBLAST",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://korflab.ucdavis.edu/software.html"
+      },
+      "sc:url": "http://korflab.ucdavis.edu/software.html"
     },
     {
-      "@id": "edam:topic_0219"
-    }
-  ],
-  "sc:citation": "pubmed:11159321",
-  "sc:description": "Software that increases the throughput of batch BLASTN searches by multiplexing (concatenating) query sequences and thereby reducing the number of actual database searches performed.",
-  "sc:featureList": [
-    {
-      "@id": "edam:operation_0346"
+      "@id": "_:N6060130e67704cc2928f980a359d7248",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2044",
+      "sc:name": "Sequence",
+      "sc:sameAs": "http://edamontology.org/data_2044"
     },
     {
-      "@id": "edam:operation_0292"
+      "@id": "_:N5033caf69b6549a5a3593e80e6653b2f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0857",
+      "sc:name": "Sequence search results",
+      "sc:sameAs": "http://edamontology.org/data_0857"
     }
-  ],
-  "sc:name": "MPBLAST",
-  "sc:operatingSystem": [
-    "Linux",
-    "Windows",
-    "Mac"
-  ],
-  "sc:softwareHelp": {
-    "@id": "http://korflab.ucdavis.edu/software.html"
-  },
-  "sc:url": "http://korflab.ucdavis.edu/software.html"
+  ]
 }
