@@ -1,13 +1,216 @@
 {
-    "additionDate": "2021-05-26T20:02:49.589994",
+    "additionDate": "2021-05-26T20:02:50Z",
     "biotoolsCURIE": "biotools:glimmermg",
     "biotoolsID": "glimmermg",
-    "description": "Glimmer-MG is a system for finding genes in environmental shotgun DNA\nsequences. Glimmer-MG (Gene Locator and Interpolated Markov ModelER -\nMetaGenomics) uses interpolated Markov models (IMMs) to identify the\ncoding regions and distinguish them from noncoding DNA.",
+    "credit": [
+        {
+            "email": "dakelley@umiacs.umd.edu",
+            "name": "David R. Kelley",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://github.com/davek44"
+        }
+    ],
+    "description": "Glimmer-MG is a system for finding genes in environmental shotgun DNA\nsequences. Glimmer-MG (Gene Locator and Interpolated Markov ModelER -\nMetaGenomics) uses interpolated Markov models (IMMs) to identify the\ncoding regions and distinguish them from noncoding DNA. Licensed under Artistic License.",
+    "documentation": [
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://github.com/davek44/Glimmer-MG/blob/master/docs/notes.pdf"
+        }
+    ],
     "editPermission": {
         "type": "private"
     },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    }
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Gene prediction",
+                    "uri": "http://edamontology.org/operation_2454"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Gene report",
+                        "uri": "http://edamontology.org/data_0916"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Gene report",
+                        "uri": "http://edamontology.org/data_0916"
+                    }
+                }
+            ],
+            "note": "Extract multi-fasta file of amino acid sequences from the Glimmer gene predictions.",
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Gene report",
+                        "uri": "http://edamontology.org/data_0916"
+                    }
+                }
+            ],
+            "note": "Training features",
+            "operation": [
+                {
+                    "term": "Feature extraction",
+                    "uri": "http://edamontology.org/operation_3937"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence motif",
+                        "uri": "http://edamontology.org/data_1353"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Sequence length",
+                        "uri": "http://edamontology.org/data_1249"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Codon usage data",
+                        "uri": "http://edamontology.org/data_0914"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Nucleic acid property",
+                        "uri": "http://edamontology.org/data_0912"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "homepage": "https://github.com/davek44/Glimmer-MG",
-    "lastUpdate": "2021-05-26T20:02:49.590937Z",
+    "language": [
+        "C++",
+        "Python"
+    ],
+    "lastUpdate": "2021-06-25T08:10:14Z",
+    "license": "Other",
+    "link": [
+        {
+            "type": [
+                "Other"
+            ],
+            "url": "http://www.cbcb.umd.edu/software/glimmer-mg/"
+        },
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/davek44/Glimmer-MG/issues"
+        }
+    ],
     "name": "Glimmer-MG",
-    "owner": "Kigaard"
+    "owner": "Kigaard",
+    "publication": [
+        {
+            "doi": "10.1093/nar/gkr1067",
+            "metadata": {
+                "abstract": "Environmental shotgun sequencing (or metagenomics) is widely used to survey the communities of microbial organisms that live in many diverse ecosystems, such as the human body. Finding the protein-coding genes within the sequences is an important step for assessing the functional capacity of a metagenome. In this work, we developed a metagenomics gene prediction system Glimmer-MG that achieves significantly greater accuracy than previous systems via novel approaches to a number of important prediction subtasks. First, we introduce the use of phylogenetic classifications of the sequences to model parameterization. We also cluster the sequences, grouping together those that likely originated from the same organism. Analogous to iterative schemes that are useful for whole genomes, we retrain our models within each cluster on the initial gene predictions before making final predictions. Finally, we model both insertiondeletion and substitution sequencing errors using a different approach than previous software, allowing Glimmer-MG to change coding frame or pass through stop codons by predicting an error. In a comparison among multiple gene finding methods, Glimmer-MG makes the most sensitive and precise predictions on simulated and real metagenomes for all read lengths and error rates tested. \u00a9 2011 The Author(s).",
+                "authors": [
+                    {
+                        "name": "Kelley D.R."
+                    },
+                    {
+                        "name": "Liu B."
+                    },
+                    {
+                        "name": "Delcher A.L."
+                    },
+                    {
+                        "name": "Pop M."
+                    },
+                    {
+                        "name": "Salzberg S.L."
+                    }
+                ],
+                "citationCount": 89,
+                "date": "2012-01-01T00:00:00Z",
+                "journal": "Nucleic Acids Research",
+                "title": "Gene prediction with Glimmer for metagenomic sequences augmented by classification and clustering"
+            },
+            "pmcid": "PMC3245904",
+            "pmid": "22102569",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "toolType": [
+        "Script"
+    ],
+    "topic": [
+        {
+            "term": "Metagenomics",
+            "uri": "http://edamontology.org/topic_3174"
+        },
+        {
+            "term": "Metagenomic sequencing",
+            "uri": "http://edamontology.org/topic_3837"
+        }
+    ]
 }

@@ -1,59 +1,97 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2015-09-12T00:21:12Z",
     "biotoolsCURIE": "biotools:dssp",
     "biotoolsID": "dssp",
-    "collectionID": [
-        "DRCAT"
-    ],
+    "community": {
+        "biolib": {
+            "app_name": "DSSP",
+            "author_name": "bio-utils",
+            "author_username": "bio-utils"
+        }
+    },
+    "cost": "Free of charge",
     "credit": [
         {
-            "name": "Radboud University Medical Center",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
-        },
-        {
-            "name": "DRCAT",
-            "typeEntity": "Project",
-            "typeRole": [
-                "Documentor"
-            ]
-        },
-        {
-            "email": "Gerrit.Vriend@radboudumc.nl",
+            "email": "wolfgang.kabsch@mr.mpg.de",
+            "name": "Wolfgang Kabsch",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact"
-            ]
+                "Developer"
+            ],
+            "url": "https://www.mr.mpg.de/person/9342/2169"
+        },
+        {
+            "email": "chris@sanderlab.org",
+            "name": "Chris Sander",
+            "orcidid": "https://orcid.org/0000-0001-6059-6270",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ],
+            "url": "https://www.sanderlab.org/#/"
+        },
+        {
+            "email": "m.hekkelman@nki.nl",
+            "name": "Maarten Hekkelman",
+            "orcidid": "https://orcid.org/0000-0002-9081-4707",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Maintainer"
+            ],
+            "url": "https://www.nki.nl/research/find-a-researcher/researchers/maarten-l-hekkelman/"
         }
     ],
-    "description": "Secondary structure assignments (and much more) for all protein entries in the Protein Data Bank (PDB).",
+    "description": "DSSP secondary structure database . It produces secondary structure assignments (and much more) for all protein entries in the Protein Data Bank (PDB).",
     "documentation": [
         {
+            "note": "User manual of the last version (4.0.1)",
             "type": [
-                "General"
+                "User manual"
             ],
-            "url": "http://swift.cmbi.ru.nl/gv/dssp/"
+            "url": "https://github.com/PDB-REDO/dssp/blob/trunk/doc/mkdssp.pdf"
+        }
+    ],
+    "download": [
+        {
+            "note": "Download source code from GitHub",
+            "type": "Source code",
+            "url": "https://github.com/PDB-REDO/dssp/archive/refs/heads/trunk.zip",
+            "version": "4.0.1"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "laurasansc"
+        ],
+        "type": "group"
     },
     "function": [
         {
+            "cmd": "mkdssp [options] input [output]",
             "input": [
                 {
                     "data": {
-                        "term": "PDB ID",
-                        "uri": "http://edamontology.org/data_1127"
-                    }
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        },
+                        {
+                            "term": "mmCIF",
+                            "uri": "http://edamontology.org/format_1477"
+                        }
+                    ]
                 }
             ],
+            "note": "Run DSSP on PDB and mmCIF files",
             "operation": [
                 {
-                    "term": "Query and retrieval",
-                    "uri": "http://edamontology.org/operation_0224"
+                    "term": "Protein structure assignment",
+                    "uri": "http://edamontology.org/operation_0320"
                 }
             ],
             "output": [
@@ -64,8 +102,8 @@
                     },
                     "format": [
                         {
-                            "term": "HTML",
-                            "uri": "http://edamontology.org/format_2331"
+                            "term": "dssp",
+                            "uri": "http://edamontology.org/format_1454"
                         }
                     ]
                 }
@@ -73,11 +111,24 @@
         }
     ],
     "homepage": "http://swift.cmbi.ru.nl/gv/dssp/",
-    "lastUpdate": "2018-12-10T12:58:49Z",
-    "name": "DSSP secondary structure database",
+    "language": [
+        "C++"
+    ],
+    "lastUpdate": "2021-09-22T08:58:19.845327Z",
+    "license": "BSD-2-Clause",
+    "link": [
+        {
+            "note": "Official GitHub repository.",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/PDB-REDO/dssp"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "DSSP",
     "operatingSystem": [
         "Linux",
-        "Windows",
         "Mac"
     ],
     "owner": "DRCAT",
@@ -109,18 +160,39 @@
                         "name": "Vriend G."
                     }
                 ],
-                "citationCount": 347,
+                "citationCount": 397,
                 "date": "2015-01-28T00:00:00Z",
                 "journal": "Nucleic Acids Research",
                 "title": "A series of PDB-related databanks for everyday needs"
             },
+            "type": [
+                "Other"
+            ]
+        },
+        {
+            "metadata": {
+                "abstract": "For a successful analysis of the relation between amino acid sequence and protein structure, an unambiguous and physically meaningful definition of secondary structure is essential. We have developed a set of simple and physically motivated criteria for secondary structure, programmed as a pattern\u2010recognition process of hydrogen\u2010bonded and geometrical features extracted from x\u2010ray coordinates. Cooperative secondary structure is recognized as repeats of the elementary hydrogen\u2010bonding patterns \u201cturn\u201d and \u201cbridge.\u201d Repeating turns are \u201chelices,\u201d repeating bridges are \u201cladders,\u201d connected ladders are \u201csheets.\u201d Geometric structure is defined in terms of the concepts torsion and curvature of differential geometry. Local chain \u201cchirality\u201d is the torsional handedness of four consecutive C\u03b1 positions and is positive for right\u2010handed helices and negative for ideal twisted \u03b2\u2010sheets. Curved pieces are defined as \u201cbends.\u201d Solvent \u201cexposure\u201d is given as the number of water molecules in possible contact with a residue. The end result is a compilation of the primary structure, including SS bonds, secondary structure, and solvent exposure of 62 different globular proteins. The presentation is in linear form: strip graphs for an overall view and strip tables for the details of each of 10.925 residues. The dictionary is also available in computer\u2010readable form for protein structure prediction work. Copyright \u00a9 1983 John Wiley & Sons, Inc.",
+                "authors": [
+                    {
+                        "name": "Kabsch W."
+                    },
+                    {
+                        "name": "Sander C."
+                    }
+                ],
+                "citationCount": 11488,
+                "date": "1983-01-01T00:00:00Z",
+                "journal": "Biopolymers",
+                "title": "Dictionary of protein secondary structure: Pattern recognition of hydrogen\u2010bonded and geometrical features"
+            },
+            "pmid": "6667333",
             "type": [
                 "Primary"
             ]
         }
     ],
     "toolType": [
-        "Database portal"
+        "Command-line tool"
     ],
     "topic": [
         {
@@ -132,5 +204,8 @@
             "uri": "http://edamontology.org/topic_3542"
         }
     ],
-    "validated": 1
+    "validated": 1,
+    "version": [
+        "4.0"
+    ]
 }
