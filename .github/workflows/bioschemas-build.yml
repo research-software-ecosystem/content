@@ -2,47 +2,47 @@ name: build bioschemas jsonld from bio.tools files
 
 on:
   schedule:
-    - cron: "0 0 * * *"
-    
+    - cron: "0 0 * * 0"
+
 jobs:
-
   build-bioschemas:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
-    - name: test if pull-request (automated) or pull-request comment with "bioschemas"
-      if: github.event_name == 'pull_request' && github.event.action == 'unassigned'
-      uses: Khan/pull-request-comment-trigger@1.0.0
-      with:
-        # The string to look for in pull-request descriptions and comments. For example "#build/android"
-        trigger: bioschemas
-    - name: Setup Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: "3.7"
-    - name: Install dependencies
-      run:
-        pip install -r scripts/bioschemas/requirements.txt
-    - name: publish bio.tools data as bioschemas files
-      run: |
-        cd scripts/bioschemas
-        python biotools_to_bioschemas.py
-    - name: commit new data
-      env:
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        cd data
-        git config --local user.email "tpe-bot@github.com"
-        git config --local user.name "Tools Platform Ecosystem bot"
-        git add .
-        if git commit -m "build bioschemas on $(date)"; then
-            git push origin HEAD
-            echo "successfully created new data"
-        else
-            echo "nothing new to add, exiting"            
-        fi
+      - uses: actions/checkout@v2
+        with:
+          path: content
+
+      - uses: actions/checkout@v2
+        with:
+          repository: bio-tools/content-ecosystem-utils
+          path: content-ecosystem-utils
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+
+      - name: Install dependencies
+        run: pip install -r scripts/bioschemas/requirements.txt
+
+      - name: publish bio.tools data as bioschemas files
+        run: |
+          cd ${{ github.workspace }}/content-ecosystem-utils/scripts/bioschemas
+          python biotools_to_bioschemas.py
+
+      - name: commit new data
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd data
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git add .
+          if git commit -m "build bioschemas on $(date)"; then
+              git push origin HEAD
+              echo "successfully created new data"
+          else
+              echo "nothing new to add, exiting"            
+          fi
