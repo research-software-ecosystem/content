@@ -1,1 +1,158 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "cg-cat", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": ["Peter Husemann"], "contributor": [], "provider": ["CeBiTec", "Bielefeld University", "BiBiServ"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/1748-7188-5-3", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.1093/bioinformatics/btp690", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0564"}, {"@id": "http://edamontology.org/operation_3216"}, {"@id": "http://edamontology.org/operation_0490"}, {"@id": "http://edamontology.org/operation_0564"}, {"@id": "http://edamontology.org/operation_3216"}], "hasInputData": [{"@id": "cg-cat/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence (raw)", "identifier": "http://edamontology.org/data_2975", "sameAs": "http://edamontology.org/data_2975"}, {"@id": "cg-cat/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence (raw)", "identifier": "http://edamontology.org/data_2975", "sameAs": "http://edamontology.org/data_2975"}, {"@id": "cg-cat/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}], "hasOutputData": [{"@id": "cg-cat/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Dotplot", "identifier": "http://edamontology.org/data_0862", "sameAs": "http://edamontology.org/data_0862"}, {"@id": "cg-cat/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence assembly report", "identifier": "http://edamontology.org/data_3181", "sameAs": "http://edamontology.org/data_3181"}, {"@id": "cg-cat/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence assembly report", "identifier": "http://edamontology.org/data_3181", "sameAs": "http://edamontology.org/data_3181"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0196"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://bibiserv.cebitec.uni-bielefeld.de/cgcat?id=cgcat_manual"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/cg-cat",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Nab8ad6948025469ba64736b32d420fd0"
+        },
+        {
+          "@id": "_:N62f4b14732204fcfa413b55f36a72da7"
+        },
+        {
+          "@id": "_:N8280761150c547d2aec0876b73532617"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N3171a3edf0af4b278a923cb571e97e0d"
+        },
+        {
+          "@id": "_:N6be421a4c7df4e7887dcd47d17ad7fab"
+        },
+        {
+          "@id": "_:Nafae1c7a9bd44a4cbfbf133447fa1778"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Desktop application",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_0196"
+      },
+      "sc:author": "Peter Husemann",
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1186/1748-7188-5-3"
+        },
+        {
+          "@id": "https://doi.org/10.1093/bioinformatics/btp690"
+        }
+      ],
+      "sc:description": "With current sequencing technologies, it is feasible to generate a lot of reads for a given genome. However, the assembly usually ends up in a set of contigs with gaps between them. If the sequences of one (or several) related genome(s) are already known, this information can be used to estimate the order and orientation of the contigs towards each other. This helps in the finishing phase of a sequencing project since it eases the design of specific primer sequences to fill the gaps.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0490"
+        },
+        {
+          "@id": "edam:operation_3216"
+        },
+        {
+          "@id": "edam:operation_0564"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-2.0",
+      "sc:name": "CG-CAT",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:provider": [
+        "Bielefeld University",
+        "BiBiServ",
+        "CeBiTec"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://bibiserv.cebitec.uni-bielefeld.de/cgcat?id=cgcat_manual"
+      },
+      "sc:softwareVersion": "1",
+      "sc:url": "http://bibiserv.cebitec.uni-bielefeld.de/cgcat"
+    },
+    {
+      "@id": "_:N3171a3edf0af4b278a923cb571e97e0d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3181",
+      "sc:name": "Sequence assembly report",
+      "sc:sameAs": "http://edamontology.org/data_3181"
+    },
+    {
+      "@id": "_:N6be421a4c7df4e7887dcd47d17ad7fab",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3181",
+      "sc:name": "Sequence assembly report",
+      "sc:sameAs": "http://edamontology.org/data_3181"
+    },
+    {
+      "@id": "_:Nafae1c7a9bd44a4cbfbf133447fa1778",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0862",
+      "sc:name": "Dotplot",
+      "sc:sameAs": "http://edamontology.org/data_0862"
+    },
+    {
+      "@id": "_:Nab8ad6948025469ba64736b32d420fd0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2975",
+      "sc:name": "Nucleic acid sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2975"
+    },
+    {
+      "@id": "_:N62f4b14732204fcfa413b55f36a72da7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:N8280761150c547d2aec0876b73532617",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2975",
+      "sc:name": "Nucleic acid sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2975"
+    },
+    {
+      "@id": "https://doi.org/10.1186/1748-7188-5-3",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btp690",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

@@ -1,1 +1,175 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "bionda", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["bioinfoservice@rub.de"], "author": ["Ruhr-Universitaet Bochum, Medizinisches Proteom-Center (MPC)"], "contributor": ["Ruhr-Universitaet Bochum, Medizinisches Proteom-Center (MPC)"], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasOperation": [{"@id": "http://edamontology.org/operation_3280"}, {"@id": "http://edamontology.org/operation_3625"}, {"@id": "http://edamontology.org/operation_2421"}, {"@id": "http://edamontology.org/operation_0306"}, {"@id": "http://edamontology.org/operation_0224"}], "hasInputData": [{"@id": "bionda/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Ontology data", "identifier": "http://edamontology.org/data_2353", "sameAs": "http://edamontology.org/data_2353"}, {"@id": "bionda/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Accession", "identifier": "http://edamontology.org/data_2091", "sameAs": "http://edamontology.org/data_2091"}, {"@id": "bionda/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Identifier (by type of data)", "identifier": "http://edamontology.org/data_0976", "sameAs": "http://edamontology.org/data_0976"}, {"@id": "bionda/op_1/in_4", "@type": "bsct:FormalParameter", "name": "UniProt keyword", "identifier": "http://edamontology.org/data_2007", "sameAs": "http://edamontology.org/data_2007"}, {"@id": "bionda/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Name", "identifier": "http://edamontology.org/data_2099", "sameAs": "http://edamontology.org/data_2099"}], "hasOutputData": [{"@id": "bionda/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}, {"@id": "bionda/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0091"}, {"@id": "http://edamontology.org/topic_3360"}, {"@id": "http://edamontology.org/topic_3071"}, {"@id": "http://edamontology.org/topic_0078"}, {"@id": "http://edamontology.org/topic_0121"}, {"@id": "http://edamontology.org/topic_3068"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://bionda.mpc.ruhr-uni-bochum.de/help.php"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/bionda",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "bioinfoservice@rub.de",
+      "bsc:input": [
+        {
+          "@id": "_:N197731b2cff54bb18d384122cf14a5cb"
+        },
+        {
+          "@id": "_:N0e5ab20dbb014f43b515967df5d21631"
+        },
+        {
+          "@id": "_:N8aeca3c3d45a4356814dbe236a3018c7"
+        },
+        {
+          "@id": "_:Nf81df1b75f1a4a0abcab2ec2ec4c95c9"
+        },
+        {
+          "@id": "_:Ne283ce0a303d4255abcba9dc15e0e7d6"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Ndb167765514541d3b588f8227b8fa565"
+        },
+        {
+          "@id": "_:Na57da6f307b44ec196bb5639459ac430"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web service",
+        "Database portal"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0091"
+        },
+        {
+          "@id": "edam:topic_3068"
+        },
+        {
+          "@id": "edam:topic_3071"
+        },
+        {
+          "@id": "edam:topic_0078"
+        },
+        {
+          "@id": "edam:topic_3360"
+        },
+        {
+          "@id": "edam:topic_0121"
+        }
+      ],
+      "sc:author": "Ruhr-Universitaet Bochum, Medizinisches Proteom-Center (MPC)",
+      "sc:contributor": "Ruhr-Universitaet Bochum, Medizinisches Proteom-Center (MPC)",
+      "sc:description": "The BIONDA biomarker database provides structured information on all biomarker candidates published in PubMed articles. There is no limitation to any kind of diseases. To this end, PubMed article abstracts and renowned databases such as UniProt and Human Disease Ontology are used as sources for BIONDA’s database entries. These are acquired automatically and updated regularly using text mining methods. BIONDA is available freely via a user-friendly web interface. As a specific characteristic, BIONDA’s database entries are rated by a scoring approach estimating biomarker reliability.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0224"
+        },
+        {
+          "@id": "edam:operation_3625"
+        },
+        {
+          "@id": "edam:operation_3280"
+        },
+        {
+          "@id": "edam:operation_2421"
+        },
+        {
+          "@id": "edam:operation_0306"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "CC-BY-4.0",
+      "sc:name": "BIONDA - Biomarker Database",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://bionda.mpc.ruhr-uni-bochum.de/help.php"
+      },
+      "sc:softwareVersion": "1..1.10",
+      "sc:url": "http://bionda.mpc.rub.de/start.php"
+    },
+    {
+      "@id": "_:Ndb167765514541d3b588f8227b8fa565",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:Na57da6f307b44ec196bb5639459ac430",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:N197731b2cff54bb18d384122cf14a5cb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2099",
+      "sc:name": "Name",
+      "sc:sameAs": "http://edamontology.org/data_2099"
+    },
+    {
+      "@id": "_:N0e5ab20dbb014f43b515967df5d21631",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2091",
+      "sc:name": "Accession",
+      "sc:sameAs": "http://edamontology.org/data_2091"
+    },
+    {
+      "@id": "_:N8aeca3c3d45a4356814dbe236a3018c7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2007",
+      "sc:name": "UniProt keyword",
+      "sc:sameAs": "http://edamontology.org/data_2007"
+    },
+    {
+      "@id": "_:Nf81df1b75f1a4a0abcab2ec2ec4c95c9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0976",
+      "sc:name": "Identifier (by type of data)",
+      "sc:sameAs": "http://edamontology.org/data_0976"
+    },
+    {
+      "@id": "_:Ne283ce0a303d4255abcba9dc15e0e7d6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2353",
+      "sc:name": "Ontology data",
+      "sc:sameAs": "http://edamontology.org/data_2353"
+    }
+  ]
+}

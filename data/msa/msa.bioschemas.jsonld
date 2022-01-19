@@ -1,1 +1,196 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "msa", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Ulrich Bodenhofer"], "author": ["Sebastian Wilzbach"], "contributor": ["Ian Sillitoe", "Guy Yachdav", "Benedikt Rauscher", "Tatyana Goldberg", "Google Summer of Code (GSoC) 2014"], "provider": ["Technische Universit\u00e4t M\u00fcnchen", "BioJS"], "funder": ["Google Summer of Code (GSoC) 2014"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/bioinformatics/btw474", "@type": "sc:CreativeWork"}, "pubmed:26315911"], "hasOperation": [{"@id": "http://edamontology.org/operation_0564"}, {"@id": "http://edamontology.org/operation_0492"}], "hasInputData": [{"@id": "msa/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "msa/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence", "identifier": "http://edamontology.org/data_2977", "sameAs": "http://edamontology.org/data_2977"}, {"@id": "msa/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}], "hasOutputData": [{"@id": "msa/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "msa/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence alignment image", "identifier": "http://edamontology.org/data_1711", "sameAs": "http://edamontology.org/data_1711"}, {"@id": "msa/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence set", "identifier": "http://edamontology.org/data_0850", "sameAs": "http://edamontology.org/data_0850"}, {"@id": "msa/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Feature table", "identifier": "http://edamontology.org/data_1270", "sameAs": "http://edamontology.org/data_1270"}, {"@id": "msa/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment report", "identifier": "http://edamontology.org/data_0867", "sameAs": "http://edamontology.org/data_0867"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0080"}, {"@id": "http://edamontology.org/topic_0160"}, {"@id": "http://edamontology.org/topic_3293"}, {"@id": "http://edamontology.org/topic_3168"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://github.com/wilzbach/msa/blob/master/LICENSE"}, {"@id": "http://msa.biojs.net"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/msa",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Ulrich Bodenhofer",
+      "bsc:input": [
+        {
+          "@id": "_:N1ee64499ff9e452996ffed0b78410557"
+        },
+        {
+          "@id": "_:Nb528ea0f33684b9c973eb6df6eb1701e"
+        },
+        {
+          "@id": "_:Na1bd51093ca64d69bfc2584a3dcee21a"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nea50085abb814a4b9df4cb6e947e391a"
+        },
+        {
+          "@id": "_:N8e4ae518c3ad4a8e8fd4ea945533937a"
+        },
+        {
+          "@id": "_:Ncafef6b2936842f28683a6e27a4aa496"
+        },
+        {
+          "@id": "_:Ndbbfde1535f04e34ba3147c5253994bf"
+        },
+        {
+          "@id": "_:N2e61abe732f94ece8858c164383f949b"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Library",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3293"
+        },
+        {
+          "@id": "edam:topic_0160"
+        },
+        {
+          "@id": "edam:topic_3168"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "sc:author": "Sebastian Wilzbach",
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/bioinformatics/btw474"
+        },
+        "pubmed:26315911"
+      ],
+      "sc:contributor": [
+        "Tatyana Goldberg",
+        "Google Summer of Code (GSoC) 2014",
+        "Guy Yachdav",
+        "Ian Sillitoe",
+        "Benedikt Rauscher"
+      ],
+      "sc:description": "Display multiple-sequence alignment. The tool is also available as R/BioConductor interface to the multiple sequence alignment algorithms ClustalW, ClustalOmega, and Muscle. All three algorithms are integrated in the package, therefore, they do not depend on any external software tools and are available for all major platforms.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0564"
+        },
+        {
+          "@id": "edam:operation_0492"
+        }
+      ],
+      "sc:funder": "Google Summer of Code (GSoC) 2014",
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Apache-2.0",
+      "sc:name": "msa",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:provider": [
+        "Technische Universität München",
+        "BioJS"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "https://github.com/wilzbach/msa/blob/master/LICENSE"
+        },
+        {
+          "@id": "http://msa.biojs.net"
+        }
+      ],
+      "sc:softwareVersion": "1.0.0",
+      "sc:url": "http://msa.biojs.net"
+    },
+    {
+      "@id": "_:Nea50085abb814a4b9df4cb6e947e391a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0850",
+      "sc:name": "Sequence set",
+      "sc:sameAs": "http://edamontology.org/data_0850"
+    },
+    {
+      "@id": "_:N8e4ae518c3ad4a8e8fd4ea945533937a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:Ncafef6b2936842f28683a6e27a4aa496",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1711",
+      "sc:name": "Sequence alignment image",
+      "sc:sameAs": "http://edamontology.org/data_1711"
+    },
+    {
+      "@id": "_:Ndbbfde1535f04e34ba3147c5253994bf",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1270",
+      "sc:name": "Feature table",
+      "sc:sameAs": "http://edamontology.org/data_1270"
+    },
+    {
+      "@id": "_:N2e61abe732f94ece8858c164383f949b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0867",
+      "sc:name": "Sequence alignment report",
+      "sc:sameAs": "http://edamontology.org/data_0867"
+    },
+    {
+      "@id": "_:N1ee64499ff9e452996ffed0b78410557",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:Nb528ea0f33684b9c973eb6df6eb1701e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2977",
+      "sc:name": "Nucleic acid sequence",
+      "sc:sameAs": "http://edamontology.org/data_2977"
+    },
+    {
+      "@id": "_:Na1bd51093ca64d69bfc2584a3dcee21a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btw474",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

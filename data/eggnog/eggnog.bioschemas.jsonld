@@ -1,1 +1,153 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "eggnog", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-1429-7485", "@type": "schema:Person"}], "author": [], "contributor": [], "provider": ["European Molecular Biology Laboratory (EMBL)", "HD-HuB"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:26582926", "pmcid:PMC4702882", {"@id": "https://doi.org/10.1093/nar/gkv1248", "@type": "sc:CreativeWork"}, "pubmed:17942413", "pubmed:24297252", "pubmed:22096231", "pubmed:19900971", "pubmed:30418610"], "hasOperation": [{"@id": "http://edamontology.org/operation_0346"}, {"@id": "http://edamontology.org/operation_0338"}], "hasInputData": [{"@id": "eggnog/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}], "hasOutputData": [{"@id": "eggnog/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence set (protein)", "identifier": "http://edamontology.org/data_1233", "sameAs": "http://edamontology.org/data_1233"}, {"@id": "eggnog/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence alignment (protein)", "identifier": "http://edamontology.org/data_1384", "sameAs": "http://edamontology.org/data_1384"}, {"@id": "eggnog/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}, {"@id": "eggnog/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Hidden Markov model", "identifier": "http://edamontology.org/data_1364", "sameAs": "http://edamontology.org/data_1364"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3174"}, {"@id": "http://edamontology.org/topic_0622"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://eggnogdb.embl.de/#/app/methods"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/nar/gkv1248",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/eggnog",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0003-1429-7485"
+      },
+      "bsc:input": {
+        "@id": "_:Nf606f5817ef04d00b7e7223dd56d7de8"
+      },
+      "bsc:output": [
+        {
+          "@id": "_:N2ac408b89e9048b4963c59edb99c22c2"
+        },
+        {
+          "@id": "_:N0642ece4c0844d669d147d8b128ab843"
+        },
+        {
+          "@id": "_:Ncb21a17f8d7d499ca1963e1f0bf2e731"
+        },
+        {
+          "@id": "_:N56fc16b47f884e479b6e707be0081482"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Database portal",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_0622"
+        }
+      ],
+      "sc:citation": [
+        "pubmed:26582926",
+        "pubmed:24297252",
+        "pmcid:PMC4702882",
+        {
+          "@id": "https://doi.org/10.1093/nar/gkv1248"
+        },
+        "pubmed:19900971",
+        "pubmed:22096231",
+        "pubmed:30418610",
+        "pubmed:17942413"
+      ],
+      "sc:description": "eggNOG is a database of nested orthologous gene groups (NOGs) inferred using unsupervised clustering applied to >5,000 complete genomes followed by comprehensive characterization and analysis of the resulting gene families. eggNOG provides orthologous group assignments at 379 different taxonomic levels as well as multiple sequence alignments, maximum-likelihood trees and broad functional annotations for each group accessible via a web interface or through bulk download.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0346"
+        },
+        {
+          "@id": "edam:operation_0338"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-3.0",
+      "sc:name": "eggNOG",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:provider": [
+        "HD-HuB",
+        "European Molecular Biology Laboratory (EMBL)"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://eggnogdb.embl.de/#/app/methods"
+      },
+      "sc:softwareVersion": "5.0",
+      "sc:url": "http://eggnogdb.embl.de/#/app/home"
+    },
+    {
+      "@id": "_:N2ac408b89e9048b4963c59edb99c22c2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1364",
+      "sc:name": "Hidden Markov model",
+      "sc:sameAs": "http://edamontology.org/data_1364"
+    },
+    {
+      "@id": "_:N0642ece4c0844d669d147d8b128ab843",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:Ncb21a17f8d7d499ca1963e1f0bf2e731",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1384",
+      "sc:name": "Sequence alignment (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1384"
+    },
+    {
+      "@id": "_:N56fc16b47f884e479b6e707be0081482",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1233",
+      "sc:name": "Sequence set (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1233"
+    },
+    {
+      "@id": "_:Nf606f5817ef04d00b7e7223dd56d7de8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-1429-7485",
+      "@type": "schema:Person"
+    }
+  ]
+}

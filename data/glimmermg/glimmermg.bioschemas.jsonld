@@ -1,1 +1,176 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "glimmermg", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["David R. Kelley"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:22102569", "pmcid:PMC3245904", {"@id": "https://doi.org/10.1093/nar/gkr1067", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_2454"}, {"@id": "http://edamontology.org/operation_2422"}, {"@id": "http://edamontology.org/operation_3937"}], "hasInputData": [{"@id": "glimmermg/op_1/in_1", "@type": "bsct:FormalParameter", "name": "DNA sequence", "identifier": "http://edamontology.org/data_3494", "sameAs": "http://edamontology.org/data_3494"}, {"@id": "glimmermg/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Gene report", "identifier": "http://edamontology.org/data_0916", "sameAs": "http://edamontology.org/data_0916"}, {"@id": "glimmermg/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Gene report", "identifier": "http://edamontology.org/data_0916", "sameAs": "http://edamontology.org/data_0916"}], "hasOutputData": [{"@id": "glimmermg/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene report", "identifier": "http://edamontology.org/data_0916", "sameAs": "http://edamontology.org/data_0916"}, {"@id": "glimmermg/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}, {"@id": "glimmermg/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Sequence motif", "identifier": "http://edamontology.org/data_1353", "sameAs": "http://edamontology.org/data_1353"}, {"@id": "glimmermg/op_3/in_2", "@type": "bsct:FormalParameter", "name": "Sequence length", "identifier": "http://edamontology.org/data_1249", "sameAs": "http://edamontology.org/data_1249"}, {"@id": "glimmermg/op_3/in_3", "@type": "bsct:FormalParameter", "name": "Codon usage data", "identifier": "http://edamontology.org/data_0914", "sameAs": "http://edamontology.org/data_0914"}, {"@id": "glimmermg/op_3/in_4", "@type": "bsct:FormalParameter", "name": "Nucleic acid property", "identifier": "http://edamontology.org/data_0912", "sameAs": "http://edamontology.org/data_0912"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3174"}, {"@id": "http://edamontology.org/topic_3837"}], "hasGenDoc": [{"@id": "https://github.com/davek44/Glimmer-MG/blob/master/docs/notes.pdf"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/glimmermg",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "David R. Kelley",
+      "bsc:input": [
+        {
+          "@id": "_:N257d364034394cd2ad037655aaf5bad7"
+        },
+        {
+          "@id": "_:Nee96edc8acd048cea8f1d265274b87ab"
+        },
+        {
+          "@id": "_:N61d2d864ec854f30bd841ac277236b83"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N7d5fd0717cd84b3c989da049890eecd3"
+        },
+        {
+          "@id": "_:Nb0d946b197ca4d29a381ab4f81033f97"
+        },
+        {
+          "@id": "_:N6bdd1841cb844d388768821481629df8"
+        },
+        {
+          "@id": "_:N698c73dee35a48d5b69cbc0e3f5fd6ec"
+        },
+        {
+          "@id": "_:N1f99ed0fa6694163aeb1aec6972ff58b"
+        },
+        {
+          "@id": "_:Nad333b919c3543fcb5f2dedbd28b35dd"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Script",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3837"
+        },
+        {
+          "@id": "edam:topic_3174"
+        }
+      ],
+      "sc:citation": [
+        "pubmed:22102569",
+        {
+          "@id": "https://doi.org/10.1093/nar/gkr1067"
+        },
+        "pmcid:PMC3245904"
+      ],
+      "sc:description": "Glimmer-MG is a system for finding genes in environmental shotgun DNA\nsequences. Glimmer-MG (Gene Locator and Interpolated Markov ModelER -\nMetaGenomics) uses interpolated Markov models (IMMs) to identify the\ncoding regions and distinguish them from noncoding DNA. Licensed under Artistic License.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3937"
+        },
+        {
+          "@id": "edam:operation_2422"
+        },
+        {
+          "@id": "edam:operation_2454"
+        }
+      ],
+      "sc:license": "Other",
+      "sc:name": "Glimmer-MG",
+      "sc:softwareHelp": {
+        "@id": "https://github.com/davek44/Glimmer-MG/blob/master/docs/notes.pdf"
+      },
+      "sc:url": "https://github.com/davek44/Glimmer-MG"
+    },
+    {
+      "@id": "_:N7d5fd0717cd84b3c989da049890eecd3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0916",
+      "sc:name": "Gene report",
+      "sc:sameAs": "http://edamontology.org/data_0916"
+    },
+    {
+      "@id": "_:Nb0d946b197ca4d29a381ab4f81033f97",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:N6bdd1841cb844d388768821481629df8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0912",
+      "sc:name": "Nucleic acid property",
+      "sc:sameAs": "http://edamontology.org/data_0912"
+    },
+    {
+      "@id": "_:N698c73dee35a48d5b69cbc0e3f5fd6ec",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1353",
+      "sc:name": "Sequence motif",
+      "sc:sameAs": "http://edamontology.org/data_1353"
+    },
+    {
+      "@id": "_:N1f99ed0fa6694163aeb1aec6972ff58b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0914",
+      "sc:name": "Codon usage data",
+      "sc:sameAs": "http://edamontology.org/data_0914"
+    },
+    {
+      "@id": "_:Nad333b919c3543fcb5f2dedbd28b35dd",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1249",
+      "sc:name": "Sequence length",
+      "sc:sameAs": "http://edamontology.org/data_1249"
+    },
+    {
+      "@id": "_:N257d364034394cd2ad037655aaf5bad7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3494",
+      "sc:name": "DNA sequence",
+      "sc:sameAs": "http://edamontology.org/data_3494"
+    },
+    {
+      "@id": "_:Nee96edc8acd048cea8f1d265274b87ab",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0916",
+      "sc:name": "Gene report",
+      "sc:sameAs": "http://edamontology.org/data_0916"
+    },
+    {
+      "@id": "_:N61d2d864ec854f30bd841ac277236b83",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0916",
+      "sc:name": "Gene report",
+      "sc:sameAs": "http://edamontology.org/data_0916"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkr1067",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

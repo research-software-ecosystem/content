@@ -1,1 +1,174 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "pyms", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:17963529"], "hasOperation": [{"@id": "http://edamontology.org/operation_2424"}, {"@id": "http://edamontology.org/operation_3695"}, {"@id": "http://edamontology.org/operation_3436"}, {"@id": "http://edamontology.org/operation_3628"}, {"@id": "http://edamontology.org/operation_3215"}, {"@id": "http://edamontology.org/operation_0335"}, {"@id": "http://edamontology.org/operation_3203"}, {"@id": "http://edamontology.org/operation_3694"}], "hasInputData": [{"@id": "pyms/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Mass spectrometry spectra", "identifier": "http://edamontology.org/data_0943", "sameAs": "http://edamontology.org/data_0943"}, {"@id": "pyms/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Peptide mass fingerprint", "identifier": "http://edamontology.org/data_0944", "sameAs": "http://edamontology.org/data_0944"}, {"@id": "pyms/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Mass spectrometry spectra", "identifier": "http://edamontology.org/data_0943", "sameAs": "http://edamontology.org/data_0943"}, {"@id": "pyms/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Peptide mass fingerprint", "identifier": "http://edamontology.org/data_0944", "sameAs": "http://edamontology.org/data_0944"}], "hasOutputData": [{"@id": "pyms/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Mass spectrometry spectra", "identifier": "http://edamontology.org/data_0943", "sameAs": "http://edamontology.org/data_0943"}, {"@id": "pyms/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Peptide mass fingerprint", "identifier": "http://edamontology.org/data_0944", "sameAs": "http://edamontology.org/data_0944"}, {"@id": "pyms/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Mass spectrometry spectra", "identifier": "http://edamontology.org/data_0943", "sameAs": "http://edamontology.org/data_0943"}, {"@id": "pyms/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Peptide mass fingerprint", "identifier": "http://edamontology.org/data_0944", "sameAs": "http://edamontology.org/data_0944"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3520"}, {"@id": "http://edamontology.org/topic_0121"}], "hasGenDoc": [{"@id": "https://code.google.com/archive/p/pyms-docs/"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/pyms",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:N87eebb54ea58499fbb348eef4d42dfc7"
+        },
+        {
+          "@id": "_:N4afe9c9f8e2846aeb889ebdd69c15777"
+        },
+        {
+          "@id": "_:N88142610231e47d78b78d0a4928f7639"
+        },
+        {
+          "@id": "_:N28df9a627a674c91ac30470f17b69a64"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N5d18a9bcbbfe44e1a57b901985857eb5"
+        },
+        {
+          "@id": "_:N688bcdd100db4be4ab955f660798f5ec"
+        },
+        {
+          "@id": "_:N95d00af99f6941e7bb2fa7292224be96"
+        },
+        {
+          "@id": "_:Nc3e62114a87c46bf95e01a195d947b70"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3520"
+        },
+        {
+          "@id": "edam:topic_0121"
+        }
+      ],
+      "sc:citation": "pubmed:17963529",
+      "sc:description": "Tools for reading LC-MS data in the ANDI-MS and JCAMP-DX formats.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3694"
+        },
+        {
+          "@id": "edam:operation_3628"
+        },
+        {
+          "@id": "edam:operation_3215"
+        },
+        {
+          "@id": "edam:operation_3695"
+        },
+        {
+          "@id": "edam:operation_3203"
+        },
+        {
+          "@id": "edam:operation_2424"
+        },
+        {
+          "@id": "edam:operation_0335"
+        },
+        {
+          "@id": "edam:operation_3436"
+        }
+      ],
+      "sc:name": "PyMS",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://code.google.com/archive/p/pyms-docs/"
+      },
+      "sc:url": "https://code.google.com/p/pyms/"
+    },
+    {
+      "@id": "_:N5d18a9bcbbfe44e1a57b901985857eb5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0943",
+      "sc:name": "Mass spectrometry spectra",
+      "sc:sameAs": "http://edamontology.org/data_0943"
+    },
+    {
+      "@id": "_:N688bcdd100db4be4ab955f660798f5ec",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0944",
+      "sc:name": "Peptide mass fingerprint",
+      "sc:sameAs": "http://edamontology.org/data_0944"
+    },
+    {
+      "@id": "_:N95d00af99f6941e7bb2fa7292224be96",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0944",
+      "sc:name": "Peptide mass fingerprint",
+      "sc:sameAs": "http://edamontology.org/data_0944"
+    },
+    {
+      "@id": "_:Nc3e62114a87c46bf95e01a195d947b70",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0943",
+      "sc:name": "Mass spectrometry spectra",
+      "sc:sameAs": "http://edamontology.org/data_0943"
+    },
+    {
+      "@id": "_:N87eebb54ea58499fbb348eef4d42dfc7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0943",
+      "sc:name": "Mass spectrometry spectra",
+      "sc:sameAs": "http://edamontology.org/data_0943"
+    },
+    {
+      "@id": "_:N4afe9c9f8e2846aeb889ebdd69c15777",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0944",
+      "sc:name": "Peptide mass fingerprint",
+      "sc:sameAs": "http://edamontology.org/data_0944"
+    },
+    {
+      "@id": "_:N88142610231e47d78b78d0a4928f7639",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0944",
+      "sc:name": "Peptide mass fingerprint",
+      "sc:sameAs": "http://edamontology.org/data_0944"
+    },
+    {
+      "@id": "_:N28df9a627a674c91ac30470f17b69a64",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0943",
+      "sc:name": "Mass spectrometry spectra",
+      "sc:sameAs": "http://edamontology.org/data_0943"
+    }
+  ]
+}

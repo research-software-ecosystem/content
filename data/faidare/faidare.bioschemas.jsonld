@@ -1,1 +1,200 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "faidare", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["URGI support"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasOperation": [{"@id": "http://edamontology.org/operation_2421"}, {"@id": "http://edamontology.org/operation_3559"}, {"@id": "http://edamontology.org/operation_3625"}, {"@id": "http://edamontology.org/operation_2422"}, {"@id": "http://edamontology.org/operation_0227"}, {"@id": "http://edamontology.org/operation_3908"}], "hasInputData": [{"@id": "faidare/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Keyword", "identifier": "http://edamontology.org/data_0968", "sameAs": "http://edamontology.org/data_0968"}, {"@id": "faidare/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Ontology data", "identifier": "http://edamontology.org/data_2353", "sameAs": "http://edamontology.org/data_2353"}, {"@id": "faidare/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Identifier", "identifier": "http://edamontology.org/data_0842", "sameAs": "http://edamontology.org/data_0842"}], "hasOutputData": [{"@id": "faidare/op_1/in_1", "@type": "bsct:FormalParameter", "name": "DOI", "identifier": "http://edamontology.org/data_1188", "sameAs": "http://edamontology.org/data_1188"}, {"@id": "faidare/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Geographic location", "identifier": "http://edamontology.org/data_3720", "sameAs": "http://edamontology.org/data_3720"}, {"@id": "faidare/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Identifier", "identifier": "http://edamontology.org/data_0842", "sameAs": "http://edamontology.org/data_0842"}, {"@id": "faidare/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Database search results", "identifier": "http://edamontology.org/data_2080", "sameAs": "http://edamontology.org/data_2080"}, {"@id": "faidare/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Data reference", "identifier": "http://edamontology.org/data_2093", "sameAs": "http://edamontology.org/data_2093"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0780"}, {"@id": "http://edamontology.org/topic_0625"}, {"@id": "http://edamontology.org/topic_3810"}, {"@id": "http://edamontology.org/topic_0610"}, {"@id": "http://edamontology.org/topic_3071"}, {"@id": "http://edamontology.org/topic_0091"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://urgi.versailles.inrae.fr/faidare/swagger-ui.html"}, {"@id": "https://forgemia.inra.fr/urgi-is/faidare/blob/master/CONTRIBUTING.md"}, {"@id": "https://urgi.versailles.inrae.fr/faidare/help"}, {"@id": "https://urgi.versailles.inrae.fr/faidare/legal"}, {"@id": "https://forgemia.inra.fr/urgi-is/faidare/blob/master/README.md"}, {"@id": "https://urgi.versailles.inrae.fr/faidare/join"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/faidare",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "URGI support",
+      "bsc:input": [
+        {
+          "@id": "_:N588b5b22951b4f648374e7066bcd67c7"
+        },
+        {
+          "@id": "_:N25811ccbbbde43f7b968afeadb0dde4d"
+        },
+        {
+          "@id": "_:Nb6ceb8d76c60453ea6028c51c5e8c46b"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nfe2dccac692346458a84d08cf979d843"
+        },
+        {
+          "@id": "_:N05b3dfff6d224f06956a6d7cf69e957d"
+        },
+        {
+          "@id": "_:N82577c57b6f04de980e02745acf9123b"
+        },
+        {
+          "@id": "_:N621063f93b844551bfd8efbb2d6c04df"
+        },
+        {
+          "@id": "_:N0892138f88f84a19a69d142080788fca"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Database portal",
+        "Web application",
+        "Web API",
+        "Web service"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0610"
+        },
+        {
+          "@id": "edam:topic_0091"
+        },
+        {
+          "@id": "edam:topic_0780"
+        },
+        {
+          "@id": "edam:topic_3071"
+        },
+        {
+          "@id": "edam:topic_0625"
+        },
+        {
+          "@id": "edam:topic_3810"
+        }
+      ],
+      "sc:description": "FAIDARE: FAIR Data-finder for Agronomic Research. \nThe purpose of this portal is to facilitate the discoverability of public data on plant biology from a federation of established data repositories.\n\nIt is based on the Breeding API (BrAPI) specifications and facilitates the access to genotype and phenotype datasets for crop and forest plants through an easy to use web interface. It also provides a standard interface that can be accessed programatically through web services.\n\nIt is an extension of the generic DataDiscovery portal, a web portal that allows finding any type of data across several databases through a lightweight keyword based search. FAIDARE offers more detailed search and data retrieval capabilities and it takes advantage of the growing adoption of the BrAPI.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3908"
+        },
+        {
+          "@id": "edam:operation_3625"
+        },
+        {
+          "@id": "edam:operation_2421"
+        },
+        {
+          "@id": "edam:operation_2422"
+        },
+        {
+          "@id": "edam:operation_0227"
+        },
+        {
+          "@id": "edam:operation_3559"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "BSD-3-Clause",
+      "sc:name": "FAIDARE",
+      "sc:operatingSystem": "Linux",
+      "sc:softwareHelp": [
+        {
+          "@id": "https://urgi.versailles.inrae.fr/faidare/help"
+        },
+        {
+          "@id": "https://urgi.versailles.inrae.fr/faidare/join"
+        },
+        {
+          "@id": "https://urgi.versailles.inrae.fr/faidare/legal"
+        },
+        {
+          "@id": "https://urgi.versailles.inrae.fr/faidare/swagger-ui.html"
+        },
+        {
+          "@id": "https://forgemia.inra.fr/urgi-is/faidare/blob/master/README.md"
+        },
+        {
+          "@id": "https://forgemia.inra.fr/urgi-is/faidare/blob/master/CONTRIBUTING.md"
+        }
+      ],
+      "sc:url": "https://urgi.versailles.inrae.fr/faidare/"
+    },
+    {
+      "@id": "_:Nfe2dccac692346458a84d08cf979d843",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2093",
+      "sc:name": "Data reference",
+      "sc:sameAs": "http://edamontology.org/data_2093"
+    },
+    {
+      "@id": "_:N05b3dfff6d224f06956a6d7cf69e957d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2080",
+      "sc:name": "Database search results",
+      "sc:sameAs": "http://edamontology.org/data_2080"
+    },
+    {
+      "@id": "_:N82577c57b6f04de980e02745acf9123b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1188",
+      "sc:name": "DOI",
+      "sc:sameAs": "http://edamontology.org/data_1188"
+    },
+    {
+      "@id": "_:N621063f93b844551bfd8efbb2d6c04df",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3720",
+      "sc:name": "Geographic location",
+      "sc:sameAs": "http://edamontology.org/data_3720"
+    },
+    {
+      "@id": "_:N0892138f88f84a19a69d142080788fca",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0842",
+      "sc:name": "Identifier",
+      "sc:sameAs": "http://edamontology.org/data_0842"
+    },
+    {
+      "@id": "_:N588b5b22951b4f648374e7066bcd67c7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0968",
+      "sc:name": "Keyword",
+      "sc:sameAs": "http://edamontology.org/data_0968"
+    },
+    {
+      "@id": "_:N25811ccbbbde43f7b968afeadb0dde4d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0842",
+      "sc:name": "Identifier",
+      "sc:sameAs": "http://edamontology.org/data_0842"
+    },
+    {
+      "@id": "_:Nb6ceb8d76c60453ea6028c51c5e8c46b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2353",
+      "sc:name": "Ontology data",
+      "sc:sameAs": "http://edamontology.org/data_2353"
+    }
+  ]
+}

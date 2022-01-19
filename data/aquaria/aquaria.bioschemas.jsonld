@@ -1,1 +1,171 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "aquaria", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Se\u00e1n O'Donoghue", "Andrea Schafferhans"], "author": ["Christian Stolte", "Kenneth S Sabir", "Se\u00e1n I O'Donoghue", "Andrea Schafferhans"], "contributor": ["Nelson Perdig\u00e3o", "Burkhard Rost", "Vivian Ho", "Manfred Roos", "Benjamin Wellmann", "Julian Heinrich", "Maria Kalemanov", "Fabian A Buske", "CSIRO's OCE Science Leader program and its Computational and Simulation Sciences platform", "Alexander von Humboldt Foundation"], "provider": ["Department for Bioinformatics and Computational Biology, Technische Universit\u00e4t M\u00fcnchen", "Division of Genomics and Epigenetics, Garvan Institute of Medical Research, Sydney", "Digital Productivity, Commonwealth Scientific and Industrial Research Organisation (CSIRO), Sydney", "School of Molecular Bioscience, The University of Sydney", "RostLab"], "funder": ["CSIRO's OCE Science Leader program and its Computational and Simulation Sciences platform", "Alexander von Humboldt Foundation"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1038/nmeth.3258", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_0339"}, {"@id": "http://edamontology.org/operation_0564"}, {"@id": "http://edamontology.org/operation_0338"}, {"@id": "http://edamontology.org/operation_0474"}], "hasInputData": [{"@id": "aquaria/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence identifier", "identifier": "http://edamontology.org/data_1063", "sameAs": "http://edamontology.org/data_1063"}, {"@id": "aquaria/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Organism identifier", "identifier": "http://edamontology.org/data_1869", "sameAs": "http://edamontology.org/data_1869"}, {"@id": "aquaria/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence accession (protein)", "identifier": "http://edamontology.org/data_1096", "sameAs": "http://edamontology.org/data_1096"}], "hasOutputData": [{"@id": "aquaria/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence-structure alignment", "identifier": "http://edamontology.org/data_0893", "sameAs": "http://edamontology.org/data_0893"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0082"}, {"@id": "http://edamontology.org/topic_3510"}, {"@id": "http://edamontology.org/topic_2814"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://www.youtube.com/watch?v=FAQ3yVGYSzY&feature=youtu.be"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/aquaria",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Andrea Schafferhans",
+        "Seán O'Donoghue"
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:Nc8c58d9ad7e34c8fbd5d1233bfd4b8b1"
+        },
+        {
+          "@id": "_:N59a4dcd40e1e44ffbc3d2ab8bd907d3d"
+        },
+        {
+          "@id": "_:Ncff6d0b8e4254aaebddb993784565cd3"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:N3c3631f2e02341d3b74cfb8f069020d9"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web application",
+        "Web API"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3510"
+        },
+        {
+          "@id": "edam:topic_2814"
+        },
+        {
+          "@id": "edam:topic_0082"
+        }
+      ],
+      "sc:author": [
+        "Christian Stolte",
+        "Kenneth S Sabir",
+        "Seán I O'Donoghue",
+        "Andrea Schafferhans"
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1038/nmeth.3258"
+      },
+      "sc:contributor": [
+        "Maria Kalemanov",
+        "Vivian Ho",
+        "Fabian A Buske",
+        "Julian Heinrich",
+        "Nelson Perdigão",
+        "CSIRO's OCE Science Leader program and its Computational and Simulation Sciences platform",
+        "Burkhard Rost",
+        "Benjamin Wellmann",
+        "Manfred Roos",
+        "Alexander von Humboldt Foundation"
+      ],
+      "sc:description": "Simplifying the generation of insight from protein structures through structure visualisation, annotated with protein features; loads sequence-to-structure alignments from the PSSH2 database, sequence features from UniProt and Interpro and user defined features on demand from JSON files; there is also a WebAPI (see ...).",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0570"
+        },
+        {
+          "@id": "edam:operation_0564"
+        },
+        {
+          "@id": "edam:operation_0474"
+        },
+        {
+          "@id": "edam:operation_0339"
+        },
+        {
+          "@id": "edam:operation_0338"
+        }
+      ],
+      "sc:funder": [
+        "Alexander von Humboldt Foundation",
+        "CSIRO's OCE Science Leader program and its Computational and Simulation Sciences platform"
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-2.0",
+      "sc:name": "Aquaria",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:provider": [
+        "Department for Bioinformatics and Computational Biology, Technische Universität München",
+        "Digital Productivity, Commonwealth Scientific and Industrial Research Organisation (CSIRO), Sydney",
+        "Division of Genomics and Epigenetics, Garvan Institute of Medical Research, Sydney",
+        "RostLab",
+        "School of Molecular Bioscience, The University of Sydney"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://www.youtube.com/watch?v=FAQ3yVGYSzY&feature=youtu.be"
+      },
+      "sc:softwareVersion": "1",
+      "sc:url": "http://aquaria.ws"
+    },
+    {
+      "@id": "_:Nc8c58d9ad7e34c8fbd5d1233bfd4b8b1",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1869",
+      "sc:name": "Organism identifier",
+      "sc:sameAs": "http://edamontology.org/data_1869"
+    },
+    {
+      "@id": "_:N59a4dcd40e1e44ffbc3d2ab8bd907d3d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1063",
+      "sc:name": "Sequence identifier",
+      "sc:sameAs": "http://edamontology.org/data_1063"
+    },
+    {
+      "@id": "_:Ncff6d0b8e4254aaebddb993784565cd3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1096",
+      "sc:name": "Sequence accession (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1096"
+    },
+    {
+      "@id": "_:N3c3631f2e02341d3b74cfb8f069020d9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0893",
+      "sc:name": "Sequence-structure alignment",
+      "sc:sameAs": "http://edamontology.org/data_0893"
+    },
+    {
+      "@id": "https://doi.org/10.1038/nmeth.3258",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

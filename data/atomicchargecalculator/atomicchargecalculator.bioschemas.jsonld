@@ -1,1 +1,153 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "atomicchargecalculator", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Primary Contact", "David Sehnal", "Crina Maria Ionescu"], "author": ["David Sehnal"], "contributor": ["Crina Maria Ionescu", "Stanislav Geidl", "Luk\u00e1\u0161 Pravda"], "provider": ["Masaryk University, Brno, Czech Republic", "ELIXIR-CZ"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/s13321-015-0099-x", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_2480"}, {"@id": "http://edamontology.org/operation_2238"}], "hasInputData": [{"@id": "atomicchargecalculator/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}, {"@id": "atomicchargecalculator/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}], "hasOutputData": [{"@id": "atomicchargecalculator/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Structure report", "identifier": "http://edamontology.org/data_2085", "sameAs": "http://edamontology.org/data_2085"}, {"@id": "atomicchargecalculator/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Atomic property", "identifier": "http://edamontology.org/data_1917", "sameAs": "http://edamontology.org/data_1917"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3332"}, {"@id": "http://edamontology.org/topic_2258"}, {"@id": "http://edamontology.org/topic_0081"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://www.jcheminf.com/content/7/1/50/citation"}, {"@id": "http://webchem.ncbr.muni.cz/Wiki/ChargeCalculator:UserManual"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1186/s13321-015-0099-x",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/atomicchargecalculator",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "David Sehnal",
+        "Primary Contact",
+        "Crina Maria Ionescu"
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:N9867220a03494c58b87d3bd5f14abe45"
+        },
+        {
+          "@id": "_:N266bf32403524184962d3187187b27b2"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N7abb031c4704434cbfd327282c59aa94"
+        },
+        {
+          "@id": "_:Nbf3fa79e66584812b6aebecd6f370ece"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web application",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2258"
+        },
+        {
+          "@id": "edam:topic_3332"
+        },
+        {
+          "@id": "edam:topic_0081"
+        }
+      ],
+      "sc:author": "David Sehnal",
+      "sc:citation": {
+        "@id": "https://doi.org/10.1186/s13321-015-0099-x"
+      },
+      "sc:contributor": [
+        "Stanislav Geidl",
+        "Lukáš Pravda",
+        "Crina Maria Ionescu"
+      ],
+      "sc:description": "A web application for the calculation and analysis of atomic charges in both large biomolecular complexes and small drug-like molecules.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_2480"
+        },
+        {
+          "@id": "edam:operation_0570"
+        },
+        {
+          "@id": "edam:operation_2238"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "AtomicChargeCalculator",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:provider": [
+        "ELIXIR-CZ",
+        "Masaryk University, Brno, Czech Republic"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "http://www.jcheminf.com/content/7/1/50/citation"
+        },
+        {
+          "@id": "http://webchem.ncbr.muni.cz/Wiki/ChargeCalculator:UserManual"
+        }
+      ],
+      "sc:softwareVersion": "1.0",
+      "sc:url": "http://ncbr.muni.cz/ACC"
+    },
+    {
+      "@id": "_:N7abb031c4704434cbfd327282c59aa94",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2085",
+      "sc:name": "Structure report",
+      "sc:sameAs": "http://edamontology.org/data_2085"
+    },
+    {
+      "@id": "_:Nbf3fa79e66584812b6aebecd6f370ece",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1917",
+      "sc:name": "Atomic property",
+      "sc:sameAs": "http://edamontology.org/data_1917"
+    },
+    {
+      "@id": "_:N9867220a03494c58b87d3bd5f14abe45",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:N266bf32403524184962d3187187b27b2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    }
+  ]
+}

@@ -1,1 +1,168 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "bridgedbr", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Egon Willighagen"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/s12859-015-0708-8", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_1812"}, {"@id": "http://edamontology.org/operation_3282"}], "hasInputData": [{"@id": "bridgedbr/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene identifier", "identifier": "http://edamontology.org/data_1025", "sameAs": "http://edamontology.org/data_1025"}, {"@id": "bridgedbr/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Reaction ID", "identifier": "http://edamontology.org/data_2108", "sameAs": "http://edamontology.org/data_2108"}, {"@id": "bridgedbr/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein identifier", "identifier": "http://edamontology.org/data_0989", "sameAs": "http://edamontology.org/data_0989"}, {"@id": "bridgedbr/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Compound identifier", "identifier": "http://edamontology.org/data_1086", "sameAs": "http://edamontology.org/data_1086"}], "hasOutputData": [{"@id": "bridgedbr/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene identifier", "identifier": "http://edamontology.org/data_1025", "sameAs": "http://edamontology.org/data_1025"}, {"@id": "bridgedbr/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Reaction ID", "identifier": "http://edamontology.org/data_2108", "sameAs": "http://edamontology.org/data_2108"}, {"@id": "bridgedbr/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein identifier", "identifier": "http://edamontology.org/data_0989", "sameAs": "http://edamontology.org/data_0989"}, {"@id": "bridgedbr/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Compound identifier", "identifier": "http://edamontology.org/data_1086", "sameAs": "http://edamontology.org/data_1086"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3345"}, {"@id": "http://edamontology.org/topic_3325"}], "hasGenDoc": [{"@id": "http://bioconductor.org/packages/release/bioc/html/BridgeDbR.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/bridgedbr",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Egon Willighagen",
+      "bsc:input": [
+        {
+          "@id": "_:Nefee7fa2f815457fb16aa3de7bc2aede"
+        },
+        {
+          "@id": "_:Nc0ec6661311e4578bfa84b655a604bd3"
+        },
+        {
+          "@id": "_:Ne5cd4a2ef6eb42d7a4f6eae0a0741f7e"
+        },
+        {
+          "@id": "_:N70a1b7822ddf48a99855fa759e570ac4"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nd5cd1d49bef9482ba19715780fa86f00"
+        },
+        {
+          "@id": "_:N718ce244b287470792a383806760ad54"
+        },
+        {
+          "@id": "_:Ndbc0e45401c34520b21bc9cb3944a69a"
+        },
+        {
+          "@id": "_:N6eb69194fadd4149bc0312d049845dff"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Library",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3325"
+        },
+        {
+          "@id": "edam:topic_3345"
+        }
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1186/s12859-015-0708-8"
+      },
+      "sc:description": "Use BridgeDb functions and load identifier mapping databases in R.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_1812"
+        },
+        {
+          "@id": "edam:operation_3282"
+        }
+      ],
+      "sc:license": "GPL-3.0",
+      "sc:name": "BridgeDbR",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://bioconductor.org/packages/release/bioc/html/BridgeDbR.html"
+      },
+      "sc:softwareVersion": "1.8.0",
+      "sc:url": "http://bioconductor.org/packages/release/bioc/html/BridgeDbR.html"
+    },
+    {
+      "@id": "_:Nefee7fa2f815457fb16aa3de7bc2aede",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0989",
+      "sc:name": "Protein identifier",
+      "sc:sameAs": "http://edamontology.org/data_0989"
+    },
+    {
+      "@id": "_:Nc0ec6661311e4578bfa84b655a604bd3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1025",
+      "sc:name": "Gene identifier",
+      "sc:sameAs": "http://edamontology.org/data_1025"
+    },
+    {
+      "@id": "_:Ne5cd4a2ef6eb42d7a4f6eae0a0741f7e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2108",
+      "sc:name": "Reaction ID",
+      "sc:sameAs": "http://edamontology.org/data_2108"
+    },
+    {
+      "@id": "_:N70a1b7822ddf48a99855fa759e570ac4",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1086",
+      "sc:name": "Compound identifier",
+      "sc:sameAs": "http://edamontology.org/data_1086"
+    },
+    {
+      "@id": "_:Nd5cd1d49bef9482ba19715780fa86f00",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2108",
+      "sc:name": "Reaction ID",
+      "sc:sameAs": "http://edamontology.org/data_2108"
+    },
+    {
+      "@id": "_:N718ce244b287470792a383806760ad54",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0989",
+      "sc:name": "Protein identifier",
+      "sc:sameAs": "http://edamontology.org/data_0989"
+    },
+    {
+      "@id": "_:Ndbc0e45401c34520b21bc9cb3944a69a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1025",
+      "sc:name": "Gene identifier",
+      "sc:sameAs": "http://edamontology.org/data_1025"
+    },
+    {
+      "@id": "_:N6eb69194fadd4149bc0312d049845dff",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1086",
+      "sc:name": "Compound identifier",
+      "sc:sameAs": "http://edamontology.org/data_1086"
+    },
+    {
+      "@id": "https://doi.org/10.1186/s12859-015-0708-8",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

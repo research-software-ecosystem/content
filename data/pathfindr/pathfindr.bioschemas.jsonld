@@ -1,1 +1,208 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "pathfindR", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-2090-3621", "@type": "schema:Person"}], "author": [{"@id": "https://orcid.org/0000-0003-2090-3621", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0001-5980-8002", "@type": "schema:Person"}], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1101/272450", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.3389/fgene.2019.00858", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0276"}, {"@id": "http://edamontology.org/operation_2436"}, {"@id": "http://edamontology.org/operation_3432"}, {"@id": "http://edamontology.org/operation_0337"}], "hasInputData": [{"@id": "pathfindR/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene symbol", "identifier": "http://edamontology.org/data_1026", "sameAs": "http://edamontology.org/data_1026"}, {"@id": "pathfindR/op_1/in_2", "@type": "bsct:FormalParameter", "name": "P-value", "identifier": "http://edamontology.org/data_1669", "sameAs": "http://edamontology.org/data_1669"}, {"@id": "pathfindR/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Over-representation data", "identifier": "http://edamontology.org/data_3753", "sameAs": "http://edamontology.org/data_3753"}], "hasOutputData": [{"@id": "pathfindR/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Over-representation data", "identifier": "http://edamontology.org/data_3753", "sameAs": "http://edamontology.org/data_3753"}, {"@id": "pathfindR/op_1/in_2", "@type": "bsct:FormalParameter", "name": "P-value", "identifier": "http://edamontology.org/data_1669", "sameAs": "http://edamontology.org/data_1669"}, {"@id": "pathfindR/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "pathfindR/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Report", "identifier": "http://edamontology.org/data_2048", "sameAs": "http://edamontology.org/data_2048"}, {"@id": "pathfindR/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Over-representation data", "identifier": "http://edamontology.org/data_3753", "sameAs": "http://edamontology.org/data_3753"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3053"}, {"@id": "http://edamontology.org/topic_0128"}, {"@id": "http://edamontology.org/topic_0602"}, {"@id": "http://edamontology.org/topic_0092"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://egeulgen.github.io/pathfindR/"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.3389/fgene.2019.00858",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-5980-8002",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/pathfindR",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0003-2090-3621"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:Nd0cec00661964a238f830766d110a317"
+        },
+        {
+          "@id": "_:N312846396ec549f9ab4418643887aa93"
+        },
+        {
+          "@id": "_:N2637754305924acdb47547129fd552a9"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N2f702fbe561443b08643a187dd638fb6"
+        },
+        {
+          "@id": "_:N860a51ee060046988b97ab7a6ff26b27"
+        },
+        {
+          "@id": "_:Nbd3a312d843040e28bd4a044735a9b78"
+        },
+        {
+          "@id": "_:N1dd60708a3884958b165155dd1ba3d76"
+        },
+        {
+          "@id": "_:Ne3ee95281bb3410fb3527e5ba8046005"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Command-line tool",
+        "Library"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0092"
+        },
+        {
+          "@id": "edam:topic_0602"
+        },
+        {
+          "@id": "edam:topic_3053"
+        },
+        {
+          "@id": "edam:topic_0128"
+        }
+      ],
+      "sc:author": [
+        {
+          "@id": "https://orcid.org/0000-0001-5980-8002"
+        },
+        {
+          "@id": "https://orcid.org/0000-0003-2090-3621"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.3389/fgene.2019.00858"
+        },
+        {
+          "@id": "https://doi.org/10.1101/272450"
+        }
+      ],
+      "sc:description": "Pathway enrichment analysis enables researchers to uncover mechanisms underlying the phenotype. pathfindR is a tool for pathway enrichment analysis utilizing active subnetworks. It identifies active subnetworks in a protein-protein interaction network using user-provided a list of genes. It performs pathway enrichment analyses on the identified subnetworks. pathfindR also offers functionalities to cluster enriched pathways and identify representative pathways, visualize analysis results and to score the pathways per sample.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_2436"
+        },
+        {
+          "@id": "edam:operation_0337"
+        },
+        {
+          "@id": "edam:operation_3432"
+        },
+        {
+          "@id": "edam:operation_0276"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "MIT",
+      "sc:name": "pathfindR",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://egeulgen.github.io/pathfindR/"
+      },
+      "sc:softwareVersion": "1.0.0, 1.1.0, 1.2.0, 1.2.1, 1.2.2, 1.2.3, 1.3.0, 1.4.0, 1.4.1, 1.4.2",
+      "sc:url": "https://github.com/egeulgen/pathfindR"
+    },
+    {
+      "@id": "_:Nd0cec00661964a238f830766d110a317",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1026",
+      "sc:name": "Gene symbol",
+      "sc:sameAs": "http://edamontology.org/data_1026"
+    },
+    {
+      "@id": "_:N312846396ec549f9ab4418643887aa93",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3753",
+      "sc:name": "Over-representation data",
+      "sc:sameAs": "http://edamontology.org/data_3753"
+    },
+    {
+      "@id": "_:N2637754305924acdb47547129fd552a9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1669",
+      "sc:name": "P-value",
+      "sc:sameAs": "http://edamontology.org/data_1669"
+    },
+    {
+      "@id": "_:N2f702fbe561443b08643a187dd638fb6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:N860a51ee060046988b97ab7a6ff26b27",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2048",
+      "sc:name": "Report",
+      "sc:sameAs": "http://edamontology.org/data_2048"
+    },
+    {
+      "@id": "_:Nbd3a312d843040e28bd4a044735a9b78",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3753",
+      "sc:name": "Over-representation data",
+      "sc:sameAs": "http://edamontology.org/data_3753"
+    },
+    {
+      "@id": "_:N1dd60708a3884958b165155dd1ba3d76",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3753",
+      "sc:name": "Over-representation data",
+      "sc:sameAs": "http://edamontology.org/data_3753"
+    },
+    {
+      "@id": "_:Ne3ee95281bb3410fb3527e5ba8046005",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1669",
+      "sc:name": "P-value",
+      "sc:sameAs": "http://edamontology.org/data_1669"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-2090-3621",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1101/272450",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

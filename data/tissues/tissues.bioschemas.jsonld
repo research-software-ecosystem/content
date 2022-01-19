@@ -1,1 +1,103 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "tissues", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Lars Juhl Jensen", "Jan Gorodkin"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:26157623", "pmcid:PMC4493645", {"@id": "https://doi.org/10.7717/peerj.1054", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_2421"}], "hasInputData": [{"@id": "tissues/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene identifier", "identifier": "http://edamontology.org/data_1025", "sameAs": "http://edamontology.org/data_1025"}], "hasOutputData": [{"@id": "tissues/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Ontology concept ID", "identifier": "http://edamontology.org/data_1087", "sameAs": "http://edamontology.org/data_1087"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0203"}, {"@id": "http://edamontology.org/topic_0218"}, {"@id": "http://edamontology.org/topic_0092"}], "isAccessibleForFree": true}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.7717/peerj.1054",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/tissues",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Lars Juhl Jensen",
+        "Jan Gorodkin"
+      ],
+      "bsc:input": {
+        "@id": "_:N05ee9d3cd9464725aff92d4578d387ae"
+      },
+      "bsc:output": {
+        "@id": "_:N3ddde8854d5e46cb8098b73657e5d055"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Database portal",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0092"
+        },
+        {
+          "@id": "edam:topic_0218"
+        },
+        {
+          "@id": "edam:topic_0203"
+        }
+      ],
+      "sc:citation": [
+        "pmcid:PMC4493645",
+        "pubmed:26157623",
+        {
+          "@id": "https://doi.org/10.7717/peerj.1054"
+        }
+      ],
+      "sc:description": "TISSUES is a weekly updated web resource that integrates evidence on tissue expression from manually curated literature, proteomics and transcriptomics screens, and automatic text mining. We map all evidence to common protein identifiers and Brenda Tissue Ontology terms, and further unify it by assigning confidence scores that facilitate comparison of the different types and sources of evidence. We finally visualize these scores on a schematic human body to provide a convenient overview.",
+      "sc:featureList": {
+        "@id": "edam:operation_2421"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "CC-BY-4.0",
+      "sc:name": "TISSUES",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:url": "https://tissues.jensenlab.org/"
+    },
+    {
+      "@id": "_:N05ee9d3cd9464725aff92d4578d387ae",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1025",
+      "sc:name": "Gene identifier",
+      "sc:sameAs": "http://edamontology.org/data_1025"
+    },
+    {
+      "@id": "_:N3ddde8854d5e46cb8098b73657e5d055",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1087",
+      "sc:name": "Ontology concept ID",
+      "sc:sameAs": "http://edamontology.org/data_1087"
+    }
+  ]
+}

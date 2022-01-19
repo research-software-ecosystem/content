@@ -1,1 +1,169 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "jphyloio", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Ben C. St\u00f6ver"], "author": ["Ben C. St\u00f6ver", "Sarah Wiechers"], "contributor": ["Kai F. M\u00fcller"], "provider": [], "funder": ["DFG (German Research Foundation)"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/database/bav094", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_1812"}, {"@id": "http://edamontology.org/operation_2409"}, {"@id": "http://edamontology.org/operation_3357"}], "hasInputData": [{"@id": "jphyloio/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Taxonomy", "identifier": "http://edamontology.org/data_3028", "sameAs": "http://edamontology.org/data_3028"}, {"@id": "jphyloio/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}, {"@id": "jphyloio/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Alignment", "identifier": "http://edamontology.org/data_1916", "sameAs": "http://edamontology.org/data_1916"}], "hasOutputData": [{"@id": "jphyloio/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Taxonomy", "identifier": "http://edamontology.org/data_3028", "sameAs": "http://edamontology.org/data_3028"}, {"@id": "jphyloio/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Alignment", "identifier": "http://edamontology.org/data_1916", "sameAs": "http://edamontology.org/data_1916"}, {"@id": "jphyloio/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3070"}, {"@id": "http://edamontology.org/topic_3293"}, {"@id": "http://edamontology.org/topic_3307"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://bioinfweb.info/JPhyloIO/Documentation"}, {"@id": "http://bioinfweb.info/JPhyloIO/Documentation/API/Latest/"}, {"@id": "http://bioinfweb.info/JPhyloIO/Documentation/Demos"}, {"@id": "http://bioinfweb.info/JPhyloIO/License"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/database/bav094",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/jphyloio",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Ben C. Stöver",
+      "bsc:input": [
+        {
+          "@id": "_:N65946f27ff5d459dadc3747a7e651fc8"
+        },
+        {
+          "@id": "_:Nc5ed64601dab4ff7bb896c4c1aeb208f"
+        },
+        {
+          "@id": "_:N412c4322cdbe4e96846a5f1399255dd8"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nad3e4334d678420495e2fc8f898e597d"
+        },
+        {
+          "@id": "_:Nf990999b18d44f17aa87152bcbd6cb37"
+        },
+        {
+          "@id": "_:Nff8900951e8a42fb9aa9c0f5058789e6"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Library",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3307"
+        },
+        {
+          "@id": "edam:topic_3293"
+        },
+        {
+          "@id": "edam:topic_3070"
+        }
+      ],
+      "sc:author": [
+        "Ben C. Stöver",
+        "Sarah Wiechers"
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1093/database/bav094"
+      },
+      "sc:contributor": "Kai F. Müller",
+      "sc:description": "An open source Java library for reading and writing various tree and alignment formats. Application developers are able to implement format-independent data processing by including event based readers via the abstract strategy pattern. All readers are designed to deal with large amounts of data (alignments with many and/or very long sequences, large trees) without using a great amount of resources (CPU or RAM).",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3357"
+        },
+        {
+          "@id": "edam:operation_2409"
+        },
+        {
+          "@id": "edam:operation_1812"
+        }
+      ],
+      "sc:funder": "DFG (German Research Foundation)",
+      "sc:isAccessibleForFree": true,
+      "sc:license": "LGPL-3.0",
+      "sc:name": "JPhyloIO",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "http://bioinfweb.info/JPhyloIO/License"
+        },
+        {
+          "@id": "http://bioinfweb.info/JPhyloIO/Documentation/API/Latest/"
+        },
+        {
+          "@id": "http://bioinfweb.info/JPhyloIO/Documentation/Demos"
+        },
+        {
+          "@id": "http://bioinfweb.info/JPhyloIO/Documentation"
+        }
+      ],
+      "sc:softwareVersion": "0.5.4",
+      "sc:url": "http://bioinfweb.info/JPhyloIO/"
+    },
+    {
+      "@id": "_:N65946f27ff5d459dadc3747a7e651fc8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1916",
+      "sc:name": "Alignment",
+      "sc:sameAs": "http://edamontology.org/data_1916"
+    },
+    {
+      "@id": "_:Nc5ed64601dab4ff7bb896c4c1aeb208f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3028",
+      "sc:name": "Taxonomy",
+      "sc:sameAs": "http://edamontology.org/data_3028"
+    },
+    {
+      "@id": "_:N412c4322cdbe4e96846a5f1399255dd8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:Nad3e4334d678420495e2fc8f898e597d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3028",
+      "sc:name": "Taxonomy",
+      "sc:sameAs": "http://edamontology.org/data_3028"
+    },
+    {
+      "@id": "_:Nf990999b18d44f17aa87152bcbd6cb37",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:Nff8900951e8a42fb9aa9c0f5058789e6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1916",
+      "sc:name": "Alignment",
+      "sc:sameAs": "http://edamontology.org/data_1916"
+    }
+  ]
+}

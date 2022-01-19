@@ -1,1 +1,172 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "msstats", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:24794931"], "hasOperation": [{"@id": "http://edamontology.org/operation_3664"}, {"@id": "http://edamontology.org/operation_2409"}, {"@id": "http://edamontology.org/operation_3741"}, {"@id": "http://edamontology.org/operation_3658"}, {"@id": "http://edamontology.org/operation_3799"}, {"@id": "http://edamontology.org/operation_3435"}, {"@id": "http://edamontology.org/operation_0335"}, {"@id": "http://edamontology.org/operation_3441"}, {"@id": "http://edamontology.org/operation_0531"}], "hasInputData": [{"@id": "msstats/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Expression data", "identifier": "http://edamontology.org/data_2603", "sameAs": "http://edamontology.org/data_2603"}, {"@id": "msstats/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Expression data", "identifier": "http://edamontology.org/data_2603", "sameAs": "http://edamontology.org/data_2603"}, {"@id": "msstats/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Expression data", "identifier": "http://edamontology.org/data_2603", "sameAs": "http://edamontology.org/data_2603"}], "hasOutputData": [{"@id": "msstats/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Statistical estimate score", "identifier": "http://edamontology.org/data_0951", "sameAs": "http://edamontology.org/data_0951"}, {"@id": "msstats/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Expression data", "identifier": "http://edamontology.org/data_2603", "sameAs": "http://edamontology.org/data_2603"}, {"@id": "msstats/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "msstats/op_3/in_2", "@type": "bsct:FormalParameter", "name": "Heat map", "identifier": "http://edamontology.org/data_1636", "sameAs": "http://edamontology.org/data_1636"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0121"}, {"@id": "http://edamontology.org/topic_3520"}, {"@id": "http://edamontology.org/topic_2269"}, {"@id": "http://edamontology.org/topic_0769"}], "hasGenDoc": [{"@id": "http://msstats.org/msstats-2/"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/msstats",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:N5966c16b701f4a8a966b83bd3b76c35c"
+        },
+        {
+          "@id": "_:Nee9462d739a14a1ebcd15de78c365208"
+        },
+        {
+          "@id": "_:N2fc08132ea834509bfcb91e3b13b0744"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N519812d798ff4426b3eac3b1639ebb8e"
+        },
+        {
+          "@id": "_:Ncd558c1a5c0145e0b85a4f91cddc6b77"
+        },
+        {
+          "@id": "_:N82e40c6bffb64458adf50559ee1823b5"
+        },
+        {
+          "@id": "_:N4c48352e33d84ad988b40210ab625c74"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3520"
+        },
+        {
+          "@id": "edam:topic_0121"
+        },
+        {
+          "@id": "edam:topic_2269"
+        },
+        {
+          "@id": "edam:topic_0769"
+        }
+      ],
+      "sc:citation": "pubmed:24794931",
+      "sc:description": "Statistical tool for quantitative mass spectrometry-based proteomics.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3441"
+        },
+        {
+          "@id": "edam:operation_3658"
+        },
+        {
+          "@id": "edam:operation_3799"
+        },
+        {
+          "@id": "edam:operation_3741"
+        },
+        {
+          "@id": "edam:operation_0531"
+        },
+        {
+          "@id": "edam:operation_2409"
+        },
+        {
+          "@id": "edam:operation_3664"
+        },
+        {
+          "@id": "edam:operation_3435"
+        },
+        {
+          "@id": "edam:operation_0335"
+        }
+      ],
+      "sc:name": "MSstats",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://msstats.org/msstats-2/"
+      },
+      "sc:url": "http://www.msstats.org/"
+    },
+    {
+      "@id": "_:N519812d798ff4426b3eac3b1639ebb8e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    },
+    {
+      "@id": "_:Ncd558c1a5c0145e0b85a4f91cddc6b77",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1636",
+      "sc:name": "Heat map",
+      "sc:sameAs": "http://edamontology.org/data_1636"
+    },
+    {
+      "@id": "_:N82e40c6bffb64458adf50559ee1823b5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:N4c48352e33d84ad988b40210ab625c74",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0951",
+      "sc:name": "Statistical estimate score",
+      "sc:sameAs": "http://edamontology.org/data_0951"
+    },
+    {
+      "@id": "_:N5966c16b701f4a8a966b83bd3b76c35c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    },
+    {
+      "@id": "_:Nee9462d739a14a1ebcd15de78c365208",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    },
+    {
+      "@id": "_:N2fc08132ea834509bfcb91e3b13b0744",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    }
+  ]
+}

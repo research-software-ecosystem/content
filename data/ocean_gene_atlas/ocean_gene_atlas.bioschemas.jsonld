@@ -1,1 +1,234 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "Ocean_Gene_Atlas", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": [], "contributor": [], "provider": ["MIO"], "funder": ["OCEANOMICS"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:29788376", {"@id": "https://doi.org/10.1093/nar/gky376", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3799"}, {"@id": "http://edamontology.org/operation_0567"}, {"@id": "http://edamontology.org/operation_0573"}, {"@id": "http://edamontology.org/operation_3478"}, {"@id": "http://edamontology.org/operation_0292"}], "hasInputData": [{"@id": "Ocean_Gene_Atlas/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence", "identifier": "http://edamontology.org/data_2977", "sameAs": "http://edamontology.org/data_2977"}, {"@id": "Ocean_Gene_Atlas/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}, {"@id": "Ocean_Gene_Atlas/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Hidden Markov model", "identifier": "http://edamontology.org/data_1364", "sameAs": "http://edamontology.org/data_1364"}, {"@id": "Ocean_Gene_Atlas/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Pfam accession number", "identifier": "http://edamontology.org/data_1138", "sameAs": "http://edamontology.org/data_1138"}, {"@id": "Ocean_Gene_Atlas/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Gene ID", "identifier": "http://edamontology.org/data_2295", "sameAs": "http://edamontology.org/data_2295"}], "hasOutputData": [{"@id": "Ocean_Gene_Atlas/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "Ocean_Gene_Atlas/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence", "identifier": "http://edamontology.org/data_2977", "sameAs": "http://edamontology.org/data_2977"}, {"@id": "Ocean_Gene_Atlas/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}, {"@id": "Ocean_Gene_Atlas/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}, {"@id": "Ocean_Gene_Atlas/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Sequence search results", "identifier": "http://edamontology.org/data_0857", "sameAs": "http://edamontology.org/data_0857"}, {"@id": "Ocean_Gene_Atlas/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Ecological data", "identifier": "http://edamontology.org/data_3736", "sameAs": "http://edamontology.org/data_3736"}, {"@id": "Ocean_Gene_Atlas/op_1/in_7", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "Ocean_Gene_Atlas/op_1/in_8", "@type": "bsct:FormalParameter", "name": "Image", "identifier": "http://edamontology.org/data_2968", "sameAs": "http://edamontology.org/data_2968"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0610"}, {"@id": "http://edamontology.org/topic_3387"}, {"@id": "http://edamontology.org/topic_3174"}, {"@id": "http://edamontology.org/topic_3941"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://tara-oceans.mio.osupytheas.fr/ocean-gene-atlas/build/pdf/Ocean-Gene-Atlas_User_Manual.pdf"}, {"@id": "http://tara-oceans.mio.osupytheas.fr/ocean-gene-atlas/termsOfUse"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/nar/gky376",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/Ocean_Gene_Atlas",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Nf03c472db43c458ea0a1550a8fe76912"
+        },
+        {
+          "@id": "_:N3809e104cabc49a9bbe01583ad2621cf"
+        },
+        {
+          "@id": "_:N20d6164101634409b34ce7dbea3339a8"
+        },
+        {
+          "@id": "_:Nd6842cf2e9dd45f188c98db623866432"
+        },
+        {
+          "@id": "_:Nead6465b564c473989a3c2aea70c7397"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nb40f874e09b1461dbb17924061b93a47"
+        },
+        {
+          "@id": "_:Nb50e38fabd474e4c926ad51867c3ebe5"
+        },
+        {
+          "@id": "_:N6c734327eacc4ae6997bf6b7954b2560"
+        },
+        {
+          "@id": "_:N869b6bf832704ca3b63de033bf02e238"
+        },
+        {
+          "@id": "_:N27c5aa346d024674bdb3cb42307ae84c"
+        },
+        {
+          "@id": "_:N64ce8b2d4bef4e4c9e3adb46956f9929"
+        },
+        {
+          "@id": "_:Ne830ff1052be4fa783f702097d3f1d26"
+        },
+        {
+          "@id": "_:N0d9f95a1f10b4d20a9c687687c28ff06"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Database portal",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0610"
+        },
+        {
+          "@id": "edam:topic_3387"
+        },
+        {
+          "@id": "edam:topic_3941"
+        },
+        {
+          "@id": "edam:topic_3174"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/nar/gky376"
+        },
+        "pubmed:29788376"
+      ],
+      "sc:description": "The Ocean Gene Atlas service provides data mining access to three complementary data objects: gene sequence catalogs (ENA), sample environmental context (PANGAEA), and gene abundances estimates in samples (computed by mapping sequence reads onto gene catalogs).\nUser queries are composed of either a sequence (nucleic or protein), or a hidden Markov model derived from a multiple sequence alignment. Homologs of the user query in the gene catalogs are identified using standard sequence similarity search tools (eg BLAST or HMMER), and their read based estimated abundance are displayed in interactive maps and plots. A phylogenetic tree is also inferred in order to situate the user query within its context of marine environmental homologs as well as known homologs from reference sequences.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0573"
+        },
+        {
+          "@id": "edam:operation_0292"
+        },
+        {
+          "@id": "edam:operation_0567"
+        },
+        {
+          "@id": "edam:operation_3478"
+        },
+        {
+          "@id": "edam:operation_3799"
+        }
+      ],
+      "sc:funder": "OCEANOMICS",
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Not licensed",
+      "sc:name": "Ocean Gene Atlas",
+      "sc:provider": "MIO",
+      "sc:softwareHelp": [
+        {
+          "@id": "http://tara-oceans.mio.osupytheas.fr/ocean-gene-atlas/build/pdf/Ocean-Gene-Atlas_User_Manual.pdf"
+        },
+        {
+          "@id": "http://tara-oceans.mio.osupytheas.fr/ocean-gene-atlas/termsOfUse"
+        }
+      ],
+      "sc:url": "http://tara-oceans.mio.osupytheas.fr/ocean-gene-atlas/"
+    },
+    {
+      "@id": "_:Nb40f874e09b1461dbb17924061b93a47",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0857",
+      "sc:name": "Sequence search results",
+      "sc:sameAs": "http://edamontology.org/data_0857"
+    },
+    {
+      "@id": "_:Nb50e38fabd474e4c926ad51867c3ebe5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3736",
+      "sc:name": "Ecological data",
+      "sc:sameAs": "http://edamontology.org/data_3736"
+    },
+    {
+      "@id": "_:N6c734327eacc4ae6997bf6b7954b2560",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:N869b6bf832704ca3b63de033bf02e238",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:N27c5aa346d024674bdb3cb42307ae84c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2968",
+      "sc:name": "Image",
+      "sc:sameAs": "http://edamontology.org/data_2968"
+    },
+    {
+      "@id": "_:N64ce8b2d4bef4e4c9e3adb46956f9929",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2977",
+      "sc:name": "Nucleic acid sequence",
+      "sc:sameAs": "http://edamontology.org/data_2977"
+    },
+    {
+      "@id": "_:Ne830ff1052be4fa783f702097d3f1d26",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:N0d9f95a1f10b4d20a9c687687c28ff06",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:Nf03c472db43c458ea0a1550a8fe76912",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2977",
+      "sc:name": "Nucleic acid sequence",
+      "sc:sameAs": "http://edamontology.org/data_2977"
+    },
+    {
+      "@id": "_:N3809e104cabc49a9bbe01583ad2621cf",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:N20d6164101634409b34ce7dbea3339a8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2295",
+      "sc:name": "Gene ID",
+      "sc:sameAs": "http://edamontology.org/data_2295"
+    },
+    {
+      "@id": "_:Nd6842cf2e9dd45f188c98db623866432",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1138",
+      "sc:name": "Pfam accession number",
+      "sc:sameAs": "http://edamontology.org/data_1138"
+    },
+    {
+      "@id": "_:Nead6465b564c473989a3c2aea70c7397",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1364",
+      "sc:name": "Hidden Markov model",
+      "sc:sameAs": "http://edamontology.org/data_1364"
+    }
+  ]
+}

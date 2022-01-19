@@ -1,1 +1,217 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "neemp", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Tom\u00e1\u0161 Ra\u010dek"], "author": ["Tom\u00e1\u0161 Ra\u010dek"], "contributor": [], "provider": ["National Centre for Biomolecular Research, Masaryk University, Brno", "Central European Institute of Technology, Brno", "mail.muni.cz", "ELIXIR-CZ"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:27803746", "pmcid:PMC5067907", {"@id": "https://doi.org/10.1186/s13321-016-0171-1", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3438"}, {"@id": "http://edamontology.org/operation_3438"}, {"@id": "http://edamontology.org/operation_3438"}, {"@id": "http://edamontology.org/operation_3438"}], "hasInputData": [{"@id": "neemp/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}, {"@id": "neemp/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Atomic property", "identifier": "http://edamontology.org/data_1917", "sameAs": "http://edamontology.org/data_1917"}, {"@id": "neemp/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}, {"@id": "neemp/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}, {"@id": "neemp/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}, {"@id": "neemp/op_3/in_2", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}, {"@id": "neemp/op_4/in_1", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}, {"@id": "neemp/op_4/in_2", "@type": "bsct:FormalParameter", "name": "Atomic property", "identifier": "http://edamontology.org/data_1917", "sameAs": "http://edamontology.org/data_1917"}, {"@id": "neemp/op_4/in_3", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}], "hasOutputData": [{"@id": "neemp/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Text data", "identifier": "http://edamontology.org/data_2526", "sameAs": "http://edamontology.org/data_2526"}, {"@id": "neemp/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Atomic property", "identifier": "http://edamontology.org/data_1917", "sameAs": "http://edamontology.org/data_1917"}, {"@id": "neemp/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Report", "identifier": "http://edamontology.org/data_2048", "sameAs": "http://edamontology.org/data_2048"}, {"@id": "neemp/op_4/in_1", "@type": "bsct:FormalParameter", "name": "Report", "identifier": "http://edamontology.org/data_2048", "sameAs": "http://edamontology.org/data_2048"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3332"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://webchem.ncbr.muni.cz/Wiki/NEEMP:UserManual"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1186/s13321-016-0171-1",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/neemp",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Tomáš Raček",
+      "bsc:input": [
+        {
+          "@id": "_:N598ea0df415d461bb3bd87d7cec760b5"
+        },
+        {
+          "@id": "_:Ndb504ae635014d55996f7645efd19644"
+        },
+        {
+          "@id": "_:N4ec0f62ebd32427f9fa6d9f1d1d6815c"
+        },
+        {
+          "@id": "_:N24a7d1cd8ad7472a95d209a32311e432"
+        },
+        {
+          "@id": "_:N95754785cbcd454781873d09537d6e13"
+        },
+        {
+          "@id": "_:N243c3994f60d48ebbf37892c15bd275f"
+        },
+        {
+          "@id": "_:Nec5c39cae3d1421eb28c93ec608d71e4"
+        },
+        {
+          "@id": "_:Nc7e9b28a6364470a9ae6c0eae9928aae"
+        },
+        {
+          "@id": "_:N8671d8c8483440f29e414f9ade037037"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nccb17dc430284eae8b730c4e62bb13b9"
+        },
+        {
+          "@id": "_:N37ed946657e24e899a452fdbce9dafbe"
+        },
+        {
+          "@id": "_:Nf2c23ff4010747c498dda2d0ef85c9fe"
+        },
+        {
+          "@id": "_:N59c1da726d1c4bddabbc3b90a8855650"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3332"
+      },
+      "sc:author": "Tomáš Raček",
+      "sc:citation": [
+        "pubmed:27803746",
+        {
+          "@id": "https://doi.org/10.1186/s13321-016-0171-1"
+        },
+        "pmcid:PMC5067907"
+      ],
+      "sc:description": "Main function is to perform EEM parameterization. Can be used to efficiently compute EEM charges, validate them against QM ones and to compute the parameter coverage.",
+      "sc:featureList": {
+        "@id": "edam:operation_3438"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-3.0",
+      "sc:name": "NEEMP",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:provider": [
+        "mail.muni.cz",
+        "National Centre for Biomolecular Research, Masaryk University, Brno",
+        "Central European Institute of Technology, Brno",
+        "ELIXIR-CZ"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://webchem.ncbr.muni.cz/Wiki/NEEMP:UserManual"
+      },
+      "sc:softwareVersion": "1",
+      "sc:url": "http://ncbr.muni.cz/neemp"
+    },
+    {
+      "@id": "_:N598ea0df415d461bb3bd87d7cec760b5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:Ndb504ae635014d55996f7645efd19644",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:N4ec0f62ebd32427f9fa6d9f1d1d6815c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1917",
+      "sc:name": "Atomic property",
+      "sc:sameAs": "http://edamontology.org/data_1917"
+    },
+    {
+      "@id": "_:N24a7d1cd8ad7472a95d209a32311e432",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:N95754785cbcd454781873d09537d6e13",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:N243c3994f60d48ebbf37892c15bd275f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:Nec5c39cae3d1421eb28c93ec608d71e4",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1917",
+      "sc:name": "Atomic property",
+      "sc:sameAs": "http://edamontology.org/data_1917"
+    },
+    {
+      "@id": "_:Nc7e9b28a6364470a9ae6c0eae9928aae",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:N8671d8c8483440f29e414f9ade037037",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:Nccb17dc430284eae8b730c4e62bb13b9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1917",
+      "sc:name": "Atomic property",
+      "sc:sameAs": "http://edamontology.org/data_1917"
+    },
+    {
+      "@id": "_:N37ed946657e24e899a452fdbce9dafbe",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2048",
+      "sc:name": "Report",
+      "sc:sameAs": "http://edamontology.org/data_2048"
+    },
+    {
+      "@id": "_:Nf2c23ff4010747c498dda2d0ef85c9fe",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2526",
+      "sc:name": "Text data",
+      "sc:sameAs": "http://edamontology.org/data_2526"
+    },
+    {
+      "@id": "_:N59c1da726d1c4bddabbc3b90a8855650",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2048",
+      "sc:name": "Report",
+      "sc:sameAs": "http://edamontology.org/data_2048"
+    }
+  ]
+}

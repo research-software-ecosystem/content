@@ -1,1 +1,178 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "clusterizebyslidingwindows", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Galaxy Support Team"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/nar/gkw343", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.7490/f1000research.1114334.1", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0291"}], "hasInputData": [{"@id": "clusterizebyslidingwindows/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Annotation track", "identifier": "http://edamontology.org/data_3002", "sameAs": "http://edamontology.org/data_3002"}, {"@id": "clusterizebyslidingwindows/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "clusterizebyslidingwindows/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "clusterizebyslidingwindows/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "clusterizebyslidingwindows/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Sequence trace", "identifier": "http://edamontology.org/data_0924", "sameAs": "http://edamontology.org/data_0924"}, {"@id": "clusterizebyslidingwindows/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasOutputData": [{"@id": "clusterizebyslidingwindows/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "clusterizebyslidingwindows/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "clusterizebyslidingwindows/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Image", "identifier": "http://edamontology.org/data_2968", "sameAs": "http://edamontology.org/data_2968"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0749"}, {"@id": "http://edamontology.org/topic_3168"}], "hasGenDoc": [{"@id": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/urgi_tools/clusterizeBySlidingWindows/1.0.0"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.7490/f1000research.1114334.1",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkw343",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/clusterizebyslidingwindows",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Galaxy Support Team",
+      "bsc:input": [
+        {
+          "@id": "_:N1d2f4338d5b3446d95324ef9b0d8c039"
+        },
+        {
+          "@id": "_:Nf5e0fc585ca643ffb1e85dd1852ab6ad"
+        },
+        {
+          "@id": "_:N1c50824cafde479a9460a1660c6c5cf7"
+        },
+        {
+          "@id": "_:Nd983e9286e484d5ca7b5763bfe5fc167"
+        },
+        {
+          "@id": "_:N6a81f242cfa84e099cf4e69d66c84dd6"
+        },
+        {
+          "@id": "_:N1c22122a21304c7f8a31bc23504e4002"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N2a8609623b3e474d978d242b705ae464"
+        },
+        {
+          "@id": "_:N787ef287cc6046debbd039ef43d3e745"
+        },
+        {
+          "@id": "_:N5d00edf1db4745cbbf9a9454d0e1c27d"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3168"
+        },
+        {
+          "@id": "edam:topic_0749"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/nar/gkw343"
+        },
+        {
+          "@id": "https://doi.org/10.7490/f1000research.1114334.1"
+        }
+      ],
+      "sc:description": "Produces a GFF3 file that clusters a list of transcripts using a sliding window. Cluster the data into regions (defined by size and overlap with next region) and keep only highest peaks.",
+      "sc:featureList": {
+        "@id": "edam:operation_0291"
+      },
+      "sc:name": "clusterizebyslidingwindows",
+      "sc:operatingSystem": [
+        "Windows",
+        "Linux",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/urgi_tools/clusterizeBySlidingWindows/1.0.0"
+      },
+      "sc:softwareVersion": "1.0.0",
+      "sc:url": "https://urgi.versailles.inra.fr/Tools/REPET"
+    },
+    {
+      "@id": "_:N1d2f4338d5b3446d95324ef9b0d8c039",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Nf5e0fc585ca643ffb1e85dd1852ab6ad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N1c50824cafde479a9460a1660c6c5cf7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Nd983e9286e484d5ca7b5763bfe5fc167",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "_:N6a81f242cfa84e099cf4e69d66c84dd6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0924",
+      "sc:name": "Sequence trace",
+      "sc:sameAs": "http://edamontology.org/data_0924"
+    },
+    {
+      "@id": "_:N1c22122a21304c7f8a31bc23504e4002",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N2a8609623b3e474d978d242b705ae464",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2968",
+      "sc:name": "Image",
+      "sc:sameAs": "http://edamontology.org/data_2968"
+    },
+    {
+      "@id": "_:N787ef287cc6046debbd039ef43d3e745",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N5d00edf1db4745cbbf9a9454d0e1c27d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    }
+  ]
+}

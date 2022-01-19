@@ -1,1 +1,193 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "svdetect_run_parallel_step", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Galaxy Support Team"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/bioinformatics/btq293", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.1093/nar/gkw343", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.7490/f1000research.1114334.1", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_2403"}, {"@id": "http://edamontology.org/operation_0475"}, {"@id": "http://edamontology.org/operation_0474"}], "hasInputData": [{"@id": "svdetect_run_parallel_step/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence trace", "identifier": "http://edamontology.org/data_0924", "sameAs": "http://edamontology.org/data_0924"}, {"@id": "svdetect_run_parallel_step/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence trace", "identifier": "http://edamontology.org/data_0924", "sameAs": "http://edamontology.org/data_0924"}, {"@id": "svdetect_run_parallel_step/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasOutputData": [{"@id": "svdetect_run_parallel_step/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "svdetect_run_parallel_step/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "svdetect_run_parallel_step/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "svdetect_run_parallel_step/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "svdetect_run_parallel_step/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Annotation track", "identifier": "http://edamontology.org/data_3002", "sameAs": "http://edamontology.org/data_3002"}, {"@id": "svdetect_run_parallel_step/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasTopic": [{"@id": "http://edamontology.org/topic_1317"}, {"@id": "http://edamontology.org/topic_0080"}], "hasGenDoc": [{"@id": "https://galaxy.pasteur.fr/root?tool_id=toolshed.pasteur.fr%2Frepos%2Fscreno%2Fsvdetect_pasteur%2Fsvdetect_run_parallel_step%2F1.0.0"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/svdetect_run_parallel_step",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Galaxy Support Team",
+      "bsc:input": [
+        {
+          "@id": "_:N87d8bbfa8e2d44e6a46de12b2e0064bb"
+        },
+        {
+          "@id": "_:Nbc3fba4a227a4437ae1163fc9473ed4c"
+        },
+        {
+          "@id": "_:N4f62515a96f94705a55b775f7c0e5b9b"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N1af4d213ca2e4f43ab46f4d6051b0aad"
+        },
+        {
+          "@id": "_:N184b8cd486e74f7798574d99ba0b3b1e"
+        },
+        {
+          "@id": "_:N9c569d0feee54a7bb6475f51785a88ae"
+        },
+        {
+          "@id": "_:N8570b9b4c23f430ea81c2749abba8177"
+        },
+        {
+          "@id": "_:N37b03a7ff5a0453f969ba774e8fd2c44"
+        },
+        {
+          "@id": "_:Ne685e5ee983d4ad4ab3f26fcb99d81fb"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_1317"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/bioinformatics/btq293"
+        },
+        {
+          "@id": "https://doi.org/10.1093/nar/gkw343"
+        },
+        {
+          "@id": "https://doi.org/10.7490/f1000research.1114334.1"
+        }
+      ],
+      "sc:description": "Detect clusters of anomalously mapped pairs and identify structural variants.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0475"
+        },
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:operation_0474"
+        }
+      ],
+      "sc:name": "svdetect_run_parallel_step",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://galaxy.pasteur.fr/root?tool_id=toolshed.pasteur.fr%2Frepos%2Fscreno%2Fsvdetect_pasteur%2Fsvdetect_run_parallel_step%2F1.0.0"
+      },
+      "sc:softwareVersion": "1.0.0",
+      "sc:url": "http://svdetect.sourceforge.net/Site/Home.html"
+    },
+    {
+      "@id": "_:N87d8bbfa8e2d44e6a46de12b2e0064bb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0924",
+      "sc:name": "Sequence trace",
+      "sc:sameAs": "http://edamontology.org/data_0924"
+    },
+    {
+      "@id": "_:Nbc3fba4a227a4437ae1163fc9473ed4c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N4f62515a96f94705a55b775f7c0e5b9b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0924",
+      "sc:name": "Sequence trace",
+      "sc:sameAs": "http://edamontology.org/data_0924"
+    },
+    {
+      "@id": "_:N1af4d213ca2e4f43ab46f4d6051b0aad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N184b8cd486e74f7798574d99ba0b3b1e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N9c569d0feee54a7bb6475f51785a88ae",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N8570b9b4c23f430ea81c2749abba8177",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N37b03a7ff5a0453f969ba774e8fd2c44",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Ne685e5ee983d4ad4ab3f26fcb99d81fb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btq293",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.7490/f1000research.1114334.1",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkw343",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

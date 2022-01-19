@@ -1,1 +1,261 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "hotspot_wizard", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["HotSpot Wizard team"], "author": [{"@id": "https://orcid.org/0000-0003-3139-3700", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0001-9989-2720", "@type": "schema:Person"}, "Lenka Sumbalova", "Antonin Pavelka", {"@id": "https://orcid.org/0000-0003-3219-8149", "@type": "schema:Person"}], "contributor": [{"@id": "https://orcid.org/0000-0001-9677-5078", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0002-7848-8216", "@type": "schema:Person"}, "Ondrej Vavra", "Eva Sebestova", "European Commission", "Grant Agency of the Czech Republic", "Ministry of Education of the Czech Republic"], "provider": ["Loschmidt Laboratories", "Masaryk University, Brno, Czech Republic", "International Centre for Clinical Research, Brno, Czech Republic", "Brno University of Technology, Brno, Czech Republic", "ELIXIR-CZ"], "funder": ["European Commission", "Grant Agency of the Czech Republic", "Ministry of Education of the Czech Republic"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/nar/gky417", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0331"}, {"@id": "http://edamontology.org/operation_0249"}, {"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_0244"}, {"@id": "http://edamontology.org/operation_0449"}, {"@id": "http://edamontology.org/operation_0492"}, {"@id": "http://edamontology.org/operation_0319"}, {"@id": "http://edamontology.org/operation_3092"}, {"@id": "http://edamontology.org/operation_0384"}, {"@id": "http://edamontology.org/operation_0482"}], "hasInputData": [{"@id": "hotspot_wizard/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}, {"@id": "hotspot_wizard/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}, {"@id": "hotspot_wizard/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}], "hasOutputData": [{"@id": "hotspot_wizard/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment (protein)", "identifier": "http://edamontology.org/data_1384", "sameAs": "http://edamontology.org/data_1384"}, {"@id": "hotspot_wizard/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein report", "identifier": "http://edamontology.org/data_0896", "sameAs": "http://edamontology.org/data_0896"}, {"@id": "hotspot_wizard/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein structure report", "identifier": "http://edamontology.org/data_1537", "sameAs": "http://edamontology.org/data_1537"}, {"@id": "hotspot_wizard/op_1/in_4", "@type": "bsct:FormalParameter", "name": "DNA sequence (raw)", "identifier": "http://edamontology.org/data_3497", "sameAs": "http://edamontology.org/data_3497"}, {"@id": "hotspot_wizard/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree", "identifier": "http://edamontology.org/data_0872", "sameAs": "http://edamontology.org/data_0872"}, {"@id": "hotspot_wizard/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Protein-ligand complex", "identifier": "http://edamontology.org/data_1461", "sameAs": "http://edamontology.org/data_1461"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2814"}, {"@id": "http://edamontology.org/topic_0160"}, {"@id": "http://edamontology.org/topic_0078"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://loschmidt.chemi.muni.cz/hotspotwizard/?action=help"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0001-9677-5078",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/hotspot_wizard",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "HotSpot Wizard team",
+      "bsc:input": [
+        {
+          "@id": "_:Nce36013358234286b78a24118c324721"
+        },
+        {
+          "@id": "_:Nc1cd8287e1ea4e46a5569421d1aac11a"
+        },
+        {
+          "@id": "_:Nea0cc78f5def4b818a0e8506d63eb024"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N6bf7ea55027b4f5bb94dfdc81d143a0f"
+        },
+        {
+          "@id": "_:Na2e5c854a33941e0a809423cc765e994"
+        },
+        {
+          "@id": "_:N23cec1dff3fb4a58b0df5ecf5b985476"
+        },
+        {
+          "@id": "_:Nf2b502c81eed47a39d9a256923e6d5fe"
+        },
+        {
+          "@id": "_:Nd033b0699a774457bc6253ac7243b798"
+        },
+        {
+          "@id": "_:N952cc64ab030417399d85bf8961ff81d"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0078"
+        },
+        {
+          "@id": "edam:topic_0160"
+        },
+        {
+          "@id": "edam:topic_2814"
+        }
+      ],
+      "sc:author": [
+        {
+          "@id": "https://orcid.org/0000-0003-3219-8149"
+        },
+        "Antonin Pavelka",
+        "Lenka Sumbalova",
+        {
+          "@id": "https://orcid.org/0000-0003-3139-3700"
+        },
+        {
+          "@id": "https://orcid.org/0000-0001-9989-2720"
+        }
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1093/nar/gky417"
+      },
+      "sc:contributor": [
+        "European Commission",
+        {
+          "@id": "https://orcid.org/0000-0002-7848-8216"
+        },
+        "Ministry of Education of the Czech Republic",
+        "Eva Sebestova",
+        "Grant Agency of the Czech Republic",
+        {
+          "@id": "https://orcid.org/0000-0001-9677-5078"
+        },
+        "Ondrej Vavra"
+      ],
+      "sc:description": "An automated design of mutations and smart libraries for engineering of protein function and stability and annotation of protein structures.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0449"
+        },
+        {
+          "@id": "edam:operation_0319"
+        },
+        {
+          "@id": "edam:operation_0570"
+        },
+        {
+          "@id": "edam:operation_0331"
+        },
+        {
+          "@id": "edam:operation_0384"
+        },
+        {
+          "@id": "edam:operation_0249"
+        },
+        {
+          "@id": "edam:operation_0482"
+        },
+        {
+          "@id": "edam:operation_0492"
+        },
+        {
+          "@id": "edam:operation_3092"
+        },
+        {
+          "@id": "edam:operation_0244"
+        }
+      ],
+      "sc:funder": [
+        "Ministry of Education of the Czech Republic",
+        "Grant Agency of the Czech Republic",
+        "European Commission"
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Proprietary",
+      "sc:name": "HotSpot Wizard",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:provider": [
+        "ELIXIR-CZ",
+        "International Centre for Clinical Research, Brno, Czech Republic",
+        "Brno University of Technology, Brno, Czech Republic",
+        "Loschmidt Laboratories",
+        "Masaryk University, Brno, Czech Republic"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://loschmidt.chemi.muni.cz/hotspotwizard/?action=help"
+      },
+      "sc:softwareVersion": "3.1",
+      "sc:url": "https://loschmidt.chemi.muni.cz/hotspotwizard/"
+    },
+    {
+      "@id": "_:N6bf7ea55027b4f5bb94dfdc81d143a0f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3497",
+      "sc:name": "DNA sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_3497"
+    },
+    {
+      "@id": "_:Na2e5c854a33941e0a809423cc765e994",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1384",
+      "sc:name": "Sequence alignment (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1384"
+    },
+    {
+      "@id": "_:N23cec1dff3fb4a58b0df5ecf5b985476",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0896",
+      "sc:name": "Protein report",
+      "sc:sameAs": "http://edamontology.org/data_0896"
+    },
+    {
+      "@id": "_:Nf2b502c81eed47a39d9a256923e6d5fe",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1537",
+      "sc:name": "Protein structure report",
+      "sc:sameAs": "http://edamontology.org/data_1537"
+    },
+    {
+      "@id": "_:Nd033b0699a774457bc6253ac7243b798",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0872",
+      "sc:name": "Phylogenetic tree",
+      "sc:sameAs": "http://edamontology.org/data_0872"
+    },
+    {
+      "@id": "_:N952cc64ab030417399d85bf8961ff81d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1461",
+      "sc:name": "Protein-ligand complex",
+      "sc:sameAs": "http://edamontology.org/data_1461"
+    },
+    {
+      "@id": "_:Nce36013358234286b78a24118c324721",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:Nc1cd8287e1ea4e46a5569421d1aac11a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "_:Nea0cc78f5def4b818a0e8506d63eb024",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9989-2720",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gky417",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-7848-8216",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3219-8149",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3139-3700",
+      "@type": "schema:Person"
+    }
+  ]
+}

@@ -1,1 +1,118 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "mocat", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Georg Zeller"], "author": [], "contributor": [], "provider": ["European Molecular Biology Laboratory (EMBL)", "HD-HuB"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:27153620", "pubmed:23082188"], "hasOperation": [{"@id": "http://edamontology.org/operation_2454"}, {"@id": "http://edamontology.org/operation_3200"}, {"@id": "http://edamontology.org/operation_0310"}, {"@id": "http://edamontology.org/operation_3672"}, {"@id": "http://edamontology.org/operation_3187"}], "hasInputData": [{"@id": "mocat/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence (raw)", "identifier": "http://edamontology.org/data_2975", "sameAs": "http://edamontology.org/data_2975"}], "hasOutputData": [{"@id": "mocat/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Matrix", "identifier": "http://edamontology.org/data_2082", "sameAs": "http://edamontology.org/data_2082"}, {"@id": "mocat/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence assembly", "identifier": "http://edamontology.org/data_0925", "sameAs": "http://edamontology.org/data_0925"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3174"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://vm-lux.embl.de/~kultima/share/MOCAT/v2.0/MOCATv2.0.manual.pdf"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/mocat",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Georg Zeller",
+      "bsc:input": {
+        "@id": "_:N0630fe8c8b094a0c84a09a91c4852635"
+      },
+      "bsc:output": [
+        {
+          "@id": "_:Nafb1e13050494be5a33fde000e334082"
+        },
+        {
+          "@id": "_:Nac90a454e3b64d46875568ef6f074041"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3174"
+      },
+      "sc:citation": [
+        "pubmed:27153620",
+        "pubmed:23082188"
+      ],
+      "sc:description": "MOCAT is a modular and scalable software pipeline for analyzing shotgun metagenomics datasets generated with Illumina technology. Starting from raw fastQ files, it can quality-filter and remove contaminants from them, assemble metagenomic reads into contigs, predict prokaryotic genes on these, identify phylogenetic marker genes and generate taxonomic abundance profiles by mapping reads to these marker genes.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3200"
+        },
+        {
+          "@id": "edam:operation_3672"
+        },
+        {
+          "@id": "edam:operation_2454"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:operation_3187"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-3.0",
+      "sc:name": "MOCAT",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac"
+      ],
+      "sc:provider": [
+        "HD-HuB",
+        "European Molecular Biology Laboratory (EMBL)"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://vm-lux.embl.de/~kultima/share/MOCAT/v2.0/MOCATv2.0.manual.pdf"
+      },
+      "sc:softwareVersion": "2.0",
+      "sc:url": "http://vm-lux.embl.de/~kultima/MOCAT/"
+    },
+    {
+      "@id": "_:Nafb1e13050494be5a33fde000e334082",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0925",
+      "sc:name": "Sequence assembly",
+      "sc:sameAs": "http://edamontology.org/data_0925"
+    },
+    {
+      "@id": "_:Nac90a454e3b64d46875568ef6f074041",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2082",
+      "sc:name": "Matrix",
+      "sc:sameAs": "http://edamontology.org/data_2082"
+    },
+    {
+      "@id": "_:N0630fe8c8b094a0c84a09a91c4852635",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2975",
+      "sc:name": "Nucleic acid sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2975"
+    }
+  ]
+}

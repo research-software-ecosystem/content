@@ -1,1 +1,207 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "microbetrace", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": ["Centers for Disease Control and Prevention"], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasOperation": [{"@id": "http://edamontology.org/operation_0491"}, {"@id": "http://edamontology.org/operation_3925"}, {"@id": "http://edamontology.org/operation_3503"}, {"@id": "http://edamontology.org/operation_0289"}, {"@id": "http://edamontology.org/operation_3459"}, {"@id": "http://edamontology.org/operation_0567"}, {"@id": "http://edamontology.org/operation_2940"}, {"@id": "http://edamontology.org/operation_0490"}, {"@id": "http://edamontology.org/operation_3553"}, {"@id": "http://edamontology.org/operation_3436"}, {"@id": "http://edamontology.org/operation_0540"}, {"@id": "http://edamontology.org/operation_0558"}], "hasInputData": [{"@id": "microbetrace/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence alignment", "identifier": "http://edamontology.org/data_1383", "sameAs": "http://edamontology.org/data_1383"}, {"@id": "microbetrace/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence distance matrix", "identifier": "http://edamontology.org/data_0870", "sameAs": "http://edamontology.org/data_0870"}, {"@id": "microbetrace/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Phylogenetic tree distances", "identifier": "http://edamontology.org/data_1442", "sameAs": "http://edamontology.org/data_1442"}, {"@id": "microbetrace/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "microbetrace/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Sequence features metadata", "identifier": "http://edamontology.org/data_2914", "sameAs": "http://edamontology.org/data_2914"}], "hasOutputData": [{"@id": "microbetrace/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Raw image", "identifier": "http://edamontology.org/data_3424", "sameAs": "http://edamontology.org/data_3424"}, {"@id": "microbetrace/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "microbetrace/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence alignment", "identifier": "http://edamontology.org/data_1383", "sameAs": "http://edamontology.org/data_1383"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3324"}, {"@id": "http://edamontology.org/topic_0602"}, {"@id": "http://edamontology.org/topic_0084"}, {"@id": "http://edamontology.org/topic_0194"}, {"@id": "http://edamontology.org/topic_0092"}, {"@id": "http://edamontology.org/topic_0091"}, {"@id": "http://edamontology.org/topic_3945"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://github.com/CDCgov/MicrobeTrace/blob/master/docs/MicrobeTrace_Manual.pdf"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/microbetrace",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:N13b63cd8289d4f05bde29784b3de5a33"
+        },
+        {
+          "@id": "_:N95449adf19db414ab9b3f68fb177aa23"
+        },
+        {
+          "@id": "_:Na2fe4f4b6607414fb750fba948b10156"
+        },
+        {
+          "@id": "_:Nf92118ec77854478844590f25f76ca1e"
+        },
+        {
+          "@id": "_:N33b294093d424727a614d4fe0366e3c8"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N2579a96768834f2ba5eb7fb089c4eaad"
+        },
+        {
+          "@id": "_:N3acb1de6ec3444c3932ed3b4364c55ad"
+        },
+        {
+          "@id": "_:Nd3a8427c38764b7688baa601ee813310"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Workbench",
+        "Web application"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0602"
+        },
+        {
+          "@id": "edam:topic_0091"
+        },
+        {
+          "@id": "edam:topic_3945"
+        },
+        {
+          "@id": "edam:topic_0084"
+        },
+        {
+          "@id": "edam:topic_0194"
+        },
+        {
+          "@id": "edam:topic_3324"
+        },
+        {
+          "@id": "edam:topic_0092"
+        }
+      ],
+      "sc:author": "Centers for Disease Control and Prevention",
+      "sc:description": "MicrobeTrace is a web-based tool to visually render networks from surveillance, epidemiologic\ninvestigations, and genetic analyses. Using simple point-and-click interfaces, data can\nbe readily imported, integrated and visualized...no coding required!",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3503"
+        },
+        {
+          "@id": "edam:operation_3436"
+        },
+        {
+          "@id": "edam:operation_0567"
+        },
+        {
+          "@id": "edam:operation_0289"
+        },
+        {
+          "@id": "edam:operation_3925"
+        },
+        {
+          "@id": "edam:operation_0490"
+        },
+        {
+          "@id": "edam:operation_2940"
+        },
+        {
+          "@id": "edam:operation_0491"
+        },
+        {
+          "@id": "edam:operation_3459"
+        },
+        {
+          "@id": "edam:operation_0540"
+        },
+        {
+          "@id": "edam:operation_3553"
+        },
+        {
+          "@id": "edam:operation_0558"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Freeware",
+      "sc:name": "MicrobeTrace",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://github.com/CDCgov/MicrobeTrace/blob/master/docs/MicrobeTrace_Manual.pdf"
+      },
+      "sc:softwareVersion": "0.6.1",
+      "sc:url": "https://microbetrace.cdc.gov"
+    },
+    {
+      "@id": "_:N2579a96768834f2ba5eb7fb089c4eaad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1383",
+      "sc:name": "Nucleic acid sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_1383"
+    },
+    {
+      "@id": "_:N3acb1de6ec3444c3932ed3b4364c55ad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3424",
+      "sc:name": "Raw image",
+      "sc:sameAs": "http://edamontology.org/data_3424"
+    },
+    {
+      "@id": "_:Nd3a8427c38764b7688baa601ee813310",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:N13b63cd8289d4f05bde29784b3de5a33",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:N95449adf19db414ab9b3f68fb177aa23",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2914",
+      "sc:name": "Sequence features metadata",
+      "sc:sameAs": "http://edamontology.org/data_2914"
+    },
+    {
+      "@id": "_:Na2fe4f4b6607414fb750fba948b10156",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1383",
+      "sc:name": "Nucleic acid sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_1383"
+    },
+    {
+      "@id": "_:Nf92118ec77854478844590f25f76ca1e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0870",
+      "sc:name": "Sequence distance matrix",
+      "sc:sameAs": "http://edamontology.org/data_0870"
+    },
+    {
+      "@id": "_:N33b294093d424727a614d4fe0366e3c8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1442",
+      "sc:name": "Phylogenetic tree distances",
+      "sc:sameAs": "http://edamontology.org/data_1442"
+    }
+  ]
+}

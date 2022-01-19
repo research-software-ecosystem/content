@@ -1,1 +1,192 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "cov2html", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:24512253", "pmcid:PMC3934542", {"@id": "https://doi.org/10.1089/OMI.2013.0119", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.7490/f1000research.1114334.1", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_2429"}], "hasInputData": [{"@id": "cov2html/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "cov2html/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_7", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasOutputData": [{"@id": "cov2html/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "cov2html/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3301"}, {"@id": "http://edamontology.org/topic_3168"}, {"@id": "http://edamontology.org/topic_0622"}, {"@id": "http://edamontology.org/topic_0092"}, {"@id": "http://edamontology.org/topic_3170"}, {"@id": "http://edamontology.org/topic_0102"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://mmonot.eu/COV2HTML/connexion.php"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/cov2html",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:N698fe59e87f443d2865e32083f875be7"
+        },
+        {
+          "@id": "_:N9b8bfe08eb47419498b7d5b066752b42"
+        },
+        {
+          "@id": "_:Nb2d0efb660e54e29a0a358d7d2f7ad73"
+        },
+        {
+          "@id": "_:Nbe3eb97ec1674bb69a56e225e9c48dd7"
+        },
+        {
+          "@id": "_:Na6e5f551c1d64ddcb3ec251a89b8f92e"
+        },
+        {
+          "@id": "_:Naf4a9b9f55c1443b9876d35970c942cf"
+        },
+        {
+          "@id": "_:Nfeeef136fb744a4fabe2383278dc55e2"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N8a27858d9c044069b362ea679b2193c9"
+        },
+        {
+          "@id": "_:Ndd9dc5afc014483294f718fae4b93ad9"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3301"
+        },
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:topic_0092"
+        },
+        {
+          "@id": "edam:topic_3168"
+        },
+        {
+          "@id": "edam:topic_0102"
+        },
+        {
+          "@id": "edam:topic_3170"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1089/OMI.2013.0119"
+        },
+        "pmcid:PMC3934542",
+        {
+          "@id": "https://doi.org/10.7490/f1000research.1114334.1"
+        },
+        "pubmed:24512253"
+      ],
+      "sc:description": "Visualization and Analysis Tool of Bacterial Next Generation Sequencing (NGS) Data for Postgenomics Life Scientists.",
+      "sc:featureList": {
+        "@id": "edam:operation_2429"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Unlicense",
+      "sc:name": "COV2HTML",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://mmonot.eu/COV2HTML/connexion.php"
+      },
+      "sc:url": "https://mmonot.eu/COV2HTML"
+    },
+    {
+      "@id": "_:N698fe59e87f443d2865e32083f875be7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N9b8bfe08eb47419498b7d5b066752b42",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Nb2d0efb660e54e29a0a358d7d2f7ad73",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Nbe3eb97ec1674bb69a56e225e9c48dd7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Na6e5f551c1d64ddcb3ec251a89b8f92e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:Naf4a9b9f55c1443b9876d35970c942cf",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Nfeeef136fb744a4fabe2383278dc55e2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N8a27858d9c044069b362ea679b2193c9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:Ndd9dc5afc014483294f718fae4b93ad9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "https://doi.org/10.1089/OMI.2013.0119",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.7490/f1000research.1114334.1",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

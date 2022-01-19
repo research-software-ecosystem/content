@@ -1,1 +1,195 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "drcancer", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "http://orcid.org/0000-0002-2323-0963", "@type": "schema:Person"}], "author": [{"@id": "http://orcid.org/0000-0002-2323-0963", "@type": "schema:Person"}], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:21763417", "pmcid:PMC3371640", {"@id": "https://doi.org/10.1016/j.ygeno.2011.06.010", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3225"}, {"@id": "http://edamontology.org/operation_3225"}], "hasInputData": [{"@id": "drcancer/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein sequence (raw)", "identifier": "http://edamontology.org/data_2974", "sameAs": "http://edamontology.org/data_2974"}, {"@id": "drcancer/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence position", "identifier": "http://edamontology.org/data_1016", "sameAs": "http://edamontology.org/data_1016"}, {"@id": "drcancer/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Amino acid name (single letter)", "identifier": "http://edamontology.org/data_2563", "sameAs": "http://edamontology.org/data_2563"}, {"@id": "drcancer/op_1/in_4", "@type": "bsct:FormalParameter", "name": "GO concept ID", "identifier": "http://edamontology.org/data_1176", "sameAs": "http://edamontology.org/data_1176"}, {"@id": "drcancer/op_2/in_1", "@type": "bsct:FormalParameter", "name": "UniProt accession", "identifier": "http://edamontology.org/data_3021", "sameAs": "http://edamontology.org/data_3021"}, {"@id": "drcancer/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Sequence position", "identifier": "http://edamontology.org/data_1016", "sameAs": "http://edamontology.org/data_1016"}, {"@id": "drcancer/op_2/in_3", "@type": "bsct:FormalParameter", "name": "Amino acid name (single letter)", "identifier": "http://edamontology.org/data_2563", "sameAs": "http://edamontology.org/data_2563"}, {"@id": "drcancer/op_2/in_4", "@type": "bsct:FormalParameter", "name": "GO concept ID", "identifier": "http://edamontology.org/data_1176", "sameAs": "http://edamontology.org/data_1176"}], "hasOutputData": [{"@id": "drcancer/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Disease report", "identifier": "http://edamontology.org/data_1622", "sameAs": "http://edamontology.org/data_1622"}, {"@id": "drcancer/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Disease report", "identifier": "http://edamontology.org/data_1622", "sameAs": "http://edamontology.org/data_1622"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0123"}, {"@id": "http://edamontology.org/topic_3474"}, {"@id": "http://edamontology.org/topic_2640"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://snps.biofold.org/drcancer/pages/DrCancer_Help.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/drcancer",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "http://orcid.org/0000-0002-2323-0963"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:N984a6e4cbd1a464486919946705ec7dc"
+        },
+        {
+          "@id": "_:N9ef29705f32043f484587278114e66d7"
+        },
+        {
+          "@id": "_:N6f20c785b5b649b99e3338e8391b0055"
+        },
+        {
+          "@id": "_:N97d6ab0272854614b81d12c9c99c7a65"
+        },
+        {
+          "@id": "_:N176a9fa141374bf4991c327608537bca"
+        },
+        {
+          "@id": "_:N9727df4c05764872aebc658a4c88c194"
+        },
+        {
+          "@id": "_:N31acf8957b1e4fbeba4cf0b818782da0"
+        },
+        {
+          "@id": "_:N666640b2f55d4b32b664b33dcdedbbd0"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nf6ddf3620a6b4cfb8daa9a06fa29a562"
+        },
+        {
+          "@id": "_:Ne8075dd7fbfa433d9a1ce40655c28fd0"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web service",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2640"
+        },
+        {
+          "@id": "edam:topic_3474"
+        },
+        {
+          "@id": "edam:topic_0123"
+        }
+      ],
+      "sc:author": {
+        "@id": "http://orcid.org/0000-0002-2323-0963"
+      },
+      "sc:citation": [
+        "pubmed:21763417",
+        {
+          "@id": "https://doi.org/10.1016/j.ygeno.2011.06.010"
+        },
+        "pmcid:PMC3371640"
+      ],
+      "sc:description": "A machine learning-based predictor of cancer-causing SNPs.",
+      "sc:featureList": {
+        "@id": "edam:operation_3225"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:name": "DrCancer",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://snps.biofold.org/drcancer/pages/DrCancer_Help.html"
+      },
+      "sc:url": "http://snps.biofold.org/drcancer"
+    },
+    {
+      "@id": "_:N984a6e4cbd1a464486919946705ec7dc",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1176",
+      "sc:name": "GO concept ID",
+      "sc:sameAs": "http://edamontology.org/data_1176"
+    },
+    {
+      "@id": "_:N9ef29705f32043f484587278114e66d7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1016",
+      "sc:name": "Sequence position",
+      "sc:sameAs": "http://edamontology.org/data_1016"
+    },
+    {
+      "@id": "_:N6f20c785b5b649b99e3338e8391b0055",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2563",
+      "sc:name": "Amino acid name (single letter)",
+      "sc:sameAs": "http://edamontology.org/data_2563"
+    },
+    {
+      "@id": "_:N97d6ab0272854614b81d12c9c99c7a65",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1016",
+      "sc:name": "Sequence position",
+      "sc:sameAs": "http://edamontology.org/data_1016"
+    },
+    {
+      "@id": "_:N176a9fa141374bf4991c327608537bca",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2563",
+      "sc:name": "Amino acid name (single letter)",
+      "sc:sameAs": "http://edamontology.org/data_2563"
+    },
+    {
+      "@id": "_:N9727df4c05764872aebc658a4c88c194",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1176",
+      "sc:name": "GO concept ID",
+      "sc:sameAs": "http://edamontology.org/data_1176"
+    },
+    {
+      "@id": "_:N31acf8957b1e4fbeba4cf0b818782da0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3021",
+      "sc:name": "UniProt accession",
+      "sc:sameAs": "http://edamontology.org/data_3021"
+    },
+    {
+      "@id": "_:N666640b2f55d4b32b664b33dcdedbbd0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2974",
+      "sc:name": "Protein sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2974"
+    },
+    {
+      "@id": "_:Nf6ddf3620a6b4cfb8daa9a06fa29a562",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1622",
+      "sc:name": "Disease report",
+      "sc:sameAs": "http://edamontology.org/data_1622"
+    },
+    {
+      "@id": "_:Ne8075dd7fbfa433d9a1ce40655c28fd0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1622",
+      "sc:name": "Disease report",
+      "sc:sameAs": "http://edamontology.org/data_1622"
+    },
+    {
+      "@id": "http://orcid.org/0000-0002-2323-0963",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1016/j.ygeno.2011.06.010",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

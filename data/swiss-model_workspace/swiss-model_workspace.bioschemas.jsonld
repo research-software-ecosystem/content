@@ -1,1 +1,154 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "swiss-model_workspace", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-2715-335X", "@type": "schema:Person"}], "author": [], "contributor": [], "provider": ["SIB Swiss Institute of Bioinformatics"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:29788355", "pmcid:PMC6030848", {"@id": "https://doi.org/10.1093/nar/gky427", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0477"}], "hasInputData": [{"@id": "swiss-model_workspace/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein sequence (raw)", "identifier": "http://edamontology.org/data_2974", "sameAs": "http://edamontology.org/data_2974"}, {"@id": "swiss-model_workspace/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence (raw)", "identifier": "http://edamontology.org/data_2974", "sameAs": "http://edamontology.org/data_2974"}, {"@id": "swiss-model_workspace/op_1/in_3", "@type": "bsct:FormalParameter", "name": "UniProt ID", "identifier": "http://edamontology.org/data_2291", "sameAs": "http://edamontology.org/data_2291"}, {"@id": "swiss-model_workspace/op_1/in_4", "@type": "bsct:FormalParameter", "name": "UniProt accession", "identifier": "http://edamontology.org/data_3021", "sameAs": "http://edamontology.org/data_3021"}, {"@id": "swiss-model_workspace/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Sequence alignment (protein)", "identifier": "http://edamontology.org/data_1384", "sameAs": "http://edamontology.org/data_1384"}], "hasOutputData": [{"@id": "swiss-model_workspace/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2275"}, {"@id": "http://edamontology.org/topic_0081"}, {"@id": "http://edamontology.org/topic_0082"}, {"@id": "http://edamontology.org/topic_3306"}], "hasGenDoc": [{"@id": "https://swissmodel.expasy.org/docs/help"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/swiss-model_workspace",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0003-2715-335X"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:Ncd81534f9c414771aeb44bd2f57c6686"
+        },
+        {
+          "@id": "_:N139452cfe4c442298bfa45adf3ab1fd3"
+        },
+        {
+          "@id": "_:Na31ad9ddab3543e4a95c6710560cfbb6"
+        },
+        {
+          "@id": "_:N67c5c16fd379432994748773f9174205"
+        },
+        {
+          "@id": "_:Nc447586224814a8dbecae6012783384d"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:N95a86c9224e84539a8eb8dbd68c9775b"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2275"
+        },
+        {
+          "@id": "edam:topic_0082"
+        },
+        {
+          "@id": "edam:topic_0081"
+        },
+        {
+          "@id": "edam:topic_3306"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/nar/gky427"
+        },
+        "pubmed:29788355",
+        "pmcid:PMC6030848"
+      ],
+      "sc:description": "SWISS-MODEL is a fully automated protein structure homology-modelling server, accessible via the ExPASy web server, or from the program DeepView (Swiss Pdb-Viewer). The purpose of this server is to make protein modelling accessible to all life science researchers worldwide.",
+      "sc:featureList": {
+        "@id": "edam:operation_0477"
+      },
+      "sc:license": "CC-BY-SA-4.0",
+      "sc:name": "SWISS-MODEL Workspace",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:provider": "SIB Swiss Institute of Bioinformatics",
+      "sc:softwareHelp": {
+        "@id": "https://swissmodel.expasy.org/docs/help"
+      },
+      "sc:url": "https://swissmodel.expasy.org/"
+    },
+    {
+      "@id": "_:Ncd81534f9c414771aeb44bd2f57c6686",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1384",
+      "sc:name": "Sequence alignment (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1384"
+    },
+    {
+      "@id": "_:N139452cfe4c442298bfa45adf3ab1fd3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2291",
+      "sc:name": "UniProt ID",
+      "sc:sameAs": "http://edamontology.org/data_2291"
+    },
+    {
+      "@id": "_:Na31ad9ddab3543e4a95c6710560cfbb6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2974",
+      "sc:name": "Protein sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2974"
+    },
+    {
+      "@id": "_:N67c5c16fd379432994748773f9174205",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2974",
+      "sc:name": "Protein sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2974"
+    },
+    {
+      "@id": "_:Nc447586224814a8dbecae6012783384d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3021",
+      "sc:name": "UniProt accession",
+      "sc:sameAs": "http://edamontology.org/data_3021"
+    },
+    {
+      "@id": "_:N95a86c9224e84539a8eb8dbd68c9775b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gky427",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-2715-335X",
+      "@type": "schema:Person"
+    }
+  ]
+}

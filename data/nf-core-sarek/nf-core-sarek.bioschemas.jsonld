@@ -1,1 +1,173 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "nf-core-sarek", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-2827-9261", "@type": "schema:Person"}, "Szilvester Juhos"], "author": [{"@id": "https://orcid.org/0000-0003-2827-9261", "@type": "schema:Person"}, "Szilvester Juhos"], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:32269765", "pmcid:PMC7111497", {"@id": "https://doi.org/10.12688/f1000research.16665.2", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.1101/316976", "@type": "sc:CreativeWork"}, "pubmed:32055031", {"@id": "https://doi.org/10.1038/s41587-020-0439-x", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3731"}, {"@id": "http://edamontology.org/operation_0361"}, {"@id": "http://edamontology.org/operation_3227"}], "hasInputData": [{"@id": "nf-core-sarek/op_1/in_1", "@type": "bsct:FormalParameter", "name": "DNA sequence (raw)", "identifier": "http://edamontology.org/data_3497", "sameAs": "http://edamontology.org/data_3497"}, {"@id": "nf-core-sarek/op_1/in_2", "@type": "bsct:FormalParameter", "name": "DNA sequence", "identifier": "http://edamontology.org/data_3494", "sameAs": "http://edamontology.org/data_3494"}], "hasOutputData": [{"@id": "nf-core-sarek/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence variations", "identifier": "http://edamontology.org/data_3498", "sameAs": "http://edamontology.org/data_3498"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2640"}, {"@id": "http://edamontology.org/topic_0622"}, {"@id": "http://edamontology.org/topic_3673"}, {"@id": "http://edamontology.org/topic_0769"}], "hasGenDoc": [{"@id": "https://nf-co.re/sarek"}, {"@id": "https://nf-co.re/sarek/usage"}, {"@id": "https://nf-co.re/usage/installation"}, {"@id": "https://github.com/nf-core/sarek/blob/master/LICENSE"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1038/s41587-020-0439-x",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.12688/f1000research.16665.2",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-2827-9261",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1101/316976",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/nf-core-sarek",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Szilvester Juhos",
+        {
+          "@id": "https://orcid.org/0000-0003-2827-9261"
+        }
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:N4b4c01788559412e9a3f66fa3a6abe1d"
+        },
+        {
+          "@id": "_:N1d63c46eff6549969b4093b70a1e5859"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:Ne04f5f5cf36b4ade84b7e94f62bad572"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Command-line tool",
+        "Workflow"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3673"
+        },
+        {
+          "@id": "edam:topic_0769"
+        },
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:topic_2640"
+        }
+      ],
+      "sc:author": [
+        {
+          "@id": "https://orcid.org/0000-0003-2827-9261"
+        },
+        "Szilvester Juhos"
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1038/s41587-020-0439-x"
+        },
+        "pubmed:32055031",
+        {
+          "@id": "https://doi.org/10.12688/f1000research.16665.2"
+        },
+        {
+          "@id": "https://doi.org/10.1101/316976"
+        },
+        "pubmed:32269765",
+        "pmcid:PMC7111497"
+      ],
+      "sc:description": "Sarek is a workflow designed to detect variants on whole genome or targeted sequencing data. Initially designed for Human, and Mouse, it can work on any species with a reference genome. Sarek can also handle tumour / normal pairs and could include additional relapses.\n\nIt's built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It comes with docker containers making installation trivial and results highly reproducible.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3731"
+        },
+        {
+          "@id": "edam:operation_3227"
+        },
+        {
+          "@id": "edam:operation_0361"
+        }
+      ],
+      "sc:license": "MIT",
+      "sc:name": "nf-core-sarek",
+      "sc:operatingSystem": "Linux",
+      "sc:softwareHelp": [
+        {
+          "@id": "https://nf-co.re/sarek/usage"
+        },
+        {
+          "@id": "https://nf-co.re/sarek"
+        },
+        {
+          "@id": "https://nf-co.re/usage/installation"
+        },
+        {
+          "@id": "https://github.com/nf-core/sarek/blob/master/LICENSE"
+        }
+      ],
+      "sc:softwareVersion": [
+        "2.5.1",
+        "2.6.1",
+        "2.6",
+        "2.7",
+        "2.5",
+        "2.5.2"
+      ],
+      "sc:url": "https://nf-co.re/sarek"
+    },
+    {
+      "@id": "_:N4b4c01788559412e9a3f66fa3a6abe1d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3494",
+      "sc:name": "DNA sequence",
+      "sc:sameAs": "http://edamontology.org/data_3494"
+    },
+    {
+      "@id": "_:N1d63c46eff6549969b4093b70a1e5859",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3497",
+      "sc:name": "DNA sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_3497"
+    },
+    {
+      "@id": "_:Ne04f5f5cf36b4ade84b7e94f62bad572",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3498",
+      "sc:name": "Sequence variations",
+      "sc:sameAs": "http://edamontology.org/data_3498"
+    }
+  ]
+}

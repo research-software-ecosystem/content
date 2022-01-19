@@ -1,1 +1,183 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "ms-gf", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:25358478", "pubmed:18597511", {"@id": "https://doi.org/10.1021/pr8001244", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3767"}, {"@id": "http://edamontology.org/operation_3647"}, {"@id": "http://edamontology.org/operation_3646"}, {"@id": "http://edamontology.org/operation_3643"}, {"@id": "http://edamontology.org/operation_3631"}, {"@id": "http://edamontology.org/operation_3649"}, {"@id": "http://edamontology.org/operation_0335"}], "hasInputData": [{"@id": "ms-gf/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Spectrum", "identifier": "http://edamontology.org/data_3483", "sameAs": "http://edamontology.org/data_3483"}, {"@id": "ms-gf/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence set (protein)", "identifier": "http://edamontology.org/data_1233", "sameAs": "http://edamontology.org/data_1233"}, {"@id": "ms-gf/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Peptide identification", "identifier": "http://edamontology.org/data_0945", "sameAs": "http://edamontology.org/data_0945"}, {"@id": "ms-gf/op_2/in_2", "@type": "bsct:FormalParameter", "name": "E-value", "identifier": "http://edamontology.org/data_1667", "sameAs": "http://edamontology.org/data_1667"}], "hasOutputData": [{"@id": "ms-gf/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Peptide identification", "identifier": "http://edamontology.org/data_0945", "sameAs": "http://edamontology.org/data_0945"}, {"@id": "ms-gf/op_1/in_2", "@type": "bsct:FormalParameter", "name": "E-value", "identifier": "http://edamontology.org/data_1667", "sameAs": "http://edamontology.org/data_1667"}, {"@id": "ms-gf/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Database search results", "identifier": "http://edamontology.org/data_2080", "sameAs": "http://edamontology.org/data_2080"}, {"@id": "ms-gf/op_2/in_2", "@type": "bsct:FormalParameter", "name": "E-value", "identifier": "http://edamontology.org/data_1667", "sameAs": "http://edamontology.org/data_1667"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0121"}, {"@id": "http://edamontology.org/topic_3520"}, {"@id": "http://edamontology.org/topic_2269"}], "hasGenDoc": [{"@id": "https://omics.pnl.gov/software/ms-gf"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/ms-gf",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Ne18d95c0bff84975b3dea4223f79533b"
+        },
+        {
+          "@id": "_:N8e42ee1d1bc24851aa0fd751d4f1ebc7"
+        },
+        {
+          "@id": "_:N398a8fba62584e60a2169b65c60274cb"
+        },
+        {
+          "@id": "_:N997e40d943314e8e9acebf19c1b62496"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N47227fb4e71e4dab9973e4692c2cb8bd"
+        },
+        {
+          "@id": "_:N7d96775cd1c64841b71871aa61ee4772"
+        },
+        {
+          "@id": "_:N3507c2b7a5f14f98bedb06ab7aa15adf"
+        },
+        {
+          "@id": "_:Nbc1bad9e9e574365877b50c413acc28a"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2269"
+        },
+        {
+          "@id": "edam:topic_0121"
+        },
+        {
+          "@id": "edam:topic_3520"
+        }
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1021/pr8001244"
+        },
+        "pubmed:18597511",
+        "pubmed:25358478"
+      ],
+      "sc:description": "A tool which performs peptide identification by scoring MS/MS spectra against peptides derived from a protein sequence database.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3767"
+        },
+        {
+          "@id": "edam:operation_3647"
+        },
+        {
+          "@id": "edam:operation_3631"
+        },
+        {
+          "@id": "edam:operation_0335"
+        },
+        {
+          "@id": "edam:operation_3643"
+        },
+        {
+          "@id": "edam:operation_3646"
+        },
+        {
+          "@id": "edam:operation_3649"
+        }
+      ],
+      "sc:name": "MS-GF+",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://omics.pnl.gov/software/ms-gf"
+      },
+      "sc:url": "http://omics.pnl.gov/software/ms-gf"
+    },
+    {
+      "@id": "_:N47227fb4e71e4dab9973e4692c2cb8bd",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0945",
+      "sc:name": "Peptide identification",
+      "sc:sameAs": "http://edamontology.org/data_0945"
+    },
+    {
+      "@id": "_:N7d96775cd1c64841b71871aa61ee4772",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1667",
+      "sc:name": "E-value",
+      "sc:sameAs": "http://edamontology.org/data_1667"
+    },
+    {
+      "@id": "_:N3507c2b7a5f14f98bedb06ab7aa15adf",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1667",
+      "sc:name": "E-value",
+      "sc:sameAs": "http://edamontology.org/data_1667"
+    },
+    {
+      "@id": "_:Nbc1bad9e9e574365877b50c413acc28a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2080",
+      "sc:name": "Database search results",
+      "sc:sameAs": "http://edamontology.org/data_2080"
+    },
+    {
+      "@id": "_:Ne18d95c0bff84975b3dea4223f79533b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1233",
+      "sc:name": "Sequence set (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1233"
+    },
+    {
+      "@id": "_:N8e42ee1d1bc24851aa0fd751d4f1ebc7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0945",
+      "sc:name": "Peptide identification",
+      "sc:sameAs": "http://edamontology.org/data_0945"
+    },
+    {
+      "@id": "_:N398a8fba62584e60a2169b65c60274cb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1667",
+      "sc:name": "E-value",
+      "sc:sameAs": "http://edamontology.org/data_1667"
+    },
+    {
+      "@id": "_:N997e40d943314e8e9acebf19c1b62496",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3483",
+      "sc:name": "Spectrum",
+      "sc:sameAs": "http://edamontology.org/data_3483"
+    },
+    {
+      "@id": "https://doi.org/10.1021/pr8001244",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

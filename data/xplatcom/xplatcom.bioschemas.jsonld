@@ -1,1 +1,194 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "xplatcom", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["PD Dr. Martin Eisenacher"], "author": ["Dr. Michael Kohl"], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:23501674", {"@id": "https://doi.org/10.1016/j.bbapap.2013.02.029", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_2997"}, {"@id": "http://edamontology.org/operation_2998"}, {"@id": "http://edamontology.org/operation_3659"}], "hasInputData": [{"@id": "xplatcom/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene expression profile", "identifier": "http://edamontology.org/data_0928", "sameAs": "http://edamontology.org/data_0928"}, {"@id": "xplatcom/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Mass spectrometry data", "identifier": "http://edamontology.org/data_2536", "sameAs": "http://edamontology.org/data_2536"}, {"@id": "xplatcom/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}], "hasOutputData": [{"@id": "xplatcom/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein features", "identifier": "http://edamontology.org/data_1277", "sameAs": "http://edamontology.org/data_1277"}, {"@id": "xplatcom/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Comparison matrix (amino acid)", "identifier": "http://edamontology.org/data_1449", "sameAs": "http://edamontology.org/data_1449"}, {"@id": "xplatcom/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "xplatcom/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Comparison matrix (nucleotide)", "identifier": "http://edamontology.org/data_1448", "sameAs": "http://edamontology.org/data_1448"}, {"@id": "xplatcom/op_1/in_5", "@type": "bsct:FormalParameter", "name": "GO-term enrichment data", "identifier": "http://edamontology.org/data_3754", "sameAs": "http://edamontology.org/data_3754"}, {"@id": "xplatcom/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Pathway ID (KEGG)", "identifier": "http://edamontology.org/data_2343", "sameAs": "http://edamontology.org/data_2343"}, {"@id": "xplatcom/op_1/in_7", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "xplatcom/op_1/in_8", "@type": "bsct:FormalParameter", "name": "Report", "identifier": "http://edamontology.org/data_2048", "sameAs": "http://edamontology.org/data_2048"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3391"}], "isAccessibleForFree": true}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/xplatcom",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "PD Dr. Martin Eisenacher",
+      "bsc:input": [
+        {
+          "@id": "_:Nd88fe286f80e4056ae64c403d5588b39"
+        },
+        {
+          "@id": "_:N6e217fbe7a9148bdb68a5fda51e8e5a4"
+        },
+        {
+          "@id": "_:Nd39a35a6c36f4bc2a806091ba8c183e8"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nd0b2a06224c148749068e110b0574139"
+        },
+        {
+          "@id": "_:Ne98cd11a2ef34cf6a19d5379ca6d83b5"
+        },
+        {
+          "@id": "_:Nd8ef4ffdce6548bfa6ad5781dced255c"
+        },
+        {
+          "@id": "_:N3d144b7795564edeb2cb2606ce29243e"
+        },
+        {
+          "@id": "_:N8876dfa6163b466fb412e4d3f9c287ce"
+        },
+        {
+          "@id": "_:N9a7d6a95cad242eb94fd4b35affbd844"
+        },
+        {
+          "@id": "_:Ne01558a44d1645918c5803f6102da709"
+        },
+        {
+          "@id": "_:N7f13be9c21e843ceb54b677ba26f18df"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Desktop application",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3391"
+      },
+      "sc:author": "Dr. Michael Kohl",
+      "sc:citation": [
+        "pubmed:23501674",
+        {
+          "@id": "https://doi.org/10.1016/j.bbapap.2013.02.029"
+        }
+      ],
+      "sc:description": "It facilitates several steps that frequently occur in the context of multi-OMICS workflows like data conversion, quality control, data comparison, differential/statistical analyses, GO and pathway analyses. In the present version, CrossPlatformCommander enables Integration data obtained from Proteomics and Transcriptomics measurements.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_2998"
+        },
+        {
+          "@id": "edam:operation_2997"
+        },
+        {
+          "@id": "edam:operation_3659"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "XPlatCom (Cross PLATform COMmander)",
+      "sc:operatingSystem": [
+        "Windows",
+        "Linux",
+        "Mac"
+      ],
+      "sc:softwareVersion": "1",
+      "sc:url": "https://www.ruhr-uni-bochum.de/mpc/software/legacy/index.html.en#XPlatCom"
+    },
+    {
+      "@id": "_:Nd88fe286f80e4056ae64c403d5588b39",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0928",
+      "sc:name": "Gene expression profile",
+      "sc:sameAs": "http://edamontology.org/data_0928"
+    },
+    {
+      "@id": "_:N6e217fbe7a9148bdb68a5fda51e8e5a4",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2536",
+      "sc:name": "Mass spectrometry data",
+      "sc:sameAs": "http://edamontology.org/data_2536"
+    },
+    {
+      "@id": "_:Nd39a35a6c36f4bc2a806091ba8c183e8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:Nd0b2a06224c148749068e110b0574139",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2048",
+      "sc:name": "Report",
+      "sc:sameAs": "http://edamontology.org/data_2048"
+    },
+    {
+      "@id": "_:Ne98cd11a2ef34cf6a19d5379ca6d83b5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1449",
+      "sc:name": "Comparison matrix (amino acid)",
+      "sc:sameAs": "http://edamontology.org/data_1449"
+    },
+    {
+      "@id": "_:Nd8ef4ffdce6548bfa6ad5781dced255c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:N3d144b7795564edeb2cb2606ce29243e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2343",
+      "sc:name": "Pathway ID (KEGG)",
+      "sc:sameAs": "http://edamontology.org/data_2343"
+    },
+    {
+      "@id": "_:N8876dfa6163b466fb412e4d3f9c287ce",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1448",
+      "sc:name": "Comparison matrix (nucleotide)",
+      "sc:sameAs": "http://edamontology.org/data_1448"
+    },
+    {
+      "@id": "_:N9a7d6a95cad242eb94fd4b35affbd844",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1277",
+      "sc:name": "Protein features",
+      "sc:sameAs": "http://edamontology.org/data_1277"
+    },
+    {
+      "@id": "_:Ne01558a44d1645918c5803f6102da709",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3754",
+      "sc:name": "GO-term enrichment data",
+      "sc:sameAs": "http://edamontology.org/data_3754"
+    },
+    {
+      "@id": "_:N7f13be9c21e843ceb54b677ba26f18df",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "https://doi.org/10.1016/j.bbapap.2013.02.029",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

@@ -1,1 +1,210 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "enzymeminer", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["EnzymeMiner team"], "author": [{"@id": "https://orcid.org/0000-0002-3321-9629", "@type": "schema:Person"}, "Simeon Borko", {"@id": "https://orcid.org/0000-0003-3139-3700", "@type": "schema:Person"}], "contributor": [{"@id": "https://orcid.org/0000-0001-9358-4081", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0001-8718-7493", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0002-6803-0340", "@type": "schema:Person"}, "Tomas Martinek", {"@id": "https://orcid.org/0000-0002-7848-8216", "@type": "schema:Person"}, "European Commission", "Czech Science Foundation", "Ministry of Education of the Czech Republic"], "provider": ["Loschmidt Laboratories", "Masaryk University, Brno, Czech Republic", "International Centre for Clinical Research, Brno, Czech Republic", "Brno University of Technology, Brno, Czech Republic", "ELIXIR-CZ"], "funder": ["European Commission", "Czech Science Foundation", "Ministry of Education of the Czech Republic"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/nar/gkaa372", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0346"}, {"@id": "http://edamontology.org/operation_0291"}, {"@id": "http://edamontology.org/operation_0361"}, {"@id": "http://edamontology.org/operation_0409"}], "hasInputData": [{"@id": "enzymeminer/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}], "hasOutputData": [{"@id": "enzymeminer/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein features", "identifier": "http://edamontology.org/data_1277", "sameAs": "http://edamontology.org/data_1277"}, {"@id": "enzymeminer/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence set (protein)", "identifier": "http://edamontology.org/data_1233", "sameAs": "http://edamontology.org/data_1233"}, {"@id": "enzymeminer/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence cluster (protein)", "identifier": "http://edamontology.org/data_1245", "sameAs": "http://edamontology.org/data_1245"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0121"}, {"@id": "http://edamontology.org/topic_0080"}, {"@id": "http://edamontology.org/topic_3473"}, {"@id": "http://edamontology.org/topic_0821"}, {"@id": "http://edamontology.org/topic_0078"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://loschmidt.chemi.muni.cz/enzymeminer/help"}, {"@id": "https://loschmidt.chemi.muni.cz/enzymeminer/example"}, {"@id": "https://loschmidt.chemi.muni.cz/enzymeminer/terms-of-use"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0001-9358-4081",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-6803-0340",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-8718-7493",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-7848-8216",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/enzymeminer",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "EnzymeMiner team",
+      "bsc:input": {
+        "@id": "_:N3b22bbe3507b45a482d243df1a01b9ca"
+      },
+      "bsc:output": [
+        {
+          "@id": "_:N545b43d7136645c2a5778b73fec5edf6"
+        },
+        {
+          "@id": "_:N200fadf0f24c486896be4abb61ff0d41"
+        },
+        {
+          "@id": "_:N55bb030a27fd410292a261289655744e"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0121"
+        },
+        {
+          "@id": "edam:topic_0080"
+        },
+        {
+          "@id": "edam:topic_0078"
+        },
+        {
+          "@id": "edam:topic_3473"
+        },
+        {
+          "@id": "edam:topic_0821"
+        }
+      ],
+      "sc:author": [
+        "Simeon Borko",
+        {
+          "@id": "https://orcid.org/0000-0003-3139-3700"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-3321-9629"
+        }
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1093/nar/gkaa372"
+      },
+      "sc:contributor": [
+        {
+          "@id": "https://orcid.org/0000-0001-8718-7493"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-6803-0340"
+        },
+        "Ministry of Education of the Czech Republic",
+        "Tomas Martinek",
+        {
+          "@id": "https://orcid.org/0000-0002-7848-8216"
+        },
+        "European Commission",
+        "Czech Science Foundation",
+        {
+          "@id": "https://orcid.org/0000-0001-9358-4081"
+        }
+      ],
+      "sc:description": "EnzymeMiner identifies putative members of enzyme families or subfamilies and facilitates the selection of promising targets for experimental characterization. Two key selection criteria are (i) the predicted solubility and (ii) the sequence identities visualised using an interactive sequence similarity network. The search query can be a sequence from the Swiss-Prot database or a custom sequence with a custom description of essential residues. The output is an interactive selection table containing annotated identified sequences.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0361"
+        },
+        {
+          "@id": "edam:operation_0409"
+        },
+        {
+          "@id": "edam:operation_0346"
+        },
+        {
+          "@id": "edam:operation_0291"
+        }
+      ],
+      "sc:funder": [
+        "Czech Science Foundation",
+        "Ministry of Education of the Czech Republic",
+        "European Commission"
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Proprietary",
+      "sc:name": "EnzymeMiner",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:provider": [
+        "Masaryk University, Brno, Czech Republic",
+        "Loschmidt Laboratories",
+        "International Centre for Clinical Research, Brno, Czech Republic",
+        "ELIXIR-CZ",
+        "Brno University of Technology, Brno, Czech Republic"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "https://loschmidt.chemi.muni.cz/enzymeminer/example"
+        },
+        {
+          "@id": "https://loschmidt.chemi.muni.cz/enzymeminer/terms-of-use"
+        },
+        {
+          "@id": "https://loschmidt.chemi.muni.cz/enzymeminer/help"
+        }
+      ],
+      "sc:softwareVersion": "1.0",
+      "sc:url": "https://loschmidt.chemi.muni.cz/enzymeminer/"
+    },
+    {
+      "@id": "_:N545b43d7136645c2a5778b73fec5edf6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1245",
+      "sc:name": "Sequence cluster (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1245"
+    },
+    {
+      "@id": "_:N200fadf0f24c486896be4abb61ff0d41",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1277",
+      "sc:name": "Protein features",
+      "sc:sameAs": "http://edamontology.org/data_1277"
+    },
+    {
+      "@id": "_:N55bb030a27fd410292a261289655744e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1233",
+      "sc:name": "Sequence set (protein)",
+      "sc:sameAs": "http://edamontology.org/data_1233"
+    },
+    {
+      "@id": "_:N3b22bbe3507b45a482d243df1a01b9ca",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-3321-9629",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkaa372",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3139-3700",
+      "@type": "schema:Person"
+    }
+  ]
+}

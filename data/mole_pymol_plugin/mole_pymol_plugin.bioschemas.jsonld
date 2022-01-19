@@ -1,1 +1,155 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "mole_pymol_plugin", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Primary Contact", "David Sehnal", "Luk\u00e1\u0161 Pravda", "Karel Berka"], "author": ["Luk\u00e1\u0161 Pravda"], "contributor": [], "provider": ["Masaryk University Brno, Czech Republic", "Palack\u00fd University Olomouc, Czech Republic", "ELIXIR-CZ"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/1758-2946-5-39", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0245"}, {"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_0250"}, {"@id": "http://edamontology.org/operation_1816"}], "hasInputData": [{"@id": "mole_pymol_plugin/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}, {"@id": "mole_pymol_plugin/op_1/in_2", "@type": "bsct:FormalParameter", "name": "PDB ID", "identifier": "http://edamontology.org/data_1127", "sameAs": "http://edamontology.org/data_1127"}], "hasOutputData": [{"@id": "mole_pymol_plugin/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structural quality report", "identifier": "http://edamontology.org/data_1539", "sameAs": "http://edamontology.org/data_1539"}, {"@id": "mole_pymol_plugin/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0123"}, {"@id": "http://edamontology.org/topic_0128"}, {"@id": "http://edamontology.org/topic_0821"}, {"@id": "http://edamontology.org/topic_0820"}, {"@id": "http://edamontology.org/topic_0166"}, {"@id": "http://edamontology.org/topic_0154"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://www.jcheminf.com/content/5/1/39/citation"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1186/1758-2946-5-39",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/mole_pymol_plugin",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "David Sehnal",
+        "Karel Berka",
+        "Lukáš Pravda",
+        "Primary Contact"
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:N238087e4a9314b4c857f9d053bd23045"
+        },
+        {
+          "@id": "_:N8899dda1ba214d38a8ab69fd282341e9"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N984a94d62c704417a83ac5c11677a083"
+        },
+        {
+          "@id": "_:N510074bd32934383b1bfa6c7a3cc4983"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Plug-in",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0123"
+        },
+        {
+          "@id": "edam:topic_0821"
+        },
+        {
+          "@id": "edam:topic_0166"
+        },
+        {
+          "@id": "edam:topic_0128"
+        },
+        {
+          "@id": "edam:topic_0154"
+        },
+        {
+          "@id": "edam:topic_0820"
+        }
+      ],
+      "sc:author": "Lukáš Pravda",
+      "sc:citation": {
+        "@id": "https://doi.org/10.1186/1758-2946-5-39"
+      },
+      "sc:description": "Plugin for MOLE 2.0 contains extended options for channel starting point automatic detection, for filtering of obtained channels to select only the relevant channels and allows estimation of basic physicochemical properties of channels.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_1816"
+        },
+        {
+          "@id": "edam:operation_0250"
+        },
+        {
+          "@id": "edam:operation_0245"
+        },
+        {
+          "@id": "edam:operation_0570"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Other",
+      "sc:name": "MOLE PyMOL plugin",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:provider": [
+        "ELIXIR-CZ",
+        "Palacký University Olomouc, Czech Republic",
+        "Masaryk University Brno, Czech Republic"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://www.jcheminf.com/content/5/1/39/citation"
+      },
+      "sc:softwareVersion": "2.0",
+      "sc:url": "http://webchem.ncbr.muni.cz/Platform/AppsBin/Mole/2.13.9.6/Mole2_pymol.zip"
+    },
+    {
+      "@id": "_:N238087e4a9314b4c857f9d053bd23045",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "_:N8899dda1ba214d38a8ab69fd282341e9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1127",
+      "sc:name": "PDB ID",
+      "sc:sameAs": "http://edamontology.org/data_1127"
+    },
+    {
+      "@id": "_:N984a94d62c704417a83ac5c11677a083",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1539",
+      "sc:name": "Protein structural quality report",
+      "sc:sameAs": "http://edamontology.org/data_1539"
+    },
+    {
+      "@id": "_:N510074bd32934383b1bfa6c7a3cc4983",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    }
+  ]
+}

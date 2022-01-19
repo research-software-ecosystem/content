@@ -1,1 +1,188 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "webnma", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": ["Sandhya P Tiwari", "Kidane M Tekle", "Tristan Cragnolini", "Svenn H Grindhaug", "Lars Skj\u00e6rven", "Gisle Salensminde", "Edvin Fuglebakk", "Nathalie Reuter", "Siv M Hollup"], "contributor": [], "provider": ["Department of Molecular Biology, University of Bergen, Norway", "Computational Biology Unit, Department of Informatics, University of Bergen, Norway", "UiB"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/s12859-014-0427-6", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.1186/1471-2105-6-52", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_0244"}, {"@id": "http://edamontology.org/operation_2487"}, {"@id": "http://edamontology.org/operation_0337"}], "hasInputData": [{"@id": "webnma/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}, {"@id": "webnma/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Structure alignment", "identifier": "http://edamontology.org/data_0886", "sameAs": "http://edamontology.org/data_0886"}, {"@id": "webnma/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}], "hasOutputData": [{"@id": "webnma/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "webnma/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence profile", "identifier": "http://edamontology.org/data_1354", "sameAs": "http://edamontology.org/data_1354"}, {"@id": "webnma/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "webnma/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Structural profile", "identifier": "http://edamontology.org/data_0889", "sameAs": "http://edamontology.org/data_0889"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2814"}, {"@id": "http://edamontology.org/topic_0736"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://apps.cbu.uib.no/webnma/howto"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/webnma",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Nd2f8a32bac6d4571ad09c7388b7d84a2"
+        },
+        {
+          "@id": "_:Nb4b65ca2fedc484bb55698c5702c478d"
+        },
+        {
+          "@id": "_:Nd51fa8969c02420ca0b2ef8526b407a0"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N3c3c673d8f08439ea6579f68bf053c54"
+        },
+        {
+          "@id": "_:Ned43982806ec4994aa184fe875e7c02f"
+        },
+        {
+          "@id": "_:Nb9b16638f92840609fe8c1d30e43a0bb"
+        },
+        {
+          "@id": "_:N3b5c103ba60a4ad6be5e0643f38fd9b6"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web service",
+        "Web application"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2814"
+        },
+        {
+          "@id": "edam:topic_0736"
+        }
+      ],
+      "sc:author": [
+        "Kidane M Tekle",
+        "Edvin Fuglebakk",
+        "Siv M Hollup",
+        "Tristan Cragnolini",
+        "Lars Skjærven",
+        "Nathalie Reuter",
+        "Sandhya P Tiwari",
+        "Svenn H Grindhaug",
+        "Gisle Salensminde"
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1186/1471-2105-6-52"
+        },
+        {
+          "@id": "https://doi.org/10.1186/s12859-014-0427-6"
+        }
+      ],
+      "sc:description": "Quick, automated computation and analysis of low-frequency normal modes for protein structures.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0244"
+        },
+        {
+          "@id": "edam:operation_2487"
+        },
+        {
+          "@id": "edam:operation_0570"
+        },
+        {
+          "@id": "edam:operation_0337"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "WEBnma",
+      "sc:operatingSystem": [
+        "Windows",
+        "Linux",
+        "Mac"
+      ],
+      "sc:provider": [
+        "Computational Biology Unit, Department of Informatics, University of Bergen, Norway",
+        "UiB",
+        "Department of Molecular Biology, University of Bergen, Norway"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://apps.cbu.uib.no/webnma/howto"
+      },
+      "sc:softwareVersion": "2.0",
+      "sc:url": "http://apps.cbu.uib.no/webnma"
+    },
+    {
+      "@id": "_:N3c3c673d8f08439ea6579f68bf053c54",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:Ned43982806ec4994aa184fe875e7c02f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0889",
+      "sc:name": "Structural profile",
+      "sc:sameAs": "http://edamontology.org/data_0889"
+    },
+    {
+      "@id": "_:Nb9b16638f92840609fe8c1d30e43a0bb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1354",
+      "sc:name": "Sequence profile",
+      "sc:sameAs": "http://edamontology.org/data_1354"
+    },
+    {
+      "@id": "_:N3b5c103ba60a4ad6be5e0643f38fd9b6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:Nd2f8a32bac6d4571ad09c7388b7d84a2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "_:Nb4b65ca2fedc484bb55698c5702c478d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0886",
+      "sc:name": "Structure alignment",
+      "sc:sameAs": "http://edamontology.org/data_0886"
+    },
+    {
+      "@id": "_:Nd51fa8969c02420ca0b2ef8526b407a0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "https://doi.org/10.1186/1471-2105-6-52",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1186/s12859-014-0427-6",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

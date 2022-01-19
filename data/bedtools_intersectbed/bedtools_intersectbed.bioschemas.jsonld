@@ -1,1 +1,193 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "bedtools_intersectbed", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Galaxy Support Team"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1002/0471250953.bi1112s47", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.7490/f1000research.1114334.1", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0232"}], "hasInputData": [{"@id": "bedtools_intersectbed/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence trace", "identifier": "http://edamontology.org/data_0924", "sameAs": "http://edamontology.org/data_0924"}, {"@id": "bedtools_intersectbed/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Annotation track", "identifier": "http://edamontology.org/data_3002", "sameAs": "http://edamontology.org/data_3002"}, {"@id": "bedtools_intersectbed/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence variations", "identifier": "http://edamontology.org/data_3498", "sameAs": "http://edamontology.org/data_3498"}, {"@id": "bedtools_intersectbed/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "bedtools_intersectbed/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Annotation track", "identifier": "http://edamontology.org/data_3002", "sameAs": "http://edamontology.org/data_3002"}, {"@id": "bedtools_intersectbed/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Sequence variations", "identifier": "http://edamontology.org/data_3498", "sameAs": "http://edamontology.org/data_3498"}, {"@id": "bedtools_intersectbed/op_1/in_7", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}], "hasOutputData": [{"@id": "bedtools_intersectbed/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence trace", "identifier": "http://edamontology.org/data_0924", "sameAs": "http://edamontology.org/data_0924"}, {"@id": "bedtools_intersectbed/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Annotation track", "identifier": "http://edamontology.org/data_3002", "sameAs": "http://edamontology.org/data_3002"}, {"@id": "bedtools_intersectbed/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Data", "identifier": "http://edamontology.org/data_0006", "sameAs": "http://edamontology.org/data_0006"}, {"@id": "bedtools_intersectbed/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Sequence variations", "identifier": "http://edamontology.org/data_3498", "sameAs": "http://edamontology.org/data_3498"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3168"}], "hasGenDoc": [{"@id": "http://quinlanlab.org/tutorials/bedtools/bedtools.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/bedtools_intersectbed",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Galaxy Support Team",
+      "bsc:input": [
+        {
+          "@id": "_:N39aa06a966fb4f91902949f81bb431f6"
+        },
+        {
+          "@id": "_:N905f453ba533493685c7a4ff58dae60b"
+        },
+        {
+          "@id": "_:N2ee3db0fc4f54d3eaa34a277a3a82b30"
+        },
+        {
+          "@id": "_:Nf528539b14b14e298a691d7eb7a0e067"
+        },
+        {
+          "@id": "_:N625934d297f149a0925bdc8f64b40e84"
+        },
+        {
+          "@id": "_:Ne5613f593d63436a97c626c6112d33ad"
+        },
+        {
+          "@id": "_:N2040cae9be444e3fae1b71c6b5e9a53a"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N93cdb61099ac45539708b5e424787b95"
+        },
+        {
+          "@id": "_:N04aeb99a8d034bfb865462111fa5018f"
+        },
+        {
+          "@id": "_:N659f00da04b341ba931f350340ef6c66"
+        },
+        {
+          "@id": "_:N58798c8a1c2343c08546c284af14e89b"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3168"
+      },
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.7490/f1000research.1114334.1"
+        },
+        {
+          "@id": "https://doi.org/10.1002/0471250953.bi1112s47"
+        }
+      ],
+      "sc:description": "Report overlaps between two feature files.",
+      "sc:featureList": {
+        "@id": "edam:operation_0232"
+      },
+      "sc:name": "bedtools_intersectbed",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://quinlanlab.org/tutorials/bedtools/bedtools.html"
+      },
+      "sc:softwareVersion": "v2.10.0",
+      "sc:url": "https://github.com/arq5x/bedtools6"
+    },
+    {
+      "@id": "_:N39aa06a966fb4f91902949f81bb431f6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "_:N905f453ba533493685c7a4ff58dae60b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N2ee3db0fc4f54d3eaa34a277a3a82b30",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "_:Nf528539b14b14e298a691d7eb7a0e067",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N625934d297f149a0925bdc8f64b40e84",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3498",
+      "sc:name": "Sequence variations",
+      "sc:sameAs": "http://edamontology.org/data_3498"
+    },
+    {
+      "@id": "_:Ne5613f593d63436a97c626c6112d33ad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0924",
+      "sc:name": "Sequence trace",
+      "sc:sameAs": "http://edamontology.org/data_0924"
+    },
+    {
+      "@id": "_:N2040cae9be444e3fae1b71c6b5e9a53a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3498",
+      "sc:name": "Sequence variations",
+      "sc:sameAs": "http://edamontology.org/data_3498"
+    },
+    {
+      "@id": "_:N93cdb61099ac45539708b5e424787b95",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0924",
+      "sc:name": "Sequence trace",
+      "sc:sameAs": "http://edamontology.org/data_0924"
+    },
+    {
+      "@id": "_:N04aeb99a8d034bfb865462111fa5018f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0006",
+      "sc:name": "Data",
+      "sc:sameAs": "http://edamontology.org/data_0006"
+    },
+    {
+      "@id": "_:N659f00da04b341ba931f350340ef6c66",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3498",
+      "sc:name": "Sequence variations",
+      "sc:sameAs": "http://edamontology.org/data_3498"
+    },
+    {
+      "@id": "_:N58798c8a1c2343c08546c284af14e89b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3002",
+      "sc:name": "Annotation track",
+      "sc:sameAs": "http://edamontology.org/data_3002"
+    },
+    {
+      "@id": "https://doi.org/10.1002/0471250953.bi1112s47",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.7490/f1000research.1114334.1",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

@@ -1,1 +1,171 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "omiccircos", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Ying Hu"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.4137/cin.s13495", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3208"}, {"@id": "http://edamontology.org/operation_0337"}, {"@id": "http://edamontology.org/operation_0362"}], "hasInputData": [{"@id": "omiccircos/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Matrix", "identifier": "http://edamontology.org/data_2082", "sameAs": "http://edamontology.org/data_2082"}, {"@id": "omiccircos/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Sequence coordinates", "identifier": "http://edamontology.org/data_2012", "sameAs": "http://edamontology.org/data_2012"}, {"@id": "omiccircos/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence alignment (nucleic acid)", "identifier": "http://edamontology.org/data_1383", "sameAs": "http://edamontology.org/data_1383"}, {"@id": "omiccircos/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Map data", "identifier": "http://edamontology.org/data_2019", "sameAs": "http://edamontology.org/data_2019"}], "hasOutputData": [{"@id": "omiccircos/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Heat map", "identifier": "http://edamontology.org/data_1636", "sameAs": "http://edamontology.org/data_1636"}, {"@id": "omiccircos/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}, {"@id": "omiccircos/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Score", "identifier": "http://edamontology.org/data_1772", "sameAs": "http://edamontology.org/data_1772"}, {"@id": "omiccircos/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Report", "identifier": "http://edamontology.org/data_2048", "sameAs": "http://edamontology.org/data_2048"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3391"}, {"@id": "http://edamontology.org/topic_0092"}], "hasGenDoc": [{"@id": "http://bioconductor.org/packages/release/bioc/html/OmicCircos.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.4137/cin.s13495",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/omiccircos",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Ying Hu",
+      "bsc:input": [
+        {
+          "@id": "_:Ncebaf38109984c1cb916378bd0f5b62d"
+        },
+        {
+          "@id": "_:N6af988357a8c44d3a17dcaedeff14eeb"
+        },
+        {
+          "@id": "_:N2115e27baa854e4e869c6cd47f7be39d"
+        },
+        {
+          "@id": "_:Ncf9d000c1b5f40d1a0298f0855b0c7e6"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N5114a944f4054b41bc918d3757e3435c"
+        },
+        {
+          "@id": "_:N84ebf32f580e4739b4ac63a460191601"
+        },
+        {
+          "@id": "_:N2918a583119f4c05898f5037f874cc69"
+        },
+        {
+          "@id": "_:Nc6f70a5197614df298dc6c9af6646002"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Library",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0092"
+        },
+        {
+          "@id": "edam:topic_3391"
+        }
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.4137/cin.s13495"
+      },
+      "sc:description": "R package for generating high-quality circular plots for omics data.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3208"
+        },
+        {
+          "@id": "edam:operation_0337"
+        },
+        {
+          "@id": "edam:operation_0362"
+        }
+      ],
+      "sc:license": "GPL-2.0",
+      "sc:name": "OmicCircos",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://bioconductor.org/packages/release/bioc/html/OmicCircos.html"
+      },
+      "sc:softwareVersion": "1.12.0",
+      "sc:url": "http://bioconductor.org/packages/release/bioc/html/OmicCircos.html"
+    },
+    {
+      "@id": "_:Ncebaf38109984c1cb916378bd0f5b62d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2082",
+      "sc:name": "Matrix",
+      "sc:sameAs": "http://edamontology.org/data_2082"
+    },
+    {
+      "@id": "_:N6af988357a8c44d3a17dcaedeff14eeb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1383",
+      "sc:name": "Sequence alignment (nucleic acid)",
+      "sc:sameAs": "http://edamontology.org/data_1383"
+    },
+    {
+      "@id": "_:N2115e27baa854e4e869c6cd47f7be39d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2019",
+      "sc:name": "Map data",
+      "sc:sameAs": "http://edamontology.org/data_2019"
+    },
+    {
+      "@id": "_:Ncf9d000c1b5f40d1a0298f0855b0c7e6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2012",
+      "sc:name": "Sequence coordinates",
+      "sc:sameAs": "http://edamontology.org/data_2012"
+    },
+    {
+      "@id": "_:N5114a944f4054b41bc918d3757e3435c",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:N84ebf32f580e4739b4ac63a460191601",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2048",
+      "sc:name": "Report",
+      "sc:sameAs": "http://edamontology.org/data_2048"
+    },
+    {
+      "@id": "_:N2918a583119f4c05898f5037f874cc69",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1636",
+      "sc:name": "Heat map",
+      "sc:sameAs": "http://edamontology.org/data_1636"
+    },
+    {
+      "@id": "_:Nc6f70a5197614df298dc6c9af6646002",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1772",
+      "sc:name": "Score",
+      "sc:sameAs": "http://edamontology.org/data_1772"
+    }
+  ]
+}

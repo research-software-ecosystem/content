@@ -1,1 +1,169 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "rnahybrid", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": ["Marc Rehmsmeier"], "contributor": [], "provider": ["Bielefeld university", "BiBiServ"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1261/rna.5248604", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0349"}, {"@id": "http://edamontology.org/operation_0415"}, {"@id": "http://edamontology.org/operation_0475"}, {"@id": "http://edamontology.org/operation_0279"}], "hasInputData": [{"@id": "rnahybrid/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence (raw)", "identifier": "http://edamontology.org/data_2975", "sameAs": "http://edamontology.org/data_2975"}, {"@id": "rnahybrid/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence (raw)", "identifier": "http://edamontology.org/data_2975", "sameAs": "http://edamontology.org/data_2975"}], "hasOutputData": [{"@id": "rnahybrid/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid enthalpy", "identifier": "http://edamontology.org/data_1584", "sameAs": "http://edamontology.org/data_1584"}, {"@id": "rnahybrid/op_1/in_2", "@type": "bsct:FormalParameter", "name": "RNA secondary structure", "identifier": "http://edamontology.org/data_0880", "sameAs": "http://edamontology.org/data_0880"}, {"@id": "rnahybrid/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Nucleic acid enthalpy", "identifier": "http://edamontology.org/data_1584", "sameAs": "http://edamontology.org/data_1584"}, {"@id": "rnahybrid/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Nucleic acid structure report", "identifier": "http://edamontology.org/data_3128", "sameAs": "http://edamontology.org/data_3128"}, {"@id": "rnahybrid/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Nucleic acid features", "identifier": "http://edamontology.org/data_1276", "sameAs": "http://edamontology.org/data_1276"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0097"}, {"@id": "http://edamontology.org/topic_0160"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://bibiserv.cebitec.uni-bielefeld.de/rnahybrid?id=rnahybrid_manual_manual"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1261/rna.5248604",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/rnahybrid",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:Nae3d60112e814d1f8dddc2a600f4e064"
+        },
+        {
+          "@id": "_:N12d48f72593b475aae36c79bc4742b8a"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N42d86a3d577342f3b8537905fa9d75d6"
+        },
+        {
+          "@id": "_:N9cbb9513557c40248faf7e9b77de5e12"
+        },
+        {
+          "@id": "_:N4541fabf3d8d46a385ef6784bfbaba08"
+        },
+        {
+          "@id": "_:N668e341b99d84eb58d4c05d32c0af913"
+        },
+        {
+          "@id": "_:Nfb4f974367da4babad818042c585b8ea"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web API",
+        "Web application",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0160"
+        },
+        {
+          "@id": "edam:topic_0097"
+        }
+      ],
+      "sc:author": "Marc Rehmsmeier",
+      "sc:citation": {
+        "@id": "https://doi.org/10.1261/rna.5248604"
+      },
+      "sc:description": "Tool for finding the minimum free energy hybridization of a long and a short RNA. The hybridization is performed in a kind of domain mode, ie. the short sequence is hybridized to the best fitting part of the long one. The tool is primarily meant as a means for microRNA target prediction.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0415"
+        },
+        {
+          "@id": "edam:operation_0279"
+        },
+        {
+          "@id": "edam:operation_0475"
+        },
+        {
+          "@id": "edam:operation_0349"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "RNAhybrid",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:provider": [
+        "Bielefeld university",
+        "BiBiServ"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://bibiserv.cebitec.uni-bielefeld.de/rnahybrid?id=rnahybrid_manual_manual"
+      },
+      "sc:softwareVersion": "2.2.1",
+      "sc:url": "http://bibiserv.cebitec.uni-bielefeld.de/rnahybrid"
+    },
+    {
+      "@id": "_:Nae3d60112e814d1f8dddc2a600f4e064",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2975",
+      "sc:name": "Nucleic acid sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2975"
+    },
+    {
+      "@id": "_:N12d48f72593b475aae36c79bc4742b8a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2975",
+      "sc:name": "Nucleic acid sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2975"
+    },
+    {
+      "@id": "_:N42d86a3d577342f3b8537905fa9d75d6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1584",
+      "sc:name": "Nucleic acid enthalpy",
+      "sc:sameAs": "http://edamontology.org/data_1584"
+    },
+    {
+      "@id": "_:N9cbb9513557c40248faf7e9b77de5e12",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0880",
+      "sc:name": "RNA secondary structure",
+      "sc:sameAs": "http://edamontology.org/data_0880"
+    },
+    {
+      "@id": "_:N4541fabf3d8d46a385ef6784bfbaba08",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1584",
+      "sc:name": "Nucleic acid enthalpy",
+      "sc:sameAs": "http://edamontology.org/data_1584"
+    },
+    {
+      "@id": "_:N668e341b99d84eb58d4c05d32c0af913",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1276",
+      "sc:name": "Nucleic acid features",
+      "sc:sameAs": "http://edamontology.org/data_1276"
+    },
+    {
+      "@id": "_:Nfb4f974367da4babad818042c585b8ea",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3128",
+      "sc:name": "Nucleic acid structure report",
+      "sc:sameAs": "http://edamontology.org/data_3128"
+    }
+  ]
+}

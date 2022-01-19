@@ -1,1 +1,170 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "ipath", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-1429-7485", "@type": "schema:Person"}], "author": [], "contributor": [], "provider": ["European Molecular Biology Laboratory (EMBL)", "HD-HuB"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:21546551", "pmcid:PMC3125749", {"@id": "https://doi.org/10.1093/nar/gkr313", "@type": "sc:CreativeWork"}, "pubmed:18276143", "pubmed:29718427"], "hasOperation": [{"@id": "http://edamontology.org/operation_2497"}, {"@id": "http://edamontology.org/operation_3083"}], "hasInputData": [{"@id": "ipath/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Pathway ID (KEGG)", "identifier": "http://edamontology.org/data_2343", "sameAs": "http://edamontology.org/data_2343"}, {"@id": "ipath/op_1/in_2", "@type": "bsct:FormalParameter", "name": "STRING ID", "identifier": "http://edamontology.org/data_2302", "sameAs": "http://edamontology.org/data_2302"}, {"@id": "ipath/op_1/in_3", "@type": "bsct:FormalParameter", "name": "EC number", "identifier": "http://edamontology.org/data_1011", "sameAs": "http://edamontology.org/data_1011"}, {"@id": "ipath/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Protein name (UniProt)", "identifier": "http://edamontology.org/data_2764", "sameAs": "http://edamontology.org/data_2764"}, {"@id": "ipath/op_1/in_5", "@type": "bsct:FormalParameter", "name": "IPI protein ID", "identifier": "http://edamontology.org/data_2384", "sameAs": "http://edamontology.org/data_2384"}, {"@id": "ipath/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Gene ID (NCBI)", "identifier": "http://edamontology.org/data_1027", "sameAs": "http://edamontology.org/data_1027"}], "hasOutputData": [{"@id": "ipath/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Matrix", "identifier": "http://edamontology.org/data_2082", "sameAs": "http://edamontology.org/data_2082"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3174"}, {"@id": "http://edamontology.org/topic_0622"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://pathways.embl.de/help.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0003-1429-7485",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/ipath",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0003-1429-7485"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:Naeace006444d4d6090cf99e6dbd8780a"
+        },
+        {
+          "@id": "_:N4306cf24a8d54202bf41ce8e0db136af"
+        },
+        {
+          "@id": "_:N8dac08eade7c420dba9c0e70a9a13c9f"
+        },
+        {
+          "@id": "_:Nc0fd717596f24ae8b9fac42f4a2f0c7e"
+        },
+        {
+          "@id": "_:Nfc6aee5ececa47e3bf7bdf6f47d4e53d"
+        },
+        {
+          "@id": "_:Ndec9bd0d71704afb8432e9e99ada4971"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:Ncb6d66f613fc45b8a81759b221e42f86"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_0622"
+        }
+      ],
+      "sc:citation": [
+        "pubmed:18276143",
+        {
+          "@id": "https://doi.org/10.1093/nar/gkr313"
+        },
+        "pubmed:29718427",
+        "pubmed:21546551",
+        "pmcid:PMC3125749"
+      ],
+      "sc:description": "iPath is a web-based tool for the visualization and analysis of cellular pathways. Based on functional annotations (such as KEGG), it provides pathway maps for primary cellular metabolism as well as for some additional secondary metabolite synthesis and regulatory pathways. Users can map their own data onto these pathway maps. Due to its navigation and customization functions, iPATH allows users to easily explore and analyze the functional and metabolic capabilities of their (meta-)genomic data sets.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3083"
+        },
+        {
+          "@id": "edam:operation_2497"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-3.0",
+      "sc:name": "iPATH",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:provider": [
+        "HD-HuB",
+        "European Molecular Biology Laboratory (EMBL)"
+      ],
+      "sc:softwareHelp": {
+        "@id": "http://pathways.embl.de/help.html"
+      },
+      "sc:softwareVersion": "3.0",
+      "sc:url": "https://pathways.embl.de/"
+    },
+    {
+      "@id": "_:Naeace006444d4d6090cf99e6dbd8780a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1011",
+      "sc:name": "EC number",
+      "sc:sameAs": "http://edamontology.org/data_1011"
+    },
+    {
+      "@id": "_:N4306cf24a8d54202bf41ce8e0db136af",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2302",
+      "sc:name": "STRING ID",
+      "sc:sameAs": "http://edamontology.org/data_2302"
+    },
+    {
+      "@id": "_:N8dac08eade7c420dba9c0e70a9a13c9f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2384",
+      "sc:name": "IPI protein ID",
+      "sc:sameAs": "http://edamontology.org/data_2384"
+    },
+    {
+      "@id": "_:Nc0fd717596f24ae8b9fac42f4a2f0c7e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2764",
+      "sc:name": "Protein name (UniProt)",
+      "sc:sameAs": "http://edamontology.org/data_2764"
+    },
+    {
+      "@id": "_:Nfc6aee5ececa47e3bf7bdf6f47d4e53d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1027",
+      "sc:name": "Gene ID (NCBI)",
+      "sc:sameAs": "http://edamontology.org/data_1027"
+    },
+    {
+      "@id": "_:Ndec9bd0d71704afb8432e9e99ada4971",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2343",
+      "sc:name": "Pathway ID (KEGG)",
+      "sc:sameAs": "http://edamontology.org/data_2343"
+    },
+    {
+      "@id": "_:Ncb6d66f613fc45b8a81759b221e42f86",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2082",
+      "sc:name": "Matrix",
+      "sc:sameAs": "http://edamontology.org/data_2082"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkr313",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

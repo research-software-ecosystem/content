@@ -1,1 +1,153 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "clusteval", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "http://orcid.org/0000-0002-0282-0462", "@type": "schema:Person"}, {"@id": "http://orcid.org/0000-0001-9181-7160", "@type": "schema:Person"}], "author": ["Jan Baumbach"], "contributor": [], "provider": ["bmb.sdu.dk"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:26389570", {"@id": "https://doi.org/10.1038/nmeth.3583", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0291"}, {"@id": "http://edamontology.org/operation_0360"}, {"@id": "http://edamontology.org/operation_0314"}, {"@id": "http://edamontology.org/operation_3463"}], "hasInputData": [{"@id": "clusteval/op_1/in_1", "@type": "bsct:FormalParameter", "name": "COGEME unisequence ID", "identifier": "http://edamontology.org/data_2730", "sameAs": "http://edamontology.org/data_2730"}, {"@id": "clusteval/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Gene expression data", "identifier": "http://edamontology.org/data_2603", "sameAs": "http://edamontology.org/data_2603"}, {"@id": "clusteval/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Sequence similarity", "identifier": "http://edamontology.org/data_1413", "sameAs": "http://edamontology.org/data_1413"}], "hasOutputData": [{"@id": "clusteval/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Score", "identifier": "http://edamontology.org/data_1772", "sameAs": "http://edamontology.org/data_1772"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2259"}, {"@id": "http://edamontology.org/topic_3071"}, {"@id": "http://edamontology.org/topic_3307"}], "hasGenDoc": [{"@id": "https://clusteval.sdu.dk/1/mains"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://orcid.org/0000-0001-9181-7160",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "http://orcid.org/0000-0002-0282-0462",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/clusteval",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        {
+          "@id": "http://orcid.org/0000-0001-9181-7160"
+        },
+        {
+          "@id": "http://orcid.org/0000-0002-0282-0462"
+        }
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:Nd83465021b0f4b53b3de1f205ed01527"
+        },
+        {
+          "@id": "_:N616753a50ae4447e863992bc2288a2b1"
+        },
+        {
+          "@id": "_:N5b9da80055324ec7a2e8f234d0717aed"
+        }
+      ],
+      "bsc:output": {
+        "@id": "_:N17886096494f4aa5a096176064d65543"
+      },
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Database portal",
+        "Web application"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2259"
+        },
+        {
+          "@id": "edam:topic_3071"
+        },
+        {
+          "@id": "edam:topic_3307"
+        }
+      ],
+      "sc:author": "Jan Baumbach",
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1038/nmeth.3583"
+        },
+        "pubmed:26389570"
+      ],
+      "sc:description": "Free and extendable opensource platform for objective performance comparison of arbitrary Clustering Methods on different datasets.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0360"
+        },
+        {
+          "@id": "edam:operation_3463"
+        },
+        {
+          "@id": "edam:operation_0291"
+        },
+        {
+          "@id": "edam:operation_0314"
+        }
+      ],
+      "sc:name": "Clusteval",
+      "sc:operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+      ],
+      "sc:provider": "bmb.sdu.dk",
+      "sc:softwareHelp": {
+        "@id": "https://clusteval.sdu.dk/1/mains"
+      },
+      "sc:url": "http://clusteval.sdu.dk/"
+    },
+    {
+      "@id": "_:Nd83465021b0f4b53b3de1f205ed01527",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2730",
+      "sc:name": "COGEME unisequence ID",
+      "sc:sameAs": "http://edamontology.org/data_2730"
+    },
+    {
+      "@id": "_:N616753a50ae4447e863992bc2288a2b1",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2603",
+      "sc:name": "Gene expression data",
+      "sc:sameAs": "http://edamontology.org/data_2603"
+    },
+    {
+      "@id": "_:N5b9da80055324ec7a2e8f234d0717aed",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1413",
+      "sc:name": "Sequence similarity",
+      "sc:sameAs": "http://edamontology.org/data_1413"
+    },
+    {
+      "@id": "_:N17886096494f4aa5a096176064d65543",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1772",
+      "sc:name": "Score",
+      "sc:sameAs": "http://edamontology.org/data_1772"
+    },
+    {
+      "@id": "https://doi.org/10.1038/nmeth.3583",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

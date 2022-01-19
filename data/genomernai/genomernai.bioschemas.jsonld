@@ -1,1 +1,192 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "genomernai", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [], "author": ["Esther Schmidt", "Benedikt Rauscher", "Oliver Pelz", "Michael Boutros"], "contributor": [], "provider": ["German Cancer Research Center", "hdhub"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:23193271"], "hasOperation": [{"@id": "http://edamontology.org/operation_2421"}, {"@id": "http://edamontology.org/operation_2422"}, {"@id": "http://edamontology.org/operation_0337"}, {"@id": "http://edamontology.org/operation_0305"}], "hasInputData": [{"@id": "genomernai/op_1/in_1", "@type": "bsct:FormalParameter", "name": "FlyBase ID", "identifier": "http://edamontology.org/data_1089", "sameAs": "http://edamontology.org/data_1089"}, {"@id": "genomernai/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Ensembl gene ID", "identifier": "http://edamontology.org/data_1033", "sameAs": "http://edamontology.org/data_1033"}, {"@id": "genomernai/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Gene symbol", "identifier": "http://edamontology.org/data_1026", "sameAs": "http://edamontology.org/data_1026"}, {"@id": "genomernai/op_1/in_4", "@type": "bsct:FormalParameter", "name": "PubMed ID", "identifier": "http://edamontology.org/data_1187", "sameAs": "http://edamontology.org/data_1187"}, {"@id": "genomernai/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Person identifier", "identifier": "http://edamontology.org/data_2118", "sameAs": "http://edamontology.org/data_2118"}, {"@id": "genomernai/op_1/in_6", "@type": "bsct:FormalParameter", "name": "Phenotype name", "identifier": "http://edamontology.org/data_3275", "sameAs": "http://edamontology.org/data_3275"}, {"@id": "genomernai/op_1/in_7", "@type": "bsct:FormalParameter", "name": "Identifier", "identifier": "http://edamontology.org/data_0842", "sameAs": "http://edamontology.org/data_0842"}, {"@id": "genomernai/op_1/in_8", "@type": "bsct:FormalParameter", "name": "Gene ID (NCBI)", "identifier": "http://edamontology.org/data_1027", "sameAs": "http://edamontology.org/data_1027"}], "hasOutputData": [{"@id": "genomernai/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Database search results", "identifier": "http://edamontology.org/data_2080", "sameAs": "http://edamontology.org/data_2080"}, {"@id": "genomernai/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Plot", "identifier": "http://edamontology.org/data_2884", "sameAs": "http://edamontology.org/data_2884"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3523"}], "hasGenDoc": [{"@id": "http://www.genomernai.org/About#"}, {"@id": "http://rnai-screening-wiki.dkfz.de/confluence/display/genomernai/Home"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/genomernai",
+      "@type": "sc:SoftwareApplication",
+      "bsc:input": [
+        {
+          "@id": "_:N8fd290a8e40443fe851c12c332e167d6"
+        },
+        {
+          "@id": "_:Nb2d59c3bc1cb4747a5026ef76b4fd7e1"
+        },
+        {
+          "@id": "_:Nc0e3b019dbef4a859b2aeb2ad3beb4ae"
+        },
+        {
+          "@id": "_:Ne8b27897833e46ea92452889d6a4bb41"
+        },
+        {
+          "@id": "_:N6349badbe0404cd1a02c3d3dc1bb59f8"
+        },
+        {
+          "@id": "_:N93fdc32084464b889a53f0951ffc8150"
+        },
+        {
+          "@id": "_:Nb16ca23a951d4218ae229be1f4fe0661"
+        },
+        {
+          "@id": "_:N446c4322c8944ca490d2c514e25f9531"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N0204b8ba2c534f42834f613bb5199944"
+        },
+        {
+          "@id": "_:N45244032b888430ebf80f3bf93bf0052"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Database portal",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3523"
+      },
+      "sc:author": [
+        "Oliver Pelz",
+        "Michael Boutros",
+        "Esther Schmidt",
+        "Benedikt Rauscher"
+      ],
+      "sc:citation": "pubmed:23193271",
+      "sc:description": "This database makes available RNAi phenotype data extracted from the literature, or submitted by data producers directly, for human and Drosophila. It also provides RNAi reagent information, along with an assessment as to their efficiency and specificity.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0305"
+        },
+        {
+          "@id": "edam:operation_2422"
+        },
+        {
+          "@id": "edam:operation_0337"
+        },
+        {
+          "@id": "edam:operation_2421"
+        }
+      ],
+      "sc:name": "GenomeRNAi",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:provider": [
+        "hdhub",
+        "German Cancer Research Center"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "http://www.genomernai.org/About#"
+        },
+        {
+          "@id": "http://rnai-screening-wiki.dkfz.de/confluence/display/genomernai/Home"
+        }
+      ],
+      "sc:url": "http://www.genomernai.org/"
+    },
+    {
+      "@id": "_:N0204b8ba2c534f42834f613bb5199944",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2884",
+      "sc:name": "Plot",
+      "sc:sameAs": "http://edamontology.org/data_2884"
+    },
+    {
+      "@id": "_:N45244032b888430ebf80f3bf93bf0052",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2080",
+      "sc:name": "Database search results",
+      "sc:sameAs": "http://edamontology.org/data_2080"
+    },
+    {
+      "@id": "_:N8fd290a8e40443fe851c12c332e167d6",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1089",
+      "sc:name": "FlyBase ID",
+      "sc:sameAs": "http://edamontology.org/data_1089"
+    },
+    {
+      "@id": "_:Nb2d59c3bc1cb4747a5026ef76b4fd7e1",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0842",
+      "sc:name": "Identifier",
+      "sc:sameAs": "http://edamontology.org/data_0842"
+    },
+    {
+      "@id": "_:Nc0e3b019dbef4a859b2aeb2ad3beb4ae",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2118",
+      "sc:name": "Person identifier",
+      "sc:sameAs": "http://edamontology.org/data_2118"
+    },
+    {
+      "@id": "_:Ne8b27897833e46ea92452889d6a4bb41",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3275",
+      "sc:name": "Phenotype name",
+      "sc:sameAs": "http://edamontology.org/data_3275"
+    },
+    {
+      "@id": "_:N6349badbe0404cd1a02c3d3dc1bb59f8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1033",
+      "sc:name": "Ensembl gene ID",
+      "sc:sameAs": "http://edamontology.org/data_1033"
+    },
+    {
+      "@id": "_:N93fdc32084464b889a53f0951ffc8150",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1026",
+      "sc:name": "Gene symbol",
+      "sc:sameAs": "http://edamontology.org/data_1026"
+    },
+    {
+      "@id": "_:Nb16ca23a951d4218ae229be1f4fe0661",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1027",
+      "sc:name": "Gene ID (NCBI)",
+      "sc:sameAs": "http://edamontology.org/data_1027"
+    },
+    {
+      "@id": "_:N446c4322c8944ca490d2c514e25f9531",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1187",
+      "sc:name": "PubMed ID",
+      "sc:sameAs": "http://edamontology.org/data_1187"
+    }
+  ]
+}

@@ -1,1 +1,153 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "net-ge", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "http://orcid.org/0000-0002-1838-8918", "@type": "schema:Person"}, "Samuele Bovo", "Pier Luigi Martelli"], "author": [], "contributor": [], "provider": ["ELIXIR-ITA-BOLOGNA"], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:26110971", "pmcid:PMC4480278", {"@id": "https://doi.org/10.1186/1471-2164-16-S8-S6", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3501"}, {"@id": "http://edamontology.org/operation_3083"}], "hasInputData": [{"@id": "net-ge/op_1/in_1", "@type": "bsct:FormalParameter", "name": "UniProt accession", "identifier": "http://edamontology.org/data_3021", "sameAs": "http://edamontology.org/data_3021"}], "hasOutputData": [{"@id": "net-ge/op_1/in_1", "@type": "bsct:FormalParameter", "name": "GO concept ID", "identifier": "http://edamontology.org/data_1176", "sameAs": "http://edamontology.org/data_1176"}, {"@id": "net-ge/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Pathway ID (KEGG)", "identifier": "http://edamontology.org/data_2343", "sameAs": "http://edamontology.org/data_2343"}, {"@id": "net-ge/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Pathway ID (reactome)", "identifier": "http://edamontology.org/data_1155", "sameAs": "http://edamontology.org/data_1155"}, {"@id": "net-ge/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "net-ge/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Taxonomy", "identifier": "http://edamontology.org/data_3028", "sameAs": "http://edamontology.org/data_3028"}], "hasTopic": [{"@id": "http://edamontology.org/topic_1775"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://net-ge.biocomp.unibo.it/enrich/tutorial"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://orcid.org/0000-0002-1838-8918",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/net-ge",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        {
+          "@id": "http://orcid.org/0000-0002-1838-8918"
+        },
+        "Samuele Bovo",
+        "Pier Luigi Martelli"
+      ],
+      "bsc:input": {
+        "@id": "_:N91c5cf938eb244fdaf459aefdd7fdd2b"
+      },
+      "bsc:output": [
+        {
+          "@id": "_:Ne44dff9bf47a4ba9bfd3fce57e8b5937"
+        },
+        {
+          "@id": "_:Nb7f4f14bca0d40b583dbd64b959e2f91"
+        },
+        {
+          "@id": "_:N25263aac659e43a0bc9a8ead80b859f5"
+        },
+        {
+          "@id": "_:N715a5217737347498a38d0f815c6afc2"
+        },
+        {
+          "@id": "_:Naeb914034cff4037812e9fee09c79ee8"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_1775"
+      },
+      "sc:citation": [
+        "pmcid:PMC4480278",
+        {
+          "@id": "https://doi.org/10.1186/1471-2164-16-S8-S6"
+        },
+        "pubmed:26110971"
+      ],
+      "sc:description": "Network-based enrichment analysis of gene sets.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3083"
+        },
+        {
+          "@id": "edam:operation_3501"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "NET-GE",
+      "sc:operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "sc:provider": "ELIXIR-ITA-BOLOGNA",
+      "sc:softwareHelp": {
+        "@id": "http://net-ge.biocomp.unibo.it/enrich/tutorial"
+      },
+      "sc:softwareVersion": "1.0",
+      "sc:url": "http://net-ge.biocomp.unibo.it/"
+    },
+    {
+      "@id": "_:Ne44dff9bf47a4ba9bfd3fce57e8b5937",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:Nb7f4f14bca0d40b583dbd64b959e2f91",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3028",
+      "sc:name": "Taxonomy",
+      "sc:sameAs": "http://edamontology.org/data_3028"
+    },
+    {
+      "@id": "_:N25263aac659e43a0bc9a8ead80b859f5",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1176",
+      "sc:name": "GO concept ID",
+      "sc:sameAs": "http://edamontology.org/data_1176"
+    },
+    {
+      "@id": "_:N715a5217737347498a38d0f815c6afc2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1155",
+      "sc:name": "Pathway ID (reactome)",
+      "sc:sameAs": "http://edamontology.org/data_1155"
+    },
+    {
+      "@id": "_:Naeb914034cff4037812e9fee09c79ee8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2343",
+      "sc:name": "Pathway ID (KEGG)",
+      "sc:sameAs": "http://edamontology.org/data_2343"
+    },
+    {
+      "@id": "_:N91c5cf938eb244fdaf459aefdd7fdd2b",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3021",
+      "sc:name": "UniProt accession",
+      "sc:sameAs": "http://edamontology.org/data_3021"
+    },
+    {
+      "@id": "https://doi.org/10.1186/1471-2164-16-S8-S6",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

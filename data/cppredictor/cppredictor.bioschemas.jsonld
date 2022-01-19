@@ -1,1 +1,160 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "cppredictor", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Jan Jel\u00ednek", "Josef P\u00e1nek"], "author": ["Jan Jel\u00ednek", "Josef P\u00e1nek"], "contributor": [], "provider": [], "funder": ["Czech Science Foundation"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:29067038", "pmcid:PMC5641303", {"@id": "https://doi.org/10.3389/fgene.2017.00147", "@type": "sc:CreativeWork"}, "pubmed:30169571", {"@id": "https://doi.org/10.1093/bioinformatics/bty753", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0278"}, {"@id": "http://edamontology.org/operation_0570"}], "hasInputData": [{"@id": "cppredictor/op_1/in_1", "@type": "bsct:FormalParameter", "name": "RNA sequence", "identifier": "http://edamontology.org/data_3495", "sameAs": "http://edamontology.org/data_3495"}, {"@id": "cppredictor/op_1/in_2", "@type": "bsct:FormalParameter", "name": "RNA secondary structure", "identifier": "http://edamontology.org/data_0880", "sameAs": "http://edamontology.org/data_0880"}], "hasOutputData": [{"@id": "cppredictor/op_1/in_1", "@type": "bsct:FormalParameter", "name": "RNA secondary structure", "identifier": "http://edamontology.org/data_0880", "sameAs": "http://edamontology.org/data_0880"}, {"@id": "cppredictor/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Statistical estimate score", "identifier": "http://edamontology.org/data_0951", "sameAs": "http://edamontology.org/data_0951"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0097"}, {"@id": "http://edamontology.org/topic_0099"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://cppredictor.elixir-czech.cz/documentation/"}, {"@id": "http://cppredictor.elixir-czech.cz/documentation/terms.html"}, {"@id": "http://cppredictor.elixir-czech.cz/documentation/help.html"}, {"@id": "http://cppredictor.elixir-czech.cz/documentation/example.html"}, {"@id": "http://cppredictor.elixir-czech.cz/documentation/usecases.html"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/bty753",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.3389/fgene.2017.00147",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/cppredictor",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Jan Jelínek",
+        "Josef Pánek"
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:N5dcd47e2e8c64c31be7cbeca4ee95054"
+        },
+        {
+          "@id": "_:N22201675cb34497dbcdc6cb4502996ff"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N5f9e98899cdb4232955cbc57c1f9bdc2"
+        },
+        {
+          "@id": "_:N5822950cb3074a4c9809225100b853f8"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0099"
+        },
+        {
+          "@id": "edam:topic_0097"
+        }
+      ],
+      "sc:author": [
+        "Jan Jelínek",
+        "Josef Pánek"
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/bioinformatics/bty753"
+        },
+        {
+          "@id": "https://doi.org/10.3389/fgene.2017.00147"
+        },
+        "pmcid:PMC5641303",
+        "pubmed:29067038",
+        "pubmed:30169571"
+      ],
+      "sc:description": "Template-based predictor of RNA secondary structure. It takes a template RNA secondary structure(s) and a query RNA sequence(s) and generates secondary structure of the query sequence(s) using the provided structure(s) as a template(s). Biological reliability of the generated structures is evaluated in form of z-scores.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0278"
+        },
+        {
+          "@id": "edam:operation_0570"
+        }
+      ],
+      "sc:funder": "Czech Science Foundation",
+      "sc:isAccessibleForFree": true,
+      "sc:license": "Freeware",
+      "sc:name": "cpPredictor",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "http://cppredictor.elixir-czech.cz/documentation/example.html"
+        },
+        {
+          "@id": "http://cppredictor.elixir-czech.cz/documentation/usecases.html"
+        },
+        {
+          "@id": "http://cppredictor.elixir-czech.cz/documentation/help.html"
+        },
+        {
+          "@id": "http://cppredictor.elixir-czech.cz/documentation/"
+        },
+        {
+          "@id": "http://cppredictor.elixir-czech.cz/documentation/terms.html"
+        }
+      ],
+      "sc:softwareVersion": "1.0",
+      "sc:url": "http://cppredictor.elixir-czech.cz/"
+    },
+    {
+      "@id": "_:N5f9e98899cdb4232955cbc57c1f9bdc2",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0951",
+      "sc:name": "Statistical estimate score",
+      "sc:sameAs": "http://edamontology.org/data_0951"
+    },
+    {
+      "@id": "_:N5822950cb3074a4c9809225100b853f8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0880",
+      "sc:name": "RNA secondary structure",
+      "sc:sameAs": "http://edamontology.org/data_0880"
+    },
+    {
+      "@id": "_:N5dcd47e2e8c64c31be7cbeca4ee95054",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0880",
+      "sc:name": "RNA secondary structure",
+      "sc:sameAs": "http://edamontology.org/data_0880"
+    },
+    {
+      "@id": "_:N22201675cb34497dbcdc6cb4502996ff",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3495",
+      "sc:name": "RNA sequence",
+      "sc:sameAs": "http://edamontology.org/data_3495"
+    }
+  ]
+}

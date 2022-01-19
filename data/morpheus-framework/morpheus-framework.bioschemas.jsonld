@@ -1,1 +1,228 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "morpheus-framework", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "https://orcid.org/0000-0003-0137-5106", "@type": "schema:Person"}], "author": [{"@id": "https://orcid.org/0000-0003-3649-2433", "@type": "schema:Person"}, {"@id": "https://orcid.org/0000-0003-4641-8472", "@type": "schema:Person"}], "contributor": [{"@id": "https://orcid.org/0000-0002-9005-6897", "@type": "schema:Person"}], "provider": [], "funder": ["Deutsche Forschungsgemeinschaft (DFG)"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:24443380", "pmcid:PMC3998129", {"@id": "https://doi.org/10.1093/bioinformatics/btt772", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3926"}, {"@id": "http://edamontology.org/operation_2426"}, {"@id": "http://edamontology.org/operation_3927"}], "hasInputData": [{"@id": "morpheus-framework/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "morpheus-framework/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "morpheus-framework/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}], "hasOutputData": [{"@id": "morpheus-framework/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "morpheus-framework/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Cell migration track image", "identifier": "http://edamontology.org/data_3449", "sameAs": "http://edamontology.org/data_3449"}, {"@id": "morpheus-framework/op_2/in_2", "@type": "bsct:FormalParameter", "name": "Trajectory data", "identifier": "http://edamontology.org/data_3870", "sameAs": "http://edamontology.org/data_3870"}, {"@id": "morpheus-framework/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Trajectory data", "identifier": "http://edamontology.org/data_3870", "sameAs": "http://edamontology.org/data_3870"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2259"}, {"@id": "http://edamontology.org/topic_2840"}, {"@id": "http://edamontology.org/topic_3376"}, {"@id": "http://edamontology.org/topic_2229"}, {"@id": "http://edamontology.org/topic_3064"}, {"@id": "http://edamontology.org/topic_3895"}, {"@id": "http://edamontology.org/topic_3306"}, {"@id": "http://edamontology.org/topic_3569"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://morpheus.gitlab.io/faq/"}, {"@id": "https://morpheus.gitlab.io/courses/"}, {"@id": "https://morpheus.gitlab.io/courses/getting-started/Have-a-look-around/"}, {"@id": "https://gitlab.com/morpheus.lab/morpheus"}, {"@id": "https://gitlab.com/morpheus.lab/morpheus/-/wikis/dev-guide"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0003-3649-2433",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-9005-6897",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://bio.tools/morpheus-framework",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0003-0137-5106"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:N39f8defbf71c4c01a585db086c9cdf5f"
+        },
+        {
+          "@id": "_:Nb1db52d42b2244e8aa3d1e9feb71004a"
+        },
+        {
+          "@id": "_:N3286765f735c44fdb4f81c24b6a0791a"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Na2497491b74e4695bc82c94aed89370a"
+        },
+        {
+          "@id": "_:N983644a2e7ac41f196d5d03b33e1a9f3"
+        },
+        {
+          "@id": "_:Nc78e62254f3a4449a301ec85fb66e684"
+        },
+        {
+          "@id": "_:Nfb2836312ab84b55aeb0fede67566e32"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Desktop application",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3895"
+        },
+        {
+          "@id": "edam:topic_3064"
+        },
+        {
+          "@id": "edam:topic_2229"
+        },
+        {
+          "@id": "edam:topic_2259"
+        },
+        {
+          "@id": "edam:topic_3376"
+        },
+        {
+          "@id": "edam:topic_3306"
+        },
+        {
+          "@id": "edam:topic_3569"
+        },
+        {
+          "@id": "edam:topic_2840"
+        }
+      ],
+      "sc:author": [
+        {
+          "@id": "https://orcid.org/0000-0003-3649-2433"
+        },
+        {
+          "@id": "https://orcid.org/0000-0003-4641-8472"
+        }
+      ],
+      "sc:citation": [
+        "pmcid:PMC3998129",
+        "pubmed:24443380",
+        {
+          "@id": "https://doi.org/10.1093/bioinformatics/btt772"
+        }
+      ],
+      "sc:contributor": {
+        "@id": "https://orcid.org/0000-0002-9005-6897"
+      },
+      "sc:description": "Morpheus is an open-source modeling and simulation framework for multi-scale and multicellular biological systems. The GUI allows to construct and simulate models from gene regulation, metabolism and signaling to tissue morphogenesis and their multi-scale feedbacks without the need to program. Morpheus is based on declarative modeling in biological terms and mathematical expressions and internally uses the domain-specific language MorpheusML, allowing for rapid model prototyping without extra code-compilation. Morpheus supports cell-based model formalisms, ODEs, PDEs, rule-based models, SBML models etc. (all freely coupled) as well as image-based modeling. It renders results in customizable 2D and 3D images or movies and offers analysis tools to extract features right during simulation. The plugin architecture makes it extensible. Binary installers are available for all major OS from the Morpheus homepage together with online courses, a public model repository and many more resources.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3927"
+        },
+        {
+          "@id": "edam:operation_3926"
+        },
+        {
+          "@id": "edam:operation_2426"
+        }
+      ],
+      "sc:funder": "Deutsche Forschungsgemeinschaft (DFG)",
+      "sc:isAccessibleForFree": true,
+      "sc:license": "BSD-3-Clause",
+      "sc:name": "Morpheus",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "https://gitlab.com/morpheus.lab/morpheus/-/wikis/dev-guide"
+        },
+        {
+          "@id": "https://morpheus.gitlab.io/courses/getting-started/Have-a-look-around/"
+        },
+        {
+          "@id": "https://morpheus.gitlab.io/faq/"
+        },
+        {
+          "@id": "https://morpheus.gitlab.io/courses/"
+        },
+        {
+          "@id": "https://gitlab.com/morpheus.lab/morpheus"
+        }
+      ],
+      "sc:softwareVersion": "2.2",
+      "sc:url": "https://morpheus.gitlab.io"
+    },
+    {
+      "@id": "_:Na2497491b74e4695bc82c94aed89370a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3870",
+      "sc:name": "Trajectory data",
+      "sc:sameAs": "http://edamontology.org/data_3870"
+    },
+    {
+      "@id": "_:N983644a2e7ac41f196d5d03b33e1a9f3",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:Nc78e62254f3a4449a301ec85fb66e684",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3870",
+      "sc:name": "Trajectory data",
+      "sc:sameAs": "http://edamontology.org/data_3870"
+    },
+    {
+      "@id": "_:Nfb2836312ab84b55aeb0fede67566e32",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3449",
+      "sc:name": "Cell migration track image",
+      "sc:sameAs": "http://edamontology.org/data_3449"
+    },
+    {
+      "@id": "_:N39f8defbf71c4c01a585db086c9cdf5f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:Nb1db52d42b2244e8aa3d1e9feb71004a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:N3286765f735c44fdb4f81c24b6a0791a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btt772",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0137-5106",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-4641-8472",
+      "@type": "schema:Person"
+    }
+  ]
+}

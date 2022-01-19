@@ -1,1 +1,203 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "stitch", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Michael Kuhn"], "author": ["Michael Kuhn"], "contributor": ["EMBL", "SUND-KU", "EC FP6", "BMBF", "EMBO", "CPR", "TUD"], "provider": ["HD-HuB"], "funder": ["EMBL", "SUND-KU", "EC FP6", "BMBF", "EMBO", "CPR", "TUD"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": ["pubmed:18084021", "pmcid:PMC2238848", {"@id": "https://doi.org/10.1093/nar/gkm795", "@type": "sc:CreativeWork"}, "pubmed:19897548", "pubmed:24293645", "pubmed:22075997"], "hasOperation": [{"@id": "http://edamontology.org/operation_2421"}, {"@id": "http://edamontology.org/operation_3083"}, {"@id": "http://edamontology.org/operation_2497"}, {"@id": "http://edamontology.org/operation_2423"}], "hasInputData": [{"@id": "stitch/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Gene name", "identifier": "http://edamontology.org/data_2299", "sameAs": "http://edamontology.org/data_2299"}, {"@id": "stitch/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}, {"@id": "stitch/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein name", "identifier": "http://edamontology.org/data_1009", "sameAs": "http://edamontology.org/data_1009"}, {"@id": "stitch/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Compound name", "identifier": "http://edamontology.org/data_0990", "sameAs": "http://edamontology.org/data_0990"}, {"@id": "stitch/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}], "hasOutputData": [{"@id": "stitch/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}, {"@id": "stitch/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Database cross-mapping", "identifier": "http://edamontology.org/data_0954", "sameAs": "http://edamontology.org/data_0954"}, {"@id": "stitch/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Evidence", "identifier": "http://edamontology.org/data_2042", "sameAs": "http://edamontology.org/data_2042"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3314"}, {"@id": "http://edamontology.org/topic_3344"}, {"@id": "http://edamontology.org/topic_0602"}], "hasGenDoc": [{"@id": "http://stitch.embl.de/cgi/show_info_page.pl?UserId=pRfi11Qlkhnx&sessionId=sEfmbh_T7QLq"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/nar/gkm795",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/stitch",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Michael Kuhn",
+      "bsc:input": [
+        {
+          "@id": "_:N73628b743b7c4f00a6c4464af9ff1d2d"
+        },
+        {
+          "@id": "_:N78e6c288d33b439d9f2e4ec61e4bb7ee"
+        },
+        {
+          "@id": "_:N68f151a182b84aad8d3894e2c2733f77"
+        },
+        {
+          "@id": "_:Nfdb47450c61b42d08d7459e04cb5ce31"
+        },
+        {
+          "@id": "_:Na1c0652030bd45c29714755f7d3c2cf8"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N7cd1b11976f6436ba740d73eb128cf9d"
+        },
+        {
+          "@id": "_:Nc6c02d48131b45a48c815c35e4f56db0"
+        },
+        {
+          "@id": "_:Nef743e1cc0a04359bd168fa34e7f21f1"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Database portal",
+        "Web application",
+        "Command-line tool"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3344"
+        },
+        {
+          "@id": "edam:topic_3314"
+        },
+        {
+          "@id": "edam:topic_0602"
+        }
+      ],
+      "sc:author": "Michael Kuhn",
+      "sc:citation": [
+        "pmcid:PMC2238848",
+        "pubmed:18084021",
+        "pubmed:19897548",
+        "pubmed:24293645",
+        {
+          "@id": "https://doi.org/10.1093/nar/gkm795"
+        },
+        "pubmed:22075997"
+      ],
+      "sc:contributor": [
+        "TUD",
+        "EMBL",
+        "CPR",
+        "BMBF",
+        "SUND-KU",
+        "EC FP6",
+        "EMBO"
+      ],
+      "sc:description": "Resource to explore known and predicted interactions of chemicals and proteins. Chemicals are linked to other chemicals and proteins by evidence derived from experiments, databases and the literature.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_2421"
+        },
+        {
+          "@id": "edam:operation_2423"
+        },
+        {
+          "@id": "edam:operation_2497"
+        },
+        {
+          "@id": "edam:operation_3083"
+        }
+      ],
+      "sc:funder": [
+        "EMBO",
+        "EC FP6",
+        "BMBF",
+        "EMBL",
+        "TUD",
+        "SUND-KU",
+        "CPR"
+      ],
+      "sc:name": "STITCH",
+      "sc:operatingSystem": [
+        "Windows",
+        "Mac",
+        "Linux"
+      ],
+      "sc:provider": "HD-HuB",
+      "sc:softwareHelp": {
+        "@id": "http://stitch.embl.de/cgi/show_info_page.pl?UserId=pRfi11Qlkhnx&sessionId=sEfmbh_T7QLq"
+      },
+      "sc:url": "http://stitch.embl.de/"
+    },
+    {
+      "@id": "_:N73628b743b7c4f00a6c4464af9ff1d2d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:N78e6c288d33b439d9f2e4ec61e4bb7ee",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1009",
+      "sc:name": "Protein name",
+      "sc:sameAs": "http://edamontology.org/data_1009"
+    },
+    {
+      "@id": "_:N68f151a182b84aad8d3894e2c2733f77",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0990",
+      "sc:name": "Compound name",
+      "sc:sameAs": "http://edamontology.org/data_0990"
+    },
+    {
+      "@id": "_:Nfdb47450c61b42d08d7459e04cb5ce31",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:Na1c0652030bd45c29714755f7d3c2cf8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2299",
+      "sc:name": "Gene name",
+      "sc:sameAs": "http://edamontology.org/data_2299"
+    },
+    {
+      "@id": "_:N7cd1b11976f6436ba740d73eb128cf9d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0954",
+      "sc:name": "Database cross-mapping",
+      "sc:sameAs": "http://edamontology.org/data_0954"
+    },
+    {
+      "@id": "_:Nc6c02d48131b45a48c815c35e4f56db0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2042",
+      "sc:name": "Evidence",
+      "sc:sameAs": "http://edamontology.org/data_2042"
+    },
+    {
+      "@id": "_:Nef743e1cc0a04359bd168fa34e7f21f1",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    }
+  ]
+}

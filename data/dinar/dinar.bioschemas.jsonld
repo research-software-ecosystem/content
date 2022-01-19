@@ -1,1 +1,201 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "dinar", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": [{"@id": "http://orcid.org/0000-0002-1669-6482", "@type": "schema:Person"}], "author": [{"@id": "http://orcid.org/0000-0002-1669-6482", "@type": "schema:Person"}], "contributor": [{"@id": "https://orcid.org/0000-0001-7484-6031", "@type": "schema:Person"}], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1186/s13007-018-0345-0", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3925"}, {"@id": "http://edamontology.org/operation_3744"}, {"@id": "http://edamontology.org/operation_0337"}, {"@id": "http://edamontology.org/operation_2495"}, {"@id": "http://edamontology.org/operation_3928"}, {"@id": "http://edamontology.org/operation_3927"}, {"@id": "http://edamontology.org/operation_3926"}, {"@id": "http://edamontology.org/operation_0571"}, {"@id": "http://edamontology.org/operation_3432"}, {"@id": "http://edamontology.org/operation_3083"}], "hasInputData": [{"@id": "dinar/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Experimental measurement", "identifier": "http://edamontology.org/data_3108", "sameAs": "http://edamontology.org/data_3108"}, {"@id": "dinar/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}], "hasOutputData": [{"@id": "dinar/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Pathway or network report", "identifier": "http://edamontology.org/data_2984", "sameAs": "http://edamontology.org/data_2984"}, {"@id": "dinar/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Image", "identifier": "http://edamontology.org/data_2968", "sameAs": "http://edamontology.org/data_2968"}, {"@id": "dinar/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Matrix", "identifier": "http://edamontology.org/data_2082", "sameAs": "http://edamontology.org/data_2082"}, {"@id": "dinar/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Pathway or network", "identifier": "http://edamontology.org/data_2600", "sameAs": "http://edamontology.org/data_2600"}], "hasTopic": [{"@id": "http://edamontology.org/topic_2259"}, {"@id": "http://edamontology.org/topic_0602"}, {"@id": "http://edamontology.org/topic_3391"}, {"@id": "http://edamontology.org/topic_0091"}, {"@id": "http://edamontology.org/topic_0092"}, {"@id": "http://edamontology.org/topic_3307"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://github.com/NIB-SI/DiNAR"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1186/s13007-018-0345-0",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/dinar",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "http://orcid.org/0000-0002-1669-6482"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:Nd2201f320b0544e387960a1d30e4deab"
+        },
+        {
+          "@id": "_:Ne878e409e3d747e18da5ea37d92e4b4d"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Nde947bb019db4f56b58685a6f09c3162"
+        },
+        {
+          "@id": "_:Nc648b685bb3744c0a4a753c006ff91a0"
+        },
+        {
+          "@id": "_:Nf1e62b2f65284d378ee11349a4250a5e"
+        },
+        {
+          "@id": "_:N3b1b70c160444345b968ab162f51d030"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Desktop application",
+        "Web application"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3391"
+        },
+        {
+          "@id": "edam:topic_0602"
+        },
+        {
+          "@id": "edam:topic_0091"
+        },
+        {
+          "@id": "edam:topic_0092"
+        },
+        {
+          "@id": "edam:topic_2259"
+        },
+        {
+          "@id": "edam:topic_3307"
+        }
+      ],
+      "sc:author": {
+        "@id": "http://orcid.org/0000-0002-1669-6482"
+      },
+      "sc:citation": {
+        "@id": "https://doi.org/10.1186/s13007-018-0345-0"
+      },
+      "sc:contributor": {
+        "@id": "https://orcid.org/0000-0001-7484-6031"
+      },
+      "sc:description": "Differential Network Analysis in R. Reveals hidden patterns of plant signaling dynamics. DiNAR presents three main functions: dynamic visualisation of complex multi-conditional experiments, identification of strong differential interactions, and recall of latent effects that are present in multi-conditional experiments. Furthermore, it can manage other background knowledge networks in combination with experimental dataset of interest such as transcriptomics, proteomics, metabolomics.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3926"
+        },
+        {
+          "@id": "edam:operation_3927"
+        },
+        {
+          "@id": "edam:operation_2495"
+        },
+        {
+          "@id": "edam:operation_0337"
+        },
+        {
+          "@id": "edam:operation_3432"
+        },
+        {
+          "@id": "edam:operation_3928"
+        },
+        {
+          "@id": "edam:operation_3744"
+        },
+        {
+          "@id": "edam:operation_0571"
+        },
+        {
+          "@id": "edam:operation_3925"
+        },
+        {
+          "@id": "edam:operation_3083"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "GPL-3.0",
+      "sc:name": "DiNAR",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://github.com/NIB-SI/DiNAR"
+      },
+      "sc:softwareVersion": "3",
+      "sc:url": "https://github.com/NIB-SI/DiNAR"
+    },
+    {
+      "@id": "_:Nde947bb019db4f56b58685a6f09c3162",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2082",
+      "sc:name": "Matrix",
+      "sc:sameAs": "http://edamontology.org/data_2082"
+    },
+    {
+      "@id": "_:Nc648b685bb3744c0a4a753c006ff91a0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2984",
+      "sc:name": "Pathway or network report",
+      "sc:sameAs": "http://edamontology.org/data_2984"
+    },
+    {
+      "@id": "_:Nf1e62b2f65284d378ee11349a4250a5e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2968",
+      "sc:name": "Image",
+      "sc:sameAs": "http://edamontology.org/data_2968"
+    },
+    {
+      "@id": "_:N3b1b70c160444345b968ab162f51d030",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "_:Nd2201f320b0544e387960a1d30e4deab",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3108",
+      "sc:name": "Experimental measurement",
+      "sc:sameAs": "http://edamontology.org/data_3108"
+    },
+    {
+      "@id": "_:Ne878e409e3d747e18da5ea37d92e4b4d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2600",
+      "sc:name": "Pathway or network",
+      "sc:sameAs": "http://edamontology.org/data_2600"
+    },
+    {
+      "@id": "http://orcid.org/0000-0002-1669-6482",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-7484-6031",
+      "@type": "schema:Person"
+    }
+  ]
+}

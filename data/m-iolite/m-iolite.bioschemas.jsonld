@@ -1,1 +1,179 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "m-iolite", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Maria I Klapa"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1016/j.ifacol.2016.12.140", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_3435"}, {"@id": "http://edamontology.org/operation_3357"}, {"@id": "http://edamontology.org/operation_3431"}, {"@id": "http://edamontology.org/operation_3658"}, {"@id": "http://edamontology.org/operation_3660"}, {"@id": "http://edamontology.org/operation_3695"}, {"@id": "http://edamontology.org/operation_3083"}, {"@id": "http://edamontology.org/operation_1812"}, {"@id": "http://edamontology.org/operation_0335"}], "hasInputData": [{"@id": "m-iolite/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Map set data", "identifier": "http://edamontology.org/data_1864", "sameAs": "http://edamontology.org/data_1864"}, {"@id": "m-iolite/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Compound name", "identifier": "http://edamontology.org/data_0990", "sameAs": "http://edamontology.org/data_0990"}, {"@id": "m-iolite/op_1/in_3", "@type": "bsct:FormalParameter", "name": "KEGG object identifier", "identifier": "http://edamontology.org/data_1154", "sameAs": "http://edamontology.org/data_1154"}, {"@id": "m-iolite/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Molecule name", "identifier": "http://edamontology.org/data_0984", "sameAs": "http://edamontology.org/data_0984"}, {"@id": "m-iolite/op_1/in_5", "@type": "bsct:FormalParameter", "name": "Mass spectrometry data", "identifier": "http://edamontology.org/data_2536", "sameAs": "http://edamontology.org/data_2536"}], "hasTopic": [{"@id": "http://edamontology.org/topic_3172"}, {"@id": "http://edamontology.org/topic_0219"}, {"@id": "http://edamontology.org/topic_3345"}, {"@id": "http://edamontology.org/topic_3572"}, {"@id": "http://edamontology.org/topic_2259"}, {"@id": "http://edamontology.org/topic_3292"}, {"@id": "http://edamontology.org/topic_3369"}, {"@id": "http://edamontology.org/topic_0081"}, {"@id": "http://edamontology.org/topic_3292"}, {"@id": "http://edamontology.org/topic_2269"}, {"@id": "http://edamontology.org/topic_3678"}], "hasGenDoc": [{"@id": "http://miolite2.iceht.forth.gr"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/m-iolite",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Maria I Klapa",
+      "bsc:input": [
+        {
+          "@id": "_:Nd9e74e5f6ac64eac8bfd7575818b4e64"
+        },
+        {
+          "@id": "_:N71d5be18e7254efa80a444654dbf5070"
+        },
+        {
+          "@id": "_:Nf69bd3dd91c94c9f93f15773a375133e"
+        },
+        {
+          "@id": "_:Nb455642fa426494b92733f817815611d"
+        },
+        {
+          "@id": "_:N77e33d3e57b2470cbe805270ec4036cb"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Suite",
+        "Desktop application",
+        "Workflow",
+        "Database portal"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3172"
+        },
+        {
+          "@id": "edam:topic_3345"
+        },
+        {
+          "@id": "edam:topic_2269"
+        },
+        {
+          "@id": "edam:topic_3292"
+        },
+        {
+          "@id": "edam:topic_3572"
+        },
+        {
+          "@id": "edam:topic_3678"
+        },
+        {
+          "@id": "edam:topic_0219"
+        },
+        {
+          "@id": "edam:topic_0081"
+        },
+        {
+          "@id": "edam:topic_3369"
+        },
+        {
+          "@id": "edam:topic_2259"
+        }
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1016/j.ifacol.2016.12.140"
+      },
+      "sc:description": "MESBL GC-MS metabolite peak database is a standardized library of more than 900 metabolite peaks from MS-reconstructed gas chromatograms integrating the in-house standard compound and peak library of the FORTH/ICE-HT Metabolic Engineering and Systems Laboratory, appropriately filtered GOLM database peak information and Human Metabolome database information.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3435"
+        },
+        {
+          "@id": "edam:operation_1812"
+        },
+        {
+          "@id": "edam:operation_0335"
+        },
+        {
+          "@id": "edam:operation_3083"
+        },
+        {
+          "@id": "edam:operation_3658"
+        },
+        {
+          "@id": "edam:operation_3357"
+        },
+        {
+          "@id": "edam:operation_3695"
+        },
+        {
+          "@id": "edam:operation_3431"
+        },
+        {
+          "@id": "edam:operation_3660"
+        }
+      ],
+      "sc:license": "Other",
+      "sc:name": "M-IOLITE",
+      "sc:operatingSystem": "Windows",
+      "sc:softwareHelp": {
+        "@id": "http://miolite2.iceht.forth.gr"
+      },
+      "sc:softwareVersion": "1.0",
+      "sc:url": "http://miolite2.iceht.forth.gr"
+    },
+    {
+      "@id": "_:Nd9e74e5f6ac64eac8bfd7575818b4e64",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0984",
+      "sc:name": "Molecule name",
+      "sc:sameAs": "http://edamontology.org/data_0984"
+    },
+    {
+      "@id": "_:N71d5be18e7254efa80a444654dbf5070",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1154",
+      "sc:name": "KEGG object identifier",
+      "sc:sameAs": "http://edamontology.org/data_1154"
+    },
+    {
+      "@id": "_:Nf69bd3dd91c94c9f93f15773a375133e",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1864",
+      "sc:name": "Map set data",
+      "sc:sameAs": "http://edamontology.org/data_1864"
+    },
+    {
+      "@id": "_:Nb455642fa426494b92733f817815611d",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2536",
+      "sc:name": "Mass spectrometry data",
+      "sc:sameAs": "http://edamontology.org/data_2536"
+    },
+    {
+      "@id": "_:N77e33d3e57b2470cbe805270ec4036cb",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0990",
+      "sc:name": "Compound name",
+      "sc:sameAs": "http://edamontology.org/data_0990"
+    },
+    {
+      "@id": "https://doi.org/10.1016/j.ifacol.2016.12.140",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

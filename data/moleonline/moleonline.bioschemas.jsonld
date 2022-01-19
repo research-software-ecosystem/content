@@ -1,1 +1,196 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "moleonline", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Primary contact", "David Sehnal", "Karel Berka"], "author": ["David Sehnal", "Michal Otyepka", "Ond\u0159ej Han\u00e1k", "Karel Berka"], "contributor": ["Crina-Maria Ionescu", "Deepti Jaiswal", "Pavel Ban\u00e1\u0161", "Jaroslav Ko\u010da", "Veronika Navr\u00e1tilov\u00e1", "Radka Svobodov\u00e1 Va\u0159ekov\u00e1", "Czech Science foundation", "Palacky University", "European Regional Development Fund", "European Social Fund", "Ministry of Education of the Czech Republic"], "provider": ["Masaryk University Brno, Czech Republic", "Palack\u00fd University Olomouc, Czech Republic", "ELIXIR-CZ"], "funder": ["Czech Science foundation", "Palacky University", "European Regional Development Fund", "European Social Fund", "Ministry of Education of the Czech Republic"], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/nar/gks363", "@type": "sc:CreativeWork"}, {"@id": "https://doi.org/10.1093/nar/gky309", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0245"}, {"@id": "http://edamontology.org/operation_1816"}, {"@id": "http://edamontology.org/operation_0570"}, {"@id": "http://edamontology.org/operation_2241"}, {"@id": "http://edamontology.org/operation_0250"}], "hasInputData": [{"@id": "moleonline/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}, {"@id": "moleonline/op_1/in_2", "@type": "bsct:FormalParameter", "name": "PDB ID", "identifier": "http://edamontology.org/data_1127", "sameAs": "http://edamontology.org/data_1127"}], "hasOutputData": [{"@id": "moleonline/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Protein structural quality report", "identifier": "http://edamontology.org/data_1539", "sameAs": "http://edamontology.org/data_1539"}, {"@id": "moleonline/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein structure", "identifier": "http://edamontology.org/data_1460", "sameAs": "http://edamontology.org/data_1460"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0123"}, {"@id": "http://edamontology.org/topic_0128"}, {"@id": "http://edamontology.org/topic_0821"}, {"@id": "http://edamontology.org/topic_0820"}, {"@id": "http://edamontology.org/topic_0166"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://mole.upol.cz/about"}, {"@id": "http://mole.upol.cz/about"}, {"@id": "http://mole.upol.cz/documentation/"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/nar/gks363",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gky309",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/moleonline",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": [
+        "Karel Berka",
+        "David Sehnal",
+        "Primary contact"
+      ],
+      "bsc:input": [
+        {
+          "@id": "_:N5b9caae12f2441cb8a93fee1921f0b17"
+        },
+        {
+          "@id": "_:Nad7ac250f79d45c0a7c4a54bc0131a06"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N5621b86a144943a4a6d69a1d19968f15"
+        },
+        {
+          "@id": "_:Nd4aa072755ff476f84869bcc4408f759"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web application",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0128"
+        },
+        {
+          "@id": "edam:topic_0820"
+        },
+        {
+          "@id": "edam:topic_0166"
+        },
+        {
+          "@id": "edam:topic_0123"
+        },
+        {
+          "@id": "edam:topic_0821"
+        }
+      ],
+      "sc:author": [
+        "Ondřej Hanák",
+        "Karel Berka",
+        "David Sehnal",
+        "Michal Otyepka"
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/nar/gks363"
+        },
+        {
+          "@id": "https://doi.org/10.1093/nar/gky309"
+        }
+      ],
+      "sc:contributor": [
+        "Veronika Navrátilová",
+        "Crina-Maria Ionescu",
+        "Deepti Jaiswal",
+        "Jaroslav Koča",
+        "European Social Fund",
+        "Radka Svobodová Vařeková",
+        "Ministry of Education of the Czech Republic",
+        "European Regional Development Fund",
+        "Czech Science foundation",
+        "Palacky University",
+        "Pavel Banáš"
+      ],
+      "sc:description": "Provides a direct access to MOLE functionality and enables on-line and easy-to-use interactive channel analysis.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_1816"
+        },
+        {
+          "@id": "edam:operation_2241"
+        },
+        {
+          "@id": "edam:operation_0570"
+        },
+        {
+          "@id": "edam:operation_0245"
+        },
+        {
+          "@id": "edam:operation_0250"
+        }
+      ],
+      "sc:funder": [
+        "Ministry of Education of the Czech Republic",
+        "Czech Science foundation",
+        "Palacky University",
+        "European Social Fund",
+        "European Regional Development Fund"
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:license": "CC-BY-NC-3.0",
+      "sc:name": "MOLEonline",
+      "sc:operatingSystem": [
+        "Mac",
+        "Linux",
+        "Windows"
+      ],
+      "sc:provider": [
+        "Palacký University Olomouc, Czech Republic",
+        "Masaryk University Brno, Czech Republic",
+        "ELIXIR-CZ"
+      ],
+      "sc:softwareHelp": [
+        {
+          "@id": "http://mole.upol.cz/about"
+        },
+        {
+          "@id": "https://mole.upol.cz/about"
+        },
+        {
+          "@id": "http://mole.upol.cz/documentation/"
+        }
+      ],
+      "sc:softwareVersion": "3.0",
+      "sc:url": "https://mole.upol.cz/"
+    },
+    {
+      "@id": "_:N5621b86a144943a4a6d69a1d19968f15",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    },
+    {
+      "@id": "_:Nd4aa072755ff476f84869bcc4408f759",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1539",
+      "sc:name": "Protein structural quality report",
+      "sc:sameAs": "http://edamontology.org/data_1539"
+    },
+    {
+      "@id": "_:N5b9caae12f2441cb8a93fee1921f0b17",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1127",
+      "sc:name": "PDB ID",
+      "sc:sameAs": "http://edamontology.org/data_1127"
+    },
+    {
+      "@id": "_:Nad7ac250f79d45c0a7c4a54bc0131a06",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1460",
+      "sc:name": "Protein structure",
+      "sc:sameAs": "http://edamontology.org/data_1460"
+    }
+  ]
+}

@@ -1,1 +1,149 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "mmb_api", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Josep Ll. Gelpi"], "author": [], "contributor": [], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasOperation": [{"@id": "http://edamontology.org/operation_0224"}], "hasInputData": [{"@id": "mmb_api/op_1/in_1", "@type": "bsct:FormalParameter", "name": "PDB ID", "identifier": "http://edamontology.org/data_1127", "sameAs": "http://edamontology.org/data_1127"}, {"@id": "mmb_api/op_1/in_2", "@type": "bsct:FormalParameter", "name": "UniProt accession", "identifier": "http://edamontology.org/data_3021", "sameAs": "http://edamontology.org/data_3021"}, {"@id": "mmb_api/op_1/in_3", "@type": "bsct:FormalParameter", "name": "EC number", "identifier": "http://edamontology.org/data_1011", "sameAs": "http://edamontology.org/data_1011"}, {"@id": "mmb_api/op_1/in_4", "@type": "bsct:FormalParameter", "name": "HET group name", "identifier": "http://edamontology.org/data_1005", "sameAs": "http://edamontology.org/data_1005"}], "hasOutputData": [{"@id": "mmb_api/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Structure", "identifier": "http://edamontology.org/data_0883", "sameAs": "http://edamontology.org/data_0883"}, {"@id": "mmb_api/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence record", "identifier": "http://edamontology.org/data_2886", "sameAs": "http://edamontology.org/data_2886"}, {"@id": "mmb_api/op_1/in_3", "@type": "bsct:FormalParameter", "name": "Protein sequence (raw)", "identifier": "http://edamontology.org/data_2974", "sameAs": "http://edamontology.org/data_2974"}, {"@id": "mmb_api/op_1/in_4", "@type": "bsct:FormalParameter", "name": "Small molecule structure", "identifier": "http://edamontology.org/data_1463", "sameAs": "http://edamontology.org/data_1463"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0081"}, {"@id": "http://edamontology.org/topic_0080"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "http://mmb.irbbarcelona.org/api/"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/mmb_api",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Josep Ll. Gelpi",
+      "bsc:input": [
+        {
+          "@id": "_:Nc2bd1a0d17c44d8290a35e27d194bcd4"
+        },
+        {
+          "@id": "_:N880394f039a640b9bf37114e56ee6d75"
+        },
+        {
+          "@id": "_:N11146ef2f08e4e2d8e35065cfa7f5e96"
+        },
+        {
+          "@id": "_:Nc343924b191f477db57087e1170cdb11"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N9e61d93c72aa43009001a254cc52d86a"
+        },
+        {
+          "@id": "_:Nc7b4ac0982694ad78478be4a650870ad"
+        },
+        {
+          "@id": "_:Nc0b0694ef8c34b569a45697f11d0f48a"
+        },
+        {
+          "@id": "_:Na82c9c6312e143a48509514f93f158a8"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Web API",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0081"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "sc:description": "REST API to access MMB-IRB data repo (PDB, Uniprot, Protein Variants, NA Features)",
+      "sc:featureList": {
+        "@id": "edam:operation_0224"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "CC-BY-4.0",
+      "sc:name": "MMB-IRB Data Repository API",
+      "sc:operatingSystem": "Linux",
+      "sc:softwareHelp": {
+        "@id": "http://mmb.irbbarcelona.org/api/"
+      },
+      "sc:url": "http://mmb.irbbarcelona.org/api"
+    },
+    {
+      "@id": "_:N9e61d93c72aa43009001a254cc52d86a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1463",
+      "sc:name": "Small molecule structure",
+      "sc:sameAs": "http://edamontology.org/data_1463"
+    },
+    {
+      "@id": "_:Nc7b4ac0982694ad78478be4a650870ad",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2974",
+      "sc:name": "Protein sequence (raw)",
+      "sc:sameAs": "http://edamontology.org/data_2974"
+    },
+    {
+      "@id": "_:Nc0b0694ef8c34b569a45697f11d0f48a",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2886",
+      "sc:name": "Protein sequence record",
+      "sc:sameAs": "http://edamontology.org/data_2886"
+    },
+    {
+      "@id": "_:Na82c9c6312e143a48509514f93f158a8",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0883",
+      "sc:name": "Structure",
+      "sc:sameAs": "http://edamontology.org/data_0883"
+    },
+    {
+      "@id": "_:Nc2bd1a0d17c44d8290a35e27d194bcd4",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1011",
+      "sc:name": "EC number",
+      "sc:sameAs": "http://edamontology.org/data_1011"
+    },
+    {
+      "@id": "_:N880394f039a640b9bf37114e56ee6d75",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3021",
+      "sc:name": "UniProt accession",
+      "sc:sameAs": "http://edamontology.org/data_3021"
+    },
+    {
+      "@id": "_:N11146ef2f08e4e2d8e35065cfa7f5e96",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1005",
+      "sc:name": "HET group name",
+      "sc:sameAs": "http://edamontology.org/data_1005"
+    },
+    {
+      "@id": "_:Nc343924b191f477db57087e1170cdb11",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_1127",
+      "sc:name": "PDB ID",
+      "sc:sameAs": "http://edamontology.org/data_1127"
+    }
+  ]
+}

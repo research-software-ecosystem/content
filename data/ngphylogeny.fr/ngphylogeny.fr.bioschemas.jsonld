@@ -1,1 +1,192 @@
-{"@context": {"@base": "https://bio.tools/", "biotools": "https://bio.tools/ontology/", "edam": "http://edamontology.org/", "rdfs": "http://www.w3.org/2000/01/rdf-schema#", "sc": "http://schema.org/", "dct": "http://purl.org/dc/terms/", "bsc": "http://bioschemas.org/", "bsct": "http://bioschemas.org/types/", "description": "sc:description", "name": "sc:name", "identifier": "sc:identifier", "sameAs": "sc:sameAs", "homepage": "sc:url", "toolType": "sc:additionalType", "primaryContact": "biotools:primaryContact", "author": "sc:author", "provider": "sc:provider", "contributor": "sc:contributor", "funder": "sc:funder", "hasPublication": "sc:citation", "hasTopic": "sc:applicationSubCategory", "hasOperation": "sc:featureList", "hasInputData": "bsc:input", "hasOutputData": "bsc:output", "license": "sc:license", "version": "sc:softwareVersion", "isAccessibleForFree": "sc:isAccessibleForFree", "operatingSystem": "sc:operatingSystem", "hasApiDoc": "sc:softwareHelp", "hasGenDoc": "sc:softwareHelp", "hasTermsOfUse": "sc:termsOfService", "conformsTo": "dct:conformsTo"}, "@graph": {"@id": "NGphylogeny.fr", "@type": ["sc:SoftwareApplication"], "applicationCategory": "Computational science tool", "primaryContact": ["Fr\u00e9d\u00e9ric Lemoine"], "author": ["Damien Correia", "Fr\u00e9d\u00e9ric Lemoine"], "contributor": ["Vincent Lefort", "Fabien Mareuil"], "provider": [], "funder": [], "conformsTo": "https://bioschemas.org/profiles/ComputationalTool/1.0-RELEASE", "hasPublication": [{"@id": "https://doi.org/10.1093/nar/gkz303", "@type": "sc:CreativeWork"}], "hasOperation": [{"@id": "http://edamontology.org/operation_0492"}, {"@id": "http://edamontology.org/operation_2089"}, {"@id": "http://edamontology.org/operation_0540"}, {"@id": "http://edamontology.org/operation_0567"}], "hasInputData": [{"@id": "NGphylogeny.fr/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Nucleic acid sequence", "identifier": "http://edamontology.org/data_2977", "sameAs": "http://edamontology.org/data_2977"}, {"@id": "NGphylogeny.fr/op_1/in_2", "@type": "bsct:FormalParameter", "name": "Protein sequence", "identifier": "http://edamontology.org/data_2976", "sameAs": "http://edamontology.org/data_2976"}, {"@id": "NGphylogeny.fr/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "NGphylogeny.fr/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "NGphylogeny.fr/op_4/in_1", "@type": "bsct:FormalParameter", "name": "Gene tree", "identifier": "http://edamontology.org/data_3271", "sameAs": "http://edamontology.org/data_3271"}], "hasOutputData": [{"@id": "NGphylogeny.fr/op_1/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "NGphylogeny.fr/op_2/in_1", "@type": "bsct:FormalParameter", "name": "Sequence alignment", "identifier": "http://edamontology.org/data_0863", "sameAs": "http://edamontology.org/data_0863"}, {"@id": "NGphylogeny.fr/op_3/in_1", "@type": "bsct:FormalParameter", "name": "Gene tree", "identifier": "http://edamontology.org/data_3271", "sameAs": "http://edamontology.org/data_3271"}, {"@id": "NGphylogeny.fr/op_4/in_1", "@type": "bsct:FormalParameter", "name": "Gene tree", "identifier": "http://edamontology.org/data_3271", "sameAs": "http://edamontology.org/data_3271"}], "hasTopic": [{"@id": "http://edamontology.org/topic_0091"}, {"@id": "http://edamontology.org/topic_3293"}, {"@id": "http://edamontology.org/topic_3293"}], "isAccessibleForFree": true, "hasGenDoc": [{"@id": "https://ngphylogeny.fr/documentation"}]}}
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1093/nar/gkz303",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://bio.tools/NGphylogeny.fr",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": "Frédéric Lemoine",
+      "bsc:input": [
+        {
+          "@id": "_:N8939033f72ca48a5adcccf3cd5098ca0"
+        },
+        {
+          "@id": "_:N8d06c6a69b8a4420a5b3711a3f04481f"
+        },
+        {
+          "@id": "_:N9a08b1f88d244c40a53e171133fb27fc"
+        },
+        {
+          "@id": "_:N9bb0fd3b07f24dd097f89e229a31e30f"
+        },
+        {
+          "@id": "_:N77b8127b0efa4f74a11edb9f742dba35"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:Neaffc1d2991b4f0c8b7d1882424d7ada"
+        },
+        {
+          "@id": "_:N4ab95a76c7bb4675ad4463c3c63b7aa9"
+        },
+        {
+          "@id": "_:N18f795a775e94d6aa351c8f523bb2cc7"
+        },
+        {
+          "@id": "_:N95de1671d20e4fae8e02e7359ccdd086"
+        }
+      ],
+      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Bioinformatics portal",
+        "Web application",
+        "Workflow"
+      ],
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3293"
+        },
+        {
+          "@id": "edam:topic_0091"
+        }
+      ],
+      "sc:author": [
+        "Damien Correia",
+        "Frédéric Lemoine"
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.1093/nar/gkz303"
+      },
+      "sc:contributor": [
+        "Vincent Lefort",
+        "Fabien Mareuil"
+      ],
+      "sc:description": "Free, simple to use web service dedicated to reconstructing and analysing phylogenetic relationships between molecular sequences.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_2089"
+        },
+        {
+          "@id": "edam:operation_0540"
+        },
+        {
+          "@id": "edam:operation_0492"
+        },
+        {
+          "@id": "edam:operation_0567"
+        }
+      ],
+      "sc:isAccessibleForFree": true,
+      "sc:name": "NGphylogeny.fr",
+      "sc:operatingSystem": [
+        "Windows",
+        "Linux",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://ngphylogeny.fr/documentation"
+      },
+      "sc:url": "https://ngphylogeny.fr/"
+    },
+    {
+      "@id": "_:N8939033f72ca48a5adcccf3cd5098ca0",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2977",
+      "sc:name": "Nucleic acid sequence",
+      "sc:sameAs": "http://edamontology.org/data_2977"
+    },
+    {
+      "@id": "_:N8d06c6a69b8a4420a5b3711a3f04481f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3271",
+      "sc:name": "Gene tree",
+      "sc:sameAs": "http://edamontology.org/data_3271"
+    },
+    {
+      "@id": "_:N9a08b1f88d244c40a53e171133fb27fc",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:N9bb0fd3b07f24dd097f89e229a31e30f",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_2976",
+      "sc:name": "Protein sequence",
+      "sc:sameAs": "http://edamontology.org/data_2976"
+    },
+    {
+      "@id": "_:N77b8127b0efa4f74a11edb9f742dba35",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:Neaffc1d2991b4f0c8b7d1882424d7ada",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:N4ab95a76c7bb4675ad4463c3c63b7aa9",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_0863",
+      "sc:name": "Sequence alignment",
+      "sc:sameAs": "http://edamontology.org/data_0863"
+    },
+    {
+      "@id": "_:N18f795a775e94d6aa351c8f523bb2cc7",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3271",
+      "sc:name": "Gene tree",
+      "sc:sameAs": "http://edamontology.org/data_3271"
+    },
+    {
+      "@id": "_:N95de1671d20e4fae8e02e7359ccdd086",
+      "@type": "bsct:FormalParameter",
+      "sc:identifier": "http://edamontology.org/data_3271",
+      "sc:name": "Gene tree",
+      "sc:sameAs": "http://edamontology.org/data_3271"
+    }
+  ]
+}
