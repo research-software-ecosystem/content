@@ -31,13 +31,14 @@ jobs:
         run: |
           cd ${{ github.workspace }}/content-ecosystem-utils/scripts/bioschemas
           python bioschemas_dump.py
+          mv ${{ github.workspace }}/content-ecosystem-utils/scripts/bioschemas/bioschemas-dump.ttl ${{ github.workspace }}/content/datasets/
 
       - name: commit new data
         env:
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd ${{ github.workspace }}/content-ecosystem-utils/scripts/bioschemas
+          cd ${{ github.workspace }}/content/
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
           git add .
