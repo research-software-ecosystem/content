@@ -1,8 +1,10 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2021-09-08T13:36:42Z",
     "biotoolsCURIE": "biotools:dentist",
     "biotoolsID": "dentist",
     "confidence_flag": "tool",
+    "cost": "Free of charge",
     "credit": [
         {
             "email": "Michael.Hiller@senckenberg.de",
@@ -12,28 +14,69 @@
             "typeRole": [
                 "Primary contact"
             ]
+        },
+        {
+            "email": "ludwig@mpi-cbg.de",
+            "name": "Arne Ludwig",
+            "orcidid": "https://orcid.org/0000-0001-8839-411X",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer",
+                "Support"
+            ]
         }
     ],
     "description": "DENTIST uses long reads to close assembly gaps at high accuracy.",
-    "documentation": [
-        {
-            "type": [
-                "General"
-            ],
-            "url": "https://bds.mpi-cbg.de/hillerlab/DENTIST/"
-        }
-    ],
     "download": [
         {
             "type": "Container file",
             "url": "https://hub.docker.com/repository/docker/aludi/dentist"
+        },
+        {
+            "type": "Binaries",
+            "url": "https://github.com/a-ludi/dentist/releases"
+        },
+        {
+            "type": "Source code",
+            "url": "https://github.com/a-ludi/dentist"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "a_ludi"
+        ],
+        "type": "group"
     },
     "function": [
         {
+            "cmd": "snakemake --configfile=snakemake.yml -jall",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1234"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
             "operation": [
                 {
                     "term": "Scaffolding",
@@ -42,14 +85,36 @@
                 {
                     "term": "Genome assembly",
                     "uri": "http://edamontology.org/operation_0525"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
                 },
                 {
-                    "term": "Transcriptome assembly",
-                    "uri": "http://edamontology.org/operation_3258"
-                },
-                {
-                    "term": "Read mapping",
-                    "uri": "http://edamontology.org/operation_3198"
+                    "data": {
+                        "term": "Sequence report",
+                        "uri": "http://edamontology.org/data_2955"
+                    },
+                    "format": [
+                        {
+                            "term": "BED",
+                            "uri": "http://edamontology.org/format_3003"
+                        },
+                        {
+                            "term": "AGP",
+                            "uri": "http://edamontology.org/format_3693"
+                        }
+                    ]
                 }
             ]
         }
@@ -58,7 +123,7 @@
     "language": [
         "D"
     ],
-    "lastUpdate": "2021-09-13T06:52:00Z",
+    "lastUpdate": "2021-12-03T20:46:09.499121Z",
     "license": "MIT",
     "link": [
         {
@@ -75,7 +140,10 @@
         }
     ],
     "name": "DENTIST",
-    "owner": "Kigaard",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "owner": "a_ludi",
     "publication": [
         {
             "doi": "10.1101/2021.02.26.432990",
@@ -85,7 +153,7 @@
         }
     ],
     "toolType": [
-        "Library"
+        "Command-line tool"
     ],
     "topic": [
         {
@@ -95,14 +163,12 @@
         {
             "term": "Workflows",
             "uri": "http://edamontology.org/topic_0769"
-        },
-        {
-            "term": "Plant biology",
-            "uri": "http://edamontology.org/topic_0780"
-        },
-        {
-            "term": "DNA polymorphism",
-            "uri": "http://edamontology.org/topic_2885"
         }
+    ],
+    "version": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "2.0.0"
     ]
 }

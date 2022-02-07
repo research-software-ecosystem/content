@@ -1,0 +1,168 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2021-11-30T20:57:06.382241Z",
+    "biotoolsCURIE": "biotools:tada-amplicon",
+    "biotoolsID": "tada-amplicon",
+    "confidence_flag": "tool",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "cjfields@illinois.edu",
+            "name": "Christopher Fields",
+            "typeEntity": "Consortium"
+        }
+    ],
+    "description": "Targeted Amplicon Diversity Analysis - a DADA2-focused Nextflow workflow for any targeted amplicon region.  Microbiome, amplicon analysis, 16S, 18S, ITS, COI, PacBio, Shoreline, Loop",
+    "editPermission": {
+        "authors": [
+            "shaze"
+        ],
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "nextflow run TADA -profile standard,docker \\\n        --reads=\"$HOME/test-data/*_R{1,2}.fastq.gz\" --trimFor 24 --trimRev 25 \\\n        --reference=\"$HOME/ref-data/silva_nr_v132_train_set.fa.gz\" --species=\"$HOME/ref-data/silva_species_assignment_v132.fa.gz\" \\\n        --outdir=\"$HOME/out\"",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "PCR primers",
+                        "uri": "http://edamontology.org/data_1240"
+                    },
+                    "format": [
+                        {
+                            "term": "raw",
+                            "uri": "http://edamontology.org/format_1957"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1234"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Sequence trimming",
+                    "uri": "http://edamontology.org/operation_3192"
+                },
+                {
+                    "term": "Primer removal",
+                    "uri": "http://edamontology.org/operation_3237"
+                },
+                {
+                    "term": "Read binning",
+                    "uri": "http://edamontology.org/operation_3798"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence alignment",
+                        "uri": "http://edamontology.org/data_1383"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Count matrix",
+                        "uri": "http://edamontology.org/data_3917"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Biodiversity data",
+                        "uri": "http://edamontology.org/data_3707"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/h3abionet/TADA",
+    "language": [
+        "Groovy",
+        "R"
+    ],
+    "lastUpdate": "2021-11-30T21:27:37.984336Z",
+    "license": "Apache-2.0",
+    "maturity": "Emerging",
+    "name": "TADA",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "cjfields",
+    "relation": [
+        {
+            "biotoolsID": "nextflow",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "dada2",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "fasttree",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "decipher",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "qiime2",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "cutadapt",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "fastqc",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "multiqc",
+            "type": "uses"
+        }
+    ],
+    "toolType": [
+        "Workflow"
+    ],
+    "topic": [
+        {
+            "term": "Microbial ecology",
+            "uri": "http://edamontology.org/topic_3697"
+        }
+    ]
+}
