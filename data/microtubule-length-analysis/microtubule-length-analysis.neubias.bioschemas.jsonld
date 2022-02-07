@@ -1,8 +1,31 @@
 {
   "@context": {
-    "dc": "http://dcterms/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@id": "http://biii.eu/microtubule-length-analysis",
@@ -23,26 +46,26 @@
   "http://schema.org/description": "###Task\r\n\r\nQuantify the length of microtubules (MT) and the MT average density per cell. \r\n\r\n### Workflow descriptions\r\n\r\nSimple two step workflow, allowing visual & manual correction of microtubule between the 2 steps. Batch measurement of microtubule lengths for multiple images is achieved by segmenting the MTs and then their skeletonizations.  The number of pixels in the microtubule is proportional to their length, so the length can be estimated.\r\n\r\n### Script\r\n\r\nWorkflow is written as an ImageJ macro (Fiji) with following steps:\r\n\r\n1. The enhancement of tubular structure by computing eigenvalues of the hessian matrix on a Gaussian filtered version of the image ( sigma 1 pixel), as implemented in the tubeness plugin. \r\n2. The tubules were then thresholded , and structures containing less than 3 pixels were discarded. \r\n3. If needed, a visual check and correction of segmented microtubule is then performed.  \r\n4. After correction, segmented MTs were then reduced to a 1-pixel thick line using the skeletonize plugin of Fiji.  The length of the skeletonized microtubules was then directly proportional to their length. \r\n5. Data were grouped by condition and converted back to micrometers units under Matlab for the statistical tests.\r\n\r\n#### Pitfalls\r\n\r\nCommented but not that general without editing some fields in the macros.\r\n\r\n### Sample Data\r\n\r\nSample data and workflow (see above URL) can be accessed by\r\n\r\n-  login: biii\r\n-  password Biii!Tag1\r\n\r\n## Misc\r\n\r\n3D version also available here.\r\n\r\nUse of components Skeletonize and Tubeness Filter\r\n\r\n",
   "http://schema.org/featureList": [
     {
+      "@id": "http://edamontology.org/operation__R9Qf06vxvFj2UbAk7pW3IMG"
+    },
+    {
       "@id": "http://edamontology.org/operation_Image_segmentation"
     },
     {
       "@id": "http://edamontology.org/operation_Skeletonization"
-    },
-    {
-      "@id": "http://edamontology.org/operation__R9Qf06vxvFj2UbAk7pW3IMG"
     }
   ],
   "http://schema.org/name": "Microtubule Length Analysis",
   "http://schema.org/publisher": "Perrine Paul-Gilloteaux",
   "http://schema.org/softwareRequirements": [
     {
-      "@id": "http://biii.eu/node/1140"
+      "@id": "http://biii.eu/node/79"
     },
     {
       "@id": "http://biii.eu/node/261"
     },
     {
-      "@id": "http://biii.eu/node/79"
+      "@id": "http://biii.eu/node/1140"
     }
   ]
 }
