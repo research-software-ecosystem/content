@@ -6,16 +6,14 @@
     "cost": "Free of charge",
     "credit": [
         {
-            "email": "thomas.schmutzer@landw.uni-halle.de",
-            "name": "Thomas Schmutzer",
-            "orcidid": "https://orcid.org/0000-0003-1073-6719",
+            "email": "beiers@ipk-gatersleben.de",
+            "name": "Sebastian Beier",
+            "orcidid": "https://orcid.org/0000-0002-2177-8781",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact",
-                "Developer",
-                "Documentor"
-            ],
-            "url": "https://www.landw.uni-halle.de/prof/biom_ai/schmutzer/"
+                "Contributor",
+                "Developer"
+            ]
         },
         {
             "email": "chris.ulpinnis@ipb-halle.de",
@@ -23,53 +21,59 @@
             "orcidid": "https://orcid.org/0000-0001-5444-9282",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact",
                 "Developer",
-                "Maintainer"
+                "Maintainer",
+                "Primary contact"
             ],
             "url": "https://www.ipb-halle.de/mitarbeiter/chris-ulpinnis/"
         },
         {
-            "name": "IPK-Gatersleben Research Group Bioinformatics and Information Technology",
-            "typeEntity": "Division",
-            "url": "https://www.ipk-gatersleben.de/en/breeding-research/bioinformatics-and-information-technology/"
-        },
-        {
-            "email": "beiers@ipk-gatersleben.de",
-            "name": "Sebastian Beier",
-            "orcidid": "https://orcid.org/0000-0002-2177-8781",
+            "email": "thomas.schmutzer@landw.uni-halle.de",
+            "name": "Thomas Schmutzer",
+            "orcidid": "https://orcid.org/0000-0003-1073-6719",
             "typeEntity": "Person",
             "typeRole": [
                 "Developer",
-                "Contributor"
-            ]
+                "Documentor",
+                "Primary contact"
+            ],
+            "url": "https://www.landw.uni-halle.de/prof/biom_ai/schmutzer/"
         },
         {
             "name": "Markus Schwalbe",
             "typeEntity": "Person",
             "typeRole": [
-                "Developer",
-                "Contributor"
+                "Contributor",
+                "Developer"
             ],
             "url": "https://monami.hs-mittweida.de/frontdoor/index/index/searchtype/all/start/0/rows/100/facetNumber_author_facet/all/facetNumber_subject/all/subjectfq/CRISPR%2FCas-Methode/docId/10555"
+        },
+        {
+            "name": "IPK-Gatersleben Research Group Bioinformatics and Information Technology",
+            "typeEntity": "Division",
+            "url": "https://www.ipk-gatersleben.de/en/breeding-research/bioinformatics-and-information-technology/"
         }
     ],
     "description": "Kmasker plants is a tool for the automatic detection of sequence regions with meaningful k-mer characteristics. This can be sequences with highly abundant k-mer patterns (repeats), regions with diverging k-mer patterns between two studied WGS samples or segments with high target specificity.",
     "documentation": [
         {
             "type": [
-                "User manual"
-            ],
-            "url": "https://github.com/tschmutzer/kmasker/blob/master/README.md"
-        },
-        {
-            "type": [
                 "Installation instructions"
             ],
             "url": "https://github.com/tschmutzer/kmasker/blob/master/INSTALL.md"
+        },
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://github.com/tschmutzer/kmasker/blob/master/README.md"
         }
     ],
     "download": [
+        {
+            "type": "Downloads page",
+            "url": "https://github.com/tschmutzer/kmasker/releases"
+        },
         {
             "type": "Software package",
             "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release.zip",
@@ -79,10 +83,6 @@
             "type": "Software package",
             "url": "https://github.com/tschmutzer/kmasker/releases/download/1.1.0/kmasker_release_source.tar",
             "version": "1.1.0"
-        },
-        {
-            "type": "Downloads page",
-            "url": "https://github.com/tschmutzer/kmasker/releases"
         },
         {
             "type": "Software package",
@@ -99,6 +99,92 @@
         "type": "private"
     },
     "function": [
+        {
+            "cmd": "Kmasker --build --seq sequence.fastq --gs 135 --in At1 --cn arabidopsis",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence set",
+                        "uri": "http://edamontology.org/data_0850"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Outputs Jellyfish index, called KINDEX in Kmasker",
+            "operation": [
+                {
+                    "term": "k-mer counting",
+                    "uri": "http://edamontology.org/operation_3472"
+                }
+            ]
+        },
+        {
+            "cmd": "Kmasker --explore --annotate --fasta query.fasta --gff kmasker_result.gff --feature KRC --dbfasta mipsREdat_9.3p_ALL.fasta",
+            "input": [
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": [
+                        {
+                            "term": "BLAST results",
+                            "uri": "http://edamontology.org/format_1333"
+                        }
+                    ]
+                }
+            ],
+            "note": "Annotation of calculated repeats based on existing repeat libraries.",
+            "operation": [
+                {
+                    "term": "Repeat sequence analysis",
+                    "uri": "http://edamontology.org/operation_0237"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence features metadata",
+                        "uri": "http://edamontology.org/data_2914"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "cmd": "Kmasker --run --fasta query.fasta --kindex At1",
             "input": [
@@ -125,6 +211,18 @@
             "output": [
                 {
                     "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
                         "term": "DNA sequence",
                         "uri": "http://edamontology.org/data_3494"
                     },
@@ -146,42 +244,6 @@
                             "uri": "http://edamontology.org/format_3665"
                         }
                     ]
-                },
-                {
-                    "data": {
-                        "term": "Annotation track",
-                        "uri": "http://edamontology.org/data_3002"
-                    },
-                    "format": [
-                        {
-                            "term": "GFF3",
-                            "uri": "http://edamontology.org/format_1975"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "Kmasker --build --seq sequence.fastq --gs 135 --in At1 --cn arabidopsis",
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence set",
-                        "uri": "http://edamontology.org/data_0850"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ],
-            "note": "Outputs Jellyfish index, called KINDEX in Kmasker",
-            "operation": [
-                {
-                    "term": "k-mer counting",
-                    "uri": "http://edamontology.org/operation_3472"
                 }
             ]
         },
@@ -211,30 +273,6 @@
             "output": [
                 {
                     "data": {
-                        "term": "DNA sequence",
-                        "uri": "http://edamontology.org/data_3494"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "DNA sequence",
-                        "uri": "http://edamontology.org/data_3494"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                },
-                {
-                    "data": {
                         "term": "Annotation track",
                         "uri": "http://edamontology.org/data_3002"
                     },
@@ -254,6 +292,30 @@
                         {
                             "term": "GFF3",
                             "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 },
@@ -358,76 +420,14 @@
                     ]
                 }
             ]
-        },
-        {
-            "cmd": "Kmasker --explore --annotate --fasta query.fasta --gff kmasker_result.gff --feature KRC --dbfasta mipsREdat_9.3p_ALL.fasta",
-            "input": [
-                {
-                    "data": {
-                        "term": "Annotation track",
-                        "uri": "http://edamontology.org/data_3002"
-                    },
-                    "format": [
-                        {
-                            "term": "GFF3",
-                            "uri": "http://edamontology.org/format_1975"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "DNA sequence",
-                        "uri": "http://edamontology.org/data_3494"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Sequence search results",
-                        "uri": "http://edamontology.org/data_0857"
-                    },
-                    "format": [
-                        {
-                            "term": "BLAST results",
-                            "uri": "http://edamontology.org/format_1333"
-                        }
-                    ]
-                }
-            ],
-            "note": "Annotation of calculated repeats based on existing repeat libraries.",
-            "operation": [
-                {
-                    "term": "Repeat sequence analysis",
-                    "uri": "http://edamontology.org/operation_0237"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence features metadata",
-                        "uri": "http://edamontology.org/data_2914"
-                    },
-                    "format": [
-                        {
-                            "term": "GFF3",
-                            "uri": "http://edamontology.org/format_1975"
-                        }
-                    ]
-                }
-            ]
         }
     ],
     "homepage": "https://kmasker.ipk-gatersleben.de/",
     "language": [
-        "R",
         "C++",
         "Perl",
-        "Python"
+        "Python",
+        "R"
     ],
     "lastUpdate": "2020-06-16T10:55:26Z",
     "license": "GPL-3.0",
@@ -457,43 +457,13 @@
         {
             "doi": "10.1111/TPJ.14645",
             "metadata": {
-                "abstract": "\u00a9 2019 The Authors. The Plant Journal published by Society for Experimental Biology and John Wiley & Sons LtdMany plant genomes display high levels of repetitive sequences. The assembly of these complex genomes using short high-throughput sequence reads is still a challenging task. Underestimation or disregard of repeat complexity in these datasets can easily misguide downstream analysis. Detection of repetitive regions by k-mer counting methods has proved to be reliable. Easy-to-use applications utilizing k-mer counting are in high demand, especially in the domain of plants. We present Kmasker plants, a tool that uses k-mer count information as an assistant throughout the analytical workflow of genome data that is provided as a command-line and web-based solution. Beside its core competence to screen and mask repetitive sequences, we have integrated features that enable comparative studies between different cultivars or closely related species and methods that estimate target specificity of guide RNAs for application of site-directed mutagenesis using Cas9 endonuclease. In addition, we have set up a web service for Kmasker plants that maintains pre-computed indices for 10 of the economically most important cultivated plants. Source code for Kmasker plants has been made publically available at https://github.com/tschmutzer/kmasker. The web service is accessible at https://kmasker.ipk-gatersleben.de.",
+                "abstract": "© 2019 The Authors. The Plant Journal published by Society for Experimental Biology and John Wiley & Sons LtdMany plant genomes display high levels of repetitive sequences. The assembly of these complex genomes using short high-throughput sequence reads is still a challenging task. Underestimation or disregard of repeat complexity in these datasets can easily misguide downstream analysis. Detection of repetitive regions by k-mer counting methods has proved to be reliable. Easy-to-use applications utilizing k-mer counting are in high demand, especially in the domain of plants. We present Kmasker plants, a tool that uses k-mer count information as an assistant throughout the analytical workflow of genome data that is provided as a command-line and web-based solution. Beside its core competence to screen and mask repetitive sequences, we have integrated features that enable comparative studies between different cultivars or closely related species and methods that estimate target specificity of guide RNAs for application of site-directed mutagenesis using Cas9 endonuclease. In addition, we have set up a web service for Kmasker plants that maintains pre-computed indices for 10 of the economically most important cultivated plants. Source code for Kmasker plants has been made publically available at https://github.com/tschmutzer/kmasker. The web service is accessible at https://kmasker.ipk-gatersleben.de.",
                 "authors": [
                     {
                         "name": "Beier S."
                     },
                     {
-                        "name": "Ulpinnis C."
-                    },
-                    {
-                        "name": "Schwalbe M."
-                    },
-                    {
-                        "name": "Munch T."
-                    },
-                    {
-                        "name": "Hoffie R."
-                    },
-                    {
-                        "name": "Koeppel I."
-                    },
-                    {
-                        "name": "Hertig C."
-                    },
-                    {
                         "name": "Budhagatapalli N."
-                    },
-                    {
-                        "name": "Hiekel S."
-                    },
-                    {
-                        "name": "Pathi K.M."
-                    },
-                    {
-                        "name": "Hensel G."
-                    },
-                    {
-                        "name": "Grosse M."
                     },
                     {
                         "name": "Chamas S."
@@ -502,19 +472,49 @@
                         "name": "Gerasimova S."
                     },
                     {
+                        "name": "Grosse M."
+                    },
+                    {
+                        "name": "Hensel G."
+                    },
+                    {
+                        "name": "Hertig C."
+                    },
+                    {
+                        "name": "Hiekel S."
+                    },
+                    {
+                        "name": "Hoffie R."
+                    },
+                    {
+                        "name": "Koeppel I."
+                    },
+                    {
                         "name": "Kumlehn J."
+                    },
+                    {
+                        "name": "Munch T."
+                    },
+                    {
+                        "name": "Pathi K.M."
+                    },
+                    {
+                        "name": "Schmutzer T."
                     },
                     {
                         "name": "Scholz U."
                     },
                     {
-                        "name": "Schmutzer T."
+                        "name": "Schwalbe M."
+                    },
+                    {
+                        "name": "Ulpinnis C."
                     }
                 ],
                 "citationCount": 3,
                 "date": "2020-05-01T00:00:00Z",
                 "journal": "Plant Journal",
-                "title": "Kmasker plants \u2013 a tool for assessing complex sequence space in plant species"
+                "title": "Kmasker plants – a tool for assessing complex sequence space in plant species"
             },
             "pmid": "31823436",
             "type": [
@@ -524,16 +524,16 @@
     ],
     "relation": [
         {
-            "biotoolsID": "jellyfish",
-            "type": "uses"
-        },
-        {
             "biotoolsID": "blast",
             "type": "uses"
         },
         {
             "biotoolsID": "cats",
             "type": "includedIn"
+        },
+        {
+            "biotoolsID": "jellyfish",
+            "type": "uses"
         }
     ],
     "toolType": [
@@ -542,20 +542,20 @@
     ],
     "topic": [
         {
-            "term": "Plant biology",
-            "uri": "http://edamontology.org/topic_0780"
-        },
-        {
-            "term": "Sequence composition, complexity and repeats",
-            "uri": "http://edamontology.org/topic_0157"
+            "term": "Comparative genomics",
+            "uri": "http://edamontology.org/topic_0797"
         },
         {
             "term": "Nucleic acid sites, features and motifs",
             "uri": "http://edamontology.org/topic_3511"
         },
         {
-            "term": "Comparative genomics",
-            "uri": "http://edamontology.org/topic_0797"
+            "term": "Plant biology",
+            "uri": "http://edamontology.org/topic_0780"
+        },
+        {
+            "term": "Sequence composition, complexity and repeats",
+            "uri": "http://edamontology.org/topic_0157"
         }
     ],
     "validated": 1,

@@ -6,18 +6,6 @@
     "cost": "Free of charge",
     "credit": [
         {
-            "email": "jsequeira@ceb.uminho.pt",
-            "name": "Jo\u00e3o C. Sequeira",
-            "orcidid": "http://orcid.org/0000-0002-2691-9950",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer",
-                "Documentor",
-                "Maintainer"
-            ],
-            "url": "https://www.ceb.uminho.pt/People/Details/9fca8b19-e2c7-4d5f-acb8-c7e15c98ca47"
-        },
-        {
             "email": "asalvador@ceb.uminho.pt",
             "name": "Andreia F. Salvador",
             "orcidid": "http://orcid.org/0000-0001-6037-4248",
@@ -28,14 +16,16 @@
             "url": "https://www.ceb.uminho.pt/People/Details/c6b2fd64-389d-4700-ae5e-7ba9b7f26321"
         },
         {
-            "email": "mrocha@di.uminho.pt",
-            "name": "Miguel Rocha",
-            "orcidid": "http://orcid.org/0000-0001-8439-8172",
+            "email": "jsequeira@ceb.uminho.pt",
+            "name": "João C. Sequeira",
+            "orcidid": "http://orcid.org/0000-0002-2691-9950",
             "typeEntity": "Person",
             "typeRole": [
-                "Support"
+                "Developer",
+                "Documentor",
+                "Maintainer"
             ],
-            "url": "https://www.ceb.uminho.pt/People/Details/19c61a9c-8d3f-4880-bbf6-8e31dc3f3fc1"
+            "url": "https://www.ceb.uminho.pt/People/Details/9fca8b19-e2c7-4d5f-acb8-c7e15c98ca47"
         },
         {
             "email": "madalena.alves@deb.uminho.pt",
@@ -46,21 +36,31 @@
                 "Support"
             ],
             "url": "https://www.ceb.uminho.pt/People/Details/44265aed-6255-48b0-965d-8dbecf383f6e"
+        },
+        {
+            "email": "mrocha@di.uminho.pt",
+            "name": "Miguel Rocha",
+            "orcidid": "http://orcid.org/0000-0001-8439-8172",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Support"
+            ],
+            "url": "https://www.ceb.uminho.pt/People/Details/19c61a9c-8d3f-4880-bbf6-8e31dc3f3fc1"
         }
     ],
     "description": "Meta-Omics Software for Community Analysis",
     "documentation": [
         {
             "type": [
-                "Quick start guide"
+                "Command-line options"
             ],
-            "url": "https://github.com/iquasere/MOSCA/wiki/Installing-and-running-MOSCA"
+            "url": "https://github.com/iquasere/MOSCA/wiki/Parameters-of-MOSCA"
         },
         {
             "type": [
                 "Command-line options"
             ],
-            "url": "https://github.com/iquasere/MOSCA/wiki/Parameters-of-MOSCA"
+            "url": "https://github.com/iquasere/MOSCA/wiki/Partial-runs"
         },
         {
             "type": [
@@ -70,15 +70,15 @@
         },
         {
             "type": [
-                "Release notes"
+                "Quick start guide"
             ],
-            "url": "https://github.com/iquasere/MOSCA/releases"
+            "url": "https://github.com/iquasere/MOSCA/wiki/Installing-and-running-MOSCA"
         },
         {
             "type": [
-                "Command-line options"
+                "Release notes"
             ],
-            "url": "https://github.com/iquasere/MOSCA/wiki/Partial-runs"
+            "url": "https://github.com/iquasere/MOSCA/releases"
         }
     ],
     "download": [
@@ -98,6 +98,166 @@
         "Tools"
     ],
     "function": [
+        {
+            "cmd": "kegg_charter.py -f {output}/MOSCA_Entry_Report.xlsx -o {output}/KEGG_maps -mm {metabolic_maps comma-separate (e.g. 00030,00680,...)} -gcol {mg_names comma-separated} -tcol {mt_names comma-separated} -tc 'Taxonomic lineage ({taxa_level})' -not {number_of_taxa} -keggc 'Cross-reference (KEGG)'",
+            "input": [
+                {
+                    "data": {
+                        "term": "Map data",
+                        "uri": "http://edamontology.org/data_2019"
+                    },
+                    "format": [
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Metabolic pathway prediction",
+                    "uri": "http://edamontology.org/operation_3929"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Pathway or network",
+                        "uri": "http://edamontology.org/data_2600"
+                    },
+                    "format": [
+                        {
+                            "term": "PNG",
+                            "uri": "http://edamontology.org/format_3603"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/annotation.py -i {output}/Assembly/{sample}/contigs.fasta -t {threads} -o {output}/Annotation/{sample} -em {error_model} -db {path/to/diamond_database.(fasta/dmnd)} -mts {diamond_max_target_seqs} --assembled",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Genome annotation",
+                    "uri": "http://edamontology.org/operation_0362"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence set (protein)",
+                        "uri": "http://edamontology.org/data_1233"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/assembly.py -r {output}/Preprocess/{sample}_forward.fastq,{output}/Preprocess/{sample}_reverse.fastq -t {threads} -o {output}/Assembly/{sample} -a {assembler (either \"metaspades\" or \"megahit\"} -m {max_memory}",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence trace",
+                        "uri": "http://edamontology.org/data_0924"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "De-novo assembly",
+                    "uri": "http://edamontology.org/operation_0524"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/binning.py -c {output}/Assembly/{sample}/contigs.fasta -t {threads} -o {output}/Binning/{sample} -r {output}/Preprocess/{sample}_forward.fastq,{output}/Preprocess/{sample}_reverse.fastq -mset {markerset (either \"107\" or \"40\")}",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Phylogenetic footprinting",
+                    "uri": "http://edamontology.org/operation_0327"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Genome report",
+                        "uri": "http://edamontology.org/data_2711"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/preprocess.py -i {your input reads (e.g. mg_R1.fq,mg_R2.fq)} -t {number of threads} -o {output directory} -adaptdir {resources directory}/adapters -rrnadbs {resources directory}/rRNA_databases -d {data_type (either \"dna\" or \"mrna\")} -rd {resources directory} --minlen {minimum length of reads to keep} --avgqual {minimum average quality of reads to keep}",
             "input": [
@@ -152,7 +312,7 @@
             ]
         },
         {
-            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/assembly.py -r {output}/Preprocess/{sample}_forward.fastq,{output}/Preprocess/{sample}_reverse.fastq -t {threads} -o {output}/Assembly/{sample} -a {assembler (either \"metaspades\" or \"megahit\"} -m {max_memory}",
+            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/quantification_analyser.py -e {path/to/experiments_file} -t {threads} -o {output} -if {input_format_of_experiments_file (\"excel\" or \"tsv\")}",
             "input": [
                 {
                     "data": {
@@ -169,138 +329,15 @@
             ],
             "operation": [
                 {
-                    "term": "De-novo assembly",
-                    "uri": "http://edamontology.org/operation_0524"
+                    "term": "RNA-Seq quantification",
+                    "uri": "http://edamontology.org/operation_3800"
                 }
             ],
             "output": [
                 {
                     "data": {
-                        "term": "Sequence assembly",
-                        "uri": "http://edamontology.org/data_0925"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/annotation.py -i {output}/Assembly/{sample}/contigs.fasta -t {threads} -o {output}/Annotation/{sample} -em {error_model} -db {path/to/diamond_database.(fasta/dmnd)} -mts {diamond_max_target_seqs} --assembled",
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence assembly",
-                        "uri": "http://edamontology.org/data_0925"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Genome annotation",
-                    "uri": "http://edamontology.org/operation_0362"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence set (protein)",
-                        "uri": "http://edamontology.org/data_1233"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Sequence search results",
-                        "uri": "http://edamontology.org/data_0857"
-                    },
-                    "format": [
-                        {
-                            "term": "TSV",
-                            "uri": "http://edamontology.org/format_3475"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/binning.py -c {output}/Assembly/{sample}/contigs.fasta -t {threads} -o {output}/Binning/{sample} -r {output}/Preprocess/{sample}_forward.fastq,{output}/Preprocess/{sample}_reverse.fastq -mset {markerset (either \"107\" or \"40\")}",
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence assembly",
-                        "uri": "http://edamontology.org/data_0925"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Phylogenetic footprinting",
-                    "uri": "http://edamontology.org/operation_0327"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Genome report",
-                        "uri": "http://edamontology.org/data_2711"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "upimapi.py -i {output}/Annotation/{sample}/aligned.blast -o {output}/Annotation/uniprotinfo --blast --full-id",
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence set (protein)",
-                        "uri": "http://edamontology.org/data_1233"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "ID mapping",
-                    "uri": "http://edamontology.org/operation_3282"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Data reference",
-                        "uri": "http://edamontology.org/data_2093"
+                        "term": "Gene expression profile",
+                        "uri": "http://edamontology.org/data_0928"
                     },
                     "format": [
                         {
@@ -349,74 +386,37 @@
             ]
         },
         {
-            "cmd": "python ~/anaconda3/envs/mosca/share/MOSCA/scripts/quantification_analyser.py -e {path/to/experiments_file} -t {threads} -o {output} -if {input_format_of_experiments_file (\"excel\" or \"tsv\")}",
+            "cmd": "upimapi.py -i {output}/Annotation/{sample}/aligned.blast -o {output}/Annotation/uniprotinfo --blast --full-id",
             "input": [
                 {
                     "data": {
-                        "term": "Sequence trace",
-                        "uri": "http://edamontology.org/data_0924"
+                        "term": "Sequence set (protein)",
+                        "uri": "http://edamontology.org/data_1233"
                     },
                     "format": [
                         {
-                            "term": "FASTQ",
-                            "uri": "http://edamontology.org/format_1930"
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
                         }
                     ]
                 }
             ],
             "operation": [
                 {
-                    "term": "RNA-Seq quantification",
-                    "uri": "http://edamontology.org/operation_3800"
+                    "term": "ID mapping",
+                    "uri": "http://edamontology.org/operation_3282"
                 }
             ],
             "output": [
                 {
                     "data": {
-                        "term": "Gene expression profile",
-                        "uri": "http://edamontology.org/data_0928"
+                        "term": "Data reference",
+                        "uri": "http://edamontology.org/data_2093"
                     },
                     "format": [
                         {
                             "term": "TSV",
                             "uri": "http://edamontology.org/format_3475"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "kegg_charter.py -f {output}/MOSCA_Entry_Report.xlsx -o {output}/KEGG_maps -mm {metabolic_maps comma-separate (e.g. 00030,00680,...)} -gcol {mg_names comma-separated} -tcol {mt_names comma-separated} -tc 'Taxonomic lineage ({taxa_level})' -not {number_of_taxa} -keggc 'Cross-reference (KEGG)'",
-            "input": [
-                {
-                    "data": {
-                        "term": "Map data",
-                        "uri": "http://edamontology.org/data_2019"
-                    },
-                    "format": [
-                        {
-                            "term": "xlsx",
-                            "uri": "http://edamontology.org/format_3620"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Metabolic pathway prediction",
-                    "uri": "http://edamontology.org/operation_3929"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Pathway or network",
-                        "uri": "http://edamontology.org/data_2600"
-                    },
-                    "format": [
-                        {
-                            "term": "PNG",
-                            "uri": "http://edamontology.org/format_3603"
                         }
                     ]
                 }
@@ -447,27 +447,27 @@
     "maturity": "Mature",
     "name": "MOSCA",
     "operatingSystem": [
-        "Mac",
-        "Linux"
+        "Linux",
+        "Mac"
     ],
     "owner": "iquasere",
     "publication": [
         {
             "doi": "10.1007/978-3-319-98702-6_22",
             "metadata": {
-                "abstract": "\u00a9 Springer Nature Switzerland AG 2019.Metagenomics (MG) and Metatranscriptomics (MT) approaches open new perspectives on the interpretation of biological systems composed by complex microbial communities. Dealing with large sequencing datasets, to extract the desired information and interpret the results are big challenges associated with meta-omics studies. There are several bioinformatics pipelines for MG data analysis and less to MT. Up to date, none performs a complete analysis integrating both MG and MT data, including the assembly of reads into contigs, functional and taxonomic annotation of identified genes, differential gene expression analysis and the comparison of multiple samples. Here, we present Meta-Omics Software for Community Analysis (MOSCA) that was designed with this purpose. It integrates RNA-Seq analysis with Whole Genome Sequencing as reference. Raw sequencing reads are submitted to preprocessing for quality trimming and rRNA removal, and assembled into contigs, which afterwards are annotated by using a reference database. MOSCA performs differential gene expression and provides graphical visualization of the results and comparison of multiple samples. Validation and reproducibility of the pipeline was obtained by using simulated MG and MT datasets.",
+                "abstract": "© Springer Nature Switzerland AG 2019.Metagenomics (MG) and Metatranscriptomics (MT) approaches open new perspectives on the interpretation of biological systems composed by complex microbial communities. Dealing with large sequencing datasets, to extract the desired information and interpret the results are big challenges associated with meta-omics studies. There are several bioinformatics pipelines for MG data analysis and less to MT. Up to date, none performs a complete analysis integrating both MG and MT data, including the assembly of reads into contigs, functional and taxonomic annotation of identified genes, differential gene expression analysis and the comparison of multiple samples. Here, we present Meta-Omics Software for Community Analysis (MOSCA) that was designed with this purpose. It integrates RNA-Seq analysis with Whole Genome Sequencing as reference. Raw sequencing reads are submitted to preprocessing for quality trimming and rRNA removal, and assembled into contigs, which afterwards are annotated by using a reference database. MOSCA performs differential gene expression and provides graphical visualization of the results and comparison of multiple samples. Validation and reproducibility of the pipeline was obtained by using simulated MG and MT datasets.",
                 "authors": [
                     {
-                        "name": "Sequeira J.C."
+                        "name": "Madalena Alves M."
                     },
                     {
                         "name": "Rocha M."
                     },
                     {
-                        "name": "Madalena Alves M."
+                        "name": "Salvador A.F."
                     },
                     {
-                        "name": "Salvador A.F."
+                        "name": "Sequeira J.C."
                     }
                 ],
                 "citationCount": 1,
@@ -482,7 +482,7 @@
     ],
     "relation": [
         {
-            "biotoolsID": "upimapi",
+            "biotoolsID": "keggcharter",
             "type": "uses"
         },
         {
@@ -490,7 +490,7 @@
             "type": "uses"
         },
         {
-            "biotoolsID": "keggcharter",
+            "biotoolsID": "upimapi",
             "type": "uses"
         }
     ],

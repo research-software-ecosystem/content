@@ -18,11 +18,12 @@
             ]
         },
         {
-            "email": "lieven.clement@UGent.be",
-            "name": "Lieven Clement",
+            "email": "ludger.goeminne@vib-ugent.be",
+            "name": "Ludger Goeminne",
+            "orcidid": "http://orcid.org/0000-0002-8285-7766",
             "typeEntity": "Person",
             "typeRole": [
-                "Maintainer"
+                "Primary contact"
             ]
         },
         {
@@ -34,14 +35,20 @@
             ]
         },
         {
-            "name": "VIB",
-            "typeEntity": "Institute",
-            "url": "http://www.vib.be"
+            "email": "lieven.clement@UGent.be",
+            "name": "Lieven Clement",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Maintainer"
+            ]
         },
         {
-            "name": "Universiteit Gent",
-            "typeEntity": "Institute",
-            "url": "http://www.ugent.be"
+            "email": "lieven.clement@UGent.be",
+            "name": "Lieven Clement",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
         },
         {
             "name": "Agentschap Innoveren en Ondernemen - Flemish Government",
@@ -54,21 +61,14 @@
             "url": "http://www.bign2n.ugent.be"
         },
         {
-            "email": "ludger.goeminne@vib-ugent.be",
-            "name": "Ludger Goeminne",
-            "orcidid": "http://orcid.org/0000-0002-8285-7766",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact"
-            ]
+            "name": "Universiteit Gent",
+            "typeEntity": "Institute",
+            "url": "http://www.ugent.be"
         },
         {
-            "email": "lieven.clement@UGent.be",
-            "name": "Lieven Clement",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact"
-            ]
+            "name": "VIB",
+            "typeEntity": "Institute",
+            "url": "http://www.vib.be"
         }
     ],
     "description": "Allows a user to do quantitative protein-level statistical inference on label-free LC-MS proteomics data. Fold changes, p values and false discovery rates are estimated.The app allows for an easy-to-use graphical user interface starting from MaxQuant search results that requires no programming skills.",
@@ -97,18 +97,6 @@
             "input": [
                 {
                     "data": {
-                        "term": "Sequence search results",
-                        "uri": "http://edamontology.org/data_0857"
-                    },
-                    "format": [
-                        {
-                            "term": "Textual format",
-                            "uri": "http://edamontology.org/format_2330"
-                        }
-                    ]
-                },
-                {
-                    "data": {
                         "term": "Experiment report",
                         "uri": "http://edamontology.org/data_2531"
                     },
@@ -122,10 +110,34 @@
                             "uri": "http://edamontology.org/format_3468"
                         }
                     ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence search results",
+                        "uri": "http://edamontology.org/data_0857"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
                 }
             ],
             "note": "MSqRob allows relative quantification in label-free proteomics data for all kinds of experimental designs. It can be run in R and with a graphical user-interface (Shiny App). For now, the Shiny App can only work with MaxQuant peptides.txt output or a similar tab-delimited peptide-level file. Multiple preprocessing options are provided and different research hypotheses can be tested at the same time. MSqRob outputs interactive diagnostic plots as well as an Excel file with fold change estimates, p values and false discovery rates.",
             "operation": [
+                {
+                    "term": "Differential protein expression analysis",
+                    "uri": "http://edamontology.org/operation_3741"
+                },
+                {
+                    "term": "Regression analysis",
+                    "uri": "http://edamontology.org/operation_3659"
+                },
+                {
+                    "term": "Standardisation and normalisation",
+                    "uri": "http://edamontology.org/operation_3435"
+                },
                 {
                     "term": "Statistical inference",
                     "uri": "http://edamontology.org/operation_3658"
@@ -133,18 +145,6 @@
                 {
                     "term": "Statistical modelling",
                     "uri": "http://edamontology.org/operation_3664"
-                },
-                {
-                    "term": "Standardisation and normalisation",
-                    "uri": "http://edamontology.org/operation_3435"
-                },
-                {
-                    "term": "Regression analysis",
-                    "uri": "http://edamontology.org/operation_3659"
-                },
-                {
-                    "term": "Differential protein expression analysis",
-                    "uri": "http://edamontology.org/operation_3741"
                 }
             ],
             "output": [
@@ -192,24 +192,24 @@
     "name": "MSqRob",
     "operatingSystem": [
         "Linux",
-        "Windows",
-        "Mac"
+        "Mac",
+        "Windows"
     ],
     "owner": "lgoeminn",
     "publication": [
         {
             "doi": "10.1074/mcp.M115.055897",
             "metadata": {
-                "abstract": "\u00a9 2016 by The American Society for Biochemistry and Molecular Biology, Inc.Peptide intensities from mass spectra are increasingly used for relative quantitation of proteins in complex samples. However, numerous issues inherent to the mass spectrometry workflow turn quantitative proteomic data analysis into a crucial challenge. We and others have shown that modeling at the peptide level outperforms classical summarization-based approaches, which typically also discard a lot of proteins at the data preprocessing step. Peptide-based linear regression models, however, still suffer from unbalanced datasets due to missing peptide intensities, outlying peptide intensities and overfitting. Here, we further improve upon peptide-based models by three modular extensions: ridge regression, improved variance estimation by borrowing information across proteins with empirical Bayes and M-estimation with Huber weights. We illustrate our method on the CPTAC spike-in study and on a study comparing wild-Type and ArgP knock-out Francisella tularensis proteomes. We show that the fold change estimates of our robust approach are more precise and more accurate than those from stateof-the-Art summarization-based methods and peptidebased regression models, which leads to an improved sensitivity and specificity. We also demonstrate that ionization competition effects come already into play at very low spike-in concentrations and confirm that analyses with peptide-based regression methods on peptide intensity values aggregated by charge state and modification status (e.g. MaxQuant's peptides.txt file) are slightly superior to analyses on raw peptide intensity values (e.g. Max-Quant's evidence.txt file).",
+                "abstract": "© 2016 by The American Society for Biochemistry and Molecular Biology, Inc.Peptide intensities from mass spectra are increasingly used for relative quantitation of proteins in complex samples. However, numerous issues inherent to the mass spectrometry workflow turn quantitative proteomic data analysis into a crucial challenge. We and others have shown that modeling at the peptide level outperforms classical summarization-based approaches, which typically also discard a lot of proteins at the data preprocessing step. Peptide-based linear regression models, however, still suffer from unbalanced datasets due to missing peptide intensities, outlying peptide intensities and overfitting. Here, we further improve upon peptide-based models by three modular extensions: ridge regression, improved variance estimation by borrowing information across proteins with empirical Bayes and M-estimation with Huber weights. We illustrate our method on the CPTAC spike-in study and on a study comparing wild-Type and ArgP knock-out Francisella tularensis proteomes. We show that the fold change estimates of our robust approach are more precise and more accurate than those from stateof-the-Art summarization-based methods and peptidebased regression models, which leads to an improved sensitivity and specificity. We also demonstrate that ionization competition effects come already into play at very low spike-in concentrations and confirm that analyses with peptide-based regression methods on peptide intensity values aggregated by charge state and modification status (e.g. MaxQuant's peptides.txt file) are slightly superior to analyses on raw peptide intensity values (e.g. Max-Quant's evidence.txt file).",
                 "authors": [
                     {
-                        "name": "Goeminne L.J.E."
+                        "name": "Clement L."
                     },
                     {
                         "name": "Gevaert K."
                     },
                     {
-                        "name": "Clement L."
+                        "name": "Goeminne L.J.E."
                     }
                 ],
                 "citationCount": 34,
