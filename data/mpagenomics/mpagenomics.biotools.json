@@ -7,18 +7,18 @@
     ],
     "credit": [
         {
-            "name": "IFB ELIXIR-FR",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
-        },
-        {
             "email": "samuel.blanck@inria.fr",
             "name": "Samuel Blanck",
             "typeEntity": "Person",
             "typeRole": [
                 "Primary contact"
+            ]
+        },
+        {
+            "name": "IFB ELIXIR-FR",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
             ]
         }
     ],
@@ -39,23 +39,23 @@
             "input": [
                 {
                     "data": {
-                        "term": "Raw microarray data",
-                        "uri": "http://edamontology.org/data_3110"
+                        "term": "Experiment report",
+                        "uri": "http://edamontology.org/data_2531"
                     }
                 }
             ],
-            "note": "Data normalization is a preprocessing step that consists in a correction of biological and technical biaises due to the experiment. It is only available for Affymetrix arrays.",
+            "note": "This function filters obtained by the segmentation and calling tool.",
             "operation": [
                 {
-                    "term": "Gene expression analysis",
-                    "uri": "http://edamontology.org/operation_2495"
+                    "term": "Sequence feature comparison",
+                    "uri": "http://edamontology.org/operation_0256"
                 }
             ],
             "output": [
                 {
                     "data": {
-                        "term": "Processed microarray data",
-                        "uri": "http://edamontology.org/data_3111"
+                        "term": "Experiment report",
+                        "uri": "http://edamontology.org/data_2531"
                     }
                 }
             ]
@@ -69,22 +69,18 @@
                     }
                 }
             ],
-            "note": "This function segments the previously normalized profiles and labels segments found in the copy-number profiles.",
+            "note": "This function extracts the copy number profile from the normalized data.",
             "operation": [
                 {
-                    "term": "Nucleic acid feature detection",
-                    "uri": "http://edamontology.org/operation_0415"
-                },
-                {
-                    "term": "Microarray probe design",
-                    "uri": "http://edamontology.org/operation_0309"
+                    "term": "Gene set testing",
+                    "uri": "http://edamontology.org/operation_3224"
                 }
             ],
             "output": [
                 {
                     "data": {
-                        "term": "Experiment report",
-                        "uri": "http://edamontology.org/data_2531"
+                        "term": "Sequence features",
+                        "uri": "http://edamontology.org/data_1255"
                     }
                 }
             ]
@@ -118,16 +114,45 @@
             "input": [
                 {
                     "data": {
-                        "term": "Experiment report",
-                        "uri": "http://edamontology.org/data_2531"
+                        "term": "Processed microarray data",
+                        "uri": "http://edamontology.org/data_3111"
                     }
                 }
             ],
-            "note": "This function filters obtained by the segmentation and calling tool.",
+            "note": "This function segments normalized profiles provided by the user and labels segments found int he copy-number profiles.",
             "operation": [
                 {
-                    "term": "Sequence feature comparison",
-                    "uri": "http://edamontology.org/operation_0256"
+                    "term": "Gene expression analysis",
+                    "uri": "http://edamontology.org/operation_2495"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Processed microarray data",
+                        "uri": "http://edamontology.org/data_3111"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Processed microarray data",
+                        "uri": "http://edamontology.org/data_3111"
+                    }
+                }
+            ],
+            "note": "This function segments the previously normalized profiles and labels segments found in the copy-number profiles.",
+            "operation": [
+                {
+                    "term": "Microarray probe design",
+                    "uri": "http://edamontology.org/operation_0309"
+                },
+                {
+                    "term": "Nucleic acid feature detection",
+                    "uri": "http://edamontology.org/operation_0415"
                 }
             ],
             "output": [
@@ -168,37 +193,12 @@
             "input": [
                 {
                     "data": {
-                        "term": "Processed microarray data",
-                        "uri": "http://edamontology.org/data_3111"
+                        "term": "Raw microarray data",
+                        "uri": "http://edamontology.org/data_3110"
                     }
                 }
             ],
-            "note": "This function extracts the copy number profile from the normalized data.",
-            "operation": [
-                {
-                    "term": "Gene set testing",
-                    "uri": "http://edamontology.org/operation_3224"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence features",
-                        "uri": "http://edamontology.org/data_1255"
-                    }
-                }
-            ]
-        },
-        {
-            "input": [
-                {
-                    "data": {
-                        "term": "Processed microarray data",
-                        "uri": "http://edamontology.org/data_3111"
-                    }
-                }
-            ],
-            "note": "This function segments normalized profiles provided by the user and labels segments found int he copy-number profiles.",
+            "note": "Data normalization is a preprocessing step that consists in a correction of biological and technical biaises due to the experiment. It is only available for Affymetrix arrays.",
             "operation": [
                 {
                     "term": "Gene expression analysis",
@@ -228,30 +228,30 @@
     "name": "MPAgenomics",
     "operatingSystem": [
         "Linux",
-        "Windows",
-        "Mac"
+        "Mac",
+        "Windows"
     ],
     "owner": "ELIXIR-FR",
     "publication": [
         {
             "doi": "10.1186/s12859-014-0394-y",
             "metadata": {
-                "abstract": "\u00a9 Grimonprez et al.; licensee BioMed Central Ltd.Background: Last generations of Single Nucleotide Polymorphism (SNP) arrays allow to study copy-number variations in addition to genotyping measures. Results:, standing for multi-patient analysis (MPA) of genomic markers, is an R-package devoted to: (i) efficient segmentation and (ii) selection of genomic markers from multi-patient copy number and SNP data profiles. It provides wrappers from commonly used packages to streamline their repeated (sometimes difficult) manipulation, offering an easy-to-use pipeline for beginners in R. Conclusions: provides an easy tool to analyze data from SNP arrays in R. The R-package is available on CRAN.",
+                "abstract": "© Grimonprez et al.; licensee BioMed Central Ltd.Background: Last generations of Single Nucleotide Polymorphism (SNP) arrays allow to study copy-number variations in addition to genotyping measures. Results:, standing for multi-patient analysis (MPA) of genomic markers, is an R-package devoted to: (i) efficient segmentation and (ii) selection of genomic markers from multi-patient copy number and SNP data profiles. It provides wrappers from commonly used packages to streamline their repeated (sometimes difficult) manipulation, offering an easy-to-use pipeline for beginners in R. Conclusions: provides an easy tool to analyze data from SNP arrays in R. The R-package is available on CRAN.",
                 "authors": [
                     {
-                        "name": "Grimonprez Q."
+                        "name": "Blanck S."
                     },
                     {
                         "name": "Celisse A."
-                    },
-                    {
-                        "name": "Blanck S."
                     },
                     {
                         "name": "Cheok M."
                     },
                     {
                         "name": "Figeac M."
+                    },
+                    {
+                        "name": "Grimonprez Q."
                     },
                     {
                         "name": "Marot G."
@@ -272,16 +272,16 @@
     ],
     "topic": [
         {
-            "term": "Statistics and probability",
-            "uri": "http://edamontology.org/topic_2269"
+            "term": "DNA polymorphism",
+            "uri": "http://edamontology.org/topic_2885"
         },
         {
             "term": "Gene expression",
             "uri": "http://edamontology.org/topic_0203"
         },
         {
-            "term": "DNA polymorphism",
-            "uri": "http://edamontology.org/topic_2885"
+            "term": "Statistics and probability",
+            "uri": "http://edamontology.org/topic_2269"
         }
     ],
     "validated": 1,

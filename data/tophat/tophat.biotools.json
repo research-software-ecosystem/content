@@ -4,9 +4,9 @@
     "biotoolsCURIE": "biotools:tophat",
     "biotoolsID": "tophat",
     "collectionID": [
-        "galaxyPasteur",
         "Rare Disease",
-        "TopHat"
+        "TopHat",
+        "galaxyPasteur"
     ],
     "cost": "Free of charge",
     "credit": [
@@ -50,12 +50,12 @@
                     },
                     "format": [
                         {
-                            "term": "FASTQ",
-                            "uri": "http://edamontology.org/format_1930"
-                        },
-                        {
                             "term": "FASTA",
                             "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
                         }
                     ]
                 }
@@ -63,15 +63,39 @@
             "note": "TopHat can find splice junctions without a reference annotation by mapping RNA-Seq reads to a reference genome. The basename of the genome index to be searched. A list of files containing reads. A list of read alignments Track of junctions reported by TopHat. Tracks of insertions and deletions reported by TopHat.",
             "operation": [
                 {
-                    "term": "Splice site prediction",
-                    "uri": "http://edamontology.org/operation_0433"
-                },
-                {
                     "term": "Read mapping",
                     "uri": "http://edamontology.org/operation_3198"
+                },
+                {
+                    "term": "Splice site prediction",
+                    "uri": "http://edamontology.org/operation_0433"
                 }
             ],
             "output": [
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "BED",
+                            "uri": "http://edamontology.org/format_3003"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "BED",
+                            "uri": "http://edamontology.org/format_3003"
+                        }
+                    ]
+                },
                 {
                     "data": {
                         "term": "Sequence alignment",
@@ -81,30 +105,6 @@
                         {
                             "term": "SAM",
                             "uri": "http://edamontology.org/format_2573"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Annotation track",
-                        "uri": "http://edamontology.org/data_3002"
-                    },
-                    "format": [
-                        {
-                            "term": "BED",
-                            "uri": "http://edamontology.org/format_3003"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Annotation track",
-                        "uri": "http://edamontology.org/data_3002"
-                    },
-                    "format": [
-                        {
-                            "term": "BED",
-                            "uri": "http://edamontology.org/format_3003"
                         }
                     ]
                 }
@@ -121,13 +121,13 @@
             "type": [
                 "Galaxy service"
             ],
-            "url": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/urgi_tools/tophat_parallel/1.0.0"
+            "url": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/tophat/tophat/1.4.1.1"
         },
         {
             "type": [
                 "Galaxy service"
             ],
-            "url": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/tophat/tophat/1.4.1.1"
+            "url": "https://galaxy.pasteur.fr/tool_runner?tool_id=toolshed.pasteur.fr/repos/fmareuil/urgi_tools/tophat_parallel/1.0.0"
         }
     ],
     "maturity": "Mature",
@@ -147,16 +147,16 @@
         {
             "doi": "10.1093/bioinformatics/btp120",
             "metadata": {
-                "abstract": "Motivation: A new protocol for sequencing the messenger RNA in a cell, known as RNA-Seq, generates millions of short sequence fragments in a single run. These fragments, or 'reads', can be used to measure levels of gene expression and to identify novel splice variants of genes. However, current software for aligning RNA-Seq data to a genome relies on known splice junctions and cannot identify novel ones. TopHat is an efficient read-mapping algorithm designed to align reads from an RNA-Seq experiment to a reference genome without relying on known splice sites. Results: We mapped the RNA-Seq reads from a recent mammalian RNA-Seq experiment and recovered more than 72% of the splice junctions reported by the annotation-based software from that study, along with nearly 20 000 previously unreported junctions. The TopHat pipeline is much faster than previous systems, mapping nearly 2.2 million reads per CPU hour, which is sufficient to process an entire RNA-Seq experiment in less than a day on a standard desktop computer. We describe several challenges unique to ab initio splice site discovery from RNA-Seq reads that will require further algorithm development. \u00a9 2009 The Author(s).",
+                "abstract": "Motivation: A new protocol for sequencing the messenger RNA in a cell, known as RNA-Seq, generates millions of short sequence fragments in a single run. These fragments, or 'reads', can be used to measure levels of gene expression and to identify novel splice variants of genes. However, current software for aligning RNA-Seq data to a genome relies on known splice junctions and cannot identify novel ones. TopHat is an efficient read-mapping algorithm designed to align reads from an RNA-Seq experiment to a reference genome without relying on known splice sites. Results: We mapped the RNA-Seq reads from a recent mammalian RNA-Seq experiment and recovered more than 72% of the splice junctions reported by the annotation-based software from that study, along with nearly 20 000 previously unreported junctions. The TopHat pipeline is much faster than previous systems, mapping nearly 2.2 million reads per CPU hour, which is sufficient to process an entire RNA-Seq experiment in less than a day on a standard desktop computer. We describe several challenges unique to ab initio splice site discovery from RNA-Seq reads that will require further algorithm development. © 2009 The Author(s).",
                 "authors": [
-                    {
-                        "name": "Trapnell C."
-                    },
                     {
                         "name": "Pachter L."
                     },
                     {
                         "name": "Salzberg S.L."
+                    },
+                    {
+                        "name": "Trapnell C."
                     }
                 ],
                 "citationCount": 8085,
@@ -181,12 +181,12 @@
     ],
     "topic": [
         {
-            "term": "RNA-Seq",
-            "uri": "http://edamontology.org/topic_3170"
-        },
-        {
             "term": "Mapping",
             "uri": "http://edamontology.org/topic_0102"
+        },
+        {
+            "term": "RNA-Seq",
+            "uri": "http://edamontology.org/topic_3170"
         },
         {
             "term": "Rare diseases",

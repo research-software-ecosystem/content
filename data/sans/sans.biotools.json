@@ -10,6 +10,13 @@
     "cost": "Free of charge",
     "credit": [
         {
+            "email": "sans-service@cebitec.uni-bielefeld.de",
+            "typeEntity": "Project",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
+        {
             "name": "Bielefeld University",
             "typeEntity": "Institute",
             "typeRole": [
@@ -24,13 +31,6 @@
                 "Provider"
             ],
             "url": "https://gi.cebitec.uni-bielefeld.de/"
-        },
-        {
-            "email": "sans-service@cebitec.uni-bielefeld.de",
-            "typeEntity": "Project",
-            "typeRole": [
-                "Primary contact"
-            ]
         }
     ],
     "description": "SANS is a freely available command line tool for phylogenetic \nreconstruction. It is alignment- and reference-free, and accepts \n(multiple) FASTA or FASTQ files containing complete genomes, assembled \ncontigs, or raw reads as input. Sequence segments (in terms of k-mers) \nthat are shared by a set of genomes are used as indicators for \nphylogenetic splits. Splits are combined, weighted, filtered and output \nin tab separated format or Newick format. They can visualized as a phylogenetic tree or \nnetwork using existing tools such as SplitsTree. SANS is implemented in \nC++.",
@@ -58,43 +58,6 @@
         "Germany"
     ],
     "function": [
-        {
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence set (nucleic acid)",
-                        "uri": "http://edamontology.org/data_1234"
-                    },
-                    "format": [
-                        {
-                            "term": "Sequence record format",
-                            "uri": "http://edamontology.org/format_1919"
-                        }
-                    ]
-                }
-            ],
-            "note": "Output is a list of phylogenetic splits / a phylogenetic network. Nexus format for visualization (e.g. in Splitstree) can be obtained from TSV output by a converter script (provided).\nIt also takes a Bifrost graph (Holley and Melsted) as input.",
-            "operation": [
-                {
-                    "term": "Phylogenetic reconstruction",
-                    "uri": "http://edamontology.org/operation_3478"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Phylogenetic data",
-                        "uri": "http://edamontology.org/data_2523"
-                    },
-                    "format": [
-                        {
-                            "term": "TSV",
-                            "uri": "http://edamontology.org/format_3475"
-                        }
-                    ]
-                }
-            ]
-        },
         {
             "cmd": "SANS -f strict",
             "input": [
@@ -132,6 +95,43 @@
                     ]
                 }
             ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence set (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1234"
+                    },
+                    "format": [
+                        {
+                            "term": "Sequence record format",
+                            "uri": "http://edamontology.org/format_1919"
+                        }
+                    ]
+                }
+            ],
+            "note": "Output is a list of phylogenetic splits / a phylogenetic network. Nexus format for visualization (e.g. in Splitstree) can be obtained from TSV output by a converter script (provided).\nIt also takes a Bifrost graph (Holley and Melsted) as input.",
+            "operation": [
+                {
+                    "term": "Phylogenetic reconstruction",
+                    "uri": "http://edamontology.org/operation_3478"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Phylogenetic data",
+                        "uri": "http://edamontology.org/data_2523"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "homepage": "https://gitlab.ub.uni-bielefeld.de/gi/sans",
@@ -156,7 +156,7 @@
         {
             "doi": "10.1186/s13015-020-00164-3",
             "metadata": {
-                "abstract": "\u00a9 2020 The Author(s).Background: The increasing amount of available genome sequence data enables large-scale comparative studies. A common task is the inference of phylogenies - a challenging task if close reference sequences are not available, genome sequences are incompletely assembled, or the high number of genomes precludes multiple sequence alignment in reasonable time. Results: We present a new whole-genome based approach to infer phylogenies that is alignment- and reference-free. In contrast to other methods, it does not rely on pairwise comparisons to determine distances to infer edges in a tree. Instead, a colored de Bruijn graph is constructed, and information on common subsequences is extracted to infer phylogenetic splits. Conclusions: The introduced new methodology for large-scale phylogenomics shows high potential. Application to different datasets confirms robustness of the approach. A comparison to other state-of-the-art whole-genome based methods indicates comparable or higher accuracy and efficiency.",
+                "abstract": "© 2020 The Author(s).Background: The increasing amount of available genome sequence data enables large-scale comparative studies. A common task is the inference of phylogenies - a challenging task if close reference sequences are not available, genome sequences are incompletely assembled, or the high number of genomes precludes multiple sequence alignment in reasonable time. Results: We present a new whole-genome based approach to infer phylogenies that is alignment- and reference-free. In contrast to other methods, it does not rely on pairwise comparisons to determine distances to infer edges in a tree. Instead, a colored de Bruijn graph is constructed, and information on common subsequences is extracted to infer phylogenetic splits. Conclusions: The introduced new methodology for large-scale phylogenomics shows high potential. Application to different datasets confirms robustness of the approach. A comparison to other state-of-the-art whole-genome based methods indicates comparable or higher accuracy and efficiency.",
                 "authors": [
                     {
                         "name": "Wittler R."
@@ -170,8 +170,8 @@
             "pmcid": "PMC7137503",
             "pmid": "32280365",
             "type": [
-                "Method",
-                "Benchmarking study"
+                "Benchmarking study",
+                "Method"
             ]
         }
     ],
@@ -180,12 +180,12 @@
     ],
     "topic": [
         {
-            "term": "Phylogenomics",
-            "uri": "http://edamontology.org/topic_0194"
-        },
-        {
             "term": "Phylogenetics",
             "uri": "http://edamontology.org/topic_3293"
+        },
+        {
+            "term": "Phylogenomics",
+            "uri": "http://edamontology.org/topic_0194"
         }
     ],
     "validated": 1

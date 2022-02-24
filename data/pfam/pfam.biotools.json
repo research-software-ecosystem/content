@@ -4,6 +4,34 @@
     "biotoolsID": "pfam",
     "credit": [
         {
+            "email": "pfam-help@ebi.ac.uk",
+            "name": "Pfam central helpdesk",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
+        {
+            "name": "HHMI"
+        },
+        {
+            "name": "Pfam group"
+        },
+        {
+            "name": "Sanger Institute"
+        },
+        {
+            "name": "Sean Eddy"
+        },
+        {
+            "name": "How to contact Pfam",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "http://pfam.xfam.org/help#tabview=tab16"
+        },
+        {
             "name": "Identifiers.org",
             "typeEntity": "Institute",
             "typeRole": [
@@ -14,34 +42,6 @@
         {
             "name": "EMBL-EBI Databases",
             "url": "http://www.ebi.ac.uk/"
-        },
-        {
-            "name": "Sean Eddy"
-        },
-        {
-            "name": "Pfam group"
-        },
-        {
-            "name": "Sanger Institute"
-        },
-        {
-            "name": "HHMI"
-        },
-        {
-            "email": "pfam-help@ebi.ac.uk",
-            "name": "Pfam central helpdesk",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact"
-            ]
-        },
-        {
-            "name": "How to contact Pfam",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact"
-            ],
-            "url": "http://pfam.xfam.org/help#tabview=tab16"
         }
     ],
     "description": "Database which contains information about protein domains and families. For each entry a protein sequence alignment and a Hidden Markov Model is stored.",
@@ -98,8 +98,8 @@
             "input": [
                 {
                     "data": {
-                        "term": "Sequence accession (protein)",
-                        "uri": "http://edamontology.org/data_1096"
+                        "term": "NCBI taxonomy ID",
+                        "uri": "http://edamontology.org/data_1179"
                     }
                 }
             ],
@@ -188,8 +188,36 @@
             "input": [
                 {
                     "data": {
-                        "term": "NCBI taxonomy ID",
-                        "uri": "http://edamontology.org/data_1179"
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    }
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Protein feature detection",
+                    "uri": "http://edamontology.org/operation_3092"
+                },
+                {
+                    "term": "Sequence feature detection",
+                    "uri": "http://edamontology.org/operation_0253"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence signature matches",
+                        "uri": "http://edamontology.org/data_0858"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence accession (protein)",
+                        "uri": "http://edamontology.org/data_1096"
                     }
                 }
             ],
@@ -213,34 +241,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "input": [
-                {
-                    "data": {
-                        "term": "Protein sequence",
-                        "uri": "http://edamontology.org/data_2976"
-                    }
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Sequence feature detection",
-                    "uri": "http://edamontology.org/operation_0253"
-                },
-                {
-                    "term": "Protein feature detection",
-                    "uri": "http://edamontology.org/operation_3092"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence signature matches",
-                        "uri": "http://edamontology.org/data_0858"
-                    }
-                }
-            ]
         }
     ],
     "homepage": "http://pfam.xfam.org/",
@@ -251,7 +251,13 @@
             "type": [
                 "Mirror"
             ],
-            "url": "http://pfam.sbc.su.se/"
+            "url": "http://pfam.ccbb.re.kr/index.shtml"
+        },
+        {
+            "type": [
+                "Mirror"
+            ],
+            "url": "http://pfam.janelia.org/"
         },
         {
             "type": [
@@ -269,20 +275,14 @@
             "type": [
                 "Mirror"
             ],
-            "url": "http://pfam.ccbb.re.kr/index.shtml"
-        },
-        {
-            "type": [
-                "Mirror"
-            ],
-            "url": "http://pfam.janelia.org/"
+            "url": "http://pfam.sbc.su.se/"
         }
     ],
     "name": "Pfam",
     "operatingSystem": [
         "Linux",
-        "Windows",
-        "Mac"
+        "Mac",
+        "Windows"
     ],
     "otherID": [
         {
@@ -293,17 +293,23 @@
     "owner": "rdf@ebi.ac.uk",
     "publication": [
         {
+            "doi": "10.1007/springerreference_36286",
+            "type": [
+                "Other"
+            ]
+        },
+        {
             "metadata": {
                 "abstract": "Databases of multiple sequence alignments are a valuable aid to protein sequence classification and analysis. One of the main challenges when constructing such a database is to simultaneously satisfy the conflicting demands of completeness on the one hand and quality of alignment and domain definitions on the other. The latter properties are best dealt with by manual approaches, whereas completeness in practice is only amenable to automatic methods. Herein we present a database based on hidden Markov model profiles (HMMs), which combines high quality and completeness. Our database, Pfam, consists of parts A and B. Pfam-A is curated and contains well-characterized protein domain families with high quality alignments, which are maintained by using manually checked seed alignments and HMMs to find and align all members. Pfam-B contains sequence families that were generated automatically by applying the Domainer algorithm to cluster and align the remaining protein sequences after removal of Pfam-A domains. By using Pfam, a large number of previously unannotated proteins from the Caenorhabditis elegans genome project were classified. We have also identified many novel family memberships in known proteins, including new kazal, Fibronectin type III, and response regulator receiver domains. Pfam-A families have permanent accession numbers and form a library of HMMs available for searching and automatic annotation of new protein sequences.",
                 "authors": [
                     {
-                        "name": "Sonnhammer E.L.L."
+                        "name": "Durbin R."
                     },
                     {
                         "name": "Eddy S.R."
                     },
                     {
-                        "name": "Durbin R."
+                        "name": "Sonnhammer E.L.L."
                     }
                 ],
                 "citationCount": 862,
@@ -315,24 +321,14 @@
             "type": [
                 "Primary"
             ]
-        },
-        {
-            "doi": "10.1007/springerreference_36286",
-            "type": [
-                "Other"
-            ]
         }
     ],
     "toolType": [
+        "Database portal",
         "Web API",
-        "Web application",
-        "Database portal"
+        "Web application"
     ],
     "topic": [
-        {
-            "term": "Proteins",
-            "uri": "http://edamontology.org/topic_0078"
-        },
         {
             "term": "Gene and protein families",
             "uri": "http://edamontology.org/topic_0623"
@@ -342,16 +338,20 @@
             "uri": "http://edamontology.org/topic_0736"
         },
         {
-            "term": "Sequence sites, features and motifs",
-            "uri": "http://edamontology.org/topic_0160"
+            "term": "Proteins",
+            "uri": "http://edamontology.org/topic_0078"
+        },
+        {
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
         },
         {
             "term": "Sequence composition, complexity and repeats",
             "uri": "http://edamontology.org/topic_0157"
         },
         {
-            "term": "Sequence analysis",
-            "uri": "http://edamontology.org/topic_0080"
+            "term": "Sequence sites, features and motifs",
+            "uri": "http://edamontology.org/topic_0160"
         }
     ],
     "validated": 1
