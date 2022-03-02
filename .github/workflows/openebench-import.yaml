@@ -35,8 +35,15 @@ jobs:
 
         OEB_IMPORT_DIFF="$(python openebench-import.py)"
 
+        OEB_IMPORT_FILES_ADDED=`echo $(jq -r '.add_files' <<< "$OEB_IMPORT_DIFF")`
+        OEB_IMPORT_OBJECTS_ADDED=`echo $(jq -r '.add_objects' <<< "$OEB_IMPORT_DIFF")`
+        OEB_IMPORT_OBJECTS_REMOVED=`echo $(jq -r '.remove_objects' <<< "$OEB_IMPORT_DIFF")`
+        OEB_IMPORT_DIFF=`echo $(jq -r '.diff' <<< "$OEB_IMPORT_DIFF")`
+        
+        echo "OEB_IMPORT_FILES_ADDED=$OEB_IMPORT_FILES_ADDED" >> $GITHUB_ENV
+        echo "OEB_IMPORT_OBJECTS_ADDED=$OEB_IMPORT_OBJECTS_ADDED" >> $GITHUB_ENV
+        echo "OEB_IMPORT_OBJECTS_REMOVED=$OEB_IMPORT_OBJECTS_REMOVED" >> $GITHUB_ENV
         echo "OEB_IMPORT_DIFF=$OEB_IMPORT_DIFF" >> $GITHUB_ENV
-        echo "IS_PR_CREATED=$IS_PR_CREATED" >> $GITHUB_ENV
 
     - name: commit new data and push to PR
       env:
@@ -44,4 +51,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd ${{ github.workspace }}/content/data
-        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED "$OEB_IMPORT_DIFF" openebench-import
+        ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED openebench-import
