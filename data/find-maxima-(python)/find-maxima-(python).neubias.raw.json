@@ -2,14 +2,14 @@
     "body": [
         {
             "format": "basic_html",
-            "processed": "<p>Maxima finding algorithm recreated from implementation in Fiji(ImageJ)</p>\n\n<p>This is a re-implementation of the java plugin written by Michael Schmid and Wayne Rasband for ImageJ. The original java code source can be found in:\u00a0<a href=\"https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html\">https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html</a>\u00a0</p>\n\n<p>This implementation remains faithful to the original implementation but is not 100% optimised. The java version is faster but this could be alleviated by compiling c code for parts of the code. This script is simply to provide the functionality of the ImageJ find maxima algorithm to individuals writing pure python script.</p>",
+            "processed": "<p>Maxima finding algorithm implemented in Python recreated from implementation in Fiji(ImageJ)</p>\n\n<p>This is a re-implementation of the java plugin written by Michael Schmid and Wayne Rasband for ImageJ. The original java code source can be found in:\u00a0<a href=\"https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html\">https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html</a>\u00a0</p>\n\n<p>This implementation remains faithful to the original implementation but is not 100% optimised. The java version is faster but this could be alleviated by compiling c code for parts of the code. This script is simply to provide the functionality of the ImageJ find maxima algorithm to individuals writing pure python script.</p>\n\n<p>The algorithm works as follows:</p>\n\n<p>The first stage in the maxima finding algorithm is to find the local maxima. This involves processing the image\u00a0with a\u00a03x3 neighbourhood maximum filter. Once filtered this image is compared back to the original, where the pixels are the same value represents the locations of the local maxima.\u00a0Typically there are far too many local maxima to be meaningful so the goal is then to merge and prune this maxima using some kind of measure of quality. In the case of algorithm a single parameter is used, the noise tolerance (Prominence). If a maxima is close to another then the maxima will be merged or removed based on the below criteria.</p>\n\n<p>Starting with the brightest maxima and working down the intensities:</p>\n\n<ul><li>Expand out (\u2018flood fill\u2019) from each maxima location. Neighbouring pixels within a noise tolerance (notl) of the maxima are scanned until the region within tolerance is exhausted.\n\t<ul><li>If the pixels are equal to the maxima, mark this as equal.</li>\n\t\t<li>If a greater maxima is met, ignore the active maxima.</li>\n\t\t<li>If the pixels are less than maxima, but greater than maxima minus the noise tolerance, mark as listed.</li>\n\t\t<li>Mark all \u2018listed\u2019 pixels 'processed' if they are included within a valid peak region, otherwise reset them.</li>\n\t\t<li>From the regions containing a peak, calculate the best pixel to be considered as maxima based on minimum distance calculation with all those maxima considered equal.<br />\n\t\t\u00a0</li>\n\t</ul></li>\n</ul><p>For a video detailing how this algorithm works please see:</p>\n\n<p><a href=\"https://youtu.be/f9vXOMKOlaY\">https://youtu.be/f9vXOMKOlaY</a></p>\n\n<p>Or for examples of it being used in practise, please see:</p>\n\n<p><a href=\"https://youtu.be/9wvPsEzRWzI\">https://youtu.be/9wvPsEzRWzI</a></p>\n\n<p>\u00a0</p>",
             "summary": "",
-            "value": "<p>Maxima finding algorithm recreated from implementation in Fiji(ImageJ)</p>\r\n\r\n<p>This is a re-implementation of the java plugin written by Michael Schmid and Wayne Rasband for ImageJ. The original java code source can be found in:&nbsp;<a href=\"https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html\">https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html</a>&nbsp;</p>\r\n\r\n<p>This implementation remains faithful to the original implementation but is not 100% optimised. The java version is faster but this could be alleviated by compiling c code for parts of the code. This script is simply to provide the functionality of the ImageJ find maxima algorithm to individuals writing pure python script.</p>\r\n"
+            "value": "<p>Maxima finding algorithm implemented in Python recreated from implementation in Fiji(ImageJ)</p>\r\n\r\n<p>This is a re-implementation of the java plugin written by Michael Schmid and Wayne Rasband for ImageJ. The original java code source can be found in:&nbsp;<a href=\"https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html\">https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html</a>&nbsp;</p>\r\n\r\n<p>This implementation remains faithful to the original implementation but is not 100% optimised. The java version is faster but this could be alleviated by compiling c code for parts of the code. This script is simply to provide the functionality of the ImageJ find maxima algorithm to individuals writing pure python script.</p>\r\n\r\n<p>The algorithm works as follows:</p>\r\n\r\n<p>The first stage in the maxima finding algorithm is to find the local maxima. This involves processing the image&nbsp;with a&nbsp;3x3 neighbourhood maximum filter. Once filtered this image is compared back to the original, where the pixels are the same value represents the locations of the local maxima.&nbsp;Typically there are far too many local maxima to be meaningful so the goal is then to merge and prune this maxima using some kind of measure of quality. In the case of algorithm a single parameter is used, the noise tolerance (Prominence). If a maxima is close to another then the maxima will be merged or removed based on the below criteria.</p>\r\n\r\n<p>Starting with the brightest maxima and working down the intensities:</p>\r\n\r\n<ul>\r\n\t<li>Expand out (\u2018flood fill\u2019) from each maxima location. Neighbouring pixels within a noise tolerance (notl) of the maxima are scanned until the region within tolerance is exhausted.\r\n\t<ul>\r\n\t\t<li>If the pixels are equal to the maxima, mark this as equal.</li>\r\n\t\t<li>If a greater maxima is met, ignore the active maxima.</li>\r\n\t\t<li>If the pixels are less than maxima, but greater than maxima minus the noise tolerance, mark as listed.</li>\r\n\t\t<li>Mark all \u2018listed\u2019 pixels 'processed' if they are included within a valid peak region, otherwise reset them.</li>\r\n\t\t<li>From the regions containing a peak, calculate the best pixel to be considered as maxima based on minimum distance calculation with all those maxima considered equal.<br />\r\n\t\t&nbsp;</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>For a video detailing how this algorithm works please see:</p>\r\n\r\n<p><a href=\"https://youtu.be/f9vXOMKOlaY\">https://youtu.be/f9vXOMKOlaY</a></p>\r\n\r\n<p>Or for examples of it being used in practise, please see:</p>\r\n\r\n<p><a href=\"https://youtu.be/9wvPsEzRWzI\">https://youtu.be/9wvPsEzRWzI</a></p>\r\n\r\n<p>&nbsp;</p>\r\n"
         }
     ],
     "changed": [
         {
-            "value": 1551356811
+            "value": 1622016303
         }
     ],
     "created": [
@@ -64,7 +64,7 @@
         {
             "options": [],
             "title": "Link to README text.",
-            "uri": "https://github.com/dwaithe/generalMacros/tree/master/maximaFinding"
+            "uri": "https://github.com/dwaithe/MaximaFinder"
         }
     ],
     "field_has_doi": [],
@@ -114,8 +114,8 @@
     "field_has_location": [
         {
             "options": [],
-            "title": "link to ipython github.",
-            "uri": "https://github.com/dwaithe/generalMacros/blob/master/maximaFinding/find%20Maxima.ipynb"
+            "title": "link to jupyter notebook in  Github.",
+            "uri": "https://github.com/dwaithe/MaximaFinder"
         }
     ],
     "field_has_programming_language": [
@@ -137,7 +137,7 @@
             "target_type": "file",
             "target_uuid": "b20a6f34-cd18-4675-bcd9-d16cac0ea170",
             "title": "",
-            "url": "http://test.biii.eu/sites/default/files/2018-10/Screenshot%202018-10-17%20at%2018.45.32.png",
+            "url": "http://biii.eu/sites/default/files/2018-10/Screenshot%202018-10-17%20at%2018.45.32.png",
             "width": 1448
         }
     ],
@@ -145,10 +145,10 @@
     "field_is_covered_by_training_mat": [],
     "field_is_dependent_of": [
         {
-            "target_id": 1312,
+            "target_id": 1286,
             "target_type": "node",
-            "target_uuid": "ab781ca3-2495-4c2e-9a01-3942f1eccaa3",
-            "url": "/python"
+            "target_uuid": "9739b7ce-e717-40b3-8502-ae77681e120d",
+            "url": "/scipy"
         },
         {
             "target_id": 1287,
@@ -157,10 +157,10 @@
             "url": "/pil"
         },
         {
-            "target_id": 1286,
+            "target_id": 1312,
             "target_type": "node",
-            "target_uuid": "9739b7ce-e717-40b3-8502-ae77681e120d",
-            "url": "/scipy"
+            "target_uuid": "ab781ca3-2495-4c2e-9a01-3942f1eccaa3",
+            "url": "/python"
         },
         {
             "target_id": 1368,
@@ -244,12 +244,12 @@
     ],
     "revision_log": [
         {
-            "value": "change the type from workflow to component. "
+            "value": "Updated the <em class=\"placeholder\">Description</em> field through in-place editing."
         }
     ],
     "revision_timestamp": [
         {
-            "value": 1551356811
+            "value": 1594032597
         }
     ],
     "revision_translation_affected": [
@@ -259,10 +259,10 @@
     ],
     "revision_uid": [
         {
-            "target_id": 94,
+            "target_id": 3118,
             "target_type": "user",
-            "target_uuid": "aa749c9e-5b9a-4fdf-83ce-6b94538fe57c",
-            "url": "/user/94"
+            "target_uuid": "57948909-261b-4805-8926-1fdc3f47e2d1",
+            "url": "/user/3118"
         }
     ],
     "status": [
@@ -302,7 +302,7 @@
     ],
     "vid": [
         {
-            "value": 2462
+            "value": 3864
         }
     ]
 }
