@@ -69,3 +69,16 @@ SELECT  ?license (COUNT(?license) as ?c) WHERE {
 ORDER BY DESC(?c)
 ```
 [Run this query](https://130.226.25.41/sparql?default-graph-uri=&query=SELECT++%3Flicense+%28COUNT%28%3Flicense%29+as+%3Fc%29+WHERE+%7B%0D%0A%3Fx+rdf%3Atype+%3Chttp%3A%2F%2Fschema.org%2FSoftwareApplication%3E+%3B%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Fname%3E+%3Fname+%3B+%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Flicense%3E+%3Flicense+.%0D%0A%7D+GROUP+BY+%3Flicense%0D%0AORDER+BY+DESC%28%3Fc%29&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
+
+#### Query 6: Top-3 most represented EDAM operations (kind of data processing) 
+```
+SELECT  ?operation (COUNT(?operation) as ?count) ?label WHERE {
+?x rdf:type <http://schema.org/SoftwareApplication> ;
+   <http://schema.org/name> ?name ; 
+   <http://schema.org/featureList> ?operation .
+   ?operation rdfs:label ?label . 
+} GROUP BY ?operation ?label
+ORDER BY DESC(?count)
+LIMIT 3
+```
+[Run this query](https://130.226.25.41/sparql?default-graph-uri=&query=SELECT++%3Foperation+%28COUNT%28%3Foperation%29+as+%3Fcount%29+%3Flabel+WHERE+%7B%0D%0A%3Fx+rdf%3Atype+%3Chttp%3A%2F%2Fschema.org%2FSoftwareApplication%3E+%3B%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2Fname%3E+%3Fname+%3B+%0D%0A+++%3Chttp%3A%2F%2Fschema.org%2FfeatureList%3E+%3Foperation+.%0D%0A+++%3Foperation+rdfs%3Alabel+%3Flabel+.+%0D%0A%7D+GROUP+BY+%3Foperation+%3Flabel%0D%0AORDER+BY+DESC%28%3Fcount%29%0D%0ALIMIT+3&format=text%2Fhtml&timeout=0&signal_void=on)
