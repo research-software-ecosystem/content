@@ -1,0 +1,498 @@
+{
+  "id": "https://openebench.bsc.es/monitor/metrics/metrics.json",
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "title": "OpenEBench Tools Monitoring Quality Metrics Schema",
+  "description": "array of metrics sets that represents same tool variationsc (versions, types, etc.)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+        "@id": {
+           "type": "string",
+           "format": "uri"
+        },
+        "project": {
+           "$ref": "#/definitions/Project"
+        },
+        "distribution": {
+           "$ref": "#/definitions/Distribution"
+        },
+        "support": {
+           "$ref": "#/definitions/Support"
+        }
+    }
+  },
+  "definitions": {
+      "Identity" : {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "boolean"
+          },
+          "logo": {
+            "type": "boolean"
+          },
+          "recognizability": {
+            "type": "boolean"
+          },
+          "uniqueness": {
+            "type": "boolean"
+          },
+          "trademark": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Summary" : {
+        "type": "object",
+        "properties": {
+          "brief": {
+            "description": "a short description is provided",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "high-level description of the tool is available",
+            "type": "boolean"
+          },
+          "concept": {
+            "description": "high-level description of how the tool/software works is available",
+            "type": "boolean"
+          },
+          "rationale": {
+            "description": "design rationale is available",
+            "type": "boolean"
+          },
+          "architecture": {
+            "description": "architectural overview, with diagrams, is available",
+            "type": "boolean"
+          },
+          "usecases": {
+            "description": "descriptions of intended use cases are available",
+            "type": "boolean"
+          },
+          "case_studies": {
+            "type": "boolean"
+          }
+        }
+      },
+      "HomepageAccess" : {
+        "type": "object",
+        "properties": {
+          "average_access_time": {
+            "description": "average access time in ms.",
+            "type": "integer"
+          },
+          "uptime_days": {
+            "description": "last month uptime days",
+            "type": "integer"
+          },
+          "downtime_days": {
+            "description": "last month downtime days",
+            "type": "integer"
+          }
+        }
+      },
+      "Website" : {
+        "type": "object",
+        "properties": {
+          "operational": {
+            "description": "http response code from the last check",
+            "type": "integer"
+          },
+          "last_check": {
+            "description": "last time the homepage has been checked",
+            "type": "string",
+            "format": "date-time"
+          },
+          "copyright": {
+            "description": "web site states copyright",
+            "type": "boolean"
+          },
+          "acknowledgement": {
+            "description": "web site states who developed/develops the software, funders etc.",
+            "type": "boolean"
+          },
+          "license": {
+            "description": "web site states a license",
+            "type": "boolean"
+          },
+          "resources": {
+            "type": "boolean"
+          },
+          "robots": {
+            "description": "search engines allowed to track the website",
+            "type": "boolean"
+          },
+          "https": {
+            "description": "web site access is secured (https)",
+            "type": "boolean"
+          },
+          "ssl": {
+            "description": "ssl works",
+            "type": "boolean"
+          },
+          "access_time": {
+            "description": "homepage load time in ms.",
+            "type": "integer"
+          },
+          "redirects": {
+            "description": "site redirects (if any) with http codes",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "redirect url",
+                  "type": "string",
+                  "format": "uri"
+                },
+                "status": {
+                  "description": "http status code",
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "bioschemas": {
+            "description": "whether the homepage is annotated with 'bioschemas'",
+            "type": "boolean"
+          },
+          "last_month_access": {
+            "description": "last month uptime statistics",
+            "$ref": "#/definitions/HomepageAccess"
+          },
+          "half_year_stat" : {
+            "description": "half year statistics of http response codes",
+            "type": "object",
+            "properties": {
+              "status": {
+                "description": "http response code",
+                "type": "integer"
+              },
+              "days": {
+                "description": "number of days website returned the code",
+                "type": "integer"
+              },
+              "serie": {
+                "description": "serie of uninterrupted status codes in days",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Build": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "description": "whether instructions for building the software are provided",
+            "type": "boolean"
+          },
+          "dependencies": {
+            "description": "whether the list of all third-party dependencies for proper project build is provided",
+            "type": "boolean"
+          },
+          "automated": {
+            "description": "whether the automated build system used",
+            "type": "boolean"
+          },
+          "unix": {
+            "description": "operative system used to build the software (unix or not)",
+            "type": "boolean"
+          }
+        }
+      },
+      "Deployment": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "description": "whether instructions for installing the software are provided",
+            "type": "boolean"
+          },
+          "dependencies": {
+            "description": "whether the list of all third-party runtime dependencies is provided",
+            "type": "boolean"
+          }
+        }            
+      },
+      "License": {
+        "type": "object",
+        "properties": {
+          "open_source": {
+            "description": "project has an open source license",
+            "type": "boolean"
+          },
+          "osi": {
+            "description": "software has an Open Software Initiative (OSI)-recognised license",
+            "type": "boolean"
+          }
+        }
+      },
+      "Documentation": {
+        "type": "object",
+        "properties": {
+          "api": {
+            "description": "software has an API documentation (e.g. JavaDoc, Doxygen)",
+            "type": "boolean"
+          },
+          "api_versioned": {
+            "description": "whether the API documentation is held under version control system",
+            "type": "boolean"
+          },
+          "howto": {
+            "type": "boolean"
+          },
+          "tutorial": {
+            "type": "boolean"
+          },
+          "citation": {
+            "type": "boolean"
+          },
+          "help": {
+            "type": "boolean"
+          },
+          "faq": {
+            "type": "boolean"
+          },
+          "general": {
+            "type": "boolean"
+          },
+          "build": {
+            "type": "boolean"
+          },
+          "manual": {
+            "type": "boolean"
+          },
+          "terms_of_use": {
+            "type": "boolean"
+          },
+          "training_material": {
+            "type": "boolean"
+          }
+        }
+      },
+      "NReferences": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "description": "the year of the referenced articles",
+            "type": "string"
+          },
+          "count": {
+            "description": "number of referenced articles published in this year",
+            "type": "integer"
+          }
+        }
+      },
+      "NCitations": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "description": "the year citations counted",
+            "type": "string"
+          },
+          "count": {
+            "description": "number of citations for the year",
+            "type": "integer"
+          }
+        }
+      },
+      "PublicationEntry": {
+        "type": "object",
+        "properties": {
+          "doi": {
+            "type": "string"
+          },
+          "pmid": {
+            "type": "string"
+          },
+          "pmcid": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "ref_count": {
+            "type": "integer"
+          },
+          "cit_count": {
+            "type": "integer"
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/NReferences"
+            }
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/NCitations"
+            }
+          }
+        }
+      },
+      "Publication": {
+        "type": "object",
+        "properties": {
+          "entries" : {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PublicationEntry"
+              }
+           }  
+        }
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "identity": {
+            "$ref": "#/definitions/Identity"
+          },
+          "summary": {
+            "$ref": "#/definitions/Summary"
+          },
+          "website": {
+            "$ref": "#/definitions/Website"
+          },
+          "build": {
+            "$ref": "#/definitions/Build"
+          },
+          "deployment": {
+            "$ref": "#/definitions/Deployment"
+          },
+          "license": {
+            "$ref": "#/definitions/License"
+          },
+          "documentation": {
+            "$ref": "#/definitions/Documentation"
+          },
+          "publications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Publication"
+            }
+          },
+          "readme": {
+            "type": "boolean"
+          },
+          "governance": {
+            "description": "whether the project has defined a governance model",
+            "type": "boolean"
+          }
+        }
+      },
+      "Binaries": {
+        "type": "object",
+        "properties": {
+          "freeness": {
+            "type": "boolean"
+          },
+          "registration": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Repository": {
+        "type": "object",
+        "properties": {
+          "anonymous": {
+            "description": "anonymous access to the repository",
+            "type": "boolean"
+          },
+          "online": {
+            "description": "whether the repository is browsable (online)",
+            "type": "boolean"
+          }
+
+        }
+      },
+      "Sourcecode": {
+        "type": "object",
+        "properties": {
+          "interpreted": {
+            "description": "whether the sourcecode is interpreted (Python, Perl, Ruby) or compiled (C, C++, Fortran)",
+            "type": "boolean"
+          },
+          "copyright": {
+            "description": "each source code file has a copyright statement",
+            "type": "boolean"
+          },
+          "license": {
+            "type": "boolean"
+          },
+          "license_headers": {
+            "description": "each source code file has a license header",
+            "type": "boolean"
+          },
+          "readme": {
+            "type": "boolean"
+          },
+          "free": {
+            "description": "source distributions are freely available",
+            "type": "boolean"
+          },
+          "public": {
+            "description": "sourcecode is available without the need for any registration",
+            "type": "boolean"
+          },
+          "repository": {
+            "$ref": "#/definitions/Repository"
+          }
+        }
+      },
+      "Distribution": {
+        "type": "object",
+        "properties": {
+          "readme": {
+            "type": "boolean"
+          },
+          "binaries": {
+            "$ref": "#/definitions/Binaries"
+          },
+          "sourcecode": {
+            "$ref": "#/definitions/Sourcecode"
+          },
+          "vre": {
+            "type": "boolean"
+          },
+          "packages": {
+            "type": "boolean"
+          },
+          "source_packages" :{
+            "description": "whenever the code can be dounloaded as a package (i.e. zip achive)",
+            "type": "boolean"
+          }
+        }
+      },
+      "IssueTracking": {
+        "type": "object",
+        "properties": {
+          "public_tracker": {
+            "type": "boolean"
+          },
+          "resolve_time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Support": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "boolean"
+          },
+          "issue_tracking": {
+            "$ref": "#/definitions/IssueTracking"
+          }
+        }
+      }
+  }
+}
