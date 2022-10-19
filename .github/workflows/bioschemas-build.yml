@@ -32,7 +32,7 @@ jobs:
           cd ${{ github.workspace }}/content-ecosystem-utils/scripts/bioschemas
           python biotools_to_bioschemas.py
 
-      - name: commit new data
+      - name: commit all changes
         env:
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
           cd ${{ github.workspace }}/content/data
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
-          git add .
+          git add -A
           if git commit -m "build bioschemas on $(date)"; then
               git push origin HEAD
               echo "successfully created new data"
