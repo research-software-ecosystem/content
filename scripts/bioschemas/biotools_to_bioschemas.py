@@ -73,7 +73,7 @@ def rdfize(entry):
                 ## Retrieving FUNDERS
                 if "typeEntity" in credit.keys() and credit["typeEntity"]:
                     if "Funding agency" in credit["typeEntity"]:
-                        sType = "schema:Organization"
+                        sType = "sc:Organization"
                         if "orcidid" in credit.keys() and credit["orcidid"] != None:
                             if not "funder" in tool.keys():
                                 tool["funder"] = {
@@ -97,9 +97,9 @@ def rdfize(entry):
                         # print(credit['name'])
                         if "typeEntity" in credit.keys() and credit["typeEntity"]:
                             if "Person" in credit["typeEntity"]:
-                                sType = "schema:Person"
+                                sType = "sc:Person"
                             else:
-                                sType = "schema:Organization"
+                                sType = "sc:Organization"
                             if "orcidid" in credit.keys() and credit["orcidid"] != None:
                                 if not "author" in tool.keys():
                                     tool["author"] = {
@@ -127,9 +127,9 @@ def rdfize(entry):
                         # print(credit['name'])
                         if "typeEntity" in credit.keys() and credit["typeEntity"]:
                             if "Person" in credit["typeEntity"]:
-                                sType = "schema:Person"
+                                sType = "sc:Person"
                             else:
-                                sType = "schema:Organization"
+                                sType = "sc:Organization"
 
                             if "orcidid" in credit.keys() and credit["orcidid"] != None:
                                 if not "provider" in tool.keys():
@@ -157,9 +157,9 @@ def rdfize(entry):
 
                         if "typeEntity" in credit.keys() and credit["typeEntity"]:
                             if "Person" in credit["typeEntity"]:
-                                sType = "schema:Person"
+                                sType = "sc:Person"
                             else:
-                                sType = "schema:Organization"
+                                sType = "sc:Organization"
 
                             if "orcidid" in credit.keys() and credit["orcidid"] != None:
                                 if not "contributor" in tool.keys():
@@ -186,9 +186,9 @@ def rdfize(entry):
                     if "Primary contact" in credit["typeRole"]:
                         if "typeEntity" in credit.keys() and credit["typeEntity"]:
                             if "Person" in credit["typeEntity"]:
-                                sType = "schema:Person"
+                                sType = "sc:Person"
                             else:
-                                sType = "schema:Organization"
+                                sType = "sc:Organization"
 
                             if "orcidid" in credit.keys() and credit["orcidid"] != None:
                                 if not "primaryContact" in tool.keys():
