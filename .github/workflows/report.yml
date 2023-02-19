@@ -8,16 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: content-ecosystem-utils
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
         python-version: "3.7"
     - name: Install dependencies
       run:
-        pip install -r scripts/stats/requirements.txt
+        pip install -r ${{ github.workspace }}/content-ecosystem-utils/scripts/stats/requirements.txt
     - name: generate report
       run: |
-        cd scripts/stats
+        cd ${{ github.workspace }}/content-ecosystem-utils/scripts/stats
         python ecosystem.py ../../report
     - name: commit new report
       env:
