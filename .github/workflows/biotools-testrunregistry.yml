@@ -59,18 +59,18 @@ jobs:
     - name: test that bio.tools registry database is up and running through the HTTP API...
       run: |
         wget --spider http://localhost:8000/api/t || :
-    - name: copy database init SQL
-      working-directory: biotoolsRegistry
-      run: |
-        docker cp initial_db.sql biotools-mysql:/root
+#     - name: copy database init SQL
+#       working-directory: biotoolsRegistry
+#       run: |
+#         docker cp initial_db.sql biotools-mysql:/root
     #- name: copy "modified" database init script
     #  working-directory: content
     #  run: |
     #      docker cp scripts/runbiotools/load_initial_db.sh biotools-mysql:/root
-    - name: load DB with initial data
-      working-directory: biotoolsRegistry
-      run: |
-        docker exec biotools-mysql mysql -h mysql -P 3306 --protocol tcp --user=elixir --password=123 elixir < initial_db.sql
+#     - name: load DB with initial data
+#       working-directory: biotoolsRegistry
+#       run: |
+#         docker exec biotools-mysql mysql -h mysql -P 3306 --protocol tcp --user=elixir --password=123 elixir < initial_db.sql
     - name: create and run django migrations
       run: |
         docker exec biotools-backend python manage.py makemigrations
