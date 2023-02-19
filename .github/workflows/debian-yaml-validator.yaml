@@ -20,10 +20,11 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: "3.7"
+    - name: install dependencies
+      working-directory: content-ecosystem-utils/scripts/files-validator
+      run: |
+        pip3 install -r requirements.txt
     - name: validate debian yaml files
       run: |
-        sudo apt install python3-pip
-        sudo apt install python3-setuptools
-        sudo pip3 install virtualenv
         cd ${{ github.workspace }}/content-ecosystem-utils/scripts/files-validator
         python3 debian_validator.py ${{ github.workspace }}/content/data/
