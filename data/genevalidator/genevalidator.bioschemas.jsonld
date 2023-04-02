@@ -1,17 +1,48 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
+    {
+      "@id": "http://orcid.org/0000-0002-3140-2809",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btw015",
+      "@type": "sc:CreativeWork"
+    },
     {
       "@id": "https://bio.tools/genevalidator",
       "@type": "sc:SoftwareApplication",
@@ -19,34 +50,34 @@
         "@id": "http://orcid.org/0000-0002-3140-2809"
       },
       "bsc:input": {
-        "@id": "_:Nb32edcb370464e33b994bfed7c56318a"
+        "@id": "_:N84311a5a354c4e0caf81be94007a545c"
       },
       "bsc:output": {
-        "@id": "_:N72fd27fb7b414de5b1c6a75f35524bb7"
+        "@id": "_:N7f5777c4baa84799b4402916cc965ae3"
       },
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": [
         "Web application",
         "Command-line tool"
       ],
       "sc:applicationSubCategory": [
         {
+          "@id": "edam:topic_0219"
+        },
+        {
           "@id": "edam:topic_0080"
         },
         {
           "@id": "edam:topic_0654"
-        },
-        {
-          "@id": "edam:topic_0219"
         }
       ],
       "sc:author": "WurmLab",
       "sc:citation": [
+        "pubmed:26787666",
+        "pmcid:PMC4866521",
         {
           "@id": "https://doi.org/10.1093/bioinformatics/btw015"
-        },
-        "pmcid:PMC4866521",
-        "pubmed:26787666"
+        }
       ],
       "sc:description": "Tool to identify problematic gene predictions based on comparisons between gene predictions and similar sequences in public databases (e.g., SwissProt).",
       "sc:featureList": {
@@ -56,26 +87,26 @@
       "sc:license": "AGPL-3.0",
       "sc:name": "GeneValidator",
       "sc:operatingSystem": [
-        "Windows",
+        "Linux",
         "Mac",
-        "Linux"
+        "Windows"
       ],
       "sc:softwareHelp": [
-        {
-          "@id": "https://github.com/wurmlab/genevalidator/blob/master/README.md"
-        },
         {
           "@id": "https://wurmlab.github.io/tools/genevalidator/"
         },
         {
           "@id": "https://github.com/wurmlab/genevalidator/blob/master/README.md#introduction"
+        },
+        {
+          "@id": "https://github.com/wurmlab/genevalidator/blob/master/README.md"
         }
       ],
       "sc:softwareVersion": "1.6.12",
       "sc:url": "https://wurmlab.github.io/tools/genevalidator/"
     },
     {
-      "@id": "_:Nb32edcb370464e33b994bfed7c56318a",
+      "@id": "_:N84311a5a354c4e0caf81be94007a545c",
       "@type": "bsct:FormalParameter",
       "sc:additionalType": {
         "@id": "edam:data_2044"
@@ -86,7 +117,7 @@
       "sc:name": "Sequence"
     },
     {
-      "@id": "_:N72fd27fb7b414de5b1c6a75f35524bb7",
+      "@id": "_:N7f5777c4baa84799b4402916cc965ae3",
       "@type": "bsct:FormalParameter",
       "sc:additionalType": {
         "@id": "edam:data_2085"
@@ -95,14 +126,6 @@
         "@id": "edam:format_2331"
       },
       "sc:name": "Structure report"
-    },
-    {
-      "@id": "https://doi.org/10.1093/bioinformatics/btw015",
-      "@type": "sc:CreativeWork"
-    },
-    {
-      "@id": "http://orcid.org/0000-0002-3140-2809",
-      "@type": "schema:Person"
     }
   ]
 }
