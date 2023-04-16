@@ -1,0 +1,127 @@
+{
+    "additionDate": "2023-04-09T09:21:44.579279Z",
+    "biotoolsCURIE": "biotools:lollipop",
+    "biotoolsID": "lollipop",
+    "collectionID": [
+        "COVID-19"
+    ],
+    "cost": "Free of charge",
+    "description": "Tool for Deconvolution for Wastewater Genomics - The LolliPop package comprises a python module and an optional set of command-line tools using it to build curves of viral variants over time  within environmental sample. It runs a  kernel-based deconvolution and leverages the time series nature of the samples.",
+    "documentation": [
+        {
+            "type": [
+                "Quick start guide"
+            ],
+            "url": "https://github.com/cbg-ethz/LolliPop#readme"
+        }
+    ],
+    "download": [
+        {
+            "type": "Binaries",
+            "url": "https://bioconda.github.io/recipes/lollipop/README.html"
+        },
+        {
+            "type": "Source code",
+            "url": "https://github.com/cbg-ethz/LolliPop/releases"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "elixirNode": [
+        "Switzerland"
+    ],
+    "elixirPlatform": [
+        "Tools"
+    ],
+    "function": [
+        {
+            "cmd": "lollipop generate-mutlist --output mutlist.tsv --out-pangovars variants_pangolin.yaml --genes Genes_NC_045512.2.GFF3 -- vocs/delta_mutations_full.yaml vocs/omicron_ba1_mutations_full.yaml vocs/omicron_ba2_mutations_full.yaml\naln2basecnt --first 1 --basecnt sample1.basecnt.tsv.gz --coverage sample1.coverage.tsv.gz --name \"sample1\" sample1.bam\nlollipop getmutations from-basecount --based 1 --output sample1.mut.tsv --location \"main plant\" --date \"2023-02-27\" -m mutlist.tsv -- sample1.basecnt.tsv.gz\nxsv cat rows --output tallymut.tsv sample*.mut.tsv\nlollipop deconvolution --output=deconvoluted.tsv --out-json=deconvoluted_upload.json --var=variants_conf.yaml --vd=variants_dates.yaml --dec=deconv_linear.yaml --seed=42 -- tallymut.tsv",
+            "input": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence alignment",
+                        "uri": "http://edamontology.org/data_1383"
+                    }
+                }
+            ],
+            "note": "Use 'aln2basecnt' from smallgenome utilities for (simple, unfiltered) SNV calling into basecount.tsv\nUse 'xsv' to concatenate all samples into the input of the deconvolution",
+            "operation": [
+                {
+                    "term": "Allele frequency distribution analysis",
+                    "uri": "http://edamontology.org/operation_0554"
+                },
+                {
+                    "term": "Variant classification",
+                    "uri": "http://edamontology.org/operation_3225"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Phylogenetic data",
+                        "uri": "http://edamontology.org/data_2523"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/cbg-ethz/LolliPop",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2023-04-09T09:21:44.582259Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "note": "GitHub repository",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/cbg-ethz/LolliPop"
+        },
+        {
+            "note": "Issue tracker",
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/cbg-ethz/LolliPop/issues"
+        },
+        {
+            "type": [
+                "Mailing list"
+            ],
+            "url": "https://cbg-ethz.github.io/V-pipe/contact/"
+        }
+    ],
+    "maturity": "Emerging",
+    "name": "LolliPop",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "DrYak",
+    "publication": [
+        {
+            "doi": "10.1101/2022.11.02.22281825",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "v-pipe",
+            "type": "usedBy"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Genetic variation",
+            "uri": "http://edamontology.org/topic_0199"
+        }
+    ]
+}
