@@ -1,0 +1,49 @@
+name: biii.eu bioschemas dump
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 0'
+
+jobs:
+
+  build-biii-raw-bioschemas:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: content
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run:
+        pip install -r ${{ github.workspace }}/content-ecosystem-utils/scripts/neubias/requirements.txt
+    - name: dump Neubias biii.eu bioschemas into a single RDF file
+      run: |
+        cd ${{ github.workspace }}/content-ecosystem-utils/scripts/neubias
+        python biseEU_LD_export.py -td http://biii.eu -dump
+        mv ${{ github.workspace }}/content-ecosystem-utils/scripts/neubias/bioschemas-biii-dump.ttl ${{ github.workspace }}/content/datasets/
+
+    - name: commit new data and push to PR
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd ${{ github.workspace }}/content/datasets
+        git config --local user.email "tpe-bot@github.com"
+        git config --local user.name "Tools Platform Ecosystem bot"
+        git add .
+        if git commit -m "build bioschemas RDF dump on $(date)"; then
+            git push origin HEAD
+            echo "successfully created new data"
+        else
+            echo "nothing new to add, exiting"            
+        fi

@@ -1,25 +1,40 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "https://doi.org/10.1093/bioinformatics/bts327",
-      "@type": "sc:CreativeWork"
-    },
-    {
-      "@id": "https://doi.org/10.1093/nar/gku982",
-      "@type": "sc:CreativeWork"
-    },
     {
       "@id": "https://bio.tools/mobidb",
       "@type": "sc:SoftwareApplication",
@@ -28,20 +43,20 @@
       },
       "bsc:input": [
         {
-          "@id": "_:N4ed38f89b09943dba85e8ae9568e07e4"
+          "@id": "_:N33abba185ddf4ebd9dbba6320f355606"
         },
         {
-          "@id": "_:Nec9abec3a9ac4184aa88ce875943b344"
+          "@id": "_:Nb8399229d4044600880ed23e777636a1"
         }
       ],
       "bsc:output": {
-        "@id": "_:N41f1fdbfa27f4280869385f89bfd86b3"
+        "@id": "_:N82e15abd5ebd4b6eb465d15c3e777f5c"
       },
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": [
-        "Web application",
         "Database portal",
-        "Web API"
+        "Web API",
+        "Web application"
       ],
       "sc:applicationSubCategory": [
         {
@@ -52,31 +67,31 @@
         }
       ],
       "sc:citation": [
-        {
-          "@id": "https://doi.org/10.1093/nar/gkx1071"
-        },
-        "pmcid:PMC7779018",
         "pubmed:33237329",
-        "pubmed:25361972",
         {
           "@id": "https://doi.org/10.1093/nar/gkaa1058"
         },
+        "pubmed:29136219",
+        "pubmed:22661649",
         {
           "@id": "https://doi.org/10.1093/nar/gku982"
         },
-        "pubmed:22661649",
-        "pubmed:29136219",
+        "pubmed:25361972",
+        "pmcid:PMC7779018",
         {
           "@id": "https://doi.org/10.1093/bioinformatics/bts327"
+        },
+        {
+          "@id": "https://doi.org/10.1093/nar/gkx1071"
         }
       ],
       "sc:description": "Database of protein disorder and mobility annotations.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_2406"
+          "@id": "edam:operation_0224"
         },
         {
-          "@id": "edam:operation_0224"
+          "@id": "edam:operation_2406"
         }
       ],
       "sc:isAccessibleForFree": true,
@@ -84,8 +99,8 @@
       "sc:name": "MobiDB",
       "sc:operatingSystem": [
         "Windows",
-        "Mac",
-        "Linux"
+        "Linux",
+        "Mac"
       ],
       "sc:provider": "University of Padua, Department of Biomedical Sciences, BioComputing UP lab",
       "sc:softwareHelp": [
@@ -96,36 +111,58 @@
           "@id": "https://mobidb.org/help/apidoc"
         }
       ],
-      "sc:softwareVersion": "4",
+      "sc:softwareVersion": "5",
       "sc:url": "https://mobidb.org/"
     },
     {
-      "@id": "_:N4ed38f89b09943dba85e8ae9568e07e4",
+      "@id": "_:N33abba185ddf4ebd9dbba6320f355606",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_3021",
-      "sc:name": "UniProt accession",
-      "sc:sameAs": "http://edamontology.org/data_3021"
+      "sc:additionalType": {
+        "@id": "edam:data_3021"
+      },
+      "sc:name": "UniProt accession"
     },
     {
-      "@id": "_:Nec9abec3a9ac4184aa88ce875943b344",
+      "@id": "_:Nb8399229d4044600880ed23e777636a1",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_2007",
-      "sc:name": "UniProt keyword",
-      "sc:sameAs": "http://edamontology.org/data_2007"
+      "sc:additionalType": {
+        "@id": "edam:data_2007"
+      },
+      "sc:encodingFormat": {
+        "@id": "edam:format_1964"
+      },
+      "sc:name": "UniProt keyword"
     },
     {
-      "@id": "_:N41f1fdbfa27f4280869385f89bfd86b3",
+      "@id": "_:N82e15abd5ebd4b6eb465d15c3e777f5c",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_1255",
-      "sc:name": "Sequence features",
-      "sc:sameAs": "http://edamontology.org/data_1255"
+      "sc:additionalType": {
+        "@id": "edam:data_1255"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_2331"
+        },
+        {
+          "@id": "edam:format_3464"
+        }
+      ],
+      "sc:name": "Sequence features"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkx1071",
+      "@type": "sc:CreativeWork"
     },
     {
       "@id": "https://orcid.org/0000-0003-4525-7793",
       "@type": "schema:Person"
     },
     {
-      "@id": "https://doi.org/10.1093/nar/gkx1071",
+      "@id": "https://doi.org/10.1093/nar/gku982",
+      "@type": "sc:CreativeWork"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/bts327",
       "@type": "sc:CreativeWork"
     },
     {
