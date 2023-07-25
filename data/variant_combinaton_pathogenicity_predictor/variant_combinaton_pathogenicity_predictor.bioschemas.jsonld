@@ -1,25 +1,40 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "https://doi.org/10.1073/pnas.1815601116",
-      "@type": "sc:CreativeWork"
-    },
-    {
-      "@id": "https://orcid.org/0000-0003-3645-1455",
-      "@type": "schema:Person"
-    },
     {
       "@id": "https://bio.tools/Variant_Combinaton_Pathogenicity_Predictor",
       "@type": "sc:SoftwareApplication",
@@ -27,11 +42,14 @@
         "@id": "https://orcid.org/0000-0003-3645-1455"
       },
       "bsc:input": {
-        "@id": "_:N8c6e7736d0ed4689a02613cfe87b55c4"
+        "@id": "_:Nfd79a42eb4b1452eb914394d75bdfd48"
       },
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Web application",
       "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0199"
+        },
         {
           "@id": "edam:topic_3063"
         },
@@ -40,9 +58,6 @@
         },
         {
           "@id": "edam:topic_0634"
-        },
-        {
-          "@id": "edam:topic_0199"
         },
         {
           "@id": "edam:topic_0622"
@@ -55,25 +70,25 @@
       "sc:description": "VarCoPP predicts the potential pathogenicity of variant combinations in gene pairs. It is based on digenic data present in DIDA and it was trained against variants from the 1000 Genomes Project. VarCoPP consists of an ensemble of 500 individual Random Forest predictors. \nA variant combination can be either predicted as disease-causing (i.e. candidate or probably pathogenic) or neutral (i.e. probably neutral). \n\nVarCoPP can be applied for Single Nucleotide Variants (SNVs) and small insertions/deletions from a single individual using the genome version GRCh37/hg19. It is highly recommended to perform beforehand an initial variant filtering procedure and generally restrict the analysis to variants from up to 150 genes. \n\nFor more information about the method and its usage, you can consult our About page. VarCoPP was developed in the Interuniversity Institute of Bioinformatics in Brussels, under the collaboration of Université libre de Bruxelles and Vrije Universiteit Brussel.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_3461"
-        },
-        {
-          "@id": "edam:operation_2423"
-        },
-        {
           "@id": "edam:operation_3225"
         },
         {
+          "@id": "edam:operation_3461"
+        },
+        {
           "@id": "edam:operation_3197"
+        },
+        {
+          "@id": "edam:operation_2423"
         }
       ],
       "sc:isAccessibleForFree": true,
       "sc:license": "CC-BY-NC-ND-4.0",
       "sc:name": "Variant Combination Pathogenicity Predictor (VarCoPP)",
       "sc:operatingSystem": [
+        "Linux",
         "Windows",
-        "Mac",
-        "Linux"
+        "Mac"
       ],
       "sc:provider": "Interuniversity Institute of Bioinformatics in Brussels",
       "sc:softwareHelp": {
@@ -83,11 +98,20 @@
       "sc:url": "http://varcopp.ibsquare.be"
     },
     {
-      "@id": "_:N8c6e7736d0ed4689a02613cfe87b55c4",
+      "@id": "_:Nfd79a42eb4b1452eb914394d75bdfd48",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_2887",
-      "sc:name": "Nucleic acid sequence record",
-      "sc:sameAs": "http://edamontology.org/data_2887"
+      "sc:additionalType": {
+        "@id": "edam:data_2887"
+      },
+      "sc:name": "Nucleic acid sequence record"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-3645-1455",
+      "@type": "schema:Person"
+    },
+    {
+      "@id": "https://doi.org/10.1073/pnas.1815601116",
+      "@type": "sc:CreativeWork"
     }
   ]
 }

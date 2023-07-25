@@ -1,14 +1,37 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
@@ -17,18 +40,22 @@
       "@type": "schema:Person"
     },
     {
+      "@id": "https://doi.org/10.1371/journal.pone.0153160",
+      "@type": "sc:CreativeWork"
+    },
+    {
       "@id": "https://bio.tools/swath2stats",
       "@type": "sc:SoftwareApplication",
       "biotools:primaryContact": {
         "@id": "http://orcid.org/0000-0001-9105-6381"
       },
       "bsc:input": {
-        "@id": "_:Nd3e2cf66f33a4df9b955313d9a21f588"
+        "@id": "_:N7daa76d1219b4b3e9981729dea2d0af6"
       },
       "bsc:output": {
-        "@id": "_:N949f1cc5fc844a939dc1316d2956222d"
+        "@id": "_:Na6ef4fe242c348baa9531203736974b6"
       },
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": [
         "Command-line tool",
         "Library"
@@ -37,11 +64,11 @@
         "@id": "edam:topic_3520"
       },
       "sc:citation": [
-        "pubmed:27054327",
         {
           "@id": "https://doi.org/10.1371/journal.pone.0153160"
         },
-        "pmcid:PMC4824525"
+        "pmcid:PMC4824525",
+        "pubmed:27054327"
       ],
       "sc:description": "This package is intended to transform SWATH data from the OpenSWATH software into a format readable by other statistics packages while performing filtering, annotation and FDR estimation.",
       "sc:featureList": {
@@ -50,9 +77,9 @@
       "sc:license": "GPL-3.0",
       "sc:name": "SWATH2stats",
       "sc:operatingSystem": [
-        "Mac",
         "Linux",
-        "Windows"
+        "Windows",
+        "Mac"
       ],
       "sc:softwareHelp": {
         "@id": "http://bioconductor.org/packages/release/bioc/html/SWATH2stats.html"
@@ -61,22 +88,31 @@
       "sc:url": "http://bioconductor.org/packages/release/bioc/html/SWATH2stats.html"
     },
     {
-      "@id": "_:Nd3e2cf66f33a4df9b955313d9a21f588",
+      "@id": "_:Na6ef4fe242c348baa9531203736974b6",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_3110",
-      "sc:name": "Raw microarray data",
-      "sc:sameAs": "http://edamontology.org/data_3110"
+      "sc:additionalType": {
+        "@id": "edam:data_3111"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_3033"
+        },
+        {
+          "@id": "edam:format_3475"
+        }
+      ],
+      "sc:name": "Processed microarray data"
     },
     {
-      "@id": "_:N949f1cc5fc844a939dc1316d2956222d",
+      "@id": "_:N7daa76d1219b4b3e9981729dea2d0af6",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_3111",
-      "sc:name": "Processed microarray data",
-      "sc:sameAs": "http://edamontology.org/data_3111"
-    },
-    {
-      "@id": "https://doi.org/10.1371/journal.pone.0153160",
-      "@type": "sc:CreativeWork"
+      "sc:additionalType": {
+        "@id": "edam:data_3110"
+      },
+      "sc:encodingFormat": {
+        "@id": "edam:format_2330"
+      },
+      "sc:name": "Raw microarray data"
     }
   ]
 }
