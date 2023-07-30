@@ -4,28 +4,166 @@
     "biotoolsCURIE": "biotools:carveme",
     "biotoolsID": "carveme",
     "cost": "Free of charge",
-    "description": "CarveMe is a python-based tool for genome-scale metabolic model reconstruction.",
+    "credit": [
+        {
+            "email": "support@elixir.no",
+            "name": "The Norwegian Bioinformatics Platform (ELIXIR-Norway) Helpdesk",
+            "typeEntity": "Division",
+            "typeRole": [
+                "Support"
+            ],
+            "url": "https://elixir.no/helpdesk"
+        },
+        {
+            "gridid": "grid.4709.a",
+            "name": "European Molecular Biology Laboratory (EMBL)",
+            "note": "Developed at EMBL 2017-2019",
+            "rorid": "03mstc592",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ],
+            "url": "http://embl.org/"
+        },
+        {
+            "gridid": "grid.5947.f",
+            "name": "NTNU",
+            "note": "Developed at NTNU 2020-present",
+            "rorid": "05xg72x27",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ],
+            "url": "http://www.ntnu.edu"
+        },
+        {
+            "name": "Daniel Machado",
+            "orcidid": "https://orcid.org/0000-0002-2063-5383",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Documentor",
+                "Maintainer",
+                "Primary contact"
+            ]
+        },
+        {
+            "name": "Horizon 2020",
+            "typeEntity": "Funding agency",
+            "url": "https://doi.org/10.3030/686070"
+        }
+    ],
+    "description": "CarveMe is a python-based automated tool for top-down genome-scale metabolic model reconstruction.",
     "documentation": [
         {
             "type": [
+                "General",
+                "Installation instructions",
                 "Quick start guide"
             ],
-            "url": "https://carveme.readthedocs.io/"
+            "url": "https://carveme.readthedocs.io/en/latest/index.html"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "eca008"
+        ],
+        "type": "group"
     },
     "elixirNode": [
         "Norway"
+    ],
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "NCBI genome accession",
+                        "uri": "http://edamontology.org/data_2787"
+                    },
+                    "format": [
+                        {
+                            "term": "plain text format (unformatted)",
+                            "uri": "http://edamontology.org/format_1964"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Homology-based search is default using diamond. Orthology-based search can be performed with eggNOG-mapper (may require the kegg-bigg branch).",
+            "operation": [
+                {
+                    "term": "Homology-based gene prediction",
+                    "uri": "http://edamontology.org/operation_3663"
+                },
+                {
+                    "term": "Metabolic network modelling",
+                    "uri": "http://edamontology.org/operation_3660"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Pathway or network report",
+                        "uri": "http://edamontology.org/data_2984"
+                    },
+                    "format": [
+                        {
+                            "term": "SBML",
+                            "uri": "http://edamontology.org/format_2585"
+                        },
+                        {
+                            "term": "XML",
+                            "uri": "http://edamontology.org/format_2332"
+                        }
+                    ]
+                }
+            ]
+        }
     ],
     "homepage": "https://github.com/cdanielmachado/carveme",
     "language": [
         "Python"
     ],
-    "lastUpdate": "2021-02-18T12:17:24Z",
+    "lastUpdate": "2023-07-28T13:30:03.915657Z",
     "license": "Apache-2.0",
     "link": [
+        {
+            "note": "Helpdesk for ELIXIR Norway services",
+            "type": [
+                "Helpdesk"
+            ],
+            "url": "https://elixir.no/helpdesk"
+        },
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/cdanielmachado/carveme/issues"
+        },
         {
             "type": [
                 "Repository"
@@ -35,12 +173,17 @@
     ],
     "maturity": "Mature",
     "name": "CarveMe",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
     "owner": "dmachado",
     "publication": [
         {
             "doi": "10.1093/nar/gky537",
             "metadata": {
-                "abstract": "© The Author(s) 2018.Genome-scale metabolic models are instrumental in uncovering operating principles of cellular metabolism, for model-guided re-engineering, and unraveling cross-feeding in microbial communities. Yet, the application of genome-scale models, especially to microbial communities, is lagging behind the availability of sequenced genomes. This is largely due to the time-consuming steps of manual curation required to obtain good quality models. Here, we present an automated tool, CarveMe, for reconstruction of species and community level metabolic models. We introduce the concept of a universal model, which is manually curated and simulation ready. Starting with this universal model and annotated genome sequences, CarveMe uses a topdown approach to build single-species and community models in a fast and scalable manner. We show that CarveMe models perform closely to manually curated models in reproducing experimental phenotypes (substrate utilization and gene essentiality). Additionally, we build a collection of 74 models for human gut bacteria and test their ability to reproduce growth on a set of experimentally defined media. Finally, we create a database of 5587 bacterial models and demonstrate its potential for fast generation of microbial community models. Overall, CarveMe provides an open-source and user-friendly tool towards broadening the use of metabolic modeling in studying microbial species and communities.",
+                "abstract": "Genome-scale metabolic models are instrumental in uncovering operating principles of cellular metabolism, for model-guided re-engineering, and unraveling cross-feeding in microbial communities. Yet, the application of genome-scale models, especially to microbial communities, is lagging behind the availability of sequenced genomes. This is largely due to the time-consuming steps of manual curation required to obtain good quality models. Here, we present an automated tool, CarveMe, for reconstruction of species and community level metabolic models. We introduce the concept of a universal model, which is manually curated and simulation ready. Starting with this universal model and annotated genome sequences, CarveMe uses a topdown approach to build single-species and community models in a fast and scalable manner. We show that CarveMe models perform closely to manually curated models in reproducing experimental phenotypes (substrate utilization and gene essentiality). Additionally, we build a collection of 74 models for human gut bacteria and test their ability to reproduce growth on a set of experimentally defined media. Finally, we create a database of 5587 bacterial models and demonstrate its potential for fast generation of microbial community models. Overall, CarveMe provides an open-source and user-friendly tool towards broadening the use of metabolic modeling in studying microbial species and communities.",
                 "authors": [
                     {
                         "name": "Andrejev S."
@@ -55,11 +198,26 @@
                         "name": "Tramontano M."
                     }
                 ],
-                "citationCount": 105,
+                "citationCount": 232,
                 "date": "2018-09-06T00:00:00Z",
                 "journal": "Nucleic Acids Research",
                 "title": "Fast automated reconstruction of genome-scale metabolic models for microbial species and communities"
-            }
+            },
+            "pmcid": "PMC6125623",
+            "pmid": "30192979",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "bigg_models",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "diamond",
+            "type": "uses"
         }
     ],
     "toolType": [
@@ -80,6 +238,7 @@
         }
     ],
     "version": [
-        "1.4.1"
+        "1.4.1",
+        "1.5.2"
     ]
 }
