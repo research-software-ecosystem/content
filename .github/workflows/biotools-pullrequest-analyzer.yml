@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: content
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
     - name: analyze biotools difference
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
@@ -17,11 +23,12 @@ jobs:
         sudo apt install python3-pip
         sudo apt install python3-setuptools git
         pip3 install gitpython
+        cd ${{ github.workspace }}/content
         git remote add biotools-content${{ github.run_id }} https://github.com/bio-tools/content.git
         git fetch biotools-content${{ github.run_id }}
         git fetch origin pull/${{ github.event.number }}/head:${{ github.run_id }}
         git checkout ${{ github.run_id }}
-        python3 scripts/biotools-pullrequest-bot/biotools_pullrequest_analyzer.py $GITHUB_WORKSPACE biotools-content${{ github.run_id }}/master ${{ github.run_id }} > output.txt
+        python3 ${{ github.workspace }}/content-ecosystem-utils/scripts/biotools-pullrequest-bot/biotools_pullrequest_analyzer.py ${{ github.workspace }}/content biotools-content${{ github.run_id }}/master ${{ github.run_id }} > output.txt
         cat output.txt
     - name: Upload output
       uses: actions/upload-artifact@v1
@@ -40,9 +47,9 @@ jobs:
           name: output
       - name: copy output to workflow dir
         run: |
-         cat /home/runner/work/content/content/output/output.txt
+         cat ${{ github.workspace }}/content-ecosystem-utils/content/output/output.txt
          mkdir -p .github/workflows/
-         cp /home/runner/work/content/content/output/output.txt .github/workflows/output.txt 
+         cp ${{ github.workspace }}/content-ecosystem-utils/content/output/output.txt .github/workflows/output.txt 
       - name: comment under pr  
         uses: harupy/comment-on-pr@master
         env:

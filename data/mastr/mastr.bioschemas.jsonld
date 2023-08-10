@@ -1,40 +1,59 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "https://doi.org/10.1093/bioinformatics/btm525",
-      "@type": "sc:CreativeWork"
-    },
     {
       "@id": "https://bio.tools/mastr",
       "@type": "sc:SoftwareApplication",
       "biotools:primaryContact": "Stinus Lindgreen",
       "bsc:input": {
-        "@id": "_:N6c76198b8eaf47a2be638ee125d1f24b"
+        "@id": "_:N43301b6d84ef48358fc975a47905f359"
       },
       "bsc:output": [
         {
-          "@id": "_:Nd0b08c31204347fab25d5b5550efff68"
+          "@id": "_:N0feb4991380943d7b8eec0dc04db53c2"
         },
         {
-          "@id": "_:Nc4c4b7ac59a64009bbc4ecbbc449668e"
+          "@id": "_:N7627af5a79174b6fab75b59869434731"
         }
       ],
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": [
-        "Command-line tool",
-        "Web application"
+        "Web application",
+        "Command-line tool"
       ],
       "sc:applicationSubCategory": {
         "@id": "edam:topic_0080"
@@ -45,17 +64,17 @@
       "sc:description": "Multiple alignment and secondary structure prediction on a set of structural RNA sequences.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_0278"
+          "@id": "edam:operation_0492"
         },
         {
-          "@id": "edam:operation_0492"
+          "@id": "edam:operation_0278"
         }
       ],
       "sc:name": "MASTR",
       "sc:operatingSystem": [
         "Linux",
-        "Windows",
-        "Mac"
+        "Mac",
+        "Windows"
       ],
       "sc:provider": "binf.ku.dk",
       "sc:softwareHelp": {
@@ -65,25 +84,35 @@
       "sc:url": "http://servers.binf.ku.dk/mastr/"
     },
     {
-      "@id": "_:N6c76198b8eaf47a2be638ee125d1f24b",
+      "@id": "_:N0feb4991380943d7b8eec0dc04db53c2",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_3495",
-      "sc:name": "RNA sequence",
-      "sc:sameAs": "http://edamontology.org/data_3495"
+      "sc:additionalType": {
+        "@id": "edam:data_0880"
+      },
+      "sc:name": "RNA secondary structure"
     },
     {
-      "@id": "_:Nd0b08c31204347fab25d5b5550efff68",
+      "@id": "_:N7627af5a79174b6fab75b59869434731",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_0880",
-      "sc:name": "RNA secondary structure",
-      "sc:sameAs": "http://edamontology.org/data_0880"
+      "sc:additionalType": {
+        "@id": "edam:data_1916"
+      },
+      "sc:name": "Alignment"
     },
     {
-      "@id": "_:Nc4c4b7ac59a64009bbc4ecbbc449668e",
+      "@id": "_:N43301b6d84ef48358fc975a47905f359",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_1916",
-      "sc:name": "Alignment",
-      "sc:sameAs": "http://edamontology.org/data_1916"
+      "sc:additionalType": {
+        "@id": "edam:data_3495"
+      },
+      "sc:encodingFormat": {
+        "@id": "edam:format_1929"
+      },
+      "sc:name": "RNA sequence"
+    },
+    {
+      "@id": "https://doi.org/10.1093/bioinformatics/btm525",
+      "@type": "sc:CreativeWork"
     }
   ]
 }

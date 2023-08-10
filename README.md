@@ -1,14 +1,15 @@
-# Bioinformatics Tools Ecosystem contents repository
-This is a (currently experimental) repository for the centralisation of bioinformatics tool descriptions. The purpose of this repository is to act as a central place for the exchange of tool metadata for multiple projects, including bio.tools, Biocontainers, Bioconda, OpenEBench, Debian Med, BIII.eu, etc.
+# Research Software Ecosystem (RSEc) contents repository
+This repository contains the metadata aggregated for the Research Software Ecosystem (RSEc). The purpose of this repository is to act as a central place for the exchange of these metadata for multiple projects, including bio.tools, Biocontainers, Bioconda, OpenEBench, Debian Med, BIII.eu, etc.
 
-# jobs status
+# Contents outline
+All software metadata are in the data folder of this repository, each software package/tool being in a distinct folder, which contains multiple files. Each of these files contains the metadata regarding the software coming from a specific resource, or reformatted in a specific format.
 
-![import bio.tools contents](https://github.com/bio-tools/content/workflows/import%20bio.tools%20contents/badge.svg)
-
-![import Neubias biii.eu content](https://github.com/bio-tools/content/workflows/import%20Neubias%20biii.eu%20content/badge.svg)
-
-![import debian-med contents](https://github.com/bio-tools/content/workflows/import%20debian-med%20contents/badge.svg)
-
-![launch a test bio.tools server and perform import tests](https://github.com/bio-tools/content/workflows/launch%20a%20test%20bio.tools%20server%20and%20perform%20import%20tests/badge.svg)
-
-**IMPORTANT : this repo is a sandbox: do not use it for production purposes!  It's entire contents may change, be reorganised or even deleted without notice.**
+```
+# Example for the contents of the 'fastqc' folder:
+fastqc.biotools.json # metadata for the fastqc bio.tools entry (pulled by RSEc bot)
+bioconda_fastqc.yaml # metadata for the bioconda fastqc package (pulled by RSEc bot)
+biocontainers.yaml # metadata for the fastqc biocontainers image (pushed by biocontainers bot)
+fastqc.oeb.metrics.json  # metadata for the OpenEBench fastqc package metrics (pulled by RSEc bot)
+fastqc.debian.yaml  # metadata for the Debian Med fastqc package (pulled by RSEc bot)
+fastqc.bioschemas.jsonld  # metadata for the fastqc package, converted from bio.tools metadata (pulled by RSEc bot)
+```
