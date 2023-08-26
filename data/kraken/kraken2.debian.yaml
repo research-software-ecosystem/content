@@ -2,7 +2,7 @@ package: kraken2
 distribution: debian
 release: sid
 component: main
-version: 2.1.1
+version: 2.1.2
 source: kraken2
 homepage: https://www.ccb.jhu.edu/software/kraken2/
 license: unknown
@@ -19,8 +19,9 @@ bib:
 - key: doi
   value: 10.1186/gb-2014-15-3-r46
 popcon:
-- insts: 13
-  olde: 13
+- insts: 23
+  olde: 22
+  recent: 1
 descr:
 - package: kraken2
   description: taxonomic classification system using exact k-mer matches
@@ -49,6 +50,37 @@ descr:
     \ against the database.\n  5. 16S Databases: Kraken 2 also provides support for\
     \ databases not\n     based on NCBI's taxonomy. Currently, these include the 16S\n\
     \     databases: Greengenes, SILVA, and RDP.\n"
+  release: sid
+  description_md5: 70f2ff9ad084534e552c6c2118d2a186
+  license: unknown
+  blend: debian-med
+- package: kraken2
+  description: Taksonomisk klassifikationssystem der bruger præcise k-mer-træffere
+  long_description: " Kraken 2 er den nyeste version af Kraken, et taksonomisk\n klassifikationssystem,\
+    \ der bruger præcise k-mer-træffere til at opnå\n høj præcision og hurtige klassifikationshastigheder.\
+    \ Dette program\n matcher hver k-mer i en forespørgelsessekvens til den laveste\
+    \ fælles\n forfader (LCA) for alle genomer indeholdende den angivne k-mer. K-mer-\n\
+    \ opgaverne informerer klassifikationsalgoritmen. (se: Kraken 1's\n internetside\
+    \ for detaljer).\n .\n Kraken 2 tilbyder signifikante forbedringer til Kraken\
+    \ 1, med hurtigere\n databasebyggetider, mindre databasestørrelser og hurtigere\n\
+    \ klassifikationshastigheder. Disse forbedringer blev opnået af de\n følgende\
+    \ opdateringer til klassifikationsprogrammet Kraken:\n .\n  1. Storage of Minimizers:\
+    \ Instead of storing/querying entire k-mers,\n     Kraken 2 stores minimizers\
+    \ (l-mers) of each k-mer. The length of\n     each l-mer must be ≤ the k-mer length.\
+    \ Each k-mer is treated by\n     Kraken 2 as if its LCA is the same as its minimizer's\
+    \ LCA.\n  2. Introduction of Spaced Seeds: Kraken 2 also uses spaced seeds to\n\
+    \     store and query minimizers to improve classification accuracy.\n  3. Database\
+    \ Structure: While Kraken 1 saved an indexed and sorted list\n     of k-mer/LCA\
+    \ pairs, Kraken 2 uses a compact hash table. This hash\n     table is a probabilistic\
+    \ data structure that allows for faster\n     queries and lower memory requirements.\
+    \ However, this data structure\n     does have a <1% chance of returning the incorrect\
+    \ LCA or returning\n     an LCA for a non-inserted minimizer. Users can compensate\
+    \ for this\n     possibility by using Kraken's confidence scoring thresholds.\n\
+    \  4. Protein Databases: Kraken 2 allows for databases built from amino\n    \
+    \ acid sequences. When queried, Kraken 2 performs a six-frame\n     translated\
+    \ search of the query sequences against the database.\n  5. 16S Databases: Kraken\
+    \ 2 also provides support for databases not\n     based on NCBI's taxonomy. Currently,\
+    \ these include the 16S\n     databases: Greengenes, SILVA, and RDP.\n"
   release: sid
   description_md5: 70f2ff9ad084534e552c6c2118d2a186
   license: unknown

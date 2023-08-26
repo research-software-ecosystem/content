@@ -3,6 +3,11 @@
     "additionDate": "2021-12-10T09:00:37.817079Z",
     "biotoolsCURIE": "biotools:metapipe",
     "biotoolsID": "metapipe",
+    "collectionID": [
+        "ELIXIR-NO",
+        "ELIXIR-Norway",
+        "UiT"
+    ],
     "cost": "Free of charge",
     "credit": [
         {
@@ -11,16 +16,7 @@
             "orcidid": "https://orcid.org/0000-0002-6014-1249",
             "typeEntity": "Person",
             "typeRole": [
-                "Support"
-            ]
-        },
-        {
-            "email": "espen.m.robertsen@uit.no",
-            "name": "Espen Robertsen",
-            "orcidid": "https://orcid.org/0000-0003-2752-6224",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Contributor"
+                "Primary contact"
             ]
         },
         {
@@ -43,12 +39,39 @@
             ]
         },
         {
-            "email": "nils-peder.willassen@uit.no",
+            "email": "support@elixir.no",
+            "name": "The Norwegian Bioinformatics Platform (ELIXIR-Norway) Helpdesk",
+            "typeEntity": "Division",
+            "typeRole": [
+                "Support"
+            ],
+            "url": "https://elixir.no/helpdesk"
+        },
+        {
+            "fundrefid": "10.13039/100007465",
+            "gridid": "grid.10919.30",
+            "name": "UiT The Arctic University of Norway",
+            "rorid": "00wge5k78",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ],
+            "url": "https://en.uit.no/"
+        },
+        {
+            "name": "Espen Robertsen",
+            "orcidid": "https://orcid.org/0000-0003-2752-6224",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
             "name": "Nils-Peder Willassen",
             "orcidid": "https://orcid.org/0000-0002-4397-8020",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact"
+                "Contributor"
             ]
         },
         {
@@ -59,7 +82,7 @@
             ]
         }
     ],
-    "description": "Nextflow workflow for annotation and analysis of marine metagenomics samples, which provides insight into phylogenetic diversity, metabolic and functional potential of environmental communities. META-pipe consists of four parts; processing of reads (merging, filtering, 16S rRNA extraction and assembly), taxonomic classification (using reads against RefSeq and MAR databases, and predicted 16S rRNA), binning and functional assignment of predicted coding sequences (CDSs).\nMETA-pipe is also available as a web service (see link section).",
+    "description": "META-pipe is a Nextflow workflow designed for comprehensive annotation and in-depth exploration of marine metagenomics samples. META-pipe offers insight into the phylogenetic diversity, metabolic capabilities, and functional potential of these environmental communities.\n\nThe workflow is divided into four modules: read processing (merging, filtering, 16S rRNA extraction, assembly), taxonomic classification using reads against RefSeq/MAR databases and predicted 16S rRNA, binning, and functional assignment of predicted coding sequences (CDSs).",
     "documentation": [
         {
             "type": [
@@ -70,6 +93,7 @@
     ],
     "editPermission": {
         "authors": [
+            "eca008",
             "erikh"
         ],
         "type": "group"
@@ -83,13 +107,106 @@
     "elixirPlatform": [
         "Tools"
     ],
-    "homepage": "https://gitlab.com/uit-sfb/metapipe",
-    "language": [
-        "Other"
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Genome assembly",
+                    "uri": "http://edamontology.org/operation_0525"
+                },
+                {
+                    "term": "Nucleic acid sequence analysis",
+                    "uri": "http://edamontology.org/operation_2478"
+                },
+                {
+                    "term": "Read binning",
+                    "uri": "http://edamontology.org/operation_3798"
+                },
+                {
+                    "term": "Taxonomic classification",
+                    "uri": "http://edamontology.org/operation_3460"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF",
+                            "uri": "http://edamontology.org/format_2305"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Plot",
+                        "uri": "http://edamontology.org/data_2884"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "raw",
+                            "uri": "http://edamontology.org/format_1957"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        }
     ],
-    "lastUpdate": "2021-12-10T09:38:15.652641Z",
+    "homepage": "https://mmp2.sfb.uit.no/metapipe/",
+    "language": [
+        "Groovy"
+    ],
+    "lastUpdate": "2023-07-31T13:27:44.996954Z",
     "license": "MIT",
     "link": [
+        {
+            "note": "META-pipe's web interface",
+            "type": [
+                "Service"
+            ],
+            "url": "https://mmp2.sfb.uit.no/metapipe-service/"
+        },
         {
             "type": [
                 "Helpdesk"
@@ -107,27 +224,58 @@
                 "Repository"
             ],
             "url": "https://gitlab.com/uit-sfb/metapipe"
-        },
-        {
-            "type": [
-                "Service"
-            ],
-            "url": "https://mmp2.sfb.uit.no/metapipe/"
         }
     ],
-    "maturity": "Emerging",
+    "maturity": "Mature",
     "name": "META-pipe",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
     "owner": "mma227",
+    "publication": [
+        {
+            "doi": "10.48550/arXiv.1604.04103",
+            "type": [
+                "Primary"
+            ],
+            "version": "1.0.0"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "meta-pipe",
+            "type": "isNewVersionOf"
+        }
+    ],
     "toolType": [
+        "Web application",
         "Workflow"
     ],
     "topic": [
         {
+            "term": "Functional genomics",
+            "uri": "http://edamontology.org/topic_0085"
+        },
+        {
+            "term": "Marine biology",
+            "uri": "http://edamontology.org/topic_3387"
+        },
+        {
             "term": "Metagenomics",
             "uri": "http://edamontology.org/topic_3174"
+        },
+        {
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
+        },
+        {
+            "term": "Taxonomy",
+            "uri": "http://edamontology.org/topic_0637"
         }
     ],
     "version": [
-        "1.1.0"
+        "1.1.0-1.3.2"
     ]
 }
