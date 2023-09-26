@@ -1,14 +1,37 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
@@ -19,20 +42,23 @@
     {
       "@id": "https://bio.tools/prosite_scan_ebi",
       "@type": "sc:SoftwareApplication",
-      "biotools:primaryContact": "Web Production",
+      "biotools:primaryContact": "Job Dispatcher",
       "bsc:input": {
-        "@id": "_:N51fc16dec9e147498e0659de716bd45a"
+        "@id": "_:N25f7fb763af64749a81795b4dddc4008"
       },
       "bsc:output": [
         {
-          "@id": "_:N0e44c6f1cea743668d8f8d73b5055411"
+          "@id": "_:N8860fcbfcc2349ec9e7fd07ff8bcf5eb"
         },
         {
-          "@id": "_:N89d763c79ab3479997fbbee869ad2f8f"
+          "@id": "_:Ne5ec188772bb4ef19903dab57d5fc862"
         }
       ],
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
-      "sc:additionalType": "Web application",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Web application",
+        "Web service"
+      ],
       "sc:applicationSubCategory": [
         {
           "@id": "edam:topic_0080"
@@ -41,60 +67,69 @@
           "@id": "edam:topic_0160"
         }
       ],
-      "sc:author": [
-        "Web Production",
-        "PROSITE"
+      "sc:author": "PROSITE",
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1093/nar/gkac240"
+        },
+        {
+          "@id": "https://doi.org/10.1093/nar/gkl124"
+        }
       ],
-      "sc:citation": {
-        "@id": "https://doi.org/10.1093/nar/gkl124"
-      },
       "sc:description": "Scan a protein against PROSITE or HAMAP patterns and profiles.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_3092"
+          "@id": "edam:operation_0239"
         },
         {
-          "@id": "edam:operation_0239"
+          "@id": "edam:operation_3092"
         }
       ],
       "sc:name": "PROSITE Scan (EBI)",
       "sc:operatingSystem": [
-        "Mac",
         "Windows",
+        "Mac",
         "Linux"
       ],
       "sc:provider": "EMBL-EBI",
       "sc:softwareHelp": [
         {
-          "@id": "http://www.ebi.ac.uk/about/terms-of-use"
+          "@id": "http://www.ebi.ac.uk/Tools/pfa/ps_scan/"
         },
         {
-          "@id": "http://www.ebi.ac.uk/Tools/pfa/ps_scan/"
+          "@id": "http://www.ebi.ac.uk/about/terms-of-use"
         }
       ],
-      "sc:softwareVersion": "1",
+      "sc:softwareVersion": "Retired",
       "sc:url": "http://www.ebi.ac.uk/Tools/pfa/ps_scan/"
     },
     {
-      "@id": "_:N0e44c6f1cea743668d8f8d73b5055411",
+      "@id": "_:N25f7fb763af64749a81795b4dddc4008",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_1277",
-      "sc:name": "Protein features",
-      "sc:sameAs": "http://edamontology.org/data_1277"
+      "sc:additionalType": {
+        "@id": "edam:data_2976"
+      },
+      "sc:name": "Protein sequence"
     },
     {
-      "@id": "_:N89d763c79ab3479997fbbee869ad2f8f",
+      "@id": "_:N8860fcbfcc2349ec9e7fd07ff8bcf5eb",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_0858",
-      "sc:name": "Sequence signature matches",
-      "sc:sameAs": "http://edamontology.org/data_0858"
+      "sc:additionalType": {
+        "@id": "edam:data_1277"
+      },
+      "sc:name": "Protein features"
     },
     {
-      "@id": "_:N51fc16dec9e147498e0659de716bd45a",
+      "@id": "_:Ne5ec188772bb4ef19903dab57d5fc862",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_2976",
-      "sc:name": "Protein sequence",
-      "sc:sameAs": "http://edamontology.org/data_2976"
+      "sc:additionalType": {
+        "@id": "edam:data_0858"
+      },
+      "sc:name": "Sequence signature matches"
+    },
+    {
+      "@id": "https://doi.org/10.1093/nar/gkac240",
+      "@type": "sc:CreativeWork"
     }
   ]
 }
