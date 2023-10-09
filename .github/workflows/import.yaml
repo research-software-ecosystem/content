@@ -9,7 +9,7 @@ jobs:
   biotools:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: 'master'
     - uses: research-software-ecosystem/utils/biotools-import@main
@@ -21,10 +21,22 @@ jobs:
     needs: [biotools]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: 'master'
     - uses: research-software-ecosystem/utils/openebench-import@main
+      with:
+        repo-user: ${{ secrets.GITHUB_USER }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  bioconda:
+    if: ${{ always() }}
+    needs: [openebench]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: 'master'
+    - uses: research-software-ecosystem/utils/bioconda-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
