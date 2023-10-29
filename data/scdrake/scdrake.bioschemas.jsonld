@@ -1,14 +1,37 @@
 {
   "@context": {
     "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
     "bsc": "http://bioschemas.org/",
     "bsct": "http://bioschemas.org/types/",
-    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
     "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
@@ -16,9 +39,9 @@
       "@id": "https://bio.tools/scdrake",
       "@type": "sc:SoftwareApplication",
       "bsc:input": {
-        "@id": "_:Ne52d14702ae848e9ada3b48cf22c735b"
+        "@id": "_:N20804ff560d94ad48dffb29c1fc446fb"
       },
-      "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
       "sc:additionalType": "Workflow",
       "sc:applicationSubCategory": [
         {
@@ -34,16 +57,10 @@
       "sc:description": "Scdrake is a highly scalable, reproducible and configurable pipeline for scRNA-seq data prepared by a popular 10x Genomics droplet-based technology. Scdrake is implemented as a package for the R language and is built on top of the drake package, a Make-like pipeline toolkit. Scdrake currently provides common steps of scRNA-seq data analysis: quality control and filtering of cells and genes, normalization, dimensionality reduction, clustering, finding of cluster markers and differentially expressed genes between clusters, and integration of multiple datasets. All pipeline steps are accompanied by rich graphical outputs and reports in HTML format.\n\nThanks to the drake package, all intermediate results can be reused, and the pipeline can be easily extended by users to incorporate custom analyses. Also, drake analyzes which parts of the pipeline are already done or haven't changed since the last run, and which can be run in parallel, resulting in great execution speed.",
       "sc:featureList": [
         {
-          "@id": "edam:operation_0313"
-        },
-        {
-          "@id": "edam:operation_3563"
+          "@id": "edam:operation_3223"
         },
         {
           "@id": "edam:operation_3744"
-        },
-        {
-          "@id": "edam:operation_3960"
         },
         {
           "@id": "edam:operation_2940"
@@ -52,7 +69,19 @@
           "@id": "edam:operation_2943"
         },
         {
+          "@id": "edam:operation_2935"
+        },
+        {
+          "@id": "edam:operation_3960"
+        },
+        {
           "@id": "edam:operation_3935"
+        },
+        {
+          "@id": "edam:operation_3563"
+        },
+        {
+          "@id": "edam:operation_0313"
         },
         {
           "@id": "edam:operation_2938"
@@ -65,12 +94,6 @@
         },
         {
           "@id": "edam:operation_3695"
-        },
-        {
-          "@id": "edam:operation_2935"
-        },
-        {
-          "@id": "edam:operation_3223"
         }
       ],
       "sc:isAccessibleForFree": true,
@@ -78,21 +101,15 @@
       "sc:name": "scdrake",
       "sc:operatingSystem": [
         "Linux",
-        "Windows",
-        "Mac"
+        "Mac",
+        "Windows"
       ],
       "sc:softwareHelp": [
         {
-          "@id": "https://github.com/bioinfocz/scdrake/blob/main/.github/CONTRIBUTING.md"
-        },
-        {
-          "@id": "https://github.com/bioinfocz/scdrake/blob/main/NEWS.md"
+          "@id": "https://bioinfocz.github.io/scdrake/articles/scdrake.html"
         },
         {
           "@id": "https://github.com/bioinfocz/scdrake/blob/main/CODE_OF_CONDUCT.md"
-        },
-        {
-          "@id": "https://bioinfocz.github.io/scdrake"
         },
         {
           "@id": "https://github.com/bioinfocz/scdrake#citation"
@@ -101,18 +118,28 @@
           "@id": "https://bioinfocz.github.io/scdrake/reference/index.html"
         },
         {
-          "@id": "https://bioinfocz.github.io/scdrake/articles/scdrake.html"
+          "@id": "https://github.com/bioinfocz/scdrake/blob/main/NEWS.md"
+        },
+        {
+          "@id": "https://bioinfocz.github.io/scdrake"
+        },
+        {
+          "@id": "https://github.com/bioinfocz/scdrake/blob/main/.github/CONTRIBUTING.md"
         }
       ],
       "sc:softwareVersion": "1.0.1",
       "sc:url": "https://bioinfocz.github.io/scdrake"
     },
     {
-      "@id": "_:Ne52d14702ae848e9ada3b48cf22c735b",
+      "@id": "_:N20804ff560d94ad48dffb29c1fc446fb",
       "@type": "bsct:FormalParameter",
-      "sc:identifier": "http://edamontology.org/data_3917",
-      "sc:name": "Count matrix",
-      "sc:sameAs": "http://edamontology.org/data_3917"
+      "sc:additionalType": {
+        "@id": "edam:data_3917"
+      },
+      "sc:encodingFormat": {
+        "@id": "edam:format_3590"
+      },
+      "sc:name": "Count matrix"
     }
   ]
 }

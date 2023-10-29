@@ -34,34 +34,24 @@
             "typeRole": [
                 "Provider"
             ],
-            "url": "http://www.ibsquare.be"
+            "url": "https://ibsquare.be"
         }
     ],
-    "description": "VarCoPP predicts the potential pathogenicity of variant combinations in gene pairs. It is based on digenic data present in DIDA and it was trained against variants from the 1000 Genomes Project. VarCoPP consists of an ensemble of 500 individual Random Forest predictors. \nA variant combination can be either predicted as disease-causing (i.e. candidate or probably pathogenic) or neutral (i.e. probably neutral). \n\nVarCoPP can be applied for Single Nucleotide Variants (SNVs) and small insertions/deletions from a single individual using the genome version GRCh37/hg19. It is highly recommended to perform beforehand an initial variant filtering procedure and generally restrict the analysis to variants from up to 150 genes. \n\nFor more information about the method and its usage, you can consult our About page. VarCoPP was developed in the Interuniversity Institute of Bioinformatics in Brussels, under the collaboration of Université libre de Bruxelles and Vrije Universiteit Brussel.",
-    "documentation": [
-        {
-            "type": [
-                "User manual"
-            ],
-            "url": "http://varcopp.ibsquare.be/about/"
-        }
-    ],
+    "description": "VarCoPP is a machine learning method that predicts the potential pathogenicity of variant combinations in gene pairs. It is based on digenic data present in OLIDA and it was trained against variants from the 1000 Genomes Project. VarCoPP2.0 is a Balanced Random Forest predictor consisting of 400 decision trees. \nA variant combination can be either predicted as disease-causing (i.e. candidate or probably pathogenic) or neutral (i.e. probably neutral). \n\nVarCoPP can be applied for Single Nucleotide Variants (SNVs) and small insertions/deletions from a single individual. It is highly recommended to perform beforehand an initial variant filtering procedure and generally restrict the analysis to variants from up to 150 genes. \n\nVarCoPP was developed in the Interuniversity Institute of Bioinformatics in Brussels, under the collaboration of Université libre de Bruxelles and Vrije Universiteit Brussel.\n\nYou can use it through the online tool ORVAL: https://orval.ibsquare.be.",
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "emmaver"
+        ],
+        "type": "group"
     },
+    "elixirCommunity": [
+        "Rare Diseases"
+    ],
     "elixirNode": [
         "Belgium"
     ],
     "function": [
         {
-            "input": [
-                {
-                    "data": {
-                        "term": "Nucleic acid sequence record",
-                        "uri": "http://edamontology.org/data_2887"
-                    }
-                }
-            ],
             "operation": [
                 {
                     "term": "Genetic variation analysis",
@@ -74,19 +64,36 @@
                 {
                     "term": "Variant classification",
                     "uri": "http://edamontology.org/operation_3225"
-                },
-                {
-                    "term": "Virulence prediction",
-                    "uri": "http://edamontology.org/operation_3461"
                 }
             ]
         }
     ],
     "homepage": "http://varcopp.ibsquare.be",
-    "lastUpdate": "2020-08-20T08:40:40Z",
-    "license": "CC-BY-NC-ND-4.0",
-    "maturity": "Emerging",
-    "name": "Variant Combination Pathogenicity Predictor (VarCoPP)",
+    "lastUpdate": "2023-07-31T11:59:09.158293Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "note": "Web app integrating VarCoPP2.0",
+            "type": [
+                "Service"
+            ],
+            "url": "https://orval.ibsquare.be"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/oligogenic/VarCoPP2.0"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/sofiapapad90/VarCoPP/"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "Variant Combination Pathogenicity Predictor (VarCoPP) 2.0",
     "operatingSystem": [
         "Linux",
         "Mac",
@@ -97,7 +104,7 @@
         {
             "doi": "10.1073/pnas.1815601116",
             "metadata": {
-                "abstract": "© 2019 National Academy of Sciences. All rights reserved.Notwithstanding important advances in the context of single-variant pathogenicity identification, novel breakthroughs in discerning the origins of many rare diseases require methods able to identify more complex genetic models. We present here the Variant Combinations Pathogenicity Predictor (VarCoPP), a machine-learning approach that identifies pathogenic variant combinations in gene pairs (called digenic or bilocus variant combinations). We show that the results produced by this method are highly accurate and precise, an efficacy that is endorsed when validating the method on recently published independent disease-causing data. Confidence labels of 95% and 99% are identified, representing the probability of a bilocus combination being a true pathogenic result, providing geneticists with rational markers to evaluate the most relevant pathogenic combinations and limit the search space and time. Finally, the VarCoPP has been designed to act as an interpretable method that can provide explanations on why a bilocus combination is predicted as pathogenic and which biological information is important for that prediction. This work provides an important step toward the genetic understanding of rare diseases, paving the way to clinical knowledge and improved patient care.",
+                "abstract": "Notwithstanding important advances in the context of single-variant pathogenicity identification, novel breakthroughs in discerning the origins of many rare diseases require methods able to identify more complex genetic models. We present here the Variant Combinations Pathogenicity Predictor (VarCoPP), a machine-learning approach that identifies pathogenic variant combinations in gene pairs (called digenic or bilocus variant combinations). We show that the results produced by this method are highly accurate and precise, an efficacy that is endorsed when validating the method on recently published independent disease-causing data. Confidence labels of 95% and 99% are identified, representing the probability of a bilocus combination being a true pathogenic result, providing geneticists with rational markers to evaluate the most relevant pathogenic combinations and limit the search space and time. Finally, the VarCoPP has been designed to act as an interpretable method that can provide explanations on why a bilocus combination is predicted as pathogenic and which biological information is important for that prediction. This work provides an important step toward the genetic understanding of rare diseases, paving the way to clinical knowledge and improved patient care.",
                 "authors": [
                     {
                         "name": "Aerts J."
@@ -130,15 +137,62 @@
                         "name": "Versbraegen N."
                     }
                 ],
-                "citationCount": 22,
+                "citationCount": 48,
                 "date": "2019-06-11T00:00:00Z",
                 "journal": "Proceedings of the National Academy of Sciences of the United States of America",
                 "title": "Predicting disease-causing variant combinations"
-            }
+            },
+            "version": "1.0"
+        },
+        {
+            "doi": "10.1186/s12859-023-05291-3",
+            "metadata": {
+                "abstract": "Background: The prediction of potentially pathogenic variant combinations in patients remains a key task in the field of medical genetics for the understanding and detection of oligogenic/multilocus diseases. Models tailored towards such cases can help shorten the gap of missing diagnoses and can aid researchers in dealing with the high complexity of the derived data. The predictor VarCoPP (Variant Combinations Pathogenicity Predictor) that was published in 2019 and identified potentially pathogenic variant combinations in gene pairs (bilocus variant combinations), was the first important step in this direction. Despite its usefulness and applicability, several issues still remained that hindered a better performance, such as its False Positive (FP) rate, the quality of its training set and its complex architecture. Results: We present VarCoPP2.0: the successor of VarCoPP that is a simplified, faster and more accurate predictive model identifying potentially pathogenic bilocus variant combinations. Results from cross-validation and on independent data sets reveal that VarCoPP2.0 has improved in terms of both sensitivity (95% in cross-validation and 98% during testing) and specificity (5% FP rate). At the same time, its running time shows a significant 150-fold decrease due to the selection of a simpler Balanced Random Forest model. Its positive training set now consists of variant combinations that are more confidently linked with evidence of pathogenicity, based on the confidence scores present in OLIDA, the Oligogenic Diseases Database (https://olida.ibsquare.be). The improvement of its performance is also attributed to a more careful selection of up-to-date features identified via an original wrapper method. We show that the combination of different variant and gene pair features together is important for predictions, highlighting the usefulness of integrating biological information at different levels. Conclusions: Through its improved performance and faster execution time, VarCoPP2.0 enables a more accurate analysis of larger data sets linked to oligogenic diseases. Users can access the ORVAL platform (https://orval.ibsquare.be) to apply VarCoPP2.0 on their data.",
+                "authors": [
+                    {
+                        "name": "Gravel B."
+                    },
+                    {
+                        "name": "Lenaerts T."
+                    },
+                    {
+                        "name": "Nachtegael C."
+                    },
+                    {
+                        "name": "Nowe A."
+                    },
+                    {
+                        "name": "Papadimitriou S."
+                    },
+                    {
+                        "name": "Renaux A."
+                    },
+                    {
+                        "name": "Verkinderen E."
+                    },
+                    {
+                        "name": "Versbraegen N."
+                    }
+                ],
+                "date": "2023-12-01T00:00:00Z",
+                "journal": "BMC Bioinformatics",
+                "title": "Faster and more accurate pathogenic combination predictions with VarCoPP2.0"
+            },
+            "version": "2.0"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "olida",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "oligogenic_resource_for_variant_analysis",
+            "type": "includedIn"
         }
     ],
     "toolType": [
-        "Web application"
+        "Plug-in"
     ],
     "topic": [
         {
@@ -148,6 +202,10 @@
         {
             "term": "Genomics",
             "uri": "http://edamontology.org/topic_0622"
+        },
+        {
+            "term": "Genotype and phenotype",
+            "uri": "http://edamontology.org/topic_0625"
         },
         {
             "term": "Medical informatics",
@@ -163,6 +221,7 @@
         }
     ],
     "version": [
-        "1.0"
+        "1.0",
+        "2.0"
     ]
 }
