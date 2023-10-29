@@ -1,46 +1,83 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2016-02-09T13:19:44Z",
     "biotoolsCURIE": "biotools:mirgen",
     "biotoolsID": "mirgen",
     "collectionID": [
+        "ELIXIR-NO",
+        "ELIXIR-Norway",
         "UiO tools"
     ],
+    "cost": "Free of charge",
     "credit": [
         {
             "email": "BastianFromm@gmail.com",
             "name": "Bastian Fromm",
+            "orcidid": "https://orcid.org/0000-0003-0352-3037",
             "typeEntity": "Person",
             "typeRole": [
-                "Primary contact"
-            ]
-        },
-        {
-            "email": "BastianFromm@gmail.com",
-            "name": "Bastian Fromm",
-            "typeRole": [
+                "Developer",
+                "Maintainer",
+                "Primary contact",
                 "Support"
             ]
         },
         {
-            "name": "UiO",
+            "email": "kevin.j.peterson@dartmouth.edu",
+            "name": "Kevin J. Peterson",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer"
+            ]
+        },
+        {
+            "email": "support@elixir.no",
+            "name": "The Norwegian Bioinformatics Platform (ELIXIR-Norway) Helpdesk",
+            "typeEntity": "Consortium",
+            "typeRole": [
+                "Support"
+            ],
+            "url": "https://elixir.no/helpdesk"
+        },
+        {
+            "fundrefid": "10.13039/501100005366",
+            "gridid": "grid.5510.1",
+            "name": "University of Oslo",
+            "rorid": "01xtthb56",
             "typeEntity": "Institute",
             "typeRole": [
                 "Provider"
-            ]
+            ],
+            "url": "https://www.uio.no/english/index.html"
         }
     ],
-    "description": "A miRBase derived database for microRNA genes that have been validated and annotated. Currently microRNA genes are available for human, mouse, chicken and zebrafish and can be browsed, blasted and downloaded.",
+    "description": "MirGeneDB is a miRBase-derived database for microRNA genes that have been manually validated and annotated. Currently, microRNA genes are available for 75 metazoan species and can be browsed, blasted and downloaded.",
     "documentation": [
         {
             "type": [
                 "General"
             ],
-            "url": "http://mirgenedb.org/"
+            "url": "https://www.mirgenedb.org/information"
+        }
+    ],
+    "download": [
+        {
+            "note": "Sequence downloads for 75 species",
+            "type": "Biological data",
+            "url": "https://www.mirgenedb.org/download",
+            "version": "2.1"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "eca008"
+        ],
+        "type": "group"
     },
+    "elixirNode": [
+        "Norway"
+    ],
     "function": [
         {
             "input": [
@@ -54,10 +91,16 @@
                     "data": {
                         "term": "Sequence accession (nucleic acid)",
                         "uri": "http://edamontology.org/data_1097"
-                    }
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
                 }
             ],
-            "note": "Retrival of curated miRNA A specific miRNA identifier A species  for all miRNAs for that species A report with metadata and visualization The hairpin loop of the miRNA with bases",
+            "note": "Data retrieval: curated miRNA. Organism identifier: a specific miRNA identifier or a species  for all miRNAs for that species. Gene transcript report: with metadata and visualization. RNA secondary structure: the hairpin loop of the miRNA with bases.",
             "operation": [
                 {
                     "term": "Data retrieval",
@@ -104,7 +147,6 @@
                     }
                 }
             ],
-            "note": "Retrive sequence in fasta format Sequence in fasta format",
             "operation": [
                 {
                     "term": "Query and retrieval",
@@ -112,6 +154,18 @@
                 }
             ],
             "output": [
+                {
+                    "data": {
+                        "term": "Count matrix",
+                        "uri": "http://edamontology.org/data_3917"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
                 {
                     "data": {
                         "term": "RNA sequence",
@@ -123,24 +177,186 @@
                             "uri": "http://edamontology.org/format_1929"
                         }
                     ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence coordinates",
+                        "uri": "http://edamontology.org/data_2012"
+                    },
+                    "format": [
+                        {
+                            "term": "BED",
+                            "uri": "http://edamontology.org/format_3003"
+                        },
+                        {
+                            "term": "GFF",
+                            "uri": "http://edamontology.org/format_2305"
+                        }
+                    ]
                 }
             ]
         }
     ],
     "homepage": "http://mirgenedb.org/",
-    "lastUpdate": "2018-12-10T12:58:52Z",
+    "lastUpdate": "2023-08-01T08:37:51.018148Z",
+    "license": "CC0-1.0",
+    "link": [
+        {
+            "type": [
+                "Helpdesk"
+            ],
+            "url": "https://elixir.no/helpdesk"
+        }
+    ],
+    "maturity": "Mature",
     "name": "MirGeneDB",
     "operatingSystem": [
         "Linux",
         "Mac",
         "Windows"
     ],
+    "otherID": [
+        {
+            "type": "doi",
+            "value": "doi:10.25504/FAIRsharing.QXSgvF",
+            "version": "2.0"
+        }
+    ],
     "owner": "UiO",
     "publication": [
         {
+            "doi": "10.1093/nar/gkab1101",
+            "metadata": {
+                "abstract": "We describe an update of MirGeneDB, the manually curated microRNA gene database. Adhering to uniform and consistent criteria for microRNA annotation and nomenclature, we substantially expanded MirGeneDB with 30 additional species representing previously missing metazoan phyla such as sponges, jellyfish, rotifers and flatworms. MirGeneDB 2.1 now consists of 75 species spanning over ∼800 million years of animal evolution, and contains a total number of 16 670 microRNAs from 1549 families. Over 6000 microRNAs were added in this update using ∼550 datasets with ∼7.5 billion sequencing reads. By adding new phylogenetically important species, especially those relevant for the study of whole genome duplication events, and through updating evolutionary nodes of origin for many families and genes, we were able to substantially refine our nomenclature system. All changes are traceable in the specifically developed MirGeneDB version tracker. The performance of read-pages is improved and microRNA expression matrices for all tissues and species are now also downloadable. Altogether, this update represents a significant step toward a complete sampling of all major metazoan phyla, and a widely needed foundation for comparative microRNA genomics and transcriptomics studies. MirGeneDB 2.1 is part of RNAcentral and Elixir Norway, publicly and freely available at http://www.mirgenedb.org/.",
+                "authors": [
+                    {
+                        "name": "Aparicio-Puerta E."
+                    },
+                    {
+                        "name": "Aslanzadeh M."
+                    },
+                    {
+                        "name": "Chabot P.J."
+                    },
+                    {
+                        "name": "Domanska D."
+                    },
+                    {
+                        "name": "Friedlander M.R."
+                    },
+                    {
+                        "name": "Fromm B."
+                    },
+                    {
+                        "name": "Hackenberg M."
+                    },
+                    {
+                        "name": "Hovig E."
+                    },
+                    {
+                        "name": "Hoye E."
+                    },
+                    {
+                        "name": "Johansen M."
+                    },
+                    {
+                        "name": "Kang W."
+                    },
+                    {
+                        "name": "Marmol-Sanchez E."
+                    },
+                    {
+                        "name": "Ovchinnikov V."
+                    },
+                    {
+                        "name": "Peterson K.J."
+                    },
+                    {
+                        "name": "Tarbier M."
+                    },
+                    {
+                        "name": "Umu S.U."
+                    },
+                    {
+                        "name": "Urgese G."
+                    },
+                    {
+                        "name": "Zhong X."
+                    }
+                ],
+                "citationCount": 28,
+                "date": "2022-01-07T00:00:00Z",
+                "journal": "Nucleic Acids Research",
+                "title": "MirGeneDB 2.1: Toward a complete sampling of all major animal phyla"
+            },
+            "pmcid": "PMC8728216",
+            "pmid": "34850127",
+            "type": [
+                "Primary"
+            ],
+            "version": "2.1"
+        },
+        {
+            "doi": "10.1093/nar/gkz885",
+            "metadata": {
+                "abstract": "Small non-coding RNAs have gained substantial attention due to their roles in animal development and human disorders. Among them, microRNAs are special because individual gene sequences are conserved across the animal kingdom. In addition, unique and mechanistically well understood features can clearly distinguish bona fide miRNAs from the myriad other small RNAs generated by cells. However, making this distinction is not a common practice and, thus, not surprisingly, the heterogeneous quality of available miRNA complements has become a major concern in microRNA research. We addressed this by extensively expanding our curated microRNA gene database-MirGeneDB-to 45 organisms, encompassing a wide phylogenetic swath of animal evolution. By consistently annotating and naming 10,899 microRNA genes in these organisms, we show that previous microRNA annotations contained not only many false positives, but surprisingly lacked >2000 bona fide microRNAs. Indeed, curated microRNA complements of closely related organisms are very similar and can be used to reconstruct ancestral miRNA repertoires. MirGeneDB represents a robust platform for microRNA-based research, providing deeper and more significant insights into the biology and evolution of miRNAs as well as biomedical and biomarker research. MirGeneDB is publicly and freely available at http://mirgenedb.org/.",
+                "authors": [
+                    {
+                        "name": "Aparicio-Puerta E."
+                    },
+                    {
+                        "name": "Domanska D."
+                    },
+                    {
+                        "name": "Flatmark K."
+                    },
+                    {
+                        "name": "Friedlander M.R."
+                    },
+                    {
+                        "name": "Fromm B."
+                    },
+                    {
+                        "name": "Hackenberg M."
+                    },
+                    {
+                        "name": "Hovig E."
+                    },
+                    {
+                        "name": "Hoye E."
+                    },
+                    {
+                        "name": "Johansen M."
+                    },
+                    {
+                        "name": "Kang W."
+                    },
+                    {
+                        "name": "Mathelier A."
+                    },
+                    {
+                        "name": "Ovchinnikov V."
+                    },
+                    {
+                        "name": "Peterson K.J."
+                    }
+                ],
+                "citationCount": 122,
+                "date": "2020-01-01T00:00:00Z",
+                "journal": "Nucleic Acids Research",
+                "title": "MirGeneDB 2.0: The metazoan microRNA complement"
+            },
+            "pmcid": "PMC6943042",
+            "pmid": "31598695",
+            "type": [
+                "Primary"
+            ],
+            "version": "2.0"
+        },
+        {
             "doi": "10.1146/annurev-genet-120213-092023",
             "metadata": {
-                "abstract": "Copyright © 2015 by Annual Reviews. All rights reserved.Although microRNAs (miRNAs) are among the most intensively studied molecules of the past 20 years, determining what is and what is not a miRNA has not been straightforward. Here, we present a uniform system for the annotation and nomenclature of miRNA genes. We show that less than a third of the 1,881 human miRBase entries, and only approximately 16% of the 7,095 metazoan miRBase entries, are robustly supported as miRNA genes. Furthermore, we show that the human repertoire of miRNAs has been shaped by periods of intense miRNA innovation and that mature gene products show a very different tempo and mode of sequence evolution than star products. We establish a new open access database-MirGeneDB (http://mirgenedb.org)-to catalog this set of miRNAs, which complements the efforts of miRBase but differs from it by annotating the mature versus star products and by imposing an evolutionary hierarchy upon this curated and consistently named repertoire.",
+                "abstract": "Although microRNAs (miRNAs) are among the most intensively studied molecules of the past 20 years, determining what is and what is not a miRNA has not been straightforward. Here, we present a uniform system for the annotation and nomenclature of miRNA genes. We show that less than a third of the 1,881 human miRBase entries, and only approximately 16% of the 7,095 metazoan miRBase entries, are robustly supported as miRNA genes. Furthermore, we show that the human repertoire of miRNAs has been shaped by periods of intense miRNA innovation and that mature gene products show a very different tempo and mode of sequence evolution than star products. We establish a new open access database-MirGeneDB (http://mirgenedb.org)-to catalog this set of miRNAs, which complements the efforts of miRBase but differs from it by annotating the mature versus star products and by imposing an evolutionary hierarchy upon this curated and consistently named repertoire.",
                 "authors": [
                     {
                         "name": "Billipp T."
@@ -176,14 +392,17 @@
                         "name": "Tarver J.E."
                     }
                 ],
-                "citationCount": 274,
+                "citationCount": 367,
                 "date": "2015-11-23T00:00:00Z",
                 "journal": "Annual Review of Genetics",
                 "title": "A Uniform System for the Annotation of Vertebrate microRNA Genes and the Evolution of the Human microRNAome"
             },
+            "pmcid": "PMC4743252",
+            "pmid": "26473382",
             "type": [
                 "Primary"
-            ]
+            ],
+            "version": "1.0"
         }
     ],
     "toolType": [
@@ -191,9 +410,28 @@
     ],
     "topic": [
         {
+            "term": "Evolutionary biology",
+            "uri": "http://edamontology.org/topic_3299"
+        },
+        {
             "term": "Functional, regulatory and non-coding RNA",
             "uri": "http://edamontology.org/topic_0659"
+        },
+        {
+            "term": "Gene regulation",
+            "uri": "http://edamontology.org/topic_0204"
+        },
+        {
+            "term": "Human biology",
+            "uri": "http://edamontology.org/topic_2815"
+        },
+        {
+            "term": "Zoology",
+            "uri": "http://edamontology.org/topic_3500"
         }
     ],
-    "validated": 1
+    "validated": 1,
+    "version": [
+        "2.1"
+    ]
 }

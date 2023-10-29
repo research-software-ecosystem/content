@@ -8,22 +8,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: content
+    - uses: actions/checkout@v2
+      with:
+        repository: bio-tools/content-ecosystem-utils
+        path: content-ecosystem-utils
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
         python-version: "3.7"
     - name: Install dependencies
       run:
-        pip install -r scripts/stats/requirements.txt
+        pip install -r ${{ github.workspace }}/content-ecosystem-utils/scripts/stats/requirements.txt
     - name: generate report
       run: |
-        cd scripts/stats
-        python ecosystem.py ../../report
+        cd ${{ github.workspace }}/content-ecosystem-utils/scripts/stats
+        python ecosystem.py ${{ github.workspace }}/content
     - name: commit new report
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |  
+        cd ${{ github.workspace }}/content
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
         cd report
