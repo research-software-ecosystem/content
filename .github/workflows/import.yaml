@@ -9,10 +9,12 @@ jobs:
   biotools:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout contents repository
+      uses: actions/checkout@v3
       with:
-        ref: 'master'
-    - uses: research-software-ecosystem/utils/biotools-import@main
+        ref: ${{ github.ref }}
+    - name: import bio.tools data from server
+      uses: research-software-ecosystem/utils/biotools-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -21,10 +23,12 @@ jobs:
     needs: [biotools]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout contents repository
+      uses: actions/checkout@v3
       with:
-        ref: 'master'
-    - uses: research-software-ecosystem/utils/openebench-import@main
+        ref: ${{ github.ref }}
+    - name: import OpenEBench data from server
+      uses: research-software-ecosystem/utils/openebench-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -33,10 +37,12 @@ jobs:
     needs: [openebench]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout contents repository
+      uses: actions/checkout@v3
       with:
-        ref: 'master'
-    - uses: research-software-ecosystem/utils/bioconda-import@main
+        ref: ${{ github.ref }}
+    - name: import bioconda data from server
+      uses: research-software-ecosystem/utils/bioconda-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
