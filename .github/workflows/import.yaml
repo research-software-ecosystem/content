@@ -8,6 +8,8 @@ on:
 jobs:
   biotools:
     runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.commit-and-push.outputs.commit_hash }}
     steps:
     - name: checkout contents repository
       uses: actions/checkout@v3
@@ -18,20 +20,36 @@ jobs:
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push
+      uses: stefanzweifel/git-auto-commit-action@v4
+      commit_user_name: Tools Platform Ecosystem bot
+      commit_user_email: tpe-bot@github.com
+      commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+      commit_message: import bio.tools data on $(date)
   openebench:
     if: ${{ always() }}
     needs: [biotools]
     runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.commit-and-push.outputs.commit_hash }}
     steps:
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ github.ref }}
+        ref: ${{ needs.biotools.outputs.commit_hash }}
     - name: import OpenEBench data from server
       uses: research-software-ecosystem/utils/openebench-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push
+      uses: stefanzweifel/git-auto-commit-action@v4
+      commit_user_name: Tools Platform Ecosystem bot
+      commit_user_email: tpe-bot@github.com
+      commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+      commit_message: import OpenEBench data on $(date)
   bioconda:
     if: ${{ always() }}
     needs: [openebench]
@@ -40,9 +58,16 @@ jobs:
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ github.ref }}
+        ref: ${{ needs.openebench.outputs.commit_hash }}
     - name: import bioconda data from server
       uses: research-software-ecosystem/utils/bioconda-import@main
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push
+      uses: stefanzweifel/git-auto-commit-action@v4
+      commit_user_name: Tools Platform Ecosystem bot
+      commit_user_email: tpe-bot@github.com
+      commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+      commit_message: import bioconda data on $(date)
