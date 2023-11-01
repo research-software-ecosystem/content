@@ -28,6 +28,8 @@ jobs:
         commit_user_email: tpe-bot@github.com
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import bio.tools data on $(date)
+    - name: "Display bio.tools import commit hash"
+      run: echo "commit hash for push to github: ${{ steps.commit-and-push.outputs.commit_hash }}"
   openebench:
     if: ${{ always() }}
     needs: [biotools]
@@ -35,6 +37,8 @@ jobs:
     outputs:
       commit_hash: ${{ steps.commit-and-push.outputs.commit_hash }}
     steps:
+    - name: "Display last commit hash to be checked out"
+      run: echo "commit hash for push to github: ${{ needs.biotools.outputs.commit_hash }}"
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
