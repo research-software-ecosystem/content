@@ -9,7 +9,7 @@ jobs:
   biotools:
     runs-on: ubuntu-latest
     outputs:
-      commit_hash: ${{ steps.commit-and-push.outputs.commit_hash }}
+      commit_hash: ${{ steps.commit-and-push-biotools.outputs.commit_hash }}
     steps:
     - name: checkout contents repository
       uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Commit and Push Changes
-      id: commit-and-push
+      id: commit-and-push-biotools
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_user_name: Tools Platform Ecosystem bot
@@ -30,13 +30,13 @@ jobs:
         commit_message: import bio.tools data on $(date)
     - name: "Display bio.tools import commit hash"
       run: |
-        echo "commit hash for push to github: ${{ steps.commit-and-push.outputs.commit_hash }}"
+        echo "commit hash for push to github: ${{ steps.commit-and-push-biotools.outputs.commit_hash }}"
   openebench:
     if: ${{ always() }}
     needs: [biotools]
     runs-on: ubuntu-latest
     outputs:
-      commit_hash: ${{ steps.commit-and-push.outputs.commit_hash }}
+      commit_hash: ${{ steps.commit-and-push-openebench.outputs.commit_hash }}
     steps:
     - name: "Display last commit hash to be checked out"
       run: |
@@ -51,7 +51,7 @@ jobs:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Commit and Push Changes
-      id: commit-and-push
+      id: commit-and-push-openebench
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_user_name: Tools Platform Ecosystem bot
@@ -62,6 +62,8 @@ jobs:
     if: ${{ always() }}
     needs: [openebench]
     runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.commit-and-push-bioconda.outputs.commit_hash }}
     steps:
     - name: checkout contents repository
       uses: actions/checkout@v3
@@ -73,7 +75,7 @@ jobs:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Commit and Push Changes
-      id: commit-and-push
+      id: commit-and-push-bioconda
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_user_name: Tools Platform Ecosystem bot
