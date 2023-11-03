@@ -28,9 +28,6 @@ jobs:
         commit_user_email: tpe-bot@github.com
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import bio.tools data on $(date)
-    - name: "Display bio.tools import commit hash"
-      run: |
-        echo "commit hash for push to github: ${{ steps.commit-and-push-biotools.outputs.commit_hash }}"
   openebench:
     if: ${{ always() }}
     needs: [biotools]
@@ -38,9 +35,6 @@ jobs:
     outputs:
       commit_hash: ${{ steps.commit-and-push-openebench.outputs.commit_hash }}
     steps:
-    - name: "Display last commit hash to be checked out"
-      run: |
-        echo "commit hash for push to github: ${{ needs.biotools.outputs.commit_hash }}"
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
@@ -82,3 +76,27 @@ jobs:
         commit_user_email: tpe-bot@github.com
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import bioconda data on $(date)
+  biii:
+    if: ${{ always() }}
+    needs: [openebench]
+    runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.commit-and-push-biii.outputs.commit_hash }}
+    steps:
+    - name: checkout contents repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref }}
+    - name: import biii data from server
+      uses: research-software-ecosystem/utils/biii-import@main
+      with:
+        repo-user: ${{ secrets.GITHUB_USER }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push-biii
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_user_name: Tools Platform Ecosystem bot
+        commit_user_email: tpe-bot@github.com
+        commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+        commit_message: import biii data on $(date)
