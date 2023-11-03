@@ -44,7 +44,7 @@ jobs:
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ needs.biotools.outputs.commit_hash }}
+        ref: ${{ github.ref }}
     - name: import OpenEBench data from server
       uses: research-software-ecosystem/utils/openebench-import@main
       with:
@@ -68,7 +68,7 @@ jobs:
     - name: checkout contents repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ needs.openebench.outputs.commit_hash }}
+        ref: ${{ github.ref }}
     - name: import bioconda data from server
       uses: research-software-ecosystem/utils/bioconda-import@main
       with:
