@@ -16,7 +16,17 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: delete previous import branch
-      run: git push origin --delete biotools-import-branch
+      run: |
+        branch_name="biotools-import-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
     - name: Create and checkout feature branch
       run: git checkout -b biotools-import-branch
     - name: import bio.tools data from server
@@ -44,7 +54,17 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: delete previous import branch
-      run: git push origin --delete openebench-import-branch
+      run:  |
+        branch_name="openebench-import-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
     - name: Create and checkout feature branch
       run: git checkout -b openebench-import-branch
     - name: import OpenEBench data from server
@@ -72,7 +92,17 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: delete previous import branch
-      run: git push origin --delete bioconda-import-branch
+      run:  |
+        branch_name="bioconda-import-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
     - name: Create and checkout feature branch
       run: git checkout -b bioconda-import-branch
     - name: import bioconda data from server
@@ -100,7 +130,17 @@ jobs:
       with:
         ref: ${{ github.ref }}
     - name: delete previous import branch
-      run: git push origin --delete biii-import-branch
+      run:  |
+        branch_name="biii-import-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
     - name: Create and checkout feature branch
       run: git checkout -b biii-import-branch
     - name: import biii data from server
