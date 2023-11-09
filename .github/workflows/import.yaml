@@ -164,15 +164,29 @@ jobs:
       - openebench
       - bioconda
       - biii
+    if: always()
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Merge feature branches
         run: |
-          git merge biotools-import-branch
-          git merge openebench-import-branch
-          git merge bioconda-import-branch
-          git merge biii-import-branch
+          merge_branch_if_exists() {
+            local branch_name="$1"
+            # Check if the branch exists on the remote repository
+            if git ls-remote --exit-code --heads origin "$branch_name" &>/dev/null; then
+              # The branch exists on the remote, so it can be safely merged
+              git fetch origin "$branch_name"
+              git merge "origin/$branch_name"
+              echo "Merged $branch_name into the current branch."
+            else
+              # The branch does not exist on the remote
+              echo "Branch $branch_name does not exist on the remote repository."
+            fi
+          }
+          merge_branch_if_exists "biotools-import-branch"
+          merge_branch_if_exists "openebench-import-branch"
+          merge_branch_if_exists "bioconda-import-branch"
+          merge_branch_if_exists "biii-import-branch"
           git push origin master
   clean-branches:
     runs-on: ubuntu-latest
