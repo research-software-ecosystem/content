@@ -31,7 +31,7 @@ jobs:
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import bio.tools data on $(date)
         branch: biotools-import-branch
-        create_branch: biotools-import-branch
+        create_branch: true
   openebench:
     runs-on: ubuntu-latest
     outputs:
@@ -55,7 +55,7 @@ jobs:
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import OpenEBench data on $(date)
         branch: openebench-import-branch
-        create_branch: openebench-import-branch
+        create_branch: true
   bioconda:
     runs-on: ubuntu-latest
     outputs:
@@ -79,7 +79,7 @@ jobs:
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         commit_message: import bioconda data on $(date)
         branch: bioconda-import-branch
-        create_branch: bioconda-import-branch
+        create_branch: true
   biii:
     runs-on: ubuntu-latest
     outputs:
@@ -102,7 +102,7 @@ jobs:
         commit_user_email: tpe-bot@github.com
         commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
         branch: biii-import-branch
-        create_branch: biii-import-branch
+        create_branch: true
   merge:
     runs-on: ubuntu-latest
     needs:
@@ -120,9 +120,17 @@ jobs:
           git merge bioconda-import-branch
           git merge biii-import-branch
           git push origin master
+  clean-branches:
+    runs-on: ubuntu-latest
+    needs:
+      - merge
+    if: always()
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
       - name: Delete feature branches
         run: |
-          git branch -d biotools-import-branch
-          git branch -d openebench-import-branch
-          git branch -d bioconda-import-branch
-          git branch -d biii-import-branch
+          git push origin --delete biotools-import-branch
+          git push origin --delete openebench-import-branch
+          git push origin --delete bioconda-import-branch
+          git push origin --delete biii-import-branch
