@@ -202,7 +202,19 @@ jobs:
         run: |
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
-          git push origin --delete biotools-import-branch
-          git push origin --delete openebench-import-branch
-          git push origin --delete bioconda-import-branch
-          git push origin --delete biii-import-branch
+          delete_branch_if_exists() {
+            local branch_name="$1"
+            # Check if the branch exists on the remote repository
+            if git ls-remote --exit-code --heads origin "$branch_name" &>/dev/null; then
+              # The branch exists on the remote, so it can be deleted
+              git push origin --delete "$branch_name"
+              echo "Deleted $branch_name into the current branch."
+            else
+              # The branch does not exist on the remote
+              echo "Branch $branch_name does not exist on the remote repository."
+            fi
+          }
+          delete_branch_if_exists "biotools-import-branch"
+          delete_branch_if_exists "openebench-import-branch"
+          delete_branch_if_exists "bioconda-import-branch"
+          delete_branch_if_exists "biii-import-branch"
