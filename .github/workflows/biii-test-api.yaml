@@ -1,0 +1,18 @@
+name: import Neubias biii.eu content
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build-biii-raw-bioschemas:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: test http REST API
+      run: |
+        curl http://biii.eu/soft?_format=json
+    - name: test http REST API no-cache
+      run: |
+        curl http://biii.eu/soft?_format=json -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0"
