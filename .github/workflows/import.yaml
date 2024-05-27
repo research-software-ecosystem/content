@@ -195,6 +195,44 @@ jobs:
         commit_message: import biocontainers data on $(date)
         branch: biocontainers-import-branch
         create_branch: true
+  galaxytool:
+    runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.commit-and-push-galaxytool.outputs.commit_hash }}
+    steps:
+    - name: checkout contents repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref }}
+    - name: delete previous import branch
+      run: |
+        branch_name="galaxytool-import-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
+    - name: Create and checkout feature branch
+      run: git checkout -b galaxytool-import-branch
+    - name: import galaxy tool data from server
+      uses: research-software-ecosystem/utils/galaxytool-import@main
+      with:
+        repo-user: ${{ secrets.GITHUB_USER }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push-galaxytool
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_user_name: Tools Platform Ecosystem bot
+        commit_user_email: tpe-bot@github.com
+        commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+        commit_message: import galaxy tools data on $(date)
+        branch: galaxytool-import-branch
+        create_branch: true
   merge:
     runs-on: ubuntu-latest
     needs:
@@ -203,6 +241,7 @@ jobs:
       - bioconda
       - biii
       - biocontainers
+      - galaxytool
     if: always()
     steps:
       - name: Checkout Repository
@@ -229,6 +268,7 @@ jobs:
           merge_branch_if_exists "bioconda-import-branch"
           merge_branch_if_exists "biii-import-branch"
           merge_branch_if_exists "biocontainers-import-branch"
+          merge_branch_if_exists "galaxy-import-branch"
           git push origin master
   clean-branches:
     runs-on: ubuntu-latest
@@ -259,3 +299,4 @@ jobs:
           delete_branch_if_exists "bioconda-import-branch"
           delete_branch_if_exists "biii-import-branch"
           delete_branch_if_exists "biocontainers-import-branch"
+          delete_branch_if_exists "galaxy-import-branch"
