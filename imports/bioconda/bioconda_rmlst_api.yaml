@@ -1,0 +1,38 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: pypi.org/project/rmlst-api
+  license: MIT
+  license_family: MIT
+  license_file: null
+  summary: API to perform rMLST on PubMLST.org
+build:
+  entry_points:
+  - rmlst-api = rmlst_api.cli:run_all
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - domenico-simone
+package:
+  name: rmlst_api
+  version: 0.1.5
+requirements:
+  host:
+  - hatchling
+  - click
+  - pip
+  - python
+  run:
+  - requests 2.28.1
+  - click
+  - python
+source:
+  sha256: 008c5eb847d92702f2c6dd819c6b00fdac97d9734fffa2f2033de23dc12a5ca3
+  url: https://pypi.io/packages/source/r/rmlst_api/rmlst_api-0.1.5.tar.gz
+test:
+  commands:
+  - rmlst-api --help
+  imports:
+  - rmlst_api

@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/Ecogenomics/GTDBTk
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A toolkit for assigning objective taxonomic classifications to bacterial
+    and archaeal genomes.
+build:
+  entry_points:
+  - gtdbtk = gtdbtk.__main__:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btz848
+  recipe-maintainers:
+  - aaronmussig
+  - pchaumeil
+package:
+  name: gtdbtk
+  version: 2.4.0
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - dendropy >=4.1.0
+  - python >=3.6
+  - prodigal >=2.6.2
+  - hmmer 3.*
+  - pplacer >=1.1.alpha17
+  - fastani 1.32
+  - fasttree >=2.1.9
+  - numpy >=1.9.0
+  - mash >=2.0
+  - tqdm >=4.35.0
+  - pydantic >=1.9.2, <2
+  - skani >=0.2.0
+source:
+  sha256: e67bab2c8f3e47c7242c70236c78e85bb9dc4721636bbf5044b171f18f22b1f7
+  url: https://pypi.io/packages/source/g/gtdbtk/gtdbtk-2.4.0.tar.gz
+test:
+  imports:
+  - gtdbtk
+  - gtdbtk.biolib_lite
+  - gtdbtk.config
+  - gtdbtk.external
+  - gtdbtk.external.pypfam
+  - gtdbtk.external.pypfam.HMM
+  - gtdbtk.external.pypfam.Scan
+  - gtdbtk.files.marker
+  - gtdbtk.files.prodigal

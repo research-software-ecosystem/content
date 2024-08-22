@@ -1,0 +1,64 @@
+about:
+  description: Preprocessing and smoothing of ChIP-Seq peaks and efficient implementation
+    of the k-mean alignment algorithm to classify them.
+  home: https://bioconductor.org/packages/3.18/bioc/html/FunChIP.html
+  license: Artistic-2.0
+  summary: Clustering and Alignment of ChIP-Seq peaks based on their shapes
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:funchip
+  - doi:10.1093/bioinformatics/btx201
+  parent_recipe:
+    name: bioconductor-funchip
+    path: recipes/bioconductor-funchip
+    version: 1.6.0
+package:
+  name: bioconductor-funchip
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-doparallel
+  - r-fda
+  - r-foreach
+  - r-rcolorbrewer
+  - r-rcpp
+  - r-shiny
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-doparallel
+  - r-fda
+  - r-foreach
+  - r-rcolorbrewer
+  - r-rcpp
+  - r-shiny
+source:
+  md5: 93a91487d2e6b0841094c9eb7c997be2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FunChIP_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FunChIP/FunChIP_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FunChIP_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-funchip/bioconductor-funchip_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FunChIP')"

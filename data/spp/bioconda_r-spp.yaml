@@ -1,0 +1,51 @@
+about:
+  home: https://CRAN.R-project.org/package=spp
+  license: GPL-2.0-only
+  license_family: GPL2
+  license_file: DESCRIPTION
+  summary: Analysis of ChIP-seq and other functional sequencing data [Kharchenko PV
+    (2008) <DOI:10.1038/nbt.1508>].
+build:
+  number: 10
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:spp
+  - doi:10.1038/nbt.1508
+package:
+  name: r-spp
+  version: 1.16.0
+requirements:
+  build:
+  - None
+  - None
+  - autoconf
+  - pkg-config
+  - make
+  host:
+  - r-base
+  - r-bh >=1.66
+  - r-rcpp
+  - bioconductor-rsamtools
+  - r-catools
+  run:
+  - r-base
+  - r-bh >=1.66
+  - r-rcpp
+  - bioconductor-rsamtools
+  - r-catools
+source:
+  sha256: 3c890f3c414183167f9643b556621dcdc14ce6a1b54a04d618c74070fdebfd23
+  url:
+  - /src/contrib/spp_1.16.0.tar.gz
+  - /src/contrib/Archive/spp/spp_1.16.0.tar.gz
+test:
+  commands:
+  - $R -e "library('spp')"
+  - '"%R%" -e "library(''spp'')"'

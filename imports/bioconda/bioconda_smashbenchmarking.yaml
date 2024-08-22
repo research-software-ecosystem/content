@@ -1,0 +1,29 @@
+about:
+  home: http://github.com/amplab/smash/
+  license: BSD License
+  summary: Check the accuracy of one VCF callset against another
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: smashbenchmarking
+  version: 1.0.1
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - pyvcf
+  - pyfasta
+  - numpy
+source:
+  md5: 77f0c979549a645f849ec28ef8afcda4
+  url: https://pypi.python.org/packages/source/s/smashbenchmarking/smashbenchmarking-1.0.1.tar.gz
+test:
+  imports:
+  - smashbenchmarking
+  - smashbenchmarking.corrupt
+  - smashbenchmarking.parsers
+  - smashbenchmarking.vcf_eval

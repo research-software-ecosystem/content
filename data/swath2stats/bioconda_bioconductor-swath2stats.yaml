@@ -1,0 +1,48 @@
+about:
+  description: This package is intended to transform SWATH data from the OpenSWATH
+    software into a format readable by other statistics packages while performing
+    filtering, annotation and FDR estimation.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SWATH2stats.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Transform and Filter SWATH Data for Statistical Packages
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:swath2stats
+  parent_recipe:
+    name: bioconductor-swath2stats
+    path: recipes/bioconductor-swath2stats
+    version: 1.10.2
+package:
+  name: bioconductor-swath2stats
+  version: 1.32.0
+requirements:
+  host:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-reshape2
+  run:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-reshape2
+source:
+  md5: 3853f9f81af8bc0732ff0e2ceaf43441
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SWATH2stats_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SWATH2stats/SWATH2stats_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SWATH2stats_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-swath2stats/bioconductor-swath2stats_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SWATH2stats')"

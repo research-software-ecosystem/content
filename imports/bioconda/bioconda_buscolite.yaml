@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/nextgenusfs/buscolite
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE.md
+  summary: 'buscolite: busco analysis for gene predictions'
+build:
+  entry_points:
+  - buscolite = buscolite.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nextgenusfs
+package:
+  name: buscolite
+  version: 23.10.26
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - augustus >=3.5.0
+  - miniprot
+  - natsort
+  - pyhmmer
+  - pyfastx
+source:
+  sha256: c641dc6c702fa198fd6fa661b756aedde4468ea591c8c64f8b8bd9c8a865b72d
+  url: https://pypi.io/packages/source/b/buscolite/buscolite-23.10.26.tar.gz
+test:
+  commands:
+  - buscolite --help
+  imports:
+  - buscolite

@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/flatironinstitute/deepblast
+  home: https://github.com/flatironinstitute/deepblast
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: COPYING.txt
+  summary: Neural Networks for Protein Sequence Alignment.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1101/2020.11.03.365932
+package:
+  name: deepblast
+  version: 1.0.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy
+  - scipy
+  - pandas
+  - pytorch >=1.4
+  - scikit-learn
+  - numba
+  - pytorch-lightning >=0.8.1
+  - matplotlib-base
+  - pillow
+  - faiss
+  - biopython >=1.78,<2.0
+  - transformers
+  - sentencepiece
+  - tensorboard
+source:
+  sha256: 80a73e6afcf153b733cf39793b6429330c4235dd2716033b2cc0870add7e3138
+  url: https://pypi.io/packages/source/d/deepblast/deepblast-1.0.2.tar.gz
+test:
+  imports:
+  - deepblast

@@ -1,0 +1,56 @@
+about:
+  description: A data-driven test for the assumptions of quantile normalization using
+    raw data such as objects that inherit eSets (e.g. ExpressionSet, MethylSet). Group
+    level information about each sample (such as Tumor / Normal status) must also
+    be provided because the test assesses if there are global differences in the distributions
+    between the user-defined groups.
+  home: https://bioconductor.org/packages/3.18/bioc/html/quantro.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A test for when to use quantile normalization
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:quantro
+  parent_recipe:
+    name: bioconductor-quantro
+    path: recipes/bioconductor-quantro
+    version: 1.14.0
+package:
+  name: bioconductor-quantro
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-minfi >=1.48.0,<1.49.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-rcolorbrewer
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-minfi >=1.48.0,<1.49.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-rcolorbrewer
+source:
+  md5: 3e7912df8d9bc50c461074539540f289
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/quantro_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/quantro/quantro_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/quantro_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-quantro/bioconductor-quantro_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('quantro')"

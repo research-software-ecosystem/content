@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/BEFH/snakemake-executor-plugin-lsf-jobstep
+  license: MIT
+  license_file: LICENSE
+  summary: A Snakemake executor plugin for running bjobs jobs inside of LSF jobs (meant
+    for internal use by snakemake-executor-plugin-lsf)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - BFH
+package:
+  name: snakemake-executor-plugin-lsf-jobstep
+  version: 0.1.10
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.17.1,<2.0.0
+  - snakemake-interface-executor-plugins >=9.0.0,<10.0.0
+source:
+  sha256: 72d29f3cd22061a61f138bba0ab6803b3fb7017f9475276acfa40ad20d23f44d
+  url: https://pypi.io/packages/source/s/snakemake-executor-plugin-lsf-jobstep/snakemake_executor_plugin_lsf_jobstep-0.1.10.tar.gz
+test:
+  imports:
+  - snakemake_executor_plugin_lsf_jobstep

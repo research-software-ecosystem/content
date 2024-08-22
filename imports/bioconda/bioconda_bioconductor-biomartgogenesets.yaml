@@ -1,0 +1,40 @@
+about:
+  description: It contains pre-compiled Gene Ontology gene sets for all organisms
+    available on the Ensembl database. It also includes GO gene sets for organisms
+    on Ensembl Plants, Ensembl Metazoa, Ensembl Fungi and Ensembl Protists. The data
+    was collected with the biomaRt package.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/BioMartGOGeneSets.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Gene Ontology Gene Sets from BioMart
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-biomartgogenesets
+  version: 0.99.11
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: f96a12703fd2f9c357442a60e5f2c764
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/BioMartGOGeneSets_0.99.11.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BioMartGOGeneSets/BioMartGOGeneSets_0.99.11.tar.gz
+  - https://bioarchive.galaxyproject.org/BioMartGOGeneSets_0.99.11.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biomartgogenesets/bioconductor-biomartgogenesets_0.99.11_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BioMartGOGeneSets')"

@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/chengsly/DeepMicroClass
+  license: BSD-2-Clause
+  license_file: LICENSE
+  summary: DeepMicroClass, a deep learning based contig prediction tool (CPU version)
+build:
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+package:
+  name: deepmicroclass
+  version: 1.0.3
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - pandas
+  - numpy
+  - biopython
+  - ete3
+  - pytorch
+  - pytorch-lightning
+  - torchmetrics
+  - tensorboard
+  - tqdm
+  - scikit-learn
+source:
+  sha256: 58da320f516b547966d53dc662dad0d9adaddd575b394baf2f37e4cc1ca48bdc
+  url: https://pypi.io/packages/source/D/DeepMicroClass/DeepMicroClass-1.0.3.tar.gz
+test:
+  commands:
+  - DeepMicroClass -h
+  imports:
+  - DeepMicroClass

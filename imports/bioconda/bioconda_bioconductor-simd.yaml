@@ -1,0 +1,47 @@
+about:
+  description: This package provides a inferential analysis method for detecting differentially
+    expressed CpG sites in MeDIP-seq data. It uses statistical framework and EM algorithm,
+    to identify differentially expressed CpG sites. The methods on this package are
+    described in the article 'Methylation-level Inferences and Detection of Differential
+    Methylation with Medip-seq Data' by Yan Zhou, Jiadi Zhu, Mingtao Zhao, Baoxue
+    Zhang, Chunfu Jiang and Xiyan Yang (2018, pending publication).
+  home: https://bioconductor.org/packages/3.18/bioc/html/SIMD.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Statistical Inferences with MeDIP-seq Data (SIMD) to infer the methylation
+    level for each CpG site
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-simd
+  version: 1.20.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-methylmnm >=1.40.0,<1.41.0
+  - r-base
+  - r-statmod
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-methylmnm >=1.40.0,<1.41.0
+  - r-base
+  - r-statmod
+source:
+  md5: 3fa4a3f26b9c42aa5026f0a22956195b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SIMD_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SIMD/SIMD_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SIMD_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-simd/bioconductor-simd_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SIMD')"

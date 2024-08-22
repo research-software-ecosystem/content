@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/hall-lab/svtools
+  license: MIT License
+  license_family: MIT
+  summary: Tools for processing and analyzing structural variants
+build:
+  entry_points:
+  - svtools=svtools.cli:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: svtools
+  version: 0.5.1
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - numpy
+  - scipy
+  - statsmodels
+  - pandas 0.19.2
+  - svtyper 0.7.1
+  - logzero
+  - crcmod
+  - google-auth
+  - google-compute-engine
+source:
+  sha256: ec25e5067879dc3bc12a0d41254f14cce969f7ab92c6ebc154148768e0072a52
+  url: https://files.pythonhosted.org/packages/fd/2f/643b36332abe8c3d6856f2479f665b7aa139ed042d9bd0f346cfc373e0e9/svtools-0.5.1.tar.gz
+test:
+  commands:
+  - svtools --help
+  - svtools --version
+  - create_coordinates --help
+  imports:
+  - svtools
+  - svtools.vcf

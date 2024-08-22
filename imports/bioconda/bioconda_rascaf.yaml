@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/mourisl/Rascaf/commits/master
+  license: GPL2
+  summary: Scaffolding with RNA-seq read alignment
+build:
+  number: 6
+  skip: true
+package:
+  name: rascaf
+  version: 20161129
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - samtools 0.1.19.*
+  - zlib
+  run:
+  - zlib
+source:
+  md5: b05116262162712098b357871f1a79e4
+  patches:
+  - 0001-Unvendor-samtools.patch
+  url: https://github.com/mourisl/Rascaf/archive/ed779e100853977307bbdc01c1644390d8556a7b.tar.gz
+test:
+  commands:
+  - rascaf 2>&1 | grep usage > /dev/null
+  - rascaf-join 2>&1 | grep usage > /dev/null

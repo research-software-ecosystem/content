@@ -1,0 +1,39 @@
+about:
+  doc_url: https://github.com/khyox/recentrifuge/wiki
+  home: https://github.com/khyox/recentrifuge
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file: LICENSE.txt
+  summary: Robust comparative analysis and contamination removal for metagenomics
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation . -vvv
+extra:
+  doi:
+  - 10.1371/journal.pcbi.1006967
+  recipe-maintainers:
+  - thanhleviet
+  - khyox
+package:
+  name: recentrifuge
+  version: 1.14.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - biopython 1.79
+  - numpy >=1.19.5
+  - matplotlib-base >=3.3.4
+  - openpyxl >=3.1
+  - pandas <2.0.0
+source:
+  sha256: b9ec5f04b256d24fc768818069838b44d576715b8093f2566fe70b129e659401
+  url: https://github.com/khyox/recentrifuge/archive/v1.14.1.tar.gz
+test:
+  commands:
+  - rcf --version

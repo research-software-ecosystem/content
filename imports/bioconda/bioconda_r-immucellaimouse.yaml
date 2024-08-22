@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/lydiaMyr/ImmuCellAI-mouse
+  license: GPL
+  license_family: GPL
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: ImmuCellAI-mouse is a tool to estimate the abundance of 36 immune cells
+    based on gene expression profile from RNA-Seq or microarray data.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1093/bioinformatics/btab711
+  recipe-maintainers:
+  - LorenzoMerotto
+package:
+  name: r-immucellaimouse
+  version: 1.0
+requirements:
+  host:
+  - r-base
+  - r-roxygen2 >=6.0.1
+  - r-rcpp >=0.12.14
+  - bioconductor-gsva
+  - r-dplyr
+  run:
+  - r-base
+  - r-rcpp >=0.12.14
+  - bioconductor-gsva
+  - r-dplyr
+  - r-mass
+source:
+  sha256: f83fb931ca2dc401d8d569f96620c709613934e4817ef12193b13f5cdf60d154
+  url: https://github.com/lydiaMyr/ImmuCellAI-mouse/archive/refs/heads/main.zip
+test:
+  commands:
+  - $R -e "library(ImmuCellAImouse)"

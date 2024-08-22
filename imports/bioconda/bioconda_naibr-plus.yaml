@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/pontushojer/NAIBR
+  license: MIT
+  summary: Identify novel adjacencies created by structural variations using linked-read
+    data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps .
+package:
+  name: naibr-plus
+  version: 0.5.3
+requirements:
+  host:
+  - python >=3.7
+  - setuptools-scm
+  - pip
+  run:
+  - python >=3.7
+  - pysam >=0.15.0
+  - mpmath
+  - numpy
+  - scipy
+  - matplotlib-base
+source:
+  sha256: 8f1829171ea1abd1e6c9625aa0e17b430401cbec859527a13197f693f8b42c95
+  url: https://github.com/pontushojer/NAIBR/releases/download/v0.5.3/naibr-0.5.3.tar.gz
+test:
+  commands:
+  - naibr --help

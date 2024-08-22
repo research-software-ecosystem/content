@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/BisanzLab/StrainR2
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: StrainR2 accurately deconvolutes strain-level abundances in synthetic microbial
+    communities using metagenomic sequencing reads
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: strainr2
+  version: 2.1.0
+requirements:
+  build:
+  - None
+  host:
+  - r-base >=4.2.0
+  - r-optparse
+  - r-tidyverse
+  - zlib
+  run:
+  - bbmap
+  - fastp
+  - samtools
+  - r-optparse
+  - r-tidyverse
+source:
+  sha256: 4683de73b3a6cb1c764a0e3adfd92e0eca61aa14dee09e87b9a75af5053e1eb0
+  url: https://github.com/BisanzLab/StrainR2/archive/v2.1.0.tar.gz
+test:
+  commands:
+  - PreProcessR --help
+  - subcontig -h
+  - hashcounter -h
+  - StrainR --help
+  - Plot.R --help

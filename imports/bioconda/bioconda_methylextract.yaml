@@ -1,0 +1,24 @@
+about:
+  home: http://bioinfo2.ugr.es/MethylExtract/
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL3
+  summary: High-Quality methylation maps and SNV calling from whole genome bisulfite
+    sequencing data
+build:
+  noarch: generic
+  number: 2
+package:
+  name: methylextract
+  version: 1.9.1
+requirements:
+  run:
+  - perl
+  - samtools
+source:
+  sha256: f9c1cb9d01814745cd37384790ee6bf71dfa69030414a11eda728fcdcc505d40
+  url: http://bioinfo2.ugr.es/MethylExtract/downloads/MethylExtract.tar.gz
+test:
+  commands:
+  - MethylExtract.pl | grep 'Command-line help' > /dev/null
+  - MethylExtractBSCR.pl | grep 'Command-line help' > /dev/null
+  - MethylExtractBSPvalue.pl | grep 'Command-line help' > /dev/null

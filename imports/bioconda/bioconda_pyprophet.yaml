@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/PyProphet/pyprophet
+  license: BSD License
+  license_family: BSD
+  summary: Python reimplementation of mProphet peak scoring
+build:
+  entry_points:
+  - pyprophet=pyprophet.main:cli
+  number: 3
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  container:
+    extended-base: true
+package:
+  name: pyprophet
+  version: 2.2.5
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython <1
+  - numpy >=1.9
+  - pypdf2
+  run:
+  - python
+  - None
+  - scipy
+  - pandas >=0.17
+  - numexpr >=2.1
+  - scikit-learn >=0.17
+  - matplotlib-base
+  - seaborn
+  - tabulate
+  - xgboost
+  - hyperopt
+  - statsmodels >=0.8.0
+  - click
+  - dataclasses
+  - pypdf2
+  - typing-extensions
+source:
+  sha256: f1d42ba53ecc0c0cac21e6938ad830f1260acb65ac69b3012a697f56e4badab3
+  url: https://pypi.io/packages/source/p/pyprophet/pyprophet-2.2.5.tar.gz
+test:
+  commands:
+  - pyprophet --help
+  imports:
+  - pyprophet

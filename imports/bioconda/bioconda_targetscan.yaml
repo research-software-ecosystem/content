@@ -1,0 +1,25 @@
+about:
+  home: https://www.targetscan.org/vert_80/
+  license: MIT
+  summary: Search for predicted microRNA targets in mammals
+build:
+  noarch: generic
+  number: 0
+extra:
+  skip-lints:
+  - license_file
+package:
+  name: targetscan
+  version: 7.0
+requirements:
+  host:
+  - perl
+  run:
+  - perl
+source:
+  sha256: 6e23c72a920f2a58ecf783fe33a6929bc16bbeb5359b020505c0fc95019bd749
+  url: https://www.targetscan.org/vert_80/vert_80_data_download/targetscan_70.zip
+test:
+  commands:
+  - perl --version
+  - targetscan_70.pl > /dev/null

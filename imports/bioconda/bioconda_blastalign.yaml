@@ -1,0 +1,30 @@
+about:
+  authors: Aris Katzourakis and Robert Belshaw
+  home: http://evolve.zoo.ox.ac.uk/Evolve/Blastalign.html
+  license: GNU GENERAL PUBLIC LICENSE
+  summary: BlastAlign uses NCBI Blast to align nucleotide sequences that have large
+    indels or are otherwise difficult to align globally.
+build:
+  number: 8
+  skip: true
+package:
+  name: blastalign
+  version: '1.4'
+requirements:
+  build:
+  - None
+  run:
+  - python
+  - perl
+  - blast-legacy
+source:
+  fn: BlastAlign.tar
+  patches:
+  - BlastAlign.patch
+  - BlastAlign_fix_Divisionby0.patch
+  - BlastAlignP.patch
+  sha256: 20cd6895dc949d3aeafd14dcf18f2678d9ed24fdcaeddd9ace3e9862d84f106d
+  url: https://drive.google.com/uc?export=download&id=1Z0bt8vHRyR6QsEway1LxJjYIgM_E-j_f
+test:
+  commands:
+  - BlastAlign 2>&1

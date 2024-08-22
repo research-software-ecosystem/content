@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/tree/master/linx
+  license: GPL-3.0-only
+  license_family: GPL
+  summary: LINX is an annotation, interpretation and visualisation tool for structural
+    variants.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-linx
+  version: '1.25'
+requirements:
+  run:
+  - openjdk >=8
+  - xorg-libxtst
+  - r-tidyr
+  - r-dplyr
+  - r-ggplot2
+  - r-cowplot
+  - r-magick
+  - bioconductor-gviz
+  - circos >=0.69.6
+source:
+  sha256: 2fa9a91801239ded3e82fcd0ee9987e6181d0e400855420ef7f5000f3b4a96da
+  url: https://github.com/hartwigmedical/hmftools/releases/download/linx-v1.25/linx_v1.25.jar
+test:
+  commands:
+  - linx -version | grep Linx

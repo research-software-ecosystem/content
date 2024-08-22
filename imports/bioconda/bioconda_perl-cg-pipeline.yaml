@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/lskatz/CG-Pipeline
+  license: GNU GPL
+  license_family: GPL
+  summary: Perl libraries required for CG-Pipeline.
+build:
+  noarch: generic
+  number: 1
+package:
+  name: perl-cg-pipeline
+  version: '0.5'
+requirements:
+  build:
+  - make
+  host:
+  - perl
+  run:
+  - perl
+  - perl-bioperl
+  - perl-xml-dom
+  - perl-xml-dom-xpath
+  - perl-exporter
+  - perl-data-dumper
+  - perl-file-path
+  - perl-file-spec
+  - perl-file-temp
+  - perl-storable
+  - perl-dbi
+source:
+  sha256: 868dec94351c461b7ff5245525640b7c3286db40a6e783b55550230c28a3b3fd
+  url: https://github.com/lskatz/CG-Pipeline/archive/v0.5.tar.gz
+test:
+  imports:
+  - AKUtils
+  - CGPBase
+  - CGPipelineUtils
+  - GTTmhmm
+  - CGPipeline::Reconciliator
+  - CGPipeline::SQLiteDB
+  - CGPipeline::TagFactory
+  - Bio::SeqIO::GTinterpro

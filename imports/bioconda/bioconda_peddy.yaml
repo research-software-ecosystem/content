@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/brentp/peddy
+  license: MIT
+  license_family: MIT
+  summary: 'genotype :: ped correspondence check, ancestry check, sex check. directly,
+    quickly on VCF'
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: peddy
+  version: 0.4.8
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - networkx
+  - cyvcf2 >=0.5.3
+  - numpy
+  - scikit-learn
+  - toolshed
+  - matplotlib-base >=1.5.0
+  - click
+  - coloredlogs
+  - seaborn
+  - pandas
+source:
+  sha256: 1949ad82b7bba7c3cffdd3f6a3a9006ca522e4cdb48b7278b4232a13faf87982
+  url: https://github.com/brentp/peddy/archive/v0.4.8.tar.gz
+test:
+  commands:
+  - python -m peddy -h
+  imports:
+  - peddy
+  - peddy.tests
+  - toolshed

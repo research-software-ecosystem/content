@@ -1,0 +1,51 @@
+about:
+  description: The probabilities by one-sided NOISeq are combined by Fisher's method
+    or Stouffer's method
+  home: https://bioconductor.org/packages/3.18/bioc/html/metaSeq.html
+  license: Artistic-2.0
+  summary: Meta-analysis of RNA-Seq count data in multiple studies
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:metaseq
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-metaseq
+    path: recipes/bioconductor-metaseq
+    version: 1.20.0
+package:
+  name: bioconductor-metaseq
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - bioconductor-noiseq >=2.46.0,<2.47.0
+  - r-base
+  - r-rcpp
+  - r-snow
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-noiseq >=2.46.0,<2.47.0
+  - r-base
+  - r-rcpp
+  - r-snow
+source:
+  md5: 8c3ee60501395cc86ecda6817d0d5439
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/metaSeq_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/metaSeq/metaSeq_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/metaSeq_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-metaseq/bioconductor-metaseq_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('metaSeq')"

@@ -1,0 +1,47 @@
+about:
+  home: https://pypi.org/project/samwell/
+  license: MIT
+  license_file: LICENSE
+  summary: Useful utilities for biological data formats and analyses
+build:
+  number: 3
+  script: -m pip install . -vv
+  skip: true
+extra:
+  recipe-maintainers:
+  - nh13
+  - tfenne
+  - NatPRoach
+  skip-lints:
+  - cython_must_be_in_host
+package:
+  name: samwell
+  version: 0.0.4
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - cython
+  - poetry
+  run:
+  - cython
+  - typing_extensions >=3.7.4
+  - typing_inspect >=0.3.1
+  - attrs >=19.3.0
+  - defopt >=6.0
+  - mypy_extensions >=0.4.3
+  - pybedlite >=0.0.1
+  - pysam >=0.15.3
+  - intervaltree
+  - python
+source:
+  patches:
+  - do_not_require_cython.patch
+  sha256: a95c9df5cf6a6d163269aac0b04c37ecac13c725ff131e31b65f0d830c5ffbf1
+  url: https://pypi.io/packages/source/s/samwell/samwell-0.0.4.tar.gz
+test:
+  imports:
+  - samwell
+  - samwell.sam

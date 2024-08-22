@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/BigDataBiology/GMSC-mapper
+  license: MIT
+  license_family: MIT
+  summary: GMSC-mapper is a command line tool to query the Global Microbial smORFs
+    Catalog (GMSC).
+build:
+  entry_points:
+  - gmsc-mapper=gmsc_mapper.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps . -vv
+extra:
+  recipe-maintainers:
+  - luispedro
+  - cocodyq
+package:
+  name: gmsc-mapper
+  version: 0.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - atomicwrites
+  - biopython
+  - Bottleneck
+  - certifi
+  - numexpr
+  - numpy
+  - packaging
+  - pandas
+  - pyparsing
+  - pyrodigal
+  - python-dateutil
+  - pytz
+  - six
+  - python >=3.7
+  - mmseqs2
+  - diamond >=2.0.13
+source:
+  sha256: 30cc09425028969ce9847a7c55d93919921fef7d91a138bfff2b9a1e31bc2921
+  url: https://github.com/BigDataBiology/GMSC-mapper/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - gmsc-mapper --help
+  imports:
+  - gmsc_mapper

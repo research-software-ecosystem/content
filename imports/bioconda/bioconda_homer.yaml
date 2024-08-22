@@ -1,0 +1,43 @@
+about:
+  home: http://homer.ucsd.edu/homer/index.html
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE.txt
+  maintainer: BioNinja, cokelaer, simonvh, r78v10a07
+  summary: Software for motif discovery and next generation sequencing analysis
+build:
+  number: 9
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: homer
+  version: '4.11'
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - perl =5.26
+  - wget
+  - unzip
+  - zip
+  run:
+  - perl
+  - wget
+  - unzip
+source:
+- patches:
+  - configureHomer.patch
+  sha256: 37e36fb10387a90050251683d35fe568657941b863b2088dcb0d09d9b1b59477
+  url: http://homer.ucsd.edu/homer/configureHomer.pl
+test:
+  commands:
+  - annotatePeaks.pl -h > /dev/null 2>&1
+  - findMotifs.pl -h > /dev/null 2>&1
+  - homer2 > /dev/null 2>&1
+  - GenomeOntology.pl > /dev/null 2>&1
+  - makeTagDirectory > /dev/null 2>&1

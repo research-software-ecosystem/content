@@ -1,0 +1,48 @@
+about:
+  description: Provides a user-friendly interface to map on-targets and off-targets
+    of CRISPR gRNA spacer sequences using bwa. The alignment is fast, and can be performed
+    using either commonly-used or custom CRISPR nucleases. The alignment can work
+    with any reference or custom genomes. Currently not supported on Windows machines.
+  home: https://bioconductor.org/packages/3.18/bioc/html/crisprBwa.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: BWA-based alignment of CRISPR gRNA spacer sequences
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-crisprbwa
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-crisprbase >=1.6.0,<1.7.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-rbwa >=1.6.0,<1.7.0
+  - r-base
+  - r-readr
+  - r-stringr
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-crisprbase >=1.6.0,<1.7.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-rbwa >=1.6.0,<1.7.0
+  - r-base
+  - r-readr
+  - r-stringr
+source:
+  md5: d77734ef6cfa03fb7b08c21c59155518
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/crisprBwa_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/crisprBwa/crisprBwa_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/crisprBwa_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-crisprbwa/bioconductor-crisprbwa_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('crisprBwa')"

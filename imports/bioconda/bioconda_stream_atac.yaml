@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/pinellolab/STREAM_atac
+  license: AGPL-3
+  license_file: LICENSE
+  summary: STREAM-Single-cell Trajectories Reconstruction, Exploration And Mapping
+    of single-cell data. Preprocessing steps for single cell atac-seq data.
+build:
+  noarch: python
+  number: 5
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+package:
+  name: stream_atac
+  version: 0.3.5
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - unzip
+  - zip
+  - wget
+  - perl
+  - anndata
+  - scikit-learn
+  - r-base
+  - r-essentials
+  - bioconductor-chromvar
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-bsgenome.mmusculus.ucsc.mm10
+  - bioconductor-bsgenome.mmusculus.ucsc.mm9
+  - bioconductor-motifmatchr
+  - bioconductor-jaspar2016
+  - rpy2 2.9
+  - r-optparse
+source:
+  patches:
+  - patch
+  sha256: 8e3e5f670d7f45ba74f9705a44003520426c6d7443d348bbe3ee33c792359654
+  url: https://github.com/pinellolab/STREAM_atac/archive/v0.3.5.tar.gz
+test:
+  commands:
+  - python -c 'import stream_atac'

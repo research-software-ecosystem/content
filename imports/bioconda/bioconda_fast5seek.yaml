@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/mbhall88/fast5seek
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: Get paths for fast5 files contained in BAM, SAM, or fastq.
+build:
+  entry_points:
+  - fast5seek=fast5seek.cli:cli
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: fast5seek
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - ont-fast5-api
+  - pysam
+source:
+  sha256: e78a7a6cf746ffa683779969bb6084ffe39d05af56283c63baf21dae77b02d50
+  url: https://github.com/mbhall88/fast5seek/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - fast5seek --help
+  imports:
+  - fast5seek

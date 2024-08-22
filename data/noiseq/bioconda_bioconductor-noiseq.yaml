@@ -1,0 +1,44 @@
+about:
+  description: Analysis of RNA-seq expression data or other similar kind of data.
+    Exploratory plots to evualuate saturation, count distribution, expression per
+    chromosome, type of detected features, features length, etc. Differential expression
+    between two experimental conditions with no parametric assumptions.
+  home: https://bioconductor.org/packages/3.18/bioc/html/NOISeq.html
+  license: Artistic-2.0
+  summary: Exploratory analysis and differential expression for RNA-seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:noiseq
+  parent_recipe:
+    name: bioconductor-noiseq
+    path: recipes/bioconductor-noiseq
+    version: 2.24.0
+package:
+  name: bioconductor-noiseq
+  version: 2.46.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-matrix >=1.2
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-matrix >=1.2
+source:
+  md5: e7ea859871f96aa68269efa3a1e7dd46
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/NOISeq_2.46.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/NOISeq/NOISeq_2.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/NOISeq_2.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-noiseq/bioconductor-noiseq_2.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('NOISeq')"

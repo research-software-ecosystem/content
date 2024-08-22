@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/moshi4/pybarrnap/
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Python implementation of barrnap (Bacterial ribosomal RNA predictor)
+build:
+  entry_points:
+  - pybarrnap = pybarrnap.scripts.pybarrnap:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - moshi4
+package:
+  name: pybarrnap
+  version: 0.5.0
+requirements:
+  host:
+  - python >=3.8
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8
+  - biopython >=1.79
+  - pyhmmer >=0.10.8
+source:
+  sha256: 9578c1677c60dfe7f12bccfd1613048918068289b0dc04b3d0396e699fd09073
+  url: https://pypi.io/packages/source/p/pybarrnap/pybarrnap-0.5.0.tar.gz
+test:
+  commands:
+  - pybarrnap --help
+  imports:
+  - pybarrnap

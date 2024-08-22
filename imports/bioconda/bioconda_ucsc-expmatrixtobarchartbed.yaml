@@ -1,0 +1,28 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: ' Generate a barChart bed6+5 file from a matrix, meta data, and coordinates. '
+build:
+  number: 2
+  skip: true
+package:
+  name: ucsc-expmatrixtobarchartbed
+  version: '377'
+requirements:
+  build: null
+  host: null
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - python
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: 932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v377.src.tgz
+test:
+  commands:
+  - expMatrixToBarchartBed --help > /dev/null

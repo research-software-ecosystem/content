@@ -1,0 +1,39 @@
+about:
+  description: 'A homo-insertion is an insertion of a string of equal characters,
+    which we also call a block, into another string. A homo-deletion is the inverse
+    operation, that is, the deletion of such a block. We consider the following problem:
+    Given two strings, what is the minimum number of homo-insertions or homo-deletions
+    needed to convert one into the other? We refer to this number as the homo-edit
+    distance.'
+  home: https://github.com/AlBi-HHU/homo-edit-distance
+  license: MIT
+  license_file: LICENSE
+  summary: An implementation of the homo-edit distance algorithm.
+build:
+  entry_points:
+  - hed=homoeditdistance.demonstration:main
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps -vv .'
+extra:
+  recipe-maintainers:
+  - AlBi-HHU
+package:
+  name: homoeditdistance
+  version: 0.0.1
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - numpy
+  - python >=3
+source:
+  sha256: 51a901a3badbc7cadfaa8a71ad86d1524f640103463e87f6d0f7fa3404a98cbd
+  url: https://github.com/AlBi-HHU/homo-edit-distance/archive/0.0.1.tar.gz
+test:
+  commands:
+  - hed --help
+  imports:
+  - homoeditdistance
+  - homoeditdistance.tests

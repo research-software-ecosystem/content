@@ -1,0 +1,39 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: Extract summary information from a bigBed file.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-bigbedsummary
+  version: '465'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: eef17b1f3182d1d9dc99b5c73a6b0468d5d3bd80470f25d3f7706cc1372e04b0
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v465.src.tgz
+test:
+  commands:
+  - test -x ${PREFIX}/bin/bigBedSummary

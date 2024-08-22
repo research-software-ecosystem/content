@@ -1,0 +1,82 @@
+about:
+  description: Cell differentiation processes are achieved through a continuum of
+    hierarchical intermediate cell-states that might be captured by single-cell RNA
+    seq. Existing computational approaches for the assessment of cell-state hierarchies
+    from single-cell data might be formalized under a general workflow composed of
+    i) a metric to assess cell-to-cell similarities (combined or not with a dimensionality
+    reduction step), and ii) a graph-building algorithm (optionally making use of
+    a cells-clustering step). Sincell R package implements a methodological toolbox
+    allowing flexible workflows under such framework. Furthermore, Sincell contributes
+    new algorithms to provide cell-state hierarchies with statistical support while
+    accounting for stochastic factors in single-cell RNA seq. Graphical representations
+    and functional association tests are provided to interpret hierarchies.
+  home: https://bioconductor.org/packages/3.18/bioc/html/sincell.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: R package for the statistical assessment of cell state hierarchies from
+    single-cell RNA-seq data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:sincell
+  parent_recipe:
+    name: bioconductor-sincell
+    path: recipes/bioconductor-sincell
+    version: 1.14.0
+package:
+  name: bioconductor-sincell
+  version: 1.34.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-cluster
+  - r-entropy
+  - r-fastica
+  - r-fields
+  - r-ggplot2
+  - r-igraph
+  - r-mass
+  - r-proxy
+  - r-rcpp >=0.11.2
+  - r-reshape2
+  - r-rtsne
+  - r-scatterplot3d
+  - r-statmod
+  - r-tsp
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-cluster
+  - r-entropy
+  - r-fastica
+  - r-fields
+  - r-ggplot2
+  - r-igraph
+  - r-mass
+  - r-proxy
+  - r-rcpp >=0.11.2
+  - r-reshape2
+  - r-rtsne
+  - r-scatterplot3d
+  - r-statmod
+  - r-tsp
+source:
+  md5: 308aa15c851a99b7f345dbd0af122f07
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/sincell_1.34.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/sincell/sincell_1.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sincell_1.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sincell/bioconductor-sincell_1.34.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sincell')"

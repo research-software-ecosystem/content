@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/PacificBiosciences/pangu
+  license: BSD-3-Clause-Clear
+  summary: CYP2D6 PGx caller for PacBio HiFi Data
+build:
+  entry_points:
+  - pangu = pangu.__main__:main_cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation -vvv .
+extra:
+  recipe-maintainers:
+  - jrharting
+package:
+  name: pangu
+  version: 0.2.8
+requirements:
+  host:
+  - python >=3.9
+  - setuptools
+  - pip
+  run:
+  - python >=3.9
+  - pysam >=0.19.1
+  - pyyaml
+  - numpy >=1.23.3
+  - pandas >=1.5.0
+  - scipy
+  - scikit-learn
+  - mappy >=2.24
+source:
+  sha256: 4360539dc2a881c3557d43e4c4322326385a7efa929b18f223aabf2e136fdea9
+  url: https://github.com/PacificBiosciences/pangu/archive/refs/tags/v0.2.8.tar.gz
+test:
+  commands:
+  - pangu -h

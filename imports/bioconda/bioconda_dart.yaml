@@ -1,0 +1,40 @@
+about:
+  description: An efficient short read mapper for RNA-Seq data.
+  home: https://github.com/hsinnan75/Dart
+  license: MIT
+  license_file: LICENSE
+  summary: 'Dart: a fast and accurate RNA-seq mapper'
+build:
+  number: 6
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1093/bioinformatics/btx558
+package:
+  name: dart
+  version: 1.4.6
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  - bzip2
+  - xz
+  - boost-cpp
+  run:
+  - zlib
+  - bzip2
+  - xz
+  - boost-cpp
+source:
+  sha256: 847d5e0a7e10162583fcf7168d31924d38290b5364e08c4a9cdd6653da73c64f
+  url: https://github.com/hsinnan75/Dart/archive/1.4.6.tar.gz
+test:
+  commands:
+  - dart --version | tee /dev/stderr | grep -qF '1.4.6'
+  - bwt_index

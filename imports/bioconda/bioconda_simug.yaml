@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/yjx1217/simuG
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: A simple, flexible, and powerful tool to simulate genome sequences with
+    pre-defined or random genomic variants.
+build:
+  noarch: generic
+  number: 1
+extra:
+  recipe-maintainers:
+  - tedil
+package:
+  name: simug
+  version: 1.0.0
+requirements:
+  run:
+  - gzip
+  - perl
+  - perl-pod-usage
+  - perl-getopt-long
+source:
+  sha256: 01ff2d213a5ae7b7441bb7b8a0c456bf0682f6e2f88929657787c4217d57021d
+  url: https://github.com/yjx1217/simuG/releases/download/v1.0.0/simuG-v1.0.0.tar.gz
+test:
+  commands:
+  - simuG -h | grep Usage
+  - vcf2model -h | grep Usage

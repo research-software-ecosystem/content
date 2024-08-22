@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/dnbaker/dashing
+  license: GPL-3
+  license_file: LICENSE
+  summary: Fast and accurate genomic distances using HyperLogLog
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1101/501726
+  recipe-maintainers:
+  - silask
+  - dnbaker
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: dashing
+  version: 1.0
+requirements:
+  build:
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  - zstd
+  - make
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  git_rev: v1.0
+  git_url: https://github.com/dnbaker/dashing
+  sha256: f4784e0c8863c266c2b826078bfe46fca4943fcde5799337891c333c9e0d29b4
+test:
+  commands:
+  - dashing --help 2>&1 | grep 1.0

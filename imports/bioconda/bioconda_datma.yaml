@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/andvides/DATMA
+  license: GPL-3.0
+  license_family: GPL
+  summary: DistributedAuTomaticMetagenomicAssembly andAnnotation framework
+build:
+  noarch: generic
+  number: 0
+package:
+  name: datma
+  version: 2.0
+requirements:
+  run:
+  - python
+  - numpy
+  - matplotlib-base
+  - bwa
+  - samtools
+  - checkm-genome
+  - trimmomatic
+  - sdsl-lite
+  - selectFasta
+  - rdp_classifier
+  - rapifilt
+  - mergeNotCombined
+  - clame 1
+  - flash2
+  - megahit
+  - spades
+  - velvet
+  - prodigal
+  - quast
+  - kaiju
+  - krona
+  - blast
+source:
+  sha256: 40408b72a27a079b268d11dc1f3109df45ff5db4c68e286e661df6443286a8d4
+  url: https://github.com/andvides/DATMA/archive/refs/tags/v2.0.tar.gz
+test:
+  commands:
+  - runDATMA.sh -h 2>&1 | grep "DATMA" > /dev/null

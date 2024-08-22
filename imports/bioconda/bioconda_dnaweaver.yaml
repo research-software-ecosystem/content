@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/Edinburgh-Genome-Foundry/DnaWeaver/
+  license: MIT
+  license_file: LICENCE.txt
+  summary: Python library to find optimal strategies for assembling large DNA constructs.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install -vv .
+extra:
+  recipe-maintainers:
+  - breakthewall
+  - kenza12
+package:
+  name: dnaweaver
+  version: v0.3.7
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - numpy
+  - biopython
+  - proglog
+  - networkx
+  - flametree
+  - dna_features_viewer
+  - weasyprint
+  - pandas
+  - jinja2
+  - blast
+  - dnachisel
+source:
+  sha256: 410aa5bfe36ebcba57caf00f4dfc6dfae7ce9b81bc8bbc2decdbde42b8d5accf
+  url: https://github.com/Edinburgh-Genome-Foundry/DnaWeaver/archive/v0.3.7.tar.gz
+test:
+  imports:
+  - dnaweaver
+  requires:
+  - pytest
+  source_files:
+  - tests

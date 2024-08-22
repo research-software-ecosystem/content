@@ -1,0 +1,35 @@
+about:
+  doc_url: https://github.com/aglabx/fastQuast/blob/main/README.md
+  home: https://github.com/aglabx/fastQuast
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Fast and simple Quality Assessment Tool for Large Genomes
+build:
+  entry_points:
+  - fastQuast=fastQuast.fastQuast:main
+  - fastquast=fastQuast.fastQuast:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - ad3002
+package:
+  name: fastquast
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - python >=3.6
+source:
+  sha256: 0a13fe73bf80050d62a3083a00a2fd04894ffc26d5dca5360a78299b217c39b5
+  url: https://pypi.io/packages/source/f/fastQuast/fastQuast-1.0.2.tar.gz
+test:
+  commands:
+  - fastQuast --help
+  - fastquast --help
+  imports:
+  - fastQuast

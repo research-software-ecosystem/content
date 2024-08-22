@@ -1,0 +1,45 @@
+about:
+  description: Many tools for data analysis are not available in R, but are present
+    in public repositories like conda. The Herper package provides a comprehensive
+    set of functions to interact with the conda package managament system. With Herper
+    users can install, manage and run conda packages from the comfort of their R session.
+    Herper also provides an ad-hoc approach to handling external system requirements
+    for R packages. For people developing packages with python conda dependencies
+    we recommend using basilisk (https://bioconductor.org/packages/release/bioc/html/basilisk.html)
+    to internally support these system requirments pre-hoc.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Herper.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: The Herper package is a simple toolset to install and manage conda packages
+    and environments from R
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-herper
+  version: 1.12.0
+requirements:
+  host:
+  - r-base
+  - r-reticulate
+  - r-rjson
+  - r-withr
+  run:
+  - r-base
+  - r-reticulate
+  - r-rjson
+  - r-withr
+source:
+  md5: dad437a472cae186246d3cf0f6b44964
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Herper_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Herper/Herper_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Herper_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-herper/bioconductor-herper_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Herper')"

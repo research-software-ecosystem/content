@@ -1,0 +1,39 @@
+about:
+  dev_url: https://gitlab.com/JakubBartoszewicz/deepac-vir
+  doc_url: https://rki_bioinformatics.gitlab.io/DeePaC/
+  home: https://gitlab.com/rki_bioinformatics/DeePaC
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Detecting novel human viruses from DNA reads with reverse-complement neural
+    networks.
+build:
+  entry_points:
+  - deepac-vir=deepacvir.command_line:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - JakubBartoszewicz
+package:
+  name: deepacvir
+  version: 0.2.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - deepac >=0.11.0
+  - numpy >=1.17
+  - python >=3.6
+  - scikit-learn >=0.22.1
+  - tensorflow >=2.1
+source:
+  sha256: 35fb33767f8c9ee41b5f22672b5a61f083915b590d6bc30ebc05c5dfbd4acd45
+  url: https://pypi.io/packages/source/d/deepacvir/deepacvir-0.2.2.tar.gz
+test:
+  commands:
+  - deepac-vir --help
+  imports:
+  - deepacvir

@@ -1,0 +1,62 @@
+about:
+  description: Single-cell RNA-seq technologies enable high throughput gene expression
+    measurement of individual cells, and allow the discovery of heterogeneity within
+    cell populations. Measurement of cell-to-cell gene expression similarity is critical
+    for the identification, visualization and analysis of cell populations. However,
+    single-cell data introduce challenges to conventional measures of gene expression
+    similarity because of the high level of noise, outliers and dropouts. We develop
+    a novel similarity-learning framework, SIMLR (Single-cell Interpretation via Multi-kernel
+    LeaRning), which learns an appropriate distance metric from the data for dimension
+    reduction, clustering and visualization.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SIMLR.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Single-cell Interpretation via Multi-kernel LeaRning (SIMLR)
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:simlr
+  - doi:10.1101/118901
+  parent_recipe:
+    name: bioconductor-simlr
+    path: recipes/bioconductor-simlr
+    version: 1.8.0
+package:
+  name: bioconductor-simlr
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-matrix
+  - r-pracma
+  - r-rcpp
+  - r-rcppannoy
+  - r-rspectra
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-matrix
+  - r-pracma
+  - r-rcpp
+  - r-rcppannoy
+  - r-rspectra
+source:
+  md5: 9692308a74c8781b41b55409edf594ce
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SIMLR_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SIMLR/SIMLR_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SIMLR_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-simlr/bioconductor-simlr_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SIMLR')"

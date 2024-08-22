@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/niemasd/TreeCluster
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Identify clusters in phylogenetic trees based on a distance threshold and
+    other constraints
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+extra:
+  identifiers:
+  - doi:10.1371/journal.pone.0221068
+package:
+  name: treecluster
+  version: 1.0.4
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - niemads
+  - treeswift
+source:
+  sha256: 7867a10816123488ca7ddfd46efb7f27305389d7b2a2a0bbcd2dc08dc320a4d0
+  url: https://pypi.io/packages/source/t/treecluster/treecluster-1.0.4.tar.gz
+test:
+  commands:
+  - TreeCluster.py -h

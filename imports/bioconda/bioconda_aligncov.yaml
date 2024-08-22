@@ -1,0 +1,39 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/pcrxn/aligncov
+  license: MIT
+  license_family: MIT
+  license_file: null
+  summary: Obtain tidy alignment coverage info from sorted BAM files
+build:
+  entry_points:
+  - aligncov=aligncov.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - pcrxn
+package:
+  name: aligncov
+  version: 0.0.2
+requirements:
+  host:
+  - pandas >=1.0.0
+  - pip
+  - python
+  run:
+  - pandas >=1.0.0
+  - python
+  - samtools >=1.15
+source:
+  sha256: 47ded440daebad7bdfa1e5e3a75925f3bf6e730e7de5b3f50060bf35e5ad0f43
+  url: https://pypi.io/packages/source/a/aligncov/aligncov-0.0.2.tar.gz
+test:
+  commands:
+  - aligncov --help
+  imports:
+  - aligncov

@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/hredestig/crmn
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Implements the Cross-contribution Compensating Multiple standard Normalization
+    (CCMN) method described in Redestig et al. (2009) Analytical Chemistry <doi:10.1021/ac901143w>
+    and other normalization algorithms.
+build:
+  noarch: generic
+  number: 4
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-crmn
+  version: 0.0.21
+requirements:
+  host:
+  - r-base
+  - bioconductor-biobase
+  - bioconductor-pcamethods >=1.56.0
+  run:
+  - r-base
+  - bioconductor-biobase
+  - bioconductor-pcamethods >=1.56.0
+source:
+  sha256: 659eb2ba41111ef7a17e1ffe75750735ec9cf2394e881eee4b05f9c3b54be972
+  url:
+  - /src/contrib/crmn_0.0.21.tar.gz
+  - /src/contrib/Archive/crmn/crmn_0.0.21.tar.gz
+test:
+  commands:
+  - $R -e "library('crmn')"

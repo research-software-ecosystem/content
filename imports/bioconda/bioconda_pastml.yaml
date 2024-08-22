@@ -1,0 +1,65 @@
+about:
+  description: 'PastML provides fast methods for Ancestral Character Reconstruction
+    (ACR)
+
+    and visualisation on rooted phylogenetic trees. Given a rooted tree and its
+
+    node annotations, it can either visualise them as-is, or infer ancestral
+
+    node states based on the tip states, with a selection of maximum likelihood
+
+    and parsimonious methods. The result is then visualised as a zoomable html
+
+    map.
+
+    '
+  dev_url: https://github.com/evolbioinfo/pastml
+  doc_url: https://pastml.pasteur.fr/help
+  home: https://pastml.pasteur.fr
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Ancestral character reconstruction and visualisation for rooted phylogenetic
+    trees.
+build:
+  entry_points:
+  - pastml = pastml.acr:main
+  - geomap = pastml.visualisation.generate_geomap:main
+  - transition_counter = pastml.utilities.transition_counter:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vvv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - annazhukova
+package:
+  name: pastml
+  version: 1.9.46
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  run:
+  - biopython >=1.70
+  - ete3 >=3.1.1
+  - itolapi >=4.0.0
+  - jinja2 >=2.11.0
+  - numpy >=1.22
+  - pandas >=1.0.0
+  - python >=3.9
+  - scipy >=1.5.0
+source:
+  sha256: cf127cb64693edf587dc3472de87c876d6603cf2215ca7b0bdf4d879df6223ff
+  url: https://pypi.io/packages/source/p/pastml/pastml-1.9.46.tar.gz
+test:
+  commands:
+  - pastml --help
+  - geomap --help
+  - transition_counter --help
+  imports:
+  - pastml
+  - pastml.models
+  - pastml.utilities
+  - pastml.visualisation

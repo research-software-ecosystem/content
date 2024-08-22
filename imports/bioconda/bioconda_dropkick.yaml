@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/KenLauLab/dropkick
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Automated scRNA-seq filtering
+build:
+  entry_points:
+  - dropkick = dropkick.__main__:main
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+  skip: true
+package:
+  name: dropkick
+  version: 1.2.8
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - numpy
+  run:
+  - python
+  - scipy >=0.14.1
+  - pandas
+  - scikit-learn >=0.18.0
+  - scikit-image
+  - matplotlib-base >=3.0.3
+  - scanpy
+  - None
+source:
+  sha256: 4bfbd23984ac11669691818f29e1f0033e32dd7c2236b16d8a2f20fe60c923c6
+  url: https://pypi.io/packages/source/d/dropkick/dropkick-1.2.8.tar.gz
+test:
+  commands:
+  - dropkick --help
+  imports:
+  - dropkick

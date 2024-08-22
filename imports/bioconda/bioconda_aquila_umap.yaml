@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/maiziex/Aquila_Umap
+  license: MIT
+  summary: This is a program to generate Umap for Aquila diploid assembly.
+build:
+  noarch: python
+  number: 2
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: aquila_umap
+  version: '1.0'
+requirements:
+  host:
+  - python
+  - setuptools >=1.1
+  run:
+  - python
+  - samtools
+  - pysam
+  - bowtie2
+source:
+  sha256: 7ce5ffc14e9aeaa55a92953f192c822165f3a540ce569704155ce60806696f59
+  url: https://github.com/maiziex/Aquila_Umap/archive/v1.0.tar.gz
+test:
+  commands:
+  - aquila_umap --help

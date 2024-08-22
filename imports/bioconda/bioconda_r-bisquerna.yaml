@@ -1,0 +1,42 @@
+about:
+  description: A reference-based method utilizes single-cell information to generate
+    a signature matrix and transformation of bulk expression for accurate regression
+    based estimates. A marker-based method utilizes known cell-specific marker genes
+    to measure relative abundances across samples. For more details, see Jew and Alvarez
+    et al (2019) <doi:10.1101/669911>.
+  home: https://www.biorxiv.org/content/10.1101/669911v1
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Provides tools to accurately estimate cell type abundances from heterogeneous
+    bulk expression.
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - brandonjew
+package:
+  name: r-bisquerna
+  version: 1.0.5
+requirements:
+  host:
+  - r-base
+  - bioconductor-biobase
+  - r-limsolve
+  run:
+  - r-base
+  - bioconductor-biobase
+  - r-limsolve
+source:
+  sha256: 76886871c497a71427929654ca0e257ae949f23af53a6cf43e31bf642e2d775c
+  url:
+  - /src/contrib/BisqueRNA_1.0.5.tar.gz
+  - /src/contrib/Archive/BisqueRNA/BisqueRNA_1.0.5.tar.gz
+test:
+  commands:
+  - $R -e "library('BisqueRNA')"

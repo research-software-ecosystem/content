@@ -1,0 +1,59 @@
+about:
+  description: Functional enrichment analysis methods such as gene set enrichment
+    analysis (GSEA) have been widely used for analyzing gene expression data. GSEA
+    is a powerful method to infer results of gene expression data at a level of gene
+    sets by calculating enrichment scores for predefined sets of genes. GSEA depends
+    on the availability and accuracy of gene sets. There are overlaps between terms
+    of gene sets or categories because multiple terms may exist for a single biological
+    process, and it can thus lead to redundancy within enriched terms. In other words,
+    the sets of related terms are overlapping. Using deep learning, this pakage is
+    aimed to predict enrichment scores for unique tokens or words from text in names
+    of gene sets to resolve this overlapping set issue. Furthermore, we can coin a
+    new term by combining tokens and find its enrichment score by predicting such
+    a combined tokens.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ttgsea.html
+  license: Artistic-2.0
+  summary: Tokenizing Text of Gene Set Enrichment Analysis
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-ttgsea
+  version: 1.10.0
+requirements:
+  host:
+  - r-base
+  - r-data.table
+  - r-diagrammer
+  - r-keras
+  - r-purrr
+  - r-stopwords
+  - r-text2vec
+  - r-textstem
+  - r-tm
+  - r-tokenizers
+  run:
+  - r-base
+  - r-data.table
+  - r-diagrammer
+  - r-keras
+  - r-purrr
+  - r-stopwords
+  - r-text2vec
+  - r-textstem
+  - r-tm
+  - r-tokenizers
+source:
+  md5: 0b38c9baea88905217b9ed667c80c26f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ttgsea_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ttgsea/ttgsea_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ttgsea_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ttgsea/bioconductor-ttgsea_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ttgsea')"

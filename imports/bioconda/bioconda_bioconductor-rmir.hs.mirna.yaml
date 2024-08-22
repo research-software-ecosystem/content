@@ -1,0 +1,39 @@
+about:
+  description: Various databases of microRNA Targets
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/RmiR.Hs.miRNA.html
+  license: The Artistic License, Version 2.0
+  summary: Various databases of microRNA Targets
+build:
+  noarch: generic
+  number: 15
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-rmir.hs.mirna
+    path: recipes/bioconductor-rmir.hs.mirna
+    version: 1.0.7
+package:
+  name: bioconductor-rmir.hs.mirna
+  version: 1.0.7
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 4aedac188382447d9907d2617aa2e8e6
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/RmiR.Hs.miRNA_1.0.7.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RmiR.Hs.miRNA/RmiR.Hs.miRNA_1.0.7.tar.gz
+  - https://bioarchive.galaxyproject.org/RmiR.Hs.miRNA_1.0.7.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rmir.hs.mirna/bioconductor-rmir.hs.mirna_1.0.7_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RmiR.Hs.miRNA')"

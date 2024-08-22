@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/huangnengCSU/compleasm
+  home: https://github.com/huangnengCSU/compleasm
+  license: Apache License 2.0
+  license_file: LICENSE
+  summary: 'Compleasm: a faster and more accurate reimplementation of BUSCO'
+build:
+  entry_points:
+  - compleasm=compleasm:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script:
+  - -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - huangnengCSU
+package:
+  name: compleasm
+  version: 0.2.6
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - pandas
+  - hmmer
+  - miniprot >=0.11
+  - sepp
+  - dendropy <4.6.0
+source:
+  sha256: 298a50064b3ada90089912844e40c174de49c976a19ccb53d3645f312649ad25
+  url: https://github.com/huangnengCSU/compleasm/archive/refs/tags/v0.2.6.tar.gz
+test:
+  commands:
+  - compleasm --help

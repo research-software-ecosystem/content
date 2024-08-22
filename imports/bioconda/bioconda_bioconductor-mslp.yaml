@@ -1,0 +1,55 @@
+about:
+  description: An integrated pipeline to predict the potential synthetic lethality
+    partners (SLPs) of tumour mutations, based on gene expression, mutation profiling
+    and cell line genetic screens data. It has builtd-in support for data from cBioPortal.
+    The primary SLPs correlating with muations in WT and compensating for the loss
+    of function of mutations are predicted by random forest based methods (GENIE3)
+    and Rank Products, respectively. Genetic screens are employed to identfy consensus
+    SLPs leads to reduced cell viability when perturbed.
+  home: https://bioconductor.org/packages/3.18/bioc/html/mslp.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Predict synthetic lethal partners of tumour mutations
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-mslp
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rankprod >=3.28.0,<3.29.0
+  - r-base
+  - r-data.table >=1.13.0
+  - r-dorng
+  - r-fmsb
+  - r-foreach
+  - r-magrittr
+  - r-proc
+  - r-randomforest
+  run:
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rankprod >=3.28.0,<3.29.0
+  - r-base
+  - r-data.table >=1.13.0
+  - r-dorng
+  - r-fmsb
+  - r-foreach
+  - r-magrittr
+  - r-proc
+  - r-randomforest
+source:
+  md5: 8d78607401143e315c9ad75923a0c9c5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mslp_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mslp/mslp_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mslp_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mslp/bioconductor-mslp_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('mslp')"

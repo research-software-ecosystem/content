@@ -1,0 +1,40 @@
+about:
+  description: 'MANTIS (Microsatellite Analysis for Normal-Tumor InStability) is a
+    program developed for detecting microsatellite instability from paired-end BAM
+    files. To perform analysis, the program needs a tumor BAM and a matched normal
+    BAM file (produced using the same pipeline) to determine the instability score
+    between the two samples within the pair. Longer reads (ideally, 100 bp or longer)
+    are recommended, as shorter reads are unlikely to entirely cover the microsatellite
+    loci, and will be discarded after failing the quality control filters.
+
+    '
+  home: https://github.com/OSU-SRLab/MANTIS/
+  license: GPL-3
+  license_family: GPL
+  summary: MANTIS is a program developed for detecting microsatellite instability
+    from paired-end BAM files
+build:
+  number: 2
+extra:
+  recipe-maintainers:
+  - nh13
+package:
+  name: mantis-msi
+  version: 1.0.5
+requirements:
+  build:
+  - make
+  - None
+  run:
+  - python >=3.6
+  - numpy >=1.11
+  - pysam >=0.13
+source:
+  patches:
+  - Makefile.patch
+  sha256: e9d7d6adbfb6b93da572d804a27a41c5db6d75ba39db690b2612284ccf885330
+  url: https://github.com/OSU-SRLab/MANTIS/archive/refs/tags/v1.0.5.tar.gz
+test:
+  commands:
+  - mantis-msi.py --help
+  - RepeatFinder -m 5 -i <(echo -e ">1\nACGTAAAAAAAAAAAAAGT") -o /dev/null

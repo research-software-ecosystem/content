@@ -1,0 +1,60 @@
+about:
+  description: Gene lists derived from the results of genomic analyses are rich in
+    biological information. For instance, differentially expressed genes (DEGs) from
+    a microarray or RNA-Seq analysis are related functionally in terms of their response
+    to a treatment or condition. Gene lists can vary in size, up to several thousand
+    genes, depending on the robustness of the perturbations or how widely different
+    the conditions are biologically. Having a way to associate biological relatedness
+    between hundreds and thousands of genes systematically is impractical by manually
+    curating the annotation and function of each gene. Over-representation analysis
+    (ORA) of genes was developed to identify biological themes. Given a Gene Ontology
+    (GO) and an annotation of genes that indicate the categories each one fits into,
+    significance of the over-representation of the genes within the ontological categories
+    is determined by a Fisher's exact test or modeling according to a hypergeometric
+    distribution. Comparing a small number of enriched biological categories for a
+    few samples is manageable using Venn diagrams or other means for assessing overlaps.
+    However, with hundreds of enriched categories and many samples, the comparisons
+    are laborious. Furthermore, if there are enriched categories that are shared between
+    samples, trying to represent a common theme across them is highly subjective.
+    goSTAG uses GO subtrees to tag and annotate genes within a set. goSTAG visualizes
+    the similarities between the over-representation of DEGs by clustering the p-values
+    from the enrichment statistical tests and labels clusters with the GO term that
+    has the most paths to the root within the subtree generated from all the GO terms
+    in the cluster.
+  home: https://bioconductor.org/packages/3.18/bioc/html/goSTAG.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A tool to use GO Subtrees to Tag and Annotate Genes within a set
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-gostag
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - r-base
+  - r-memoise
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - r-base
+  - r-memoise
+source:
+  md5: 8d3245abbcc5813366a9393dc7bf79c7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/goSTAG_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/goSTAG/goSTAG_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/goSTAG_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gostag/bioconductor-gostag_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('goSTAG')"

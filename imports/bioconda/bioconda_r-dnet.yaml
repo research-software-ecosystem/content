@@ -1,0 +1,51 @@
+about:
+  home: http://dnet.r-forge.r-project.org, https://github.com/hfang-bristol/dnet
+  license: GPL-2
+  license_family: GPL2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: 'The focus of the dnet by Fang and Gough (2014) <doi:10.1186/s13073-014-0064-8>
+    is to make sense of omics data (such as gene expression and mutations) from different
+    angles including: integration with molecular networks, enrichments using ontologies,
+    and relevance to gene evolutionary ages. Integration is achieved to identify a
+    gene subnetwork from the whole gene network whose nodes/genes are labelled with
+    informative data (such as the significant levels of differential expression or
+    survival risks). To help make sense of identified gene networks, enrichment analysis
+    is also supported using a wide variety of pre-compiled ontologies and phylostratific
+    gene age information in major organisms including: human, mouse, rat, chicken,
+    C.elegans, fruit fly, zebrafish and arabidopsis. Add-on functionalities are supports
+    for calculating semantic similarity between ontology terms (and between genes)
+    and for calculating network affinity based on random walk; both can be done via
+    high-performance parallel computing.'
+build:
+  noarch: generic
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-dnet
+  version: 1.1.7
+requirements:
+  build: null
+  host:
+  - r-base
+  - r-matrix
+  - bioconductor-rgraphviz
+  - bioconductor-graph
+  - r-igraph
+  - bioconductor-suprahex
+  run:
+  - r-base
+  - r-matrix
+  - bioconductor-rgraphviz
+  - bioconductor-graph
+  - r-igraph
+  - bioconductor-suprahex
+source:
+  sha256: ac2be6d2b64dd6f63002c80b4646506fadf3ec9dc690249193db40d1d17db816
+  url:
+  - /src/contrib/dnet_1.1.7.tar.gz
+  - /src/contrib/Archive/dnet/dnet_1.1.7.tar.gz
+test:
+  commands:
+  - $R -e "library('dnet')"

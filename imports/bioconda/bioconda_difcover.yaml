@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/timnat/DifCover
+  license: MIT
+  license_file: LICENSE
+  summary: Pipeline to identify genomic regions with read coverage differences between
+    pairs of samples
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+package:
+  name: difcover
+  version: 3.0.1
+requirements:
+  build:
+  - make
+  - None
+  run:
+  - samtools
+  - bedtools
+  - bioconductor-dnacopy
+source:
+  patches:
+  - 0001-Replaces-fname-char-with-std-string.patch
+  sha256: 52f950f35bfcd6c863127bae937da1158dd16da5c1a0e85f523561504d300447
+  url: https://github.com/timnat/DifCover/archive/refs/tags/v3.0.1.tar.gz
+test:
+  commands:
+  - from_unionbed_to_ratio_per_window_CC0 2>&1 | grep "^Usage"

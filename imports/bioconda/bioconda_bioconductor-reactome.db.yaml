@@ -1,0 +1,41 @@
+about:
+  description: A set of annotation maps for reactome assembled using data from reactome.
+    This package has been created by a third-party developer, and is not affiliated
+    with the Reactome team.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/reactome.db.html
+  license: CC BY 4.0
+  summary: A set of annotation maps for reactome
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-reactome.db
+    path: recipes/bioconductor-reactome.db
+    version: 1.64.0
+package:
+  name: bioconductor-reactome.db
+  version: 1.86.2
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: ff56f3908b347cb18e3e4ccedf7f584e
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/reactome.db_1.86.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/reactome.db/reactome.db_1.86.2.tar.gz
+  - https://bioarchive.galaxyproject.org/reactome.db_1.86.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-reactome.db/bioconductor-reactome.db_1.86.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('reactome.db')"

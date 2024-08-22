@@ -1,0 +1,65 @@
+about:
+  description: 'hiAnnotator contains set of functions which allow users to annotate
+    a GRanges object with custom set of annotations. The basic philosophy of this
+    package is to take two GRanges objects (query & subject) with common set of seqnames
+    (i.e. chromosomes) and return associated annotation per seqnames and rows from
+    the query matching seqnames and rows from the subject (i.e. genes or cpg islands).
+    The package comes with three types of annotation functions which calculates if
+    a position from query is: within a feature, near a feature, or count features
+    in defined window sizes. Moreover, each function is equipped with parallel backend
+    to utilize the foreach package. In addition, the package is equipped with wrapper
+    functions, which finds appropriate columns needed to make a GRanges object from
+    a common data frame.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/hiAnnotator.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions for annotating GRanges objects
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:hiannotator
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-hiannotator
+    path: recipes/bioconductor-hiannotator
+    version: 1.14.0
+package:
+  name: bioconductor-hiannotator
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-scales
+  run:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-scales
+source:
+  md5: 67e0fbd27bb6f634ccb9912642a2aeb6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/hiAnnotator_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/hiAnnotator/hiAnnotator_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hiAnnotator_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hiannotator/bioconductor-hiannotator_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('hiAnnotator')"

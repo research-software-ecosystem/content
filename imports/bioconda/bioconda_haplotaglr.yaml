@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Boyle-Lab/HaplotagLR.git
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Haplotagging individual long reads using known haplotype information.
+build:
+  entry_points:
+  - HaplotagLR = HaplotagLR.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: haplotaglr
+  version: 1.1.9
+requirements:
+  host:
+  - python >=3.7,<3.13
+  - pip
+  run:
+  - python >=3.7,<3.13
+  - biopython >=1.78
+  - numpy >=1.20.1
+  - powerlaw >=1.4.6
+  - pyliftover >=0.4
+  - pysam >=0.16.0.1
+  - powerlaw >=1.4.6
+  - requests >=2.26.0
+source:
+  sha256: e8bdcdf8628583fc3e24f2d53fc316ac8a30c1514c258c62996251523f0a9299
+  url: https://pypi.io/packages/source/H/HaplotagLR/HaplotagLR-1.1.9.tar.gz
+test:
+  commands:
+  - HaplotagLR --help
+  imports:
+  - HaplotagLR

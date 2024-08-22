@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/lh3/yak
+  doc_url: https://github.com/lh3/yak/blob/v0.1/README.md
+  home: https://github.com/lh3/yak
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Yet another k-mer analyzer.
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: yak
+  version: 0.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+source:
+  patches:
+  - yak.patch
+  sha256: a4237af25005eb8e7e721519c62d6bbcf203bf0a572506af63c3f6ecb6b11836
+  url: https://github.com/lh3/yak/archive/v0.1.tar.gz
+test:
+  commands:
+  - yak 2>&1 | grep 'Usage'

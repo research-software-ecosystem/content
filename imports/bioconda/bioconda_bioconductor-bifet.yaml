@@ -1,0 +1,43 @@
+about:
+  description: BiFET identifies TFs whose footprints are over-represented in target
+    regions compared to background regions after correcting for the bias arising from
+    the imbalance in read counts and GC contents between the target and background
+    regions. For a given TF k, BiFET tests the null hypothesis that the target regions
+    have the same probability of having footprints for the TF k as the background
+    regions while correcting for the read count and GC content bias. For this, we
+    use the number of target regions with footprints for TF k, t_k as a test statistic
+    and calculate the p-value as the probability of observing t_k or more target regions
+    with footprints under the null hypothesis.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BiFET.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Bias-free Footprint Enrichment Test
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-bifet
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-poibin
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-poibin
+source:
+  md5: 11fcc80fc0c2745e5a15524fd2279bed
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BiFET_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BiFET/BiFET_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BiFET_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bifet/bioconductor-bifet_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BiFET')"

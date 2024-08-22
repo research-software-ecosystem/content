@@ -1,0 +1,57 @@
+about:
+  home: https://github.com/pkrog/biodb
+  license: AGPL-3.0
+  summary: An R package for connecting to chemical and biological databases.
+build:
+  number: 9
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-biodb
+  version: 1.2.2
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-codetools
+  - r-devtools
+  - r-rcpp
+  - r-xml
+  - r-stringr
+  - r-plyr
+  - r-bitops
+  - r-rcurl
+  - r-r.utils
+  run:
+  - r-base
+  - r-rcpp
+  - r-xml
+  - r-stringr
+  - r-plyr
+  - r-bitops
+  - r-rcurl
+  - r-r.utils
+  - r-jsonlite
+  - r-digest
+source:
+  sha256: abc4c533a2824e98bb6b4e94b5288bf89c6cf2ba5e62804d0e8dc75147eecb88
+  url: https://github.com/pkrog/biodb/archive/v1.2.2.tar.gz
+test:
+  commands:
+  - $R -e "library(biodb)"
+  - $R -e "library(biodb) ; biodb = biodb::Biodb()"

@@ -1,0 +1,62 @@
+about:
+  description: "Annotates data from liquid chromatography coupled to mass spectrometry\
+    \ (LC/MS) metabolomics experiments. Based on a network algorithm (O.Senan, A.\
+    \ Aguilar- Mogas, M. Navarro, O. Yanes, R.Guimer\xE0 and M. Sales-Pardo, Bioinformatics,\
+    \ 35(20), 2019), 'CliqueMS' builds a weighted similarity network where nodes are\
+    \ features and edges are weighted according to the similarity of this features.\
+    \ Then it searches for the most plausible division of the similarity network into\
+    \ cliques (fully connected components). Finally it annotates metabolites within\
+    \ each clique, obtaining for each annotated metabolite the neutral mass and their\
+    \ features, corresponding to isotopes, ionization adducts and fragmentation adducts\
+    \ of that metabolite."
+  home: https://bioconductor.org/packages/3.18/bioc/html/cliqueMS.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Annotation of Isotopes, Adducts and Fragmentation Adducts for in-Source
+    LC/MS Metabolomics Data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-cliquems
+  version: 1.16.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-msnbase >=2.28.0,<2.29.0
+  - bioconductor-xcms >=4.0.0,<4.1.0
+  - r-base
+  - r-bh
+  - r-igraph
+  - r-matrixstats
+  - r-qlcmatrix
+  - r-rcpp >=0.12.15
+  - r-rcpparmadillo
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-msnbase >=2.28.0,<2.29.0
+  - bioconductor-xcms >=4.0.0,<4.1.0
+  - r-base
+  - r-bh
+  - r-igraph
+  - r-matrixstats
+  - r-qlcmatrix
+  - r-rcpp >=0.12.15
+  - r-rcpparmadillo
+source:
+  md5: f423e41dd4ca04cefe4bd5be77ceec3a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cliqueMS_1.16.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cliqueMS/cliqueMS_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cliqueMS_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cliquems/bioconductor-cliquems_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cliqueMS')"

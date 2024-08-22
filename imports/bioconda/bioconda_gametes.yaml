@@ -1,0 +1,26 @@
+about:
+  home: https://sourceforge.net/projects/gametes/
+  license: GPL-2.0-only
+  license_file: LICENSE
+  summary: Tool for the generation of complex single SNP models
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+package:
+  name: gametes
+  version: 2.1
+requirements:
+  host:
+  - openjdk >=17
+  - python
+  run:
+  - openjdk >=17
+  - python
+source:
+  sha256: 5e38b0993f8915e3e3e4c225ce6b684455d02c6189877d6ae219d24ad69e27d7
+  url: https://sourceforge.net/projects/gametes/files/GAMETES_2.1.jar
+test:
+  commands:
+  - $(echo $(gametes -h |  grep Usage))

@@ -1,0 +1,59 @@
+about:
+  description: Differential Expression analysis at both gene and isoform level using
+    RNA-seq data
+  home: https://bioconductor.org/packages/3.18/bioc/html/EBSeq.html
+  license: Artistic-2.0
+  summary: An R package for gene and isoform differential expression analysis of RNA-seq
+    data
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:ebseq
+  - doi:10.1093/bioinformatics/btt087
+  parent_recipe:
+    name: bioconductor-ebseq
+    path: recipes/bioconductor-ebseq
+    version: 1.20.0
+package:
+  name: bioconductor-ebseq
+  version: 2.0.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-bh
+  - r-blockmodeling
+  - r-gplots
+  - r-rcpp >=0.12.11
+  - r-rcppeigen >=0.3.2.9.0
+  - r-testthat
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-bh
+  - r-blockmodeling
+  - r-gplots
+  - r-rcpp >=0.12.11
+  - r-rcppeigen >=0.3.2.9.0
+  - r-testthat
+source:
+  md5: e64aabb38197aba0ee5985a1558cce60
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/EBSeq_2.0.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EBSeq/EBSeq_2.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EBSeq_2.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ebseq/bioconductor-ebseq_2.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EBSeq')"

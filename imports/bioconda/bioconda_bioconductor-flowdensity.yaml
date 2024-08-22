@@ -1,0 +1,51 @@
+about:
+  description: This package provides tools for automated sequential gating analogous
+    to the manual gating strategy based on the density of the data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/flowDensity.html
+  license: Artistic-2.0
+  summary: Sequential Flow Cytometry Data Gating
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:flowdensity
+  - doi:10.1093/bioinformatics/btu677
+  parent_recipe:
+    name: bioconductor-flowdensity
+    path: recipes/bioconductor-flowdensity
+    version: 1.14.0
+package:
+  name: bioconductor-flowdensity
+  version: 1.36.1
+requirements:
+  host:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - bioconductor-flowviz >=1.66.0,<1.67.0
+  - r-base
+  - r-car
+  - r-gplots
+  - r-polyclip
+  - libxml2
+  run:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - bioconductor-flowviz >=1.66.0,<1.67.0
+  - r-base
+  - r-car
+  - r-gplots
+  - r-polyclip
+  - libxml2
+source:
+  md5: 30c661d010484bff6c2eb427a7056aa1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/flowDensity_1.36.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/flowDensity/flowDensity_1.36.1.tar.gz
+  - https://bioarchive.galaxyproject.org/flowDensity_1.36.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowdensity/bioconductor-flowdensity_1.36.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowDensity')"

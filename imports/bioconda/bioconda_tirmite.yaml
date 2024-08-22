@@ -1,0 +1,42 @@
+about:
+  description: Build profile Hidden Markov Models for Terminal Inverted repeat families
+    (TIR-pHMMs) and map to genomic sequences for annotation of MITES and complete
+    DNA-Transposons with variable internal sequence composition.
+  home: https://github.com/Adamtaranto/TIRmite
+  license: MIT License
+  license_family: MIT
+  summary: Map TIR-pHMM models to genomic sequences for annotation of MITES and complete
+    DNA-Transposons.
+build:
+  entry_points:
+  - tirmite=tirmite.cmd_tirmite:main
+  - tsplit-LTR=tirmite.cmd_LTR:main
+  - tsplit-TIR=tirmite.cmd_TIR:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - Adam Taranto
+package:
+  name: tirmite
+  version: 1.1.4
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pandas >=0.20.3
+  - biopython >=1.70
+  - pymummer >=0.10.3
+source:
+  sha256: 82657d6f84f51731cb5f92c33d9e672a61009ecc79a61ba21f6f3fc637b2a25b
+  url: https://pypi.io/packages/source/t/tirmite/tirmite-1.1.4.tar.gz
+test:
+  commands:
+  - tirmite --help
+  - tsplit-LTR --help
+  - tsplit-TIR --help
+  imports:
+  - tirmite

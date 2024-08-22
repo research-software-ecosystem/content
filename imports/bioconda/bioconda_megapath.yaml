@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/HKU-BAL/MegaPath
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: 'MegaPath: sensitive and rapid pathogen detection using metagenomic NGS
+    data; MegaPath-Amplicon: filtering module for metagenomic amplicon data'
+build:
+  number: 4
+  skip: true
+package:
+  name: megapath
+  version: 2
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  - boost-cpp
+  run:
+  - python =3.6
+  - bedtools
+  - samtools =1.10
+  - megahit =1.1
+  - seqtk
+  - parallel =20191122
+  - pypy3.6
+  - bwa =0.7.12
+  - pysam =0.16.0.1
+  - pandas
+  - gatk4
+  - minimap2
+source:
+  sha256: 8202bd0002a2acaaf0c84551223d5ba9c3f058e88209324844a3245a6bd9637b
+  url: https://github.com/HKU-BAL/MegaPath/archive/refs/tags/v2.tar.gz
+test:
+  commands:
+  - bedtools -h

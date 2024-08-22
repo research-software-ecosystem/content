@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/betsig/borf
+  license: MIT
+  license_family: MIT
+  summary: ORF predictions from .fa files
+build:
+  entry_points:
+  - borf = borf.borf:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - betsig
+package:
+  name: borf
+  version: '1.2'
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - biopython
+  - numpy
+  - pandas
+  - python >=3
+  - scikit-bio
+source:
+  sha256: 0d54614834545ff7898d64aef5af514db731e4d1b66eae1f53c8e172f6e2fa08
+  url: https://pypi.io/packages/source/b/borf/borf-1.2.tar.gz
+test:
+  commands:
+  - borf --help
+  imports:
+  - borf
+  - borf.tests

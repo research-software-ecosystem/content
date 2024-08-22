@@ -1,0 +1,49 @@
+about:
+  description: 'GARFIELD is a non-parametric functional enrichment analysis approach
+    described in the paper GARFIELD: GWAS analysis of regulatory or functional information
+    enrichment with LD correction. Briefly, it is a method that leverages GWAS findings
+    with regulatory or functional annotations (primarily from ENCODE and Roadmap epigenomics
+    data) to find features relevant to a phenotype of interest. It performs greedy
+    pruning of GWAS SNPs (LD r2 > 0.1) and then annotates them based on functional
+    information overlap. Next, it quantifies Fold Enrichment (FE) at various GWAS
+    significance cutoffs and assesses them by permutation testing, while matching
+    for minor allele frequency, distance to nearest transcription start site and number
+    of LD proxies (r2 > 0.8).'
+  home: https://bioconductor.org/packages/3.18/bioc/html/garfield.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: GWAS Analysis of Regulatory or Functional Information Enrichment with LD
+    correction
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: bioconductor-garfield
+  version: 1.30.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: bf1974925a6c10b95ada01ff6d46bf15
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/garfield_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/garfield/garfield_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/garfield_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-garfield/bioconductor-garfield_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('garfield')"

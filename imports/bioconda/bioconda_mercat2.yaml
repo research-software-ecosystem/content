@@ -1,0 +1,57 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/raw-lab/mercat2
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: null
+  summary: versatile k-mer counter and diversity estimator for database independent
+    property analysis (DIPA) for multi-omic analysis
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - decrevi
+  - raw-lab
+package:
+  name: mercat2
+  version: 1.4.1
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  - setuptools
+  run:
+  - python >=3.9
+  - grpcio ==1.43
+  - fastqc
+  - fastp
+  - prodigal
+  - ray-core
+  - ray-dashboard
+  - ray-default
+  - ray-tune
+  - configargparse
+  - dominate
+  - humanize
+  - numpy
+  - pandas
+  - plotly
+  - psutil
+  - scikit-learn
+  - metaomestats
+  - scikit-bio ==0.5.7
+  - scipy ==1.8.1
+  - python-kaleido
+source:
+  sha256: 5a090b19db6beecae8d3a1f2014a239b306fa428e92cc8f02e98e0e4b4a89d31
+  url: https://pypi.io/packages/source/m/mercat2/mercat2-1.4.1.tar.gz
+test:
+  commands:
+  - mercat2.py --help
+  imports:
+  - mercat2_lib

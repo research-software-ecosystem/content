@@ -1,0 +1,25 @@
+about:
+  home: https://gitlab.com/PlantGenomicsLab/gFACs
+  license: GNU General Public License v3 (GPL-3.0)
+  license_family: GPL
+  license_file: license.txt
+  summary: gFACs is a filtering, analysis, and conversion tool to unify genome annotations
+    across alignment and gene prediction frameworks.
+build:
+  noarch: generic
+  number: 1
+extra:
+  identifiers:
+  - doi:10.1016/j.gpb.2019.04.002
+package:
+  name: perl-gfacs
+  version: 1.1.1
+requirements:
+  run:
+  - perl-bioperl >=1.7.2
+source:
+  sha256: 6088ccc792f9442b87b32dfc9fac18943a22f59e12e77971929cc0671c10aefc
+  url: https://gitlab.com/PlantGenomicsLab/gFACs/-/archive/master/gFACs-v1.1.1.tar.gz
+test:
+  commands:
+  - gFACs.pl 2>&1 | grep "gFACs" > /dev/null

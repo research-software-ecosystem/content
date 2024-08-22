@@ -1,0 +1,50 @@
+about:
+  description: 'SELAM (Simulation of Epistasis, Local adaptation with Admixture and
+    Mate
+
+    choice) is a forward time population genetic simulation for studying
+
+    admixture between ancestral subpopulations. This program tracks local
+
+    ancestry along chromosomes. SELAM supports complex demography
+
+    scenarios, including changes in population sizes, migration rates, and
+
+    arbitrary numbers of subpopulations. This program can also accommodate
+
+    sophisticated selective regimes, including dominance, epistasis, local
+
+    adaptation, and mate choice.
+
+    '
+  home: https://github.com/russcd/SELAM/
+  license: GPL3
+  license_file: LICENSE
+  summary: Simulation of Epistasis Local adaptation, with Ancestry and Mate choice
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1093/bioinformatics/btw365
+package:
+  name: selam
+  version: 0.9
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - gsl
+  run:
+  - gsl
+source:
+  sha256: d367f3ef85a22c29866e4178371294773648213fe259e3522c8af414f032825b
+  url: https://github.com/russcd/selam/archive/v0.9.tar.gz
+test:
+  commands:
+  - SELAM --test
+  - SELAM_STATS --test

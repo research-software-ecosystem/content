@@ -1,0 +1,40 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: Remove lines from bed file that refer to off-chromosome locations.
+build:
+  number: 4
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-bedclip
+  version: '377'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+source:
+  patches:
+  - include.patch
+  - patch1.patch
+  sha256: 932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v377.src.tgz
+test:
+  commands:
+  - which bedClip

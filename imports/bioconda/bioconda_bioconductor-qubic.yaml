@@ -1,0 +1,56 @@
+about:
+  description: 'The core function of this R package is to provide the implementation
+    of the well-cited and well-reviewed QUBIC algorithm, aiming to deliver an effective
+    and efficient biclustering capability. This package also includes the following
+    related functions: (i) a qualitative representation of the input gene expression
+    data, through a well-designed discretization way considering the underlying data
+    property, which can be directly used in other biclustering programs; (ii) visualization
+    of identified biclusters using heatmap in support of overall expression pattern
+    analysis; (iii) bicluster-based co-expression network elucidation and visualization,
+    where different correlation coefficient scores between a pair of genes are provided;
+    and (iv) a generalize output format of biclusters and corresponding network can
+    be freely downloaded so that a user can easily do following comprehensive functional
+    enrichment analysis (e.g. DAVID) and advanced network visualization (e.g. Cytoscape).'
+  home: https://bioconductor.org/packages/3.18/bioc/html/QUBIC.html
+  license: CC BY-NC-ND 4.0 + file LICENSE
+  license_file: LICENSE
+  summary: An R package for qualitative biclustering in support of gene co-expression
+    analyses
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-qubic
+  version: 1.30.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-biclust
+  - r-matrix
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-biclust
+  - r-matrix
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+source:
+  md5: 728f7aca6c2d2913d424694e9b31c41c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/QUBIC_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/QUBIC/QUBIC_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/QUBIC_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-qubic/bioconductor-qubic_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('QUBIC')"

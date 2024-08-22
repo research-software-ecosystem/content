@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/Public-Health-Bioinformatics/pubmlst_client
+  license: MIT
+  license_file: LICENSE
+  summary: List and download schemes from pubMLST.org
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+package:
+  name: pubmlst_client
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+source:
+  sha256: 84e4a3c7fa7781447613007e03678b512efd32bbbb466bee84ed6ead68c193ca
+  url: https://github.com/Public-Health-Bioinformatics/pubmlst_client/archive/v0.2.0.tar.gz
+test:
+  commands:
+  - pubmlst_list -h
+  - pubmlst_download -h

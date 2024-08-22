@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/vinisalazar/bioprov
+  doc_url: https://bioprov.readthedocs.io/
+  home: https://github.com/vinisalazar/BioProv
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: BioProv - Provenance capture for bioinformatics workflows
+build:
+  noarch: python
+  number: 0
+  script:
+  - ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - vinisalazar
+package:
+  name: bioprov
+  version: 0.1.23
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - coveralls
+  - coolname
+  - dataclasses
+  - pandas
+  - prodigal
+  - prov
+  - provstore-api
+  - pydot
+  - pytest
+  - pytest-cov
+  - python
+  - tinydb
+  - tqdm
+source:
+  sha256: 2f9d3c76d7f1c307a5f50defabed1b201d7cb4b23fa46178a9e264c9abe368ca
+  url: https://github.com/vinisalazar/bioprov/archive/v0.1.23.tar.gz
+test:
+  commands:
+  - bioprov
+  imports:
+  - bioprov
+  - bioprov.data
+  - bioprov.programs
+  - bioprov.src
+  - bioprov.tests
+  - bioprov.workflows

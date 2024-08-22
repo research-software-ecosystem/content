@@ -1,0 +1,43 @@
+about:
+  description: Length of mRNA transcripts for a number of genomes and gene ID formats,
+    largely based on UCSC table browser
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/geneLenDataBase.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Lengths of mRNA transcripts for a number of genomes
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-genelendatabase
+    path: recipes/bioconductor-genelendatabase
+    version: 1.16.0
+package:
+  name: bioconductor-genelendatabase
+  version: 1.38.0
+requirements:
+  host:
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  run:
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: c29099d3142aad07590e22ce37c6acf3
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/geneLenDataBase_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/geneLenDataBase/geneLenDataBase_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geneLenDataBase_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genelendatabase/bioconductor-genelendatabase_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('geneLenDataBase')"

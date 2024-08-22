@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/Magdoll/Cogent
+  license: BSD-3-Clause-Clear
+  license_file: LICENSE.md
+  summary: COding GENome reconstruction Tool using transcript sequences
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: md-cogent
+  version: 8.0.0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python
+  - matplotlib-base
+  - numpy
+  - scipy
+  - networkx =2.5
+  - scikit-image
+  - pulp
+  - biopython
+  - bx-python
+source:
+  sha256: 709bc0e7bf9febabe417ab597e6f7f3b9c369d5a2c1774726bd646ef11fc9154
+  url: https://github.com/Magdoll/Cogent/archive/v8.0.0.tar.gz
+test:
+  commands:
+  - which run_mash.py

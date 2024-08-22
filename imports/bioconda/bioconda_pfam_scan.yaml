@@ -1,0 +1,24 @@
+about:
+  home: http://ftp.ebi.ac.uk/pub/databases/Pfam/Tools/
+  license: GPL (>= 2)
+  summary: pfam_scan.pl is a Perl script calling HMMER v3 to search a FASTA file against
+    a library of Pfam HMMs.
+build:
+  noarch: generic
+  number: 4
+package:
+  name: pfam_scan
+  version: 1.6
+requirements:
+  run:
+  - hmmer >=3.0
+  - perl
+  - perl-moose
+  - perl-bioperl >=1.4
+  - perl-ipc-run
+source:
+  sha256: 365c96bc150d5057349c3016d62667c58cb33afcfb6329457ae16ab5aae4f401
+  url: http://ftp.ebi.ac.uk/pub/databases/Pfam/Tools/PfamScan.tar.gz
+test:
+  commands:
+  - pfam_scan.pl -h

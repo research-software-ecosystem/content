@@ -1,0 +1,34 @@
+about:
+  home: http://kissplice.prabi.fr
+  license: CeCILL license
+  summary: A local transcriptome assembler for SNPs, indels and AS events
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - MONJEAUD Cyril
+  - leoisl
+package:
+  name: kissplice
+  version: 2.6.5
+requirements:
+  build:
+  - None
+  - libgomp
+  - llvm-openmp
+  - cmake
+  - make
+  - bcalm >=2.2.3
+  host:
+  - zlib
+  run:
+  - python >=3.8
+  - bcalm >=2.2.3
+source:
+  sha256: 79fa50c8fdd83d5b1235fe5ac9293cd9aa241bb86b7badb3b524edd96b781380
+  url: https://gitlab.inria.fr/erable/kissplice/-/archive/2.6.5/kissplice-2.6.5.tar.gz
+test:
+  commands:
+  - kissplice -h

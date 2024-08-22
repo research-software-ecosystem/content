@@ -1,0 +1,46 @@
+about:
+  description: 'The CCREPE (Compositionality Corrected by REnormalizaion and PErmutation)
+    package is designed to assess the significance of general similarity measures
+    in compositional datasets.  In microbial abundance data, for example, the total
+    abundances of all microbes sum to one; CCREPE is designed to take this constraint
+    into account when assigning p-values to similarity measures between the microbes.  The
+    package has two functions: ccrepe: Calculates similarity measures, p-values and
+    q-values for relative abundances of bugs in one or two body sites using bootstrap
+    and permutation matrices of the data. nc.score: Calculates species-level co-variation
+    and co-exclusion patterns based on an extension of the checkerboard score to ordinal
+    data.'
+  home: https://bioconductor.org/packages/3.17/bioc/html/ccrepe.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: ccrepe_and_nc.score
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  parent_recipe:
+    name: bioconductor-ccrepe
+    path: recipes/bioconductor-ccrepe
+    version: 1.18.0
+package:
+  name: bioconductor-ccrepe
+  version: 1.36.0
+requirements:
+  host:
+  - r-base
+  - r-infotheo >=1.1
+  run:
+  - r-base
+  - r-infotheo >=1.1
+source:
+  md5: e7eede47c35843ca92b83c8069a1d606
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/ccrepe_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/ccrepe/ccrepe_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ccrepe_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ccrepe/bioconductor-ccrepe_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ccrepe')"

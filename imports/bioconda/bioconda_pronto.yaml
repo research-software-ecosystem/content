@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/althonos/pronto
+  doc_url: https://pronto.readthedocs.io/en/stable/
+  home: https://github.com/althonos/pronto
+  license: MIT
+  license_family: MIT
+  license_file: COPYING
+  summary: Python frontend to ontologies
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-build-isolation --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - althonos
+package:
+  name: pronto
+  version: 2.5.7
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - chardet >=5.0
+  - fastobo >=0.12.2
+  - networkx >=2.3
+  - python-dateutil >=2.8
+source:
+  sha256: 014a5b02064781d6edd7ca5b4f63b13342dd9b5322248f5a4740f48a98464629
+  url: https://pypi.io/packages/source/p/pronto/pronto-2.5.7.tar.gz
+test:
+  imports:
+  - pronto
+  - pronto.entity
+  - pronto.logic
+  - pronto.utils
+  - pronto.parsers
+  - pronto.serializers

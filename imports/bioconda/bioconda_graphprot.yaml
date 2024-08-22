@@ -1,0 +1,72 @@
+about:
+  home: https://github.com/dmaticzka/graphprot
+  license: MIT
+  summary: GraphProt is a tool for modelling binding preferences of RNA-binding proteins
+    from high-throughput experiments such as CLIP-seq and RNAcompete.
+build:
+  number: 5
+  skip: true
+package:
+  name: graphprot
+  version: 1.1.7
+requirements:
+  build:
+  - None
+  host:
+  - openmp
+  - zlib
+  - make
+  - gawk
+  - pytest
+  - coreutils
+  - scripttest
+  - rnashapes <3
+  - weblogo >=3
+  - libsvm
+  - perl-getopt-long
+  - r-plyr
+  - r-prroc
+  run:
+  - openmp
+  - zlib
+  - make
+  - coreutils
+  - gawk
+  - rnashapes <3
+  - weblogo >=3
+  - libsvm
+  - perl-getopt-long
+  - r-plyr
+  - r-prroc
+  - curl
+source:
+  patches: make.patch
+  sha256: 663ae26b8f14bcce645a64c5f83e6a0b634bea8fda94f2cab21482b42cace1b0
+  url: https://github.com/dmaticzka/GraphProt/archive/v1.1.7.tar.gz
+test:
+  commands:
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/testclip.train.negatives.fa
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/testclip.train.positives.fa
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/test_data_full_A.train.fa
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/test_data_full_A.train.affys
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/CL_ls.params
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/CL_train.model
+  - curl -O https://raw.githubusercontent.com/dmaticzka/GraphProt/v1.1.7/tests/REG_ls.params
+  - GraphProt.pl -mode classification -action ls --onlyseq \ -fasta testclip.train.positives.fa
+    \ -negfasta testclip.train.negatives.fa \
+  - GraphProt.pl \ -mode classification -action cv --onlyseq -fasta testclip.train.positives.fa
+    -negfasta testclip.train.negatives.fa -params CL_ls.params
+  - GraphProt.pl -mode classification -action train -fasta testclip.train.positives.fa
+    -negfasta testclip.train.negatives.fa -abstraction 1 -R 0 -D 0 -epochs 2 -lambda
+    0.1 -bitsize 10
+  - GraphProt.pl -mode classification -action motif -fasta testclip.train.positives.fa
+    -model CL_train.model -abstraction 1 -R 0 -D 0 -epochs 2 -lambda 0.1 -bitsize
+    10
+  - GraphProt.pl -mode regression -action ls --onlyseq -fasta test_data_full_A.train.fa
+    -affinities test_data_full_A.train.affys -abstraction 1 -R 0 -D 0 -epsilon 0.11
+    -c 11 -bitsize 10
+  - GraphProt.pl -mode regression -action cv --onlyseq -fasta test_data_full_A.train.fa
+    -affinities test_data_full_A.train.affys -params REG_ls.params
+  - GraphProt.pl -mode regression -action train -fasta test_data_full_A.train.fa -affinities
+    test_data_full_A.train.affys -abstraction 1 -R 0 -D 0 -epsilon 0.11 -c 11 -bitsize
+    10

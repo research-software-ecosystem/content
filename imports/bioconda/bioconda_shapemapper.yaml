@@ -1,0 +1,38 @@
+about:
+  home: http://www.chem.unc.edu/rna/software.html
+  license: GPL
+  license_file: COPYING
+  summary: ShapeMapper converts raw sequencing files into mutational profiles, creates
+    SHAPE reactivity plots, and provides extensive diagnostic information useful for
+    experiment analysis and troubleshooting.
+build:
+  number: 2
+  skip: true
+package:
+  name: shapemapper
+  version: '1.2'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - python
+  - bowtie2
+  - matplotlib
+  - httplib2
+  - rnastructure
+  run:
+  - python
+  - bowtie2
+  - matplotlib
+  - httplib2
+  - rnastructure
+source:
+  md5: 640bf3f898a37ff8c5ca06f5e68c40d3
+  url: http://www.chem.unc.edu/rna/software-files/ShapeMapper_v1.2.tar.gz
+test:
+  commands:
+  - type ShapeMapper.py
+  - type trimPhred
+  - type parseAlignment
+  - type countMutations

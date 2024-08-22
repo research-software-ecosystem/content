@@ -1,0 +1,60 @@
+about:
+  description: A fundamental problem in biomedical research is the low number of observations,
+    mostly due to a lack of available biosamples, prohibitive costs, or ethical reasons.
+    By augmenting a few real observations with artificially generated samples, their
+    analysis could lead to more robust and higher reproducible. One possible solution
+    to the problem is the use of generative models, which are statistical models of
+    data that attempt to capture the entire probability distribution from the observations.
+    Using the variational autoencoder (VAE), a well-known deep generative model, this
+    package is aimed to generate samples with gene expression data, especially for
+    single-cell RNA-seq data. Furthermore, the VAE can use conditioning to produce
+    specific cell types or subpopulations. The conditional VAE (CVAE) allows us to
+    create targeted samples rather than completely random ones.
+  home: https://bioconductor.org/packages/3.18/bioc/html/VAExprs.html
+  license: Artistic-2.0
+  summary: Generating Samples of Gene Expression Data with Variational Autoencoders
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-vaexprs
+  version: 1.8.0
+requirements:
+  host:
+  - bioconductor-deeppincs >=1.10.0,<1.11.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-catencoders
+  - r-diagrammer
+  - r-keras
+  - r-mclust
+  - r-purrr
+  - r-tensorflow
+  run:
+  - bioconductor-deeppincs >=1.10.0,<1.11.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-catencoders
+  - r-diagrammer
+  - r-keras
+  - r-mclust
+  - r-purrr
+  - r-tensorflow
+source:
+  md5: 6f9ed6eba476abd7908d6849381b545c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/VAExprs_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/VAExprs/VAExprs_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/VAExprs_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-vaexprs/bioconductor-vaexprs_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('VAExprs')"

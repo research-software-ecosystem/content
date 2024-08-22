@@ -1,0 +1,43 @@
+about:
+  authors:
+  - isovic
+  - zkronenberg
+  - pb-cdunn
+  home: https://github.com/PacificBiosciences/pbbioconda
+  license: BSD 3-Clause Clear License
+  summary: Improved Phased Assembly
+build:
+  number: 2
+  skip: true
+extra:
+  recipe-maintainers:
+  - pb-cdunn
+  - isovic
+package:
+  name: pbipa
+  version: 1.8.0
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - htslib >=1.15
+  - pcre
+  run:
+  - htslib >=1.15
+  - networkx
+  - snakemake-minimal >=7.0.4
+  - racon
+  - pb-falconc >=1.15
+  - samtools >=1.15
+  - minimap2
+source:
+- sha256: 8c08fc53a17dfc6e773c10a3e565ea7224595829e0b48adcd76556418544388a
+  url: https://github.com/PacificBiosciences/pbipa/releases/download/v1.8.0/pbipa.tar.gz
+test:
+  commands:
+  - nighthawk --version
+  - pblayout --version
+  - pancake --version
+  - ipa --help
+  - ipa validate

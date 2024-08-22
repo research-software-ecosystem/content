@@ -1,0 +1,59 @@
+about:
+  description: This package implements functions for calling methylation for all cytosines
+    in the genome.
+  home: https://bioconductor.org/packages/3.18/bioc/html/methimpute.html
+  license: Artistic-2.0
+  summary: Imputation-guided re-construction of complete methylomes from WGBS data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-methimpute
+    path: recipes/bioconductor-methimpute
+    version: 1.4.1
+package:
+  name: bioconductor-methimpute
+  version: 1.24.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-minpack.lm
+  - r-rcpp >=0.12.4.5
+  - r-reshape2
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-minpack.lm
+  - r-rcpp >=0.12.4.5
+  - r-reshape2
+source:
+  md5: 7b2a598d7391c33c4ba82639616077e6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/methimpute_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/methimpute/methimpute_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/methimpute_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-methimpute/bioconductor-methimpute_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('methimpute')"

@@ -1,0 +1,76 @@
+about:
+  description: 'Whole genome single-cell DNA sequencing (scDNA-seq) enables characterization
+    of copy number profiles at the cellular level. This circumvents the averaging
+    effects associated with bulk-tissue sequencing and has increased resolution yet
+    decreased ambiguity in deconvolving cancer subclones and elucidating cancer evolutionary
+    history. ScDNA-seq data is, however, sparse, noisy, and highly variable even within
+    a homogeneous cell population, due to the biases and artifacts that are introduced
+    during the library preparation and sequencing procedure. Here, we propose SCOPE,
+    a normalization and copy number estimation method for scDNA-seq data. The distinguishing
+    features of SCOPE include: (i) utilization of cell-specific Gini coefficients
+    for quality controls and for identification of normal/diploid cells, which are
+    further used as negative control samples in a Poisson latent factor model for
+    normalization; (ii) modeling of GC content bias using an expectation-maximization
+    algorithm embedded in the Poisson generalized linear models, which accounts for
+    the different copy number states along the genome; (iii) a cross-sample iterative
+    segmentation procedure to identify breakpoints that are shared across cells from
+    the same genetic background.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/SCOPE.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: A normalization and copy number estimation method for single-cell DNA sequencing
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-scope
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19 >=1.4.0,<1.5.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-desctools
+  - r-doparallel
+  - r-foreach
+  - r-gplots
+  - r-rcolorbrewer
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19 >=1.4.0,<1.5.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-desctools
+  - r-doparallel
+  - r-foreach
+  - r-gplots
+  - r-rcolorbrewer
+source:
+  md5: b8e4ce76717f217322282d378de1b3bd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SCOPE_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SCOPE/SCOPE_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SCOPE_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scope/bioconductor-scope_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SCOPE')"

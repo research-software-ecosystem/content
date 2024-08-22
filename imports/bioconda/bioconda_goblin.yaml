@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/rpetit3/goblin
+  license: MIT
+  license_file: LICENSE
+  summary: Generate trusted prOteins to supplement BacteriaL annotatIoN
+build:
+  noarch: generic
+  number: 0
+extra:
+  recipe-maintainers:
+  - rpetit3
+package:
+  name: goblin
+  version: 1.0.0
+requirements:
+  run:
+  - biopython
+  - cd-hit
+  - executor
+  - ncbi-genome-download
+  - pigz
+  - python >=3.7
+  - rich-click
+source:
+  sha256: 3032d1f93e576dfa6fe2bbf5a09f647585f168dbc60a97c0470971e43f21344c
+  url: https://github.com/rpetit3/goblin/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - goblin --version
+  - goblin --help
+  - goblin --check

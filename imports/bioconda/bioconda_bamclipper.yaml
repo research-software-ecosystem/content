@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/tommyau/bamclipper
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Remove primer sequence from BAM alignments by soft-clipping.
+build:
+  noarch: generic
+  number: 2
+extra:
+  identifiers:
+  - doi:10.1038/s41598-017-01703-6
+package:
+  name: bamclipper
+  version: 1.0.0
+requirements:
+  run:
+  - samtools
+  - parallel
+  - perl
+source:
+  sha256: aa43e4f9cf6b1fb58ac2c6329acc9870e9522e5ba20286b50312ccf89a18f2fc
+  url: https://github.com/tommyau/bamclipper/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - bamclipper.sh 2>&1 | grep "bamclipper.sh" > /dev/null

@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/cfrioux/MeneTools
+  license: GPLv3+
+  summary: Python 3 Metabolic Network Topology Tools
+build:
+  entry_points:
+  - menecheck = menetools.__main__:main_menecheck
+  - menecof = menetools.__main__:main_menecof
+  - menepath = menetools.__main__:main_menepath
+  - menescope = menetools.__main__:main_menescope
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: menetools
+  version: 2.0.6
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - clyngor
+  run:
+  - python >=3.6
+  - clyngor
+source:
+  sha256: c6bc5b48b9593ed2d1aa71aa52d1064d7ffe9fbbd6a0b3394e87c193c7c7c68e
+  url: https://files.pythonhosted.org/packages/18/25/2e7f23fa15c864fbcbff33c785e13fc64c76c54969adf1b68ef9aa4937df/MeneTools-2.0.6.tar.gz
+test:
+  commands:
+  - menecheck -h
+  - menescope -h
+  - menepath -h
+  - menecof -h
+  imports:
+  - menetools

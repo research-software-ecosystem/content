@@ -1,0 +1,35 @@
+about:
+  home: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/
+  license: Public Domain
+  summary: bmfilter is part of BMTagger aka Best Match Tagger, for removing human
+    reads from metagenomics datasets
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  skip-lints:
+  - should_not_be_noarch_source
+  - should_be_noarch_generic
+package:
+  name: bmfilter
+  version: 3.101
+requirements:
+  build:
+  - make
+  - None
+  host: null
+source:
+- md5: 719474a0e3b54449cbe06f6e442994dd
+  patches:
+  - 0001-Cast-getline-stream-to-bool.patch
+  - bmtool-cplusplus-template.patch
+  - bmtool-fix-ctime.patch
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/bmtools.tar.gz
+- md5: ef79071be499ed23e9f3a19c9c323775
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/mac-os/bmfilter
+test:
+  commands:
+  - bmfilter -h &> /dev/null

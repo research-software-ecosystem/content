@@ -1,0 +1,44 @@
+about:
+  description: This package provides a Redis-based back-end for BiocParallel, enabling
+    an alternative mechanism for distributed computation. The The 'manager' distributes
+    tasks to a 'worker' pool through a central Redis server, rather than directly
+    to workers as with other BiocParallel implementations. This means that the worker
+    pool can change dynamically during job evaluation. All features of BiocParallel
+    are supported, including reproducible random number streams, logging to the manager,
+    and alternative 'load balancing' task distributions.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RedisParam.html
+  license: Artistic-2.0
+  summary: Provide a 'redis' back-end for BiocParallel
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-redisparam
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-futile.logger
+  - r-redux
+  - r-withr
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-futile.logger
+  - r-redux
+  - r-withr
+source:
+  md5: cf24018f96bc9de6286d2806dfd7bfaa
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RedisParam_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RedisParam/RedisParam_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RedisParam_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-redisparam/bioconductor-redisparam_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RedisParam')"

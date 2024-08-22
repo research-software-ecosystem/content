@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/thegenemyers/DALIGNER
+  license: Custom
+  license_file: LICENSE
+  summary: 'DALIGNER: Find all significant local alignments between reads'
+build:
+  number: 0
+  run_exports:
+  - None
+package:
+  name: daligner
+  version: 1.0.20230620
+requirements:
+  build:
+  - make
+  - None
+  run: null
+source:
+  sha256: 3cf7e92a83c346aa7bb2bcaec640f73891c9d90583c1c3e28016670313b50215
+  url: https://github.com/thegenemyers/DALIGNER/archive/f9a35a82855abaddd49d509a75904dbf0fc46d60.tar.gz
+test:
+  commands:
+  - daligner 2>&1 | grep Usage
+  - LAsort 2>&1 | grep Usage
+  - LAmerge 2>&1 | grep Usage
+  - LAshow 2>&1 | grep Usage
+  - LAcat 2>&1 | grep Usage
+  - LAsplit 2>&1 | grep Usage
+  - LAcheck 2>&1 | grep Usage
+  - HPC.daligner 2>&1 | grep Usage

@@ -1,0 +1,43 @@
+about:
+  home: https://blobtools.readme.io/docs/what-is-blobtools
+  license: GPLv3
+  license_family: GPL
+  license_file: LICENSE.md
+  summary: Modular command-line solution for visualisation, quality control and taxonomic
+    partitioning of genome datasets
+build:
+  entry_points:
+  - blobtools = blobtools.interface:main
+  noarch: python
+  number: 1
+extra:
+  identifiers:
+  - doi:10.12688/f1000research.12232.1
+package:
+  name: blobtools
+  version: 1.1.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  - docopt
+  - matplotlib
+  - tqdm
+  - pysam
+  - pyyaml >=4.2b1
+  run:
+  - python >=3
+  - docopt
+  - matplotlib
+  - tqdm
+  - pysam
+  - pyyaml >=4.2b1
+source:
+  patches:
+  - patch
+  sha256: 637328dad29dabb626c13b2d29c7fb69f8a76c904392b4bede5a4274154d79c7
+  url: https://github.com/DRL/blobtools/archive/blobtools_v1.1.1.tar.gz
+test:
+  commands:
+  - blobtools -h
+  - blobtools create --help

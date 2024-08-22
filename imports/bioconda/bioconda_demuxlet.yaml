@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/statgen/demuxlet
+  doc_url: https://github.com/statgen/demuxlet
+  home: https://github.com/statgen/demuxlet
+  license: GPL3
+  license_file: LICENSE
+  summary: Genetic multiplexing of barcoded single cell RNA-seq
+build:
+  number: 5
+  skip: true
+package:
+  name: demuxlet
+  version: 1.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - libtool
+  - autoconf
+  - automake
+  host:
+  - htslib
+  run:
+  - samtools
+  - htslib
+source:
+  patches:
+  - Makefile.am.patch
+  sha256: 6ca1427b08461eac292623041d4808c7216e18e5ac0eade0c8245930853b68ff
+  url: https://github.com/statgen/demuxlet/archive/b99026f9298f46d897a23f6e7909e462e1b1fa1b.zip
+test:
+  commands:
+  - demuxlet -help 2>&1 | grep 'Detailed'

@@ -1,0 +1,35 @@
+about:
+  doc_url: https://barseqcount.readthedocs.io
+  home: https://github.com/damienmarsic/barseqcount
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Analysis of DNA barcode sequencing experiments
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - damienmarsic
+package:
+  name: barseqcount
+  version: 0.1.5
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - dmbiolib
+  - numpy
+  - matplotlib-base
+  - regex
+source:
+  sha256: c5213958e18be1107a8f41003d0e64e03bba8b397a2fdcf38391c06147070fbd
+  url: https://pypi.io/packages/source/b/barseqcount/barseqcount-0.1.5.tar.gz
+test:
+  commands:
+  - pip check
+  - python -m barseqcount -h
+  requires:
+  - pip

@@ -1,0 +1,56 @@
+about:
+  description: apeglm provides Bayesian shrinkage estimators for effect sizes for
+    a variety of GLM models, using approximation of the posterior for individual coefficients.
+  home: https://bioconductor.org/packages/3.18/bioc/html/apeglm.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Approximate posterior estimation for GLM coefficients
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  parent_recipe:
+    name: bioconductor-apeglm
+    path: recipes/bioconductor-apeglm
+    version: 1.2.1
+package:
+  name: bioconductor-apeglm
+  version: 1.24.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-emdbook
+  - r-rcpp
+  - r-rcppeigen
+  - r-rcppnumerical
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-emdbook
+  - r-rcpp
+  - r-rcppeigen
+  - r-rcppnumerical
+source:
+  md5: 0f8e64bdd8eec2566238fdc487afabb8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/apeglm_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/apeglm/apeglm_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/apeglm_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-apeglm/bioconductor-apeglm_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('apeglm')"

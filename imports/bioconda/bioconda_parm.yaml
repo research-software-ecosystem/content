@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/vansteensellab/PARM
+  license: https://github.com/vansteensellab/PARM/blob/main/LICENSE
+  summary: promoter activity regulatory model
+build:
+  noarch: python
+  number: 2
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+package:
+  name: parm
+  version: 0.0.6
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - pytorch
+  - biopython
+  - numpy >=1.26.0
+  - pandas
+  - matplotlib-base
+  - logomaker
+  - tqdm
+  - seaborn
+  - einops
+  - optuna
+  - scikit-learn
+  - h5py
+source:
+- sha256: 58853578e42e76ecb9e609cb9b292fa979ae5a999d28126f3c43ac0e986f44a5
+  url: https://github.com/vansteensellab/PARM/archive/refs/tags/v0.0.6.tar.gz
+test:
+  commands:
+  - parm train --help

@@ -1,0 +1,57 @@
+about:
+  description: A package that extends and improves the functionality of the base affy
+    package. Routines that make heavy use of compiled code for speed. Central focus
+    is on implementation of methods for fitting probe-level models and tools using
+    these models. PLM based quality assessment tools.
+  home: https://bioconductor.org/packages/3.18/bioc/html/affyPLM.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Methods for fitting probe-level models
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:affyplm
+  parent_recipe:
+    name: bioconductor-affyplm
+    path: recipes/bioconductor-affyplm
+    version: 1.56.0
+package:
+  name: bioconductor-affyplm
+  version: 1.78.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+source:
+  md5: cdfd69bc9c54f3c03b52b3fd6e9f86b7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/affyPLM_1.78.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/affyPLM/affyPLM_1.78.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affyPLM_1.78.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affyplm/bioconductor-affyplm_1.78.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('affyPLM')"

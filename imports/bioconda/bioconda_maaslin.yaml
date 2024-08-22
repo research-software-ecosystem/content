@@ -1,0 +1,58 @@
+about:
+  home: https://huttenhower.sph.harvard.edu/maaslin
+  license: Custom
+  license_file: LICENSE
+  summary: MaAsLin is a multivariate statistical framework that finds associations
+    between clinical metadata and microbial community abundance or function.
+build:
+  noarch: generic
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: maaslin
+  version: 0.0.5
+requirements:
+  host:
+  - r-base
+  - r-agricolae
+  - r-gam
+  - r-gamlss
+  - r-gbm
+  - r-glmnet
+  - r-inlinedocs
+  - r-logging
+  - r-optparse
+  - r-outliers
+  - r-penalized
+  - r-pscl
+  - r-robustbase
+  run:
+  - r-base
+  - r-agricolae
+  - r-gam
+  - r-gamlss
+  - r-gbm
+  - r-glmnet
+  - r-inlinedocs
+  - r-logging
+  - r-optparse
+  - r-outliers
+  - r-penalized
+  - r-pscl
+  - r-robustbase
+  - python <3
+  - blist
+source:
+  patches:
+  - paths.patch
+  sha256: 7019bda725adf7623b1437239646ffeb3cba2386c701ecb277a41a18a6bd58a3
+  url: https://bitbucket.org/biobakery/maaslin/downloads/Maaslin_0.0.5.tar.gz
+test:
+  commands:
+  - $R -e "library('Maaslin')"
+  - MaaslinToGraphlanAnnotation.py -h
+  - merge_metadata.py -h
+  - PCLToGraphlanCoreGene.py -h
+  - transpose.py -h

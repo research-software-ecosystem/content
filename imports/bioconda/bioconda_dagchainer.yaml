@@ -1,0 +1,41 @@
+about:
+  description: DAGchainer identifies chains of gene pairs sharing conserved order
+    between genomic regions, by identifying paths through a directed acyclic graph
+    (DAG).
+  home: https://github.com/kullrich/dagchainer
+  license: MIT
+  license_file: LICENSE
+  summary: DAGchainer identifies syntenic regions.
+build:
+  ignore_run_exports_from:
+  - perl-data-dumper
+  - perl-storable
+  number: 3
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/bth397
+package:
+  name: dagchainer
+  version: r120920
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-storable
+  - perl-carp
+  - perl-local-lib
+  run:
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-storable
+  - perl-carp
+  - perl-local-lib
+source:
+  sha256: 95fbc06aae75483ac4267d210ba62388978c13dd48a41af6f1b5ec4f40bdd9b0
+  url: https://github.com/kullrich/dagchainer/archive/r120920.tar.gz
+test:
+  commands:
+  - dagchainer 2>&1 | grep dagchainer

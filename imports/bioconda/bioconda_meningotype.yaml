@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/MDU-PHL/meningotype
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: In silico serotyping and finetyping (porA and fetA) of Neisseria meningitidis
+build:
+  entry_points:
+  - meningotype=meningotype.meningotype:main
+  noarch: python
+  number: 1
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - andersgs
+package:
+  name: meningotype
+  version: 0.8.5
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - biopython
+  - python >=3.6
+  - ispcr
+  - blast
+  - mlst >=2.12
+source:
+  sha256: d5892a5cedfcde505fa6409b2b5ec04a2f79bf096a060c9d7cb35b29351884f9
+  url: https://pypi.io/packages/source/m/meningotype/meningotype-0.8.5.tar.gz
+test:
+  commands:
+  - pip check
+  - meningotype --help
+  - meningotype --test
+  imports:
+  - meningotype
+  requires:
+  - pip

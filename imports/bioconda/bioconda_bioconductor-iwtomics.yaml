@@ -1,0 +1,51 @@
+about:
+  description: Implementation of the Interval-Wise Testing (IWT) for omics data. This
+    inferential procedure tests for differences in "Omics" data between two groups
+    of genomic regions (or between a group of genomic regions and a reference center
+    of symmetry), and does not require fixing location and scale at the outset.
+  home: https://bioconductor.org/packages/3.18/bioc/html/IWTomics.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Interval-Wise Testing for Omics Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-iwtomics
+    path: recipes/bioconductor-iwtomics
+    version: 1.4.0
+package:
+  name: bioconductor-iwtomics
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-fda
+  - r-gtable
+  - r-kernsmooth
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-fda
+  - r-gtable
+  - r-kernsmooth
+source:
+  md5: f571644700ff672c2ac90aa49b611158
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/IWTomics_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/IWTomics/IWTomics_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/IWTomics_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-iwtomics/bioconductor-iwtomics_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('IWTomics')"

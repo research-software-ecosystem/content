@@ -1,0 +1,31 @@
+about:
+  home: https://bitbucket.org/yonatanf/sparcc
+  license: MIT
+  license_file: readme.rst
+  summary: SparCC is a python module for computing correlations in compositional data
+    (16S, metagenomics, etc).
+build:
+  noarch: python
+  number: 0
+extra:
+  identifiers:
+  - doi:10.1371/journal.pcbi.1002687
+package:
+  name: sparcc
+  version: 0.1.0
+requirements:
+  run:
+  - python <3
+  - pandas
+  - numpy
+  - scipy
+source:
+  patches:
+  - pseudopvals.patch
+  sha256: 00f00acb700de381d79d9d4d244f9834eb7b223780b3d018533d0ef2c853d63e
+  url: https://bitbucket.org/yonatanf/sparcc/get/3aff6141c3f1.zip
+test:
+  commands:
+  - SparCC.py --help |grep SparCC
+  - PseudoPvals.py --help |grep PseudoPvals
+  - MakeBootstraps.py --help |grep MakeBootstraps

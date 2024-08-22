@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/theislab/scib
+  doc_url: https://scib.readthedocs.io/en/latest/
+  home: https://github.com/theislab/scib
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Evaluating single-cell data integration methods
+build:
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1038/s41592-021-01336-8
+package:
+  name: scib
+  version: 1.1.5
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  run:
+  - anndata >=0.7.2
+  - deprecated
+  - h5py
+  - igraph >=0.10
+  - leidenalg
+  - llvmlite
+  - matplotlib-base
+  - numpy
+  - pandas <2
+  - pydot
+  - python
+  - scanpy >=1.5, <1.10
+  - scikit-learn
+  - scikit-misc
+  - scipy
+  - seaborn
+  - umap-learn
+source:
+  patches:
+  - setup_compiler.patch
+  sha256: 7ab3183065f2d861b64f88823a55cec767327a37ad6d0eaccce7b43c996293ad
+  url: https://pypi.io/packages/source/s/scib/scib-1.1.5.tar.gz
+test:
+  imports:
+  - scib

@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/huishenlab/biscuit
+  doc_url: https://huishenlab.github.io/biscuit/
+  home: https://github.com/huishenlab/biscuit
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A utility for analyzing sodium bisulfite conversion-based DNA methylation/modification
+    data
+build:
+  number: 0
+  run_exports:
+  - None
+package:
+  name: biscuit
+  version: 1.5.0.20240506
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  host:
+  - zlib
+  - ncurses
+  - pthread-stubs
+  - libcurl
+  run:
+  - zlib
+  - ncurses
+  - pthread-stubs
+  - libcurl
+  - perl
+source:
+- sha256: fc235dfcc79429d6cb941bda0430b7fbe20db3e0b23b41b3d29040ec67608e27
+  url: https://github.com/huishenlab/biscuit/releases/download/v1.5.0.20240506/release-source.zip
+test:
+  commands:
+  - biscuit 2>&1 | grep "Usage"
+  - QC.sh -h 2>&1 | grep "Usage"
+  - build_biscuit_QC_assets.pl -h 2>&1 | grep "Usage"

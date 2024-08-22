@@ -1,0 +1,28 @@
+about:
+  home: http://www.imtools.org/
+  license: GPLv2
+  summary: 'IMSEQ is a fast, PCR and sequencing error aware tool to analyze high throughput
+    data from recombined T-cell receptor or immunoglobulin gene sequencing experiments
+
+    '
+build:
+  number: 7
+  skip: true
+package:
+  name: imseq
+  version: 1.1.0
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: e6c9ffb29b77feecd158f3079ac55a15ed5187a2445455514a78da7c3ee6e73c
+  url: https://github.com/lkuchenb/imseq/releases/download/v1.1.0/seqan-imseq_1.1.0-source.tgz
+test:
+  commands:
+  - imseq 2>&1 | grep 'SeqAn'

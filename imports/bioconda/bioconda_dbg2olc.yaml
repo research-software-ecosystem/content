@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/yechengxi/DBG2OLC
+  license: unknown
+  summary: Efficient Assembly of Large Genomes Using Long Erroneous Reads of the Third
+    Generation Sequencing Technologies
+build:
+  number: 2
+  script: '"${CXX}" ${CPPFLAGS} ${CXXFLAGS} -O3 -o DBG2OLC *.cpp ${LDFLAGS}
+
+    mkdir -p "${PREFIX}/bin"
+
+    mv DBG2OLC "${PREFIX}/bin/"
+
+    '
+package:
+  name: dbg2olc
+  version: 20200723
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+  - sparseassembler
+  - sparc
+  - assemblyutility
+source:
+  sha256: 40f5fc3731a2ed5167e8751d4d69a012108b97d492c64d173abadac6e3a0b312
+  url: https://github.com/yechengxi/DBG2OLC/archive/951482830dcbb68dadb3994c142f5285f6236e06.zip
+test:
+  commands:
+  - DBG2OLC | grep -qF 'Chengxi Ye cxy@umd.edu'

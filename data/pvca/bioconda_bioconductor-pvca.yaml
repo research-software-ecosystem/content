@@ -1,0 +1,51 @@
+about:
+  description: This package contains the function to assess the batch sourcs by fitting
+    all "sources" as random effects including two-way interaction terms in the Mixed
+    Model(depends on lme4 package) to selected principal components, which were obtained
+    from the original data correlation matrix. This package accompanies the book "Batch
+    Effects and Noise in Microarray Experiements, chapter 12.
+  home: https://bioconductor.org/packages/3.18/bioc/html/pvca.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Principal Variance Component Analysis (PVCA)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:pvca
+  - doi:10.1002/9780470685983.ch12
+  parent_recipe:
+    name: bioconductor-pvca
+    path: recipes/bioconductor-pvca
+    version: 1.20.0
+package:
+  name: bioconductor-pvca
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-lme4
+  - r-matrix
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-lme4
+  - r-matrix
+source:
+  md5: dcc72a578e6ec7d738fab213c4d27e20
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/pvca_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/pvca/pvca_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/pvca_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pvca/bioconductor-pvca_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('pvca')"

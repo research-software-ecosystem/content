@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/KolmogorovLab/Severus
+  license: BSD-3-Clause
+  summary: A tool for somatic structural variant calling using long reads
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+extra:
+  skip-lints:
+  - uses_setuptools
+package:
+  name: severus
+  version: 1.1
+requirements:
+  host:
+  - python >=3.8
+  - setuptools
+  - pip
+  run:
+  - python >=3.8
+  - setuptools
+  - pip
+  - samtools >=1.14
+  - networkx >=2.6
+  - pygraphviz
+  - pydot
+  - matplotlib-base
+  - biopython
+  - numpy
+  - pysam
+  - plotly
+source:
+  sha256: 9479ff6c5ee09d28c047b7088414f5cc626cc77523940f2a22fa939506772d1d
+  url: https://github.com/KolmogorovLab/Severus/archive/refs/tags/1.1.tar.gz
+test:
+  commands:
+  - severus -h | grep breakpoint

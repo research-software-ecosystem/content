@@ -1,0 +1,33 @@
+about:
+  home: https://bitbucket.org/genomicepidemiology/pmlst
+  license: APACHE-2.0
+  license_family: APACHE
+  license_file: LICENSE-2.0.txt
+  summary: Plasmid Multi-Locus Sequence Typing
+build:
+  noarch: generic
+  number: 0
+extra:
+  notes: pMLST requires database that can be downloaded with download-db.sh.
+package:
+  name: pmlst
+  version: 2.0.3
+requirements:
+  host:
+  - git
+  - kma
+  run:
+  - python >=3
+  - kma
+  - biopython
+  - blast >=2.8.1
+  - cgecore 1.5.5
+  - tabulate 0.7.7
+source:
+  patches:
+  - python_path.patch
+  sha256: 3da48017ded3fc8a97e4f7fdccab8dc7eacc160ff278de8a2ec26a3dd9f2a45c
+  url: https://bitbucket.org/genomicepidemiology/pmlst/get/2.0.3.tar.gz
+test:
+  commands:
+  - pmlst.py --help

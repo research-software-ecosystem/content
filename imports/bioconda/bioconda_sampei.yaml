@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/FenyoLab/SAMPEI
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: SAMPEI, a searching method leveraging high quality query spectra within
+    the same or different dataset to assign target spectra with peptide sequence and
+    undefined modification (mass shift)
+build:
+  entry_points:
+  - sampei = src.sampei.cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+package:
+  name: sampei
+  version: 0.0.9
+requirements:
+  host:
+  - python >=3.6
+  - setuptools
+  - pip
+  run:
+  - python >=3.6
+  - numpy >=1.18.1
+  - pandas >=1.0.1
+  - pyteomics >=4.2
+  - numba >=0.49.0
+source:
+  sha256: 513d65fc2dda81582e4fc21e06d258364f1fe87f886d21faa473cacb91ec16c4
+  url: https://github.com/FenyoLab/SAMPEI/archive/0.0.9.tar.gz
+test:
+  commands:
+  - sampei --help
+  imports:
+  - src.sampei
+  - src.sampei.cli

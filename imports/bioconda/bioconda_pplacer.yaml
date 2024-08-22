@@ -1,0 +1,25 @@
+about:
+  dev_url: https://github.com/matsen/pplacer/
+  home: http://matsen.fredhutch.org/pplacer/
+  license: GPL-3.0
+  license_family: GPL
+  summary: Pplacer places query sequences on a fixed reference phylogenetic tree to
+    maximize phylogenetic likelihood or posterior probability according to a reference
+    alignment.
+build:
+  number: 2
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: pplacer
+  version: 1.1.alpha19
+source:
+  sha256: 9131b45c35ddb927f866385f149cf64af5dffe724234cd4548c22303a992347d
+  url: https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip
+test:
+  commands:
+  - pplacer --help > /dev/null
+  - guppy to_csv --help > /dev/null
+  - rppr check --help > /dev/null

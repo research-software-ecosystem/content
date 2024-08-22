@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/rega-cev/virulign
+  license: GPL-2.0-only
+  license_file: LICENSE.txt
+  summary: VIRULIGN is a tool for codon-correct pairwise alignments, with an augmented
+    functionality to annotate the alignment according the positions of the proteins.
+build:
+  number: 4
+package:
+  name: virulign
+  version: 1.1.1
+requirements:
+  build:
+  - make
+  - None
+  - cmake>=3.12
+  host:
+  - openmp
+  run:
+  - openmp
+source:
+- sha256: 9213ce0dd6ffd03f54c2af24c5a24aea78ea07a518002160028a962c4e056d80
+  url: https://github.com/mirand863/virulign/archive/refs/tags/v1.1.1.tar.gz
+test:
+  commands:
+  - virulign -h 2>&1 | grep "virulign"

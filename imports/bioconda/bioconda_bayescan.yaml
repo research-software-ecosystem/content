@@ -1,0 +1,25 @@
+about:
+  home: http://cmpg.unibe.ch/software/BayeScan/
+  license: GPL
+  summary: Phylogenetics - Randomized Axelerated Maximum Likelihood.
+build:
+  number: 6
+  skip: true
+package:
+  name: bayescan
+  version: 2.0.1
+requirements:
+  build:
+  - make
+  - None
+  host: null
+  run: null
+source:
+  patches:
+  - 0001-Use-CXX-and-no-static.patch
+  - 0002-Fix-strcpy-overflow.patch
+  sha256: 7859e581e62471b1c33289a89e80ab14b244b97f2d61a2560083ca073a7ef1e9
+  url: http://cmpg.unibe.ch/software/BayeScan/files/BayeScan2.01.zip
+test:
+  commands:
+  - bayescan2 | grep -qF BayeScan

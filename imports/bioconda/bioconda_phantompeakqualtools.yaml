@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/kundajelab/phantompeakqualtools
+  license: BSD-3-Clause
+  summary: This package computes informative enrichment and quality measures for ChIP-seq/DNase-seq/FAIRE-seq/MNase-seq
+    data. It can also be used to obtain robust estimates of the predominant fragment
+    length or characteristic tag shift values in these assays.
+build:
+  noarch: generic
+  number: 1
+extra:
+  identifiers:
+  - doi:10.1101/gr.136184.111
+  - doi:10.1038/nbt.1508
+package:
+  name: phantompeakqualtools
+  version: 1.2.2
+requirements:
+  run:
+  - r-base >=3.1
+  - r-catools
+  - r-snow
+  - r-snowfall
+  - r-bitops
+  - r-spp >=1.13
+  - bioconductor-rsamtools
+  - boost
+  - samtools
+  - gawk
+source:
+  sha256: b31263b64aefe97bdc4d7fae138f515a7d7a60cd05031d38dd89a10f9ee10cd1
+  url: https://github.com/kundajelab/phantompeakqualtools/archive/1.2.2.tar.gz
+test:
+  commands:
+  - run_spp.R 2>&1 | grep MANDATORY

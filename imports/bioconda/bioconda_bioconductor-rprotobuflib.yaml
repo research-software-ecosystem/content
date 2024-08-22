@@ -1,0 +1,44 @@
+about:
+  description: This package provides the headers and static library of Protocol buffers
+    for other R packages to compile and link against.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RProtoBufLib.html
+  license: BSD_3_clause
+  summary: C++ headers and static libraries of Protocol buffers
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  parent_recipe:
+    name: bioconductor-rprotobuflib
+    path: recipes/bioconductor-rprotobuflib
+    version: 1.2.0
+package:
+  name: bioconductor-rprotobuflib
+  version: 2.14.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: e7351127e6b19daaae94fcecc970292b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RProtoBufLib_2.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RProtoBufLib/RProtoBufLib_2.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RProtoBufLib_2.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rprotobuflib/bioconductor-rprotobuflib_2.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RProtoBufLib')"

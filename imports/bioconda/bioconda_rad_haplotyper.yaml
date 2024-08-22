@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/chollenbeck/rad_haplotyper
+  license: Perl
+  summary: A program for building SNP haplotypes from RAD sequencing data
+build:
+  number: 7
+  skip: true
+package:
+  name: rad_haplotyper
+  version: 1.1.9
+requirements:
+  build:
+  - None
+  host:
+  - perl
+  - perl-app-cpanminus
+  - perl-module-build
+  - ddocent
+  - perl-bioperl
+  - perl-vcftools-vcf <0.700
+  - perl-bio-samtools
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-pod-usage
+  - perl-list-moreutils
+  - perl-parallel-forkmanager
+  - perl-term-progressbar
+  - perl-bio-cigar
+  run:
+  - ddocent
+  - perl
+  - perl-bioperl
+  - perl-vcftools-vcf <0.700
+  - perl-app-cpanminus
+  - perl-module-build
+  - perl-bio-samtools
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-pod-usage
+  - perl-list-moreutils
+  - perl-parallel-forkmanager
+  - perl-term-progressbar
+  - perl-bio-cigar
+source:
+  sha256: 1a9ca21ec215e6dae7233918daa2f48b9bb2262a630e0acbdde49ab1f2b8984e
+  url: https://github.com/chollenbeck/rad_haplotyper/archive/v1.1.9.tar.gz
+test:
+  commands:
+  - rad_haplotyper.pl --version 2>&1 | grep Version

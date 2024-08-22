@@ -1,0 +1,51 @@
+about:
+  description: 'TimeScape is an automated tool for navigating temporal clonal evolution
+    data. The key attributes of this implementation involve the enumeration of clones,
+    their evolutionary relationships and their shifting dynamics over time. TimeScape
+    requires two inputs: (i) the clonal phylogeny and (ii) the clonal prevalences.
+    Optionally, TimeScape accepts a data table of targeted mutations observed in each
+    clone and their allele prevalences over time. The output is the TimeScape plot
+    showing clonal prevalence vertically, time horizontally, and the plot height optionally
+    encoding tumour volume during tumour-shrinking events. At each sampling time point
+    (denoted by a faint white line), the height of each clone accurately reflects
+    its proportionate prevalence. These prevalences form the anchors for bezier curves
+    that visually represent the dynamic transitions between time points.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/timescape.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Patient Clonal Timescapes
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-timescape
+  version: 1.26.0
+requirements:
+  host:
+  - r-base
+  - r-dplyr >=0.4.3
+  - r-gtools >=3.5.0
+  - r-htmlwidgets >=0.5
+  - r-jsonlite >=0.9.19
+  - r-stringr >=1.0.0
+  run:
+  - r-base
+  - r-dplyr >=0.4.3
+  - r-gtools >=3.5.0
+  - r-htmlwidgets >=0.5
+  - r-jsonlite >=0.9.19
+  - r-stringr >=1.0.0
+source:
+  md5: 1a409bde946cb8ed4c7e8e6a334158de
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/timescape_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/timescape/timescape_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/timescape_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-timescape/bioconductor-timescape_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('timescape')"

@@ -1,0 +1,52 @@
+about:
+  description: Fit-Hi-C is a tool for assigning statistical confidence estimates to
+    intra-chromosomal contact maps produced by genome-wide genome architecture assays
+    such as Hi-C.
+  home: https://bioconductor.org/packages/3.18/bioc/html/FitHiC.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Confidence estimation for intra-chromosomal contact maps
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:fithic
+  - doi:10.1101/gr.160374
+  parent_recipe:
+    name: bioconductor-fithic
+    path: recipes/bioconductor-fithic
+    version: 1.6.0
+package:
+  name: bioconductor-fithic
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-data.table
+  - r-fdrtool
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-data.table
+  - r-fdrtool
+  - r-rcpp
+source:
+  md5: ee894d402d0c5567935ade4f8dc75c29
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FitHiC_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FitHiC/FitHiC_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FitHiC_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fithic/bioconductor-fithic_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FitHiC')"

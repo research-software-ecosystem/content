@@ -1,0 +1,49 @@
+about:
+  dev_url: ''
+  doc_url: ''
+  home: https://github.com/MDUPHL/emmtyper
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: ''
+  summary: Streptococcus pyogenes in silico EMM typer
+build:
+  entry_points:
+  - emmtyper=emmtyper.bin.run_emmtyper:main
+  - emmtyper-db=emmtyper.utilities.make_db:emmtyper_db
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - andersgs
+package:
+  name: emmtyper
+  version: 0.2.0
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - click
+  - numpy >=1.15.0
+  - python >=3
+  - python-dateutil
+  - scipy >=1.1.0
+  - blast >=2.6.0
+  - ispcr
+source:
+  sha256: 6ec35065ce1456ccee0daab67a982267380714d1efac627996f0e47b4a7d5a4b
+  url: https://pypi.io/packages/source/e/emmtyper/emmtyper-0.2.0.tar.gz
+test:
+  commands:
+  - emmtyper --help
+  - emmtyper-db --help
+  imports:
+  - emmtyper
+  - emmtyper.bin
+  - emmtyper.objects
+  - emmtyper.utilities
+  requires:
+  - nose

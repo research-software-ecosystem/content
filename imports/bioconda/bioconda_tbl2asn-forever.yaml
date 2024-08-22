@@ -1,0 +1,32 @@
+about:
+  home: https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2
+  license: Public Domain
+  summary: tbl2asn is a program that automates the creation of sequence records for
+    submission to GenBank
+build:
+  number: 4
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: tbl2asn-forever
+  version: 25.7.2f
+requirements:
+  build:
+  - None
+  - make
+  run:
+  - libidn11
+  - zlib
+source:
+- sha256: 2c27b9b0ef347d59b794e39b3cd4a93a7b783c05f0c4a678fe0faa85ed78b48e
+  url: https://github.com/rpetit3/tbl2asn-forever/archive/v25.7.2f.tar.gz
+- folder: libfaketime
+  patches:
+  - test_makefile.patch
+  sha256: 06288237cd5890eca148489e5b904ed852ed0ffa8424bfb479342f4daa8442a3
+  url: https://github.com/wolfcw/libfaketime/archive/v0.9.8.tar.gz
+test:
+  commands:
+  - tbl2asn-test

@@ -1,0 +1,53 @@
+about:
+  description: ExCluster flattens Ensembl and GENCODE GTF files into GFF files, which
+    are used to count reads per non-overlapping exon bin from BAM files. This read
+    counting is done using the function featureCounts from the package Rsubread. Library
+    sizes are normalized across all biological replicates, and ExCluster then compares
+    two different conditions to detect signifcantly differentially spliced genes.
+    This process requires at least two independent biological repliates per condition,
+    and ExCluster accepts only exactly two conditions at a time. ExCluster ultimately
+    produces false discovery rates (FDRs) per gene, which are used to detect significance.
+    Exon log2 fold change (log2FC) means and variances may be plotted for each significantly
+    differentially spliced gene, which helps scientists develop hypothesis and target
+    differential splicing events for RT-qPCR validation in the wet lab.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ExCluster.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: ExCluster robustly detects differentially expressed exons between two conditions
+    of RNA-seq data, requiring at least two independent biological replicates per
+    condition
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-excluster
+  version: 1.20.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsubread >=2.16.0,<2.17.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-matrixstats
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsubread >=2.16.0,<2.17.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-matrixstats
+source:
+  md5: 2f60d612945a7f431831ce690d01d042
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ExCluster_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ExCluster/ExCluster_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ExCluster_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-excluster/bioconductor-excluster_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ExCluster')"

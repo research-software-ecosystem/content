@@ -1,0 +1,56 @@
+about:
+  description: Detection of copy number variants (CNV) from exome sequencing samples,
+    including unpaired samples.  The package implements a hidden Markov model which
+    uses positional covariates, such as background read depth and GC-content, to simultaneously
+    normalize and segment the samples into regions of constant copy count.
+  home: https://bioconductor.org/packages/3.18/bioc/html/exomeCopy.html
+  license: GPL-3.0-or-later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Copy number variant detection from exome sequencing read depth
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:exomecopy
+  - doi:10.2202/1544-6115.1732
+  parent_recipe:
+    name: bioconductor-exomecopy
+    path: recipes/bioconductor-exomecopy
+    version: 1.26.0
+package:
+  name: bioconductor-exomecopy
+  version: 1.48.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+source:
+  md5: 068f1f0cb675297a1b7940330fae0cbe
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/exomeCopy_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/exomeCopy/exomeCopy_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/exomeCopy_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-exomecopy/bioconductor-exomecopy_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('exomeCopy')"

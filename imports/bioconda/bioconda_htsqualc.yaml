@@ -1,0 +1,32 @@
+about:
+  doc_url: https://reneshbedre.github.io/blog/htseqqc.html
+  home: https://reneshbedre.github.io/blog/htseqqc.html
+  license: MIT
+  summary: HTSQualC is an automated quality control analysis tool for a single and
+    paired-end high-throughput sequencing data (HTS)
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install
+package:
+  name: htsqualc
+  version: 1.1
+requirements:
+  host:
+  - python
+  - termcolor
+  - numpy
+  - pysam
+  - matplotlib-base
+  run:
+  - python
+  - termcolor
+  - pysam
+  - matplotlib-base
+  - numpy
+source:
+  sha256: 63b0f1d9d88621583012b8167b998107925bb822ddf8b5d0c40485422b4e8471
+  url: https://github.com/reneshbedre/HTSQualC/archive/v1.1.tar.gz
+test:
+  commands:
+  - filter.py -h

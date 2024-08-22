@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/beardymcjohnface/Trimnami
+  license: MIT
+  license_file: trimnami/trimnami.LICENSE
+  summary: Read-trimming pipelines for multiple samples
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - beardymcjohnface
+package:
+  name: trimnami
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - snaketool-utils >=0.0.4
+  - snakemake >=7.14.0,<8
+  - pulp <2.8
+  - pyyaml >=6.0
+  - Click >=8.1.3
+  - metasnek >=0.0.8
+source:
+  sha256: b98b6011ec0c898942a2c11047ec81fbf3ee2dc2ada2c999fd741739374a498f
+  url: https://pypi.io/packages/source/t/trimnami/trimnami-0.1.4.tar.gz
+test:
+  commands:
+  - trimnami --help

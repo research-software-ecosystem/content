@@ -1,0 +1,40 @@
+about:
+  description: 'Supporting data for the EpiMix R package. It include: - HM450_lncRNA_probes.rda
+    - HM450_miRNA_probes.rda - EPIC_lncRNA_probes.rda - EPIC_miRNA_probes.rda - EpigenomeMap.rda
+    - LUAD.sample.annotation - TCGA_BatchData - MET.data - mRNA.data - microRNA.data
+    - lncRNA.data - Sample_EpiMixResults_lncRNA - Sample_EpiMixResults_miRNA - Sample_EpiMixResults_Regular
+    - Sample_EpiMixResults_Enhancer - lncRNA expression data of tumors from TCGA that
+    are stored in the ExperimentHub.'
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/EpiMix.data.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Data for the EpiMix package
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-epimix.data
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 52c386f6828945121acfca44eabb7827
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/EpiMix.data_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EpiMix.data/EpiMix.data_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EpiMix.data_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-epimix.data/bioconductor-epimix.data_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EpiMix.data')"

@@ -1,0 +1,38 @@
+about:
+  home: https://CRAN.R-project.org/package=phyext2
+  license: GPL-3
+  license_family: GPL3
+  summary: Based on (but not identical to) the no-longer-maintained package 'phyext',
+    provides enhancements to 'phylobase' classes, specifically for use by package
+    'SigTree'; provides classes and methods which help users manipulate branch-annotated
+    trees (as in 'SigTree'); also provides support for a few other extra features.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 9
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-phyext2
+  version: 0.0.4
+requirements:
+  build:
+  - zip
+  host:
+  - r-base
+  - r-ape
+  - r-phylobase
+  run:
+  - r-base
+  - r-ape
+  - r-phylobase
+source:
+  sha256: 2ba35543bf7b4bfab5d41ad4de2ff2a1ac78ce0f07c0d736a0d4a58adf0c0749
+  url:
+  - /src/contrib/phyext2_0.0.4.tar.gz
+  - /src/contrib/Archive/phyext2/phyext2_0.0.4.tar.gz
+test:
+  commands:
+  - $R -e "library('phyext2')"
+  - '"%R%" -e "library(''phyext2'')"'

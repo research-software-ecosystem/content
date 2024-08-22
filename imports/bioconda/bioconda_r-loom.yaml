@@ -1,0 +1,53 @@
+about:
+  home: https://github.com/mojaveazure/loomR
+  license: GPL-3
+  license_family: GPL3
+  summary: An interface for the single-cell RNAseq-oriented loom format. Loom files
+    are an HDF5-based format for storing and interacting with large single-cell RNAseq
+    datasets. loomR provides an interface for working with loom files in a loom-specific
+    way; we provide routines for validating loom files, iterating with chunks through
+    data within the loom file, and provide a platform for other packages to build
+    support for loom files.
+build:
+  noarch: generic
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-loom
+  version: 0.2.0.2
+requirements:
+  host:
+  - icu >=64
+  - r-base
+  - r-devtools
+  - r-hdf5r
+  - r-iterators
+  - r-itertools
+  - r-matrix
+  - r-pbapply
+  run:
+  - icu >=64
+  - r-base
+  - r-hdf5r
+  - r-iterators
+  - r-itertools
+  - r-matrix
+  - r-pbapply
+  - r-stringr
+source:
+  sha256: 7ad37bee3f91cc7d0cfb7e31b2de33e4bf7dd03ed2205732c34f150c97faa652
+  url: https://github.com/mojaveazure/loomR/archive/1eca16a60f529944050e2a3419040cb811726699.tar.gz
+test:
+  commands:
+  - $R -e "library(loomR)"

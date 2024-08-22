@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/BackofenLab/CLIPcontext
+  license: MIT
+  license_file: LICENSE
+  summary: Extract CLIP-seq binding regions with both genomic and transcript context
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: clipcontext
+  version: 0.7
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - bedtools 2.29.0
+  - ucsc-twobitinfo
+  - ucsc-twobittofa
+  - seaborn >=0.10.0
+  - matplotlib-base >=3.1.3
+  - markdown >=3.2.1
+  - pandas >=1.0.3
+source:
+  sha256: 50eec55dbab84dd954d2abdfdcb977b95b1953c17414f7bd48fb2f0ca23c35fb
+  url: https://github.com/BackofenLab/CLIPcontext/archive/v0.7.tar.gz
+test:
+  commands:
+  - clipcontext -h

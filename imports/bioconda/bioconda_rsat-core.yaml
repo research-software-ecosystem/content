@@ -1,0 +1,116 @@
+about:
+  home: http://rsat.eu/
+  license: AGPL-3
+  license_file: LICENSE.txt
+  summary: Detection of regulatory signals in non-coding sequences.
+build:
+  number: 1
+  skip: true
+extra:
+  identifiers:
+  - biotools:rsat
+  - doi:10.1093/nar/gky317
+package:
+  name: rsat-core
+  version: 2020.02.29
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - python
+  - perl
+  run:
+  - python
+  - numpy
+  - scipy
+  - matplotlib
+  - httplib2
+  - pygraphviz
+  - snakemake
+  - pyyaml
+  - r-base
+  - r-gplots
+  - r-jpeg
+  - r-png
+  - r-devtools
+  - r-ggplot2
+  - r-dynamictreecut
+  - r-reshape2
+  - r-dendextend
+  - r-gridextra
+  - r-egg
+  - r-flux
+  - r-zoo
+  - r-rcolorbrewer
+  - r-amap
+  - r-rjsonio
+  - r-dplyr
+  - r-data.table
+  - bioconductor-ctc
+  - bioconductor-qvalue
+  - perl
+  - perl-bioperl
+  - perl-bio-das
+  - perl-yaml
+  - perl-cgi
+  - perl-statistics-distributions
+  - perl-math-cdf
+  - perl-algorithm-cluster
+  - perl-file-spec
+  - perl-posix
+  - perl-data-dumper
+  - perl-digest-md5-file
+  - perl-io-all
+  - perl-object-insideout
+  - perl-class-std-fast
+  - perl-gd
+  - perl-dbi
+  - perl-dbd-mysql
+  - perl-db-file
+  - perl-lwp-simple
+  - perl-json
+  - perl-soap-lite
+  - perl-xml-libxml
+  - perl-xml-dom
+  - perl-xml-parser
+  - perl-log-log4perl
+  - perl-number-format
+  - perl-ole-storage_lite
+  - perl-spreadsheet-writeexcel
+  - perl-readonly
+  - perl-rest-client
+  - perl-http-tiny
+  - perl-lockfile-simple
+  - perl-util-properties
+  - perl-ensembl-api
+  - perl-ensembl-genomes
+  - perl-parallel-forkmanager
+  - perl-mce-shared
+  - seqlogo
+  - weblogo
+  - bedtools
+  - d3
+  - blast
+  - ghostscript
+  - gnuplot
+  - vmatch
+  - perl-email-simple
+source:
+  sha256: e964d960f8fa57d39f1add2763ea6cb5eef12beae54c01dc1fd7c50c1f01aaa6
+  url: http://pedagogix-tagc.univ-mrs.fr/download_rsat/rsat-core_2020.02.29.tar.gz
+test:
+  commands:
+  - rsat --help
+  - rsat oligo-analysis -h
+  - rsat random-seq -l 100 -n 2
+  - rsat random-seq -l 100 -n 2 | rsat purge-sequence
+  - rsat random-motif -l 10
+  - rsat feature-map -h
+  - rsat info-gibbs -h
+  - rsat count-words -h
+  - rsat matrix-scan-quick -h
+  - rsat matrix-clustering -h

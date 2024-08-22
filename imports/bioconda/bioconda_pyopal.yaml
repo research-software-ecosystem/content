@@ -1,0 +1,44 @@
+about:
+  doc_url: https://pyopal.readthedocs.org/
+  home: https://github.com/althonos/pyopal
+  license: MIT
+  license_file: COPYING
+  summary: Cython bindings and Python interface to Opal, a SIMD-accelerated pairwise
+    aligner.
+build:
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - althonos
+package:
+  name: pyopal
+  version: 0.6.1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - setuptools
+  - scoring-matrices >=0.2
+  run:
+  - python
+  - setuptools
+  - archspec
+  - scoring-matrices >=0.2
+source:
+  sha256: 039487f2ffeae29962e1ed38db401fbe2c295f894461f1dd9af09e94e1feccb0
+  url: https://pypi.io/packages/source/p/pyopal/pyopal-0.6.1.tar.gz
+test:
+  commands:
+  - python -m unittest -vv pyopal.tests
+  imports:
+  - pyopal

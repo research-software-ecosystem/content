@@ -1,0 +1,45 @@
+about:
+  home: http://sourceforge.net/projects/rpore/
+  license: BSD
+  summary: An R package to enable organisation and visualisation of nanopore sequencing
+    data
+build:
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-pore
+  version: '0.24'
+requirements:
+  host:
+  - r-base
+  - bioconductor-rhdf5
+  - r-bit64
+  - r-shiny
+  - r-data.table
+  - r-svdialogs
+  - parallel
+  run:
+  - r-base
+  - bioconductor-rhdf5
+  - r-bit64
+  - r-shiny
+  - r-data.table
+  - r-svdialogs
+  - parallel
+source:
+  sha256: 5bcf5a2dfe3e714baef545972cd05901198cd58949cc9951270fed25a94d305e
+  url: http://downloads.sourceforge.net/project/rpore/0.24/poRe_0.24.tar.gz
+test:
+  commands:
+  - $R -e "library('poRe')"

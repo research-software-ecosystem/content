@@ -1,0 +1,39 @@
+about:
+  doc_url: https://github.com/medema-group/BiG-SCAPE/wiki
+  home: https://github.com/medema-group/BiG-SCAPE
+  license: AGPL-3.0-or-later
+  license_file: LICENSE
+  summary: Biosynthetic Genes Similarity Clustering and Prospecting Engine.
+build:
+  entry_points:
+  - bigscape=bigscape.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install --no-deps --no-build-isolation . -vvv'
+extra:
+  identifiers:
+  - doi:10.1038/s41589-019-0400-9
+package:
+  name: bigscape
+  version: 1.1.9
+requirements:
+  host:
+  - python ==3.7
+  - pip
+  run:
+  - python ==3.7
+  - hmmer
+  - biopython
+  - fasttree
+  - networkx
+  - numpy
+  - scikit-learn
+  - scipy
+source:
+  sha256: ef0ddb5b433e0b1467ae5f96037fd6d23ebcba6bc08201d1421eba35d072e534
+  url: https://github.com/medema-group/BiG-SCAPE/archive/refs/tags/v1.1.9.tar.gz
+test:
+  commands:
+  - bigscape --version

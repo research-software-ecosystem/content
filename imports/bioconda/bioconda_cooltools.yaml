@@ -1,0 +1,52 @@
+about:
+  doc_url: https://cooltools.readthedocs.io
+  home: https://github.com/open2c/cooltools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Analysis tools for genomic interaction data stored in .cool format
+build:
+  entry_points:
+  - cooltools = cooltools.cli:cli
+  number: 2
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - abretaud
+package:
+  name: cooltools
+  version: 0.7.0
+requirements:
+  build:
+  - None
+  host:
+  - cython
+  - pip
+  - python
+  - numpy
+  run:
+  - bioframe >=0.4.1
+  - click >=7
+  - cooler >=0.9.1
+  - joblib
+  - matplotlib-base
+  - multiprocess
+  - numba
+  - None
+  - pandas >=1.5.1
+  - python
+  - scikit-learn >=1.1.2
+  - scipy
+  - scikit-image
+source:
+  sha256: 8b26d4857cc76b2dd3d1097b85f828cf6d5f1cf85b0cfd4b67a310e33e7ece1c
+  url: https://pypi.io/packages/source/c/cooltools/cooltools-0.7.0.tar.gz
+test:
+  commands:
+  - cooltools --help
+  imports:
+  - cooltools
+  - cooltools.cli
+  - cooltools.lib

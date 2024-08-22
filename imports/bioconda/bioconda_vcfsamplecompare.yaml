@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/hepcat72/vcfSampleCompare
+  license: GNU
+  license_file: LICENSE
+  summary: This script sorts and (optionally) filters the rows/variants of a VCF file
+    (containing data for 2 or more samples) based on the differences in the variant
+    data between samples or sample groups. Degree of "difference" is determined by
+    either the best possible degree of separation of sample groups by genotype calls
+    or the difference in average allelic frequency of each sample or sample group
+    (with a gap size threshold). The pair of samples or sample groups used to represent
+    the difference for a variant row is the one leading to the greatest difference
+    in consistent genotype or average allelic frequencies (i.e. observation ratios,
+    e.g. AO/DP) of the same variant state. If sample groups are not specified, the
+    pair of samples leading to the greatest difference is greedily discovered and
+    chosen to represent the variant/row.
+build:
+  noarch: generic
+  number: 2
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.3565896
+package:
+  name: vcfsamplecompare
+  version: 2.013
+requirements:
+  build:
+  - make
+  host:
+  - perl
+  run:
+  - perl
+source:
+  sha256: fb2632c1eebae35380d9c0edb376003447c98afb2b67c34b029466aabe9d2f5e
+  url: https://github.com/hepcat72/vcfSampleCompare/archive/2.013.tar.gz
+test:
+  commands:
+  - vcfSampleCompare.pl --version

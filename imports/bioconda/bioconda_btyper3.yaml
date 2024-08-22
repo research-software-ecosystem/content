@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/lmc297/BTyper3
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE
+  summary: In silico taxonomic classification of Bacillus cereus group isolates using
+    assembled genomes
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  identifiers:
+  - https://doi.org/10.3389/fmicb.2020.580691
+package:
+  name: btyper3
+  version: 3.4.0
+requirements:
+  host:
+  - python >=3.7
+  - setuptools >=38.10
+  - pip
+  run:
+  - python >=3.7
+  - numpy >=1.18
+  - biopython >=1.74
+  - pandas >=1.0
+  - pyfastani >=0.4
+  - blast >=2.9.0
+source:
+  sha256: 8717a5805b469ba08399e594eef9b7868740aad90428156ce8a65c2949c7cf28
+  url: https://pypi.io/packages/source/b/btyper3/btyper3-3.4.0.tar.gz
+test:
+  commands:
+  - btyper3 --help

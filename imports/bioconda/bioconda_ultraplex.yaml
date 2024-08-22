@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/ulelab/ultraplex.git
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: fastq demultiplexer
+build:
+  entry_points:
+  - ultraplex = ultraplex.__main__:main
+  number: 2
+  run_exports:
+  - None
+  script:
+  - ' -m pip install . --no-deps --no-build-isolation --use-pep517 -vvv'
+  skip: true
+extra:
+  recipe-maintainers:
+  - Delayed-Gitification
+  - CharlotteAnne
+package:
+  name: ultraplex
+  version: 1.2.9
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - cython
+  - setuptools-scm >8
+  run:
+  - python
+  - xopen >=1.0.0
+  - dnaio >=0.5.0
+  - pigz
+  - multiprocess
+  - setuptools_scm >8
+source:
+  sha256: 7b1efa09a421590907c7e5177eb9e4837deade89c237b961bcf2f7edfa9f2e90
+  url: https://pypi.io/packages/source/u/ultraplex/ultraplex-1.2.9.tar.gz
+test:
+  commands:
+  - ultraplex --help
+  imports:
+  - ultraplex

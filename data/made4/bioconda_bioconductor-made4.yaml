@@ -1,0 +1,52 @@
+about:
+  description: Multivariate data analysis and graphical display of microarray data.
+    Functions include for supervised dimension reduction (between group analysis)
+    and joint dimension reduction of 2 datasets (coinertia analysis). It contains
+    functions that require R package ade4.
+  home: https://bioconductor.org/packages/3.18/bioc/html/made4.html
+  license: Artistic-2.0
+  summary: Multivariate analysis of microarray data using ADE4
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:made4
+  parent_recipe:
+    name: bioconductor-made4
+    path: recipes/bioconductor-made4
+    version: 1.54.0
+package:
+  name: bioconductor-made4
+  version: 1.76.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-ade4
+  - r-base
+  - r-gplots
+  - r-rcolorbrewer
+  - r-scatterplot3d
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-ade4
+  - r-base
+  - r-gplots
+  - r-rcolorbrewer
+  - r-scatterplot3d
+source:
+  md5: ae8a8a420c5f5ebd8a729767baf0a762
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/made4_1.76.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/made4/made4_1.76.0.tar.gz
+  - https://bioarchive.galaxyproject.org/made4_1.76.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-made4/bioconductor-made4_1.76.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('made4')"

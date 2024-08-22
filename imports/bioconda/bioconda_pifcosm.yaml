@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/RybergGroup/PifCoSm
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: PisCoSm is a pipeline to construct supermatrix trees from GenBank data
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - doi:10.1073/pnas.1922539117
+package:
+  name: pifcosm
+  version: 0.1.1
+requirements:
+  run:
+  - perl
+  - perl-dbi
+  - perl-dbd-sqlite
+  - cd-hit
+  - gblocks
+  - hmmer
+  - mafft
+  - muscle
+  - raxml
+  - fasttree
+  - roguenarok
+  - phylommand
+source:
+  patches:
+  - PifCoSm.patch
+  sha256: 116159f8fc24f9158eda250d0f9ac4e8c4cca3131ca562c4ecb7c90ecfac9ebe
+  url: https://github.com/RybergGroup/PifCoSm/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - PifCoSm.pl

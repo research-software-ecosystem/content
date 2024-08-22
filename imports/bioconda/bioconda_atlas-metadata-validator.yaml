@@ -1,0 +1,38 @@
+about:
+  description: "This is a python module to parse a set of MAGE-TAB files and check\
+    \ for\ncompatibility with the Expression Atlas and Single Cell Expression Atlas\n\
+    analysis pipelines. The main validation script automatically detects the\nexperiment\
+    \ type from the MAGE-TAB and runs the respective tests. Currently\ngeneral checks\
+    \ (for bulk and single-cell experiment) as well as Single Cell\nExpression Atlas\
+    \ specific checks are supported.  \n"
+  home: https://github.com/ebi-gene-expression-group/atlas-metadata-validator
+  license: Apache Software
+  license_family: APACHE
+  summary: A MAGE-TAB validator for Expression Atlas and Single Cell Expression Atlas
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - pinin4fjords
+  - anjaf
+package:
+  name: atlas-metadata-validator
+  version: 1.6.1
+requirements:
+  host:
+  - pip
+  - python>=3
+  - requests >=2.20.1
+  - GitPython>=3.1.7
+  run:
+  - python>=3
+  - requests >=2.20.1
+  - GitPython>=3.1.7
+source:
+  sha256: fdda1a7d7896a8fe1848cc0dfa30d8f1c1d2f2358cd6e5332bef635bf3fa29de
+  url: https://pypi.io/packages/source/a/atlas-metadata-validator/atlas-metadata-validator-1.6.1.tar.gz
+test:
+  imports:
+  - atlas_metadata_validator

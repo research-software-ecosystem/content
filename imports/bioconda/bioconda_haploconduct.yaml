@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/HaploConduct/HaploConduct
+  license: GPL3
+  license_file: LICENSE
+  summary: HaploConduct is a package designed for reconstruction of individual haplotypes
+    from next generation sequencing data, in particular Illumina. It provides two
+    methods, SAVAGE and POLYTE, which can be run through the haploconduct wrapper.
+build:
+  number: 3
+  skip: true
+package:
+  name: haploconduct
+  version: 0.2.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - python
+  - boost-cpp
+  run:
+  - boost-cpp
+  - python
+  - bwa
+  - kallisto >=0.43.0
+  - rust-overlaps
+  - scipy
+  - samtools >=1.4
+source:
+  md5: 415188452fbef01c200983f46de09605
+  url: https://github.com/HaploConduct/HaploConduct/archive/v0.2.1.tar.gz
+test:
+  commands:
+  - haploconduct --help

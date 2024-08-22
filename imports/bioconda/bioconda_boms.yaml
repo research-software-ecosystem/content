@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/ocimakamboj/boms
+  license: MIT
+  license_file: LICENSE
+  summary: Cell Segmentation for Spatial Transcriptomics Data using BOMS
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-build-isolation
+  skip: true
+extra:
+  recipe-maintainers:
+  - FloWuenne
+package:
+  name: boms
+  version: 1.1.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - setuptools >=61.0
+  - wheel
+  - pybind11 >=2.11.0
+  - requests
+  - pip
+  - mkl-service
+  run:
+  - python
+  - numpy
+  - mkl
+  - mkl-service
+  - scipy
+  - matplotlib-base
+  - scikit-learn
+source:
+  sha256: c64a867233148dab9d32257e86b127793022f893321a43210ceaafa02870cd7c
+  url: https://pypi.io/packages/source/b/boms/boms-1.1.0.tar.gz
+test:
+  imports:
+  - boms
+  requires:
+  - pip

@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/PathoGenOmics-Lab/tcfinder
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A lightweight tool to find clusters of samples within a phylogeny.
+build:
+  number: 0
+  run_exports:
+  - pin_subpackage(name, max_pin="x.x")
+  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+package:
+  name: tcfinder
+  version: 1.0.0
+requirements:
+  build:
+  - None
+source:
+  sha256: 70bc354bdccddc91217d4a6b3d7ed9847ef5a9b279500ddd0cb9f5f51b705db9
+  url: https://github.com/PathoGenOmics-Lab/tcfinder/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - tcfinder --version

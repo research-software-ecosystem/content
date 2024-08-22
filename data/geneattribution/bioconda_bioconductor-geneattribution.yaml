@@ -1,0 +1,57 @@
+about:
+  description: Identification of the most likely gene or genes through which variation
+    at a given genomic locus in the human genome acts. The most basic functionality
+    assumes that the closer gene is to the input locus, the more likely the gene is
+    to be causative. Additionally, any empirical data that links genomic regions to
+    genes (e.g. eQTL or genome conformation data) can be used if it is supplied in
+    the UCSC .BED file format.
+  home: https://bioconductor.org/packages/3.18/bioc/html/geneAttribution.html
+  license: Artistic-2.0
+  summary: Identification of candidate genes associated with genetic variation
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:geneattribution
+  - doi:10.1093/bioinformatics/btw698
+  parent_recipe:
+    name: bioconductor-geneattribution
+    path: recipes/bioconductor-geneattribution
+    version: 1.6.0
+package:
+  name: bioconductor-geneattribution
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+source:
+  md5: 62d05af7aabb146fb41a5d91fa460dff
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/geneAttribution_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/geneAttribution/geneAttribution_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geneAttribution_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-geneattribution/bioconductor-geneattribution_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('geneAttribution')"

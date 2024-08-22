@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/fenderglass/Ragout
+  license: GPLv3
+  summary: Chromosome-level scaffolding using multiple references
+build:
+  number: 7
+  skip: true
+extra:
+  skip-lints:
+  - uses_setuptools
+package:
+  name: ragout
+  version: 2.3
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - decorator ==4.3.0
+  - networkx ==2.2
+  - sibelia
+  - setuptools
+source:
+  sha256: 69d50a7ff49f03821e0143449ee0dc3e80c73e2c24568cad71948a5492613bca
+  url: https://github.com/fenderglass/Ragout/archive/2.3.tar.gz
+test:
+  commands:
+  - ragout -h
+  - Sibelia --version
+  - python -c "import ragout.tests.test_toy as t; t.main()"

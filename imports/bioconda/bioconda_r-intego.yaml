@@ -1,0 +1,38 @@
+about:
+  home: http://marie.verbanck.free.fr/packages/InteGO/
+  license: GPL3
+  summary: An unsupervised gene clustering algorithm based on the integration of external
+    biological knowledge, such as Gene Ontology annotations, into expression data.
+build:
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1186/1471-2105-14-42
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-intego
+  version: 2.0
+requirements:
+  host:
+  - r-factominer
+  - r-base
+  run:
+  - r-factominer
+  - r-base
+source:
+  sha256: 61854b2985da3f759ee15af68e7345fb3584db389dbe51f53542ccf91c0f627d
+  url: http://marie.verbanck.free.fr/packages/InteGO/InteGO_2.0.tar.gz
+test:
+  commands:
+  - $R -e "library('InteGO')"

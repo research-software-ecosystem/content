@@ -1,0 +1,57 @@
+about:
+  description: The ClusterSignificance package provides tools to assess if class clusters
+    in dimensionality reduced data representations have a separation different from
+    permuted data. The term class clusters here refers to, clusters of points representing
+    known classes in the data. This is particularly useful to determine if a subset
+    of the variables, e.g. genes in a specific pathway, alone can separate samples
+    into these established classes. ClusterSignificance accomplishes this by, projecting
+    all points onto a one dimensional line. Cluster separations are then scored and
+    the probability of the seen separation being due to chance is evaluated using
+    a permutation method.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ClusterSignificance.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: The ClusterSignificance package provides tools to assess if class clusters
+    in dimensionality reduced data representations have a separation different from
+    permuted data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:clustersignificance
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-clustersignificance
+    path: recipes/bioconductor-clustersignificance
+    version: 1.8.2
+package:
+  name: bioconductor-clustersignificance
+  version: 1.30.0
+requirements:
+  host:
+  - r-base
+  - r-pracma
+  - r-princurve >=2.0.5
+  - r-rcolorbrewer
+  - r-scatterplot3d
+  run:
+  - r-base
+  - r-pracma
+  - r-princurve >=2.0.5
+  - r-rcolorbrewer
+  - r-scatterplot3d
+source:
+  md5: 46f8a23ba4910712f2c65ebbb151ad4f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ClusterSignificance_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ClusterSignificance/ClusterSignificance_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ClusterSignificance_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-clustersignificance/bioconductor-clustersignificance_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ClusterSignificance')"

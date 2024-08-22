@@ -1,0 +1,66 @@
+about:
+  description: The package Ringo facilitates the primary analysis of ChIP-chip data.
+    The main functionalities of the package are data read-in, quality assessment,
+    data visualisation and identification of genomic regions showing enrichment in
+    ChIP-chip. The package has functions to deal with two-color oligonucleotide microarrays
+    from NimbleGen used in ChIP-chip projects, but also contains more general functions
+    for ChIP-chip data analysis, given that the data is supplied as RGList (raw) or
+    ExpressionSet (pre- processed). The package employs functions from various other
+    packages of the Bioconductor project and provides additional ChIP-chip-specific
+    and NimbleGen-specific functionalities.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Ringo.html
+  license: Artistic-2.0
+  summary: R Investigation of ChIP-chip Oligoarrays
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:ringo
+  parent_recipe:
+    name: bioconductor-ringo
+    path: recipes/bioconductor-ringo
+    version: 1.44.0
+package:
+  name: bioconductor-ringo
+  version: 1.66.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-lattice
+  - r-matrix
+  - r-rcolorbrewer
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-lattice
+  - r-matrix
+  - r-rcolorbrewer
+source:
+  md5: 2aa9ffb65c3d24fed5141f139f8721ab
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Ringo_1.66.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Ringo/Ringo_1.66.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Ringo_1.66.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ringo/bioconductor-ringo_1.66.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Ringo')"

@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/KevinMenden/scaden
+  license: MIT
+  summary: Cell type deconvolution using single cell data
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: scaden
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  - twine
+  run:
+  - python >=3
+  - pandas
+  - numpy >=1.16.0,<1.19.0
+  - numpy
+  - scikit-learn
+  - scipy  1.4.1
+  - seaborn
+  - tensorflow >=2
+  - matplotlib-base
+  - scanpy
+  - tqdm
+  - click
+  - rich
+source:
+  sha256: ae03c2036f154955d8337207b18076331ae7f249dbf4df0b99c254a6724e0e88
+  url: https://pypi.io/packages/source/s/scaden/scaden-1.1.2.tar.gz
+test:
+  commands:
+  - scaden --help

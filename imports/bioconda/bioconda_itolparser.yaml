@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/boasvdp/itolparser
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Small script to produce iTOL colorstrip metadata files from a table
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - boasvdp
+package:
+  name: itolparser
+  version: 0.2.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - colorbrewer
+  - numpy
+  - pandas
+  - python
+source:
+  sha256: 8699adea2caf5ea1c645c5bc1abf4be8aa232a7c6c51f8a1f229c465408b6570
+  url: https://pypi.io/packages/source/i/itolparser/itolparser-0.2.1.tar.gz
+test:
+  commands:
+  - itolparser -h

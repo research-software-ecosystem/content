@@ -1,0 +1,44 @@
+about:
+  description: A package for RNA basepair analysis, including the visualization of
+    basepairs as arc diagrams for easy comparison and annotation of sequence and structure.  Arc
+    diagrams can additionally be projected onto multiple sequence alignments to assess
+    basepair conservation and covariation, with numerical methods for computing statistics
+    for each.
+  home: https://bioconductor.org/packages/3.18/bioc/html/R4RNA.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: An R package for RNA visualization and analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:r4rna
+  parent_recipe:
+    name: bioconductor-r4rna
+    path: recipes/bioconductor-r4rna
+    version: 1.8.0
+package:
+  name: bioconductor-r4rna
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+source:
+  md5: a77903559307ab481671650646dd85e5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/R4RNA_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/R4RNA/R4RNA_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/R4RNA_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-r4rna/bioconductor-r4rna_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('R4RNA')"

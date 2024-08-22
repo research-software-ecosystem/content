@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/varfish-org/annonars
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: Genome annotation based on Rust and RocksDB.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - holtgrewe
+  - tedil
+package:
+  name: annonars
+  version: 0.40.0
+requirements:
+  build:
+  - None
+  - None
+  - rust >=1.30
+  - clangdev
+  - pkg-config
+  - protobuf
+  - make
+  - cmake
+  host:
+  - clangdev
+  - openssl
+  - sqlite
+  - zlib
+  run:
+  - sqlite
+source:
+  sha256: 1860e69f89935aa5d5456e55070d4c172cd4b29bdf07ad16b6b4dcf95b4ef7b2
+  url: https://github.com/varfish-org/annonars/archive/refs/tags/v0.40.0.tar.gz
+test:
+  commands:
+  - annonars --help

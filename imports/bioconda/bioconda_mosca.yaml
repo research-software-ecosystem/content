@@ -1,0 +1,46 @@
+about:
+  description: "MOSCA (portuguese for fly) is a pipeline designed for performing metagenomics\
+    \ (MG),\nmetatranscriptomics (MT) and metaproteomics (MP) integrated data analysis,\
+    \ \nin a mostly local and fully automated workflow. Metagenomics is used to build\
+    \ \na reference database for MT and MP, beginning with preprocessing of data for\n\
+    removal of Illumina adapters and lower quality regions, folowed by assembly\n\
+    of reads into contigs, gene calling on the contigs and homology-based and \ndomain-based\
+    \ annotation of identified proteins, using the UniProt and COG \ndatabases, respectively.\
+    \ If available, MT reads are then aligned to the ORFs \nfor gene expression quantification,\
+    \ and MP spectra are submitted for\nPeptide-to-Spectrum matching, with the annotated\
+    \ ORFs as reference database.\nFinal steps include differential expression analysis\
+    \ for both MT and MP, and\nmetabolic pathways analysis through KEGG Pathways.\n"
+  dev_url: https://github.com/iquasere/MOSCA
+  doc_url: https://github.com/iquasere/MOSCA/wiki
+  home: https://github.com/iquasere/MOSCA
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: MOSCA - Meta-Omics Software for Community Analysis
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script: 'mkdir -p $PREFIX/share/MOSCA $PREFIX/bin &&  cp -r workflow/* resources/*.json
+    resources/*.txt $PREFIX/share/MOSCA &&  chmod +x $PREFIX/share/MOSCA/mosca.py
+    &&  ln -s $PREFIX/share/MOSCA/mosca.py $PREFIX/bin/mosca
+
+    '
+extra:
+  recipe-maintainers:
+  - iquasere
+package:
+  name: mosca
+  version: 2.3.0
+requirements:
+  run:
+  - python >=3.9, <3.12
+  - pandas
+  - snakemake <8
+source:
+  sha256: 1eba9c082273dd46badd2d5ff8df56aabdc496214e337331d000f54399893a94
+  url: https://github.com/iquasere/MOSCA/archive/2.3.0.tar.gz
+test:
+  commands:
+  - mosca -v

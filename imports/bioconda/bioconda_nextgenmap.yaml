@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/Cibiv/NextGenMap
+  license: MIT
+  license_family: MIT
+  summary: NextGenMap is a flexible highly sensitive short read mapping tool that
+    handles much higher mismatch rates than comparable algorithms while still outperforming
+    them in terms of runtime.
+build:
+  number: 5
+  skip: true
+package:
+  name: nextgenmap
+  version: 0.5.5
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  run:
+  - binutils
+source:
+  sha256: c205e6cb312d2f495106435f10fb446e6fb073dd1474f4f74ab5980ba9803661
+  url: https://github.com/Cibiv/NextGenMap/archive/v0.5.5.tar.gz
+test:
+  commands:
+  - ngm 2>&1 | grep "NextGenMap"
+  - ngm-utils 2>&1 | grep "ngm-utils"

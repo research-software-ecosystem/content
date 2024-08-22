@@ -1,0 +1,46 @@
+about:
+  description: This package contains several tools for analyzing Sanger Sequencing
+    data files in R, including reading .scf and .ab1 files, making basecalls and plotting
+    chromatograms.
+  home: https://bioconductor.org/packages/3.18/bioc/html/sangerseqR.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Tools for Sanger Sequencing Data in R
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:sangerseqr
+  parent_recipe:
+    name: bioconductor-sangerseqr
+    path: recipes/bioconductor-sangerseqr
+    version: 1.16.0
+package:
+  name: bioconductor-sangerseqr
+  version: 1.38.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-shiny
+  - r-stringr
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-shiny
+  - r-stringr
+source:
+  md5: efc55dbe39324b21b62910684962b86b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/sangerseqR_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/sangerseqR/sangerseqR_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sangerseqR_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sangerseqr/bioconductor-sangerseqr_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sangerseqR')"

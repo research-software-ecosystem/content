@@ -1,0 +1,38 @@
+about:
+  description: Open Cancer TherApeutic Discovery (OCTAD) package implies sRGES approach
+    for the drug discovery. The essential idea is to identify drugs that reverse the
+    gene expression signature of a disease by tamping down over-expressed genes and
+    stimulating weakly expressed ones. The following package contains all required
+    precomputed data for whole OCTAD pipeline computation.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/octad.db.html
+  license: Artistic-2.0
+  summary: Open Cancer TherApeutic Discovery (OCTAD) database
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-octad.db
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: ef8723031fea32015ee26dbf30d2c8ba
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/octad.db_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/octad.db/octad.db_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/octad.db_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-octad.db/bioconductor-octad.db_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('octad.db')"

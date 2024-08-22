@@ -1,0 +1,50 @@
+about:
+  description: The GSRI package estimates the number of differentially expressed genes
+    in gene sets, utilizing the concept of the Gene Set Regulation Index (GSRI).
+  home: https://bioconductor.org/packages/3.18/bioc/html/GSRI.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Gene Set Regulation Index
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:gsri
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-gsri
+    path: recipes/bioconductor-gsri
+    version: 2.28.0
+package:
+  name: bioconductor-gsri
+  version: 2.50.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-les >=1.52.0,<1.53.0
+  - r-base
+  - r-fdrtool
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-les >=1.52.0,<1.53.0
+  - r-base
+  - r-fdrtool
+source:
+  md5: 686ab91e4ee0adeb4828a5b2ac2f6943
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GSRI_2.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GSRI/GSRI_2.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GSRI_2.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gsri/bioconductor-gsri_2.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GSRI')"

@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/phytest-devs/phytest
+  doc_url: https://phytest-devs.github.io/phytest/
+  home: https://github.com/phytest-devs/phytest
+  license: MIT
+  license_file: LICENSE
+  summary: Quality control for phylogenetic pipelines using pytest
+build:
+  entry_points:
+  - phytest = phytest.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - vinisalazar
+  - rbturnbull
+  - Wytamma
+  - smutch
+package:
+  name: phytest
+  version: 1.4.1
+requirements:
+  host:
+  - python >=3.8,<=3.11
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8,<=3.11
+  - pytest >=7.1.1
+  - pytest-sugar >=0.9.4
+  - pytest-html >=3.1.1
+  - typer >=0.4.1
+  - biopython >=1.79
+  - treetime >=0.8.6
+  - scipy >=1.8.0
+  - numpy >=1.22.3
+  - pytest-xdist >=3.2.0
+source:
+  sha256: a4083778922020f317efd02474a35dcb822df6451b6e9a6e9350bb1c1ce336a2
+  url: https://pypi.io/packages/source/p/phytest/phytest-1.4.1.tar.gz
+test:
+  commands:
+  - pip check
+  - phytest --help
+  imports:
+  - phytest
+  requires:
+  - pip

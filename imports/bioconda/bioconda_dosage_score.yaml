@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/SegawaTenta/Dosage-score
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: 'Dosage-score: pipline to estimate dosage of each genomic region'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  identifiers:
+  - biotools:dosage_score
+package:
+  name: dosage_score
+  version: 1.0.0
+requirements:
+  build:
+  - python >=3.7
+  - setuptools
+  - pip
+  run:
+  - python >=3.7
+  - pandas =1.5.0
+  - samtools >=1.16
+  - matplotlib-base
+  - numpy
+source:
+  sha256: 4d5761a1b0284bba5c0291359b24e7abf9a7e729b06917c324bf846d59b4306c
+  url: https://github.com/SegawaTenta/Dosage-score/releases/download/v1.0.0/Dosage-score-main.zip
+test:
+  commands:
+  - dosage_score -h
+  - dosage_score_plot -h

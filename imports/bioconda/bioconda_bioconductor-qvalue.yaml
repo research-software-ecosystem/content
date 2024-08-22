@@ -1,0 +1,49 @@
+about:
+  description: This package takes a list of p-values resulting from the simultaneous
+    testing of many hypotheses and estimates their q-values and local FDR values.
+    The q-value of a test measures the proportion of false positives incurred (called
+    the false discovery rate) when that particular test is called significant. The
+    local FDR measures the posterior probability the null hypothesis is true given
+    the test's p-value. Various plots are automatically generated, allowing one to
+    make sensible significance cut-offs. Several mathematical results have recently
+    been shown on the conservative accuracy of the estimated q-values from this software.
+    The software can be applied to problems in genomics, brain imaging, astrophysics,
+    and data mining.
+  home: https://bioconductor.org/packages/3.18/bioc/html/qvalue.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Q-value estimation for false discovery rate control
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-qvalue
+    path: recipes/bioconductor-qvalue
+    version: 2.12.0
+package:
+  name: bioconductor-qvalue
+  version: 2.34.0
+requirements:
+  host:
+  - r-base
+  - r-ggplot2
+  - r-reshape2
+  run:
+  - r-base
+  - r-ggplot2
+  - r-reshape2
+source:
+  md5: d6d57a60a814587681cf438b4e6ee9bc
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/qvalue_2.34.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/qvalue/qvalue_2.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/qvalue_2.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-qvalue/bioconductor-qvalue_2.34.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('qvalue')"

@@ -1,0 +1,47 @@
+about:
+  description: A package that provides a client interface to the Kyoto Encyclopedia
+    of Genes and Genomes (KEGG) REST server. Based on KEGGSOAP by J. Zhang, R. Gentleman,
+    and Marc Carlson, and KEGG (python package) by Aurelien Mazurie.
+  home: https://bioconductor.org/packages/3.18/bioc/html/KEGGREST.html
+  license: Artistic-2.0
+  summary: Client-side REST access to the Kyoto Encyclopedia of Genes and Genomes
+    (KEGG)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:keggrest
+  - doi:10.1007/s11845-015-1283-8
+  parent_recipe:
+    name: bioconductor-keggrest
+    path: recipes/bioconductor-keggrest
+    version: 1.20.2
+package:
+  name: bioconductor-keggrest
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-httr
+  - r-png
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-httr
+  - r-png
+source:
+  md5: 805cb8808b0ffa6f57999b880337b504
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/KEGGREST_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/KEGGREST/KEGGREST_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KEGGREST_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-keggrest/bioconductor-keggrest_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KEGGREST')"

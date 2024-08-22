@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/Teichlab/bbknn
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Batch balanced KNN
+build:
+  number: 3
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - jenzopr
+package:
+  name: bbknn
+  version: 1.6.0
+requirements:
+  build:
+  - None
+  host:
+  - cython
+  - python-annoy
+  - pynndescent
+  - numpy >=1.13
+  - pip
+  - python
+  - flit-core >=3.2,<4
+  - scipy >=1.6.0
+  - scikit-learn >=1.0.2
+  - umap-learn
+  - pandas
+  run:
+  - python
+  - python-annoy
+  - pynndescent
+  - numpy >=1.13
+  - scipy >=1.6.0
+  - scikit-learn >=1.0.2
+  - umap-learn
+  - pandas
+source:
+  sha256: 1c01a9d6df2fc52a527de8a403617897a4b672724863299a7026f2132f1b041b
+  url: https://pypi.io/packages/source/b/bbknn/bbknn-1.6.0.tar.gz
+test:
+  imports:
+  - bbknn

@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/srp33/ShapeShifter
+  license: MIT
+  license_family: MIT
+  summary: A tool for managing large datasets
+build:
+  noarch: python
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - srp33
+  - frytime32
+package:
+  name: shapeshifter
+  version: 1.1.1
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  - pandas
+  - pyarrow
+  - numpy
+  - sqlalchemy
+  - xlsxwriter
+  - xlrd
+  - nbformat
+  run:
+  - python >=3
+  - pandas
+  - pyarrow
+  - numpy
+  - sqlalchemy
+  - xlsxwriter
+  - xlrd
+  - nbformat
+source:
+  sha256: 9679af30022df7eeeafa11d9f8dd62408417bb439efb343f272de615eadacd33
+  url: https://pypi.io/packages/source/s/shapeshifter/shapeshifter-1.1.1.tar.gz
+test:
+  imports:
+  - shapeshifter
+  - shapeshifter.errors
+  - shapeshifter.files
+  - shapeshifter.utils

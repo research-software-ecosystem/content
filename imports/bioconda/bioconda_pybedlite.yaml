@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/fulcrumgenomics/pybedlite
+  doc_url: https://pybedlite.readthedocs.io/en/latest/
+  home: https://pypi.org/project/pybedlite/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Lightweight python classes for interfacing with bed intervals
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - NatPRoach
+  - nh13
+  - tfenne
+package:
+  name: pybedlite
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - poetry-core
+  - cython
+  run:
+  - python
+  - cgranges >=0.1
+  - typing_extensions >=3.7.4
+  - typing_inspect >=0.3.1
+  - attrs >=23.0.0
+source:
+  sha256: c87a246a673f69b929103176b744b6ad6978b63fae45f1ca6becc315a72d671c
+  url: https://pypi.io/packages/source/p/pybedlite/pybedlite-1.0.0.tar.gz
+test:
+  imports:
+  - pybedlite

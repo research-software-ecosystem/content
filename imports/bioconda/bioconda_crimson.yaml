@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/bow/crimson
+  license: BSD License
+  license_family: BSD
+  summary: Bioinformatics tool outputs converter to JSON or YAML.
+build:
+  entry_points:
+  - crimson=crimson.cli:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: crimson
+  version: 1.1.1
+requirements:
+  host:
+  - python
+  - pip
+  - poetry
+  run:
+  - python
+  - click >=6.6
+  - pyyaml >=3.11
+  - single-source
+source:
+  sha256: bdc54961dbb29cfd9479c310f382475820e80f7158ebc2a732f756dc72b7978d
+  url: https://files.pythonhosted.org/packages/d3/4c/5cae5b14b05e34db95b6438372f83b663afbf175e0e7d8c15332e2a30aaa/crimson-1.1.1.tar.gz
+test:
+  commands:
+  - LANG=C.UTF-8 crimson --help
+  imports:
+  - crimson

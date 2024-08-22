@@ -1,0 +1,64 @@
+about:
+  description: MEDIPS was developed for analyzing data derived from methylated DNA
+    immunoprecipitation (MeDIP) experiments followed by sequencing (MeDIP-seq). However,
+    MEDIPS provides functionalities for the analysis of any kind of quantitative sequencing
+    data (e.g. ChIP-seq, MBD-seq, CMS-seq and others) including calculation of differential
+    coverage between groups of samples and saturation and correlation analysis.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MEDIPS.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: DNA IP-seq data analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:medips
+  parent_recipe:
+    name: bioconductor-medips
+    path: recipes/bioconductor-medips
+    version: 1.32.0
+package:
+  name: bioconductor-medips
+  version: 1.54.0
+requirements:
+  host:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-gtools
+  run:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-gtools
+source:
+  md5: 088394b1864d37eba7ed1064a9d671e9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MEDIPS_1.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MEDIPS/MEDIPS_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MEDIPS_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-medips/bioconductor-medips_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MEDIPS')"

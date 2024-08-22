@@ -1,0 +1,31 @@
+about:
+  home: https://bitbucket.org/ecoevo/nemo-age-release
+  license: GPL-3
+  license_family: GPL3
+  license_file: readme.txt
+  summary: In Nemo-age, it is possible to model genetic and phenotypic evolution in
+    populations with, for instance, overlapping generations, a seed bank, and multiple
+    age classes with stage-specific transition rates, fecundities, selection pressures,
+    and dispersal rates, among other things.
+build:
+  number: 4
+package:
+  name: nemo-age
+  version: 0.30.0
+requirements:
+  build:
+  - make
+  - None
+  - sed
+  host:
+  - gsl
+  run:
+  - gsl
+source:
+  patches:
+  - Makefile.patch
+  sha256: b4ce73a145c3a9b1e32aae6d6b54df02e26b6805ddc326f506fff4f8a772d54e
+  url: https://bitbucket.org/ecoevo/nemo-age-release/get/v0.30.0.tar.gz
+test:
+  commands:
+  - nemoage 2>&1 | grep "N E M O A G E"

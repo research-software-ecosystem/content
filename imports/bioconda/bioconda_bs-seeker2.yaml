@@ -1,0 +1,24 @@
+about:
+  home: http://pellegrini.mcdb.ucla.edu/BS_Seeker2/
+  license: MIT
+  summary: BS Seeker 2 is a seamless and versatile pipeline for accurately and fast
+    mapping the bisulfite-treated short reads.
+build:
+  noarch: generic
+  number: 1
+package:
+  name: bs-seeker2
+  version: 2.1.7
+requirements:
+  run:
+  - python <3
+  - pysam
+  - bowtie2
+source:
+  sha256: dfa6a2a0659cd68a652a2b7ffbb41ce1c881739f40fee07e338065686913a3e0
+  url: https://github.com/BSSeeker/BSseeker2/archive/v2.1.7.tar.gz
+test:
+  commands:
+  - bs_seeker2-align.py --help > /dev/null
+  - bs_seeker2-build.py --help > /dev/null
+  - bs_seeker2-call_methylation.py --help > /dev/null

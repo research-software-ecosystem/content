@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/yhoogstrate/dr-disco
+  license: GPL-3.0+
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'Dr. Disco: fusion gene and genomic breakpoint detection in random hexamer
+    RNA-seq data'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: dr-disco
+  version: 0.18.3
+requirements:
+  host:
+  - python
+  - pip
+  - numpy
+  - scipy
+  run:
+  - python
+  - numpy
+  - scipy
+  - pysam
+  - click
+  - HTSeq
+  - pyfaidx
+  - tqdm
+source:
+  sha256: 056a7fb5715a5112d04e07385a5c665a4d2dc1574221427972fd3168c3dea348
+  url: https://github.com/yhoogstrate/dr-disco/archive/v0.18.3.tar.gz
+test:
+  commands:
+  - LANG=C.UTF-8 dr-disco --version
+  imports:
+  - drdisco

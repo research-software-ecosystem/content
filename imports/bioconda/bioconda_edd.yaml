@@ -1,0 +1,46 @@
+about:
+  home: http://github.com/CollasLab/edd
+  license: MIT
+  license_family: MIT
+  summary: Enriched domain detector for ChIP-seq data
+build:
+  number: 4
+  script: -m pip install . --no-deps -vv
+  skip: true
+extra:
+  skip-lints:
+  - uses_setuptools
+package:
+  name: edd
+  version: 1.1.19
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - cython
+  - setuptools
+  - numpy
+  - pysam 0.10.0
+  run:
+  - python
+  - setuptools
+  - pysam 0.10.0
+  - logbook
+  - pybedtools
+  - statsmodels
+  - patsy
+  - pandas
+  - python-dateutil
+  - scipy
+  - numpy
+source:
+  sha256: c82a71d1bda0462daa5b54dc0b882932a38bdd719a192dc8ebbe2ed588acf3dd
+  url: https://files.pythonhosted.org/packages/72/86/d8305a033e44ca801899b0f4aec5aaafd20cbc9d930928ac73e9362578ca/edd-1.1.19.tar.gz
+test:
+  commands:
+  - edd --version 2>&1 | grep 1.1.19
+  imports:
+  - eddlib
+  - eddlib.algorithm

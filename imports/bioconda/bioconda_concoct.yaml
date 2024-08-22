@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/BinPro/CONCOCT
+  license: FreeBSD
+  license_family: BSD
+  summary: Clustering cONtigs with COverage and ComposiTion
+build:
+  number: 6
+  preserve_egg_dir: true
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1038/nmeth.3103
+  skip-lints:
+  - uses_setuptools
+  - cython_must_be_in_host
+package:
+  name: concoct
+  version: 1.1.0
+requirements:
+  build:
+  - None
+  host:
+  - python >=3.5
+  - setuptools
+  - cython >=0.28.5
+  - numpy >=1.8.0
+  - gsl
+  run:
+  - python >=3.5
+  - setuptools
+  - cython >=0.28.5
+  - None
+  - scipy >=0.13.3
+  - pandas >=0.11.0
+  - biopython >=1.62b
+  - pytz >=2013.9
+  - scikit-learn >=1.1.3
+  - libopenblas =*=*openmp*
+  - nose >=1.3.0
+  - gsl
+  - samtools
+source:
+  patches:
+  - concoct-newer-scikit-learn.patch
+  sha256: 00aecacb4b720ac123a63e65072c61e0b5a8690d844c869aaee4dbf287c82888
+  url: https://github.com/BinPro/CONCOCT/archive/1.1.0.tar.gz
+test:
+  commands:
+  - concoct -h
+  imports:
+  - concoct

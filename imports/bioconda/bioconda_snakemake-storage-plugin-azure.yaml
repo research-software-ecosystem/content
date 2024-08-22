@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/snakemake/snakemake-storage-plugin-azure
+  license: MIT
+  license_file: LICENSE
+  summary: A Snakemake storage plugin to read and write from Azure Blob Storage
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koesterlab
+package:
+  name: snakemake-storage-plugin-azure
+  version: 0.4.2
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.15.0,<2.0.0
+  - snakemake-interface-storage-plugins >=3.0.0,<4.0.0
+  - azure-storage-blob >=12.19.0,<13.0.0
+  - azure-core >=1.29.5,<2.0.0
+  - azure-identity >=1.15.0,<2.0.0
+source:
+  sha256: f1b0395e466fa2f6a20247a23c240b418240dbd6eaf7a55af3b34714594891f0
+  url: https://pypi.io/packages/source/s/snakemake-storage-plugin-azure/snakemake_storage_plugin_azure-0.4.2.tar.gz
+test:
+  commands:
+  - pip check
+  requires:
+  - pip

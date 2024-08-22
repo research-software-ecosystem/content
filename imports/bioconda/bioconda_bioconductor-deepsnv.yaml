@@ -1,0 +1,64 @@
+about:
+  description: This package provides provides quantitative variant callers for detecting
+    subclonal mutations in ultra-deep (>=100x coverage) sequencing experiments. The
+    deepSNV algorithm is used for a comparative setup with a control experiment of
+    the same loci and uses a beta-binomial model and a likelihood ratio test to discriminate
+    sequencing errors and subclonal SNVs. The shearwater algorithm computes a Bayes
+    classifier based on a beta-binomial model for variant calling with multiple samples
+    for precisely estimating model parameters - such as local error rates and dispersion
+    - and prior knowledge, e.g. from variation data bases such as COSMIC.
+  home: https://bioconductor.org/packages/3.18/bioc/html/deepSNV.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Detection of subclonal SNVs in deep sequencing data.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:deepsnv
+  parent_recipe:
+    name: bioconductor-deepsnv
+    path: recipes/bioconductor-deepsnv
+    version: 1.26.1
+package:
+  name: bioconductor-deepsnv
+  version: 1.48.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rhtslib >=2.4.0,<2.5.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-variantannotation >=1.48.0,<1.49.0
+  - r-base
+  - r-vgam
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rhtslib >=2.4.0,<2.5.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-variantannotation >=1.48.0,<1.49.0
+  - r-base
+  - r-vgam
+source:
+  md5: 4df42adbe4997ad401a7d2505ee2b227
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/deepSNV_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/deepSNV/deepSNV_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/deepSNV_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-deepsnv/bioconductor-deepsnv_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('deepSNV')"

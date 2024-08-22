@@ -1,0 +1,59 @@
+about:
+  home: https://github.com/OpenMS/OpenMS
+  license: BSD
+  license_file: LICENSE
+  summary: python bindings for OpenMS, an open-source software C++ library for LC-MS
+    data management and analyses
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - biotools:openms
+  - doi:10.1038/nmeth.3959
+package:
+  name: pyopenms
+  version: 3.1.0
+requirements:
+  build:
+  - None
+  - make
+  - cmake
+  - sysroot_linux-64 =2.17
+  host:
+  - libopenms 3.1.0
+  - llvm-openmp
+  - libsvm
+  - xerces-c
+  - boost-cpp
+  - qt-main
+  - python
+  - cython >=0.25.2
+  - autowrap >=0.22.10
+  - setuptools
+  - wheel
+  - pip
+  - numpy
+  - pandas
+  - matplotlib-base
+  - sysroot_linux-64 =2.17
+  run:
+  - libopenms 3.1.0
+  - llvm-openmp
+  - libsvm
+  - xerces-c
+  - boost-cpp
+  - qt-main
+  - python
+  - numpy
+  - pandas
+  - matplotlib-base
+  - sysroot_linux-64 =2.17
+source:
+  md5: 6a60ef1a95c7ce915cc3a02e5bccd593
+  url: https://github.com/OpenMS/OpenMS/releases/download/Release3.1.0/OpenMS-3.1.0-src.tar.gz
+test:
+  commands:
+  - python -c "import pyopenms; print(pyopenms.__version__)"

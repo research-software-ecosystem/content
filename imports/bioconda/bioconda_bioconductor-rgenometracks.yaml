@@ -1,0 +1,42 @@
+about:
+  description: rGenomeTracks package leverages the power of pyGenomeTracks software
+    with the interactivity of R. pyGenomeTracks is a python software that offers robust
+    method for visualizing epigenetic data files like narrowPeak, Hic matrix, TADs
+    and arcs, however though, here is no way currently to use it within R interactive
+    session. rGenomeTracks wrapped the whole functionality of pyGenomeTracks with
+    additional utilites to make to more pleasant for R users.
+  home: https://bioconductor.org/packages/3.18/bioc/html/rGenomeTracks.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Integerated visualization of epigenomic data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-rgenometracks
+  version: 1.8.0
+requirements:
+  host:
+  - bioconductor-rgenometracksdata >=0.99.0,<0.100.0
+  - r-base
+  - r-imager
+  - r-reticulate
+  run:
+  - bioconductor-rgenometracksdata >=0.99.0,<0.100.0
+  - r-base
+  - r-imager
+  - r-reticulate
+source:
+  md5: 860c81f62e3abf51de44d4dcdcdbfeef
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/rGenomeTracks_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/rGenomeTracks/rGenomeTracks_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rGenomeTracks_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rgenometracks/bioconductor-rgenometracks_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rGenomeTracks')"

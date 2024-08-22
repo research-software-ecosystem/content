@@ -1,0 +1,40 @@
+about:
+  description: Taxon- and phylogenetic-based beta diversity measures.
+  dev_url: https://github.com/dparks1134/ExpressBetaDiversity
+  doc_url: https://github.com/dparks1134/ExpressBetaDiversity
+  home: https://github.com/dparks1134/ExpressBetaDiversity
+  license: GPL-3
+  license_family: GPL3
+  license_file: license.txt
+  summary: Taxon- and phylogenetic-based beta diversity measures.
+build:
+  number: 5
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1038/ismej.2012.88
+  recipe-maintainers:
+  - aaronmussig
+package:
+  name: expressbetadiversity
+  version: 1.0.10
+requirements:
+  build:
+  - None
+  - make
+  - python >=3
+  host: null
+  run:
+  - python >=3
+  - numpy
+  - matplotlib-base
+source:
+  patches:
+  - 0001-Fix-hardcoded-g++.patch
+  sha256: c3ee0894ed0beea42f7668e531e53d01f4c19374d0dfd287cb400a68241c6c03
+  url: https://github.com/dparks1134/ExpressBetaDiversity/archive/v1.0.10.tar.gz
+test:
+  commands:
+  - ExpressBetaDiversity -h
+  - convertToEBD.py -h
+  - convertToFullMatrix.py -h

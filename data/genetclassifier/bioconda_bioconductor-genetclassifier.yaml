@@ -1,0 +1,49 @@
+about:
+  description: Comprehensive package to automatically train and validate a multi-class
+    SVM classifier based on gene expression data. Provides transparent selection of
+    gene markers, their coexpression networks, and an interface to query the classifier.
+  home: https://bioconductor.org/packages/3.18/bioc/html/geNetClassifier.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Classify diseases and build associated gene networks using gene expression
+    profiles
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:genetclassifier
+  parent_recipe:
+    name: bioconductor-genetclassifier
+    path: recipes/bioconductor-genetclassifier
+    version: 1.20.0
+package:
+  name: bioconductor-genetclassifier
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-ebarrays >=2.66.0,<2.67.0
+  - bioconductor-minet >=3.60.0,<3.61.0
+  - r-base
+  - r-e1071
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-ebarrays >=2.66.0,<2.67.0
+  - bioconductor-minet >=3.60.0,<3.61.0
+  - r-base
+  - r-e1071
+source:
+  md5: 7fed3e42e9ec93956b71960e271aa090
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/geNetClassifier_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/geNetClassifier/geNetClassifier_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geNetClassifier_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genetclassifier/bioconductor-genetclassifier_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('geNetClassifier')"

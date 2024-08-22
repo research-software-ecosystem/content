@@ -1,0 +1,57 @@
+about:
+  home: https://CRAN.R-project.org/package=gkmSVM
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  license_file:
+  - /lib/R/share/licenses/GPL-2
+  summary: Imports the 'gkmSVM' v2.0 functionalities into R <http://www.beerlab.org/gkmsvm/>
+    It also uses the 'kernlab' library (separate R package by different authors) for
+    various SVM algorithms.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-gkmsvm
+  version: 0.83.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-rocr
+  - r-rcpp
+  - r-kernlab
+  - r-seqinr
+  - bioconductor-biocgenerics
+  - bioconductor-biostrings
+  - bioconductor-genomeinfodb
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-s4vectors
+  - bioconductor-rtracklayer
+  run:
+  - r-base
+  - r-rocr
+  - r-rcpp
+  - r-kernlab
+  - r-seqinr
+  - bioconductor-biocgenerics
+  - bioconductor-biostrings
+  - bioconductor-genomeinfodb
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-s4vectors
+  - bioconductor-rtracklayer
+source:
+  sha256: 65825a0a3dc8bcb383331606199b132565da452d17e449c508d21c950997e9ad
+  url:
+  - /src/contrib/gkmSVM_0.83.0.tar.gz
+  - /src/contrib/Archive/gkmSVM/gkmSVM_0.83.0.tar.gz
+test:
+  commands:
+  - $R -e "library('gkmSVM')"
+  - '"%R%" -e "library(''gkmSVM'')"'

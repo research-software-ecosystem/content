@@ -1,0 +1,37 @@
+about:
+  home: http://statistical-genetics.pages.pasteur.fr/raiss/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: SNP summary statistics imputation package
+build:
+  entry_points:
+  - raiss=raiss.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --ignore-installed -vv .
+package:
+  name: raiss
+  version: 4.0.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - joblib
+  - numpy
+  - pandas
+  - python-dateutil
+  - pytz
+  - scipy >=1.7.0
+  - six
+  - tzdata
+source:
+  sha256: eb5cc6b67b395fbf5c2678a253dd7fd2c30c5f62a7358253778b1c6c1161a89f
+  url: https://gitlab.pasteur.fr/statistical-genetics/raiss/-/archive/4.0.1/raiss-4.0.1.tar.gz
+test:
+  commands:
+  - raiss --help

@@ -1,0 +1,47 @@
+about:
+  home: http://github.com/lamortenera/epicseg
+  license: GPL-3
+  summary: EpiCSeg (Epigenome Count-based Segmentation) is a software for annotating
+    the genome based on the state of the chromatin. It provides tools for extracting
+    count data from BAM files, typlically corresponding to ChIP-seq experiments for
+    histone marks (but other choices are possible) it learns a statistical model for
+    the read counts based on a HMM, it annotates the genome, and it provides tools
+    for displaying and analyzing the obtained models and segmentations. EpiCSeg can
+    be used as an R package or from the command line via Rscript.
+build:
+  number: 9
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: epicseg
+  version: '1.0'
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-rcpp >=0.11.3
+  - r-rcolorbrewer
+  - bioconductor-iranges
+  - bioconductor-genomicranges
+  - bioconductor-bamsignals
+  - bioconductor-edger
+  - bioconductor-s4vectors
+  - kfoots
+  run:
+  - r-base
+  - r-rcpp >=0.10.6
+  - r-rcolorbrewer
+  - bioconductor-iranges
+  - bioconductor-genomicranges
+  - bioconductor-bamsignals
+  - bioconductor-edger
+  - bioconductor-s4vectors
+  - kfoots
+source:
+  sha256: e3094ad54044c19a9c7fd027c4b64c9ae7793bed84cec3442aedf495d0fb4b2b
+  url: https://github.com/BIMSBbioinfo/epicseg/archive/v1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('epicseg')"

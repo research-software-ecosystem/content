@@ -1,0 +1,49 @@
+about:
+  description: Finds associations between two human genomic datasets.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SIM.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Integrated Analysis on two human genomic datasets
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:sim
+  - doi:10.1186/1471-2105-10-203
+  parent_recipe:
+    name: bioconductor-sim
+    path: recipes/bioconductor-sim
+    version: 1.50.0
+package:
+  name: bioconductor-sim
+  version: 1.72.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-globaltest >=5.56.0,<5.57.0
+  - bioconductor-quantsmooth >=1.68.0,<1.69.0
+  - r-base
+  - r-quantreg
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-globaltest >=5.56.0,<5.57.0
+  - bioconductor-quantsmooth >=1.68.0,<1.69.0
+  - r-base
+  - r-quantreg
+source:
+  md5: 72c2ca38244f4d53842bece2abdfadee
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SIM_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SIM/SIM_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SIM_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sim/bioconductor-sim_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SIM')"

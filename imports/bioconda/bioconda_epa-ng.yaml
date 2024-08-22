@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/Pbdas/epa-ng
+  license: GNU Affero General Public License v3.0
+  license_file: LICENSE
+  summary: Massively parallel phylogenetic placement of genetic sequences
+build:
+  number: 4
+extra:
+  identifiers:
+  - doi:10.1093/sysbio/syy054
+package:
+  name: epa-ng
+  version: 0.3.8
+requirements:
+  build:
+  - make
+  - None
+  - libtool
+  - flex
+  - bison 3.4
+  - m4
+  - cmake
+  - automake
+  - autoconf
+  - llvm-openmp
+  host:
+  - zlib
+  - llvm-openmp
+  run:
+  - zlib
+  - llvm-openmp
+source:
+  sha256: d1db23919f49cfad202b18623e5eb30c3d6cedcc1705b944221daea8131cbb74
+  url: https://github.com/Pbdas/epa-ng/archive/v0.3.8.tar.gz
+test:
+  commands:
+  - epa-ng -h | grep "Number of threads to use" > /dev/null

@@ -1,0 +1,60 @@
+about:
+  home: http://github.com/endrebak/epic
+  license: GNU General Public License v3 (GPLv3)
+  summary: Chip-Seq broad peak/domain finder.
+build:
+  number: 7
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+    && $PYTHON setup.py build_ext --inplace
+  skip: true
+package:
+  name: epic
+  version: 0.2.12
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - cython
+  - pip
+  - scipy
+  - pandas
+  - numpy
+  - natsort
+  - joblib
+  - docopt
+  - pyfaidx
+  - functools32
+  - typing
+  - pybigwig
+  run:
+  - python
+  - scipy
+  - pandas
+  - numpy
+  - natsort
+  - joblib
+  - docopt
+  - pyfaidx
+  - functools32
+  - bedtools
+  - typing
+  - pybigwig
+source:
+  patches:
+  - patch
+  sha256: 0370839ada73feb01a6d7a5a2ac57730187231b84a9db28673c24776c65a9b9b
+  url: https://files.pythonhosted.org/packages/cb/be/03ce848177359e1da09395c2c37e2c18c69a7dc0a5179e2d725fe3a88339/bioepic-0.2.12.tar.gz
+test:
+  commands:
+  - epic -h
+  imports:
+  - epic
+  - epic.config
+  - epic.run
+  - epic.scripts
+  - epic.statistics
+  - epic.utils
+  - epic.windows
+  - epic.windows.cluster
+  - epic.windows.count

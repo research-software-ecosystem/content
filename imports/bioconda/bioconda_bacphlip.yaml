@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/adamhockenberry/bacphlip
+  license: MIT
+  license_family: MIT
+  summary: A Random Forest classifier to predict bacteriophage lifestyle
+build:
+  entry_points:
+  - bacphlip=bacphlip.command_line:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --no-deps --ignore-installed'
+package:
+  name: bacphlip
+  version: 0.9.6
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - biopython >=1.7
+  - joblib >=0.13
+  - pandas >=0.25
+  - python >=3.6
+  - scikit-learn ==0.23.1
+source:
+  sha256: ce9c75630972b69158769e808ccc96821035147d7b3a415a2beda8e893870b38
+  url: https://pypi.io/packages/source/b/bacphlip/bacphlip-0.9.6.tar.gz
+test:
+  commands:
+  - bacphlip --help
+  imports:
+  - bacphlip

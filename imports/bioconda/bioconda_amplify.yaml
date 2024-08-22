@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/bcgsc/AMPlify
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE
+  summary: Attentive deep learning model for antimicrobial peptide prediction
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+package:
+  name: amplify
+  version: 2.0.0
+requirements:
+  host:
+  - python =3.6
+  run:
+  - python =3.6
+  - keras =2.2.4
+  - tensorflow >=1.10, <1.13
+  - numpy <1.17
+  - biopython
+  - pandas
+  - scikit-learn
+  - h5py <3
+  - absl-py <2
+source:
+  sha256: 94418a9e2f09b1cfc63eff047fab6d15cce5a7afae5283e50ab809dac2de8752
+  url: https://github.com/bcgsc/AMPlify/archive/v2.0.0.tar.gz
+test:
+  commands:
+  - AMPlify -h
+  - train_amplify -h

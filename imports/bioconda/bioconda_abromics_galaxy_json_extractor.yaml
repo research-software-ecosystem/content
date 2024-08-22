@@ -1,0 +1,72 @@
+about:
+  dev_url: https://gitlab.com/ifb-elixirfr/abromics/abromics-galaxy-json-extractor
+  doc_url: https://gitlab.com/ifb-elixirfr/abromics/abromics-galaxy-json-extractor/-/blob/main/docs/_build/html/index.html
+  home: https://gitlab.com/ifb-elixirfr/abromics
+  license: GPLv3
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: Tool to convert Galaxy AMR output to abromics project
+build:
+  entry_points:
+  - abromics_extract = abromics_galaxy_json_extractor.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+context: {}
+extra:
+  recipe-maintainers:
+  - pimarin
+package:
+  name: abromics_galaxy_json_extractor
+  version: 0.8.3.6
+requirements:
+  host:
+  - python >=3.9
+  - pip >=23.1.2
+  run:
+  - pandas
+  - biopython
+  - python
+  - ld_impl_linux-64
+  - _libgcc_mutex
+  - libstdcxx-ng
+  - python_abi
+  - ca-certificates
+  - libgfortran5
+  - libgomp
+  - libgfortran-ng
+  - _openmp_mutex
+  - libgcc-ng
+  - libopenblas
+  - openssl
+  - xz
+  - ncurses
+  - libnsl
+  - libffi
+  - bzip2
+  - libzlib
+  - libblas
+  - readline
+  - tk
+  - libsqlite
+  - libcblas
+  - liblapack
+  - tzdata
+  - wheel
+  - setuptools
+  - pip
+  - six
+  - pytz
+  - python-tzdata
+  - python-dateutil
+  - numpy
+source:
+  sha256: 364997088a29c30cdc45d2c66af40a3d6b8e3398efe1d7eb242d31b0e68abd77
+  url: https://gitlab.com/ifb-elixirfr/abromics/abromics-galaxy-json-extractor/-/archive/0.8.3.6/abromics-galaxy-json-extractor-0.8.3.6.tar.gz
+test:
+  commands:
+  - abromics_extract --help
+  - abromics_extract --version
+  - abromics_extract abricate --help

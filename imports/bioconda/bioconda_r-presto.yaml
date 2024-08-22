@@ -1,0 +1,52 @@
+about:
+  home: https://github.com/immunogenomics/presto
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Scalable implementation of the Wilcoxon rank sum test and auROC statistic.
+    Interfaces to dense and sparse matrices, as well as genomics analysis frameworks
+    Seurat and SingleCellExperiment.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  script: $R CMD INSTALL --build .
+package:
+  name: r-presto
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - r-base
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-data.table
+  - r-dplyr
+  - r-purrr
+  - r-rlang
+  - r-tibble
+  - r-tidyr
+  run:
+  - r-base
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-data.table
+  - r-dplyr
+  - r-purrr
+  - r-rlang
+  - r-tibble
+  - r-tidyr
+source:
+  sha256: 720ef58aba219af03344e0ae0408fc48feda50e6b7f7f4af2251eb24ce1bfb88
+  url: https://github.com/immunogenomics/presto/archive/31dc97fed5e2e7fc323ae4af62f72181cc51d9a3.tar.gz
+test:
+  commands:
+  - $R -e "library('presto')"

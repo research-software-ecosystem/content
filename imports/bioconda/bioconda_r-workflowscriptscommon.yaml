@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/ebi-gene-expression-group/workflowscriptscommon
+  home: https://github.com/ebi-gene-expression-group/workflowscriptscommon
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  summary: Common functions for making R function wapper scripts. Functions in R packages
+    are hard to call when building workflows outside of R, so this package is used
+    by other packages (e.g. r-seurat-scripts) to add sets of simple wrappers with
+    robust argument parsing.
+build:
+  noarch: generic
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  script: ${R} CMD INSTALL --build . ${R_ARGS}
+package:
+  name: r-workflowscriptscommon
+  version: 0.0.8
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - r-optparse
+source:
+  sha256: 6a5685d2c754f7d639a11e0dfcc203ce3bab16c0ba0886a3a5b993811964e7a3
+  url: https://github.com/ebi-gene-expression-group/workflowscriptscommon/archive/v0.0.8.tar.gz
+test:
+  commands:
+  - $R -e "library('workflowscriptscommon')"

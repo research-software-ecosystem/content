@@ -1,0 +1,40 @@
+about:
+  description: Precompiled and processed miRNA-overexpression fold-changes from 84
+    Gene Expression Omnibus (GEO) series corresponding to 6 platforms, 77 human cells
+    or tissues, and 113 distinct miRNAs. Accompanied with the data, we also included
+    in this package the sequence feature scores from TargetScanHuman 6.1 including
+    the context+ score and the probabilities of conserved targeting for each miRNA-mRNA
+    interaction. Thus, the user can use these static sequence-based scores together
+    with user-supplied tissue/cell-specific fold-change due to miRNA overexpression
+    to predict miRNA targets using the package TargetScore (download separately)
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/TargetScoreData.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: TargetScoreData
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-targetscoredata
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 61084f230f2c3dedb27988867f07f50f
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/TargetScoreData_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TargetScoreData/TargetScoreData_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TargetScoreData_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-targetscoredata/bioconductor-targetscoredata_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TargetScoreData')"

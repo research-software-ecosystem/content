@@ -1,0 +1,48 @@
+about:
+  description: 'linear ANOVA decomposition of Multivariate Designed Experiments implementation
+    based on limma lmFit. Features: i)Flexible formula type interface, ii) Fast limma
+    based implementation, iii) p-values for each estimated coefficient levels in each
+    factor, iv) F values for factor effects and v) plotting functions for PCA and
+    PLS.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/lmdme.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Linear Model decomposition for Designed Multivariate Experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:lmdme
+  parent_recipe:
+    name: bioconductor-lmdme
+    path: recipes/bioconductor-lmdme
+    version: 1.22.0
+package:
+  name: bioconductor-lmdme
+  version: 1.44.0
+requirements:
+  host:
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-stemhypoxia >=1.38.0,<1.39.0
+  - r-base
+  - r-pls
+  run:
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-stemhypoxia >=1.38.0,<1.39.0
+  - r-base
+  - r-pls
+source:
+  md5: 9a1b98d738df482adb30496ac028b924
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/lmdme_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/lmdme/lmdme_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/lmdme_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lmdme/bioconductor-lmdme_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lmdme')"

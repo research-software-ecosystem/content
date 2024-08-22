@@ -1,0 +1,38 @@
+about:
+  description: '''FScanR'' identifies Programmed Ribosomal Frameshifting (PRF) events
+    from BLASTX homolog sequence alignment between targeted genomic/cDNA/mRNA sequences
+    against the peptide library of the same species or a close relative. The output
+    by BLASTX or diamond BLASTX will be used as input of ''FScanR'' and should be
+    in a tabular format with 14 columns. For BLASTX, the output parameter should be:
+    -outfmt ''6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send
+    evalue bitscore qframe sframe''. For diamond BLASTX, the output parameter should
+    be: -outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart
+    send evalue bitscore qframe qframe.'
+  home: https://bioconductor.org/packages/3.17/bioc/html/FScanR.html
+  license: Artistic-2.0
+  summary: Detect Programmed Ribosomal Frameshifting Events from mRNA/cDNA BLASTX
+    Output
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-fscanr
+  version: 1.10.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 493abc70911c8ecce2e574a7f8b2366a
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/FScanR_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/FScanR/FScanR_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FScanR_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fscanr/bioconductor-fscanr_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FScanR')"

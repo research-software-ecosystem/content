@@ -1,0 +1,61 @@
+about:
+  home: https://CRAN.R-project.org/package=ggmsa
+  license: Artistic-2.0
+  license_family: OTHER
+  license_file:
+  - /lib/R/share/licenses/Artistic-2.0
+  summary: Supports visualizing multiple sequence alignment of DNA and protein sequences
+    using 'ggplot2'. It supports a number of colour schemes, including Chemistry,
+    Clustal, Shapely, Taylor and Zappo. Multiple sequence alignment can easily be
+    combined with other 'ggplot2' plots, such as aligning a phylogenetic tree produced
+    by 'ggtree' with multiple sequence alignment.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-ggmsa
+  version: 1.0.2
+requirements:
+  build:
+  - zip
+  host:
+  - r-base
+  - bioconductor-biostrings
+  - bioconductor-r4rna
+  - r-rcolorbrewer
+  - r-aplot
+  - r-dplyr
+  - r-ggalt
+  - r-ggforce
+  - r-ggplot2
+  - r-magrittr
+  - r-stringr
+  - r-tidyr
+  - r-seqmagick
+  run:
+  - r-base
+  - bioconductor-biostrings
+  - bioconductor-r4rna
+  - r-rcolorbrewer
+  - r-aplot
+  - r-dplyr
+  - r-ggalt
+  - r-ggforce
+  - r-ggplot2
+  - r-magrittr
+  - r-stringr
+  - r-tidyr
+  - r-seqmagick
+source:
+  sha256: 2af603f2e0d9b5940189e225e744b3b003c9cf90365f65b4ae70581f4649a152
+  url:
+  - /src/contrib/ggmsa_1.0.2.tar.gz
+  - /src/contrib/Archive/ggmsa/ggmsa_1.0.2.tar.gz
+test:
+  commands:
+  - $R -e "library('ggmsa')"
+  - '"%R%" -e "library(''ggmsa'')"'

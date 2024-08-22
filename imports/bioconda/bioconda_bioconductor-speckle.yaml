@@ -1,0 +1,48 @@
+about:
+  description: The speckle package contains functions for the analysis of single cell
+    RNA-seq data. The speckle package currently contains functions to analyse differences
+    in cell type proportions. There are also functions to estimate the parameters
+    of the Beta distribution based on a given counts matrix, and a function to normalise
+    a counts matrix to the median library size. There are plotting functions to visualise
+    cell type proportions and the mean-variance relationship in cell type proportions
+    and counts. As our research into specialised analyses of single cell data continues
+    we anticipate that the package will be updated with new functions.
+  home: https://bioconductor.org/packages/3.18/bioc/html/speckle.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Statistical methods for analysing single cell RNA-seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-speckle
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-ggplot2
+  - r-seurat
+  run:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-ggplot2
+  - r-seurat
+source:
+  md5: 4603cad300c83d6e6374e5989b5fe32a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/speckle_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/speckle/speckle_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/speckle_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-speckle/bioconductor-speckle_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('speckle')"

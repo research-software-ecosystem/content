@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/MartinThoma/propy3
+  home: https://github.com/MartinThoma/propy3
+  license: GPLv2
+  license_family: GPL
+  license_file: LICENSE
+  summary: Python library for calculating various protein descriptors from protein
+    sequences
+build:
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed -vv .
+extra:
+  recipe-maintainers:
+  - MartinThoma
+  - jhahnfeld
+package:
+  name: propy3
+  version: 1.1.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - urllib3
+source:
+  sha256: ab67d6b469c4338a9f9994915065b48f84f131e60a54467e5633834cef08597a
+  url: https://pypi.io/packages/source/p/propy3/propy3-1.1.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - propy
+  requires:
+  - pip

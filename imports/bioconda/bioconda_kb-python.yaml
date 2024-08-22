@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/pachterlab/kb_python
+  doc_url: https://www.kallistobus.tools/
+  home: https://github.com/pachterlab/kb_python
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: A wrapper for the kallisto | bustools workflow for single-cell RNA-seq
+    pre-processing
+build:
+  entry_points:
+  - kb=kb_python.main:main
+  noarch: python
+  number: 2
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - Maarten-vd-Sande
+package:
+  name: kb-python
+  version: 0.28.2
+requirements:
+  host:
+  - python >=3.7, <3.9
+  - pip
+  run:
+  - python >=3.7, <3.9
+  - anndata >=0.6.22.post1
+  - h5py >=2.10.0
+  - jinja2 >2.10.1
+  - loompy >=3.0.6
+  - nbconvert >=5.6.0
+  - nbformat >=4.4.0
+  - ngs-tools >=1.5.11
+  - numpy >=1.17.2
+  - pandas >=1.0.0, <2
+  - plotly >=4.5.0
+  - scanpy >=1.4.4.post1
+  - scikit-learn >=0.21.3
+  - tqdm >=4.39.0
+  - requests >=2.22.0
+  - typing-extensions >=3.7.4
+source:
+  sha256: e8c910865fd5196b1b3163e18a565ef96c8518b2cf34f87f288dfdc85b339078
+  url: https://github.com/pachterlab/kb_python/archive/v0.28.2.tar.gz
+test:
+  commands:
+  - kb ref --help
+  imports:
+  - kb_python

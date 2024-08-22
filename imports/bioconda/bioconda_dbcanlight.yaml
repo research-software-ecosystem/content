@@ -1,0 +1,37 @@
+about:
+  description: "dbcanlight uses the hmmsearch module in pyhmmer to discover CAZymes\
+    \ and \npotential substrates from a peptide sequences.\n"
+  home: https://github.com/chtsai0105/dbcanLight/tree/main
+  license: MIT
+  license_file: LICENSE
+  summary: A lightweight rewrite of run_dbcan
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - chtsai0105
+package:
+  name: dbcanlight
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python
+  - setuptools
+  run:
+  - biopython >=1.79
+  - python >=3.7
+  - importlib_metadata
+  - pyhmmer >=0.10.2
+source:
+  sha256: da8a46553010e625e0a8c5db218876b1b339a153750341f110f7883dd961c340
+  url: https://github.com/chtsai0105/dbcanLight/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - dbcanLight -h
+  - dbcanLight-hmmparser -h
+  - dbcanLight-subparser -h

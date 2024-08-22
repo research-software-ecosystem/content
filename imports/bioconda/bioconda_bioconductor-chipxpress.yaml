@@ -1,0 +1,57 @@
+about:
+  description: ChIPXpress takes as input predicted TF bound genes from ChIPx data
+    and uses a corresponding database of gene expression profiles downloaded from
+    NCBI GEO to rank the TF bound targets in order of which gene is most likely to
+    be functional TF target.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ChIPXpress.html
+  license: GPL(>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'ChIPXpress: enhanced transcription factor target gene identification from
+    ChIP-seq and ChIP-chip data using publicly available gene expression profiles'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:chipxpress
+  - doi:10.1186/1471-2105-14-188
+  parent_recipe:
+    name: bioconductor-chipxpress
+    path: recipes/bioconductor-chipxpress
+    version: 1.24.0
+package:
+  name: bioconductor-chipxpress
+  version: 1.46.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-chipxpressdata >=1.40.0,<1.41.0
+  - bioconductor-frma >=1.54.0,<1.55.0
+  - bioconductor-geoquery >=2.70.0,<2.71.0
+  - r-base
+  - r-biganalytics
+  - r-bigmemory
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-chipxpressdata >=1.40.0,<1.41.0
+  - bioconductor-frma >=1.54.0,<1.55.0
+  - bioconductor-geoquery >=2.70.0,<2.71.0
+  - r-base
+  - r-biganalytics
+  - r-bigmemory
+source:
+  md5: bed7bbe60d0a51fb667cee9b01e4c407
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ChIPXpress_1.46.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ChIPXpress/ChIPXpress_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ChIPXpress_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chipxpress/bioconductor-chipxpress_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ChIPXpress')"

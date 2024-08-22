@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/LUMC/fastq-filter
+  license: MIT
+  license_family: MIT
+  summary: A fast FASTQ filter program.
+build:
+  entry_points:
+  - fastq-filter=fastq_filter:main
+  number: 2
+  script: ' -m pip install . -vv'
+  skip: true
+extra:
+  recipe-maintainers:
+  - rhpvorderman
+package:
+  name: fastq-filter
+  version: 0.3.0
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - setuptools
+  - cython
+  - python
+  - dnaio >=0.6.0
+  - xopen >=1.2.1
+  run:
+  - python
+  - dnaio >=0.6.0
+  - xopen >=1.2.1
+source:
+  sha256: 8f28ea8124871b7c2cba2b558b7b64abdcbd4b0fdb7197a82056f7e6202b3e4b
+  url: https://pypi.io/packages/source/f/fastq-filter/fastq-filter-0.3.0.tar.gz
+test:
+  commands:
+  - fastq-filter --help
+  imports:
+  - fastq_filter

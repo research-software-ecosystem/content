@@ -1,0 +1,48 @@
+about:
+  description: This package implements UbiBic algorithm in R. This biclustering algorithm
+    for analysis of gene expression data was introduced by Zhenjia Wang et al. in
+    2016. It is currently considered the most promising biclustering method for identification
+    of meaningful structures in complex and noisy data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/runibic.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: 'runibic: row-based biclustering algorithm for analysis of gene expression
+    data in R'
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-runibic
+  version: 1.24.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-biclust
+  - r-rcpp >=0.12.12
+  - r-testthat
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-biclust
+  - r-rcpp >=0.12.12
+  - r-testthat
+source:
+  md5: e67e1067d80c06f72208fca94d7a2e52
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/runibic_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/runibic/runibic_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/runibic_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-runibic/bioconductor-runibic_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('runibic')"

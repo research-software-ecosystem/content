@@ -1,0 +1,56 @@
+about:
+  description: SCATE is a software tool for extracting and enhancing the sparse and
+    discrete Single-cell ATAC-seq Signal. Single-cell sequencing assay for transposase-accessible
+    chromatin (scATAC-seq) is the state-of-the-art technology for analyzing genome-wide
+    regulatory landscapes in single cells. Single-cell ATAC-seq data are sparse and
+    noisy, and analyzing such data is challenging. Existing computational methods
+    cannot accurately reconstruct activities of individual cis-regulatory elements
+    (CREs) in individual cells or rare cell subpopulations. SCATE was developed to
+    adaptively integrate information from co-activated CREs, similar cells, and publicly
+    available regulome data and substantially increase the accuracy for estimating
+    activities of individual CREs. We demonstrate that SCATE can be used to better
+    reconstruct the regulatory landscape of a heterogeneous sample.
+  home: https://bioconductor.org/packages/3.17/bioc/html/SCATE.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: 'SCATE: Single-cell ATAC-seq Signal Extraction and Enhancement'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-scate
+  version: 1.10.0
+requirements:
+  host:
+  - bioconductor-genomicalignments >=1.36.0,<1.37.0
+  - bioconductor-genomicranges >=1.52.0,<1.53.0
+  - bioconductor-preprocesscore >=1.62.0,<1.63.0
+  - bioconductor-scatedata >=1.10.0,<1.11.0
+  - r-base
+  - r-mclust
+  - r-rtsne
+  - r-splines2
+  - r-xgboost
+  run:
+  - bioconductor-genomicalignments >=1.36.0,<1.37.0
+  - bioconductor-genomicranges >=1.52.0,<1.53.0
+  - bioconductor-preprocesscore >=1.62.0,<1.63.0
+  - bioconductor-scatedata >=1.10.0,<1.11.0
+  - r-base
+  - r-mclust
+  - r-rtsne
+  - r-splines2
+  - r-xgboost
+source:
+  md5: 1336788dfbcdb94defd8b4d36b7b13ec
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/SCATE_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/SCATE/SCATE_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SCATE_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scate/bioconductor-scate_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SCATE')"

@@ -1,0 +1,35 @@
+about:
+  doc_url: https://atropos.readthedocs.io
+  home: https://github.com/jdidion/atropos
+  license: CC0 and partly MIT
+  summary: trim adapters from high-throughput sequencing reads
+build:
+  number: 2
+  run_exports:
+  - None
+  script: find . "(" -name "*.c" -o -name PKG-INFO ")" -exec rm {} ";" &&  -m pip
+    install --no-deps --no-build-isolation . -vvv
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: atropos
+  version: 1.1.32
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython >=0.25.2
+  run:
+  - python
+  - tqdm
+  - pysam
+  - jinja2
+source:
+  sha256: 17e9dc3d76d7a2ca607a12da191a6d7ba1cfbd1a8c924215870417f85858fd83
+  url: https://pypi.io/packages/source/a/atropos/atropos-1.1.32.tar.gz
+test:
+  commands:
+  - atropos | grep "Atropos version"

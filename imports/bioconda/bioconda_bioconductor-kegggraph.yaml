@@ -1,0 +1,50 @@
+about:
+  description: KEGGGraph is an interface between KEGG pathway and graph object as
+    well as a collection of tools to analyze, dissect and visualize these graphs.
+    It parses the regularly updated KGML (KEGG XML) files into graph models maintaining
+    all essential pathway attributes. The package offers functionalities including
+    parsing, graph operation, visualization and etc.
+  home: https://bioconductor.org/packages/3.18/bioc/html/KEGGgraph.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'KEGGgraph: A graph approach to KEGG PATHWAY in R and Bioconductor'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:kegggraph
+  parent_recipe:
+    name: bioconductor-kegggraph
+    path: recipes/bioconductor-kegggraph
+    version: 1.40.0
+package:
+  name: bioconductor-kegggraph
+  version: 1.62.0
+requirements:
+  host:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-rcurl
+  - r-xml >=2.3-0
+  run:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-rcurl
+  - r-xml >=2.3-0
+source:
+  md5: 9a4fb63b5bab3eeb0af51af22fa2dc16
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/KEGGgraph_1.62.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/KEGGgraph/KEGGgraph_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KEGGgraph_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kegggraph/bioconductor-kegggraph_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KEGGgraph')"

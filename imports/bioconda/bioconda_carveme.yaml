@@ -1,0 +1,60 @@
+about:
+  dev_url: https://github.com/cdanielmachado/carveme
+  doc_url: https://carveme.readthedocs.io/en/latest
+  home: https://github.com/cdanielmachado/carveme
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE.txt
+  summary: 'CarveMe: automated genome-scale metabolic model reconstruction'
+build:
+  entry_points:
+  - build_universe=carveme.cli.build_universe:main
+  - curate_universe=carveme.cli.curate_universe:main
+  - carve=carveme.cli.carve:main
+  - gapfill=carveme.cli.gapfill:main
+  - merge_community=carveme.cli.merge_community:main
+  - benchmark=carveme.cli.benchmark:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install --use-pep517 --no-deps --no-build-isolation --no-cache-dir
+    . -vvv'
+extra:
+  recipe-maintainers:
+  - lhtxa
+  - cdanielmachado
+package:
+  name: carveme
+  version: 1.6.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  run:
+  - pandas
+  - python >=3.8
+  - reframed >=1.5.1
+  - diamond
+  - pyscipopt
+  - scip
+  - numpy
+  - requests
+source:
+  sha256: cd0ac30fff347c180d76083c96f85705ed1a426f69aa43ca47bb964df7d22ac3
+  url: https://pypi.io/packages/source/c/carveme/carveme-1.6.2.tar.gz
+test:
+  commands:
+  - build_universe --help
+  - curate_universe --help
+  - carve --help
+  - gapfill --help
+  - merge_community --help
+  - benchmark --help
+  imports:
+  - carveme
+  - carveme.cli
+  - carveme.reconstruction
+  - carveme.universe
+  - tests

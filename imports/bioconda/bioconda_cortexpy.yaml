@@ -1,0 +1,55 @@
+about:
+  dev_url: https://github.com/winni2k/cortexpy
+  doc_url: https://cortexpy.readthedocs.io/en/v0.46.5/
+  home: https://github.com/winni2k/cortexpy
+  license: Apache Software
+  license_family: APACHE
+  license_file: LICENSE.txt
+  summary: A Python API for manipulating (Mc)Cortex de novo assembly graph and link
+    data
+build:
+  entry_points:
+  - cortexpy=cortexpy.__main__:main
+  number: 5
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+  skip: true
+extra:
+  recipe-maintainers:
+  - winni2k
+package:
+  name: cortexpy
+  version: 0.46.5
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  run:
+  - attrs
+  - biopython
+  - delegation
+  - msgpack-python
+  - networkx
+  - numpy
+  - python
+  - pyyaml
+  - schema
+source:
+  sha256: 3e2c2e9d88bdc714b16b28cce1b5b77db4e4831c2e46287c90a3ddd063eca073
+  url: https://pypi.io/packages/source/c/cortexpy/cortexpy-0.46.5.tar.gz
+test:
+  commands:
+  - cortexpy --help
+  - cortexpy view --help
+  - cortexpy view graph --help
+  imports:
+  - cortexpy
+  - cortexpy.command
+  - cortexpy.graph
+  - cortexpy.graph.parser
+  - cortexpy.graph.serializer
+  - cortexpy.graph.traversal
+  requires:
+  - coverage
+  - pytest

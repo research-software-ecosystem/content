@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/johnymatar/SpCLUST/
+  license: gpl-3.0-or-later
+  summary: Spectral clustering for biological sequences
+build:
+  number: 0
+extra:
+  container:
+    extended-base: true
+package:
+  name: spclust
+  version: 28.5.19
+requirements:
+  build:
+  - make
+  - autoconf
+  - automake
+  - None
+  host:
+  - openmpi
+  - openmpi-mpicxx
+  - zlib
+  run:
+  - openmpi
+  - openmpi-mpicxx
+  - zlib
+source:
+  sha256: 8b4ea8c384097788b56f5be2431d0487cd1b2d9d818bc0ec0edf56e13851fd31
+  url: https://github.com/johnymatar/SpCLUST/raw/f582e47f7e85e67dfa85415f6c975ad65eecd183/Linux/install.tar.xz
+test:
+  commands:
+  - mpiexec --allow-run-as-root spclust -h

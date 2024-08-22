@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/evolbioinfo/gotree
+  license: GPL-2.0
+  summary: gotree is a set of command line tools to manipulate phylogenetic trees
+build:
+  binary_relocation: false
+  number: 0
+  run_exports:
+  - None
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: gotree
+  version: 0.4.5
+requirements:
+  build:
+  - go-nocgo
+source:
+- folder: src/github.com/evolbioinfo/gotree/
+  sha256: 317a881fc8465e45c991dac9c1fbf95031e8c8cb7fe65a1f4de1c0c1c91e9026
+  url: https://github.com/evolbioinfo/gotree/archive/v0.4.5.tar.gz
+test:
+  commands:
+  - gotree -h
+  - gotree_test.sh
+  - gotree version

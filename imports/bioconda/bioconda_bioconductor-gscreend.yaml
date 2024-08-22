@@ -1,0 +1,42 @@
+about:
+  description: Package for the analysis of pooled genetic screens (e.g. CRISPR-KO).
+    The analysis of such screens is based on the comparison of gRNA abundances before
+    and after a cell proliferation phase. The gscreend packages takes gRNA counts
+    as input and allows detection of genes whose knockout decreases or increases cell
+    proliferation.
+  home: https://bioconductor.org/packages/3.17/bioc/html/gscreend.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Analysis of pooled genetic screens
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-gscreend
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.34.0,<1.35.0
+  - bioconductor-summarizedexperiment >=1.30.0,<1.31.0
+  - r-base
+  - r-fgarch
+  - r-nloptr
+  run:
+  - bioconductor-biocparallel >=1.34.0,<1.35.0
+  - bioconductor-summarizedexperiment >=1.30.0,<1.31.0
+  - r-base
+  - r-fgarch
+  - r-nloptr
+source:
+  md5: 6d79483ce0c766b1779a2dab5614e249
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/gscreend_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/gscreend/gscreend_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/gscreend_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gscreend/bioconductor-gscreend_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('gscreend')"

@@ -1,0 +1,66 @@
+about:
+  description: See what is going on 'under the hood' of KEGG pathways by explicitly
+    re-creating the pathway maps from information obtained from KGML files.
+  home: https://bioconductor.org/packages/3.18/bioc/html/KEGGlincs.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Visualize all edges within a KEGG pathway and overlay LINCS data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:kegglincs
+  - doi:10.7490/f1000research.1113436.1
+  parent_recipe:
+    name: bioconductor-kegglincs
+    path: recipes/bioconductor-kegglincs
+    version: 1.6.2
+package:
+  name: bioconductor-kegglincs
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-hgu133a.db >=3.13.0,<3.14.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-kodata >=1.28.0,<1.29.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  - r-gtools
+  - r-httr
+  - r-igraph
+  - r-plyr
+  - r-rjsonio
+  - r-xml
+  - cytoscape >=3.3.0
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-hgu133a.db >=3.13.0,<3.14.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-kodata >=1.28.0,<1.29.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  - r-gtools
+  - r-httr
+  - r-igraph
+  - r-plyr
+  - r-rjsonio
+  - r-xml
+  - cytoscape >=3.3.0
+source:
+  md5: 9ef4b8d4652560f3e9fddb3209adb0dd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/KEGGlincs_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/KEGGlincs/KEGGlincs_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KEGGlincs_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kegglincs/bioconductor-kegglincs_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KEGGlincs')"

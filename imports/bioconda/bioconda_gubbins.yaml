@@ -1,0 +1,66 @@
+about:
+  home: https://github.com/nickjcroucher/gubbins
+  license: GPL-2.0
+  license_file: LICENSE
+  summary: Rapid phylogenetic analysis of large samples of recombinant bacterial whole
+    genome sequences using Gubbins.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  skip-lints:
+  - uses_setuptools
+package:
+  name: gubbins
+  version: 3.3.5
+requirements:
+  build:
+  - make
+  - None
+  - libtool
+  - autoconf
+  - automake
+  - autoconf-archive
+  - pkg-config
+  host:
+  - perl
+  - zlib
+  - python >=3.8,<3.10
+  - scipy
+  - setuptools
+  - dendropy
+  - biopython
+  - numpy <=1.23.0
+  - numba
+  run:
+  - python >=3.8,<3.10
+  - scipy
+  - dendropy
+  - biopython
+  - multiprocess
+  - setuptools
+  - raxml =8.2.12
+  - iqtree >=2.2
+  - rapidnj
+  - raxml-ng =1.0.1
+  - fasttree =2.1.10
+  - numpy <=1.23.0
+  - numba
+  - ska2 >=0.3.0
+  - r-argparser
+  - r-magrittr
+  - r-tidyverse
+  - bioconductor-treeio
+  - bioconductor-ggtree
+  - r-aplot
+  - r-patchwork
+  - r-cowplot
+  - r-rcolorbrewer
+source:
+  sha256: 4ee363f82708bdda0c00d1c6c334cf20127bd852ee488619f61140771a279774
+  url: https://github.com/nickjcroucher/gubbins/archive/refs/tags/v3.3.5.tar.gz
+test:
+  commands:
+  - run_gubbins.py -h

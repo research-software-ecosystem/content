@@ -1,0 +1,53 @@
+about:
+  dev_url: https://github.com/ebi-pf-team/interproscan
+  home: https://github.com/ebi-pf-team/interproscan
+  license: GPLv3
+  license_family: Apache
+  license_file: LICENSE
+  summary: InterPro integrates together predictive information about proteins function
+    from a number of partner resources
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - biotools:interproscan_ebi
+  maintainers:
+  - abretaud
+package:
+  name: interproscan
+  version: 5.59_91.0
+requirements:
+  build:
+  - make
+  - None
+  - openjdk >=11,<17
+  - maven >=3
+  run:
+  - python >=3
+  - perl >=5.08
+  - openjdk >=11,<17
+  - cath-tools
+  - pftools
+  - hmmer2
+  - hmmer >=3
+  - emboss
+  - blast >=2.12
+  - sfld
+source:
+  patches:
+  - no_setup.patch
+  sha256: 140ab453af8b5f7c36ad607777378027fd018648e56ce915d4a9928f18e06dfc
+  url: https://github.com/ebi-pf-team/interproscan/archive/5.59-91.0.tar.gz
+test:
+  commands:
+  - perl -version
+  - python3 --version
+  - java -version
+  - interproscan.sh | grep XX
+  - interproscan.sh | grep Xmx
+  - interproscan.sh --version
+  files:
+  - test_proteins.fasta
+  - test_nt_seqs.fasta
+  - test_all_appl.fasta

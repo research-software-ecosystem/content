@@ -1,0 +1,65 @@
+about:
+  description: This package implements a general purpose gene set analysis method
+    called PADOG that downplays the importance of genes that apear often accross the
+    sets of genes to be analyzed. The package provides also a benchmark for gene set
+    analysis methods in terms of sensitivity and ranking using 24 public datasets
+    from KEGGdzPathwaysGEO package.
+  home: https://bioconductor.org/packages/3.18/bioc/html/PADOG.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Pathway Analysis with Down-weighting of Overlapping Genes (PADOG)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:padog
+  - doi:10.1186/1471-2105-13-136
+  parent_recipe:
+    name: bioconductor-padog
+    path: recipes/bioconductor-padog
+    version: 1.22.0
+package:
+  name: bioconductor-padog
+  version: 1.44.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-hgu133a.db >=3.13.0,<3.14.0
+  - bioconductor-hgu133plus2.db >=3.13.0,<3.14.0
+  - bioconductor-keggdzpathwaysgeo >=1.40.0,<1.41.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-dorng
+  - r-foreach
+  - r-gsa
+  - r-nlme
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-hgu133a.db >=3.13.0,<3.14.0
+  - bioconductor-hgu133plus2.db >=3.13.0,<3.14.0
+  - bioconductor-keggdzpathwaysgeo >=1.40.0,<1.41.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-dorng
+  - r-foreach
+  - r-gsa
+  - r-nlme
+source:
+  md5: ca2c1e477f0ef2d2be1eaf52570dd8c4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/PADOG_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/PADOG/PADOG_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PADOG_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-padog/bioconductor-padog_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PADOG')"

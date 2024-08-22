@@ -1,0 +1,65 @@
+about:
+  dev_url: https://github.com/galaxyproject/bioblend
+  doc_url: https://bioblend.readthedocs.org/
+  home: https://github.com/galaxyproject/bioblend
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A Python library for interacting with the Galaxy API
+build:
+  entry_points:
+  - bioblend-galaxy-tests = bioblend._tests.pytest_galaxy_test_wrapper:main [testing]
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
+package:
+  name: bioblend
+  version: 1.3.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - requests >=2.20.0
+  - requests-toolbelt >=0.5.1,!=0.9.0
+  - tuspy
+  - typing-extensions
+source:
+  sha256: e72318e10c29a81c16281d25aaac00989a07fc2900be7479137964232cc4a507
+  url: https://pypi.io/packages/source/b/bioblend/bioblend-1.3.0.tar.gz
+test:
+  imports:
+  - bioblend
+  - bioblend.galaxy
+  - bioblend.galaxy.config
+  - bioblend.galaxy.container_resolution
+  - bioblend.galaxy.dataset_collections
+  - bioblend.galaxy.datasets
+  - bioblend.galaxy.datatypes
+  - bioblend.galaxy.folders
+  - bioblend.galaxy.forms
+  - bioblend.galaxy.ftpfiles
+  - bioblend.galaxy.genomes
+  - bioblend.galaxy.groups
+  - bioblend.galaxy.histories
+  - bioblend.galaxy.invocations
+  - bioblend.galaxy.jobs
+  - bioblend.galaxy.libraries
+  - bioblend.galaxy.objects
+  - bioblend.galaxy.quotas
+  - bioblend.galaxy.roles
+  - bioblend.galaxy.tool_data
+  - bioblend.galaxy.tool_dependencies
+  - bioblend.galaxy.tools
+  - bioblend.galaxy.toolshed
+  - bioblend.galaxy.users
+  - bioblend.galaxy.visual
+  - bioblend.galaxy.workflows
+  - bioblend.toolshed
+  - bioblend.toolshed.categories
+  - bioblend.toolshed.repositories
+  - bioblend.toolshed.tools
+  - bioblend.util

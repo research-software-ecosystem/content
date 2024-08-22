@@ -1,0 +1,33 @@
+about:
+  home: http://www.niehs.nih.gov/research/resources/software/biostatistics/art/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: GPLv3.txt
+  summary: Illumina, 454 and Solid read simulator
+build:
+  number: 11
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: art
+  version: 2016.06.05
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - gsl
+  - libcblas
+  run:
+  - gsl
+source:
+  md5: 6df7ce4760f9ad309846c296ad90806d
+  url: https://www.niehs.nih.gov/research/resources/assets/docs/artsrcmountrainier2016.06.05linux.tgz
+test:
+  commands:
+  - art_illumina -h  | grep 'Version'
+  - art_454  | grep 'Version'
+  - art_SOLiD  | grep 'Version'

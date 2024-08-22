@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/phac-nml/irida-staramr-results
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: IRIDA StarAMR Results program enables StarAMR analysis results that were
+    run through IRIDA to be batch downloaded into a collection of spreadsheets using
+    the command line.
+build:
+  entry_points:
+  - irida-staramr-results = irida_staramr_results.cli:main
+  noarch: python
+  number: 0
+  script: python3 -m pip install . --no-deps -vv
+package:
+  name: irida-staramr-results
+  version: 0.3.1
+requirements:
+  host:
+  - pip
+  - python >=3.8.*
+  run:
+  - rauth
+  - requests
+  - setuptools
+  - pyyaml
+  - pandas
+  - xlsxwriter
+  - python-dateutil
+  - python >=3.8.*
+source:
+  sha256: ef54d5a3ad7e6f9ed1e8623d4612a4a82ca1547882ba29420205a9086380550e
+  url: https://pypi.io/packages/source/i/irida-staramr-results/irida-staramr-results-0.3.1.tar.gz
+test:
+  commands:
+  - irida-staramr-results --help

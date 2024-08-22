@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/stjudecloud/ngsderive
+  doc_url: https://stjudecloud.github.io/ngsderive/
+  home: https://github.com/stjudecloud/ngsderive
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: Backwards derive attributes from NGS data
+build:
+  entry_points:
+  - ngsderive = ngsderive.__main__:run
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - claymcleod
+  - a-frantz
+package:
+  name: ngsderive
+  version: 4.0.0
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  - poetry
+  run:
+  - colorlog >=6.6.0
+  - pysam >=0.21
+  - pytabix >=0.1
+  - python >=3.8
+  - rstr >=3.0.0
+  - gtfparse >=1.2.1
+  - sortedcontainers >=2.4.0
+  - tabix >=1.11
+  - pygtrie >=2.5.0
+source:
+  sha256: 1e55f7bed3dfe1ecf4b3955636bd6fc7b1c1bd7c5685c539c0e248abfc47bf97
+  url: https://pypi.io/packages/source/n/ngsderive/ngsderive-4.0.0.tar.gz
+test:
+  commands:
+  - ngsderive --help
+  imports:
+  - ngsderive
+  - ngsderive.commands

@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/wdecoster/NanoPlot
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Plotting suite for long read sequencing data and alignments
+build:
+  entry_points:
+  - NanoPlot=nanoplot.NanoPlot:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+package:
+  name: nanoplot
+  version: 1.43.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - biopython
+  - pysam >0.10.0.0
+  - pandas >=1.1.0
+  - numpy >=1.16.5
+  - scipy
+  - python-dateutil
+  - libpng
+  - nanoget >=1.19.1
+  - plotly >=5.4.0
+  - pyarrow
+  - python-kaleido
+source:
+  sha256: 0f94096d689b552c32fd7246ad87cb6d5e5e2499dad5acc551091e0ff67f48df
+  url: https://pypi.io/packages/source/n/nanoplot/nanoplot-1.43.0.tar.gz
+test:
+  commands:
+  - NanoPlot --help
+  imports:
+  - nanoplot

@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/tmoerman/arboreto
+  license: BSD 3-Clause License
+  license_family: BSD
+  summary: Scalable gene regulatory network inference using tree-based ensemble regressors
+build:
+  noarch: python
+  number: 0
+  script: touch requirements.txt && python -m pip install --no-deps --ignore-installed
+    .
+package:
+  name: arboreto
+  version: 0.1.6
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - scikit-learn
+  - numpy
+  - scipy
+  - pandas
+  - dask
+  - distributed
+source:
+  sha256: 32fdac5e8a3e0ef2e196b5827f067d815ac4e689d2fca0dc437f42abdeeb89ab
+  url: https://pypi.io/packages/source/a/arboreto/arboreto-0.1.6.tar.gz
+test:
+  imports:
+  - arboreto
+  - tests

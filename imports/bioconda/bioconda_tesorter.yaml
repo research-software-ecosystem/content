@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/zhangrengang/TEsorter
+  doc_url: https://github.com/zhangrengang/TEsorter/blob/master/README.md
+  home: https://github.com/zhangrengang/TEsorter
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Lineage-level classification of transposable elements using conserved protein
+    domains.
+build:
+  entry_points:
+  - TEsorter = TEsorter.app:main
+  - TEsorter-test = TEsorter.test.test_app:main
+  - concatenate_domains.py = TEsorter.modules.concatenate_domains:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/hr/uhac017
+package:
+  name: tesorter
+  version: 1.4.6
+requirements:
+  host:
+  - python >=3
+  - pip
+  - hmmer
+  run:
+  - python >=3
+  - drmaa
+  - pp
+  - hmmer
+  - blast
+  - biopython
+  - xopen
+source:
+  sha256: c6952c98fa78d0084742fd6c7d2d1204d36db103c3cbeb19e52093cd9d311523
+  url: https://github.com/zhangrengang/TEsorter/archive/refs/tags/v1.4.6.tar.gz
+test:
+  commands:
+  - TEsorter --version
+  - TEsorter-test

@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/lmrodriguezr/nonpareil
+  home: http://nonpareil.readthedocs.io/
+  license: Artistic License 2.0
+  summary: Estimate average coverage and create curves for metagenomic datasets
+build:
+  number: 0
+  run_exports:
+  - None
+  script: 'make -j ${CPU_COUNT} cpp="${CXX} ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}" nonpareil
+
+    make prefix="${PREFIX}" install
+
+    chmod +x utils/NonpareilCurves.R
+
+    cp utils/NonpareilCurves.R ${PREFIX}/bin/NonpareilCurves.R
+
+    '
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: nonpareil
+  version: 3.5.5
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - zlib
+  run:
+  - r-base
+  - r-optparse
+  - r-jsonlite
+  - zlib
+source:
+  sha256: a1896a3ecf1394cbbc685de8dcb0eef04aa089e5ad6badf51d0eaa89b4b3bf1e
+  url: https://github.com/lmrodriguezr/nonpareil/archive/v3.5.5.tar.gz
+test:
+  commands:
+  - nonpareil -h 2>&1 | grep "Nonpareil"
+  - NonpareilCurves.R -h

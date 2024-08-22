@@ -1,0 +1,46 @@
+about:
+  description: 'In-silico cleavage of polypeptide sequences. The cleavage rules are
+    taken from: http://web.expasy.org/peptide_cutter/peptidecutter_enzymes.html'
+  home: https://bioconductor.org/packages/3.18/bioc/html/cleaver.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Cleavage of Polypeptide Sequences
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cleaver
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-cleaver
+    path: recipes/bioconductor-cleaver
+    version: 1.18.0
+package:
+  name: bioconductor-cleaver
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: 978f7bba3eb0dae3a3edee5c5721de7b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cleaver_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cleaver/cleaver_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cleaver_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cleaver/bioconductor-cleaver_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cleaver')"

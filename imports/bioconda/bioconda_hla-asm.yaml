@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/DiltheyLab/HLA-LA/blob/master/HLA-ASM.md
+  license: GPL
+  summary: find HLA gene exon coordinates in long read-based assemblies and carry
+    out HLA typing at G group resolution
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - biotools:hla-asm
+package:
+  name: hla-asm
+  version: 1.0.1
+requirements:
+  host:
+  - perl
+  run:
+  - bwa
+  - mummer
+  - samtools
+  - perl
+  - perl-bioperl
+  - perl-bio-db-hts
+  - perl-text-levenshteinxs
+  - perl-list-moreutils
+source:
+- md5: 816171a2673a806643cd7b857bd88bee
+  url: https://raw.githubusercontent.com/DiltheyLab/HLA-LA/master/findPath.pm
+- md5: 980b465f7f0a32c96de89fe259b34219
+  url: https://raw.githubusercontent.com/DiltheyLab/HLA-LA/master/HLA-ASM.pl
+test:
+  commands:
+  - HLA-ASM.pl --testing 1

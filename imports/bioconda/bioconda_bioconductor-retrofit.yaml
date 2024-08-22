@@ -1,0 +1,45 @@
+about:
+  description: RETROFIT is a Bayesian non-negative matrix factorization framework
+    to decompose cell type mixtures in ST data without using external single-cell
+    expression references. RETROFIT outperforms existing reference-based methods in
+    estimating cell type proportions and reconstructing gene expressions in simulations
+    with varying spot size and sample heterogeneity, irrespective of the quality or
+    availability of the single-cell reference. RETROFIT recapitulates known cell-type
+    localization patterns in a Slide-seq dataset of mouse cerebellum without using
+    any single-cell data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/retrofit.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'RETROFIT: Reference-free deconvolution of cell mixtures in spatial transcriptomics'
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-retrofit
+  version: 1.2.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-rcpp
+source:
+  md5: 2b804a752a293f14495e94adb39df466
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/retrofit_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/retrofit/retrofit_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/retrofit_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-retrofit/bioconductor-retrofit_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('retrofit')"

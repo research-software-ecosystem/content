@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/susiegriggo/Phynteny
+  doc_url: null
+  home: https://github.com/susiegriggo/Phynteny
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Phynteny: Synteny-based prediction of bacteriophage genes'
+build:
+  entry_points:
+  - generate_training_data=train_phynteny.generate_training_data:main
+  - train_model=train_phynteny.train_phyntenty:main
+  - compute_confidence=train_phynteny.compute_confidence:main
+  - install_models=phynteny_utils.install_models:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - susiegriggo
+package:
+  name: phynteny
+  version: 0.1.13
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython >=1.79
+  - click
+  - joblib
+  - alive-progress
+  - loguru
+  - numpy
+  - pandas
+  - python <3.11
+  - scikit-learn <=1.2.2
+  - tensorflow-cpu ==2.9.1
+  - python_abi
+source:
+  sha256: b613950a00ebf60714cf053cf846c5bc84da668b2e87dd2fd83361c7856a8e04
+  url: https://github.com/susiegriggo/Phynteny/archive/refs/tags/0.1.13.tar.gz
+test:
+  commands:
+  - phynteny --help

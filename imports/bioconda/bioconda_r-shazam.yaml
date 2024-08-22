@@ -1,0 +1,82 @@
+about:
+  home: http://shazam.readthedocs.io
+  license: AGPL-3
+  license_family: AGPL
+  license_file:
+  - /lib/R/share/licenses/AGPL-3
+  summary: 'Provides a computational framework for analyzing mutations in immunoglobulin
+    (Ig) sequences. Includes methods for Bayesian estimation of antigen-driven selection
+    pressure, mutational load quantification, building of somatic hypermutation (SHM)
+    models, and model-dependent distance calculations. Also includes empirically derived
+    models of SHM for both mice and humans. Citations: Gupta and Vander Heiden, et
+    al (2015) <doi:10.1093/bioinformatics/btv359>, Yaari, et al (2012) <doi:10.1093/nar/gks457>,
+    Yaari, et al (2013) <doi:10.3389/fimmu.2013.00358>, Cui, et al (2016) <doi:10.4049/jimmunol.1502263>.'
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - ggabernet
+  skip-lints:
+  - in_other_channels
+package:
+  name: r-shazam
+  version: 1.1.2
+requirements:
+  build:
+  - zip
+  host:
+  - r-base
+  - r-kernsmooth
+  - r-mass
+  - r-alakazam >=1.1.0
+  - r-ape
+  - r-diptest
+  - r-doparallel
+  - r-dplyr >=0.8.1
+  - r-foreach
+  - r-ggplot2 >=3.3.4
+  - r-igraph
+  - r-iterators
+  - r-kedd
+  - r-lazyeval
+  - r-progress
+  - r-rlang
+  - r-scales
+  - r-seqinr
+  - r-stringi >=1.1.3
+  - r-tidyr
+  - r-tidyselect
+  run:
+  - r-base
+  - r-kernsmooth
+  - r-mass
+  - r-alakazam >=1.1.0
+  - r-ape
+  - r-diptest
+  - r-doparallel
+  - r-dplyr >=0.8.1
+  - r-foreach
+  - r-ggplot2 >=3.3.4
+  - r-igraph
+  - r-iterators
+  - r-kedd
+  - r-lazyeval
+  - r-progress
+  - r-rlang
+  - r-scales
+  - r-seqinr
+  - r-stringi >=1.1.3
+  - r-tidyr
+  - r-tidyselect
+source:
+  sha256: 141f0f4b0b7fe359134ce71ec19f787003caf233410f6be25dd1de8db22eff23
+  url:
+  - /src/contrib/shazam_1.1.2.tar.gz
+  - /src/contrib/Archive/shazam/shazam_1.1.2.tar.gz
+test:
+  commands:
+  - $R -e "library('shazam')"

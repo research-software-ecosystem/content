@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/theislab/dca
+  license: Apache Software
+  license_family: APACHE
+  summary: Count autoencoder for scRNA-seq denoising
+build:
+  entry_points:
+  - dca = dca.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+extra:
+  identifiers:
+  - doi:10.1101/300681
+package:
+  name: dca
+  version: 0.3.4
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - h5py
+  - keras >=2.0.8
+  - kopt
+  - numpy >=1.7
+  - pandas
+  - python >=3.6
+  - scanpy
+  - scikit-learn
+  - six >=1.10.0
+source:
+  sha256: da92704cf406a6084ef466e15e6218eafe6be7c621477b32ca0f4787485817ca
+  url: https://pypi.io/packages/source/D/DCA/DCA-0.3.4.tar.gz
+test:
+  commands:
+  - dca --help
+  imports:
+  - dca

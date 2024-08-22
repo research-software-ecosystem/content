@@ -1,0 +1,79 @@
+about:
+  description: The software formalises a framework for classification and survival
+    model evaluation in R. There are four stages; Data transformation, feature selection,
+    model training, and prediction. The requirements of variable types and variable
+    order are fixed, but specialised variables for functions can also be provided.
+    The framework is wrapped in a driver loop that reproducibly carries out a number
+    of cross-validation schemes. Functions for differential mean, differential variability,
+    and differential distribution are included. Additional functions may be developed
+    by the user, by creating an interface to the framework.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ClassifyR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A framework for cross-validated classification problems, with applications
+    to differential variability and differential distribution testing
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:classifyr
+  parent_recipe:
+    name: bioconductor-classifyr
+    path: recipes/bioconductor-classifyr
+    version: 2.2.4
+package:
+  name: bioconductor-classifyr
+  version: 3.6.2
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-multiassayexperiment >=1.28.0,<1.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-dplyr
+  - r-generics
+  - r-ggplot2 >=3.0.0
+  - r-ggpubr
+  - r-ggupset
+  - r-ranger
+  - r-reshape2
+  - r-rlang
+  - r-survival
+  - r-tidyr
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-multiassayexperiment >=1.28.0,<1.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-dplyr
+  - r-generics
+  - r-ggplot2 >=3.0.0
+  - r-ggpubr
+  - r-ggupset
+  - r-ranger
+  - r-reshape2
+  - r-rlang
+  - r-survival
+  - r-tidyr
+source:
+  md5: 002678b6aeace9d7967b87654547a4f3
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ClassifyR_3.6.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ClassifyR/ClassifyR_3.6.2.tar.gz
+  - https://bioarchive.galaxyproject.org/ClassifyR_3.6.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-classifyr/bioconductor-classifyr_3.6.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ClassifyR')"

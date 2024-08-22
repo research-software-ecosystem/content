@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/BioPP/bpp-popgen
+  license: CeCILL
+  license_file: COPYING.txt
+  summary: Bio++ is a set of C++ libraries for Bioinformatics.
+build:
+  number: 4
+package:
+  name: bpp-popgen
+  version: 2.4.1
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - bpp-seq
+  run:
+  - bpp-seq
+source:
+  patches:
+  - 0001-do-not-override-CXXFLAGS.patch
+  sha256: 03b57d71a63c8fa7f11c085e531d0d691fc1d40d4ea541070dabde0ab3baf413
+  url: https://github.com/BioPP/bpp-popgen/archive/v2.4.1.tar.gz
+test:
+  commands:
+  - test -f ${PREFIX}/lib/libbpp-popgen.a
+  - test -f ${PREFIX}/lib/libbpp-popgen.so
+  - test -f ${PREFIX}/lib/libbpp-popgen.dylib

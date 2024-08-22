@@ -1,0 +1,65 @@
+about:
+  description: An interactive web application for quality control, filtering and trimming
+    of FASTQ files. This user-friendly tool combines a pipeline for data processing
+    based on Biostrings and ShortRead infrastructure, with a cutting-edge visual environment.
+    Single-Read and Paired-End files can be locally processed. Diagnostic interactive
+    plots (CG content, per-base sequence quality, etc.) are provided for both the
+    input and output files.
+  home: https://bioconductor.org/packages/3.18/bioc/html/FastqCleaner.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ
+    Files
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:fastqcleaner
+package:
+  name: bioconductor-fastqcleaner
+  version: 1.20.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+  - r-dt
+  - r-htmltools
+  - r-rcpp >=0.12.12
+  - r-shiny
+  - r-shinybs
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+  - r-dt
+  - r-htmltools
+  - r-rcpp >=0.12.12
+  - r-shiny
+  - r-shinybs
+source:
+  md5: bace77f4e33bd7fe58cbbadaefd896d8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FastqCleaner_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FastqCleaner/FastqCleaner_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FastqCleaner_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fastqcleaner/bioconductor-fastqcleaner_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FastqCleaner')"

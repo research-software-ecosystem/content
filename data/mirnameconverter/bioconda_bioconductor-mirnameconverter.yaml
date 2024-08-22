@@ -1,0 +1,47 @@
+about:
+  description: Translating mature miRNA names to different miRBase versions, sequence
+    retrieval, checking names for validity and detecting miRBase version of a given
+    set of names (data from http://www.mirbase.org/).
+  home: https://bioconductor.org/packages/3.18/bioc/html/miRNAmeConverter.html
+  license: Artistic-2.0
+  summary: Convert miRNA Names to Different miRBase Versions
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mirnameconverter
+  parent_recipe:
+    name: bioconductor-mirnameconverter
+    path: recipes/bioconductor-mirnameconverter
+    version: 1.8.0
+package:
+  name: bioconductor-mirnameconverter
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-mirbaseversions.db >=1.1.0,<1.2.0
+  - r-base
+  - r-dbi
+  - r-reshape2
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-mirbaseversions.db >=1.1.0,<1.2.0
+  - r-base
+  - r-dbi
+  - r-reshape2
+source:
+  md5: cfc6563f669ecbc03292cccba919fe05
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/miRNAmeConverter_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/miRNAmeConverter/miRNAmeConverter_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRNAmeConverter_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirnameconverter/bioconductor-mirnameconverter_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('miRNAmeConverter')"

@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/LexMapr/lexmapr
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: A Lexicon and Rule-Based Tool for Translating Short Biomedical Specimen
+    Descriptions into Semantic Web Ontology Terms
+build:
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_python
+  - should_not_use_skip_python
+package:
+  name: lexmapr
+  version: 0.7.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - python-dateutil
+  - nltk 3.4.5.*
+  - nltk_data
+  - inflection
+  - wikipedia
+  - rdflib
+source:
+  sha256: 148e25d050cad8f20c06359a60c8d3d6b780ea5c6c2bb623d630c20bb638090e
+  url: https://github.com/Public-Health-Bioinformatics/LexMapr/archive/v0.7.1.tar.gz
+test:
+  commands:
+  - lexmapr -h
+  imports:
+  - lexmapr

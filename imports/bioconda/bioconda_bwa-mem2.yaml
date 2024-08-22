@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/bwa-mem2/bwa-mem2
+  license: MIT
+  license_file: LICENSE
+  summary: The next version of bwa-mem
+build:
+  number: 5
+extra:
+  identifiers:
+  - doi:10.1109/IPDPS.2019.00041
+package:
+  name: bwa-mem2
+  version: 2.2.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+source:
+- patches:
+  - Makefile.patch
+  sha256: 9b001bdc7666ee3f14f3698b21673714d429af50438b894313b05bc4688b1f6d
+  url: https://github.com/bwa-mem2/bwa-mem2/releases/download/v2.2.1/Source_code_including_submodules.tar.gz
+test:
+  commands:
+  - bwa-mem2 version
+  - bwa-mem2.sse41 version
+  - bwa-mem2.sse42 version
+  - bwa-mem2.avx version
+  - bwa-mem2.avx2 version
+  - bwa-mem2.avx512bw version

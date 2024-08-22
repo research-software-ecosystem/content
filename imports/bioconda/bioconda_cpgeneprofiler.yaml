@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/ramadatta/CPgeneProfiler
+  license: GPL2
+  license_file: LICENSE.md
+  summary: 'Generate a profile of carbapenamase genes from the genome assemblies. '
+build:
+  noarch: generic
+  number: 4
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script: R CMD INSTALL --build .
+package:
+  name: cpgeneprofiler
+  version: 2.1.1
+requirements:
+  host:
+  - r-base
+  - r-biocmanager
+  - r-tidyverse
+  - r-upsetr
+  - r-scales
+  - r-ape
+  - r-reshape2
+  - r-gridextra
+  - r-png
+  - r-tiff
+  - r-jpeg
+  - r-pdftools
+  - r-usethis
+  - bioconductor-biostrings
+  - blast >=2.9.0
+  run:
+  - r-base
+  - r-biocmanager
+  - r-tidyverse
+  - r-upsetr
+  - r-scales
+  - r-ape
+  - r-reshape2
+  - r-gridextra
+  - r-png
+  - r-tiff
+  - r-jpeg
+  - r-pdftools
+  - r-usethis
+  - bioconductor-biostrings
+  - blast >=2.9.0
+source:
+- sha256: b599de2ab046a20fb55eea7b8d02d77bd94ec814c4771671544754e2e9abef05
+  url: https://github.com/ramadatta/CPgeneProfiler/archive/v2.1.1.tar.gz
+test:
+  commands:
+  - $R -e "library('CPgeneProfiler')"
+  - '"%R%" -e "library(''CPgeneProfiler'')"'

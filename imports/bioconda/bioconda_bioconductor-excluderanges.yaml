@@ -1,0 +1,39 @@
+about:
+  description: Genomic coordinates of problematic genomic regions that should be avoided
+    when working with genomic data. GRanges of exclusion regions (formerly known as
+    blacklisted), centromeres, telomeres, known heterochromatin regions, etc. (UCSC
+    'gap' table data). Primarily for human and mouse genomes, hg19/hg38 and mm9/mm10
+    genome assemblies.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/excluderanges.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Genomic coordinates of problematic genomic regions
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-excluderanges
+  version: 0.99.8
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 2ec19df8a51df1900a339f7f505cd5fa
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/excluderanges_0.99.8.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/excluderanges/excluderanges_0.99.8.tar.gz
+  - https://bioarchive.galaxyproject.org/excluderanges_0.99.8.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-excluderanges/bioconductor-excluderanges_0.99.8_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('excluderanges')"

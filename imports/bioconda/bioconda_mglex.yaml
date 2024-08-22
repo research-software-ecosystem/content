@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/fungs/mglex
+  license: GPL-3.0
+  license_family: GPL
+  summary: MGLEX - MetaGenome Likelihood EXtractor
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps --ignore-installed --no-cache-dir .'
+package:
+  name: mglex
+  version: 0.2.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  - setuptools_scm
+  run:
+  - python >=3
+  - numpy >=1.8.2
+  - scipy >=0.13.3
+  - docopt >=0.6.2
+source:
+  sha256: 2a81a50c2f3ceb85a4f936ee7822c1249eeb74d46d4eca498201207d08788541
+  url: https://pypi.io/packages/source/m/mglex/MGLEX-0.2.1.tar.gz
+test:
+  commands:
+  - mglex-cli --help
+  imports:
+  - mglex
+  - mglex.cli
+  - mglex.models

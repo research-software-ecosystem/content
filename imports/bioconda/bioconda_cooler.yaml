@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/open2c/cooler
+  doc_url: https://open2c.github.io/cooler
+  home: https://github.com/open2c/cooler
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Sparse binary format for genomic interaction matrices.
+build:
+  entry_points:
+  - cooler = cooler.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:0.1093/bioinformatics/btz540
+package:
+  name: cooler
+  version: 0.10.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - hatchling
+  - hatch-vcs
+  run:
+  - asciitree
+  - click >=7
+  - cytoolz
+  - dask
+  - h5py >=2.5
+  - multiprocess
+  - numpy <2
+  - pairix
+  - pandas >1.5
+  - pyfaidx
+  - pysam
+  - python >=3.8
+  - pyyaml
+  - scipy
+  - simplejson
+source:
+  sha256: 3780a2e69b2ec89882dfc2775de5d9b54ccb79569dc5f042b4851599388112dc
+  url: https://pypi.python.org/packages/source/c/cooler/cooler-0.10.2.tar.gz
+test:
+  commands:
+  - cooler --help
+  imports:
+  - cooler
+  - cooler.cli
+  - cooler.sandbox

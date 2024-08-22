@@ -1,0 +1,68 @@
+about:
+  dev_url: https://github.com/broadinstitute/gatk
+  home: https://www.broadinstitute.org/gatk/
+  license: BSD-3-Clause
+  license_family: BSD
+  summary: Genome Analysis Toolkit (GATK4)
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+outputs:
+- name: gatk4
+  requirements:
+    run:
+    - openjdk >=17,<18
+    - python
+  script: build_main.sh
+  test:
+    commands:
+    - gatk -h
+    - gatk --list
+    - gatk HaplotypeCaller --help
+    - gatk DetermineGermlineContigPloidy --help
+- build:
+    noarch: generic
+  name: gatk4-spark
+  requirements:
+    run:
+    - openjdk >=17,<18
+    - python
+    - None
+  script: build_spark.sh
+  test:
+    commands:
+    - gatk -h
+    - gatk --list
+    - gatk MarkDuplicatesSpark --help
+    - gatk DetermineGermlineContigPloidy --help
+package:
+  name: gatk4
+  version: 4.5.0.0
+requirements:
+  host:
+  - r-base =3.6
+  - r-gplots
+  - r-ggplot2
+  - r-gsalib
+  - r-reshape
+  - gcnvkernel =0.8
+  run:
+  - openjdk >=17,<18
+  - python
+  - r-base =3.6
+  - r-gplots
+  - r-ggplot2
+  - r-gsalib
+  - r-reshape
+  - gcnvkernel =0.8
+source:
+  sha256: dc1a4471e8bb566397db9894ca18acbf8f40f3fc312c8fad9a8c5390c218e916
+  url: https://github.com/broadinstitute/gatk/releases/download/4.5.0.0/gatk-4.5.0.0.zip
+test:
+  commands:
+  - gatk -h
+  - gatk --list
+  - gatk HaplotypeCaller --help
+  - gatk DetermineGermlineContigPloidy --help

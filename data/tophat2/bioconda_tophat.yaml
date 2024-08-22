@@ -1,0 +1,29 @@
+about:
+  home: http://ccb.jhu.edu/software/tophat/index.shtml
+  license: Boost Software License
+  summary: A spliced read mapper for RNA-Seq
+build:
+  number: 4
+  skip: true
+extra:
+  identifiers:
+  - biotools:tophat2
+  - usegalaxy-eu:tophat2
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: tophat
+  version: 2.1.1
+requirements:
+  run:
+  - python
+  - bowtie2 <=2.2.5
+source:
+- md5: 97fe58465a01cb0a860328fdb1993660
+  url: http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+- md5: 1e4e7f8d08f182d2db3202975f284294
+  url: https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.OSX_x86_64.tar.gz
+test:
+  commands:
+  - (tophat --version 2>&1) > /dev/null

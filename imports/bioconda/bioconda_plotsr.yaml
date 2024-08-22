@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/schneebergerlab/plotsr
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Visualiser for structural annotations between multiple genomes
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+extra:
+  recipe-maintainers:
+  - Manish Goel <goel@mpipz.mpg.de>
+package:
+  name: plotsr
+  version: 1.1.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy >=1.21
+  - matplotlib-base >=3.3
+  - pandas >=1.2.4
+source:
+  sha256: db24f0b6f400ffcf5c1d3ebdd2e534857e121b0dd513bd9ead1b241cd82185de
+  url: https://github.com/schneebergerlab/plotsr/archive/v1.1.1.tar.gz
+test:
+  commands:
+  - plotsr --version

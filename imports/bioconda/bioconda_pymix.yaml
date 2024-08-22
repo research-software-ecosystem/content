@@ -1,0 +1,44 @@
+about:
+  home: http://www.pymix.org/pymix
+  license: GPL2
+  summary: Python mixture package
+build:
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: pymix
+  version: 0.8
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - numpy
+  - gsl
+  run:
+  - python
+  - numpy
+  - gsl
+  - ghmm
+  - matplotlib >=1.1.0,!=1.4.2,<1.5.0
+  - glib
+  - xorg-libxext
+  - xorg-libxdmcp
+  - xorg-libsm
+  - xorg-libxrender
+  - xorg-libxau
+source:
+  md5: 4e2b7db99251d9ce6d0527528224a45b
+  patches:
+  - setup.py.patch
+  url: http://www.pymix.org/pymix-0.8a.tar.gz
+test:
+  imports:
+  - mixture
+  - mixtureHMM
+  - mixtureunittests
+  - alphabet
+  - plotMixture
+  - setPartitions

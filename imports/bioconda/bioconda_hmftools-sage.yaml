@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/tree/master/sage
+  license: GPL-3.0-only
+  license_family: GPL
+  summary: SAGE is a somatic SNV, MNV and small INDEL caller optimised 100x tumor
+    / 40x normal coverage, but has a flexible set of filters that can be adapted to
+    lower or higher depth coverage.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-sage
+  version: 3.4.4
+requirements:
+  run:
+  - zlib
+  - openjdk >=8
+  - bioconductor-variantannotation
+  - bioconductor-genomicranges
+  - r-dplyr
+  - r-tidyr
+  - r-ggplot2
+  - xorg-libxt
+  - font-ttf-dejavu
+source:
+  sha256: 6fd6af086bb215b370a15de5f08d931175e6cab163e021757168d99e2babb8d7
+  url: https://github.com/hartwigmedical/hmftools/releases/download/sage-v3.4.4/sage_v3.4.4.jar
+test:
+  commands:
+  - sage -version | grep Sage

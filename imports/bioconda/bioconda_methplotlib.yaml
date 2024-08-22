@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/wdecoster/methplotlib
+  license: MIT
+  license_family: MIT
+  summary: Plot methylation data obtained from nanopolish
+build:
+  entry_points:
+  - methplotlib=methplotlib.methplotlib:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - wdecoster
+package:
+  name: methplotlib
+  version: 0.21.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy >=1.14.3
+  - pandas >=0.23.4
+  - plotly >=4.9.0
+  - pyranges >=0.0.77
+  - fisher >=0.1.9
+  - scikit-learn
+  - pyfaidx
+  - biopython
+  - pysam
+source:
+  sha256: 12f487986c3296efa03c05091c0feeb99337aef7e009f7df747280481b9a8c3f
+  url: https://pypi.io/packages/source/m/methplotlib/methplotlib-0.21.2.tar.gz
+test:
+  commands:
+  - methplotlib --help
+  imports:
+  - methplotlib

@@ -1,0 +1,40 @@
+about:
+  doc_url: https://hybracter.readthedocs.io/en/latest/
+  home: https://github.com/gbouras13/hybracter
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: An automated long-read first bacterial genome assembly pipeline.
+build:
+  entry_points:
+  - hybracter=hybracter.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - gbouras13
+package:
+  name: hybracter
+  version: 0.7.3
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - snakemake-minimal >=7.14.0
+  - pyyaml >=6.0
+  - click >=8.1.3
+  - attrmap >=0.0.5
+  - biopython >=1.76
+source:
+  sha256: 01ee53bb84c37ba2a4c37431dd34ada4383cf29aab4127acb3131ab1be58adac
+  url: https://pypi.io/packages/source/h/hybracter/hybracter-0.7.3.tar.gz
+test:
+  commands:
+  - hybracter --help
+  imports:
+  - hybracter

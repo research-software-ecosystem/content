@@ -1,0 +1,28 @@
+about:
+  home: https://gitlab.com/mcfrith/paraclu
+  license: GPL-3.0-or-later
+  license_file: COPYING.txt
+  summary: Paraclu finds clusters in data attached to sequences.
+build:
+  number: 4
+extra:
+  identifiers:
+  - biotools:paraclu
+package:
+  name: paraclu
+  version: 10
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: 20c529f2b33992fed4b25052a2881acc92cfcae8e50d2e9ba8365b73770611c2
+  url: https://gitlab.com/mcfrith/paraclu/-/archive/10/paraclu-10.tar.gz
+test:
+  commands:
+  - paraclu 2>&1 >/dev/null | grep 'I need a minValue and a fileName'
+  - paraclu-cut -h

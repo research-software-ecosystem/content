@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/EBI-metagenomics/emg-toolkit
+  home: https://www.ebi.ac.uk/metagenomics
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Metagenomics toolkit.
+build:
+  entry_points:
+  - mg-toolkit=mg_toolkit.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - biotools:MGnify
+package:
+  name: mg-toolkit
+  version: 0.10.4
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - pytest-runner
+  run:
+  - jsonapi-client >=0.9.9
+  - pandas ==2.0.3
+  - python >=3.8
+  - requests >=2.31.0
+  - tqdm >=4.49.0
+  - urllib3 >=2.2.1
+source:
+  sha256: 087042ccaac9601fecfdc2e121330b650426ec373ce5353fc32cd5337ef823a9
+  url: https://pypi.io/packages/source/m/mg-toolkit/mg-toolkit-0.10.4.tar.gz
+test:
+  commands:
+  - mg-toolkit --help
+  imports:
+  - mg_toolkit

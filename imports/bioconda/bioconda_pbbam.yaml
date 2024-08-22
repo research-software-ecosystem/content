@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/PacificBiosciences/pbbam
+  license: BSD-3-Clause-Clear
+  summary: PacBio BAM C++ library
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - pb-dseifert
+  - mhsieh
+  - pezmaster31
+  - armintoepfer
+package:
+  name: pbbam
+  version: 2.4.0
+requirements:
+  build:
+  - None
+  - meson >=0.57.0
+  - ninja
+  - pkg-config
+  host:
+  - boost-cpp
+  - zlib
+  - htslib
+  - pbcopper 2.3.*
+  run:
+  - htslib
+  - pbtk
+source:
+  sha256: a386a5231b06b0ea660d81abe8081041c200d1817710b89bc9888b485a7aab26
+  url: https://github.com/PacificBiosciences/pbbam/archive/v2.4.0.tar.gz
+test:
+  commands:
+  - test -f $PREFIX/lib/libpbbam*

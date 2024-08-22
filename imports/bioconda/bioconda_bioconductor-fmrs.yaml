@@ -1,0 +1,46 @@
+about:
+  description: The package obtains parameter estimation, i.e., maximum likelihood
+    estimators (MLE), via the Expectation-Maximization (EM) algorithm for the Finite
+    Mixture of Regression (FMR) models with Normal distribution, and MLE for the Finite
+    Mixture of Accelerated Failure Time Regression (FMAFTR) subject to right censoring
+    with Log-Normal and Weibull distributions via the EM algorithm and the Newton-Raphson
+    algorithm (for Weibull distribution). More importantly, the package obtains the
+    maximum penalized likelihood (MPLE) for both FMR and FMAFTR models (collectively
+    called FMRs). A component-wise tuning parameter selection based on a component-wise
+    BIC is implemented in the package. Furthermore, this package provides Ridge Regression
+    and Elastic Net.
+  home: https://bioconductor.org/packages/3.18/bioc/html/fmrs.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Variable Selection in Finite Mixture of AFT Regression and FMR Models
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-fmrs
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - r-survival
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-survival
+source:
+  md5: ccf41504ab27d93464e555b363ef406a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/fmrs_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/fmrs/fmrs_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/fmrs_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fmrs/bioconductor-fmrs_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('fmrs')"

@@ -1,0 +1,50 @@
+about:
+  description: For single cell RNA-seq data collected from more than one subject (e.g.
+    biological sample or technical replicates), this package contains tools to summarize
+    single cell gene expression profiles at the level of subject. A SingleCellExperiment
+    object is taken as input and converted to a list of SummarizedExperiment objects,
+    where each list element corresponds to an assigned cell type. The SummarizedExperiment
+    objects contain aggregate gene-by-subject count matrices and inter-subject column
+    metadata for individual subjects that can be processed using downstream bulk RNA-seq
+    tools.
+  home: https://bioconductor.org/packages/3.18/bioc/html/aggregateBioVar.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Differential Gene Expression Analysis for Multi-subject scRNA-seq
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-aggregatebiovar
+  version: 1.12.0
+requirements:
+  host:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-matrix
+  - r-rlang
+  - r-tibble
+  run:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-matrix
+  - r-rlang
+  - r-tibble
+source:
+  md5: f389a909fab4bbc4cb526505c68f22e1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/aggregateBioVar_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/aggregateBioVar/aggregateBioVar_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/aggregateBioVar_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-aggregatebiovar/bioconductor-aggregatebiovar_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('aggregateBioVar')"

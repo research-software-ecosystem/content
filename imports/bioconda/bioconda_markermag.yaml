@@ -1,0 +1,46 @@
+about:
+  home: https://pypi.org/project/MarkerMAG/
+  license: AGPL-3.0
+  license_file: LICENSE.txt
+  summary: linking MAGs with 16S rRNA marker genes
+build:
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - songweizhi
+package:
+  name: markermag
+  version: 1.1.28
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - matplotlib-base
+  - numpy
+  - pandas
+  - plotly
+  - python
+  - seaborn
+  - setuptools
+  - blast
+  - barrnap
+  - seqtk
+  - bowtie2
+  - samtools
+  - hmmer
+  - spades
+source:
+  sha256: b0595dbfd13a3e34e9c761e1c6c2b54af2be7eae78a973dddefb6cf49a6a4097
+  url: https://pypi.io/packages/source/M/MarkerMAG/MarkerMAG-1.1.28.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - MarkerMAG
+  - MarkerMAG.vxtractor
+  requires:
+  - pip

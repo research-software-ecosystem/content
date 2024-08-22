@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/Roestlab/massdash
+  license: BSD
+  license_family: BSD
+  summary: MassDash is a streamlined DIA mass spec visualization, analysis, optimization,
+    and rapid prototyping.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - singjc
+package:
+  name: massdash
+  version: 0.0.9
+requirements:
+  host:
+  - pip
+  - python
+  - flake8
+  - flit
+  - flit-core
+  - pylint
+  - snapshottest
+  run:
+  - bokeh ==2.4.3
+  - click
+  - joblib
+  - matplotlib-base
+  - matplotlib-venn
+  - upsetplot
+  - numpy >=1.9.0
+  - pandas >=0.17
+  - plotly
+  - psutil
+  - pyopenms
+  - scipy
+  - streamlit
+  - tqdm
+source:
+  sha256: 68d90f668312d94ec44f744376c0dad0b671fe78f01906d2e36ce43cc9c85ffa
+  url: https://pypi.io/packages/source/m/massdash/massdash-0.0.9.tar.gz
+test:
+  imports:
+  - massdash

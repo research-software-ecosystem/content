@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/bihealth/var-agg
+  license: MIT
+  summary: A simple helper for aggregating multi-sample VCF files into "site VCF"
+    files.
+build:
+  number: 2
+package:
+  name: var-agg
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - rust
+  host:
+  - clangdev
+  - zlib
+  - bzip2
+  - xz
+source:
+  patches:
+  - 0001-Restrict-rust-htslib-version.patch
+  sha256: 35764ff68e7edcad56157cb7a2edfd7edc9a495893e4ff909ef17430e70ea7f4
+  url: https://github.com/bihealth/var-agg/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - var-agg --help

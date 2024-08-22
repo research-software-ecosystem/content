@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/marbl/Winnowmap
+  doc_url: https://github.com/marbl/Winnowmap
+  home: https://github.com/marbl/Winnowmap
+  license: LicenseRef-Public-Domain AND MIT
+  license_file: LICENSE
+  summary: Winnowmap is a long-read mapping algorithm optimized for mapping ONT and
+    PacBio reads to repetitive reference sequences.
+build:
+  number: 2
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btaa435
+package:
+  name: winnowmap
+  version: 2.03
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  run:
+  - meryl >=1.2,<2013
+source:
+  patches:
+  - 0001-Un-vendor-meryl.patch
+  sha256: f6375960ee2184b68c0f56d3ca95e12ec3218f9e44aeecbdb14f85f581112c83
+  url: https://github.com/marbl/Winnowmap/archive/v2.03.tar.gz
+test:
+  commands:
+  - winnowmap --help
+  - winnowmap --version

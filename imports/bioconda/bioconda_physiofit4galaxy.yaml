@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/MetaSys-LISBP/PhysioFit4Galaxy
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Calculate extracellular fluxes from metabolite concentrations and biomass
+    data
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . -vv
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - llegregam
+package:
+  name: physiofit4galaxy
+  version: 2.2.1
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  run:
+  - matplotlib-base >=3.5.2
+  - numpy >=1.21.6
+  - openpyxl >=3.0.9
+  - pandas >=1.3.5
+  - python >=3.7
+  - scipy >=1.7.3
+source:
+  sha256: e78d20d4d5b1287b10e899aee78ca7d5c398ff0ae3449a772919d6fadb1cc954
+  url: https://github.com/MetaSys-LISBP/PhysioFit4Galaxy/archive/refs/tags/v2.2.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - physiofit4galaxy
+  requires:
+  - pip

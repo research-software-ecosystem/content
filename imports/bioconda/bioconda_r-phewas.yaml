@@ -1,0 +1,65 @@
+about:
+  home: https://github.com/PheWAS/PheWAS
+  license: GPL-3
+  license_family: GPL
+  license_file: /LICENSE
+  summary: Phenome Wide Association Studies (PheWAS) - Functions to perform Phenome
+    Wide Association Studies (PheWAS). These functions include the conversion of ICD9
+    codes to PheWAS codes (v1.2), statistical analysis, and plotting.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btu197
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-phewas
+  version: 0.99.6
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-dplyr
+  - r-tidyr
+  - r-ggplot2 >=2.2.0
+  - r-mass
+  - r-meta
+  - r-ggrepel
+  - r-dt
+  - r-lmtest
+  - r-logistf
+  - r-survival
+  run:
+  - r-base
+  - r-dplyr
+  - r-tidyr
+  - r-ggplot2 >=2.2.0
+  - r-mass
+  - r-meta
+  - r-ggrepel
+  - r-dt
+  - r-lmtest
+  - r-logistf
+  - r-survival
+source:
+  sha256: d462db49cd32dcbacc8e1f0e4611f1e1de21a7e9e227f0d53a63de16272533c7
+  url: https://github.com/PHeWAS/PHeWAS/archive/v0.99.6-1.tar.gz
+test:
+  commands:
+  - $R -e "library('PheWAS')"

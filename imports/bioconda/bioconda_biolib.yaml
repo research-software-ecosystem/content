@@ -1,0 +1,35 @@
+about:
+  home: http://pypi.python.org/pypi/biolib/
+  license: GPL3
+  license_family: GPL3
+  license_file: /LICENSE
+  summary: Package for common tasks in bioinformatics.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed'
+extra:
+  recipe-maintainers:
+  - npavlovikj
+  - aaronmussig
+package:
+  name: biolib
+  version: 0.1.9
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - python >=3.6
+  - numpy
+  - matplotlib-base
+  - scipy
+source:
+  sha256: bc9ae68c6d76d46e4295fe0b1df5a48b575fe96374bd96d624c3330feb94856f
+  url: https://pypi.io/packages/source/b/biolib/biolib-0.1.9.tar.gz
+test:
+  imports:
+  - biolib
+  - biolib.external
+  - biolib.misc
+  - biolib.plots

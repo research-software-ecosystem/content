@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/conchoecia/pauvre
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: Tools for plotting Oxford Nanopore and other long-read data.
+build:
+  entry_points:
+  - pauvre=pauvre.pauvre_main:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+package:
+  name: pauvre
+  version: 0.2.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython >=1.68
+  - matplotlib-base >=2.0.2
+  - numpy >=1.12.1
+  - pandas >=0.20.1
+  - scikit-learn
+  - scipy
+source:
+  sha256: 54cd738da0aed36118a05bd747913cfff8572ec78ff99babab818c96573cfa40
+  url: https://pypi.io/packages/source/p/pauvre/pauvre-0.2.2.tar.gz
+test:
+  commands:
+  - pauvre --help
+  imports:
+  - pauvre
+  - pauvre.lsi
+  - pauvre.tests

@@ -1,0 +1,33 @@
+about:
+  home: https://sourceforge.net/projects/transcriptomeassembly/
+  license: GPL3
+  license_file: LICENSE
+  summary: A de novo transcriptome assembler that uses line graph iteration
+build:
+  number: 1
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1186/s13059-019-1690-7
+package:
+  name: translig
+  version: 1.3
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - boost-cpp
+  - zlib
+  run:
+  - boost-cpp
+  - zlib
+source:
+  patches:
+  - patch
+  sha256: 3978d9c7ced7dd75ae88263aaa1d2a95c47f36ae0c4d4dcef6923c09aec3cf97
+  url: https://sourceforge.net/projects/transcriptomeassembly/files/TransLiG/TransLiG_1.3.tar.gz
+test:
+  commands:
+  - Assemble --help 2>&1 | grep Usage

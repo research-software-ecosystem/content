@@ -1,0 +1,35 @@
+about:
+  home: http://www.rnasoft.ca/download/README.html
+  license: GPL-2.0-or-later
+  summary: RNA/DNA secondary structure prediction for one, two, or many interacting
+    strands
+build:
+  number: 0
+  run_exports:
+  - None
+package:
+  name: multirnafold
+  version: 2.1
+requirements:
+  build:
+  - make
+  - None
+source:
+  patches:
+  - 0001-FIX-Makefile.patch
+  - 0002-FIX-printf-missing-arg.patch
+  - 0003-FIX-remove-unneeded-include.patch
+  sha256: cb5462e03c70da24caaa9706f493fa329b1e15f697fbffd5bf460cd873243306
+  url: http://www.rnasoft.ca/download/MultiRNAFold-2.1.tar.gz
+test:
+  commands:
+  - test -x $PREFIX/bin/feature_description
+  - test -x $PREFIX/bin/multifold
+  - test -x $PREFIX/bin/pairfold
+  - test -x $PREFIX/bin/pairfold-web
+  - test -x $PREFIX/bin/simfold
+  - test -x $PREFIX/bin/simfold_pf
+  - pairfold -h
+  - simfold -h
+  - simfold_pf -h
+  - multifold -h

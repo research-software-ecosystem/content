@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/malonge/RagTag
+  doc_url: https://github.com/malonge/RagTag/wiki
+  home: https://github.com/malonge/RagTag
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Fast reference-guided genome assembly scaffolding
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.3887139
+  recipe-maintainers:
+  - malonge
+package:
+  name: ragtag
+  version: 2.1.0
+requirements:
+  host:
+  - networkx
+  - intervaltree
+  - numpy
+  - pip
+  - pysam
+  - python >3
+  run:
+  - networkx
+  - intervaltree
+  - numpy
+  - pysam
+  - python >3
+  - minimap2
+  - mummer
+source:
+  sha256: 99994d7caac7d2ec590f7ac51031dc675a0fd20a51aa3703713295607e8f70e8
+  url: https://pypi.io/packages/source/R/RagTag/RagTag-2.1.0.tar.gz
+test:
+  commands:
+  - ragtag.py --help
+  imports:
+  - ragtag_utilities

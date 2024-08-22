@@ -1,0 +1,28 @@
+about:
+  home: https://www.gsea-msigdb.org/gsea
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: Gene Set Enrichment Analysis (GSEA)
+build:
+  noarch: generic
+  number: 0
+package:
+  name: gsea
+  version: 4.3.2
+requirements:
+  host:
+  - sed
+  - openjdk
+  run:
+  - openjdk
+source:
+  patches:
+  - gsea.patch
+  - gsea-cli.patch
+  sha256: 76a14ba937a6a6266a0a431dac139f623864c74d7afc3be2db487396b564448f
+  url: https://data.broadinstitute.org/gsea-msigdb/gsea/software/desktop/4.3/GSEA_4.3.2.zip
+test:
+  commands:
+  - which gsea
+  - which gsea-cli

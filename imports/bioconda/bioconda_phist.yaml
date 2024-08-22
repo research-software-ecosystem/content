@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/refresh-bio/PHIST
+  license: GPL-3
+  license_family: GPL-3
+  license_file: LICENSE
+  summary: Phage-Host Interaction Search Tool.
+build:
+  number: 0
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab837
+package:
+  name: phist
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - python >=3
+  - kmer-db
+  - zlib
+  run:
+  - python >=3
+  - kmer-db
+  - zlib
+source:
+  patches:
+  - makefile.patch
+  - python.patch
+  sha256: a6cb42dcf7990e7aa32f974dc826e8f721b4428f704010392ddd97ad69e1a4ba
+  url: https://github.com/refresh-bio/PHIST/archive/ed2a1e6.tar.gz
+test:
+  commands:
+  - phist.py --help
+  - phist --help
+  - matcher --help

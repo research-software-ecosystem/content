@@ -1,0 +1,65 @@
+about:
+  dev_url: https://gitlab.com/Bernt/MITOS
+  home: http://mitos.bioinf.uni-leipzig.de
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: MITOS is a tool for the annotation of metazoan mitochondrial genomes.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - bernt-matthias
+package:
+  name: mitos
+  version: 2.1.9
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - biopython <1.82
+  - python >=3
+  - blast >=2.9
+  - hmmer =3.2
+  - infernal >=1.1.5
+  - viennarna
+  - r-base
+  - r-ggplot2
+  - r-reshape2
+  - openjdk >8
+  - reportlab
+  - conda-forge::pillow
+  - conda-forge::libtiff
+source:
+  sha256: 88fc8980c815ae8497518ee7ff58ff69e51b1a35c1efe2ae9b0925b7c4f364f5
+  url: https://pypi.io/packages/source/m/mitos/mitos-2.1.9.tar.gz
+test:
+  commands:
+  - runmitos.py -h
+  - R -e "library('reshape2')"
+  - R -e "library('ggplot2')"
+  imports:
+  - mitos
+  - mitos.bedfile
+  - mitos.blast
+  - mitos.draw
+  - mitos.extprog
+  - mitos.feature
+  - mitos.gb
+  - mitos.gfffile
+  - mitos.mergefeature
+  - mitos.mitfi
+  - mitos.mito
+  - mitos.mitofile
+  - mitos.rna
+  - mitos.sequence
+  - mitos.tax
+  - mitos.tbl
+  - mitos.trna
+  - mitos.update
+  - mitos.webserver

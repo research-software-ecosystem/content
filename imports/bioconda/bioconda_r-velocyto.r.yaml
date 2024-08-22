@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/velocyto-team/velocyto.R
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: RNA velocity estimation in R
+build:
+  number: 8
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script: R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - tdido
+package:
+  name: r-velocyto.r
+  version: 0.6
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - boost-cpp
+  - r-base
+  - r-mass
+  - r-matrix
+  - r-rcpp >=0.12.13
+  - r-rcpparmadillo
+  - r-abind
+  - r-cluster
+  - r-hdf5r
+  - r-igraph
+  - r-mgcv
+  - bioconductor-pcamethods
+  run:
+  - boost-cpp
+  - r-base
+  - r-mass
+  - r-matrix
+  - r-rcpp >=0.12.13
+  - r-rcpparmadillo
+  - r-abind
+  - r-cluster
+  - r-hdf5r
+  - r-igraph
+  - r-mgcv
+  - bioconductor-pcamethods
+source:
+  sha256: 3821e86a254bcce844024f7a7e98236f9801f4503143bac5d6c5a4781a438adc
+  url: https://github.com/velocyto-team/velocyto.R/archive/0.6.tar.gz
+test:
+  commands:
+  - $R -e "library('velocyto.R')"

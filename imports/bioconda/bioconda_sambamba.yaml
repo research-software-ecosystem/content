@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/biod/sambamba
+  doc_url: https://lomereiter.github.io/sambamba/docs/sambamba-view.html
+  home: https://github.com/biod/sambamba
+  license: GPL-2.0-only
+  license_family: GPL2
+  license_file: LICENSE
+  summary: Tools for working with SAM/BAM data
+build:
+  ignore_run_exports:
+  - bzip2
+  - xz
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1093/bioinformatics/btv098
+  recipe-maintainers:
+  - mjsteinbaugh
+package:
+  name: sambamba
+  version: 1.0.1
+requirements:
+  build:
+  - None
+  - make
+  - python
+  host:
+  - bzip2
+  - ldc >=1.17.0
+  - lz4-c
+  - xz
+  - zlib
+source:
+  patches:
+  - 0001-fix-osx-compile.patch
+  sha256: 955a51a00be9122aa9b0c27796874bfdda85de58aa0181148ef63548ea5192b0
+  url: https://github.com/biod/sambamba/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - sambamba view --help

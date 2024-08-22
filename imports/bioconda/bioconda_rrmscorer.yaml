@@ -1,0 +1,70 @@
+about:
+  author: "Joel Roca-Mart\xEDnez, Wim Vranken"
+  description: "RRMScorer (RRM-RNA score predictor) allows the user to easily predict\n\
+    how likely a single RRM is to bind ssRNA using a carefully generated\nalignment\
+    \ for the RRM structures in complex with RNA, from which we\nanalyzed the interaction\
+    \ patterns and derived the scores (please\naddress to the publication for more\
+    \ details on the method REF).\n\nRRMScorer has several features to either calculate\
+    \ the binding score\nfor a specific RRM and RNA sequences, for a set of RRM sequences\
+    \ in a\nFASTA file, or to explore which are the best RNA binders according to\
+    \ our scoring method.\n\nRRMScorer has been developed by Bio2Byte within the RNAct\
+    \ project. This project has received\nfunding from the European Union's Horizon\
+    \ 2020 research and innovation programme under\nthe Marie Sk\u0142odowska-Curie\
+    \ grant agreement No. 813239.\n\nWim Vranken, Bio2Byte group within the RNAct\
+    \ project, VUB, Belgium.\n"
+  dev_url: https://bitbucket.org/bio2byte/rrmscorer/
+  doc_source_url: https://bitbucket.org/bio2byte/rrmscorer/raw/master/readme.md
+  doc_url: https://pypi.org/project/rrmscorer
+  home: https://bio2byte.be/rrmscorer/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: RRMScorer (RRM-RNA score predictor) predicts how likely a single RRM is
+    to bind ssRNA
+build:
+  entry_points:
+  - rrmscorer=rrmscorer.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1371/journal.pcbi.1010859
+  notes:
+  - "More details are available from the publication related to this work. Please\
+    \ also reference this publication if you use this code:\nRoca-Mart\xEDnez J, Dhondge\
+    \ H, Sattler M, Vranken WF (2023) Deciphering the RRM-RNA recognition code: A\
+    \ computational analysis.\nPLOS Computational Biology 19(1): e1010859.\n"
+  - 'DOI: https://doi.org/10.1371/journal.pcbi.1010859'
+  recipe-maintainers:
+  - JoelRoca
+package:
+  name: rrmscorer
+  version: 1.0.9
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  run:
+  - biopython
+  - hmmer
+  - logomaker
+  - matplotlib-base
+  - numpy
+  - pandas
+  - python >=3.9
+  - requests
+  - scikit-learn
+  - seaborn
+source:
+  sha256: 2058ec1af72ff6ed0d026a643d0358c3e06f7cdb25615bba66b05554df2d76fa
+  url: https://pypi.io/packages/source/r/rrmscorer/rrmscorer-1.0.9.tar.gz
+test:
+  commands:
+  - rrmscorer --version
+  - rrmscorer --help
+  - python -m rrmscorer --help
+  imports:
+  - rrmscorer

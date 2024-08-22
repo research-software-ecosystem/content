@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/milnus/Magphi
+  doc_url: https://github.com/milnus/Magphi/wiki
+  home: https://github.com/milnus/Magphi
+  license: MIT
+  license_family: MIT
+  summary: A bioinformatics tool allowing for examnination and extraction of genomic
+    features using seed sequences.
+build:
+  entry_points:
+  - Magphi = Magphi.__main__:main
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - milnus
+package:
+  name: magphi
+  version: 2.0.2
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - biopython >=1.79
+  - blast >=2.12.0
+  - pybedtools ==0.8.2
+  - numpy ==1.21.2
+  - samtools ==1.11
+source:
+  sha256: 092e5535feac5521ed13f939851ff8f5fc4c08d13b8cca50338fcce456f629de
+  url: https://pypi.io/packages/source/M/Magphi/Magphi-2.0.2.tar.gz
+test:
+  commands:
+  - Magphi --help
+  import:
+  - Magphi

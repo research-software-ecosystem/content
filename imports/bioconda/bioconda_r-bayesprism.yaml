@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/omnideconv/BayesPrism
+  license: GPL-3
+  license_family: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'BayesPrism: Bayesian cell type and gene expression deconvolution'
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - https://doi.org/10.1038/s43018-022-00356-3
+  recipe-maintainers:
+  - LorenzoMerotto
+package:
+  name: r-bayesprism
+  version: 0
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-roxygen2 >=6.0.1
+  - r-r.utils
+  - r-gplots
+  - bioconductor-scran
+  - bioconductor-biocparallel
+  - r-knitr
+  - r-snowfall
+  - r-nmf
+  run:
+  - r-base
+  - r-r.utils
+  - r-gplots
+  - bioconductor-scran
+  - bioconductor-biocparallel
+  - r-knitr
+  - r-snowfall
+  - r-nmf
+source:
+  sha256: 5fbb453d57706d39a88b186497d7a777fcc2e18bd36bff58ee3e7189a0c14599
+  url: https://github.com/omnideconv/BayesPrism/archive/refs/heads/master.zip
+test:
+  commands:
+  - $R -e "library('BayesPrism')"

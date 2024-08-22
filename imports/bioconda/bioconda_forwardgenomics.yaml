@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/hillerlab/ForwardGenomics
+  license: MIT license
+  license_file: LICENSE
+  summary: 'Forward Genomics is a framework to associate phenotypic differences between
+    species to differences in their genomes
+
+    '
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p $PREFIX/bin ; mv *.R $PREFIX/bin
+package:
+  name: forwardgenomics
+  version: 1.0
+requirements:
+  run:
+  - perl
+  - r-base
+  - r-caper
+  - r-isotone
+  - r-weights
+  - r-phangorn
+  - phast
+  - r-xtermstyle
+source:
+  sha256: ecec4ff84404621ec799104f3f8628b154af384dc6ace280e0762a748123ee61
+  url: https://github.com/hillerlab/ForwardGenomics/archive/refs/tags/1.0.tar.gz
+test:
+  commands:
+  - forwardGenomics.R  >  /dev/null 2>&1

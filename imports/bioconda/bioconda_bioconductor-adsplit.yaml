@@ -1,0 +1,56 @@
+about:
+  description: This package implements clustering of microarray gene expression profiles
+    according to functional annotations. For each term genes are annotated to, splits
+    into two subclasses are computed and a significance of the supporting gene set
+    is determined.
+  home: https://bioconductor.org/packages/3.18/bioc/html/adSplit.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Annotation-Driven Clustering
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-adsplit
+    path: recipes/bioconductor-adsplit
+    version: 1.50.0
+package:
+  name: bioconductor-adsplit
+  version: 1.72.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - r-base
+  - r-cluster >=1.9.1
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - r-base
+  - r-cluster >=1.9.1
+source:
+  md5: 4d50affb50e6f6a11d8c4e379b6116d8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/adSplit_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/adSplit/adSplit_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/adSplit_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-adsplit/bioconductor-adsplit_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('adSplit')"

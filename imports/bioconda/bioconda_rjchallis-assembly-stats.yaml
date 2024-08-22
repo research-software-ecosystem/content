@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/rjchallis/assembly-stats
+  license: MIT
+  license_family: MIT
+  summary: Assembly metric visualisations to facilitate rapid assessment and comparison
+    of assembly quality.
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.322347
+license_file: LICENSE
+package:
+  name: rjchallis-assembly-stats
+  version: 17.02
+requirements:
+  run:
+  - perl
+  - perl-json
+source:
+  sha256: 92dd9fb958873cdae153521a29e27ad16dd85402510e8c17ccc8987a9222f37d
+  url: https://github.com/rjchallis/assembly-stats/archive/refs/tags/17.02.tar.gz
+test:
+  commands:
+  - perl -e 'print ">test\n"; print "A" x 1000' | asm2stats.pl
+  - perl -e 'print ">test\n"; print "A" x 1000' | asm2stats.minmaxgc.pl

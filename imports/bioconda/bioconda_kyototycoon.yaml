@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/alticelabs/kyoto
+  license: GNU GPL v3.0
+  summary: a lightweight network server on top of the Kyoto Cabinet key-value database,
+    built for high-performance and concurrency
+build:
+  number: 4
+  skip: true
+package:
+  name: kyototycoon
+  version: '20170410'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - lzo
+  - zlib
+  - lua=5.1.5
+  - wget
+source:
+  patches:
+  - ktulog.patch
+  sha256: a19a2318718bf3d23e99aba747db4b04bed8cb50ae53fea806068c81e4cbfc63
+  url: https://github.com/alticelabs/kyoto/archive/refs/tags/stable-20170410.tar.gz
+test:
+  commands:
+  - kchashmgr version
+  - which ktserver

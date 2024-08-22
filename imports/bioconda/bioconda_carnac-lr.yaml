@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/kamimrcht/CARNAC-LR
+  license: GNU Affero General Public License
+  license_family: AGPL
+  license_file: License.txt
+  summary: Clustering coefficient-based Acquisition of RNA Communities in Long Read
+build:
+  number: 4
+package:
+  name: carnac-lr
+  version: 1.0.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  run:
+  - python >=3
+source:
+  patches:
+  - makefile.patch
+  - python_path.patch
+  sha256: 13601b79b01f83348a725edf5414d8b4916d21428f98ed335195ca6d446f7e8a
+  url: https://github.com/kamimrcht/CARNAC-LR/archive/1.0.0.tar.gz
+test:
+  commands:
+  - CARNAC-LR
+  - CARNAC_to_fasta
+  - CARNAC_to_fasta.py
+  - paf_to_CARNAC.py
+  files:
+  - test.input

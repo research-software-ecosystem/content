@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/hoelzer-lab/hypro.git
+  license: GPL
+  summary: Extend hypothetical prokka protein annotations using additional homology
+    searches against larger databases
+build:
+  noarch: python
+  number: 0
+  script: hypro-0.1/setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: hypro
+  version: 0.1
+requirements:
+  host:
+  - python 3.7*
+  - pip
+  - prokka >=1.14.6
+  run:
+  - python 3.7*
+  - mygene 3.1.0*
+  - pandas 0.25.2*
+  - mmseqs2 10.6d92c
+  - prokka >=1.14.6
+source:
+  folder: hypro-0.1
+  sha256: 55510113190bc3c1154e7a67f2046970dd34b4388e88e81936fa73737bc3879e
+  url: https://github.com/hoelzer-lab/hypro/archive/v0.1.tar.gz
+test:
+  commands:
+  - prokka --help
+  - hypro.py --help
+  source_files:
+  - hypro-0.1/scripts/hypro.py

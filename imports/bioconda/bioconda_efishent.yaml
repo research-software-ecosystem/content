@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/bbquercus/eFISHent/
+  license: MIT
+  license_family: MIT
+  summary: A tool to design RNA FISH oligos/probes
+build:
+  entry_points:
+  - efishent = eFISHent.cli:main
+  - eFISHent = eFISHent.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - BBQuercus
+package:
+  name: efishent
+  version: 0.0.5
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  run:
+  - biopython
+  - blast
+  - bowtie
+  - entrez-direct
+  - gtfparse
+  - jellyfish
+  - luigi
+  - matplotlib-base
+  - numpy
+  - pandas
+  - pyarrow
+  - pyomo
+  - python >=3.9
+  - rnastructure
+  - samtools
+  - tqdm
+  - pysam
+source:
+  sha256: 28d4bffc56257f263539fdcc27016a2a643cf1732f81b3b713580ea2ae17bae7
+  url: https://pypi.io/packages/source/e/eFISHent/eFISHent-0.0.5.tar.gz
+test:
+  commands:
+  - efishent --help
+  - eFISHent --help

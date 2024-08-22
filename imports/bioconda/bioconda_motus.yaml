@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/motu-tool/mOTUs
+  home: http://motu-tool.org/
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Marker gene-based OTU (mOTU) profiling
+build:
+  noarch: python
+  number: 0
+extra:
+  additional notes identifiers:
+  - biotools:motus
+  notes: A tiny wrapper to the command motus was added. See build.sh for
+  recipe-maintainers:
+  - AlessioMilanese
+package:
+  name: motus
+  version: 3.1.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - metasnv =1.0.3
+  - samtools >=1.9
+  - bwa >=0.7.17
+  - python >=3.8
+source:
+  sha256: d0ab3a89b23c5d93349d938aba5e08f025737f14b2daf37458d956f84306fff4
+  url: https://github.com/motu-tool/mOTUs/archive/3.1.0.tar.gz
+test:
+  commands:
+  - motus --version 2>&1 >/dev/null | { grep -i "downloaddb" ; echo $? ;}

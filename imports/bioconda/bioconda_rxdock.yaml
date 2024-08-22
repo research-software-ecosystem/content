@@ -1,0 +1,39 @@
+about:
+  dev_url: https://gitlab.com/rxdock/rxdock/
+  home: https://www.rxdock.org
+  license: LGPL-3.0
+  license_file: LICENSE.txt
+  summary: RxDock is a fork of rDock (GitLab), a fast, versatile and open-source program
+    for docking ligands to proteins and nucleic acids.
+build:
+  number: 2
+extra:
+  identifiers:
+  - usegalaxy-eu:rxdock_rbdock
+package:
+  name: rxdock
+  version: 2013.1.1_148c5bd1
+requirements:
+  build:
+  - meson
+  - None
+  - None
+  host:
+  - perl
+  run:
+  - numpy
+  - python
+  - perl
+  - openbabel
+source:
+  patches:
+  - rDock_fix_paths.patch
+  sha256: 1f81adbaaf3c20344ebc037dc62b6eecf4e45c3a6bd225573ed0e25582cc9a06
+  url: https://gitlab.com/rxdock/rxdock/-/archive/master/rxdock-148c5bd172cf669fd1ad1090052169261bec79b4.tar.gz
+test:
+  commands:
+  - rbcavity --help
+  - rbdock --help
+  - sdrmsd --help
+  - sdsort -h
+  - sdmodify

@@ -1,0 +1,26 @@
+about:
+  home: http://github.com/mjsull/chromatiblock/
+  license: GPL-3.0-only
+  license_file: LICENSE.md
+  summary: Scalable, whole-genome visualisation of structural changes in prokaryotes.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: chromatiblock
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.6
+  run:
+  - python >=3.6
+  - Sibelia
+  - blast >=2.2
+  - cairosvg
+source:
+  sha256: 10193f537c3d2daaa3dc5a2e9ae167fc80b25f97e3ae09438b287a37cec816e6
+  url: https://github.com/mjsull/chromatiblock/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - chromatiblock -h

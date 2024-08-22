@@ -1,0 +1,31 @@
+about:
+  home: http://smithlabresearch.org/software/piranha/
+  license: GNU General Public License v3 (GPLv3)
+  summary: Piranha is a peak-caller for CLIP- and RIP-Seq data.
+build:
+  number: 11
+  skip: true
+package:
+  name: piranha
+  version: 1.2.1
+requirements:
+  build:
+  - make
+  - autoconf
+  - None
+  host:
+  - gawk
+  - python
+  - bamtools
+  - gsl
+  run:
+  - bamtools
+  - gsl
+source:
+  md5: 4ca70055b54ae0212d2b3641aafcb976
+  patches:
+  - 0001-Fix-bamtools-check.patch
+  url: http://smithlabresearch.org/downloads/piranha-1.2.1.tar.gz
+test:
+  commands:
+  - Piranha 2>&1 | grep "^Usage"

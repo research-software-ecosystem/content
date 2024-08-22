@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/rrwick/Rebaler
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Reference-based long read assemblies of bacterial genomes
+build:
+  noarch: python
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: rebaler
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - biopython
+  - racon >=1.4.12
+  - minimap2
+source:
+  patches:
+  - patch
+  sha256: 28a0670aa0bc01ea066de9db7a37413c06b8f336bda62a131661cc0768ec276b
+  url: https://github.com/rrwick/Rebaler/archive/v0.2.0.tar.gz
+test:
+  commands:
+  - rebaler --help

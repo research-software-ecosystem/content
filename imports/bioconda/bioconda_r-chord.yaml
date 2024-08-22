@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/UMCUGenetics/CHORD
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: Predict HRD using somatic mutations contexts
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: r-chord
+  version: '2.03'
+requirements:
+  host:
+  - r-base
+  - r-mutsigextractor ==1.14
+  - r-randomforest
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
+  run:
+  - r-base
+  - r-mutsigextractor ==1.14
+  - r-randomforest
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
+source:
+  sha256: def578e8e3764231d0711d0fb2542862c064fe9e355fbc6c5b61da153f50e7bc
+  url: https://github.com/UMCUGenetics/CHORD/archive/refs/tags/2.03.tar.gz
+test:
+  commands:
+  - $R -e "library('CHORD')"

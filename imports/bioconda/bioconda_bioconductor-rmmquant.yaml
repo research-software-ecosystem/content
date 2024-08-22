@@ -1,0 +1,66 @@
+about:
+  description: RNA-Seq is currently used routinely, and it provides accurate information
+    on gene transcription. However, the method cannot accurately estimate duplicated
+    genes expression. Several strategies have been previously used, but all of them
+    provide biased results. With Rmmquant, if a read maps at different positions,
+    the tool detects that the corresponding genes are duplicated; it merges the genes
+    and creates a merged gene. The counts of ambiguous reads is then based on the
+    input genes and the merged genes. Rmmquant is a drop-in replacement of the widely
+    used tools findOverlaps and featureCounts that handles multi-mapping reads in
+    an unabiased way.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Rmmquant.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: RNA-Seq multi-mapping Reads Quantification Tool
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-rmmquant
+  version: 1.20.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-apeglm >=1.24.0,<1.25.0
+  - bioconductor-biocstyle >=2.30.0,<2.31.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-org.mm.eg.db >=3.18.0,<3.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tbx20bamsubset >=1.38.0,<1.39.0
+  - bioconductor-txdb.mmusculus.ucsc.mm9.knowngene >=3.2.0,<3.3.0
+  - r-base
+  - r-devtools
+  - r-rcpp >=0.12.8
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-apeglm >=1.24.0,<1.25.0
+  - bioconductor-biocstyle >=2.30.0,<2.31.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-org.mm.eg.db >=3.18.0,<3.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tbx20bamsubset >=1.38.0,<1.39.0
+  - bioconductor-txdb.mmusculus.ucsc.mm9.knowngene >=3.2.0,<3.3.0
+  - r-base
+  - r-devtools
+  - r-rcpp >=0.12.8
+source:
+  md5: 8f12574d12fdfbb3ef7407666fb22a7b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rmmquant_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rmmquant/Rmmquant_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rmmquant_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rmmquant/bioconductor-rmmquant_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rmmquant')"

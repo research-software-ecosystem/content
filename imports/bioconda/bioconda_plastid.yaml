@@ -1,0 +1,67 @@
+about:
+  home: http://plastid.readthedocs.io/en/latest/
+  license: BSD 3-Clause
+  summary: plastid is a Python library for genomic analysis -- in particular, high-throughput
+    sequencing data
+build:
+  number: 2
+  skip: true
+extra:
+  skip-lints:
+  - cython_must_be_in_host
+package:
+  name: plastid
+  version: 0.6.1
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - cython >=0.22.0
+  - setuptools
+  - numpy >=1.9.4,<=1.23.5
+  - pysam >=0.8.4
+  - termcolor
+  - scipy >=0.15.1
+  - pandas >=0.17.0
+  - matplotlib-base >=1.4.0
+  - biopython >=1.64,<1.78
+  - twobitreader >=3.0.0
+  - zlib
+  - openssl
+  - htslib
+  run:
+  - python
+  - numpy <=1.23.5
+  - None
+  - setuptools
+  - cython >=0.22.0
+  - termcolor
+  - scipy >=0.15.1
+  - pandas >=0.17.0
+  - matplotlib-base >=1.4.0
+  - biopython >=1.64,<1.78
+  - twobitreader >=3.0.0
+  - zlib
+  - bowtie
+  - fastx_toolkit
+  - htslib
+source:
+  sha256: 7a63f8a3b760e9c91e7c6d95ff781d9a8f2f967d705fcd8555ebb1e6d3b08b7b
+  url: https://files.pythonhosted.org/packages/source/p/plastid/plastid-0.6.1.tar.gz
+test:
+  commands:
+  - counts_in_region -h
+  - cs -h
+  - get_count_vectors -h
+  - make_wiggle -h
+  - metagene -h
+  - phase_by_size -h
+  - psite -h
+  - crossmap -h
+  - gff_parent_types -h
+  - reformat_transcripts -h
+  - findjuncs -h
+  - slidejuncs -h
+  imports:
+  - plastid

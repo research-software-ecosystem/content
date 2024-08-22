@@ -1,0 +1,60 @@
+about:
+  description: "The RNAseqCovarImpute package implements multiple imputation of missing\
+    \ covariates and differential gene expression analysis by: 1) Randomly binning\
+    \ genes into smaller groups, 2) Creating M imputed datasets separately within\
+    \ each bin, where the imputation predictor matrix includes all covariates and\
+    \ the log counts per million (CPM) for the genes within each bin, 3) Estimating\
+    \ gene expression changes using voom followed by lmFit functions, separately on\
+    \ each M imputed dataset within each gene bin, 4) Un-binning the gene sets and\
+    \ stacking the M sets of model results before applying the squeezeVar function\
+    \ to apply a variance shrinking Bayesian procedure to each M set of model results,\
+    \ 5) Pooling the results with Rubins\u2019 rules to produce combined coefficients,\
+    \ standard errors, and P-values, and 6) Adjusting P-values for multiplicity to\
+    \ account for false discovery rate (FDR)."
+  home: https://bioconductor.org/packages/3.18/bioc/html/RNAseqCovarImpute.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Impute Covariate Data in RNA Sequencing Studies
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-rnaseqcovarimpute
+  version: 1.0.2
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-magrittr
+  - r-mice
+  - r-rlang
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-magrittr
+  - r-mice
+  - r-rlang
+source:
+  md5: 17d14273ae359562d3f0cbf1c45b10a7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RNAseqCovarImpute_1.0.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RNAseqCovarImpute/RNAseqCovarImpute_1.0.2.tar.gz
+  - https://bioarchive.galaxyproject.org/RNAseqCovarImpute_1.0.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rnaseqcovarimpute/bioconductor-rnaseqcovarimpute_1.0.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RNAseqCovarImpute')"

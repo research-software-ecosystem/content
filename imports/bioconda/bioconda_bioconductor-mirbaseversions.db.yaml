@@ -1,0 +1,46 @@
+about:
+  description: Annotation package containing all available miRNA names from 22 versions
+    (data from http://www.mirbase.org/).
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/miRBaseVersions.db.html
+  license: Artistic-2.0
+  summary: Collection of mature miRNA names of 22 different miRBase release versions
+build:
+  noarch: generic
+  number: 13
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-mirbaseversions.db
+    path: recipes/bioconductor-mirbaseversions.db
+    version: 1.1.0
+package:
+  name: bioconductor-mirbaseversions.db
+  version: 1.1.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - r-dbi
+  - r-gtools
+  - r-rsqlite
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - r-dbi
+  - r-gtools
+  - r-rsqlite
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 9944ab7a474f84a40100c56298f9cb77
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/miRBaseVersions.db_1.1.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/miRBaseVersions.db/miRBaseVersions.db_1.1.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRBaseVersions.db_1.1.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirbaseversions.db/bioconductor-mirbaseversions.db_1.1.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('miRBaseVersions.db')"

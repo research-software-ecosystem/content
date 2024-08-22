@@ -1,0 +1,50 @@
+about:
+  description: The BioPlex package implements access to the BioPlex protein-protein
+    interaction networks and related resources from within R. Besides protein-protein
+    interaction networks for HEK293 and HCT116 cells, this includes access to CORUM
+    protein complex data, and transcriptome and proteome data for the two cell lines.
+    Functionality focuses on importing the various data resources and storing them
+    in dedicated Bioconductor data structures, as a foundation for integrative downstream
+    analysis of the data.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/BioPlex.html
+  license: Artistic-2.0
+  summary: R-side access to BioPlex protein-protein interaction data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-bioplex
+  version: 1.8.0
+requirements:
+  host:
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-geoquery >=2.70.0,<2.71.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-geoquery >=2.70.0,<2.71.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 77e38da3b194e7776fa7007a2cef42bf
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/BioPlex_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BioPlex/BioPlex_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BioPlex_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bioplex/bioconductor-bioplex_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BioPlex')"

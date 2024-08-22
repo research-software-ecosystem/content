@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/BackofenLab/RNAProt
+  license: MIT
+  license_file: LICENSE
+  summary: Modelling RBP binding preferences to predict RPB binding sites
+build:
+  noarch: python
+  number: 1
+  script: $PYTHON -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - michauhl
+package:
+  name: rnaprot
+  version: 0.5
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - pytorch >=1.8
+  - seaborn
+  - viennarna
+  - bedtools
+  - logomaker
+  - hpbandster
+  - markdown <=3.2.2
+  - plotly
+  - scikit-learn
+  - ushuffle
+  - ucsc-twobittofa
+  - ucsc-twobitinfo
+  - ucsc-bigwigaverageoverbed
+source:
+  sha256: 1e3a349126cf495757bbe4c672c3943e10acd3472686775e7141f28bccf96afd
+  url: https://github.com/BackofenLab/RNAProt/archive/v0.5.tar.gz
+test:
+  commands:
+  - rnaprot -h

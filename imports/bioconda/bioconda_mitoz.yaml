@@ -1,0 +1,71 @@
+about:
+  home: https://github.com/linzhi2013/MitoZ
+  license: GPLv3
+  license_file: LICENSE
+  summary: 'MitoZ: A toolkit for assembly, annotation, and visualization of animal
+    mitochondrial genomes'
+build:
+  entry_points:
+  - mitoz = mitoz.MitoZ:main
+  - mitoz-tools = mitoz.tools:main
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  maintainers:
+  - linzhi2013
+package:
+  name: mitoz
+  version: 3.6
+requirements:
+  host:
+  - python >=3.6,<3.9
+  - pip
+  run:
+  - biopython
+  - blast
+  - bs4
+  - bwa
+  - circos =0.69
+  - coreutils
+  - ete3 >=3.1.2
+  - fastp
+  - hmmer =3.1b2
+  - html5lib
+  - infernal =1.1.1
+  - libgd
+  - megahit
+  - openjdk
+  - perl-app-cpanminus
+  - perl-bioperl
+  - perl-clone
+  - perl-config-general
+  - perl-encode-locale
+  - perl-list-moreutils
+  - perl-math-bezier
+  - perl-math-round
+  - perl-math-vecstat
+  - perl-params-validate
+  - perl-set-intspan
+  - perl-statistics-basic
+  - perl-statistics-descriptive
+  - perl =5.32
+  - pkgconfig
+  - python >=3.6,<3.9
+  - requests
+  - samtools
+  - seqkit
+  - spades >=3.15.2
+  - spades >=3.15.4
+  - tbl2asn
+  - tiara
+  - wise2
+source:
+  sha256: e6b815b569fb259480ea57bc73105f174666393c798dbfc08255db544a0b5979
+  url: https://github.com/linzhi2013/MitoZ/releases/download/3.6/mitoz-3.6.tar.gz
+test:
+  commands:
+  - mitoz --version
+  - mitoz-tools --version
+  imports:
+  - mitoz

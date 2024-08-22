@@ -1,0 +1,38 @@
+about:
+  home: https://www.poseidon-adna.org/#/
+  license: MIT
+  summary: A tool (trident) to work with modular genotype databases formatted using
+    Poseidon.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p $PREFIX/bin
+  - mv trident* $PREFIX/bin/trident
+  - chmod u+x $PREFIX/bin/trident
+extra:
+  additional-platforms:
+  - osx-arm64
+package:
+  name: poseidon-trident
+  version: 1.5.4.0
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - gmp
+  run:
+  - zlib
+  - gmp
+source:
+- md5: 626dc6fde74f532e505bdded4742886f
+  url: https://github.com/poseidon-framework/poseidon-hs/releases/download/v1.5.4.0/trident-conda-linux
+- md5: 88fc51b50a17cf3c05e66f0a4e701d03
+  url: https://github.com/poseidon-framework/poseidon-hs/releases/download/v1.5.4.0/trident-macOS-X64
+- md5: 0cc0186736b8a3d380e23bfa242f9a98
+  url: https://github.com/poseidon-framework/poseidon-hs/releases/download/v1.5.4.0/trident-macOS-ARM64
+test:
+  commands:
+  - trident --version

@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/BjornFJohansson/pydna
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: Representing double stranded DNA and functions for simulating cloning and
+    homologous recombination between DNA molecules.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --ignore-installed -vv
+  script_env:
+  - POETRY_DYNAMIC_VERSIONING_BYPASS=5.2.0
+package:
+  name: pydna
+  version: 5.2.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - poetry
+  - poetry-dynamic-versioning
+  run:
+  - python >=3.8
+  - appdirs >=1.4.4
+  - biopython >=1.80
+  - networkx >=2.8.8
+  - prettytable >=3.5.0
+  - pyperclip >=1.8.2
+  - pyfiglet >=0.8.post1
+  - pyparsing >=2.4.7
+  - requests >=2.26.0
+source:
+  sha256: 24e89cc71c77c727c3681da8fe889fb65f243766db63fb17f67a8a6280fde313
+  url: https://github.com/BjornFJohansson/pydna/archive/v5.2.0.tar.gz
+test:
+  imports:
+  - pydna

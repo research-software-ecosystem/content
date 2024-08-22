@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/grp-bork/gunc
+  doc_url: https://grp-bork.embl-community.io/gunc/
+  home: https://github.com/grp-bork/gunc
+  license: GNU General Public v3 or later (GPLv3+)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Python package for detection of chimerism and contamination in prokaryotic
+    genomes.
+build:
+  entry_points:
+  - gunc = gunc.gunc:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv --ignore-installed --no-deps'
+extra:
+  recipe-maintainers:
+  - fullama
+package:
+  name: gunc
+  version: 1.0.6
+requirements:
+  host:
+  - pip
+  - python >=3.6,<3.12
+  run:
+  - prodigal
+  - diamond 2.0.4
+  - numpy
+  - pandas
+  - python >=3.6
+  - scipy
+  - requests >=2.22.0
+  - plotly
+source:
+  sha256: 6c8d6ffc658d130e59b39709da521fc5689c85ad84f4ec6d381dda5efbb16475
+  url: https://pypi.io/packages/source/g/gunc/gunc-1.0.6.tar.gz
+test:
+  commands:
+  - gunc --help
+  imports:
+  - gunc
+  - gunc.tests

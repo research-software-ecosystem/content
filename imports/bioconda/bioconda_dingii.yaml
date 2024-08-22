@@ -1,0 +1,40 @@
+about:
+  dev_url: https://gitlab.ub.uni-bielefeld.de/gi/dingiiofficial
+  doc_url: https://gitlab.ub.uni-bielefeld.de/gi/dingiiofficial/-/blob/main/README.md
+  home: https://gitlab.ub.uni-bielefeld.de/gi/dingiiofficial
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Computing the Rearrangement Distance of Natural Genomes.
+build:
+  entry_points:
+  - dingII = dingII.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.48550/arXiv.2001.02139
+  recipe-maintainers:
+  - leobkmer
+package:
+  name: dingii
+  version: 0.0.1
+requirements:
+  host:
+  - python >=3.8
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8
+  - networkx >=3.1
+source:
+  sha256: 60a35ad2b5cf04b50ac0723d3841e903b23e7dbe071f483ebe0afb1192106140
+  url: https://github.com/Danderson123/dingii/archive/v0.0.1.tar.gz
+test:
+  commands:
+  - dingII --help
+  imports:
+  - dingII

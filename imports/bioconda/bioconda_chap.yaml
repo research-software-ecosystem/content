@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/channotation/chap
+  license: MIT
+  license_file: LICENSE.TXT
+  summary: CHAP is a tool for the functional annotation of ion channel structures
+build:
+  number: 3
+  skip: true
+package:
+  name: chap
+  version: 0.9.1
+requirements:
+  build:
+  - make
+  - None
+  - cmake >=3.2
+  host:
+  - boost-cpp
+  - libcblas=3.8.0=8_*_netlib
+  - liblapacke=3.8.0=8_*_netlib
+  - gromacs=2018.6
+  - rapidjson
+  - intel-compute-runtime
+  run:
+  - boost-cpp
+  - libcblas=3.8.0=8_*_netlib
+  - liblapacke=3.8.0=8_*_netlib
+  - gromacs=2018.6
+  - rapidjson
+  - intel-compute-runtime
+source:
+  patches:
+  - patch
+  sha256: d9dab03ab89d14faa8300fc71cc5d3e3f89ca63435acb666bfae9e7ed51cd718
+  url: https://github.com/channotation/chap/archive/version_0_9_1.tar.gz
+test:
+  commands:
+  - chap -h

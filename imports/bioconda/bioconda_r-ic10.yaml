@@ -1,0 +1,41 @@
+about:
+  home: https://CRAN.R-project.org/package=iC10
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Implementation of the classifier described in the paper 'Genome-driven
+    integrated classification of breast cancer validated in over 7,500 samples' (Ali
+    HR et al., Genome Biology 2014). It uses copy number and/or expression form breast
+    cancer data, trains a pamr classifier (Tibshirani et al.) with the features available
+    and predicts the iC10 group.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  script: ${R} CMD INSTALL --build . ${R_ARGS}
+package:
+  name: r-ic10
+  version: 2.0.2
+requirements:
+  host:
+  - r-base
+  - bioconductor-impute
+  - r-ic10trainingdata
+  - r-pamr
+  run:
+  - r-base
+  - bioconductor-impute
+  - r-ic10trainingdata
+  - r-pamr
+source:
+  sha256: 8c417097765b74576aad6a4dfa30917910dc06a05e858f6a6080574c109c1b32
+  url:
+  - /src/contrib/iC10_2.0.2.tar.gz
+  - /src/contrib/Archive/iC10/iC10_2.0.2.tar.gz
+test:
+  commands:
+  - $R -e "library('iC10')"

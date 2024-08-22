@@ -1,0 +1,62 @@
+about:
+  description: scRecover is an R package for imputation of single-cell RNA-seq (scRNA-seq)
+    data. It will detect and impute dropout values in a scRNA-seq raw read counts
+    matrix while keeping the real zeros unchanged, since there are both dropout zeros
+    and real zeros in scRNA-seq data. By combination with scImpute, SAVER and MAGIC,
+    scRecover not only detects dropout and real zeros at higher accuracy, but also
+    improve the downstream clustering and visualization results.
+  home: https://bioconductor.org/packages/3.18/bioc/html/scRecover.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: scRecover for imputation of single-cell RNA-seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-screcover
+  version: 1.18.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-bbmle >=1.0.18
+  - r-doparallel
+  - r-foreach
+  - r-gamlss >=4.4-0
+  - r-kernlab
+  - r-mass >=7.3-45
+  - r-matrix >=1.2-14
+  - r-penalized
+  - r-preseqr >=4.0.0
+  - r-pscl >=1.4.9
+  - r-rsvd
+  - r-saver >=1.1.1
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-bbmle >=1.0.18
+  - r-doparallel
+  - r-foreach
+  - r-gamlss >=4.4-0
+  - r-kernlab
+  - r-mass >=7.3-45
+  - r-matrix >=1.2-14
+  - r-penalized
+  - r-preseqr >=4.0.0
+  - r-pscl >=1.4.9
+  - r-rsvd
+  - r-saver >=1.1.1
+source:
+  md5: ebdc203b50818397a1856fdce417f10e
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/scRecover_1.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/scRecover/scRecover_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scRecover_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-screcover/bioconductor-screcover_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('scRecover')"

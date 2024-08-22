@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/linzhi2013/msaconverter
+  license: GNU General Public v3 or later (GPLv3+)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: To convert multiple alignment alignments (MSA) into different formats
+build:
+  entry_points:
+  - msaconverter=msaconverter.msaconverter:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - linzhi2013
+package:
+  name: msaconverter
+  version: 0.0.4
+requirements:
+  host:
+  - pip
+  - python >=2.7.15
+  run:
+  - biopython >=1.54
+  - python >=2.7.15
+source:
+  sha256: ee1bdf2cf4a8e51c7aaf15fb11c76bff23db760dbee9f22f856307565d0b58ac
+  url: https://pypi.io/packages/source/m/msaconverter/msaconverter-0.0.4.tar.gz
+test:
+  commands:
+  - msaconverter --help
+  imports:
+  - msaconverter

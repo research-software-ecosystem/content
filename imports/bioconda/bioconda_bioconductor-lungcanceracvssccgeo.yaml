@@ -1,0 +1,43 @@
+about:
+  description: This package contains 30 Affymetrix CEL files for 7 Adenocarcinoma
+    (AC) and 8 Squamous cell carcinoma (SCC) lung cancer samples taken at random from
+    3 GEO datasets (GSE10245, GSE18842 and GSE2109) and other 15 samples from a dataset
+    produced by the organizers of the IMPROVER Diagnostic Signature Challenge available
+    from GEO (GSE43580).
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/LungCancerACvsSCCGEO.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: A lung cancer dataset that can be used with maPredictDSC package for developing
+    outcome prediction models from Affymetrix CEL files.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-lungcanceracvssccgeo
+    path: recipes/bioconductor-lungcanceracvssccgeo
+    version: 1.16.0
+package:
+  name: bioconductor-lungcanceracvssccgeo
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: f353aa0cc36dc25e67cdf1ba0738985e
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/LungCancerACvsSCCGEO_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/LungCancerACvsSCCGEO/LungCancerACvsSCCGEO_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/LungCancerACvsSCCGEO_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lungcanceracvssccgeo/bioconductor-lungcanceracvssccgeo_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('LungCancerACvsSCCGEO')"

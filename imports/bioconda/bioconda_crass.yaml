@@ -1,0 +1,35 @@
+about:
+  home: https://mummer4.github.io/
+  license: GNU General Public License v3.0
+  summary: Crass (The CRISPR Assembler) is a program that searches through raw metagenomic
+    reads for Clustered Regularly Interspersed Short Palindromic Repeats
+build:
+  number: 5
+  skip: true
+package:
+  name: crass
+  version: 1.0.1
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - autoconf >=2.61
+  - automake >=1.10
+  host:
+  - libtool >=2.2
+  - zlib
+  - xerces-c =3.1
+  run:
+  - libtool >=2.2
+  - xerces-c =3.1
+  - zlib
+source:
+  patches:
+  - patch
+  sha256: 7078bcccb7a16bf4f2e54590f25d85f36d27d1bbaa9f2c484d4eaa81a5ead930
+  url: https://github.com/ctSkennerton/crass/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - crass -h 2>&1 | grep crass &> /dev/null
+  - crass --version 2>&1 | grep crass &> /dev/null

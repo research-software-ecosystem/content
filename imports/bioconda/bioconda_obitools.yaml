@@ -1,0 +1,68 @@
+about:
+  home: http://metabarcoding.org/obitools
+  license: CeCILL-V2
+  summary: The OBITools package is a set of programs specifically designed for analyzing
+    NGS data in a DNA metabarcoding context, taking into account taxonomic information
+build:
+  number: 4
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: obitools
+  version: 1.2.13
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - cython >=0.24
+  - setuptools
+  - sphinx >=1.2.0
+  - virtualenv >=1.11.0
+  - wheel >=0.24.0
+  run:
+  - python
+  - ipython >=3.0.0,<6.0
+  - xorg-libx11
+  - xorg-libxau
+source:
+  patches:
+  - extractreads.patch
+  - extractreads2.patch
+  sha256: efc7b583a44f435f0663f9d67759a0e3d415ba1896e6132198cb135e35c34873
+  url: https://pypi.io/packages/source/O/OBITools/OBITools-1.2.13.tar.gz
+test:
+  commands:
+  - ali2consensus -h
+  - ecodbtaxstat -h
+  - ecotag -h
+  - ecotaxspecificity -h
+  - ecotaxstat -h
+  - illuminapairedend -h
+  - ngsfilter -h
+  - obiaddtaxids -h
+  - obiannotate -h
+  - obiclean -h
+  - obicomplement -h
+  - obiconvert -h
+  - obicount -h
+  - obicut -h
+  - obidistribute -h
+  - obiextract -h
+  - obigrep -h
+  - obihead -h
+  - obijoinpairedend -h
+  - obipr2 -h
+  - obisample -h
+  - obiselect -h
+  - obisilva -h
+  - obisort -h
+  - obisplit -h
+  - obistat -h
+  - obisubset -h
+  - obitab -h
+  - obitail -h
+  - obitaxonomy -h
+  - obiuniq -h
+  - oligotag -h

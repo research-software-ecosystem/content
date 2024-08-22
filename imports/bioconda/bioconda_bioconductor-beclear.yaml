@@ -1,0 +1,66 @@
+about:
+  description: Provides functions to detect and correct for batch effects in DNA methylation
+    data. The core function is based on latent factor models and can also be used
+    to predict missing values in any other matrix containing real numbers.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BEclear.html
+  license: GPL-3.0-only
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Correction of batch effects in DNA methylation data
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:beclear
+  - doi:10.1371/journal.pone.0159921
+  parent_recipe:
+    name: bioconductor-beclear
+    path: recipes/bioconductor-beclear
+    version: 1.12.1
+package:
+  name: bioconductor-beclear
+  version: 2.18.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-abind
+  - r-base
+  - r-data.table >=1.11.8
+  - r-dixontest
+  - r-futile.logger
+  - r-ids
+  - r-matrix
+  - r-rcpp
+  - r-rdpack
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-abind
+  - r-base
+  - r-data.table >=1.11.8
+  - r-dixontest
+  - r-futile.logger
+  - r-ids
+  - r-matrix
+  - r-rcpp
+  - r-rdpack
+source:
+  md5: bd34703e5a35dfc888f0029395df2c80
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BEclear_2.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BEclear/BEclear_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BEclear_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-beclear/bioconductor-beclear_2.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BEclear')"

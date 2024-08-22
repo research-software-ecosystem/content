@@ -1,0 +1,39 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: Convert a bedGraph file to bigWig format.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-bedgraphtobigwig
+  version: '455'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - openssl
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - openssl
+source:
+  patches:
+  - include.patch
+  - patch1.patch
+  sha256: e458cadad7c4a5c1b8385edafffa1b29380ac725a0c20535bf5a3bab99fe80db
+  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v455.src.tgz
+test:
+  commands:
+  - which bedGraphToBigWig

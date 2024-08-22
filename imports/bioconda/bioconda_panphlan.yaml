@@ -1,0 +1,35 @@
+about:
+  dev_url: http://github.com/SegataLab/panphlan/
+  home: http://github.com/SegataLab/panphlan/
+  license: MIT
+  license_family: MIT
+  license_file: license.txt
+  summary: PanPhlAn is a strain-level metagenomic profiling tool for identifying the
+    gene composition and *in-vivo* transcriptional activity of individual strains
+    in metagenomic samples.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+package:
+  name: panphlan
+  version: '3.1'
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - bowtie2 >=2.3.0
+  - samtools >=1.9
+  - numpy
+  - pandas
+  - scipy
+source:
+  sha256: 09bfba7842d27318714e42e75276bf852cee870696bf9c208ed8cebd957b3870
+  url: https://github.com/SegataLab/panphlan/archive/3.1.tar.gz
+test:
+  commands:
+  - panphlan_download_pangenome.py --help
+  - panphlan_map.py --help
+  - panphlan_profiling.py --help

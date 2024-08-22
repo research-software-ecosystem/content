@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/cov-ert/datafunk
+  license: MIT
+  license_family: MIT
+  summary: Miscellaneous data manipulation tools for fasta and sam files
+build:
+  entry_points:
+  - datafunk = datafunk.__main__:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: datafunk
+  version: 0.1.0
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - biopython >=1.70
+  - pandas >=0.25.0
+  - pycountry >=19.8.18
+  - pysam >=0.15.4
+  - datapackage
+  - epiweeks
+  - unidecode
+source:
+  sha256: ab822f324aa8b58468ccd59b513aad2db9b53b1a87c926454a96f29cb378ed72
+  url: https://github.com/cov-ert/datafunk/archive/v0.1.0.tar.gz
+test:
+  commands:
+  - datafunk --help

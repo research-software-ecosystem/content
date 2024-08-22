@@ -1,0 +1,28 @@
+about:
+  home: http://transposonpsi.sourceforge.net/
+  license: artistic-2.0
+  summary: TransposonPSI is an analysis tool to identify protein or nucleic acid sequence
+    homology to proteins encoded by diverse families of transposable elements.
+build:
+  noarch: generic
+  number: 3
+package:
+  name: transposonpsi
+  version: 1.0.0
+requirements:
+  host: null
+  run:
+  - perl >=5.8
+  - perl-bioperl >=1.7.2
+  - blast-legacy =2.2.26
+source:
+  sha256: 9ea02dc62f1a37137d0b458e41d3832baf25d83c06471e3150699d8a515236df
+  url: https://github.com/NBISweden/TransposonPSI/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - transposonPSI.pl 2>&1 | grep -i usage
+  - 'cd "${PREFIX}/share/transposonPSI/test"
+
+    ./runMe.sh
+
+    '

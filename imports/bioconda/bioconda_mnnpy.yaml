@@ -1,0 +1,41 @@
+about:
+  home: http://github.com/chriscainx/mnnpy
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Mutual nearest neighbors correction in python.
+build:
+  number: 9
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  recipe-maintainers:
+  - pinin4fjords
+package:
+  name: mnnpy
+  version: 0.1.9.5
+requirements:
+  build:
+  - None
+  - llvm-openmp
+  - libgomp
+  host:
+  - cython
+  - pip
+  - python
+  run:
+  - anndata
+  - numba
+  - numpy
+  - pandas
+  - python
+  - scipy <1.9.0
+source:
+  patches:
+  - 0001-Fix-missing-forceobj-for-numba.jit.patch
+  sha256: 41cdafaf21392144b683d7acf99f7a1fc59085f9b3697cd6ace57f40dddace9c
+  url: https://pypi.io/packages/source/m/mnnpy/mnnpy-0.1.9.5.tar.gz
+test:
+  imports:
+  - mnnpy

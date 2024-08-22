@@ -1,0 +1,40 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/CFSAN-Biostatistics/snp-mutator
+  license: BSD
+  license_family: BSD
+  license_file: null
+  summary: Generate mutated sequence files from a reference genome.
+build:
+  entry_points:
+  - snpmutator = snpmutator.script:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+extra:
+  recipe-maintainers:
+  - mbhall88
+package:
+  name: snp-mutator
+  version: 1.2.0
+requirements:
+  host:
+  - biopython
+  - numpy
+  - pip
+  - python
+  run:
+  - biopython
+  - numpy
+  - python
+source:
+  sha256: ddf14bb955d6863a24c4a25700f51c3a76067a4f68843cfb4d0caa0c97b1c91e
+  url: https://pypi.io/packages/source/s/snp-mutator/snp-mutator-1.2.0.tar.gz
+test:
+  commands:
+  - snpmutator --help
+  imports:
+  - snpmutator
+  requires:
+  - testfixtures

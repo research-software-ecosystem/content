@@ -1,0 +1,38 @@
+about:
+  doc_url: https://github.com/cokelaer/biosniff
+  home: http://github.com/cokelaer/biosniff/
+  license: BSD 3-clause
+  license_family: BSD
+  summary: A Sniffer for Biological formats
+build:
+  entry_points:
+  - biosniff=biosniff.main:sniffer
+  noarch: python
+  number: 0
+  preserve_egg_dir: true
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - cokelaer
+package:
+  name: biosniff
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - click
+  - pysam
+  - pandas
+  - pyyaml
+  - colorlog
+source:
+  sha256: 6e1a7c7343b6a99722449c99bf99c6eb5c82d51a582f25a7afcd7ea5e401d244
+  url: https://pypi.io/packages/source/b/biosniff/biosniff-1.0.0.tar.gz
+test:
+  commands:
+  - biosniff --version > /dev/null
+  - biosniff --help
+  imports:
+  - biosniff

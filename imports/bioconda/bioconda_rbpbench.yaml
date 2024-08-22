@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/michauhl/RBPBench
+  license: MIT
+  license_file: LICENSE
+  summary: Evaluate CLIP-seq and other genomic region data using a comprehensive collection
+    of known RBP binding motifs
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: $PYTHON -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: rbpbench
+  version: 0.9
+requirements:
+  host:
+  - python <3.12
+  - pip
+  run:
+  - python <3.12
+  - logomaker
+  - markdown
+  - meme >=5.0
+  - scipy
+  - plotly
+  - textdistance
+  - venn
+  - matplotlib-venn
+  - infernal
+  - bedtools
+  - upsetplot >=0.9
+  - packaging
+  - scikit-learn
+source:
+  sha256: 247b9e0cabe5e4bd454653dbc1bfd0337b381b1e8d595bdd6d409b5693a57bda
+  url: https://github.com/michauhl/RBPBench/archive/v0.9.tar.gz
+test:
+  commands:
+  - rbpbench -h

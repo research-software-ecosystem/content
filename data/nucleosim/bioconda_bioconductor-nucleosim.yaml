@@ -1,0 +1,47 @@
+about:
+  description: "This package can generate a synthetic map with reads covering the\
+    \ nucleosome regions as well as a synthetic map with forward and reverse reads\
+    \ emulating next-generation sequencing. The synthetic hybridization data of \u201C\
+    Tiling Arrays\u201D can also be generated. The user has choice between three different\
+    \ distributions for the read positioning: Normal, Student and Uniform. In addition,\
+    \ a visualization tool is provided to explore the synthetic nucleosome maps."
+  home: https://bioconductor.org/packages/3.18/bioc/html/nucleoSim.html
+  license: Artistic-2.0
+  summary: Generate synthetic nucleosome maps
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:nucleosim
+  - doi:10.1515/sagmb-2014-0098
+  parent_recipe:
+    name: bioconductor-nucleosim
+    path: recipes/bioconductor-nucleosim
+    version: 1.8.0
+package:
+  name: bioconductor-nucleosim
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: b1b994c654ce500e414a8a7caea5162f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/nucleoSim_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/nucleoSim/nucleoSim_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nucleoSim_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nucleosim/bioconductor-nucleosim_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('nucleoSim')"

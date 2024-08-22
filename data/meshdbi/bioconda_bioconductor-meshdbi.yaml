@@ -1,0 +1,45 @@
+about:
+  description: The package is unified implementation of MeSH.db, MeSH.AOR.db, and
+    MeSH.PCR.db and also is interface to construct Gene-MeSH package (MeSH.XXX.eg.db).
+    loadMeSHDbiPkg import sqlite file and generate MeSH.XXX.eg.db.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MeSHDbi.html
+  license: Artistic-2.0
+  summary: DBI to construct MeSH-related package from sqlite file
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:meshdbi
+  parent_recipe:
+    name: bioconductor-meshdbi
+    path: recipes/bioconductor-meshdbi
+    version: 1.16.0
+package:
+  name: bioconductor-meshdbi
+  version: 1.38.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-rsqlite
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-rsqlite
+source:
+  md5: edb738bd5c18f7017ebd13bd0cce9d2f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MeSHDbi_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MeSHDbi/MeSHDbi_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MeSHDbi_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-meshdbi/bioconductor-meshdbi_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MeSHDbi')"

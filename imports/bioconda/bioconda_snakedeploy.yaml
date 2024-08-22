@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/snakemake/snakedeploy
+  license: MPL-2.0
+  license_file: LICENSE
+  summary: Helper for deploying published Snakemake pipelines
+build:
+  entry_points:
+  - snakedeploy=snakedeploy.client:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --use-pep517 -vvv
+extra:
+  recipe-maintainers:
+  - johanneskoester
+package:
+  name: snakedeploy
+  version: 0.10.0
+requirements:
+  host:
+  - pip
+  - pytest-runner
+  - python >=3.8
+  run:
+  - python >=3.8
+  - jinja2
+  - pandas
+  - requests
+  - pyyaml
+  - pygithub
+  - reretry
+  - packaging
+source:
+  sha256: 85922677897e90e3d179e74ba41f28e174084ed184d4e2712a4c0be3890c6279
+  url: https://pypi.io/packages/source/s/snakedeploy/snakedeploy-0.10.0.tar.gz
+test:
+  commands:
+  - pip check
+  - snakedeploy --help
+  imports:
+  - snakedeploy
+  requires:
+  - pip

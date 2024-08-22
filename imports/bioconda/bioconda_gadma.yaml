@@ -1,0 +1,66 @@
+about:
+  doc_url: https://gadma.readthedocs.io/en/latest/
+  home: https://github.com/ctlab/GADMA
+  license: GNU General Public (GPL)
+  license_family: LGPL
+  license_file: LICENSE
+  summary: Genetic Algorithm for Demographic Inference
+build:
+  entry_points:
+  - gadma = gadma.core:main
+  - gadma-run_ls_on_boot_data = gadma.run_ls_on_boot_data:main
+  - gadma-get_confidence_intervals = gadma.get_confidence_intervals:main
+  - gadma-get_confidence_intervals_for_ld = gadma.get_confidence_intervals_for_ld:main
+  - gadma-precompute_ld_data = gadma.precompute_ld_data:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=2.0.0
+extra:
+  identifiers:
+  - doi:10.1093/gigascience/giaa005
+package:
+  name: gadma
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.6,<3.9
+  - pip
+  - setuptools-scm
+  run:
+  - python >=3.6,<3.9
+  - dadi
+  - matplotlib-base
+  - mpmath
+  - nlopt
+  - numpy
+  - pandas
+  - pillow
+  - ruamel.yaml
+  - scipy
+  - networkx
+  - moments
+  - scikit-allel
+source:
+  sha256: 1e891b87749261ce9c1866fd3e0ac389306096e3b940eb364101448efeca4cfd
+  url: https://pypi.io/packages/source/g/gadma/gadma-2.0.0.tar.gz
+test:
+  commands:
+  - gadma --help
+  - gadma-run_ls_on_boot_data --help
+  - gadma-get_confidence_intervals --help
+  - gadma-get_confidence_intervals_for_ld --help
+  - gadma-precompute_ld_data --help
+  imports:
+  - gadma
+  - gadma.cli
+  - gadma.code_generator
+  - gadma.core
+  - gadma.data
+  - gadma.engines
+  - gadma.models
+  - gadma.optimizers
+  - gadma.utils

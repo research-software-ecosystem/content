@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/nanoporetech/nanonet
+  license: MPL-2.0
+  summary: Nanonet provides recurrent neural network basecalling for Oxford Nanopore
+    MinION data.
+build:
+  number: 1
+  skip: true
+package:
+  name: nanonet
+  version: 2.0.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - numpy
+  - cython
+  - h5py
+  - watchdog
+  - hdf5
+  - myriad >=0.1.2
+  - six
+  - boost
+  - pyyaml >=3.10
+  - argh
+  - pathtools >=0.1.1
+  run:
+  - python
+  - numpy
+  - cython
+  - h5py
+  - watchdog
+  - hdf5
+  - myriad >=0.1.2
+  - six
+  - boost
+  - pyyaml >=3.10
+  - argh
+  - pathtools >=0.1.1
+source:
+  md5: bc3e34049a2af62edc1d7cea6fb6d1ba
+  patches:
+  - nanonet.patch
+  url: https://github.com/nanoporetech/nanonet/archive/v2.0.0.tar.gz
+test:
+  commands:
+  - nanonetcall --help > /dev/null

@@ -1,0 +1,44 @@
+about:
+  description: Signal-to-Noise applied to Gene Expression Experiments. Signal-to-noise
+    ratios can be used as a proxy for quality of gene expression studies and samples.
+    The SNRs can be calculated on any gene expression data set as long as gene IDs
+    are available, no access to the raw data files is necessary. This allows to flag
+    problematic studies and samples in any public data set.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SNAGEE.html
+  license: Artistic-2.0
+  summary: Signal-to-Noise applied to Gene Expression Experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:snagee
+  - doi:10.1371/journal.pone.0051013
+  parent_recipe:
+    name: bioconductor-snagee
+    path: recipes/bioconductor-snagee
+    version: 1.20.0
+package:
+  name: bioconductor-snagee
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-snageedata >=1.38.0,<1.39.0
+  - r-base
+  run:
+  - bioconductor-snageedata >=1.38.0,<1.39.0
+  - r-base
+source:
+  md5: faadcab23b170f71a29ac7fd67b2a5d8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SNAGEE_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SNAGEE/SNAGEE_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SNAGEE_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-snagee/bioconductor-snagee_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SNAGEE')"

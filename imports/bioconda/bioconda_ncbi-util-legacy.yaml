@@ -1,0 +1,56 @@
+about:
+  home: ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/
+  license: Public Domain
+  summary: NCBI software development toolkit
+build:
+  number: 4
+  skip: true
+package:
+  name: ncbi-util-legacy
+  version: 6.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - gmp
+  - gnutls
+  - openmotif-dev
+  - xorg-libx11
+  - xorg-libxt
+  - xorg-libxft
+  - xorg-libxp
+  - xorg-libxmu
+  - tcsh
+  - jpeg
+  - libpng
+  - fontconfig
+  run:
+  - gmp
+  - gnutls
+  - xorg-libx11
+  - xorg-libxt
+  - xorg-libxft
+  - xorg-libxp
+  - xorg-libxmu
+  - tcsh
+  - jpeg
+  - libpng
+  - fontconfig
+source:
+  folder: ncbi
+  patches:
+  - 0001-Inject-our-CC.patch
+  - dev.patch
+  sha256: 4b88aaad8f953b1b50bc7d06f3a5920f0d589d2c9a26c709199f8347905f5867
+  url: ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/ncbi.tar.gz
+test:
+  commands:
+  - asn2gb - > /dev/null
+  - asn2idx - > /dev/null
+  - cdscan - > /dev/null
+  - demo_regexp "a.c" "xyzabcxyz" > /dev/null
+  - demo_regexp_grep --help > /dev/null
+  - gene2xml - > /dev/null
+  - echo "ATCG\nACTG"|ncbisort > /dev/null
+  - tbl2asn - > /dev/null

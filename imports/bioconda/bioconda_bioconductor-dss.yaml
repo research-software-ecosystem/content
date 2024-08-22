@@ -1,0 +1,53 @@
+about:
+  description: DSS is an R library performing differntial analysis for count-based
+    sequencing data. It detectes differentially expressed genes (DEGs) from RNA-seq,
+    and differentially methylated loci or regions (DML/DMRs) from bisulfite sequencing
+    (BS-seq). The core of DSS is a new dispersion shrinkage method for estimating
+    the dispersion parameter from Gamma-Poisson or Beta-Binomial distributions.
+  home: https://bioconductor.org/packages/3.17/bioc/html/DSS.html
+  license: GPL-3.0-only
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Dispersion shrinkage for sequencing data
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:dss
+  parent_recipe:
+    name: bioconductor-dss
+    path: recipes/bioconductor-dss
+    version: 2.28.0
+package:
+  name: bioconductor-dss
+  version: 2.48.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-bsseq >=1.38.0,<1.39.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-bsseq >=1.38.0,<1.39.0
+  - r-base
+source:
+  md5: bbdc2e1dd734b2c002e9ae034b86f78e
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/DSS_2.48.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/DSS/DSS_2.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DSS_2.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dss/bioconductor-dss_2.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DSS')"

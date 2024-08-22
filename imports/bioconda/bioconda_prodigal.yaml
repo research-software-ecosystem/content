@@ -1,0 +1,31 @@
+about:
+  dev_url: https://github.com/hyattpd/Prodigal
+  home: http://prodigal.ornl.gov/
+  license: GPL v3
+  summary: Prodigal (Prokaryotic Dynamic Programming Genefinding Algorithm) is a microbial
+    (bacterial and archaeal) gene finding program
+build:
+  number: 9
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: prodigal
+  version: 2.6.3
+requirements:
+  build:
+  - make
+  - None
+  - unzip
+source:
+  patches:
+  - score_nodes.patch
+  - sd_motif_A.patch
+  - sd_motif_B.patch
+  sha256: 4f73f64ea09be8421e08afabdc641db7775632210f5ef896f5fab4604c9dfcd9
+  url: https://github.com/hyattpd/Prodigal/archive/v2.6.3.zip
+test:
+  commands:
+  - prodigal -h

@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/jtrachsel/gifrop
+  license: GPL2
+  license_file: LICENSE
+  summary: Identify, classify, and cluster genomic islands from roary pangenomes
+build:
+  noarch: generic
+  number: 0
+package:
+  name: gifrop
+  version: 0.0.9
+requirements:
+  host:
+  - abricate>=1.0.0
+  run:
+  - abricate>=1.0.0
+  - parallel
+  - roary>=3.13.0
+  - prokka>=1.14.6
+  - r-base>=3.6
+  - r-dplyr>=1.0.0
+  - r-tidyr
+  - r-readr
+  - r-tibble
+  - r-ggplot2
+  - r-purrr
+  - bioconductor-biostrings
+  - bioconductor-bsgenome
+  - r-igraph
+  - r-digest
+  - r-parallelDist
+source:
+  sha256: 55e35fec5190f35dfb757e9f4086aff92121fedf346a7e4360e392c840ad19a3
+  url: https://github.com/jtrachsel/gifrop/archive/v0.0.9.tar.gz
+test:
+  commands:
+  - gifrop --version | grep '0.0.9'
+  - gifrop --help
+  - pan_pipe --help
+  - abricate --list | grep 'megares2'
+  - abricate --list | grep 'viroseqs'

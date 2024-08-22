@@ -1,0 +1,48 @@
+about:
+  home: https://sourceforge.net/p/cfm-id/wiki/Home/
+  license: GPL-2
+  license_file: license.txt
+  summary: Tools for applying Competitive Fragmentation Modeling (CFM) to spectrum
+    prediction and metabolite identification tasks, as well as a tools for fragment
+    generation and peak annotation.
+build:
+  number: 6
+  skip: true
+package:
+  name: cfm
+  version: '33'
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - boost-cpp 1.68.0.*
+  - liblbfgs =1.10
+  - lp_solve =5.5
+  - mpich
+  - rdkit ==2018.09.1
+  run:
+  - boost-cpp 1.68.0.*
+  - lp_solve =5.5
+  - mpich
+  - rdkit ==2018.09.1
+source:
+- patches:
+  - source.patch
+  sha256: 6518e70d2acf995d95d610312b234b5a69ee13ba0eed4836235ce32d73e32e35
+  url: https://depot.galaxyproject.org/software/cfm/cfm_r33_src_all.zip
+- folder: train-example
+  sha256: 1e17dd6cda69800e457b30af41356341fb9dec4ec362b477bf1c5a2469348c44
+  url: https://depot.galaxyproject.org/software/cfm-train-example/cfm-train-example_r33_src_all.zip
+test:
+  commands:
+  - which cfm-annotate
+  - which cfm-id
+  - which cfm-id-precomputed
+  - which cfm-predict
+  - which cfm-train
+  - fraggraph-gen CC 2 + fullgraph
+  - fraggraph-gen CC 2 "*" fragonly
+  - cfm-test
+  - mpiexec -launcher fork -n 2 cfm-test

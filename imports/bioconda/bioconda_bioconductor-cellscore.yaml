@@ -1,0 +1,50 @@
+about:
+  description: The CellScore package contains functions to evaluate the cell identity
+    of a test sample, given a cell transition defined with a starting (donor) cell
+    type and a desired target cell type. The evaluation is based upon a scoring system,
+    which uses a set of standard samples of known cell types, as the reference set.
+    The functions have been carried out on a large set of microarray data from one
+    platform (Affymetrix Human Genome U133 Plus 2.0). In principle, the method could
+    be applied to any expression dataset, provided that there are a sufficient number
+    of standard samples and that the data are normalized.
+  home: https://bioconductor.org/packages/3.18/bioc/html/CellScore.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Tool for Evaluation of Cell Identity from Transcription Profiles
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-cellscore
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-gplots >=3.0.1
+  - r-lsa >=0.73.1
+  - r-rcolorbrewer >=1.1-2
+  - r-squash >=1.0.8
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-gplots >=3.0.1
+  - r-lsa >=0.73.1
+  - r-rcolorbrewer >=1.1-2
+  - r-squash >=1.0.8
+source:
+  md5: c842a56a0f5067b891a0ab7c9f9b1e21
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CellScore_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CellScore/CellScore_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CellScore_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cellscore/bioconductor-cellscore_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CellScore')"

@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/obenno/cutqc
+  license: MIT
+  summary: generate aggregated fastqc report of both before and after trimming.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: cutqc
+  version: 0.07
+requirements:
+  build:
+  - sed
+  run:
+  - gawk
+  - cutadapt
+  - fastqc
+  - r-base
+  - r-tidyverse
+  - r-scales
+  - r-rmarkdown
+  - r-plotly
+source:
+  sha256: dc098e212274442efeaf41a8514777ca3ee33fedab417555584660858546b87a
+  url: https://github.com/obenno/cutqc/archive/refs/tags/v0.07.tar.gz
+test:
+  commands:
+  - cutqc
+  source_files:
+  - data/test_data.R1.fq.gz
+  - data/test_data.R2.fq.gz

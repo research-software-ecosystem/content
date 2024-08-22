@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/mfranberg/libplinkio
+  license: BSD-3-Clause
+  license_file:
+  - COPYING
+  - COPYING
+  - copyright
+  summary: A library for parsing plink genotype files
+build:
+  number: 1
+  run_exports: None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - SonofLastPanda
+package:
+  name: plinkio
+  version: 0.9.8
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+source:
+  sha256: 820cd57167ed28158f926ac4b2901b323f8593eb139bec000eeb3b895430011f
+  url: https://pypi.io/packages/source/p/plinkio/plinkio-0.9.8.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - plinkio
+  requires:
+  - pip

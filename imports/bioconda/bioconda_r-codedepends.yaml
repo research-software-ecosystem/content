@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/duncantl/CodeDepends
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Tools for analyzing R expressions or blocks of code and determining the
+    dependencies between them. It focuses on R scripts, but can be used on the bodies
+    of functions. There are many facilities including the ability to summarize  or
+    get a high-level view of code, determining dependencies between variables,  code
+    improvement suggestions.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-codedepends
+  version: 0.6.6
+requirements:
+  build:
+  - zip
+  host:
+  - r-base
+  - r-xml
+  - r-codetools
+  - bioconductor-graph
+  run:
+  - r-base
+  - r-xml
+  - r-codetools
+  - bioconductor-graph
+source:
+  sha256: 7f815b03abe573b95ac9ed2e20caa7c5b5370aff710767e897575c2cf52c5857
+  url:
+  - /src/contrib/CodeDepends_0.6.6.tar.gz
+  - /src/contrib/Archive/CodeDepends/CodeDepends_0.6.6.tar.gz
+test:
+  commands:
+  - $R -e "library('CodeDepends')"
+  - '"%R%" -e "library(''CodeDepends'')"'

@@ -1,0 +1,60 @@
+about:
+  description: "Family Free Genome Comparison (FFGC) is a self-contained workflow\
+    \ system that\nprovides functionality for all steps of a family-free gene order\
+    \ analysis\nstarting from annotated genome sequences.\n\nFamily-free methods for\
+    \ gene order analyses do not require prior knowledge of\nevolutionary relationships\
+    \ between the genes across the studied genomes. This\ntool features a complete\
+    \ workflow for genome comparison, requiring nothing\nbut annotated genome sequences\
+    \ as input.\n\nSurprisingly, the continuous development of family-free methods\
+    \ recently lead\nto an integrated method for inferring gene families across several\
+    \ species.\nFFGC now includes a subworkflow for inferring gene families simultaneously\n\
+    based on gene similarities and family-free genome rearrangements (OrthoFFGC\u029C\
+    \nand OrthoFFGC\u029C\u2248 extensions).\n\nFFGC is available for download at\
+    \ our git repository\n(https://gitlab.ub.uni-bielefeld.de/gi/FFGC) or as a\nConda\
+    \ package at Bioconda (https://anaconda.org/bioconda/ffgc).\n\nIn general, three\
+    \ major steps are performed: (1) the computation of local\nsequence alignment\
+    \ scores between genes of two or more gene order sequences\nusing BLAST+ or Diamond;\
+    \ (2) the establishment of gene relationships; and\n(3) the actual family-free\
+    \ gene order analysis.\n"
+  doc_url: https://gitlab.ub.uni-bielefeld.de/gi/FFGC/blob/master/README.md
+  home: https://gitlab.ub.uni-bielefeld.de/gi/FFGC
+  license: BSD
+  license_file: LICENSE
+  summary: Family Free Genome Comparison (FFGC) workflow
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+  script:
+  - echo $PREFIX
+  - mkdir -p $PREFIX/bin/
+  - mkdir -p $PREFIX/opt/ffgc/
+  - cp -r * $PREFIX/opt/ffgc/
+  - chmod u+x $PREFIX/opt/ffgc/ffgc_create_project.py
+  - ln -s $PREFIX/opt/ffgc/ffgc_create_project.py $PREFIX/bin/
+extra:
+  recipe-maintainers:
+  - diegorubert
+package:
+  name: ffgc
+  version: 2.4.2
+requirements:
+  host:
+  - python
+  run:
+  - python
+  - snakemake >=7.24
+  - biopython >=1.78
+  - networkx >=2.4
+  - ruamel.yaml >=0.15
+  - blast >=2.8
+  - diamond >=2.0.15
+  - lxml >=4.9.1
+  - mcl >=14.137
+source:
+  md5: 5449bfb702b5a4b3bad636aab8925506
+  url: https://gitlab.ub.uni-bielefeld.de/gi/FFGC/-/archive/2.4.2/FFGC-2.4.2.tar.bz2
+test:
+  commands:
+  - ffgc_create_project.py --help

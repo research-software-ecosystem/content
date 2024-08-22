@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/andrewjpage/tiptoft
+  doc_url: https://github.com/andrewjpage/tiptoft
+  home: https://github.com/andrewjpage/tiptoft
+  license: GPL3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Predict plasmids from uncorrected long read data.
+build:
+  number: 5
+  script: python -m pip install --no-deps --ignore-installed .
+  skip: true
+extra:
+  skip-lints:
+  - cython_must_be_in_host
+  - uses_setuptools
+package:
+  name: tiptoft
+  version: 1.0.2
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - cython
+  - pip
+  - setuptools
+  run:
+  - python
+  - biopython >=1.68
+  - pyfastaq >=3.12.0
+  - cython
+  - setuptools
+source:
+  sha256: e02cd7f57fc14a3a2928dad8e4c3f5a1e063f3d365d6876e7731be5da2d0c578
+  url: https://pypi.io/packages/source/t/tiptoft/tiptoft-1.0.2.tar.gz
+test:
+  commands:
+  - tiptoft --help
+  - tiptoft_database_downloader --help

@@ -1,0 +1,56 @@
+about:
+  description: This package imports the epiviz visualization JavaScript app for genomic
+    data interactive visualization. The 'epivizrServer' package is used to provide
+    a web server running completely within R. This standalone version allows to browse
+    arbitrary genomes through genome annotations provided by Bioconductor packages.
+  home: https://bioconductor.org/packages/3.18/bioc/html/epivizrStandalone.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Run Epiviz Interactive Genomic Data Visualization App within R
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:epivizrstandalone
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-epivizrstandalone
+    path: recipes/bioconductor-epivizrstandalone
+    version: 1.8.0
+package:
+  name: bioconductor-epivizrstandalone
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-epivizr >=2.32.0,<2.33.0
+  - bioconductor-epivizrserver >=1.30.0,<1.31.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-git2r
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-epivizr >=2.32.0,<2.33.0
+  - bioconductor-epivizrserver >=1.30.0,<1.31.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-git2r
+source:
+  md5: aa34f18a7a4f4340f2e4a0ecc46af0a2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/epivizrStandalone_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/epivizrStandalone/epivizrStandalone_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/epivizrStandalone_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-epivizrstandalone/bioconductor-epivizrstandalone_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('epivizrStandalone')"

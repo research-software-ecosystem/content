@@ -1,0 +1,31 @@
+about:
+  home: http://compbio.dfci.harvard.edu/tgi
+  license: Public Domain
+  summary: CDB (Constant DataBase) indexing and retrieval tools for FASTA files
+build:
+  number: 10
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: cdbtools
+  version: 0.99
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - zlib.patch
+  sha256: 68767e8b2fb9de5a6d68ee16df73293f65e02f05cf2f747a9dd6b8854766722c
+  url: ftp://occams.dfci.harvard.edu/pub/bio/tgi/software/cdbfasta/cdbfasta.tar.gz
+test:
+  commands:
+  - cdbfasta -v
+  - cdbyank -v

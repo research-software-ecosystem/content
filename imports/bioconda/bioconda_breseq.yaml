@@ -1,0 +1,38 @@
+about:
+  doc_url: https://barricklab.org/twiki/pub/Lab/ToolsBacterialGenomeResequencing/documentation/
+  home: https://github.com/barricklab/breseq
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: A computational pipeline for finding mutations relative to a reference
+    sequence in short-read DNA re-sequencing data.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: breseq
+  version: 0.39.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+  - r-base
+  - r-cairo
+  - bowtie2 >=2.0.0,!=2.0.3,!=2.0.4,!=2.3.1
+source:
+  sha256: 39b35e246ecd2b497c82a99765ca4d78a0400bc4a7518b7506b140229ccc0247
+  url: https://github.com/barricklab/breseq/releases/download/v0.39.0/breseq-0.39.0-Source.tar.gz
+test:
+  commands:
+  - breseq --help 2>&1 | grep Usage
+  - gdtools --help 2>&1 | grep Usage

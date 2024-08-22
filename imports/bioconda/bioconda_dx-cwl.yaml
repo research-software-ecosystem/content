@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/dnanexus/dx-cwl
+  license: Apache v2.0
+  summary: Import and run CWL workflows on DNAnexus
+build:
+  noarch: generic
+  number: 3
+package:
+  name: dx-cwl
+  version: 0.1.0a20180905
+requirements:
+  run:
+  - python <3
+  - cwltool
+  - dxpy
+  - pyyaml
+  - futures
+source:
+  sha256: 162c927f85a010c030189ec582aa437be1673176072f8a7c8c129e1560a09ef7
+  url: https://github.com/dnanexus/dx-cwl/archive/fca163d.tar.gz
+test:
+  commands:
+  - dx-cwl -h
+  - dx-cwl compile-workflow -h
+  - dx-cwl run-workflow -h

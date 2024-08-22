@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/yigbt/deepFPlearn
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE.pdf
+  summary: Link molecular structures of chemicals (in form of topological fingerprints)
+    with multiple targets.
+build:
+  entry_points:
+  - dfpl=dfpl.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv &&  -m pip install git+https://github.com/soulios/chemprop.git@1d73523e49aa28a90b74edc04aaf45d7e124e338
+    --no-deps --ignore-installed -vv'
+package:
+  name: deepfplearn
+  version: 2.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - jsonpickle =2.1
+  - matplotlib-base =3.5.1
+  - numpy =1.22
+  - pandas =1.4
+  - rdkit =2022.03
+  - scikit-learn =1.0
+  - keras =2.9
+  - tensorflow-base
+  - wandb =0.12
+  - chemprop
+  - seaborn =0.12.2
+  - umap-learn =0.5.3
+  - flask >=1.1.2
+  - hyperopt >=0.2.3
+  - pandas-flavor >=0.2.0
+  - scipy >=1.4.1
+  - sphinx >=3.1.2
+  - tensorboardx >=2.0
+  - pytorch >=1.5.1
+  - tqdm >=4.45.0
+  - typed-argument-parser >=1.6.1
+  - descriptastorus
+source:
+  sha256: 858e30e075e64ed49a3db5fcacb9d4a70b3f59bd8841b8f6989a62677107a541
+  url: https://github.com/yigbt/deepFPlearn/archive/refs/tags/v2.0.tar.gz
+test:
+  commands:
+  - dfpl --help
+  imports:
+  - tensorflow
+  - dfpl

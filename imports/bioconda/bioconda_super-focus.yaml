@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/metageni/SUPER-FOCUS
+  home: https://edwards.sdsu.edu/SUPERFOCUS
+  license: GPL-3.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'SUPER-FOCUS: A tool for agile functional analysis of shotgun metagenomic
+    data'
+build:
+  noarch: python
+  number: 1
+  script: $PYTHON -m pip install --no-deps --ignore-installed --no-cache-dir -vvv
+    .
+package:
+  name: super-focus
+  version: '1.6'
+requirements:
+  host:
+  - python >=3
+  - pip
+  - pytest
+  - setuptools
+  - setuptools_scm
+  run:
+  - python >=3
+  - numpy >=1.12.1
+  - scipy
+  - kmer-jellyfish
+  - rapsearch
+  - diamond
+  - mmseqs2
+  - blast
+  - setuptools
+  - setuptools_scm
+source:
+  sha256: 4b3d6c731e58cf0dad1e1bfd5278a320a5e4a7d1d5658c19f36eaccba7329620
+  url: https://pypi.io/packages/source/s/superfocus/superfocus-1.6.tar.gz
+test:
+  commands:
+  - superfocus --help
+  - superfocus_downloadDB --help

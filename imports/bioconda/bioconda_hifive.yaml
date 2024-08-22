@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/bxlab/hifive
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Python library for normalizing and analyzing HiC and 5C data
+build:
+  number: 4
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: hifive
+  version: 1.5.7
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - pip
+  - python
+  - numpy
+  - scipy
+  - h5py
+  - cython
+  - setuptools_cython
+  run:
+  - python
+  - numpy
+  - scipy
+  - h5py
+  - setuptools_cython
+  - pyx ==0.12.1
+  - pysam
+  - pillow
+  - mpi4py
+source:
+  sha256: a903d209eeedba4f9f415a260f2080b469ca460b16a97c9663274bf90f1f6093
+  url: https://github.com/bxlab/hifive/archive/v1.5.7.tar.gz
+test:
+  imports:
+  - hifive
+  - hifive.commands
+  - hifive.libraries

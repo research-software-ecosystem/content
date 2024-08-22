@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/theiagen/public_health_viral_genomics
+  license: AGPL-3.0
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Command-line version of the Titan genomic characterization workflow for
+    viral pathogens of concern.
+build:
+  noarch: generic
+  number: 1
+extra:
+  recipe-maintainers:
+  - rpetit3
+package:
+  name: titan-gc
+  version: 1.5.3
+requirements:
+  run:
+  - cromwell
+  - python >=3.7
+source:
+- sha256: 2e8118d8c7485675b85f9eaa440cdbcd38ed07f406b76829172ea8ce93ad9896
+  url: https://github.com/theiagen/public_health_viral_genomics/archive/refs/tags/v1.5.3.tar.gz
+test:
+  commands:
+  - titan-gc --help
+  - titan-gc-organize.py
+  - titan-gc-prepare.py

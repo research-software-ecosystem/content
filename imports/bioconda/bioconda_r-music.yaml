@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/xuranw/MuSiC
+  license: GPL-3
+  license_family: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'Companion package to: A bulk tissue deconvolution method with multi-subject
+    single cell expression reference. This package provide functions to estimate bulk
+    tissue cell type proportions with multi-subject single cell expression as reference.'
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.1038/s41467-018-08023-x
+  recipe-maintainers:
+  - PelzKo
+package:
+  name: r-music
+  version: 0.2.0
+requirements:
+  host:
+  - r-base
+  - r-roxygen2 >=6.0.1
+  - r-nnls
+  - r-ggplot2
+  - r-plyr
+  - bioconductor-biobase
+  - r-mcmcpack
+  run:
+  - r-base
+  - r-nnls
+  - r-ggplot2
+  - r-plyr
+  - bioconductor-biobase
+  - r-mcmcpack
+source:
+  sha256: cd34955e46e10bb52d7348dc4771702bb23104b1c54989f40a36f542ef4b9f34
+  url: https://github.com/xuranw/MuSiC/archive/7c5834830223957f5d8134c86d6acf653bfff4e7.zip
+test:
+  commands:
+  - $R -e "library('MuSiC')"

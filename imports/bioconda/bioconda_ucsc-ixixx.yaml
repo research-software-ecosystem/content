@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe/
+  license: Varies; see https://genome.ucsc.edu/license
+  summary: 'Create indices for simple line-oriented file of format '
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-ixixx
+  version: '466'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+source:
+  patches:
+  - include.patch
+  sha256: 5ed312771de13b18a72f3f3f615ef1bc0b8be9dcd647b8dde05dc60d4630e9fb
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v466.src.tgz
+test:
+  commands:
+  - test -x ${PREFIX}/bin/ixIxx

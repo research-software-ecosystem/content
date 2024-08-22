@@ -1,0 +1,48 @@
+about:
+  description: This package offers an interface to NDEx servers, e.g. the public server
+    at http://ndexbio.org/. It can retrieve and save networks via the API. Networks
+    are offered as RCX object and as igraph representation.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ndexr.html
+  license: BSD_3_clause + file LICENSE
+  license_file: LICENSE
+  summary: NDEx R client library
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-ndexr
+    path: recipes/bioconductor-ndexr
+    version: 1.2.0
+package:
+  name: bioconductor-ndexr
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-rcx >=1.6.0,<1.7.0
+  - r-base
+  - r-httr
+  - r-jsonlite
+  - r-plyr
+  - r-tidyr
+  run:
+  - bioconductor-rcx >=1.6.0,<1.7.0
+  - r-base
+  - r-httr
+  - r-jsonlite
+  - r-plyr
+  - r-tidyr
+source:
+  md5: caa87487f3e0c062aa6b56b1dc6f70a0
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ndexr_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ndexr/ndexr_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ndexr_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ndexr/bioconductor-ndexr_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ndexr')"

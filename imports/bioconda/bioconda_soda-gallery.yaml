@@ -1,0 +1,42 @@
+about:
+  doc_url: https://github.com/alexpreynolds/soda/blob/master/README.md
+  home: https://github.com/alexpreynolds/soda
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Python-based UCSC genome browser gallery generator
+build:
+  entry_points:
+  - soda = soda.soda:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - alexpreynolds
+package:
+  name: soda-gallery
+  version: 1.2.0
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - beautifulsoup4 >=4.9.3
+  - certifi >=2024.2.2
+  - jinja2 >=3.0.1
+  - pdfminer >=20191125
+  - pdfrw >=0.4
+  - python >=3
+  - requests >=2.25.1
+  - requests-kerberos >=0.12.0
+source:
+  sha256: dc71f503ecdf3d54ad00c9648176e98c0a1db37a18fe6fe7d5d1ea763340e92c
+  url: https://pypi.io/packages/source/s/soda-gallery/soda-gallery-1.2.0.tar.gz
+test:
+  commands:
+  - soda --help
+  imports:
+  - soda

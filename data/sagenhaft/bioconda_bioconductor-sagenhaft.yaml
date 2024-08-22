@@ -1,0 +1,45 @@
+about:
+  description: This package implements several functions useful for analysis of gene
+    expression data by sequencing tags as done in SAGE (Serial Analysis of Gene Expressen)
+    data, i.e. extraction of a SAGE library from sequence files, sequence error correction,
+    library comparison. Sequencing error correction is implementing using an Expectation
+    Maximization Algorithm based on a Mixture Model of tag counts.
+  home: https://bioconductor.org/packages/3.18/bioc/html/sagenhaft.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Collection of functions for reading and comparing SAGE libraries
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:sagenhaft
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-sagenhaft
+    path: recipes/bioconductor-sagenhaft
+    version: 1.50.0
+package:
+  name: bioconductor-sagenhaft
+  version: 1.72.0
+requirements:
+  host:
+  - r-base
+  - r-sparsem >=0.73
+  run:
+  - r-base
+  - r-sparsem >=0.73
+source:
+  md5: 4f27450a0e98b4f0f7396a784eb0e4e3
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/sagenhaft_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/sagenhaft/sagenhaft_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sagenhaft_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sagenhaft/bioconductor-sagenhaft_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sagenhaft')"

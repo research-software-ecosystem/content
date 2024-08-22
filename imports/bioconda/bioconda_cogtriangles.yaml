@@ -1,0 +1,30 @@
+about:
+  home: https://ftp.ncbi.nih.gov/pub/wolf/COGs/COGsoft/
+  license: Public Domain
+  summary: low-polynomial algorithm for assembling clusters of orthologous groups
+    from intergenomic symmetric best matches
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - biotools:cogtriangles
+  - doi:10.1093/bioinformatics/btq229
+package:
+  name: cogtriangles
+  version: 2012.04
+requirements:
+  build:
+  - make
+  - None
+  - perl
+source:
+  sha256: 1217a1c6975301a4dd3316fe6e7f413aea4a321635285c30aea7787b6d82641a
+  url: https://github.com/eead-csic-compbio/get_homologues/releases/download/v3.4.6/COGsoft.tgz
+test:
+  commands:
+  - COGcognitor -h 2>&1 | grep Usage
+  - COGlse -h 2>&1 | grep Usage
+  - COGreadblast -h 2>&1 | grep Usage
+  - COGmakehash -h 2>&1 | grep Usage
+  - COGtriangles -h 2>&1 | grep Usage

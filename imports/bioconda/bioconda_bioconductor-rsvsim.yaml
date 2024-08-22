@@ -1,0 +1,51 @@
+about:
+  description: RSVSim is a package for the simulation of deletions, insertions, inversion,
+    tandem-duplications and translocations of various sizes in any genome available
+    as FASTA-file or BSgenome data package. SV breakpoints can be placed uniformly
+    accross the whole genome, with a bias towards repeat regions and regions of high
+    homology (for hg19) or at user-supplied coordinates.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RSVSim.html
+  license: LGPL-3
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: 'RSVSim: an R/Bioconductor package for the simulation of structural variations'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rsvsim
+  - doi:10.1093/bioinformatics/btt198
+  parent_recipe:
+    name: bioconductor-rsvsim
+    path: recipes/bioconductor-rsvsim
+    version: 1.20.0
+package:
+  name: bioconductor-rsvsim
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+source:
+  md5: 0ce59bfd8791d8b1bf0b4fa48ea37e31
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RSVSim_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RSVSim/RSVSim_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RSVSim_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rsvsim/bioconductor-rsvsim_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RSVSim')"

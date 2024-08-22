@@ -1,0 +1,44 @@
+about:
+  home: http://ccb.nki.nl/software/
+  license: GPL-3
+  summary: An analysis package for multi sample insertional mutagenesis data (including
+    viral- and transposon-based systems) using Gaussian kernel convolution to identify
+    common insertion sites.
+build:
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-cimpl
+  version: 1.1
+requirements:
+  host:
+  - r-base
+  - r-kernsmooth
+  - r-mass
+  - r-xtable
+  - bioconductor-biomart
+  - bioconductor-biostrings
+  run:
+  - r-base
+  - r-kernsmooth
+  - r-mass
+  - r-xtable
+  - bioconductor-biomart
+  - bioconductor-biostrings
+source:
+  sha256: 4895f221e8d12efc65d892684efbd151e909b32d5c5041d4bcefea9e832995f5
+  url: https://github.com/NKI-CCB/cimpl/archive/v1.1.tar.gz
+test:
+  commands:
+  - $R -e "library('cimpl')"

@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/morispi/CONSENT
+  license: AGPL-3.0
+  license_family: AGPL
+  summary: Scalable long read self-correction and assembly polishing with multiple
+    sequence alignment
+build:
+  number: 3
+  skip: true
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - natir
+package:
+  name: consent
+  version: 2.2.2
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  - wget
+  host:
+  - zlib
+  run:
+  - minimap2
+source:
+  patches:
+  - CONSENT-correct.patch
+  - CONSENT-polish.patch
+  sha256: 3c236688c3ce83b039a547d10f05a3087717cab98bfb0fd57985de74af350833
+  url: https://github.com/morispi/CONSENT/archive/v2.2.2.tar.gz
+test:
+  commands:
+  - CONSENT-correct -h | grep "CONSENT-correct"
+  - CONSENT-polish -h | grep "CONSENT-polish"

@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/NCEAS/metadig-r/
+  license: Apache-2.0
+  license_family: Apache
+  license_file:
+  - LICENSE
+  summary: A set of utility methods for authoring MetaDIG checks in R.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+  - TanguyGen
+package:
+  name: r-metadig
+  version: 0.2.1
+requirements:
+  build:
+  - cross-r-base
+  host:
+  - r-base
+  - r-digest
+  - r-httr
+  - r-xml2
+  run:
+  - r-base
+  - r-digest
+  - r-httr
+  - r-xml2
+source:
+  sha256: 031afbd61cd120b9b6428858e0a4d8a2c4bf0b89d2e1abb783bba8b6479ad585
+  url: https://github.com/NCEAS/metadig-r/archive/refs/tags/v0.2.1.tar.gz
+test:
+  commands:
+  - $R -e "library('metadig')"
+  - '"%R%" -e "library(''metadig'')"'

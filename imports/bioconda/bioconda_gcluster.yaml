@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/Xiangyang1984/Gcluster
+  home: http://www.microbialgenomic.cn/Gcluster_tool.html
+  license: perl_5
+  summary: Gcluster is a simple-to-use tool for visualizing and comparing genome contexts
+    for numerous genomes
+build:
+  noarch: generic
+  number: 2
+extra:
+  recipe-maintainers:
+  - mjsteinbaugh
+package:
+  name: gcluster
+  version: '2.06'
+requirements:
+  run:
+  - mcl
+  - blast
+  - perl-gd
+  - perl-gd-svg
+  - perl-svg
+  - perl-bioperl-core
+source:
+  sha256: c967df82598424c66b399d89fef796d62ad6914959423ebd4e7db62c3b42226f
+  url: https://github.com/Xiangyang1984/Gcluster/archive/refs/tags/v2.06.tar.gz
+test:
+  commands:
+  - Gcluster.pl -h
+  - interested_gene_generation.pl -h
+  - blastp -h
+  - makeblastdb -h
+  - mcl --help

@@ -1,0 +1,34 @@
+about:
+  description: 'MTBseq is a semi-automated pipeline for mapping, variant calling and
+
+    detection of resistance mediating and phylogenetic variants from Illumina
+
+    whole genome sequence data of Mycobacterium tuberculosis complex isolates'
+  home: https://github.com/ngs-fzb/MTBseq_source
+  license: GPLv3
+  license_file: GPL.md
+  summary: Pipeline for WGS analysis of M. tuberculosis
+build:
+  noarch: generic
+  number: 0
+package:
+  name: mtbseq
+  version: 1.1.0
+requirements:
+  host: null
+  run:
+  - perl >=5.22
+  - openjdk >=8,<9
+  - gatk ==3.8
+  - bwa ==0.7.17
+  - samtools ==1.6
+  - perl-number-format
+  - perl-statistics-basic >=1.6611
+  - perl-mce >=1.836
+  - picard >=2.17.0,<3
+source:
+  sha256: 6d0582ae44a180de78591e9c2dfa510afcb5f0ae0eeca1c049045b0c25c5594d
+  url: https://github.com/ngs-fzb/MTBseq_source/archive/v1.1.0.zip
+test:
+  commands:
+  - MTBseq --check >/dev/null

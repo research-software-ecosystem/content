@@ -1,0 +1,46 @@
+about:
+  description: Implements a DelayedArray backend for reading and writing dense or
+    sparse arrays in the TileDB format. The resulting TileDBArrays are compatible
+    with all Bioconductor pipelines that can accept DelayedArray instances.
+  home: https://bioconductor.org/packages/3.18/bioc/html/TileDBArray.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Using TileDB as a DelayedArray Backend
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-tiledbarray
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rcpp
+  - r-tiledb
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rcpp
+  - r-tiledb
+source:
+  md5: 7bb6ef67d882031ac2ebfcb3c1873dd2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TileDBArray_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TileDBArray/TileDBArray_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TileDBArray_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tiledbarray/bioconductor-tiledbarray_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TileDBArray')"

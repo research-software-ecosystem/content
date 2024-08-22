@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/CellProfiler/centrosome
+  license: BSD 3
+  license_file: LICENSE
+  summary: An open source image processing library. Dependency for CellProfiler
+build:
+  number: 1
+  run_exports:
+  - None
+  script: CFLAGS="$CFLAGS -Wno-error=int-conversion" python -m pip install --no-deps
+    --ignore-installed . -vv
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: centrosome
+  version: 1.2.3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - pytest
+  - numpy
+  run:
+  - python
+  - deprecation
+  - matplotlib-base
+  - numpy
+  - pillow
+  - scikit-image
+  - scipy
+source:
+  sha256: 889ce9f79857cdf1d0d04d8d19dd749dfae4a077915fadec223717d5ddcb47fc
+  url: https://github.com/CellProfiler/centrosome/archive/v1.2.3.zip
+test:
+  imports:
+  - centrosome

@@ -1,0 +1,41 @@
+about:
+  description: This package provides a function for reconstructing DNA methylation
+    values from raw measurements. It iteratively implements the group fused lars to
+    smooth related-by-location methylation values and the constrained least squares
+    to remove probe affinity effect across multiple sequences.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MBAmethyl.html
+  license: Artistic-2.0
+  summary: Model-based analysis of DNA methylation data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mbamethyl
+  - doi:10.1111/biom.12422
+  parent_recipe:
+    name: bioconductor-mbamethyl
+    path: recipes/bioconductor-mbamethyl
+    version: 1.14.0
+package:
+  name: bioconductor-mbamethyl
+  version: 1.36.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 0b6ac0d76525c156606d08bcbf606709
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MBAmethyl_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MBAmethyl/MBAmethyl_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MBAmethyl_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mbamethyl/bioconductor-mbamethyl_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MBAmethyl')"

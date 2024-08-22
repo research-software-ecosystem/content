@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/attractivechaos/k8
+  home: https://github.com/attractivechaos/k8
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Lightweight JavaScript shell based on Google's V8 JavaScript engine
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: k8
+  version: 1.2
+requirements:
+  build:
+  - None
+  - make
+  - sysroot_linux-64 >=2.17
+  host:
+  - python ==3.8
+  - zlib
+  - wget
+  - tar
+  - sed
+  - sysroot_linux-64 >=2.17
+  run:
+  - sysroot_linux-64 >=2.17
+source:
+  sha256: 4157aa86066eb0a7874de194893c4544ac772d009cc1148377c9c346f9fc6d07
+  url: https://github.com/attractivechaos/k8/archive/refs/tags/v1.2.tar.gz
+test:
+  commands:
+  - k8 -v | grep '^k8'

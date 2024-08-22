@@ -1,0 +1,48 @@
+about:
+  description: SNPediaR provides some tools for downloading and parsing data from
+    the SNPedia web site <http://www.snpedia.com>. The implemented functions allow
+    users to import the wiki text available in SNPedia pages and to extract the most
+    relevant information out of them. If some information in the downloaded pages
+    is not automatically processed by the library functions, users can easily implement
+    their own parsers to access it in an efficient way.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SNPediaR.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Query data from SNPedia
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:snpediar
+  - doi:10.1007/978-1-4419-9863-7_1039
+  parent_recipe:
+    name: bioconductor-snpediar
+    path: recipes/bioconductor-snpediar
+    version: 1.6.0
+package:
+  name: bioconductor-snpediar
+  version: 1.28.0
+requirements:
+  host:
+  - r-base
+  - r-jsonlite
+  - r-rcurl
+  run:
+  - r-base
+  - r-jsonlite
+  - r-rcurl
+source:
+  md5: 25d5eec5081ccfac687eba26102eb826
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SNPediaR_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SNPediaR/SNPediaR_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SNPediaR_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-snpediar/bioconductor-snpediar_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SNPediaR')"

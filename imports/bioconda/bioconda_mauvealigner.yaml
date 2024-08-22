@@ -1,0 +1,42 @@
+about:
+  dev_url: https://sourceforge.net/projects/mauve/
+  home: http://darlinglab.org/mauve/
+  license: GPL-2.0
+  license_family: GPL
+  summary: The mauveAligner and progressiveMauve command-line tools for generating
+    multiple genome alignments in the presence of large-scale evolutionary events
+build:
+  number: 6
+  skip: true
+package:
+  name: mauvealigner
+  version: 1.2.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  host:
+  - boost-cpp
+  - libgenome
+  - libmuscle
+  - libmems
+  run:
+  - boost-cpp
+  - libgenome
+  - libmuscle
+  - libmems
+source:
+  patches:
+  - 0001-remove-STATIC_FLAG.patch
+  - 0002-68f36be602b760bdde275bb882210f125958b868.patch
+  sha256: 0d0cf5dd560cf062d4bfb01b121b38865f3a7fae6312d4169eb696add82cefc7
+  url: https://depot.galaxyproject.org/software/mauveAligner/mauveAligner_1.2.0_src_all.zip
+test:
+  commands:
+  - mauveAligner 2>&1 | grep ^Options
+  - progressiveMauve 2>&1 | grep ^Options

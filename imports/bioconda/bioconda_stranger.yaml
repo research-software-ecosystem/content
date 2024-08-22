@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/moonso/stranger
+  doc_url: https://github.com/moonso/stranger
+  home: https://github.com/moonso/stranger
+  license: MIT
+  license_family: MIT
+  summary: Annotate VCF files with str variants
+build:
+  entry_points:
+  - stranger = stranger.__main__:base_command
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: stranger
+  version: 0.9.1
+requirements:
+  host:
+  - click
+  - coloredlogs
+  - pip
+  - python
+  - pyyaml
+  run:
+  - click
+  - coloredlogs
+  - python >=3.6.0
+  - pyyaml
+source:
+  sha256: b9322384836e46ed9373fdb30b4e7656ea59d6b293f22692a1b9125b6cb8ca76
+  url: https://pypi.io/packages/source/s/stranger/stranger-0.9.1.tar.gz
+test:
+  commands:
+  - stranger --help
+  imports:
+  - stranger
+  - stranger.resources
+  requires:
+  - pytest
+  - pytest-cov

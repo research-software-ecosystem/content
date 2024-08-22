@@ -1,0 +1,33 @@
+about:
+  home: https://bitbucket.org/liulab/mageck-vispr
+  license: MIT License
+  summary: MAGeCK-VISPR is a comprehensive quality control, analysis and visualization
+    workflow for CRISPR/Cas9 screens based on MAGeCK, VISPR, Snakemake, FastQC and
+    cutadapt.
+build:
+  entry_points:
+  - mageck-vispr = mageck_vispr.cli:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: mageck-vispr
+  version: 0.5.6
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - snakemake
+  - mageck >=0.5.9
+  - vispr
+  - fastqc
+  - cutadapt
+  - jinja2
+source:
+  sha256: b6bdd59d34f9bbb548c88de8948e2aacf7e461a62a74c1b8ef8a73b9b64b2e92
+  url: https://bitbucket.org/liulab/mageck-vispr/get/v0.5.6.tar.gz
+test:
+  commands:
+  - mageck-vispr --help > /dev/null

@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe/
+  license: Varies; see http://genome.ucsc.edu/license
+  summary: Sum columns in a text file.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-addcols
+  version: '466'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - libopenssl-static
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: 5ed312771de13b18a72f3f3f615ef1bc0b8be9dcd647b8dde05dc60d4630e9fb
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v466.src.tgz
+test:
+  commands:
+  - test -x ${PREFIX}/bin/addCols

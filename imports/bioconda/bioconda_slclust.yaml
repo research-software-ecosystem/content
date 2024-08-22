@@ -1,0 +1,30 @@
+about:
+  home: https://sourceforge.net/projects/slclust/
+  license: Artistic License
+  summary: A utility that performs single-linkage clustering with the option of applying
+    a Jaccard similarity coefficient to break weakly bound clusters into distinct
+    clusters.
+build:
+  number: 4
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: slclust
+  version: 533512
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: 9e21b65288e7fc35647721380cfedffd68608e164b4240c692c511c18c1620f8
+  url: http://downloads.sourceforge.net/project/slclust/slclust/slclust_02022010.tar.gz
+test:
+  commands:
+  - slclust --help 2>&1 | grep jaccard > /dev/null

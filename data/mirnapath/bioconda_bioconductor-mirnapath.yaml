@@ -1,0 +1,43 @@
+about:
+  description: This package provides pathway enrichment techniques for miRNA expression
+    data. Specifically, the set of methods handles the many-to-many relationship between
+    miRNAs and the multiple genes they are predicted to target (and thus affect.)  It
+    also handles the gene-to-pathway relationships separately. Both steps are designed
+    to preserve the additive effects of miRNAs on genes, many miRNAs affecting one
+    gene, one miRNA affecting multiple genes, or many miRNAs affecting many genes.
+  home: https://bioconductor.org/packages/3.18/bioc/html/miRNApath.html
+  license: LGPL-2.1
+  license_file: /lib/R/share/licenses/LGPL-2.1
+  summary: 'miRNApath: Pathway Enrichment for miRNA Expression Data'
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mirnapath
+  parent_recipe:
+    name: bioconductor-mirnapath
+    path: recipes/bioconductor-mirnapath
+    version: 1.40.0
+package:
+  name: bioconductor-mirnapath
+  version: 1.62.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 94aad8a3b57b070cb5c559d9d1f14726
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/miRNApath_1.62.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/miRNApath/miRNApath_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRNApath_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirnapath/bioconductor-mirnapath_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('miRNApath')"

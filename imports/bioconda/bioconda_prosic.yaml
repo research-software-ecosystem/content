@@ -1,0 +1,34 @@
+about:
+  home: https://prosic.github.io
+  license: GPLv3
+  summary: A highly sensitive and accurate Bayesian caller for somatic insertions
+    and deletions.
+build:
+  number: 2
+package:
+  name: prosic
+  version: 2.1.2
+requirements:
+  build:
+  - None
+  - rust >=1.30
+  - pkg-config
+  - clangdev
+  host:
+  - gsl
+  - libcblas
+  - zlib
+  - bzip2
+  - xz
+  - clangdev
+  run:
+  - gsl
+  - zlib
+source:
+  patches:
+  - 0001-Cargo.toml-version-restrict-time.patch
+  sha256: c5490684d04bb4a9bb47de39c9d171f775f6d3ffa1c9337df7af9d8774d33974
+  url: https://github.com/varlociraptor/prosic2/archive/v2.1.2.tar.gz
+test:
+  commands:
+  - prosic call-tumor-normal --help

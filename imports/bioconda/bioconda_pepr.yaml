@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/shawnzhangyx/PePr/
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL
+  summary: Peak-calling and Prioritization pipeline for replicated ChIP-Seq data
+build:
+  entry_points:
+  - PePr=PePr.PePr:argless_main
+  - PePr-preprocess=PePr.PePr:pre_processing_module
+  - PePr-postprocess=PePr.post_processing.post_process_PePr:post_processing_module
+  noarch: python
+  number: 3
+package:
+  name: pepr
+  version: 1.1.24
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - numpy >=1.6.0
+  - scipy >=0.14.0
+  - pysam
+  - sharedmem
+source:
+  md5: 7780fed1e8e5aeef933d5df3f3392f0d
+  patches:
+  - setup.py.patch
+  url: https://pypi.io/packages/source/p/pepr/PePr-1.1.24.tar.gz
+test:
+  commands:
+  - PePr --help
+  - PePr-preprocess --help
+  - PePr-postprocess --help
+  imports:
+  - PePr
+  - PePr.post_processing

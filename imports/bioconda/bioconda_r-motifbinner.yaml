@@ -1,0 +1,67 @@
+about:
+  home: https://github.com/HIVDiversity/MotifBinner2, http://biom-format.org/
+  license: GPL3
+  license_file: LICENSE
+  summary: MotifBinner processes high-throughput sequencing data of an RNA virus population.
+build:
+  number: 7
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script: $R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - davebx
+package:
+  name: r-motifbinner
+  version: 2.0.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - r-base
+  - r-tidyr
+  - r-dplyr
+  - r-stringdist
+  - r-domc
+  - r-ggplot2
+  - r-knitr
+  - r-optparse
+  - r-rmarkdown
+  - r-foreach
+  - r-gridextra
+  - r-reshape2
+  - r-formattable
+  - r-data.table
+  - bioconductor-biocgenerics
+  - bioconductor-biostrings
+  - bioconductor-shortread
+  run:
+  - r-base
+  - r-domc
+  - r-dplyr
+  - r-tidyr
+  - r-ggplot2
+  - r-knitr
+  - r-optparse
+  - r-rmarkdown
+  - r-gridextra
+  - r-stringdist
+  - r-foreach
+  - r-gridextra
+  - r-reshape2
+  - r-data.table
+  - r-formattable
+  - bioconductor-biocgenerics
+  - bioconductor-biostrings
+  - bioconductor-shortread
+source:
+  sha256: 6337bf7a7c84c4d3dbdf784b1acc6ad92f05b97fe4068b58ef19630da0c5590d
+  url:
+  - https://github.com/HIVDiversity/MotifBinner2/archive/v2.0.0.tar.gz
+test:
+  commands:
+  - $R -e "library('MotifBinner2')"
+  - '"%R%" -e "library(''MotifBinner2'')"'

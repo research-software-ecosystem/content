@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/avsecz/nimnexus
+  license: MIT
+  summary: command-line tools for processing ChIP-nexus data
+build:
+  number: 4
+  skip: true
+package:
+  name: nimnexus
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - nim
+  host:
+  - pcre
+  - htslib 1.9.*
+  run:
+  - pcre
+  - htslib 1.9.*
+source:
+- patches:
+  - 0001-add-hts-dep-upper-constraint.patch
+  sha256: 3e0656e02cbd3222e0b302681f26f478717aa4ad69e6b13ceaafff498c23ca2a
+  url: https://github.com/avsecz/nimnexus/archive/0.1.1.tar.gz
+- folder: hts-nim
+  sha256: 19f46dd89a7f13df5a679a93113aedab55fa99e1fa0bd4d2c5fed51b0526f56c
+  url: https://github.com/brentp/hts-nim/archive/v0.2.23.tar.gz
+- folder: genoiser
+  sha256: ff8dee83cca89a1ebbb357334308460134fcd18121322f3fe709276b0cc1b4d5
+  url: https://github.com/brentp/genoiser/archive/v0.2.7.tar.gz
+test:
+  commands:
+  - nimnexus trim -h
+  - nimnexus dedup -h

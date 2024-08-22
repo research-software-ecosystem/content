@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/FOI-Bioinformatics/CanSNPer2
+  license: GPLv3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A toolkit for SNP-typing bacterial genomes.
+build:
+  entry_points:
+  - CanSNPer2=CanSNPer2.CanSNPerTree:main
+  - CanSNPer2-database=CanSNPer2.SNPDatabase:main
+  - CanSNPer2-download=CanSNPer2.DownloadGenomes:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - druvus
+package:
+  name: cansnper2
+  version: 2.0.6
+requirements:
+  host:
+  - pip
+  - python >3
+  - flextaxd >=0.2.1
+  - ete3
+  run:
+  - python >3
+  - flextaxd >=0.2.1
+  - ete3
+  - progressivemauve
+source:
+  sha256: a8ab21592f4c5bc462395f4351391379e705e89d958a656b2be46235a2a2bc82
+  url: https://github.com/FOI-Bioinformatics/CanSNPer2/archive/v2.0.6.tar.gz
+test:
+  commands:
+  - CanSNPer2 --help
+  - CanSNPer2-database --help
+  - CanSNPer2-download --help

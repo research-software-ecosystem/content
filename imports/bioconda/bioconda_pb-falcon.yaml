@@ -1,0 +1,53 @@
+about:
+  authors:
+  - cschin
+  - pb-cdunn
+  - isovic
+  - zkronenberg
+  home: https://github.com/PacificBiosciences/pbbioconda
+  license: BSD 3-Clause Clear License
+  summary: FALCON/Unzip tool-suite (originally by Jason Chin)
+build:
+  number: 6
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: pb-falcon
+  version: 2.2.4
+requirements:
+  build:
+  - None
+  - meson
+  - ninja
+  - pkg-config
+  host:
+  - zlib
+  - htslib
+  - python
+  - setuptools
+  run:
+  - htslib
+  - python
+  - networkx >=1.9.1
+  - future >=0.16.0
+  - python-edlib >=1.2.4
+  - python-intervaltree
+  - python-msgpack >=0.6.1
+  - numpy
+  - pysam
+source:
+- folder: pb-falcon
+  sha256: ae5743a16e0aadbfcbd7f3a54732a693e355a19e5533959cfe1a0dfb1b759e4a
+  url: https://github.com/PacificBiosciences/pb-falcon/releases/download/v2.2.4/pb-falcon.tar.gz
+test:
+  imports:
+  - pypeflow
+  - pwatcher
+  - pwatcher.mains
+  - falcon_kit
+  - falcon_unzip
+  - falcon_phase

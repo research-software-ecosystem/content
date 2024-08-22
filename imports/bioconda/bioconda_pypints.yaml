@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/hyulab/PINTS
+  home: https://pints.yulab.org
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Peak Identifier for Nascent Transcripts Starts (PINTS)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1038/s41587-022-01211-7
+  notes: "The tool provides a set of executable files: \n`pints_caller` (for peak\
+    \ calling, the main program), \n`pints_visualizer` (for generating bigwig files\
+    \ from bam files), \n`pints_normalizer` (for normalizing bigwig files by spikein\
+    \ counts), \nand `pints_boundary_extender`."
+package:
+  name: pypints
+  version: 1.1.10
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - bedtools
+  - biopython
+  - matplotlib-base
+  - numpy
+  - pandas
+  - pybedtools
+  - pybigwig
+  - pysam
+  - python
+  - requests
+  - samtools
+  - scipy
+  - statsmodels
+  - tabix
+source:
+  sha256: 91e4e6e8a308ad4e4e829068b96282385a0285512a2351cedd9793c50e8a7f63
+  url: https://pypi.io/packages/source/p/pyPINTS/pyPINTS-1.1.10.tar.gz
+test:
+  imports:
+  - pints

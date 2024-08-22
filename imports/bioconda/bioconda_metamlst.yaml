@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/SegataLab/metamlst
+  license: MIT
+  license_file: license.txt
+  summary: A computational pipeline for MLST typing from metagenomic data
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - doi:10.1093/nar/gkw837
+package:
+  name: metamlst
+  version: 1.2.3
+requirements:
+  run:
+  - python >=3.5
+  - samtools >=1.9
+  - bowtie2 >=2.2.6
+  - pysam >=0.11.1
+  - cmseq
+  - biopython
+source:
+  sha256: ba6515e7ad2cd04bd3db567b058b62e7c54b698f8aeb754564911775f3c2299c
+  url: https://github.com/SegataLab/metamlst/archive/v1.2.3.tar.gz
+test:
+  commands:
+  - metamlst.py -h
+  - metamlst-index.py -h

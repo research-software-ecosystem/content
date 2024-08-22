@@ -1,0 +1,30 @@
+about:
+  home: http://gatb.inria.fr/software/bloocoo/
+  license: aGPL v3
+  summary: Bloocoo is a k-mer spectrum-based read error corrector, designed to correct
+    large datasets with a very low memory footprint. As an example, it can correct
+    whole human genome re-sequencing reads at 70 x coverage with less than 4GB of
+    memory.
+build:
+  number: 6
+package:
+  name: bloocoo
+  version: 1.0.7
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  md5: f2ec2a1b1939b9e77dc58f4a6c18e326
+  patches:
+  - 0001-Remove-superfluous-template-keyword-in-debruijn--impl.patch
+  url: https://github.com/GATB/bloocoo/releases/download/v1.0.7/Bloocoo-v1.0.7-Source.tar.gz
+test:
+  commands:
+  - Bloocoo -version  | grep Bloocoo

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/runjiaji/magcluster
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  summary: Magnetosome gene cluster identification, annotation and visualization tool
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: magcluster
+  version: 0.2.5
+requirements:
+  host:
+  - python >=3.6
+  - prokka =1.13.4
+  - blast <=2.9
+  - pip
+  run:
+  - python >=3.6
+  - clinker-py
+  - pandas
+  - prokka =1.13.4
+  - blast <=2.9
+source:
+  sha256: bf6c566d14595dbc95cd0a40d3a526bc9a9b45ca1b7e033e6b17b62063fb9972
+  url: https://pypi.io/packages/source/m/magcluster/magcluster-0.2.5.tar.gz
+test:
+  commands:
+  - magcluster -h

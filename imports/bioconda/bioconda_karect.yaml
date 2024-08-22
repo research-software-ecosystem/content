@@ -1,0 +1,35 @@
+about:
+  dev_url: https://github.com/aminallam/karect
+  doc_url: https://github.com/aminallam/karect/blob/master/karect_manual.pdf
+  home: https://github.com/aminallam/karect
+  license: GPLv2
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'Read error correction tool based on multiple alignment.
+
+    '
+build:
+  number: 6
+  script: "install -d \"${PREFIX}/bin\"\n\"${CXX}\" ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}\
+    \ \\\n    -O3 -Wall -pthread -lpthread \\\n    karect.cpp \\\n    -o \"${PREFIX}/bin/karect\"\
+    \n"
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btv415
+  recipe-maintainers:
+  - notestaff
+package:
+  name: karect
+  version: 1.0
+requirements:
+  build:
+  - None
+  host: null
+  run: null
+source:
+  sha256: 47d90bf2e6d4dd26a48bcf9c8041cbe95af0bec48d2488422485378fd8c35681
+  url: https://github.com/aminallam/karect/archive/v1.0.tar.gz
+test:
+  commands:
+  - karect

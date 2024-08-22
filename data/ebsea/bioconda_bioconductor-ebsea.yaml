@@ -1,0 +1,44 @@
+about:
+  description: Calculates differential expression of genes based on exon counts of
+    genes obtained from RNA-seq sequencing data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/EBSEA.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Exon Based Strategy for Expression Analysis of genes
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:ebsea
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-ebsea
+    path: recipes/bioconductor-ebsea
+    version: 1.8.0
+package:
+  name: bioconductor-ebsea
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-empiricalbrownsmethod >=1.30.0,<1.31.0
+  - r-base
+  run:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-empiricalbrownsmethod >=1.30.0,<1.31.0
+  - r-base
+source:
+  md5: d016b1e83c4b885565a573db1b134fbd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/EBSEA_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EBSEA/EBSEA_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EBSEA_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ebsea/bioconductor-ebsea_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EBSEA')"

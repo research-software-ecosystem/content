@@ -1,0 +1,49 @@
+about:
+  doc_url: https://docs.solvebio.com/
+  home: https://github.com/solvebio/solvebio-python
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: The SolveBio Python client
+build:
+  entry_points:
+  - solvebio = solvebio.cli.main:main
+  - solvebio-recipes = recipes.sync_recipes:sync_recipes
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
+package:
+  name: solvebio
+  version: 2.29.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - six
+  - pyprind
+  - pycurl >=7.0.0
+  - requests >=2.0.0
+  - dash-auth <2
+  - dash-html-components
+  - dash-core-components
+  - flask
+  - flask-seasurf
+source:
+  sha256: e5e1e6eb044fb8300b64af768e1a1cae8ee66d665b55190daa44ec2489f7a2a6
+  url: https://pypi.io/packages/source/s/solvebio/solvebio-2.29.1.tar.gz
+test:
+  commands:
+  - solvebio --help
+  imports:
+  - solvebio
+  - solvebio.cli
+  - solvebio.contrib
+  - solvebio.contrib.dash
+  - solvebio.contrib.dash.tests
+  - solvebio.resource
+  - solvebio.test
+  - solvebio.utils

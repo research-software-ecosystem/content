@@ -1,0 +1,27 @@
+about:
+  home: https://www.healthcare.uiowa.edu/labs/au/LSC/
+  license: Apache 2.0
+  license_file: LICENSE
+  summary: LSC is a long read error correction tool that offers fast correction with
+    high sensitivity and good accuracy.
+build:
+  noarch: generic
+  number: 3
+package:
+  name: lsc
+  version: '2.0'
+requirements:
+  host: null
+  run:
+  - perl
+  - python <3
+  - samtools
+  - bowtie2
+source:
+  md5: 10e0e85f74a7975cd46ef4ea43ab7c5d
+  patches:
+  - install_paths.patch
+  url: http://augroup.org/LSC/files/LSC-2.0.tar.gz
+test:
+  commands:
+  - runLSC.py -h

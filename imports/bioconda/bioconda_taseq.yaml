@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/KChigira/taseq/
+  license: MIT
+  license_file: LICENSE
+  summary: Downstream analysis for targetted amplicon sequencing.
+build:
+  entry_points:
+  - taseq_hapcall = taseq.hapcall:main
+  - taseq_genotype = taseq.genotype:main
+  - taseq_filter = taseq.filter:main
+  - taseq_draw = taseq.draw:main
+  - taseq = taseq.default:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - KChigira
+package:
+  name: taseq
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python >=3.12,<4.0
+  - pandas >=2.2.2,<3.0.0
+  - matplotlib-base >=3.9.1,<4.0.0
+  - samtools >=1.20,<2.0
+  - gatk4 >=4.5.0.0,<4.6.0.0
+  - picard-slim >=2.27.4,<3.0.0
+  - bwa >=0.7.18,<0.8.0
+  - trimmomatic >=0.39,<1.0
+source:
+  sha256: a5ace00224b7bfd7e95d7552c89fea996327799be03f490fea7c782e3c01abea
+  url: https://pypi.io/packages/source/t/taseq/taseq-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  - taseq_hapcall --help
+  - taseq_genotype --help
+  - taseq_filter --help
+  - taseq_draw --help
+  - taseq --help
+  imports:
+  - taseq
+  requires:
+  - pip

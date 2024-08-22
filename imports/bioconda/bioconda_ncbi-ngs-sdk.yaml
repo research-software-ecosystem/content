@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/ncbi/ngs
+  license: Public Domain
+  summary: NGS is a new, domain-specific API for accessing reads, alignments and pileups
+    produced from Next Generation Sequencing.
+build:
+  number: 4
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ncbi-ngs-sdk
+  version: 3.0.1
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - perl
+  - libiconv
+  - libxml2
+source:
+  patches:
+  - patch
+  sha256: 0c326aa1744a689c67d2ee7ef8097ec962fdc1529ddbfd63eb0987a23e76d48e
+  url: https://github.com/ncbi/ngs/archive/3.0.1.tar.gz
+test:
+  commands:
+  - test -e ${PREFIX}/lib64/libngs-sdk.so
+  - test -e ${PREFIX}/lib64/libngs-sdk.dylib

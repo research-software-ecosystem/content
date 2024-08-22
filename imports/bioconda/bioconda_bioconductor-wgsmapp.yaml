@@ -1,0 +1,41 @@
+about:
+  description: "This package provides whole-genome mappability tracks on human hg19/hg38\
+    \ assembly. We employed the 100-mers mappability track from the ENCODE Project\
+    \ and computed weighted average of the mappability scores if multiple ENCODE regions\
+    \ overlap with the same bin. \u201CBlacklist\u201D bins, including segmental duplication\
+    \ regions and gaps in reference assembly from telomere, centromere, and/or heterochromatin\
+    \ regions are included. The dataset consists of three assembled .bam files of\
+    \ single-cell whole genome sequencing from 10X for illustration purposes."
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/WGSmapp.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Mappability tracks of Whole-genome Sequencing from the ENCODE Project
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-wgsmapp
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: dfc3f5a82d532551e2d6c21b11c99566
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/WGSmapp_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/WGSmapp/WGSmapp_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/WGSmapp_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-wgsmapp/bioconductor-wgsmapp_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('WGSmapp')"

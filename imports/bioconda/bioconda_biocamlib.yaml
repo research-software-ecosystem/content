@@ -1,0 +1,47 @@
+about:
+  description: 'BiOCamLib is an OCaml foundation upon which a number of the bioinformatics
+    tools are built,
+
+    including KPop <https://github.com/PaoloRibeca/KPop>. It consists of four tools:
+
+    1. RC, which can efficiently compute the reverse complement of sequences.
+
+    2. Octopus, which is a high-throughput program to compute the transitive closure
+    of strings.
+
+    3. Parallel, which allows the splits and processes an input file chunk-wise using
+    a reader/workers/writer model.
+
+    4. FASTools, which is a Swiss-knife tool for the manipulation of FASTA/FASTQ files.
+
+    '
+  dev_url: https://github.com/PaoloRibeca/BiOCamLib
+  home: https://github.com/PaoloRibeca/BiOCamLib
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: An OCaml foundation upon which a number of the bioinformatics tools are
+    built.
+build:
+  number: 0
+  run_exports: None
+  skip: true
+extra:
+  recipe-maintainers:
+  - PaoloRibeca
+  - ryanmorrison22
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: biocamlib
+  version: 1.0.0
+source:
+- sha256: bd08b1fe1949cb2faa98b46b40a99c84f0f5581515e337bab50111b11d9c7f12
+  url: https://github.com/PaoloRibeca/BiOCamLib/releases/download/v1.0.0/BiOCamLib-1.0.0-Linux_x86-64.tar.xz
+- sha256: e55766df1e0af12f825ab1fe244841b70b8ccce9c764b60acc56d4386d3ce9bb
+  url: https://github.com/PaoloRibeca/BiOCamLib/releases/download/v1.0.0/BiOCamLib-1.0.0-MacOS_x86-64.tar.xz
+test:
+  commands:
+  - Parallel -V
+  - FASTools -V
+  - Octopus -V
+  - RC -V

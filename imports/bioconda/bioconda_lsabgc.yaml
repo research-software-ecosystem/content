@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/Kalan-Lab/lsaBGC-Pan
+  home: https://github.com/Kalan-Lab/lsaBGC-Pan
+  license: BSD-3-Clause license
+  license_family: BSD
+  license_file: LICENSE
+  summary: lsaBGC-Pan - refined workflow for pan-BGC-omic evolutionary investigations.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - raufs
+package:
+  name: lsabgc
+  version: 1.1.1
+requirements:
+  host:
+  - python
+  - setuptools
+  - pip
+  run:
+  - python >=3.10
+  - r-base
+  - axel
+  - zol >=1.4.12
+  - orthofinder =2.5.5
+  - pyseer >=1.3
+  - gecco =0.9.6
+  - prodigal
+  - pyrodigal
+  - biopython
+  - tar
+  - pandas
+  - xlsxwriter >=3.0.3
+  - scikit-learn
+  - numpy
+  - r-ggplot2
+  - r-cowplot
+  - r-phytools
+  - r-ape
+  - r-dplyr
+  - r-gggenes
+  - bioconductor-ggtree
+  - r-data.table
+  - r-plyr
+  - r-gridextra
+source:
+  sha256: d926a662a19352c87c7a1c5085936a64b29d6318db2c037370797851eba71617
+  url: https://github.com/Kalan-Lab/lsaBGC-Pan/archive/refs/tags/v1.1.1.tar.gz
+test:
+  commands:
+  - lsaBGC-Pan -h

@@ -1,0 +1,50 @@
+about:
+  description: To give the exactly p-value and q-value of MeDIP-seq and MRE-seq data
+    for different samples comparation.
+  home: https://bioconductor.org/packages/3.18/bioc/html/methylMnM.html
+  license: GPL-3.0-only
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: detect different methylation level (DMR)
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:methylmnm
+  - doi:10.1101/gr.156539.113
+  parent_recipe:
+    name: bioconductor-methylmnm
+    path: recipes/bioconductor-methylmnm
+    version: 1.18.0
+package:
+  name: bioconductor-methylmnm
+  version: 1.40.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - r-base
+  - r-statmod
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - r-base
+  - r-statmod
+source:
+  md5: 3d6c83c4fa30daea5b1c91e70f67c6b5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/methylMnM_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/methylMnM/methylMnM_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/methylMnM_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-methylmnm/bioconductor-methylmnm_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('methylMnM')"

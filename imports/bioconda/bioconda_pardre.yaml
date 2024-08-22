@@ -1,0 +1,35 @@
+about:
+  home: https://sourceforge.net/projects/pardre/
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: ParDRe is a parallel tool to remove duplicate reads.
+build:
+  number: 3
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - https://doi.org/10.1093/bioinformatics/btw038
+  recipe-maintainers:
+  - rhpvorderman
+package:
+  name: pardre
+  version: 2.2.5
+requirements:
+  build:
+  - make
+  - None
+  - mpich-mpicxx
+  - zlib
+  host:
+  - mpich
+  - zlib
+  run:
+  - mpich
+  - zlib
+source:
+  sha256: c5c5311f9492de52c32f77cb225952bfc5638b3837653198061022fd9123ba80
+  url: https://sourceforge.net/projects/pardre/files/ParDRe-rel2.2.5.tar.gz
+test:
+  commands:
+  - ParDRe -h

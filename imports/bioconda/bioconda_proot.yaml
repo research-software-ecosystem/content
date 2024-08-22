@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/proot-me/PRoot
+  license: GPL-2.0
+  license_file: COPYING
+  summary: chroot, mount --bind, and binfmt_misc without privilege/setup
+build:
+  number: 1
+  skip: true
+package:
+  name: proot
+  version: 5.1.0
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - talloc
+  run:
+  - talloc
+source:
+  patches:
+  - proot_event.patch
+  sha256: 50fcb882662b2de3e64e603b68d1af75e920d480191a49e11c0cb63d50040386
+  url: https://github.com/proot-me/PRoot/archive/v5.1.0.tar.gz
+test:
+  commands:
+  - proot -V |grep proot.me >/dev/null

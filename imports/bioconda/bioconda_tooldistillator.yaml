@@ -1,0 +1,74 @@
+about:
+  dev_url: https://gitlab.com/ifb-elixirfr/abromics/tooldistillator
+  doc_url: https://gitlab.com/ifb-elixirfr/abromics/tooldistillator/-/blob/main/docs/_build/html/index.html
+  home: https://gitlab.com/ifb-elixirfr/abromics
+  license: GPLv3
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: Tool to extract and aggregate information from different tool outputs to
+    JSON parsable files
+build:
+  entry_points:
+  - tooldistillator = tooldistillator.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+context: {}
+extra:
+  recipe-maintainers:
+  - bebatut
+  - clsiguret
+package:
+  name: tooldistillator
+  version: '0.9'
+requirements:
+  host:
+  - python >=3.10
+  - pip >=23.1.2
+  run:
+  - pandas
+  - biopython
+  - python
+  - ld_impl_linux-64
+  - _libgcc_mutex
+  - libstdcxx-ng
+  - python_abi
+  - ca-certificates
+  - libgfortran5
+  - libgomp
+  - libgfortran-ng
+  - _openmp_mutex
+  - libgcc-ng
+  - libopenblas
+  - openssl
+  - xz
+  - ncurses
+  - libnsl
+  - libffi
+  - bzip2
+  - libzlib
+  - libblas
+  - readline
+  - tk
+  - libsqlite
+  - libcblas
+  - liblapack
+  - tzdata
+  - wheel
+  - setuptools
+  - pip
+  - six
+  - pytz
+  - python-tzdata
+  - python-dateutil
+  - numpy
+source:
+  sha256: e2b52e29971ef0da84d9bb8370db060dbc6c58fc61e509e852d297b3d7648817
+  url: https://gitlab.com/ifb-elixirfr/abromics/tooldistillator/-/archive/0.9/tooldistillator-0.9.tar.gz
+test:
+  commands:
+  - tooldistillator --help
+  - tooldistillator --version
+  - tooldistillator abricate --help

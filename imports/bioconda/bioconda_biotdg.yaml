@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/biowdl/biotdg
+  doc_url: https://github.com/biowdl/biotdg
+  home: https://github.com/biowdl/biotdg
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Bioinformatics Test Data Generator
+build:
+  entry_points:
+  - biotdg = biotdg:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --ignore-installed --no-deps'
+extra:
+  recipe-maintainers:
+  - rhpvorderman
+  - DavyCats
+package:
+  name: biotdg
+  version: 0.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.6,<3.8
+  - setuptools
+  run:
+  - biopython
+  - cyvcf2
+  - python >=3.6,<3.8
+  - setuptools
+  - dwgsim
+source:
+  sha256: 981d588a3be672fd62ec5eac402a87d5e5f0865d040d1a1b6ae2f8398f840cd1
+  url: https://pypi.io/packages/source/b/biotdg/biotdg-0.1.0.tar.gz
+test:
+  commands:
+  - biotdg --help
+  - biotdg --version
+  imports:
+  - biotdg

@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/kornl/mutoss/
+  license: GPL
+  license_family: GPL
+  summary: Designed to ease the application and comparison of multiple hypothesis
+    testing procedures for FWER, gFWER, FDR and FDX. Methods are  standardized and
+    usable by the accompanying 'mutossGUI'.
+build:
+  noarch: generic
+  number: 7
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-mutoss
+  version: 0.112
+requirements:
+  host:
+  - r-base
+  - r-multcomp >=1.1_0
+  - bioconductor-multtest >=2.2.0
+  - r-mvtnorm
+  - r-plotrix
+  run:
+  - r-base
+  - r-multcomp >=1.1_0
+  - bioconductor-multtest >=2.2.0
+  - r-mvtnorm
+  - r-plotrix
+source:
+  sha256: 2889ae3d502157592697124eb86adc14911e2b7fdaa7204743a376b1eeb967fa
+  url:
+  - /src/contrib/mutoss_0.1-12.tar.gz
+  - /src/contrib/Archive/mutoss/mutoss_0.1-12.tar.gz
+test:
+  commands:
+  - $R -e "library('mutoss')"
+  - '"%R%" -e "library(''mutoss'')"'

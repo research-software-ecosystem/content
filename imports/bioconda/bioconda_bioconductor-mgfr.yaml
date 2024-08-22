@@ -1,0 +1,43 @@
+about:
+  description: The package is designed to detect marker genes from RNA-seq data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MGFR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Marker Gene Finder in RNA-seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mgfr
+  - doi:10.1186/s12864-015-1785-9
+  parent_recipe:
+    name: bioconductor-mgfr
+    path: recipes/bioconductor-mgfr
+    version: 1.6.0
+package:
+  name: bioconductor-mgfr
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+  run:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+source:
+  md5: 73cad34ad523499dbdcfb3746b519b48
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MGFR_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MGFR/MGFR_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MGFR_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mgfr/bioconductor-mgfr_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MGFR')"

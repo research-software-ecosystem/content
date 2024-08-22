@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/xinehc/melon
+  license: MIT
+  license_family: MIT
+  summary: 'Melon: metagenomic long-read-based taxonomic identification and quantification'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - xinehc
+package:
+  name: melon
+  version: 0.2.0
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - diamond >=2.1.8
+  - minimap2 >=2.26
+  - kraken2
+  - seqkit
+  - numpy
+  - scipy
+  - tqdm
+source:
+  sha256: 3020c20f8619aeeb254a52eb8822dab3689956b3e218450cd8506a42f263f7f4
+  url: https://github.com/xinehc/melon/archive/refs/tags/v0.2.0.tar.gz
+test:
+  commands:
+  - melon -h
+  imports:
+  - melon

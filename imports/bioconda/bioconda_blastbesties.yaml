@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/Adamtaranto/blast-besties
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Rapid discovery of reciprocal best blast pairs from BLAST output files.
+build:
+  entry_points:
+  - blastbesties = blastbesties.app:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+package:
+  name: blastbesties
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  - setuptools-scm
+  run:
+  - python >=3.7
+source:
+  sha256: 6dce21a9f92d8e47875a020c279e420ed5077d00ced3534844993a26e779e57d
+  url: https://pypi.io/packages/source/b/blastbesties/blastbesties-1.1.2.tar.gz
+test:
+  commands:
+  - blastbesties --help
+  imports:
+  - blastbesties

@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/Kalan-Lab/codoff
+  home: https://github.com/Kalan-Lab/codoff
+  license: BSD-3-Clause license
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'codoff: program to measure the irregularity of the codon usage for a single
+    genomic region (e.g. a BGC, phage, etc.) relative to the full genome.'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+package:
+  name: codoff
+  version: 1.1.8
+requirements:
+  host:
+  - python
+  - setuptools
+  - pip
+  - wget
+  run:
+  - python >=3.10
+  - biopython
+  - setuptools
+  - scipy
+  - seaborn
+  - matplotlib-base
+  - pyrodigal
+source:
+  sha256: 9f32c3f0a72df67a9951add4bcd0ecbe60fd48471321ba952bdb0c2867343cfd
+  url: https://github.com/Kalan-Lab/codoff/archive/refs/tags/v1.1.8.tar.gz
+test:
+  commands:
+  - codoff -h

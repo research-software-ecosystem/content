@@ -1,0 +1,29 @@
+about:
+  description: ChExAlign is a computational framework that aligns ChIP-exo crosslinking
+    patterns from multiple proteins across a set of regulatory regions, and which
+    detects and quantifies protein-DNA crosslinking events within the aligned profiles.
+    The output of the alignment approach is a set of composite profiles that represent
+    the crosslinking signatures of the complex across analyzed regulatory regions.
+    We then use a probabilistic mixture model to deconvolve individual crosslinking
+    events within the aligned ChIP-exo profiles, enabling consistent measurements
+    of protein-DNA crosslinking strengths across multiple proteins.
+  home: https://github.com/seqcode/chexalign
+  license: MIT
+  summary: ChExAlign is used for alignment and quantification of ChIP-exo crosslinking
+    patterns.
+build:
+  noarch: generic
+  number: 1
+package:
+  name: chexalign
+  version: '0.12'
+requirements:
+  run:
+  - openjdk >=8
+source:
+  sha256: b2fb09b2ddf37719b64dd6327ce711c60a40966ad5cd864623b194eee14498c4
+  url: http://lugh.bmb.psu.edu/software/chexalign/chexalign_v0.12.jar
+test:
+  commands:
+  - chexalign --version 2>&1 | grep 0.12
+  - rm -rf chex*

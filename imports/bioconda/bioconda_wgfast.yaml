@@ -1,0 +1,56 @@
+about:
+  home: https://github.com/jasonsahl/wgfast
+  license: GPL v3
+  license_family: GPL
+  license_file: LICENSE
+  summary: The whole genome focused array SNP typing (WG-FAST) pipeline
+build:
+  entry_points:
+  - wgfast = wgfast.main:main
+  - wgfast_prep = wgfast.tools.wgfast_prep:main
+  - wgfastdb = wgfastdb.main:main
+  - wgfast_genbankqc = genbankqc.__main__:cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  container:
+    extended-base: true
+  recipe_maintainers:
+  - tfursten
+package:
+  name: wgfast
+  version: 1.0.4
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython
+  - pandas
+  - click
+  - dendropy
+  - samtools
+  - bwa
+  - bbmap
+  - raxml
+  - picard
+  - mash
+  - nasp
+  - ncbitk
+  - snakemake >=5
+  - logbook
+  - qt
+  - pathos
+  - ete3
+  - retrying
+source:
+  sha256: 9bc050563bcf835647b5621f5fb3b927d06a563f7c7a230db6f591ec7e8df0e4
+  url: https://github.com/FofanovLab/wgfast/archive/1.0.4.tar.gz
+test:
+  commands:
+  - wgfast --help
+  - wgfast_prep --help
+  - wgfastdb --help
+  - wgfast_genbankqc --help

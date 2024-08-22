@@ -1,0 +1,49 @@
+about:
+  description: Pathway analysis based on p-values associated to genes from a genes
+    expression analysis of interest. Utility functions enable to extract pathways
+    from the Gene Ontology Biological Process (GOBP), Molecular Function (GOMF) and
+    Cellular Component (GOCC), Kyoto Encyclopedia of Genes of Genomes (KEGG) and Reactome
+    databases. Methodology, and helper functions to display the results as a table,
+    barplot of pathway significance, Gene Ontology graph and pathway significance
+    are available.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MLP.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Mean Log P Analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mlp
+  - doi:10.1007/978-3-642-24007-2_12
+  parent_recipe:
+    name: bioconductor-mlp
+    path: recipes/bioconductor-mlp
+    version: 1.28.0
+package:
+  name: bioconductor-mlp
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - r-gplots
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - r-gplots
+source:
+  md5: 5ed5a850807679b4baa1c5d4d88f48d6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MLP_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MLP/MLP_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MLP_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mlp/bioconductor-mlp_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MLP')"

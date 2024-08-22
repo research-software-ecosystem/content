@@ -1,0 +1,52 @@
+about:
+  description: The package contains local copy of the Synaptic proteome database.
+    On top of this it provide a set of utility R functions to query and analyse its
+    content. It allows extraction of information for specific genes and building the
+    protein-protein interaction graph for gene sets, synaptic compartments, and brain
+    regions.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/synaptome.db.html
+  license: Artistic-2.0
+  summary: Synamptosome Proteome Database
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-synaptome.db
+  version: 0.99.15
+requirements:
+  host:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-synaptome.data >=0.99.0,<0.100.0
+  - r-base
+  - r-dbi
+  - r-dbplyr
+  - r-dplyr
+  - r-igraph
+  - r-rdpack
+  - r-rsqlite
+  run:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-synaptome.data >=0.99.0,<0.100.0
+  - r-base
+  - r-dbi
+  - r-dbplyr
+  - r-dplyr
+  - r-igraph
+  - r-rdpack
+  - r-rsqlite
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 7ed11d61ac8dca86372eeec59b5ab03b
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/synaptome.db_0.99.15.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/synaptome.db/synaptome.db_0.99.15.tar.gz
+  - https://bioarchive.galaxyproject.org/synaptome.db_0.99.15.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-synaptome.db/bioconductor-synaptome.db_0.99.15_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('synaptome.db')"

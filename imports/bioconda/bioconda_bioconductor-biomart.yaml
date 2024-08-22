@@ -1,0 +1,65 @@
+about:
+  description: In recent years a wealth of biological data has become available in
+    public data repositories. Easy access to these valuable data resources and firm
+    integration with data analysis is needed for comprehensive bioinformatics data
+    analysis. biomaRt provides an interface to a growing collection of databases implementing
+    the BioMart software suite (<http://www.biomart.org>). The package enables retrieval
+    of large amounts of data in a uniform way without the need to know the underlying
+    database schemas or write complex SQL queries. The most prominent examples of
+    BioMart databases are maintain by Ensembl, which provides biomaRt users direct
+    access to a diverse set of data and enables a wide range of powerful online queries
+    from gene annotation to database mining.
+  home: https://bioconductor.org/packages/3.18/bioc/html/biomaRt.html
+  license: Artistic-2.0
+  summary: Interface to BioMart databases (i.e. Ensembl)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:biomaRt
+  - doi:10.1038/nprot.2009.97
+  parent_recipe:
+    name: bioconductor-biomart
+    path: recipes/bioconductor-biomart
+    version: 2.36.1
+package:
+  name: bioconductor-biomart
+  version: 2.58.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - r-base
+  - r-digest
+  - r-httr
+  - r-progress
+  - r-rappdirs
+  - r-stringr
+  - r-xml >=3.99-0.7
+  - r-xml2
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - r-base
+  - r-digest
+  - r-httr
+  - r-progress
+  - r-rappdirs
+  - r-stringr
+  - r-xml >=3.99-0.7
+  - r-xml2
+source:
+  md5: dd18037fef27f7c50af56f5da2086e04
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/biomaRt_2.58.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/biomaRt/biomaRt_2.58.0.tar.gz
+  - https://bioarchive.galaxyproject.org/biomaRt_2.58.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biomart/bioconductor-biomart_2.58.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('biomaRt')"

@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/dparks1134/UniteM
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Ensemble binning strategies for combining the output of multiple binning
+    methods.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+package:
+  name: unitem
+  version: 1.2.6
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - python >=3
+  - numpy >=1.24
+  - svgwrite >=1.4.1
+  - maxbin2 >=2.2.7
+  - metabat2 >=2.15
+source:
+  sha256: 7d761548cfda8db476a16d1f92ae4962a064e48d59d11548bd728c43c5d654da
+  url: https://pypi.io/packages/source/u/unitem/unitem-1.2.6.tar.gz
+test:
+  commands:
+  - unitem -h
+  imports:
+  - unitem

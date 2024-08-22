@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/jodyphelan/TBProfiler
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Profiling tool for Mycobacterium tuberculosis to detect drug resistance
+    and lineage from sequencing data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1186/s13073-019-0650-x
+package:
+  name: tb-profiler
+  version: 6.3.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - gatk4
+  - samtools >=1.10
+  - bwa
+  - snpeff >=5.0
+  run:
+  - python >=3.8
+  - git
+  - jinja2
+  - pathogen-profiler =4.3.0
+  - filelock
+  - docxtpl
+  - iqtree
+  - joblib
+  - tqdm
+  - pysam
+  - rich-argparse
+source:
+  sha256: 45f3f104a3dd0f2fe07b315e3dc4ab1f0e35be095180363ecc65d41842972140
+  url: https://github.com/jodyphelan/TBProfiler/archive/v6.3.0.tar.gz
+test:
+  commands:
+  - tb-profiler
+  imports:
+  - tbprofiler
+  - pathogenprofiler

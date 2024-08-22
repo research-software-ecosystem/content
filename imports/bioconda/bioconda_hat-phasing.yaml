@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/AbeelLab/hat/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: "HAT:\u200C  Haplotype assembly tool that use both long and short reads\
+    \ to reconstruct haplotypes"
+build:
+  entry_points:
+  - HAT = hat.HAT_main:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - ramin-shirali
+package:
+  name: hat-phasing
+  version: 0.1.8
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - matplotlib-base
+  - numpy >=1.22.3
+  - pysam >=0.19.0
+  - python
+  - seaborn
+source:
+  sha256: 8bcff2b4ff9d84ebf367767e5f9df70ef1cd11bb34c86ff5d59d3aa5d16405da
+  url: https://pypi.io/packages/source/H/HAT-phasing/HAT_phasing-0.1.8.tar.gz
+test:
+  commands:
+  - HAT --help
+  imports:
+  - hat

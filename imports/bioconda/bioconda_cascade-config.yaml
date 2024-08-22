@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/RalfG/cascade-config
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Cascading configuration from the CLI and config files.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vvv'
+extra:
+  recipe-maintainers:
+  - compomics
+  - RalfG
+package:
+  name: cascade-config
+  version: 0.4.0
+requirements:
+  host:
+  - python >=3.6
+  - flit-core
+  - pip
+  run:
+  - python >=3.6
+  - jsonschema
+source:
+  sha256: cb3cffd3e9899b6aa46f29e5462b413cfdd94e74e36748e977d1949c46478715
+  url: https://pypi.io/packages/source/c/cascade-config/cascade_config-0.4.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - cascade_config
+  requires:
+  - pip

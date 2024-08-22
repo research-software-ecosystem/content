@@ -1,0 +1,30 @@
+about:
+  doc_url: https://www.dfam.org/help/family
+  home: dfam.org
+  license: Creative Commons Zero
+  license_family: CC
+  summary: The Dfam database is a collection of Repetitive DNA element sequence alignments,
+    hidden Markov models (HMMs) and matches lists for complete Eukaryote genomes
+build:
+  noarch: generic
+  number: 0
+package:
+  name: dfam
+  version: 3.7
+requirements:
+  build:
+  - gettext
+  run:
+  - perl
+  - python >3
+  - python-wget
+  - wget
+  - hmmer
+  - repeatmasker
+source:
+  sha256: f06ea8a655c69141e9f40d66724c20bea6e3404ccc040b8aaa64a5f92ebd8b37
+  url: https://dfam.org/releases/Dfam_3.7/infrastructure/dfamscan.pl.gz
+test:
+  commands:
+  - dfamscan.pl --help 2>&1 | grep "prints this help"
+  - download-dfam.py --help

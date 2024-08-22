@@ -1,0 +1,38 @@
+about:
+  home: https://igphyml.readthedocs.io/en/latest/index.html
+  license: GNU GPL version 2
+  license_family: GPL2
+  license_file: COPYING
+  summary: IgPhyML is a program designed to build phylogenetic trees and test evolutionary
+    hypotheses regarding B cell affinity maturation.
+build:
+  number: 1
+extra:
+  recipe-maintainers:
+  - PertuyF
+package:
+  name: igphyml
+  version: 1.1.5
+requirements:
+  build:
+  - None
+  - autoconf
+  - automake
+  - make
+  - llvm-openmp
+  host:
+  - llvm-openmp
+  run:
+  - llvm-openmp
+  - changeo >=0.4.6
+  - r-alakazam >=0.3.0
+source:
+  sha256: 0182d2a46a1449bedd374c8db6659e796aa7297d6821090727c2ffad13f34a26
+  url: https://bitbucket.org/kleinstein/igphyml/get/1.1.5.tar.gz
+test:
+  commands:
+  - igphyml --help
+  - IGPHYML_PATH=${PREFIX}/share/igphyml/motifs/ igphyml -i ${PREFIX}/share/igphyml/examples/example.fasta
+    -m GY --run_id gy --threads 2 | [[ ! $( grep 'unless compiled with OMP!' ) ]]
+  - IGPHYML_PATH=${PREFIX}/share/igphyml/motifs/ igphyml -i ${PREFIX}/share/igphyml/examples/example.fasta
+    -m HLP --root V4-59 --run_id hlp

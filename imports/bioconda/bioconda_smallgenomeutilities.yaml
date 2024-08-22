@@ -1,0 +1,63 @@
+about:
+  home: https://github.com/cbg-ethz/smallgenomeutilities
+  license: GNU General Public License v2 or later (GPLv2+)
+  license_family: GPL2
+  license_file: LICENSE
+  summary: A collection of scripts that are useful for dealing with viral RNA NGS
+    data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -v
+extra:
+  recipe-maintainers:
+  - DrYak
+package:
+  name: smallgenomeutilities
+  version: 0.4.1
+requirements:
+  host:
+  - python >3
+  - pip
+  run:
+  - python >3
+  - biopython =1.83
+  - pysam >=0.16
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  - progress
+  - pyyaml
+  - bcbio-gff
+  - pysamstats
+  - mafft
+source:
+  sha256: 0fbf5077b8147bbcd445ee9e761f1234e947a093d3cc908bb1c3dfc76c1ce1e1
+  url: https://github.com/cbg-ethz/smallgenomeutilities/releases/download/0.4.1/smallgenomeutilities-0.4.1.tar.gz
+test:
+  commands:
+  - test "$(frameshift_deletions_checks --version|tee >(cat 1>&2)|grep -oE '[0-9]+(\.[0-9a-z]+)*$')"
+    == "0.4.1"
+  - aln2basecnt -h
+  - convert_qr -h
+  - convert_reference -h
+  - coverage -h
+  - coverage_stats -h
+  - extract_consensus -h
+  - extract_coverage_intervals -h
+  - extract_sam -h
+  - extract_seq -h
+  - frameshift_deletions_checks -h
+  - gather_coverage -h
+  - mapper -h
+  - minority_freq -h
+  - pair_sequences -h
+  - predict_num_reads -h
+  - remove_gaps_msa -h
+  - MPLBACKEND="Agg" compute_mds  -h
+  imports:
+  - smallgenomeutilities

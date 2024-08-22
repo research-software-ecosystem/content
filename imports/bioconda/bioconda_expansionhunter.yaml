@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/Illumina/ExpansionHunter
+  license: APACHE
+  license_file: LICENSE.txt
+  summary: A tool for estimating repeat sizes
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: expansionhunter
+  version: 5.0.0
+requirements:
+  build:
+  - None
+  - make
+  - cmake
+  host:
+  - abseil-cpp >=20210324.2,<20210324.3
+  - boost >=1.73
+  - bzip2
+  - fmt
+  - gmock
+  - gtest >=1.10.0
+  - htslib >=1.10.2
+  - libcurl
+  - libdeflate
+  - spdlog >=1.6.1
+  - xz
+  - zlib
+  run:
+  - boost
+source:
+  patches:
+  - 0001-adjust-cmake-targets.patch
+  - 0002-specify-boost-for-make_unique.patch
+  - 0003-add-missing-limits-import.patch
+  - 0004-add-fmt-formatters-for-classes.patch
+  - 0005-apply-bioconda-4.0.2-patches.patch
+  sha256: 921d1f8be658f2bdd144150278210bb921d605af921816e94a7508c0b9b9dfff
+  url: https://github.com/Illumina/ExpansionHunter/archive/v5.0.0.tar.gz
+test:
+  commands:
+  - test -f ${PREFIX}/bin/ExpansionHunter
+  - ExpansionHunter --help

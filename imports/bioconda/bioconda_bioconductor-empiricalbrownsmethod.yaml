@@ -1,0 +1,43 @@
+about:
+  description: "Combining P-values from multiple statistical tests is common in bioinformatics.\
+    \ However, this procedure is non-trivial for dependent P-values. This package\
+    \ implements an empirical adaptation of Brown\u2019s Method (an extension of Fisher\u2019\
+    s Method) for combining dependent P-values which is appropriate for highly correlated\
+    \ data sets found in high-throughput biological experiments."
+  home: https://bioconductor.org/packages/3.18/bioc/html/EmpiricalBrownsMethod.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Uses Brown's method to combine p-values from dependent tests
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:empiricalbrownsmethod
+  - doi:10.1093/bioinformatics/btw438
+  parent_recipe:
+    name: bioconductor-empiricalbrownsmethod
+    path: recipes/bioconductor-empiricalbrownsmethod
+    version: 1.8.0
+package:
+  name: bioconductor-empiricalbrownsmethod
+  version: 1.30.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: cde2165928019f9c13982d640a1303c5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/EmpiricalBrownsMethod_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EmpiricalBrownsMethod/EmpiricalBrownsMethod_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EmpiricalBrownsMethod_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-empiricalbrownsmethod/bioconductor-empiricalbrownsmethod_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EmpiricalBrownsMethod')"

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/Kamnitsask/deepmedic
+  license: BSD
+  summary: Efficient Multi-Scale 3D Convolutional Neural Network for Brain Lesion
+    Segmentation.
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: deepmedic
+  version: 0.6.1
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - theano
+  - nibabel
+  - pp
+  - six
+  - scipy
+  - numpy
+source:
+  sha256: 02496be7740f19f27af413b246282b436d6afea59e5491d2bbf9f0db1d2ae427
+  url: https://github.com/Kamnitsask/deepmedic/archive/v0.6.1_theano.tar.gz
+test:
+  commands:
+  - deepMedicRun -h

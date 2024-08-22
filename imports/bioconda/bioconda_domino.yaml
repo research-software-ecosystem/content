@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/Shamir-Lab/DOMINO
+  license: MIT
+  license_family: MIT
+  summary: AMI algorithm with low rate of false calls
+build:
+  entry_points:
+  - domino = src.runner:main_domino
+  - slicer = src.runner:main_slicer
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - hag007
+package:
+  name: domino
+  version: 1.0.0
+requirements:
+  host:
+  - pip
+  - python >=3.6,<3.8
+  run:
+  - python >=3.6,<3.8
+  - networkx 2.4
+  - numpy 1.18.1
+  - scipy 1.4.1
+  - pandas 1.0.1
+  - pcst-fast 1.0.7
+  - statsmodels 0.11.0
+  - python-louvain 0.14
+source:
+  sha256: 59e095e39a9d3ff017b0bc95dd242247be1e3f953c6ff8c715a14e76df60e46e
+  url: https://github.com/Shamir-Lab/DOMINO/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - python --version

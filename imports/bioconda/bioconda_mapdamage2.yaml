@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/ginolhac/mapDamage
+  license: MIT
+  summary: 'mapDamage: tracking and quantifying damage patterns in ancient DNA sequences
+    http://geogenetics.ku.dk/all_literature/mapdamage/'
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: mapdamage2
+  version: 2.2.2
+requirements:
+  host:
+  - pip
+  - python >=3.5
+  - r-base
+  - r-ggplot2 >=2.1.0
+  - r-rcpp
+  - r-rcppgsl
+  - r-inline
+  - r-gam
+  run:
+  - python >=3.5
+  - r-base
+  - r-ggplot2 >=2.1.0
+  - r-rcpp
+  - r-rcppgsl
+  - r-inline
+  - r-gam
+  - pysam
+  - seqtk
+source:
+  patches:
+  - patch
+  sha256: 0958ac559c5cdb064156a74df6fb8665610ec98521c892f8923cf2060f1014f8
+  url: https://github.com/ginolhac/mapDamage/archive/2.2.2.tar.gz
+test:
+  commands:
+  - mapDamage -h 2>&1 | grep 'Options for the statistical estimation'
+  - mapDamage 2>&1 | grep Usage
+  - $R -e "library('RcppGSL')"
+  - '"%R%" -e "library(''RcppGSL'')"'
+  imports:
+  - pysam

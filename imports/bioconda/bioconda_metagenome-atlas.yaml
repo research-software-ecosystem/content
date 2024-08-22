@@ -1,0 +1,63 @@
+about:
+  description: "Atlas is a easy to use metagenomic pipeline\n# Quick Start\n\nThree\
+    \ commands to start analysing your metagenome data:\n```\n    mamba install -c\
+    \ bioconda -c conda-forge metagenome-atlas\n    atlas init --db-dir databases\
+    \ path/to/fastq/files\n    atlas run\n```\nAll databases and dependencies are\
+    \ installed on the fly in the directory `db-dir`.\nYou want to run these three\
+    \ commands on the example_data on the GitHub repo.\nIf you have more time, then\
+    \ we recommend you configure atlas according to your needs.\n  - check the `samples.tsv`\n\
+    \  - edit the `config.yaml`\n  - run atlas on any cluster system\nFor more details\
+    \ see documentation.\n"
+  dev_url: https://github.com/metagenome-atlas/atlas
+  doc_url: https://metagenome-atlas.rtfd.io
+  home: https://github.com/metagenome-atlas
+  license: BSD-3-Clause
+  license_family: BSD
+  summary: ATLAS - Three commands to start analysing your metagenome data
+build:
+  entry_points:
+  - atlas=atlas.atlas:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1101/737528
+  recipe-maintainers:
+  - silask
+package:
+  name: metagenome-atlas
+  version: 2.18.2
+requirements:
+  host:
+  - python >=3.8,<3.11
+  - pip
+  run:
+  - python >=3.8,<3.11
+  - mamba
+  - bbmap >=39.01,<40
+  - snakemake-minimal >=7.18.1,<7.26
+  - pygments
+  - networkx
+  - graphviz
+  - pandas >=1.2, <1.5
+  - pyarrow >=8
+  - click >=7
+  - ruamel.yaml >=0.17
+  - cookiecutter
+  - pathlib
+  - numpy =1.21
+source:
+  sha256: 33a3d4b0a479bb7ed561f316252c7b4e33d098c8445e0567520e55e1cf4cf1e0
+  url: https://github.com/metagenome-atlas/atlas/archive/v2.18.2.tar.gz
+test:
+  commands:
+  - export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8 && atlas --version
+  - export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8 && atlas init --help
+  - export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8 && atlas run --help
+  imports:
+  - atlas

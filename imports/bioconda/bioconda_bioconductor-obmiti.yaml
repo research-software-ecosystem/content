@@ -1,0 +1,40 @@
+about:
+  description: The package provide RNA-seq count for 2 strains of mus musclus; Wild
+    type and Ob/Ob. Each strain was divided into two groups, and each group received
+    either chow diet or high fat diet. RNA expression was measured after 20 weeks
+    in 7 tissues.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/ObMiTi.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Ob/ob Mice Data on Normal and High Fat Diet
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-obmiti
+  version: 1.10.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 0510665a5231cd3109d19478e4aadbd9
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/ObMiTi_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ObMiTi/ObMiTi_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ObMiTi_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-obmiti/bioconductor-obmiti_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ObMiTi')"

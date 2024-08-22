@@ -1,0 +1,28 @@
+about:
+  home: http://github.com/karel-brinda/ococo
+  license: MIT
+  summary: Ococo, the first online consensus caller.
+build:
+  number: 9
+package:
+  name: ococo
+  version: 0.1.2.7
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+- patches:
+  - 0001-Use-already-downloaded-HTSlib-sources.patch
+  sha256: 0a93ca3ed14cdeb1b274a30b433db128105274caed2b0b06742fc42de7ed6d75
+  url: https://github.com/karel-brinda/ococo/archive/0.1.2.7.tar.gz
+- folder: ext/htslib-b6aa0e6
+  sha256: 85e5ea12e34ddbf137a96f15dd79e9221df1c8d15ad0094ad193e026b1f6fa9d
+  url: https://github.com/samtools/htslib/archive/b6aa0e6.tar.gz
+test:
+  commands:
+  - ococo -v

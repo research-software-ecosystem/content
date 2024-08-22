@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/bcgsc/ntsynt
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Detecting multi-genome synteny blocks using minimizer graph mapping
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: ntsynt
+  version: 1.0.2
+requirements:
+  build:
+  - None
+  - cmake
+  host:
+  - python
+  - meson
+  - ninja
+  - llvm-openmp
+  - libgomp
+  - btllib >=1.7.1
+  run:
+  - python
+  - btllib >=1.7.1
+  - intervaltree
+  - pybedtools
+  - ncls
+  - python-igraph
+  - snakemake
+  - samtools
+  - seqtk
+source:
+  sha256: 6ada92dfe51dec8cd47900a5c41ee3c649cc95777eb81fe860e10748ce04e133
+  url: https://github.com/bcgsc/ntSynt/releases/download/v1.0.2/ntSynt-1.0.2.tar.gz
+test:
+  commands:
+  - ntSynt -h
+  imports:
+  - btllib

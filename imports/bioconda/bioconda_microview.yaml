@@ -1,0 +1,52 @@
+about:
+  home: https://github.com/jvfe/microview
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Generate reports from taxonomic classification data
+build:
+  entry_points:
+  - microview = microview.cli:main
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jvfe
+  skip-lints:
+  - cython_must_be_in_host
+package:
+  name: microview
+  version: 0.11.0
+requirements:
+  build:
+  - None
+  host:
+  - python >=3.8
+  - pip
+  - cython
+  run:
+  - python >=3.8
+  - scipy
+  - cython
+  - decorator
+  - scikit-bio
+  - pandas
+  - numpy
+  - plotly
+  - jinja2
+  - rich
+  - rich-click
+  - click-option-group
+  - frictionless >=4.32.0,<5
+source:
+  sha256: c6713e83ee1488ed7baec6828513ffda6d6efa44f15e61821cf62d23e5568149
+  url: https://pypi.io/packages/source/m/microview/MicroView-0.11.0.tar.gz
+test:
+  commands:
+  - pip check
+  - microview --help
+  imports:
+  - microview
+  requires:
+  - pip

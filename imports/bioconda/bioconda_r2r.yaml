@@ -1,0 +1,28 @@
+about:
+  home: http://breaker.research.yale.edu/R2R/
+  license: GPL-2
+  summary: software to speed depiction of aesthetic consensus RNA secondary structures
+build:
+  number: 4
+  skip: true
+package:
+  name: r2r
+  version: 1.0.6
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - perl
+  - perl-clone
+  run:
+  - perl
+  - perl-clone
+source:
+  sha256: 1ba8f51db92866ebe1aeb3c056f17489bceefe2f67c5c0bbdfbddc0eee17743d
+  url: https://sourceforge.net/projects/weinberg-r2r/files/R2R-1.0.6.tgz
+test:
+  commands:
+  - r2r --GSC-weighted-consensus $PREFIX/share/demo1.sto $PREFIX/share/demo1.cons.sto
+    3 0.97 0.9 0.75 4 0.97 0.9 0.75 0.5 0.1

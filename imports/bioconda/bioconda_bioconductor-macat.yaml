@@ -1,0 +1,47 @@
+about:
+  description: This library contains functions to investigate links between differential
+    gene expression and the chromosomal localization of the genes. MACAT is motivated
+    by the common observation of phenomena involving large chromosomal regions in
+    tumor cells. MACAT is the implementation of a statistical approach for identifying
+    significantly differentially expressed chromosome regions. The functions have
+    been tested on a publicly available data set about acute lymphoblastic leukemia
+    (Yeoh et al.Cancer Cell 2002), which is provided in the library 'stjudem'.
+  home: https://bioconductor.org/packages/3.18/bioc/html/macat.html
+  license: Artistic-2.0
+  summary: MicroArray Chromosome Analysis Tool
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:macat
+  parent_recipe:
+    name: bioconductor-macat
+    path: recipes/bioconductor-macat
+    version: 1.54.0
+package:
+  name: bioconductor-macat
+  version: 1.76.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: cad43ea7bcc92da57a4e5918581d0143
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/macat_1.76.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/macat/macat_1.76.0.tar.gz
+  - https://bioarchive.galaxyproject.org/macat_1.76.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-macat/bioconductor-macat_1.76.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('macat')"

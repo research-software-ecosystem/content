@@ -1,0 +1,40 @@
+about:
+  description: ''
+  dev_url: https://github.com/caleb-easterly/metaquant
+  doc_url: ''
+  home: The package home page
+  license: Apache Software License
+  license_family: APACHE
+  license_file: ''
+  summary: Quantitative microbiome analysis
+build:
+  entry_points:
+  - metaquant=metaquant.__main__:main
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers: ''
+package:
+  name: metaquant
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pandas
+  - ete3
+  - goatools
+  - wget
+  - numpy
+  - statsmodels
+source:
+  sha256: b0826a3a10400fcf106e5d7ff92da4f597c92d7163fa1eb438257dbe340e51b5
+  url: https://pypi.io/packages/source/m/metaquant/metaquant-0.1.2.tar.gz
+test:
+  commands:
+  - metaquant --help
+  imports:
+  - metaquant

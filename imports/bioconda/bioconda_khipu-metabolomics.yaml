@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/shuzhao-li/khipu
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Python library for generalized, low-level annotation of MS metabolomics
+build:
+  entry_points:
+  - khipu=khipu.command_line:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: khipu-metabolomics
+  version: 2.0.2
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - intervaltree
+  - isocor
+  - mass2chem
+  - matplotlib-base
+  - numpy
+  - networkx
+  - pandas
+  - requests
+  - scipy
+  - treelib
+source:
+  sha256: c9c5c1febbe7d368aa249819cb14a6633bb14f1ab13ec1192e1ea27546174d47
+  url: https://pypi.io/packages/source/k/khipu-metabolomics/khipu_metabolomics-2.0.2.tar.gz
+test:
+  commands:
+  - pip check
+  - khipu --help
+  imports:
+  - khipu
+  requires:
+  - pip

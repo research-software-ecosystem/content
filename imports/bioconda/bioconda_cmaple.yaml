@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/iqtree/cmaple
+  doc_url: https://github.com/iqtree/cmaple/wiki
+  home: https://github.com/iqtree/cmaple
+  license: GPL-2.0
+  license_family: GPL2
+  license_file: LICENSE
+  summary: MAximum Parsimonious Likelihood Estimation in C/C++
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/molbev/msae134
+  recipe-maintainers:
+  - corneliusroemer
+package:
+  name: cmaple
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  - cmake
+  - ninja
+  host:
+  - libgomp
+  - llvm-openmp
+source:
+- patches:
+  - patch
+  sha256: 68693229053d8c456028b7696ee39770ff55a3eaf3454d7087def08accbf0603
+  url: https://github.com/iqtree/cmaple/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - cmaple
+  - cmaple -h
+  - cmaple-aa
+  - cmaple -aln example/input.fa
+  source_files:
+  - example/input.fa

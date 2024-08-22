@@ -1,0 +1,70 @@
+about:
+  description: "SARTools provides R tools and an environment for the statistical \n\
+    analysis of RNA-Seq projects load and clean data, produce figures, \nperform statistical\
+    \ analysis/testing with DESeq2 or edgeR, export \nresults and create final report.\n"
+  home: https://github.com/PF2-pasteur-fr/SARTools
+  license: GPL-2
+  summary: Statistical Analysis of RNA-Seq data
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - biotools:sartools
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+  - hvaret
+package:
+  name: r-sartools
+  version: 1.8.1
+requirements:
+  host:
+  - r-base
+  - r-knitr
+  - bioconductor-deseq2
+  - bioconductor-edger
+  - bioconductor-genefilter
+  - r-rmarkdown
+  - r-ashr
+  - r-bit64
+  - r-blob
+  - r-ggplot2
+  - r-ggally
+  - r-ggrepel
+  - r-ggdendro
+  - r-kableextra
+  - r-optparse
+  - r-gridextra
+  run:
+  - r-base
+  - r-knitr
+  - bioconductor-deseq2 >=1.32.0
+  - bioconductor-edger >=3.34.0
+  - bioconductor-genefilter
+  - r-rmarkdown >=1.4
+  - r-ashr >=2.2-54
+  - r-bit64
+  - r-blob
+  - bioconductor-summarizedexperiment >=1.6
+  - r-ggplot2 >=3.3.0
+  - r-ggally
+  - r-ggrepel
+  - r-ggdendro
+  - r-kableextra
+  - r-optparse
+  - r-gridextra
+source:
+  sha256: 8cc5b1f4e87a257e5581155f0032d00b7f749d58907654f624fcb1942e63c08a
+  url: https://github.com/PF2-pasteur-fr/SARTools/archive/v1.8.1.tar.gz
+test:
+  commands:
+  - $R -e "library('SARTools')"

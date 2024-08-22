@@ -1,0 +1,27 @@
+about:
+  home: https://bitbucket.org/genomicepidemiology/kmerfinder
+  license: APACHE-2.0
+  license_family: APACHE
+  license_file: LICENSE-2.0.txt
+  summary: Prediction of bacterial species using a fast K-mer algorithm.
+build:
+  noarch: generic
+  number: 0
+extra:
+  notes: KmerFinder requires a database that can be downloaded with download-db.sh.
+package:
+  name: kmerfinder
+  version: 3.0.2
+requirements:
+  host: null
+  run:
+  - python >=3.5
+  - kma
+source:
+  patches:
+  - python_path.patch
+  sha256: 1412862d4373bb1080ab658db4ba7b7e7bca8a5adab85e7a02158c755345faaf
+  url: https://bitbucket.org/genomicepidemiology/kmerfinder/get/3.0.2.tar.gz
+test:
+  commands:
+  - kmerfinder.py --help

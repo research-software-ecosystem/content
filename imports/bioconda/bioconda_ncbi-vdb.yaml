@@ -1,0 +1,40 @@
+about:
+  description: 'VDB is the database engine that all SRA tools use. It is a columnar
+    database
+
+    system with a number of unique features. All SRA objects are stored in VDB.
+
+    '
+  dev_url: https://github.com/ncbi/ncbi-vdb
+  doc_url: https://github.com/ncbi/ncbi-vdb/wiki
+  home: https://github.com/ncbi/ncbi-vdb
+  license: Public Domain
+  summary: SRA tools database engine
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: ncbi-vdb
+  version: 3.1.1
+requirements:
+  build:
+  - None
+  - bison
+  - cmake
+  - flex
+  - make
+source:
+  folder: ncbi-vdb
+  patches:
+  - env.cmake.patch
+  sha256: e9766f259853c696be48e289b08cb5ae6e198d82d7ffee79f09ce7f720487991
+  url: https://github.com/ncbi/ncbi-vdb/archive/3.1.1.tar.gz
+test:
+  commands:
+  - test -e ${PREFIX}/lib64/libncbi-vdb.so
+  - test -e ${PREFIX}/lib64/libncbi-vdb.dylib

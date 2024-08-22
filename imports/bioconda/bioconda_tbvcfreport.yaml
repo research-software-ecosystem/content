@@ -1,0 +1,37 @@
+about:
+  doc_url: https://github.com/COMBAT-TB/tbvcfreport/blob/master/README.md
+  home: https://github.com/COMBAT-TB/tbvcfreport
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Parses SnpEff annotated M.tb VCF(s) and generates an interactive HTML-based
+    report.
+build:
+  entry_points:
+  - tbvcfreport=tbvcfreport.tbvcfreport:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: tbvcfreport
+  version: 1.0.1
+requirements:
+  host:
+  - pip
+  - python >=3.10
+  run:
+  - click
+  - jinja2
+  - neo4j-python-driver
+  - python >=3.10
+  - vcfpy
+source:
+  sha256: aba241b26d3f4918fc363fcdf3f9d241c8f67bc0659a8753e02721c60262b0e1
+  url: https://github.com/COMBAT-TB/tbvcfreport/archive/1.0.1.tar.gz
+test:
+  commands:
+  - tbvcfreport --help
+  imports:
+  - tbvcfreport

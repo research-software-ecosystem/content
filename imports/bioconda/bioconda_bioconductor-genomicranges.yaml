@@ -1,0 +1,60 @@
+about:
+  description: The ability to efficiently represent and manipulate genomic annotations
+    and alignments is playing a central role when it comes to analyzing high-throughput
+    sequencing data (a.k.a. NGS data). The GenomicRanges package defines general purpose
+    containers for storing and manipulating genomic intervals and variables defined
+    along a genome. More specialized containers for representing and manipulating
+    short alignments against a reference genome, or a matrix-like summarization of
+    an experiment, are defined in the GenomicAlignments and SummarizedExperiment packages,
+    respectively. Both packages build on top of the GenomicRanges infrastructure.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GenomicRanges.html
+  license: Artistic-2.0
+  summary: Representation and manipulation of genomic intervals
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:genomicranges
+  parent_recipe:
+    name: bioconductor-genomicranges
+    path: recipes/bioconductor-genomicranges
+    version: 1.32.7
+package:
+  name: bioconductor-genomicranges
+  version: 1.54.1
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+source:
+  md5: 19fe37133cae70c1c3a1a164e6c8eaed
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GenomicRanges_1.54.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GenomicRanges/GenomicRanges_1.54.1.tar.gz
+  - https://bioarchive.galaxyproject.org/GenomicRanges_1.54.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genomicranges/bioconductor-genomicranges_1.54.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GenomicRanges')"

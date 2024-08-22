@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/achtman-lab/GrapeTree
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Web interface of GrapeTree, which is a program for phylogenetic analysis.
+build:
+  entry_points:
+  - grapetree = grapetree.grapetree:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --ignore-installed --no-deps'
+extra:
+  recipe-maintainers:
+  - simonhtausch
+package:
+  name: grapetree
+  version: '2.1'
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - ete3
+  - flask
+  - networkx
+  - numba
+  - numpy
+  - psutil
+  - pandas
+  - requests
+  - python
+  - unidecode
+source:
+  sha256: b68985a2bdbe8353f9657ce3bd5b42be67c3c28e972d6fa390d12a0f19ff8b74
+  url: https://pypi.io/packages/source/g/grapetree/grapetree-2.1.tar.gz
+test:
+  commands:
+  - grapetree --help
+  imports:
+  - grapetree

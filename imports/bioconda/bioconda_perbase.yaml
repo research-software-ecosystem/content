@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/sstadick/perbase
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Per-base metrics on BAM/CRAM files.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: perbase
+  version: 0.10.0
+requirements:
+  build:
+  - clangdev
+  - None
+  - None
+  - None
+  - pkg-config
+  - make
+  - cmake
+  host:
+  - curl
+  - openssl
+  - zlib
+  - bzip2
+  - xz
+  - clangdev
+  run:
+  - curl
+  - openssl
+  - zlib
+  - bzip2
+  - xz
+source:
+  patches:
+  - perbase-aarch64.patch
+  sha256: 357d2b24cf06875e177f9aa5165286709aec91ce84bef13602ae4c26274160f4
+  url: https://github.com/sstadick/perbase/archive/v0.10.0.tar.gz
+test:
+  commands:
+  - perbase --help

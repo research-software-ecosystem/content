@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/alex-wave/Rmath-python
+  license: GPL-2.0
+  license_file: COPYING
+  summary: standalone Rmath library from R
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - alpae
+package:
+  name: rmath4
+  version: 4.3.1
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - wheel
+  - pip
+  run:
+  - python
+source:
+  sha256: c39a75e1c883fd6f5d6b6677213b4e0704ce014f060d0d00b89f5ff608b72300
+  url: https://pypi.io/packages/source/r/rmath4/Rmath4-4.3.1.tar.gz
+test:
+  commands:
+  - pip check
+  - python -c "import Rmath4; assert 0<=Rmath4.unif_rand()<1"
+  imports:
+  - Rmath4
+  requires:
+  - pip

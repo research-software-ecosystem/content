@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/CAMI-challenge/OPAL
+  home: http://cami-challenge.org
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: OPAL assesses and compares the performance of taxonomic metagenome profilers.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vvv
+package:
+  name: cami-opal
+  version: 1.0.13
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - numpy >=1.24.2
+  - matplotlib-base >=3.7.1
+  - pandas >=1.5.3
+  - jinja2 >=3.1.2
+  - bokeh ==3.1.0
+  - seaborn >=0.12.2
+  - docker-py >=6.1.2
+  - scipy >=1.10.1
+  - dendropy >=4.4.0
+  - h5py >=2.9.0
+  - scikit-bio >=0.5.5
+  - markupsafe <2.1
+source:
+  sha256: bbb869b739c555fbbfc26d2771fa1b501f671b620bcbf743c15327a51debd408
+  url: https://pypi.io/packages/source/c/cami-opal/cami-opal-1.0.13.tar.gz
+test:
+  commands:
+  - opal.py --help
+  imports:
+  - cami_opal

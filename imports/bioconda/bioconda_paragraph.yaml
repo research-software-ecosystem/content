@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Illumina/paragraph
+  license: Apache License 2.0
+  license_file: LICENSE
+  summary: Graph realignment tools for structural variants
+build:
+  number: 2
+  skip: true
+package:
+  name: paragraph
+  version: '2.3'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  - boost-cpp
+  host:
+  - htslib
+  - zlib
+  - bzip2
+  run:
+  - python >=3
+  - htslib
+  - zlib
+  - bzip2
+  - pysam
+  - intervaltree
+  - jsonschema
+source:
+  sha256: 6394314e42005026893a305362a1fed58d37f2ca02ed5fc6c54d4c5d12caf1eb
+  url: https://github.com/Illumina/paragraph/archive/v2.3.tar.gz
+test:
+  commands:
+  - multigrmpy.py --help
+  - paragraph --help
+  - grmpy --help

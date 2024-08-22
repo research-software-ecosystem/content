@@ -1,0 +1,37 @@
+about:
+  home: https://bitbucket.org/schwarzlab/pyfish
+  license: GPL-3
+  license_file: LICENSE
+  summary: Plotting tool for evolutionary population dynamics. Creates a Fish (Muller)
+    plot.
+build:
+  entry_points:
+  - pyfish = pyfish.main:run
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - tlkaufmann
+  - xstreck1
+package:
+  name: pyfish
+  version: 1.0.3
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - matplotlib-base >=3.0
+  - numpy >=1.14
+  - pandas >=1.0
+  - python >=3.8
+  - scipy >=1.0
+source:
+  sha256: ce4985baf6e4b1f6721b85c46d61ee5c7b79ba8b5e402a312048df6353252a0d
+  url: https://pypi.io/packages/source/p/pyfish/pyfish-1.0.3.tar.gz
+test:
+  commands:
+  - pyfish --help
+  imports:
+  - pyfish

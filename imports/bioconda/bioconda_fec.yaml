@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/zhangjuncsu/Fec
+  license: MIT
+  summary: An error correction tool
+build:
+  number: 1
+  skip: true
+package:
+  name: fec
+  version: 1.0.1
+requirements:
+  build:
+  - make
+  - None
+  - libgomp
+  - llvm-openmp
+  host:
+  - zlib
+  run:
+  - zlib
+  - minimap2 >=2.17
+  - python >=3.6
+source:
+  sha256: 7dd39c1562e9a5db3fb450992c0fce0303afa0448cd48b43b2a78514983d50cd
+  url: https://github.com/zhangjuncsu/Fec/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - Fec -h 2>&1 | grep 'USAGE'

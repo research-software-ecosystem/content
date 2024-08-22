@@ -1,0 +1,53 @@
+about:
+  dev_url: https://github.com/esolares/HapSolo
+  home: https://github.com/esolares/HapSolo
+  license: GPL-2.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: An optimization approach for removing secondary haplotigs during diploid
+    genome assembly and scaffolding.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: hapsolo
+  version: 2021.10.09
+requirements:
+  host:
+  - python 2.7
+  - matplotlib-base <3
+  - pandas
+  - busco 3.0.*
+  - blat >=36
+  - minimap2
+  - augustus
+  - blast
+  - mummer
+  - parallel
+  - ucsc-fatotwobit
+  - quast
+  - braker
+  run:
+  - python 2.7
+  - matplotlib-base <3
+  - pandas
+  - busco 3.0.*
+  - blat >=36
+  - minimap2
+  - augustus
+  - blast
+  - mummer
+  - parallel
+  - ucsc-fatotwobit
+  - quast
+  - braker
+source:
+  patches:
+  - python_path.patch
+  - scripts.patch
+  sha256: b6f0295cd84fc6c3f7b2c68a91b49865d7c617a86551f1bb6cdca8c5f65c2e33
+  url: https://github.com/esolares/HapSolo/archive/4925fd3.tar.gz
+test:
+  commands:
+  - hapsolo.py --help
+  - preprocessfasta.py --help

@@ -1,0 +1,47 @@
+about:
+  description: Improves simultaneous inference under dependence of tests by estimating
+    a collapsed null distribution through resampling. Accounting for the dependence
+    between tests increases the power while reducing the variability of the false
+    discovery proportion. This dependence is common in genomics applications, e.g.
+    when combining flow cytometry measurements with microbiome sequence counts.
+  home: https://bioconductor.org/packages/3.18/bioc/html/reconsi.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Resampling Collapsed Null Distributions for Simultaneous Inference
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-reconsi
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-phyloseq >=1.46.0,<1.47.0
+  - r-base
+  - r-ggplot2
+  - r-ks
+  - r-matrix
+  - r-matrixstats
+  - r-reshape2
+  run:
+  - bioconductor-phyloseq >=1.46.0,<1.47.0
+  - r-base
+  - r-ggplot2
+  - r-ks
+  - r-matrix
+  - r-matrixstats
+  - r-reshape2
+source:
+  md5: 884019da85885289094a2aed95d18314
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/reconsi_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/reconsi/reconsi_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/reconsi_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-reconsi/bioconductor-reconsi_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('reconsi')"

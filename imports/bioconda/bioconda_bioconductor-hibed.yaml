@@ -1,0 +1,50 @@
+about:
+  description: Hierarchical deconvolution for extensive cell type resolution in the
+    human brain using DNA methylation. The HiBED deconvolution estimates proportions
+    up to 7 cell types (GABAergic neurons, glutamatergic neurons, astrocytes, microglial
+    cells, oligodendrocytes, endothelial cells, and stromal cells) in bulk brain tissues.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/HiBED.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: HiBED
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hibed
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-flowsorted.blood.epic >=2.6.0,<2.7.0
+  - bioconductor-flowsorted.dlpfc.450k >=1.38.0,<1.39.0
+  - bioconductor-minfi >=1.48.0,<1.49.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-dplyr
+  - r-tibble
+  run:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-flowsorted.blood.epic >=2.6.0,<2.7.0
+  - bioconductor-flowsorted.dlpfc.450k >=1.38.0,<1.39.0
+  - bioconductor-minfi >=1.48.0,<1.49.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-dplyr
+  - r-tibble
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 282aec6967013cdaa790ff191e4139b4
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/HiBED_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HiBED/HiBED_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HiBED_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hibed/bioconductor-hibed_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HiBED')"

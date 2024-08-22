@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/PengNi/deepsignal-plant
+  home: https://github.com/PengNi/deepsignal-plant
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A deep-learning method for detecting DNA methylation state from Oxford
+    Nanopore sequencing reads of plants
+build:
+  entry_points:
+  - deepsignal_plant=deepsignal_plant.deepsignal_plant:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - PengNi
+package:
+  name: deepsignal-plant
+  version: 0.1.6
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - h5py >=2.8.0
+  - numpy >=1.19.2
+  - scikit-learn >=1.0.2
+  - statsmodels >=0.13.2
+  - pytorch >=1.2.0,<=1.11.0
+source:
+  sha256: 122cd4e2927e3474534c8066d70ec24ad42876684a621c77f25ec1c6564c62bc
+  url: https://github.com/PengNi/deepsignal-plant/archive/0.1.6.tar.gz
+test:
+  commands:
+  - deepsignal_plant --help
+  imports:
+  - deepsignal_plant

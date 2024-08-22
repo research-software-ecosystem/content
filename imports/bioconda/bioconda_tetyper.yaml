@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/aesheppard/TETyper
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Typing of a specific transposable element (TE) of interest from paired-end
+    sequencing data.
+build:
+  noarch: generic
+  number: 1
+  script: mkdir -p $PREFIX/bin && cp TETyper.py $PREFIX/bin
+extra:
+  identifiers:
+  - doi:10.1099/mgen.0.000232
+package:
+  name: tetyper
+  version: 1.1
+requirements:
+  run:
+  - python
+  - biopython
+  - pysam
+  - pyvcf
+  - samtools
+  - bcftools
+  - bwa
+  - spades
+  - blast
+source:
+  sha256: c3b3e043196630ffba803fc6dbcf2a36ce88a8dc38f1481afff98e86a6fdbebf
+  url: https://github.com/aesheppard/TETyper/archive/v1.1.tar.gz
+test:
+  commands:
+  - TETyper.py -h

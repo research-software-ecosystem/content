@@ -1,0 +1,38 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: ' Filter cDNA alignments in psl format.  Filtering criteria are comparative,
+    selecting near best in genome alignments for each given cDNA and non-comparative,
+    based only on the quality of an individual alignment. '
+build:
+  number: 1
+  skip: true
+package:
+  name: ucsc-pslcdnafilter
+  version: '445'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - binutils
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+source:
+  patches:
+  - include.patch
+  sha256: c7abb5db6a5e16a79aefcee849d2b59dbc71ee112ca1e41fea0afb25229cf56c
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v445.src.tgz
+test:
+  commands:
+  - which pslCDnaFilter

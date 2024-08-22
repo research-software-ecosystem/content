@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/sanger-pathogens/assembly-stats
+  license: GPL-3.0
+  summary: Get assembly statistics from FASTA and FASTQ files
+build:
+  number: 8
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: assembly-stats
+  version: 1.0.1
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host: null
+  run: null
+source:
+  patches:
+  - 0001-Fix-macOS-compilation.patch
+  sha256: 02be614da4d244673bcd0adc6917749681d52a58cb0a039c092d01cdeabd8575
+  url: https://github.com/sanger-pathogens/assembly-stats/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - assembly-stats -v

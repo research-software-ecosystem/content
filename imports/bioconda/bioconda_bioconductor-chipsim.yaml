@@ -1,0 +1,49 @@
+about:
+  description: A general framework for the simulation of ChIP-seq data. Although currently
+    focused on nucleosome positioning the package is designed to support different
+    types of experiments.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ChIPsim.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Simulation of ChIP-seq experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:chipsim
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-chipsim
+    path: recipes/bioconductor-chipsim
+    version: 1.34.0
+package:
+  name: bioconductor-chipsim
+  version: 1.56.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+source:
+  md5: e6f1bd9d18f542abace1039c37ada326
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ChIPsim_1.56.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ChIPsim/ChIPsim_1.56.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ChIPsim_1.56.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chipsim/bioconductor-chipsim_1.56.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ChIPsim')"

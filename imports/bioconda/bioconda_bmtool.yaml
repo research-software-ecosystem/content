@@ -1,0 +1,34 @@
+about:
+  home: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/
+  license: Public Domain
+  summary: bmtool is part of BMTagger aka Best Match Tagger, for removing human reads
+    from metagenomics datasets
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: bmtool
+  version: 3.101
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host: null
+  run: null
+source:
+- md5: 719474a0e3b54449cbe06f6e442994dd
+  patches:
+  - 0001-Cast-getline-stream-to-bool.patch
+  - bmtool-cplusplus-template.patch
+  - bmtool-fix-ctime.patch
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/bmtools.tar.gz
+- md5: 43f112115af7ef2a28c6a64b31374c12
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/mac-os/bmtool
+test:
+  commands:
+  - bmtool -h

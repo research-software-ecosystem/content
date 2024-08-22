@@ -1,0 +1,21 @@
+about:
+  home: https://github.com/editasmedicine/calitas
+  license: BSD-3-Clause-Clear
+  summary: A CRISPR/Cas-aware ALigner for In silico off-TArget Search
+build:
+  noarch: generic
+  number: 1
+package:
+  name: calitas
+  version: 1.0
+requirements:
+  run:
+  - openjdk >=8
+  - python
+source:
+  sha256: 5959343d76d342c252abe0fcffc3a79e332b369d7b5febb4e9d5886614155ea9
+  url: https://github.com/editasmedicine/calitas/releases/download/v1.0/calitas-1.0.jar
+test:
+  commands:
+  - calitas --help 2>&1 | grep SearchReference
+  - calitas --version 2>&1 | grep Version

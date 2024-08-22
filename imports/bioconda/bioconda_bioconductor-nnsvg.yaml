@@ -1,0 +1,52 @@
+about:
+  description: Method for scalable identification of spatially variable genes (SVGs)
+    in spatially-resolved transcriptomics data. The method is based on nearest-neighbor
+    Gaussian processes and uses the BRISC algorithm for model fitting and parameter
+    estimation. Allows identification and ranking of SVGs with flexible length scales
+    across a tissue slide or within spatial domains defined by covariates. Scales
+    linearly with the number of spatial locations and can be applied to datasets containing
+    thousands or more spatial locations.
+  home: https://bioconductor.org/packages/3.18/bioc/html/nnSVG.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Scalable identification of spatially variable genes in spatially-resolved
+    transcriptomics data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-nnsvg
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-spatialexperiment >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-brisc
+  - r-matrix
+  - r-matrixstats
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-spatialexperiment >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-brisc
+  - r-matrix
+  - r-matrixstats
+source:
+  md5: 4af169b12d944eff8ee9d9e3063ff5ea
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/nnSVG_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/nnSVG/nnSVG_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nnSVG_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nnsvg/bioconductor-nnsvg_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('nnSVG')"

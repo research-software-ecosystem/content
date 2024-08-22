@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/dynverse/anndata
+  license: MIT
+  license_family: MIT
+  license_file: /lib/R/share/licenses/MIT
+  summary: A 'reticulate' wrapper for the Python package 'anndata'. Provides a scalable
+    way of keeping track of data and learned annotations.  Used to read from and write
+    to the h5ad file format.
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.1186/s13059-017-1382-0
+  recipe-maintainers:
+  - PelzKo
+package:
+  name: r-anndata
+  version: 0.7.5.4
+requirements:
+  host:
+  - r-base
+  - r-roxygen2 >=6.0.1
+  - r-assertthat
+  - r-r6
+  - r-reticulate >=1.17
+  - r-matrix
+  run:
+  - r-base
+  - r-assertthat
+  - r-r6
+  - r-reticulate >=1.17
+  - r-matrix
+source:
+  sha256: 35561748978b82739eb75b64e0532919b122eccebf8cc765c964e549884a56cd
+  url:
+  - https://github.com/dynverse/anndata/archive/refs/tags/0.7.5.4.tar.gz
+test:
+  commands:
+  - $R -e "library('anndata')"

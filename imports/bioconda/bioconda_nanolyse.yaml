@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/wdecoster/NanoLyse
+  license: MIT
+  license_family: MIT
+  summary: Removing lambda DNA control reads from fastq dataset
+build:
+  entry_points:
+  - NanoLyse=nanolyse.NanoLyse:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: nanolyse
+  version: 1.2.1
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  - pip
+  run:
+  - python >=3
+  - biopython
+  - mappy >=2.2
+source:
+  sha256: 933ee668da805fc9ec9fa86c9fca81a073438d45b5f64e23cf606c01e715b1d5
+  url: https://pypi.io/packages/source/n/nanolyse/NanoLyse-1.2.1.tar.gz
+test:
+  commands:
+  - NanoLyse --help
+  imports:
+  - nanolyse

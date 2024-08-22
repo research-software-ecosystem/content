@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/jfarek/alignstats
+  license: BSD-3-Clause
+  summary: Comprehensive alignment, whole-genome coverage, and capture coverage statistics.
+build:
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: alignstats
+  version: 0.1
+requirements:
+  build:
+  - make
+  - autoconf
+  - automake
+  - None
+  host:
+  - htslib >1.4
+  run:
+  - htslib >1.4
+source:
+  sha256: cc9a11e34889832180aba0e9b01367b7cd0e828c2b667afc9c6ddea8d5928490
+  url: https://github.com/jfarek/alignstats/archive/v0.10.tar.gz
+test:
+  commands:
+  - alignstats -h 2>&1 | grep AlignStats
+  requires:
+  - htslib >1.4

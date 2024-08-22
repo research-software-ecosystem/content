@@ -1,0 +1,42 @@
+about:
+  description: Exposes an annotation databases generated from UCSC by exposing these
+    as TxDb objects
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/TxDb.Mmusculus.UCSC.mm10.knownGene.html
+  license: Artistic-2.0
+  summary: Annotation package for TxDb object(s)
+build:
+  noarch: generic
+  number: 9
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-txdb.mmusculus.ucsc.mm10.knowngene
+    path: recipes/bioconductor-txdb.mmusculus.ucsc.mm10.knowngene
+    version: 3.4.0
+package:
+  name: bioconductor-txdb.mmusculus.ucsc.mm10.knowngene
+  version: 3.10.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 129b610bf05ec77451731196baa55bcc
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/TxDb.Mmusculus.UCSC.mm10.knownGene_3.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TxDb.Mmusculus.UCSC.mm10.knownGene/TxDb.Mmusculus.UCSC.mm10.knownGene_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TxDb.Mmusculus.UCSC.mm10.knownGene_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-txdb.mmusculus.ucsc.mm10.knowngene/bioconductor-txdb.mmusculus.ucsc.mm10.knowngene_3.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TxDb.Mmusculus.UCSC.mm10.knownGene')"

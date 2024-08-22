@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/aquaskyline/SOAPdenovo2
+  license: GPL-3.0
+  license_family: GPL
+  license_file: /LICENSE
+  summary: SoapDenovo2 data prepare module using assembled contig to do scaffold assembly.
+build:
+  number: 8
+  skip: true
+extra:
+  skip-lints:
+  - should_not_be_noarch_source
+package:
+  name: soapdenovo2-prepare
+  version: 2.0
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - Makefile.osx.patch
+  sha256: 97bfccede6bd138365d466f2d71685abaccd366ea69ae0a9d90598e4547f291f
+  url: https://sourceforge.net/projects/soapdenovo2/files/Prepare/Prepare-src-v2.0.tgz
+test:
+  commands:
+  - finalFusion

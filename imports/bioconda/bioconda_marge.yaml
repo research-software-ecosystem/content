@@ -1,0 +1,36 @@
+about:
+  home: http://cistrome.org/MARGE
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Model-based Analysis of Regulation of Gene Expression
+build:
+  noarch: python
+  number: 2
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: marge
+  version: '1.0'
+requirements:
+  host:
+  - python >3
+  - pip
+  run:
+  - python >3
+  - numpy
+  - scipy
+  - scikit-learn
+  - twobitreader
+  - pytables
+  - snakemake 3.*
+  - hdf5
+  - ucsc-bedclip
+  - ucsc-bigwigaverageoverbed
+  - ucsc-bigwigsummary
+  - ucsc-bigwigtobedgraph
+source:
+  sha256: ab2d648d7250ca6ba734a2d33809f1575b7a5a1ec63b85f966a90f6d3ce0659e
+  url: https://github.com/suwangbio/MARGE_py3/archive/v1.0.tar.gz
+test:
+  commands:
+  - marge -h

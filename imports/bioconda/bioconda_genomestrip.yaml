@@ -1,0 +1,25 @@
+about:
+  home: http://software.broadinstitute.org/software/genomestrip/
+  license: custom
+  license_file: /LICENSE.txt
+  summary: Genome STRiP (Genome STRucture In Populations) is a suite of tools for
+    discovery and genotyping of structural variation using whole-genome sequencing
+    data
+build:
+  noarch: generic
+  number: 4
+package:
+  name: genomestrip
+  version: 2.00.1833
+requirements:
+  run:
+  - openjdk >=8
+  - r-base >=3.4
+  - samtools
+  - htslib
+source:
+  sha256: e9172d6d91b605052f6226720535a5d2d00eb5b690360df4da60d8faf47422f3
+  url: https://bitbucket.org/tobiasmarschall/genomestrip-redist/downloads/svtoolkit_2.00.1833.tar.gz
+test:
+  commands:
+  - 'genomestrip 2>&1 | grep usage:'

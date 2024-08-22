@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/galaxy001/pirs
+  license: GPL-2.0
+  summary: pIRS is a program for simulating Illumina PE reads.
+build:
+  number: 7
+  skip: true
+package:
+  name: pirs
+  version: 2.0.2
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  - automake
+  host:
+  - zlib
+  - boost
+  run:
+  - zlib
+  - boost
+  - perl
+  - gnuplot
+  - coreutils
+  - samtools
+  - bwa
+  - soapaligner
+  - soapcoverage
+source:
+  md5: 8ea08c5c0907ca829fec553ea051a338
+  patches:
+  - static.patch
+  url: https://github.com/galaxy001/pirs/archive/v2.0.2.tar.gz
+test:
+  commands:
+  - pirs --help 2>&1 | grep pirs > /dev/null

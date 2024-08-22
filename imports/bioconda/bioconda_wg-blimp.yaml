@@ -1,0 +1,44 @@
+about:
+  description: "wg-blimp (Whole Genome BisuLfIte sequencing Methylation analysis Pipeline)\
+    \ can be utilised to analyse WGBS data. \nIt performs alignment, qc, methylation\
+    \ calling, DMR calling, segmentation and annotation using a multitude of tools.\
+    \ \n"
+  home: https://github.com/MarWoes/wg-blimp
+  license: AGPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: wg-blimp (Whole Genome BisuLfIte sequencing Methylation analysis Pipeline)
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  container:
+    extended-base: true
+package:
+  name: wg-blimp
+  version: 0.10.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - click
+  - h5py
+  - pysam
+  - r-base
+  - r-data.table
+  - r-dt
+  - r-ggplot2
+  - r-htmlwidgets
+  - r-httpuv
+  - r-shiny
+  - r-shinydashboard
+  - ruamel.yaml
+  - snakemake-minimal >=5.8
+source:
+  sha256: f2233ad4ee3a2c288cd75fa2e3e6b5926f180749ec7960fa285683189871a8ac
+  url: https://github.com/MarWoes/wg-blimp/releases/download/v0.10.0/wg-blimp-v0.10.0.tar.gz
+test:
+  commands:
+  - wg-blimp --help

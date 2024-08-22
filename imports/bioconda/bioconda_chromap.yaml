@@ -1,0 +1,36 @@
+about:
+  doc_url: https://zhanghaowen.com/chromap/
+  home: https://github.com/haowenz/chromap
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Fast alignment and preprocessing of chromatin profiles
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: chromap
+  version: 0.2.6
+requirements:
+  build:
+  - make
+  - None
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - chromap-aarch64.patch
+  sha256: bea2fc76bd7d8931f69db0b63aef19e50070b24c0ab1415569b59d490fff42e8
+  url: https://github.com/haowenz/chromap/archive/refs/tags/v0.2.6.tar.gz
+test:
+  commands:
+  - chromap --help

@@ -1,0 +1,36 @@
+about:
+  description: '''Subtype Salmonella enterica genomes using 33bp k-mer typing schemes.
+    ''
+
+    ''Includes schemes for Heidelberg and Enteritidis subtyping.''
+
+    '
+  home: https://github.com/phac-nml/biohansel
+  license: GNU General Public License v3 or later (GPLv3+)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Subtype Salmonella enterica genomes using 33bp k-mer typing schemes.
+build:
+  noarch: python
+  number: 0
+  script: sed -i.bak '42d' setup.py &&  -m pip install . --no-deps -vv
+package:
+  name: bio_hansel
+  version: 2.6.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy >=1.12.1
+  - pandas >=0.20.1
+  - attrs
+  - pyahocorasick >=1.1.6
+  - rich
+source:
+  sha256: bd5d66e5952565dc6559cdc40d97482d41a3b8a30ea6e37d5ec564b5d8f3eee1
+  url: https://pypi.io/packages/source/b/bio-hansel/bio_hansel-2.6.1.tar.gz
+test:
+  commands:
+  - hansel -V

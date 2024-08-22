@@ -1,0 +1,51 @@
+about:
+  description: The package is to provide a model based Bayesian method to characterize
+    and simulate microbiome data. sparseDOSSA's model captures the marginal distribution
+    of each microbial feature as a truncated, zero-inflated log-normal distribution,
+    with parameters distributed as a parent log-normal distribution. The model can
+    be effectively fit to reference microbial datasets in order to parameterize their
+    microbes and communities, or to simulate synthetic datasets of similar population
+    structure. Most importantly, it allows users to include both known feature-feature
+    and feature-metadata correlation structures and thus provides a gold standard
+    to enable benchmarking of statistical methods for metagenomic data analysis.
+  home: https://bioconductor.org/packages/3.17/bioc/html/sparseDOSSA.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Sparse Data Observations for Simulating Synthetic Abundance
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  parent_recipe:
+    name: bioconductor-sparsedossa
+    path: recipes/bioconductor-sparsedossa
+    version: 1.6.0
+package:
+  name: bioconductor-sparsedossa
+  version: 1.24.0
+requirements:
+  host:
+  - r-base
+  - r-mass
+  - r-mcmcpack
+  - r-optparse
+  - r-tmvtnorm >=1.4.10
+  run:
+  - r-base
+  - r-mass
+  - r-mcmcpack
+  - r-optparse
+  - r-tmvtnorm >=1.4.10
+source:
+  md5: cb988cd435f5c6da0b103632ef1deb50
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/sparseDOSSA_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/sparseDOSSA/sparseDOSSA_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sparseDOSSA_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sparsedossa/bioconductor-sparsedossa_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sparseDOSSA')"

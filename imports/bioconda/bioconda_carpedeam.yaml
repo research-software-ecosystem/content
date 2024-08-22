@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/LouisPwr/CarpeDeam
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: CarpeDeam - A metagenomic assembler for heavily damaged ancient datasets
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:carpedeam
+  recipe-maintainers:
+  - gabriel-renaud
+  - louis-kraft
+package:
+  name: carpedeam
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - llvm-openmp
+  - libgomp
+  host:
+  - perl
+  - gawk
+  - zlib
+  - bzip2
+  run:
+  - gawk
+  - zlib
+  - bzip2
+source:
+  sha256: 92deec3d670810f8433c0345758588b47fa460349e61ce8aa549374f5cf4a812
+  url: https://github.com/LouisPwr/CarpeDeam/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - carpedeam --version | grep "Ancient Metagenome Assembler."

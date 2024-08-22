@@ -1,0 +1,58 @@
+about:
+  description: This package provides connections to the epiviz web app (http://epiviz.cbcb.umd.edu)
+    for interactive visualization of genomic data. Objects in R/bioc interactive sessions
+    can be displayed in genome browser tracks or plots to be explored by navigation
+    through genomic regions. Fundamental Bioconductor data structures are supported
+    (e.g., GenomicRanges and RangedSummarizedExperiment objects), while providing
+    an easy mechanism to support other data structures (through package epivizrData).
+    Visualizations (using d3.js) can be easily added to the web app as well.
+  home: https://bioconductor.org/packages/3.18/bioc/html/epivizr.html
+  license: Artistic-2.0
+  summary: R Interface to epiviz web app
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:epivizr
+  - doi:10.1038/nmeth.3038
+  parent_recipe:
+    name: bioconductor-epivizr
+    path: recipes/bioconductor-epivizr
+    version: 2.10.0
+package:
+  name: bioconductor-epivizr
+  version: 2.32.0
+requirements:
+  host:
+  - bioconductor-bumphunter >=1.44.0,<1.45.0
+  - bioconductor-epivizrdata >=1.30.0,<1.31.0
+  - bioconductor-epivizrserver >=1.30.0,<1.31.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-bumphunter >=1.44.0,<1.45.0
+  - bioconductor-epivizrdata >=1.30.0,<1.31.0
+  - bioconductor-epivizrserver >=1.30.0,<1.31.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: aaf997f0c4eccf72d795d79a3ebd7bfe
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/epivizr_2.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/epivizr/epivizr_2.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/epivizr_2.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-epivizr/bioconductor-epivizr_2.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('epivizr')"

@@ -1,0 +1,38 @@
+about:
+  home: https://bitbucket.org/genomicepidemiology/serotypefinder
+  license: Apache-2.0
+  license_family: APACHE
+  summary: SerotypeFinder identifies the serotype in total or partial sequenced isolates
+    of E. coli.
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1128/JCM.00008-1
+  recipe-maintainers:
+  - rpetit3
+package:
+  name: serotypefinder
+  version: 2.0.2
+requirements:
+  host:
+  - python >=3.8
+  run:
+  - biopython >=1.79
+  - blast >=2.8.1
+  - cgecore >=1.5.5
+  - kma
+  - python >=3.8
+  - tabulate >=0.8.9
+  - git
+source:
+  patches:
+  - database_path.patch
+  sha256: c6e13a3ef91c2f137bad99925a6b64e31330b768a4d8214bb767a51b3ea11446
+  url: https://bitbucket.org/genomicepidemiology/serotypefinder/get/2.0.2.tar.gz
+test:
+  commands:
+  - serotypefinder --help

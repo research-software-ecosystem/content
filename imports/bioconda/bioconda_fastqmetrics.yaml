@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/wdecoster/fastqmetrics
+  license: MIT License
+  license_family: MIT
+  summary: Extract metrics from a fastq file, streaming
+build:
+  entry_points:
+  - fastqmetrics=fastqmetrics.fastqmetrics:main
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: fastqmetrics
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - nanoget >=0.14.0,<1.8.0
+source:
+  sha256: 7d7f6b3645d9c35550cb7b803466b6f3428c42da0eecff3238dcf1735320b14c
+  url: https://pypi.io/packages/source/f/fastqmetrics/fastqmetrics-0.1.0.tar.gz
+test:
+  commands:
+  - fastqmetrics --help
+  imports:
+  - fastqmetrics

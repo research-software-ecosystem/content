@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/nickeener/sarscov2formatter
+  doc_url: https://github.com/nickeener/sarscov2formatter/README.md
+  home: https://github.com/nickeener/sarscov2formatter
+  license: Academic Free (AFL)
+  license_family: OTHER
+  summary: Formatter for Galaxy SARS-CoV2 Selection Analysis Workflow
+build:
+  entry_points:
+  - sarscov2summary=sarscov2summary.cli:main
+  noarch: python
+  number: 1
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: sarscov2summary
+  version: '0.5'
+requirements:
+  host:
+  - biopython
+  - pip
+  - python >=3.6
+  run:
+  - biopython
+  - python >=3.6
+source:
+  sha256: a1d1fbaa09a3f6cc183f633b1258433b92dba913845a4dd04e1e06986e2d7b71
+  url: https://pypi.io/packages/source/s/sarscov2summary/sarscov2summary-0.5.tar.gz
+test:
+  commands:
+  - sarscov2summary --help
+  imports:
+  - sarscov2summary

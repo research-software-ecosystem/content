@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/brsynth/icfree-ml
+  home: https://github.com/brsynth/icfree-ml
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Design of experiments (DoE) and machine learning packages for the iCFree
+    project
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - tduigou
+package:
+  name: icfree-ml
+  version: 2.4.0
+requirements:
+  host:
+  - python >3.8,<3.12
+  - pip
+  run:
+  - python >3.8,<3.12
+  - biopython
+  - pysbol2
+  - blast
+  - pandas
+  - pydoe2
+source:
+  sha256: 7ea76c71098b86f562fd676c31b440da86d2f1c83c70b601eea58d4e28cce408
+  url: https://github.com/brsynth/icfree-ml/archive/refs/tags/2.4.0.tar.gz
+test:
+  imports:
+  - icfree
+  requires:
+  - pytest
+  - pytest-cov
+  - pytest-mock
+  source_files:
+  - tests/

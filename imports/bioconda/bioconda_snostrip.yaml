@@ -1,0 +1,41 @@
+about:
+  home: http://snostrip.bioinf.uni-leipzig.de/help.py
+  license: GPL3
+  license_file: README.md
+  summary: Automatic snoRNA annotation pipeline
+build:
+  number: 5
+  skip: true
+extra:
+  recipe-maintainers:
+  - jfallmann
+  skip-lints:
+  - should_not_be_noarch_source
+package:
+  name: snostrip
+  version: 2.0.2
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - perl
+  - blast-legacy
+  - infernal
+  - muscle
+  - viennarna
+  run:
+  - perl
+  - blast-legacy
+  - infernal
+  - muscle
+  - viennarna
+source:
+  patches:
+  - configure.patch
+  - snostrip.patch
+  sha256: 07902c0813b91189bfbf12cbe931dda769fe96ea8c3806c69cb6d2b016d66b80
+  url: https://github.com/Bierinformatik/snoStrip/archive/v2.0.2-beta.tar.gz
+test:
+  commands:
+  - snoStrip.pl -h 2>&1 | grep usage

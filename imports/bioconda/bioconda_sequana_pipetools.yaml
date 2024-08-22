@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/sequana/sequana_pipetools
+  license: BSD 3-clause
+  license_family: BSD
+  summary: A set of tools to help building or using Sequana pipelines
+build:
+  entry_points:
+  - sequana_completion=sequana_pipetools.completion:main
+  - sequana_slurm_status=sequana_pipetools.slurm:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - cokelaer
+package:
+  name: sequana_pipetools
+  version: 0.9.4
+requirements:
+  host:
+  - python
+  - setuptools
+  - pip
+  run:
+  - python
+  - deprecated
+  - easydev
+  - parse
+  - ruamel.yaml
+  - pykwalify
+  - importlib_resources
+  - pyyaml
+  - aiohttp
+  - tqdm
+source:
+  sha256: d2eea9079e58c6154363613f421360efc336b0e41263c099d4f0db65399f71a1
+  url: https://pypi.io/packages/source/s/sequana_pipetools/sequana_pipetools-0.9.4.tar.gz
+test:
+  commands:
+  - sequana_completion --help 1>out 2>err
+  - sequana_slurm_status --help 1>out 2>err
+  imports:
+  - sequana_pipetools

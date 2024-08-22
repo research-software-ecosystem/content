@@ -1,0 +1,48 @@
+about:
+  description: suite of standalone and Galaxy tools for processing of metabolomics
+    data.
+  dev_url: ''
+  doc_url: ''
+  home: https://github.com/secimTools/SECIMTools
+  license: MIT License
+  license_family: MIT
+  summary: Metabolomics tools from the SECIM project
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers: om@rc.ufl.edu
+package:
+  name: secimtools
+  version: 22.3.23
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - bioconductor-impute
+  - lxml
+  - matplotlib-base
+  - matplotlib-venn
+  - numpy >=1.16
+  - palettable
+  - pandas
+  - pymc
+  - perl-vcftools-vcf
+  - r-glmnet
+  - rpy2
+  - scikit-learn
+  - scipy
+  - seaborn
+  - statsmodels
+source:
+  sha256: 1ab5309247e6eeb8cc64db44807c85258ddfb3e504a44be905ef72c0f117cb82
+  url: https://pypi.io/packages/source/s/secimtools/secimtools-22.3.23.tar.gz
+test:
+  imports:
+  - secimtools
+  - secimtools.anovaModules
+  - secimtools.dataManager
+  - secimtools.visualManager

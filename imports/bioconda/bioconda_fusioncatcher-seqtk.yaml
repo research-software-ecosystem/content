@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/ndaniel/seqtk
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: This is modified Seqtk version required for FusionCatcher.
+build:
+  number: 5
+package:
+  name: fusioncatcher-seqtk
+  version: 1.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - 0001-Makefile-rm-CC-append-CFLGAS-add-CPPFLAGS-add-LDFLAGS.patch
+  sha256: 4a57fbe828eccaa4f0122c84bf9c4c5409a024ad9deace31ec7bee6d25cf5e49
+  url: https://github.com/ndaniel/seqtk/archive/1.2-r101c.tar.gz
+test:
+  commands:
+  - seqtk 2>&1 | grep seqtk -q

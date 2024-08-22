@@ -1,0 +1,34 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: convert PSL alignments of mRNAs to gene annotations.
+build:
+  number: 4
+  skip: true
+package:
+  name: ucsc-transmappsltogenepred
+  version: '377'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: 932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v377.src.tgz
+test:
+  commands:
+  - which transMapPslToGenePred

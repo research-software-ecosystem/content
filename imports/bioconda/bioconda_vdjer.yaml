@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/mozack/vdjer
+  license: https://github.com/mozack/vdjer/blob/master/LICENSE.txt
+  summary: B Cell Receptor Repertoire Reconstruction from short read mRNA-Seq data
+build:
+  number: 7
+  skip: true
+package:
+  name: vdjer
+  version: '0.12'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - 0001-CXX-and-flags.patch
+  sha256: 09d407c00e29efdc05d11b3b24955d3a15e436cb00974db7cb7390db3fc3bdba
+  url: https://github.com/mozack/vdjer/archive/v0.12.tar.gz
+test:
+  commands:
+  - vdjer 2>&1 | grep 'ELAPSED_SEC'

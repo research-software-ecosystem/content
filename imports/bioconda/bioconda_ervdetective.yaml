@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/ZhijianZhou01/ervdetective
+  license: LGPL-2.1-or-later
+  license_family: LGPL
+  license_file: LICENSE
+  summary: An efficient pipeline for identification and annotation of endogenous retroviruses
+    (ERVs).
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - ZhijianZhou01
+package:
+  name: ervdetective
+  version: 1.0.8
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  run:
+  - python >=3.6
+  - biopython >=1.77
+  - psutil >=5.9.1
+  - blast >=2.9.0
+  - genometools-genometools >=1.6.1
+  - hmmer >=3.0
+source:
+  sha256: 3438eaf219dc78c51f7711dc420b6f7cc7d71ec4b6608573a11df1dac8f407d4
+  url: https://pypi.io/packages/source/e/ervdetective/ervdetective-1.0.8.tar.gz
+test:
+  commands:
+  - ervdetective --help

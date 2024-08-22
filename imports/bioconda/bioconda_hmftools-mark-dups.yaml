@@ -1,0 +1,24 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/tree/master/mark-dups
+  license: GPL-3.0-only
+  license_family: GPL
+  summary: Mark read duplicates and form consenus sequences
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-mark-dups
+  version: 1.1.7
+requirements:
+  run:
+  - openjdk >=8
+  - sambamba >=1.0.1
+  - samtools >=1.17
+source:
+  sha256: 382fc3cb533d4887bf1cf53507b77f288fb8021a60aa965c9f1ddef45ae9c4ec
+  url: https://github.com/hartwigmedical/hmftools/releases/download/mark-dups-v1.1.7/mark-dups_v1.1.7.jar
+test:
+  commands:
+  - markdups -version | grep MarkDups

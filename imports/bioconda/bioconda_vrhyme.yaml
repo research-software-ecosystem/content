@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/AnantharamanLab/vRhyme
+  home: https://github.com/AnantharamanLab/vRhyme
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Binning Virus Genomes from Metagenomes.
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . -vv
+extra:
+  identifiers:
+  - doi:10.1093/nar/gkac341
+package:
+  name: vrhyme
+  version: 1.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  - gzip
+  run:
+  - numpy
+  - python >=3.6
+  - samtools
+  - mmseqs2
+  - prodigal
+  - mash
+  - bowtie2
+  - bwa
+  - pandas
+  - numba
+  - pysam
+  - networkx
+  - scikit-learn
+source:
+  patches:
+  - setup.patch
+  sha256: ffc8b7b7f976d251e5f42d41ef88f8a9bc3d3b6044fc443f31625a5feff83985
+  url: https://github.com/AnantharamanLab/vRhyme/archive/v1.1.0.tar.gz
+test:
+  commands:
+  - vRhyme --version

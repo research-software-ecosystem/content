@@ -1,0 +1,50 @@
+about:
+  description: 'FastSpar is a C++ implementation of the SparCC algorithm
+
+    which is up to several thousand times faster than the original
+
+    Python2 release and uses much less memory. The FastSpar
+
+    implementation provides threading support and a p-value
+
+    estimator which accounts for the possibility of repetitious data
+
+    permutations.
+
+    '
+  home: https://github.com/scwatts/fastspar
+  license: GPLv3
+  license_file: LICENSE
+  summary: Rapid and scalable correlation estimation for compositional data
+build:
+  number: 5
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/bty734
+  - doi:10.1371/journal.pcbi.1002687
+package:
+  name: fastspar
+  version: 1.0.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - autoconf
+  - automake
+  host:
+  - armadillo >=7.800.1
+  - gnu-getopt
+  - gsl
+  - openblas =*=*openmp*
+  run:
+  - armadillo >=7.800.1
+  - gnu-getopt
+  - gsl
+  - openblas =*=*openmp*
+source:
+  sha256: 22a8f8e5199f5ebdf547a2613db914e2b0b929734936a4bc763eecfb275beb72
+  url: https://github.com/scwatts/fastspar/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - fastspar --help

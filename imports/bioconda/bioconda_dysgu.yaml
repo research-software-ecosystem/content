@@ -1,0 +1,84 @@
+about:
+  dev_url: https://github.com/kcleal/dysgu
+  home: https://github.com/kcleal/dysgu
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: A collection of tools for calling structural variants using short or long
+    reads
+build:
+  binary_relocation: false
+  entry_points:
+  - dysgu = dysgu.main:cli
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - kcleal
+  skip-lints:
+  - cython_must_be_in_host
+package:
+  name: dysgu
+  version: 1.6.6
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - python
+  - cython
+  - htslib >=1.12
+  - numpy >=1.18
+  - lightgbm
+  - zlib
+  - pysam >=0.19
+  - libcurl
+  - openssl
+  - bzip2
+  - xz
+  - wheel
+  - scipy >=1.7
+  - pandas >=1.2
+  - networkx >=2.4
+  - scikit-learn >=0.22
+  - python-edlib
+  - sortedcontainers
+  - click >=8.0
+  run:
+  - python
+  - numpy >=1.18
+  - scipy >1.7
+  - pandas >=1.2
+  - networkx >=2.4
+  - scikit-learn >=0.22
+  - python-edlib
+  - sortedcontainers
+  - lightgbm
+  - zlib
+  - click >=8.0
+  - pysam >=0.22
+  - libcurl
+  - openssl
+  - bzip2
+  - xz
+  - htslib >=1.12
+  - wheel
+  - cython
+source:
+  sha256: cabc54afc88c8a855f79067bdeddc089d99ec91a4e4fe21fd18f42962d0d6a6d
+  url: https://github.com/kcleal/dysgu/archive/v1.6.6.tar.gz
+test:
+  commands:
+  - dysgu --help
+  files:
+  - dysgu/tests/*
+  imports:
+  - dysgu
+  requires:
+  - cython

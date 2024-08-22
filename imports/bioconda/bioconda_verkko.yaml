@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/marbl/verkko
+  doc_url: https://github.com/marbl/verkko/blob/master/README.md
+  home: https://github.com/marbl/verkko
+  license: CC0
+  license_file: README.licenses
+  summary: A hybrid genome assembly pipeline developed for telomere-to-telomere assembly
+    of PacBio HiFi or Oxford Nanopore Duplex and Oxford Nanopore simplex reads.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1038/s41587-023-01662-6
+  - usegalaxy-eu:verkko
+package:
+  name: verkko
+  version: 2.1
+requirements:
+  build:
+  - make
+  - llvm-openmp
+  - libgomp
+  - None
+  - rust >=1.74
+  host:
+  - llvm-openmp
+  - libgomp
+  - gsl
+  - zlib
+  run:
+  - python >=3.7
+  - perl >=5.6
+  - seqtk
+  - parasail-python >=1.3.3
+  - networkx >=2.6.3
+  - biopython
+  - snakemake-minimal >=7.8.0,<8.0
+  - graphaligner >=1.0.19
+  - findutils >=4.6.0
+  - mashmap >=3.0.6
+  - winnowmap >=2.0
+  - bwa >=0.7.17
+  - minimap2 >=2.28
+  - samtools >=1.17
+source:
+  patches:
+  - version.patch
+  - osx_availability.patch
+  sha256: e989710a43cc6f721938f6393d20c8a674b110cd74a7c27f23f4d06a9dd78e9f
+  url: https://github.com/marbl/verkko/releases/download/v2.1/verkko-v2.1.tar.gz
+test:
+  commands:
+  - verkko --version
+  requires:
+  - curl

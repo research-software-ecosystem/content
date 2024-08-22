@@ -1,0 +1,67 @@
+about:
+  description: Databases based on the InterMine platform such as FlyMine, modMine
+    (modENCODE), RatMine, YeastMine, HumanMine and TargetMine are integrated databases
+    of genomic, expression and protein data for various organisms. Integrating data
+    makes it possible to run sophisticated data mining queries that span domains of
+    biological knowledge. This R package provides interfaces with these databases
+    through webservices. It makes most from the correspondence of the data frame object
+    in R and the table object in databases, while hiding the details of data exchange
+    through XML or JSON.
+  home: https://bioconductor.org/packages/3.18/bioc/html/InterMineR.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: R Interface with InterMine-Powered Databases
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-interminer
+    path: recipes/bioconductor-interminer
+    version: 1.2.1
+package:
+  name: bioconductor-interminer
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-httr
+  - r-igraph
+  - r-rcurl
+  - r-rjsonio
+  - r-sqldf
+  - r-xml
+  - r-xml2
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-httr
+  - r-igraph
+  - r-rcurl
+  - r-rjsonio
+  - r-sqldf
+  - r-xml
+  - r-xml2
+source:
+  md5: a401e91084a8393592ceb3305b6cbfa2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/InterMineR_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/InterMineR/InterMineR_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/InterMineR_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-interminer/bioconductor-interminer_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('InterMineR')"

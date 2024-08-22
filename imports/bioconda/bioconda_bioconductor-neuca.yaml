@@ -1,0 +1,43 @@
+about:
+  description: NeuCA is is a neural-network based method for scRNA-seq data annotation.
+    It can automatically adjust its classification strategy depending on cell type
+    correlations, to accurately annotate cell. NeuCA can automatically utilize the
+    structure information of the cell types through a hierarchical tree to improve
+    the annotation accuracy. It is especially helpful when the data contain closely
+    correlated cell types.
+  home: https://bioconductor.org/packages/3.17/bioc/html/NeuCA.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: NEUral network-based single-Cell Annotation tool
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-neuca
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-limma >=3.56.0,<3.57.0
+  - bioconductor-singlecellexperiment >=1.22.0,<1.23.0
+  - r-base
+  - r-e1071
+  - r-keras
+  run:
+  - bioconductor-limma >=3.56.0,<3.57.0
+  - bioconductor-singlecellexperiment >=1.22.0,<1.23.0
+  - r-base
+  - r-e1071
+  - r-keras
+source:
+  md5: 2b4589fd7129485bbfbe2e64d25f295e
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/NeuCA_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/NeuCA/NeuCA_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/NeuCA_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-neuca/bioconductor-neuca_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('NeuCA')"

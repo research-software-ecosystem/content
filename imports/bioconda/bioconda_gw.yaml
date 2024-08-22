@@ -1,0 +1,73 @@
+about:
+  home: https://github.com/kcleal/gw
+  license: MIT
+  license_file: LICENSE.md
+  summary: View genomic sequencing data and vcf files
+build:
+  ignore_run_exports:
+  - libglx
+  - xorg-libsm
+  - xorg-libice
+  - xorg-libx11
+  - xorg-libxau
+  - xorg-libxext
+  - libegl
+  - libxcb
+  - freetype
+  - fontconfig
+  - zlib
+  - libuuid
+  - libdeflate
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - osx-arm64
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - kcleal
+package:
+  name: gw
+  version: 1.0.2
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - fontconfig
+  - libuuid
+  - libcurl
+  - libdeflate >=1.0
+  - htslib >=1.12
+  - glfw >=3.3
+  - unzip
+  - freetype
+  - zlib
+  - pthread-stubs
+  - xorg-libsm
+  - xorg-libice
+  - xorg-libx11
+  - libxcb
+  - libegl-devel
+  - libgl-devel
+  - libglx-devel
+  run:
+  - glfw >=3.3
+  - htslib >=1.12
+  - xorg-libxt
+  - xorg-libxau
+  - xorg-libxfixes
+  - xorg-libxxf86vm
+  - xorg-libxdamage
+source:
+  patches:
+  - fix-linker-issues.patch
+  sha256: 1f9b17702a073e255a87e5e273c0dd0ddafbc25c02b19aa143b3d744ce5d359d
+  url: https://github.com/kcleal/gw/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - gw hg19 -b https://github.com/kcleal/gw/releases/download/v1.0.0/demo1.bam -r
+    chr8:37047270-37055161 -n > test.png; ls -lh test.png

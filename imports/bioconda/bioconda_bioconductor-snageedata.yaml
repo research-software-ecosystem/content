@@ -1,0 +1,37 @@
+about:
+  description: SNAGEE data - gene list and correlation matrix
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/SNAGEEdata.html
+  license: Artistic-2.0
+  summary: SNAGEE data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-snageedata
+    path: recipes/bioconductor-snageedata
+    version: 1.16.0
+package:
+  name: bioconductor-snageedata
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: bfd0a2689cb9ac612cb2f8995c3a03d5
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/SNAGEEdata_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SNAGEEdata/SNAGEEdata_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SNAGEEdata_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-snageedata/bioconductor-snageedata_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SNAGEEdata')"

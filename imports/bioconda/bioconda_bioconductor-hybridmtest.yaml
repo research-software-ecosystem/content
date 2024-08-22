@@ -1,0 +1,54 @@
+about:
+  description: Performs hybrid multiple testing that incorporates method selection
+    and assumption evaluations into the analysis using empirical Bayes probability
+    (EBP) estimates obtained by Grenander density estimation. For instance, for 3-group
+    comparison analysis, Hybrid Multiple testing considers EBPs as weighted EBPs between
+    F-test and H-test with EBPs from Shapiro Wilk test of normality as weigth. Instead
+    of just using EBPs from F-test only or using H-test only, this methodology combines
+    both types of EBPs through EBPs from Shapiro Wilk test of normality. This methodology
+    uses then the law of total EBPs.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HybridMTest.html
+  license: GPL Version 2 or later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Hybrid Multiple Testing
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:hybridmtest
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-hybridmtest
+    path: recipes/bioconductor-hybridmtest
+    version: 1.24.0
+package:
+  name: bioconductor-hybridmtest
+  version: 1.46.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-fdrtool
+  - r-mass
+  - r-survival
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-fdrtool
+  - r-mass
+  - r-survival
+source:
+  md5: a2b1764b0e458f82e6055a3ebdf90933
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HybridMTest_1.46.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HybridMTest/HybridMTest_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HybridMTest_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hybridmtest/bioconductor-hybridmtest_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HybridMTest')"

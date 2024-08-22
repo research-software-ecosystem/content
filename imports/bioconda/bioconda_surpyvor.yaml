@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/wdecoster/surpyvor
+  license: MIT License
+  license_family: MIT
+  summary: Evaluating, merging and plotting SV vcf files
+build:
+  entry_points:
+  - surpyvor=surpyvor.surpyvor:main
+  noarch: python
+  number: 0
+  script: touch README.md &&  -m pip install . --no-deps -vv
+extra:
+  identifiers:
+  - doi:10.1101/gr.244939.118
+  recipe-maintainers:
+  - wdecoster
+package:
+  name: surpyvor
+  version: 0.15.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - bcftools
+  - htslib
+  - survivor
+  - numpy
+  - cyvcf2
+  - matplotlib-base
+  - matplotlib-venn
+  - upsetplot
+source:
+  sha256: da22dcf7a03c59325d3bddc53e3e6e8c335b1758cff093257e4d3b073eb01470
+  url: https://pypi.io/packages/source/s/surpyvor/surpyvor-0.15.0.tar.gz
+test:
+  commands:
+  - surpyvor --help
+  imports:
+  - surpyvor

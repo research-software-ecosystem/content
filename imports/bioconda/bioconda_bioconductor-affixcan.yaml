@@ -1,0 +1,42 @@
+about:
+  description: Impute a GReX (Genetically Regulated Expression) for a set of genes
+    in a sample of individuals, using a method based on the Total Binding Affinity
+    (TBA). Statistical models to impute GReX can be trained with a training dataset
+    where the real total expression values are known.
+  home: https://bioconductor.org/packages/3.18/bioc/html/AffiXcan.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A Functional Approach To Impute Genetically Regulated Expression
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-affixcan
+  version: 1.20.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-multiassayexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-crayon
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-multiassayexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-crayon
+source:
+  md5: 0fdb85714a4ee94e3c04117e56d35724
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/AffiXcan_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/AffiXcan/AffiXcan_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/AffiXcan_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affixcan/bioconductor-affixcan_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('AffiXcan')"

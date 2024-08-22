@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/NatPRoach/conduit
+  license: GPL-2.0
+  license_file: LICENSE
+  summary: Long- and short-read hybrid de novo transcriptome assembly
+build:
+  number: 2
+  skip: true
+package:
+  name: conduit-assembler
+  version: 0.1.2
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - htslib
+  - nim >=1.4.0
+  run:
+  - htslib
+  - samtools
+  - bowtie2 >=2.3.3
+source:
+- patches:
+  - patch
+  sha256: 9573b0306b894d944e02644c3eb716a0eded34ad60c94f62ff84f61c3308d439
+  url: https://github.com/NatPRoach/conduit/releases/download/0.1.2/conduit_0.1.2.tar.gz
+- folder: hts-nim
+  sha256: 8c89c3414321237c611f1a232ea77517b044b48041f363ef94db41df0d0591f6
+  url: https://github.com/brentp/hts-nim/archive/v0.3.11.tar.gz
+test:
+  commands:
+  - conduit --help
+  - conduit hybrid --help
+  - conduitUtils --help

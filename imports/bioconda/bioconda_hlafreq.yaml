@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/Vaccitech/HLAfreq
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Download and combine HLA frequency data from multiple studies
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - DAWells
+package:
+  name: hlafreq
+  version: 0.0.3
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - bs4
+  - matplotlib-base
+  - numpy
+  - pandas
+  - pymc >=3
+  - arviz
+  - python >=3.8
+  - requests
+  - scipy
+source:
+  sha256: 93941536c4912180f12544251792d21098e47116a871c6c49565054987e1438f
+  url: https://pypi.io/packages/source/H/HLAfreq/HLAfreq-0.0.3.tar.gz
+test:
+  imports:
+  - HLAfreq
+  - HLAfreq.HLAfreq_pymc

@@ -1,0 +1,34 @@
+about:
+  home: http://poretools.readthedocs.org/en/latest/
+  license: MIT
+  license_file: LICENSE
+  summary: 'poretools: a toolkit for working with nanopore sequencing data from Oxford
+    Nanopore'
+build:
+  noarch: python
+  number: 8
+extra:
+  container:
+    extended-base: true
+package:
+  name: poretools
+  version: 0.6.1a1
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - hdf5
+  - h5py >=2.2.0
+  - matplotlib
+  - seaborn
+  - pandas
+source:
+  md5: 9c38c7c104d431b1296dde54bc7f432c
+  patches:
+  - poretools.patch
+  url: https://github.com/arq5x/poretools/archive/33e03f0b5dbc2a7d654870edab4aa968c2db6683.tar.gz
+test:
+  commands:
+  - poretools -v

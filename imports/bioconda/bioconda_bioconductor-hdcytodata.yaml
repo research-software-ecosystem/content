@@ -1,0 +1,46 @@
+about:
+  description: Data package containing a set of publicly available high-dimensional
+    cytometry benchmark datasets, formatted into SummarizedExperiment and flowSet
+    Bioconductor object formats, including all required metadata. Row metadata includes
+    sample IDs, group IDs, patient IDs, reference cell population or cluster labels
+    (where available), and labels identifying 'spiked in' cells (where available).
+    Column metadata includes channel names, protein marker names, and protein marker
+    classes (cell type or cell state).
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/HDCytoData.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Collection of high-dimensional cytometry benchmark datasets in Bioconductor
+    object formats
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hdcytodata
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 8f962c6124539fea7a4a02a30e776de8
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/HDCytoData_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HDCytoData/HDCytoData_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HDCytoData_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hdcytodata/bioconductor-hdcytodata_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HDCytoData')"

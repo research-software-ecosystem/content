@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/nebiolabs/tasmanian-mismatch
+  license: GNU Affero General Public License
+  summary: Tasmanian tool to analyze mismatches at read and position in high throughput
+    sequencing data
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - aerijman
+package:
+  name: tasmanian-mismatch
+  version: 1.0.7
+requirements:
+  host:
+  - python >=3.6
+  - setuptools
+  run:
+  - python >=3.6
+  - numpy
+  - matplotlib-base==3.1.1
+  - numpy==1.16.4
+  - pandas==0.25.1
+  - plotly==4.3.0
+  - scikit-learn==0.21.2
+  - scipy==1.2.1
+  - seaborn==0.9.0
+  - statsmodels==0.10.1
+  - termcolor==1.1.0
+source:
+  sha256: 62bde0d4a25e6227e04a3f4dbea4ab3a55a7c38301c93e676a1c5bd009c3917d
+  url: https://github.com/nebiolabs/tasmanian-mismatch/archive/v1.0.7.tar.gz
+test:
+  imports:
+  - tasmanian
+  - tasmanian.utils

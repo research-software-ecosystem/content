@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/opentargets/validator
+  license: Apache, Version 2.0
+  license_family: APACHE
+  summary: Evidence validation at targetvalidation.org
+build:
+  entry_points:
+  - opentargets_validator=opentargets_validator.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+extra:
+  recipe-maintainers:
+  - pinin4fjords
+package:
+  name: opentargets-validator
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - python-fastjsonschema >=2.18.0
+  - pathos >=0.3.1
+source:
+  sha256: 7908b649a82f7d45d2e1e4a32b35e4ae1ffbdd32cb3060e38d2155af45da717f
+  url: https://pypi.io/packages/source/o/opentargets-validator/opentargets-validator-1.0.0.tar.gz
+test:
+  commands:
+  - opentargets_validator --help
+  imports:
+  - opentargets_validator

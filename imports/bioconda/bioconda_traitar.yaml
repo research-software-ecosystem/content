@@ -1,0 +1,38 @@
+about:
+  description: Traitar is a software for characterizing microbial samples from nucleotide
+    or protein sequences
+  dev_url: ''
+  doc_url: https://github.com/nick-youngblut/traitar3
+  home: https://github.com/nick-youngblut/traitar3
+  license: GNU General Public, version 3 (GPL-3.0)
+  license_family: GPL3
+  license_file: /LICENSE
+  summary: traitar - The microbial trait analyzer
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: traitar
+  version: 3.0.1
+requirements:
+  host:
+  - python >=3.7,<3.11
+  - pip
+  run:
+  - python >=3.7,<3.11
+  - hmmer
+  - scipy
+  - pandas >1.2,<2
+  - numpy
+  - matplotlib-base
+source:
+  sha256: 975b977931041c19cb1ee151bba328bdeb124a0874ab2383faff63ea5002af98
+  url: https://github.com/nick-youngblut/traitar3/archive/refs/tags/3.0.1.tar.gz
+test:
+  commands:
+  - traitar -h
+  - traitar pfam -h
+  - traitar phenotype -h
+  imports:
+  - traitar

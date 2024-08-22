@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/tekpinar/correlationplus
+  doc_url: https://github.com/tekpinar/correlationplus
+  home: https://github.com/tekpinar/correlationplus
+  license: GNU Lesser General Public v3 (LGPLv3)
+  license_family: LGPL
+  license_file: COPYING.LESSER
+  summary: A Python package to calculate, visualize and analyze dynamical correlations
+    of proteins.
+build:
+  entry_points:
+  - correlationplus=correlationplus.scripts.correlationplus:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --ignore-installed --no-deps'
+extra:
+  recipe-maintainers:
+  - bneron
+package:
+  name: correlationplus
+  version: 0.2.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - matplotlib-base
+  - networkx
+  - numpy
+  - prody
+  - mdanalysis
+  - numba
+  - python
+  - scipy
+source:
+  sha256: 848ca7d2a7d42ca7b8ca19a7fefd2d8621330e1c5e6101364744453bec798ac1
+  url: https://pypi.io/packages/source/c/correlationplus/correlationplus-0.2.1.tar.gz
+test:
+  commands:
+  - correlationplus --help
+  imports:
+  - correlationplus
+  - correlationplus.scripts

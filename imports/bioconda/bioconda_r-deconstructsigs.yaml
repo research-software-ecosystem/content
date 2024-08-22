@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/raerose01/deconstructSigs
+  license: GPL (>= 2)
+  license_family: GPL3
+  summary: Takes sample information in the form of the fraction of mutations in each
+    of 96 trinucleotide contexts and identifies the weighted combination of published
+    signatures that, when summed, most closely reconstructs the mutational profile.
+build:
+  noarch: generic
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-deconstructsigs
+  version: 1.9.0
+requirements:
+  build:
+  - zip
+  host:
+  - r-base
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-genomeinfodb
+  - r-reshape2
+  run:
+  - r-base
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-genomeinfodb
+  - r-reshape2
+source:
+  sha256: 7c59930902929cc88442226ac639da1784f5905737918a0535cdc68543656da8
+  url: https://github.com/raerose01/deconstructSigs/archive/refs/tags/v1.9.0.tar.gz
+test:
+  commands:
+  - $R -e "library('deconstructSigs')"
+  - '"%R%" -e "library(''deconstructSigs'')"'

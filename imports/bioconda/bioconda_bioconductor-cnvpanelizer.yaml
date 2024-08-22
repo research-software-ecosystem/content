@@ -1,0 +1,83 @@
+about:
+  description: A method that allows for the use of a collection of non-matched normal
+    tissue samples. Our approach uses a non-parametric bootstrap subsampling of the
+    available reference samples to estimate the distribution of read counts from targeted
+    sequencing. As inspired by random forest, this is combined with a procedure that
+    subsamples the amplicons associated with each of the targeted genes. The obtained
+    information allows us to reliably classify the copy number aberrations on the
+    gene level.
+  home: https://bioconductor.org/packages/3.18/bioc/html/CNVPanelizer.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Reliable CNV detection in targeted sequencing applications
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cnvpanelizer
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-cnvpanelizer
+    path: recipes/bioconductor-cnvpanelizer
+    version: 1.12.0
+package:
+  name: bioconductor-cnvpanelizer
+  version: 1.34.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-exomecopy >=1.48.0,<1.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-noiseq >=2.46.0,<2.47.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-foreach
+  - r-ggplot2
+  - r-gplots
+  - r-openxlsx
+  - r-plyr
+  - r-reshape2
+  - r-shiny
+  - r-shinyfiles
+  - r-shinyjs
+  - r-stringr
+  - r-testthat
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-exomecopy >=1.48.0,<1.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-noiseq >=2.46.0,<2.47.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-foreach
+  - r-ggplot2
+  - r-gplots
+  - r-openxlsx
+  - r-plyr
+  - r-reshape2
+  - r-shiny
+  - r-shinyfiles
+  - r-shinyjs
+  - r-stringr
+  - r-testthat
+source:
+  md5: 1d984f2fa3f3db99f3ccf72b5c9a0890
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CNVPanelizer_1.34.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CNVPanelizer/CNVPanelizer_1.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CNVPanelizer_1.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cnvpanelizer/bioconductor-cnvpanelizer_1.34.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CNVPanelizer')"

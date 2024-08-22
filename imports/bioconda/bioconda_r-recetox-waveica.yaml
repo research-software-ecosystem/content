@@ -1,0 +1,45 @@
+about:
+  description: Recetox-waveica is a fork of WaveICA package customized by RECETOX.
+    This package is used to remove batch effects from large-scale untargeted metabolomics
+    data and contains functionality of both original WaveICA and WaveICA 2.0 libraries.
+  home: https://github.com/recetox/waveica
+  license: MIT
+  summary: Removal of batch effects for large-scale untargeted metabolomics data based
+    on wavelet transform.
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/
+  - lib/R/lib/
+  script: R CMD INSTALL --build .
+extra:
+  identifiers:
+  - doi:10.1016/j.aca.2019.02.010
+  - doi:10.1007/s11306-021-01839-7
+  maintainers:
+  - hechth
+  - martenson
+  - maximskorik
+package:
+  name: r-recetox-waveica
+  version: 0.2.0
+requirements:
+  host:
+  - r-base
+  - r-waveslim
+  - r-jade
+  - r-corpcor
+  - r-mgcv
+  run:
+  - r-base
+  - r-waveslim
+  - r-jade
+  - r-corpcor
+  - r-mgcv
+source:
+  sha256: dd6e7ea73e908aebfface2e7f991ce6adbeae6ab6027661561e2392ffe0e15f8
+  url: https://github.com/recetox/waveica/archive/v0.2.0.tar.gz
+test:
+  commands:
+  - $R -e "library('recetox.waveica')"

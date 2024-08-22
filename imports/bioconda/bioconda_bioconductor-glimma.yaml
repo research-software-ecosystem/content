@@ -1,0 +1,57 @@
+about:
+  description: This package produces interactive visualizations for RNA-seq data analysis,
+    utilizing output from limma, edgeR, or DESeq2. It produces interactive htmlwidgets
+    versions of popular RNA-seq analysis plots to enhance the exploration of analysis
+    results by overlaying interactive features. The plots can be viewed in a web browser
+    or embedded in notebook documents.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Glimma.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Interactive visualizations for gene expression analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:glimma
+  - doi:10.1101/096107
+  parent_recipe:
+    name: bioconductor-glimma
+    path: recipes/bioconductor-glimma
+    version: 1.8.2
+package:
+  name: bioconductor-glimma
+  version: 2.12.0
+requirements:
+  host:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-htmlwidgets
+  - r-jsonlite
+  run:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-htmlwidgets
+  - r-jsonlite
+source:
+  md5: bea9aeee00dca519586661d33ba8dc74
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Glimma_2.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Glimma/Glimma_2.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Glimma_2.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-glimma/bioconductor-glimma_2.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Glimma')"

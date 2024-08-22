@@ -1,0 +1,55 @@
+about:
+  doc_url: https://sashimi.readthedocs.io/en/latest/
+  home: https://github.com/ygidtu/sashimi.py
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: This is an pure Python version of sashimi plot
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - ygidtu
+package:
+  name: sashimi-py
+  version: 0.1.5
+requirements:
+  host:
+  - python
+  - wheel
+  - setuptools
+  - setuptools_scm
+  - pip
+  - filetype
+  - pysam
+  - pybigwig
+  - hicmatrix
+  - click-option-group
+  run:
+  - python
+  - wheel
+  - adjusttext
+  - pysam
+  - filetype
+  - pybigwig
+  - click-option-group
+  - cairocffi
+  - hicmatrix
+  - matplotlib-base
+  - seaborn-base
+  - click
+  - numpy
+  - requests
+  - xmltodict
+  - pandas
+  - loguru
+source:
+  sha256: cd792440449a4205e8d90a942993a1d404e75277db9e37f43dcd75bad81aa2fd
+  url: https://pypi.io/packages/source/s/sashimi.py/sashimi.py-0.1.5.tar.gz
+test:
+  commands:
+  - sashimipy --help
+  imports:
+  - sashimi

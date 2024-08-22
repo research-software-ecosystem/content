@@ -1,0 +1,44 @@
+about:
+  description: Integrative clustering of multiple genomic data using a joint latent
+    variable model.
+  home: https://bioconductor.org/packages/3.18/bioc/html/iClusterPlus.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Integrative clustering of multi-type genomic data
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: bioconductor-iclusterplus
+  version: 1.38.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - autoconf
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 133b682823ec6ab41f6f6579413d461d
+  patches:
+  - 0001-Detect-compiler-with-gfortran-suffix.patch
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/iClusterPlus_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/iClusterPlus/iClusterPlus_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/iClusterPlus_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-iclusterplus/bioconductor-iclusterplus_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('iClusterPlus')"

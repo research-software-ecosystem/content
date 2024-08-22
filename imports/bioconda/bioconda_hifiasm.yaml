@@ -1,0 +1,31 @@
+about:
+  doc_url: https://hifiasm.readthedocs.io/en/latest/index.html
+  home: https://github.com/chhylp123/hifiasm
+  license: MIT
+  license_family: MIT
+  summary: Haplotype-resolved assembler for accurate Hifi reads
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: hifiasm
+  version: 0.19.9
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+source:
+  patches:
+  - linux-aarch64-support.patch
+  sha256: 8b80c03ad50b65e197d7e633740a135ad1202949ebfe4dfb977f27f2f2ae83ee
+  url: https://github.com/chhylp123/hifiasm/archive/0.19.9.tar.gz
+test:
+  commands:
+  - hifiasm 2>&1 | grep 'Usage'

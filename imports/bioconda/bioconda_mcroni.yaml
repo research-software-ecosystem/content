@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/liampshaw/mcroni
+  license: MIT
+  summary: mcr-1 analysis
+build:
+  entry_points:
+  - mcroni = mcroni.mcroni:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+package:
+  name: mcroni
+  version: 1.0.4
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pandas
+  - biopython
+  - numpy
+  - abricate
+  - blast
+source:
+  sha256: ee7a76801b7d48c93b281903dcfd0496f8ae3996d0649c382316e910adfa5ffe
+  url: https://github.com/liampshaw/mcroni/archive/v1.0.4.tar.gz
+test:
+  commands:
+  - mcroni --help
+  imports:
+  - mcroni

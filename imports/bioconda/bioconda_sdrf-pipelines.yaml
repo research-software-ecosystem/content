@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/bigbio/sdrf-pipelines
+  doc_url: https://github.com/bigbio/sdrf-pipelines
+  home: https://github.com/bigbio/sdrf-pipelines
+  license: Apache 2
+  summary: Translate, convert SDRF to configuration pipelines
+build:
+  entry_points:
+  - parse_sdrf = sdrf_pipelines.parse_sdrf:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vvv'
+extra:
+  container:
+    extended-base: true
+package:
+  name: sdrf-pipelines
+  version: 0.0.29
+requirements:
+  host:
+  - pip
+  - python >=3.5
+  run:
+  - click
+  - requests
+  - pandas
+  - pandas_schema
+  - python >=3.5
+  - pyaml
+  - defusedxml
+  - pytest
+  - duckdb
+  - rdflib
+  - pyarrow
+source:
+  sha256: 730d198ce879f864181aa5e567c51273ce95212c9394df84840a0e1896d644f1
+  url: https://pypi.io/packages/source/s/sdrf_pipelines/sdrf_pipelines-0.0.29.tar.gz
+test:
+  commands:
+  - parse_sdrf --help
+  imports:
+  - sdrf_pipelines
+  - sdrf_pipelines.openms
+  - sdrf_pipelines.sdrf
+  - sdrf_pipelines.utils
+  - sdrf_pipelines.ols

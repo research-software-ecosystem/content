@@ -1,0 +1,45 @@
+about:
+  description: Display a rectangular heatmap (intensity plot) of a data matrix. By
+    default, both samples (columns) and features (row) of the matrix are sorted according
+    to a hierarchical clustering, and the corresponding dendrogram is plotted. Optionally,
+    panels with additional information about samples and features can be added to
+    the plot.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Heatplus.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Heatmaps with row and/or column covariates and colored clusters
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:heatplus
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-heatplus
+    path: recipes/bioconductor-heatplus
+    version: 2.26.0
+package:
+  name: bioconductor-heatplus
+  version: 3.10.0
+requirements:
+  host:
+  - r-base
+  - r-rcolorbrewer
+  run:
+  - r-base
+  - r-rcolorbrewer
+source:
+  md5: 459fb0dbd1242699e9f394f156a7e0c1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Heatplus_3.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Heatplus/Heatplus_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Heatplus_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-heatplus/bioconductor-heatplus_3.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Heatplus')"

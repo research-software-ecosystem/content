@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/evotools/hapbin
+  license: GPLv3
+  summary: hapbin is a collection of tools for efficiently calculating Extended Haplotype
+    Homozygosity (EHH), the Integrated Haplotype Score (iHS) and the Cross Population
+    Extended Haplotype Homozogysity (XP-EHH) statistic.
+build:
+  number: 5
+  skip: true
+package:
+  name: hapbin
+  version: 1.3.0
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  host: null
+  run: null
+source:
+  patches:
+  - 0001-Remove-aligned_alloc-definition-already-in-patched-glibc.patch
+  sha256: 2443cb1783a5f40c042d02e84eece97220c38530e8d887b2d3c5e9354400f92d
+  url: https://github.com/evotools/hapbin/archive/v1.3.0.tar.gz
+test:
+  commands:
+  - ihsbin --help | grep "Voight"
+  - ehhbin --help | grep "Voight"
+  - xpehhbin --help | grep "Voight"

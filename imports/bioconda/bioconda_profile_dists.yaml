@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/phac-nml/profile_dists/
+  home: https://pypi.org/project/profile-dists
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: 'Profile Dists: Rapid calcualtion of allele profile distances and distance
+    base querying'
+build:
+  entry_points:
+  - profile_dists=profile_dists.main:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . --use-pep517 --no-deps -vvv
+  skip: true
+package:
+  name: profile_dists
+  version: 1.0.1
+requirements:
+  host:
+  - python
+  - pip
+  - pytest-runner
+  run:
+  - python >=3.8,<3.12
+  - None
+  - pyarrow >=12.0.0
+  - fastparquet >=2023.4.0
+  - numba
+  - pytables >=3.8.0
+  - six >=1.16.0
+  - pandas >=2.0.2
+  - psutil
+source:
+  sha256: 440622e653aa201f1892f905973a808cfee78459cc3d7e4a68336177b978132a
+  url: https://pypi.io/packages/source/p/profile_dists/profile_dists-1.0.1.tar.gz
+test:
+  commands:
+  - profile_dists -h
+  imports:
+  - profile_dists

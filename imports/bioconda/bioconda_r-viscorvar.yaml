@@ -1,0 +1,53 @@
+about:
+  description: "visCorVar does analysis from data integration with the \nfunction\
+    \ block.splsda (mixOmics package). visCorVar \nperforms the overlaying of correlation\
+    \ circles and a zoom\nin a rectangle to retrieve correlated variables. visCorVar\
+    \ \ncan create a network of correlated variables.\n"
+  home: https://gitlab.com/bilille/viscorvar
+  license: GPL3
+  license_file: LICENSE
+  summary: Overlaying of Correlation Circles and Network of Correlated Variables
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - maxime.brunin
+  - ppericard
+package:
+  name: r-viscorvar
+  version: 0.9
+requirements:
+  host:
+  - r-base
+  - bioconductor-mixomics >=6.14.1
+  - r-knitr
+  - r-rmarkdown
+  - r-ellipse
+  - r-testthat
+  - r-xtable
+  - r-rcolorbrewer
+  - r-igraph
+  - r-dplyr
+  - r-reshape2
+  run:
+  - r-base
+  - bioconductor-mixomics
+  - r-knitr
+  - r-rmarkdown
+  - r-ellipse
+  - r-testthat
+  - r-xtable
+  - r-rcolorbrewer
+  - r-igraph
+  - r-dplyr
+  - r-reshape2
+source:
+  sha256: 1138d9d36382811a6cfdf25142a663fcd3cfb88b5c97496bdf61f7c6238bcec9
+  url: https://gitlab.com/bilille/viscorvar/-/archive/v0.9/viscorvar-v0.9.tar.gz
+test:
+  commands:
+  - $R -e "library('visCorVar')"

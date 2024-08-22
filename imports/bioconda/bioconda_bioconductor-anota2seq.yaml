@@ -1,0 +1,58 @@
+about:
+  description: anota2seq provides analysis of translational efficiency and differential
+    expression analysis for polysome-profiling and ribosome-profiling studies (two
+    or more sample classes) quantified by RNA sequencing or DNA-microarray. Polysome-profiling
+    and ribosome-profiling typically generate data for two RNA sources; translated
+    mRNA and total mRNA. Analysis of differential expression is used to estimate changes
+    within each RNA source (i.e. translated mRNA or total mRNA). Analysis of translational
+    efficiency aims to identify changes in translation efficiency leading to altered
+    protein levels that are independent of total mRNA levels (i.e. changes in translated
+    mRNA that are independent of levels of total mRNA) or buffering, a mechanism regulating
+    translational efficiency so that protein levels remain constant despite fluctuating
+    total mRNA levels (i.e. changes in total mRNA that are independent of levels of
+    translated mRNA). anota2seq applies analysis of partial variance and the random
+    variance model to fulfill these tasks.
+  home: https://bioconductor.org/packages/3.18/bioc/html/anota2seq.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Generally applicable transcriptome-wide analysis of translational efficiency
+    using anota2seq
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-anota2seq
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-rcolorbrewer
+  run:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-rcolorbrewer
+source:
+  md5: c14a5f4c2cd7c51fbc9c7ecd844ad0be
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/anota2seq_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/anota2seq/anota2seq_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/anota2seq_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-anota2seq/bioconductor-anota2seq_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('anota2seq')"

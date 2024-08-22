@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/davidebolo1993/VISOR.git
+  license: LGPL-3.0
+  license_file: LICENSE.txt
+  summary: Haplotype-aware structural variants simulator for short, long and linked
+    reads
+build:
+  entry_points:
+  - VISOR=VISOR.VISOR:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - tdido
+package:
+  name: visor
+  version: 1.1.2.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - mappy >=2.17
+  - numpy >=1.15.3
+  - plotly ==3.10.0
+  - pybedtools >=0.8.0
+  - pyfaidx >=0.5.5.2
+  - pysam >=0.15.0
+  - python
+  - pywgsim >=0.3.3
+  - badread >=0.4.0
+  - minimap2 >=2.17
+  - samtools >=1.9
+source:
+  sha256: 8cb8c21414c70f037263b70d217ed89532ffa26ca0a50ea0a239e5a87c1d6b0e
+  url: https://github.com/davidebolo1993/VISOR/archive/v1.1.2.1.tar.gz
+test:
+  commands:
+  - pip check
+  - VISOR --help
+  imports:
+  - VISOR
+  requires:
+  - pip

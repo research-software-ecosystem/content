@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/HobnobMancer/saintBioutils
+  license: MIT
+  license_file: LICENSE
+  summary: A package of utility and miscellaneous functions for using in bioinformaticspipelines,
+    primarily in Python.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - HobnobMancer
+package:
+  name: saintbioutils
+  version: 0.0.25
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython >=1.76
+  - python
+  - tqdm
+source:
+  sha256: 67a09c00cafc0026c7bda67d6941e68ce6fb7f24ff8680a3946b9a105110793c
+  url: https://pypi.io/packages/source/s/saintbioutils/saintBioutils-0.0.25.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - saintBioutils
+  - saintBioutils.genbank
+  requires:
+  - pip

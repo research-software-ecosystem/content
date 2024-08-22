@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/muellan/metacache
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: MetaCache is a classification system for mapping genomic sequences (short
+    reads, long reads, contigs, ...) from metagenomic samples to their most likely
+    taxon of origin.
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+package:
+  name: metacache
+  version: 2.4.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - gawk
+  - wget
+  - zlib
+  run:
+  - gawk
+  - wget
+source:
+  sha256: 2062de4c13cc9ed3962c8903b81dca05ccabd5820305362229bc446c11c9b111
+  url: https://github.com/muellan/metacache/archive/refs/tags/v2.4.2.tar.gz
+test:
+  commands:
+  - metacache
+  - command -v download-ncbi-genomes
+  - command -v download-ncbi-taxmaps
+  - command -v download-ncbi-taxonomy
+  - command -v metacache-build-refseq
+  - command -v metacache-db-info
+  - command -v metacache-partition-genomes
+  - command -v summarize-results

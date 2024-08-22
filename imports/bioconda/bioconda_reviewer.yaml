@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/Illumina/REViewer
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: A tool for visualizing alignments of reads in regions containing tandem
+    repeats
+build:
+  ignore_run_exports:
+  - spdlog
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1186/s13073-022-01085-z
+package:
+  name: reviewer
+  version: 0.2.7
+requirements:
+  build:
+  - None
+  - make
+  - cmake
+  host:
+  - boost-cpp
+  - catch2 <3
+  - fmt
+  - htslib
+  - spdlog
+  run:
+  - boost-cpp
+source:
+  patches:
+  - cpp-fixes.patch
+  - external-libs.patch
+  sha256: 8411c40028907b0294b1899cd20af6934325796da160511b649044ecf9a5169f
+  url: https://github.com/Illumina/REViewer/archive/refs/tags/v0.2.7.tar.gz
+test:
+  commands:
+  - REViewer --help

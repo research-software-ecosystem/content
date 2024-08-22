@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/wdecoster/NanoComp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Comparing runs of Oxford Nanopore sequencing data and alignments
+build:
+  entry_points:
+  - NanoComp=nanocomp.NanoComp:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+package:
+  name: nanocomp
+  version: 1.23.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy >=1.16.5
+  - pandas
+  - pyarrow
+  - nanoget >=1.19.0
+  - nanomath >=1.0.0
+  - nanoplot >=1.39.0
+  - psutil
+  - plotly >=3.4.2
+source:
+  sha256: 9c411413e2dec8416f162cbc63996c5a293c1e19c700c67c7137d2103f7f1ded
+  url: https://pypi.io/packages/source/n/nanocomp/NanoComp-1.23.1.tar.gz
+test:
+  commands:
+  - NanoComp --help
+  imports:
+  - nanocomp

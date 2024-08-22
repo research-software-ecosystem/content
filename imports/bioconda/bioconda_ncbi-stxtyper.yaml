@@ -1,0 +1,38 @@
+about:
+  description: 'This software and the included database use a standardized algorithm
+    to accurately type both known and unknown Shiga toxin operons from assembled genomic
+    sequence
+
+    '
+  doc_url: https://github.com/ncbi/stxtyper
+  home: https://github.com/ncbi/stxtyper
+  license: Public Domain
+  license_file: LICENSE
+  summary: StxTyper identifies and types Stx operons from assembled genomic sequence.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - evolarjun
+package:
+  name: ncbi-stxtyper
+  version: 1.0.24
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - coreutils
+  run:
+  - blast >=2.9
+source:
+  sha256: 54ddeb7ec1a052c141c32eea402c816f0515f47b7f0a5afeb054e410f9a4576f
+  url: https://github.com/ncbi/stxtyper/archive/v1.0.24.tar.gz
+test:
+  commands:
+  - echo "PREFIX=$PREFIX   CONDA_PREFIX=$CONDA_PREFIX  SRC_DIR=$SRC_DIR"
+  - stxtyper --help
+  - fasta_check -help
+  - fasta_extract -help

@@ -1,0 +1,63 @@
+about:
+  description: 'IsoCorrectoR performs the correction of mass spectrometry data from
+    stable isotope labeling/tracing metabolomics experiments with regard to natural
+    isotope abundance and tracer impurity. Data from both MS and MS/MS measurements
+    can be corrected (with any tracer isotope: 13C, 15N, 18O...), as well as ultra-high
+    resolution MS data from multiple-tracer experiments (e.g. 13C and 15N used simultaneously).
+    See the Bioconductor package IsoCorrectoRGUI for a graphical user interface to
+    IsoCorrectoR. NOTE: With R version 4.0.0, writing correction results to Excel
+    files may currently not work on Windows. However, writing results to csv works
+    as before.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/IsoCorrectoR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Correction for natural isotope abundance and tracer purity in MS and MS/MS
+    data from stable isotope labeling experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-isocorrector
+    path: recipes/bioconductor-isocorrector
+    version: 1.0.4
+package:
+  name: bioconductor-isocorrector
+  version: 1.20.0
+requirements:
+  host:
+  - r-base
+  - r-dplyr
+  - r-magrittr
+  - r-pracma
+  - r-quadprog
+  - r-readr
+  - r-readxl
+  - r-stringr
+  - r-tibble
+  - r-writexls
+  run:
+  - r-base
+  - r-dplyr
+  - r-magrittr
+  - r-pracma
+  - r-quadprog
+  - r-readr
+  - r-readxl
+  - r-stringr
+  - r-tibble
+  - r-writexls
+source:
+  md5: ba3b19c2ad9ed8f9b7f6929c49828bb5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/IsoCorrectoR_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/IsoCorrectoR/IsoCorrectoR_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/IsoCorrectoR_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-isocorrector/bioconductor-isocorrector_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('IsoCorrectoR')"

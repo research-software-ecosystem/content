@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/GATB/short_read_connector
+  license: AGPL-3.0
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Short read connector enables the comparisons of two read sets
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: short-read-connector
+  version: 1.2.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - zlib
+  - dsk
+  run:
+  - zlib
+  - dsk
+source:
+  md5: 2b7a3c9bdb5a3d3e2d3c9fdd9b496323
+  url: https://github.com/GATB/short_read_connector/releases/download/v1.2.0/rconnector-v1.2.0-Source.tar.gz
+test:
+  commands:
+  - short_read_connector_linker.sh index -h
+  - short_read_connector_linker.sh query -h
+  - short_read_connector_counter.sh index -h
+  - short_read_connector_counter.sh query -h

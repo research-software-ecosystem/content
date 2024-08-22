@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/broadinstitute/strainge
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'Strain Genome Explorer: a tool suite for tracking and characterizing low-abundance
+    strains.'
+build:
+  entry_points:
+  - strainge=strainge.cli.main:strainge_cli
+  - straingst=strainge.cli.main:straingst_cli
+  - straingr=strainge.cli.main:straingr_cli
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+extra:
+  recipe-maintainers:
+  - lrvdijk
+package:
+  name: strainge
+  version: 1.3.8
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - pybind11 >=2.2
+  - numpy
+  - zlib
+  run:
+  - python
+  - numpy
+  - pybind11 >=2.2
+  - h5py
+  - intervaltree
+  - matplotlib-base
+  - scikit-bio >=0.5.8
+  - scikit-learn >=0.24
+  - pysam >=0.10
+  - scipy
+source:
+  sha256: d93f1d5fea0f13519cdf19e6b0914c8ef5ce07778d653b74db267e92643e4bd1
+  url: https://pypi.io/packages/source/s/strainge/strainge-1.3.8.tar.gz
+test:
+  commands:
+  - strainge --help
+  - straingst --help
+  - straingr --help
+  imports:
+  - strainge
+  - strainge.cli
+  - strainge.io

@@ -1,0 +1,39 @@
+about:
+  description: 'We propose an Asymmetric Within-Sample Transformation (AWST) to regularize
+    RNA-seq read counts and reduce the effect of noise on the classification of samples.
+    AWST comprises two main steps: standardization and smoothing. These steps transform
+    gene expression data to reduce the noise of the lowly expressed features, which
+    suffer from background effects and low signal-to-noise ratio, and the influence
+    of the highly expressed features, which may be the result of amplification bias
+    and other experimental artifacts.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/awst.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Asymmetric Within-Sample Transformation
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-awst
+  version: 1.10.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+source:
+  md5: a7ca0636a8f728b63d6cf56729b856eb
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/awst_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/awst/awst_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/awst_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-awst/bioconductor-awst_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('awst')"

@@ -1,0 +1,62 @@
+about:
+  description: HGC (short for Hierarchical Graph-based Clustering) is an R package
+    for conducting hierarchical clustering on large-scale single-cell RNA-seq (scRNA-seq)
+    data. The key idea is to construct a dendrogram of cells on their shared nearest
+    neighbor (SNN) graph. HGC provides functions for building graphs and for conducting
+    hierarchical clustering on the graph. The users with old R version could visit
+    https://github.com/XuegongLab/HGC/tree/HGC4oldRVersion to get HGC package built
+    for R 3.6.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HGC.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A fast hierarchical graph-based clustering method
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hgc
+  version: 1.10.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-ape
+  - r-base
+  - r-dendextend
+  - r-dplyr
+  - r-ggplot2
+  - r-matrix
+  - r-mclust
+  - r-patchwork
+  - r-rann
+  - r-rcpp >=1.0.0
+  - r-rcppeigen >=0.3.2.0
+  - libblas
+  - liblapack
+  run:
+  - r-ape
+  - r-base
+  - r-dendextend
+  - r-dplyr
+  - r-ggplot2
+  - r-matrix
+  - r-mclust
+  - r-patchwork
+  - r-rann
+  - r-rcpp >=1.0.0
+  - r-rcppeigen >=0.3.2.0
+source:
+  md5: 7a8ac62af3106b62952c79c162937a3c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HGC_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HGC/HGC_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HGC_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hgc/bioconductor-hgc_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HGC')"

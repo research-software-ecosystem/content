@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/crohrandt/nanopore_simulation
+  license: MPL-2.0
+  summary: Nanopore SimulatION is a tool for simulating an Oxfornd Nanopore Technologies
+    MinION device for bioinformatic development.
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: nanopore_simulation
+  version: 0.3
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython
+  - pandas
+  - h5py
+  - scipy
+  - matplotlib
+  - numpy
+source:
+  sha256: 4e42d56a9e3d5a1209eba264379831f064a9c705920963516859f8b68af81fce
+  url: https://github.com/crohrandt/nanopore_simulation/archive/a748cd1ddbaf2856b183ed873c40415ad069d943.tar.gz
+test:
+  commands:
+  - simulatION --help

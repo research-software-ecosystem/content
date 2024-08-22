@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/AlexanderLabWHOI/EUKulele
+  license: MIT
+  license_file: LICENSE
+  summary: Easy taxonomic annotation for eukaryotic microbes
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps'
+package:
+  name: eukulele
+  version: 2.0.7
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - pytest-runner
+  run:
+  - python >=3.6
+  - numpy ==1.19.5
+  - biopython ==1.78
+  - pandas ==1.2.0
+  - seaborn-base
+  - boost-cpp
+  - chardet
+  - joblib
+  - ujson
+  - pyyaml
+  - matplotlib-base ==3.3.3
+  - blast ==2.2.31
+  - diamond ==0.9.24
+source:
+  sha256: e52ca613c92ef99a6f01e503674b1c35ee26de6c03c4cb58338278e3a348a394
+  url: https://github.com/AlexanderLabWHOI/EUKulele/archive/refs/tags/v2.0.7_3.tar.gz
+test:
+  commands:
+  - EUKulele --version | grep '2.0.7'
+  - EUKulele --help

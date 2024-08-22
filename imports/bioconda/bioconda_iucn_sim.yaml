@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/tobiashofmann88/iucn_extinction_simulator
+  license: MIT
+  license_file: LICENSE
+  summary: Simulate future extinctions and extinction rates for a given set of species,
+    based on IUCN threat assessments
+build:
+  entry_points:
+  - iucn_sim = iucn_sim.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+package:
+  name: iucn_sim
+  version: 2.2.0
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  - r-base
+  run:
+  - python >=3.6
+  - pandas
+  - numpy
+  - scipy
+  - matplotlib-base
+  - r-base
+  - r-rredlist
+source:
+  sha256: fd8919bd1c29379e7db456b0bd0580d9d74de55a538f735a70e81803f8d91163
+  url: https://github.com/tobiashofmann88/iucn_extinction_simulator/archive/2.2.0.tar.gz
+test:
+  commands:
+  - iucn_sim -h
+  imports:
+  - iucn_sim

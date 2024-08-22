@@ -1,0 +1,57 @@
+about:
+  description: This package provides functions for identification and visualization
+    of potential intramolecular triplex patterns in DNA sequence. The main functionality
+    is to detect the positions of subsequences capable of folding into an intramolecular
+    triplex (H-DNA) in a much larger sequence. The potential H-DNA (triplexes) should
+    be made of as many cannonical nucleotide triplets as possible. The package includes
+    visualization showing the exact base-pairing in 1D, 2D or 3D.
+  home: https://bioconductor.org/packages/3.18/bioc/html/triplex.html
+  license: BSD_2_clause + file LICENSE
+  license_file: LICENSE
+  summary: Search and visualize intramolecular triplex-forming sequences in DNA
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:triplex
+  parent_recipe:
+    name: bioconductor-triplex
+    path: recipes/bioconductor-triplex
+    version: 1.20.0
+package:
+  name: bioconductor-triplex
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-xvector >=0.42.0,<0.43.0
+  - r-base
+source:
+  md5: c66a6990486e7a4873b256d08eff9933
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/triplex_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/triplex/triplex_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/triplex_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-triplex/bioconductor-triplex_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('triplex')"

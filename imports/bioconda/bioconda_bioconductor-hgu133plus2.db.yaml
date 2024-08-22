@@ -1,0 +1,42 @@
+about:
+  description: Affymetrix Affymetrix HG-U133_Plus_2 Array annotation data (chip hgu133plus2)
+    assembled using data from public repositories
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/hgu133plus2.db.html
+  license: Artistic-2.0
+  summary: Affymetrix Affymetrix HG-U133_Plus_2 Array annotation data (chip hgu133plus2)
+build:
+  noarch: generic
+  number: 4
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-hgu133plus2.db
+    path: recipes/bioconductor-hgu133plus2.db
+    version: 3.2.3
+package:
+  name: bioconductor-hgu133plus2.db
+  version: 3.13.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 459fcf4880a9eaa25b373c5635fede3d
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/hgu133plus2.db_3.13.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/hgu133plus2.db/hgu133plus2.db_3.13.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hgu133plus2.db_3.13.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hgu133plus2.db/bioconductor-hgu133plus2.db_3.13.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('hgu133plus2.db')"

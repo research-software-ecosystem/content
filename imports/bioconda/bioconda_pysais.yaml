@@ -1,0 +1,39 @@
+about:
+  home: https://bitbucket.org/alex-warwickvesztrocy/pysais
+  license: MIT
+  license_file: PySAIS/COPYING
+  summary: Suffix array computation with induced sorting algorithm.
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - alpae
+package:
+  name: pysais
+  version: 1.1.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - wheel
+  - numpy
+  - cython >=3.0.0
+  - pip
+  run:
+  - python
+  - pytables
+  - None
+source:
+  sha256: 6547748a32ab876c1a50553b63d486d585f12a40352387a932eab8b908a13f20
+  url: https://pypi.io/packages/source/p/pysais/PySAIS-1.1.0.tar.gz
+test:
+  commands:
+  - python3 -c "import PySAIS, numpy; arr=numpy.fromiter('ADARINA','S1'); assert(arr[PySAIS.sais(arr.tobytes())].tobytes()
+    == b'AAADINR')"
+  imports:
+  - PySAIS

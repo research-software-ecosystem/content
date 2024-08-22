@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/proksee-project/proksee-cmd
+  license: Apache License, Version 2.0
+  license_file: LICENSE
+  summary: Proksee is a suite of command line tools for performing assembly, annotation
+    and visualization of microbial genomes.
+build:
+  entry_points:
+  - proksee = proksee.cli:cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - emarinier
+package:
+  name: proksee
+  version: 1.0.0a6
+requirements:
+  host:
+  - python 3.7
+  - setuptools
+  run:
+  - python 3.7
+  - numpy 1.19.5
+  - scipy
+  - scikit-learn 0.24.1
+  - joblib 1.0.1
+  - skesa
+  - mash
+  - spades
+  - quast =5.0.2
+  - click
+  - wget
+  - fastp =0.22.0
+source:
+  sha256: d33e3a63ec2df1b1f76bf7793614aaa9228c8fc336daa9d5d1d1dc6bc5fe9e44
+  url: https://github.com/proksee-project/proksee-cmd/archive/v1.0.0a6.tar.gz
+test:
+  commands:
+  - proksee assemble --help
+  - proksee evaluate --help

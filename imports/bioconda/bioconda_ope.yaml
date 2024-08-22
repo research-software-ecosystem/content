@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/camillescott/ope
+  license: MIT
+  license_family: MIT
+  summary: Tools for gnu-parallel with FASTA input and parsers for some common formats.
+build:
+  entry_points:
+  - ope=ope.cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - camillescott
+package:
+  name: ope
+  version: '0.8'
+requirements:
+  host:
+  - click >=7.0
+  - numpy
+  - pandas
+  - pip
+  - python
+  - screed
+  run:
+  - click >=7.0
+  - numpy
+  - pandas
+  - python
+  - screed
+  - parallel >=20171222
+source:
+  sha256: 898e573e674369b02ea40b7dcfaebe3a92cdcec2946b2879e512204f466cea2c
+  url: https://pypi.io/packages/source/o/ope/ope-0.8.tar.gz
+test:
+  commands:
+  - ope --help
+  imports:
+  - ope
+  - ope.io

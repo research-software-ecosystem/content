@@ -1,0 +1,43 @@
+about:
+  home: http://www.cibiv.at/~pflug_/trumicount
+  license: AGPLv3
+  summary: Implements the necessary distributions and parameter estimation procedures
+    for a model of amplification and high-troughput sequencing. The model is based
+    on a mechanistic model of PCR amplification as a Galton-Watson branching process,
+    and on Poissonan sampling to model high-throughput sequencing.
+build:
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-gwpcr
+  version: 1.0.4
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-data.table
+  - r-akima
+  - r-statmod
+  run:
+  - r-base
+  - r-data.table
+  - r-akima
+  - r-statmod
+source:
+  sha256: 094f17ceea8efddc993183269754c991953aac122e508dfea71985fbcb626860
+  url: https://github.com/Cibiv/gwpcR/archive/v1.0.4.tar.gz
+test:
+  commands:
+  - $R -e "library('gwpcR');"

@@ -1,0 +1,47 @@
+about:
+  description: An implementation of a probabilistic modeling framework that jointly
+    analyzes personal genome and transcriptome data to estimate the probability that
+    a variant has regulatory impact in that individual. It is based on a generative
+    model that assumes that genomic annotations, such as the location of a variant
+    with respect to regulatory elements, determine the prior probability that variant
+    is a functional regulatory variant, which is an unobserved variable. The functional
+    regulatory variant status then influences whether nearby genes are likely to display
+    outlier levels of gene expression in that person. See the RIVER website for more
+    information, documentation and examples.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RIVER.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: R package for RIVER (RNA-Informed Variant Effect on Regulation)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-river
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-ggplot2
+  - r-glmnet
+  - r-proc
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-ggplot2
+  - r-glmnet
+  - r-proc
+source:
+  md5: 7b8f82011a163ae4f4a31f2172d49124
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RIVER_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RIVER/RIVER_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RIVER_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-river/bioconductor-river_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RIVER')"

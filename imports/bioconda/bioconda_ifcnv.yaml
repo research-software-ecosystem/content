@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/SimCab-CHU/ifCNV
+  home: https://github.com/SimCab-CHU/ifCNV
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  summary: 'ifCNV: a novel isolation-forest-based package to detect copy number variations
+    from various NGS datasets.'
+build:
+  entry_points:
+  - ifCNV_main=ifCNV:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - char-al
+package:
+  name: ifcnv
+  version: 0.2.1
+requirements:
+  host:
+  - numpy >=1.21
+  - pandas >=1.3
+  - pip
+  - plotly >=5.4
+  - pybedtools >=0.8.2
+  - python
+  - scikit-learn >=1.0.1
+  run:
+  - numpy >=1.21
+  - pandas >=1.3
+  - plotly >=5.4
+  - pybedtools >=0.8.2
+  - python
+  - scikit-learn >=1.0.1
+source:
+  sha256: 20150e24e72a96b7d9827c691f5c6d3f7abc7801a4693b41d69439583b637d58
+  url: https://pypi.io/packages/source/i/ifCNV/ifCNV-0.2.1.tar.gz
+test:
+  commands:
+  - ifCNV --help
+  imports:
+  - ifCNV

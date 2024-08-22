@@ -1,0 +1,55 @@
+about:
+  dev_url: https://github.com/dparks1134/RefineM
+  doc_url: https://github.com/dparks1134/RefineM/blob/master/README.md
+  home: http://pypi.python.org/pypi/refinem/
+  license: GPL3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A toolbox for improving population genomes.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - HadrienG
+package:
+  name: refinem
+  version: 0.1.2
+requirements:
+  host:
+  - biolib >=0.0.45
+  - jinja2 >=2.7.3
+  - matplotlib-base >=1.4.0
+  - mpld3 >=0.2
+  - numpy >=1.9.0
+  - scipy >=1.0.0
+  - pip
+  - python
+  - weightedstats
+  - pysam
+  - dendropy
+  run:
+  - biolib >=0.0.45
+  - jinja2 >=2.7.3
+  - matplotlib-base >=1.4.0
+  - mpld3 >=0.2
+  - numpy >=1.9.0
+  - scipy >=1.0.0
+  - python
+  - weightedstats
+  - pysam
+  - dendropy
+  - diamond >=0.9.9
+  - blast >=2.6.0
+  - prodigal >=2.6.3
+  - krona >=2.7
+source:
+  sha256: 4a29228113cd3467c98448aa85f0e87b0e785501fd867e8fb7241810db7146fb
+  url: https://pypi.io/packages/source/r/refinem/refinem-0.1.2.tar.gz
+test:
+  commands:
+  - refinem -h
+  imports:
+  - refinem
+  - refinem.plots

@@ -1,0 +1,43 @@
+about:
+  description: The package includes DNA methylation data for the primary Chronic Lymphocytic
+    Leukemia samples included in the Primary Blood Cancer Encyclopedia (PACE) project.
+    Raw data from the 450k DNA methylation arrays is stored in the European Genome-Phenome
+    Archive (EGA) under accession number EGAS0000100174. For more information concerning
+    the project please refer to the paper "Drug-perturbation-based stratification
+    of blood cancer" by Dietrich S, Oles M, Lu J et al., J. Clin. Invest. (2018) and
+    R/Bioconductor package BloodCancerMultiOmics2017.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/CLLmethylation.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Methylation data of primary CLL samples in PACE project
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-cllmethylation
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=2.10.0,<2.11.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: a8c3768dca1df5bb9e911878b68ad4c4
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/CLLmethylation_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CLLmethylation/CLLmethylation_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CLLmethylation_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cllmethylation/bioconductor-cllmethylation_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CLLmethylation')"

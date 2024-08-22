@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/ISA-tools/isa-rwval
+  home: https://github.com/ISA-tools/isa-rwval
+  license: CPAL
+  summary: ISA metadata tracking tools
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - bernt-matthias
+package:
+  name: isa-rwval
+  version: 0.10.10
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - networkx
+  - numpy
+  - pandas
+  - matplotlib-base
+  - python >=3.6
+source:
+  sha256: 3e9fcf37d5e5ff7e92cf28069ecd95d1e62a4025c2d667519da382e5c2258e51
+  url: https://pypi.io/packages/source/i/isa-rwval/isa-rwval-0.10.10.tar.gz
+test:
+  imports:
+  - isatools.model
+  - isatools.isatab
+  - isatools.isajson
+  - isatools.isaviz

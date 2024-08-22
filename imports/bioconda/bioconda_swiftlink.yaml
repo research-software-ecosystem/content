@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/ajm/swiftlink
+  license: GPLv3
+  summary: A multipoint parametric linkage analysis tool for large consanguineous
+    pedigrees and is primarily targeted at pedigrees that cannot be analysed by a
+    Lander-Green algorithm based program, i.e. many markers, but larger pedigrees.
+build:
+  number: 2
+package:
+  name: swiftlink
+  version: 1.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - gsl
+  - openblas
+  - openmp
+  run:
+  - gsl
+  - openblas
+  - openmp
+source:
+  md5: b39b35143d5f7d7eb7a3c9ce8fd8ba65
+  patches:
+  - osx-makefile.patch
+  url: https://github.com/ajm/swiftlink/archive/master.zip
+test:
+  commands:
+  - swiftlink -h

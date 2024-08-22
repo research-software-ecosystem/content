@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/tjiangHIT/cuteSV
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: cuteSV is a long-read based human genomic structural variation detection
+    tool
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation -vvv .
+extra:
+  recipe-maintainers:
+  - tjiangHIT
+package:
+  name: cutesv
+  version: 2.1.1
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - biopython
+  - cigar
+  - numpy
+  - pysam >=0.15.0
+  - python >=3
+  - pyvcf
+  - scikit-learn
+  - scipy
+source:
+  sha256: ebba8ffe0943626a9c1606adeed37bec3a4c0816c4fb7af8d6d219d7bee2acd2
+  url: https://github.com/tjiangHIT/cuteSV/archive/cuteSV-v2.1.1.tar.gz
+test:
+  commands:
+  - cuteSV -h

@@ -1,0 +1,24 @@
+about:
+  dev_url: https://github.com/ebi-pf-team/interproscan
+  home: https://github.com/ebi-pf-team/interproscan
+  license: GPL
+  license_file: LICENSE
+  summary: Search against FingerPRINTScan with a protein query sequence to identify
+    the closest matching PRINTS sequence motif fingerprints in a protein sequence.
+build:
+  number: 4
+package:
+  name: fingerprintscan
+  version: '3_597'
+requirements:
+  build:
+  - make
+  - None
+source:
+  patches:
+  - patch1
+  sha256: a7e586ef05682619431342fa9380d84f718799cc7b370bc676074a88ddfc4b53
+  url: https://github.com/NBISweden/fingerPRINTScan/archive/v3_597.tar.gz
+test:
+  commands:
+  - fingerPRINTScan 2>&1 | grep -i calculate

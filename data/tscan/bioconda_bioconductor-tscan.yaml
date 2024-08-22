@@ -1,0 +1,74 @@
+about:
+  description: Provides methods to perform trajectory analysis based on a minimum
+    spanning tree constructed from cluster centroids. Computes pseudotemporal cell
+    orderings by mapping cells in each cluster (or new cells) to the closest edge
+    in the tree. Uses linear modelling to identify differentially expressed genes
+    along each path through the tree. Several plotting and interactive visualization
+    functions are also implemented.
+  home: https://bioconductor.org/packages/3.18/bioc/html/TSCAN.html
+  license: GPL(>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Tools for Single-Cell Analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:tscan
+  - doi:10.1093/nar/gkw430
+  parent_recipe:
+    name: bioconductor-tscan
+    path: recipes/bioconductor-tscan
+    version: 1.18.0
+package:
+  name: bioconductor-tscan
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-trajectoryutils >=1.10.0,<1.11.0
+  - r-base
+  - r-combinat
+  - r-fastica
+  - r-ggplot2
+  - r-gplots
+  - r-igraph
+  - r-matrix
+  - r-mclust
+  - r-mgcv
+  - r-plyr
+  - r-shiny
+  run:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-trajectoryutils >=1.10.0,<1.11.0
+  - r-base
+  - r-combinat
+  - r-fastica
+  - r-ggplot2
+  - r-gplots
+  - r-igraph
+  - r-matrix
+  - r-mclust
+  - r-mgcv
+  - r-plyr
+  - r-shiny
+source:
+  md5: 018be0d6197c80dbf2ce7832a3f9c49d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TSCAN_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TSCAN/TSCAN_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TSCAN_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tscan/bioconductor-tscan_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TSCAN')"

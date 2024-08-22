@@ -1,0 +1,55 @@
+about:
+  description: A parser for mzIdentML files implemented using the XML package. The
+    parser tries to be general and able to handle all types of mzIdentML files with
+    the drawback of having less 'pretty' output than a vendor specific parser. Please
+    contact the maintainer with any problems and supply an mzIdentML file so the problems
+    can be fixed quickly.
+  home: https://bioconductor.org/packages/3.18/bioc/html/mzID.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: An mzIdentML parser for R
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mzid
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-mzid
+    path: recipes/bioconductor-mzid
+    version: 1.18.0
+package:
+  name: bioconductor-mzid
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-protgenerics >=1.34.0,<1.35.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-iterators
+  - r-plyr
+  - r-xml
+  run:
+  - bioconductor-protgenerics >=1.34.0,<1.35.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-iterators
+  - r-plyr
+  - r-xml
+source:
+  md5: 8ede9a6260d4b9aa70edd19838e3c80c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mzID_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mzID/mzID_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mzID_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mzid/bioconductor-mzid_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('mzID')"

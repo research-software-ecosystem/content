@@ -1,0 +1,53 @@
+about:
+  home: https://github.com/SynBioDex/tyto
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Tyto (Take Your Terms from Ontologies) provides a handy interface for ontologies
+    for use in your Python application.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install -vv .
+extra:
+  recipe-maintainers:
+  - kenza12
+  - breakthewall
+  - tduigou
+package:
+  name: tyto
+  version: 1.4
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - rdflib >=5.0
+  - SPARQLWrapper
+  - requests
+  - pyparsing <3
+source:
+- sha256: 198c42132d8bde41cc8ae3bd69547842b0724aa08ea567a7cf9158b28eff3d28
+  url: https://github.com/SynBioDex/tyto/archive/v1.4.tar.gz
+- folder: tyto/ontologies/sbol-owl3
+  sha256: 2fbb20a398ac7b77d143cfa45085a007f377090c4c7fbd03a0584057cdbd1c37
+  url: https://github.com/SynBioDex/sbol-owl3/archive/1.0.tar.gz
+- folder: tyto/ontologies/sbol-owl
+  sha256: 44a3b1f30e73ce39fa64533c6d7638d8203f1f6d8e4ba14b9216dfbf36424c3e
+  url: https://github.com/dissys/sbol-owl/archive/v1.1.6.tar.gz
+- folder: tyto/ontologies/paml
+  sha256: 4dca33c28ffee1380a4a126430bfa90cf6021115f5a5d96fa1fd6a3c7cd28715
+  url: https://github.com/bioprotocols/paml/archive/96fdd666991a68a34db1f71774fb7f72952ac93a.tar.gz
+- folder: tyto/ontologies/paml/container-ontology
+  sha256: 222223870c6b2f1ea0821eb9f69e96f1598c73467c79a2cbfd8d609f4b2374a8
+  url: https://github.com/rpgoldman/container-ontology/archive/a7dd08801bbbf5659966002db12e227d64a7a845.tar.gz
+- folder: tyto/ontologies/paml/paml-check
+  sha256: 204602c23d81450153baf6510132b452c4a6ffc10f3c1b3192cbff648b05c3c8
+  url: https://github.com/SD2E/paml-check/archive/120cc01227de622e250a3162d03f9e45120057f3.tar.gz
+test:
+  commands:
+  - python -m unittest discover -s test
+  imports:
+  - tyto
+  source_files:
+  - test

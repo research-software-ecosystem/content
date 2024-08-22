@@ -1,0 +1,52 @@
+about:
+  description: The package implements MBASED algorithm for detecting allele-specific
+    gene expression from RNA count data, where allele counts at individual loci (SNVs)
+    are integrated into a gene-specific measure of ASE, and utilizes simulations to
+    appropriately assess the statistical significance of observed ASE.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MBASED.html
+  license: Artistic-2.0
+  summary: Package containing functions for ASE analysis using Meta-analysis Based
+    Allele-Specific Expression Detection
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mbased
+  - doi:10.1186/s13059-014-0405-3
+  parent_recipe:
+    name: bioconductor-mbased
+    path: recipes/bioconductor-mbased
+    version: 1.14.0
+package:
+  name: bioconductor-mbased
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-runit
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-runit
+source:
+  md5: 441d95c8a2670c6d5fd3488ed33aad2d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MBASED_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MBASED/MBASED_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MBASED_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mbased/bioconductor-mbased_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MBASED')"

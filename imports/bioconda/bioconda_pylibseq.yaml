@@ -1,0 +1,34 @@
+about:
+  home: http://pypi.python.org/pypi/pylibseq
+  license: GPLv3+
+  license_family: GPL
+  license_file: COPYING
+  summary: A Python interface to libsequence
+build:
+  number: 7
+  script: -m pip install . --no-deps -vv
+  skip: true
+package:
+  name: pylibseq
+  version: 0.2.3
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+  host:
+  - pip
+  - python
+  - pybind11 >=2.2.3
+  - msprime >=0.7.0
+  run:
+  - python
+  - msprime >=0.7.0
+source:
+  patches:
+  - patch
+  sha256: 112adec97fbc7c6011e910848e4d40920e68f74de0b5d4b9958be2d40f42fd26
+  url: https://pypi.io/packages/source/p/pylibseq/pylibseq-0.2.3.tar.gz
+test:
+  imports:
+  - libsequence

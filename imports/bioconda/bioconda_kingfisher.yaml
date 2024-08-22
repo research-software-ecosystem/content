@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/wwood/kingfisher-download
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENCE.txt
+  summary: Download/extract biological FASTA/Q read data and metadata
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-build-isolation --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - wwood
+package:
+  name: kingfisher
+  version: 0.4.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - extern
+  - requests
+  - tqdm
+  - pandas
+  - bird_tool_utils_python >=0.4.1
+  - pyarrow
+  - awscli
+  - pigz
+  - curl
+  - sra-tools >=3.0.5
+  - aria2 >=1.36.0
+  - sracat
+source:
+  sha256: b74510c997db71432b4feb03398b8432b883d873d0d05eb2f0e5a1dafbce42f6
+  url: https://pypi.io/packages/source/k/kingfisher/kingfisher-0.4.1.tar.gz
+test:
+  commands:
+  - kingfisher --version | grep 0.4.1
+  imports:
+  - kingfisher

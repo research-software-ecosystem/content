@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/lh3/minigraph
+  doc_url: https://lh3.github.io/minigraph/minigraph.html
+  home: https://github.com/lh3/minigraph
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Proof-of-concept seq-to-graph mapper and graph generator
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1186/s13059-020-02168-z
+package:
+  name: minigraph
+  version: 0.21
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+source:
+  patches:
+  - minigraph-aarch64.patch
+  sha256: 4272447393f0ae1e656376abe144de96cbafc777414d4c496f735dd4a6d3c06a
+  url: https://github.com/lh3/minigraph/archive/refs/tags/v0.21.tar.gz
+test:
+  commands:
+  - minigraph 2>&1 | grep 'Usage'

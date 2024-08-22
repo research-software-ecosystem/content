@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/evolbioinfo/phylodeep_data_bdei
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Package containing data for the phylodeep package.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vvv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - annazhukova
+package:
+  name: phylodeep_data_bdei
+  version: '0.4'
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - python >=3
+  - pandas >=1.0.0
+source:
+  sha256: 59098286f611e21b264ccf0265351c27b3e51d1861f66d4fe9638136fd2828c3
+  url: https://pypi.io/packages/source/p/phylodeep_data_bdei/phylodeep_data_bdei-0.4.tar.gz
+test:
+  commands:
+  - bdei_ci_paths --help
+  imports:
+  - phylodeep_data_bdei

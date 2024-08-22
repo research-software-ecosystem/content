@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/YuLab-SMU/seqmagick
+  license: Artistic-2.0
+  license_family: OTHER
+  license_file:
+  - /lib/R/share/licenses/Artistic-2.0
+  summary: Supports reading and writing sequences for different formats (currently
+    interleaved and sequential formats for 'FASTA' and 'PHYLIP'), file conversion,
+    and manipulation (e.g. filter sequences that contain specify pattern, export consensus
+    sequence from an alignment).
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+package:
+  name: r-seqmagick
+  version: 0.1.7
+requirements:
+  host:
+  - r-base
+  - bioconductor-biostrings
+  - r-magrittr
+  - r-yulab.utils >0.1.1
+  run:
+  - r-base
+  - bioconductor-biostrings
+  - r-magrittr
+  - r-yulab.utils >0.1.1
+source:
+  sha256: 95cf80c9c0a266e07cf7b124de105818c58f8f843f70ab25e0877a910211b8e5
+  url:
+  - /src/contrib/seqmagick_0.1.7.tar.gz
+  - /src/contrib/Archive/seqmagick/seqmagick_0.1.7.tar.gz
+test:
+  commands:
+  - $R -e "library('seqmagick')"

@@ -1,0 +1,42 @@
+about:
+  description: 'qiskit-xyz2pdb is a tool to convert XYZ files from the results of
+    Qiskit''s protein folding algorithm
+
+    '
+  home: https://github.com/thepineapplepirate/qiskit-xyz2pdb
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: qiskit-xyz2pdb
+build:
+  entry_points:
+  - qiskit-xyz2pdb=xyz2pdb.xyz2pdb:main
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - thepineapplepirate
+package:
+  name: qiskit-xyz2pdb
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  - numpy
+  run:
+  - python >=3.6
+  - numpy
+source:
+  sha256: 04fd1e61c614f1e76d2e5ac3b79eada20244c36d3193730297cae75fd0c51f43
+  url: https://pypi.io/packages/source/q/qiskit-xyz2pdb/qiskit-xyz2pdb-0.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  - qiskit-xyz2pdb --version
+  imports:
+  - xyz2pdb
+  requires:
+  - pip

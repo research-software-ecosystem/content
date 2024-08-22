@@ -1,0 +1,45 @@
+about:
+  description: Estimates gene expressions from several laser scans of the same microarray
+  home: https://bioconductor.org/packages/3.18/bioc/html/multiscan.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: R package for combining multiple scans
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:multiscan
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-multiscan
+    path: recipes/bioconductor-multiscan
+    version: 1.40.0
+package:
+  name: bioconductor-multiscan
+  version: 1.62.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: 58243690ff05bdbd30da46ea01e409a3
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/multiscan_1.62.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/multiscan/multiscan_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/multiscan_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-multiscan/bioconductor-multiscan_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('multiscan')"

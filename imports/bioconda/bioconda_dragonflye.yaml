@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/rpetit3/dragonflye
+  license: GPL2
+  license_file: LICENSE
+  summary: Microbial assembly pipeline for Nanopore reads
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:dragonflye
+  - usegalaxy-eu:dragonflye
+package:
+  name: dragonflye
+  version: 1.2.1
+requirements:
+  run:
+  - assembly-scan >=1.0.0
+  - any2fasta >=0.4.2
+  - bwa
+  - dnaapler
+  - fastp
+  - flye >=2.9.2
+  - kmc >=3.1
+  - medaka >=1.11.0
+  - miniasm >=0.3_r179
+  - nanoq >=0.10.0
+  - perl >=5.26
+  - perl-file-spec
+  - perl-findbin
+  - pigz >=2.6
+  - pilon
+  - polypolish >=0.6.0
+  - porechop
+  - racon >=1.5.0
+  - rasusa >=1.0.0
+  - raven-assembler >=1.8.3
+  - samclip
+  - samtools
+  - seqtk >=1.4
+source:
+  sha256: 3a0499a5c9aeb1b9246d5eb9512c01fe07b6c87f80bc97b11d3b672e60eb51f9
+  url: https://github.com/rpetit3/dragonflye/archive/v1.2.1.tar.gz
+test:
+  commands:
+  - dragonflye --version | grep -F '1.2.1'
+  - dragonflye --check
+  - dragonflye --list_models 2>&1 | grep "r1041"

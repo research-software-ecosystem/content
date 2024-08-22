@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/griffithlab/civicpy
+  doc_url: https://docs.civicpy.org/en/latest/
+  home: http://civicpy.org
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: CIViC variant knowledgebase analysis toolkit.
+build:
+  entry_points:
+  - civicpy=civicpy.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+package:
+  name: civicpy
+  version: 3.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.5
+  run:
+  - python >=3.5
+  - backports-datetime-fromisoformat =2.0.0
+  - click
+  - deprecation
+  - networkx
+  - obonet =0.2.3
+  - pandas
+  - pysam
+  - requests
+  - vcfpy
+source:
+  sha256: 1e9d5a36dff490c5a806cfc152c5f998ba13a54e409cb72eff392dc2ada14537
+  url: https://pypi.io/packages/source/c/civicpy/civicpy-3.1.0.tar.gz
+test:
+  commands:
+  - civicpy --help
+  imports:
+  - civicpy

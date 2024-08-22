@@ -1,0 +1,48 @@
+about:
+  description: Raptor is a tool for approximately searching many queries in large
+    collections of nucleotide sequences.
+  dev_url: https://github.com/seqan/raptor
+  doc_source_url: https://github.com/seqan/raptor/blob/main/README.md
+  doc_url: https://seqan-raptor.vercel.app
+  home: https://github.com/seqan/raptor
+  license: BSD-3-Clause License
+  license_family: BSD
+  license_file: LICENSE.md
+  summary: 'Raptor: A fast and space-efficient pre-filter for querying very large
+    collections of nucleotide sequences'
+build:
+  number: 2
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1016/j.isci.2021.102782
+  - doi:10.1186/s13059-023-02971-4
+  recipe-maintainers:
+  - eseiler
+package:
+  name: raptor
+  version: 3.0.1
+requirements:
+  build:
+  - make
+  - None
+  - cmake >=3.18
+  host:
+  - bzip2
+  - zlib
+  - yaml-cpp
+  run:
+  - bzip2
+  - zlib
+  - yaml-cpp
+source:
+  sha256: be44e7b2635e110c940cf40ff132956200551a2e25765d9f057e844f7a3ccebb
+  url: https://github.com/seqan/raptor/releases/download/raptor-v3.0.1/raptor-3.0.1-Source.tar.xz
+test:
+  commands:
+  - raptor --version
+  - raptor --help 2>&1 > /dev/null
+  - raptor build --help 2>&1 > /dev/null
+  - raptor search --help 2>&1 > /dev/null

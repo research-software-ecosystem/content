@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/nextgenusfs/gapmm2
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE.md
+  summary: 'gapmm2: gapped alignment using minimap2'
+build:
+  entry_points:
+  - gapmm2 = gapmm2.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nextgenusfs
+package:
+  name: gapmm2
+  version: 23.11.3
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - mappy
+  - python-edlib
+  - natsort
+source:
+  sha256: da058706e9e71a786ed6b35686a67ee53090258c8f16f7b2c07451cf85e05ddb
+  url: https://pypi.io/packages/source/g/gapmm2/gapmm2-23.11.3.tar.gz
+test:
+  commands:
+  - gapmm2 --help
+  imports:
+  - gapmm2

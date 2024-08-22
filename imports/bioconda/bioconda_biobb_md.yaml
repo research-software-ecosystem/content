@@ -1,0 +1,42 @@
+about:
+  description: 'Deprecated Package: biobb_md is no longer maintained and has been
+    superseded by the biobb_gromacs package. Biobb_md is the Biobb module collection
+    to perform molecular dynamics simulations. Biobb (BioExcel building blocks) packages
+    are Python building blocks that create new layers of compatibility and interoperability
+    over popular bioinformatics tools.'
+  dev_url: https://github.com/bioexcel/biobb_md
+  doc_url: http://biobb_md.readthedocs.io/en/latest/
+  home: https://github.com/bioexcel/biobb_md
+  license: Apache Software License
+  license_family: APACHE
+  license_file: ''
+  summary: 'Deprecated Package: biobb_md is no longer maintained and has been superseded
+    by the biobb_gromacs package. Biobb_md is the Biobb module collection to perform
+    molecular dynamics simulations.'
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers: PauAndrio
+package:
+  name: biobb_md
+  version: 3.7.2
+requirements:
+  host:
+  - python ==3.7.*
+  - setuptools
+  - biobb_common ==3.7.0
+  - gromacs ==2019.1
+  run:
+  - python ==3.7.*
+  - biobb_common ==3.7.0
+  - gromacs ==2019.1
+source:
+  sha256: 48ad93f9c349ea5230aaf82368e40563e6b5ecf965e9d22dc7775338dadc2bd7
+  url: https://pypi.io/packages/source/b/biobb_md/biobb_md-3.7.2.tar.gz
+test:
+  imports:
+  - biobb_md
+  - biobb_md.gromacs
+  - biobb_md.gromacs_extra

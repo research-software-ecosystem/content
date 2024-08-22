@@ -1,0 +1,47 @@
+about:
+  description: Model-based analysis of single-cell methylation data
+  home: https://bioconductor.org/packages/3.18/bioc/html/BEAT.html
+  license: LGPL (>= 3.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: BEAT - BS-Seq Epimutation Analysis Toolkit
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:beat
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-beat
+    path: recipes/bioconductor-beat
+    version: 1.18.0
+package:
+  name: bioconductor-beat
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-shortread >=1.60.0,<1.61.0
+  - r-base
+source:
+  md5: 46e0caf216c816dbe7323a1b0117fbf6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BEAT_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BEAT/BEAT_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BEAT_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-beat/bioconductor-beat_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BEAT')"

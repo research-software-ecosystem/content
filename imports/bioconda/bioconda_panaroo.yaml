@@ -1,0 +1,70 @@
+about:
+  doc_url: https://gtonkinhill.github.io/panaroo/#/gettingstarted/quickstart
+  home: https://gtonkinhill.github.io/panaroo
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: panaroo - an updated pipeline for pangenome investigation
+build:
+  entry_points:
+  - panaroo = panaroo.__main__:main
+  - run_prokka = panaroo.run_prokka:main
+  - panaroo-qc = panaroo.generate_qc_plots:main
+  - panaroo-merge = panaroo.merge_graphs:main
+  - panaroo-plot-abundance = panaroo.generate_abundance_plots:main
+  - panaroo-spydrpick = panaroo.spydrpick:main
+  - panaroo-img = panaroo.estimate_img_params:main
+  - panaroo-fmg = panaroo.estimate_many_genes_params:main
+  - panaroo-msa = panaroo.post_run_alignment_gen:main
+  - panaroo-integrate = panaroo.integrate:main
+  - panaroo-gene-neighbourhood = panaroo.get_neighborhood:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+package:
+  name: panaroo
+  version: 1.5.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - networkx
+  - numba
+  - numpy
+  - mkl
+  - scipy
+  - scikit-learn
+  - gffutils
+  - biopython
+  - joblib
+  - tqdm
+  - python-edlib
+  - matplotlib-base
+  - plotly
+  - dendropy
+  - intbitset
+  - biocode
+  - mafft
+  - prank
+  - mash
+  - prokka
+  - cd-hit
+source:
+  sha256: 0a80f87cde8ee3d59cd62cdae434341979a03dfdeb07142c2f9ff3b54dc0477a
+  url: https://github.com/gtonkinhill/panaroo/archive/v1.5.0.tar.gz
+test:
+  commands:
+  - panaroo --help
+  - run_prokka --help
+  - panaroo-qc --help
+  - panaroo-plot-abundance --help
+  - panaroo-spydrpick --help
+  - panaroo-img --help
+  - panaroo-fmg --help
+  - panaroo-msa --help
+  imports:
+  - panaroo

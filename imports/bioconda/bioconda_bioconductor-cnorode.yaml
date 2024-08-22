@@ -1,0 +1,49 @@
+about:
+  description: Logic based ordinary differential equation (ODE) add-on to CellNOptR.
+  home: https://bioconductor.org/packages/3.18/bioc/html/CNORode.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: ODE add-on to CellNOptR
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cnorode
+  - doi:10.1186/1752-0509-6-133
+  parent_recipe:
+    name: bioconductor-cnorode
+    path: recipes/bioconductor-cnorode
+    version: 1.22.0
+package:
+  name: bioconductor-cnorode
+  version: 1.44.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-cellnoptr >=1.48.0,<1.49.0
+  - r-base
+  - r-genalg
+  - r-knitr
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-cellnoptr >=1.48.0,<1.49.0
+  - r-base
+  - r-genalg
+  - r-knitr
+source:
+  md5: e93b3e3437c26f6cfab6690f78c6a6cc
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CNORode_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CNORode/CNORode_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CNORode_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cnorode/bioconductor-cnorode_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CNORode')"

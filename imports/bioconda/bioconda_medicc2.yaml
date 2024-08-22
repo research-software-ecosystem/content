@@ -1,0 +1,47 @@
+about:
+  description: "For more information see the accompanying biorxiv preprint \"Kaufmann\
+    \ et al. Whole-genome \ndoubling-aware copy number phylogenies for cancer evolution\
+    \ with MEDICC2.\""
+  home: https://bitbucket.org/schwarzlab/medicc2
+  license: GPL-3
+  license_file: LICENSE
+  summary: Whole-genome doubling-aware copy number phylogenies for cancer evolution
+build:
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - tlkaufmann
+package:
+  name: medicc2
+  version: 1.0.4
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python >=3.8,<3.11
+  - pip
+  - numpy >=1.20.1
+  - openfst ==1.8.2
+  - setuptools
+  - cython ==0.29.*
+  run:
+  - python >=3.8,<3.11
+  - numpy >=1.20.1,<2.0
+  - pyyaml >=5.4.1
+  - None
+  - pandas >=1.2.2,<2.1
+  - joblib >=1.0.1
+  - biopython >=1.78
+  - scipy >=1.7
+  - matplotlib-base >=3.3
+  - pyranges
+source:
+  sha256: ed890c608b5d6ad08ea1e459af93a844242c1e12a02bd0f03b542a3654dcc720
+  url: https://pypi.io/packages/source/m/medicc2/medicc2-1.0.4.tar.gz
+test:
+  commands:
+  - medicc2 --help

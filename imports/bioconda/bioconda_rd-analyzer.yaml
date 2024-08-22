@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/xiaeryu/RD-Analyzer
+  license: GPL-3
+  license_family: GPL
+  summary: In silico region of difference (RD) analysis of Mycobacterium tuberculosis
+    complex from sequence reads
+build:
+  noarch: generic
+  number: 0
+extra:
+  recipe-maintainers:
+  - abhi18av
+package:
+  name: rd-analyzer
+  version: 1.01
+requirements:
+  run:
+  - python <3
+  - bwa ==0.7.17
+  - samtools ==0.1.19
+source:
+  patches:
+  - patch-ref-location
+  sha256: ca59d0e7a386cf6ea93c553b43ae95080c57d33fb5f2a001d5be5434957c9a27
+  url: https://github.com/xiaeryu/RD-Analyzer/archive/v1.01.tar.gz
+test:
+  commands:
+  - RD-Analyzer.py --help|grep RD-Analyzer >/dev/null 2>&1

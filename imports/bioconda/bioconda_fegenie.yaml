@@ -1,0 +1,63 @@
+about:
+  home: https://github.com/Arkadiy-Garber/FeGenie
+  license: AGPL-3.0
+  license_family: AGPL
+  license_file: LICENSE
+  summary: HMM-based identification and categorization of iron genes and iron gene
+    operons in genomes and metagenomes.
+build:
+  noarch: generic
+  number: 4
+extra:
+  identifiers:
+  - doi:10.3389/fmicb.2020.00037
+package:
+  name: fegenie
+  version: '1.2'
+requirements:
+  host:
+  - r-base=4.0
+  - r-gridbase
+  - r-broom
+  - r-ggpubr
+  - r-ggplot2
+  - r-stringi
+  - r-reshape
+  - r-reshape2
+  - r-tidyverse
+  - r-argparse
+  - r-ggdendro
+  - r-pvclust
+  - python>=3.7
+  - hmmer
+  - diamond
+  - prodigal
+  - blast
+  - metabat2
+  run:
+  - r-base=4.0
+  - r-gridbase
+  - r-broom
+  - r-ggpubr
+  - r-ggplot2
+  - r-stringi
+  - r-reshape
+  - r-reshape2
+  - r-tidyverse
+  - r-argparse
+  - r-ggdendro
+  - r-pvclust
+  - python>=3.7
+  - hmmer
+  - diamond
+  - prodigal
+  - blast
+  - metabat2
+source:
+  patches:
+  - python.patch
+  sha256: 8158a25c6e706f68f5c5d3756d3a8bf4463c2845025b116332111f769fea7bcb
+  url: https://github.com/Arkadiy-Garber/FeGenie/archive/v1.2.tar.gz
+test:
+  commands:
+  - FeGenie.py -h

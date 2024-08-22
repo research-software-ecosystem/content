@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/wdecoster/fastq-anonymous
+  license: MIT License
+  license_family: MIT
+  summary: "Change the sequence of a fastq file to enable sharing of confidential\
+    \ information, for troubleshooting\uFFFC of tools."
+build:
+  entry_points:
+  - fastq-anonymous=fastqanonymous.fastqanonymous:main
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: fastq-anonymous
+  version: 1.0.1
+requirements:
+  build:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython
+source:
+  sha256: 8636162798aa0a69f7e4f3e3ae02fe8aafa559d5ff22f74ce447521355bdbb14
+  url: https://pypi.io/packages/source/f/fastq-anonymous/fastq-anonymous-1.0.1.tar.gz
+test:
+  commands:
+  - fastq-anonymous --help
+  imports:
+  - fastqanonymous

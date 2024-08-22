@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/NBISweden/vcf2cytosure
+  license: MIT
+  license_family: MIT
+  summary: Convert VCF with structural variations to CytoSure format
+build:
+  entry_points:
+  - vcf2cytosure=vcf2cytosure.vcf2cytosure:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: vcf2cytosure
+  version: 0.9.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - cyvcf2
+  - lxml
+  - pandas
+  - python
+source:
+  sha256: 96e89005869cf6cfa42bba30f6063721326107a490efca150cf65cc65eb0e9d6
+  url: https://pypi.io/packages/source/v/vcf2cytosure/vcf2cytosure-0.9.1.tar.gz
+test:
+  commands:
+  - vcf2cytosure --help
+  imports:
+  - tests
+  - vcf2cytosure
+  - vcf2cytosure.constants

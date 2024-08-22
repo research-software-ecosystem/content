@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/sujunhao/RENET2
+  license: BSD-3-Clause
+  license_family: BSD
+  summary: 'RENET2: High-Performance Full-text Gene-Disease Relation Extraction with
+    Iterative Training Data Expansion'
+build:
+  entry_points:
+  - renet2 = renet2.renet2:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+package:
+  name: renet2
+  version: 1.2
+requirements:
+  host:
+  - python>=3.7
+  - pip
+  run:
+  - python>=3.7
+  - ruby
+  - scikit-learn=0.22.2.post1
+  - pandas=1.0.1
+  - numpy=1.18.1
+  - tqdm=4.42.1
+  - pytorch==1.2.0
+  - cudatoolkit=10.0
+source:
+  sha256: b4183486e70a9d14d3749eee22a7dd1a8e7913ffae339676e309accdb0687bfd
+  url: https://github.com/sujunhao/RENET2/releases/download/v1.2/renet2-1.2.tar.gz
+test:
+  commands:
+  - renet2 --help
+  imports:
+  - renet2

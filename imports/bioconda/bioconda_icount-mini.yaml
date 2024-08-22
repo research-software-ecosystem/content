@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/ulelab/iCount-Mini
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Computational pipeline for analysis of iCLIP data
+build:
+  entry_points:
+  - iCount-Mini = iCount.cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --ignore-installed --no-deps'
+extra:
+  recipe-maintainers:
+  - marc-jones
+package:
+  name: icount-mini
+  version: 3.0.1
+requirements:
+  host:
+  - pip
+  - python
+  - sphinx >=1.4
+  run:
+  - cutadapt >=1.10
+  - matplotlib-base
+  - numpy
+  - numpydoc
+  - pandas
+  - pybedtools
+  - pysam
+  - python
+  - sphinx >=1.4
+  - bedtools ==2.30.0
+source:
+  sha256: 795e2ee77c5a23c96c01d4144c5b78103982ec3aa7274fea8f3ed94c0fd511ac
+  url: https://pypi.io/packages/source/i/iCount-Mini/iCount-Mini-3.0.1.tar.gz
+test:
+  commands:
+  - iCount-Mini --help
+  imports:
+  - iCount
+  - iCount.analysis
+  - iCount.examples
+  - iCount.externals
+  - iCount.files
+  - iCount.genomes
+  - iCount.mapping
+  - iCount.plotting

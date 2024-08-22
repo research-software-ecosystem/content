@@ -1,0 +1,61 @@
+about:
+  description: Strand specific peak-pair calling in ChIP-exo replicates. The cumulative
+    Skellam distribution function is used to detect significant normalised count differences
+    of opposed sign at each DNA strand (peak-pairs). Then, irreproducible discovery
+    rate for overlapping peak-pairs across biological replicates is computed.
+  home: https://bioconductor.org/packages/3.18/bioc/html/CexoR.html
+  license: Artistic-2.0 | GPL-2 + file LICENSE
+  license_file: LICENSE
+  summary: An R package to uncover high-resolution protein-DNA interactions in ChIP-exo
+    replicates
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cexor
+  - doi:10.14806/ej.21.0.837
+  parent_recipe:
+    name: bioconductor-cexor
+    path: recipes/bioconductor-cexor
+    version: 1.18.0
+package:
+  name: bioconductor-cexor
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-genomation >=1.34.0,<1.35.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-idr
+  - r-rcolorbrewer
+  run:
+  - bioconductor-genomation >=1.34.0,<1.35.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-idr
+  - r-rcolorbrewer
+source:
+  md5: 53f7febbb51a7f925322329e89a8d619
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CexoR_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CexoR/CexoR_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CexoR_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cexor/bioconductor-cexor_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CexoR')"

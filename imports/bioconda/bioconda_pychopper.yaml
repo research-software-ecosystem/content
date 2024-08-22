@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/epi2me-labs/pychopper
+  license: Mozilla Public License 2.0
+  license_file: LICENSE.md
+  summary: A tool to identify, orient and rescue full length cDNA reads from nanopore
+    data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: pychopper
+  version: 2.7.10
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - python-edlib
+  - parasail-python
+  - hmmer >=3.2
+  - tqdm
+  - matplotlib-base
+  - seaborn
+  - six
+  - pandas
+  - numpy
+  - pysam
+source:
+  sha256: 99be3fd0f3e051868b7fcfa1dd88a12470e2ed0c54c326af95eba83311966595
+  url: https://github.com/epi2me-labs/pychopper/archive/v2.7.10.tar.gz
+test:
+  commands:
+  - pychopper --help

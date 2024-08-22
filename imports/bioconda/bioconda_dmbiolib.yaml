@@ -1,0 +1,33 @@
+about:
+  doc_url: https://dmbiolib.readthedocs.io/
+  home: https://github.com/damienmarsic/dmbiolib
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Library of Python functions for bioinformatics
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - damienmarsic
+package:
+  name: dmbiolib
+  version: 0.4.3
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - numpy
+  - matplotlib-base
+source:
+  sha256: 622ad522c678ec7cdc5e32ff40635efd779f06bd46c8e8b2691394efc7e5f44f
+  url: https://pypi.io/packages/source/d/dmbiolib/dmbiolib-0.4.3.tar.gz
+test:
+  commands:
+  - pip check
+  - python -m dmbiolib -v
+  requires:
+  - pip

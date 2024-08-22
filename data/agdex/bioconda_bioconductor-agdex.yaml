@@ -1,0 +1,44 @@
+about:
+  description: A tool to evaluate agreement of differential expression for cross-species
+    genomics
+  home: https://bioconductor.org/packages/3.18/bioc/html/AGDEX.html
+  license: GPL Version 2 or later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Agreement of Differential Expression Analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:agdex
+  - doi:10.1093/bioinformatics/btr362
+  parent_recipe:
+    name: bioconductor-agdex
+    path: recipes/bioconductor-agdex
+    version: 1.28.0
+package:
+  name: bioconductor-agdex
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 9e74a7202bdc2e422e2213f1fb7a23f1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/AGDEX_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/AGDEX/AGDEX_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/AGDEX_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-agdex/bioconductor-agdex_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('AGDEX')"

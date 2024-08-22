@@ -1,0 +1,34 @@
+about:
+  description: Scripts that implement samtools flagstat functionality, but provide
+    statistics for individual reads rather than individual alignments
+  home: https://github.com/kundajelab/SAMstats
+  license: MIT
+  summary: SAM file alignment statistics at the read level
+build:
+  entry_points:
+  - SAMstats = SAMstats.__init__:main
+  - SAMstatsParallel= SAMstatsParallel.__init__:main
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: samstats
+  version: 0.2.2
+requirements:
+  host:
+  - python
+  - pip
+  - multiprocess
+  run:
+  - python
+  - multiprocess
+source:
+  sha256: 9bec5f247eb50ba35e8d04dd5502c156ce53ec05dab4c229e179b9be02dba004
+  url: https://pypi.io/packages/source/s/samstats/SAMstats-0.2.2.tar.gz
+test:
+  commands:
+  - SAMstats --help
+  - SAMstatsParallel --help
+  imports:
+  - SAMstats
+  - SAMstatsParallel

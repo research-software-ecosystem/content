@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/SamStudio8/gretel
+  license: MIT
+  license_file: LICENSE
+  summary: An algorithm for recovering haplotypes from metagenomes
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  identifiers:
+  - doi:10.1101/223404
+package:
+  name: gretel
+  version: 0.0.94
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pysam
+  - numpy
+  - hanselx 0.0.92
+  - pyvcf
+source:
+  sha256: 3a8b30d208fbf0c1d0902f6862455078baeb9cba09cc330f780ab4fd44dae95b
+  url: https://github.com/SamStudio8/gretel/archive/v0.0.94.tar.gz
+test:
+  commands:
+  - gretel -h
+  - gretel --version | grep 'gretel 0.0.94'
+  imports:
+  - gretel

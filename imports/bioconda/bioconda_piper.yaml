@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/databio/pypiper/
+  doc_url: https://pypiper.databio.org/en/latest/
+  home: https://github.com/databio/pypiper/
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A lightweight python toolkit for gluing together restartable, robust command
+    line pipelines
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: 2to3 . &&  -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - michalstolarczyk
+package:
+  name: piper
+  version: 0.14.2
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - attmap >=0.12.5
+  - logmuse >=0.2.4
+  - pandas
+  - psutil
+  - python >=3
+  - ubiquerg >=0.8.0
+  - yacman >=0.9.3
+  - pipestat >=0.9.a1
+source:
+  sha256: fff74a6e7cbf188a3ce023913a9ce63098e7c3acfa73833fd9e4c4096a578035
+  url: https://pypi.io/packages/source/p/piper/piper-0.14.2.tar.gz
+test:
+  imports:
+  - pypiper
+  requires:
+  - coveralls >=1.1
+  - hypothesis
+  - mock ==2.0.0
+  - pytest >=4.2.1
+  - pytest-cov ==2.6.1
+  - veracitools

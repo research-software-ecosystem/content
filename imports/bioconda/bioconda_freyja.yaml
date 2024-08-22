@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/andersen-lab/Freyja
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Freyja recovers relative lineage abundances from mixed SARS-CoV-2 samples
+    and provides functionality to analyze lineage dynamics.
+build:
+  entry_points:
+  - freyja=freyja._cli:cli
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: python -m pip install . --no-deps
+package:
+  name: freyja
+  version: 1.5.1
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - click
+  - cvxpy
+  - ivar
+  - samtools
+  - usher
+  - numpy
+  - pandas
+  - matplotlib-base
+  - joblib
+  - tqdm
+  - plotly
+  - pyyaml
+  - requests
+  - epiweeks
+  - pysam
+  - biopython
+  - seaborn
+  - pyarrow
+source:
+  sha256: e9007c144857cb8aefe5a834e50c097d1ed685439c9c25f188e38d0c736084d8
+  url: https://github.com/andersen-lab/Freyja/archive/v1.5.1.tar.gz
+test:
+  commands:
+  - freyja variants --help

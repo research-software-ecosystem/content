@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/lh3/fermi2
+  license: Unknown
+  summary: Fermi2 focuses on the exploration of FMD-index as a graph.
+build:
+  number: 8
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: fermi2
+  version: r193
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - zlib
+  run:
+  - bfc
+  - ropebwt2
+  - seqtk
+  - perl
+source:
+  patches:
+  - fermi2-aarch64.patch
+  sha256: 278fff4a0aa0203ce288a1b4d9c66245cfe38ac10fece321fed3da869a678536
+  url: https://github.com/lh3/fermi2/archive/580ec8ffd30b73e33c7dda5b13a5bfb4281466ac.tar.gz
+test:
+  commands:
+  - fermi2 2>&1 | grep "^Usage:"
+  - fermi2.pl 2>&1 | grep "^Usage:"

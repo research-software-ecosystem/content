@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/bio-nim/nim-falcon
+  license: MIT
+  summary: Nim-based executables used by Falcon assembly workflow
+build:
+  number: 1
+  skip: true
+extra:
+  recipe-maintainers:
+  - pb-cdunn
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: nim-falcon
+  version: 3.0.2
+requirements:
+  host:
+  - zlib
+  - htslib 1.10*
+  - pcre
+source:
+  sha256: eb4a161133beea8e37425980b71a99c874eb423905266b4af6dc06d272e3828f
+  url: https://github.com/bio-nim/nim-falcon/releases/download/3.0.2/nim-falcon-linux-64.tar.gz
+test:
+  commands:
+  - fc_rr_hctg_track2.exe -h
+  - fc_rr_hctg_track.exe -h
+  - fc_consensus.exe -h
+  - falconc -h
+  - falconc rr-hctg-track2 -h

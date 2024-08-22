@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/maximilianh/multiSub
+  license: GPL3
+  license_file: LICENSE
+  summary: multiSub is a command-line tool to prepare and/or submit a SARS-CoV-2 genome
+    sequence to the NCBI Genbank, EBI ENA and GISAID sequence repositories.
+build:
+  build: python -m pip install --no-deps --ignore-installed .
+  noarch: python
+  number: 0
+package:
+  name: multisub
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+source:
+  patches:
+  - multisub-patch1
+  sha256: 6fd6a5a24a14cda282bd4e0b58186888b7e9ea6e1d3c291e0efef617135951e8
+  url: https://github.com/maximilianh/multiSub/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - multiSub -h
+  requires:
+  - make

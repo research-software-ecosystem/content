@@ -1,0 +1,51 @@
+about:
+  description: provides a functions for generating spectra libraries that can be used
+    for MRM SRM MS workflows in proteomics. The package provides a BiblioSpec reader,
+    a function which can add the protein information using a FASTA formatted amino
+    acid file, and an export method for using the created library in the Spectronaut
+    software. The package is developed, tested and used at the Functional Genomics
+    Center Zurich <https://fgcz.ch>.
+  home: https://bioconductor.org/packages/3.18/bioc/html/specL.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: specL - Prepare Peptide Spectrum Matches for Use in Targeted Proteomics
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:specl
+  parent_recipe:
+    name: bioconductor-specl
+    path: recipes/bioconductor-specl
+    version: 1.16.0
+package:
+  name: bioconductor-specl
+  version: 1.36.0
+requirements:
+  host:
+  - r-base
+  - r-dbi >=0.5
+  - r-protviz >=0.7
+  - r-rsqlite >=1.1
+  - r-seqinr >=3.3
+  run:
+  - r-base
+  - r-dbi >=0.5
+  - r-protviz >=0.7
+  - r-rsqlite >=1.1
+  - r-seqinr >=3.3
+source:
+  md5: a3a436585f26f8353106b030a26cbf98
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/specL_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/specL/specL_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/specL_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-specl/bioconductor-specl_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('specL')"

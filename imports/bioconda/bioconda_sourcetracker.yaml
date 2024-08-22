@@ -1,0 +1,44 @@
+about:
+  description: Python implementation of the SourceTracker R package.
+  dev_url: https://github.com/biota/sourcetracker2
+  doc_url: https://github.com/biota/sourcetracker2
+  home: http://www.biota.com
+  license: modified BSD
+  license_family: BSD
+  license_file: ''
+  summary: Python implementation of the SourceTracker R package.
+build:
+  entry_points:
+  - sourcetracker2=sourcetracker._cli:cli
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - nick-youngblut
+package:
+  name: sourcetracker
+  version: 2.0.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy
+  - h5py
+  - biom-format >=2.1.5,<2.2.0
+  - click
+  - ipyparallel
+  - scikit-bio
+  - pandas
+source:
+  sha256: 34cb7e38819ad14c792345231575611709920d325388f2fb5821b64581cd0ec7
+  url: https://pypi.io/packages/source/s/sourcetracker/sourcetracker-2.0.1.tar.gz
+test:
+  commands:
+  - sourcetracker2 gibbs --help
+  imports:
+  - sourcetracker

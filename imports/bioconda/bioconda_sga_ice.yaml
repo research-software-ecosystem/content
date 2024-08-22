@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/hillerlab/IterativeErrorCorrection
+  license: MIT license
+  license_file: LICENSE
+  summary: "Iterative error correction of long 250 or 300 bp Illumina reads minimizes\
+    \ the total amount of erroneous reads, which improves contig assembly \n"
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p $PREFIX/bin ; mv *.py $PREFIX/bin
+package:
+  name: sga_ice
+  version: 1.01
+requirements:
+  run:
+  - python
+  - sga
+source:
+  sha256: d870175b023f741b60eeeafac07d8cd823706a81d202853e3b5da30d140edcc1
+  url: https://github.com/hillerlab/IterativeErrorCorrection/archive/refs/tags/1.01.tar.gz
+test:
+  commands:
+  - SGA-ICE.py -h  2>&1 | cat > /dev/null

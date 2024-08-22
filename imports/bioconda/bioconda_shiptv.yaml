@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/peterk87/shiptv
+  license: Apache Software License
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Generate a standalone HTML file with an interactive phylogenetic tree using
+    PhyloCanvas
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps -vv
+package:
+  name: shiptv
+  version: 0.4.1
+requirements:
+  host:
+  - pip
+  - python
+  - pytest
+  - pytest-runner
+  run:
+  - python
+  - rich
+  - typer >=0.3.2
+  - click
+  - jinja2
+  - pandas
+  - biopython
+  - requests
+source:
+  sha256: 5b21dafbef47b98fe8a43cb6432c72b60fda91cb009b519d5f64378ef3ac6249
+  url: https://pypi.python.org/packages/source/s/shiptv/shiptv-0.4.1.tar.gz
+test:
+  commands:
+  - shiptv --help
+  imports:
+  - shiptv

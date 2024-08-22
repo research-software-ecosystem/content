@@ -1,0 +1,57 @@
+about:
+  home: https://github.com/galaxy-genome-annotation/python-chado
+  icense_file: /LICENSE.txt
+  license: MIT
+  license_family: MIT
+  summary: A Python library for interacting with Chado database.
+build:
+  entry_points:
+  - chakin=chakin.cli:chakin
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  container:
+    extended-base: true
+package:
+  name: python-chado
+  version: 2.3.9
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - bcbio-gff ==0.6.4
+  - biopython
+  - click
+  - future
+  - psycopg2
+  - python
+  - pyyaml
+  - sqlalchemy
+  - wrapt
+source:
+  sha256: baccb6adb7fa50b34a5c6ec5c94cc103845b500bfe88af41ebd855503b4cb1e1
+  url: https://pypi.io/packages/source/c/chado/chado-2.3.9.tar.gz
+test:
+  commands:
+  - chakin --help
+  - chakin analysis --help
+  imports:
+  - chado
+  - chado.analysis
+  - chado.export
+  - chado.expression
+  - chado.feature
+  - chado.organism
+  - chado.phylogeny
+  - chado.util
+  - chakin
+  - chakin.commands
+  - chakin.commands.analysis
+  - chakin.commands.export
+  - chakin.commands.expression
+  - chakin.commands.feature
+  - chakin.commands.organism
+  - chakin.commands.phylogeny
+  - chakin.commands.util

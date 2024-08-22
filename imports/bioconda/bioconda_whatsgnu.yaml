@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/ahmedmagds/WhatsGNU
+  home: https://github.com/ahmedmagds/WhatsGNU
+  license: GPLv3
+  license_family: GPL
+  license_file: LICENSE
+  summary: WhatsGNU A Tool For Identifying Proteomic Novelty
+build:
+  noarch: generic
+  number: 0
+extra:
+  recipe-maintainers:
+  - AhmedMoustafa
+  - PaulPlanet
+package:
+  name: whatsgnu
+  version: '1.5'
+requirements:
+  run:
+  - python >=3.4
+  - blast >=2.9.0
+  - matplotlib-base >=3.0.2
+  - numpy >=1.15.3
+  - scipy >=1.2.0
+source:
+  sha256: 0107e59afac4f76ca563565af6e7a2d11f6f416957c1899cfdf7514738520ae6
+  url: https://github.com/ahmedmagds/WhatsGNU/archive/v1.5.tar.gz
+test:
+  commands:
+  - WhatsGNU_get_GenBank_genomes.py -h
+  - WhatsGNU_database_customizer.py -h
+  - WhatsGNU_main.py -h
+  - WhatsGNU_plotter.py -h
+  - blastp -help

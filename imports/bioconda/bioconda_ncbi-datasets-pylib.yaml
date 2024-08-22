@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/ncbi/datasets
+  doc_url: https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/
+  home: https://www.ncbi.nlm.nih.gov/datasets
+  license: Unlicense
+  license_file: LICENSE.md
+  summary: Easily gather data from across NCBI databases
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --use-pep517 --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - misialq
+package:
+  name: ncbi-datasets-pylib
+  version: 16.6.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - python-packit
+  run:
+  - python >=3.8
+  - gffutils ==0.10.*
+  - jinja2 ==3.1.*
+  - jsonlines ==3.0.*
+  - protobuf ==3.20.*
+  - python-dateutil ==2.8.*
+  - urllib3 ==1.26.*
+source:
+  sha256: 06ab4409a00ac4c89465dea774558f8e51bc759f869072332399e5dcca0dded8
+  url: https://pypi.io/packages/source/n/ncbi-datasets-pylib/ncbi-datasets-pylib-16.6.1.tar.gz
+test:
+  imports:
+  - ncbi

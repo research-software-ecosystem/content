@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/blab/evofr
+  home: https://github.com/blab/evofr
+  license: AGPL-3.0
+  license_file: LICENSE.txt
+  summary: Tools for evolutionary forecasting
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - marlinfiggins
+  - tsibley
+package:
+  name: evofr
+  version: 0.1.23
+requirements:
+  host:
+  - python >=3.9,<4
+  - pip
+  - poetry-core >=1.0.0
+  run:
+  - python >=3.9,<4
+  - numpy >=1.22.4
+  - pandas >=1.4.2
+  - jax >=0.4.14,<0.5.0
+  - jaxlib >=0.4.1,<0.5.0
+  - numpyro >=0.13.2,<0.14.0
+  - blackjax >=0.9.6,<0.10.0
+source:
+  sha256: ac159419119c000e403b5801d8b6dfef215bcbeca6f30f3bf13b66b90b64ad17
+  url: https://pypi.io/packages/source/e/evofr/evofr-0.1.23.tar.gz
+test:
+  imports:
+  - evofr

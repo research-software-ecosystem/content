@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/Alan-Collins/CRISPR_comparison_toolkit
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Tools to identify and compare CRISPR arrays.
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: cctk
+  version: 1.0.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  run:
+  - python >=3.8
+  - numpy
+  - matplotlib-base
+  - dendropy
+  - minced
+  - blast
+source:
+  sha256: 84866f5cae2249e6c421f034c00e98e29d68dcae70f3ecedd504c9c9fbc26c65
+  url: https://github.com/Alan-Collins/CRISPR_comparison_toolkit/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - cctk --version

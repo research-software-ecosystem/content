@@ -1,0 +1,44 @@
+about:
+  description: A tabular style data object where most data is stored outside main
+    memory. A buffer is used to speed up access to data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BufferedMatrix.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: A matrix data storage object held in temporary files
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:bufferedmatrix
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-bufferedmatrix
+    path: recipes/bioconductor-bufferedmatrix
+    version: 1.44.0
+package:
+  name: bioconductor-bufferedmatrix
+  version: 1.66.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: a4ad95db528526463e6dfca80975815e
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BufferedMatrix_1.66.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BufferedMatrix/BufferedMatrix_1.66.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BufferedMatrix_1.66.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bufferedmatrix/bioconductor-bufferedmatrix_1.66.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BufferedMatrix')"

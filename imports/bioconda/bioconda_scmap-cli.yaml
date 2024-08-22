@@ -1,0 +1,49 @@
+about:
+  description: 'A set of wrappers for operations associated with the scmap package.
+
+    Functions in R packages are hard to call when building workflows outside
+
+    of R, so this package adds a set of simple wrappers with robust argument
+
+    parsing. Intermediate steps are currently mainly serialized R objects,
+
+    but the ultimate objective is to have language-agnostic intermediate
+
+    formats allowing composite workflows using a variety of software
+
+    packages.
+
+    '
+  dev_url: https://github.com/ebi-gene-expression-group/scmap-cli
+  home: https://github.com/ebi-gene-expression-group/scmap-cli
+  license: Apache 2.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: CLI scripts for the scmap package
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: scmap-cli
+  version: 0.1.0
+requirements:
+  run:
+  - bioconductor-biobase
+  - bioconductor-singlecellexperiment
+  - bioconductor-loomexperiment
+  - bioconductor-scmap >=1.6.0,<1.7
+  - r-optparse
+  - r-workflowscriptscommon
+source:
+  sha256: 58444bf3e5a1f10261635b585aaeb1f259fd6e21561817899f5378a4b2811498
+  url: https://github.com/ebi-gene-expression-group/scmap-cli/archive/0.1.0.tar.gz
+test:
+  commands:
+  - scmap-index-cell.R --help
+  - scmap-scmap-cluster.R --help
+  - scmap-index-cluster.R --help
+  - scmap-scmap-cell.R --help
+  - scmap-select-features.R --help
+  - which scmap-cli-post-install-tests.sh

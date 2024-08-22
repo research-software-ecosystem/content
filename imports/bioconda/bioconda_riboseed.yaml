@@ -1,0 +1,61 @@
+about:
+  description: Genome assembly polisher to bridge rDNA gaps
+  dev_url: https://github.com/nickp60/riboSeed
+  home: https://github.com/nickp60/riboSeed
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'riboSeed: assemble across rDNA regions'
+build:
+  entry_points:
+  - ribo = riboSeed.ribo:main
+  noarch: python
+  number: 0
+extra:
+  recipe-maintainers:
+  - nickp60
+package:
+  name: riboseed
+  version: 0.4.90
+requirements:
+  host:
+  - python 3.5.*
+  - setuptools
+  run:
+  - python 3.5.*
+  - biopython
+  - jenkspy
+  - pyaml
+  - pysam
+  - matplotlib
+  - pandas
+  - numpy
+  - coverage
+  - networkx
+  - bcbiogff
+  - barrnap
+  - mafft
+  - prank
+  - blast
+  - spades ==3.9.1
+  - bwa
+  - samtools
+  - bcftools
+  - skesa
+  - quast >=4.6.3
+source:
+  sha256: c5b3c13c136e7a100f7c88d19b3d77604d2ce4230ec2d9a13d544fea1d28ce58
+  url: https://pypi.io/packages/source/r/riboSeed/riboSeed-0.4.90.tar.gz
+test:
+  commands:
+  - ribo
+  - ribo scan -h
+  - ribo select -h
+  - ribo stack -h
+  - ribo run -h
+  - ribo seed -h
+  - ribo snag -h
+  - ribo sketch -h
+  - spades.py -v
+  imports:
+  - riboSeed

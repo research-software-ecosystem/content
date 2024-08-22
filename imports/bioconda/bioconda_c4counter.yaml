@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/irunonayran/c4counter.git
+  license: MIT
+  license_family: MIT
+  summary: returns the number and types of human C4 regions in a fasta file
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - irunonayran
+package:
+  name: c4counter
+  version: 0.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - minimap2
+  - biopython
+  - docopt
+source:
+  sha256: df3d14cffb3043d9ebd86ab75d271ba66eff2df1a7533449d4df4aecf4d1d553
+  url: https://pypi.io/packages/source/c/c4counter/c4counter-0.0.2.tar.gz
+test:
+  commands:
+  - c4counter -h > /dev/null

@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/hcdenbakker/SalmID
+  license: MIT
+  summary: Rapid tool to check taxonomic ID of single isolate samples. Currently only
+    IDs Salmonella species and subspecies, and some common contaminants (Listeria,
+    Escherichia).
+build:
+  noarch: python
+  number: 0
+extra:
+  identifiers:
+  - DOI:10.5281/zenodo.1409766
+  recipe-maintainers:
+  - pvanheus
+package:
+  name: salmid
+  version: 0.1.23
+requirements:
+  host:
+  - python >=3
+  - poetry
+  run:
+  - python >=3
+source:
+  sha256: aadcee6a7ba87ff4681129e86238d5edb7617dc4adf291e651b05ccb6d450cc9
+  url: https://github.com/hcdenbakker/SalmID/archive/0.1.23.tar.gz
+test:
+  commands:
+  - SalmID.py -v |grep SalmID.py >/dev/null 2>&1

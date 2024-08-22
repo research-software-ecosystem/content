@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/COMBINE-lab/cuttlefish
+  doc_url: https://github.com/COMBINE-lab/cuttlefish#readme
+  home: https://github.com/COMBINE-lab/cuttlefish
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Construction of the compacted de Bruijn graph efficiently
+build:
+  number: 2
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab309
+  - doi:10.1186/s13059-022-02743-6
+  recipe-maintainers:
+  - jamshed
+  - rob-p
+package:
+  name: cuttlefish
+  version: 2.2.0
+requirements:
+  build:
+  - autoconf
+  - cmake >=3.14.0
+  - make
+  - None
+  - None
+  - zlib
+  - bzip2
+  host:
+  - jemalloc >=5.1.0
+  - zlib
+  - bzip2
+  run:
+  - bzip2
+  - zlib
+source:
+  sha256: d524aaeed5dd86ce256c5540661eda388cecbfad2ce4dde86e52539b2b1d6ed5
+  url: https://github.com/COMBINE-lab/cuttlefish/archive/refs/tags/v2.2.0.tar.gz
+test:
+  commands:
+  - cuttlefish build --help
+  - cuttlefish help
+  - cuttlefish version

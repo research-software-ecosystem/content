@@ -1,0 +1,50 @@
+about:
+  description: Peak Detection in Mass Spectrometry data is one of the important preprocessing
+    steps. The performance of peak detection affects subsequent processes, including
+    protein identification, profile alignment and biomarker identification. Using
+    Continuous Wavelet Transform (CWT), this package provides a reliable algorithm
+    for peak detection that does not require any type of smoothing or previous baseline
+    correction method, providing more consistent results for different spectra. See
+    <doi:10.1093/bioinformatics/btl355} for further details.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MassSpecWavelet.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Peak Detection for Mass Spectrometry data using wavelet-based algorithms
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:massspecwavelet
+  parent_recipe:
+    name: bioconductor-massspecwavelet
+    path: recipes/bioconductor-massspecwavelet
+    version: 1.46.0
+package:
+  name: bioconductor-massspecwavelet
+  version: 1.68.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 387636ea7c674fe339c56a8af3458f8a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MassSpecWavelet_1.68.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MassSpecWavelet/MassSpecWavelet_1.68.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MassSpecWavelet_1.68.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-massspecwavelet/bioconductor-massspecwavelet_1.68.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MassSpecWavelet')"

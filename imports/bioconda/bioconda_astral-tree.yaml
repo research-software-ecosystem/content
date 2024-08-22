@@ -1,0 +1,44 @@
+about:
+  description: "ASTRAL is a tool for estimating an unrooted species tree given a set\
+    \ of unrooted gene trees. \nASTRAL is statistically consistent under the multi-species\
+    \ coalescent model \n(and thus is useful for handling incomplete lineage sorting,\
+    \ i.e., ILS). \nASTRAL finds the species tree that has the maximum number of shared\
+    \ induced \nquartet trees with the set of gene trees, subject to the constraint\
+    \ that \nthe set of bipartitions in the species tree comes from a predefined set\
+    \ of bipartitions. \nThis predefined set is empirically decided by ASTRAL (but\
+    \ see tutorial on how to expand it). \nThe current code corresponds to ASTRAL-III.\n"
+  home: https://github.com/smirarab/ASTRAL
+  license: Apache License 2.0
+  license_family: APACHE
+  summary: ASTRAL is a tool for estimating an unrooted species tree given a set of
+    unrooted gene trees.
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1186/s12859-018-2129-y
+  notes: 'astral is a Java program that comes with a custom wrapper shell script.
+    By default ''no default java option'' is set in the wrapper. The command that
+    runs the program is ''astral''. If you want to overwrite it you can specify memory
+    options directly after your binaries. If you have _JAVA_OPTIONS set globally this
+    will take precedence. For example run it with ''biopet-fastqsplitter -Xms512m
+    -Xmx1g''. '
+  recipe-maintainers:
+  - pauldg
+package:
+  name: astral-tree
+  version: 5.7.8
+requirements:
+  host: null
+  run:
+  - openjdk >=11
+  - python
+source:
+  sha256: 7b3d89ca4fee42b00e547ed2485e60bebfdf7f0179cfc503f0c522d682483dea
+  url: https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip
+test:
+  files:
+  - test.tre

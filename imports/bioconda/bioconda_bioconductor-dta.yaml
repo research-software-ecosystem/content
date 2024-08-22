@@ -1,0 +1,46 @@
+about:
+  description: Dynamic Transcriptome Analysis (DTA) can monitor the cellular response
+    to perturbations with higher sensitivity and temporal resolution than standard
+    transcriptomics. The package implements the underlying kinetic modeling approach
+    capable of the precise determination of synthesis- and decay rates from individual
+    microarray or RNAseq measurements.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DTA.html
+  license: Artistic-2.0
+  summary: Dynamic Transcriptome Analysis
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:dta
+  - doi:10.1093/bioinformatics/bts052
+  parent_recipe:
+    name: bioconductor-dta
+    path: recipes/bioconductor-dta
+    version: 2.26.0
+package:
+  name: bioconductor-dta
+  version: 2.48.0
+requirements:
+  host:
+  - r-base
+  - r-lsd
+  - r-scatterplot3d
+  run:
+  - r-base
+  - r-lsd
+  - r-scatterplot3d
+source:
+  md5: 58705aacdbf08c61d4713273dbd9bc6f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DTA_2.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DTA/DTA_2.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DTA_2.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dta/bioconductor-dta_2.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DTA')"

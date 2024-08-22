@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/caleb-easterly/validate_fasta_database
+  license: GPL-3.0
+  summary: Code for Galaxy tool for quality control on FASTA database
+build:
+  noarch: generic
+  number: 2
+package:
+  name: validate-fasta-database
+  version: 1.0
+requirements:
+  host:
+  - openjdk >=7
+  run:
+  - openjdk >=7
+  - python
+source:
+  md5: 04fa47141882ee32f5cdaec93e5a890b
+  url: https://github.com/caleb-easterly/validate_fasta_database/releases/download/v1.0/validate_fasta_database-1.0.jar
+test:
+  commands:
+  - echo -e ">abc|001\nMMCTARRK" > test.fasta && validate-fasta-database test.fasta
+    good.fasta bad.fasta false true "" false 0

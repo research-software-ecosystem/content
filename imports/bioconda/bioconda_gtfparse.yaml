@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/openvax/gtfparse
+  home: https://github.com/openvax/gtfparse
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: GTF Parsing
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+package:
+  name: gtfparse
+  version: 2.5.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - polars >=0.20.2,<0.21.0
+  - numpy >=1.7
+  - pandas >=0.15
+  - pyarrow >=14.0.2
+source:
+  sha256: 9fea54811cd87f597a110a49dc1b1b6a3325ffb7d1f36ecc62c32d14d3eb9493
+  url: https://pypi.io/packages/source/g/gtfparse/gtfparse-2.5.0.tar.gz
+test:
+  imports:
+  - gtfparse

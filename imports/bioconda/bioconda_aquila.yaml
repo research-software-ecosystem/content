@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/maiziex/Aquila
+  license: MIT
+  summary: Diploid personal genome assembly and comprehensive variant detection based
+    on linked-reads
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+package:
+  name: aquila
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - samtools
+  - pysam >=0.15.2
+  - minimap2
+  - scipy
+  - numpy
+source:
+  sha256: 035da84ffc116ce6a9cf5bdd2d53428efa2d84fd5c9009c94cc9c700410cc542
+  url: https://github.com/xinzhoucs/Aquila/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - Aquila_step1 --help
+  - Aquila_step2 --help
+  - Aquila_clean --help
+  - Aquila_step1_multilibs --help
+  - Aquila_assembly_based_variants_call --help
+  - Aquila_phasing_all_variants --help
+  - Aquila_step0_sortbam --help
+  - Aquila_step0_sortbam_multilibs --help

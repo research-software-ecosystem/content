@@ -1,0 +1,35 @@
+about:
+  description: ncfp is a script and module that facilitates recovery of nucleotide
+    sequences from NCBI that encode a set of input protein sequences
+  dev_url: https://github.com/widdowquinn/ncfp
+  doc_url: https://ncfp.readthedocs.io/en/latest/
+  home: http://widdowquinn.github.io/ncfp/
+  license: MIT
+  license_family: MIT
+  summary: A program/module to find nt sequences that code for aa sequences
+build:
+  entry_points:
+  - ncfp = ncbi_cds_from_protein.scripts.ncfp:run_main
+  noarch: python
+  number: 0
+package:
+  name: ncfp
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - biopython
+  - bioservices
+  - tqdm
+source:
+  sha256: 3400138b76698c68a069ae622b7c947dda56329c3e6039990fa820f119880340
+  url: https://pypi.io/packages/source/n/ncfp/ncfp-0.2.0.tar.gz
+test:
+  commands:
+  - ncfp --help
+  imports:
+  - ncbi_cds_from_protein
+  - ncbi_cds_from_protein.scripts

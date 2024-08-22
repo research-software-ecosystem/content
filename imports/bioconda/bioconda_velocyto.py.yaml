@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/velocyto-team/velocyto.py
+  license: MIT
+  license_file: LICENSE
+  summary: A library for the analysis of RNA velocity.
+build:
+  entry_points:
+  - velocyto = velocyto.commands.velocyto:cli
+  number: 7
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1038/s41586-018-0414-6
+package:
+  name: velocyto.py
+  version: 0.17.17
+requirements:
+  build:
+  - None
+  - llvm-openmp
+  - libgomp
+  host:
+  - python
+  - pip
+  - numpy
+  - cython
+  run:
+  - python
+  - None
+  - scipy
+  - numba
+  - matplotlib-base
+  - scikit-learn
+  - h5py
+  - loompy
+  - pysam
+  - click
+  - pandas
+  - samtools
+source:
+  sha256: 2461eabf2ec6b152240c95f7ad8a0a5768a83c72822d9398beec2981732b890d
+  url: https://github.com/velocyto-team/velocyto.py/archive/0.17.17.tar.gz
+test:
+  commands:
+  - velocyto --version
+  imports:
+  - velocyto

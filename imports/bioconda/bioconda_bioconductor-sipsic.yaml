@@ -1,0 +1,40 @@
+about:
+  description: Infer biological pathway activity of cells from single-cell RNA-sequencing
+    data by calculating a pathway score for each cell (pathway genes are specified
+    by the user). It is recommended to have the data in Transcripts-Per-Million (TPM)
+    or Counts-Per-Million (CPM) units for best results. Scores may change when adding
+    cells to or removing cells off the data. SiPSiC stands for Single Pathway analysis
+    in Single Cells.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SiPSiC.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Calculate Pathway Scores for Each Cell in scRNA-Seq Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-sipsic
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-matrix
+  run:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-matrix
+source:
+  md5: e85e0e9b34b9a1e0a93dd653868061ef
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SiPSiC_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SiPSiC/SiPSiC_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SiPSiC_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sipsic/bioconductor-sipsic_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SiPSiC')"

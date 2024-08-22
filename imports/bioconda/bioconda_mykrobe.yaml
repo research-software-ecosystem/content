@@ -1,0 +1,69 @@
+about:
+  description: Rapid antibiotic-resistance predictions from genome sequence data for
+    Staphylococcus aureus and Mycobacterium tuberculosis.
+  home: https://github.com/Mykrobe-tools/mykrobe
+  license: MIT
+  license_file: LICENSE
+  summary: Antibiotic resistance prediction in minutes
+build:
+  entry_points:
+  - mykrobe = mykrobe.cli:main
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - mbhall88
+  - martinghunt
+package:
+  name: mykrobe
+  version: 0.13.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - numpy
+  - biopython
+  host:
+  - python
+  - pip
+  - zlib
+  - wget
+  - cython
+  - numpy
+  - mongodb >3.0
+  - mongoengine >=0.18.0
+  - pyvcf3 >=1.0.3
+  - biopython
+  - anytree
+  - requests
+  - setuptools
+  run:
+  - python
+  - mongodb >3.0
+  - wget
+  - zlib
+  - numpy
+  - mongoengine >=0.18.0
+  - pyvcf3 >=1.0.3
+  - biopython
+  - anytree
+  - requests
+  - setuptools
+source:
+  sha256: 49662937378a4ff10ffcb3876efcc069be58f0dc183615e9cffb57f51348a45e
+  url: https://github.com/Mykrobe-tools/mykrobe/archive/v0.13.0.tar.gz
+test:
+  commands:
+  - mykrobe --version
+  - mykrobe --help
+  - mykrobe predict --help
+  - mykrobe variants --help
+  - mykrobe panels describe
+  - test -x $PREFIX/lib/python*/site-packages/mykrobe/cortex/mccortex31
+  - $PREFIX/lib/python*/site-packages/mykrobe/cortex/mccortex31 uniqkmers -k 7 1
+  imports:
+  - mykrobe

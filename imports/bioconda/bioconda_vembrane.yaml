@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/vembrane/vembrane
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Filter VCF/BCF files with Python expressions.
+build:
+  entry_points:
+  - vembrane = vembrane.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - felixmoelder
+  - mbargull
+package:
+  name: vembrane
+  version: 1.0.6
+requirements:
+  host:
+  - pip
+  - poetry >=1.5.1
+  - python >=3.8
+  run:
+  - asttokens >=2.0,<3.0
+  - intervaltree >=3.0,<4.0
+  - numpy >=1.23,<2.0
+  - pysam >=0.20,<0.21
+  - python >=3.8
+  - pyyaml >=6.0,<7
+source:
+  sha256: 941fcb10cc61c3d3fcaa87d1ab7e230c87f1ce625975402a0139eef0acc03fc2
+  url: https://pypi.io/packages/source/v/vembrane/vembrane-1.0.6.tar.gz
+test:
+  commands:
+  - vembrane --help
+  - vembrane --version
+  imports:
+  - vembrane

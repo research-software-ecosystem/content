@@ -1,0 +1,37 @@
+about:
+  home: The package home page
+  license: GNU General Public License v3.0
+  license_family: GPL3
+  summary: Given a set of BAM files and a gene annotation BED file, calculates the
+    Transcript Integrity Number (TIN) for each transcript.
+build:
+  noarch: python
+  number: 0
+  script: touch requirements.txt &&  -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - fgypas
+package:
+  name: tin-score-calculation
+  version: 0.6.3
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - matplotlib-base
+  - bx-python >=0.8.10
+  - guppy3 >=3
+  - pandas >=0.25
+  - psutil >=5.8.0
+  - pysam >=0.16
+  - RSeQC >=3
+  - python
+source:
+  sha256: 4549f8bdf5bbaa0b0d5bfc43a1c53a91032eb30a038467366a2d7d49f8476443
+  url: https://pypi.io/packages/source/t/tin-score-calculation/tin-score-calculation-0.6.3.tar.gz
+test:
+  commands:
+  - calculate-tin.py --help
+  - merge-tin.py --help
+  - plot-tin.py --help

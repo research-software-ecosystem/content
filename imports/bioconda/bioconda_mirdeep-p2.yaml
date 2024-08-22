@@ -1,0 +1,23 @@
+about:
+  home: https://sourceforge.net/projects/mirdp2/
+  license: GNU General Public v3 (GPLv3)
+  summary: A fast and accurate tool for analyzing the miRNA transcriptome in plants
+build:
+  noarch: generic
+  number: 0
+package:
+  name: mirdeep-p2
+  version: 1.1.4
+requirements:
+  run:
+  - bowtie
+  - bowtie2
+  - viennarna
+  - randfold
+  - perl
+source:
+  sha256: 3a6e85ff495f312b34e99573484d7f52bbdae08a2dab5db0f2aada9e8e1dd240
+  url: https://sourceforge.net/projects/mirdp2/files/latest_version/miRDP2-v1.1.4.tar.gz
+test:
+  commands:
+  - miRDP2-v1.1.4_pipeline.bash -h 2>&1 | grep -i "./miRDP2-v1.1.4_pipeline.bash <OPTIONS>"

@@ -1,0 +1,45 @@
+about:
+  description: 'Reneo recovers high-quality genomes from viral communities (including
+    both prokaryotic and eukaryotic viruses) found within metagenomes.
+
+    '
+  dev_url: https://github.com/Vini2/reneo
+  doc_url: https://github.com/Vini2/reneo
+  home: https://github.com/Vini2/phables
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Reneo: Unraveling Viral Genomes from Metagenomes'
+build:
+  entry_points:
+  - reneo=reneo.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - Vini2
+package:
+  name: reneo
+  version: 0.4.0
+requirements:
+  host:
+  - python <3.11
+  - pip
+  run:
+  - python <3.11
+  - snakemake-minimal >=7.14.0
+  - pyyaml >=6.0
+  - click >=8.1.3
+  - jinja2 >=3.0.2
+  - mamba <1.4.2
+  - metasnek >=0.0.5
+  - snaketool-utils >=0.0.3
+source:
+  sha256: b74cdf3fca658b00c15db2e52e24877aa58fa43ba242323cc4d8f8fb292fbab7
+  url: https://github.com/Vini2/reneo/archive/refs/tags/v0.4.0.tar.gz
+test:
+  commands:
+  - reneo --help

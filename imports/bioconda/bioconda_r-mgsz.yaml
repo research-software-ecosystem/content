@@ -1,0 +1,44 @@
+about:
+  home: https://CRAN.R-project.org/package=mGSZ
+  license: GPL (>= 2)
+  license_family: GPL3
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Performs gene set analysis based on GSZ scoring function and asymptotic
+    p-value. It is different from GSZ in that it implements asymptotic p-values instead
+    of empirical p-values. Asymptotic p-values are calculated by fitting suitable
+    distribution model to the null distribution. Unlike empirical p-values, resolution
+    of asymptotic p-values are independent of the number of permutations and hence
+    requires considerably fewer permutations. In addition, this package allows gene
+    set analysis with seven other popular gene set analysis methods.
+build:
+  noarch: generic
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-mgsz
+  version: 1.0
+requirements:
+  host:
+  - r-base
+  - bioconductor-biobase
+  - r-gsa
+  - r-mass
+  - r-ismev
+  - bioconductor-limma
+  run:
+  - r-base
+  - bioconductor-biobase
+  - r-gsa
+  - r-mass
+  - r-ismev
+  - bioconductor-limma
+source:
+  sha256: f0978d2c6468c26399432f1f49aca1c04189322ef76f3d539f080a584e448922
+  url:
+  - /src/contrib/mGSZ_1.0.tar.gz
+  - /src/contrib/Archive/mGSZ/mGSZ_1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('mGSZ')"

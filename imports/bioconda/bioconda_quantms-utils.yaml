@@ -1,0 +1,49 @@
+about:
+  dev_url: https://www.github.com/bigbio/quantms-utils
+  home: https://www.github.com/bigbio/quantms-utils
+  license: MIT
+  license_file: LICENSE
+  summary: Python package with scripts and helpers for the quantms workflow
+build:
+  entry_points:
+  - quantmsutilsc=quantmsutils.quantmsutilsc:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vvv'
+extra:
+  recipe-maintainers:
+  - ypriverol
+package:
+  name: quantms-utils
+  version: 0.0.9
+requirements:
+  host:
+  - python >=3.8,<4.0
+  - pip
+  run:
+  - python >=3.7.0,<4.0.0
+  - click >=7.0
+  - pydantic >=1.10,<2
+  - sdrf-pipelines >=0.0.29
+  - pyopenms >=2.9.1
+  - ms2rescore ==3.0.3
+  - psm-utils ==0.8.2
+  - ms2pip ==4.0.0.dev8
+  - deeplc ==2.2.38
+  - pandas >=1.0.0
+  - numpy
+  - scipy ==1.13.1
+  - scikit-learn
+  - deeplcretrainer
+source:
+  sha256: 72f86706f6dc10e7e332317b2b78e22acb33b63cff37d8c897871934ac60c2af
+  url: https://pypi.io/packages/source/q/quantms-utils/quantms_utils-0.0.9.tar.gz
+test:
+  commands:
+  - quantmsutilsc --help
+  imports:
+  - quantmsutils
+  requires:
+  - pip

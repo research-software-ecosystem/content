@@ -1,0 +1,40 @@
+about:
+  home: https://tissuumaps.research.it.uu.se/
+  license: MIT
+  license_file: LICENSE
+  summary: 'TissUUmaps is a lightweight viewer that uses basic web tools to visualize
+    gene expression data or any kind of point data on top of whole slide images
+
+    '
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install --no-deps -vv .'
+extra:
+  identifiers:
+  - doi:10.1101/2022.01.28.478131
+package:
+  name: tissuumaps
+  version: 3.2.1.9
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - flask >=2
+  - openslide-python >=1.1.2
+  - pillow >=8.2.0
+  - ipython >=7.0
+  - pyyaml >=6.0
+  - h5py >=3.6.0
+  - scipy >=1.7.2
+  - pyvips
+source:
+  sha256: cd859ae51d14d243dd9c3000d5aa5e9e9a6920643b7b5eafdaedbc88d5214a4d
+  url: https://github.com/TissUUmaps/TissUUmaps/archive/refs/tags/3.2.1.9.tar.gz
+test:
+  commands:
+  - 'tissuumaps_server --help 2>&1 > /dev/null | grep ''version: 3.2.1.9'''

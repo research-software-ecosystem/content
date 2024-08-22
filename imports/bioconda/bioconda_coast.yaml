@@ -1,0 +1,43 @@
+about:
+  description: 'Alignment search tool that identifies similar proteomes.
+
+    '
+  dev_url: https://gitlab.com/coast_tool/COAST
+  home: https://gitlab.com/coast_tool/COAST
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Alignment search tool that identifies similar proteomes.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed
+  script_env:
+  - PBR_VERSION=0.2.2
+package:
+  name: coast
+  version: 0.2.2
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - pbr
+  run:
+  - python
+  - pandas >=1.2.0
+  - biopython >=1.78
+  - requests >=2.25.1
+  - seaborn >=0.11.1
+  - tabulate >=0.8.9
+  - jinja2 >=3.0.0
+  - bokeh >=2.4.0
+  - blast >=2.10
+source:
+  sha256: e13a9b7fc3617f97a62604e5ac8f776b52970fc102d45720221ee897cceeae43
+  url: https://gitlab.com/coast_tool/COAST/-/archive/v0.2.2/COAST-v0.2.2.tar.gz
+test:
+  commands:
+  - coast search --help
+  - coast report --help
+  - coast compare --help

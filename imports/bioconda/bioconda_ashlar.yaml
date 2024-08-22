@@ -1,0 +1,48 @@
+about:
+  doc_url: https://labsyspharm.github.io/ashlar/
+  home: https://github.com/sorgerlab/ashlar
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Alignment by Simultaneous Harmonization of Layer/Adjacency Registration
+build:
+  entry_points:
+  - ashlar=ashlar.scripts.ashlar:main
+  - preview_slide=ashlar.scripts.preview_slide:main
+  - make_alignment_movie=ashlar.scripts.make_alignment_movie:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - alliecreason
+package:
+  name: ashlar
+  version: 1.18.0
+requirements:
+  host:
+  - pip
+  - python <3.12
+  run:
+  - blessed >=1.17
+  - matplotlib-base >=3.1.2
+  - networkx >=2.4
+  - numpy >=1.18.1
+  - pyjnius >=1.2.1
+  - python <3.12
+  - scikit-image ==0.19
+  - scikit-learn >=0.21.1
+  - scipy >=1.4.1
+  - tifffile >=2022.4.8
+  - zarr
+source:
+  sha256: 2c0e8997a49daf64fc56b3afabc2e58a0eb2f6f9985d0c3c22be957bf8b03760
+  url: https://pypi.io/packages/source/a/ashlar/ashlar-1.18.0.tar.gz
+test:
+  commands:
+  - ashlar --help
+  imports:
+  - ashlar
+  - ashlar.scripts

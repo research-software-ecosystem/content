@@ -1,0 +1,45 @@
+about:
+  description: The package generally provides methods for gene set enrichment analysis
+    of high-throughput RNA-Seq data by integrating differential expression and splicing.
+    It uses negative binomial distribution to model read count data, which accounts
+    for sequencing biases and biological variation. Based on permutation tests, statistical
+    significance can also be achieved regarding each gene's differential expression
+    and splicing, respectively.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SeqGSEA.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'Gene Set Enrichment Analysis (GSEA) of RNA-Seq Data: integrating differential
+    expression and splicing'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-seqgsea
+  version: 1.42.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - r-base
+  - r-doparallel
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - r-base
+  - r-doparallel
+source:
+  md5: 13213924066a18535220d42938e923fa
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SeqGSEA_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SeqGSEA/SeqGSEA_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SeqGSEA_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seqgsea/bioconductor-seqgsea_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SeqGSEA')"

@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/AntonelliLab/seqcap_processor
+  license: MIT
+  license_file: LICENSE
+  summary: Process sequence-capture FASTQ files into alignments for phylogenetic analyses.
+    Integrates allele phasing.
+build:
+  entry_points:
+  - secapr = secapr.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+package:
+  name: secapr
+  version: 2.2.8
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - pandas
+  - matplotlib-base
+  - biopython
+  - trimmomatic
+  - fastqc
+  - abyss
+  - spades
+  - blast
+  - mafft
+  - muscle
+  - emboss
+  - bwa
+  - samtools=1.9
+  - trimal
+source:
+  sha256: c2ba7597e3c8de0e1fb43a02d5b0bcff4de7bbf43144b9491fb46a95e77192b2
+  url: https://github.com/AntonelliLab/seqcap_processor/archive/v2.2.8.tar.gz
+test:
+  commands:
+  - secapr --version
+  imports:
+  - secapr

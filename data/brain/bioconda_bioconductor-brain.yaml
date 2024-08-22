@@ -1,0 +1,48 @@
+about:
+  description: Package for calculating aggregated isotopic distribution and exact
+    center-masses for chemical substances (in this version composed of C, H, N, O
+    and S). This is an implementation of the BRAIN algorithm described in the paper
+    by J. Claesen, P. Dittwald, T. Burzykowski and D. Valkenborg.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BRAIN.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Baffling Recursive Algorithm for Isotope distributioN calculations
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:brain
+  - doi:10.1021/ac303439m
+  parent_recipe:
+    name: bioconductor-brain
+    path: recipes/bioconductor-brain
+    version: 1.26.0
+package:
+  name: bioconductor-brain
+  version: 1.48.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-lattice
+  - r-polynomf
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-lattice
+  - r-polynomf
+source:
+  md5: 575b879f058d01202c3bc33b0ff8e3f1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BRAIN_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BRAIN/BRAIN_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BRAIN_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-brain/bioconductor-brain_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BRAIN')"

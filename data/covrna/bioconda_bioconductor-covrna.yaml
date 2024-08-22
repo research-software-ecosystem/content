@@ -1,0 +1,46 @@
+about:
+  description: This package provides the analysis methods fourthcorner and RLQ analysis
+    for large-scale transcriptomic data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/covRNA.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Multivariate Analysis of Transcriptomic Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:covrna
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-covrna
+    path: recipes/bioconductor-covrna
+    version: 1.6.0
+package:
+  name: bioconductor-covrna
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - r-ade4
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - r-ade4
+  - r-base
+source:
+  md5: dd8405538f8c54345579ee7d0d5dc63f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/covRNA_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/covRNA/covRNA_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/covRNA_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-covrna/bioconductor-covrna_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('covRNA')"

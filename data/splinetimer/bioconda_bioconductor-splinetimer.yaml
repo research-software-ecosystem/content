@@ -1,0 +1,59 @@
+about:
+  description: This package provides functions for differential gene expression analysis
+    of gene expression time-course data. Natural cubic spline regression models are
+    used. Identified genes may further be used for pathway enrichment analysis and/or
+    the reconstruction of time dependent gene regulatory association networks.
+  home: https://bioconductor.org/packages/3.18/bioc/html/splineTimeR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Time-course differential gene expression data analysis using spline regression
+    models followed by gene association network reconstruction
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:splinetimer
+  - doi:10.1371/journal.pone.0160791
+  parent_recipe:
+    name: bioconductor-splinetimer
+    path: recipes/bioconductor-splinetimer
+    version: 1.8.0
+package:
+  name: bioconductor-splinetimer
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-fis >=1.30.0,<1.31.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-genenet >=1.2.13
+  - r-gtools
+  - r-igraph
+  - r-longitudinal >=1.1.12
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-fis >=1.30.0,<1.31.0
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  - r-genenet >=1.2.13
+  - r-gtools
+  - r-igraph
+  - r-longitudinal >=1.1.12
+source:
+  md5: 09454e29df75ff3f9d9e3f2780fb5db6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/splineTimeR_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/splineTimeR/splineTimeR_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/splineTimeR_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-splinetimer/bioconductor-splinetimer_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('splineTimeR')"

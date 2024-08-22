@@ -1,0 +1,42 @@
+about:
+  description: Enrichment of metabolomics data using KEGG entries. Given a set of
+    affected compounds, FELLA suggests affected reactions, enzymes, modules and pathways
+    using label propagation in a knowledge model network. The resulting subnetwork
+    can be visualised and exported.
+  home: https://bioconductor.org/packages/3.18/bioc/html/FELLA.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Interpretation and enrichment for metabolomics data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-fella
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - r-base
+  - r-igraph
+  - r-matrix
+  - r-plyr
+  run:
+  - bioconductor-keggrest >=1.42.0,<1.43.0
+  - r-base
+  - r-igraph
+  - r-matrix
+  - r-plyr
+source:
+  md5: 106f8558197df891cfb6e28e406363e1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FELLA_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FELLA/FELLA_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FELLA_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fella/bioconductor-fella_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FELLA')"

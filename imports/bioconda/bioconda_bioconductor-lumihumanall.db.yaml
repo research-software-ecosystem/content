@@ -1,0 +1,42 @@
+about:
+  description: Illumina Human Illumina expression annotation data (chip lumiHumanAll)
+    assembled using data from public repositories
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/lumiHumanAll.db.html
+  license: Artistic-2.0
+  summary: Illumina Human Illumina expression annotation data (chip lumiHumanAll)
+build:
+  noarch: generic
+  number: 15
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-lumihumanall.db
+    path: recipes/bioconductor-lumihumanall.db
+    version: 1.22.0
+package:
+  name: bioconductor-lumihumanall.db
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: ce7e219b50833ceab203f0bbfb11d917
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/lumiHumanAll.db_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/lumiHumanAll.db/lumiHumanAll.db_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/lumiHumanAll.db_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lumihumanall.db/bioconductor-lumihumanall.db_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lumiHumanAll.db')"

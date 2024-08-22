@@ -1,0 +1,32 @@
+about:
+  home: https://jbrowse.org/
+  license: Apache-2.0
+  license_family: Apache
+  summary: The JBrowse 2 Genome Browser
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:jbrowse
+  - doi:10.1101/gr.094607.109
+package:
+  name: jbrowse2
+  version: 2.13.1
+requirements:
+  host:
+  - nodejs
+  run:
+  - nodejs
+  - bcftools
+  - gff3sort
+  - htslib
+  - samtools
+source:
+  sha256: 6b2ccd796ae6c0e09e8e02fc4b7173826994b1db81bad5961fde588c6fc6964e
+  url: https://github.com/GMOD/jbrowse-components/releases/download/v2.13.1/jbrowse-web-v2.13.1.zip
+test:
+  commands:
+  - jbrowse help | grep "command line tool for working with JBrowse"

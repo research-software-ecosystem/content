@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/rwdavies/rrbgen
+  doc_url: https://github.com/rwdavies/rrbgen
+  home: https://github.com/rwdavies/rrbgen
+  license: GPL3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A lightweight limited functionality R bgen read/write library
+build:
+  number: 11
+  run_exports:
+  - None
+  script: $R CMD INSTALL --build --install-tests .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - rwdavies
+package:
+  name: r-rrbgen
+  version: 0.0.6
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-rcpp >=0.12.18
+  - r-rcpparmadillo >=0.8.600.0.0
+  - r-testthat >=2.0.0
+  run:
+  - r-rcpp >=0.12.18
+  - r-rcpparmadillo >=0.8.600.0.0
+  - r-base
+  - r-testthat >=2.0.0
+source:
+  sha256: 2cfd00be202a164212949e290459736359e80a064f2992d59f57501629f218ee
+  url: https://github.com/rwdavies/rrbgen/releases/download/0.0.6/rrbgen_0.0.6.tar.gz
+test:
+  commands:
+  - $R -e "library('rrbgen')"
+  - $R -e "testthat::test_package('rrbgen', stop_on_failure = TRUE, stop_on_warning
+    = TRUE)"

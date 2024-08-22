@@ -1,0 +1,58 @@
+about:
+  description: The package contains methods to visualise the expression profile of
+    genes from a microarray or RNA-seq experiment, and offers a supervised clustering
+    approach to identify GO terms containing genes with expression levels that best
+    classify two or more predefined groups of samples. Annotations for the genes present
+    in the expression dataset may be obtained from Ensembl through the biomaRt package,
+    if not provided by the user. The default random forest framework is used to evaluate
+    the capacity of each gene to cluster samples according to the factor of interest.
+    Finally, GO terms are scored by averaging the rank (alternatively, score) of their
+    respective gene sets to cluster the samples. P-values may be computed to assess
+    the significance of GO term ranking. Visualisation function include gene expression
+    profile, gene ontology-based heatmaps, and hierarchical clustering of experimental
+    samples using gene expression data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GOexpress.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Visualise microarray and RNAseq data using gene ontology annotations
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-goexpress
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+  - r-ggplot2 >=0.9.0
+  - r-gplots >=2.13.0
+  - r-randomforest >=4.6
+  - r-rcolorbrewer >=1.0
+  - r-rcurl >=1.95
+  - r-stringr >=0.6.2
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - r-base
+  - r-ggplot2 >=0.9.0
+  - r-gplots >=2.13.0
+  - r-randomforest >=4.6
+  - r-rcolorbrewer >=1.0
+  - r-rcurl >=1.95
+  - r-stringr >=0.6.2
+source:
+  md5: b313b2555495c3d3fc5674120b7bb01b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GOexpress_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GOexpress/GOexpress_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GOexpress_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-goexpress/bioconductor-goexpress_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GOexpress')"

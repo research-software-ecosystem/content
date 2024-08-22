@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/zeeev/wham
+  license: MIT
+  license_family: MIT
+  summary: Structural variant detection and association testing
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - biotools:Wham6216
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: wham
+  version: 1.8.0.1.2017.05.03
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  git_rev: 4e8c9bee568211596cdc634d15600114e75d2619
+  git_url: https://github.com/zeeev/wham.git
+  patches:
+  - bamtools-gcc-fix.diff
+test:
+  commands:
+  - whamg --help 2>&1 | grep Version
+  - wham --help 2>&1 | grep WHAM-BAM

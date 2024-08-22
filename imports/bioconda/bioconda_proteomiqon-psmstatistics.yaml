@@ -1,0 +1,40 @@
+about:
+  description: "To measure the similarity of in silico generated spectra and measured\
+    \ MS/MS scans we use our own implementations of three established search enginge\
+    \ scores: \nSEQUEST, Andromeda and XTandem. Additionally, we also record quality\
+    \ control parameters such as the mass difference between the precursor ion and\
+    \ the theoretically \ncalulated mass or the uniquness of each score in comparison\
+    \ to 'competing' peptides within the search space. The PSMStatistics tool utilizes\
+    \ semi supervised machine \nlearning techniques to integrate search engine scores\
+    \ as well as the mentioned quality scores into one single consensus score.\nSince\
+    \ the search space is extended by so called decoys - reversed counterparts of\
+    \ peptides within the search space - we can estimate the distribution of 'true\
+    \ negatives' and \ncalculate local (PEP values) and global (Q values) false discovery\
+    \ rates at each consensus score. The reported peptides at user defined local and\
+    \ global FDR cutoffs can then\nbe used as inputs for any downstream analysis be\
+    \ it ProteinInference or PSMBasedQuantification.\n"
+  dev_url: https://github.com/CSBiology/ProteomIQon
+  doc_url: https://csbiology.github.io/ProteomIQon/tools/PSMStatistics.html
+  home: https://csbiology.github.io/ProteomIQon/
+  license: MIT
+  summary: The PSMStatistics tool utilizes semi supervised machine learning techniques
+    to integrate search engine scores as well as the mentioned quality scores into
+    one single consensus score.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: proteomiqon-psmstatistics
+  version: 0.0.8
+requirements:
+  host:
+  - unzip
+  run:
+  - openssl =1.1
+  - dotnet-runtime =5.0
+source:
+  sha256: cfa9c106c852eb77dc259dab2b323976450015a049596f44fbb0048e92792342
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMStatistics/0.0.8
+test:
+  commands:
+  - proteomiqon-psmstatistics --help

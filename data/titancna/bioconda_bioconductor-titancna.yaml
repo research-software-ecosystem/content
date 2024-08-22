@@ -1,0 +1,61 @@
+about:
+  description: Hidden Markov model to segment and predict regions of subclonal copy
+    number alterations (CNA) and loss of heterozygosity (LOH), and estimate cellular
+    prevalence of clonal clusters in tumour whole genome sequencing data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/TitanCNA.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Subclonal copy number and LOH prediction from whole genome sequencing of
+    tumours
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:titancna
+  parent_recipe:
+    name: bioconductor-titancna
+    path: recipes/bioconductor-titancna
+    version: 1.19.1
+package:
+  name: bioconductor-titancna
+  version: 1.40.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-variantannotation >=1.48.0,<1.49.0
+  - r-base
+  - r-data.table >=1.10.4
+  - r-dplyr >=0.5.0
+  - r-foreach >=1.4.3
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-variantannotation >=1.48.0,<1.49.0
+  - r-base
+  - r-data.table >=1.10.4
+  - r-dplyr >=0.5.0
+  - r-foreach >=1.4.3
+source:
+  md5: ce40de587ae35a22c583019e6a85dbc6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TitanCNA_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TitanCNA/TitanCNA_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TitanCNA_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-titancna/bioconductor-titancna_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TitanCNA')"

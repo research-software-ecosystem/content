@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/arq5x/lumpy-sv
+  license: MIT
+  summary: a general probabilistic framework for structural variant discovery
+build:
+  noarch: generic
+  number: 3
+package:
+  name: lumpy-sv
+  version: 0.3.1
+requirements:
+  run:
+  - lumpy-sv-minimal 0.3.1
+  - htslib
+  - python 2.7.*
+  - samtools
+  - gawk
+  - pysam
+  - numpy
+  - util-linux
+  - sambamba
+  - samblaster
+  - bamkit
+source:
+  patches:
+  - patch
+  sha256: 6a75dffafd238417011416c62d4351f64ea71bd018b5a7660383566f2cbb7c5d
+  url: https://github.com/arq5x/lumpy-sv/archive/v0.3.1.tar.gz
+test:
+  commands:
+  - lumpy 2>&1 | grep -q structural
+  - lumpy_filter 2>&1 | grep -q lumpy_filter\:\ usage
+  - lumpyexpress 2>&1 | grep -q lumpyexpress
+  - extractSplitReads_BwaMem --help
+  - pairend_distro.py --help

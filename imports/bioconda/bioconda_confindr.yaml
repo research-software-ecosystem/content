@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/OLC-Bioinformatics/ConFindr
+  doc_url: https://OLC-Bioinformatics.github.io/ConFindr/
+  home: https://github.com/OLC-Bioinformatics/ConFindr
+  license: MIT
+  license_family: MIT
+  summary: Detect intra- and inter-species bacterial contamination in NGS reads
+build:
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed --no-cache-dir .
+extra:
+  recipe-maintainers:
+  - adamkoziol
+  - pcrxn
+package:
+  name: confindr
+  version: 0.8.1
+requirements:
+  host:
+  - python >=3.9.15
+  - pip
+  run:
+  - python >=3.9.15
+  - biopython 1.81
+  - pysam >=0.15
+  - pytest
+  - bbmap >=39.01
+  - mash >=2.3
+  - samtools >=1.6
+  - minimap2
+  - kma >=1.4.9
+source:
+  sha256: a1eef8ee5e0a56416f00e05305cece51d1545f997d7cd0351f85f909cdabb30b
+  url: https://pypi.io/packages/source/c/confindr/confindr-0.8.1.tar.gz
+test:
+  commands:
+  - confindr.py --version
+  - confindr --version
+  imports:
+  - confindr_src

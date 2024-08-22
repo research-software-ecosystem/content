@@ -1,0 +1,58 @@
+about:
+  home: https://github.com/heathsc/gemBS
+  license: GPL-3.0
+  license_file: LICENSE.md
+  summary: gemBS is a bioinformatics pipeline designed for high throughput analysis
+    of DNA methylation from Whole Genome Bisulfite Sequencing data (WGBS).
+build:
+  number: 8
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1101/201988
+  skip-lints:
+  - uses_setuptools
+package:
+  name: gembs
+  version: 3.5.5_IHEC
+requirements:
+  build:
+  - make
+  - autoconf
+  - automake
+  - None
+  - wget
+  host:
+  - pip
+  - python
+  - htslib
+  - openssl
+  - bzip2
+  - zlib
+  run:
+  - python
+  - matplotlib-base
+  - multiprocess
+  - pigz
+  - openssl
+  - bzip2
+  - zlib
+  - htslib
+  - matplotlib-base
+  - multiprocess
+  - samtools
+  - bcftools
+  - bs_call
+  - gem3-mapper
+  - ucsc-bedtobigbed
+  - ucsc-wigtobigwig
+  - setuptools
+source:
+  patches:
+  - patch
+  - clock.patch
+  sha256: 687ed92052dbd8400563e5d7e431fee90645250e065f8f345bb16b0a0c2d416f
+  url: https://github.com/JakeLehle/gemBS/archive/v3.5.5_IHEC.tar.gz
+test:
+  commands:
+  - gemBS

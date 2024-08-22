@@ -1,0 +1,58 @@
+about:
+  description: Based on external numerous data files where rfPred scores are pre-calculated
+    on all genomic positions of the human exome, the package gives rfPred scores to
+    missense variants identified by the chromosome, the position (hg19 version), the
+    referent and alternative nucleotids and the uniprot identifier of the protein.
+    Note that for using the package, the user has to download the TabixFile and index
+    (approximately 3.3 Go).
+  home: https://bioconductor.org/packages/3.18/bioc/html/rfPred.html
+  license: GPL (>=2 )
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Assign rfPred functional prediction scores to a missense variants list
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rfpred
+  - doi:10.1101/037127
+  parent_recipe:
+    name: bioconductor-rfpred
+    path: recipes/bioconductor-rfpred
+    version: 1.18.0
+package:
+  name: bioconductor-rfpred
+  version: 1.40.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-data.table
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-data.table
+source:
+  md5: 125e88d593749d17979dfd08a67ea330
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/rfPred_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/rfPred/rfPred_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rfPred_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rfpred/bioconductor-rfpred_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rfPred')"

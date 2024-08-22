@@ -1,0 +1,63 @@
+about:
+  description: This package implements a Naive Bayes classifier for accurately differentiating
+    true polyadenylation sites (pA sites) from oligo(dT)-mediated 3' end sequencing
+    such as PAS-Seq, PolyA-Seq and RNA-Seq by filtering out false polyadenylation
+    sites, mainly due to oligo(dT)-mediated internal priming during reverse transcription.
+    The classifer is highly accurate and outperforms other heuristic methods.
+  home: https://bioconductor.org/packages/3.18/bioc/html/cleanUpdTSeq.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: cleanUpdTSeq cleans up artifacts from polyadenylation sites from oligo(dT)-mediated
+    3' end RNA sequending data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cleanupdtseq
+  parent_recipe:
+    name: bioconductor-cleanupdtseq
+    path: recipes/bioconductor-cleanupdtseq
+    version: 1.18.0
+package:
+  name: bioconductor-cleanupdtseq
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-bsgenome.drerio.ucsc.danrer7 >=1.4.0,<1.5.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-e1071
+  - r-seqinr
+  - r-stringr
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-bsgenome.drerio.ucsc.danrer7 >=1.4.0,<1.5.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-e1071
+  - r-seqinr
+  - r-stringr
+source:
+  md5: 52f27e948758be1db9d6b003d69a84b9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cleanUpdTSeq_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cleanUpdTSeq/cleanUpdTSeq_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cleanUpdTSeq_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cleanupdtseq/bioconductor-cleanupdtseq_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cleanUpdTSeq')"

@@ -1,0 +1,77 @@
+about:
+  description: geneXtendeR optimizes the functional annotation of ChIP-seq peaks by
+    exploring relative differences in annotating ChIP-seq peak sets to variable-length
+    gene bodies.  In contrast to prior techniques, geneXtendeR considers peak annotations
+    beyond just the closest gene, allowing users to see peak summary statistics for
+    the first-closest gene, second-closest gene, ..., n-closest gene whilst ranking
+    the output according to biologically relevant events and iteratively comparing
+    the fidelity of peak-to-gene overlap across a user-defined range of upstream and
+    downstream extensions on the original boundaries of each gene's coordinates.  Since
+    different ChIP-seq peak callers produce different differentially enriched peaks
+    with a large variance in peak length distribution and total peak count, annotating
+    peak lists with their nearest genes can often be a noisy process.  As such, the
+    goal of geneXtendeR is to robustly link differentially enriched peaks with their
+    respective genes, thereby aiding experimental follow-up and validation in designing
+    primers for a set of prospective gene candidates during qPCR.
+  home: https://bioconductor.org/packages/3.18/bioc/html/geneXtendeR.html
+  license: GPL-3.0-or-later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Optimized Functional Annotation Of ChIP-seq Data
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:genextender
+package:
+  name: bioconductor-genextender
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biocstyle >=2.30.0,<2.31.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-org.rn.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-data.table
+  - r-dplyr
+  - r-networkd3
+  - r-rcolorbrewer
+  - r-snowballc
+  - r-tm
+  - r-wordcloud
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biocstyle >=2.30.0,<2.31.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-org.rn.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  - r-data.table
+  - r-dplyr
+  - r-networkd3
+  - r-rcolorbrewer
+  - r-snowballc
+  - r-tm
+  - r-wordcloud
+source:
+  md5: 63ab36f83aa3d05bf932dc3c0e0c173a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/geneXtendeR_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/geneXtendeR/geneXtendeR_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geneXtendeR_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genextender/bioconductor-genextender_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('geneXtendeR')"

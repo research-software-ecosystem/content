@@ -1,0 +1,32 @@
+about:
+  description: UMIs are a popular way to identify duplicate DNA/RNA reads caused by
+    PCR amplification. This requires software for collapsing duplicate reads with
+    the same UMI, while accounting for sequencing/PCR errors. This tool implements
+    many efficient algorithms for orders-of-magnitude faster UMI deduplication than
+    previous tools (UMI-tools, etc.), while maintaining similar functionality. This
+    is achieved by using faster data structures with n-grams and BK-trees, along other
+    techniques that are carefully implemented to scale well to larger datasets and
+    longer UMIs. Users of UMICollapse have reported speedups from taking hours or
+    days to run with a previous tool to taking only a few minutes with this tool with
+    real datasets! doi 10.7717/peerj.8275.
+  home: https://github.com/Daniel-Liu-c0deb0t/UMICollapse
+  license: MIT
+  license_family: MIT
+  summary: Accelerating the deduplication and collapsing process for reads with Unique
+    Molecular Identifiers (UMI).
+build:
+  noarch: generic
+  number: 1
+package:
+  name: umicollapse
+  version: 1.0.0
+requirements:
+  run:
+  - openjdk >=17
+  - python
+source:
+  sha256: 40685d58f6be844ae4029eff1bf21f886f059da8293902ab390ee872e878edec
+  url: https://github.com/CharlotteAnne/UMICollapse/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - which umicollapse

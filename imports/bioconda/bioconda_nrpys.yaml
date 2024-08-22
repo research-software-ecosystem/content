@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/kblin/nrpys
+  license: AGPL-3.0-or-later
+  license_file: LICENSE.txt
+  summary: Python language bindings for nrps-rs substrate specificity predictor.
+build:
+  noarch: python
+  number: 3
+  run_exports:
+  - None
+package:
+  name: nrpys
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - rust
+  - maturin
+  - zlib
+  run:
+  - python >=3.8
+source:
+  patches:
+  - cargo.patch
+  - pyproject.patch
+  sha256: 77d2104ab276bf92fae59b64827047353a71f1a79b09f7d0fdc7370eb088bb7f
+  url: https://github.com/kblin/nrpys/archive/refs/tags/v0.1.1.tar.gz
+test:
+  imports:
+  - nrpys

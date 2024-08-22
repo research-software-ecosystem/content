@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/moshi4/ANIclustermap/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A tool for drawing ANI clustermap between all-vs-all microbial genomes
+build:
+  entry_points:
+  - ANIclustermap = aniclustermap.aniclustermap:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - moshi4
+package:
+  name: aniclustermap
+  version: 1.4.0
+requirements:
+  host:
+  - pip
+  - poetry-core
+  - python >=3.8
+  run:
+  - python >=3.8
+  - pandas >=1.4.1
+  - seaborn >=0.11.2
+  - scipy >=1.9.0
+  - fastani >=1.33
+  - skani >=0.1.0
+source:
+  sha256: c0542543ee14801d448ad9aff1abc4d7c225f94dcae21601e7c4f93bf1b63f26
+  url: https://pypi.io/packages/source/a/aniclustermap/aniclustermap-1.4.0.tar.gz
+test:
+  commands:
+  - ANIclustermap --help
+  imports:
+  - aniclustermap
+  requires:
+  - pytest
+  source_files:
+  - tests/

@@ -1,0 +1,40 @@
+about:
+  home: https://https://github.com/metaGmetapop/metapop
+  license: GPL-2.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: A pipeline for the macro- and micro-diversity analyses and visualization
+    of metagenomic-derived populations
+build:
+  noarch: generic
+  number: 1
+extra:
+  recipe-maintainers:
+  - jiarong
+package:
+  name: metapop
+  version: 1.0.2
+requirements:
+  run:
+  - r-base >=4.0,<4.1
+  - r-data.table
+  - r-ggplot2
+  - r-bit64
+  - r-gggenes
+  - r-cowplot
+  - r-stringr
+  - r-rcolorbrewer
+  - r-vegan
+  - r-compositions
+  - r-pheatmap
+  - r-doParallel
+  - bioconductor-rsamtools
+  - bioconductor-biostrings
+  - samtools
+  - bcftools
+source:
+  sha256: ded49143d698be2d2249a20096b96672c9d5ad47e153ca0c5203ab14733e9773
+  url: https://github.com/jiarong/MetaPop/archive/v1.0.2.tar.gz
+test:
+  commands:
+  - MetaPop.R -help | grep "Welcome to MetaPop"

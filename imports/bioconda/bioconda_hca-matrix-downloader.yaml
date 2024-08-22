@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/ebi-gene-expression-group/hca-matrix-downloader
+  license: MIT
+  summary: Python client for the HCA DCP matrix service
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: hca-matrix-downloader
+  version: 0.0.4
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - requests
+source:
+  sha256: 711358be16eea848676a6657d32d92802e308bdd6663ec71423c4187b4a569b8
+  url: https://github.com/ebi-gene-expression-group/hca-matrix-downloader/archive/0.0.4.tar.gz
+test:
+  commands:
+  - hca-matrix-downloader -h
+  - hca-mtx-to-10x

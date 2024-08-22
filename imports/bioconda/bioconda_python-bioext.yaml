@@ -1,0 +1,73 @@
+about:
+  home: https://github.com/veg/BioExt.git
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: A few handy bioinformatics tools not already in BioPython
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: python-bioext
+  version: 0.21.8
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy
+  run:
+  - freetype
+  - python
+  - biopython >=1.78
+  - None
+  - scipy
+  - pysam
+  - joblib
+  - six
+source:
+  patches:
+  - cythonize.patch
+  - osx-freetype.patch
+  sha256: e19ccc6ba7dc1d2b4b13e1a0d6fa60fce626298c0b2e97012b5fc1a4535ea618
+  url: https://pypi.io/packages/source/B/BioExt/bioext-0.21.8.tar.gz
+test:
+  commands:
+  - bam2fna 2>&1 | grep 'usage' > /dev/null
+  - bam2msa 2>&1 | grep 'usage' > /dev/null
+  - bealign 2>&1 | grep 'usage' > /dev/null
+  - clipedge 2>&1 | grep 'usage' > /dev/null
+  - msa2bam 2>&1 | grep 'usage' > /dev/null
+  - seqmerge 2>&1 | grep 'usage' > /dev/null
+  imports:
+  - BioExt
+  - BioExt.align
+  - BioExt.args
+  - BioExt.collections
+  - BioExt.errorize
+  - BioExt.freetype
+  - BioExt.freetype.ft_enums
+  - BioExt.io
+  - BioExt.io.BamIO
+  - BioExt.io.LazyAlignIO
+  - BioExt.io.SamIO
+  - BioExt.merge
+  - BioExt.misc
+  - BioExt.ndarray
+  - BioExt.optimize
+  - BioExt.orflist
+  - BioExt.phylo
+  - BioExt.rateclass
+  - BioExt.references
+  - BioExt.scorematrices
+  - BioExt.stats
+  - BioExt.tn93
+  - BioExt.uds
+  - BioExt.untranslate

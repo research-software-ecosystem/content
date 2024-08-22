@@ -1,0 +1,44 @@
+about:
+  description: The package contains the function for filtering genes by the proportion
+    of variation accounted for by the first principal component (PVAC).
+  home: https://bioconductor.org/packages/3.18/bioc/html/pvac.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: PCA-based gene filtering for Affymetrix arrays
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:pvac
+  - doi:10.1093/nar/gkr241
+  parent_recipe:
+    name: bioconductor-pvac
+    path: recipes/bioconductor-pvac
+    version: 1.28.0
+package:
+  name: bioconductor-pvac
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: ae148a3c65e5b6efc44cfea7d208d918
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/pvac_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/pvac/pvac_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/pvac_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pvac/bioconductor-pvac_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('pvac')"

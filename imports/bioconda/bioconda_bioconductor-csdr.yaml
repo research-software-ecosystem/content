@@ -1,0 +1,50 @@
+about:
+  description: This package contains functionality to run differential gene co-expression
+    across two different conditions. The algorithm is inspired by Voigt et al. 2017
+    and finds Conserved, Specific and Differentiated genes (hence the name CSD). This
+    package include efficient and variance calculation by bootstrapping and Welford's
+    algorithm.
+  home: https://bioconductor.org/packages/3.18/bioc/html/csdR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Differential gene co-expression
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-csdr
+  version: 1.8.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-glue
+  - r-matrixstats
+  - r-rcpp
+  - r-rhpcblasctl
+  - r-wgcna
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-glue
+  - r-matrixstats
+  - r-rcpp
+  - r-rhpcblasctl
+  - r-wgcna
+source:
+  md5: 02132c2d953434d0bb7de9b58e8b5769
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/csdR_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/csdR/csdR_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/csdR_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-csdr/bioconductor-csdr_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('csdR')"

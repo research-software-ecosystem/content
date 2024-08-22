@@ -1,0 +1,48 @@
+about:
+  description: 'GraphBin is a metagenomic contig bin-refinement tool that makes use
+    of assembly graphs.
+
+    '
+  dev_url: https://github.com/Vini2/GraphBin
+  doc_url: https://graphbin.readthedocs.io/
+  home: https://github.com/Vini2/GraphBin
+  license: BSD-3
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'GraphBin: Refined binning of metagenomic contigs using assembly graphs'
+build:
+  entry_points:
+  - graphbin = graphbin.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script:
+  - ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btaa180
+  recipe-maintainers:
+  - Vini2
+  - vinisalazar
+package:
+  name: graphbin
+  version: 1.7.4
+requirements:
+  host:
+  - pip
+  - python >=3.7,<3.11
+  - flit-core
+  run:
+  - cairocffi
+  - python >=3.7,<3.11
+  - python-igraph
+  - tqdm
+  - click
+  - cogent3
+source:
+  sha256: b1c7080aa61535fb3112e4fe3aae186b346a0074eec6e93650564a3b349cc69c
+  url: https://github.com/metagentools/GraphBin/archive/refs/tags/v1.7.4.tar.gz
+test:
+  commands:
+  - graphbin --help

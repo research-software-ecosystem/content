@@ -1,0 +1,52 @@
+about:
+  description: 'MetaPhOR was developed to enable users to assess metabolic dysregulation
+    using transcriptomic-level data (RNA-sequencing and Microarray data) and produce
+    publication-quality figures. A list of differentially expressed genes (DEGs),
+    which includes fold change and p value, from DESeq2 or limma, can be used as input,
+    with sample size for MetaPhOR, and will produce a data frame of scores for each
+    KEGG pathway. These scores represent the magnitude and direction of transcriptional
+    change within the pathway, along with estimated p-values.MetaPhOR then uses these
+    scores to visualize metabolic profiles within and between samples through a variety
+    of mechanisms, including: bubble plots, heatmaps, and pathway models.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/MetaPhOR.html
+  license: Artistic-2.0
+  summary: Metabolic Pathway Analysis of RNA
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-metaphor
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-clusterprofiler >=4.10.0,<4.11.0
+  - bioconductor-rcy3 >=2.22.0,<2.23.0
+  - r-base
+  - r-ggplot2
+  - r-ggrepel
+  - r-pheatmap
+  - r-recordlinkage
+  - r-stringr
+  run:
+  - bioconductor-clusterprofiler >=4.10.0,<4.11.0
+  - bioconductor-rcy3 >=2.22.0,<2.23.0
+  - r-base
+  - r-ggplot2
+  - r-ggrepel
+  - r-pheatmap
+  - r-recordlinkage
+  - r-stringr
+source:
+  md5: 311e286126427130d127b23a77b3b6f4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MetaPhOR_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MetaPhOR/MetaPhOR_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MetaPhOR_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-metaphor/bioconductor-metaphor_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MetaPhOR')"

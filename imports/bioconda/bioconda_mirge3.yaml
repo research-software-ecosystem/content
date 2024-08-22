@@ -1,0 +1,71 @@
+about:
+  description: Comprehensive analysis of small RNA sequencing data
+  dev_url: https://github.com/mhalushka/miRge3.0/
+  doc_source_url: https://github.com/mhalushka/miRge3.0/blob/master/README.rst
+  doc_url: https://mirge3.readthedocs.io/
+  home: https://github.com/mhalushka/miRge3.0/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Comprehensive analysis of small RNA sequencing Data
+build:
+  entry_points:
+  - miRge3.0 = mirge.__main__:main
+  noarch: python
+  number: 1
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - arunhpatil
+  - mhalushka
+package:
+  name: mirge3
+  version: 0.1.4
+requirements:
+  host:
+  - biopython
+  - cutadapt
+  - future >=0.18.2
+  - joblib >=0.15.1
+  - matplotlib-base
+  - pandas
+  - pip
+  - python >=3.6
+  - reportlab >=3.5.42
+  - scikit-learn
+  - scipy >=1.4.1
+  run:
+  - biopython
+  - cutadapt
+  - future >=0.18.2
+  - joblib >=0.15.1
+  - matplotlib-base
+  - pandas
+  - python
+  - reportlab >=3.5.42
+  - scikit-learn
+  - scipy >=1.4.1
+  - samtools
+  - bowtie
+  - viennarna
+  - r-ggplot2
+  - bioconductor-deseq2
+source:
+  patches:
+  - r_script.patch
+  sha256: 9e7ccd8d9c8f12f9f244ebcc7455ae5e0471db1d00fb8b639c969bd4cd862439
+  url: https://pypi.io/packages/source/m/mirge3/mirge3-0.1.4.tar.gz
+test:
+  commands:
+  - miRge3.0 --help
+  imports:
+  - mirge
+  - mirge.classes
+  - mirge.forgi
+  - mirge.forgi.graph
+  - mirge.forgi.threedee
+  - mirge.forgi.threedee.utilities
+  - mirge.forgi.utilities
+  - mirge.libs
+  - mirge.models
+  - mirge.rScripts

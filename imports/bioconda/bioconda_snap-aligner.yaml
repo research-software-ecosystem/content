@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/amplab/snap/
+  home: http://snap.cs.berkeley.edu/
+  license: Apache v2
+  summary: Scalable Nucleotide Alignment Program -- a fast and accurate read aligner
+    for high-throughput sequencing data
+build:
+  number: 3
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: snap-aligner
+  version: 2.0.3
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - snap-aligner-aarch64.patch
+  sha256: 8a47cfa929827e60d45dbd436ba2d1119cb2161bd5b6be99eaedac01fb6fc33a
+  url: https://github.com/amplab/snap/archive/refs/tags/v2.0.3.tar.gz
+test:
+  commands:
+  - snap-aligner 2>&1 | grep "SNAP"

@@ -1,0 +1,56 @@
+about:
+  description: Determine sample ploidy via flow cytometry histogram analysis. Reads
+    Flow Cytometry Standard (FCS) files via the flowCore bioconductor package, and
+    provides functions for determining the DNA ploidy of samples based on internal
+    standards.
+  home: https://bioconductor.org/packages/3.18/bioc/html/flowPloidy.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Analyze flow cytometer data to determine sample ploidy
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:flowploidy
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-flowploidy
+    path: recipes/bioconductor-flowploidy
+    version: 1.6.0
+package:
+  name: bioconductor-flowploidy
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-car
+  - r-catools
+  - r-knitr
+  - r-minpack.lm
+  - r-rmarkdown
+  - r-shiny
+  run:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-car
+  - r-catools
+  - r-knitr
+  - r-minpack.lm
+  - r-rmarkdown
+  - r-shiny
+source:
+  md5: 1020981a0f645d2dcbf1a38a3e42b7e0
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/flowPloidy_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/flowPloidy/flowPloidy_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowPloidy_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowploidy/bioconductor-flowploidy_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowPloidy')"

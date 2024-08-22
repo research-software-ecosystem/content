@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/snakemake/snakemake-interface-executor-plugins
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: This package provides a stable interface for interactions between Snakemake
+    and its executor plugins.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - johanneskoester
+package:
+  name: snakemake-interface-executor-plugins
+  version: 9.2.0
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - argparse-dataclass >=2.0.0,<3.0.0
+  - snakemake-interface-common >=1.12.0,<2.0.0
+  - throttler >=1.2.2,<2.0.0
+source:
+  sha256: 67feaf438a0b8b041ec5f1a1dd859f729036c70c07c9fdad895135f5b949e40a
+  url: https://pypi.io/packages/source/s/snakemake-interface-executor-plugins/snakemake_interface_executor_plugins-9.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - snakemake_interface_executor_plugins
+  requires:
+  - pip

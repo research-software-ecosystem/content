@@ -1,0 +1,32 @@
+about:
+  home: https://gitlab.com/LPCDRP/pbhoover
+  license: GPLv3
+  license_file: LICENSE
+  summary: Variant caller for legacy and low coverage Pacific Biosciences' long-read
+    sequencing data
+build:
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+package:
+  name: pbhoover
+  version: 1.1.0
+requirements:
+  host:
+  - python <3
+  - setuptools
+  run:
+  - python <3
+  - pbh5tools <=0.8.0
+  - bcftools <=1.3.1
+  - htslib <=1.3.2
+  - pyvcf <=0.6.7
+  - pbcore <=1.2.7
+source:
+  patches:
+  - patch
+  sha256: 38a08e436fbc5c26e776d0cdd506bd6330e66e673235e3d3996fe3a77b11bfba
+  url: https://gitlab.com/LPCDRP/pbhoover/-/archive/1.1.0/pbhoover-1.1.0.tar.gz
+test:
+  commands:
+  - pbhoover -h

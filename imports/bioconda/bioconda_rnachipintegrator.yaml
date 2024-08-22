@@ -1,0 +1,40 @@
+about:
+  description: RnaChipIntegrator is a utility that performs integrated analyses of
+    'gene' data (a set of genes or other genomic features) with 'peak' data (a set
+    of regions, for example ChIP peaks) to identify the genes nearest to each peak,
+    and vice versa
+  dev_url: https://github.com/fls-bioinformatics-core/RnaChipIntegrator
+  doc_url: https://rnachipintegrator.readthedocs.io
+  home: https://github.com/fls-bioinformatics-core/RnaChipIntegrator
+  license: Artistic License
+  license_family: OTHER
+  summary: Analyse genes against peak data, and vice versa
+build:
+  entry_points:
+  - RnaChipIntegrator = rnachipintegrator.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: rnachipintegrator
+  version: 3.0.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - xlsxwriter >=0.8.4
+source:
+  sha256: bdb5cd278a2d93bc7c0e3a7980609db5f24ffa0199b8857818ec8481c59ea0ed
+  url: https://pypi.io/packages/source/r/rnachipintegrator/RnaChipIntegrator-3.0.0.tar.gz
+test:
+  commands:
+  - RnaChipIntegrator --help
+  imports:
+  - rnachipintegrator
+  requires:
+  - nose

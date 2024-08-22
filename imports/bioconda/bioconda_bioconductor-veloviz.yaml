@@ -1,0 +1,53 @@
+about:
+  description: "VeloViz uses each cell\u2019s current observed and predicted future\
+    \ transcriptional states inferred from RNA velocity analysis to build a nearest\
+    \ neighbor graph between cells in the population. Edges are then pruned based\
+    \ on a cosine correlation threshold and/or a distance threshold and the resulting\
+    \ graph is visualized using a force-directed graph layout algorithm. VeloViz can\
+    \ help ensure that relationships between cell states are reflected in the 2D embedding,\
+    \ allowing for more reliable representation of underlying cellular trajectories."
+  home: https://bioconductor.org/packages/3.18/bioc/html/veloviz.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'VeloViz: RNA-velocity informed 2D embeddings for visualizing cell state
+    trajectories'
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-veloviz
+  version: 1.8.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-igraph
+  - r-matrix
+  - r-mgcv
+  - r-rcpp
+  - r-rspectra
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-igraph
+  - r-matrix
+  - r-mgcv
+  - r-rcpp
+  - r-rspectra
+source:
+  md5: 54c6f9e5fd6275be8b999a2c949cf6bb
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/veloviz_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/veloviz/veloviz_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/veloviz_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-veloviz/bioconductor-veloviz_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('veloviz')"

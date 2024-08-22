@@ -1,0 +1,39 @@
+about:
+  description: Annotation data file for cMAP assembled using data from public data
+    repositories
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/cMAP.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: A data package containing annotation data for cMAP
+build:
+  noarch: generic
+  number: 15
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-cmap
+    path: recipes/bioconductor-cmap
+    version: 1.15.1
+package:
+  name: bioconductor-cmap
+  version: 1.15.1
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: dbf8df4d4540151936884e1c5d747bcf
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/cMAP_1.15.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cMAP/cMAP_1.15.1.tar.gz
+  - https://bioarchive.galaxyproject.org/cMAP_1.15.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cmap/bioconductor-cmap_1.15.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cMAP')"

@@ -1,0 +1,53 @@
+about:
+  description: 'Statistical tools for ChIP-seq data analysis. The package includes
+    the statistical method described in Kaufmann et al. (2009) PLoS Biology: 7(4):e1000090.
+    Briefly, Taking the average DNA fragment size subjected to sequencing into account,
+    the software calculates genomic single-nucleotide read-enrichment values. After
+    normalization, sample and control are compared using a test based on the Poisson
+    distribution. Test statistic thresholds to control the false discovery rate are
+    obtained through random permutation.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/CSAR.html
+  license: Artistic-2.0
+  summary: Statistical tools for the analysis of ChIP-seq data
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:csar
+package:
+  name: bioconductor-csar
+  version: 1.54.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: cf22689abca527406f9f2b333739d7bc
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CSAR_1.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CSAR/CSAR_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CSAR_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-csar/bioconductor-csar_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CSAR')"

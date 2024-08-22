@@ -1,0 +1,40 @@
+about:
+  description: A collection of different sets of experimental data from yeast.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/yeastExpData.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Yeast Experimental Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-yeastexpdata
+    path: recipes/bioconductor-yeastexpdata
+    version: 0.26.0
+package:
+  name: bioconductor-yeastexpdata
+  version: 0.48.0
+requirements:
+  host:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  run:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 7cd63808a957defe831bf3e9d3ef4789
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/yeastExpData_0.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/yeastExpData/yeastExpData_0.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/yeastExpData_0.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-yeastexpdata/bioconductor-yeastexpdata_0.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('yeastExpData')"

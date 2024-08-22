@@ -1,0 +1,50 @@
+about:
+  description: 'Statistical tests for label-free LC-MS/MS data by spectral counts,
+    to discover differentially expressed proteins between two biological conditions.
+    Three tests are available: Poisson GLM regression, quasi-likelihood GLM regression,
+    and the negative binomial of the edgeR package.The three models admit blocking
+    factors to control for nuissance variables.To assure a good level of reproducibility
+    a post-test filter is available, where we may set the minimum effect size considered
+    biologicaly relevant, and the minimum expression of the most abundant condition.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/msmsTests.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: LC-MS/MS Differential Expression Tests
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-msmstests
+    path: recipes/bioconductor-msmstests
+    version: 1.20.0
+package:
+  name: bioconductor-msmstests
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-msmseda >=1.40.0,<1.41.0
+  - bioconductor-msnbase >=2.28.0,<2.29.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - r-base
+  run:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-msmseda >=1.40.0,<1.41.0
+  - bioconductor-msnbase >=2.28.0,<2.29.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - r-base
+source:
+  md5: 90c08df612ce3e4608ab3b9fa048764a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/msmsTests_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/msmsTests/msmsTests_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/msmsTests_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-msmstests/bioconductor-msmstests_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('msmsTests')"

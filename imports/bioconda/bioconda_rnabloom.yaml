@@ -1,0 +1,31 @@
+about:
+  description: RNA-Bloom is a reference-free and reference-guided transcriptome assembly
+    tool for short and long RNA-seq reads.
+  dev_url: https://github.com/bcgsc/RNA-Bloom
+  doc_url: https://github.com/bcgsc/RNA-Bloom/blob/master/README.md
+  home: https://github.com/bcgsc/RNA-Bloom
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Java tool for RNA-seq assembly
+build:
+  noarch: generic
+  number: 1
+extra:
+  identifiers:
+  - doi:10.1101/gr.260174.119
+  - doi:10.1038/s41467-023-38553-y
+package:
+  name: rnabloom
+  version: 2.0.1
+requirements:
+  run:
+  - openjdk >=11
+  - minimap2
+  - racon
+  - ntcard >=1.2.1
+source:
+  sha256: e06564e99db6847ea745c99cef7890980ed9b2c2a2e1d126e16df545c59d7626
+  url: https://github.com/bcgsc/RNA-Bloom/releases/download/v2.0.1/rnabloom_v2.0.1.tar.gz
+test:
+  commands:
+  - rnabloom --version | grep 2.0.1

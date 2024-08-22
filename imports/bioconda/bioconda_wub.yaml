@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/nanoporetech/wub
+  license: MPL-2.0
+  license_file: LICENSE.md
+  summary: Tools and software library developed by the ONT Applications group
+build:
+  noarch: python
+  number: 0
+package:
+  name: wub
+  version: 0.5.1
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - pytest
+  - biopython
+  - numpy
+  - matplotlib-base
+  - seaborn
+  - editdistance
+  - pandas >=0.20.2
+  - pysam
+  - tqdm
+  - statsmodels
+  - htslib=1.1
+source:
+  patches:
+  - wub_setup.patch
+  sha256: d09964255a525fd393972078bec5c0c1518bd147e2cb8258ad7bf1cffc2ac0d4
+  url: https://github.com/nanoporetech/wub/archive/v0.5.1.tar.gz
+test:
+  commands:
+  - add_errors.py -h
+  - compare_genomes_lastal.py -h
+  - reads_stats.py -h
+  - sequence_filter.py -h
+  - simulate_genome.py -h
+  imports:
+  - wub

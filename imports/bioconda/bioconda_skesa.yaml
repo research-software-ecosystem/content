@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/ncbi/SKESA
+  license: Public Domain
+  license_file: LICENSE
+  summary: Strategic Kmer Extension for Scrupulous Assemblies & Sequence Assembly
+    Using Target Enrichment
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: skesa
+  version: 2.5.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - boost >=1.70,<=1.71
+  - zlib
+  run:
+  - libstdcxx-ng
+  - boost >=1.70,<=1.71
+  - zlib
+source:
+  patches:
+  - skesa-aarch64.patch
+  sha256: dc5ad60f963afb09d3f2a3bab8917e657bd93364f0deca6e6844ede44968e979
+  url: https://github.com/ncbi/SKESA/archive/refs/tags/skesa.2.4.0_saute.1.3.0_2.tar.gz
+test:
+  commands:
+  - skesa --version
+  - saute --version
+  - saute_prot --version
+  - gfa_connector --version
+  - kmercounter --version

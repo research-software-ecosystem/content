@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/pjbriggs/nebulizer
+  doc_url: https://nebulizer.readthedocs.io/en/latest/
+  home: https://github.com/pjbriggs/nebulizer
+  license: AFL-3.0
+  license_file: LICENSE
+  summary: Command-line utilities to help with managing users, data libraries and
+    tools in a Galaxy instance
+build:
+  entry_points:
+  - nebulizer = nebulizer.cli:nebulizer
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: nebulizer
+  version: 0.7.1
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - bioblend
+  - mako
+  - click <=6.7
+source:
+  sha256: e6dbafe3681a99e5adc82f7d672380aa7e66d155d9c207770fa779ca87011403
+  url: https://github.com/pjbriggs/nebulizer/archive/v0.7.1.tar.gz
+test:
+  commands:
+  - nebulizer --help

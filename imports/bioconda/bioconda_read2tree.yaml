@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/DessimozLab/read2tree
+  license: MIT
+  license_file: LICENSE
+  summary: Building phylogenetic trees directly from sequencing reads
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  identifiers:
+  - doi:10.1101/2022.04.18.488678
+  recipe-maintainers:
+  - alpae
+package:
+  name: read2tree
+  version: 0.1.5
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - numpy
+  - biopython
+  - lxml
+  - tqdm
+  - scipy
+  - pyparsing
+  - requests
+  - natsort
+  - pyyaml
+  - filelock
+  - dendropy
+  - mafft
+  - iqtree
+  - ngmlr
+  - nextgenmap
+  - samtools
+  - filelock
+  - pyham
+  - pysam
+source:
+  sha256: c1a7f4801c0abc4742ff03c9af4e8817e4e8c9aa9ced0735e2275df2c7dd8e3d
+  url: https://github.com/DessimozLab/read2tree/archive/refs/tags/v0.1.5.tar.gz
+test:
+  commands:
+  - read2tree -h
+  imports:
+  - read2tree

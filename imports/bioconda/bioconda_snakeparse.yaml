@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/nh13/snakeparse
+  license: MIT
+  license_file: LICENSE
+  summary: Making Snakemake workflows into full-fledged command line tools since 1999.
+build:
+  entry_points:
+  - snakeparse=snakeparse.__main__:main
+  noarch: python
+  number: 2
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: snakeparse
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - pyhocon >=0.3.38
+  - pyyaml >=3.12
+source:
+  sha256: 0fbe0916a7524768b43a785cb22d3b490a5b953b400dc8cc29b17adcf8eded69
+  url: https://github.com/nh13/snakeparse/archive/0.1.0.tar.gz
+test:
+  imports:
+  - snakeparse

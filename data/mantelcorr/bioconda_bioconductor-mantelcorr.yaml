@@ -1,0 +1,40 @@
+about:
+  description: Computes Mantel cluster correlations from a (p x n) numeric data matrix
+    (e.g. microarray gene-expression data).
+  home: https://bioconductor.org/packages/3.18/bioc/html/MantelCorr.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Compute Mantel Cluster Correlations
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mantelcorr
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-mantelcorr
+    path: recipes/bioconductor-mantelcorr
+    version: 1.50.0
+package:
+  name: bioconductor-mantelcorr
+  version: 1.72.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 7ef5ee0a329a4cf218c340e9289fea32
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MantelCorr_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MantelCorr/MantelCorr_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MantelCorr_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mantelcorr/bioconductor-mantelcorr_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MantelCorr')"

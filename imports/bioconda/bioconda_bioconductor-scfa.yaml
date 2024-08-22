@@ -1,0 +1,58 @@
+about:
+  description: Subtyping via Consensus Factor Analysis (SCFA) can efficiently remove
+    noisy signals from consistent molecular patterns in multi-omics data. SCFA first
+    uses an autoencoder to select only important features and then repeatedly performs
+    factor analysis to represent the data with different numbers of factors. Using
+    these representations, it can reliably identify cancer subtypes and accurately
+    predict risk scores of patients.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SCFA.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: 'SCFA: Subtyping via Consensus Factor Analysis'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-scfa
+  version: 1.12.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-cluster
+  - r-coro
+  - r-glmnet
+  - r-igraph
+  - r-matrix
+  - r-matrixstats
+  - r-psych
+  - r-rhpcblasctl
+  - r-survival
+  - r-torch >=0.3.0
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-cluster
+  - r-coro
+  - r-glmnet
+  - r-igraph
+  - r-matrix
+  - r-matrixstats
+  - r-psych
+  - r-rhpcblasctl
+  - r-survival
+  - r-torch >=0.3.0
+source:
+  md5: c4e7d00ff20faff6a8a14eddde8e7a84
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SCFA_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SCFA/SCFA_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SCFA_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scfa/bioconductor-scfa_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SCFA')"

@@ -1,0 +1,71 @@
+about:
+  home: https://github.com/cmclean5/rSpectral
+  license: GPL-2
+  license_family: GPL2
+  license_file:
+  - /lib/R/share/licenses/GPL-2
+  summary: "Implements the network clustering algorithm described in Newman (2006)\
+    \ <doi:10.1103/PhysRevE.74.036104>. The complete iterative algorithm comprises\
+    \ of two steps. In the first step, the network is expressed in terms of its leading\
+    \ eigenvalue and eigenvector and recursively partition into two communities. Partitioning\
+    \ occurs if the maximum positive eigenvalue is greater than the tolerance (10e-5)\
+    \ for the current partition, and if it results in a positive contribution to the\
+    \ Modularity. Given an initial separation using the leading eigen step, 'rSpectral'\
+    \ then continues to maximise for the change in Modularity using a fine-tuning\
+    \ step - or variate thereof. The first stage here is to find the node which, when\
+    \ moved from one community to another, gives the maximum change in Modularity.\
+    \ This node\u2019s community is then fixed and we repeat the process until all\
+    \ nodes have been moved. The whole process is repeated from this new state until\
+    \ the change in the Modularity, between the new and old state, is less than the\
+    \ predefined tolerance. A slight variant of the fine-tuning step, which can improve\
+    \ speed of the calculation, is also provided. Instead of moving each node into\
+    \ each community in turn, we only consider moves of neighbouring nodes, found\
+    \ in different communities, to the community of the current node of interest.\
+    \ The two steps process is repeatedly applied to each new community found, subdivided\
+    \ each community into two new communities, until we are unable to find any division\
+    \ that results in a positive change in Modularity."
+build:
+  merge_build_host: true
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-rspectral
+  version: 1.0.0.10
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - filesystem
+  - make
+  - sed
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-rcpp >=1.0.8.3
+  - r-rcpparmadillo >=0.11.2.0.0
+  - r-rdpack
+  - bioconductor-graph
+  - r-igraph
+  run:
+  - r-base
+  - gcc-libs
+  - r-rcpp >=1.0.8.3
+  - r-rcpparmadillo >=0.11.2.0.0
+  - r-rdpack
+  - bioconductor-graph
+  - r-igraph
+source:
+  sha256: ddc03a1a1c11088f66ad55613ae389c252c60e819570c998a8cf2832a9f4cf89
+  url:
+  - /src/contrib/rSpectral_1.0.0.10.tar.gz
+  - /src/contrib/Archive/rSpectral/rSpectral_1.0.0.10.tar.gz
+test:
+  commands:
+  - $R -e "library('rSpectral')"
+  - '"%R%" -e "library(''rSpectral'')"'

@@ -1,0 +1,70 @@
+about:
+  dev_url: https://chanzuckerberg.github.io/cellxgene/
+  doc_url: https://github.com/chanzuckerberg/cellxgene
+  home: https://chanzuckerberg.github.io/cellxgene/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Web application for exploration of large scale scRNA-seq datasets
+build:
+  entry_points:
+  - cellxgene = server.cli.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - usegalaxy-eu:interactive_tool_cellxgene
+  recipe-maintainers:
+  - bgruening
+  - holtgrewe
+package:
+  name: cellxgene
+  version: 1.2.0
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - anndata >=0.7.6
+  - boto3 >=1.12.18
+  - click >=7.1.2
+  - fastobo >=0.6.1
+  - flask >=1.0.2
+  - flask-compress >=1.4.0
+  - flask-cors >=3.0.9
+  - flask-restful >=0.3.6
+  - flask-server-timing >=0.1.2
+  - flask-talisman >=0.7.0
+  - python-flatbuffers >=1.11.0,<2.0.0
+  - flatten-dict >=0.2.0
+  - fsspec >=0.4.4,<0.8.0
+  - gunicorn >=20.0.4
+  - h5py >=3.0.0
+  - numba >=0.51.2
+  - numpy >=1.17.5
+  - packaging >=20.0
+  - pandas >=1.0,!=1.1
+  - python >=3.6
+  - pyyaml >=5.4
+  - requests >=2.22.0
+  - s3fs ==0.4.2
+  - scipy >=1.4.0
+  - tiledb-py >=0.6.2
+  - sqlalchemy
+source:
+  sha256: 1a4c5e93106283ecd1d6bd38170942d298ce8087ace533c2a6e294b67fb13c53
+  url: https://pypi.io/packages/source/c/cellxgene/cellxgene-1.2.0.tar.gz
+test:
+  commands:
+  - cellxgene --help
+  imports:
+  - server
+  - server.app
+  - server.cli
+  - server.common
+  - server.common.web
+  - server.data_anndata
+  - server.data_common

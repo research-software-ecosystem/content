@@ -1,0 +1,37 @@
+about:
+  home: http://pypi.python.org/pypi/htsget
+  license: Apache Software
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Python API and command line interface for the GA4GH htsget API.
+build:
+  entry_points:
+  - htsget=htsget.cli:htsget_main
+  noarch: python
+  number: 0
+  script: 'sed -i.bak ''22d'' setup.py &&  -m pip install . --no-deps --ignore-installed
+    -vv '
+extra:
+  recipe-maintainers:
+  - dpryan79
+package:
+  name: python-htsget
+  version: 0.2.6
+requirements:
+  host:
+  - pip
+  - python
+  - setuptools_scm
+  run:
+  - humanize
+  - python
+  - requests
+  - six
+source:
+  sha256: 84816534e2740d3bcc4fb44a6d703b387b8a392209be098752466c35ff253884
+  url: https://pypi.io/packages/source/h/htsget/htsget-0.2.6.tar.gz
+test:
+  commands:
+  - htsget --help
+  imports:
+  - htsget

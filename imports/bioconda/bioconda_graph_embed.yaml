@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/fabriziocosta/GraphEmbed
+  doc_url: https://github.com/fabriziocosta/GraphEmbed
+  home: https://github.com/fabriziocosta/GraphEmbed
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Compute a 2D embedding of a data matrix given supervised class information.
+build:
+  entry_points:
+  - graphembed=graphembed.graph_embed:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - mtekman
+package:
+  name: graph_embed
+  version: '2.4'
+requirements:
+  host:
+  - python
+  run:
+  - docopt
+  - matplotlib
+  - networkx
+  - numpy
+  - python
+  - pygraphviz
+  - scikit-learn==0.22
+  - toolz
+source:
+  sha256: b0bf6cac610c77d4a87a7f9894de453393641382c30fd042f410403f1302ed1d
+  url: https://pypi.io/packages/source/g/graphembed/graphembed-0.0.107.tar.gz
+test:
+  commands:
+  - graphembed --version
+  imports:
+  - graphembed

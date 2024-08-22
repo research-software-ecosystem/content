@@ -1,0 +1,36 @@
+about:
+  doc_url: https://docs.rs/crate/ncbitaxonomy/1.0.7
+  home: https://github.com/pvanheus/ncbitaxonomy
+  license: MIT
+  license_file: LICENSE
+  summary: 'A Rust crate for working with a local copy of the NCBI Taxonomy database,
+    which provides utilities for taxonomic filtering.
+
+    '
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: rust-ncbitaxonomy
+  version: 1.0.7
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - sqlite
+  run:
+  - sqlite
+source:
+  sha256: fc78c0db6b2bac71db449f2da44740f08c192362a5dae516834d8f37fdacd801
+  url: https://github.com/pvanheus/ncbitaxonomy/archive/1.0.7.tar.gz
+test:
+  commands:
+  - taxonomy_util --help | grep NCBI
+  - taxonomy_filter_refseq --help | grep NCBI
+  - taxonomy_filter_fastq --help | grep FASTQ

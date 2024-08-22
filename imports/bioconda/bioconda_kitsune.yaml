@@ -1,0 +1,43 @@
+about:
+  description: 'K-mer-length Iterative Selection for UNbiased Ecophylogenomics
+
+    '
+  dev_url: https://github.com/natapol/kitsune
+  home: https://github.com/natapol/kitsune
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: kitsune
+build:
+  entry_points:
+  - kitsune=kitsune.kitsune:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - natapol
+  - cumbof
+package:
+  name: kitsune
+  version: 1.3.5
+requirements:
+  host:
+  - python >=3.5
+  - pip
+  run:
+  - kmer-jellyfish >=2.2
+  - numpy >=1.22.3
+  - python >=3.5
+  - scipy >=1.7.3
+  - tqdm >=4.38.0
+source:
+  sha256: 73af096870a02dd6b3774578b4e3d6b86122e99a27877977045330f7a24d2e41
+  url: https://pypi.io/packages/source/k/kitsune/kitsune-1.3.5.tar.gz
+test:
+  commands:
+  - kitsune --version
+  imports:
+  - kitsune

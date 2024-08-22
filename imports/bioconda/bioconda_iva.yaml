@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/sanger-pathogens/iva
+  license: GPLv3
+  license_family: GPL
+  summary: Iterative Virus Assembler
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: iva
+  version: 1.0.11
+requirements:
+  host:
+  - python >=3
+  - pip
+  - pyfastaq >=3.10.0
+  - networkx >=1.7
+  - pysam >=0.8.1
+  - packaging
+  - kmc
+  - smalt
+  - mummer
+  - samtools
+  run:
+  - python >=3
+  - pyfastaq >=3.10.0
+  - networkx >=1.7
+  - pysam >=0.8.1
+  - packaging
+  - kmc
+  - smalt
+  - mummer
+  - samtools
+source:
+  sha256: fc33e24926de84efc2eda9ad753e5f0facd191c7298e3c0dfe3016af25fb110f
+  url: https://github.com/sanger-pathogens/iva/archive/v1.0.11.tar.gz
+test:
+  commands:
+  - iva -h 2>&1 | grep "SMALT mapping options"
+  imports:
+  - iva

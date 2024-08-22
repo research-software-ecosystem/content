@@ -1,0 +1,60 @@
+about:
+  description: GBScleanR is a package for quality check, filtering, and error correction
+    of genotype data derived from next generation sequcener (NGS) based genotyping
+    platforms. GBScleanR takes Variant Call Format (VCF) file as input. The main function
+    of this package is `estGeno()` which estimates the true genotypes of samples from
+    given read counts for genotype markers using a hidden Markov model with incorporating
+    uneven observation ratio of allelic reads. This implementation gives robust genotype
+    estimation even in noisy genotype data usually observed in Genotyping-By-Sequnencing
+    (GBS) and similar methods, e.g. RADseq. The current implementation accepts genotype
+    data of a diploid population at any generation of multi-parental cross, e.g. biparental
+    F2 from inbred parents, biparental F2 from outbred parents, and 8-way recombinant
+    inbred lines (8-way RILs) which can be refered to as MAGIC population.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GBScleanR.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: Error correction tool for noisy genotyping by sequencing (GBS) data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-gbscleanr
+  version: 1.6.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-seqarray >=1.42.0,<1.43.0
+  - r-base
+  - r-expm
+  - r-ggplot2
+  - r-rcpp
+  - r-rcppparallel
+  - r-tidyr
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-seqarray >=1.42.0,<1.43.0
+  - r-base
+  - r-expm
+  - r-ggplot2
+  - r-rcpp
+  - r-rcppparallel
+  - r-tidyr
+source:
+  md5: f54a8356b8931c5c6dd6150a021c56cf
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GBScleanR_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GBScleanR/GBScleanR_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GBScleanR_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gbscleanr/bioconductor-gbscleanr_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GBScleanR')"

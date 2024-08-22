@@ -1,0 +1,62 @@
+about:
+  home: https://github.com/hms-dbmi/dropEst/
+  license: GPL3
+  license_file: LICENSE.md
+  summary: Pipeline for initial analysis of droplet-based single-cell RNA-seq data
+build:
+  number: 8
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  skip: true
+package:
+  name: dropest
+  version: 0.8.6
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - r-base
+  - boost
+  - boost-cpp
+  - bamtools
+  - zlib
+  - bzip2
+  - r-rcpp
+  - r-rcppeigen
+  - r-rinside
+  - r-matrix
+  - r-ks
+  - r-ggplot2
+  - r-dplyr
+  - r-magrittr
+  - r-pcapp
+  - r-rcppprogress
+  run:
+  - r-base
+  - boost
+  - bamtools
+  - zlib
+  - bzip2
+  - r-rcpp
+  - r-rcppeigen
+  - r-rinside
+  - r-matrix
+  - r-ks
+  - r-ggplot2
+  - r-dplyr
+  - r-magrittr
+  - r-pcapp
+  - r-rcppprogress
+source:
+  patches:
+  - patch
+  sha256: 06156485c62d09349d5d7bc2e49fa739578e85b409a6a674b20e054d15a6c8a9
+  url: https://github.com/hms-dbmi/dropEst/archive/v0.8.6.tar.gz
+test:
+  commands:
+  - dropest --help
+  - droptag --help
+  - R -e "library('dropestr')"

@@ -1,0 +1,49 @@
+about:
+  description: Takes as input an incomplete perturbation profile and differential
+    gene expression in log odds and infers unobserved perturbations and augments observed
+    ones. The inference is done by iteratively inferring a network from the perturbations
+    and inferring perturbations from the network. The network inference is done by
+    Nested Effects Models.
+  home: https://bioconductor.org/packages/3.18/bioc/html/nempi.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Inferring unobserved perturbations from gene expression data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-nempi
+  version: 1.10.0
+requirements:
+  host:
+  - bioconductor-epinem >=1.26.0,<1.27.0
+  - bioconductor-mnem >=1.18.0,<1.19.0
+  - r-base
+  - r-e1071
+  - r-matrixstats
+  - r-naturalsort
+  - r-nnet
+  - r-randomforest
+  run:
+  - bioconductor-epinem >=1.26.0,<1.27.0
+  - bioconductor-mnem >=1.18.0,<1.19.0
+  - r-base
+  - r-e1071
+  - r-matrixstats
+  - r-naturalsort
+  - r-nnet
+  - r-randomforest
+source:
+  md5: 1180e323b8f109079a74702ef7159cda
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/nempi_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/nempi/nempi_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nempi_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nempi/bioconductor-nempi_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('nempi')"

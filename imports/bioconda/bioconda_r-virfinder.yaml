@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/jessieren/VirFinder
+  license: USC-RL v1.0
+  summary: 'VirFinder: a novel k-mer based tool for identifying viral sequences from
+    assembled metagenomic data.'
+build:
+  number: 7
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.1186/s40168-017-0283-5
+  recipe-maintainers:
+  - wclose
+package:
+  name: r-virfinder
+  version: 1.1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - bioconductor-qvalue
+  - r-base
+  - r-glmnet
+  - r-rcpp
+  run:
+  - bioconductor-qvalue
+  - r-base
+  - r-glmnet
+  - r-rcpp
+source:
+  sha256: fb84d0527a1ae581a89b0aa3925be6226073e71d3e03c44d5c09fe37d216d9c8
+  url: https://github.com/jessieren/VirFinder/archive/v1.1.tar.gz
+test:
+  commands:
+  - $R -e "library('VirFinder')"

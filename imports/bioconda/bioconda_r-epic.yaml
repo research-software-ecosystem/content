@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/GfellerLab/EPIC
+  license: other
+  license_family: other
+  license_file: LICENSE
+  summary: Estimate the Proportion of Immune and Cancer cells from bulk gene expression
+    data.
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.7554/eLife.26476.001
+  recipe-maintainers:
+  - grst
+package:
+  name: r-epic
+  version: 1.1.7
+requirements:
+  host:
+  - r-base
+  - r-roxygen2 >=6.0.1
+  run:
+  - r-base
+source:
+  sha256: 795150b042606a9ab6efbf3b50145c4ee6b626ede5f344b3dd83045238b1f625
+  url:
+  - https://github.com/GfellerLab/EPIC/archive/v1.1.7.tar.gz
+test:
+  commands:
+  - $R -e "library('EPIC')"

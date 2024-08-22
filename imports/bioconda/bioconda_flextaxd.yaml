@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/FOI-Bioinformatics/flextaxd
+  license: GPLv3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Script that allows the creation of custom kraken databases from various
+    sources (NCBI, QIIME, CanSNPer)
+build:
+  entry_points:
+  - flextaxd=flextaxd.custom_taxonomy_databases:main
+  - flextaxd-create=flextaxd.create_databases:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - druvus
+package:
+  name: flextaxd
+  version: 0.4.4
+requirements:
+  host:
+  - pip
+  - python >3
+  run:
+  - python >3
+source:
+  sha256: 1b942ad23a79adea6602d387efbea4b6947ce2e92304fdfe4296c5507fdae745
+  url: https://github.com/FOI-Bioinformatics/flextaxd/archive/v0.4.4.tar.gz
+test:
+  commands:
+  - flextaxd --help
+  - flextaxd-create --help
+  imports:
+  - flextaxd
+  - flextaxd.modules
+  - flextaxd.modules.database

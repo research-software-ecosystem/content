@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/marbl/VALET
+  license: MIT
+  summary: Pipeline for detecting mis-assemblies in metagenomic assemblies
+build:
+  noarch: generic
+  number: 5
+package:
+  name: valet
+  version: 1.0
+requirements:
+  run:
+  - python <3
+  - bowtie2
+  - tbb =2020.2
+  - samtools
+  - bedtools
+  - numpy
+  - scipy
+  - perl
+  - r-base
+source:
+  md5: bc8ed448610fbc42a92ae906dcead2f9
+  patches:
+  - valet.patch
+  url: https://github.com/marbl/VALET/archive/v1.0.tar.gz
+test:
+  commands:
+  - valet.py -h
+  - bowtie2 --help
+  - samtools --help

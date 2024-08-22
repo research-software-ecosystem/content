@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/sybila/eBCSgen
+  doc_url: https://ebcsgen.readthedocs.io/
+  home: https://github.com/sybila/eBCSgen
+  license: MIT
+  license_file: LICENSE
+  summary: eBSCgen is a tool for development and analysis of models written in Biochemical
+    Space Language (BCSL).
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - xtrojak
+package:
+  name: ebcsgen
+  version: 2.2.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - numpy
+  - pandas
+  - pyparsing
+  - regex
+  - requests
+  - scipy
+  - sortedcontainers
+  - sympy
+  - python-libsbml
+  - lark
+  - lark-parser
+  - pymodelchecking
+source:
+  sha256: 023e2a0a3613ab36e9344d07e589f483283b306be9b760b4827b0807781b0743
+  url: https://github.com/sybila/eBCSgen/archive/refs/tags/v2.2.0.tar.gz
+test:
+  imports:
+  - eBCSgen

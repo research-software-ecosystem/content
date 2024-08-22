@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/LUMC/locus_processing
+  license: MIT License
+  license_family: MIT
+  summary: Tools for working with locus definition files
+build:
+  entry_points:
+  - locus2bed = locus_processing.cli:locus_to_bed
+  - validate_locus = locus_processing.cli:validate_locus
+  - complete_locus = locus_processing.cli:complete_locus
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: locus_processing
+  version: 0.0.4
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - click >=6.7
+  - marshmallow ==2.13.5
+  - requests >=2.18.1
+  - pyyaml >=3.12
+source:
+  sha256: 01de0f896acc31645f2753afd4297aa148a9eca9efa2b180dce46bf84a2da779
+  url: https://pypi.io/packages/source/l/locus_processing/locus_processing-0.0.4.tar.gz
+test:
+  commands:
+  - locus2bed --help
+  - validate_locus --help
+  - complete_locus --help
+  imports:
+  - locus_processing

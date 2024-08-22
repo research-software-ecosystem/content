@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/bcgsc/straglr
+  home: https://github.com/bcgsc/straglr
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'Short-tandem repeat genotyping using long reads '
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  identifiers:
+  - doi:10.1186/s13059-021-02447-3
+  recipe-maintainers:
+  - wdecoster
+package:
+  name: straglr
+  version: 1.5.1
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - trf
+  - blast
+  - pysam >=0.14.0
+  - pybedtools >=0.9.0
+  - intspan >=1.5.8
+  - numpy >=1.22.3
+  - pathos >=0.2.3
+  - scikit-learn >=1.1
+  - scipy >=1.8.0
+source:
+  sha256: 8c65247e9329f5c0b51b83cbf595089efc1d5f4783fc7e8346c05b93e9bc8abe
+  url: https://github.com/bcgsc/straglr/archive/refs/tags/v1.5.1.tar.gz
+test:
+  commands:
+  - straglr.py --help

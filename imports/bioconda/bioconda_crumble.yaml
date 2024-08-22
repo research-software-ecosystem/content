@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/jkbonfield/crumble
+  license: multiple BSD style licenses
+  license_family: BSD
+  summary: Controllable lossy compression of BAM/CRAM files
+build:
+  number: 3
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/bty608
+  recipe-maintainers:
+  - maarten-k
+package:
+  name: crumble
+  version: 0.9.1
+requirements:
+  build:
+  - make
+  - autoconf
+  - automake <1.16.5
+  - None
+  host:
+  - htslib
+  - zlib
+  run:
+  - htslib
+source:
+  sha256: d06afb75734d6d9967813136ad11ad9901a1518483bf9d9b2a39136ec26114a8
+  url: https://github.com/jkbonfield/crumble/archive/refs/tags/v0.9.1.tar.gz
+test:
+  commands:
+  - 'crumble -h |grep ''Usage: crumble'''

@@ -1,0 +1,54 @@
+about:
+  description: The package provides methods of combining the graph structure learning
+    and generalized least squares regression to improve the regression estimation.
+    The main function sparsenetgls() provides solutions for multivariate regression
+    with Gaussian distributed dependant variables and explanatory variables utlizing
+    multiple well-known graph structure learning approaches to estimating the precision
+    matrix, and uses a penalized variance covariance matrix with a distance tuning
+    parameter of the graph structure in deriving the sandwich estimators in generalized
+    least squares (gls) regression. This package also provides functions for assessing
+    a Gaussian graphical model which uses the penalized approach. It uses Receiver
+    Operative Characteristics curve as a visualization tool in the assessment.
+  home: https://bioconductor.org/packages/3.18/bioc/html/sparsenetgls.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Using Gaussian graphical structue learning estimation in generalized least
+    squared regression for multivariate normal regression
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-sparsenetgls
+    path: recipes/bioconductor-sparsenetgls
+    version: 1.0.0
+package:
+  name: bioconductor-sparsenetgls
+  version: 1.20.0
+requirements:
+  host:
+  - r-base
+  - r-glmnet
+  - r-huge
+  - r-mass
+  - r-matrix
+  run:
+  - r-base
+  - r-glmnet
+  - r-huge
+  - r-mass
+  - r-matrix
+source:
+  md5: 32b8f3b9fe86b40386aee23ac4ea55fd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/sparsenetgls_1.20.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/sparsenetgls/sparsenetgls_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sparsenetgls_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sparsenetgls/bioconductor-sparsenetgls_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sparsenetgls')"

@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/theAguy/crispector2
+  license: free to academic and non-for-profit research work, non-commercial use,
+    see LICENSE file
+  license_file: LICENSE
+  summary: Accurate estimation of off-target editing activity from comparative NGS
+    data
+build:
+  entry_points:
+  - crispector = crispector2.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - theAguy
+package:
+  name: crispector2
+  version: 2.1.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - biopython >=1.74, <=1.79
+  - fastp
+  - python-edlib
+  - click >=7.0
+  - pyyaml >=5.1.2
+  - matplotlib-base >=3.1.2
+  - scipy >=1.2.1
+  - numpy >=1.12.1
+  - seaborn >=0.9.0
+  - plotly >=4.3.0
+  - pandas >=0.24.2
+  - statsmodels
+  - jinja2
+  - tqdm >=4.66.0
+  - mpmath
+source:
+  sha256: 1c624fda975f293b5acab8b2c6afe98cacaaa77a79dc54c923b18c08fa1942cc
+  url: https://github.com/theAguy/crispector2/archive/refs/tags/v2.1.2.tar.gz
+test:
+  commands:
+  - crispector -h

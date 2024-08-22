@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/huangnengCSU/minibusco
+  home: https://github.com/huangnengCSU/minibusco
+  license: Apache License 2.0
+  license_file: LICENSE
+  summary: 'minibusco: a faster and more accurate reimplementation of BUSCO'
+build:
+  entry_points:
+  - minibusco=minibusco:main
+  noarch: python
+  number: 0
+  script:
+  - -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - huangnengCSU
+package:
+  name: minibusco
+  version: 0.2.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - pandas
+  - hmmer
+  - miniprot >=0.11
+  - sepp
+  - dendropy <4.6.0
+source:
+  sha256: 2f9107e0fef87d1e6b2d98ae616f21ec6525184dc4ea481d7317cbe1c297f9e2
+  url: https://github.com/huangnengCSU/minibusco/archive/refs/tags/v0.2.1.tar.gz
+test:
+  commands:
+  - minibusco --help

@@ -1,0 +1,42 @@
+about:
+  description: 'This tool is used to calculate the pseudo-temporal development trajectory
+    of single-cell data.
+
+    '
+  dev_url: https://github.com/klarman-cell-observatory/forceatlas2
+  home: https://github.com/klarman-cell-observatory/forceatlas2-python
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Multithreaded Gephi Force Atlas2 Layout algorithm in 2D and 3D.
+build:
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - yihming
+package:
+  name: forceatlas2-python
+  version: '1.1'
+requirements:
+  host:
+  - python >=3.6
+  - pandas >=0.21
+  - pip
+  - openjdk >=8
+  - setuptools_scm
+  run:
+  - python >=3.6
+  - pandas >=0.21
+  - importlib_metadata >=0.7
+  - setuptools
+  - openjdk >=8
+source:
+  sha256: 57bbe7d3bc74f7dd407822f58fcbd4047777451c9d694d4c4eedf378e3212b2c
+  url: https://pypi.io/packages/source/f/forceatlas2-python/forceatlas2-python-1.1.tar.gz
+test:
+  commands:
+  - java --version
+  imports:
+  - forceatlas2

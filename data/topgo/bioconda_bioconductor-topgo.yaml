@@ -1,0 +1,60 @@
+about:
+  description: topGO package provides tools for testing GO terms while accounting
+    for the topology of the GO graph. Different test statistics and different methods
+    for eliminating local similarities and dependencies between GO terms can be implemented
+    and applied.
+  home: https://bioconductor.org/packages/3.18/bioc/html/topGO.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Enrichment Analysis for Gene Ontology
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:topgo
+  - doi:10.1093/bioinformatics/btl140
+  parent_recipe:
+    name: bioconductor-topgo
+    path: recipes/bioconductor-topgo
+    version: 2.32.0
+package:
+  name: bioconductor-topgo
+  version: 2.54.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-dbi
+  - r-lattice
+  - r-matrixstats
+  - r-sparsem >=0.73
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-go.db >=3.18.0,<3.19.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-dbi
+  - r-lattice
+  - r-matrixstats
+  - r-sparsem >=0.73
+source:
+  md5: 62aeda25dfb89dfd466ddc749e52a422
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/topGO_2.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/topGO/topGO_2.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/topGO_2.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-topgo/bioconductor-topgo_2.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('topGO')"

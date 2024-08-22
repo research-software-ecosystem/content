@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/BigDataBiology/GMGC-mapper
+  license: MIT
+  license_family: MIT
+  summary: Map genes and genome to the Global Microbial Gene Catalog (GMGC)
+build:
+  entry_points:
+  - gmgc-mapper=gmgc_mapper.main:main
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - psj1997
+package:
+  name: gmgc-mapper
+  version: 0.2.0
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - atomicwrites
+  - biopython
+  - numpy
+  - python
+  - pyyaml
+  - scikit-bio
+  - tqdm
+  - prodigal
+source:
+  sha256: 49977835cd3af85c3ed45ba4fd2c173ad94249a9e90c56599cc342c95a001da6
+  url: https://pypi.io/packages/source/G/GMGC-mapper/GMGC-mapper-0.2.0.tar.gz
+test:
+  commands:
+  - gmgc-mapper --help
+  imports:
+  - gmgc_mapper

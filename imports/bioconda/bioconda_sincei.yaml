@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/bhardwaj-lab/sincei
+  license: MIT
+  license_file: LICENCE.txt
+  summary: A user-friendly toolkit for QC, counting, clustering and plotting of single-cell
+    (epi)genomics data.
+build:
+  entry_points:
+  - sincei = sincei.sincei:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  identifiers:
+  - biotools:sincei
+  - doi:10.5281/zenodo.8105536
+package:
+  name: sincei
+  version: '0.4'
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - hatchling
+  run:
+  - python >=3.8
+  - umap-learn
+  - pandas
+  - deeptools
+  - scanpy
+  - anndata
+  - loompy
+  - gensim
+  - networkx
+  - leidenalg
+  - python-igraph
+  - session-info
+  - pytorch
+  - importlib-metadata
+source:
+  sha256: 04d60233a9cfadc32601b5ef79b872bc6e08c51bd6909e62a22a9b37ecabd213
+  url: https://pypi.io/packages/source/s/sincei/sincei-0.4.tar.gz
+test:
+  commands:
+  - sincei -h
+  imports:
+  - sincei

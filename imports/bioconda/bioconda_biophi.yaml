@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/Merck/BioPhi
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: BioPhi open-source antibody design platform
+build:
+  entry_points:
+  - biophi = biophi.common.cli.main:main
+  noarch: python
+  number: 3
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: biophi
+  version: 1.0.9
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  - pytest
+  run:
+  - python >=3.8
+  - abnumber ==0.3.2
+  - anarci ==2020.04.23
+  - hmmer >=3.1
+  - click >=7
+  - sqlalchemy <2
+  - flask <3
+  - werkzeug <3
+  - redis-py
+  - celery
+  - requests
+  - tqdm
+  - xlsxwriter
+  - humanize
+  - sapiens >=1.0.4
+  - pandas <2.2
+source:
+  sha256: dd0662ce1e8ff750487493c23db7ac2fa0e9b7cf0868f479996300aec2e2acd2
+  url: https://github.com/Merck/BioPhi/archive/v1.0.9.tar.gz
+test:
+  commands:
+  - biophi --help
+  - biophi sapiens --help
+  - biophi oasis --help
+  imports:
+  - biophi

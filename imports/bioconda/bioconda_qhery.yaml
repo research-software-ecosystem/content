@@ -1,0 +1,30 @@
+about:
+  home: http://github.com/mjsull/qhery/
+  license: GPL-3.0-only
+  license_file: LICENSE.md
+  summary: Identification of mutations in SARS-CoV-2 associated with resistance to
+    treatment.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: qhery
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.6
+  - poetry >=1.1.15
+  run:
+  - python >=3.6
+  - bcftools >=1.15.1
+  - pysam >=0.19.1
+  - blast >=2.2
+  - lofreq >=2.1.5
+  - nextclade >=2.5.0
+source:
+  sha256: 5d2d0d290d24d70601a5ea2cd1bb33cb794a70a9a2427baf0160aacc2f6f99dc
+  url: https://github.com/mjsull/qhery/archive/v0.1.2.tar.gz
+test:
+  commands:
+  - qhery -h

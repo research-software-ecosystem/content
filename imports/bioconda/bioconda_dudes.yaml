@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/pirovc/dudes
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: 'DUDes: a top-down taxonomic profiler for metagenomics and metaproteomics'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --ignore-installed --no-cache-dir -vvv .
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btw150
+  recipe-maintainers:
+  - pirovc
+  - rababerladuseladim
+package:
+  name: dudes
+  version: 0.10.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - poetry
+  run:
+  - python >=3.10
+  - matplotlib-base >=3.5.1
+  - numpy >=1.21.0
+  - pandas >=1.4.1
+source:
+  sha256: cb53be14da0c9d40e4ac758a6de7fe98e494c5bff3847d5aa6568a1ea8781180
+  url: https://github.com/pirovc/dudes/archive/refs/tags/v0.10.0.tar.gz
+test:
+  commands:
+  - dudes -h
+  - dudesdb -h

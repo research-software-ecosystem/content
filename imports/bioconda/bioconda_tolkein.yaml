@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/tolkit/tolkein
+  doc_url: https://tolkein.readthedocs.io/
+  home: https://github.com/tolkit/tolkein
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Tree of Life Kit of Evolutionary Informatics Novelties
+build:
+  entry_points:
+  - tolkein = tolkein:cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - npavlovikj
+package:
+  name: tolkein
+  version: 0.5.0
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - docopt >=0.6.2
+  - python
+  - pyyaml
+  - requests >=2.24.0
+  - tqdm >=4.48.1
+  - ujson >=3.0.0
+  - xmltodict >=0.12.0
+source:
+  sha256: 2bba56ac0d49b8e0168992f4efa2eb7a6db39f88decd091af6f4a6d9b2f2aae5
+  url: https://pypi.io/packages/source/t/tolkein/tolkein-0.5.0.tar.gz
+test:
+  commands:
+  - tolkein --help 2>&1 | grep -i 'usage' > /dev/null
+  imports:
+  - tolkein
+  - tolkein.lib

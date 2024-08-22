@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/wtmatlock/flanker
+  license: MIT
+  summary: Gene-flank analysis tool
+build:
+  entry_points:
+  - flanker = flanker.flanker:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+extra:
+  recipe-maintainers:
+  - bede
+  - wtmatlock
+  - samlipworth
+package:
+  name: flanker
+  version: 0.1.5
+requirements:
+  host:
+  - python>=3.6
+  - pip
+  run:
+  - python>=3.6
+  - pandas>=1.2
+  - biopython>=1.78
+  - abricate>=1.0.1
+  - mash>=2.2.2
+  - networkx>=2.5
+  - python-levenshtein==0.12.2
+source:
+  sha256: 68e49145ad56ccb931a61dbe9d1233e9f71d519f8541ef02833b1012a6261783
+  url: https://github.com/wtmatlock/flanker/archive/0.1.5.tar.gz
+test:
+  commands:
+  - flanker --help
+  imports:
+  - flanker

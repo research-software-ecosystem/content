@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/SynBioDex/SBOL-utilities
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Collection of scripts and functions for manipulating SBOL 3 data that can
+    be run from the command line or as functions in Python.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install -vv .
+extra:
+  recipe-maintainers:
+  - kenza12
+  - breakthewall
+  - tduigou
+package:
+  name: sbol-utilities
+  version: 1.0a17
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - pysbol3 >=1.1
+  - pysbol2 =v1.4.1
+  - rdflib >=6.2
+  - python-graphviz
+  - openjdk
+  - nodejs
+  - biopython
+  - tyto >=1.4
+  - openpyxl
+  - sbol_factory >=1.1
+source:
+  sha256: f8ec2fa452c051ec1f4d810997b0ef6befb48f3235127528698c9c26aa8dedf5
+  url: https://github.com/SynBioDex/SBOL-utilities/archive/1.0a17.tar.gz
+test:
+  imports:
+  - sbol_utilities
+  requires:
+  - pytest
+  - interrogate
+  source_files:
+  - test

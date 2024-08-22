@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/mbhall88/drprg
+  license: MIT
+  license_file: LICENSE
+  summary: Drug resistance prediction with reference graphs
+build:
+  binary_has_prefix_files:
+  - bin/pandora
+  number: 1
+  skip: true
+extra:
+  recipe-maintainers:
+  - mbhall88
+package:
+  name: drprg
+  version: 0.1.1
+requirements:
+  build:
+  - rust >=1.65
+  - None
+  - wget
+  - cmake
+  - make
+  host:
+  - openssl
+  run:
+  - bcftools
+  - make_prg =0.4
+  - mafft =7.505
+source:
+  sha256: b5cfba49372867272b40c3e018f12583a0eff98c1e6061c4974fac03986e6b5c
+  url: https://github.com/mbhall88/drprg/archive/0.1.1.tar.gz
+test:
+  commands:
+  - drprg --help
+  - pandora --version

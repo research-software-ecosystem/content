@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/fickludd/dinosaur
+  license: Apache-2.0
+  license_family: Apache
+  summary: Feature finding algorithm for detection of isotope patterns in HPLC mass
+    spectrometry data.
+build:
+  noarch: generic
+  number: 1
+extra:
+  notes: "This recipe supplies a wrapper shell script around the Dinosaur Java program.\n\
+    By default, Java is called without specifying heap size. If you want to overwrite\
+    \ \nit you can specify these values after calling the wrapper. If you have \n\
+    _JAVA_OPTIONS set globally this will take precedence.\nFor example run it with\
+    \ \"dinosaur -Xmx4g\""
+package:
+  name: dinosaur
+  version: 1.2.0
+requirements:
+  run:
+  - openjdk
+  - python
+source:
+  sha256: 6e455136b75def47db1087bd2f0191f71bc6de38e2f936067a07c7033ec01629
+  url: https://github.com/fickludd/dinosaur/releases/download/1.2.0/Dinosaur-1.2.0.free.jar
+test:
+  commands:
+  - dinosaur 2>&1 | grep OPTIONS

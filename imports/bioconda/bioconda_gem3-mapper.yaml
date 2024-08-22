@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/smarco/gem3-mapper
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: The GEM read mapper (v3).
+build:
+  number: 12
+extra:
+  identifiers:
+  - doi:10.1038/nmeth.2221
+  - biotools:GEM_Mapper
+package:
+  name: gem3-mapper
+  version: 3.6.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - bzip2
+  - zlib
+  run:
+  - bzip2
+  - zlib
+source:
+  sha256: 195f158691fe85bacc90b9cf848f203aeba1c56332516261da3774fee3f7ddbf
+  url: https://github.com/smarco/gem3-mapper/archive/v3.6.1.tar.gz
+test:
+  commands:
+  - gem-mapper 2>&1 | grep 'index|-I <index_file.gem>'
+  - gem-indexer -h 2>&1 | grep 'input|-i <input_file> (Multi-FASTA)'
+  - gem-retriever -h 2>&1 | grep 'index|-I <index_file.gem> (GEM archive)'

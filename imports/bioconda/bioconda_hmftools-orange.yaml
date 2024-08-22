@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/blob/master/orange/README.md
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  summary: ORANGE summarizes the key outputs from all algorithms in the Hartwig suite.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-orange
+  version: 3.7.0
+requirements:
+  run:
+  - zlib
+  - openjdk >=8
+source:
+  sha256: 5eefa9acb4040361ba4f56ec5670ccdcd0ac18e8b13e3bdbd6a6e6241104dfd1
+  url: https://github.com/hartwigmedical/hmftools/releases/download/orange-v3.7.0/orange_v3.7.0.jar
+test:
+  commands:
+  - orange 2>&1 | grep -q "ORANGE"

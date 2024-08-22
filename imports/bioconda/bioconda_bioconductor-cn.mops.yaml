@@ -1,0 +1,69 @@
+about:
+  description: cn.mops (Copy Number estimation by a Mixture Of PoissonS) is a data
+    processing pipeline for copy number variations and aberrations (CNVs and CNAs)
+    from next generation sequencing (NGS) data. The package supplies functions to
+    convert BAM files into read count matrices or genomic ranges objects, which are
+    the input objects for cn.mops. cn.mops models the depths of coverage across samples
+    at each genomic position. Therefore, it does not suffer from read count biases
+    along chromosomes. Using a Bayesian approach, cn.mops decomposes read variations
+    across samples into integer copy numbers and noise by its mixture components and
+    Poisson distributions, respectively. cn.mops guarantees a low FDR because wrong
+    detections are indicated by high noise and filtered out. cn.mops is very fast
+    and written in C++.
+  home: https://bioconductor.org/packages/3.18/bioc/html/cn.mops.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: cn.mops - Mixture of Poissons for CNV detection in NGS data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cn.mops
+  parent_recipe:
+    name: bioconductor-cn.mops
+    path: recipes/bioconductor-cn.mops
+    version: 1.26.0
+package:
+  name: bioconductor-cn.mops
+  version: 1.48.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-exomecopy >=1.48.0,<1.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-exomecopy >=1.48.0,<1.49.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: e4e51a7ecd3810464be443ba9a6b6919
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cn.mops_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cn.mops/cn.mops_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cn.mops_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cn.mops/bioconductor-cn.mops_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cn.mops')"

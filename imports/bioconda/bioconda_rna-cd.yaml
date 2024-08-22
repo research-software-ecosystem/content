@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/LUMC/rna_cd
+  doc_url: https://rna-cd.readthedocs.io/en/latest/
+  home: https://github.com/LUMC/rna_cd
+  license: GNU Affero General Public v3 or later (AGPLv3+)
+  license_family: AGPL
+  summary: RNA contamination detector
+build:
+  entry_points:
+  - rna_cd-train = rna_cd.cli:train_cli
+  - rna_cd-classify = rna_cd.cli:classify_cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: rna-cd
+  version: 0.2.0
+requirements:
+  host:
+  - pip
+  - python >=3.5
+  run:
+  - click
+  - joblib
+  - matplotlib
+  - pysam
+  - python >=3.5
+  - scikit-learn
+source:
+  sha256: 9590c018068cb25b38fcb6b18f16111bfc032800dcbfe8893806b381887562c4
+  url: https://pypi.io/packages/source/r/rna-cd/rna_cd-0.2.0.tar.gz
+test:
+  commands:
+  - rna_cd-train --help
+  - rna_cd-classify --help
+  imports:
+  - rna_cd

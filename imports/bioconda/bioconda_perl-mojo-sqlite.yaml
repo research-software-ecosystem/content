@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/Grinnz/Mojo-SQLite
+  license: Artistic-2.0
+  summary: A tiny Mojolicious wrapper for SQLite
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+    weak:
+    - perl-mojo-sqlite =3.009
+extra:
+  recipe-maintainers:
+  - khaled196
+package:
+  name: perl-mojo-sqlite
+  version: 3.009
+requirements:
+  host:
+  - perl =>5.32
+  - perl-mojolicious
+  - perl-sql-abstract-pg
+  - perl-uri
+  - perl-dbi
+  - perl-module-build-tiny
+  - perl-uri-db
+  - perl-dbd-sqlite
+  - make
+  run:
+  - perl =>5.32
+  - perl-mojolicious
+  - perl-sql-abstract-pg
+  - perl-uri
+  - perl-dbi
+  - perl-dbd-sqlite
+  - perl-uri-db
+source:
+  sha256: 5739a9af3fc0fc162b38032df610a070035263bfbe0bec16aec52f0dddd7b647
+  url: https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Mojo-SQLite-3.009.tar.gz
+test:
+  imports:
+  - Mojo::SQLite
+  - Mojo::SQLite::Database
+  - Mojo::SQLite::Migrations
+  - Mojo::SQLite::PubSub
+  - Mojo::SQLite::Results
+  - Mojo::SQLite::Transaction

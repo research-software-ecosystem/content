@@ -1,0 +1,54 @@
+about:
+  description: This package is designed to model gene detection pattern of scRNA-seq
+    through a binary factor analysis model. This model allows user to pass into a
+    cell level covariate matrix X and gene level covariate matrix Q to account for
+    nuisance variance(e.g batch effect), and it will output a low dimensional embedding
+    matrix for downstream analysis.
+  home: https://bioconductor.org/packages/3.18/bioc/html/scBFA.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: A dimensionality reduction tool using gene detection pattern to mitigate
+    noisy expression profile of scRNA-seq
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-scbfa
+  version: 1.16.0
+requirements:
+  host:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-zinbwave >=1.24.0,<1.25.0
+  - r-base
+  - r-copula
+  - r-ggplot2
+  - r-mass
+  - r-matrix
+  - r-seurat
+  run:
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-zinbwave >=1.24.0,<1.25.0
+  - r-base
+  - r-copula
+  - r-ggplot2
+  - r-mass
+  - r-matrix
+  - r-seurat
+source:
+  md5: 7729a460da97e96d4da3957b959149db
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/scBFA_1.16.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/scBFA/scBFA_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scBFA_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scbfa/bioconductor-scbfa_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('scBFA')"

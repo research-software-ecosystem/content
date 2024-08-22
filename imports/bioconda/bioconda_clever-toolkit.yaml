@@ -1,0 +1,46 @@
+about:
+  description: CTK is a suite of tools to analyze next-generation sequencing data
+    and, in particular, to discover and genotype insertions and deletions from paired-end
+    reads.
+  dev_url: https://bitbucket.org/tobiasmarschall/clever-toolkit
+  doc_url: https://bitbucket.org/tobiasmarschall/clever-toolkit/wiki/Home
+  home: https://bitbucket.org/tobiasmarschall/clever-toolkit
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: The CLEVER Toolkit
+build:
+  number: 13
+  run_exports:
+  - None
+  - None
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: clever-toolkit
+  version: 2.4
+requirements:
+  build:
+  - None
+  - cmake >=3.1
+  - make >=4.2
+  host:
+  - boost-cpp >=1.36.*
+  - zlib
+  run:
+  - python 3.*
+  - bedtools
+  - bwa
+  - samtools
+  - matplotlib-base
+source:
+  patches:
+  - patch
+  sha256: a8db97fd9c23a4519f63d60955361547fadcc1ece1bc51e4dd3ee224fb2131b7
+  url: https://bitbucket.org/tobiasmarschall/clever-toolkit/downloads/clever-toolkit-v2.4.tar.gz
+test:
+  commands:
+  - clever --help > /dev/null
+  - laser --help > /dev/null

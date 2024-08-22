@@ -1,0 +1,53 @@
+about:
+  dev_url: https://github.com/gwcbi/haphpipe
+  doc_url: https://gwcbi.github.io/haphpipe_docs/
+  home: https://github.com/gwcbi/haphpipe
+  license: GPL License
+  license_file: LICENSE.txt
+  summary: HAplotype and PHylodynamics pipeline for viral assembly, population genetics,
+    and phylodynamics.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - mlbendall
+  - kmgibson
+  - maggiesteiner
+package:
+  name: haphpipe
+  version: 1.0.3
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - future
+  - pyyaml
+  - biopython
+  - seqtk
+  - bowtie2
+  - bwa
+  - flash
+  - freebayes
+  - mummer
+  - picard
+  - trimmomatic
+  - samtools >=1.9
+  - gatk=3.8
+  - spades
+  - blast
+  - sierrapy
+  - mafft
+  - modeltest-ng
+  - raxml-ng
+  - sra-tools
+  - gsutil
+source:
+  sha256: 9a9e8632a217ff4207c1dea66887a471e0ea04bbb7c0f0d72631acaba214bd37
+  url: https://github.com/gwcbi/haphpipe/archive/v1.0.3/haphpipe-1.0.3.tar.gz
+test:
+  commands:
+  - haphpipe -h

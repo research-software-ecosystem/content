@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/lehtiolab/msstitch
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: MS proteomics post processing utilities
+build:
+  entry_points:
+  - msstitch=app.msstitch:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+package:
+  name: msstitch
+  version: '3.16'
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy
+  - lxml
+  - biopython >=1.69
+source:
+  sha256: a4bad10c46545783e7829590db12c47459a614088bae06c4acd45e0456e402ee
+  url: https://files.pythonhosted.org/packages/79/40/38b264c211823bd0d158418557b728dd459d8b23e54f0309cc82e85bf883/msstitch-3.16.tar.gz
+test:
+  commands:
+  - msstitch --help
+  imports:
+  - app
+  - app.actions
+  - app.actions.lookups
+  - app.actions.psmtable
+  - app.actions.percolator
+  - app.dataformats
+  - app.drivers
+  - app.lookups
+  - app.lookups.sqlite
+  - app.readers
+  - app.writers

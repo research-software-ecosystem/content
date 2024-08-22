@@ -1,0 +1,43 @@
+about:
+  home: https://CRAN.R-project.org/package=cp4p
+  license: GPL-3
+  license_family: GPL3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions to check whether a vector of p-values respects the assumptions
+    of FDR (false discovery rate) control procedures and to compute adjusted p-values.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-cp4p
+  version: 0.3.6
+requirements:
+  build: null
+  host:
+  - r-base
+  - r-mess
+  - bioconductor-limma
+  - bioconductor-multtest
+  - bioconductor-qvalue
+  run:
+  - r-base
+  - r-mess
+  - bioconductor-limma
+  - bioconductor-multtest
+  - bioconductor-qvalue
+source:
+  sha256: 6d21e6c0c194d1016eef953ac2da6880f7e51c17c8043ec7646e5b0fe49cadfd
+  url:
+  - /src/contrib/cp4p_0.3.6.tar.gz
+  - /src/contrib/Archive/cp4p/cp4p_0.3.6.tar.gz
+test:
+  commands:
+  - $R -e "library('cp4p')"
+  - '"%R%" -e "library(''cp4p'')"'

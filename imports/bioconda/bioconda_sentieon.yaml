@@ -1,0 +1,37 @@
+about:
+  home: https://www.sentieon.com
+  license: Commercial (requires license for use; redistribution allowed)
+  summary: Accelerated performance bioinformatics tools for mapping and variant calling
+build:
+  binary_relocation: false
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: sentieon
+  version: 202308.03
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - zlib
+  run:
+  - python >=2.7
+  - zlib
+source:
+- patches:
+  - sentieon_symlinks.patch
+  sha256: d51d1a192aa9fd3108f4baa5e1d0784ea80af6734fcc1a27a57e15779f43fcf1
+  url: https://s3.amazonaws.com/sentieon-release/software/sentieon-genomics-202308.03.tar.gz
+test:
+  commands:
+  - sentieon driver
+  - sentieon driver --help --algo TNscope
+  - sentieon STAR --help
+  - sentieon umi --help
+  - sentieon util --help

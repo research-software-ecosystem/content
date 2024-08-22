@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/mahulchak/quickmerge
+  license: GPL-3
+  license_file: LICENSE
+  summary: Quickmerge uses a simple concept to improve contiguity of genome assemblies
+    based on long molecule sequences.
+build:
+  number: 5
+extra:
+  recipe-maintainers:
+  - thanhleviet
+package:
+  name: quickmerge
+  version: 0.3
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - perl
+  run:
+  - perl
+  - python
+  - mummer=3.23
+  - zlib
+source:
+  sha256: 13169366bdaeef5462bda35dd3c213d8ec818db8f34c173ac336d5ce98ac92b3
+  url: https://github.com/mahulchak/quickmerge/archive/v0.3.tar.gz
+test:
+  commands:
+  - merge_wrapper.py -h

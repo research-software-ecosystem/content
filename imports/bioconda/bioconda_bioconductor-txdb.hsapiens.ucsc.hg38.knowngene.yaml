@@ -1,0 +1,42 @@
+about:
+  description: Exposes an annotation databases generated from UCSC by exposing these
+    as TxDb objects
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/TxDb.Hsapiens.UCSC.hg38.knownGene.html
+  license: Artistic-2.0
+  summary: Annotation package for TxDb object(s)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
+    path: recipes/bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
+    version: 3.4.0
+package:
+  name: bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
+  version: 3.18.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 2344dbd2878c82c6c860ed6529a700b2
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/TxDb.Hsapiens.UCSC.hg38.knownGene_3.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TxDb.Hsapiens.UCSC.hg38.knownGene/TxDb.Hsapiens.UCSC.hg38.knownGene_3.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TxDb.Hsapiens.UCSC.hg38.knownGene_3.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-txdb.hsapiens.ucsc.hg38.knowngene/bioconductor-txdb.hsapiens.ucsc.hg38.knowngene_3.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TxDb.Hsapiens.UCSC.hg38.knownGene')"

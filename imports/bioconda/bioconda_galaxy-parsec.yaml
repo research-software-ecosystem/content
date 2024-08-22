@@ -1,0 +1,69 @@
+about:
+  home: https://github.com/galaxy-iuc/parsec
+  license: MIT
+  license_family: MIT
+  summary: Command-line utilities to assist in interacting with Galaxy servers (http://galaxyproject.org/).
+build:
+  entry_points:
+  - parsec=parsec.cli:parsec
+  noarch: python
+  number: 0
+  preserve_egg_dir: true
+extra:
+  container:
+    extended-base: true
+package:
+  name: galaxy-parsec
+  version: 1.16.0
+requirements:
+  host:
+  - python
+  - setuptools
+  - click >=6.7
+  - bioblend
+  - wrapt
+  - pyyaml
+  - justbackoff
+  - xunit-wrapper
+  - future
+  run:
+  - python
+  - click >=6.7
+  - bioblend
+  - wrapt
+  - pyyaml
+  - justbackoff
+  - xunit-wrapper >=0.12
+  - future
+source:
+  sha256: b52c9c2684a56b1e88b546e96286c21ceb32c81256f7078e8a028a86f95ab1af
+  url: https://files.pythonhosted.org/packages/f8/9b/042372baf4a89443cad7f222a39b10e2b930688f12dcc3571e8c1153bd85/galaxy-parsec-1.16.0.tar.gz
+test:
+  commands:
+  - parsec --help
+  imports:
+  - parsec
+  - parsec.commands
+  - parsec.commands.config
+  - parsec.commands.datasets
+  - parsec.commands.datatypes
+  - parsec.commands.folders
+  - parsec.commands.forms
+  - parsec.commands.ftpfiles
+  - parsec.commands.genomes
+  - parsec.commands.groups
+  - parsec.commands.histories
+  - parsec.commands.jobs
+  - parsec.commands.libraries
+  - parsec.commands.quotas
+  - parsec.commands.roles
+  - parsec.commands.tools
+  - parsec.commands.tool_data
+  - parsec.commands.toolshed
+  - parsec.commands.toolshed_categories
+  - parsec.commands.toolshed_repositories
+  - parsec.commands.toolshed_tools
+  - parsec.commands.users
+  - parsec.commands.utils
+  - parsec.commands.visual
+  - parsec.commands.workflows

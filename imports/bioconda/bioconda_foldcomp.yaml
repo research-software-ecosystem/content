@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/steineggerlab/foldcomp
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE.txt
+  summary: 'Foldcomp: a library and format for compressing and indexing large protein
+    structure sets'
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btad153
+  recipe-maintainers:
+  - milot-mirdita
+package:
+  name: foldcomp
+  version: 0.0.7
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: 34cf6df7bb48f6bdd5c94337ddb1e1f16eafead841da8afed62dac1b5b8a9467
+  url: https://github.com/steineggerlab/foldcomp/archive/v0.0.7.tar.gz
+test:
+  commands:
+  - foldcomp > /dev/null

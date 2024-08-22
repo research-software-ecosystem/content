@@ -1,0 +1,56 @@
+about:
+  description: The main function is doppelgangR(), which takes as minimal input a
+    list of ExpressionSet object, and searches all list pairs for duplicated samples.  The
+    search is based on the genomic data (exprs(eset)), phenotype/clinical data (pData(eset)),
+    and "smoking guns" - supposedly unique identifiers found in pData(eset).
+  home: https://bioconductor.org/packages/3.18/bioc/html/doppelgangR.html
+  license: GPL (>=2.0)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Identify likely duplicate samples from genomic or meta-data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:doppelgangr
+  - doi:10.1093/jnci/djw146
+  parent_recipe:
+    name: bioconductor-doppelgangr
+    path: recipes/bioconductor-doppelgangr
+    version: 1.8.0
+package:
+  name: bioconductor-doppelgangr
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-impute >=1.76.0,<1.77.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-sva >=3.50.0,<3.51.0
+  - r-base
+  - r-digest
+  - r-mnormt
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-impute >=1.76.0,<1.77.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-sva >=3.50.0,<3.51.0
+  - r-base
+  - r-digest
+  - r-mnormt
+source:
+  md5: c50eff7bb5871b545a8199a9b1c4667b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/doppelgangR_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/doppelgangR/doppelgangR_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/doppelgangR_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-doppelgangr/bioconductor-doppelgangr_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('doppelgangR')"

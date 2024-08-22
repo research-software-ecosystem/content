@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/labomics/midas
+  doc_url: https://scmidas.readthedocs.io/en/latest/
+  home: https://github.com/labomics/midas
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A torch-based integration method for single-cell multi-omic data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  identifiers:
+  - doi:10.1038/s41587-023-02040-y
+  recipe-maintainers:
+  - mencian
+package:
+  name: scmidas
+  version: 0.0.18
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - toml
+  - tqdm
+  - numpy
+  - pytorch >1.12
+  - matplotlib-base
+  - pandas
+  - scikit-learn
+  - scanpy
+  - louvain
+  - rpy2
+  - anndata2ri
+  - ipykernel
+  - jupyter
+source:
+  sha256: 62c953d679a7298a25882930098cda8c6f3055ec37b89e5306eb471edec10b3f
+  url: https://pypi.io/packages/source/s/scmidas/scmidas-0.0.18.tar.gz
+test:
+  imports:
+  - scmidas

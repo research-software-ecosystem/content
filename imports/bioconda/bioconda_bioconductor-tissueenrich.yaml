@@ -1,0 +1,59 @@
+about:
+  description: "The TissueEnrich package is used to calculate enrichment of tissue-specific\
+    \ genes in a set of input genes. For example, the user can input the most highly\
+    \ expressed genes from RNA-Seq data, or gene co-expression modules to determine\
+    \ which tissue-specific genes are enriched in those datasets. Tissue-specific\
+    \ genes were defined by processing RNA-Seq data from the Human Protein Atlas (HPA)\
+    \ (Uhl\xE9n et al. 2015), GTEx (Ardlie et al. 2015), and mouse ENCODE (Shen et\
+    \ al. 2012) using the algorithm from the HPA (Uhl\xE9n et al. 2015).The hypergeometric\
+    \ test is being used to determine if the tissue-specific genes are enriched among\
+    \ the input genes. Along with tissue-specific gene enrichment, the TissueEnrich\
+    \ package can also be used to define tissue-specific genes from expression datasets\
+    \ provided by the user, which can then be used to calculate tissue-specific gene\
+    \ enrichments."
+  home: https://bioconductor.org/packages/3.18/bioc/html/TissueEnrich.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Tissue-specific gene enrichment analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-tissueenrich
+    path: recipes/bioconductor-tissueenrich
+    version: 1.0.7
+package:
+  name: bioconductor-tissueenrich
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-dplyr >=0.7.3
+  - r-ensurer >=1.1.0
+  - r-ggplot2 >=2.2.1
+  - r-tidyr >=0.8.0
+  run:
+  - bioconductor-gseabase >=1.64.0,<1.65.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-dplyr >=0.7.3
+  - r-ensurer >=1.1.0
+  - r-ggplot2 >=2.2.1
+  - r-tidyr >=0.8.0
+source:
+  md5: 5cc00925f523a6d82b216343e7f4b81a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TissueEnrich_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TissueEnrich/TissueEnrich_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TissueEnrich_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tissueenrich/bioconductor-tissueenrich_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TissueEnrich')"

@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/raw-lab/titan
+  license: BSD
+  license_family: BSD
+  summary: A comprehensive multi-omics data analysis pipeline.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - decrevi
+  - raw-lab
+package:
+  name: titanomics
+  version: '0.1'
+requirements:
+  host:
+  - pip
+  - python
+  - setuptools
+  run:
+  - python
+  - fastqc
+  - bowtie2
+  - samtools
+  - fastp
+  - flash2
+  - megahit
+  - flye
+  - configargparse
+  - psutil
+  - metaomestats
+  - ray-core
+  - ray-dashboard
+  - grpcio <=1.43
+source:
+  sha256: 20027bc0a76ead37c6fd10254fd07975eb43abd6bbcf6288be3284fb4980dd2c
+  url: https://pypi.io/packages/source/T/TitanOmics/TitanOmics-0.1.tar.gz
+test:
+  commands:
+  - titan.py --help
+  imports:
+  - titanomics

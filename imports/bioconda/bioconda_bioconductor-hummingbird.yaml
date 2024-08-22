@@ -1,0 +1,53 @@
+about:
+  description: A package for detecting differential methylation. It exploits a Bayesian
+    hidden Markov model that incorporates location dependence among genomic loci,
+    unlike most existing methods that assume independence among observations. Bayesian
+    priors are applied to permit information sharing across an entire chromosome for
+    improved power of detection. The direct output of our software package is the
+    best sequence of methylation states, eliminating the use of a subjective, and
+    most of the time an arbitrary, threshold of p-value for determining significance.
+    At last, our methodology does not require replication in either or both of the
+    two comparison groups.
+  home: https://bioconductor.org/packages/3.18/bioc/html/hummingbird.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Bayesian Hidden Markov Model for the detection of differentially methylated
+    regions
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hummingbird
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-rcpp
+source:
+  md5: 3f2788dadae0f811072b04866fc9e5ed
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/hummingbird_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/hummingbird/hummingbird_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hummingbird_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hummingbird/bioconductor-hummingbird_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('hummingbird')"

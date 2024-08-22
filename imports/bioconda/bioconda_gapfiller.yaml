@@ -1,0 +1,35 @@
+about:
+  home: https://sourceforge.net/projects/gapfiller
+  license: GPLv3
+  license_family: GPL
+  license_file: COPYING
+  summary: GapFiller is a seed-and-extend local assembler to fill the gap within paired
+    reads.
+build:
+  number: 5
+  skip: true
+package:
+  name: gapfiller
+  version: 2.1.2
+requirements:
+  build:
+  - make
+  - None
+  - autoconf
+  - automake
+  - libtool
+  host:
+  - zlib
+  - boost-cpp
+  run:
+  - zlib
+  - boost-cpp
+source:
+- sha256: a4c5235b1ee17e277d08cc945dbfa05af084559e546a2b7f15c9c1b703f4b237
+  url: https://sourceforge.net/projects/gapfiller/files/v2.1.2/gapfiller-2.1.2.tar.gz
+- folder: m4
+  sha256: f04391a5601f2d616cc6cfb1d2863df38f084f5dc184ae106114c5fb9f323d2f
+  url: https://raw.githubusercontent.com/tsuna/boost.m4/3d67ee84e9149f6279a8df2113f5a86f0a83bd0d/build-aux/boost.m4
+test:
+  commands:
+  - GapFiller --help

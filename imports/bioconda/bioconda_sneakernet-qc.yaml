@@ -1,0 +1,71 @@
+about:
+  home: https://github.com/lskatz/sneakernet
+  license: MIT
+  summary: A QC pipeline for raw reads
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.21105/joss.02334
+  recipe-maintainers:
+  - lskatz
+package:
+  name: sneakernet-qc
+  version: 0.27.0
+requirements:
+  build:
+  - make
+  - perl
+  - kalamari
+  run:
+  - blast
+  - bowtie2
+  - chewbbaca
+  - colorid_bv
+  - fastqc
+  - flash
+  - kalamari
+  - kma >=1.4
+  - kmc
+  - kraken >=1, <2
+  - krona
+  - lighter
+  - make
+  - perl-text-levenshtein >=0.15
+  - mash >=2
+  - megahit
+  - mlst
+  - multiqc
+  - perl
+  - perl-app-cpanminus
+  - perl-bioperl
+  - perl-cg-pipeline
+  - perl-config-simple
+  - perl-file-slurp
+  - perl-gd
+  - perl-gdgraph
+  - perl-list-moreutils
+  - perl-moo
+  - perl-statistics-descriptive
+  - pilon
+  - prodigal
+  - python >=3.7
+  - quast
+  - salmid
+  - samclip
+  - seqtk
+  - shovill
+  - skesa >=2.4
+  - spades
+  - staramr
+  - trimmomatic
+source:
+  sha256: 4fd8c041f5c18ea0392c2734f7a09c136ccbb4662afaea7a7f189ca0ca63ddc4
+  url: https://github.com/lskatz/sneakernet/archive/v0.27.0.tar.gz
+test:
+  commands:
+  - SneakerNetPlugins.pl --help || true
+  - SneakerNetPlugins.pl --version

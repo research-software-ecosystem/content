@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/varda/varda2_preprocessing
+  license: MIT
+  license_family: MIT
+  summary: Python tool to extra coverage from gVCF files.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - marksantcroos
+package:
+  name: pygvcf2coverage
+  version: '0.2'
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - cyvcf2
+source:
+  sha256: ef42d1f027a3eb0a61e405811fd8fa4d3d42d0ad3cdf99d4a221374aa73addec
+  url: https://pypi.io/packages/source/p/pygvcf2coverage/pygvcf2coverage-0.2.tar.gz
+test:
+  commands:
+  - pygvcf2coverage -h

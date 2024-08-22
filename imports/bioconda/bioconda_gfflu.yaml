@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/CFIA-NCFAD/gfflu
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Annotate Influenza A virus gene segment sequences and output GFF3 files.
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --ignore-installed -vv .
+package:
+  name: gfflu
+  version: 0.0.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - hatch
+  run:
+  - blast
+  - miniprot
+  - python >=3.8
+  - typer
+  - rich
+  - biopython
+  - bcbio-gff
+  - polars
+source:
+  sha256: c327a59786500ae714a5d16cb87a7019c120e4d2a1764ac06a79e6a87de5d9fc
+  url: https://pypi.io/packages/source/g/gfflu/gfflu-0.0.2.tar.gz
+test:
+  commands:
+  - gfflu --help

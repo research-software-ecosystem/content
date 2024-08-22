@@ -1,0 +1,33 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/DiltheyLab/MHC-annotation
+  license: MIT
+  license_family: MIT
+  license_file: null
+  summary: Tools to annotate haplotypes of MHC with gene and transcript information
+build:
+  noarch: python
+  number: 1
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - irunonayran
+package:
+  name: mhc-annotation
+  version: 0.1.1
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - minimap2
+  - bcbio-gff
+  - biopython
+source:
+  sha256: 9a7187b30356ab862c42502583a1f9dda76abb382adffc151e7f431e562c7dd1
+  url: https://files.pythonhosted.org/packages/84/01/0a32d5d5fcb88f1fec04c22b6ef41ede3001247550ef36620dbdf17acb82/MHC-Annotation-0.1.1.tar.gz
+test:
+  commands:
+  - mhca -h > /dev/null

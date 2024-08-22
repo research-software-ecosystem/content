@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/BackofenLab/Cherri
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Accurate detection of functional RNA-RNA Interactions sites
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vvv
+package:
+  name: cherri
+  version: 0.8
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - scikit-learn
+  - networkx
+  - interlap
+  - numpy
+  - pandas
+  - eden-kernel
+  - biofilm >=0.0.102
+  - intarna
+  - python-wget
+  - ubergauss
+  - bedtools
+  - biopython
+source:
+  sha256: 4f4a2d813dc803285042d5ae55ca12ffc9c16483796accfe60cd6f9c6cd70ca2
+  url: https://github.com/BackofenLab/Cherri/archive/v0.8.tar.gz
+test:
+  commands:
+  - cherri -h

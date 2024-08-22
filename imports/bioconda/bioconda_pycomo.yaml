@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/univieCUBE/PyCoMo
+  license: MIT
+  license_file: LICENSE
+  summary: PyCoMo is a software package for generating and analysing compartmentalized
+    community metabolic models
+build:
+  entry_points:
+  - pycomo = pycomo.pycomo_models:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - mpredl
+package:
+  name: pycomo
+  version: 0.2.2
+requirements:
+  host:
+  - python >=3.9
+  - setuptools
+  - pip
+  run:
+  - python >=3.9
+  - cobra >=0.23.0
+  - pandas >=1.5.3
+  - python-libsbml >=5.20.1
+  - numpy >=1.22.4
+source:
+  sha256: 242973127addd422bcfabc8db79caaaa88c3a1e87f86b735a4de5449abe99331
+  url: https://pypi.io/packages/source/p/pycomo/pycomo-0.2.2.tar.gz
+test:
+  commands:
+  - pip check
+  - pycomo --help
+  imports:
+  - pycomo
+  requires:
+  - pip

@@ -1,0 +1,58 @@
+about:
+  description: Assessment of FASTQ file format with multiple metrics including quality
+    score, sequence content, overrepresented sequence and Kmers.
+  home: https://bioconductor.org/packages/3.18/bioc/html/qckitfastq.html
+  license: Artistic-2.0
+  summary: FASTQ Quality Control
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-qckitfastq
+  version: 1.18.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-rseqan >=1.22.0,<1.23.0
+  - bioconductor-seqtools >=1.36.0,<1.37.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-data.table
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-rcpp
+  - r-reshape2
+  - r-rlang
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-rseqan >=1.22.0,<1.23.0
+  - bioconductor-seqtools >=1.36.0,<1.37.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-data.table
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-rcpp
+  - r-reshape2
+  - r-rlang
+source:
+  md5: 60955b37d9eb0868da1c5ecd262334e8
+  patches:
+  - shared_timed_mutex.patch
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/qckitfastq_1.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/qckitfastq/qckitfastq_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/qckitfastq_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-qckitfastq/bioconductor-qckitfastq_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('qckitfastq')"

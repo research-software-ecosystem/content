@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/linnarsson-lab/BackSPIN
+  license: MIT
+  license_family: MIT
+  summary: backSPIN clustering algorythm
+build:
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - jdblischak
+package:
+  name: backspinpy
+  version: 0.2.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - future
+  - numpy
+  - scipy
+  - scikit-learn
+  run:
+  - python
+  - future
+  - numpy
+  - scipy
+  - scikit-learn
+source:
+  sha256: 91f8b6b3d5acb318844d8ecdd4b67bf8c37a19fa129466cebf2083dc0fc5476c
+  url: https://pypi.io/packages/source/b/backspinpy/backspinpy-0.2.1.tar.gz
+test:
+  commands:
+  - backspin -h
+  imports:
+  - backspinpy

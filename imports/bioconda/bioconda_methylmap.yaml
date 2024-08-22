@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/EliseCoopman/methylmap
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Plotting tool for population-scale nucleotide modifications
+build:
+  entry_points:
+  - methylmap=methylmap.methylmap:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1101/2022.11.28.518239
+  recipe-maintainers:
+  - EliseCoopman
+package:
+  name: methylmap
+  version: 0.4.6
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy >=1.14.3
+  - pandas >=0.23.4
+  - plotly >=5.4.0
+  - pyranges >=0.0.77
+  - tabix
+  - scipy
+  - dash
+source:
+  sha256: ff94b6d5b75c704af8ced7b0c0187c1a4d8bfb7cf3565bde09ea46d2c9e44963
+  url: https://pypi.io/packages/source/m/methylmap/methylmap-0.4.6.tar.gz
+test:
+  commands:
+  - methylmap --help
+  imports:
+  - methylmap

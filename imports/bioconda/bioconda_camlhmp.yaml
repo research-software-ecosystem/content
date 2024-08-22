@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/rpetit3/camlhmp
+  license: MIT
+  license_file: LICENSE
+  summary: Classification through yAML Heuristic Mapping Protocol
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --ignore-installed -vv .
+extra:
+  recipe-maintainers:
+  - rpetit3
+package:
+  name: camlhmp
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.8
+  - poetry
+  - pip
+  run:
+  - biopython
+  - blast
+  - executor
+  - pigz
+  - python >=3.8
+  - pyyaml
+  - rich-click >=1.6.0
+source:
+  sha256: 91bb81e2c7e548a3e6acdd01f2276e54e4a82df491a61864aff647bd8b327c3d
+  url: https://pypi.io/packages/source/c/camlhmp/camlhmp-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  - camlhmp --help
+  imports:
+  - camlhmp
+  requires:
+  - pip

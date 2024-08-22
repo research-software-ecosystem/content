@@ -1,0 +1,81 @@
+about:
+  description: The package is focused on finding differential exon usage using RNA-seq
+    exon counts between samples with different experimental designs. It provides functions
+    that allows the user to make the necessary statistical tests based on a model
+    that uses the negative binomial distribution to estimate the variance between
+    biological replicates and generalized linear models for testing. The package also
+    provides functions for the visualization and exploration of the results.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DEXSeq.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Inference of differential exon usage in RNA-Seq
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:dexseq
+  - usegalaxy-eu:dexseq
+  parent_recipe:
+    name: bioconductor-dexseq
+    path: recipes/bioconductor-dexseq
+    version: 1.26.0
+package:
+  name: bioconductor-dexseq
+  version: 1.48.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-geneplotter >=1.80.0,<1.81.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-hwriter
+  - r-rcolorbrewer
+  - r-statmod
+  - r-stringr
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-genefilter >=1.84.0,<1.85.0
+  - bioconductor-geneplotter >=1.80.0,<1.81.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - htseq >=2.0.2,<2.1
+  - r-base
+  - r-hwriter
+  - r-rcolorbrewer
+  - r-statmod
+  - r-stringr
+source:
+  md5: 8e5876f927b0b0cdfc4a402bfb4fb3d6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DEXSeq_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DEXSeq/DEXSeq_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DEXSeq_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dexseq/bioconductor-dexseq_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DEXSeq')"
+  - dexseq_prepare_annotation.py --help
+  - dexseq_count.py --help

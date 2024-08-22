@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/AbeelLab/lorikeet
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE
+  summary: Tool for digital spoligotyping of MTB strains from Illumina read data
+build:
+  noarch: generic
+  number: 1
+extra:
+  identifiers:
+  - doi:10.1371/journal.pmed.1001880
+  recipe-maintainers:
+  - pvanheus
+package:
+  name: lorikeet
+  version: 20
+requirements:
+  build:
+  - openjdk
+  - make
+  run:
+  - openjdk
+source:
+  sha256: 5fbb7e9ae8cda264b5c4c90a5f7cceb3f7be532801f2caea74b112e357e3704a
+  url: http://genomeview.org/jenkins/lorikeet/lorikeet-20.zip
+test:
+  commands:
+  - lorikeet | grep spoligotype >/dev/null

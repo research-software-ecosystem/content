@@ -1,0 +1,44 @@
+about:
+  description: lpNet aims at infering biological networks, in particular signaling
+    and gene networks. For that it takes perturbation data, either steady-state or
+    time-series, as input and generates an LP model which allows the inference of
+    signaling networks. For parameter identification either leave-one-out cross-validation
+    or stratified n-fold cross-validation can be used.
+  home: https://bioconductor.org/packages/3.18/bioc/html/lpNet.html
+  license: Artistic License 2.0
+  summary: Linear Programming Model for Network Inference
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:lpnet
+  - doi:10.1093/bioinformatics/btv327
+  parent_recipe:
+    name: bioconductor-lpnet
+    path: recipes/bioconductor-lpnet
+    version: 2.12.0
+package:
+  name: bioconductor-lpnet
+  version: 2.34.0
+requirements:
+  host:
+  - r-base
+  - r-lpsolve
+  run:
+  - r-base
+  - r-lpsolve
+source:
+  md5: b2aa2f27ba2f75f595f718f9c9f6e737
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/lpNet_2.34.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/lpNet/lpNet_2.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/lpNet_2.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lpnet/bioconductor-lpnet_2.34.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lpNet')"

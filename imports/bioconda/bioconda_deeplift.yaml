@@ -1,0 +1,40 @@
+about:
+  description: 'Algorithms for computing importance scores in deep neural networks.
+
+
+    Implements the methods in "Learning Important Features Through Propagating Activation
+    Differences" by Shrikumar, Greenside & Kundaje, as well as other commonly-used
+    methods such as gradients, guided backprop and integrated gradients. See https://github.com/kundajelab/deeplift
+    for documentation and FAQ.'
+  dev_url: https://github.com/kundajelab/deeplift
+  doc_url: https://github.com/kundajelab/deeplift/blob/master/README.md
+  home: https://github.com/kundajelab/deeplift
+  license: MIT License
+  license_family: OTHER
+  license_file: LICENSE
+  summary: DeepLIFT (Deep Learning Important FeaTures)
+build:
+  noarch: python
+  number: 0
+  script: -m pip install --ignore-installed --no-deps . -vv
+extra:
+  recipe-maintainers:
+  - visze'
+package:
+  name: deeplift
+  version: 0.6.13.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy >=1.9
+source:
+  sha256: 354ac5a00630b2df0856e8c948262e38c7eb83a719f71d6b5bf8ec4b064cb432
+  url: https://pypi.io/packages/source/d/deeplift/deeplift-0.6.13.0.tar.gz
+test:
+  imports:
+  - deeplift
+  - deeplift.conversion
+  - deeplift.visualization

@@ -1,0 +1,68 @@
+about:
+  description: The package offers functions to process multiple ChIP-seq BAM files
+    and detect allele-specific events. Computes allele counts at individual variants
+    (SNPs/SNVs), implements extensive QC steps to remove problematic variants, and
+    utilizes a bayesian framework to identify statistically significant allele- specific
+    events. BaalChIP is able to account for copy number differences between the two
+    alleles, a known phenotypical feature of cancer samples.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BaalChIP.html
+  license: Artistic-2.0
+  summary: 'BaalChIP: Bayesian analysis of allele-specific transcription factor binding
+    in cancer genomes'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:baalchip
+  - doi:10.1186/s13059-017-1165-7
+  parent_recipe:
+    name: bioconductor-baalchip
+    path: recipes/bioconductor-baalchip
+    version: 1.6.0
+package:
+  name: bioconductor-baalchip
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-coda
+  - r-doby
+  - r-doparallel
+  - r-foreach
+  - r-ggplot2
+  - r-reshape2
+  - r-scales
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-coda
+  - r-doby
+  - r-doparallel
+  - r-foreach
+  - r-ggplot2
+  - r-reshape2
+  - r-scales
+source:
+  md5: 5f2cf6dd86b26982d4d7ed693f961246
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BaalChIP_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BaalChIP/BaalChIP_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BaalChIP_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-baalchip/bioconductor-baalchip_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BaalChIP')"

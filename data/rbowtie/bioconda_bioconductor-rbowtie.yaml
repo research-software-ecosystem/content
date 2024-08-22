@@ -1,0 +1,47 @@
+about:
+  description: This package provides an R wrapper around the popular bowtie short
+    read aligner and around SpliceMap, a de novo splice junction discovery and alignment
+    tool. The package is used by the QuasR bioconductor package. We recommend to use
+    the QuasR package instead of using Rbowtie directly.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Rbowtie.html
+  license: Artistic-2.0 | file LICENSE
+  license_file: LICENSE
+  summary: R bowtie wrapper
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rbowtie
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-rbowtie
+    path: recipes/bioconductor-rbowtie
+    version: 1.20.0
+package:
+  name: bioconductor-rbowtie
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 409fc50371b1eaf9be2af500aff05249
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rbowtie_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rbowtie/Rbowtie_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rbowtie_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbowtie/bioconductor-rbowtie_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rbowtie')"

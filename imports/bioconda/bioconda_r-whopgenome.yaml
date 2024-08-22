@@ -1,0 +1,45 @@
+about:
+  home: https://CRAN.R-project.org/package=WhopGenome
+  license: GPL (>= 2)
+  license_family: GPL3
+  summary: Provides very fast access to whole genome, population scale variation data
+    from VCF files and sequence data from FASTA-formatted files. It also reads in
+    alignments from FASTA, Phylip, MAF and other file formats. Provides easy-to-use
+    interfaces to genome annotation from UCSC and Bioconductor and gene ontology data
+    from AmiGO and is capable to read, modify and write PLINK .PED-format pedigree
+    files.
+build:
+  number: 9
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-whopgenome
+  version: 0.9.7
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  sha256: 58bb001a831eff64955e424f07de7775d4d463d9674fc7743a0f795b7a6a47f5
+  url:
+  - /src/contrib/WhopGenome_0.9.7.tar.gz
+  - /src/contrib/Archive/WhopGenome/WhopGenome_0.9.7.tar.gz
+test:
+  commands:
+  - $R -e "library('WhopGenome')"
+  - '"%R%" -e "library(''WhopGenome'')"'

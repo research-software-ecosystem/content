@@ -1,0 +1,36 @@
+about:
+  dev_url: https://bitbucket.org/genomicepidemiology/cge_core_module
+  home: https://bitbucket.org/genomicepidemiology/cge_core_module
+  license: Apache-2.0
+  license_family: Apache
+  summary: Center for Genomic Epidemiology Core Module
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - npavlovikj
+package:
+  name: cgecore
+  version: 1.5.6
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - biopython
+source:
+  sha256: 310dbaf02c6791dcc17cff7b01930a6260d92328c07cfaaf431742f073fcc758
+  url: https://pypi.io/packages/source/c/cgecore/cgecore-1.5.6.tar.gz
+test:
+  imports:
+  - cgecore
+  - cgecore.blaster
+  - cgecore.organisminfo
+  - cgecore.alignment
+  - cgecore.argumentparsing
+  - cgecore.cgefinder
+  - cgecore.cmdline
+  - cgecore.utility

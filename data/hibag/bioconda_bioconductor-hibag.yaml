@@ -1,0 +1,51 @@
+about:
+  description: Imputes HLA classical alleles using GWAS SNP data, and it relies on
+    a training set of HLA and SNP genotypes. HIBAG can be used by researchers with
+    published parameter estimates instead of requiring access to large training sample
+    datasets. It combines the concepts of attribute bagging, an ensemble classifier
+    method, with haplotype inference for SNPs and HLA types. Attribute bagging is
+    a technique which improves the accuracy and stability of classifier ensembles
+    using bootstrap aggregating and random variable selection.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HIBAG.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: HLA Genotype Imputation with Attribute Bagging
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:hibag
+  parent_recipe:
+    name: bioconductor-hibag
+    path: recipes/bioconductor-hibag
+    version: 1.16.0
+package:
+  name: bioconductor-hibag
+  version: 1.38.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-rcppparallel >=5.0.0
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-rcppparallel >=5.0.0
+source:
+  md5: 80772de8231b22269fb6ee5401af8292
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HIBAG_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HIBAG/HIBAG_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HIBAG_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hibag/bioconductor-hibag_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HIBAG')"

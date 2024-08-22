@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/tleonardi/nanocompore
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Nanocompore identifies raw signal changes between two conditions dRNA-Seq
+    data.
+build:
+  entry_points:
+  - nanocompore = nanocompore.__main__:main
+  noarch: python
+  number: 0
+  script:
+  - -m pip install . --no-deps -vv
+extra:
+  identifiers:
+  - usegalaxy-eu:nanocompore_db
+  recipe-maintainers:
+  - bgruening
+package:
+  name: nanocompore
+  version: 1.0.4
+requirements:
+  host:
+  - pip
+  - python >=3.6.1
+  - poetry >=0.12
+  run:
+  - matplotlib-base
+  - numpy >=1.16.0
+  - pandas
+  - pyfaidx
+  - python >=3.6.1
+  - pyyaml
+  - scikit-learn =0.21
+  - scipy >=1.2.0
+  - seaborn
+  - statsmodels >=0.9.0
+  - tqdm
+  - bedparse
+  - importlib_metadata
+  - loguru
+source:
+  sha256: 52653c103bc84207c7edd3e6171a27adb84ef1721c3fe0a11a1b009c95c10c2b
+  url: https://pypi.io/packages/source/n/nanocompore/nanocompore-1.0.4.tar.gz
+test:
+  commands:
+  - nanocompore sampcomp --help
+  - nanocompore simreads --help

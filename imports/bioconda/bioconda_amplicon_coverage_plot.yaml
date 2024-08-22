@@ -1,0 +1,38 @@
+about:
+  description: 'generate an interactive barplot given amplicon info in bed/bedpe format
+    and coverage information in cov/bam file.
+
+    '
+  home: https://github.com/chienchi/amplicon_coverage_plot
+  license: GPLv3
+  license_file: LICENSE
+  summary: Generate an amplicon coverage plot
+build:
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - pvanheus
+package:
+  name: amplicon_coverage_plot
+  version: 0.3.3
+requirements:
+  host:
+  - python >=3.7
+  - numpy >=1.15.1
+  - plotly >=4.7.1
+  - pysam >=0.15.4
+  run:
+  - python >=3.7
+  - numpy >=1.15.1
+  - plotly >=4.7.1
+  - pysam >=0.15.4
+source:
+  sha256: 260ca1ac42381149e955b102f422267ad77d16daec3bee83585999cd1152d817
+  url: https://github.com/chienchi/amplicon_coverage_plot/archive/refs/tags/0.3.3.tar.gz
+test:
+  commands:
+  - amplicov --help

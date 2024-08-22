@@ -1,0 +1,35 @@
+about:
+  home: http://parafly.sourceforge.net/
+  license: The Broad Institute (own license thingy)
+  summary: Given a file containing a list of unix commands, multithreading is used
+    to process the commands in parallel on a single server. Success/failure is captured,
+    and failed commands are retained and reported.
+build:
+  number: 3
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: parafly
+  version: r2013_01_21
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - llvm-openmp
+  - libgomp
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - parafly-aarch64.patch
+  sha256: 64cf7ac2d4af0801b78d58f4057a1489d76b2b8ae59c78997f434d1239fa4abe
+  url: http://downloads.sourceforge.net/project/parafly/parafly-r2013-01-21.tgz
+test:
+  commands:
+  - ParaFly 2>&1 | grep Usage > /dev/null

@@ -1,0 +1,54 @@
+about:
+  description: Curves+ is a revised version of the Curves approach for analysing the
+    structure of nucleic acids. It respects the international conventions for nucleic
+    acid analysis, runs much faster and provides new data.
+  home: http://curvesplus.bsc.es/misc
+  license: Apache Software License
+  license_family: APACHE
+  summary: 'CURVES+: Conformational analysis of single nucleic acid structures or
+    of molecular dynamics trajectories'
+build:
+  number: 2
+  run_exports:
+  - None
+extra:
+  build:
+    python:
+    - 3.8
+    - 3.9
+    - 3.1
+  skip: true
+package:
+  name: curves
+  version: 3.0.2
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - make
+  host:
+  - python
+  - libnetcdf
+  - netcdf-fortran
+  - ambertools >=22.0
+  run:
+  - python 3.8.*
+  - python 3.9.*
+  - python 3.10.*
+  - libnetcdf
+  - netcdf-fortran
+  - ambertools >=22.0
+source:
+- patches:
+  - Makefile.patch
+  - Makefile.osx.patch
+  sha256: b9033caffd398956336dfac1f05fd95d22a1efd376fb3501b1b9058ba74e6a91
+  url: http://curvesplus.bsc.es/static/app/curves+_v3.0nc.tar.gz
+- sha256: 4ff30cd6821fdb80e1520483f24b35cc3852af7dec2e7c73df9fd57d84e8dde2
+  url: http://curvesplus.bsc.es/static/app/canal.f
+- sha256: 81b324d4b4ff835e56f81a3f7d6a408f511e89a42cac8f390516a9fb3f9026f7
+  url: http://curvesplus.bsc.es/static/app/canion.f
+test:
+  files:
+  - input_files.tar.gz

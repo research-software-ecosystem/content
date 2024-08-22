@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/damurdock/SIDR
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Sequence Idenification using Decision tRees; a tool to classify DNA reads
+    using machine learning models.
+build:
+  entry_points:
+  - sidr = sidr.cli:cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: sidr
+  version: 0.0.2a2
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - click
+  - numpy
+  - pandas
+  - pysam >=0.8.1
+  - python
+  - scikit-learn
+  - scipy
+source:
+  sha256: 23a1da88d3d531db4140e7a3eac829ab29c987cdd11ddc8d5411006cdd8d0550
+  url: https://pypi.io/packages/source/S/SIDR/SIDR-0.0.2a2.tar.gz
+test:
+  commands:
+  - sidr --help
+  imports:
+  - sidr

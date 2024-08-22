@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/bioforensics/happer/
+  home: https://github.com/bioforensics/happer/
+  license: BSD License
+  license_family: BSD
+  summary: Minimal Python library for generating haplotype sequences.
+build:
+  entry_points:
+  - happer = happer.__main__:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - standage
+package:
+  name: happer
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+source:
+  sha256: eeb5a79063a720e0bc59aaf204d9e941d94f03a209644a04376077b08938b966
+  url: https://github.com/bioforensics/happer/archive/0.1.1.tar.gz
+test:
+  imports:
+  - happer
+  requires:
+  - pytest
+  - pytest-cov

@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/HRGV/phyloFlash
+  license: GPLv3
+  license_family: GPL
+  summary: 'phyloFlash is a pipeline to rapidly reconstruct the SSU rRNAs and explore
+
+    phylogenetic composition of an illumina (meta)genomic dataset.'
+build:
+  noarch: generic
+  number: 1
+package:
+  name: phyloflash
+  version: 3.4.2
+requirements:
+  run:
+  - perl >=5.13.2
+  - bbmap
+  - emirge
+  - pigz
+  - samtools >=1.12
+  - vsearch >=2.5.0
+  - bedtools
+  - mafft
+  - spades
+  - r-base >=4.0.0
+  - r-ggdendro
+  - r-gtable
+  - r-reshape2
+  - r-ggplot2 >=3.3.0
+  - r-optparse
+source:
+  sha256: e88ab03a11ef6599f9269c58896e449b36ea5e26780c3f70728e6a6ac2e875da
+  url: https://github.com/HRGV/phyloFlash/archive/pf3.4.2.tar.gz
+test:
+  commands:
+  - phyloFlash.pl -check_env || true
+  - phyloFlash.pl -check_env 2>&1 | grep "Please provide a path using -dbhome"
+  - phyloFlash_makedb.pl --help | grep "download databases"
+  - phyloFlash_heatmap.R --help | tee | grep "Generates a heatmap plot"

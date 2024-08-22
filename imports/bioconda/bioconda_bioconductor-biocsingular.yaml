@@ -1,0 +1,64 @@
+about:
+  description: Implements exact and approximate methods for singular value decomposition
+    and principal components analysis, in a framework that allows them to be easily
+    switched within Bioconductor packages or workflows. Where possible, parallelization
+    is achieved using the BiocParallel framework.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BiocSingular.html
+  license: GPL-3.0-only
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Singular Value Decomposition for Bioconductor Packages
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:biocsingular
+package:
+  name: bioconductor-biocsingular
+  version: 1.18.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-beachmat >=2.18.0,<2.19.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-scaledmatrix >=1.10.0,<1.11.0
+  - r-base
+  - r-irlba
+  - r-matrix
+  - r-rcpp
+  - r-rsvd
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-beachmat >=2.18.0,<2.19.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-scaledmatrix >=1.10.0,<1.11.0
+  - r-base
+  - r-irlba
+  - r-matrix
+  - r-rcpp
+  - r-rsvd
+source:
+  md5: 9b4158e143f2cbefc140228c13090b35
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocSingular_1.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BiocSingular/BiocSingular_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BiocSingular_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biocsingular/bioconductor-biocsingular_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BiocSingular')"

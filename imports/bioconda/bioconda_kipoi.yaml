@@ -1,0 +1,55 @@
+about:
+  description: 'Kipoi: model zoo for genomics.'
+  dev_url: https://github.com/kipoi/kipoi
+  doc_url: https://kipoi.org/docs/
+  home: https://kipoi.org
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: 'Kipoi: model zoo for genomics'
+build:
+  entry_points:
+  - kipoi = kipoi.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps --ignore-installed -v .'
+extra:
+  recipe-maintainers:
+  - visze
+  - Avsecz
+package:
+  name: kipoi
+  version: 0.8.6
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pyyaml
+  - future
+  - numpy
+  - pandas >=0.21.0
+  - tqdm
+  - attrs <=21.4.0
+  - related >=0.6.0
+  - colorlog
+  - jinja2
+  - cookiecutter >=1.6.0
+  - h5py
+  - urllib3 >=1.21.1
+  - tinydb
+  - kipoi-utils >=0.7.5
+  - kipoi-conda >=0.1.6
+  - deprecation >=2.0.6
+source:
+  sha256: 029d86aef31398be669824a1a004c3cf27a4dc22e581c7d2a10db6a0d09d6198
+  url: https://pypi.io/packages/source/k/kipoi/kipoi-0.8.6.tar.gz
+test:
+  commands:
+  - kipoi --help
+  imports:
+  - kipoi
+  - kipoi.cli
+  - kipoi.external
+  - kipoi.external.related

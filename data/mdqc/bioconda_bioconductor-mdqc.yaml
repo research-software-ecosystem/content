@@ -1,0 +1,47 @@
+about:
+  description: MDQC is a multivariate quality assessment method for microarrays based
+    on quality control (QC) reports. The Mahalanobis distance of an array's quality
+    attributes is used to measure the similarity of the quality of that array against
+    the quality of the other arrays. Then, arrays with unusually high distances can
+    be flagged as potentially low-quality.
+  home: https://bioconductor.org/packages/3.18/bioc/html/mdqc.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Mahalanobis Distance Quality Control for microarrays
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mdqc
+  - doi:10.1093/bioinformatics/btm487
+  parent_recipe:
+    name: bioconductor-mdqc
+    path: recipes/bioconductor-mdqc
+    version: 1.42.0
+package:
+  name: bioconductor-mdqc
+  version: 1.64.0
+requirements:
+  host:
+  - r-base
+  - r-cluster
+  - r-mass
+  run:
+  - r-base
+  - r-cluster
+  - r-mass
+source:
+  md5: a9dd8adf71b5fe15b4b5b444f0b43110
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mdqc_1.64.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mdqc/mdqc_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mdqc_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mdqc/bioconductor-mdqc_1.64.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('mdqc')"

@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/csmiller/EMIRGE
+  license: GNU General Public License v3 or later (GPLv3+)
+  license_family: GPL3
+  summary: EMIRGE reconstructs full length sequences from short sequencing reads
+build:
+  number: 7
+  script: python -m pip install --no-deps --ignore-installed .
+  skip: true
+package:
+  name: emirge
+  version: 0.61.1
+requirements:
+  build:
+  - None
+  host:
+  - cython
+  - pip
+  - zlib
+  - python
+  - setuptools
+  - numpy
+  run:
+  - zlib
+  - python
+  - numpy
+  - pysam
+  - scipy
+  - biopython
+  - bowtie
+  - samtools
+  - vsearch
+source:
+  sha256: a24d5be398b77140e5d08bfa9a36743595115c02b2424b843366de3488f2b59d
+  url: https://pypi.io/packages/source/E/EMIRGE/EMIRGE-0.61.1.tar.gz
+test:
+  commands:
+  - emirge_makedb.py --help >/dev/null
+  imports:
+  - pykseq
+  - _emirge_amplicon
+  - _emirge

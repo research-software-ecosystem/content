@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/kowallus/mbgc
+  license: GPL3
+  license_family: GPL
+  license_file: LICENSE
+  summary: A tool for compressing collection of genomes in FASTA format
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  maintainers:
+  - kowallus
+package:
+  name: mbgc
+  version: 2.0.1
+requirements:
+  build:
+  - None
+  - cmake >=3.5
+  - make
+  host:
+  - llvm-openmp
+  run:
+  - llvm-openmp
+source:
+  sha256: fb422fc89aa95d82dab0b1431b7f220d5f4cdab2dfc1141218e74668461fa530
+  url: https://github.com/kowallus/mbgc/archive/refs/tags/v2.0.1.tar.gz
+test:
+  commands:
+  - mbgc -v 2>&1 | grep -F 2.0.1

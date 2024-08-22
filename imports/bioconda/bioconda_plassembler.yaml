@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/gbouras13/plassembler
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Quickly and accurately assemble plasmids in hybrid sequenced bacterial
+    isolates
+build:
+  entry_points:
+  - plassembler = plassembler:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vvv'
+extra:
+  recipe-maintainers:
+  - gbouras13
+package:
+  name: plassembler
+  version: 1.6.2
+requirements:
+  host:
+  - python >=3.8,<3.10
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8,<3.10
+  - flye >=2.9
+  - minimap2 >=2.11
+  - fastp >=0.18.0
+  - chopper >=0.5.0
+  - mash >=2.2
+  - unicycler >=0.4.8
+  - raven-assembler >=1.8
+  - samtools >=0.15.0
+  - click >=8.0.0
+  - loguru >=0.5.3
+  - pysam >=0.16.0
+  - pyyaml >=6.0
+  - pandas >=1.4.2
+  - biopython >=1.76
+  - alive-progress >=3.0.1
+  - requests >=2.25.1
+  - canu ==2.2
+  - dnaapler >=0.4.0
+source:
+  sha256: 1433253aa9fb9305b8eb55ac3a19b46c4064d01147adbda077bc34da82509e46
+  url: https://pypi.io/packages/source/p/plassembler/plassembler-1.6.2.tar.gz
+test:
+  commands:
+  - plassembler --help
+  imports:
+  - plassembler

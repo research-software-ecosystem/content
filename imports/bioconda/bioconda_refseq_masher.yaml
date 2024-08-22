@@ -1,0 +1,39 @@
+about:
+  author: Peter Kruczkiewicz, Gary van Domselaar
+  dev_url: https://github.com/phac-nml/refseq_masher
+  doc_url: https://github.com/phac-nml/refseq_masher
+  home: https://github.com/phac-nml/refseq_masher
+  license: Apache 2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: refseq_masher finds what NCBI RefSeq genomes match or are contained within
+    your sequence data using Mash
+build:
+  entry_points:
+  - refseq_masher = refseq_masher.cli:cli
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  container:
+    extended-base: true
+package:
+  name: refseq_masher
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy >=1.12.1
+  - pandas >=0.20.1
+  - click
+  - mash >=2.0
+source:
+  sha256: 00f81c35b913d5d3325856162cf3f5eddb82d218736bfddaee90fc99ab85b224
+  url: https://pypi.io/packages/source/r/refseq_masher/refseq_masher-0.1.2.tar.gz
+test:
+  commands:
+  - refseq_masher --version
+  - refseq_masher --help

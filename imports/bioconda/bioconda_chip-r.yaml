@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/rhysnewell/ChIP-R
+  license: GPL3
+  license_file: LICENSE
+  summary: ChIP-R is a method for assessing the reproducibility of replicated ChIP-seq
+    or ATAC-seq experiments.
+build:
+  entry_points:
+  - chipr=chipr.__main__:main
+  - ChIP-R=chipr.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - rhysnewell
+package:
+  name: chip-r
+  version: 1.2.0
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - numpy
+  - python
+  - scipy
+source:
+  sha256: ac17733ce397cfd3499bfed044ed0765c1bccee581d1fbb5437a8b9332a59b6d
+  url: https://pypi.io/packages/source/C/ChIP-R/ChIP-R-1.2.0.tar.gz
+test:
+  commands:
+  - chipr --help
+  - ChIP-R --help
+  imports:
+  - chipr

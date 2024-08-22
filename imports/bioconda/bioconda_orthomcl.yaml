@@ -1,0 +1,32 @@
+about:
+  home: http://orthomcl.org/orthomcl/
+  license: EuPathDB Bioinformatics Resource Center
+  license_file: doc/OrthoMCLEngine/Main/SoftwareLicense.txt
+  summary: Ortholog groups of protein sequences
+build:
+  noarch: generic
+  number: 5
+package:
+  name: orthomcl
+  version: 2.0.9
+requirements:
+  run:
+  - perl
+  - perl-dbi
+  - perl-dbd-mysql
+  - mcl
+  - blast
+  - mysqlclient
+source:
+  md5: 2e0202ed4e36a753752c3567edb9bba9
+  patches:
+  - orthomcl.patch
+  url: http://orthomcl.org/common/downloads/software/v2.0/orthomclSoftware-v2.0.9.tar.gz
+test:
+  commands:
+  - orthomclBlastParser 2>&1 | grep EXAMPLE
+  - orthomclFilterFasta 2>&1 | grep EXAMPLE
+  - orthomclReduceFasta 2>&1 | grep EXAMPLE
+  - orthomclReduceGroups 2>&1 | grep EXAMPLE
+  - orthomclSingletons 2>&1 | grep EXAMPLE
+  - orthomclAdjustFasta 2>&1 | grep EXAMPLE

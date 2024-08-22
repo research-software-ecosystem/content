@@ -1,0 +1,30 @@
+about:
+  home: http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/
+  license: GPLv3
+  summary: FastQ Screen allows you to screen a library of sequences in FastQ format
+    against a set of sequence databases so you can see if the composition of the library
+    matches with what you expect
+build:
+  noarch: generic
+  number: 0
+package:
+  name: fastq-screen
+  version: 0.15.3
+requirements:
+  build:
+  - bowtie
+  - bowtie2
+  - perl
+  - perl-gdgraph
+  run:
+  - bowtie
+  - bowtie2
+  - perl
+  - perl-gdgraph
+source:
+  sha256: 002750d78ca50fe0f789e24445e10988e16244f81b4f0189bf2fc4ee8b680be5
+  url: https://github.com/StevenWingett/FastQ-Screen/archive/refs/tags/v0.15.3.tar.gz
+test:
+  commands:
+  - fastq_screen -h >/dev/null
+  - fastq_screen --version

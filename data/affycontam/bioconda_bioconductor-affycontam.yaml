@@ -1,0 +1,44 @@
+about:
+  description: structured corruption of cel file data to demonstrate QA effectiveness
+  home: https://bioconductor.org/packages/3.18/bioc/html/affyContam.html
+  license: Artistic-2.0
+  summary: structured corruption of affymetrix cel file data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:affycontam
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-affycontam
+    path: recipes/bioconductor-affycontam
+    version: 1.38.0
+package:
+  name: bioconductor-affycontam
+  version: 1.60.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-affydata >=1.50.0,<1.51.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-affydata >=1.50.0,<1.51.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: eb7e98d31e923d77d4e6197e5cf8b02d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/affyContam_1.60.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/affyContam/affyContam_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affyContam_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affycontam/bioconductor-affycontam_1.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('affyContam')"

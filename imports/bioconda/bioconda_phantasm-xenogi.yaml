@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/dr-joe-wirth/xenoGI
+  license: GPL-3.0
+  license_family: GPL3
+  license_file: LICENSE
+  summary: xenoGI for PHANTASM
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: phantasm-xenogi
+  version: 3.1.2
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - biopython
+  - blast
+  - fasttree
+  - generax
+  - muscle >=5
+  - numpy
+  - parasail-python
+  - python >=3.9
+  - scipy
+source:
+  sha256: ef4254f1dfef45888480aaa2db908d6afff648d446eff29a4f6c2df93e1209f0
+  url: https://github.com/dr-joe-wirth/xenoGI/archive/refs/tags/v3.1.2.tar.gz
+test:
+  commands:
+  - touch $PREFIX/tmp.py && xenoGI $PREFIX/tmp.py version

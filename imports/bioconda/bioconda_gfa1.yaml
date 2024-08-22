@@ -1,0 +1,33 @@
+about:
+  description: "A command-line tool as well as a library in C that \nparses, validates\
+    \ and transforms assembly graphs in\na dialect of the GFA1 format.\n"
+  home: https://github.com/lh3/gfa1
+  license: GPL3
+  summary: gfa1 toolkit
+build:
+  number: 2
+extra:
+  identifiers:
+  - biotools:gfa1
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: gfa1
+  version: 0.53.alpha
+requirements:
+  build:
+  - make
+  - flex
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  git_commit: 2faeed2953399102e8bb22f5aa833c8f900a7587
+  git_url: https://github.com/lh3/gfa1.git
+  sha256: ignored
+test:
+  commands:
+  - gfaview 2>&1 | grep Usage
+  - fastg2gfa 2>&1 | grep Usage

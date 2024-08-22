@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/linsalrob/genbank_to
+  home: https://github.com/linsalrob/genbank_to
+  license: MIT
+  license_family: MIT
+  summary: 'genbank_to: convert genbank files to a swath of other formats'
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv '
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.6465821
+  recipe-maintainers:
+  - linsalrob
+package:
+  name: genbank_to
+  version: '0.42'
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - bcbio-gff
+  - biopython
+  - pandas
+source:
+  sha256: b59cb5a0f3e62abc9b3d5e2487e7204f939853e1cf95159755e695670684ae52
+  url: https://pypi.io/packages/source/g/genbank_to/genbank_to-0.42.tar.gz
+test:
+  commands:
+  - genbank_to --help
+  - genbank_to --version
+  imports:
+  - GenBankToLib

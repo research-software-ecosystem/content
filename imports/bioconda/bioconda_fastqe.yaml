@@ -1,0 +1,39 @@
+about:
+  description: 'The program reads one or more input FASTQ files.
+
+    For each file it computes the minimum, maximum and mean FASTQ quality score at
+    each position across all reads in a file.
+
+
+    For some reason, it then represents these as emoji.'
+  home: https://github.com/lonsbio/fastqe
+  license: MIT
+  license_family: MIT
+  summary: A emoji based bioinformatics command line tool
+build:
+  entry_points:
+  - fastqe = fastqe.fastqe:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: fastqe
+  version: 0.3.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - biopython >=1.66
+  - pyemojify
+source:
+  patches:
+  - patch
+  sha256: 5b2e60d3d48d9abc5807ebaa9b51c5326b2130b118e0852cd40a35179460379c
+  url: https://pypi.io/packages/source/f/fastqe/fastqe-0.3.1.tar.gz
+test:
+  commands:
+  - fastqe --help
+  imports:
+  - fastqe

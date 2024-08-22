@@ -1,0 +1,50 @@
+about:
+  description: Extends beachmat to support initialization of tatami matrices from
+    HDF5-backed arrays. This allows C++ code in downstream packages to directly call
+    the HDF5 C/C++ library to access array data, without the need for block processing
+    via DelayedArray. Some utilities are also provided for direct creation of an in-memory
+    tatami matrix from a HDF5 file.
+  home: https://bioconductor.org/packages/3.18/bioc/html/beachmat.hdf5.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: beachmat bindings for HDF5-backed matrices
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-beachmat.hdf5
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-beachmat >=2.18.0,<2.19.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-hdf5array >=1.30.0,<1.31.0
+  - bioconductor-rhdf5lib >=1.24.0,<1.25.0
+  - r-base
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-beachmat >=2.18.0,<2.19.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-hdf5array >=1.30.0,<1.31.0
+  - bioconductor-rhdf5lib >=1.24.0,<1.25.0
+  - r-base
+  - r-rcpp
+source:
+  md5: b2ca9b6358fb05895101e6a911ca0e39
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/beachmat.hdf5_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/beachmat.hdf5/beachmat.hdf5_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/beachmat.hdf5_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-beachmat.hdf5/bioconductor-beachmat.hdf5_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('beachmat.hdf5')"

@@ -1,0 +1,36 @@
+about:
+  home: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/srprism/
+  license: Public Domain
+  summary: SRPRISM - Short Read Alignment Tool
+build:
+  number: 5
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: srprism
+  version: 2.4.24
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - autoconf
+  - automake
+  host:
+  - bzip2
+  - zlib
+  run:
+  - bzip2
+  - zlib
+source:
+  patches:
+  - srprism-fix-compilation.patch
+  sha256: ad76998cf6db0d76f8b3326f085d6b8c01f57302b5d89fd057669b6390df978f
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/src/srprism.tar.gz
+test:
+  commands:
+  - srprism help

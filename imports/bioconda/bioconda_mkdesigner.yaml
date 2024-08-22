@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/KChigira/mkdesigner/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Genome-wide design of markers for PCR-based genotyping from NGS data.
+build:
+  entry_points:
+  - mkvcf = mkdesigner.mkvcf:main
+  - mkprimer = mkdesigner.mkprimer:main
+  - mkselect = mkdesigner.mkselect:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - KChigira
+package:
+  name: mkdesigner
+  version: 0.4.3
+requirements:
+  host:
+  - python >=3.8,<4.0
+  - pip
+  run:
+  - python >=3.8,<4.0
+  - pandas >=2.0.2,<3.0.0
+  - blast >=2.14.0,<3.0.0
+  - gatk4 >=4.4.0.0,<5.0.0.0
+  - picard-slim >=2.18.29,<3.0.0
+  - primer3 >=2.6.1,<3.0.0
+  - samtools >=1.6,<2.0
+  - bcftools >=1.5,<2.0
+  - matplotlib-base
+source:
+  sha256: b56c5fd1f60e300e2bfefb4997e3af7bfd5a37ed6643138114ba810a83250e1a
+  url: https://pypi.io/packages/source/m/mkdesigner/mkdesigner-0.4.3.tar.gz
+test:
+  commands:
+  - mkvcf --help
+  - mkprimer --help
+  - mkselect --help
+  imports:
+  - mkdesigner

@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/soedinglab/transannot
+  doc_url: https://github.com/soedinglab/transannot/blob/master/README.md
+  home: https://github.com/soedinglab/transannot
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE.md
+  summary: 'TransAnnot: a fast transcriptome annotation pipeline.'
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:transannot
+  recipe-maintainers:
+  - mariia-zelenskaia
+package:
+  name: transannot
+  version: 3.0.0
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  host:
+  - llvm-openmp
+  - libgomp
+  - gawk
+  - zlib
+  - bzip2
+  run:
+  - aria2
+  - wget
+  - perl
+source:
+  sha256: 6835fc3cc77aafd273abc8f2b4d8213b251b199ff7dd5ae9fa7e1dd19579ae41
+  url: https://github.com/soedinglab/transannot/archive/refs/tags/3-e15e316.tar.gz
+test:
+  commands:
+  - transannot > /dev/null

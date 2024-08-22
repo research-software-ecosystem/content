@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/wwood/CoverM
+  license: GPL3
+  license_family: GPL3
+  summary: CoverM aims to be a configurable, easy to use and fast DNA read coverage
+    and relative abundance calculator focused on metagenomics applications
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+package:
+  name: coverm
+  version: 0.7.0
+requirements:
+  build:
+  - rust >=1.19
+  - None
+  - None
+  - clangdev
+  - pkg-config
+  - make
+  - cmake
+  host:
+  - zlib
+  - gsl
+  - openblas
+  run:
+  - zlib
+  - gsl
+  - starcode
+  - openblas
+  - bwa >=0.7.17
+  - samtools >=1.9
+  - minimap2 >=2.24
+  - fastani >=1.31
+  - dashing >=0.4.0
+  - strobealign >=0.11.0
+source:
+  sha256: 539142529d2590166e98ed399db36913fbf8b256d8c74a1966acae849c18a828
+  url: https://github.com/wwood/coverm/archive/v0.7.0.tar.gz
+test:
+  commands:
+  - coverm --version | grep '0.7.0'

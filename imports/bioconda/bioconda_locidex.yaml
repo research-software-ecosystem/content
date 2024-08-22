@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/phac-nml/locidex
+  home: https://pypi.org/project/locidex/
+  license: Apache-2.0
+  summary: 'Locidex: Common search engine for similarity based typing applications'
+build:
+  entry_points:
+  - locidex=locidex.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --use-pep517 --no-deps -vvv
+package:
+  name: locidex
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.8,<4
+  - pip
+  run:
+  - python >=3.8,<4
+  - None
+  - pandas >=2.0.2
+  - numba >=0.57.1
+  - pytables >=3.8
+  - six >=1.16
+  - pyrodigal >=3.0
+  - biopython >=1.83
+  - mafft
+  - blast >=2.9.0
+source:
+  sha256: 00134512c81ce4d752ca568e2fc5c3497004be4b8a4458fa38e4195e5cfb72d0
+  url: https://pypi.io/packages/source/l/locidex/locidex-0.1.2.tar.gz
+test:
+  commands:
+  - locidex -h
+  - locidex search -h
+  - locidex extract  -h
+  - locidex report -h
+  - locidex merge -h
+  - locidex format -h
+  - locidex build  -h

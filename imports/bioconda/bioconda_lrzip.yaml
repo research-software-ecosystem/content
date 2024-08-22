@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/ckolivas/lrzip
+  license: GPLv2
+  license_file: COPYING
+  summary: Long Range ZIP or Lzma RZIP. This is a compression program optimised for
+    large files. The larger the file and the more memory you have, the better the
+    compression advantage this will provide, especially once the files are larger
+    than 100MB. The advantage can be chosen to be either size (much smaller than bzip2)
+    or speed (much faster than bzip2).
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: lrzip
+  version: 0.651
+requirements:
+  build:
+  - autoconf
+  - automake
+  - libtool
+  - make
+  - None
+  host:
+  - zlib
+  - bzip2
+  - lzo
+  - lz4-c
+  run:
+  - bzip2
+  - zlib
+  - lzo
+  - lz4-c
+source:
+  sha256: 48bd8decb097c1596c9b3777959cd3e332819434ed77a2823e65aa436f1602f9
+  url: http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
+test:
+  commands:
+  - lrzip --version

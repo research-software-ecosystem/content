@@ -1,0 +1,45 @@
+about:
+  description: FISHalyseR provides functionality to process and analyse digital cell
+    culture images, in particular to quantify FISH probes within nuclei. Furthermore,
+    it extract the spatial location of each nucleus as well as each probe enabling
+    spatial co-localisation analysis.
+  home: https://bioconductor.org/packages/3.18/bioc/html/FISHalyseR.html
+  license: Artistic-2.0
+  summary: FISHalyseR a package for automated FISH quantification
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:fishalyser
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-fishalyser
+    path: recipes/bioconductor-fishalyser
+    version: 1.14.0
+package:
+  name: bioconductor-fishalyser
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-ebimage >=4.44.0,<4.45.0
+  - r-abind
+  - r-base
+  run:
+  - bioconductor-ebimage >=4.44.0,<4.45.0
+  - r-abind
+  - r-base
+source:
+  md5: fea17ba4629a7d53c62eef47a3cdfab2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FISHalyseR_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FISHalyseR/FISHalyseR_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FISHalyseR_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fishalyser/bioconductor-fishalyser_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FISHalyseR')"

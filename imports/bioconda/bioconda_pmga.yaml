@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/CDCgov/BMGAP
+  license: AGPL-2.0
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Command-line version of PMGA (PubMLST Genome Annotator) for all Neisseria
+    species and Haemophilus influenzae
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - doi:10.3389/fgene.2020.601870
+  recipe-maintainers:
+  - rpetit3
+package:
+  name: pmga
+  version: 3.0.2
+requirements:
+  run:
+  - biopython >1.77
+  - blast
+  - executor
+  - mash 1.1
+  - pigz
+  - python >=3.7
+  - requests
+source:
+- sha256: 8d451383bad2fbec9d39fe62d40235b2459e7371010e669eb4e63400e5f1bdf2
+  url: https://github.com/rpetit3/pmga/archive/refs/tags/v3.0.2.tar.gz
+test:
+  commands:
+  - pmga --help
+  - pmga --version
+  - pmga-build --help
+  - pmga-build --version

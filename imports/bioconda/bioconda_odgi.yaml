@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/pangenome/odgi
+  license: MIT
+  license_file: LICENSE
+  summary: An optimized dynamic genome/graph implementation
+build:
+  number: 2
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - AndreaGuarracino
+package:
+  name: odgi
+  version: 0.8.6
+requirements:
+  build:
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  - cmake
+  - make
+  host:
+  - zlib
+  - python
+  - jemalloc
+  - pybind11
+  run:
+  - llvm-openmp
+  - python
+  - pybind11
+source:
+  patches:
+  - patch
+  sha256: a6db190b782608082b14b42c660389aa18010791de1e2d07e29f7f61d8787754
+  url: https://github.com/pangenome/odgi/releases/download/v0.8.6/odgi-v0.8.6.tar.gz
+test:
+  commands:
+  - odgi test

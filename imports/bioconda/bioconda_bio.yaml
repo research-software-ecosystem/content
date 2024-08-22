@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/ialbert/bio
+  home: https://github.com/ialbert/bio
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Command-line utilities to make bioinformatics explorations more enjoyable.
+build:
+  entry_points:
+  - bio = biorun.__main__:run
+  - fasta_filter.py = biorun.scripts.fasta_filter:run
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+package:
+  name: bio
+  version: 1.7.1
+requirements:
+  host:
+  - python >=3.10
+  - hatchling
+  - pip
+  run:
+  - python >=3.10
+  - biopython >=1.80
+  - requests
+  - tqdm
+  - mygene
+  - pandas
+  - pooch
+  - gprofiler-official
+source:
+  sha256: df3252905b0b1e739eca3760c91fd519d5af07b09632df25c2bd4ecd20da2724
+  url: https://pypi.io/packages/source/b/bio/bio-1.7.1.tar.gz
+test:
+  commands:
+  - pip check

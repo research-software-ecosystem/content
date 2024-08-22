@@ -1,0 +1,41 @@
+about:
+  home: https://gitlab.com/aaylward/pydbsnp
+  license: MIT
+  license_file: LICENSE
+  summary: Interface with dbSNP VCF data
+build:
+  entry_points:
+  - pydbsnp-download=pydbsnp.download:main
+  - pydbsnp-index=pydbsnp.index:main
+  - pydbsnp-query=pydbsnp.query:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - JohannesGawron
+package:
+  name: pydbsnp
+  version: 2.0.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pysam
+source:
+  sha256: 07259a3bd1412e72664c908f364dccb7f6a5ae28e44a012620fd8959a4aa296b
+  url: https://pypi.io/packages/source/p/pydbsnp/pydbsnp-2.0.2.tar.gz
+test:
+  commands:
+  - pip check
+  - pydbsnp-download --help
+  - pydbsnp-index --help
+  - pydbsnp-query --help
+  imports:
+  - pydbsnp
+  requires:
+  - pip

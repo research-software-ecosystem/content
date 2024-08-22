@@ -1,0 +1,53 @@
+about:
+  description: BiocCheck guides maintainers through Bioconductor best practicies.
+    It runs Bioconductor-specific package checks by searching through package code,
+    examples, and vignettes. Maintainers are required to address all errors, warnings,
+    and most notes produced.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BiocCheck.html
+  license: Artistic-2.0
+  summary: Bioconductor-specific package checks
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-bioccheck
+  version: 1.38.0
+requirements:
+  host:
+  - bioconductor-biocbaseutils >=1.4.0,<1.5.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-biocviews >=1.70.0,<1.71.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-biocmanager
+  - r-callr
+  - r-codetools
+  - r-httr
+  - r-knitr
+  - r-stringdist
+  run:
+  - bioconductor-biocbaseutils >=1.4.0,<1.5.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-biocviews >=1.70.0,<1.71.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-biocmanager
+  - r-callr
+  - r-codetools
+  - r-httr
+  - r-knitr
+  - r-stringdist
+source:
+  md5: d003f035a6c197261bed5fa4cd989738
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocCheck_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BiocCheck/BiocCheck_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BiocCheck_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bioccheck/bioconductor-bioccheck_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BiocCheck')"

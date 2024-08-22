@@ -1,0 +1,49 @@
+about:
+  description: Defines a S4 class for storing data from single-cell experiments. This
+    includes specialized methods to store and retrieve spike-in information, dimensionality
+    reduction coordinates and size factors for each cell, along with the usual metadata
+    for genes and libraries.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SingleCellExperiment.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: S4 Classes for Single Cell Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-singlecellexperiment
+    path: recipes/bioconductor-singlecellexperiment
+    version: 1.2.0
+package:
+  name: bioconductor-singlecellexperiment
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+source:
+  md5: ef057b77f40efba992f311486e83448b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SingleCellExperiment_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SingleCellExperiment/SingleCellExperiment_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SingleCellExperiment_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-singlecellexperiment/bioconductor-singlecellexperiment_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SingleCellExperiment')"

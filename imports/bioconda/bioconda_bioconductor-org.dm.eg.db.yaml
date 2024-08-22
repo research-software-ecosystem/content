@@ -1,0 +1,40 @@
+about:
+  description: Genome wide annotation for Fly, primarily based on mapping using Entrez
+    Gene identifiers.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/org.Dm.eg.db.html
+  license: Artistic-2.0
+  summary: Genome wide annotation for Fly
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-org.dm.eg.db
+    path: recipes/bioconductor-org.dm.eg.db
+    version: 3.6.0
+package:
+  name: bioconductor-org.dm.eg.db
+  version: 3.18.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 92577ed3bc5d76b78905169eebfebe7d
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/org.Dm.eg.db_3.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/org.Dm.eg.db/org.Dm.eg.db_3.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/org.Dm.eg.db_3.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-org.dm.eg.db/bioconductor-org.dm.eg.db_3.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('org.Dm.eg.db')"

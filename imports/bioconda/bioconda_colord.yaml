@@ -1,0 +1,24 @@
+about:
+  home: https://github.com/refresh-bio/colord
+  license: GPL-3
+  license_family: GPL
+  summary: A versatile compressor of third generation sequencing reads.
+build:
+  number: 1
+  script: mkdir -p ${PREFIX}/bin; cp bin/colord ${PREFIX}/bin
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: colord
+  version: 1.1.0
+requirements:
+  build: null
+  run: null
+source:
+  sha256: ff9a11f3c83f2fe09aa169eecafc6611ad790d771364f58b8f7cab68da12cd55
+  url: https://github.com/refresh-bio/colord/releases/download/v1.1.0/colord-1.1.0.mac.tar.gz
+test:
+  commands:
+  - colord --help

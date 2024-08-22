@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/bodegalab/irescue
+  license: MIT
+  license_file: LICENSE
+  summary: A tool to quantify transposable elements expression in scRNA-seq.
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - bepoli
+package:
+  name: irescue
+  version: 1.0.3
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - numpy >=1.20.2
+  - requests >=2.27.1
+  - gawk >=5.0.1
+  - coreutils >=9.3
+  - gzip >=1.12
+  - pysam >=0.16.0.1
+  - bedtools >=2.30.0
+  - samtools >=1.12
+source:
+  sha256: 9d68f42cd70c1ee9151699201319a3c879a3400b51a1224ccd66191ae5bb16ae
+  url: https://pypi.io/packages/source/i/irescue/IRescue-1.0.3.tar.gz
+test:
+  commands:
+  - irescue --version
+  imports:
+  - irescue

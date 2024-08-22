@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/cdanielmachado/smetana
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Species METabolic interaction ANAlysis (SMETANA) is a python-based command
+    line tool to analyse microbial communities.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - acaprez
+package:
+  name: smetana
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.6
+  - setuptools-scm
+  - pip
+  run:
+  - python >=3.6
+  - reframed
+  - pandas
+source:
+  sha256: e76729dcb39da54a65074360229c862811579920fa8ab7bf10211aadca609019
+  url: https://pypi.io/packages/source/s/smetana/smetana-1.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - smetana
+  requires:
+  - pip

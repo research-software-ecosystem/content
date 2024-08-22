@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/cgat-developers/cgat-daisy
+  license: MIT
+  summary: A system to design and execute benchmarks
+build:
+  entry_points:
+  - daisy = daisy.tools.cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+package:
+  name: cgat-daisy
+  version: 0.1.12
+requirements:
+  host:
+  - python
+  - pip
+  - poetry
+  run:
+  - python
+  - cgatcore
+  - pandas
+  - sqlalchemy
+  - ruffus
+  - ruamel_yaml
+  - pysam
+  - tqdm
+source:
+  sha256: ccca3a2e85a29a5fb08a9845a9bc075cf6ff286f9ca529740a04dfaf79469d86
+  url: https://pypi.io/packages/source/c/cgat-daisy/cgat-daisy-0.1.12.tar.gz
+test:
+  commands:
+  - daisy run --help

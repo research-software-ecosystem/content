@@ -1,0 +1,85 @@
+about:
+  description: 'Pegasus is a tool for analyzing transcriptomes of millions of single
+    cells.
+
+    It is a command line tool, a python package and a base for Cloud-based analysis
+    workflows.
+
+    '
+  dev_url: https://github.com/lilab-bcb/pegasus
+  doc_url: https://pegasus.readthedocs.io
+  home: https://github.com/lilab-bcb/pegasus
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: An efficient Python analysis tool which scales to transcriptomes of millions
+    of single cells.
+build:
+  entry_points:
+  - pegasus = pegasus.__main__:main
+  number: 2
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  identifiers:
+  - doi:10.1038/s41592-020-0905-x
+  recipe-maintainers:
+  - yihming
+package:
+  name: pegasuspy
+  version: 1.10.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - cython
+  - setuptools_scm
+  - pip
+  run:
+  - python
+  - numpy
+  - pandas >=1.2.0
+  - anndata >=0.7.1
+  - loompy >=3
+  - docopt
+  - scipy >=1.7
+  - pegasusio >=0.9.1
+  - psutil
+  - threadpoolctl
+  - adjusttext
+  - demuxem
+  - hnswlib
+  - harmony-pytorch
+  - joblib >=0.14
+  - lightgbm >=2.2.1
+  - louvain >=0.7.0
+  - leidenalg >=0.8.0
+  - matplotlib-base >=3.7.0
+  - natsort
+  - numba
+  - pybind11
+  - python-igraph >=0.8.0
+  - scikit-learn >=0.23.2
+  - scikit-misc
+  - seaborn >=0.13.0
+  - statsmodels
+  - pyfit-sne >=1.1.1
+  - umap-learn >=0.5.2
+  - xlsxwriter
+  - wordcloud
+  - forceatlas2-python
+  - tbb
+source:
+  sha256: 1419cdb4da138402190912bceba427f99f5fb9949731ddd8706109924c6ee4c2
+  url: https://pypi.io/packages/source/p/pegasuspy/pegasuspy-1.10.0.tar.gz
+test:
+  commands:
+  - pegasus --help
+  imports:
+  - pegasus
+  - pegasus.commands
+  - pegasus.cylib.cfisher
+  - pegasus.cylib.fast_utils
+  - pegasus.cylib.de_utils

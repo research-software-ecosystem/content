@@ -1,0 +1,36 @@
+about:
+  home: http://bebatut.fr/enasearch/
+  license: MIT License
+  license_family: MIT
+  summary: A Python library for interacting with ENA's API
+build:
+  entry_points:
+  - enasearch = enasearch.__main__:main
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: enasearch
+  version: 0.2.2
+requirements:
+  host:
+  - python <3
+  - pip
+  - pytest-runner
+  run:
+  - python <3
+  - requests
+  - click
+  - flake8
+  - xmltodict
+  - biopython
+  - dicttoxml
+source:
+  md5: fdb69570976dddaceb66a21484cea0ce
+  url: https://pypi.python.org/packages/6c/98/e731dfb01f1a95ccfec443c85dfd09dd3cf6a9a08ee64bfcb0be2688e518/enasearch-0.2.0.tar.gz
+test:
+  commands:
+  - enasearch --help
+  imports:
+  - enasearch
+  - enasearch_data

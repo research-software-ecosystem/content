@@ -1,0 +1,51 @@
+about:
+  description: The method performs bottom-up hierarchical clustering, using a Dirichlet
+    Process (infinite mixture) to model uncertainty in the data and Bayesian model
+    selection to decide at each step which clusters to merge.  This avoids several
+    limitations of traditional methods, for example how many clusters there should
+    be and how to choose a principled distance metric.  This implementation accepts
+    multinomial (i.e. discrete, with 2+ categories) or time-series data. This version
+    also includes a randomised algorithm which is more efficient for larger data sets.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BHC.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Bayesian Hierarchical Clustering
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:bhc
+  - doi:10.1186/1471-2105-10-242
+  parent_recipe:
+    name: bioconductor-bhc
+    path: recipes/bioconductor-bhc
+    version: 1.32.0
+package:
+  name: bioconductor-bhc
+  version: 1.54.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 855087c8854bd3014111477e1c3cdcb9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BHC_1.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BHC/BHC_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BHC_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bhc/bioconductor-bhc_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BHC')"

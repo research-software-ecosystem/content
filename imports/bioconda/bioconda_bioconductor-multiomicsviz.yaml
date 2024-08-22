@@ -1,0 +1,44 @@
+about:
+  description: Calculate the spearman correlation between the source omics data and
+    other target omics data, identify the significant correlations and plot the significant
+    correlations on the heat map in which the x-axis and y-axis are ordered by the
+    chromosomal location.
+  home: https://bioconductor.org/packages/3.17/bioc/html/multiOmicsViz.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Plot the effect of one omics data on other omics data along the chromosome
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  parent_recipe:
+    name: bioconductor-multiomicsviz
+    path: recipes/bioconductor-multiomicsviz
+    version: 1.4.0
+package:
+  name: bioconductor-multiomicsviz
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.30.0,<1.31.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  run:
+  - bioconductor-summarizedexperiment >=1.30.0,<1.31.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+source:
+  md5: a051b5e32c72385f4463cbe1751c1484
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/multiOmicsViz_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/multiOmicsViz/multiOmicsViz_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/multiOmicsViz_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-multiomicsviz/bioconductor-multiomicsviz_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('multiOmicsViz')"

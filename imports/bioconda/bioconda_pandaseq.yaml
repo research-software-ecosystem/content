@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/neufeld/pandaseq
+  license: GPL3
+  license_file: COPYING
+  summary: PANDASEQ is a program to align Illumina reads, optionally with PCR primers
+    embedded in the sequence, and reconstruct an overlapping sequence.
+build:
+  number: 8
+  skip: false
+package:
+  name: pandaseq
+  version: '2.11'
+requirements:
+  build:
+  - make
+  - None
+  - autoconf
+  - automake
+  - pkg-config
+  - libtool
+  host:
+  - libtool
+  - zlib
+  - bzip2
+  run:
+  - zlib
+  - bzip2
+source:
+  md5: a8ae0e938bac592fc07dfa668147d80b
+  url: https://github.com/neufeld/pandaseq/archive/v2.11.tar.gz
+test:
+  commands:
+  - pandaseq -v 2>&1 | grep "pandaseq" > /dev/null

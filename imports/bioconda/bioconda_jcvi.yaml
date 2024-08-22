@@ -1,0 +1,76 @@
+about:
+  description: JCVI utility libraries
+  dev_url: https://github.com/tanghaibao/jcvi
+  doc_url: https://github.com/tanghaibao/jcvi/wiki
+  home: https://github.com/tanghaibao/jcvi
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Python utility libraries on genome assembly, annotation, and comparative
+    genomics
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.4.16
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: jcvi
+  version: 1.4.16
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - setuptools-scm
+  - cython
+  - numpy
+  run:
+  - python
+  - biopython
+  - boto3
+  - brewer2mpl
+  - coveralls
+  - deap
+  - ete3
+  - gffutils
+  - goatools
+  - graphviz
+  - jinja2
+  - matplotlib-base
+  - natsort
+  - networkx
+  - None
+  - pypdf2
+  - more-itertools
+  - last
+  - r-ggplot2
+  - r-tinytex
+  - pyyaml
+  - rich
+  - scipy
+  - seaborn-base
+  - ucsc-liftover
+source:
+  sha256: 78201d911d45d226f1cb6a97076e6f5aac57fa5d5fec5fc5bd2896e6e5c240e7
+  url: https://pypi.io/packages/source/j/jcvi/jcvi-1.4.16.tar.gz
+test:
+  imports:
+  - jcvi
+  - jcvi.algorithms
+  - jcvi.annotation
+  - jcvi.apps
+  - jcvi.assembly
+  - jcvi.compara
+  - jcvi.formats
+  - jcvi.graphics
+  - jcvi.projects
+  - jcvi.utils
+  - jcvi.utils.data
+  - jcvi.variation

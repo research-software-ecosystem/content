@@ -1,0 +1,39 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: Sort chains.  By default sorts by score.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+package:
+  name: ucsc-chainsort
+  version: '455'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - binutils
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: e458cadad7c4a5c1b8385edafffa1b29380ac725a0c20535bf5a3bab99fe80db
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v455.src.tgz
+test:
+  commands:
+  - which chainSort

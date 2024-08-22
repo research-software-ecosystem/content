@@ -1,0 +1,44 @@
+about:
+  description: Package designed to visualize genomic data along the chromosomes, where
+    the vertical chromosomes are sorted by number, with sex chromosomes at the end.
+  home: https://bioconductor.org/packages/3.18/bioc/html/chromPlot.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Global visualization tool of genomic data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:chromplot
+  - doi:10.1093/bioinformatics/btw137
+  parent_recipe:
+    name: bioconductor-chromplot
+    path: recipes/bioconductor-chromplot
+    version: 1.8.0
+package:
+  name: bioconductor-chromplot
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+source:
+  md5: a9a3e6d499f082698be0bf88f6432103
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/chromPlot_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/chromPlot/chromPlot_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/chromPlot_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chromplot/bioconductor-chromplot_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('chromPlot')"

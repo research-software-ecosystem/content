@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/dpryan79/libBigWig
+  license: MIT
+  summary: A C library for handling bigWig files
+build:
+  number: 6
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: libbigwig
+  version: 0.4.7
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - libcurl
+  - zlib
+  run:
+  - libcurl
+  - zlib
+source:
+  patches:
+  - patch
+  sha256: 8e057797011d93fa00e756600898af4fe6ca2d48959236efc9f296abe94916d9
+  url: https://github.com/dpryan79/libBigWig/archive/0.4.7.tar.gz
+test:
+  commands:
+  - test -f $PREFIX/lib/libBigWig.so

@@ -1,0 +1,47 @@
+about:
+  description: 'This package uses non-parametric methods to detect rhythms in time
+    series. It deals with outliers, missing values and is optimized for time series
+    comprising 10-100 measurements. As it does not assume expect any distinct waveform
+    it is optimal or detecting oscillating behavior (e.g. circadian or cell cycle)
+    in e.g. genome- or proteome-wide biological measurements such as: micro arrays,
+    proteome mass spectrometry, or metabolome measurements.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/rain.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Rhythmicity Analysis Incorporating Non-parametric Methods
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rain
+  parent_recipe:
+    name: bioconductor-rain
+    path: recipes/bioconductor-rain
+    version: 1.14.0
+package:
+  name: bioconductor-rain
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - r-base
+  - r-gmp
+  run:
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - r-base
+  - r-gmp
+source:
+  md5: e523c08337422230710fd1f2a5a392cd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/rain_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/rain/rain_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rain_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rain/bioconductor-rain_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rain')"

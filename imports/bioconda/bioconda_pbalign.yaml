@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/PacificBiosciences/pbalign
+  license: BSD-3-Clause-Clear
+  summary: Python wrapper for producing PBBAM valid alignments
+build:
+  noarch: python
+  number: 1
+extra:
+  recipe-maintainers:
+  - pb-cdunn
+  - ylipacbio
+  - pb-dseifert
+  - mhsieh
+package:
+  name: pbalign
+  version: 0.3.2
+requirements:
+  host:
+  - python <3
+  - setuptools
+  run:
+  - python <3
+  - pysam >=0.15.1
+  - pbcore >=1.6.5
+  - pbcommand >=1.1.1
+  - blasr >=5.3.2
+  - pbbam >=0.18.0
+  - samtools >=1.6
+source:
+  sha256: 4555b4c3997e982f195fd66d581e1dfd8e30af7df900b53e89da046476635edc
+  url: https://github.com/PacificBiosciences/pbalign/releases/download/0.3.2/pbalign-0.3.2.tar.gz
+test:
+  commands:
+  - pbalign -h

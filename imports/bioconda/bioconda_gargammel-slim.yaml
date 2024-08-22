@@ -1,0 +1,41 @@
+about:
+  description: "This a stripped version of Gargammel that only builds the programs\
+    \ \nfragSim, deamSim and adptSim. For a full Gargammel installation\nlook at the\
+    \ gargammel package\n"
+  home: https://github.com/grenaud/gargammel
+  license: GPL-3.0-only
+  license_file: gargammel/LICENSE
+  summary: Tool for simulating ancient DNA datasets
+build:
+  number: 5
+package:
+  name: gargammel-slim
+  version: 1.1.2
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - zlib
+  - cmake
+  - gsl
+  - bamtools
+source:
+- folder: gargammel/libgab
+  sha256: ef4d4e980918f48b9a5c454f46afe3ffe6d97a075bbbf89abb7e3553cd6b9827
+  url: https://github.com/grenaud/libgab/archive/d2bbab7d88fbfdaa0ce57a26dc908d2fc66bf656.tar.gz
+- folder: gargammel
+  patches:
+  - 0001-gargammel-Makefile-keep-basic.patch
+  - 0002-gargammel-src-Makefile-change-CXXFLAGS-and-LDFLAGS.patch
+  - 0003-libgab-gzstream-Makefile-use-CXXFLAGS-and-LDFLAGS.patch
+  - 0004-libgab-Makefile-removed-CXX.patch
+  - 0005-libgab-ReconsReferenceBAM-OSX.patch
+  sha256: c4b5ca081087fa5ecf086dbd49a4db0fb3c7d2d3d13eb30bdfc96b964661c3c1
+  url: https://github.com/grenaud/gargammel/archive/1.1.2.tar.gz
+test:
+  commands:
+  - adptSim --help | grep -q 'adptSim'
+  - deamSim --help | grep -q 'deamSim'
+  - fragSim --help | grep -q 'fragSim'

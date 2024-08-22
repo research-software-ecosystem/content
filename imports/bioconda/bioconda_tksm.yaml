@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/vpc-ccg/tksm
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Very modular, very cool long-read transcriptomic simulator
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+package:
+  name: tksm
+  version: 0.6.1
+requirements:
+  build:
+  - python
+  - None
+  - make
+  - vim
+  - lld
+  - nlohmann_json
+  host:
+  - python
+  - zlib
+  - nlohmann_json
+  - cxxopts >=3.1.0
+  - fmt >=9.1.0
+  run:
+  - python
+  - zlib
+  - python-edlib
+  - numpy
+  - joblib
+  - tqdm
+  - scikit-learn
+source:
+- sha256: 20a206258ea778c73d94645596fb484723382adeb5b66a8d6ae0f2379603b993
+  url: https://github.com/vpc-ccg/tksm/archive/v0.6.1.zip
+test:
+  commands:
+  - tksm list
+  - tksm sequence --help
+  - tksm abundance --help
+  - tksm model-truncation --help

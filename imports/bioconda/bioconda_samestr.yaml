@@ -1,0 +1,55 @@
+about:
+  dev_url: https://github.com/danielpodlesny/samestr
+  doc_url: https://github.com/danielpodlesny/samestr/
+  home: https://github.com/danielpodlesny/samestr/
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file: LICENSE
+  summary: SameStr identifies shared strains between pairs of metagenomic samples
+    based on the similarity of SNV profiles.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1186/s40168-022-01251-w
+  recipe-maintainers:
+  - danielpodlesny
+package:
+  name: samestr
+  version: 1.2024.2.post1
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  run:
+  - biopython ==1.81
+  - numpy ==1.24.2
+  - pandas ==1.5.3
+  - pysam ==0.20.0
+  - python >=3.9
+  - scipy ==1.10.0
+  - blast >=2.6.0
+  - muscle ==3.8.1551
+  - mafft ==7.515
+  - samtools ==0.1.19
+source:
+  sha256: d03c5f1fd89fd018409bcf332c3a95e752aca9fb47b88c617fad702581630bdd
+  url: https://pypi.io/packages/source/s/samestr/samestr-1.2024.2.post1.tar.gz
+test:
+  commands:
+  - samestr --help
+  imports:
+  - samestr
+  - samestr.compare
+  - samestr.convert
+  - samestr.db
+  - samestr.extract
+  - samestr.filter
+  - samestr.merge
+  - samestr.stats
+  - samestr.summarize
+  - samestr.utils

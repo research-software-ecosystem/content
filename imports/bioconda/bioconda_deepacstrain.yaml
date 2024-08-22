@@ -1,0 +1,38 @@
+about:
+  dev_url: https://gitlab.com/JakubBartoszewicz/deepac-strain
+  doc_url: https://rki_bioinformatics.gitlab.io/DeePaC/
+  home: https://gitlab.com/rki_bioinformatics/DeePaC
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Predicting pathogenic potentials of novel strains of known bacterial species.
+build:
+  entry_points:
+  - deepac-strain=deepacstrain.command_line:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - JakubBartoszewicz
+package:
+  name: deepacstrain
+  version: 0.2.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - deepac >=0.11.0
+  - numpy >=1.18.1
+  - python >=3.6
+  - scikit-learn >=0.22.1
+  - tensorflow >=2.1
+source:
+  sha256: 56b8dd4ebc206142c883bc305fa607a3e52a2db43fa4beb157e9545083acf897
+  url: https://pypi.io/packages/source/d/deepacstrain/deepacstrain-0.2.1.tar.gz
+test:
+  commands:
+  - deepac-strain --help
+  imports:
+  - deepacstrain

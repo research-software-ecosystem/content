@@ -1,0 +1,60 @@
+about:
+  description: 'This software and the accompanying database are designed to
+
+    find acquired antimicrobial resistance genes in bacterial protein or
+
+    nucleotide sequences as well as known point mutations for several taxa. With
+
+    AMRFinderPlus we have added select members of additional classes of genes
+
+    such as virulence factors, biocide, heat, acid, and metal resistance genes.
+
+    '
+  doc_url: https://github.com/ncbi/amr/wiki
+  home: https://github.com/ncbi/amr/wiki
+  license: Public Domain
+  license_file: LICENSE
+  summary: AMRFinderPlus finds antimicrobial resistance and other genes in protein
+    or nucleotide sequences.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1038/s41598-021-91456-0
+  recipe-maintainers:
+  - evolarjun
+package:
+  name: ncbi-amrfinderplus
+  version: 3.12.8
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - coreutils
+  - libcurl
+  run:
+  - blast >=2.9
+  - hmmer >=3.2
+  - libcurl
+  - curl
+source:
+  sha256: a199bc332877bad9033a7620bc5e8e849db1f19a9ba8b7357ec5451a6a283aa0
+  url: https://github.com/ncbi/amr/archive/amrfinder_v3.12.8.tar.gz
+test:
+  commands:
+  - echo "PREFIX=$PREFIX   CONDA_PREFIX=$CONDA_PREFIX"
+  - amr_report -help
+  - amrfinder_update --help
+  - fasta_check -help
+  - fasta2parts -help
+  - gff_check -help
+  - dna_mutation -help
+  - amrfinder -U
+  - "curl --silent \\\n -O https://raw.githubusercontent.com/ncbi/amr/master/test_dna.fa\
+    \ \\\n -O https://raw.githubusercontent.com/ncbi/amr/master/test_prot.fa \\\n\
+    \ -O https://raw.githubusercontent.com/ncbi/amr/master/test_prot.gff \\\n -O https://raw.githubusercontent.com/ncbi/amr/master/test_both.expected\n\
+    amrfinder --plus -n test_dna.fa -p test_prot.fa -g test_prot.gff -O Escherichia\
+    \ --print_node > test_both.got\ndiff test_both.expected test_both.got\n"

@@ -1,0 +1,183 @@
+about:
+  description: '"ARB (ARBor, Latin: tree): A software environment for maintaining
+
+    databases of molecular sequences and additional information, and
+
+    for analyzing the sequence data, with emphasis on phylogeny
+
+    reconstruction.
+
+
+    The programs have primarily been developed for ribosomal
+
+    ribonucleic acid (rRNA) sequences and, therefore, contain special
+
+    tools for alignment and analysis of these structures. However,
+
+    other molecular sequence data can also be handled. Protein gene
+
+    sequences and predicted protein primary structures as well as
+
+    protein secondary structures can be stored in the same database.
+
+
+    The ARB package is designed for graphical user interface. Program
+
+    control and data display are available in a hierarchical set of
+
+    windows and subwindows. The majority of operations can be
+
+    controlled using the mouse for moving the pointer and the left
+
+    mouse button for initiating and performing operations"
+
+    '
+  dev_url: http://bugs.arb-home.de/
+  doc_url: http://www.arb-home.de/documentation.html
+  home: http://www.arb-home.de
+  licence_file: arb_LICENSE.txt
+  license: ARB
+  summary: ARB 6 Sequence Analysis Suite
+build:
+  number: 9
+extra:
+  identifiers:
+  - biotools:arb
+  - doi:10.1002/9781118010518.ch46
+  recipe-maintainers:
+  - epruesse
+outputs:
+- name: libarbdb
+  requirements:
+    build:
+    - None
+    host:
+    - glib
+    - perl
+    run:
+    - gettext
+    - None
+  script: install_libarbdb.sh
+- name: arb-bio-tools
+  requirements:
+    build:
+    - None
+    host:
+    - glib
+    - perl
+    run:
+    - None
+  script: install_tools.sh
+- name: arb-bio
+  requirements:
+    build:
+    - None
+    - pkg-config
+    - time
+    - lynx
+    - xorg-makedepend
+    - sed >=4.4
+    - tar
+    host:
+    - openmotif-dev
+    - glib
+    - gettext
+    - pthread-stubs
+    - xorg-libxi
+    - xorg-libxp
+    - xorg-libxaw
+    - xorg-libxpm
+    - xorg-libxmu
+    - libtiff
+    - libxslt
+    - libpng
+    - xerces-c
+    - perl
+    run:
+    - None
+    - None
+    - gettext
+    - openmotif
+    - xorg-libxi
+    - xorg-libxmu
+    - xorg-libxp
+    - xorg-libxaw
+    - xorg-libxpm
+    - xorg-libxft
+    - xorg-libxt
+    - libpng
+    - gnuplot
+    - muscle
+    - mafft
+    - raxml
+    - mrbayes
+    - phylip
+    - phyml 3.2.0*
+    - fasttree
+    - sed >=4.4
+    - xfig
+    - fig2dev
+  script: install_main.sh
+- build:
+    run_exports:
+    - None
+  name: arb-bio-devel
+  requirements:
+    build:
+    - None
+    run:
+    - None
+    - openmotif-dev
+  script: install_devel.sh
+package:
+  name: arb-bio
+  version: 6.0.6
+requirements:
+  build:
+  - make
+  - None
+  - pkg-config
+  - time
+  - lynx
+  - xorg-makedepend
+  - sed >=4.4
+  - tar
+  - perl
+  - coreutils
+  host:
+  - openmotif-dev
+  - glib
+  - gettext
+  - pthread-stubs
+  - xorg-libxi
+  - xorg-libxp
+  - xorg-libxaw
+  - xorg-libxpm
+  - xorg-libxmu
+  - libtiff
+  - libxslt
+  - libpng
+  - xerces-c
+  - perl
+source:
+  patches:
+  - disable_pkgs.patch
+  - no_mafftlinks.patch
+  - link_dyn.patch
+  - make.patch
+  - make_path_fix.patch
+  - abs_path_fix.patch
+  - gsed.patch
+  - cxxforward.patch
+  - nullptr.patch
+  - typeof.patch
+  sha256: 8b1fc3fd11bbb05aca4731ac8803c004a4f2b6b87c11b543660d07ea349a6c21
+  url: http://download.arb-home.de/release/arb-6.0.6/arb-6.0.6-source.tgz
+test:
+  commands:
+  - if command -v conda; then conda inspect linkages -p $PREFIX $PKG_NAME; fi
+  - if command -v conda; then conda inspect objects -p $PREFIX $PKG_NAME; fi
+  - which arb
+  - which arb_pt_server
+  requires:
+  - conda

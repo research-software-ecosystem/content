@@ -1,0 +1,34 @@
+about:
+  home: http://compbio.bccrc.ca/software/hmmcopy/
+  license: GPL-3
+  summary: C++ based programs for analyzing BAM files and preparing read counts --
+    used with bioconductor-hmmcopy
+build:
+  number: 10
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: hmmcopy
+  version: 0.1.1
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - zlib
+  run:
+  - zlib
+  - bowtie
+  - perl
+source:
+  md5: 205a719e7ac9b9f9ba811cdd7cbdae0a
+  url: http://compbio-bccrc.sites.olt.ubc.ca/files/2013/12/HMMcopy.zip
+test:
+  commands:
+  - readCounter -h
+  - generateMap.pl -h

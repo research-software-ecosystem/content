@@ -1,0 +1,43 @@
+about:
+  description: Full genomic sequences for Homo sapiens as provided by UCSC (genome
+    hg38, based on assembly GRCh38.p14 since 2023/01/31). The sequences are stored
+    in DNAString objects.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/BSgenome.Hsapiens.UCSC.hg38.html
+  license: Artistic-2.0
+  summary: Full genomic sequences for Homo sapiens (UCSC genome hg38)
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-bsgenome.hsapiens.ucsc.hg38
+    path: recipes/bioconductor-bsgenome.hsapiens.ucsc.hg38
+    version: 1.4.1
+package:
+  name: bioconductor-bsgenome.hsapiens.ucsc.hg38
+  version: 1.4.5
+requirements:
+  host:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - r-base
+  run:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: b2e670c27944eed77fbe9a9b55be40d2
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/BSgenome.Hsapiens.UCSC.hg38_1.4.5.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BSgenome.Hsapiens.UCSC.hg38/BSgenome.Hsapiens.UCSC.hg38_1.4.5.tar.gz
+  - https://bioarchive.galaxyproject.org/BSgenome.Hsapiens.UCSC.hg38_1.4.5.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bsgenome.hsapiens.ucsc.hg38/bioconductor-bsgenome.hsapiens.ucsc.hg38_1.4.5_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BSgenome.Hsapiens.UCSC.hg38')"

@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/medvedevgroup/SibeliaZ
+  license: Custom OSS
+  license_file: LICENSE.txt
+  summary: A fast whole-genome aligner based on de Bruijn graphs.
+build:
+  number: 3
+  skip: true
+package:
+  name: sibeliaz
+  version: 1.2.5
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  - libgomp
+  - llvm-openmp
+  host:
+  - tbb-devel
+  - llvm-openmp
+  run:
+  - twopaco >0.9.2
+  - spoa 4.0.3-0
+  - maf2synteny
+source:
+  sha256: 15fb36fc5fa8e4502008e888531f3f5f5966e8ae4295cf30333d2220d3b599a3
+  url: https://github.com/medvedevgroup/SibeliaZ/archive/v1.2.5.tar.gz
+test:
+  commands:
+  - sibeliaz -h
+  - sibeliaz-lcb --help

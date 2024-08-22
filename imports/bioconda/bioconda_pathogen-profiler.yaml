@@ -1,0 +1,60 @@
+about:
+  home: https://github.com/jodyphelan/pathogen-profiler
+  license: GPL3
+  license_file: LICENSE
+  summary: Library giving access to classes and functions to create a profiling tool
+    to look for mutations from NGS data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - max_pin="x"): null
+    pin_subpackage('pathogen-profiler': null
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: pathogen-profiler
+  version: 4.3.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python >=3.10
+  - git
+  - trimmomatic
+  - bwa
+  - minimap2
+  - parallel
+  - samtools >=1.12
+  - bcftools >=1.12
+  - tqdm
+  - delly >=1.2.6
+  - gatk4
+  - bedtools
+  - freebayes =1.3.6
+  - samclip
+  - snpeff >=5.1
+  - requests
+  - pilon >=1.24
+  - lofreq >=2.1.5
+  - openjdk >=11.0.8
+  - kmc >=3.2.1
+  - dsk >=2.2
+  - rich-argparse
+  - joblib >=1.3.0
+  - pysam
+  - pydantic >=2.6
+  - tomli
+  - itol-config
+  - seqkit
+  - sourmash
+source:
+  sha256: ca6d579308a045c7d433c71c6951293c2f7f7d4952ca37e80b1830a6e9be7fd4
+  url: https://github.com/jodyphelan/pathogen-profiler/archive/v4.3.0.tar.gz
+test:
+  commands:
+  - rename_vcf_chrom.py -h
+  - combine_vcf_variants.py -h
+  - echo '#' | add_dummy_AD.py
+  imports:
+  - pathogenprofiler

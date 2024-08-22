@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/DessimozLab/omamer
+  license: LGPL-3.0
+  license_file:
+  - LICENSE
+  - COPYING.LESSER
+  - COPYING
+  summary: OMAmer - tree-driven and alignment-free protein assignment to sub-families
+build:
+  entry_points:
+  - omamer = omamer.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab219
+  recipe-maintainers:
+  - alpae
+package:
+  name: omamer
+  version: 2.0.4
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - alive-progress
+  - biopython
+  - ete3
+  - numba
+  - numpy
+  - pandas >2.0.0
+  - property-manager
+  - rmath4
+  - scipy
+  - pytables
+  - tqdm
+  - pysais
+source:
+  sha256: 292a9bc0534452f0480144620a57135a498b5e54cb252f1ee6f93a816037e3e0
+  url: https://pypi.io/packages/source/o/omamer/omamer-2.0.4.tar.gz
+test:
+  commands:
+  - omamer --help
+  imports:
+  - omamer

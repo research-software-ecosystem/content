@@ -1,0 +1,35 @@
+about:
+  home: http://csb5.github.io/lofreq/
+  license: MIT
+  summary: A fast and sensitive variant-caller for inferring SNVs and indels from
+    next-generation sequencing data
+build:
+  number: 12
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - usegalaxy-eu:lofreq_call
+package:
+  name: lofreq
+  version: 2.1.5
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - python
+  - htslib
+  - zlib
+  run:
+  - python
+  - samtools
+source:
+  sha256: 43028af07faa23c7ec0e167855492ae7bd31c4e7f8158114e51ec12aba5fd184
+  url: https://raw.githubusercontent.com/CSB5/lofreq/v2.1.5/dist/lofreq_star-2.1.5.tar.gz
+test:
+  commands:
+  - lofreq version
+  - samtools --help

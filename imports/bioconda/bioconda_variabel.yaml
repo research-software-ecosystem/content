@@ -1,0 +1,26 @@
+about:
+  home: https://gitlab.com/treangenlab/variabel
+  license: MIT
+  license_file: LICENSE
+  summary: Variabel is a novel approach and method for intrahost variant detection
+    on ONT data, which outperforms existing ONT variant callers.
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p ${PREFIX}/bin && cp variabel ${PREFIX}/bin
+package:
+  name: variabel
+  version: 1.0.0
+requirements:
+  run:
+  - biopython
+  - python >=3.7
+  - scipy
+  - pyvcf
+  - lofreq
+source:
+  sha256: 84ec978254e5a7115cb0e5f83b1cce397f150f1101b230bd9b985c73bbfe5c40
+  url: https://gitlab.com/treangenlab/variabel/-/archive/v1.0.0/variabel-v1.0.0.tar.gz
+test:
+  commands:
+  - variabel --help

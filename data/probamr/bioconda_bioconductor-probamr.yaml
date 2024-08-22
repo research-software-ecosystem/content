@@ -1,0 +1,52 @@
+about:
+  description: Mapping PSMs back to genome. The package builds SAM file from shotgun
+    proteomics data The package also provides function to prepare annotation from
+    GTF file.
+  home: https://bioconductor.org/packages/3.18/bioc/html/proBAMr.html
+  license: Artistic-2.0
+  summary: Generating SAM file for PSMs in shotgun proteomics data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:probamr
+  - doi:10.1074/mcp.M115.052860
+  parent_recipe:
+    name: bioconductor-probamr
+    path: recipes/bioconductor-probamr
+    version: 1.14.0
+package:
+  name: bioconductor-probamr
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-genomicfeatures >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - r-base
+source:
+  md5: 0b5a894a54fb0d56f940b75e025c0d47
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/proBAMr_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/proBAMr/proBAMr_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/proBAMr_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-probamr/bioconductor-probamr_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('proBAMr')"

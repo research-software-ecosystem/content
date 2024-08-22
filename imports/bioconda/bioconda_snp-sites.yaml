@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/sanger-pathogens/snp-sites
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Finds SNP sites from a multi-FASTA alignment file.
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: snp-sites
+  version: 2.5.1
+requirements:
+  build:
+  - make
+  - None
+  - automake
+  - autoconf
+  - libtool
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - configure.patch
+  sha256: 913f79302e5d3127aea382756abc9ffeb05e26ce00022f43a6ea16a55cdd7a7e
+  url: https://github.com/sanger-pathogens/snp-sites/archive/v2.5.1.tar.gz
+test:
+  commands:
+  - snp-sites -V

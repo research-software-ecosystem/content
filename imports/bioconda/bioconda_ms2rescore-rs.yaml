@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/compomics/ms2rescore-rs
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: "Rust functionality for the MS\xB2Rescore package"
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - CompOmics
+  - RalfG
+package:
+  name: ms2rescore-rs
+  version: 0.2.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  - cmake
+  host:
+  - zlib
+  - python
+  - maturin >=1.5,<2.0
+  - pip
+  run:
+  - python
+source:
+  sha256: 561ed92f58fd7ecccc78b3e4b1bc91ffa36d0f2e58d54f7ea317898f3ea55560
+  url: https://pypi.io/packages/source/m/ms2rescore-rs/ms2rescore_rs-0.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - ms2rescore_rs
+  requires:
+  - pip

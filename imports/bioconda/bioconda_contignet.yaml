@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/tianqitang1/ContigNet
+  license: USC-RL v1.0
+  license_family: OTHER
+  license_file: LICENSE
+  summary: ContigNet, a deep learning based phage-host interaction prediction tool
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btac239
+  recipe-maintainers:
+  - tianqitang1
+package:
+  name: contignet
+  version: 1.0.1.post3
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - pytorch
+  - tqdm
+  - matplotlib-base
+  - seaborn
+  - biopython
+  - ete3
+  - tensorboard
+source:
+  sha256: 670ab775589d6d2a419165176ae5e5946d0f9c9dae74f4b6d6e72b8f92d7cbf2
+  url: https://pypi.io/packages/source/C/ContigNet/ContigNet-1.0.1.post3.tar.gz
+test:
+  commands:
+  - python -m ContigNet --help
+  imports:
+  - ContigNet

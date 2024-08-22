@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/vpc-ccg/haslr
+  license: GPL3
+  license_file: LICENSE
+  summary: A fast tool for hybrid genome assembly of long and short reads
+build:
+  number: 5
+  skip: true
+package:
+  name: haslr
+  version: 0.8a1
+requirements:
+  build:
+  - None
+  - make
+  - zlib
+  host:
+  - python
+  - zlib
+  - minia >=3.2.1
+  - minimap2 >=2.17
+  - fastutils >=0.2
+  run:
+  - python
+  - zlib
+  - minia >=3.2.1
+  - minimap2 >=2.17
+  - fastutils >=0.2
+source:
+  sha256: 0d55a943a828cd1a42701774b52ef9c2ba1d944a7fc3415d64856ad88c135ee8
+  url: https://github.com/vpc-ccg/haslr/archive/v0.8a1.tar.gz
+test:
+  commands:
+  - haslr.py --version
+  - haslr_assemble --version
+  - minia_nooverlap -h
+  - minia --help
+  - minimap2 --help
+  - fastutils --version

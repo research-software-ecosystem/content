@@ -1,0 +1,47 @@
+about:
+  description: Gene co-expression and transcriptional bursting pattern recognition
+    tool in single cell/nucleus RNA-sequencing data
+  dev_url: https://github.com/arunhpatil/brooklyn/
+  doc_source_url: https://github.com/arunhpatil/brooklyn/blob/main/README.rst
+  doc_url: https://brooklyn-plot.readthedocs.io/
+  home: https://github.com/arunhpatil/brooklyn/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Gene co-expression and transcriptional bursting pattern recognition tool
+    in single cell/nucleus RNA-sequencing data
+build:
+  entry_points:
+  - brooklyn_plot = brooklyn_plot.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - arunhpatil
+  - mhalushka
+package:
+  name: brooklyn_plot
+  version: 0.0.4
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - numpy <1.24
+  - pandas
+  - python >=3.7
+  - scanpy
+  - scipy
+source:
+  sha256: 6e9821999aa52b10710e59c1cd4777d6b364fef806da949e61058e6d311b97fa
+  url: https://pypi.io/packages/source/b/brooklyn_plot/brooklyn_plot-0.0.4.tar.gz
+test:
+  commands:
+  - brooklyn_plot --help
+  imports:
+  - brooklyn_plot
+  - brooklyn_plot.libs
+  - brooklyn_plot.rScripts

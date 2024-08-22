@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/lijinbio/HaMiP
+  license: 'License :: OSI Approved :: MIT'
+  license_family: MIT
+  license_file: LICENSE
+  summary: HaMiP is A scalable, accurate, and efficient solution for hydroxymethylation
+    analysis of CMS-IP data.
+build:
+  entry_points:
+  - HaMiP=HaMiP.HaMiP:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - lijinbio
+package:
+  name: hamip
+  version: 0.0.3.2
+requirements:
+  host:
+  - matplotlib-base
+  - pandas
+  - pip
+  - python >=3
+  - pyyaml
+  run:
+  - matplotlib-base
+  - pandas
+  - python >=3
+  - pyyaml
+  - bedtools
+  - ucsc-fetchchromsizes
+  - r-base >=4
+  - bioconductor-deseq2
+  - bioconductor-genefilter
+  - r-desctools
+  - gawk
+  - moabs
+source:
+  sha256: 73fb10ce12e42e389f93a23424190e5eb4659c7e670bb6fd4c3b278c5002f366
+  url: https://pypi.io/packages/source/H/HaMiP/HaMiP-0.0.3.2.tar.gz
+test:
+  commands:
+  - HaMiP --help
+  imports:
+  - HaMiP

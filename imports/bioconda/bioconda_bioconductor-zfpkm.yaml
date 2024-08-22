@@ -1,0 +1,50 @@
+about:
+  description: Perform the zFPKM transform on RNA-seq FPKM data. This algorithm is
+    based on the publication by Hart et al., 2013 (Pubmed ID 24215113). Reference
+    recommends using zFPKM > -3 to select expressed genes. Validated with encode open/closed
+    chromosome data. Works well for gene level data using FPKM or TPM. Does not appear
+    to calibrate well for transcript level data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/zFPKM.html
+  license: GPL-3 | file LICENSE
+  license_file: LICENSE
+  summary: A suite of functions to facilitate zFPKM transformations
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-zfpkm
+    path: recipes/bioconductor-zfpkm
+    version: 1.2.0
+package:
+  name: bioconductor-zfpkm
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-checkmate
+  - r-dplyr
+  - r-ggplot2
+  - r-tidyr
+  run:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-checkmate
+  - r-dplyr
+  - r-ggplot2
+  - r-tidyr
+source:
+  md5: a167e99447d7fd6b5081152a7d4472a4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/zFPKM_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/zFPKM/zFPKM_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/zFPKM_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-zfpkm/bioconductor-zfpkm_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('zFPKM')"

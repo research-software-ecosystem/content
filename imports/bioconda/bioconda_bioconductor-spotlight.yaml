@@ -1,0 +1,54 @@
+about:
+  description: '`SPOTlight`provides a method to deconvolute spatial transcriptomics
+    spots using a seeded NMF approach along with visualization tools to assess the
+    results. Spatially resolved gene expression profiles are key to understand tissue
+    organization and function. However, novel spatial transcriptomics (ST) profiling
+    techniques lack single-cell resolution and require a combination with single-cell
+    RNA sequencing (scRNA-seq) information to deconvolute the spatially indexed datasets.
+    Leveraging the strengths of both data types, we developed SPOTlight, a computational
+    tool that enables the integration of ST with scRNA-seq data to infer the location
+    of cell types and states within a complex tissue. SPOTlight is centered around
+    a seeded non-negative matrix factorization (NMF) regression, initialized using
+    cell-type marker genes and non-negative least squares (NNLS) to subsequently deconvolute
+    ST capture locations (spots).'
+  home: https://bioconductor.org/packages/3.18/bioc/html/SPOTlight.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: '`SPOTlight`: Spatial Transcriptomics Deconvolution'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-spotlight
+  version: 1.6.3
+requirements:
+  host:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-ggplot2
+  - r-matrix
+  - r-matrixstats
+  - r-nmf
+  - r-nnls
+  run:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-ggplot2
+  - r-matrix
+  - r-matrixstats
+  - r-nmf
+  - r-nnls
+source:
+  md5: 00759051612f8f17697afd03507d6d8c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SPOTlight_1.6.3.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SPOTlight/SPOTlight_1.6.3.tar.gz
+  - https://bioarchive.galaxyproject.org/SPOTlight_1.6.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-spotlight/bioconductor-spotlight_1.6.3_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SPOTlight')"

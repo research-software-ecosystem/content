@@ -1,0 +1,57 @@
+about:
+  description: The EMDomics algorithm is used to perform a supervised multi-class
+    analysis to measure the magnitude and statistical significance of observed continuous
+    genomics data between groups. Usually the data will be gene expression values
+    from array-based or sequence-based experiments, but data from other types of experiments
+    can also be analyzed (e.g. copy number variation). Traditional methods like Significance
+    Analysis of Microarrays (SAM) and Linear Models for Microarray Data (LIMMA) use
+    significance tests based on summary statistics (mean and standard deviation) of
+    the distributions. This approach lacks power to identify expression differences
+    between groups that show high levels of intra-group heterogeneity. The Earth Mover's
+    Distance (EMD) algorithm instead computes the "work" needed to transform one distribution
+    into another, thus providing a metric of the overall difference in shape between
+    two distributions. Permutation of sample labels is used to generate q-values for
+    the observed EMD scores. This package also incorporates the Komolgorov-Smirnov
+    (K-S) test and the Cramer von Mises test (CVM), which are both common distribution
+    comparison tests.
+  home: https://bioconductor.org/packages/3.18/bioc/html/EMDomics.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Earth Mover's Distance for Differential Analysis of Genomics Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-emdomics
+  version: 2.32.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - r-base
+  - r-cdft
+  - r-emdist
+  - r-ggplot2
+  - r-matrixstats
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - r-base
+  - r-cdft
+  - r-emdist
+  - r-ggplot2
+  - r-matrixstats
+source:
+  md5: 3ac097828648747f0be1ed4d956ecfa7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/EMDomics_2.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EMDomics/EMDomics_2.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EMDomics_2.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-emdomics/bioconductor-emdomics_2.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EMDomics')"

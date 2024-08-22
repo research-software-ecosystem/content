@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/bonsai-team/Porechop_ABI
+  license: GPL3
+  license_file: LICENSE
+  summary: Adapter inferrence and removal of Oxford Nanopore reads
+build:
+  entry_points:
+  - porechop_abi = porechop_abi.porechop_abi:main
+  number: 3
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: porechop_abi
+  version: 0.5.0
+requirements:
+  build:
+  - None
+  - make
+  - libgomp
+  - llvm-openmp
+  host:
+  - python
+  - setuptools
+  - pip
+  - networkx
+  - zlib
+  - libzlib
+  run:
+  - python
+  - networkx
+  - zlib
+source:
+  sha256: b5252b8fc26f750a6625353fe02fdf44c9a58bc9439933921f177735eac07ca3
+  url: https://github.com/bonsai-team/Porechop_ABI/archive/refs/heads/conda_test.zip
+test:
+  commands:
+  - porechop_abi -h

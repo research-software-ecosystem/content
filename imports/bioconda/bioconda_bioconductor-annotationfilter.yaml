@@ -1,0 +1,41 @@
+about:
+  description: This package provides class and other infrastructure to implement filters
+    for manipulating Bioconductor annotation resources. The filters will be used by
+    ensembldb, Organism.dplyr, and other packages.
+  home: https://bioconductor.org/packages/3.18/bioc/html/AnnotationFilter.html
+  license: Artistic-2.0
+  summary: Facilities for Filtering Bioconductor Annotation Resources
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-annotationfilter
+    path: recipes/bioconductor-annotationfilter
+    version: 1.4.0
+package:
+  name: bioconductor-annotationfilter
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-lazyeval
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-lazyeval
+source:
+  md5: 512eececc247990236fd09aa1fc46966
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/AnnotationFilter_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/AnnotationFilter/AnnotationFilter_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/AnnotationFilter_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-annotationfilter/bioconductor-annotationfilter_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('AnnotationFilter')"

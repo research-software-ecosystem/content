@@ -1,0 +1,46 @@
+about:
+  dev_url: http://assemblerflow.readthedocs.io/en/latest/
+  doc_url: http://assemblerflow.readthedocs.io/en/latest/
+  home: https://github.com/assemblerflow/flowcraft
+  license: GPL3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A Nextflow pipeline assembler for genomics. Pick your modules. Assemble
+    them. Run the pipeline.
+build:
+  entry_points:
+  - flowcraft = flowcraft.flowcraft:main
+  noarch: python
+  number: 2
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  recipe-maintainers:
+  - odiogosilva
+  - cimendes
+package:
+  name: flowcraft
+  version: 1.4.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pympler
+  - python-dateutil
+  - jinja2
+  - requests
+  - nextflow >=0.28
+source:
+  sha256: 72613803632a73c60beb6b399c9aa9eb40cfa201df59879a3e50a2bddc65b04e
+  url: https://pypi.io/packages/source/f/flowcraft/flowcraft-1.4.1.tar.gz
+test:
+  commands:
+  - flowcraft --help
+  imports:
+  - flowcraft
+  - flowcraft.generator
+  - flowcraft.generator.components
+  - flowcraft.generator.recipes
+  - flowcraft.templates
+  - flowcraft.templates.flowcraft_utils

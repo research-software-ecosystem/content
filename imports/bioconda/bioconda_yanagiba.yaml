@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/Adamtaranto/Yanagiba
+  license: MIT License
+  license_family: MIT
+  summary: Filter short or low quality Oxford Nanopore reads which have been basecalled
+    with Albacore.
+build:
+  entry_points:
+  - yanagiba=yanagiba.cmd_line:main
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: yanagiba
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - nanomath >=0.13.0
+  - pandas >=0.20.3
+  - biopython >=1.70
+source:
+  sha256: aa5a1be66267163cd7eebb10ea2c3e4339f8512f39c12374b85f23d4e606d854
+  url: https://pypi.io/packages/source/y/yanagiba/yanagiba-1.0.0.tar.gz
+test:
+  commands:
+  - yanagiba --help
+  imports:
+  - yanagiba

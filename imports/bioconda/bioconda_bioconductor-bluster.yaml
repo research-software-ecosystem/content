@@ -1,0 +1,57 @@
+about:
+  description: Wraps common clustering algorithms in an easily extended S4 framework.
+    Backends are implemented for hierarchical, k-means and graph-based clustering.
+    Several utilities are also provided to compare and evaluate clustering results.
+  home: https://bioconductor.org/packages/3.18/bioc/html/bluster.html
+  license: GPL-3.0-only
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Clustering Algorithms for Bioconductor
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:bluster
+package:
+  name: bioconductor-bluster
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocneighbors >=1.20.0,<1.21.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-cluster
+  - r-igraph
+  - r-matrix
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocneighbors >=1.20.0,<1.21.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-cluster
+  - r-igraph
+  - r-matrix
+  - r-rcpp
+source:
+  md5: baf91e0700b1f49eb80522be9eb8204d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/bluster_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/bluster/bluster_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/bluster_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bluster/bioconductor-bluster_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('bluster')"

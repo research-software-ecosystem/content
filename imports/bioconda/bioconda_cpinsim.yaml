@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/BiancaStoecker/cpinsim
+  license: MIT License
+  license_family: MIT
+  summary: 'CPINSim is a package for the simulation of protein complex assembly with
+    constrained
+
+    protein interaction networks.
+
+    '
+build:
+  entry_points:
+  - cpinsim = cpinsim:main
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: cpinsim
+  version: 0.5.2
+requirements:
+  host:
+  - python >3
+  - pip
+  run:
+  - python >3
+  - networkx
+  - bitarray
+  - scipy
+source:
+  sha256: 34a7d7ae7fc6192e8524c8907967b3a6f868b8af650fab8d395a9a96da0308e8
+  url: https://pypi.io/packages/source/c/cpinsim/cpinsim-0.5.2.zip
+test:
+  commands:
+  - cpinsim --help
+  imports:
+  - cpinsim

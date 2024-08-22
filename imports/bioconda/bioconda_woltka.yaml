@@ -1,0 +1,42 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/qiyunzhu/woltka
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: versatile meta-omic data classifier
+build:
+  entry_points:
+  - woltka=woltka.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - qiyunzhu
+package:
+  name: woltka
+  version: 0.1.6
+requirements:
+  host:
+  - biom-format
+  - pip
+  - python
+  - setuptools
+  run:
+  - biom-format
+  - python
+  - setuptools
+source:
+  sha256: d1ffe069515284f6350e3129b5fa3a65b4a583105282c5af0a3997c30b7f8e99
+  url: https://pypi.io/packages/source/w/woltka/woltka-0.1.6.tar.gz
+test:
+  commands:
+  - woltka --help
+  imports:
+  - woltka
+  - woltka.q2
+  - woltka.tests

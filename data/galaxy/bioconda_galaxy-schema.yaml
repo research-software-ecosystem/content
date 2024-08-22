@@ -1,0 +1,59 @@
+about:
+  dev_url: https://github.com/galaxyproject/galaxy
+  doc_url: https://docs.galaxyproject.org
+  home: https://galaxyproject.org
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: The Galaxy API schema objects.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - biotools:galaxy
+  - doi:10.1093/nar/gky379
+  recipe-maintainers:
+  - bernt-matthias
+package:
+  name: galaxy-schema
+  version: 24.1.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - galaxy-util >=24.1
+  - pydantic >=2.7.4
+  - email-validator
+source:
+  sha256: 622c65bf1f7fc0cfb5cf6ee844e819a7ceff2b929aca5894848761b3a7df84fa
+  url: https://pypi.io/packages/source/g/galaxy-schema/galaxy_schema-24.1.1.tar.gz
+test:
+  imports:
+  - galaxy
+  - galaxy.schema
+  - galaxy.schema.cloud
+  - galaxy.schema.cloud
+  - galaxy.schema.drs
+  - galaxy.schema.fetch_data
+  - galaxy.schema.fields
+  - galaxy.schema.generics
+  - galaxy.schema.groups
+  - galaxy.schema.help
+  - galaxy.schema.history
+  - galaxy.schema.invocation
+  - galaxy.schema.invocation
+  - galaxy.schema.jobs
+  - galaxy.schema.notifications
+  - galaxy.schema.remote_files
+  - galaxy.schema.schema
+  - galaxy.schema.storage_cleaner
+  - galaxy.schema.types
+  - galaxy.schema.workflow
+  - galaxy.schema.workflow.comments
+  - galaxy.schema.workflows

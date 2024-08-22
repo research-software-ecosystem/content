@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/PopicLab/insilicoSV
+  license: MIT
+  license_family: MIT
+  summary: Simulator for complex structural variants
+build:
+  entry_points:
+  - insilicosv=insilicosv.simulate:run_insilicosv
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - notestaff
+  - crohlicek
+  - viq854
+package:
+  name: insilicosv
+  version: 0.0.6
+requirements:
+  host:
+  - pip
+  - python =>3.8
+  run:
+  - cycler
+  - kiwisolver
+  - matplotlib-base
+  - numpy
+  - pillow
+  - pyparsing
+  - pysam
+  - python >=3.8
+  - python-dateutil
+  - pyyaml
+  - six
+source:
+  sha256: be14fc77d5d53563686328e38657ce84dc34ba46e2e44eb67e4df4e44a4474eb
+  url: https://pypi.io/packages/source/i/insilicosv/insilicosv-0.0.6.tar.gz
+test:
+  commands:
+  - insilicosv --help
+  imports:
+  - insilicosv

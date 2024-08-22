@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/biowdl/collect-columns
+  license: MIT
+  license_family: MIT
+  summary: Retrieve a column for each in a set of tables, placing them in a single
+    output table.
+build:
+  entry_points:
+  - collect-columns=collect_columns.collect_columns:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: collect-columns
+  version: 1.0.0
+requirements:
+  host:
+  - gffutils
+  - pip
+  - python >=3.5
+  run:
+  - gffutils
+  - python >=3.5
+source:
+  sha256: 13aefe84172da40d5b3ba4fc0066b9b11f05c6530bf951fee688ed050b8ba618
+  url: https://pypi.io/packages/source/c/collect-columns/collect-columns-1.0.0.tar.gz
+test:
+  commands:
+  - collect-columns --help
+  imports:
+  - collect_columns

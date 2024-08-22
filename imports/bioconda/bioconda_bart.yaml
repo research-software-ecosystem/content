@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/tomdstanton/bart
+  license: MIT
+  summary: bart - a bacterial read type
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - telatin
+package:
+  name: bart
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.7,<=3.10
+  - pip
+  run:
+  - python >=3.7,<=3.10
+  - kma
+  - refseq_masher
+source:
+  sha256: b0003ff1b51d650da2407b60887524eff7879f037e861cb8abeb2110b3ca40fb
+  url: https://github.com/tomdstanton/bart/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - kma -v
+  - refseq_masher --version
+  - bart --help

@@ -1,0 +1,52 @@
+about:
+  home: http://pypi.python.org/pypi/gdsctools
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: Set of tools and pipelines to analyse GDSC data (cancerrxgene.org)
+build:
+  entry_points:
+  - gdsctools_anova=gdsctools.scripts.anova:main
+  - gdsctools_regression=gdsctools.scripts.regression:main
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: gdsctools
+  version: 1.0.1
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biokit ==0.4.1
+  - colorlog
+  - colormap ==1.0.1
+  - easydev >=0.9.34
+  - jinja2
+  - matplotlib >=1.4.3
+  - numexpr
+  - numpy
+  - pandas ==0.20.1
+  - python
+  - reports ==0.3.1
+  - scikit-learn ==0.18.2
+  - scipy ==0.19.1
+  - statsmodels ==0.8.0
+  - xlrd
+source:
+  sha256: 72bba53d42150b88b1e186da5d12d94eb2c9f5ac529f4c9f800f98639cf9d82b
+  url: https://pypi.io/packages/source/g/gdsctools/gdsctools-1.0.1.tar.gz
+test:
+  commands:
+  - gdsctools_anova --help
+  - gdsctools_regression --help
+  imports:
+  - gdsctools
+  - gdsctools.data
+  - gdsctools.data.css
+  - gdsctools.data.images
+  - gdsctools.data.javascript
+  - gdsctools.data.templates
+  - gdsctools.pipelines
+  - gdsctools.scripts

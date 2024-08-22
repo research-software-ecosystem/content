@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/UCLOrengoGroup/cath-tools
+  home: https://github.com/UCLOrengoGroup/cath-tools
+  license: GPLv3
+  license_file: LICENSE
+  summary: Protein structure comparison tools such as SSAP, as used by the Orengo
+    Group in curating CATH.
+build:
+  number: 1
+package:
+  name: cath-tools
+  version: 0.16.5
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  - gsl >=2.6
+  - llvm-openmp
+  - perl >=5.08
+  - pkgconfig
+  host:
+  - boost-cpp
+source:
+  sha256: 10b2913edf70cda698a47003d4f1ad8de89fc73ccacdafb1d75ce444be25bffe
+  url: https://github.com/UCLOrengoGroup/cath-tools/archive/v0.16.5.tar.gz
+test:
+  commands:
+  - cath-assign-domains -h
+  - cath-cluster -h
+  - cath-map-clusters -h
+  - cath-refine-align -h
+  - cath-resolve-hits -h
+  - cath-score-align -h
+  - cath-ssap -h 2>&1 | grep -i usage
+  - cath-superpose -h
+  source_files:
+  - build-test-data
+  - perl

@@ -1,0 +1,28 @@
+about:
+  home: https://gitlab.com/tprodanov/pileuppy
+  license: MIT
+  license_file: LICENSE
+  summary: Colorful and fast tool designed to draw alignment pileup.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: pileuppy
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pysam >=0.15
+  - colored
+source:
+  sha256: fd1a3ab0cd7dc3205abe3566f21fffb4ff525b034b86aa2cc3902e06c3469d3f
+  url: https://gitlab.com/tprodanov/pileuppy/-/archive/v1.2.0/pileuppy-v1.2.0.tar.gz
+test:
+  commands:
+  - pileuppy --help

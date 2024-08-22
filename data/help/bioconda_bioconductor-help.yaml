@@ -1,0 +1,42 @@
+about:
+  description: The package contains a modular pipeline for analysis of HELP microarray
+    data, and includes graphical and mathematical tools with more general applications.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HELP.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Tools for HELP data analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:help
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-help
+    path: recipes/bioconductor-help
+    version: 1.38.0
+package:
+  name: bioconductor-help
+  version: 1.60.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: d7a1038ee6eb5ec01393b39e30e028fe
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HELP_1.60.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HELP/HELP_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HELP_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-help/bioconductor-help_1.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HELP')"

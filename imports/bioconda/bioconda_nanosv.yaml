@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/mroosmalen/nanosv
+  license: MIT License
+  license_family: MIT
+  summary: Structural variation detection tool for Oxford Nanopore data.
+build:
+  entry_points:
+  - NanoSV=nanosv.NanoSV:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  identifiers:
+  - doi:10.1038/s41467-017-01343-4
+  recipe-maintainers:
+  - wdecoster
+package:
+  name: nanosv
+  version: 1.2.4
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pysam
+  - pyvcf
+source:
+  sha256: af1b3671d862008b4631c6338fc7dbe3d6a11d4412c55eba4334f305a46a82f2
+  url: https://pypi.io/packages/source/n/nanosv/NanoSV-1.2.4.tar.gz
+test:
+  commands:
+  - NanoSV --help

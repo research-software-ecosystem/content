@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/romueller/gefast
+  license: AGPL
+  license_file: LICENCE
+  summary: Clustering tool using Swarm's clustering strategy and Pass-Join's segment
+    filter.
+build:
+  number: 3
+package:
+  name: gefast
+  version: 2.0.1
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+source:
+- sha256: 39bd390584980d1e4bbbc0923dc059de2481cfded084c89d0b6e1dc5a3223464
+  url: https://github.com/romueller/gefast/archive/refs/tags/v2.0.1.tar.gz
+- folder: libs/stats
+  sha256: fe82c679dbed0cbea284ce077e2c2503afaec745658a3791f9fe5010e438305e
+  url: https://github.com/kthohr/stats/archive/refs/tags/v3.1.2.tar.gz
+- folder: libs/gcem
+  sha256: 69a1973f146a4a5e584193af062359f50bd5b948c4175d58ea2622e1c066b99b
+  url: https://github.com/kthohr/gcem/archive/refs/tags/v1.13.1.tar.gz
+test:
+  commands:
+  - GeFaST --help | grep 2.0.1

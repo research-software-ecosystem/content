@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/orzechoj/circRNA_finder
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Scripts required for running the pipeline to find circular RNAs from RNA-seq
+    data
+build:
+  noarch: generic
+  number: 1
+package:
+  name: circrna_finder
+  version: 1.2
+requirements:
+  host:
+  - perl
+  run:
+  - perl
+  - coreutils
+source:
+- patches: circrna_finder.patch
+  sha256: 2ca764c8c6022af72a9a2366d7b62a6d5d94b4b097a431d3faf381928bbcb7c3
+  url: https://github.com/orzechoj/circRNA_finder/archive/refs/tags/v1.2.tar.gz
+test:
+  commands:
+  - perl --version
+  - which postProcessStarAlignment.pl

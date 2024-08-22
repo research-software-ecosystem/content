@@ -1,0 +1,47 @@
+about:
+  description: Multi sample aCGH analysis package using kernel convolution
+  home: https://bioconductor.org/packages/3.18/bioc/html/KCsmart.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Multi sample aCGH analysis package using kernel convolution
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:kcsmart
+  - doi:10.1186/1756-0500-3-298
+  parent_recipe:
+    name: bioconductor-kcsmart
+    path: recipes/bioconductor-kcsmart
+    version: 2.38.0
+package:
+  name: bioconductor-kcsmart
+  version: 2.60.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-siggenes >=1.76.0,<1.77.0
+  - r-base
+  - r-kernsmooth
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-siggenes >=1.76.0,<1.77.0
+  - r-base
+  - r-kernsmooth
+source:
+  md5: e50f547d912df8deb29537d5e27fc5d0
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/KCsmart_2.60.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/KCsmart/KCsmart_2.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KCsmart_2.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kcsmart/bioconductor-kcsmart_2.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KCsmart')"

@@ -1,0 +1,53 @@
+about:
+  description: Rfastp is an R wrapper of fastp developed in c++. fastp performs quality
+    control for fastq files. including low quality bases trimming, polyX trimming,
+    adapter auto-detection and trimming, paired-end reads merging, UMI sequence/id
+    handling. Rfastp can concatenate multiple files into one file (like shell command
+    cat) and accept multiple files as input.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Rfastp.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: An Ultra-Fast and All-in-One Fastq Preprocessor (Quality Control, Adapter,
+    low quality and polyX trimming) and UMI Sequence Parsing).
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-rfastp
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-rhtslib >=2.4.0,<2.5.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-ggplot2
+  - r-rcpp
+  - r-reshape2
+  - r-rjson
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-rhtslib >=2.4.0,<2.5.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-ggplot2
+  - r-rcpp
+  - r-reshape2
+  - r-rjson
+source:
+  md5: 9f6903cb485151c4d3c368abf5193309
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rfastp_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rfastp/Rfastp_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rfastp_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rfastp/bioconductor-rfastp_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rfastp')"

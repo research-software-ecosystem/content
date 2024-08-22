@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/dlcgold/muPBWT
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: A light pbwt-based index
+build:
+  number: 3
+  skip: true
+extra:
+  identifiers:
+  - biotools:mupbwt
+  recipe-maintainers:
+  - dlcgold
+package:
+  name: mupbwt
+  version: 0.1.2
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  host:
+  - zlib
+  - sdsl-lite
+  - htslib
+  - openmp
+source:
+  patches:
+  - cmake.patch
+  sha256: abe5d2f6df6a5d2eba728160099ed68ecd77559d39c6d0e803c54fde5062633c
+  url: https://github.com/dlcgold/muPBWT/archive/v0.1.2.tar.gz
+test:
+  commands:
+  - mupbwt -h

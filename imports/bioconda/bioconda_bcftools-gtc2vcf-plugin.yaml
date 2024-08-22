@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/freeseek/gtc2vcf
+  license: MIT
+  summary: Tools to convert Illumina and Affymetrix array intensity data files into
+    VCF files.
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: bcftools-gtc2vcf-plugin
+  version: 1.19
+requirements:
+  build:
+  - None
+  - make
+  - autoconf
+  host:
+  - gsl
+  - zlib
+  - None
+  - None
+  run:
+  - gsl
+  - None
+  - None
+  - zlib
+source:
+- folder: gtc2vcf
+  sha256: 4fb67f39d9599970b202fe5af01d5549088710970d44256b00ee78c25c57289f
+  url: https://github.com/freeseek/gtc2vcf/archive/1898320.tar.gz
+- folder: bcftools
+  sha256: 782b5f1bc690415192231e82213b3493b047f45e630dc8ef6f154d6126ab3e68
+  url: https://github.com/samtools/bcftools/releases/download/1.19/bcftools-1.19.tar.bz2
+test:
+  commands:
+  - bcftools plugin -lv | grep affy2vcf
+  - bcftools plugin -lv | grep gtc2vcf

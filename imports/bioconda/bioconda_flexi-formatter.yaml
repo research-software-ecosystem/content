@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/VIB-CCB-BioIT/flexiplex_tag_formatter
+  license: MIT
+  license_file: LICENSE
+  summary: Moving flexiplex barcode and UMI to bam tags
+build:
+  entry_points:
+  - flexi_formatter = flexi_formatter.reformat_flexiplex_tags:app
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - ljwharbers
+package:
+  name: flexi-formatter
+  version: 0.0.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  - setuptools
+  run:
+  - python >=3
+  - typer
+  - simplesam
+  - samtools
+source:
+  sha256: 25e973b73a571d5e3cc23e7da9da616e8484b15c788e83cb1211a5ce8b0cbe16
+  url: https://pypi.io/packages/source/f/flexi-formatter/flexi_formatter-0.0.1.tar.gz
+test:
+  commands:
+  - flexi_formatter --help
+  - samtools --help
+  imports:
+  - flexi_formatter
+  - simplesam
+  requires:
+  - pip

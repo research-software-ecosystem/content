@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/quinlan-lab/STRling
+  license: MIT
+  summary: "STRling (pronounced like \u201Csterling\u201D) is a method to detect large\
+    \ STR expansions from short-read sequencing data."
+build:
+  number: 2
+  skip: true
+package:
+  name: strling
+  version: 0.5.2
+requirements:
+  build:
+  - None
+  - nim
+  host:
+  - htslib
+  run:
+  - htslib
+  - bpipe
+  - python >=3.7
+  - scikit-learn
+  - seaborn
+  - pandas
+  - pysam
+  - biopython
+  - pytest
+  - statsmodels
+  - pytest-runner
+source:
+  sha256: d50cf21f942f033a3f346486b9d136641fb968cedc4a96dcf08dda6d59b536f6
+  url: https://github.com/quinlan-lab/STRling/archive/v0.5.2.tar.gz
+test:
+  commands:
+  - strling -h
+  - strling-outliers.py -h

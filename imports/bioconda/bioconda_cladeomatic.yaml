@@ -1,0 +1,54 @@
+about:
+  dev_url: https://github.com/phac-nml/cladeomatic
+  doc_url: https://github.com/phac-nml/cladeomatic
+  home: https://github.com/phac-nml/cladeomatic
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: 'Clade-O-Matic: Automatic recognition of population structures based on
+    canonical SNPs'
+build:
+  entry_points:
+  - cladeomatic=cladeomatic.main:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - jrober84
+package:
+  name: cladeomatic
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.9,<3.10
+  - pip
+  run:
+  - python >=3.9,<3.10
+  - biopython ==1.81
+  - dendropy ==4.5.2
+  - deprecated ==1.2.13
+  - ete3 ==3.1.2
+  - matplotlib-base ==3.7.1
+  - numpy >=1.23.0
+  - pandas >=2.0.0
+  - plotly ==5.14.1
+  - psutil
+  - pyahocorasick ==1.4.4
+  - ray-default
+  - scikit-learn >=1.1.1
+  - scipy >=1.10.1
+  - six ==1.16.0
+  - snp-sites ==2.5.1
+  - jellyfish
+source:
+  sha256: 8adb1eef21fe90ef2d59f0be065e5f7b72044bf64287d09af8bf4d4ebc9ce06c
+  url: https://pypi.io/packages/source/c/cladeomatic/cladeomatic-0.1.1.tar.gz
+test:
+  commands:
+  - cladeomatic --help
+  imports:
+  - cladeomatic
+  - cladeomatic.utils
+  requires:
+  - pytest

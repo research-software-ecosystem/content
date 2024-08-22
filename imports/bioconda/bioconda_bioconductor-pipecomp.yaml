@@ -1,0 +1,90 @@
+about:
+  description: A simple framework to facilitate the comparison of pipelines involving
+    various steps and parameters. The `pipelineDefinition` class represents pipelines
+    as, minimally, a set of functions consecutively executed on the output of the
+    previous one, and optionally accompanied by step-wise evaluation and aggregation
+    functions. Given such an object, a set of alternative parameters/methods, and
+    benchmark datasets, the `runPipeline` function then proceeds through all combinations
+    arguments, avoiding recomputing the same step twice and compiling evaluations
+    on the fly to avoid storing potentially large intermediate data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/pipeComp.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: pipeComp pipeline benchmarking framework
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-pipecomp
+  version: 1.12.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-complexheatmap >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-scran >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-aricode
+  - r-base
+  - r-circlize
+  - r-clue
+  - r-cluster
+  - r-cowplot
+  - r-dplyr
+  - r-ggplot2
+  - r-intrinsicdimension
+  - r-knitr
+  - r-matrix
+  - r-matrixstats
+  - r-randomcolor
+  - r-rcolorbrewer
+  - r-reshape2
+  - r-rtsne
+  - r-scales
+  - r-seurat
+  - r-uwot
+  - r-viridislite
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-complexheatmap >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-scran >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-aricode
+  - r-base
+  - r-circlize
+  - r-clue
+  - r-cluster
+  - r-cowplot
+  - r-dplyr
+  - r-ggplot2
+  - r-intrinsicdimension
+  - r-knitr
+  - r-matrix
+  - r-matrixstats
+  - r-randomcolor
+  - r-rcolorbrewer
+  - r-reshape2
+  - r-rtsne
+  - r-scales
+  - r-seurat
+  - r-uwot
+  - r-viridislite
+source:
+  md5: ccc688331233bccee84104cbbb9b5d81
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/pipeComp_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/pipeComp/pipeComp_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/pipeComp_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pipecomp/bioconductor-pipecomp_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('pipeComp')"

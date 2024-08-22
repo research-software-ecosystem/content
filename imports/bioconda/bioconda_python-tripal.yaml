@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/galaxy-genome-annotation/python-tripal
+  license: MIT License
+  license_family: MIT
+  summary: Tripal API library
+build:
+  noarch: python
+  number: 0
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - biotools:tripal
+package:
+  name: python-tripal
+  version: 3.2.1
+requirements:
+  host:
+  - python
+  - setuptools
+  - requests >=2.4.3
+  - wrapt
+  - click
+  - pyyaml
+  run:
+  - python
+  - requests >=2.4.3
+  - wrapt
+  - click
+  - pyyaml
+  - future
+source:
+  sha256: dd54abc5f8ad45227d9ddefae2785ef193fc98e14f4023a2c586a5ffccbe0754
+  url: https://files.pythonhosted.org/packages/df/0f/74f673fd20ff1dd6b26606dac6c2c8f2935df88c6fb6702ab81cd7bd0c86/tripal-3.2.1.tar.gz
+test:
+  commands:
+  - tripaille --help > /dev/null
+  - tripaille analysis --help > /dev/null
+  imports:
+  - tripal
+  - tripal.analysis
+  - tripal.db
+  - tripal.feature
+  - tripal.job
+  - tripal.organism
+  - tripal.phylogeny

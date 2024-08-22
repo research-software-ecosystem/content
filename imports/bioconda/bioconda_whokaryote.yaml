@@ -1,0 +1,48 @@
+about:
+  description: 'Whokaryote uses a random forest classifier that uses gene-structure
+    based
+
+    features and optionally Tiara predictions to predict whether a contig is
+
+    from a eukaryote or from a prokaryote. You can use Whokaryote to determine
+
+    which contigs need eukaryotic gene prediction and which need prokaryotic
+
+    gene prediction.
+
+    '
+  dev_url: https://git.wageningenur.nl/lotte.pronk/whokaryote
+  home: https://github.com/LottePronk/whokaryote
+  license: AGPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Classify metagenomic contigs as eukaryotic or prokaryotic
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  identifiers:
+  - doi:https://doi.org/10.1099/mgen.0.000823
+package:
+  name: whokaryote
+  version: 1.1.2
+requirements:
+  host:
+  - python =3.8
+  run:
+  - python =3.8
+  - tiara
+  - prodigal
+  - pandas
+  - pathlib
+  - biopython
+  - numpy =1.19.4
+  - joblib
+  - scikit-learn =1.0.2
+source:
+  sha256: 481776bc29f25c0101c0ad4ca4e0bfff16b03024457a31f4d393585ba81530b4
+  url: https://github.com/LottePronk/whokaryote/archive/refs/tags/v1.1.2.tar.gz
+test:
+  commands:
+  - whokaryote.py --help

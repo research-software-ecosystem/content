@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/cogent3/cogent3
+  doc_url: https://github.com/cogent3/cogent3/blob/2024.7.19a4/README.md
+  home: https://github.com/cogent3/cogent3
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'COmparative GENomics Toolkit 3: genomic sequence analysis within notebooks
+    or on compute systems with 1000s of CPUs.'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - dpryan79
+  - GavinHuttley
+  - khiron
+package:
+  name: cogent3
+  version: 2024.7.19a4
+requirements:
+  host:
+  - python >=3.9,<3.13
+  - pip
+  - flit-core >=3.2,<4
+  run:
+  - python >=3.9,<3.13
+  - charset-normalizer
+  - scipy
+  - chardet
+  - numpy
+  - numba >0.53.0
+  - scitrack
+  - tqdm
+  - tinydb
+  - typing_extensions
+  - stevedore
+source:
+  sha256: 3ff157aa3a778d4b2f473d18619d674073d5b61ad864daca3ee5283a9cdc50bb
+  url: https://pypi.io/packages/source/c/cogent3/cogent3-2024.7.19a4.tar.gz
+test:
+  imports:
+  - cogent3

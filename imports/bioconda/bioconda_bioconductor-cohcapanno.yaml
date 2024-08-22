@@ -1,0 +1,39 @@
+about:
+  description: Provides genomic location, nearby CpG island and nearby gene information
+    for common Illumina methylation array platforms
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/COHCAPanno.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Annotations for City of Hope CpG Island Analysis Pipeline
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-cohcapanno
+    path: recipes/bioconductor-cohcapanno
+    version: 1.16.0
+package:
+  name: bioconductor-cohcapanno
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 78fd4891651a8a62779fe402a13ba6b1
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/COHCAPanno_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/COHCAPanno/COHCAPanno_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/COHCAPanno_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cohcapanno/bioconductor-cohcapanno_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('COHCAPanno')"

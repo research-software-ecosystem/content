@@ -1,0 +1,42 @@
+about:
+  description: Provides delayed computation of a matrix of residuals after fitting
+    a linear model to each column of an input matrix. Also supports partial computation
+    of residuals where selected factors are to be preserved in the output matrix.
+    Implements a number of efficient methods for operating on the delayed matrix of
+    residuals, most notably matrix multiplication and calculation of row/column sums
+    or means.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ResidualMatrix.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Creating a DelayedMatrix of Regression Residuals
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-residualmatrix
+  version: 1.12.0
+requirements:
+  host:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-matrix
+  run:
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-matrix
+source:
+  md5: 76eaee4311380f83265d9b5ecacd7e49
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ResidualMatrix_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ResidualMatrix/ResidualMatrix_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ResidualMatrix_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-residualmatrix/bioconductor-residualmatrix_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ResidualMatrix')"

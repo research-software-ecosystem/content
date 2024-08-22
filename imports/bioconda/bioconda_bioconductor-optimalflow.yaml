@@ -1,0 +1,67 @@
+about:
+  description: Optimal-transport techniques applied to supervised flow cytometry gating.
+  home: https://bioconductor.org/packages/3.18/bioc/html/optimalFlow.html
+  license: Artistic-2.0
+  summary: optimalFlow
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  container:
+    extended-base: true
+package:
+  name: bioconductor-optimalflow
+  version: 1.14.0
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - xorg-libxfixes
+  host:
+  - bioconductor-flowmeans >=1.62.0,<1.63.0
+  - bioconductor-optimalflowdata >=1.14.0,<1.15.0
+  - r-base
+  - r-dbscan
+  - r-doparallel
+  - r-dplyr
+  - r-ellipse
+  - r-foreach
+  - r-randomforest
+  - r-rfast
+  - r-rgl
+  - r-rlang >=0.4.0
+  - r-robustbase
+  - r-transport
+  run:
+  - bioconductor-flowmeans >=1.62.0,<1.63.0
+  - bioconductor-optimalflowdata >=1.14.0,<1.15.0
+  - r-base
+  - r-dbscan
+  - r-doparallel
+  - r-dplyr
+  - r-ellipse
+  - r-foreach
+  - r-randomforest
+  - r-rfast
+  - r-rgl
+  - r-rlang >=0.4.0
+  - r-robustbase
+  - r-transport
+source:
+  md5: c66127dc23a70fdcfd651543ea596329
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/optimalFlow_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/optimalFlow/optimalFlow_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/optimalFlow_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-optimalflow/bioconductor-optimalflow_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - LD_LIBRARY_PATH="${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${BUILD_PREFIX}/lib"
+    $R -e "library('optimalFlow')"

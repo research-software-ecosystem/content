@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/linsalrob/PyFBA/
+  doc_url: https://linsalrob.github.io/PyFBA/
+  home: https://linsalrob.github.io/PyFBA/
+  license: MIT
+  license_family: MIT
+  summary: Python-based Flux Balance Analysis using the ModelSEED
+build:
+  number: 6
+  script: ' -m pip install --ignore-installed --no-cache-dir -vvv .'
+  skip: true
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.4972064
+  recipe-maintainers:
+  - linsalrob
+package:
+  name: pyfba
+  version: '2.62'
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - setuptools >=38.6.0
+  - setuptools_scm <7
+  - pyglpk
+  - glpk
+  run:
+  - python
+  - pyglpk
+  - glpk
+  - beautifulsoup4
+  - jupyter
+  - lxml
+  - importlib_resources
+source:
+  sha256: 3f9a7c47cceb15b90eee1f8b572250919e416c2b8ee44a073a81de74342df96a
+  url: https://pypi.io/packages/source/p/pyfba/PyFBA-2.62.tar.gz
+test:
+  commands:
+  - pyfba --help
+  - pyfba gapfill_roles --help
+  imports:
+  - PyFBA

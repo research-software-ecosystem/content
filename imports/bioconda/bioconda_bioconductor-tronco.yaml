@@ -1,0 +1,71 @@
+about:
+  description: The TRONCO (TRanslational ONCOlogy) R package collects algorithms to
+    infer progression models via the approach of Suppes-Bayes Causal Network, both
+    from an ensemble of tumors (cross-sectional samples) and within an individual
+    patient (multi-region or single-cell samples). The package provides parallel implementation
+    of algorithms that process binary matrices where each row represents a tumor sample
+    and each column a single-nucleotide or a structural variant driving the progression;
+    a 0/1 value models the absence/presence of that alteration in the sample. The
+    tool can import data from plain, MAF or GISTIC format files, and can fetch it
+    from the cBioPortal for cancer genomics. Functions for data manipulation and visualization
+    are provided, as well as functions to import/export such data to other bioinformatics
+    tools for, e.g, clustering or detection of mutually exclusive alterations. Inferred
+    models can be visualized and tested for their confidence via bootstrap and cross-validation.
+    TRONCO is used for the implementation of the Pipeline for Cancer Inference (PICNIC).
+  home: https://bioconductor.org/packages/3.18/bioc/html/TRONCO.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: TRONCO, an R package for TRanslational ONCOlogy
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-tronco
+  version: 2.34.0
+requirements:
+  host:
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-bnlearn
+  - r-circlize
+  - r-doparallel
+  - r-foreach
+  - r-gridextra
+  - r-gtable
+  - r-gtools
+  - r-igraph
+  - r-iterators
+  - r-r.matlab
+  - r-rcolorbrewer
+  - r-scales
+  - r-xtable
+  run:
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-bnlearn
+  - r-circlize
+  - r-doparallel
+  - r-foreach
+  - r-gridextra
+  - r-gtable
+  - r-gtools
+  - r-igraph
+  - r-iterators
+  - r-r.matlab
+  - r-rcolorbrewer
+  - r-scales
+  - r-xtable
+source:
+  md5: 0e137e734d0e5552bdcaa25ccdd4df08
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TRONCO_2.34.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TRONCO/TRONCO_2.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TRONCO_2.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tronco/bioconductor-tronco_2.34.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TRONCO')"

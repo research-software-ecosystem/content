@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/a-slide/NanopolishComp
+  license: MIT
+  summary: NanopolishComp is a Python3 package for downstream analyses of Nanopolish
+    output files
+build:
+  entry_points:
+  - NanopolishComp=NanopolishComp.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+package:
+  name: nanopolishcomp
+  version: 0.6.12
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - numpy >=1.14.0
+  - python >=3.6
+  - tqdm >=4.23.4
+source:
+  sha256: afe11b2f7da8de89d7e080dfded351fd9a69d08f54438b90ab2f9e2f5d93e521
+  url: https://pypi.io/packages/source/N/NanopolishComp/NanopolishComp-0.6.12.tar.gz
+test:
+  commands:
+  - NanopolishComp --help
+  - NanopolishComp Eventalign_collapse --help
+  - NanopolishComp Freq_meth_calculate --help

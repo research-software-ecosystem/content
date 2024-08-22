@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/Shamir-Lab/SCAPP
+  license: MIT
+  license_family: MIT
+  summary: Plasmid assembly in metagenomes
+build:
+  entry_points:
+  - scapp = scapp.scapp:main
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - dpellow
+package:
+  name: scapp
+  version: 0.1.4
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - blast >=2.10.1
+  - bwa
+  - samtools
+  - plasclass
+  - networkx 2.4
+  - python >=3.7
+  - pysam 0.15.3
+source:
+  sha256: b37bf1173428f04f9faec7c1fe671e312a806c7f2e7bf1dd4404908403d630ea
+  url: https://github.com/Shamir-Lab/SCAPP/archive/v0.1.4.tar.gz
+test:
+  commands:
+  - scapp -h
+  imports:
+  - scapp

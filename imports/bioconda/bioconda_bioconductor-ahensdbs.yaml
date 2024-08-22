@@ -1,0 +1,39 @@
+about:
+  description: Supplies AnnotationHub with EnsDb Ensembl-based annotation databases
+    for all species. EnsDb SQLite databases are generated separately from Ensembl
+    MySQL databases using functions from the ensembldb package employing the Ensembl
+    Perl API.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/AHEnsDbs.html
+  license: Artistic-2.0
+  summary: EnsDbs for AnnotationHub
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-ahensdbs
+  version: 1.1.10
+requirements:
+  host:
+  - bioconductor-annotationhubdata >=1.32.0,<1.33.0
+  - bioconductor-ensembldb >=2.26.0,<2.27.0
+  - r-base
+  run:
+  - bioconductor-annotationhubdata >=1.32.0,<1.33.0
+  - bioconductor-ensembldb >=2.26.0,<2.27.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 63aa3efc1c85d5a26e4d69d50f781a2a
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/AHEnsDbs_1.1.10.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/AHEnsDbs/AHEnsDbs_1.1.10.tar.gz
+  - https://bioarchive.galaxyproject.org/AHEnsDbs_1.1.10.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ahensdbs/bioconductor-ahensdbs_1.1.10_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('AHEnsDbs')"

@@ -1,0 +1,33 @@
+about:
+  date: '2022-09-26'
+  home: https://github.com/plfjohnson/contamMix
+  license: GPL-3
+  license_file: LICENSE
+  summary: estimation of mtDNA contamination from a set of potential contaminant genomes.
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: contammix
+  version: 1.0.11
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-coda
+  - r-getopt
+  run:
+  - r-base
+  - r-coda
+  - r-getopt
+  - samtools
+source:
+  sha256: 1bfd53eca5554c957771daa51a2520306e90da17423dded39454ac8f23424a22
+  url: https://github.com/plfjohnson/contamMix/archive/refs/tags/v1.0-11.tar.gz
+test:
+  commands:
+  - $R -e "library(contamMix)"
+  - contammix

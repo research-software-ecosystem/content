@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/VGP/vgp-assembly/tree/master/galaxy_tools/parse_mito_blast
+  license: BSD
+  license_file: LICENSE
+  summary: Filtering blast out from querying assembly against mitochondrial database.
+build:
+  noarch: python
+  number: 0
+  script: mkdir -p ${PREFIX}/bin && cp parse_mito_blast.py $PREFIX/bin && chmod +x
+    $PREFIX/bin/parse_mito_blast.py
+extra:
+  recipe-maintainer:
+  - vgp-assembly
+package:
+  name: parse_mito_blast
+  version: 1.0.2
+requirements:
+  run:
+  - python
+  - pandas
+source:
+  sha256: 50177ac54e1e9942b7161e404eacfee8f9e25f78a426b34e80056dcc085ba179
+  url: https://raw.githubusercontent.com/VGP/vgp-assembly/master/galaxy_tools/parse_mito_blast/parse_mito_blast.py
+test:
+  commands:
+  - parse_mito_blast.py --help

@@ -1,0 +1,54 @@
+about:
+  description: Save Bioconductor data structures into file artifacts, and load them
+    back into memory. This is a more robust and portable alternative to serialization
+    of such objects into RDS files. Each artifact is associated with metadata for
+    further interpretation; downstream applications can enrich this metadata with
+    context-specific properties.
+  home: https://bioconductor.org/packages/3.18/bioc/html/alabaster.base.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Save Bioconductor Objects To File
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-alabaster.base
+  version: 1.2.1
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-alabaster.schemas >=1.2.0,<1.3.0
+  - bioconductor-rhdf5 >=2.46.0,<2.47.0
+  - bioconductor-rhdf5lib >=1.24.0,<1.25.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-jsonlite
+  - r-jsonvalidate
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-alabaster.schemas >=1.2.0,<1.3.0
+  - bioconductor-rhdf5 >=2.46.0,<2.47.0
+  - bioconductor-rhdf5lib >=1.24.0,<1.25.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-jsonlite
+  - r-jsonvalidate
+  - r-rcpp
+source:
+  md5: 2d6215dfe9b8412438f9b05b54be2331
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/alabaster.base_1.2.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/alabaster.base/alabaster.base_1.2.1.tar.gz
+  - https://bioarchive.galaxyproject.org/alabaster.base_1.2.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-alabaster.base/bioconductor-alabaster.base_1.2.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('alabaster.base')"

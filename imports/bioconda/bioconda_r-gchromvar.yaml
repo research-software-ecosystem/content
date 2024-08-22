@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/caleblareau/gchromVAR
+  home: https://caleblareau.github.io/gchromVAR/
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - /lib/R/share/licenses/MIT
+  summary: R package for computing cell-type specific GWAS enrichments from Finemapping
+    data and quantitative epigenomic data.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - mfansler
+package:
+  name: r-gchromvar
+  version: 0.3.2
+requirements:
+  host:
+  - r-base
+  - r-matrix
+  - bioconductor-biocparallel
+  - bioconductor-chromvar
+  - bioconductor-genomicranges
+  - bioconductor-s4vectors
+  - bioconductor-summarizedexperiment
+  run:
+  - r-base
+  - r-matrix
+  - bioconductor-biocparallel
+  - bioconductor-chromvar
+  - bioconductor-genomicranges
+  - bioconductor-s4vectors
+  - bioconductor-summarizedexperiment
+source:
+  sha256: dcb7b686c34155febbf20c17e28aceee7c5301efb817999b3366693da8e75b47
+  url: https://github.com/caleblareau/gchromVAR/archive/e4f33cad4115160ee4bdf16fd625c2fcd0bf3910.zip
+test:
+  commands:
+  - $R -e "library(gchromVAR)"

@@ -1,0 +1,29 @@
+about:
+  home: https://lapti.ucc.ie/rust/
+  license: GPL-3.0
+  license_file: COPYING
+  summary: Ribo-seq Unit Step Transformation. Tools to characterise the determinants
+    of ribosome profiling read density across mRNA. May be used to examine relative
+    decoding rates and and for quality assessment
+build:
+  number: 2
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: riboseq-rust
+  version: '1.2'
+requirements:
+  run:
+  - python <3
+  - argparse
+  - matplotlib
+  - numpy
+  - pysam
+source:
+  sha256: 2b50915fda23f9bc9c8170d82fa5255ef2c3954f0d6a5ea15649b119ff506d0c
+  url: https://lapti.ucc.ie/rust/scripts/RUST_1.2.tar.gz
+test:
+  commands:
+  - rust_nucleotide -h

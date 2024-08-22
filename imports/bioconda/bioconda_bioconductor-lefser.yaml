@@ -1,0 +1,42 @@
+about:
+  description: lefser is an implementation in R of the popular "LDA Effect Size (LEfSe)"
+    method for microbiome biomarker discovery. It uses the Kruskal-Wallis test, Wilcoxon-Rank
+    Sum test, and Linear Discriminant Analysis to find biomarkers of groups and sub-groups.
+  home: https://bioconductor.org/packages/3.18/bioc/html/lefser.html
+  license: Artistic-2.0
+  summary: R implementation of the LEfSE method for microbiome biomarker discovery
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-lefser
+  version: 1.12.1
+requirements:
+  host:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-coin
+  - r-ggplot2
+  - r-mass
+  run:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-coin
+  - r-ggplot2
+  - r-mass
+source:
+  md5: c3b2deaf4b58de1bb930164df11a388f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/lefser_1.12.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/lefser/lefser_1.12.1.tar.gz
+  - https://bioarchive.galaxyproject.org/lefser_1.12.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lefser/bioconductor-lefser_1.12.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lefser')"

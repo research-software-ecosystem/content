@@ -1,0 +1,42 @@
+about:
+  description: 'kipoi-utils: utils used in various packages related to kipoi'
+  dev_url: https://github.com/kipoi/kipoi-utils
+  doc_url: https://github.com/kipoi/kipoi-utils
+  home: https://github.com/kipoi/kipoi-utils
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: 'kipoi-utils: utils used in various packages related to kipoi'
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - visze
+package:
+  name: kipoi-utils
+  version: 0.7.7
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - pandas >=0.21.0
+  - attrs
+  - related
+  - six
+  - tqdm
+  - numpy
+  - pyyaml >=5.1.0
+source:
+  sha256: 9e293b578a7b7cf920fd26045955b66d71325ac1127fdcd886efe4c4a2ba83b7
+  url: https://pypi.io/packages/source/k/kipoi_utils/kipoi_utils-0.7.7.tar.gz
+test:
+  imports:
+  - kipoi_utils
+  - kipoi_utils.external
+  - kipoi_utils.external.related
+  - kipoi_utils.external.torch
+  - kipoi_utils.external.torchvision

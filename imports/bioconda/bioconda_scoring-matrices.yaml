@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/althonos/scoring-matrices
+  doc_url: https://scoring-matrices.readthedocs.org/
+  home: https://github.com/althonos/scoring-matrices
+  license: MIT
+  license_family: MIT
+  license_file: COPYING
+  summary: Dependency free, Cython-compatible scoring matrices to use with biological
+    sequences.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv'
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - althonos
+package:
+  name: scoring-matrices
+  version: 0.2.2
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  run:
+  - python
+source:
+  sha256: 2192df3f5f8ecd144071858cc287c958d2a842cdc8cc082c13755dfefe2f66b8
+  url: https://pypi.io/packages/source/s/scoring-matrices/scoring-matrices-0.2.2.tar.gz
+test:
+  commands:
+  - python -m unittest -vv scoring_matrices.tests
+  imports:
+  - scoring_matrices

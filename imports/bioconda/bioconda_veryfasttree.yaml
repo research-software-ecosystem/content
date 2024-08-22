@@ -1,0 +1,38 @@
+about:
+  description: "VeryFastTree is a highly-tuned implementation of the FastTree-2 tool\
+    \ that takes advantage of parallelization and vectorization strategies \nto speed\
+    \ up the inference of phylogenies for huge alignments.\n"
+  dev_url: https://github.com/citiususc/veryfasttree
+  home: https://github.com/citiususc/veryfasttree
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: VeryFastTree -- speeding up the estimation of phylogenies for large alignments
+    through parallelization and vectorization strategies
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - cesarpomar
+  - jcpichel
+package:
+  name: veryfasttree
+  version: 4.0.03
+requirements:
+  build:
+  - None
+  - libgomp
+  - cmake
+  - make
+  host:
+  - libgomp
+  run:
+  - libgomp
+source:
+  sha256: 40c6b2f94d7d94f0a58b4736174c091f1131c83a8a090c0776c1789f3c13ef8a
+  url: https://github.com/citiususc/veryfasttree/archive/refs/tags/v4.0.03.tar.gz
+test:
+  commands:
+  - VeryFastTree --help

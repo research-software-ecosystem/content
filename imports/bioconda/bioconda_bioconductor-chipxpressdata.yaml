@@ -1,0 +1,41 @@
+about:
+  description: Contains pre-built mouse (GPL1261) and human (GPL570) database of gene
+    expression profiles to be used for ChIPXpress ranking.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/ChIPXpressData.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: ChIPXpress Pre-built Databases
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-chipxpressdata
+    path: recipes/bioconductor-chipxpressdata
+    version: 1.18.0
+package:
+  name: bioconductor-chipxpressdata
+  version: 1.40.0
+requirements:
+  host:
+  - r-base
+  - r-bigmemory
+  run:
+  - r-base
+  - r-bigmemory
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 029086a630df9533dedea4babd28f0d7
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/ChIPXpressData_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ChIPXpressData/ChIPXpressData_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ChIPXpressData_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chipxpressdata/bioconductor-chipxpressdata_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ChIPXpressData')"

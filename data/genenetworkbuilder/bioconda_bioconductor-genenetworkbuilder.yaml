@@ -1,0 +1,60 @@
+about:
+  description: Appliation for discovering direct or indirect targets of transcription
+    factors using ChIP-chip or ChIP-seq, and microarray or RNA-seq gene expression
+    data. Inputting a list of genes of potential targets of one TF from ChIP-chip
+    or ChIP-seq, and the gene expression results, GeneNetworkBuilder generates a regulatory
+    network of the TF.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GeneNetworkBuilder.html
+  license: GPL-3.0-or-later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'GeneNetworkBuilder: a bioconductor package for building regulatory network
+    using ChIP-chip/ChIP-seq data and Gene Expression Data'
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:genenetworkbuilder
+package:
+  name: bioconductor-genenetworkbuilder
+  version: 1.44.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-htmlwidgets
+  - r-plyr
+  - r-rcpp >=0.9.13
+  - r-rjson
+  - r-xml
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rgraphviz >=2.46.0,<2.47.0
+  - r-base
+  - r-htmlwidgets
+  - r-plyr
+  - r-rcpp >=0.9.13
+  - r-rjson
+  - r-xml
+source:
+  md5: aedb0b143d59865acfad5ce4d635ff77
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GeneNetworkBuilder_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GeneNetworkBuilder/GeneNetworkBuilder_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GeneNetworkBuilder_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genenetworkbuilder/bioconductor-genenetworkbuilder_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GeneNetworkBuilder')"

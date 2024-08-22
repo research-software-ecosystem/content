@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/weizhongli/cdhit
+  license: GPLv2
+  summary: Clusters and compares protein or nucleotide sequences
+build:
+  number: 10
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: cd-hit
+  version: 4.8.1
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: f8bc3cdd7aebb432fcd35eed0093e7a6413f1e36bbd2a837ebc06e57cdb20b70
+  url: https://github.com/weizhongli/cdhit/archive/V4.8.1.tar.gz
+test:
+  commands:
+  - cd-hit --help | grep 'Usage' > /dev/null

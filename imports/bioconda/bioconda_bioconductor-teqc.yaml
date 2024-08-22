@@ -1,0 +1,54 @@
+about:
+  description: Target capture experiments combine hybridization-based (in solution
+    or on microarrays) capture and enrichment of genomic regions of interest (e.g.
+    the exome) with high throughput sequencing of the captured DNA fragments. This
+    package provides functionalities for assessing and visualizing the quality of
+    the target enrichment process, like specificity and sensitivity of the capture,
+    per-target read coverage and so on.
+  home: https://bioconductor.org/packages/3.18/bioc/html/TEQC.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Quality control for target capture experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:teqc
+  - doi:10.1093/bioinformatics/btr122
+  parent_recipe:
+    name: bioconductor-teqc
+    path: recipes/bioconductor-teqc
+    version: 4.2.0
+package:
+  name: bioconductor-teqc
+  version: 4.24.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-hwriter
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - r-base
+  - r-hwriter
+source:
+  md5: 02976837ccda44f13a0a43b9de17ea81
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TEQC_4.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TEQC/TEQC_4.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TEQC_4.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-teqc/bioconductor-teqc_4.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TEQC')"

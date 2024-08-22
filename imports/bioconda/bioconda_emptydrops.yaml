@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/nh3/emptydrops
+  home: https://pypi.org/project/emptydrops/
+  license: MIT
+  license_file: LICENSE
+  summary: Python implementation of emptydrops from 10X Cellranger v3.0.2
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps --ignore-installed -vv .'
+extra:
+  recipe-maintainers:
+  - nh3
+package:
+  name: emptydrops
+  version: 0.0.5
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - h5py
+  - lz4
+  - pandas
+  - scipy
+source:
+  sha256: 108f5ed56d99946eb0752ccdd8d3267bc18cbe25455573ec4c561395831acaa0
+  url: https://pypi.io/packages/source/e/emptydrops/emptydrops-0.0.5.tar.gz
+test:
+  imports:
+  - emptydrops
+  - emptydrops.matrix

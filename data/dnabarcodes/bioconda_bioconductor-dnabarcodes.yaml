@@ -1,0 +1,54 @@
+about:
+  description: The package offers a function to create DNA barcode sets capable of
+    correcting insertion, deletion, and substitution errors. Existing barcodes can
+    be analysed regarding their minimal, maximal and average distances between barcodes.
+    Finally, reads that start with a (possibly mutated) barcode can be demultiplexed,
+    i.e., assigned to their original reference barcode.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DNABarcodes.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: A tool for creating and analysing DNA barcodes used in Next Generation
+    Sequencing multiplexing experiments
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:dnabarcodes
+  parent_recipe:
+    name: bioconductor-dnabarcodes
+    path: recipes/bioconductor-dnabarcodes
+    version: 1.10.0
+package:
+  name: bioconductor-dnabarcodes
+  version: 1.32.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-bh
+  - r-matrix
+  - r-rcpp >=0.11.2
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-bh
+  - r-matrix
+  - r-rcpp >=0.11.2
+source:
+  md5: 6047e393e89e644fbf9aa4aa5a9faa64
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DNABarcodes_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DNABarcodes/DNABarcodes_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DNABarcodes_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dnabarcodes/bioconductor-dnabarcodes_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DNABarcodes')"

@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/swiftseal/resistify
+  license: MIT
+  summary: A resistance gene annotation tool
+build:
+  entry_points:
+  - resistify = resistify.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: resistify
+  version: 0.3.0
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  - hatchling
+  run:
+  - python >=3.9
+  - scikit-learn ==0.24.2
+  - biopython
+  - numpy
+  - rich
+  - rich-argparse
+  - hmmer
+source:
+  sha256: 3a8f4ccedf38fb1a7cdb3522ad6497d054bd72164155bcdc03aa23133b030623
+  url: https://pypi.io/packages/source/r/resistify/resistify-0.3.0.tar.gz
+test:
+  commands:
+  - resistify --help
+  imports:
+  - resistify

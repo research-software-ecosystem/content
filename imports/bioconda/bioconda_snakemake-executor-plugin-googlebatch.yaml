@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/snakemake/snakemake-executor-plugin-googlebatch
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Snakemake executor plugin for Google Batch
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koesterlab
+package:
+  name: snakemake-executor-plugin-googlebatch
+  version: 0.5.0
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - google-cloud-batch >=0.17.1,<0.18.0
+  - requests >=2.31.0,<3.0.0
+  - google-api-core >=2.12.0,<3.0.0
+  - google-cloud-storage >=2.12.0,<3.0.0
+  - snakemake-interface-common >=1.14.0,<2.0.0
+  - snakemake-interface-executor-plugins >=9.0.0,<10.0.0
+  - jinja2 >=3.1.2,<4.0.0
+  - google-cloud-logging >=3.8.0,<4.0.0
+source:
+  sha256: 242ddb2348db1837a0676e991b257e0924791d3dab20aa8f89d63c548adfd1cd
+  url: https://pypi.io/packages/source/s/snakemake-executor-plugin-googlebatch/snakemake_executor_plugin_googlebatch-0.5.0.tar.gz
+test:
+  imports:
+  - snakemake_executor_plugin_googlebatch

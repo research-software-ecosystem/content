@@ -1,0 +1,43 @@
+about:
+  description: Package provides mRNA datasets from The Cancer Genome Atlas Project
+    for all available cohorts types from http://gdac.broadinstitute.org/. Data format
+    is explained here https://wiki.nci.nih.gov/display/TCGA/Gene+expression+data Data
+    from 2015-11-01 snapshot.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/RTCGA.mRNA.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: mRNA datasets from The Cancer Genome Atlas Project
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-rtcga.mrna
+    path: recipes/bioconductor-rtcga.mrna
+    version: 1.8.0
+package:
+  name: bioconductor-rtcga.mrna
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-rtcga >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-rtcga >=1.32.0,<1.33.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: c9774207df355ef5945677d36e915103
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/RTCGA.mRNA_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RTCGA.mRNA/RTCGA.mRNA_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RTCGA.mRNA_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rtcga.mrna/bioconductor-rtcga.mrna_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RTCGA.mRNA')"

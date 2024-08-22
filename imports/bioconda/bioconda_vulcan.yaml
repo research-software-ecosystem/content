@@ -1,0 +1,32 @@
+about:
+  home: https://gitlab.com/treangenlab/vulcan
+  license: MIT
+  license_file: LICENSE
+  summary: "vulcan, map long reads and prosper\U0001F596, a long read mapping pipeline\
+    \ that melds minimap2 and NGMLR"
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p ${PREFIX}/bin && cp vulcan ${PREFIX}/bin
+package:
+  name: vulcan
+  version: 1.0.3
+requirements:
+  run:
+  - pysam
+  - python >=3.5
+  - minimap2
+  - tqdm
+  - ngmlr
+  - samtools ==1.9
+  - bamtools
+  - numpy
+source:
+  sha256: faef1965a12bf4852e82c5ec2f4f4930d15d32b32b223cc755263729c29cb525
+  url: https://gitlab.com/treangenlab/vulcan/-/archive/v1.0.3/vulcan-v1.0.3.tar.gz
+test:
+  commands:
+  - vulcan --help
+  source_files:
+  - test
+  - test/*

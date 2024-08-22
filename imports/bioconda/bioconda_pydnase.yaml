@@ -1,0 +1,38 @@
+about:
+  description: A suite of tools for analysing DNase-seq data.
+  doc_url: http://pythonhosted.org/pyDNase/index.html
+  home: http://jpiper.github.io/pyDNase
+  license: MIT
+  license_family: MIT
+  summary: DNase-seq analysis library
+build:
+  number: 6
+  skip: true
+package:
+  name: pydnase
+  version: 0.3.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  run:
+  - python
+  - numpy
+  - pysam
+  - clint
+  - bedtools
+  - samtools
+  - matplotlib-base
+  - pybedtools
+source:
+  sha256: dba03cadca37929a1cc41545e962136f29efc41f8e3c6de042c51c47ee04d558
+  url: https://pypi.io/packages/source/p/pyDNase/pyDNase-0.3.0.tar.gz
+test:
+  commands:
+  - wellington_footprints.py --help
+  imports:
+  - pyDNase
+  - pyDNase.footprinting

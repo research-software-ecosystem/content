@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/PROBIC/mSWEEP
+  license: MIT
+  license_file: LICENSE
+  summary: mSWEEP - bacterial community composition estimation from pseudoalignments
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.12688/wellcomeopenres.15639.2
+package:
+  name: msweep
+  version: 2.1.2
+requirements:
+  build:
+  - None
+  - None
+  - git >=2.10.0
+  - cmake >=3.0.0
+  - make
+  host:
+  - llvm-openmp
+  - libgomp
+  - zlib >=1.2.0
+  - xz >=5.2.0
+  - bzip2 >=1.0.6
+source:
+  sha256: fd6e384bed01e08a64463d40b7cfba79dc6ba7def60c69b31ca5fc5b55551a22
+  url: https://github.com/PROBIC/mSWEEP/archive/v2.1.2.tar.gz
+test:
+  commands:
+  - mSWEEP --help 2>&1 | grep cite

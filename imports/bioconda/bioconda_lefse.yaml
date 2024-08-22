@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/SegataLab/lefse
+  license: MIT
+  license_file: license.txt
+  summary: LDA Effect Size (LEfSe) (Segata et. al 2010) is an algorithm for high-dimensional
+    biomarker discovery and explanation that identifies genomic features (genes, pathways,
+    or taxa) characterizing the differences between two or more biological conditions.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install -vv --no-deps .
+package:
+  name: lefse
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3.7
+  - setuptools
+  run:
+  - python >=3.7
+  - r-base
+  - r-survival
+  - r-mvtnorm
+  - r-modeltools
+  - r-coin
+  - r-mass
+  - rpy2
+  - numpy
+  - matplotlib-base
+  - icu
+  - biom-format
+source:
+  sha256: ff4fcd792e11cd7f76597ca3b14c75521b442a965e3a708862dcbac8d4af65e1
+  url: https://github.com/SegataLab/lefse/archive/refs/tags/1.1.2.tar.gz
+test:
+  commands:
+  - lefse_run.py -h
+  - lefse_format_input.py -h
+  - lefse2circlader.py -h
+  - lefse_plot_cladogram.py -h
+  - lefse_plot_features.py -h
+  - lefse_plot_res.py -h
+  - qiime2lefse.py -h

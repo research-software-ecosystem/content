@@ -1,0 +1,48 @@
+about:
+  description: BAnOCC is a package designed for compositional data, where each sample
+    sums to one. It infers the approximate covariance of the unconstrained data using
+    a Bayesian model coded with `rstan`. It provides as output the `stanfit` object
+    as well as posterior median and credible interval estimates for each correlation
+    element.
+  home: https://bioconductor.org/packages/3.18/bioc/html/banocc.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Bayesian ANalysis Of Compositional Covariance
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-banocc
+    path: recipes/bioconductor-banocc
+    version: 1.6.0
+package:
+  name: bioconductor-banocc
+  version: 1.26.0
+requirements:
+  host:
+  - r-base
+  - r-coda >=0.18.1
+  - r-mvtnorm
+  - r-rstan >=2.17.4
+  - r-stringr
+  run:
+  - r-base
+  - r-coda >=0.18.1
+  - r-mvtnorm
+  - r-rstan >=2.17.4
+  - r-stringr
+source:
+  md5: 5a73975945814e725991bd67552349e6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/banocc_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/banocc/banocc_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/banocc_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-banocc/bioconductor-banocc_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('banocc')"

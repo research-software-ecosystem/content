@@ -1,0 +1,28 @@
+about:
+  home: https://gitlab.com/tprodanov/duplomap
+  license: MIT
+  license_file: LICENSE
+  summary: Tool designed to improve precision and recall of long-read alignments in
+    segmental duplications.
+build:
+  number: 3
+package:
+  name: duplomap
+  version: 0.9.5
+requirements:
+  build:
+  - rust >=1.40
+  - None
+  - zlib
+  - make
+  host:
+  - zlib
+  run:
+  - samtools
+source:
+  sha256: 847b881788e31ffe77146d5eb1e2a12e7b7f90c42c2c54c44ba8b71db51d1827
+  url: https://gitlab.com/tprodanov/DuploMap/-/archive/v0.9.5/duplomap-v0.9.5.tar.gz
+test:
+  commands:
+  - duplomap --help
+  - duplomap-prepare --help

@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/snakemake/snakemake-storage-plugin-sftp
+  license: MIT
+  license_file: LICENSE
+  summary: 'A Snakemake storage plugin that handles files on an SFTP server. '
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koesterlab
+package:
+  name: snakemake-storage-plugin-sftp
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.14.3,<2.0.0
+  - snakemake-interface-storage-plugins >=3.0.0,<4.0.0
+  - pysftp >=0.2.9,<0.3.0
+source:
+  sha256: 1b5f99a6baf334d74e209d6ec8a59e495e56098cf6e9a19954e472ba1501525c
+  url: https://pypi.io/packages/source/s/snakemake-storage-plugin-sftp/snakemake_storage_plugin_sftp-0.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  requires:
+  - pip

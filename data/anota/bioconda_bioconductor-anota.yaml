@@ -1,0 +1,52 @@
+about:
+  description: Genome wide studies of translational control is emerging as a tool
+    to study verious biological conditions. The output from such analysis is both
+    the mRNA level (e.g. cytosolic mRNA level) and the levl of mRNA actively involved
+    in translation (the actively translating mRNA level) for each mRNA. The standard
+    analysis of such data strives towards identifying differential translational between
+    two or more sample classes - i.e. differences in actively translated mRNA levels
+    that are independent of underlying differences in cytosolic mRNA levels. This
+    package allows for such analysis using partial variances and the random variance
+    model. As 10s of thousands of mRNAs are analyzed in parallell the library performs
+    a number of tests to assure that the data set is suitable for such analysis.
+  home: https://bioconductor.org/packages/3.18/bioc/html/anota.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: ANalysis Of Translational Activity (ANOTA).
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:anota
+  - doi:10.1093/bioinformatics/btr146
+  parent_recipe:
+    name: bioconductor-anota
+    path: recipes/bioconductor-anota
+    version: 1.28.0
+package:
+  name: bioconductor-anota
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - r-base
+  run:
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - r-base
+source:
+  md5: dc1461d1c43ffdfedc8e0f49a2b4ac6b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/anota_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/anota/anota_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/anota_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-anota/bioconductor-anota_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('anota')"

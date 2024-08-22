@@ -1,0 +1,28 @@
+about:
+  home: http://nugentechnologies.github.io/nudup/
+  license: GNU Lesser General Public License 3.0
+  license_file: LICENSE.md
+  summary: Marks/removes duplicate molecules based on the molecular tagging technology
+    used in NuGEN products.
+build:
+  noarch: python
+  number: 2
+  script: mkdir -p ${PREFIX}/bin && cp nudup.py ${PREFIX}/bin
+package:
+  name: nudup
+  version: 2.3.3
+requirements:
+  host:
+  - python <3
+  run:
+  - python <3
+  - samtools >=1.2
+  - coreutils
+  - sed
+  - grep
+source:
+  sha256: daa4d26380275951ec5675d5a7f0432fa89e4ead868bae2d0eeabd1cb7449736
+  url: https://github.com/nugentechnologies/nudup/archive/2.3.3.tar.gz
+test:
+  commands:
+  - nudup.py -h

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/bihealth/hlama
+  license: MIT
+  summary: Simple matching of HTS samples based on HLA typing
+build:
+  entry_points:
+  - hlama = hlama.app:main
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_python
+package:
+  name: hlama
+  version: 3.0.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - snakemake ==3.7.1
+  - optitype >=1.2
+source:
+  sha256: a304567d0a0fe544344d069444da2cb106c019deba6665b9cf11b1727546384e
+  url: https://github.com/bihealth/hlama/archive/v3.0.1.tar.gz
+test:
+  commands:
+  - hlama --help

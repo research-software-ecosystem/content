@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/4dn-dcic/pairix
+  home: https://github.com/4dn-dcic/pairix
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: 2D indexing on bgzipped text files of paired genomic coordinates
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: pairix
+  version: 0.3.8
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - python
+  - pip
+  - zlib
+  run:
+  - python
+  - perl
+  - htslib
+  - samtools
+source:
+  patches:
+  - src_Makefile.patch
+  sha256: 51e349c034eda3bce21d9f89a8e477471d2db5a3ef4424a39999d1ec316e2726
+  url: https://github.com/4dn-dcic/pairix/archive/0.3.8.tar.gz
+test:
+  commands:
+  - pairix --help

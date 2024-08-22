@@ -1,0 +1,53 @@
+about:
+  description: Provides memory efficient S4 classes for storing sequences "externally"
+    (e.g. behind an R external pointer, or on disk).
+  home: https://bioconductor.org/packages/3.18/bioc/html/XVector.html
+  license: Artistic-2.0
+  summary: Foundation of external vector representation and manipulation in Bioconductor
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:xvector
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-xvector
+    path: recipes/bioconductor-xvector
+    version: 0.20.0
+package:
+  name: bioconductor-xvector
+  version: 0.42.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+source:
+  md5: f126998c6b563132e51ea31c3995c6b9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/XVector_0.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/XVector/XVector_0.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/XVector_0.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-xvector/bioconductor-xvector_0.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('XVector')"

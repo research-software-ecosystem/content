@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/statisticalbiotechnology/diffacto
+  home: https://github.com/statisticalbiotechnology/diffacto
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE.txt
+  summary: A protein summarization method for shotgun proteomics experiments
+build:
+  entry_points:
+  - diffacto = diffacto.diffacto:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+package:
+  name: diffacto
+  version: 1.0.7
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - networkx >=2.3
+  - numpy >=1.10
+  - pandas >=0.18
+  - pyteomics >=3.3
+  - python
+  - scikit-learn >=0.17
+  - scipy >=0.17
+source:
+  sha256: 372d46e43509b2d0cbc5499a651ef51f175f24e211219598127f5f3ba13755fe
+  url: https://github.com/statisticalbiotechnology/diffacto/archive/refs/tags/v1.0.7.tar.gz
+test:
+  commands:
+  - diffacto --help
+  imports:
+  - diffacto

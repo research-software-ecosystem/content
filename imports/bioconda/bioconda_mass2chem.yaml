@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/shuzhao-li/mass2chem
+  license: BSD-Protection
+  license_file: LICENSE
+  summary: Common utilities for interpreting mass spectrometry data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: mass2chem
+  version: 0.5.0
+requirements:
+  host:
+  - python >=3.7
+  - setuptools >=42
+  - wheel
+  - pip
+  run:
+  - python >=3.7
+  - numpy
+  - scipy
+  - treelib
+source:
+  sha256: 0ef8a49e9ae7e39502edf881249bbdeb445225ae91e6b96da3828a3793f0f8f5
+  url: https://pypi.io/packages/source/m/mass2chem/mass2chem-0.5.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - mass2chem
+  requires:
+  - pip

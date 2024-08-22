@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/snakemake/snakemake-storage-plugin-ftp
+  license: MIT
+  license_file: LICENSE
+  summary: A Snakemake plugin for handling input and output via FTP
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koesterlab
+package:
+  name: snakemake-storage-plugin-ftp
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.15.1,<2.0.0
+  - snakemake-interface-storage-plugins >=3.0.0,<4.0.0
+  - ftputil >=5.0.4,<6.0.0
+source:
+  sha256: e3097e19dbe9ed4c8cf794e1d4594c3032ee7f7a9f7797dfb0d2556f0aafe07c
+  url: https://pypi.io/packages/source/s/snakemake-storage-plugin-ftp/snakemake_storage_plugin_ftp-0.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  requires:
+  - pip

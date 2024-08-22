@@ -1,0 +1,52 @@
+about:
+  description: This package provides a method to identify differential expression
+    genes in the same or different species. Given that non-DE genes have some similarities
+    in features, a scaling-free minimum enclosing ball (SFMEB) model is built to cover
+    those non-DE genes in feature space, then those DE genes, which are enormously
+    different from non-DE genes, being regarded as outliers and rejected outside the
+    ball. The method on this package is described in the article 'A minimum enclosing
+    ball method to detect differential expression genes for RNA-seq data'. The SFMEB
+    method is extended to the scMEB method that considering two or more potential
+    types of cells or unknown labels scRNA-seq dataset DEGs identification.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MEB.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: A normalization-invariant minimum enclosing ball method to detect differentially
+    expressed genes for RNA-seq and scRNA-seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-meb
+  version: 1.16.0
+requirements:
+  host:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-e1071
+  - r-wrswor
+  run:
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-scater >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-e1071
+  - r-wrswor
+source:
+  md5: b1785984524fee5b32976a5e768037d6
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MEB_1.16.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MEB/MEB_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MEB_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-meb/bioconductor-meb_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MEB')"

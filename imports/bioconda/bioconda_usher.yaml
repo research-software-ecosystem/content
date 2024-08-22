@@ -1,0 +1,49 @@
+about:
+  doc_url: https://usher-wiki.readthedocs.io/en/latest/
+  home: https://github.com/yatisht/usher
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Ultrafast Sample Placement on Existing Trees (UShER)
+build:
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1038/s41588-021-00862-7
+package:
+  name: usher
+  version: 0.6.3
+requirements:
+  build:
+  - make
+  - autoconf
+  - cmake
+  - None
+  - None
+  - wget
+  host:
+  - boost-cpp
+  - libprotobuf
+  - openmpi =4.1.2
+  - openssh
+  - isa-l
+  run:
+  - mafft
+  - boost-cpp
+  - ucsc-fatovcf
+  - openmpi =4.1.2
+  - openssh
+  - isa-l
+source:
+- sha256: 95aba8f748599915f21f7bdf883c2e532f2d821138f06cb2e4e58d7323019946
+  url: https://github.com/yatisht/usher/archive/v0.6.3.tar.gz
+test:
+  commands:
+  - usher --help
+  - usher-sampled --help
+  - matOptimize --help
+  - matUtils --help

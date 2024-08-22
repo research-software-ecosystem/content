@@ -1,0 +1,26 @@
+about:
+  home: http://mahonylab.org/software/multigps/
+  license: MIT
+  summary: MultiGPS is a framework for analyzing collections of multi-condition ChIP-seq
+    datasets and characterizing differential binding events between conditions.
+build:
+  number: 3
+  skip: true
+extra:
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: multigps
+  version: 0.74
+requirements:
+  run:
+  - r-base
+  - bioconductor-edger
+  - openjdk >=8
+  - meme >=4.11.2
+source:
+  sha256: 34c7d9cd5f718f126a9d2a502dd9b04159dd8426c5c8f66929adfdcdc85a946d
+  url: http://lugh.bmb.psu.edu/software/multigps/multigps_v0.74.jar
+test:
+  commands:
+  - multigps --version 2>&1 | grep 0.74

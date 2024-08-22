@@ -1,0 +1,27 @@
+about:
+  home: http://www.genome.umd.edu/quorum.html
+  license: GPLv3
+  summary: QuorUM (Quality Optimized Reads from the University of Maryland) is an
+    error corrector for Illumina reads. It is distributed and used with MaSuRCA, or
+    it can be used independently.
+build:
+  number: 5
+  skip: true
+package:
+  name: quorum
+  version: 1.1.1
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - kmer-jellyfish 2.*
+  run:
+  - perl
+  - kmer-jellyfish 2.*
+source:
+  md5: f35761bb32d00de556c143bcf33a1142
+  url: https://github.com/gmarcais/Quorum/releases/download/v1.1.1/quorum-1.1.1.tar.gz
+test:
+  commands:
+  - quorum --version 2>&1 > /dev/null

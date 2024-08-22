@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/nextstrain/nextclade
+  doc_url: https://docs.nextstrain.org/projects/nextclade/en/stable/
+  home: https://github.com/nextstrain/nextclade
+  license: MIT
+  license_family: MIT
+  summary: Viral genome alignment, mutation calling, clade assignment, quality checks
+    and phylogenetic placement
+build:
+  binary_relocation: false
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.21105/joss.03773
+  recipe-maintainers:
+  - corneliusroemer
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: nextclade2
+  version: 2.14.0
+requirements: null
+source:
+- sha256: 1a9a82655830243ffd01937ebb895744ff46ec49f725ef6feff9a3f0e37d90d1
+  url: https://github.com/nextstrain/nextclade/releases/download/2.14.0/nextclade-x86_64-unknown-linux-gnu
+- sha256: 432f56d2152edda49b8c4a2c3f81d9a5da7419a6cc7c4a3d5205d17d5f834cf6
+  url: https://github.com/nextstrain/nextclade/releases/download/2.14.0/nextclade-x86_64-apple-darwin
+- sha256: aaac669618d953381428eac3674fe6cb22bef66e7c1ae55552f6a1567f3d3030
+  url: https://github.com/nextstrain/nextclade/releases/download/2.14.0/nextclade-aarch64-apple-darwin
+- sha256: e8bf11ba18c40aaad6b91b1a65bd49b304375f77b9273b1a17e75ba32cffbca8
+  url: https://github.com/nextstrain/nextclade/releases/download/2.14.0/nextclade-aarch64-unknown-linux-gnu
+test:
+  commands:
+  - nextclade2 --help

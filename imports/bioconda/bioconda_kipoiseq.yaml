@@ -1,0 +1,42 @@
+about:
+  description: 'kipoiseq: sequence-based data-laoders for Kipoi'
+  dev_url: https://github.com/kipoi/kipoiseq
+  doc_url: https://kipoi.org/kipoiseq/
+  home: https://github.com/kipoi/kipoiseq
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'kipoiseq: sequence-based data-laoders for Kipoi'
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - Avsecz
+package:
+  name: kipoiseq
+  version: 0.7.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - kipoi >=0.5.5
+  - pyfaidx
+  - numpy
+  - pandas
+  - tqdm
+  - gffutils
+  - kipoi-utils >=0.1.1
+  - kipoi-conda >=0.1.0
+  - pyranges
+source:
+  sha256: 9e96fc7cd5dacba3c4c855d47892c9f0e7dcfc091eb91f40c01ea09c8a0d02fb
+  url: https://pypi.io/packages/source/k/kipoiseq/kipoiseq-0.7.1.tar.gz
+test:
+  imports:
+  - kipoiseq
+  - kipoiseq.dataloaders
+  - kipoiseq.transforms

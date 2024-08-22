@@ -1,0 +1,67 @@
+about:
+  home: https://github.com/openvax/mhcflurry
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: MHC Binding Predictor
+build:
+  entry_points:
+  - mhcflurry-downloads = mhcflurry.downloads_command:run
+  - mhcflurry-predict = mhcflurry.predict_command:run
+  - mhcflurry-predict-scan = mhcflurry.predict_scan_command:run
+  - mhcflurry-class1-train-allele-specific-models = mhcflurry.train_allele_specific_models_command:run
+  - mhcflurry-class1-train-pan-allele-models = mhcflurry.train_pan_allele_models_command:run
+  - mhcflurry-class1-train-processing-models = mhcflurry.train_processing_models_command:run
+  - mhcflurry-class1-select-allele-specific-models = mhcflurry.select_allele_specific_models_command:run
+  - mhcflurry-class1-select-pan-allele-models = mhcflurry.select_pan_allele_models_command:run
+  - mhcflurry-class1-select-processing-models = mhcflurry.select_processing_models_command:run
+  - mhcflurry-calibrate-percentile-ranks = mhcflurry.calibrate_percentile_ranks_command:run
+  - mhcflurry-class1-train-presentation-models = mhcflurry.train_presentation_models_command:run
+  - mhcflurry-cluster-worker-entry-point = mhcflurry.cluster_parallelism:worker_entry_point
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1016/j.cels.2018.05.014
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: mhcflurry
+  version: 2.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - appdirs
+  - mhcgnomes >=0.8.4
+  - np_utils
+  - pandas >=0.20.3
+  - python
+  - pyyaml
+  - scikit-learn
+  - six
+  - tensorflow >=2.12.0
+  - tqdm
+source:
+  sha256: 95f7b23abde2838118190307096d84c795f373646d231ddf07969cdb4a5138de
+  url: https://pypi.io/packages/source/m/mhcflurry/mhcflurry-2.1.2.tar.gz
+test:
+  commands:
+  - mhcflurry-downloads --help
+  - mhcflurry-predict --help
+  - mhcflurry-predict-scan --help
+  - mhcflurry-class1-train-allele-specific-models --help
+  - mhcflurry-class1-train-pan-allele-models --help
+  - mhcflurry-class1-train-processing-models --help
+  - mhcflurry-class1-select-allele-specific-models --help
+  - mhcflurry-class1-select-pan-allele-models --help
+  - mhcflurry-class1-select-processing-models --help
+  - mhcflurry-calibrate-percentile-ranks --help
+  - mhcflurry-class1-train-presentation-models --help
+  - mhcflurry-cluster-worker-entry-point --help
+  imports:
+  - mhcflurry

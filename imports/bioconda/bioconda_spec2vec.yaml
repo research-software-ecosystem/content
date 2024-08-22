@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/iomega/spec2vec
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Word2Vec based similarity measure of mass spectrometry data.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - bgruening
+  - hechth
+package:
+  name: spec2vec
+  version: 0.8.0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - gensim >=4.0.0
+  - matchms >=0.11.0
+  - numba >=0.51
+  - numpy
+  - fuzzytm
+  - tqdm
+source:
+  sha256: 0a5a4c3d79dcc4e2b22ad44bc04a67aee1f7789e42f1f0143c9a7ffef54ce5b0
+  url: https://pypi.io/packages/source/s/spec2vec/spec2vec-0.8.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - spec2vec
+  requires:
+  - pip

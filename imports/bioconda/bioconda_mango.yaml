@@ -1,0 +1,60 @@
+about:
+  dev_url: https://github.com/bigdatagenomics/mango
+  doc_url: https://bdg-mango.readthedocs.io/en/latest/
+  home: https://github.com/bdgenomics/mango
+  license: Apache 2
+  summary: A scalable genomic visualization tool
+build:
+  noarch: python
+  number: 4
+extra:
+  recipe-maintainers:
+  - akmorrow13
+package:
+  name: mango
+  version: 0.0.5
+requirements:
+  host:
+  - pip
+  - psutil
+  - python >3
+  - jupyter ==1.0.0
+  run:
+  - dask
+  - distributed
+  - modin
+  - openjdk >=8,<9
+  - pyspark ==2.4.4
+  - psutil
+  - python >3
+  - cigar ==0.1.3
+  - ipython ==7.8.0
+  - ipywidgets ==7.0.0
+  - matplotlib ==2.0.2
+  - ipykernel >=5.1.2
+  - widgetsnbextension >=3.5.0
+  - traitlets >=4.3.0,<5.0
+  - traittypes >=0.0.6
+source:
+- folder: core
+  md5: fb9c822dcc0ea1a13766d7faf3413af5
+  url: https://search.maven.org/remotecontent?filepath=org/bdgenomics/mango/mango-distribution/0.0.5/mango-distribution-0.0.5-bin.tar.gz
+- folder: python
+  patches:
+  - 0001-mango-Do-not-use-pip-internals.patch
+  sha256: 3da5016f827123505357d7f0f1e7b861257e60de90ed343e356f3d2851e3162e
+  url: https://pypi.io/packages/source/b/bdgenomics.mango/bdgenomics.mango-0.0.6a1.tar.gz
+- folder: python_pileup
+  patches:
+  - 0002-pileup-Do-not-use-pip-internals.patch
+  sha256: 03f70c507b73585fbc06649b6c27ab69c6ce5102d55805f6f1d4bcae1a8ddfef
+  url: https://pypi.io/packages/source/b/bdgenomics.mango.pileup/bdgenomics.mango.pileup-0.0.6a0.tar.gz
+- folder: python_adam
+  sha256: bfb9e5f0f2bf887a63eebc994d9d6c3d7606e1e9504b88426972b170b7d6f4a9
+  url: https://pypi.io/packages/source/b/bdgenomics.adam/bdgenomics.adam-0.30.0a0.tar.gz
+test:
+  commands:
+  - mango-submit --help
+  - SPARK_HOME=$(python -c "import site,os; print(os.path.join(site.getsitepackages()[0],
+    \"pyspark\"))" ) mango-notebook --help
+  - make_genome --help

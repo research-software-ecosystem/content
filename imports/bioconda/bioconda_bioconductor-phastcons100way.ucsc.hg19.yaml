@@ -1,0 +1,50 @@
+about:
+  description: Store UCSC phastCons conservation scores for the human genome (hg19)
+    calculated from multiple alignments with other 99 vertebrate species.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/phastCons100way.UCSC.hg19.html
+  license: Artistic-2.0
+  summary: UCSC phastCons conservation scores for hg19
+build:
+  noarch: generic
+  number: 14
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-phastcons100way.ucsc.hg19
+    path: recipes/bioconductor-phastcons100way.ucsc.hg19
+    version: 3.7.2
+package:
+  name: bioconductor-phastcons100way.ucsc.hg19
+  version: 3.7.2
+requirements:
+  host:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-genomicscores >=2.14.0,<2.15.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-bsgenome >=1.70.0,<1.71.0
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-genomicscores >=2.14.0,<2.15.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 65aa706a567f7e328dbba0095f995cf1
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/phastCons100way.UCSC.hg19_3.7.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/phastCons100way.UCSC.hg19/phastCons100way.UCSC.hg19_3.7.2.tar.gz
+  - https://bioarchive.galaxyproject.org/phastCons100way.UCSC.hg19_3.7.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-phastcons100way.ucsc.hg19/bioconductor-phastcons100way.ucsc.hg19_3.7.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('phastCons100way.UCSC.hg19')"

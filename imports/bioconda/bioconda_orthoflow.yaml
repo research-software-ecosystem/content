@@ -1,0 +1,64 @@
+about:
+  description: '
+
+    # Orthoflow - end-to-end phylogenomic inference
+
+
+    Orthoflow is a workflow for phylogenetic inference of genome-scale datasets of
+    protein-coding genes.
+
+
+    For more information, visit the GitHub or the documentation page.
+
+    '
+  dev_url: https://github.com/rbturnbull/orthoflow
+  doc_url: https://rbturnbull.github.io/orthoflow/
+  home: https://github.com/rbturnbull/orthoflow
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Orthoflow is a workflow for phylogenetic inference of genome-scale datasets
+    of protein-coding genes.
+build:
+  entry_points:
+  - orthoflow = orthoflow.main:app
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - rbturnull
+  - vinisalazar
+package:
+  name: orthoflow
+  version: 0.3.4
+requirements:
+  host:
+  - python >=3.8,<3.12
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8,<3.12
+  - snakemake-minimal >=7.0.0
+  - pandas >=1.2.5,<2.0.0
+  - typer >=0.4.1
+  - flask >=2.1.2
+  - biopython >=1.79.0
+  - jinja2 >=3.1.2
+  - pydot >=1.4.2
+  - appdirs >=1.4.4
+  - joblib >=1.2.0
+  - toml >=0.10.2
+  - phytest >=1.4.1
+  - rich >=13.3.3
+  - pulp 2.7.0
+source:
+  sha256: 063bff7c0f5e4a62e637f472ce27b95a6ccd8709fcf381b8b735bfd7df3a55e6
+  url: https://pypi.io/packages/source/o/orthoflow/orthoflow-0.3.4.tar.gz
+test:
+  commands:
+  - orthoflow --help
+  imports:
+  - orthoflow

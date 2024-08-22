@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/SciLifeLab/TIDDIT
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: TIDDIT - structural variant calling
+build:
+  entry_points:
+  - tiddit = tiddit.__main__:main
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: tiddit
+  version: 3.7.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - cython
+  - numpy
+  - pip
+  - pysam
+  - joblib
+  run:
+  - python
+  - None
+  - joblib
+  - pysam
+  - fermi2
+  - bwa
+  - ropebwt2
+source:
+  sha256: ae373b33e0036fbe5af7cd69e769c3c3fb869e28345a8e0067a0416e64ba76f6
+  url: https://github.com/SciLifeLab/TIDDIT/archive/TIDDIT-3.7.0.tar.gz
+test:
+  commands:
+  - tiddit --help

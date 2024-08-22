@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/kamimrcht/ELECTOR
+  license: AGPL-3.0
+  summary: ELECTOR EvaLuator of Error Correction Tools for lOng Reads
+build:
+  number: 5
+  skip: true
+package:
+  name: elector
+  version: 1.0.4
+requirements:
+  build:
+  - None
+  - None
+  - libgomp
+  - make
+  host:
+  - biopython
+  - python
+  run:
+  - python
+  - samtools
+  - minimap2
+  - biopython
+source:
+  patches:
+  - 0001-Makefiles.patch
+  - elector_utils.patch
+  sha256: eafa7fcafa6c0fdb202934fd7aaabf85fbb055447e0660246fba6ae3f0fd0c7c
+  url: https://github.com/kamimrcht/ELECTOR/archive/v1.0.4.tar.gz
+test:
+  commands:
+  - elector --help

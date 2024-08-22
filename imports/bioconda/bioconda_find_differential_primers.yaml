@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/widdowquinn/find_differential_primers
+  license: MIT
+  license_family: MIT
+  summary: Scripts to aid the design of differential primers for diagnostic PCR.
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.9861
+package:
+  name: find_differential_primers
+  version: 0.1.4
+requirements:
+  host:
+  - python >2
+  - pip
+  run:
+  - python >2
+  - biopython <1.78
+  - bx-python
+  - emboss
+  - primer3  <=1.1.4
+  - prodigal
+  - blast
+source:
+  patches:
+  - patch
+  sha256: e3f0c0d8a6fe87539d531c6d9411f16fa93e9d796bb5cf0c807908bf7294235e
+  url: https://github.com/widdowquinn/find_differential_primers/archive/v0.1.4.tar.gz
+test:
+  commands:
+  - find_differential_primers.py -h

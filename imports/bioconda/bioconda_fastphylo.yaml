@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/arvestad/FastPhylo
+  license: MIT
+  license_file: COPYING
+  summary: Fastphylo is software project containing the implementations of the algorithms
+    "Fast Computation of Distance Estimators" and "Fast Neighbor Joining".
+build:
+  number: 9
+extra:
+  identifiers:
+  - doi:10.1186/1471-2105-14-334
+package:
+  name: fastphylo
+  version: 1.0.3
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - openmpi <4.0.2
+  - libblas
+  - liblapack
+  - libxml2
+  - gengetopt
+  - zlib
+  run:
+  - openmpi <4.0.2
+  - libxml2
+  - zlib
+source:
+  patches:
+  - 0001-Fix-implicit-nullptr-comparison.patch
+  sha256: b53c44aadea21aaf2e0645cbd18ff7eea99dbf8545a42b005443332fd84d41a2
+  url: https://github.com/arvestad/FastPhylo/archive/1.0.3.tar.gz
+test:
+  commands:
+  - fastdist -h | grep Usage
+  - fastprot -h | grep Usage
+  - fnj -h | grep Usage

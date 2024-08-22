@@ -1,0 +1,49 @@
+about:
+  description: The package allows for predicting whether a coiled coil sequence (amino
+    acid sequence plus heptad register) is more likely to form a dimer or more likely
+    to form a trimer. Additionally to the prediction itself, a prediction profile
+    is computed which allows for determining the strengths to which the individual
+    residues are indicative for either class. Prediction profiles can also be visualized
+    as curves or heatmaps.
+  home: https://bioconductor.org/packages/3.18/bioc/html/procoil.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Prediction of Oligomerization of Coiled Coil Proteins
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:procoil
+  parent_recipe:
+    name: bioconductor-procoil
+    path: recipes/bioconductor-procoil
+    version: 2.8.0
+package:
+  name: bioconductor-procoil
+  version: 2.30.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-kebabs >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-kebabs >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: 5536c056587bff646a606dec3437fa5d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/procoil_2.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/procoil/procoil_2.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/procoil_2.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-procoil/bioconductor-procoil_2.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('procoil')"

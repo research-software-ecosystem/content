@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/matq007/fusion-report
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Tool for parsing outputs from fusion detection tools. Part of a nf-core/rnafusion
+    pipeline
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  identifiers:
+  - DOI:10.5281/zenodo.2609024
+package:
+  name: fusion-report
+  version: 2.1.5
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - tqdm ==4.33.0
+  - colorlog ==4.0.2
+  - Jinja2 ==2.10.1
+  - python-rapidjson
+  - pyyaml >=4.2b1
+  - markupsafe <2.1
+  - pandas
+source:
+  sha256: f1d7d4bba20a73fdfeddd171318e38b0dae520fae58894ba589a9f809e047bcf
+  url: https://github.com/matq007/fusion-report/archive/2.1.5.tar.gz
+test:
+  commands:
+  - fusion_report --help
+  imports:
+  - fusion_report

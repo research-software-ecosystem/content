@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/statisticalbiotechnology/triqler
+  license: Apache Software
+  license_family: APACHE
+  summary: A combined identification and quantification error model of label-free
+    protein quantification
+build:
+  entry_points:
+  - triqler = triqler.triqler:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - glormph
+package:
+  name: triqler
+  version: 0.6.2
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - numpy >=1.12
+  - python
+  - scipy >=0.17
+  - threadpoolctl >=1.0
+source:
+  sha256: 09e0e286e252742be7fc957932eb1c998dce9d6d357b90473526ac7d6dc19d62
+  url: https://pypi.io/packages/source/t/triqler/triqler-0.6.2.tar.gz
+test:
+  commands:
+  - triqler --help
+  imports:
+  - triqler

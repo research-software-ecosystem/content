@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/atarashansky/SAMap
+  license: MIT
+  license_family: MIT
+  summary: The SAMap algorithm
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - atarashansky
+  - pinin4fjords
+package:
+  name: samap
+  version: 1.0.15
+requirements:
+  host:
+  - python <3.8
+  run:
+  - dill
+  - h5py <=2.10
+  - hnswlib
+  - leidenalg
+  - python <3.8
+  - sam-algorithm >=0.8.4
+  - scanpy
+source:
+  sha256: a1358b997d41c062a838e963fbdeb437af66007b5b4580a2cbea59cdc6a774fa
+  url: https://pypi.io/packages/source/s/samap/samap-1.0.15.tar.gz
+test:
+  imports:
+  - samap
+  - samap.mapping
+  - samap.analysis

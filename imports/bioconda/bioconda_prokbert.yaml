@@ -1,0 +1,47 @@
+about:
+  doc_url: https://prokbert.readthedocs.io/en/latest/
+  home: https://github.com/nbrg-ppcu/prokbert
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: ProkBERT is a genomic language model specifically designed for microbiome
+    applications. It leverages the power of machine learning to decipher complex microbial
+    interactions, predict functionalities, and uncover novel patterns in extensive
+    datasets. The ProkBERT model family, built on transfer learning and self-supervised
+    methodologies, capitalizes on the abundant genomic data available.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - doi:10.1101/2023.11.09.566411
+  recipe-maintainers:
+  - obalasz
+package:
+  name: prokbert
+  version: 0.0.44
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  run:
+  - python >=3.10
+  - pytorch
+  - torchvision
+  - biopython
+  - pandas >=2.0.0
+  - datasets >=2.0.1
+  - scikit-learn >=1.2.2
+  - scipy >=1.10.0
+  - transformers >=4.23
+  - tables >=3.8.0
+  - h5py >=3.7.0
+source:
+  sha256: 19a6c9890c7689d795a8898061d48e7023b64226388c1c67f2f68a91c42a5012
+  url: https://pypi.io/packages/source/p/prokbert/prokbert-0.0.44.tar.gz
+test:
+  imports:
+  - prokbert

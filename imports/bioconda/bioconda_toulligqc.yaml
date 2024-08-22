@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/GenomicParisCentre/toulligQC
+  license: CECILL-2.1
+  summary: A post sequencing QC tool for Oxford Nanopore sequencers
+build:
+  entry_points:
+  - toulligqc=toulligqc.toulligqc:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+package:
+  name: toulligqc
+  version: 2.5.6
+requirements:
+  host:
+  - python >=3.10.0
+  run:
+  - h5py >=3.7.0
+  - matplotlib-base >=3.6.3
+  - numpy >=1.24.2
+  - scipy >=1.10.1
+  - pandas >=1.5.3
+  - plotly >=5.15.0
+  - pysam >=0.21.0
+  - python >=3.10.0
+  - scikit-learn >=1.2.1
+  - tqdm >=4.64.1
+source:
+  sha256: 1b6087ccb927e0da6ff8f9c82c166de02d41bc55df9b9d7fc9edf264aec009f9
+  url: https://pypi.io/packages/source/t/toulligqc/toulligqc-2.5.6.tar.gz
+test:
+  commands:
+  - toulligqc --help
+  imports:
+  - toulligqc

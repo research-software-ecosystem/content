@@ -1,0 +1,33 @@
+about:
+  home: https://sourceforge.net/p/codingquarry/
+  license: GPL-3
+  license_family: GPL
+  summary: 'CodingQuarry: highly accurate hidden Markov model gene prediction in fungal
+    genomes using RNA-seq transcripts.'
+build:
+  number: 9
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1186/s12864-015-1344-4
+package:
+  name: codingquarry
+  version: 2.0
+requirements:
+  build:
+  - make
+  - None
+  - llvm-openmp
+  host:
+  - python
+  - llvm-openmp
+  run:
+  - python
+  - biopython
+  - llvm-openmp
+source:
+  sha256: 1198afbf7cebcf0975c5b20d92b7a2dd6d956072fcde6e86fdce6aeae4842504
+  url: https://sourceforge.net/projects/codingquarry/files/CodingQuarry_v2.0.tar.gz
+test:
+  commands:
+  - CodingQuarry 2>&1 | grep "CodingQuarry v. 2.0"

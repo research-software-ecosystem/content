@@ -1,0 +1,35 @@
+about:
+  home: http://github.com/asafpr/RILseq
+  license: MIT
+  license_family: MIT
+  summary: Processing RILSeq experiments results
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - asafpr
+package:
+  name: rilseq
+  version: '0.82'
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - biopython
+  - numpy
+  - pysam >=0.14.1
+  - python >=3
+  - scipy
+  - bwa >=0.7.12
+  - samtools >=1.9
+source:
+  sha256: a7d207af65aaa75f4cc986bacfb3ce4a5639dacf7571f568e01a413dbc4d7287
+  url: https://pypi.io/packages/source/r/rilseq/RILseq-0.82.tar.gz
+test:
+  commands:
+  - samtools 2>&1 | grep "Usage"
+  imports:
+  - RILseq

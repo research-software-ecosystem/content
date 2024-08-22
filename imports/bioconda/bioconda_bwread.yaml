@@ -1,0 +1,38 @@
+about:
+  home: http://github.com/endrebak/bwread
+  license: MIT
+  license_family: MIT
+  summary: Read bigwig files quickly into PyRanges or DataFrames
+build:
+  number: 2
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+  skip: true
+extra:
+  recipe-maintainers:
+  - endrebak
+  skip-lints:
+  - uses_setuptools
+package:
+  name: bwread
+  version: 0.0.5
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  run:
+  - python
+  - natsort
+  - numpy
+  - pandas
+  - pybigwig
+  - pyranges
+  - setuptools
+source:
+  sha256: a6f524baf85a8c10c0de8e1d5874467816a32dccaa7b9f2b571c99ed6c449b16
+  url: https://pypi.io/packages/source/b/bwread/bwread-0.0.5.tar.gz
+test:
+  imports:
+  - bwread

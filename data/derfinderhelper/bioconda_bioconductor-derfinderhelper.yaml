@@ -1,0 +1,46 @@
+about:
+  description: Helper package for speeding up the derfinder package when using multiple
+    cores. This package is particularly useful when using BiocParallel and it helps
+    reduce the time spent loading the full derfinder package when running the F-statistics
+    calculation in parallel.
+  home: https://bioconductor.org/packages/3.18/bioc/html/derfinderHelper.html
+  license: Artistic-2.0
+  summary: derfinder helper package
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:derfinderhelper
+  parent_recipe:
+    name: bioconductor-derfinderhelper
+    path: recipes/bioconductor-derfinderhelper
+    version: 1.14.0
+package:
+  name: bioconductor-derfinderhelper
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-matrix
+  run:
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-matrix
+source:
+  md5: 2544077112525d7f25f34270ed365423
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/derfinderHelper_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/derfinderHelper/derfinderHelper_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/derfinderHelper_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-derfinderhelper/bioconductor-derfinderhelper_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('derfinderHelper')"

@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/treangenlab/methphaser
+  license: MIT License
+  summary: 'MethPhaser: methylation-based haplotype phasing of human genomes'
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p ${PREFIX}/bin && cp methphasing ${PREFIX}/bin && cp meth_phaser_parallel
+    ${PREFIX}/bin && cp meth_phaser_post_processing ${PREFIX}/bin
+package:
+  name: methphaser
+  version: 0.0.3
+requirements:
+  run:
+  - pysam
+  - tqdm
+  - pandas
+  - scipy
+  - matplotlib-base
+  - seaborn
+source:
+  sha256: 101a056b2c7bed8702e592cda6d9f4e96b762721e5104a2e330a7cf52b2ba313
+  url: https://github.com/treangenlab/methphaser/archive/refs/tags/V0.0.3.tar.gz
+test:
+  commands:
+  - meth_phaser_parallel -h

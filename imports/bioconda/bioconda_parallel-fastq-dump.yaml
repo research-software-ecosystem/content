@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/rvalieris/parallel-fastq-dump
+  license: MIT License
+  license_family: MIT
+  summary: parallel fastq-dump wrapper
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps
+package:
+  name: parallel-fastq-dump
+  version: 0.6.7
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  - pip
+  run:
+  - python >=3
+  - sra-tools
+source:
+  sha256: cb33ea0ed0b1123c100aee7b9ea60a3fc3fc81a3a46be5237c85ba56380617de
+  url: https://github.com/rvalieris/parallel-fastq-dump/archive/0.6.7.tar.gz
+test:
+  commands:
+  - parallel-fastq-dump --version

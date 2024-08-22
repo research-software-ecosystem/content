@@ -1,0 +1,39 @@
+about:
+  description: "Gene prediction on long reads, aka PacBio and Nanopore, is often impaired\
+    \ by indels causing frameshift. \nProovframe detects and corrects frameshifts\
+    \ in coding sequences from raw long reads or long-read derived assemblies.\n"
+  dev_url: https://github.com/thackl/proovframe
+  home: https://github.com/thackl/proovframe
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: frame-shift correction for long read (meta)genomics
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+maintainers:
+- thanhleviet
+package:
+  name: proovframe
+  version: 0.9.7
+requirements:
+  run:
+  - diamond >=2.0.3
+  - minimap2
+  - seqkit
+  - perl
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-text-wrap
+  - perl-file-path
+  - perl-findbin
+source:
+  sha256: 5e33556fd682095712a25ee00aabbd5c9935c39cf7339e39a9aeb4d00d5991ca
+  url: https://github.com/thackl/proovframe/archive/v0.9.7.tar.gz
+test:
+  commands:
+  - proovframe map --help
+  - proovframe fix --help
+  - proovframe prf --help

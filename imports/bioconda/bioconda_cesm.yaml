@@ -1,0 +1,67 @@
+about:
+  description: "\"CESM (Community Earth System Model) is a fully-coupled, community,\n\
+    global climate model that provides state-of-the-art computer simulations\nof the\
+    \ Earth's past, present, and future climate states. \nWhen creating a case, use\
+    \ `espresso` for the target machine.\nIn addition, the following environment variables\
+    \ need to be defined\nbefore creating the cesm case:\n```\nexport NETCDF_DIR=$(nc-config\
+    \ --prefix)\nexport CIME_MODEL=cesm\nexport CESM_DATA_ROOT=$HOME\nexport CESM_WORK_ROOT=$HOME\n\
+    mkdir -p $CESM_DATA_ROOT/inputdata\n```\n\"\n"
+  doc_url: http://www.cesm.ucar.edu/
+  home: https://github.com/ESCOMP/cesm
+  license: BSD 3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: "The Community Earth System Model (CESM) is a coupled climate model for\
+    \ simulating Earth\u2019s climate system"
+build:
+  number: 8
+  skip: true
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - bgruening
+  skip-lints:
+  - compilers_must_be_in_build
+package:
+  name: cesm
+  version: 2.1.3
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  host:
+  - python
+  - mpich
+  - hdf5=*=*mpich*
+  - netcdf-fortran=*=*mpich*
+  - subversion
+  - libxml2
+  - perl
+  - perl-xml-libxml
+  run:
+  - python
+  - tcsh
+  - binutils
+  - None
+  - None
+  - netcdf-fortran=*=*mpich*
+  - mpich
+  - libxml2
+  - libiconv
+  - make
+  - cmake
+  - mkl
+  - subversion
+  - wget
+  - perl
+  - perl-xml-libxml
+source:
+  sha256: 6adae8b9cc74afdf002582fcb66a53942dcfcac94601fe5d1356d355851eb479
+  url: https://github.com/ESCOMP/cesm/archive/release-cesm2.1.3.tar.gz
+test:
+  commands:
+  - create_newcase --help
+  - create_clone --help
+  - query_testlists --help

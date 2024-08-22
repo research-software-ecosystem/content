@@ -1,0 +1,49 @@
+about:
+  description: The package contains functions for inferece of target gene regulation
+    by miRNA, based on only target gene expression profile.
+  home: https://bioconductor.org/packages/3.18/bioc/html/MiRaGE.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: MiRNA Ranking by Gene Expression
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mirage
+  parent_recipe:
+    name: bioconductor-mirage
+    path: recipes/bioconductor-mirage
+    version: 1.22.0
+package:
+  name: bioconductor-mirage
+  version: 1.44.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-biocmanager
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-biocmanager
+source:
+  md5: c86c12c042052eb4d558bdff55e8c47a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MiRaGE_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MiRaGE/MiRaGE_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MiRaGE_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirage/bioconductor-mirage_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MiRaGE')"

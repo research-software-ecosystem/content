@@ -1,0 +1,56 @@
+about:
+  description: Scalable implementation of generalized mixed models with highly optimized
+    C++ implementation and integration with Genomic Data Structure (GDS) files. It
+    is designed for single variant tests and set-based aggregate tests in large-scale
+    Phenome-wide Association Studies (PheWAS) with millions of variants and samples,
+    controlling for sample structure and case-control imbalance. The implementation
+    is based on the SAIGE R package (v0.45, Zhou et al. 2018 and Zhou et al. 2020),
+    and it is extended to include the state-of-the-art ACAT-O set-based tests. Benchmarks
+    show that SAIGEgds is significantly faster than the SAIGE R package.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SAIGEgds.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Scalable Implementation of Generalized mixed models using GDS files in
+    Phenome-Wide Association Studies
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-saigegds
+  version: 2.2.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-seqarray >=1.42.0,<1.43.0
+  - r-base
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rcppparallel >=5.0.0
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-seqarray >=1.42.0,<1.43.0
+  - r-base
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rcppparallel >=5.0.0
+source:
+  md5: d5792543f5eba866f022723bad21b67e
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SAIGEgds_2.2.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SAIGEgds/SAIGEgds_2.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SAIGEgds_2.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-saigegds/bioconductor-saigegds_2.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SAIGEgds')"

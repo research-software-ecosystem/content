@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/agshumate/LiftoffTools
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE.md
+  summary: A tool for comparing annotations across genome assemblies
+build:
+  entry_points:
+  - liftofftools = liftofftools.liftofftools:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - agshumate
+package:
+  name: liftofftools
+  version: 0.4.4
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - biopython >=1.76
+  - gffutils >=0.10.1
+  - matplotlib-base >=3.5.2
+  - nltk >=3.6.7
+  - numpy >=1.21.1
+  - parasail-python >=1.2.4
+  - pyfaidx >=0.5.8
+  - python >=3.7
+  - mmseqs2
+source:
+  sha256: dacd8120debf5eb3190cae2ee87bf88d13a903e1eefebbad6a9ea847ea5dcba3
+  url: https://github.com/agshumate/LiftoffTools/archive/refs/tags/v0.4.4.tar.gz
+test:
+  commands:
+  - liftofftools --help
+  imports:
+  - liftofftools
+  - liftofftools.cluster_analysis
+  - liftofftools.synteny
+  - liftofftools.tests
+  - liftofftools.variants

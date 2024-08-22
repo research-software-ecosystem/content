@@ -1,0 +1,52 @@
+about:
+  home: https://github.com/dfguan/purge_dups
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: purge_dups is a package used to purge haplotigs and overlaps in an assembly
+    based on read depth.
+build:
+  number: 1
+package:
+  name: purge_dups
+  version: 1.2.6
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - zlib
+  - minimap2
+  - python >=3
+  - purge-dups-runner
+  - kmc
+  - augustus
+  - busco
+  - matplotlib-base
+  - blast
+  run:
+  - minimap2
+  - python >=3
+  - purge-dups-runner
+  - kmc
+  - augustus
+  - busco
+  - matplotlib-base
+  - blast
+source:
+  patches:
+  - makefile.patch
+  - scripts.patches
+  sha256: 75b20df834d28410858ccd4e2d65b6c70849f3cbe5fc05959f38bfc2d041c704
+  url: https://github.com/dfguan/purge_dups/archive/v1.2.6.tar.gz
+test:
+  commands:
+  - purge_dups -h 2>&1 | grep Usage
+  - split_fa -h 2>&1 | grep Usage
+  - pbcstat -h 2>&1 | grep Usage
+  - ngscstat -h 2>&1 | grep Usage
+  - calcuts -h 2>&1 | grep Usage
+  - get_seqs -h 2>&1 | grep Usage
+  - hist_plot.py -h
+  - pd_config.py -h
+  - run_purge_dups.py -h

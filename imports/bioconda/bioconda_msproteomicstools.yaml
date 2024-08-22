@@ -1,0 +1,55 @@
+about:
+  home: https://github.com/msproteomicstools/msproteomicstools
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: msproteomicstools is a Python library that can be used in LC-MS/MS based
+    proteomics. It features a core library called.
+build:
+  number: 4
+  script: -m pip install . --no-deps -vv
+  skip: true
+package:
+  name: msproteomicstools
+  version: 0.11.0
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - cython
+  - numpy
+  run:
+  - python
+  - None
+  - scipy
+  - python-cluster ==1.3.3
+  - pyteomics >=2.4.0
+  - xlsxwriter >=0.5.3
+  - scikits-datasmooth
+  - pymzml ==0.7.8
+  - lxml
+  - statsmodels
+  - configobj
+  - biopython
+  - xlwt
+source:
+  patches:
+  - 0001-setup.py.patch
+  sha256: 8ec16ea0d8f852aaa04cd4dcc01838077dc4a234454340df79792e6217cc2c8e
+  url: https://pypi.io/packages/source/m/msproteomicstools/msproteomicstools-0.11.0.tar.gz
+test:
+  imports:
+  - msproteomicstoolslib
+  - msproteomicstoolslib.algorithms
+  - msproteomicstoolslib.algorithms.PADS
+  - msproteomicstoolslib.algorithms.alignment
+  - msproteomicstoolslib.algorithms.shared
+  - msproteomicstoolslib.data_structures
+  - msproteomicstoolslib.format
+  - msproteomicstoolslib.math
+  - msproteomicstoolslib.util
+  - openswathgui
+  - openswathgui.models
+  - openswathgui.views

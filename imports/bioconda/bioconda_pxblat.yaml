@@ -1,0 +1,51 @@
+about:
+  dev_url: https://pypi.org/project/pxblat/
+  doc_url: https://pxblat.readthedocs.io/en/latest/
+  home: https://github.com/ylab-hi/pxblat
+  license: OTHER
+  license_file: LICENSE
+  summary: 'PxBLAT: An Efficient and Ergonomics Python Binding Library for BLAT.'
+build:
+  entry_points:
+  - pxblat = pxblat.cli.cli:app
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1101/2023.08.02.551686
+  recipe-maintainers:
+  - yangyangli
+package:
+  name: pxblat
+  version: 1.2.1
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - poetry-core >=1.2.0
+  - pybind11 >2.9.1
+  - setuptools >=46.4
+  run:
+  - python
+  - loguru
+  - pybind11 >=2.10.4
+  - rich
+  - pysimdjson
+  - biopython
+  - typer
+  - deprecated
+  - mashumaro
+  - urllib3
+source:
+  sha256: b61337bde541be6fc933059d42c51364490775071d96de53a60cefeb0ac16e1a
+  url: https://pypi.io/packages/source/P/PxBLAT/pxblat-1.2.1.tar.gz
+test:
+  commands:
+  - pxblat -h
+  imports:
+  - pxblat

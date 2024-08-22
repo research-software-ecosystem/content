@@ -1,0 +1,45 @@
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: Convert a GTF file to a genePred
+build:
+  ignore_run_exports:
+  - libpng
+  - libuuid
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ucsc-gtftogenepred
+  version: 447
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - binutils
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - libopenssl-static
+  - zlib
+  run:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+source:
+  patches:
+  - include.patch
+  - htmshell.patch
+  sha256: 747a48486f7481d891e297baf63623b15d699265ede7339f654bcbc42481ac81
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v447.src.tgz
+test:
+  commands:
+  - which gtfToGenePred

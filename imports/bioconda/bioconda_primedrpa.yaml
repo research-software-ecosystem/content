@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/MatthewHiggins2017/bioconda-PrimedRPA/
+  license: GPL3
+  license_file: LICENSE
+  summary: RPA primer & probe design tool.
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: primedrpa
+  version: 1.0.3
+requirements:
+  host:
+  - python>=3.6
+  - pip
+  run:
+  - python>=3.6
+  - pandas
+  - clustalo
+  - samtools>=1.10
+  - blast
+source:
+  sha256: 8ffcbcb4b5290159b220548f2c672e916e8ddc59d32cc048ff1a8a07a7908e11
+  url: https://github.com/MatthewHiggins2017/bioconda-PrimedRPA/archive/refs/tags/1.0.3.tar.gz
+test:
+  commands:
+  - PrimedRPA --help

@@ -1,0 +1,43 @@
+about:
+  description: Combining bootstrap aggregating and Gene set enrichment analysis (GSEA),
+    RGSEA is a classfication algorithm with high robustness and no over-fitting problem.
+    It performs well especially for the data generated from different exprements.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RGSEA.html
+  license: GPL(>=3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Random Gene Set Enrichment Analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rgsea
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-rgsea
+    path: recipes/bioconductor-rgsea
+    version: 1.14.0
+package:
+  name: bioconductor-rgsea
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - r-base
+source:
+  md5: 426ab6d4dc463399d014c6e76c3f8c75
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RGSEA_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RGSEA/RGSEA_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RGSEA_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rgsea/bioconductor-rgsea_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RGSEA')"

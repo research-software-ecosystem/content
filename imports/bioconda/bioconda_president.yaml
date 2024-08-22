@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/rki-mf1/president
+  license: MIT
+  license_file: LICENSE
+  summary: Calculate pairwise nucleotide identity with respect to a reference sequence.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - mirand863
+package:
+  name: president
+  version: 0.6.8
+requirements:
+  host:
+  - python >=3.8
+  - pip >=20.3.3
+  run:
+  - python >=3.8
+  - pandas >=1.2.1
+  - screed >=1.0.4
+  - numpy >=1.19.5
+  - pblat >=2.5
+source:
+  sha256: 2d4672eef2532559747b3e6f61c611514a55fe947b535da92ca3af492f44569b
+  url: https://pypi.io/packages/source/p/pypresident/pypresident-0.6.8.tar.gz
+test:
+  commands:
+  - president -h | grep president
+  - president -v | grep 0.6.8
+  imports:
+  - president

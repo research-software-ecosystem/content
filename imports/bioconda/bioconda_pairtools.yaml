@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/open2c/pairtools
+  doc_url: http://pairtools.readthedocs.io/
+  home: https://github.com/open2c/pairtools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: CLI tools to process mapped Hi-C data
+build:
+  entry_points:
+  - pairtools = pairtools.cli:cli
+  number: 2
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  container:
+    extended-base: true
+    recipe-maintainers:
+    - golobor
+package:
+  name: pairtools
+  version: 1.1.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy
+  - pysam >=0.19
+  run:
+  - python
+  - coreutils
+  - None
+  - click
+  - lz4-c
+  - samtools
+  - htslib
+  - pbgzip
+  - pysam >=0.19
+  - pandas
+  - scipy >=1.7
+  - pyyaml
+  - bioframe >=0.3.3
+source:
+  sha256: 3f265ebcd50fb07a36199a99c58f6b17810b48bacf2d5f3096453319c89bd522
+  url: https://pypi.io/packages/source/p/pairtools/pairtools-1.1.0.tar.gz
+test:
+  commands:
+  - pairtools --help
+  imports:
+  - pairtools

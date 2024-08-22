@@ -1,0 +1,41 @@
+about:
+  doc_url: https://pypi.org/project/happy-AntoineHo/
+  home: https://github.com/AntoineHo/HapPy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Haploidy and Size Completeness Estimation with Python
+build:
+  entry_points:
+  - happy=happy.Hap:main
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps -vvv
+extra:
+  identifiers:
+  - doi:10.1186/s12859-021-04118-3
+package:
+  name: happy-python
+  version: 0.2.1rc0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - numpy
+  - scipy
+  - matplotlib-base
+  - pandas
+  - docopt
+  - sambamba
+  - minimap2
+  - samtools
+source:
+  sha256: 1b9935fc30bf8974b4814f8e1b4f22d7ddf4ff16a6c92cda0114d7fa8a501682
+  url: https://pypi.io/packages/source/h/happy-AntoineHo/happy-AntoineHo-0.2.1rc0.tar.gz
+test:
+  commands:
+  - happy --help
+  imports:
+  - happy

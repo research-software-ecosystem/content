@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/thegenemyers/FASTK
+  license: https://github.com/thegenemyers/FASTK/blob/master/LICENSE
+  summary: "FastK is a k\u2011mer counter that is optimized for processing high quality\
+    \ DNA assembly data sets such as those produced with an Illumina instrument or\
+    \ a PacBio run in HiFi mode."
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+package:
+  name: fastk
+  version: 1.0.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - bzip2
+  - zlib
+  - libcurl
+source:
+  patches:
+  - patch
+  sha256: 92f3f4633fc702f20b6d3c07c6fe10b002d746b25154e090f0115ac7d2791863
+  url: https://github.com/thegenemyers/FASTK/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - 'FastK 2>&1 >/dev/null | grep "Usage: FastK"'

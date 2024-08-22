@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/ebi-gene-expression-group/MAGE-Tab-merger
+  doc_url: https://github.com/ebi-gene-expression-group/MAGE-Tab-merger/blob/develop/README.md
+  home: The package home page
+  license: MIT
+  license_family: MIT
+  summary: Utility scripts to merge SDRFs, condensed SDRFs and IDFs (MAGE-Tab) for
+    meta-analysis and othe purposes.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --no-deps'
+extra:
+  recipe-maintainers:
+  - pcm32
+package:
+  name: mage-tab-merger
+  version: 0.0.4
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - jinja2
+  - networkx ==2.5
+  - pandas
+  - python
+  - requests
+source:
+  sha256: 61aec523dad2a3bc2e212151cbed3c5267033821ed95e7a4f018625c6f9535c5
+  url: https://pypi.io/packages/source/M/MAGE-Tab-merger/MAGE-Tab merger-0.0.4.tar.gz
+test:
+  imports:
+  - IDF
+  - SDRF
+  - test_util

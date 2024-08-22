@@ -1,0 +1,39 @@
+about:
+  description: Exposes an annotation databases generated from Ensembl.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/EnsDb.Hsapiens.v75.html
+  license: Artistic-2.0
+  summary: Ensembl based annotation package
+build:
+  noarch: generic
+  number: 15
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-ensdb.hsapiens.v75
+    path: recipes/bioconductor-ensdb.hsapiens.v75
+    version: 2.99.0
+package:
+  name: bioconductor-ensdb.hsapiens.v75
+  version: 2.99.0
+requirements:
+  host:
+  - bioconductor-ensembldb >=2.26.0,<2.27.0
+  - r-base
+  run:
+  - bioconductor-ensembldb >=2.26.0,<2.27.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 6c896475252903972bfc6c0eb0d8f334
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/EnsDb.Hsapiens.v75_2.99.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EnsDb.Hsapiens.v75/EnsDb.Hsapiens.v75_2.99.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EnsDb.Hsapiens.v75_2.99.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ensdb.hsapiens.v75/bioconductor-ensdb.hsapiens.v75_2.99.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EnsDb.Hsapiens.v75')"

@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/jordanlab/tagore
+  license: GPLv3
+  license_family: GPL
+  license_file: LICENSE
+  summary: A simple way to visualize features on human chromosome ideograms
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: tagore
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - click
+source:
+  sha256: ae87ad17bd3a72c8b01f27bb633c35f2792dac9403d278cb25ca1bb82f264b22
+  url: https://github.com/jordanlab/tagore/archive/1.1.2.tar.gz
+test:
+  commands:
+  - tagore --version

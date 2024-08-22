@@ -1,0 +1,37 @@
+about:
+  home: https://bitbucket.org/genomicepidemiology/plasmidfinder
+  license: Apache-2.0
+  license_family: APACHE
+  summary: PlasmidFinder allows identification of plasmids in total or partial sequenced
+    isolates of bacteria.
+build:
+  noarch: generic
+  number: 1
+extra:
+  identifiers:
+  - doi:10.1128/AAC.02412-14
+  recipe-maintainers:
+  - npavlovikj
+package:
+  name: plasmidfinder
+  version: 2.1.6
+requirements:
+  host:
+  - python >=3
+  - kma
+  - wget
+  run:
+  - python >=3
+  - kma
+  - biopython
+  - tabulate
+  - cgecore
+  - blast
+source:
+  patches:
+  - python_path.patch
+  sha256: ce1535c2a227a7dfa798468e8c8e9ce8602e6b16f0cf33cd4802b8f40c8b61ec
+  url: https://bitbucket.org/genomicepidemiology/plasmidfinder/get/2.1.6.tar.gz
+test:
+  commands:
+  - plasmidfinder.py --help

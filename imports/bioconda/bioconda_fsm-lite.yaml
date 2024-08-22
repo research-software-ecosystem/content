@@ -1,0 +1,38 @@
+about:
+  description: 'A single-core implemetation of frequency-based substring mining. Used
+    to
+
+    count k-mers in populations of genomes (supplied as fasta files).
+
+    '
+  home: https://github.com/nvalimak/fsm-lite
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE.md
+  summary: Frequency-based String Mining (lite)
+build:
+  number: 5
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1038/ncomms12797
+package:
+  name: fsm-lite
+  version: 1.0
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - sdsl-lite
+  run:
+  - sdsl-lite
+source:
+  patches:
+  - 0001-Increase-DBITS.patch
+  - 0002-CXX-in-Makefile.patch
+  sha256: f781a9fbab5265bd09b3b5b7e1cba904582ec201c3d30baed36e28a03de3ac61
+  url: https://github.com/nvalimak/fsm-lite/archive/v1.0-stable.tar.gz
+test:
+  commands:
+  - fsm-lite -h 2>&1 | grep whitespace-separated

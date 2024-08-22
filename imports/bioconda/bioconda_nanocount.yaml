@@ -1,0 +1,52 @@
+about:
+  description: NanoCount estimates transcripts abundance from Oxford Nanopore *direct-RNA
+    sequencing* datasets, using an expectation-maximization approach like RSEM, Kallisto,
+    salmon, etc to handle the uncertainty of multi-mapping reads
+  doc_url: https://a-slide.github.io/NanoCount/
+  home: https://github.com/a-slide/NanoCount/
+  licence_url: https://mit-license.org/
+  license: MIT
+  license_file: LICENSE
+  summary: Transcript abundance estimation from Nanopore *direct-RNA sequencing* datasets
+build:
+  entry_points:
+  - NanoCount=NanoCount.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  author: Adrien Leger
+  author_email: aleg@ebi.ac.uk
+  author_url: https://adrienleger.com
+  identifiers:
+  - doi:10.1093/nar/gkab1129
+  recipe-maintainers:
+  - corneliusroemer
+package:
+  name: nanocount
+  version: 1.0.0.post6
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - tqdm >=4.51.0
+  - numpy >=1.19.4
+  - pysam >=0.16.0
+  - pandas >=1.1.4
+  - colorlog >=4.1.0
+source:
+  sha256: 0f24e8526ce9a0df9894cacaac957f285c90bf1d2f98507bb183981cb0ea346e
+  url: https://pypi.io/packages/source/N/NanoCount/NanoCount-1.0.0.post6.tar.gz
+test:
+  commands:
+  - pip check
+  - NanoCount --help
+  imports:
+  - NanoCount
+  - NanoCount.NanoCount
+  requires:
+  - pip

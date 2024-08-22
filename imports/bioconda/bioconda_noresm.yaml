@@ -1,0 +1,68 @@
+about:
+  description: "\"NorESM (Norwegian Earth System Model) is the Norwegian fully-coupled,\
+    \ \nglobal climate model that provides state-of-the-art computer simulations\n\
+    of the Earth's past, present, and future climate states. \nWhen creating a case,\
+    \ use `espresso` for the target machine.\nIn addition, the following environment\
+    \ variables need to be defined\nbefore creating the noresm case:\n```\nexport\
+    \ NETCDF_DIR=$(nc-config --prefix)\nexport CIME_MODEL=cesm\nexport CESM_DATA_ROOT=$HOME\n\
+    export CESM_WORK_ROOT=$HOME\nmkdir -p $CESM_DATA_ROOT/inputdata\n```\n\"\n"
+  doc_url: https://noresm-docs.readthedocs.io/en/latest
+  home: https://github.com/NorESMhub/NorESM
+  license: BSD 3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: "The Norwegian Earth System Model (NorESM) is a coupled climate model for\
+    \ simulating Earth\u2019s climate system"
+build:
+  number: 2
+  skip: true
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - annefou
+  - j34ni
+  skip-lints:
+  - compilers_must_be_in_build
+package:
+  name: noresm
+  version: 2.0.2
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  host:
+  - python
+  - mpich
+  - hdf5=*=*mpich*
+  - netcdf-fortran=*=*mpich*
+  - subversion
+  - libxml2
+  - perl
+  - perl-xml-libxml
+  run:
+  - python
+  - tcsh
+  - binutils
+  - None
+  - None
+  - netcdf-fortran=*=*mpich*
+  - mpich
+  - libxml2
+  - libiconv
+  - make
+  - cmake
+  - mkl
+  - subversion
+  - wget
+  - perl
+  - perl-xml-libxml
+source:
+  sha256: f46a1d0cd6559dfc16ca85d744737dd47af919719b798061d18291328a653a4c
+  url: https://github.com/NorESMhub/NorESM/archive/refs/tags/release-noresm2.0.2.tar.gz
+test:
+  commands:
+  - create_newcase --help
+  - create_clone --help
+  - query_testlists --help

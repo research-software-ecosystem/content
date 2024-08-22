@@ -1,0 +1,31 @@
+about:
+  home: https://ccb.jhu.edu/software/glimmerhmm/
+  license: Artistic License
+  summary: GlimmerHMM is a gene finder based on a Generalized Hidden Markov Model
+    (GHMM)
+build:
+  number: 8
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: glimmerhmm
+  version: 3.0.4
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - perl
+  run:
+  - perl
+source:
+  md5: af3626a5eceb2893ba4e19373dfad1b0
+  url: https://ccb.jhu.edu/software/glimmerhmm/dl/GlimmerHMM-3.0.4.tar.gz
+test:
+  commands:
+  - glimmerhmm -h | tee /dev/null
+  - trainGlimmerHMM | tee /dev/null

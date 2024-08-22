@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Edinburgh-Genome-Foundry/DnaChisel
+  license: MIT
+  license_file: LICENCE.txt
+  summary: Optimize DNA sequences under constraints.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - tjacobs2
+package:
+  name: dnachisel
+  version: 3.2.11
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - docopt
+  - flametree
+  - numpy
+  - proglog
+  - python
+  - python-codon-tables
+source:
+  sha256: 8fc7a677959c113a8c70e4752d216b902be30b56c2a2892a1ae4ea6d046fde0f
+  url: https://pypi.io/packages/source/d/dnachisel/dnachisel-3.2.11.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - dnachisel
+  - dnachisel.DnaOptimizationProblem
+  requires:
+  - pip

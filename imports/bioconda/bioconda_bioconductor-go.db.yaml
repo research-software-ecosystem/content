@@ -1,0 +1,40 @@
+about:
+  description: A set of annotation maps describing the entire Gene Ontology assembled
+    using data from GO
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/GO.db.html
+  license: Artistic-2.0
+  summary: A set of annotation maps describing the entire Gene Ontology
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-go.db
+    path: recipes/bioconductor-go.db
+    version: 3.6.0
+package:
+  name: bioconductor-go.db
+  version: 3.18.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: b23522167263afc45a9b115d01632cb1
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/GO.db_3.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GO.db/GO.db_3.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GO.db_3.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-go.db/bioconductor-go.db_3.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GO.db')"

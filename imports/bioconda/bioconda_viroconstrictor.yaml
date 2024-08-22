@@ -1,0 +1,59 @@
+about:
+  dev_url: https://github.com/RIVM-bioinformatics/ViroConstrictor
+  doc_url: https://rivm-bioinformatics.github.io/ViroConstrictor/
+  home: https://rivm-bioinformatics.github.io/ViroConstrictor/
+  license: GNU Affero General Public v3
+  license_family: AGPL
+  license_file: LICENSE
+  summary: ViroConstrictor is a flexible pipeline for analysis of targeted viral sequencing
+    data
+build:
+  entry_points:
+  - ViroConstrictor = ViroConstrictor.__main__:main
+  - viroconstrictor = ViroConstrictor.__main__:main
+  - viroConstrictor = ViroConstrictor.__main__:main
+  - Viroconstrictor = ViroConstrictor.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - florianzwagemaker
+  - KHajji
+  - ids-bioinformatics
+package:
+  name: viroconstrictor
+  version: 1.4.3
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - snakemake >=7.15.2, < 8
+  - conda
+  run:
+  - python >=3.10
+  - urllib3
+  - biopython >=1.79
+  - drmaa ==0.7.9
+  - fpdf2
+  - pandas >=1.5.1
+  - openpyxl
+  - pyyaml ==6.0
+  - rich ==13.*
+  - snakemake >=7.15.2, < 8
+  - aminoextract ==0.3.1
+  - conda
+  - mamba
+source:
+  sha256: 43e7e6b29745367f3eabaef4ea736dfb25e2797fbe0e532b10f8594f71fc5883
+  url: https://github.com/RIVM-bioinformatics/ViroConstrictor/archive/v1.4.3.tar.gz
+test:
+  commands:
+  - ViroConstrictor --help
+  - viroconstrictor --help
+  - viroConstrictor --help
+  - Viroconstrictor --help
+  imports:
+  - ViroConstrictor

@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/eonurk/seAMLess
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Given a bulk transcriptomic (RNA-seq) sample of an Myeloid Leukemia patient
+    calculates immune composition and drug resistance for different small-molecule
+    inhibitors.
+build:
+  noarch: generic
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - eonurk
+package:
+  name: r-seamless
+  version: 0.1.0
+requirements:
+  host:
+  - r-base
+  - bioconductor-biobase
+  - r-ggplot2
+  - r-ggtern
+  - r-randomforest
+  - r-music
+  run:
+  - r-base
+  - bioconductor-biobase
+  - r-ggplot2
+  - r-ggtern
+  - r-randomforest
+  - r-music
+  - xbioc
+source:
+  sha256: ab737087b3341884e915530d772948130f60299a65af40c43e101a8c819a37a3
+  url:
+  - /src/contrib/seAMLess_0.1.0.tar.gz
+  - /src/contrib/Archive/seAMLess/seAMLess_0.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('seAMLess')"

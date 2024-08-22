@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/ParBLiSS/FastANI
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: FastANI is developed for fast alignment-free computation of whole-genome
+    Average Nucleotide Identity (ANI).
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: fastani
+  version: 1.34
+requirements:
+  build:
+  - make
+  - None
+  - autoconf
+  - automake
+  host:
+  - zlib
+  - gsl >=2.6, <2.7.1
+  - libgomp
+  - llvm-openmp
+  - clangdev
+  - libcxx >=4.0
+  run:
+  - zlib
+  - gsl
+  - libcxx >=4.0
+  - llvm-openmp >=4.0
+source:
+  patches:
+  - wrap-memcpy-only-for-linux-x86_64.patch
+  sha256: dc185cf29b9fa40cdcc2c83bb48150db46835e49b9b64a3dbff8bc4d0f631cb1
+  url: https://github.com/ParBLiSS/FastANI/archive/v1.34.tar.gz
+test:
+  commands:
+  - fastANI -h 2>&1 | grep 'fastANI'

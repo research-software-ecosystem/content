@@ -1,0 +1,34 @@
+about:
+  description: "Vcfstats is a tool that can generate metrics from a vcf file.\n\n\
+    \ - General stats (default, can be disabled)\n - Genotype stats (default, can\
+    \ be disabled)\n - Sample compare (default, can be disabled)\n - Sample distributions\
+    \ (default, can be disabled)\n - Field histograms\n\nThis tool can run locally\
+    \ single threaded but also on a Apache Spark cluster.\n\nFor documentation and\
+    \ manuals visit our github.io page: https://biopet.github.io/vcfstats"
+  home: https://github.com/biopet/vcfstats
+  license: MIT
+  summary: Vcfstats is a tool that can generate metrics from a vcf file.
+build:
+  noarch: generic
+  number: 1
+extra:
+  notes: 'biopet-vcfstats is a Java program that comes with a custom wrapper shell
+    script. By default ''no default java option'' is set in the wrapper. The command
+    that runs the program is ''biopet-vcfstats''. If you want to overwrite it you
+    can specify memory options directly after your binaries. If you have _JAVA_OPTIONS
+    set globally this will take precedence. For example run it with ''biopet-vcfstats
+    -Xms512m -Xmx1g''. '
+package:
+  name: biopet-vcfstats
+  version: '1.2'
+requirements:
+  run:
+  - openjdk >=8,<9
+  - python
+source:
+  sha256: ff3827e26b990d893a11eb4ec23e2e5d564897390740ec92aaf2804535b6bbfb
+  url: https://github.com/biopet/vcfstats/releases/download/v1.2/VcfStats-assembly-1.2.jar
+test:
+  commands:
+  - biopet-vcfstats --version
+  - biopet-vcfstats --help

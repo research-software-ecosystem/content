@@ -1,0 +1,53 @@
+about:
+  dev_url: https://github.com/Dowell-Lab/DAStk
+  home: https://github.com/Dowell-Lab/DAStk
+  license: BSD-3
+  license_family: BSD
+  summary: Differential ATAC-seq toolkit
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed -vv .
+extra:
+  identifiers:
+  - doi:10.3390/molecules23051136
+  - biotools:DAStk_-_Differential_ATAC-seq_toolkit
+package:
+  name: dastk
+  version: 1.0.1
+requirements:
+  host:
+  - python
+  - matplotlib-base
+  - matplotlib-venn
+  - adjusttext
+  - scipy
+  - pandas
+  - pybedtools
+  - futures
+  - scikit-learn
+  - networkx >=2
+  - upsetplot
+  run:
+  - python
+  - matplotlib-base
+  - matplotlib-venn
+  - adjusttext
+  - scipy
+  - pandas
+  - pybedtools
+  - futures
+  - scikit-learn
+  - networkx >=2
+  - upsetplot
+source:
+  sha256: 99dc29ab7ca7ccc6bf56e0f1ce0aa3be310f5c3513c67e011465533554a8ac8f
+  url: https://files.pythonhosted.org/packages/6b/d9/3ff879c202f7a9cebfc5ec605c39f6ef5c06aa264cec092e1851fb034f7a/DAStk-1.0.1.post1.tar.gz
+test:
+  commands:
+  - process_atac --help
+  - differential_md_score --help
+  - barcode_plot --help
+  - ma_plot --help
+  - tf_intersect --help
+  - tf_result_explanations --help

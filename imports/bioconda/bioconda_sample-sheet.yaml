@@ -1,0 +1,38 @@
+about:
+  doc_url: https://sample-sheet.readthedocs.io/
+  home: https://github.com/clintval/sample-sheet
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: An Illumina Sample Sheet parsing library
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - clintval
+package:
+  name: sample-sheet
+  version: 0.13.0
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - click
+  - python >=3.6
+  - requests
+  - tabulate
+  - terminaltables
+  - smart_open >=1.5.4
+source:
+  sha256: e20bcb7171ea965b8de546fac224c7d2c503a529fff35606466b01c722f8d92b
+  url: https://pypi.io/packages/source/s/sample-sheet/sample-sheet-0.13.0.tar.gz
+test:
+  commands:
+  - sample-sheet -h
+  imports:
+  - sample_sheet

@@ -1,0 +1,43 @@
+about:
+  description: '| RLHub provides a convenient interface to the processed data provided
+    within RLSuite, a tool-chain for analyzing R-loop-mapping data sets. The primary
+    purpose of RLHub is to serve the processed data sets required by the RLSeq R package
+    and the RLBase web service. Additionally, RLHub provides a stand-alone R interface
+    to these data, benefiting users who are addressing questions related to R-loop
+    regions (RL-Regions), R-loop-binding proteins (RLBPs), R-loop co-localizing factors,
+    and the differences between R-loop-mapping methods. The full data-generating protocol
+    is found here: https://github.com/Bishop-Laboratory/RLBase-data.'
+  home: https://bioconductor.org/packages/3.17/data/experiment/html/RLHub.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: An ExperimentHub package for accessing processed RLSuite data sets
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rlhub
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-annotationhub >=3.8.0,<3.9.0
+  - bioconductor-experimenthub >=2.8.0,<2.9.0
+  - r-base
+  run:
+  - bioconductor-annotationhub >=3.8.0,<3.9.0
+  - bioconductor-experimenthub >=2.8.0,<2.9.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20230706
+source:
+  md5: 9072a588ef09512493ea389c50984153
+  url:
+  - https://bioconductor.org/packages/3.17/data/experiment/src/contrib/RLHub_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/RLHub/RLHub_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RLHub_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rlhub/bioconductor-rlhub_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RLHub')"

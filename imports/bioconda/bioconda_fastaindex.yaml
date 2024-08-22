@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/lpryszcz/FastaIndex
+  license: GPLv3
+  summary: FastA indexing and sequence retrival.
+build:
+  entry_points:
+  - FastaIndex = FastaIndex:main
+  - fasta_stats = fasta_stats:main
+  noarch: python
+  number: 3
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: fastaindex
+  version: 0.11c
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+source:
+  sha256: 3c7c1560719d44602ca5c70960228cbe12545e73e1381e3fdf9cdf64a588c943
+  url: https://github.com/lpryszcz/FastaIndex/archive/0.11c.tar.gz
+test:
+  commands:
+  - FastaIndex --version
+  - fasta_stats --version
+  imports:
+  - FastaIndex
+  - fasta_stats

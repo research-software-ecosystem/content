@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/rrwick/Badread
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A long read simulator that can imitate many types of read problems
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vv
+package:
+  name: badread
+  version: 0.4.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - pip
+  - numpy
+  - python-edlib
+  - matplotlib-base
+  - scipy
+source:
+  sha256: 236dee5ac99b8d0c1997c482df5b805908b0c34f75277ef706e897af71db1f9a
+  url: https://github.com/rrwick/Badread/archive/v0.4.1.tar.gz
+test:
+  commands:
+  - badread -h
+  imports:
+  - edlib
+  - numpy
+  - scipy
+  - matplotlib

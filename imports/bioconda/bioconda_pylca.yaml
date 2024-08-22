@@ -1,0 +1,30 @@
+about:
+  description: "Adaptation of the the lowest common ancestor (LCA) algorithm \noriginally\
+    \ developed by D. Eppstein \n(https://www.ics.uci.edu/~eppstein/)\n"
+  home: https://github.com/pirovc/pylca
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: Lowest common ancestor (LCA) algorithm implementation in python
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - pirovc
+package:
+  name: pylca
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+source:
+  sha256: da5abb053ce6efb3040f2c48c7f1b120200c1372d9639e76548352d5f1b6e710
+  url: https://github.com/pirovc/pylca/archive/pylca_v1.0.0.tar.gz
+test:
+  commands:
+  - python -c 'from pylca.pylca import *; unittest.main();'

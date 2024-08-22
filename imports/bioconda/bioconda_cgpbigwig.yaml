@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/cancerit/cgpBigWig
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: BigWig manpulation tools using libBigWig and htslib
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: cgpbigwig
+  version: 1.7.0
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  - bzip2
+  - xz
+  - gnutls
+  - gmp
+  - libtasn1
+  - nettle
+  - p11-kit
+  - htslib
+  - libbigwig
+source:
+  sha256: d1dff8cdf35b8ffa231b999e79c44f8a4897e469224652da50d2a116c45b2b8b
+  url: https://github.com/cancerit/cgpBigWig/archive/1.7.0.tar.gz
+test:
+  commands:
+  - bam2bw -h
+  - detectExtremeDepth -h

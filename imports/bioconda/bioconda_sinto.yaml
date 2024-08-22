@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/timoast/sinto
+  doc_url: https://timoast.github.io/sinto/
+  home: https://timoast.github.io/sinto/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'sinto: tools for single-cell data processing'
+build:
+  entry_points:
+  - sinto = sinto.arguments:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - timoast
+package:
+  name: sinto
+  version: 0.10.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - wheel
+  run:
+  - python >=3.8
+  - pysam >=0.14,<0.21
+  - numpy
+  - scipy
+  - umi_tools
+source:
+  sha256: ac54280a62db55d139635cf96a2a36e40857282f660a67c1ce5d4a31115beae7
+  url: https://pypi.io/packages/source/s/sinto/sinto-0.10.1.tar.gz
+test:
+  commands:
+  - sinto --help
+  imports:
+  - sinto

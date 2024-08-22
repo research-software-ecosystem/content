@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/cmap/cmapPy
+  license: BSD 3-clause
+  license_family: BSD
+  summary: Assorted tools for interacting with .gct, .gctx, .grp, and .gmt files as
+    well as other Connectivity Map (Broad Institute) data/tools
+build:
+  entry_points:
+  - gctx2gct=cmapPy.pandasGEXpress.gctx2gct:main
+  - gct2gctx=cmapPy.pandasGEXpress.gct2gctx:main
+  - concat=cmapPy.pandasGEXpress.concat:main
+  - subset=cmapPy.pandasGEXpress.subset:main
+  number: 7
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vv
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: cmappy
+  version: 4.0.1
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy >=1.11.2
+  - pandas >=0.18
+  - h5py >=2.6.0
+  - requests >=2.13.0
+source:
+  sha256: ecd6349a2de743176f12cd36019844ed1dd45bdb4f45e125d260675bb219ad90
+  url: https://pypi.io/packages/source/c/cmappy/cmapPy-4.0.1.tar.gz
+test:
+  commands:
+  - gctx2gct --help
+  - gct2gctx --help
+  - concat --help
+  - subset --help
+  imports:
+  - cmapPy
+  - cmapPy.clue_api_client
+  - cmapPy.pandasGEXpress
+  - cmapPy.set_io

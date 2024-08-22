@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/yoshihikosuzuki/ClassPro/
+  license: https://github.com/yoshihikosuzuki/ClassPro/blob/main/LICENSE
+  summary: A K-mer classifier for HiFi reads .
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p $PREFIX/bin
+  - cp $SRC_DIR/bin/*  $PREFIX/bin/
+  - chmod u+x $PREFIX/bin/ClassPro $PREFIX/bin/ClassGS $PREFIX/bin/prof2class $PREFIX/bin/class2acc
+    $PREFIX/bin/class2cns
+package:
+  name: classpro
+  version: 1.0.2
+requirements:
+  host:
+  - bzip2
+  - zlib
+  - libcurl
+source:
+  sha256: 2ae4e71ca3b1f8e31d1b55d607dcde58a4de84966f1d92a3c3a04e6ead167a61
+  url: https://github.com/yoshihikosuzuki/ClassPro/releases/download/v1.0.2/classpro-v1.0.2_linux.tar.gz
+test:
+  commands:
+  - which ClassPro

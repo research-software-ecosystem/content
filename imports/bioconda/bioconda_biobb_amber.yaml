@@ -1,0 +1,45 @@
+about:
+  description: 'Biobb_amber is a BioBB category for AMBER MD package. Biobb (BioExcel
+    building blocks) packages are Python building blocks that create new layer of
+    compatibility and interoperability over popular bioinformatics tools. The latest
+    documentation of this package can be found in our readthedocs site: http://biobb_amber.readthedocs.io/en/latest/)](http://biobb_amber.readthedocs.io/en/latest/'
+  home: https://github.com/bioexcel/biobb_amber
+  license: Apache Software License
+  license_family: APACHE
+  license_file: ''
+  summary: Biobb_amber is a BioBB category for AMBER MD package.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+package:
+  name: biobb_amber
+  version: 4.2.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools
+  - biobb_common ==4.2.0
+  - ambertools >=22.0
+  run:
+  - python >=3.8
+  - biobb_common ==4.2.0
+  - ambertools >=22.0
+source:
+  sha256: 11fe9767c895c5de4a2e643f1c2de00f57bb03c8e0835415542c98aec2ca6040
+  url: https://pypi.io/packages/source/b/biobb_amber/biobb_amber-4.2.0.tar.gz
+test:
+  imports:
+  - biobb_amber
+  - biobb_amber.ambpdb
+  - biobb_amber.cphstats
+  - biobb_amber.cpptraj
+  - biobb_amber.leap
+  - biobb_amber.nab
+  - biobb_amber.parmed
+  - biobb_amber.pdb4amber
+  - biobb_amber.pmemd
+  - biobb_amber.process
+  - biobb_amber.sander

@@ -1,0 +1,59 @@
+about:
+  description: (f-divergence Cutoff Index), is to find DEGs in the transcriptomic
+    & proteomic data, and identify DEGs by computing the difference between the distribution
+    of fold-changes for the control-control and remaining (non-differential) case-control
+    gene expression ratio data. fCI provides several advantages compared to existing
+    methods.
+  home: https://bioconductor.org/packages/3.18/bioc/html/fCI.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: f-divergence Cutoff Index for Differential Expression Analysis in Transcriptomics
+    and Proteomics
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  container:
+    extended-base: true
+package:
+  name: bioconductor-fci
+  version: 1.32.0
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - xorg-libxfixes
+  host:
+  - r-base
+  - r-fnn
+  - r-gtools
+  - r-psych
+  - r-rgl
+  - r-venndiagram
+  - r-zoo
+  run:
+  - r-base
+  - r-fnn
+  - r-gtools
+  - r-psych
+  - r-rgl
+  - r-venndiagram
+  - r-zoo
+source:
+  md5: 5a6ec7dcf6303ef44018924283b87586
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/fCI_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/fCI/fCI_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/fCI_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fci/bioconductor-fci_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - LD_LIBRARY_PATH="${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${BUILD_PREFIX}/lib"
+    $R -e "library('fCI')"

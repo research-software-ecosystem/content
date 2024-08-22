@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/bschiffthaler/seidr
+  license: GPL-2.0-or-later
+  license_file: LICENCE
+  summary: Community gene network inference and exploration toolkit
+build:
+  number: 2
+  skip: true
+  string: nompi_h
+package:
+  name: seidr
+  version: 0.14.2
+requirements:
+  build:
+  - cmake
+  - make
+  - None
+  - None
+  - None
+  host:
+  - armadillo=*=*openblas*
+  - boost-cpp
+  - zlib
+  - coin-or-clp
+  - tbb-devel
+  - nompi
+  run:
+  - armadillo=*=*openblas*
+  - boost-cpp
+  - zlib
+  - coin-or-clp
+  - tbb
+  - nompi
+source:
+  sha256: 771442aa7fd8e7ed97d3db465496a6004e163f9c111cd91c19fe86f4961f216f
+  url: https://github.com/bschiffthaler/seidr/releases/download/0.14.2/seidr-0.14.2.tar.gz
+test:
+  commands:
+  - seidr version
+  - anoverence -V
+  - correlation -V
+  - el-ensemble -V
+  - genie3 -V
+  - llr-ensemble -V
+  - mi -V
+  - narromi -V
+  - pcor -V
+  - plsnet -V
+  - svm-ensemble -V
+  - tigress -V
+  - tomsimilarity -V

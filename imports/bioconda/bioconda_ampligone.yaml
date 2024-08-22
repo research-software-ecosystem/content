@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/RIVM-bioinformatics/AmpliGone
+  doc_url: https://rivm-bioinformatics.github.io/AmpliGone/
+  home: https://rivm-bioinformatics.github.io/AmpliGone/
+  license: GNU Affero General Public v3
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Ampligone is a tool which accurately removes primer sequences from FastQ
+    NGS reads in an amplicon sequencing experiment
+build:
+  entry_points:
+  - ampligone = AmpliGone.AmpliGone:main
+  - AmpliGone = AmpliGone.AmpliGone:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - florianzwagemaker
+  - KHajji
+  - ids-bioinformatics
+package:
+  name: ampligone
+  version: 1.3.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - pandas >=1.3
+  - pysam =0.19
+  - biopython >=1.79
+  - mappy ==2.24
+  - parmap =1.5
+  - regex >=2021.11.10
+  - rich =12.5
+source:
+  sha256: f53520874f5f3301b6099142e1d79264a96820add09affb0130744eb39ae4139
+  url: https://pypi.io/packages/source/A/AmpliGone/AmpliGone-1.3.1.tar.gz
+test:
+  commands:
+  - ampligone --help
+  - AmpliGone --help
+  imports:
+  - AmpliGone.fasta2bed

@@ -1,0 +1,32 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/bioexcel/biobb_remote
+  license: Apache Software License
+  license_family: APACHE
+  license_file: ''
+  summary: Biobb_remote is the Biobb module for remote execution via ssl.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers: BiobbDevelopers
+package:
+  name: biobb_remote
+  version: 1.2.2
+requirements:
+  host:
+  - python ==3.7.*
+  - setuptools
+  - paramiko ==2.7.2
+  run:
+  - python ==3.7.*
+  - paramiko ==2.7.2
+source:
+  sha256: 9bc9512892efc9f938b0c9b5603832b7d435b5d42cf4ee8c4b2ad3b363c7f437
+  url: https://pypi.io/packages/source/b/biobb_remote/biobb_remote-1.2.2.tar.gz
+test:
+  imports:
+  - biobb_remote
+  - biobb_remote.scripts

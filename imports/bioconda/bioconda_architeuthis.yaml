@@ -1,0 +1,45 @@
+about:
+  description: 'architeuthis is a fast standalone command to supplement the Kraken
+    suite of software
+
+    tools such like Kraken2, KrakenUniq, and Bracken. I saw myself repeatedly rewriting
+
+    the same code in my pipelines when dealing with Kraken output, like merging files
+    or
+
+    maninpulating lineage annotations. It also adds some functionality to dive deeper
+
+    into the individual k-mer classifications for reads.
+
+    '
+  dev_url: https://github.com/cdiener/architeuthis.git
+  home: https://github.com/cdiener/architeuthis
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Tool to analyze and summarize data for Kraken.
+build:
+  number: 1
+  run_exports:
+  - None
+  script:
+  - go build -v -ldflags "-w -s -X 'main.version=0.3.0'" -o $PREFIX/bin/architeuthis
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - cdiener
+package:
+  name: architeuthis
+  version: 0.3.0
+requirements:
+  build:
+  - None
+  run:
+  - taxonkit >=0.16.0
+source:
+  sha256: 63aba50c66188202debc822d0ded57d2398f5e4e9d8535f83a2c5e982bb4999f
+  url: https://github.com/cdiener/architeuthis/archive/0.3.0.tar.gz
+test:
+  commands:
+  - architeuthis -v

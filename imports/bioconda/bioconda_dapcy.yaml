@@ -1,0 +1,47 @@
+about:
+  home: https://gitlab.com/uhasselt-bioinfo/dapcy
+  license: MIT
+  license_file: LICENSE
+  summary: An sklearn implementation of discriminant analysis of principal components
+    (DAPC) for population genetics
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - pmoris
+package:
+  name: dapcy
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - bed-reader
+  - joblib
+  - matplotlib-base
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - seaborn
+  - sgkit
+  - aiohttp
+  - cyvcf2
+  - requests
+  - yarl
+source:
+  sha256: b62440ea8523f05597cd0a889b9eafb68192bd4e481048e859b772ac654ccb93
+  url: https://pypi.io/packages/source/d/dapcy/dapcy-0.1.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - dapcy
+  requires:
+  - pip

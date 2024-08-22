@@ -1,0 +1,47 @@
+about:
+  description: The package contains functions to perform normalization of high-throughput
+    qPCR data. Basic functions for processing raw Ct data plus functions to generate
+    diagnostic plots are also available.
+  home: https://bioconductor.org/packages/3.18/bioc/html/qpcrNorm.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Data-driven normalization strategies for high-throughput qPCR data.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:qpcrnorm
+  - doi:10.1186/1471-2105-10-110
+  parent_recipe:
+    name: bioconductor-qpcrnorm
+    path: recipes/bioconductor-qpcrnorm
+    version: 1.38.0
+package:
+  name: bioconductor-qpcrnorm
+  version: 1.60.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - r-base
+source:
+  md5: 43fa513309301e6d8e89fcef668c7b28
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/qpcrNorm_1.60.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/qpcrNorm/qpcrNorm_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/qpcrNorm_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-qpcrnorm/bioconductor-qpcrnorm_1.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('qpcrNorm')"

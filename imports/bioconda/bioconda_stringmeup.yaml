@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/danisven/StringMeUp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A post-processing tool to reclassify Kraken 2 output based on the confidence
+    score and/or minimum minimizer hit groups.
+build:
+  entry_points:
+  - stringmeup=stringmeup.stringmeup:stringmeup
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - druvus
+package:
+  name: stringmeup
+  version: 0.1.4
+requirements:
+  host:
+  - pip
+  - python >3
+  run:
+  - python >3
+  - dataclasses
+source:
+  sha256: b3c313c11b608061764dacfeca33307057734e97b90db92b7b9c8900dbeca23c
+  url: https://github.com/danisven/StringMeUp/archive/0.1.4.tar.gz
+test:
+  commands:
+  - stringmeup --help

@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/EBIvariation/eva-sub-cli
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: EVA Submission Command Line Interface
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - apriltuesday
+  - tcezard
+  - ebi-variation
+package:
+  name: eva-sub-cli
+  version: 0.3
+requirements:
+  host:
+  - nextflow >=21.10.0
+  - python >=3.8
+  - nodejs >=10.19.1
+  - vcf-validator >=0.9.6
+  - ebi-eva-common-pyutils >=0.6.1
+  - pyyaml
+  - jinja2
+  - openpyxl
+  - requests
+  - jsonschema
+  - unzip
+  run:
+  - nextflow >=21.10.0
+  - python >=3.8
+  - nodejs >=10.19.1
+  - vcf-validator >=0.9.6
+  - ebi-eva-common-pyutils >=0.6.1
+  - pyyaml
+  - jinja2
+  - openpyxl
+  - requests
+  - jsonschema
+source:
+  sha256: bf5e00ffd7f4a290350011ceb626f818111f8646975e5dd7247910555971e1bd
+  url: https://github.com/EBIvariation/eva-sub-cli/archive/v0.3.tar.gz
+test:
+  commands:
+  - biovalidator --help
+  - eva-sub-cli.py --help
+  imports:
+  - eva_sub_cli

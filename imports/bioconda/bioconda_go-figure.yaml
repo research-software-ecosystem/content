@@ -1,0 +1,38 @@
+about:
+  description: GO-Figure! offers a simple solution for command-line plotting of informative
+    summary visualisations of lists of GO terms, designed to support exploratory data
+    analyses and multiple dataset comparisons.
+  dev_url: https://gitlab.com/evogenlab/GO-Figure
+  home: https://gitlab.com/evogenlab/GO-Figure
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  summary: GO-Figure! offers a simple solution for command-line plotting of informative
+    summary visualisations of lists of GO terms, designed to support exploratory data
+    analyses and multiple dataset comparisons.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - hdetering
+package:
+  name: go-figure
+  version: 1.0.2
+requirements:
+  run:
+  - python >=3
+  - matplotlib-base 3.7.1.*
+  - scikit-learn 1.2.2.*
+  - seaborn 0.12.2.*
+  - adjusttext 0.7.3.1.*
+source:
+  patches:
+  - change_data_path.patch
+  sha256: 91728363c2fa1b1210355f665fdcfdd36287daa5fbaf05c2ac502c95fbb95b26
+  url: https://gitlab.com/evogenlab/GO-Figure/-/archive/v1.0.2/GO-Figure-v1.0.2.tar.gz
+test:
+  commands:
+  - /usr/bin/env python --version
+  - python3 $(which gofigure.py) --help

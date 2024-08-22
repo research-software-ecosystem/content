@@ -1,0 +1,51 @@
+about:
+  description: 'Identifies cell populations in Flow Cytometry data using non-parametric
+    clustering and segmented-regression-based change point detection. Note: R 2.11.0
+    or newer is required.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/flowMeans.html
+  license: Artistic-2.0
+  summary: Non-parametric Flow Cytometry Data Gating
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  container:
+    extended-base: true
+package:
+  name: bioconductor-flowmeans
+  version: 1.62.0
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - xorg-libxfixes
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-feature
+  - r-rrcov
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-feature
+  - r-rrcov
+source:
+  md5: 5cbb796502f09bf65cae60e4f0f53c1f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/flowMeans_1.62.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/flowMeans/flowMeans_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowMeans_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowmeans/bioconductor-flowmeans_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - LD_LIBRARY_PATH="${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${BUILD_PREFIX}/lib"
+    $R -e "library('flowMeans')"

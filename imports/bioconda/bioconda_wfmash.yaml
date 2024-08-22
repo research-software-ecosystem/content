@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/waveygang/wfmash
+  license: MIT
+  license_file: LICENSE
+  summary: a pangenome-scale aligner
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - AndreaGuarracino
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: wfmash
+  version: 0.19.0
+requirements:
+  build:
+  - None
+  - None
+  - llvm-openmp
+  - cmake
+  - make
+  host:
+  - gsl
+  - zlib
+  - jemalloc
+  - htslib
+  - libblas
+  run:
+  - llvm-openmp
+  - python >=3.7
+source:
+  sha256: db6eefc7296739c6276daa8ed413c171487eceed1a62588c1d2fdb40011b011f
+  url: https://github.com/waveygang/wfmash/releases/download/v0.19.0/wfmash-v0.19.0.tar.gz
+test:
+  commands:
+  - wfmash --help

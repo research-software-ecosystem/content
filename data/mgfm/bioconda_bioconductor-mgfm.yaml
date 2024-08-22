@@ -1,0 +1,44 @@
+about:
+  description: The package is designed to detect marker genes from Microarray gene
+    expression data sets
+  home: https://bioconductor.org/packages/3.18/bioc/html/MGFM.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Marker Gene Finder in Microarray gene expression data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mgfm
+  - doi:10.1186/s12864-015-1785-9
+  parent_recipe:
+    name: bioconductor-mgfm
+    path: recipes/bioconductor-mgfm
+    version: 1.14.0
+package:
+  name: bioconductor-mgfm
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotate >=1.80.0,<1.81.0
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 893a9f574fe4e023d3c4d3b99d58ae78
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MGFM_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MGFM/MGFM_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MGFM_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mgfm/bioconductor-mgfm_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MGFM')"

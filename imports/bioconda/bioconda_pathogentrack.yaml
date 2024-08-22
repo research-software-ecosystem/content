@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/ncrna/PathogenTrack
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A pipeline to identify pathogenic microorganisms from scRNA-seq raw data
+build:
+  entry_points:
+  - PathogenTrack=PathogenTrack.PathogenTrack:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - ncrna
+package:
+  name: pathogentrack
+  version: 0.2.3
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython >=1.78
+  - python
+source:
+  sha256: 169cca4ce348e9c2ea2c4697e3756640e426424e2fbc16af97687ec074dd53fa
+  url: https://pypi.io/packages/source/p/pathogentrack/PathogenTrack-0.2.3.tar.gz
+test:
+  commands:
+  - PathogenTrack --help
+  imports:
+  - PathogenTrack

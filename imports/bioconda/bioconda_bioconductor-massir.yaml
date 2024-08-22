@@ -1,0 +1,46 @@
+about:
+  description: Predicts the sex of samples in gene expression microarray datasets
+  home: https://bioconductor.org/packages/3.18/bioc/html/massiR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'massiR: MicroArray Sample Sex Identifier'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:massir
+  parent_recipe:
+    name: bioconductor-massir
+    path: recipes/bioconductor-massir
+    version: 1.16.0
+package:
+  name: bioconductor-massir
+  version: 1.38.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-cluster
+  - r-diptest
+  - r-gplots
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-cluster
+  - r-diptest
+  - r-gplots
+source:
+  md5: f2dda0fb78f776b416af77100e902b55
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/massiR_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/massiR/massiR_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/massiR_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-massir/bioconductor-massir_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('massiR')"

@@ -1,0 +1,45 @@
+about:
+  description: The rDGIdb package provides a wrapper for the Drug Gene Interaction
+    Database (DGIdb). For simplicity, the wrapper query function and output resembles
+    the user interface and results format provided on the DGIdb website (https://www.dgidb.org/).
+  home: https://bioconductor.org/packages/3.18/bioc/html/rDGIdb.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: R Wrapper for DGIdb
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rdgidb
+  - doi:10.12688/f1000research.9357.1
+  parent_recipe:
+    name: bioconductor-rdgidb
+    path: recipes/bioconductor-rdgidb
+    version: 1.6.0
+package:
+  name: bioconductor-rdgidb
+  version: 1.28.0
+requirements:
+  host:
+  - r-base
+  - r-httr
+  - r-jsonlite
+  run:
+  - r-base
+  - r-httr
+  - r-jsonlite
+source:
+  md5: 5f3f78a4035bbb5597811f38c68b8e4f
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/rDGIdb_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/rDGIdb/rDGIdb_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rDGIdb_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rdgidb/bioconductor-rdgidb_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rDGIdb')"

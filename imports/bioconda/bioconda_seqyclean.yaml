@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/ibest/seqyclean
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Main purpose of this software is to pre-process NGS data in order to prepare
+    for downstream analysis.
+build:
+  number: 5
+package:
+  name: seqyclean
+  version: 1.10.09
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - 0001-Replace-explicit-g++-and-gcc.patch
+  sha256: 9fd357f677c37711ca11ebd645c5d6f49c87be087c8f512924d475e8a11029df
+  url: https://github.com/ibest/seqyclean/archive/1.10.09.tar.gz
+test:
+  commands:
+  - seqyclean -h 2>&1 | grep seqyclean

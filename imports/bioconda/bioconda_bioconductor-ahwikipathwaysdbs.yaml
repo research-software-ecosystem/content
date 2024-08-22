@@ -1,0 +1,44 @@
+about:
+  description: The package provides a comprehensive mapping table of metabolites linked
+    to Wikipathways pathways. The tables include HMDB, KEGG, ChEBI, Drugbank, PubChem
+    compound, ChemSpider, KNApSAcK, and Wikidata IDs plus CAS and InChIKey. The tables
+    are provided for each of the 25 species ("Anopheles gambiae", "Arabidopsis thaliana",
+    "Bacillus subtilis", "Bos taurus", "Caenorhabditis elegans", "Canis familiaris",
+    "Danio rerio", "Drosophila melanogaster", "Equus caballus", "Escherichia coli",
+    "Gallus gallus", "Gibberella zeae", "Homo sapiens", "Hordeum vulgare", "Mus musculus",
+    "Mycobacterium tuberculosis", "Oryza sativa", "Pan troglodytes", "Plasmodium falciparum",
+    "Populus trichocarpa", "Rattus norvegicus", "Saccharomyces cerevisiae", "Solanum
+    lycopersicum", "Sus scrofa", "Zea mays"). These table information can be used
+    for Metabolite Set Enrichment Analysis.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/AHWikipathwaysDbs.html
+  license: Artistic-2.0
+  summary: Metabolites linked to WikiPathways pathways (for AnnotationHub)
+build:
+  noarch: generic
+  number: 5
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-ahwikipathwaysdbs
+  version: 0.99.4
+requirements:
+  host:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - r-base
+  run:
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: ffa90f6d6e8832ae6f4b5bf8b151cd46
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/AHWikipathwaysDbs_0.99.4.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/AHWikipathwaysDbs/AHWikipathwaysDbs_0.99.4.tar.gz
+  - https://bioarchive.galaxyproject.org/AHWikipathwaysDbs_0.99.4.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ahwikipathwaysdbs/bioconductor-ahwikipathwaysdbs_0.99.4_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('AHWikipathwaysDbs')"

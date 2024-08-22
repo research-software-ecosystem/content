@@ -1,0 +1,56 @@
+about:
+  description: A package with focus on analysis of discrete regions of the genome.
+    This package is useful for investigation of one or a few genes using Affymetrix
+    data, since it will extract probe level data using the Affymetrix Power Tools
+    application and wrap these data into a ProbeLevelSet. A ProbeLevelSet directly
+    extends the expressionSet, but includes additional information about the sequence
+    of each probe and the probe set it is derived from. The package includes a number
+    of functions used for plotting these probe level data as a function of location
+    along sequences of mRNA-strands. This can be used for analysis of variable splicing,
+    and is especially well suited for use with exon-array data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GeneRegionScan.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: GeneRegionScan
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:generegionscan
+  parent_recipe:
+    name: bioconductor-generegionscan
+    path: recipes/bioconductor-generegionscan
+    version: 1.36.0
+package:
+  name: bioconductor-generegionscan
+  version: 1.58.0
+requirements:
+  host:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rcolorbrewer
+  run:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rcolorbrewer
+source:
+  md5: 9b3e0cfd305d2db2aae5cfd4003e56a7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GeneRegionScan_1.58.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GeneRegionScan/GeneRegionScan_1.58.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GeneRegionScan_1.58.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-generegionscan/bioconductor-generegionscan_1.58.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GeneRegionScan')"

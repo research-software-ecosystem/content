@@ -1,0 +1,51 @@
+about:
+  doc_url: https://github.com/ViriatoII/MindaGap/blob/main/README.md
+  home: https://github.com/ViriatoII/MindaGap
+  license: BSD 3-Clause License
+  license_file: LICENSE
+  summary: Takes a single panorama image and fills the empty grid lines with neighbour-weighted
+    values.
+build:
+  noarch: python
+  number: 1
+  script: 'mkdir -p $PREFIX/bin && sed -i ''1i #!/usr/bin/env python'' $SRC_DIR/*.py
+    && chmod +x $SRC_DIR/*.py && cp $SRC_DIR/* $PREFIX/bin/'
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - FloWuenne
+package:
+  name: mindagap
+  version: 0.0.2
+requirements:
+  build:
+  - python ==3.9.13
+  - None
+  - None
+  - None
+  - None
+  - None
+  host:
+  - python ==3.9.13
+  - pip
+  - xorg-libxfixes
+  run:
+  - python ==3.9.13
+  - mesa-libgl-cos7-x86_64
+  - scipy
+  - numpy
+  - matplotlib-base
+  - tifffile
+  - opencv
+  - libopencv
+  - py-opencv
+  - rich
+  - procps-ng
+  - pandas
+source:
+  sha256: 7b8f74ae8424edcb7b6b78c9b12a354ca5276cf22f4e3d4ad8343671f301d8e6
+  url: https://github.com/ViriatoII/mindagap/archive/refs/tags/0.0.2.tar.gz
+test:
+  commands:
+  - mindagap.py -v test

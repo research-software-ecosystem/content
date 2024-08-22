@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/lasersonlab/phip-stat
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: PhIP-seq analysis tools
+build:
+  entry_points:
+  - phip = phip.cli:cli
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - dnbenso
+package:
+  name: phip-stat
+  version: 0.5.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - click
+  - tqdm
+  - numpy
+  - scipy
+  - pandas
+source:
+  sha256: ebf405bbede636f34a26e9d4cf0201a2d4603ca504492338078d43a3cd62c2fc
+  url: https://pypi.io/packages/source/p/phip-stat/phip-stat-0.5.1.tar.gz
+test:
+  commands:
+  - pip check
+  - phip --help
+  imports:
+  - phip
+  requires:
+  - pip

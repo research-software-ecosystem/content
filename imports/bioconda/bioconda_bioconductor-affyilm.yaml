@@ -1,0 +1,50 @@
+about:
+  description: affyILM is a preprocessing tool which estimates gene expression levels
+    for Affymetrix Gene Chips. Input from physical chemistry is employed to first
+    background subtract intensities before calculating concentrations on behalf of
+    the Langmuir model.
+  home: https://bioconductor.org/packages/3.18/bioc/html/affyILM.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Linear Model of background subtraction and the Langmuir isotherm
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:affyilm
+  - doi:10.1186/1748-7188-4-15
+  parent_recipe:
+    name: bioconductor-affyilm
+    path: recipes/bioconductor-affyilm
+    version: 1.32.0
+package:
+  name: bioconductor-affyilm
+  version: 1.54.0
+requirements:
+  host:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - r-base
+  run:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - r-base
+source:
+  md5: 96d1989fb75742f6a9b0f9d8df1c3fc0
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/affyILM_1.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/affyILM/affyILM_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affyILM_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affyilm/bioconductor-affyilm_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('affyILM')"

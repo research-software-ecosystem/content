@@ -1,0 +1,45 @@
+about:
+  description: 'arcasHLA performs high-resolution genotyping for HLA class I and class
+    II
+
+    genes from RNA sequencing, supporting both paired and single-end samples.
+
+    '
+  home: https://github.com/RabadanLab/arcasHLA
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: high-resolution HLA typing from RNA seq
+build:
+  noarch: generic
+  number: 2
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btz474
+package:
+  name: arcas-hla
+  version: 0.6.0
+requirements:
+  run:
+  - bedtools
+  - biopython
+  - coreutils
+  - git
+  - git-lfs
+  - kallisto ==0.44
+  - numpy
+  - pandas
+  - pigz
+  - pip
+  - pyarrow
+  - pytest
+  - python
+  - samtools
+  - scipy
+source:
+  sha256: 75bef1a5596a9dfabccb901420f5d852d6d8a15d9c676e4c94787b8d25dd708b
+  url: https://github.com/RabadanLab/arcasHLA/archive/v0.6.0.tar.gz
+test:
+  commands:
+  - arcasHLA --help

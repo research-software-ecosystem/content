@@ -1,0 +1,35 @@
+about:
+  description: A set of annotation maps describing the entire Human Disease Ontology
+    assembled using data from DO. Its annotation data comes from https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/main/src/ontology.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/HDO.db.html
+  license: Artistic-2.0
+  summary: A set of annotation maps describing the entire Human Disease Ontology
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hdo.db
+  version: 0.99.1
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 007a50523f1de27048dfc97f4d458f59
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/HDO.db_0.99.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HDO.db/HDO.db_0.99.1.tar.gz
+  - https://bioarchive.galaxyproject.org/HDO.db_0.99.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hdo.db/bioconductor-hdo.db_0.99.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HDO.db')"

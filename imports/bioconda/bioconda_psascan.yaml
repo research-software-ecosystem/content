@@ -1,0 +1,27 @@
+about:
+  home: https://www.cs.helsinki.fi/group/pads/pSAscan.html
+  license: MIT
+  license_file: LICENCE
+  summary: A parallel external memory suffix array construction algorithm
+build:
+  number: 4
+  skip: true
+package:
+  name: psascan
+  version: 0.1.0
+requirements:
+  build:
+  - None
+  - make
+  - llvm-openmp
+  host:
+  - libdivsufsort
+  run:
+  - libdivsufsort
+  - llvm-openmp
+source:
+  sha256: 9e21521033f9a56419caa05efe4a0147f84f34fdb249f3fbfc5600e11e99f0b2
+  url: https://www.cs.helsinki.fi/group/pads/software/pSAscan/pSAscan-0.1.0.tar.bz2
+test:
+  commands:
+  - psascan --help 2>&1 | grep "Construct the suffix array for text stored in FILE"

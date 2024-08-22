@@ -1,0 +1,25 @@
+about:
+  home: http://dtai.cs.kuleuven.be/ml/systems/nspdk
+  license: GNUv3
+  license_file: null
+  summary: Neighborhood Subgraph Pairwise Distance Kernel (NSPDK).
+build:
+  number: 2
+  skip: true
+package:
+  name: nspdk
+  version: 9.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: 90955549e7d3e268d194cb89a38018a323f050c1c524d35630733f4cd97664a6
+  url: https://raw.githubusercontent.com/BackofenLab/GraphClust/master/NSPDK_src/NSPDK-9.2.tar.gz
+test:
+  commands:
+  - NSPDK -h  2>&1 | grep "Usage" >/dev/null

@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/haojingshao/npInv
+  license: MIT
+  summary: an accurate tool for detecting and genotyping inversion using multiple
+    alignment long reads
+build:
+  noarch: generic
+  number: 6
+extra:
+  identifiers:
+  - doi:10.1186/s12859-018-2252-9
+  notes: 'npinv is Java program that comes with a custom wrapper python script which
+    I took from peptide-shaker.
+
+    By default "-Xms512m -Xmx1g" is set in the wrapper. If you want to overwrite it
+    you can
+
+    specify these values directly after your binaries. If you have _JAVA_OPTIONS
+
+    set globally this will take precedence.
+
+    For example run it with "npinv -Xms512m -Xmx1g"
+
+    '
+package:
+  name: npinv
+  version: 1.24
+requirements:
+  host:
+  - openjdk >=8,<9
+  - python
+  run:
+  - openjdk >=8,<9
+  - python
+source:
+  sha256: d58c5e20a3d795307517ef78bb1efe654f2f3040c461c3385fa9a406870b8816
+  url: https://github.com/haojingshao/npInv/releases/download/npInv1.24/npInv1.24.jar
+test:
+  commands:
+  - npinv --help

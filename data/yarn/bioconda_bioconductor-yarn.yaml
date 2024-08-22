@@ -1,0 +1,64 @@
+about:
+  description: Expedite large RNA-Seq analyses using a combination of previously developed
+    tools. YARN is meant to make it easier for the user in performing basic mis-annotation
+    quality control, filtering, and condition-aware normalization. YARN leverages
+    many Bioconductor tools and statistical techniques to account for the large heterogeneity
+    and sparsity found in very large RNA-seq experiments.
+  home: https://bioconductor.org/packages/3.18/bioc/html/yarn.html
+  license: Artistic-2.0
+  summary: 'YARN: Robust Multi-Condition RNA-Seq Preprocessing and Normalization'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:yarn
+  - doi:10.1101/086587
+  parent_recipe:
+    name: bioconductor-yarn
+    path: recipes/bioconductor-yarn
+    version: 1.6.0
+package:
+  name: bioconductor-yarn
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-quantro >=1.36.0,<1.37.0
+  - r-base
+  - r-downloader
+  - r-gplots
+  - r-matrixstats
+  - r-rcolorbrewer
+  - r-readr
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - bioconductor-limma >=3.58.0,<3.59.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - bioconductor-quantro >=1.36.0,<1.37.0
+  - r-base
+  - r-downloader
+  - r-gplots
+  - r-matrixstats
+  - r-rcolorbrewer
+  - r-readr
+source:
+  md5: 90baa3de55a308d7deef0f913c6fdef8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/yarn_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/yarn/yarn_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/yarn_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-yarn/bioconductor-yarn_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('yarn')"

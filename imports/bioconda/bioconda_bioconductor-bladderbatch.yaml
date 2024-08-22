@@ -1,0 +1,41 @@
+about:
+  description: This package contains microarray gene expression data on 57 bladder
+    samples from 5 batches. The data are used as an illustrative example for the sva
+    package.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/bladderbatch.html
+  license: Artistic-2.0
+  summary: Bladder gene expression data illustrating batch effects
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-bladderbatch
+    path: recipes/bioconductor-bladderbatch
+    version: 1.18.0
+package:
+  name: bioconductor-bladderbatch
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: d59d10a87e8d62c6ba10f7e9c0160a44
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/bladderbatch_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/bladderbatch/bladderbatch_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/bladderbatch_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bladderbatch/bioconductor-bladderbatch_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('bladderbatch')"

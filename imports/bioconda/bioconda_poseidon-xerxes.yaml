@@ -1,0 +1,32 @@
+about:
+  home: https://www.poseidon-adna.org/#/
+  license: MIT
+  summary: A tool (xerxes) to analyse genotype databases formatted using Poseidon.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p $PREFIX/bin
+  - mv xerxes* $PREFIX/bin/xerxes
+  - chmod u+x $PREFIX/bin/xerxes
+package:
+  name: poseidon-xerxes
+  version: 1.0.1.1
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - gmp
+  run:
+  - zlib
+  - gmp
+source:
+- md5: c1165839313a768ac12d1c8dbe7b2f0a
+  url: https://github.com/poseidon-framework/poseidon-analysis-hs/releases/download/v1.0.1.1/xerxes-conda-linux
+- md5: f101c7d0448b486b86edc259c7838a92
+  url: https://github.com/poseidon-framework/poseidon-analysis-hs/releases/download/v1.0.1.1/xerxes-macOS-X64
+test:
+  commands:
+  - xerxes --version

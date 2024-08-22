@@ -1,0 +1,66 @@
+about:
+  description: The package implements an algorithm for fast gene set enrichment analysis.
+    Using the fast algorithm allows to make more permutations and get more fine grained
+    p-values, which allows to use accurate stantard approaches to multiple hypothesis
+    correction.
+  home: https://bioconductor.org/packages/3.18/bioc/html/fgsea.html
+  license: MIT + file LICENCE
+  summary: Fast Gene Set Enrichment Analysis
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:fgsea
+  - doi:10.1101/060012
+  parent_recipe:
+    name: bioconductor-fgsea
+    path: recipes/bioconductor-fgsea
+    version: 1.6.0
+package:
+  name: bioconductor-fgsea
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-bh
+  - r-cowplot
+  - r-data.table
+  - r-fastmatch
+  - r-ggplot2 >=2.2.0
+  - r-matrix
+  - r-rcpp
+  - r-scales
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-bh
+  - r-cowplot
+  - r-data.table
+  - r-fastmatch
+  - r-ggplot2 >=2.2.0
+  - r-matrix
+  - r-rcpp
+  - r-scales
+source:
+  md5: 53b8ab8a13390a0920bc13eeba3aa1b8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/fgsea_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/fgsea/fgsea_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/fgsea_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fgsea/bioconductor-fgsea_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('fgsea')"

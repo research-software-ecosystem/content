@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/rhysnewell/flight
+  license: BSD-3
+  license_family: BSD
+  summary: flight - python component of Rosella and Lorikeet
+build:
+  entry_points:
+  - flight = flight.flight:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - rhysnewell
+  - aaronmussig
+package:
+  name: flight-genome
+  version: 1.6.3
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python >=3.8
+  - biopython
+source:
+  sha256: 48a450da686d634aaed5d223d79481876836929892a5b730e42610d9b741dc6e
+  url: https://pypi.io/packages/source/f/flight-genome/flight-genome-1.6.3.tar.gz
+test:
+  commands:
+  - flight --version
+  imports:
+  - flight

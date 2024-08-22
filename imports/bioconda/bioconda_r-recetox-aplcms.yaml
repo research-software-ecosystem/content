@@ -1,0 +1,76 @@
+about:
+  dev_url: https://github.com/RECETOX/recetox-aplcms
+  doc_url: https://mypage.cuhk.edu.cn/academics/yutianwei/apLCMS
+  home: https://github.com/RECETOX/recetox-aplcms
+  license: GPL-2.0-or-later
+  license_file: LICENSE
+  summary: apLCMS is a software which generates a feature table from a batch of LC/MS
+    spectra. A modified fork of the original apLCMS by Tianwei Yu.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  script: ${R} CMD INSTALL --build . ${R_ARGS}
+  script_env:
+  - RGL_USE_NULL=TRUE
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1093/bioinformatics/btp291
+  - doi:10.1186/1471-2105-11-559
+  - doi:10.1021/pr301053d
+  - doi:10.1093/bioinformatics/btu430
+  - doi:10.1038/s41598-020-70850-0
+  recipe-maintainers:
+  - hechth
+  - martenson
+  - maximskorik
+package:
+  name: r-recetox-aplcms
+  version: 0.13.2
+requirements:
+  host:
+  - r-base
+  - r-mass
+  - bioconductor-mzr ==2.36.0
+  - r-splines2
+  - r-doparallel
+  - r-foreach
+  - r-iterators
+  - r-snow
+  - r-rcpp
+  - r-arrow
+  - r-dplyr
+  - r-tidyr
+  - r-stringr
+  - r-stringi
+  - r-tibble
+  - r-plyr
+  run:
+  - r-base
+  - r-mass
+  - bioconductor-mzr ==2.36.0
+  - r-splines2
+  - r-doparallel
+  - r-foreach
+  - r-iterators
+  - r-snow
+  - r-rcpp
+  - r-arrow
+  - r-dplyr
+  - r-tidyr
+  - r-stringr
+  - r-stringi
+  - r-tibble
+  - r-plyr
+source:
+  sha256: 070e1dc9df4e3bff0e55d1332ee0a738ed368a03dbd485a37b14120408be08b2
+  url: https://github.com/RECETOX/recetox-aplcms/archive/refs/tags/v0.13.2.tar.gz
+test:
+  commands:
+  - $R -e "library('recetox.aplcms')"

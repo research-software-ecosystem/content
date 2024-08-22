@@ -1,0 +1,27 @@
+about:
+  description: This is a tool for generating images (png, bmp or jpeg) of Hi-C contact
+    maps in the Pretext format. See https://github.com/wtsi-hpag/PretextMap for how
+    to generate Pretext contact maps, or search for pretextmap on bioconda.
+  home: https://github.com/wtsi-hpag/PretextSnapshot
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Commandline image generator for Pretext Hi-C genome contact maps.
+build:
+  number: 3
+package:
+  name: pretextsnapshot
+  version: 0.0.4
+requirements:
+  build:
+  - None
+  - clang>=9.0.1
+  - meson>=0.57.1
+source:
+  patches:
+  - bioconda_libdeflate_include_path.patch
+  sha256: 7d170437e6368cf51ae72c31eced828d61d23753f048e711bf88a09f92e0518e
+  url: https://github.com/wtsi-hpag/PretextSnapshot/releases/download/0.0.4/Source_with_Submodules.tar.gz
+test:
+  commands:
+  - PretextSnapshot

@@ -1,0 +1,45 @@
+about:
+  description: The package provides the summarization algorithm called Factor Analysis
+    for Robust Microarray Summarization (FARMS) and a novel unsupervised feature selection
+    criterion called "I/NI-calls"
+  home: https://bioconductor.org/packages/3.17/bioc/html/farms.html
+  license: LGPL (>= 2.1)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: FARMS - Factor Analysis for Robust Microarray Summarization
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - biotools:farms
+  parent_recipe:
+    name: bioconductor-farms
+    path: recipes/bioconductor-farms
+    version: 1.32.0
+package:
+  name: bioconductor-farms
+  version: 1.52.0
+requirements:
+  host:
+  - bioconductor-affy >=1.78.0,<1.79.0
+  - bioconductor-biobase >=2.60.0,<2.61.0
+  - r-base
+  - r-mass
+  run:
+  - bioconductor-affy >=1.78.0,<1.79.0
+  - bioconductor-biobase >=2.60.0,<2.61.0
+  - r-base
+  - r-mass
+source:
+  md5: 47741e71448e6a0b2b47309b31572a2d
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/farms_1.52.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/farms/farms_1.52.0.tar.gz
+  - https://bioarchive.galaxyproject.org/farms_1.52.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-farms/bioconductor-farms_1.52.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('farms')"

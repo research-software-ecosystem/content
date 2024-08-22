@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/soedinglab/xxmotif
+  license: GPLv3
+  license_file: LICENSE
+  summary: eXhaustive, weight matriX-based motif discovery in nucleotide sequences
+build:
+  number: 4
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: xxmotif
+  version: 1.6
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  run: null
+source:
+  patches:
+  - fix-build.patch
+  sha256: 235eb8ad562c4757a549751bb290f443ff70c29a142edbff0f03440f097b61cb
+  url: https://github.com/soedinglab/xxmotif/archive/1.6.tar.gz
+test:
+  commands:
+  - test -f ${PREFIX}/bin/XXmotif

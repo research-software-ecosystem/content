@@ -1,0 +1,50 @@
+about:
+  description: The PLIER (Probe Logarithmic Error Intensity Estimate) method produces
+    an improved signal by accounting for experimentally observed patterns in probe
+    behavior and handling error at the appropriately at low and high signal values.
+  home: https://bioconductor.org/packages/3.18/bioc/html/plier.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Implements the Affymetrix PLIER algorithm
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:plier
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-plier
+    path: recipes/bioconductor-plier
+    version: 1.50.0
+package:
+  name: bioconductor-plier
+  version: 1.72.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: f16a09bf8bccc7f5596d55ed0577a593
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/plier_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/plier/plier_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/plier_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-plier/bioconductor-plier_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('plier')"

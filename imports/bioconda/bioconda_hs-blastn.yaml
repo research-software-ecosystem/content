@@ -1,0 +1,24 @@
+about:
+  home: https://github.com/chenying2016/queries
+  license: GPL-3.0
+  summary: hs-blastn, a fast and accurate nucleotide-nucleotide sequences aligner.
+build:
+  number: 5
+  skip: true
+package:
+  name: hs-blastn
+  version: 0.0.5
+requirements:
+  build:
+  - make
+  - None
+  run:
+  - blast
+source:
+  patches:
+  - 0001-Makefile-append-LDFLAGS.patch
+  sha256: 42b06355ae2fafc0ec511cef0b1e558e2ed9d56b46e8ef5e75446f7fbaf905b4
+  url: https://github.com/chenying2016/queries/archive/dd60e628155af28ccaf73a1f160561db0009df47.tar.gz
+test:
+  commands:
+  - hs-blastn align -h

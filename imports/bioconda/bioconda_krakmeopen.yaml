@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/danisven/KrakMeOpen
+  license: MIT
+  license_family: MIT
+  license_file: LICENCE
+  summary: A Kraken 2 downstream analysis toolkit. Calculate quality metrics for Kraken
+    2 classifications.
+build:
+  entry_points:
+  - krakmeopen=krakmeopen.krakmeopen:krakmeopen
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - danisven
+package:
+  name: krakmeopen
+  version: 0.1.5
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - pyyaml
+  - pandas
+  - stringmeup
+source:
+  sha256: f51f412652abe7fa7a04372d949bb238287c6745a85cb02c681b6a6e2ebfb199
+  url: https://github.com/danisven/KrakMeOpen/archive/v0.1.5.tar.gz
+test:
+  commands:
+  - krakmeopen --help

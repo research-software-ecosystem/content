@@ -1,0 +1,26 @@
+about:
+  home: https://sourceforge.net/projects/poamsa
+  license: GPLv2
+  summary: POA is Partial Order Alignment, a fast program for multiple sequence alignment
+    in bioinformatics. Its advantages are speed, scalability, sensitivity, and the
+    superior ability to handle branching / indels in the alignment.
+build:
+  number: 5
+  skip: true
+package:
+  name: poa
+  version: '2.0'
+requirements:
+  build:
+  - make
+  - None
+  run:
+  - blast-legacy
+source:
+  md5: 9e2eb270d4867114406f53dab1311b2b
+  patches:
+  - pscores.patch
+  url: https://downloads.sourceforge.net/project/poamsa/poamsa/2.0/poaV2.tar.gz
+test:
+  commands:
+  - poa 2>&1 | grep Usage > /dev/null

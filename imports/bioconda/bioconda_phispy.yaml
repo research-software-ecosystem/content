@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/linsalrob/PhiSpy/
+  doc_url: https://github.com/linsalrob/PhiSpy/blob/master/README.md
+  home: https://github.com/linsalrob/PhiSpy
+  license: MIT
+  license_family: MIT
+  summary: Prophage finder using multiple metrics
+build:
+  number: 6
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vv '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.5281/zenodo.3475717
+  recipe-maintainers:
+  - linsalrob
+package:
+  name: phispy
+  version: 4.2.21
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  run:
+  - biopython <=1.81
+  - numpy
+  - python
+  - hmmer
+  - scikit-learn
+  - bcbio-gff
+source:
+  sha256: 1dc3ec45c15328577557908517254d8e4ba152416f0e6bbad39e965b86730e28
+  url: https://pypi.io/packages/source/p/phispy/PhiSpy-4.2.21.tar.gz
+test:
+  commands:
+  - PhiSpy.py -v
+  imports:
+  - PhiSpyModules

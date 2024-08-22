@@ -1,0 +1,57 @@
+about:
+  home: https://CRAN.R-project.org/package=EZtune
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Contains two functions that are intended to make tuning supervised learning
+    methods easy. The eztune function uses a genetic algorithm or Hooke-Jeeves optimizer
+    to find the best set of tuning parameters. The user can choose the optimizer,
+    the learning method, and if optimization will be based on accuracy obtained through
+    validation error, cross validation, or resubstitution. The function eztune.cv
+    will compute a cross validated error rate. The purpose of eztune_cv is to provide
+    a cross validated accuracy or MSE when resubstitution or validation data are used
+    for optimization because error measures from both approaches can be misleading.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-eztune
+  version: 3.1.1
+requirements:
+  host:
+  - r-base
+  - bioconductor-biocstyle
+  - r-ga
+  - r-rocr
+  - r-ada
+  - r-e1071
+  - r-gbm
+  - r-glmnet
+  - r-optimx
+  - r-rpart
+  run:
+  - r-base
+  - bioconductor-biocstyle
+  - r-ga
+  - r-rocr
+  - r-ada
+  - r-e1071
+  - r-gbm
+  - r-glmnet
+  - r-optimx
+  - r-rpart
+source:
+  sha256: d3d57b42cb436b805fc066ea7e0eb25c164f51795c250eb23eaaf2b5dea29a69
+  url:
+  - /src/contrib/EZtune_3.1.1.tar.gz
+  - /src/contrib/Archive/EZtune/EZtune_3.1.1.tar.gz
+test:
+  commands:
+  - $R -e "library('EZtune')"

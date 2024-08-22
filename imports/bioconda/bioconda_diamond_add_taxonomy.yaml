@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/pvanheus/diamond_add_taxonomy
+  license: MIT
+  summary: Utility to work with NCBI taxonomy database including tool to annotate
+    DIAMOND results with taxonomy lineage
+build:
+  number: 0
+  script: ' -m pip install --no-deps . -vvv'
+  skip: true
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - pvanheus
+package:
+  name: diamond_add_taxonomy
+  version: 0.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - click
+  - ete3
+source:
+  sha256: b6ef999133e1299e9a4aeee0c944efa6ef62c941456a0426fb0e9477370c0aca
+  url: https://github.com/pvanheus/diamond_add_taxonomy/archive/0.1.2.tar.gz
+test:
+  commands:
+  - diamond_add_taxonomy --help |grep DIAMOND_OUTPUT_FILE >/dev/null 2>&1

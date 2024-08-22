@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/keyuan/ccube
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: R package for clustering and estimating cancer cell fractions (CCF) of
+    somatic variants (SNVs/SVs) from bulk whole genome/exome data.
+build:
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script: R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - tdido
+package:
+  name: r-ccube
+  version: 1.0_beta.1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - boost-cpp
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-matrix
+  - r-pracma
+  run:
+  - boost-cpp
+  - r-base
+  - r-dplyr
+  - r-foreach
+  - r-matrix
+  - r-pracma
+source:
+  sha256: 3b2f57e928b93bb0e9659b03635be796a2505e0d5885b5cfd5d1806fc3ffc739
+  url: https://github.com/keyuan/ccube/archive/v1.0_beta.1.tar.gz
+test:
+  commands:
+  - $R -e "library('ccube')"

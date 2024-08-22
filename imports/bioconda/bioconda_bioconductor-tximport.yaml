@@ -1,0 +1,45 @@
+about:
+  description: Imports transcript-level abundance, estimated counts and transcript
+    lengths, and summarizes into matrices for use with downstream gene-level analysis
+    packages. Average transcript length, weighted by sample-specific transcript abundance
+    estimates, is provided as a matrix which can be used as an offset for different
+    expression of gene-level counts.
+  home: https://bioconductor.org/packages/3.18/bioc/html/tximport.html
+  license: LGPL (>=2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Import and summarize transcript-level estimates for transcript- and gene-level
+    analysis
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:tximport
+  parent_recipe:
+    name: bioconductor-tximport
+    path: recipes/bioconductor-tximport
+    version: 1.8.0
+  recipe-maintainers:
+  - roryk
+package:
+  name: bioconductor-tximport
+  version: 1.30.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 8bbe549dafbf5b0dfe626f327910a893
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/tximport_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/tximport/tximport_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/tximport_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tximport/bioconductor-tximport_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('tximport')"

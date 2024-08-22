@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/blob/master/protect/README.md
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  summary: PROTECT determines the clinical evidence applicable for a particular tumor
+    sample based on all genomic events and signatures that are determined by the Hartwig
+    pipeline.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: hmftools-protect
+  version: '2.3'
+requirements:
+  run:
+  - zlib
+  - openjdk >=8
+source:
+  sha256: 4277f078f3b142e41e2c052b62c3e6f3eed4d416f1cbafd7925a4982846a6b61
+  url: https://github.com/hartwigmedical/hmftools/releases/download/protect-v2.3/protect.jar
+test:
+  commands:
+  - protect 2>&1 | grep -q "PROTECT"

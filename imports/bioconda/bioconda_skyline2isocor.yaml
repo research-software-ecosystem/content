@@ -1,0 +1,36 @@
+about:
+  home: https://pypi.org/project/skyline2isocor/
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Convert skyline output to IsoCor input format
+build:
+  entry_points:
+  - skyline2isocor = skyline2isocor.cli:start_cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - llegregam
+package:
+  name: skyline2isocor
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - pandas >=2.1.4,<3.0.0
+source:
+  sha256: b202927c63bd10693c5b423cc6a4bd93efcbac0fb0ab86d5a68fae69b026a6d2
+  url: https://pypi.io/packages/source/s/skyline2isocor/skyline2isocor-1.0.0.tar.gz
+test:
+  commands:
+  - skyline2isocor --help
+  imports:
+  - skyline2isocor

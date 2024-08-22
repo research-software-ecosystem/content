@@ -1,0 +1,23 @@
+about:
+  home: https://sourceforge.net/projects/helitronscanner
+  license: GPL-3.0-or-later
+  summary: HelitronScanner uncovers a large overlooked cache of Helitron transposons
+    in many genomes
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: helitronscanner
+  version: 1.0
+requirements:
+  run:
+  - openjdk
+source:
+  sha256: 936accf4a129bc36b38d10472a5b7295dd00f68cc275952e50fff9d9fa685815
+  url: https://sourceforge.net/projects/HelitronScanner/files/HelitronScanner_V1.0.zip
+test:
+  commands:
+  - HelitronScanner scanHead -Xmx2g --help | grep 'Scan for Helitron 5'
+  - cat "${HELITRONSCANNER_TRAININGSET_PATH}/head.lcvs" | grep 'TCCATAATA'

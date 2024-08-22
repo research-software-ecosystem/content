@@ -1,0 +1,43 @@
+about:
+  description: Laplace mixture modelling of microarray experiments. A hierarchical
+    Bayesian approach is used, and the hyperparameters are estimated using empirical
+    Bayes. The main purpose is to identify differentially expressed genes.
+  home: https://bioconductor.org/packages/3.18/bioc/html/lapmix.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Laplace Mixture Model in Microarray Experiments
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:lapmix
+  - doi:10.1093/biostatistics/kxj032
+  parent_recipe:
+    name: bioconductor-lapmix
+    path: recipes/bioconductor-lapmix
+    version: 1.46.0
+package:
+  name: bioconductor-lapmix
+  version: 1.68.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: 5d2611d1b39b06b05ed64ffab459a5a9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/lapmix_1.68.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/lapmix/lapmix_1.68.0.tar.gz
+  - https://bioarchive.galaxyproject.org/lapmix_1.68.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lapmix/bioconductor-lapmix_1.68.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lapmix')"

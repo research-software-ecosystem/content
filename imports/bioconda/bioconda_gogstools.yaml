@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/genouest/ogs-tools
+  doc_url: https://github.com/genouest/ogs-tools
+  home: https://github.com/genouest/ogs-tools
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: GenOuest tools for manipulating Official Gene Sets
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - abretaud
+package:
+  name: gogstools
+  version: 0.1.2
+requirements:
+  host:
+  - pip
+  - python ==3.10
+  run:
+  - python ==3.10
+  - bedops ==2.4.39
+  - bedtools
+  - gffread
+  - bcbio-gff
+source:
+  sha256: 8fd83e481de68a9f7280a612043a72e851c102cca6536e12be4bf1dc7a008404
+  url: https://pypi.io/packages/source/g/gogstools/gogstools-0.1.2.tar.gz
+test:
+  commands:
+  - ogs_check -h
+  - ogs_merge -h

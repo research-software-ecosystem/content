@@ -1,0 +1,53 @@
+about:
+  description: Harman is a PCA and constrained optimisation based technique that maximises
+    the removal of batch effects from datasets, with the constraint that the probability
+    of overcorrection (i.e. removing genuine biological signal along with batch noise)
+    is kept to a fraction which is set by the end-user.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Harman.html
+  license: GPL-3 + file LICENCE
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: The removal of batch effects from datasets using a PCA and constrained
+    optimisation based technique
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:harman
+  parent_recipe:
+    name: bioconductor-harman
+    path: recipes/bioconductor-harman
+    version: 1.8.0
+package:
+  name: bioconductor-harman
+  version: 1.30.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-ckmeans.1d.dp
+  - r-matrixstats
+  - r-rcpp >=0.11.2
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-ckmeans.1d.dp
+  - r-matrixstats
+  - r-rcpp >=0.11.2
+source:
+  md5: aaec4256c0cb2949d553ff81d94e48d2
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Harman_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Harman/Harman_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Harman_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-harman/bioconductor-harman_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Harman')"

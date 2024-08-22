@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/mhalushka/miRge3_build/
+  doc_source_url: https://github.com/mhalushka/miRge3_build/blob/main/README.rst
+  doc_url: https://mirge-build.readthedocs.io/
+  home: https://github.com/mhalushka/miRge3_build
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'miRge-build: Building libraries of small RNA sequencing Data'
+build:
+  entry_points:
+  - miRge-build = mirge_build.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - arunhpatil
+  - mhalushka
+package:
+  name: mirge-build
+  version: 0.0.1
+requirements:
+  host:
+  - biopython ==1.77
+  - pip
+  - python >=3.6
+  - scikit-learn ==0.23.1
+  - scipy ==1.4.1
+  run:
+  - biopython ==1.77
+  - python
+  - scikit-learn ==0.23.1
+  - scipy ==1.4.1
+  - bowtie ==1.2.3
+source:
+  sha256: 69ca866bad6bbff57030f36e411a9bd8e72133ff552f262f03d508820f035109
+  url: https://pypi.io/packages/source/m/miRge-build/miRge-build-0.0.1.tar.gz
+test:
+  commands:
+  - miRge-build --help
+  imports:
+  - mirge_build
+  - mirge_build.blibs

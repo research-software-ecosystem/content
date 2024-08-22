@@ -1,0 +1,27 @@
+about:
+  home: https://github.com/firecat53/tabview
+  license: MIT License
+  summary: A curses command-line CSV and list (tabular data) viewer
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: tabview
+  version: 1.4.3
+requirements:
+  host:
+  - python
+  - setuptools
+  - ncurses
+  run:
+  - python
+  - ncurses
+source:
+  sha256: 48a5dd0c2658cd34c2aa6a89e50eea32754bebc45b38cacba762b212a13cce98
+  url: https://files.pythonhosted.org/packages/84/10/3ba8c474cfda857cb01b1e28b38de86dec2f35fa434cc0315727fb290f79/tabview-1.4.3.tar.gz
+test:
+  commands:
+  - tabview -h > /dev/null || [[ "$?" == 2 ]]
+  imports:
+  - tabview

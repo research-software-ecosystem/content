@@ -1,0 +1,30 @@
+about:
+  home: http://statistical-genetics.pages.pasteur.fr/jass_preprocessing/
+  license: MIT
+  license_family: MIT
+  summary: Harmonizing raw GWAS summary statistic for further analysis with jass
+build:
+  entry_points:
+  - jass_preprocessing=jass_preprocessing.__main__:main
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed -vv .
+package:
+  name: jass_preprocessing
+  version: 2.2
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - scipy
+  - numpy
+  - seaborn
+  - pandas
+source:
+  sha256: 55ece9c6d3b9fd5b5db28c2524365b2bf29f96ae34583acc62dbe84ec83bfa20
+  url: https://gitlab.pasteur.fr/statistical-genetics/jass_preprocessing/-/archive/2.2/jass_preprocessing-2.2.tar.gz
+test:
+  commands:
+  - jass_preprocessing --help

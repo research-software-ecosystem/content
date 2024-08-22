@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/ddarriba/modeltest
+  doc_url: https://github.com/ddarriba/modeltest/wiki
+  home: https://github.com/ddarriba/modeltest
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: ModelTest-NG is a tool for selecting the best-fit model of evolution for
+    DNA and protein alignments.
+build:
+  number: 2
+extra:
+  identifiers:
+  - doi:10.1093/molbev/msz189
+  - doi:10.1093/sysbio/syu084
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: modeltest-ng
+  version: 0.1.7
+requirements:
+  build:
+  - make
+  - None
+  - flex
+  - bison 3.4
+  - cmake
+  host:
+  - openmpi
+  run:
+  - openmpi
+source:
+  git_rev: v0.1.7
+  git_url: https://github.com/ddarriba/modeltest
+test:
+  commands:
+  - modeltest-ng --help
+  - modeltest-ng-mpi --help

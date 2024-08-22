@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/DiltheyLab/HLA-LA
+  license: GPL
+  summary: HLA typing from short and long reads
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - biotools:hla-la
+package:
+  name: hla-la
+  version: 1.0.4
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  - boost-cpp ==1.74.00
+  - bamtools ==2.5.1
+  - perl-bio-db-hts
+  - perl-bioperl
+  - perl-bioperl-core
+  - perl-bio-featureio
+  - perl-text-levenshtein
+  - perl-list-moreutils
+  run:
+  - boost-cpp ==1.74.00
+  - bamtools ==2.5.1
+  - samtools >=1.10
+  - r-base =4
+  - picard
+  - bwa ==0.7.12
+  - mummer
+  - perl-bio-db-hts
+  - perl-bioperl
+  - perl-bioperl-core
+  - perl-bio-featureio
+  - perl-text-levenshtein
+  - perl-list-moreutils
+source:
+  folder: src
+  sha256: 6a6c28bbee6256fde1b845d23f5d21589e1b83b1c4c2aceb6309bc65a3284ea7
+  url: https://github.com/DiltheyLab/HLA-LA/archive/v1.0.4.tar.gz
+test:
+  commands:
+  - HLA-LA.pl --testing 1
+  - HLA-ASM.pl --testing 1

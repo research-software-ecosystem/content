@@ -1,0 +1,59 @@
+about:
+  description: For scRNA-seq data, it selects features and clusters the cells simultaneously
+    for single-cell UMI data. It has a novel feature selection method using the zero
+    inflation instead of gene variance, and computationally faster than other existing
+    methods since it only relies on PCA+Kmeans rather than graph-clustering or consensus
+    clustering.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HIPPO.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Heterogeneity-Induced Pre-Processing tOol
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-hippo
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-dplyr
+  - r-ggplot2
+  - r-ggrepel
+  - r-gridextra
+  - r-irlba
+  - r-magrittr
+  - r-matrix
+  - r-reshape2
+  - r-rlang
+  - r-rtsne
+  - r-umap
+  run:
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - r-base
+  - r-dplyr
+  - r-ggplot2
+  - r-ggrepel
+  - r-gridextra
+  - r-irlba
+  - r-magrittr
+  - r-matrix
+  - r-reshape2
+  - r-rlang
+  - r-rtsne
+  - r-umap
+source:
+  md5: 6c249e5f8b3f2a0622642c945e8d0566
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HIPPO_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HIPPO/HIPPO_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HIPPO_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hippo/bioconductor-hippo_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HIPPO')"

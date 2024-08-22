@@ -1,0 +1,63 @@
+about:
+  home: https://github.com/chrisquince/DESMAN
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: De novo Extraction of Strains from MetAgeNomes
+build:
+  number: 9
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vv
+extra:
+  identifiers:
+  - doi:10.1186/s13059-017-1309-9
+  skip-lints:
+  - uses_setuptools
+  - cython_must_be_in_host
+package:
+  name: desman
+  version: 2.1
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - setuptools
+  - cython >=0.19.1
+  - numpy
+  - numpy >=1.7.1
+  - gsl
+  - pandas >=0.11.0
+  - scipy >=0.12.0
+  run:
+  - python
+  - setuptools
+  - bcbio-gff
+  - biopython
+  - pysam
+  - cython>=0.19.1
+  - scipy >=0.12.0
+  - None
+  - pandas >=0.11.0
+  - scikit-learn
+  - gsl
+  - r-getopt
+  - r-ggplot2 >=2.2.2
+  - r-reshape >=0.8.7
+  - r-labeling
+source:
+  sha256: 3bca35dcabf1ce540ea053aaae459971b1ea9a1300d0b544002f50873d6347a2
+  url: https://github.com/chrisquince/DESMAN/archive/v2.1.tar.gz
+test:
+  commands:
+  - desman -h
+  - CalcDelta.py -h
+  - Lengths.py -h
+  - Variant_Filter.py -h
+  - ExtractGenes.py -h
+  - CalcGeneCov.py -h
+  - GeneAssign.py -h
+  - python -c "import desman"
+  - python -c "import sampletau"

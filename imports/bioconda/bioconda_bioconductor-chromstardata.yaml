@@ -1,0 +1,38 @@
+about:
+  description: ChIP-seq data for demonstration purposes in the chromstaR package.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/chromstaRData.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: ChIP-seq data for Demonstration Purposes
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-chromstardata
+    path: recipes/bioconductor-chromstardata
+    version: 1.6.0
+package:
+  name: bioconductor-chromstardata
+  version: 1.28.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 7f4a965a6b5aa71874a5cca39046cabf
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/chromstaRData_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/chromstaRData/chromstaRData_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/chromstaRData_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chromstardata/bioconductor-chromstardata_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('chromstaRData')"

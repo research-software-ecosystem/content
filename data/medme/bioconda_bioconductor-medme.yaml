@@ -1,0 +1,50 @@
+about:
+  description: MEDME allows the prediction of absolute and relative methylation levels
+    based on measures obtained by MeDIP-microarray experiments
+  home: https://bioconductor.org/packages/3.18/bioc/html/MEDME.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Modelling Experimental Data from MeDIP Enrichment
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:medme
+  - doi:10.1101/gr.080721.108
+  parent_recipe:
+    name: bioconductor-medme
+    path: recipes/bioconductor-medme
+    version: 1.40.0
+package:
+  name: bioconductor-medme
+  version: 1.62.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-drc
+  - r-mass
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - r-base
+  - r-drc
+  - r-mass
+source:
+  md5: 03868c2e2f04af9c9f33d48cc6abed08
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/MEDME_1.62.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/MEDME/MEDME_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MEDME_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-medme/bioconductor-medme_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MEDME')"

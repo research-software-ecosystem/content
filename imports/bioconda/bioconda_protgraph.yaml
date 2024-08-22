@@ -1,0 +1,66 @@
+about:
+  home: https://github.com/mpc-bioinformatics/ProtGraph
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: ProtGraph, a graph generator for proteins.
+build:
+  entry_points:
+  - protgraph=protgraph.protgraph:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - Luxxii
+package:
+  name: protgraph
+  version: 0.3.10
+requirements:
+  host:
+  - biopython
+  - mysql-connector-python
+  - networkx
+  - pip
+  - python >=3.6
+  - tqdm
+  - aenum
+  - isodate
+  - wcwidth
+  - importlib_metadata
+  - redis-py
+  - prettytable
+  - python-igraph
+  - texttable
+  - gremlinpython
+  - redisgraph-py
+  run:
+  - biopython
+  - mysql-connector-python
+  - networkx
+  - cassandra-driver
+  - python >=3.6
+  - tqdm
+  - aenum
+  - isodate
+  - wcwidth
+  - importlib_metadata
+  - redis-py
+  - prettytable
+  - python-igraph
+  - texttable
+  - gremlinpython
+  - redisgraph-py
+source:
+  sha256: 52d0449eea53c8f113d1287fd5f40e837bf3bd6ed13193974fbd0c3bd358f800
+  url: https://pypi.io/packages/source/p/protgraph/protgraph-0.3.10.tar.gz
+test:
+  commands:
+  - protgraph --help
+  imports:
+  - protgraph
+  - protgraph.export
+  - protgraph.export.peptides
+  - protgraph.ft_execution

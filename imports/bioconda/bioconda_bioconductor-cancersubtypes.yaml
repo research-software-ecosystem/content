@@ -1,0 +1,56 @@
+about:
+  description: CancerSubtypes integrates the current common computational biology
+    methods for cancer subtypes identification and provides a standardized framework
+    for cancer subtype analysis based multi-omics data, such as gene expression, miRNA
+    expression, DNA methylation and others.
+  home: https://bioconductor.org/packages/3.17/bioc/html/CancerSubtypes.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Cancer subtypes identification, validation and visualization based on multiple
+    genomic data sets
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - biotools:cancersubtypes
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-cancersubtypes
+    path: recipes/bioconductor-cancersubtypes
+    version: 1.6.0
+package:
+  name: bioconductor-cancersubtypes
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-consensusclusterplus >=1.64.0,<1.65.0
+  - bioconductor-impute >=1.74.0,<1.75.0
+  - bioconductor-limma >=3.56.0,<3.57.0
+  - r-base
+  - r-cluster
+  - r-nmf
+  - r-sigclust
+  - r-survival
+  run:
+  - bioconductor-consensusclusterplus >=1.64.0,<1.65.0
+  - bioconductor-impute >=1.74.0,<1.75.0
+  - bioconductor-limma >=3.56.0,<3.57.0
+  - r-base
+  - r-cluster
+  - r-nmf
+  - r-sigclust
+  - r-survival
+source:
+  md5: 60441ccfd99126a3727c0621d087d526
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/CancerSubtypes_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/CancerSubtypes/CancerSubtypes_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CancerSubtypes_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cancersubtypes/bioconductor-cancersubtypes_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CancerSubtypes')"

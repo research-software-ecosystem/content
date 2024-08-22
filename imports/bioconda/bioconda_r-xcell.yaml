@@ -1,0 +1,68 @@
+about:
+  description: '"Tissues are a complex milieu consisting of numerous cell types. In
+    cancer, understanding the cellular heterogeneity in the tumor microenvironment
+    is an emerging field of research. Numerous methods have been published in recent
+    years for the enumeration of cell subsets from tissue expression profiles. However,
+    the available methods suffer from three major problems: inferring cell subset
+    based on gene sets learned and verified from limited sources; displaying only
+    partial portrayal of the full cellular heterogeneity; and insufficient validation
+    in mixed tissues. The xCell package performs cell type enrichment analysis from
+    gene expression data for 64 immune and stroma cell types. xCell is a gene signatures-based
+    method learned from thousands of pure cell types from various sources. xCell applies
+    a novel technique for reducing associations between closley related cell types.
+    xCell signatures were validated using extensive in-silico simulations and also
+    cytometry immunophenotyping, and were shown to outperform previous methods. xCell
+    allows researchers to reliably portray the cellular heterogeneity landscape of
+    tissue expression profiles."
+
+    '
+  home: https://github.com/dviraran/xCell
+  license: GPL-3
+  license_family: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Estimate immune cell proportions from gene expression data
+build:
+  number: 6
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script: $R CMD INSTALL --build .
+extra:
+  identifiers:
+  - doi:10.1186/s13059-017-1349-1
+  recipe-maintainers:
+  - grst
+  - dviraran
+package:
+  name: r-xcell
+  version: 1.3
+requirements:
+  build:
+  - None
+  host:
+  - r-base
+  - r-roxygen2
+  - r-mass
+  - bioconductor-gsva
+  - bioconductor-gseabase
+  - r-pracma
+  - r-digest
+  - r-quadprog
+  - r-curl
+  run:
+  - r-base >=3.1.0
+  - r-roxygen2
+  - r-mass
+  - bioconductor-gsva
+  - bioconductor-gseabase
+  - r-pracma
+  - r-digest
+  - r-quadprog
+  - r-curl
+source:
+  sha256: 9fc97603366f5ee318bc602beda60c6836bff7668bcb7a436bfc3af3cb919e44
+  url:
+  - https://github.com/dviraran/xCell/archive/1.3.tar.gz
+test:
+  commands:
+  - $R -e "library('xCell')"

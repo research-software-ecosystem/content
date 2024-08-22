@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/PMBio/peer
+  license: GPL-2.0-or-later
+  license_file:
+  - LICENSE
+  - External/yaml-cpp/license.txt
+  summary: A collection of Bayesian approaches to infer hidden determinants and their
+    effects from gene expression profiles using factor analysis methods
+build:
+  number: 0
+  run_exports:
+  - None
+package:
+  name: peer
+  version: 1.3
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+source:
+  patches:
+  - patches/0001-Comment-out-SWIG-package-search.patch
+  sha256: 80a549354569ae5ec7d4d92c78e7f8fa72da08fcd11322611f737044c34861ed
+  url: https://github.com/PMBio/peer/archive/40bc4b2cd92459ce42f44dfe279717436395f3f6.tar.gz
+test:
+  commands:
+  - peertool --help | grep -q USAGE

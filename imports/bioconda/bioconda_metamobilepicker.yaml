@@ -1,0 +1,40 @@
+about:
+  doc_url: https://metamobilepicker.nl
+  home: https://gitlab.com/jkerkvliet/metamobilepicker
+  license: MIT
+  license_file: LICENSE
+  summary: 'MetaMobilePicker: identification of MGEs and ARGs based in metagenomic
+    samples'
+build:
+  noarch: python
+  number: 0
+  script:
+  - ' -m pip install . --ignore-installed --no-deps'
+package:
+  name: metamobilepicker
+  version: 0.7.3
+requirements:
+  host:
+  - python >=3.10
+  - setuptools
+  - setuptools_scm
+  - setuptools_scm_git_archive
+  - pip
+  run:
+  - python >=3.10
+  - snakemake ==7.8.5
+  - mamba
+  - click
+  - pyyaml
+  - biopython
+  - rich
+  - tabulate ==0.8.10
+  - setuptools_scm_git_archive
+  - setuptools
+source:
+  sha256: e3833c3ce53f43545a80c674f1c3b84c570b4db9c350efcf90ccee0f3e50f61f
+  url: https://gitlab.com/jkerkvliet/MetaMobilePicker/-/archive/v0.7.3/MetaMobilePicker-v0.7.3.tar.gz
+test:
+  commands:
+  - python -m MetaMobilePicker.metamobilepicker --version
+  - metamobilepicker run --help

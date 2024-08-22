@@ -1,0 +1,46 @@
+about:
+  description: A set of annotation maps describing the entire Gene Ontology assembled
+    using data from PANTHER.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/PANTHER.db.html
+  license: Artistic-2.0
+  summary: A set of annotation maps describing the entire PANTHER Gene Ontology
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-panther.db
+    path: recipes/bioconductor-panther.db
+    version: 1.0.4
+package:
+  name: bioconductor-panther.db
+  version: 1.0.12
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - r-base
+  - r-rsqlite
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-annotationhub >=3.10.0,<3.11.0
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - r-base
+  - r-rsqlite
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: edafd1c94f2f1cf3975f525fae7a9b83
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/PANTHER.db_1.0.12.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/PANTHER.db/PANTHER.db_1.0.12.tar.gz
+  - https://bioarchive.galaxyproject.org/PANTHER.db_1.0.12.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-panther.db/bioconductor-panther.db_1.0.12_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PANTHER.db')"

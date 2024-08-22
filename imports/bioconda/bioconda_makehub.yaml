@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Gaius-Augustus/MakeHub
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: MakeHub is a command line tool for the fully automatic generation of of
+    track data hubs for visualizing genomes with the UCSC genome browser.
+build:
+  noarch: generic
+  number: 0
+  script: mkdir -p ${PREFIX}/bin; chmod +x make_hub.py; cp make_hub.py ${PREFIX}/bin/
+package:
+  name: makehub
+  version: 1.0.8
+requirements:
+  run:
+  - python >=3.8
+  - biopython
+  - samtools
+  - augustus >=3.5.0
+  - ucsc-bedtobigbed
+  - ucsc-genepredcheck
+  - ucsc-fatotwobit
+  - ucsc-gtftogenepred
+  - ucsc-hggcpercent
+  - ucsc-ixixx
+  - ucsc-twobitinfo
+  - ucsc-wigtobigwig
+  - ucsc-genepredtobed
+  - ucsc-genepredtobiggenepred
+source:
+  patch:
+  - patch
+  sha256: 0b4c2ccba430139b09ffa9c07205496f1d548bc8b2d51c0691e5024031147407
+  url: https://github.com/Gaius-Augustus/MakeHub/archive/refs/tags/1.0.8.tar.gz
+test:
+  commands:
+  - make_hub.py --help

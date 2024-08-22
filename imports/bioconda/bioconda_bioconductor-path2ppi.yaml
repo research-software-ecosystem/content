@@ -1,0 +1,46 @@
+about:
+  description: Package to predict protein-protein interaction (PPI) networks in target
+    organisms for which only a view information about PPIs is available. Path2PPI
+    predicts PPI networks based on sets of proteins which can belong to a certain
+    pathway from well-established model organisms. It helps to combine and transfer
+    information of a certain pathway or biological process from several reference
+    organisms to one target organism. Path2PPI only depends on the sequence similarity
+    of the involved proteins.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Path2PPI.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Prediction of pathway-related protein-protein interaction networks
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:path2ppi
+  parent_recipe:
+    name: bioconductor-path2ppi
+    path: recipes/bioconductor-path2ppi
+    version: 1.10.0
+package:
+  name: bioconductor-path2ppi
+  version: 1.32.0
+requirements:
+  host:
+  - r-base
+  - r-igraph >=1.0.1
+  run:
+  - r-base
+  - r-igraph >=1.0.1
+source:
+  md5: 4fcd4d73b05e2167ecdfb79aadfe8722
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Path2PPI_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Path2PPI/Path2PPI_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Path2PPI_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-path2ppi/bioconductor-path2ppi_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Path2PPI')"

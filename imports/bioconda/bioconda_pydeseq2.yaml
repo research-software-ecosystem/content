@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/owkin/PyDESeq2
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A python implementation of DESeq2.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  identifiers:
+  - doi:10.1101/2022.12.14.520412
+package:
+  name: pydeseq2
+  version: 0.4.10
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - anndata >=0.8.0
+  - jupyter
+  - ipython
+  - numpy >=1.23.0
+  - pandas >=1.4.0
+  - scikit-learn >=1.1.0
+  - scipy >=1.11.0
+  - matplotlib-base >=3.6.2
+source:
+  sha256: 8a296938c565035f2c219c870d8e0138e699d71b30f2add04a647b4fbd0b8b6a
+  url: https://pypi.io/packages/source/p/pydeseq2/pydeseq2-0.4.10.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - pydeseq2
+  requires:
+  - pip

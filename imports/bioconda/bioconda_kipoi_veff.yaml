@@ -1,0 +1,74 @@
+about:
+  description: 'kipoi_veff: variant effect prediction plugin for Kipoi'
+  doc_url: https://kipoi.org/veff-docs/
+  home: https://github.com/kipoi/kipoi-veff
+  license: MIT license
+  license_family: MIT
+  summary: 'kipoi_veff: variant effect prediction plugin for Kipoi'
+build:
+  noarch: python
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - Avsecz
+package:
+  name: kipoi_veff
+  version: 0.3.1
+requirements:
+  build:
+  - python
+  - setuptools
+  - kipoi >=0.5.5
+  - pyvcf
+  - cyvcf2
+  - pybedtools
+  - pysam
+  - intervaltree
+  - deepdish
+  - matplotlib
+  - seaborn
+  - shapely
+  - descartes
+  - future
+  - numpy
+  - pandas
+  - tqdm
+  - colorlog
+  - cookiecutter
+  - h5py
+  - urllib3 >=1.21.1,<1.23
+  run:
+  - python
+  - kipoi >=0.5.5
+  - kipoi-utils
+  - pyvcf
+  - cyvcf2
+  - pybedtools
+  - pysam
+  - intervaltree
+  - deepdish
+  - matplotlib
+  - seaborn
+  - shapely
+  - descartes
+  - future
+  - numpy
+  - pandas
+  - tqdm
+  - colorlog
+  - cookiecutter
+  - h5py
+  - urllib3 >=1.21.1,<1.23
+source:
+  sha256: bf439ab4a8363439f0bf87572714a3b2f15615aa50cea83313c87e7181487b2a
+  url: https://pypi.io/packages/source/k/kipoi_veff/kipoi_veff-0.3.1.tar.gz
+test:
+  commands:
+  - kipoi veff --help
+  imports:
+  - kipoi_veff
+  - kipoi_veff.external
+  - kipoi_veff.external.concise
+  - kipoi_veff.utils
+  requires: null

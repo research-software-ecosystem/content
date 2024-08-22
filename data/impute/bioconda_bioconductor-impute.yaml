@@ -1,0 +1,46 @@
+about:
+  description: Imputation for microarray data (currently KNN only)
+  home: https://bioconductor.org/packages/3.18/bioc/html/impute.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: 'impute: Imputation for microarray data'
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:impute
+  - doi:10.1007/978-3-642-57489-4_7
+  parent_recipe:
+    name: bioconductor-impute
+    path: recipes/bioconductor-impute
+    version: 1.54.0
+package:
+  name: bioconductor-impute
+  version: 1.76.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 8e974dcc31c3507ebcc8984b2d7943f9
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/impute_1.76.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/impute/impute_1.76.0.tar.gz
+  - https://bioarchive.galaxyproject.org/impute_1.76.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-impute/bioconductor-impute_1.76.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('impute')"

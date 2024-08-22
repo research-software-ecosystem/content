@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/DISCASM/DISCASM
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: DISCASM aims to extract reads that map to reference genomes in a discordant
+    fashion and optionally include reads that do not map to the genome at all, and
+    perform a de novo transcriptome assembly of these reads. DISCASM relies on the
+    output from STAR (as run via STAR-Fusion), and supports de novo transcriptome
+    assembly using Trinity or Oases. - https://github.com/DISCASM/DISCASM/wiki
+build:
+  noarch: generic
+  number: 1
+package:
+  name: discasm
+  version: 0.1.3
+requirements:
+  run:
+  - python <3
+  - pysam >=0.10.0
+  - perl
+  - star >=2.4
+  - trinity >=2.4
+  - oases >=0.2
+source:
+  md5: d65e4d002a0f3b557fe305ee6ef0ec8d
+  url: https://github.com/DISCASM/DISCASM/archive/DISCASM-v0.1.3.tar.gz
+test:
+  commands:
+  - DISCASM --help 2>&1
+  - '$PREFIX/share/discasm-0.1.3-1/util/retrieve_SF_chimeric_and_unmapped_reads.py
+    --help 2>&1 | grep "usage" '
+  - '$PREFIX/share/discasm-0.1.3-1/util/retrieve_SF_chimeric_reads.py --help 2>&1
+    | grep "usage" '
+  - '$PREFIX/share/discasm-0.1.3-1/util/run_OASES_multiK.pl --help 2>&1 | grep "#############################" '
+  - '$PREFIX/share/discasm-0.1.3-1/util/run_OASES.pl --help 2>&1 | grep "usage" '

@@ -1,0 +1,36 @@
+about:
+  description: A sequence-read simulator program for NGS
+  home: https://github.com/guillaume-gricourt/HmnRandomRead
+  license: MIT
+  license_file: LICENSE
+  summary: A sequence-read simulator program for NGS
+build:
+  number: 3
+  skip: true [osx]
+extra:
+  recipe-maintainers:
+  - guillaume-gricourt
+package:
+  name: hmnrandomread
+  version: 0.10.0
+requirements:
+  build:
+  - make
+  - None
+  - htslib
+  host:
+  - htslib
+  run:
+  - python
+  - pytest
+  - htslib
+source:
+  sha256: dc589ef91be1a4c5694aad3e34a4cd0b1818c131b03153e76634f01ed0719854
+  url: https://github.com/guillaume-gricourt/HmnRandomRead/archive/0.10.0.tar.gz
+test:
+  commands:
+  - which HmnRandomRead
+  requires:
+  - make
+  source_files:
+  - Makefile

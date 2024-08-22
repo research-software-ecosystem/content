@@ -1,0 +1,46 @@
+about:
+  description: "Deep learning for Metagenome Assembly Error Detection\n See README\
+    \ for more information."
+  dev_url: https://github.com/leylabmpi/DeepMAsED
+  doc_url: https://github.com/leylabmpi/DeepMAsED
+  home: https://github.com/leylabmpi/DeepMAsED
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Deep learning for Metagenome Assembly Error Detection
+build:
+  entry_points:
+  - DeepMAsED = DeepMAsED.__main__:main
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: deepmased
+  version: 0.3.1
+requirements:
+  host:
+  - python >=3.6
+  - setuptools
+  - pip
+  - numpy
+  run:
+  - python >=3.6
+  - numpy >=1.17.0
+  - scipy >=1.3.1
+  - tensorflow >=2.0
+  - tensorboard
+  - keras
+  - scikit-learn
+  - ipython
+  - pysam
+  - snakemake
+source:
+  sha256: f5e4015e416904b13cf3a93c49cffff9567b387bc97596521cb9b585d3106421
+  url: https://pypi.io/packages/source/D/DeepMAsED/DeepMAsED-0.3.1.tar.gz
+test:
+  commands:
+  - DeepMAsED --help
+  imports:
+  - DeepMAsED
+  - DeepMAsED.Commands
+  - tests

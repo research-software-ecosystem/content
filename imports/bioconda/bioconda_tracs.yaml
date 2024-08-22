@@ -1,0 +1,57 @@
+about:
+  doc_url: https://github.com/gtonkinhill/tracs/tree/main/docs
+  home: https://github.com/gtonkinhill/tracs
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Tracs - Fast pairwise transmission inference from single genome and/or
+    metagenomic data
+build:
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+package:
+  name: tracs
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python >=3.12
+  - pip
+  - pybind11
+  - boost-cpp
+  - zlib
+  - llvm-openmp
+  run:
+  - python >=3.12
+  - numpy
+  - pandas
+  - sourmash
+  - joblib
+  - ncbi-genome-download
+  - pyfastx
+  - tqdm
+  - scipy
+  - plotly
+  - samtools
+  - htsbox
+  - minimap2
+source:
+  sha256: 8950cf46bf53160b03c639cf9c1aaca43e506ac60b081d3ba7ee0a3b61c800f9
+  url: https://github.com/gtonkinhill/tracs/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - tracs --help
+  - tracs --version
+  - tracs align --help
+  - tracs combine --help
+  - tracs distance --help
+  - tracs threshold --help
+  - tracs cluster --help
+  - tracs build-db --help
+  - tracs pipe --help
+  imports:
+  - tracs

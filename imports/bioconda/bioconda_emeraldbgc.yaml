@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Finn-Lab/emeraldBGC
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: SMBGC detection tool
+build:
+  entry_points:
+  - emeraldbgc = emeraldbgc._cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --no-deps'
+package:
+  name: emeraldbgc
+  version: 0.2.4.1
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - perl >=5
+  - biopython
+  - numpy >=1.16,<1.20
+  - openjdk >=11.0
+  - tensorflow =2.4
+  - hmmer
+  - joblib >=1.0.1
+  - scikit-learn =0.24
+  - prodigal
+source:
+  sha256: ca1157a4c2f3b6d6302a6bc4f4d363af8914e4b1987a564a04c71f00ff3e4ae0
+  url: https://github.com/Finn-Lab/emeraldBGC/archive/refs/tags/v0.2.4.1.tar.gz
+test:
+  commands:
+  - emeraldbgc --help > /dev/null
+  imports:
+  - emeraldbgc

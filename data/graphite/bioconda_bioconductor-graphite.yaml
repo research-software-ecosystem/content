@@ -1,0 +1,51 @@
+about:
+  description: Graph objects from pathway topology derived from KEGG, Panther, PathBank,
+    PharmGKB, Reactome SMPDB and WikiPathways databases.
+  home: https://bioconductor.org/packages/3.18/bioc/html/graphite.html
+  license: AGPL-3
+  license_file: /lib/R/share/licenses/AGPL-3
+  summary: GRAPH Interaction from pathway Topological Environment
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:graphite
+  parent_recipe:
+    name: bioconductor-graphite
+    path: recipes/bioconductor-graphite
+    version: 1.26.3
+package:
+  name: bioconductor-graphite
+  version: 1.48.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-httr
+  - r-purrr
+  - r-rappdirs
+  - r-rlang
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - r-base
+  - r-httr
+  - r-purrr
+  - r-rappdirs
+  - r-rlang
+source:
+  md5: 532e304cdb96a828c4b764bfd36cce85
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/graphite_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/graphite/graphite_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/graphite_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-graphite/bioconductor-graphite_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('graphite')"

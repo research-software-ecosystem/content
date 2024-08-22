@@ -1,0 +1,63 @@
+about:
+  description: Implements topological gene set analysis using a two-step empirical
+    approach. It exploits graph decomposition theory to create a junction tree and
+    reconstruct the most relevant signal path. In the first step clipper selects significant
+    pathways according to statistical tests on the means and the concentration matrices
+    of the graphs derived from pathway topologies. Then, it "clips" the whole pathway
+    identifying the signal paths having the greatest association with a specific phenotype.
+  home: https://bioconductor.org/packages/3.18/bioc/html/clipper.html
+  license: AGPL-3.0-only
+  license_file: /lib/R/share/licenses/AGPL-3
+  summary: Gene Set Analysis Exploiting Pathway Topology
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:clipper
+package:
+  name: bioconductor-clipper
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-qpgraph >=2.36.0,<2.37.0
+  - r-base
+  - r-corpcor
+  - r-grbase >=1.6.6
+  - r-igraph
+  - r-matrix
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-qpgraph >=2.36.0,<2.37.0
+  - r-base
+  - r-corpcor
+  - r-grbase >=1.6.6
+  - r-igraph
+  - r-matrix
+  - r-rcpp
+source:
+  md5: 551f3c6ad3a56f2a70439f48a4aef431
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/clipper_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/clipper/clipper_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/clipper_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-clipper/bioconductor-clipper_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('clipper')"

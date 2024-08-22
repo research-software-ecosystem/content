@@ -1,0 +1,26 @@
+about:
+  home: https://skyline.ms/project/home/software/BiblioSpec/begin.view?
+  license: Apache 2.0
+  summary: The BiblioSpec Spetral Library tool suite
+build:
+  number: 2
+  script: bash -c "./quickbuild.sh -j address-model=64 runtime-link=shared pwiz_tools/BiblioSpec
+    && cp build-linux-x86_64/gcc-release-x86_64/* $PREFIX/bin"
+  skip: true
+extra:
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: bibliospec
+  version: 1.0
+requirements:
+  build:
+  - None
+  run: null
+source:
+  git_rev: 3901730503509f61058e11a7ca530138beb0cdfb
+  git_url: https://github.com/ProteoWizard/pwiz.git
+test:
+  commands:
+  - BlibSearch -h

@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/visze/seqiolib
+  doc_url: https://github.com/visze/seqiolib
+  home: https://github.com/visze/seqiolib
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Library to read, write sequence, variants, regions to use them for training
+    of machine learning algorithms.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - visze
+package:
+  name: seqiolib
+  version: 0.2.4
+requirements:
+  host:
+  - pip
+  - python >=3
+  - pytest-runner
+  run:
+  - numpy
+  - pyfaidx
+  - python >=3
+  - tensorflow
+source:
+  sha256: 7d6669d48e59f0e186371e86097847f2ec78b3d9ea5bd10faf51dd5488bbf708
+  url: https://pypi.io/packages/source/s/seqiolib/seqiolib-0.2.4.tar.gz
+test:
+  imports:
+  - seqiolib
+  - seqiolib.utils
+  requires:
+  - pytest >=3

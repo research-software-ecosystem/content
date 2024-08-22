@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/hall-lab/extract_sv_reads
+  license: MIT
+  summary: Tool for extracting splitter or discordant reads from a BAM or CRAM file.
+build:
+  number: 5
+  skip: true
+package:
+  name: extract-sv-reads
+  version: 1.3.0
+requirements:
+  build:
+  - make
+  - None
+  - cmake
+  host:
+  - perl
+  - htslib 1.9.*
+  - boost-cpp
+  run:
+  - htslib 1.9.*
+  - boost-cpp
+source:
+  patches:
+  - 0001-Unvendor-HTSlib-and-Boost.patch
+  sha256: e19e21b84cc6229b414440e3f219bf0fa4779f6dec1877498cd3244f0140977f
+  url: https://github.com/hall-lab/extract_sv_reads/archive/v1.3.0.tar.gz
+test:
+  commands:
+  - extract-sv-reads -h
+  - extract-sv-reads --version

@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/sndrtj/afplot
+  license: MIT
+  license_family: MIT
+  summary: Plot allele frequencies in VCF files
+build:
+  entry_points:
+  - afplot = afplot.cli:main
+  noarch: python
+  number: 2
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  container:
+    extended-base: true
+package:
+  name: afplot
+  version: 0.2.1
+requirements:
+  host:
+  - python >=3.4
+  - pip
+  run:
+  - python >=3.4
+  - click
+  - numpy
+  - matplotlib
+  - pandas
+  - seaborn
+  - progressbar2
+  - pysam
+  - pyvcf
+source:
+  sha256: e345777e40a3822c4a098933336861d99707dc88fe479453f40cb470f37b196b
+  url: https://pypi.io/packages/source/a/afplot/afplot-0.2.1.tar.gz
+test:
+  commands:
+  - afplot --help
+  imports:
+  - afplot

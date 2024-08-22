@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/bvalot/panISa
+  home: https://github.com/bvalot/panISa
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: panISa is a software to search insertion sequence (IS) on resequencing
+    data (bam file)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - bvalot
+package:
+  name: panisa
+  version: 0.1.7
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - pysam >=0.9
+  - python >=3.7
+  - requests >=2.12
+source:
+  sha256: 5c9b6c4c30ebe4e43439e2a85ae304b9ed434239165749395232ba06fdbbc44c
+  url: https://github.com/bvalot/panISa/archive/refs/tags/0.1.7.tar.gz
+test:
+  commands:
+  - panISa.py --help
+  - ISFinder_search.py --help
+  imports:
+  - lib

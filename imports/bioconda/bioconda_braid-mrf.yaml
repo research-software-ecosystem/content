@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/wasineer-dev/braid.git
+  home: https://github.com/wasineer-dev/braid.git
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Predicting protein complexes
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+extra:
+  recipe-maintainers:
+  - wasineer-dev
+package:
+  name: braid-mrf
+  version: 1.0.9
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools >=38.6.0
+  - numpy
+  - numba
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  run:
+  - python
+  - numpy
+  - numba
+  - scipy
+  - pandas >=0.24.1
+  - scikit-learn
+  - matplotlib-base
+source:
+  sha256: 18bd6747b252026d0804e1ddf920eaf679c7d6f299a4a5502138ff1bbdb34aee
+  url: https://pypi.org/packages/source/b/braid-mrf/braid-mrf-1.0.9.tar.gz
+test:
+  imports:
+  - braidmrf
+  - braidmrf.meanfield
+  - braidmrf.observation
+  - braidmrf.inputFile

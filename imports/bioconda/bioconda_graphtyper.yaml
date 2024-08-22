@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/DecodeGenetics/graphtyper
+  license: MIT
+  summary: Population-scale genotyping using pangenome graphs
+build:
+  number: 2
+  skip: true
+extra:
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: graphtyper
+  version: 2.7.2
+requirements:
+  build:
+  - automake
+  - autoconf
+  - libtool
+  - pkg-config
+  - coreutils
+  - binutils
+  - None
+  - None
+  - cmake >=3.2
+  - make
+  host:
+  - zlib
+  - bzip2
+  - xz
+  run:
+  - zlib
+  - bzip2
+  - xz
+source:
+  git_rev: v2.7.2
+  git_url: https://github.com/DecodeGenetics/graphtyper.git
+test:
+  commands:
+  - graphtyper construct -h
+  - graphtyper genotype -h

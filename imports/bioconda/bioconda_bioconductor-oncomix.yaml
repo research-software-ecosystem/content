@@ -1,0 +1,47 @@
+about:
+  description: This package helps identify mRNAs that are overexpressed in subsets
+    of tumors relative to normal tissue. Ideal inputs would be paired tumor-normal
+    data from the same tissue from many patients (>15 pairs). This unsupervised approach
+    relies on the observation that oncogenes are characteristically overexpressed
+    in only a subset of tumors in the population, and may help identify oncogene candidates
+    purely based on differences in mRNA expression between previously unknown subtypes.
+  home: https://bioconductor.org/packages/3.18/bioc/html/oncomix.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Identifying Genes Overexpressed in Subsets of Tumors from Tumor-Normal
+    mRNA Expression Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-oncomix
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-ggplot2
+  - r-ggrepel
+  - r-mclust
+  - r-rcolorbrewer
+  run:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-ggplot2
+  - r-ggrepel
+  - r-mclust
+  - r-rcolorbrewer
+source:
+  md5: dd6381604152d7cb96f7c592e8f82ab7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/oncomix_1.24.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/oncomix/oncomix_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/oncomix_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-oncomix/bioconductor-oncomix_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('oncomix')"

@@ -1,0 +1,41 @@
+about:
+  description: The SEQC/MAQC-III Consortium has produced benchmark RNA-seq data for
+    the assessment of RNA sequencing technologies and data analysis methods (Nat Biotechnol,
+    2014). Billions of sequence reads have been generated from ten different sequencing
+    sites. This package contains the summarized read count data for ~2000 sequencing
+    libraries. It also includes all the exon-exon junctions discovered from the study.
+    TaqMan RT-PCR data for ~1000 genes and ERCC spike-in sequence data are included
+    in this package as well.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/seqc.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: RNA-seq data generated from SEQC (MAQC-III) study
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-seqc
+  version: 1.36.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 105a278c97aca90968641aec403c1219
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/seqc_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/seqc/seqc_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/seqc_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seqc/bioconductor-seqc_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('seqc')"

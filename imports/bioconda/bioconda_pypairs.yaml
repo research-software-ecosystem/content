@@ -1,0 +1,42 @@
+about:
+  doc_url: https://pypairs.readthedocs.io/
+  home: https://github.com/rfechtner/pypairs
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: A python scRNA-Seq classifier
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - rfechtner
+package:
+  name: pypairs
+  version: 3.2.3
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - anndata >=0.6.13
+  - colorama
+  - h5py >=2.8.0
+  - numba >=0.40.1
+  - numpy >=1.15.4
+  - pandas >=0.23.4
+  - psutil
+  - python >=3
+  - scikit-learn
+  - tqdm
+source:
+  sha256: 54fc3ac5d6ef38a6ff9925b7a5f7b79e821b2b92b9fd86848fe2701fbf2af90b
+  url: https://pypi.io/packages/source/p/pypairs/pypairs-3.2.3.tar.gz
+test:
+  imports:
+  - pypairs
+  - pypairs.datasets
+  - pypairs.pairs
+  - pypairs.utils
+  - pypairs.settings

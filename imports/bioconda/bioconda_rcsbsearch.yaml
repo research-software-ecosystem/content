@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/sbliven/rcsbsearch
+  doc_url: https://rcsbsearch.readthedocs.io/en/latest/
+  home: https://github.com/sbliven/rcsbsearch
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: Access the RCSB Search API
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - acaprez
+package:
+  name: rcsbsearch
+  version: 0.2.3
+requirements:
+  host:
+  - jsonschema
+  - pip
+  - python >=3.7
+  - requests
+  run:
+  - jsonschema
+  - python >=3.7
+  - requests
+source:
+  sha256: 63b29e6df4809a6e47a83874cd166bd3753a0df0db96e644bebff1743c08faa8
+  url: https://pypi.io/packages/source/r/rcsbsearch/rcsbsearch-0.2.3.tar.gz
+test:
+  imports:
+  - rcsbsearch
+  requires:
+  - black ==20.8b1
+  - flake8
+  - mypy
+  - pytest
+  - tox

@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/maxibor/bamAlignCleaner
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Removes unaligned references in BAM alignment file
+build:
+  entry_points:
+  - bamAlignCleaner = bamaligncleaner.cli:cli
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers: maxibor
+package:
+  name: bamaligncleaner
+  version: 0.2.2
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - click
+  - pysam
+  - python >=3.6
+  - tqdm
+source:
+  sha256: ee0a0f1f9392243c15da8ffc082d267ba4609fe49d597591f712211c3106e379
+  url: https://pypi.io/packages/source/b/bamAlignCleaner/bamAlignCleaner-0.2.2.tar.gz
+test:
+  commands:
+  - pip check
+  - bamAlignCleaner --help
+  imports:
+  - bamaligncleaner
+  requires:
+  - pip

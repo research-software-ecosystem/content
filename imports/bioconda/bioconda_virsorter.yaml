@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/jiarong/VirSorter2/virsorter
+  home: https://github.com/jiarong/VirSorter2
+  license: GPL-2.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: VirSorter2 --  A multi-classifier, expert-guided approach to detect diverse
+    DNA and RNA virus genomes
+build:
+  entry_points:
+  - virsorter=virsorter.virsorter:cli
+  noarch: python
+  number: 1
+  script: -m pip install . --no-deps -vv
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - jiarong
+package:
+  name: virsorter
+  version: 2.2.4
+requirements:
+  host:
+  - python >=3.6,<=3.10
+  - pip
+  run:
+  - python >=3.6,<=3.10
+  - ruamel.yaml =0.16
+  - snakemake-minimal >=5.18,<=5.26
+  - click >=7
+  - git
+  - cookiecutter
+  - mamba
+  - conda-package-handling <=1.9
+source:
+  sha256: f9d1c291f773d9c4d70d7ec096e76c21208950d74d7bd5046da7c4a77cd54c07
+  url: https://github.com/jiarong/VirSorter2/archive/v2.2.4.tar.gz
+test:
+  commands:
+  - virsorter --version
+  - virsorter setup --help
+  - virsorter run --help
+  - virsorter train-feature --help
+  - virsorter train-model --help
+  imports:
+  - virsorter

@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/kpalin/EEL
+  license: GPL
+  license_file: COPYING
+  summary: Tool for finding evolutionarily conserved mammalian enhancer elements.
+build:
+  number: 3
+  script: "# \"version\" file is picked up as a c++ header file.\nmv src/gzstream/version{,.txt}\n\
+    \ -m pip install . --no-deps --ignore-installed -vv\n"
+  skip: true
+package:
+  name: python-eel
+  version: 1.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - zlib
+  run:
+  - python
+  - zlib
+source:
+  patches:
+  - 0001-Add-static_cast-for-unsigned-assignment.patch
+  sha256: d4556b04af69ad31f5c3ddf36bef413ab6ee0fc6143487639e4b07c055284d6c
+  url: https://github.com/kpalin/EEL/archive/v1.0.tar.gz
+test:
+  commands:
+  - eel -help
+  imports:
+  - eellib.align

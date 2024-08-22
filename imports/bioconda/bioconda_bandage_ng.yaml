@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/asl/BandageNG
+  license: GPL-3.0
+  license_family: GPL3
+  license_file: COPYING
+  summary: Bandage - a Bioinformatics Application for Navigating De novo Assembly
+    Graphs Easily
+build:
+  number: 4
+  run_exports:
+  - None
+  skip: true
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1093/bioinformatics/btv383
+package:
+  name: bandage_ng
+  version: '2022.09'
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  - None
+  - None
+  - None
+  - None
+  - None
+  host:
+  - xorg-libx11
+  - xorg-libxext
+  - xorg-libxdamage
+  - xorg-libsm
+  - xorg-libice
+  - xorg-libxcomposite
+  - xorg-libxxf86vm
+  - xorg-xf86vidmodeproto
+  - qt6-main
+  run:
+  - qt6-main
+  - fonts-conda-ecosystem
+source:
+- sha256: 892c36350ee0eb8a58ec7187cf08b6b5b288915bd74f6d69e68c7aa2fdd704f0
+  url: https://github.com/asl/BandageNG/archive/refs/tags/v2022.09.tar.gz
+test:
+  commands:
+  - which Bandage
+  - QT_QPA_PLATFORM='offscreen' Bandage --version

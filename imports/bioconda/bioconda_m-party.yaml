@@ -1,0 +1,42 @@
+about:
+  description: "M-PARTY takes an input FASTA file with a variable number of aminoacidic\n\
+    sequences and performes a search against an considerable amount of Hidden \nMarkov\
+    \ Models, previously built and trained from state of the art plastic \n(PE - polyethylene)\
+    \ degrading enzymes. This process relies on the hmmsearch \nfunction from HMMER\
+    \ to perform the structural annotation. Output deduces \nabout the potential presence\
+    \ of plastic degradring enzymes in the inputed\nsequences, and is composed by\
+    \ 3 distinct files, in order to help the user \nto have an easier time to read\
+    \ and conclude about the results.\n"
+  dev_url: https://github.com/ozefreitas/M-PARTY
+  doc_url: https://github.com/ozefreitas/M-PARTY/blob/main/README.md
+  home: https://github.com/ozefreitas/M-PARTY
+  license: MIT license
+  license_family: MIT
+  license_file: LICENSE
+  summary: Mining Protein dAtasets foR Targeted EnzYmes
+build:
+  noarch: python
+  number: 0
+extra:
+  recipe-maintainers:
+  - ozefreitas
+package:
+  name: m-party
+  version: 0.2.2
+requirements:
+  run:
+  - upimapi
+  - pyyaml
+  - hmmer
+  - t-coffee
+  - cd-hit
+  - pandas
+  - openpyxl
+  - snakemake
+  - clint
+source:
+  sha256: d3e6cf0ea470ccba9ea0b286d94e86c156c050dbed43c82b006504b091fd4c9d
+  url: https://github.com/ozefreitas/M-PARTY/archive/refs/tags/v0.2.2.tar.gz
+test:
+  commands:
+  - m-party -h

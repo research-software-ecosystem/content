@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/dr-joe-wirth/primerForge
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: 'primerForge: software to identify primers that can be used to distinguish
+    genomes'
+build:
+  entry_points:
+  - primerForge=bin.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - dr-joe-wirth
+package:
+  name: primerforge
+  version: 1.1.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  run:
+  - python >=3.11
+  - biopython ==1.81
+  - numpy
+  - primer3-py >=2.0
+  - scipy >=1.10
+source:
+  sha256: b13a26e006f7790f80937178a311cfbb95a9f69ee8ab97a0d21139bd197fec13
+  url: https://github.com/dr-joe-wirth/primerForge/archive/refs/tags/v1.1.1.tar.gz
+test:
+  commands:
+  - primerForge --help
+  - primerForge --check_install

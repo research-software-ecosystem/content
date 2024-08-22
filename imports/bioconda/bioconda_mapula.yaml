@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/epi2me-labs/mapula
+  doc_url: https://github.com/epi2me-labs/mapula
+  home: https://github.com/epi2me-labs/mapula
+  license: Mozilla Public License Version 2.0
+  license_file: LICENSE.md
+  summary: Calculation of alignment statistics
+build:
+  entry_points:
+  - mapula = mapula.main:run_main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - cjw85
+  - karhide
+package:
+  name: mapula
+  version: 2.1.2
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - aplanat
+  - pandas
+  - pysam
+  - python >=3.8
+  - scipy
+  - tqdm
+source:
+  sha256: dd0798aca0f40cd5e9f46897a25d431d952e4b3e872cacc0d8c4cc1903f1eb42
+  url: https://pypi.io/packages/source/m/mapula/mapula-2.1.2.tar.gz
+test:
+  commands:
+  - mapula --help
+  imports:
+  - mapula

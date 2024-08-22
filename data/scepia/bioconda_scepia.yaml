@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/vanheeringen-lab/scepia
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Single Cell Epigenome-based Inference of Activity
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  identifiers:
+  - biotools:scepia
+  recipe-maintainers:
+  - simonvh
+  - maarten-vd-sande
+  - rebecza
+package:
+  name: scepia
+  version: 0.5.1
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - adjusttext
+  - geosketch
+  - gimmemotifs >=0.15.2, <=0.17.1
+  - leidenalg
+  - loguru
+  - louvain
+  - scanpy
+source:
+  sha256: 7c899802eaf3561f1c3334cb2ff5c55753c688c47ef08b16d3875cc88ed981d7
+  url: https://github.com/vanheeringen-lab/scepia/releases/download/0.5.1/scepia-0.5.1.tar.gz
+test:
+  imports:
+  - scepia

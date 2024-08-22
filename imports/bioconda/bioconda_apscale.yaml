@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/DominikBuchner/apscale
+  home: https://github.com/DominikBuchner/apscale
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Advanced Pipeline for Simple yet Comprehensive AnaLysEs of DNA metabarcoding
+    data
+build:
+  entry_points:
+  - apscale = apscale.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - DominikBuchner
+package:
+  name: apscale
+  version: 2.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - biopython >=1.78
+  - cutadapt >=3.5
+  - demultiplexer >=1.1.0
+  - fastparquet >=0.8.0
+  - joblib >=1.0.0
+  - openpyxl >=3.0.6
+  - pandas >=1.2.1
+  - psutil >=5.8.0
+  - pyarrow >=7.0.0
+  - python >=3.7
+  - tqdm >=4.56.0
+  - vsearch >=2.21,<3
+source:
+  sha256: 13d32ad87c1cf2d161bd577421e848006de8bcbb831aab15e5ecd3a5b6fc4563
+  url: https://pypi.io/packages/source/a/apscale/apscale-2.0.2.tar.gz
+test:
+  commands:
+  - apscale --help
+  imports:
+  - apscale

@@ -1,0 +1,37 @@
+about:
+  home: http://www.synthsys.ed.ac.uk/
+  license: MIT
+  license_file: LICENSE
+  summary: Client library offering helper methods to upload data to an OMERO server.
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: pyomero-upload
+  version: 5.6.2_2.2.0
+requirements:
+  host:
+  - setuptools
+  - python >=3.6,<3.8
+  run:
+  - python >=3.6,<3.8
+  - zeroc-ice 3.6
+  - python-omero 5.6.2
+  - pillow
+  - enum34
+  - pyyaml
+  - pandas
+  - scipy
+  - requests
+  - numpy
+  - filetype
+  - future
+source:
+  sha256: f2f2f2aeb9dfe11f80b60e80c40322227e8bd50cfa55f803e68bbab1daf4fda8
+  url: https://github.com/SynthSys/pyOmeroUpload/archive/v5.6.2_2.2.0.tar.gz
+test:
+  imports:
+  - random
+  - omero
+  - omero.gateway

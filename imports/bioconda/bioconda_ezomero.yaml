@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/TheJacksonLaboratory/ezomero
+  license: GPL-2.0-only
+  license_file: LICENSE
+  summary: A module with convenience functions for writing Python code that interacts
+    with OMERO
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: ezomero
+  version: 3.0.1
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  run:
+  - python >=3.8
+  - omero-py =5.16
+  - numpy >=1.22,<2.0
+source:
+  sha256: 2fc7c85626e013bb993d2da300d870bbfdf395d1574f72af086b12d182eebe95
+  url: https://pypi.io/packages/source/e/ezomero/ezomero-3.0.1.tar.gz
+test:
+  imports:
+  - ezomero

@@ -1,0 +1,34 @@
+about:
+  home: https://bitbucket.org/mcgranahanlab/lohhla
+  license: UNKNOWN
+  summary: A computational tool to evaluate HLA loss using next-generation sequencing
+    data.
+build:
+  noarch: generic
+  number: 3
+extra:
+  container:
+    extended-base: true
+  notes: The tool is available as command `lohhla`.
+package:
+  name: lohhla
+  version: 20171108
+requirements:
+  run:
+  - r-base
+  - bedtools
+  - samtools
+  - novoalign
+  - picard
+  - r-seqinr
+  - bioconductor-biostrings
+  - r-beeswarm
+  - r-zoo
+  - bioconductor-rsamtools
+  - r-optparse <1.6.4
+source:
+  sha256: 484f73b05bc98dcf2f98caffc6efa7b86ba1f3e6239563308807f1023ce4fb63
+  url: https://bitbucket.org/mcgranahanlab/lohhla/get/e4c7d5e14c39.zip
+test:
+  commands:
+  - lohhla --help | grep Options > /dev/null

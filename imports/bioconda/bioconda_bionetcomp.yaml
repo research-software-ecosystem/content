@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/lmigueel/bionetcomp/
+  license: GNU General Public (GPL)
+  license_family: LGPL
+  license_file: LICENSE
+  summary: 'BioNetComp: A Python package for biological network comparison from STRING
+    database.'
+build:
+  entry_points:
+  - bionetcomp=bionetcomp.bionetcomp:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - Matt-BF
+package:
+  name: bionetcomp
+  version: '1.1'
+requirements:
+  host:
+  - gseapy
+  - matplotlib-base
+  - networkx >=2.5
+  - numpy
+  - pandas
+  - pip
+  - python
+  - requests
+  - scipy >=1.6.1
+  run:
+  - gseapy
+  - matplotlib-base
+  - networkx >=2.5
+  - numpy
+  - pandas
+  - python
+  - requests
+  - scipy >=1.6.1
+source:
+  sha256: d09e9167925ba9cff368c5fa6788e161c6a8aae992ff9526689c8ff468fa0bd6
+  url: https://pypi.io/packages/source/b/bionetcomp/bionetcomp-1.1.tar.gz
+test:
+  commands:
+  - bionetcomp --help
+  imports:
+  - bionetcomp

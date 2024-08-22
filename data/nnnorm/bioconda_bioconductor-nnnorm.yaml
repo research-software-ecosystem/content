@@ -1,0 +1,46 @@
+about:
+  description: This package allows to detect and correct for spatial and intensity
+    biases with two-channel microarray data. The normalization method implemented
+    in this package is based on robust neural networks fitting.
+  home: https://bioconductor.org/packages/3.18/bioc/html/nnNorm.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Spatial and intensity based normalization of cDNA microarray data based
+    on robust neural nets
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:nnnorm
+  - doi:10.1093/bioinformatics/bti397
+  parent_recipe:
+    name: bioconductor-nnnorm
+    path: recipes/bioconductor-nnnorm
+    version: 2.44.0
+package:
+  name: bioconductor-nnnorm
+  version: 2.66.0
+requirements:
+  host:
+  - bioconductor-marray >=1.80.0,<1.81.0
+  - r-base
+  - r-nnet
+  run:
+  - bioconductor-marray >=1.80.0,<1.81.0
+  - r-base
+  - r-nnet
+source:
+  md5: f6e41106fc2afb44568c00dce1a36670
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/nnNorm_2.66.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/nnNorm/nnNorm_2.66.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nnNorm_2.66.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nnnorm/bioconductor-nnnorm_2.66.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('nnNorm')"

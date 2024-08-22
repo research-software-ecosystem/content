@@ -1,0 +1,43 @@
+about:
+  home: http://apcamargo.github.io/RNAsamba/
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE
+  summary: A tool for computing the coding potential of RNA transcript sequences using
+    deep learning.
+build:
+  entry_points:
+  - rnasamba=rnasamba.cli:cli
+  number: 1
+  skip: true
+package:
+  name: rnasamba
+  version: 0.2.5
+requirements:
+  build:
+  - None
+  - rust >=1.40
+  host:
+  - biopython
+  - keras >=2.1.0,<2.3.0
+  - numpy <1.17
+  - pip
+  - setuptools-rust
+  - python
+  - tensorflow >=1.5.0,<2.0
+  - h5py <3.0.0
+  run:
+  - biopython
+  - keras >=2.1.0,<2.3.0
+  - numpy <1.17
+  - python
+  - tensorflow >=1.5.0,<2.0
+  - h5py <3.0.0
+source:
+  sha256: 23bf656e21eb3e1a1052928e19dc59b80bae65190a11d6f3d3f0e7f19e488011
+  url: https://pypi.io/packages/source/r/rnasamba/rnasamba-0.2.5.tar.gz
+test:
+  commands:
+  - rnasamba --help
+  - rnasamba classify --help
+  - rnasamba train --help

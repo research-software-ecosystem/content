@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/HadrienG/InSilicoSeq
+  doc_url: https://insilicoseq.readthedocs.io/en/latest/
+  home: https://github.com/HadrienG/InSilicoSeq
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A sequencing simulator.
+build:
+  entry_points:
+  - iss = iss.app:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --no-build-isolation . -vvv
+extra:
+  recipe-maintainers:
+  - standage
+  - HadrienG
+package:
+  name: insilicoseq
+  version: 2.0.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - biopython >=1.79
+  - future
+  - joblib
+  - numpy
+  - pysam >=0.15.1
+  - python
+  - requests
+  - scipy
+source:
+  sha256: a1b452fbb6781c5c04bad269836893bf8d2103215e8d131c37baa95a74b2cbaa
+  url: https://github.com/HadrienG/InSilicoSeq/archive/2.0.1.tar.gz
+test:
+  commands:
+  - iss --help
+  files:
+  - bogus-genome.fasta.gz
+  - checksums.md5
+  imports:
+  - iss

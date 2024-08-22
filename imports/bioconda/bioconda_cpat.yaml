@@ -1,0 +1,41 @@
+about:
+  home: https://cpat.readthedocs.io/en/latest/
+  license: GPL-2.0-or-later
+  license_file: LICENSE.txt
+  summary: Coding Potential Assessment Tool
+build:
+  number: 2
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: cpat
+  version: 3.0.5
+requirements:
+  build:
+  - None
+  host:
+  - bx-python
+  - pip
+  - nose
+  - python
+  - pysam
+  - numpy
+  - cython
+  run:
+  - bx-python
+  - python
+  - numpy
+  - pysam
+  - r-base
+source:
+  sha256: ea7c9216208221f68055f962073622939ff90bbe52ebe36c305ead9f91ed24bc
+  url: https://pypi.io/packages/source/C/CPAT/CPAT-3.0.5.tar.gz
+test:
+  commands:
+  - cpat.py -h
+  - make_hexamer_tab.py -h
+  - make_logitModel.py -h

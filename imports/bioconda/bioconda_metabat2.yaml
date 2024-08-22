@@ -1,0 +1,47 @@
+about:
+  home: https://bitbucket.org/berkeleylab/metabat
+  license: BSD-3-Clause-LBNL
+  license_file: license.txt
+  summary: Metagenome binning
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: metabat2
+  version: '2.17'
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - cmake
+  - autoconf
+  - automake
+  - libtool
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  - htslib
+  - boost-cpp
+  - libdeflate
+  run:
+  - perl >=5
+  - boost-cpp
+source:
+  patches:
+  - cmake.patch
+  - cmake-htslib.patch
+  sha256: fb46f5c3d3b0c327f62a58fceee04a55b9003276bc768040ba93c9b7913b52e2
+  url: https://bitbucket.org/berkeleylab/metabat/get/v2.17.tar.bz2
+test:
+  commands:
+  - metabat2 -h
+  - metabat1 -h
+  - jgi_summarize_bam_contig_depths -h
+  - contigOverlaps -h

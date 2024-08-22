@@ -1,0 +1,56 @@
+about:
+  description: flowMap quantifies the similarity of cell populations across multiple
+    flow cytometry samples using a nonparametric multivariate statistical test. The
+    method is able to map cell populations of different size, shape, and proportion
+    across multiple flow cytometry samples. The algorithm can be incorporate in any
+    flow cytometry work flow that requires accurat quantification of similarity between
+    cell populations.
+  home: https://bioconductor.org/packages/3.17/bioc/html/flowMap.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Mapping cell populations in flow cytometry data for cross-sample comparisons
+    using the Friedman-Rafsky Test
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - biotools:flowmap
+  - doi:10.1002/cyto.a.22735
+  parent_recipe:
+    name: bioconductor-flowmap
+    path: recipes/bioconductor-flowmap
+    version: 1.20.0
+package:
+  name: bioconductor-flowmap
+  version: 1.38.0
+requirements:
+  host:
+  - r-abind >=1.4.0
+  - r-ade4 >=1.5-2
+  - r-base
+  - r-doparallel >=1.0.3
+  - r-matrix >=1.1-4
+  - r-reshape2 >=1.2.2
+  - r-scales >=0.2.3
+  run:
+  - r-abind >=1.4.0
+  - r-ade4 >=1.5-2
+  - r-base
+  - r-doparallel >=1.0.3
+  - r-matrix >=1.1-4
+  - r-reshape2 >=1.2.2
+  - r-scales >=0.2.3
+source:
+  md5: 1c8039dc003c35a4c0dbb45e03f7c8aa
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/flowMap_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/flowMap/flowMap_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowMap_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowmap/bioconductor-flowmap_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowMap')"

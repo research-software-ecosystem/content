@@ -1,0 +1,38 @@
+about:
+  doc_url: http://pvac-seq.readthedocs.io/
+  home: https://github.com/griffithlab/pVAC-Seq
+  license: NPOSL-3.0
+  license_family: Other
+  license_file: LICENSE
+  summary: Personalized Variant Antigens by Cancer Sequencing (pVAC-Seq)
+build:
+  entry_points:
+  - pvacseq = pvacseq.pvacseq:main
+  - pvacseq-ui = pvacseq.server.app:main
+  noarch: python
+  number: 3
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: pvacseq
+  version: 4.0.10
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pyvcf
+  - requests
+  - pyyaml
+  - pandas
+  - connexion
+source:
+  sha256: ab8e90496c78dd186a4f72095e7b4acf6389caef76584b33947237718fbd57fb
+  url: https://github.com/griffithlab/pVAC-Seq/archive/v4.0.10.tar.gz
+test:
+  commands:
+  - pvacseq --version
+  imports:
+  - pvacseq
+  - pvacseq.lib
+  - pvacseq.server

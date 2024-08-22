@@ -1,0 +1,77 @@
+about:
+  home: https://github.com/EMSL-Computing/pspecterlib
+  license: BSD-2-Clause
+  license_file: license.txt
+  summary: Proteomics R package for matching peaks in digested and intact proteomics
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  script: R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: r-pspecterlib
+  version: 1.1.0
+requirements:
+  host:
+  - r-base >=4.2
+  - bioconductor-rhdf5
+  - bioconductor-mzr
+  - bioconductor-msnbase
+  - r-lsa
+  - r-seqinr
+  - r-dplyr
+  - r-reshape2
+  - r-gtools
+  - r-readxl
+  - r-data.table
+  - r-plotly
+  - r-ggplot2
+  - r-magrittr
+  - r-purrr
+  - r-tidyr
+  - r-htmltools
+  - r-rcolorbrewer
+  - r-isopat
+  - r-chnosz
+  - r-cairo
+  - r-rmarkdown
+  - r-knitr
+  - bioconductor-rawrr
+  run:
+  - r-base >=4.2
+  - bioconductor-rhdf5
+  - bioconductor-mzr
+  - bioconductor-msnbase
+  - r-lsa
+  - r-seqinr
+  - r-dplyr
+  - r-reshape2
+  - r-gtools
+  - r-readxl
+  - r-data.table
+  - r-plotly
+  - r-ggplot2
+  - r-magrittr
+  - r-purrr
+  - r-tidyr
+  - r-htmltools
+  - r-rcolorbrewer
+  - r-isopat
+  - r-chnosz
+  - r-cairo
+  - r-rmarkdown
+  - r-knitr
+  - bioconductor-rawrr
+source:
+  sha256: 8ca6c456365f815bb1c80feecca5bbb8d32e785fab2a1a7be06574c1e29bbcd2
+  url: https://github.com/EMSL-Computing/pspecterlib/archive/refs/tags/1.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('pspecterlib')"

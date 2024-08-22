@@ -1,0 +1,139 @@
+about:
+  home: https://github.com/OpenMS/OpenMS
+  license: BSD
+  license_file: LICENSE
+  summary: OpenMS is an open-source software C++ library for LC-MS data management
+    and analyses
+build:
+  number: 4
+  skip: true
+extra:
+  identifiers:
+  - biotools:openms
+  - usegalaxy-eu:openms_fileconverter
+  - doi:10.1038/nmeth.3959
+  skip-lints:
+  - build_number_needs_reset
+  - missing_run_exports
+outputs:
+- build:
+    run_exports:
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - libopenms 3.1.0
+  name: libopenms
+  requirements:
+    build:
+    - cmake
+    - sysroot_linux-64 =2.17
+    host:
+    - llvm-openmp
+    - zlib
+    - libtool
+    - xerces-c
+    - boost-cpp
+    - eigen >=3.3.2
+    - hdf5 >=1.10
+    - bzip2
+    - qt-main
+    - libsvm
+    - coinmp
+    - sysroot_linux-64 =2.17
+  script: package_libopenms.sh
+  version: 3.1.0
+- name: openms
+  requirements:
+    build:
+    - cmake
+    - sysroot_linux-64 =2.17
+    host:
+    - None
+    - llvm-openmp
+    - zlib
+    - libtool
+    - xerces-c
+    - boost-cpp
+    - eigen >=3.3.2
+    - hdf5 >=1.10
+    - bzip2
+    - qt-main
+    - libsvm
+    - coinmp
+    - sysroot_linux-64 =2.17
+    run:
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+  script: package_openms-tools.sh
+  test:
+    commands:
+    - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/OpenMSInfo
+    - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/FileMerger --help
+  version: 3.1.0
+- build:
+    skip: true
+  name: openms-thirdparty
+  requirements:
+    run:
+    - None
+    - comet-ms ==2023012
+    - luciphor2 ==2020_04_03
+    - msgf_plus ==2023.01.1202
+    - percolator ==3.5
+    - sirius-ms ==5.8.2
+    - thermorawfileparser ==1.4.3
+    - xtandem ==15.12.15.2
+    - sage-proteomics ==0.14.4
+    - gnuplot
+    - r-gplots
+  test:
+    commands:
+    - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/OpenMSInfo
+  version: 3.1.0
+package:
+  name: openms-meta
+  version: 3.1.0
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+  - autoconf
+  - automake
+  - sysroot_linux-64 =2.17
+  host:
+  - llvm-openmp
+  - zlib
+  - libtool
+  - xerces-c
+  - boost-cpp
+  - eigen >=3.3.2
+  - hdf5 >=1.10
+  - bzip2
+  - qt-main
+  - libsvm
+  - coinmp
+  - sysroot_linux-64 =2.17
+source:
+  md5: 6a60ef1a95c7ce915cc3a02e5bccd593
+  url: https://github.com/OpenMS/OpenMS/releases/download/Release3.1.0/OpenMS-3.1.0-src.tar.gz
+test:
+  commands:
+  - conda inspect linkages -p $PREFIX $PKG_NAME
+  - conda inspect objects -p $PREFIX $PKG_NAME

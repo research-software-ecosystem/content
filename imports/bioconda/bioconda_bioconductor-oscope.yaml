@@ -1,0 +1,52 @@
+about:
+  description: 'Oscope is a statistical pipeline developed to identifying and recovering
+    the base cycle profiles of oscillating genes in an unsynchronized single cell
+    RNA-seq experiment. The Oscope pipeline includes three modules: a sine model module
+    to search for candidate oscillator pairs; a K-medoids clustering module to cluster
+    candidate oscillators into groups; and an extended nearest insertion module to
+    recover the base cycle order for each oscillator group.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/Oscope.html
+  license: Artistic-2.0
+  summary: Oscope - A statistical pipeline for identifying oscillatory genes in unsynchronized
+    single cell RNA-seq
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:oscope
+  - doi:10.1038/nmeth.3549
+  parent_recipe:
+    name: bioconductor-oscope
+    path: recipes/bioconductor-oscope
+    version: 1.10.0
+package:
+  name: bioconductor-oscope
+  version: 1.32.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-ebseq >=2.0.0,<2.1.0
+  - r-base
+  - r-cluster
+  - r-testthat
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-ebseq >=2.0.0,<2.1.0
+  - r-base
+  - r-cluster
+  - r-testthat
+source:
+  md5: 96a8fc6730b6d493d352d74032c4b3d3
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Oscope_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Oscope/Oscope_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Oscope_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-oscope/bioconductor-oscope_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Oscope')"

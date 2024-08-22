@@ -1,0 +1,31 @@
+about:
+  home: https://genome.sph.umich.edu/wiki/Polymutt
+  license: custom (written permission by author to publish on bioconda)
+  license_file: license.txt
+  summary: 'Li B, Chen W, Zhan X, Busonero F, Sanna S, et al. (2012) A Likelihood-Based
+    Framework for Variant Calling and De Novo Mutation Detection in Families. PLoS
+    Genet 8(10): e1002944. doi:10.1371/journal.pgen.1002944'
+build:
+  number: 1
+  skip: true
+package:
+  name: polymutt
+  version: 0.18
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - openmp
+  - bzip2
+  run:
+  - openmp
+  - bzip2
+source:
+  md5: 38f0917b6e23d8b4b0ea07fa8727ac78
+  patches:
+  - polymutt-build.patch
+  url: https://genome.sph.umich.edu/w/images/b/b9/Polymutt.0.18.tar.gz
+test:
+  commands:
+  - polymutt | grep pedfile

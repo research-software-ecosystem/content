@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/ctSkennerton/fxtract
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Extract sequences from a fastx file given a subsequence or identifier.
+build:
+  number: 2
+extra:
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: fxtract
+  version: 2.4
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - zlib
+  - pcre
+  run:
+  - pcre
+source:
+  git_revision: 958619a6b46f6f5886ea56a65eb7af060a53c347
+  git_url: https://github.com/ctSkennerton/fxtract
+  patches:
+  - Makefile.patch
+test:
+  commands:
+  - fxtract -h 2>&1 > /dev/null || [[ "$?" == 2 ]]

@@ -1,0 +1,53 @@
+about:
+  description: Alignment, quantification and analysis of RNA sequencing data (including
+    both bulk RNA-seq and scRNA-seq) and DNA sequenicng data (including ATAC-seq,
+    ChIP-seq, WGS, WES etc). Includes functionality for read mapping, read counting,
+    SNP calling, structural variant detection and gene fusion discovery. Can be applied
+    to all major sequencing techologies and to both short and long sequence reads.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Rsubread.html
+  license: GPL (>=3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Mapping, quantification and variant analysis of sequencing data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:rsubread
+  parent_recipe:
+    name: bioconductor-rsubread
+    path: recipes/bioconductor-rsubread
+    version: 1.30.9
+package:
+  name: bioconductor-rsubread
+  version: 2.16.1
+requirements:
+  build:
+  - None
+  - automake
+  - make
+  host:
+  - r-base
+  - r-matrix
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-matrix
+source:
+  md5: ec5687eb02901ff3b62915cf37aa48b4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rsubread_2.16.1.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rsubread/Rsubread_2.16.1.tar.gz
+  - https://bioarchive.galaxyproject.org/Rsubread_2.16.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rsubread/bioconductor-rsubread_2.16.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rsubread')"

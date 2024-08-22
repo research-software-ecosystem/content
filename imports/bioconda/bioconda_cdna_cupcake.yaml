@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/Magdoll/cDNA_Cupcake
+  license: BSD-3-Clause-Clear
+  license_family: BSD
+  license_file: LICENSE.md
+  summary: cDNA_Cupcake is a miscellaneous collection of Python and R scripts used
+    for analyzing sequencing data.
+build:
+  number: 1
+  skip: true
+package:
+  name: cdna_cupcake
+  version: 29.0.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - numpy
+  - cython
+  run:
+  - python
+  - biopython
+  - bx-python >=0.7.3
+  - bcbio-gff
+  - r-base
+  - graphviz
+  - scikit-learn
+  - pysam
+  - None
+  - samtools >=1.10
+source:
+  sha256: ca9ea12788e25b7c84f7b52d2282a48185bab3ed65f8413181c7ae4094b7a5e1
+  url: https://github.com/Magdoll/cDNA_Cupcake/archive/v29.0.0.tar.gz
+test:
+  commands:
+  - make_file_for_subsampling_from_collapsed.py -h
+  - subsample.py -h
+  - subsample_with_category.py -h
+  - get_seq_stats.py -h
+  - revcomp.py -h
+  - fa2fq.py -h
+  - fq2fa.py -h
+  - get_seqs_from_list.py -h
+  - err_correct_w_genome.py -h
+  - sam_to_bam.py -h 2>&1 | grep "Only accepts"
+  - sam_to_gff3.py -h
+  - simulate.py -h
+  - collapse_isoforms_by_sam.py -h
+  - get_abundance_post_collapse.py -h
+  - filter_away_subset.py -h
+  - chain_samples.py -h
+  - fusion_finder.py -h

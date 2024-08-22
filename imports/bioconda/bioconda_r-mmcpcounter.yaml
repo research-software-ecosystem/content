@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/cit-bioinfo/mMCP-counter
+  license: GPL-3
+  license_family: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'Murine version of MCP-counter, a tool to estimate the immune and stromal
+    composition of heterogeneous tissue, from transcriptomic data '
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.1186/s13073-020-00783-w
+  recipe-maintainers:
+  - LorenzoMerotto
+package:
+  name: r-mmcpcounter
+  version: 1.1.0
+requirements:
+  host:
+  - r-base
+  - r-roxygen2
+  run:
+  - r-base
+source:
+  sha256: 3f2cfdc07ed8414d67c035b9b7e44c63d0fb67f06bcc76c13d9bd45f7f2bdeb4
+  url: https://github.com/cit-bioinfo/mMCP-counter/archive/v1.1.0.zip
+test:
+  commands:
+  - $R -e "library('mMCPcounter')"

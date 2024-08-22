@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/imanyass/ShigaPass/
+  license: GPL3
+  license_file: LICENSE
+  summary: 'ShigaPass: An in silico tool to predict Shigella serotypes'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: shigapass
+  version: 1.5.0
+requirements:
+  build:
+  - blast
+  run:
+  - blast
+source:
+  sha256: b07299943cd7bbe1f778b57152b6cd7e92cc8640ffd7192fde91dd1efcc99ead
+  url: https://github.com/imanyass/ShigaPass/archive/refs/tags/v1.5.0.tar.gz
+test:
+  commands:
+  - blastn -h
+  - makeblastdb -h
+  - bash ShigaPass.sh -h

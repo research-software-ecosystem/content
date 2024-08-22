@@ -1,0 +1,57 @@
+about:
+  description: A toolkit of high-level functions for DNA motif scanning and enrichment
+    analysis built upon Biostrings. The main functionality is PWM enrichment analysis
+    of already known PWMs (e.g. from databases such as MotifDb), but the package also
+    implements high-level functions for PWM scanning and visualisation. The package
+    does not perform "de novo" motif discovery, but is instead focused on using motifs
+    that are either experimentally derived or computationally constructed by other
+    tools.
+  home: https://bioconductor.org/packages/3.18/bioc/html/PWMEnrich.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: PWM enrichment analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:pwmenrich
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-pwmenrich
+    path: recipes/bioconductor-pwmenrich
+    version: 4.16.0
+package:
+  name: bioconductor-pwmenrich
+  version: 4.38.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-seqlogo >=1.68.0,<1.69.0
+  - r-base
+  - r-evd
+  - r-gdata
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-biostrings >=2.70.0,<2.71.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-seqlogo >=1.68.0,<1.69.0
+  - r-base
+  - r-evd
+  - r-gdata
+source:
+  md5: ced56cbfbab381f5736f4f58fe26b9f8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/PWMEnrich_4.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/PWMEnrich/PWMEnrich_4.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PWMEnrich_4.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pwmenrich/bioconductor-pwmenrich_4.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PWMEnrich')"

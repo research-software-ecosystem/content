@@ -1,0 +1,31 @@
+about:
+  home: http://metaphyler.cbcb.umd.edu/
+  license: Artistic License 2.0
+  summary: Estimating Bacterial Composition from Metagenomic Sequences
+build:
+  number: 7
+  skip: true
+package:
+  name: metaphyler
+  version: 1.25
+requirements:
+  build:
+  - None
+  - perl
+  - blast-legacy
+  run:
+  - perl
+  - blast-legacy
+source:
+  md5: fa8a18451e6450359788985be8ab2c5e
+  url: http://metaphyler.cbcb.umd.edu/MetaPhylerV1.25.tar.gz
+test:
+  commands:
+  - runMetaphyler.pl 2>&1 | grep "Usage"
+  - buildMetaphyler.pl 2>&1 | grep "Usage"
+  - runClassifier.pl 2>&1 | grep "Usage"
+  - simuReads 2>&1 | grep "Usage"
+  - metaphylerTrain 2>&1 | grep "Usage"
+  - metaphylerClassify 2>&1 | grep "Usage"
+  - combine 2>&1 | grep "Usage"
+  - taxprof 2>&1 | grep "Usage"

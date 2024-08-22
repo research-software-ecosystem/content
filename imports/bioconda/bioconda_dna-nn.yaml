@@ -1,0 +1,35 @@
+about:
+  dev_url: https://github.com/lh3/dna-nn
+  home: https://github.com/lh3/dna-nn
+  license: Unknown
+  summary: Model and predict short DNA sequence features with neural networks.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - smeds
+package:
+  name: dna-nn
+  version: 0.1
+requirements:
+  build:
+  - make
+  - None
+  - zlib
+  host:
+  - zlib
+  run:
+  - k8
+source:
+  sha256: bac26a25ad9e0315351b170bc33ab4e41b7573818fd9527b661f882b96ae0a8a
+  url: https://github.com/lh3/dna-nn/archive/refs/tags/v0.1.tar.gz
+test:
+  commands:
+  - echo $(dna-brnn 2>&1) | grep "dna-brnn"
+  - echo $(dna-cnn 2>&1) | grep "dna-cnn"
+  - echo $(gen-fq 2>&1) | grep "gen-fq"
+  - echo $(parse-rm.js 2>&1) | grep "k8 parse-rm"

@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/cancerit/cgpBattenberg
+  license: GPLv3
+  summary: detect subclonality and copy number in matched NGS data
+build:
+  number: 9
+  skip: true
+package:
+  name: perl-sanger-cgp-battenberg
+  version: 1.4.1
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - perl
+  - perl-app-cpanminus
+  - perl-module-build
+  - perl-file-sharedir
+  - perl-file-sharedir-install
+  - perl-pcap
+  - perl-sanger-cgp-allelecount
+  - cancerit-allelecount
+  - impute2
+  run:
+  - perl
+  - perl-file-sharedir
+  - perl-file-sharedir-install
+  - perl-pcap
+  - perl-sanger-cgp-allelecount
+  - cancerit-allelecount
+  - impute2
+source:
+  sha256: 90209eda047d5a54ad1737d527fb1c8cbed17c7c833d16392cfde767bb28b6a1
+  url: https://github.com/chapmanb/cgpBattenberg/archive/a4fec2c.tar.gz
+test:
+  commands:
+  - battenberg.pl 2>&1 | grep battenberg.pl
+  imports:
+  - Sanger::CGP::Battenberg

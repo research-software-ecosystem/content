@@ -1,0 +1,68 @@
+about:
+  home: https://github.com/gtonkinhill/fastbaps
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: A fast approximation to a Dirichlet Process Mixture model (DPM) for clustering
+    genetic data
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  script:
+  - $R CMD INSTALL --build .
+  - cp inst/run_fastbaps $PREFIX/bin/run_fastbaps
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.1472299
+  - doi:10.1093/nar/gkz361
+package:
+  name: r-fastbaps
+  version: 1.0.8
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - r-base
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-ape
+  - bioconductor-ggtree
+  - r-phytools
+  - r-ggplot2
+  - r-genie
+  - r-irlba
+  - r-fastcluster
+  - r-matrix
+  - r-adegenet
+  - r-doparallel
+  - r-clusteval
+  - r-gplots
+  - r-optparse
+  - zlib
+  run:
+  - r-base
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-ape
+  - bioconductor-ggtree
+  - r-phytools
+  - r-ggplot2
+  - r-genie
+  - r-irlba
+  - r-fastcluster
+  - r-matrix
+  - r-adegenet
+  - r-doparallel
+  - r-clusteval
+  - r-gplots
+  - r-optparse
+source:
+  sha256: d99ddc232acce92556d4592d54add63db0dcc1d73f3e3c291af3b6ee292159bc
+  url: https://github.com/gtonkinhill/fastbaps/archive/v1.0.8.tar.gz
+test:
+  commands:
+  - $R -e "library('fastbaps')"
+  - run_fastbaps --help

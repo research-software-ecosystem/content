@@ -1,0 +1,57 @@
+about:
+  description: 'In a typical microarray setting with gene expression data observed
+    under two conditions, the local false discovery rate describes the probability
+    that a gene is not differentially expressed between the two conditions given its
+    corrresponding observed score or p-value level. The resulting curve of p-values
+    versus local false discovery rate offers an insight into the twilight zone between
+    clear differential and clear non-differential gene expression. Package ''twilight''
+    contains two main functions: Function twilight.pval performs a two-condition test
+    on differences in means for a given input matrix or expression set and computes
+    permutation based p-values. Function twilight performs a stochastic downhill search
+    to estimate local false discovery rates and effect size distributions. The package
+    further provides means to filter for permutations that describe the null distribution
+    correctly. Using filtered permutations, the influence of hidden confounders could
+    be diminished.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/twilight.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Estimation of local false discovery rate
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:twilight
+  - doi:10.1093/bioinformatics/bti436
+  parent_recipe:
+    name: bioconductor-twilight
+    path: recipes/bioconductor-twilight
+    version: 1.56.0
+package:
+  name: bioconductor-twilight
+  version: 1.78.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: fa6b01126ace9423edfc04757f6392b1
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/twilight_1.78.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/twilight/twilight_1.78.0.tar.gz
+  - https://bioarchive.galaxyproject.org/twilight_1.78.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-twilight/bioconductor-twilight_1.78.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('twilight')"

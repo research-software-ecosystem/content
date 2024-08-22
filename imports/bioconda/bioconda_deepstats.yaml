@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/gtrichard/deepStats
+  license: GPL3
+  license_file: LICENSE.txt
+  summary: A statistical and dataviz toolbox for deeptools, genomic signals, and more.
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.3336593
+  recipe-maintainer:
+  - gtrichard
+package:
+  name: deepstats
+  version: 0.4
+requirements:
+  run:
+  - r-base >=3.5.1
+  - r-boot
+  - r-ggplot2
+  - r-optparse
+  - r-cowplot
+  - r-showtext
+  - r-tidyverse
+  - r-dichromat
+  - r-purrr
+  - r-essentials
+  - r-vroom
+  - r-argparse
+  - bioconductor-iranges
+  - r-seqinr
+  - r-stringr
+  - bioconductor-rsamtools
+source:
+  sha256: f11bb03c78914b91570c0b3b16e06c7b165ac98081cec036898af94469031bf4
+  url: https://github.com/gtrichard/deepStats/archive/0.4.tar.gz
+test:
+  commands:
+  - dsCompareCurves --help

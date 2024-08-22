@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/compomics/ThermoRawFileParser
+  doc_url: https://github.com/compomics/ThermoRawFileParser/blob/master/README.md
+  home: https://github.com/compomics/ThermoRawFileParser
+  license: Apache Software
+  license_family: APACHE
+  license_file: /LICENSE
+  summary: Wrapper around the .net (C#) ThermoFisher ThermoRawFileReader library for
+    running on Linux with mono
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir $PREFIX/bin
+  - cp -r * $PREFIX/bin
+  - cp $RECIPE_DIR/ThermoRawFileParser.sh $PREFIX/bin
+  - chmod +x $PREFIX/bin/ThermoRawFileParser.sh
+  - ln -s $PREFIX/bin/ThermoRawFileParser.sh $PREFIX/bin/ThermoRawFileParser
+  - ln -s $PREFIX/bin/ThermoRawFileParser.sh $PREFIX/bin/thermorawfileparser
+extra:
+  recipe-maintainers:
+  - RECETOX
+  - hechth
+package:
+  name: thermorawfileparser
+  version: 1.4.4
+requirements:
+  build:
+  - zlib
+  run:
+  - mono >=5
+  - zlib
+source:
+  sha256: 5fff9266636422557095b5eea0a18b26f5a9972f49a538d93cb969a6b239a044
+  url: https://github.com/compomics/ThermoRawFileParser/releases/download/v1.4.4/ThermoRawFileParser1.4.4.zip
+test:
+  commands:
+  - ThermoRawFileParser.sh 2>&1 | grep metadata

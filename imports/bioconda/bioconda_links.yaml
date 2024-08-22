@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/bcgsc/LINKS
+  license: GPLv3
+  license_file: /LICENSE
+  summary: Long Interval Nucleotide K-mer Scaffolder
+build:
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: links
+  version: 2.0.1
+requirements:
+  build:
+  - None
+  - make
+  run:
+  - make
+  - perl
+source:
+  sha256: f6f664b854b9dcc51a399af8d5ce2634f788ccdbc35e7d2732c927ca50bc7f70
+  url: https://github.com/bcgsc/LINKS/releases/download/v2.0.1/links-v2.0.1.tar.gz
+test:
+  commands:
+  - LINKS | grep 'Usage'
+  - LINKS-make help | grep 'Usage'

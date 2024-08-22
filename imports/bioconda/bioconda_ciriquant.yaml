@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/bioinfo-biols/CIRIquant
+  license: MIT
+  license_file: LICENSE
+  summary: circular RNA quantification pipeline
+build:
+  entry_points:
+  - CIRIquant=CIRIquant.main:main
+  - CIRI_DE=CIRIquant.de:main
+  - CIRI_DE_replicate=CIRIquant.replicate:main
+  - prep_CIRIquant=CIRIquant.prep_CIRIquant:main
+  noarch: python
+  number: 2
+  script: -m pip install . -vvv --ignore-installed --no-deps
+extra:
+  recipe-maintainers:
+  - BarryDigby
+package:
+  name: ciriquant
+  version: 1.1.2
+requirements:
+  host:
+  - pip
+  - python ==2.7.15
+  run:
+  - argparse
+  - bwa
+  - numexpr
+  - numpy
+  - hisat2
+  - pysam
+  - python ==2.7.15
+  - pyyaml
+  - samtools ==1.9
+  - scikit-learn
+  - scipy
+  - stringtie
+source:
+  patches: ciriquant.patch
+  sha256: b3e023b9cce103419867751799d9672b7eb1e0fb945ca8d57d3f8369e3914120
+  url: https://pypi.io/packages/source/c/ciriquant/CIRIquant-1.1.2.tar.gz
+test:
+  commands:
+  - CIRIquant --help

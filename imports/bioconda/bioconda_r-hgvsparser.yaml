@@ -1,0 +1,30 @@
+about:
+  dev_url: https://github.com/VariantEffect/hgvsParseR
+  doc_url: https://github.com/VariantEffect/hgvsParseR
+  home: https://github.com/VariantEffect/hgvsParseR
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: COPYING
+  summary: hgvsParseR
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script: $R CMD INSTALL --build .
+package:
+  name: r-hgvsparser
+  version: 0.1.0
+requirements:
+  host:
+  - r-base
+  - r-devtools
+  run:
+  - r-base
+  - r-devtools
+source:
+  sha256: a540ae0ec48e892f0e31d50a2c33d5b6d477cdf9b1d03612361acb2da4fcd5ab
+  url: https://github.com/VariantEffect/hgvsParseR/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('hgvsParseR')"

@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/milnus/Corekaburra
+  doc_url: https://github.com/milnus/Corekaburra/wiki
+  home: https://github.com/milnus/Corekaburra
+  license: MIT
+  license_family: MIT
+  summary: A commandline bioinformatics tool made to utilize syntenic information
+    from genomes in the context of pan-genomes
+build:
+  entry_points:
+  - Corekaburra = Corekaburra.__main__:main
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - milnus
+package:
+  name: corekaburra
+  version: 0.0.5
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - biopython ==1.79
+  - networkx ==2.6.3
+  - gffutils ==0.10.1
+source:
+  sha256: 08f10ecd92c3da593e46916a7a39dacf6736ab719bf1f5ad043c819b7e288d11
+  url: https://pypi.io/packages/source/C/Corekaburra/Corekaburra-0.0.5.tar.gz
+test:
+  commands:
+  - Corekaburra --help
+  import:
+  - Corekaburra

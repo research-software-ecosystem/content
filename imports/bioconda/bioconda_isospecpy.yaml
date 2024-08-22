@@ -1,0 +1,37 @@
+about:
+  home: http://matteolacki.github.io/IsoSpec/
+  license: BSD-3-Clause
+  license_file: debian/copyright
+  summary: Python interface to IsoSpec++ isotopic envelope calculator library
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: isospecpy
+  version: 2.2.2
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - cffi
+  - pip
+  run:
+  - python
+  - cffi
+source:
+  sha256: ca838870d31c4879f7e8d0ff782876858888532b6eb0d501fb9650bf5395578e
+  url: https://pypi.io/packages/source/i/isospecpy/IsoSpecPy-2.2.2.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - IsoSpecPy
+  requires:
+  - pip

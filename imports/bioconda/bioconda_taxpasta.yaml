@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/taxprofiler/taxpasta
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: TAXonomic Profile Aggregation and STAndardisation
+build:
+  entry_points:
+  - taxpasta = taxpasta.infrastructure.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - Midnighter
+package:
+  name: taxpasta
+  version: 0.7.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=40.6.0
+  - wheel
+  - pip
+  - hatch
+  - hatch-vcs
+  run:
+  - python >=3.8
+  - depinfo >=2.1
+  - numpy
+  - pandas
+  - pandera
+  - taxopy
+  - typer
+  - biom-format
+  - pyarrow
+source:
+  sha256: 320d8499124e03a20baec4e46dc3ade855c9aec9113ad2d632d0301d347d0be4
+  url: https://pypi.io/packages/source/t/taxpasta/taxpasta-0.7.0.tar.gz
+test:
+  commands:
+  - taxpasta --help
+  imports:
+  - taxpasta

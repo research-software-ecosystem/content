@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/NBISweden/contigtax
+  license: MIT
+  summary: Assign taxonomy to metagenomic contigs (previously know as tango)
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: contigtax
+  version: 0.5.10
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - diamond >=0.8.37, <=0.9.24
+  - ete3
+  - biopython
+  - pandas
+  - tqdm >4.7.2
+  - numpy
+source:
+  sha256: 79a33efb79a720652d3604b4fba9cca6b644d02fb29ac6ba3b6d3151c8fd4653
+  url: https://github.com/NBISweden/contigtax/archive/v0.5.10.tar.gz
+test:
+  commands:
+  - contigtax -h
+  - contigtax download -h
+  - contigtax format -h
+  - contigtax update -h
+  - contigtax build -h
+  - contigtax search -h
+  - contigtax assign -h
+  - contigtax transfer -h
+  imports:
+  - contigtax

@@ -1,0 +1,31 @@
+about:
+  home: http://soap.genomics.org.cn/soapdenovo.html
+  license: GPL
+  summary: SOAPdenovo is a novel short-read assembly method that can build a de novo
+    draft assembly for the human-sized genomes.
+build:
+  number: 2
+package:
+  name: soapdenovo2
+  version: '2.40'
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  - samtools 0.1.19
+  run:
+  - zlib
+  - samtools 0.1.19
+source:
+  patches:
+  - makefile.patch
+  - sparsePregraph.main.cpp.patch
+  - soapdenovo2-sources.patch
+  sha256: db7fbde57ddab0255d966f875f1d41e61a5cf8ad79e8d1c5411c79fc2cd062ce
+  url: https://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r240/SOAPdenovo2-src-r240-mac.tgz
+test:
+  commands:
+  - SOAPdenovo-127mer --help
+  - SOAPdenovo-63mer --help

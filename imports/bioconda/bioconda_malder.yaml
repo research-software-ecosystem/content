@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/joepickrell/malder
+  license: Custom OSS
+  license_file: license.txt
+  summary: MALDER is a version of ALDER (http://groups.csail.mit.edu/cb/alder/) that
+    has been modified to allow multiple admixture events.
+build:
+  number: 7
+extra:
+  identifiers:
+  - doi:10.1073/pnas.1313787111
+package:
+  name: malder
+  version: 1.0.1e83d4e
+requirements:
+  build:
+  - make
+  - None
+  - None
+  - llvm-openmp
+  - libgomp
+  - patch
+  host:
+  - fftw
+  - lapack
+  - gsl
+  - libblas
+  - libcblas
+  - liblapack
+  - liblapacke
+  run:
+  - fftw
+  - gsl
+source:
+  patches:
+  - 0001-admixtools_src-Makefile.patch
+  - bioconda.patch
+  sha256: 177a0becd1f88d25bc528d7ee3d2942d641d9f0f8e8314540290b1db7fa47935
+  url: https://github.com/joepickrell/malder/archive/1e83d4ef3683de56e0d1c66cc0e55ee01ba16967.tar.gz
+test:
+  commands:
+  - malder -h

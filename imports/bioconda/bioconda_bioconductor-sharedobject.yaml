@@ -1,0 +1,46 @@
+about:
+  description: This package is developed for facilitating parallel computing in R.
+    It is capable to create an R object in the shared memory space and share the data
+    across multiple R processes. It avoids the overhead of memory dulplication and
+    data transfer, which make sharing big data object across many clusters possible.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SharedObject.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Sharing R objects across multiple R processes without memory duplication
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-sharedobject
+  version: 1.16.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - r-base
+  - r-bh
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - r-base
+  - r-bh
+  - r-rcpp
+source:
+  md5: 7c47265b6a5f61385088d6146c7e4879
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SharedObject_1.16.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SharedObject/SharedObject_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SharedObject_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sharedobject/bioconductor-sharedobject_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SharedObject')"

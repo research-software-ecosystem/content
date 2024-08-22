@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/mothur/mothur
+  home: http://www.mothur.org
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE.md
+  summary: This project seeks to develop a single piece of open-source, expandable
+    software to fill the bioinformatics needs of the microbial ecology community.
+build:
+  number: 3
+extra:
+  identifiers:
+  - doi:10.1128/AEM.01541-09
+  - usegalaxy-eu:mothur_get_label
+package:
+  name: mothur
+  version: 1.48.0
+requirements:
+  build:
+  - make==4.2.1
+  - None
+  - None
+  host:
+  - blast-legacy
+  - boost-cpp
+  - gsl
+  - hdf5
+  - readline
+  - sra-tools
+  - vsearch =2.15.2
+  - zlib
+  run:
+  - blast-legacy
+  - boost-cpp
+  - gsl
+  - hdf5
+  - readline
+  - sra-tools
+  - vsearch =2.15.2
+  - zlib
+source:
+  patches:
+  - makefile.patch
+  sha256: 9494406abd8d14b821782ab9db811f045ded9424f28f01234ee6764d4e78941d
+  url: https://github.com/mothur/mothur/archive/refs/tags/v1.48.0.tar.gz
+test:
+  commands:
+  - mothur "#help()"
+  - uchime --version

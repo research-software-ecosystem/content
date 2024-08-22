@@ -1,0 +1,35 @@
+about:
+  description: A serverless interface to Biopython to query and access JASPAR motifs
+    from different releases of JASPAR database using sqlite3.
+  doc_url: https://pyjaspar.rtfd.io
+  home: https://github.com/asntech/pyjaspar
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'pyJASPAR: a serverless interface to Biopython to access different versions
+    of JASPAR database'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-build-isolation --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - asntech
+package:
+  name: pyjaspar
+  version: 3.0.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - biopython
+source:
+  sha256: b939770e5d9e0fb26137e404a640e8aeb866c84b570e59c42d056f61f561146d
+  url: https://pypi.io/packages/source/p/pyjaspar/pyjaspar-3.0.0.tar.gz
+test:
+  imports:
+  - pyjaspar

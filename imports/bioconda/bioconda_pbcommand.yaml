@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/PacificBiosciences/pbbioconda
+  license: BSD-3-Clause-Clear
+  summary: Library for generating the CLI of various PacBio tools
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --no-deps -vv
+extra:
+  recipe-maintainers:
+  - pb-dseifert
+  - mhsieh
+package:
+  name: pbcommand
+  version: 2.1.1
+requirements:
+  host:
+  - python >=3.7,<3.8
+  - pip
+  run:
+  - python >=3.7,<3.8
+  - setuptools
+  - avro-python3
+  - requests
+  - iso8601
+  - pytz
+  - numpy >=1.17
+source:
+  sha256: 5156a04aa772543f285914ac0db11ac68e8f1270f880320b676bc1fd6f0a6e5a
+  url: https://github.com/PacificBiosciences/pbcommand/releases/download/2.1.1/pbcommand-2.1.1.tar.gz
+test:
+  imports:
+  - pbcommand
+  - pbcommand.cli
+  - pbcommand.cli.examples
+  - pbcommand.engine
+  - pbcommand.models
+  - pbcommand.pb_io
+  - pbcommand.schemas
+  - pbcommand.services
+  - pbcommand.testkit

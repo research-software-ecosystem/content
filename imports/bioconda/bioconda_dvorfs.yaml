@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/ilevantis/dvorfs
+  license: MIT
+  summary: DVORFS tool for mining endogenous viral elements
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: dvorfs
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.6
+  - setuptools
+  run:
+  - python >=3.6
+  - numpy
+  - pandas
+  - bedtools
+  - hmmer
+  - hmmer2
+  - emboss
+  - wise2
+source:
+  sha256: afcac489c66037056ba2e96efae96d329f7a0b56d75c576ada1bbf14fae71ef2
+  url: https://github.com/ilevantis/dvorfs/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - dvorfs -h
+  - process-genewise -h

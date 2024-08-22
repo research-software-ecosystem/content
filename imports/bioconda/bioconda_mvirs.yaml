@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/SushiLab/mVIRs
+  doc_url: https://github.com/SushiLab/mVIRs
+  home: https://github.com/SushiLab/mVIRs
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'mVIRs: Localisation of inducible prophages using NGS data'
+build:
+  entry_points:
+  - mvirs=mVIRs.mvirs:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  identifiers:
+  - https://doi.org/10.1186/s40168-021-01033-w
+  recipe-maintainers:
+  - hjruscheweyh
+package:
+  name: mvirs
+  version: 1.1.1
+requirements:
+  host:
+  - pip
+  - pysam >=0.15.2
+  - python >=3.8
+  run:
+  - pysam >=0.15.2
+  - python >=3.8
+  - samtools >=1.9
+  - bwa >=0.7.17
+source:
+  sha256: 72c775b444d3acef3a681b8f10aa51c72741db6c717021c43a949d73df738427
+  url: https://pypi.io/packages/source/m/mVIRs/mVIRs-1.1.1.tar.gz
+test:
+  commands:
+  - mvirs test -o .
+  imports:
+  - mVIRs

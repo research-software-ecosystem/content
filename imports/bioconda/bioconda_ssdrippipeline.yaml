@@ -1,0 +1,50 @@
+about:
+  dev_url: https://github.com/PEHGP/ssDripPipeline
+  doc_url: https://github.com/PEHGP/ssDripPipeline/wiki
+  home: https://github.com/PEHGP/ssDripPipeline
+  license: GPL3
+  license_file: LICENSE
+  summary: Useful tools for the analysis of ssDRIP-seq data
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  string: kuan
+package:
+  name: ssdrippipeline
+  version: 0.0.5
+requirements:
+  host:
+  - python >=3.7
+  - r-base >=4.1.0
+  - numpy >=1.18.1
+  - pandas >=1.0.1
+  - biopython >=1.78
+  run:
+  - python >=3.7
+  - pandas >=1.0.1
+  - biopython >=1.78
+  - numpy >=1.18.1
+  - scipy >=1.4.1
+  - matplotlib-base >=3.1.3
+  - seaborn >=0.10.0
+  - bowtie2 >=2.3.5.1
+  - picard >=2.24.2
+  - homer >=4.11
+  - bedtools >=2.29.2
+  - samtools >=1.7
+  - macs2 >=2.2.7.1
+  - deeptools >=3.5.0
+  - r-gplots >=3.1.1
+  - bioconductor-mfuzz >=2.52.0
+  - bioconductor-deseq2 >=1.32.0
+  - ucsc-bedgraphtobigwig
+  - r-base >=4.1.0
+source:
+  md5: 2121880cbb53b665937ee17e6003753b
+  url: https://github.com/PEHGP/ssDripPipeline/archive/refs/tags/v0.0.5.tar.gz
+test:
+  commands:
+  - ssDRIPSeqAnalysis.py
+  imports:
+  - ssDripPipelines

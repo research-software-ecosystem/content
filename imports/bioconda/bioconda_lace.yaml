@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/Oshlack/Lace
+  license: GPL
+  license_file: LICENSE
+  summary: 'Building SuperTranscripts: A linear representation of transcriptome data'
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  container:
+    extended-base: true
+package:
+  name: lace
+  version: 1.14.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pandas
+  - networkx
+  - numpy
+  - matplotlib-base
+  - blat
+source:
+  sha256: 79629e1cb0b7f21c9767daa24fd8cdc229d6b1c45e5e361e80ae9211678366f5
+  url: https://github.com/Oshlack/Lace/archive/v1.14.1.tar.gz
+test:
+  commands:
+  - Lace -h | grep '1.14.1'
+  - 'Lace_Checker -h | grep ''usage: Lace_Checker'''
+  - 'Mobius -h | grep ''usage: Mobius'''
+  - STViewer -h
+  - BuildSuperTranscript || test $? == 1

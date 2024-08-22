@@ -1,0 +1,61 @@
+about:
+  description: 'Proteus is an R package for downstream analysis of MaxQuant output.
+
+    The input for Proteus is the evidence file. Evidence data are aggregated
+
+    into peptides and then into proteins. Proteus offers many visualisation
+
+    and data analysis tools both at peptide and protein level. In particular
+
+    it allows simple differential expression using limma.
+
+    '
+  home: https://github.com/bartongroup/Proteus
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: R package for analysing proteomics data
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-proteus-bartongroup
+  version: 0.2.16
+requirements:
+  host:
+  - r-base
+  - r-dplyr
+  - r-reshape2
+  - r-ggplot2
+  - r-ggdendro
+  - r-ggrepel
+  - r-ggExtra
+  - r-gridExtra
+  - r-viridis
+  - r-hexbin
+  - bioconductor-limma
+  - r-shiny
+  - r-dt
+  run:
+  - r-base
+  - r-dplyr
+  - r-reshape2
+  - r-ggplot2
+  - r-ggdendro
+  - r-ggrepel
+  - r-ggExtra
+  - r-gridExtra
+  - r-viridis
+  - r-hexbin
+  - bioconductor-limma
+  - r-shiny
+  - r-dt
+source:
+  sha256: befd66aeb5c29ea10d1c457aad9e47f3f757347e8c60734a8f01161222718137
+  url: https://github.com/bartongroup/Proteus/archive/refs/tags/v0.2.16.tar.gz
+test:
+  commands:
+  - $R -e "library('proteus'); proteus::proteinColumns"

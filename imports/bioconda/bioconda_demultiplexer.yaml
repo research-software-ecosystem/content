@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/DominikBuchner/demultiplexer
+  license: MIT
+  summary: python tool to demultiplex illumina reads tagged with the leeselab tagging
+    scheme
+build:
+  entry_points:
+  - demultiplexer = demultiplexer.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - DominikBuchner
+package:
+  name: demultiplexer
+  version: 1.2.1
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - biopython >=1.78
+  - joblib >=0.16.0
+  - openpyxl >=3.0.3
+  - psutil >=5.7.3
+  - pysimplegui >=4.19.0
+  - python >=3.6
+source:
+  sha256: e57026caf192fa8a6c6a560bd2f93a70553ca9673320e75c272ae21643de7a3b
+  url: https://pypi.io/packages/source/d/demultiplexer/demultiplexer-1.2.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - demultiplexer
+  requires:
+  - pip

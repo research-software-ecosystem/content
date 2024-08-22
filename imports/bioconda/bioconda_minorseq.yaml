@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/PacificBiosciences/pbbioconda
+  license: BSD-3-Clause-Clear
+  summary: Minor Variant Calling and Phasing Tools
+build:
+  number: 1
+  skip: true
+extra:
+  recipe-maintainers:
+  - armintoepfer
+  - pb-dseifert
+  - mhsieh
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: minorseq
+  version: 1.12.0
+requirements:
+  run:
+  - pbccs
+  - pbmm2
+  - samtools
+source:
+  sha256: 31f4bcdaa4064cd454adf4330bad1f220cc34004c67ac86794ccfbf94cbacdcd
+  url: https://github.com/PacificBiosciences/minorseq/releases/download/v1.12.0/minorseq.tar.gz
+test:
+  commands:
+  - juliet -h
+  - fuse -h
+  - cleric -h
+  - julietflow -h

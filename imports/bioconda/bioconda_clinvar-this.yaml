@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/bihealth/clinvar-this
+  license: MIT
+  license_family: MIT
+  summary: ClinVar Submission API Made Easy
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: clinvar-this
+  version: 0.17.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - pysam >=0.10.0
+  - logzero
+  - requests
+  - attrs
+  - cattrs
+  - python-dateutil
+  - click
+  - toml
+  - tabulate
+  - jsonschema
+source:
+  sha256: 9fc21858d673a9f4daa459741a5425790402ad7ef12544d62c13e750d73888af
+  url: https://pypi.io/packages/source/c/clinvar-this/clinvar-this-0.17.1.tar.gz
+test:
+  imports:
+  - clinvar_this
+  - clinvar_api

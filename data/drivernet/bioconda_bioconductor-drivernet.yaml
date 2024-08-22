@@ -1,0 +1,46 @@
+about:
+  description: DriverNet is a package to predict functional important driver genes
+    in cancer by integrating genome data (mutation and copy number variation data)
+    and transcriptome data (gene expression data). The different kinds of data are
+    combined by an influence graph, which is a gene-gene interaction network deduced
+    from pathway data. A greedy algorithm is used to find the possible driver genes,
+    which may mutated in a larger number of patients and these mutations will push
+    the gene expression values of the connected genes to some extreme values.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DriverNet.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'Drivernet: uncovering somatic driver mutations modulating transcriptional
+    networks in cancer'
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:drivernet
+  - doi:10.1186/gb-2012-13-12-r124
+  parent_recipe:
+    name: bioconductor-drivernet
+    path: recipes/bioconductor-drivernet
+    version: 1.20.0
+package:
+  name: bioconductor-drivernet
+  version: 1.42.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 78b923b016f6bd8097c1edc43ca0cca4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DriverNet_1.42.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DriverNet/DriverNet_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DriverNet_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-drivernet/bioconductor-drivernet_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DriverNet')"

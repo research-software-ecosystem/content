@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/galaxy-genome-annotation/python-apollo
+  license: MIT
+  license_family: MIT
+  summary: WebApollo API library
+build:
+  entry_points:
+  - arrow=arrow.cli:arrow
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+extra:
+  recipe-maintainers:
+  - abretaud
+package:
+  name: apollo
+  version: 4.2.13
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - bcbio-gff
+  - biopython
+  - cachetools
+  - click >=6.7
+  - python
+  - pyyaml
+  - requests
+  - wrapt
+  - decorator
+source:
+  sha256: a16b3d6a6a202b5a6e62838c70c8d22162d875c3ef027a37727ae7de37deb68c
+  url: https://pypi.io/packages/source/a/apollo/apollo-4.2.13.tar.gz
+test:
+  commands:
+  - arrow --help
+  imports:
+  - apollo
+  - apollo.annotations
+  - apollo.cannedcomments
+  - apollo.cannedkeys
+  - apollo.cannedvalues
+  - apollo.groups
+  - apollo.io
+  - apollo.metrics
+  - apollo.organisms
+  - apollo.status
+  - apollo.users

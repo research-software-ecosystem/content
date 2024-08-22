@@ -1,0 +1,38 @@
+about:
+  description: GoPeaks is a peak caller designed for CUT&TAG/CUT&RUN sequencing data.
+    GoPeaks by default works best with narrow peaks such as H3K4me3 and transcription
+    factors. However, broad epigenetic marks like H3K27Ac/H3K4me1 require different
+    the step, slide, and minwidth parameters. We encourage users to explore the parameters
+    of GoPeaks to analyze their data.
+  dev_url: https://github.com/maxsonBraunLab/gopeaks
+  home: https://github.com/maxsonBraunLab/gopeaks
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Peak caller for CUT&TAG data
+build:
+  number: 2
+  script:
+  - mkdir -p $PREFIX/bin
+  - GOARCH=amd64 GOOS=linux GOPATH="" go build -o $PREFIX/bin/gopeaks gopeaks.go
+  - GOARCH=amd64 GOOS=darwin GOPATH="" go build -o $PREFIX/bin/gopeaks gopeaks.go
+  - chmod a+x $PREFIX/bin/gopeaks
+  skip: true
+extra:
+  recipe-maintainers:
+  - gartician
+package:
+  name: gopeaks
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  - go-licenses
+source:
+  sha256: 36e13bf083089accbfef3d463bec16922dd5b5ad0e02db408404d6e5b361a80a
+  url: https://github.com/maxsonBraunLab/gopeaks/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - gopeaks -h
+  - gopeaks -v

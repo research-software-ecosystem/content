@@ -1,0 +1,40 @@
+about:
+  description: Contains consensus genomic signatures (CGS) for experimental cell-line
+    specific gene knock-outs as well as baseline gene expression data for a subset
+    of experimental cell-lines. Intended for use with package KEGGlincs.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/KOdata.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: LINCS Knock-Out Data Package
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-kodata
+    path: recipes/bioconductor-kodata
+    version: 1.6.0
+package:
+  name: bioconductor-kodata
+  version: 1.28.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 40e099053eae889ad66256a94427ac54
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/KOdata_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/KOdata/KOdata_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KOdata_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kodata/bioconductor-kodata_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KOdata')"

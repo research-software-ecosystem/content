@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/ViennaRNA/RNAsketch
+  license: GPL3
+  license_files: LICENSE
+  summary: RNAsketch Library for designing RNA molecules. Glue between RNAblueprint/RNARedPrint
+    and ViennaRNA, Nupack, Hotknots, pKiss.
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: rnasketch
+  version: 1.5
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - rnablueprint >=1.2
+  - viennarna >=2.4*
+  - python-igraph
+  - numpy >=1.15*
+  - scipy >=1.1*
+source:
+  md5: 29c7e5c9f9d605359c9d7fa342078460
+  url: https://github.com/ViennaRNA/RNAsketch/archive/1.5.tar.gz
+test:
+  commands:
+  - echo "." | design-generategraphml.py -i
+  imports:
+  - RNAsketch

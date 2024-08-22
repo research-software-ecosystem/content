@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/pachterlab/ffq
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A command line tool that makes it easier to find sequencing data from the
+    SRA / GEO / ENA.
+build:
+  entry_points:
+  - ffq=ffq.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: ffq
+  version: 0.3.1
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - python >=3.6
+  - beautifulsoup4 >=4.8.2
+  - lxml >=4.5.0
+  - requests >=2.23.0
+  - frozendict
+source:
+  sha256: 02a82b1130fa1d50558b8e3b9663cc2db1ad95498a7345783e69517f6391884b
+  url: https://pypi.io/packages/source/f/ffq/ffq-0.3.1.tar.gz
+test:
+  commands:
+  - ffq --help

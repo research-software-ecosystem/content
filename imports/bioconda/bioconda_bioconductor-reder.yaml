@@ -1,0 +1,41 @@
+about:
+  description: RedeR is an R-based package combined with a stand-alone Java application
+    for interactive visualization and manipulation of nested networks.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RedeR.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Interactive visualization and manipulation of nested networks
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:reder
+  parent_recipe:
+    name: bioconductor-reder
+    path: recipes/bioconductor-reder
+    version: 1.28.0
+package:
+  name: bioconductor-reder
+  version: 2.6.0
+requirements:
+  host:
+  - r-base
+  - r-igraph
+  run:
+  - r-base
+  - r-igraph
+source:
+  md5: 033b5763d95dc222256a4ef85b7e3a99
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RedeR_2.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RedeR/RedeR_2.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RedeR_2.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-reder/bioconductor-reder_2.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RedeR')"

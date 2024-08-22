@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/standage/tag/
+  home: https://github.com/standage/tag/
+  license: BSD License
+  license_family: BSD
+  summary: Genome annotation data analysis and management implemented in pure Python.
+build:
+  entry_points:
+  - tag = tag.__main__:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - standage
+package:
+  name: tag
+  version: 0.5.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - intervaltree >=3.0
+  - networkx >=2.0
+source:
+  sha256: e620facc1dd10c41a5b1666c3524148def267731be339ca070e58916ee4e5655
+  url: https://github.com/standage/tag/archive/0.5.1.tar.gz
+test:
+  commands:
+  - tag --version
+  imports:
+  - tag
+  requires:
+  - pytest
+  - pytest-cov

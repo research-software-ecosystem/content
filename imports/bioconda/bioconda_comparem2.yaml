@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/cmkobel/comparem2
+  doc_url: https://comparem2.readthedocs.io
+  home: https://github.com/cmkobel/comparem2
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: CompareM2 genomes-to-report pipeline
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - cmkobel
+package:
+  name: comparem2
+  version: 2.11.1
+requirements:
+  run:
+  - snakemake-minimal <8
+  - pulp <2.8
+  - python <3.12
+  - mamba
+  - pandas
+source:
+  sha256: cc0979068e06490aca1582fe0590a14519307f82e14872ceece3be1555702ee4
+  url: https://github.com/cmkobel/CompareM2/archive/refs/tags/v2.11.1.tar.gz
+test:
+  commands:
+  - touch dummy.fa; comparem2 --help

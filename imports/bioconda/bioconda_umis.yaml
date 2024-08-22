@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/vals/umis
+  home: https://github.com/vals/umis
+  license: MIT
+  summary: Tools for processing UMI RNA-tag data
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - mjsteinbaugh
+  - roryk
+package:
+  name: umis
+  version: 1.0.9
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - cython
+  run:
+  - python
+  - click
+  - pandas
+  - pysam >=0.8.3
+  - regex
+  - scipy
+  - toolz
+source:
+  sha256: 7d446da4cc31f075e539db6b6d7b31a3309e0c4c708875981d61780c2de7ed82
+  url: https://github.com/vals/umis/archive/refs/tags/v1.0.9.tar.gz
+test:
+  commands:
+  - LC_ALL=C.UTF-8 LANG=C.UTF-8 umis version
+  - LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 umis version

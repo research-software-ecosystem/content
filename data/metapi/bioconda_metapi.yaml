@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/ohmeta/metapi
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A general metagenomics data mining system focus on robust microbiome research
+build:
+  entry_points:
+  - metapi = metapi.corer:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  identifiers:
+  - biotools:metapi
+  recipe-maintainers:
+  - alienzj
+package:
+  name: metapi
+  version: 3.0.0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - numpy
+  - pandas
+  - matplotlib-base
+  - seaborn
+  - openpyxl
+  - biopython >=1.73
+  - natsort
+  - ruamel.yaml
+  - snakemake-minimal >=7.0
+  - seqtk
+  - seqkit
+  - pigz
+  - fd-find
+  - sra-tools >=2.11.0
+  - executor
+source:
+  sha256: ee0b2cedc9c5e42e9dfe015c85167b859be96cbd673e2396f0df8c027e096752
+  url: https://github.com/ohmeta/metapi/archive/v3.0.0.tar.gz
+test:
+  commands:
+  - metapi --version
+  - metapi init --help
+  - metapi gene_wf --help
+  - metapi mag_wf --help
+  imports:
+  - metapi

@@ -1,0 +1,53 @@
+about:
+  description: EBarrays provides tools for the analysis of replicated/unreplicated
+    microarray data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/EBarrays.html
+  license: GPL-3.0-or-later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Unified Approach for Simultaneous Gene Clustering and Differential Expression
+    Identification
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:ebarrays
+  - doi:10.1111/j.1541-0420.2006.00611.x
+  parent_recipe:
+    name: bioconductor-ebarrays
+    path: recipes/bioconductor-ebarrays
+    version: 2.44.0
+package:
+  name: bioconductor-ebarrays
+  version: 2.66.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-cluster
+  - r-lattice
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-cluster
+  - r-lattice
+source:
+  md5: d273e2e9411207653d4e079e14484026
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/EBarrays_2.66.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/EBarrays/EBarrays_2.66.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EBarrays_2.66.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ebarrays/bioconductor-ebarrays_2.66.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EBarrays')"

@@ -1,0 +1,30 @@
+about:
+  home: http://msa.sbc.su.se/cgi-bin/msa.cgi
+  license: GPLv2
+  license_file: COPYING
+  summary: Kalign is a fast and accurate multiple sequence alignment algorithm designed
+    to align large numbers of protein sequences.
+build:
+  number: 7
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1186/1471-2105-6-298
+package:
+  name: kalign2
+  version: 2.04
+requirements:
+  build:
+  - None
+  - make
+source:
+  sha256: 8cf20ac4e1807dc642e7ffba8f42a117313beccaee4f87c5555d53a2eeac4cbb
+  url: http://msa.sbc.su.se/downloads/kalign/current.tar.gz
+test:
+  commands:
+  - printf ">a\nACGTCGATGCTA\n>b\nCAGTGTCAGCTG\n" | kalign 2>&1 >/dev/null | grep
+    "2.04"

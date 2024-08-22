@@ -1,0 +1,54 @@
+about:
+  description: This package uses functions of various other packages together with
+    other functions in a coordinated way to handle and analyse cDNA microarray data
+  home: https://bioconductor.org/packages/3.17/bioc/html/maigesPack.html
+  license: GPL-3.0-or-later
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions to handle cDNA microarray data, including several methods of
+    data analysis
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:maigespack
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-maigespack
+    path: recipes/bioconductor-maigespack
+    version: 1.44.0
+package:
+  name: bioconductor-maigespack
+  version: 1.64.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-convert >=1.78.0,<1.79.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-limma >=3.58.1,<3.59.0
+  - bioconductor-marray >=1.80.0,<1.81.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-convert >=1.78.0,<1.79.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-limma >=3.58.1,<3.59.0
+  - bioconductor-marray >=1.80.0,<1.81.0
+  - r-base
+source:
+  md5: 118a586912fcef7e97526e4b2d142729
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/maigesPack_1.64.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/maigesPack/maigesPack_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/maigesPack_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-maigespack/bioconductor-maigespack_1.64.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('maigesPack')"

@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/metaDMG-dev/metaDMG-cpp
+  license: GPLv3, MIT
+  summary: 'metaDMG-cpp: fast and efficient method for estimating mutation and damage
+    rates in ancient DNA data'
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: false
+extra:
+  identifiers:
+  - doi:10.1101/2022.12.06.519264
+  recipe-maintainers:
+  - ANGSD
+  - rahenriksen
+package:
+  name: metadmg
+  version: 0.4
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - openssl
+  - htslib
+  - zlib
+  - bzip2
+  - xz
+  - gsl
+  - eigen
+  run:
+  - openssl
+  - htslib
+  - zlib
+  - bzip2
+  - xz
+  - gsl
+  - eigen
+source:
+  sha256: 072486bf4103c256bbc907d265d24993b3f5a90eca7dd3fced63f5a8f5840b64
+  url: https://github.com/metaDMG-dev/metaDMG-cpp/archive/refs/tags/v0.4.tar.gz
+test:
+  commands:
+  - metaDMG-cpp 2>&1 | grep 'metaDMG-cpp'
+  - metaDMG-cpp getdamage 2>&1 | grep 'getdamage'
+  - metaDMG-cpp lca 2>&1 | grep 'lca'
+  - compressbam 2>&1 | grep 'compressbam'

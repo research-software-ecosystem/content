@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/kaist-ina/BWA-MEME
+  license: MIT
+  license_file: LICENSE
+  summary: Faster BWA-MEM2 using learned-index
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btac137
+package:
+  name: bwa-meme
+  version: 1.0.6
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  - rust >=1.43
+  host:
+  - zlib
+  - m4
+source:
+- sha256: ff6960428323b74f2fdba29c15a077023880fcb4508287bea9c40d29ad4f2b6d
+  url: https://github.com/kaist-ina/BWA-MEME/releases/download/v1.0.6/Source_BWA-MEME_r1.tar.gz
+test:
+  commands:
+  - bwa-meme version
+  - bwa-meme_mode2 version
+  - bwa-meme_mode1 version
+  - bwa-meme_mode1.sse41 version
+  - bwa-meme_mode2.sse42 version
+  - bwa-meme_mode3.avx version
+  - bwa-meme_mode3.avx2 version
+  - bwa-meme_mode3.avx512bw version
+  - build_rmis_dna.sh
+  - bwa-meme-train-prmi --version

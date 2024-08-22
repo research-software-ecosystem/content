@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/xjtu-omics/msisensor-pro
+  license: Custom Licence
+  license_file: LICENSE
+  summary: Microsatellite Instability (MSI) detection using high-throughput sequencing
+    data.
+build:
+  number: 7
+package:
+  name: msisensor-pro
+  version: 1.2.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  - llvm-openmp
+  - libgomp
+  host:
+  - htslib
+  run:
+  - htslib
+source:
+  patches:
+  - buildfixes.patch
+  sha256: 0b6de043bf7ee7322814a8c805f8abdc19ac746cba9f0dbe0d687b556c473f25
+  url: https://github.com/xjtu-omics/msisensor-pro/archive/v1.2.0.tar.gz
+test:
+  commands:
+  - msisensor-pro scan -h 2>&1 | grep Usage
+  - msisensor-pro baseline -h 2>&1 | grep Usage
+  - msisensor-pro pro -h 2>&1 | grep Usage
+  - msisensor-pro msi -h 2>&1 | grep Usage

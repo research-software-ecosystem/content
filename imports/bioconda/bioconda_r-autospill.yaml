@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/carlosproca/autospill
+  home: https://github.com/carlosproca/autospill
+  license: MIT
+  license_family: MIT
+  summary: AutoSpill algorithm for calculating spillover coefficients to compensate
+    or unmix high-parameter flow cytometry data.
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - pcm32
+package:
+  name: r-autospill
+  version: 0.2.0
+requirements:
+  host:
+  - r-base
+  - r-deldir
+  - r-fields
+  - bioconductor-flowcore
+  - bioconductor-flowworkspace
+  - r-ggplot2
+  - r-mass
+  - r-moments
+  - r-rcolorbrewer
+  - r-rlang
+  - r-sp
+  - r-tripack
+  run:
+  - r-base
+  - r-deldir
+  - r-fields
+  - bioconductor-flowcore
+  - bioconductor-flowworkspace
+  - r-ggplot2
+  - r-mass
+  - r-moments
+  - r-rcolorbrewer
+  - r-rlang
+  - r-sp
+  - r-tripack
+source:
+  sha256: 902d87a7b5dec2fe20b024b39f13c80e24e29d1b69e899dff69546b98fd26599
+  url: https://github.com/carlosproca/autospill/archive/refs/tags/v0.2.0.tar.gz
+test:
+  commands:
+  - $R -e 'library(autospill)'

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/Zsailer/phylopandas
+  license: MIT
+  license_family: MIT
+  summary: Pandas for phylogenetics
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+package:
+  name: phylopandas
+  version: 0.8.0
+requirements:
+  host:
+  - pip
+  - python >3
+  run:
+  - python >3
+  - pandas
+  - pandas-flavor
+  - biopython
+  - dendropy
+source:
+  sha256: 1efc4b81ce745794490f6f6144114f1dc8102764303c58935017119cdcaaa7d2
+  url: https://pypi.io/packages/source/p/phylopandas/phylopandas-0.8.0.tar.gz
+test:
+  imports:
+  - phylopandas
+  - phylopandas.seqio
+  - phylopandas.treeio

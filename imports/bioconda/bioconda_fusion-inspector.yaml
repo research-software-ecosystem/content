@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/FusionInspector/FusionInspector
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  summary: FusionInspector is a component of the Trinity Cancer Transcriptome Analysis
+    Toolkit (CTAT). FusionInspector assists in fusion transcript discovery by performing
+    a supervised analysis of fusion predictions, attempting to recover and re-score
+    evidence for such predictions. - https://github.com/FusionInspector/FusionInspector/wiki
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: fusion-inspector
+  version: 2.8.0
+requirements:
+  host:
+  - htslib
+  - trinity >=2.4
+  run:
+  - python >=3
+  - requests >=2.19.1
+  - bzip2
+  - htslib
+  - samtools >=1.3
+  - perl
+  - perl-uri
+  - perl-set-intervaltree
+  - perl-db-file
+  - gmap >=2017.11.15
+  - star >=2.6.1b
+  - trinity >=2.4
+source:
+  sha256: adfef115dffce5a9f55798fe0bd6ffdf771afe94f11883b69776d58858afc2ed
+  url: https://github.com/FusionInspector/FusionInspector/releases/download/FusionInspector-v2.8.0/FusionInspector-v2.8.0.FULL.tar.gz
+test:
+  commands:
+  - FusionInspector --help 2>&1
+  - $PREFIX/share/fusion-inspector-2.8.0-0/util/retrieve_fusion_junction_reads_by_accession.pl
+    --help 2>&1 | grep usage

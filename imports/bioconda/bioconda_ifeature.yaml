@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/Jie-Yuan/iFeature
+  license: MIT
+  license_family: MIT
+  summary: A python package for feature extraction and selection from protein and
+    peptide sequences
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - jaidevjoshi83
+package:
+  name: ifeature
+  version: 0.0.6
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - six ==1.15.0
+  - numpy >=1.10.4
+  - pandas >=0.18.1
+  - tqdm ==4.49.0
+  - lightgbm ==3.0.0
+  - jieba
+  - wrapt ==1.12.1
+source:
+  sha256: a96534f3a9777d72531efce19030c59311216d9ed8366856b6eed7cf5bb258dd
+  url: https://pypi.io/packages/source/i/ifeature/ifeature-0.0.6.tar.gz
+test:
+  imports:
+  - ifeature
+  - ifeature.eda
+  - ifeature.features_add
+  - ifeature.features_sub
+  - ifeature.features_transform
+  - ifeature.models
+  - ifeature.models.utils
+  - ifeature.utils

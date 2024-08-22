@@ -1,0 +1,58 @@
+about:
+  description: Provides large-scale single-cell RNA-seq data manipulation using Genomic
+    Data Structure (GDS) files. It combines dense and sparse matrices stored in GDS
+    files and the Bioconductor infrastructure framework (SingleCellExperiment and
+    DelayedArray) to provide out-of-memory data storage and large-scale manipulation
+    using the R programming language.
+  home: https://bioconductor.org/packages/3.18/bioc/html/SCArray.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Large-scale single-cell RNA-seq data manipulation with GDS files
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-scarray
+  version: 1.10.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biocsingular >=1.18.0,<1.19.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-delayedmatrixstats >=1.24.0,<1.25.0
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-matrix
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biocsingular >=1.18.0,<1.19.0
+  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-delayedmatrixstats >=1.24.0,<1.25.0
+  - bioconductor-gdsfmt >=1.38.0,<1.39.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-matrix
+source:
+  md5: c777bd1f1f52dd055b83830ed6da1f77
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/SCArray_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/SCArray/SCArray_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SCArray_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scarray/bioconductor-scarray_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SCArray')"

@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/lijinbio/cmsip
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A package for detecting differential 5hmC regions from CMS-IP sequencing
+    data.
+build:
+  entry_points:
+  - cmsip=cmsip.cmsip:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - lijinbio
+package:
+  name: cmsip
+  version: 0.0.3.0
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - matplotlib-base
+  - python >=3
+  - pyyaml
+  - bedtools
+  - ucsc-fetchchromsizes
+  - r-base
+  - bioconductor-deseq2
+  - bioconductor-genefilter
+  - r-desctools
+  - gawk
+  - moabs
+source:
+  sha256: 52dccd593dc41e8f9744659e9a80d31bc53e496bcff63384269a200d27eb11d7
+  url: https://pypi.io/packages/source/c/cmsip/cmsip-0.0.3.0.tar.gz
+test:
+  commands:
+  - cmsip --help
+  imports:
+  - cmsip

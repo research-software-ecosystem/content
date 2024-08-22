@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/RacimoLab/dinf
+  license: MIT
+  license_file: LICENSE
+  summary: discriminator-based inference for population genetics
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - grahamgower
+package:
+  name: dinf
+  version: 0.5.0
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  run:
+  - adjusttext
+  - cyvcf2 >=0.30.14
+  - demes >=0.2.1
+  - demesdraw
+  - emcee
+  - flax >=0.5.2
+  - jax
+  - matplotlib-base
+  - msprime >=1.0.4
+  - multiprocess
+  - numpy
+  - optax
+  - python >=3.8
+  - rich
+  - scipy
+source:
+  sha256: 0a6d925dcc28bca8cfbd2bf8d3213ddf70646dfff814bd574068e6720e7f455f
+  url: https://pypi.io/packages/source/d/dinf/dinf-0.5.0.tar.gz
+test:
+  commands:
+  - dinf --help
+  - dinf-plot --help
+  imports:
+  - dinf

@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/babelomics/SMAca
+  license: GPL-3.0
+  license_file: LICENSE.txt
+  summary: smaca is a python tool to detect putative SMA carriers and estimate the
+    absolute SMN1 copy-number in a population.
+build:
+  entry_points:
+  - smaca = smaca.cli:main
+  number: 5
+  run_exports:
+  - None
+  script: -m pip install . -vv
+  skip: true
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:https://zenodo.org/badge/latestdoi/250259934
+  recipe-maintainers:
+  - loucerac
+package:
+  name: smaca
+  version: 1.2.3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - pip
+  - python
+  - cython
+  - numpy
+  - pysam
+  run:
+  - click
+  - joblib
+  - pysam
+  - python
+  - None
+source:
+  sha256: 1a0750ef2c58aeb997806be2c5f5c6952d8c13f95b4f4fff880e184a4fab2d43
+  url: https://pypi.io/packages/source/s/smaca/smaca-1.2.3.tar.gz
+test:
+  commands:
+  - smaca --help
+  imports:
+  - smaca

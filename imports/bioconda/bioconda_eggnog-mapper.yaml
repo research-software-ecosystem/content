@@ -1,0 +1,49 @@
+about:
+  doc_url: https://github.com/eggnogdb/eggnog-mapper/wiki
+  home: https://github.com/eggnogdb/eggnog-mapper
+  license: AGPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: Fast genome-wide functional annotation through orthology assignment.
+build:
+  noarch: python
+  number: 0
+  script: sed -i.bak "s/eggnogmapper.bin/#eggnogmapper.bin/g"  setup.cfg; python -m
+    pip install --no-deps --ignore-installed --no-cache-dir -vvv .
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:10.1093/nar/gky1085
+  - usegalaxy-eu:eggnog_mapper
+package:
+  name: eggnog-mapper
+  version: 2.1.12
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - biopython >=1.76
+  - psutil >=5.7.0
+  - diamond >=2.0.11
+  - xlsxwriter >=1.4.3
+  - hmmer
+  - mmseqs2
+  - prodigal
+  - easel
+  - wget
+source:
+  sha256: b3c53fb0e606a5cfec75cbc84f7c215f57f43ce00d8e50f449513acdad76da73
+  url: https://github.com/eggnogdb/eggnog-mapper/archive/refs/tags/2.1.12.tar.gz
+test:
+  commands:
+  - emapper.py --help
+  - download_eggnog_data.py --help
+  - download_eggnog_data.py -sfy
+  - hmm_mapper.py --help
+  - hmm_server.py --help
+  - hmm_worker.py --help
+  imports:
+  - eggnogmapper

@@ -1,0 +1,53 @@
+about:
+  dev_url: https://github.com/dkoslicki/CMash
+  doc_url: https://github.com/dkoslicki/CMash
+  home: https://github.com/dkoslicki/CMash
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Fast and accurate set similarity estimation via containment min hash (for
+    genomic datasets).
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  authors:
+  - dkoslicki
+  identifiers:
+  - doi:10.1016/j.amc.2019.02.018
+  recipe-maintainers:
+  - luizirber
+  - dkoslicki
+package:
+  name: cmash
+  version: 0.5.2
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools >=24.2.0
+  run:
+  - python
+  - screed >=0.9
+  - khmer >=2.1.1
+  - h5py
+  - numpy >=1.14
+  - blist
+  - pandas >=0.21.1
+  - six
+  - scipy
+  - matplotlib-base
+  - marisa-trie
+  - hydra
+  - pycairo
+source:
+  sha256: b947787e644fcfc527f6a519097a2069ac4bd889c2fd3771f2b69a444184e917
+  url: https://github.com/dkoslicki/CMash/archive/v0.5.2.tar.gz
+test:
+  commands:
+  - MakeStreamingDNADatabase.py -h
+  - MakeStreamingPrefilter.py -h
+  - StreamingQueryDNADatabase.py -h
+  imports:
+  - CMash

@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/mbhall88/taeper
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: Simulate repeating a nanopore experiment.
+build:
+  entry_points:
+  - taeper=taeper.cli:main
+  noarch: python
+  number: 2
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: taeper
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - ont-fast5-api
+  - numpy
+source:
+  sha256: c336aa0d40f658703cecad8dace4c3212fbefff0fdf159b239f5ccf676c6e929
+  url: https://pypi.io/packages/source/t/taeper/taeper-0.1.0.tar.gz
+test:
+  commands:
+  - taeper --help
+  imports:
+  - taeper

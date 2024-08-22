@@ -1,0 +1,59 @@
+about:
+  description: 'BinSPreader is a novel tool that attempts to refine metagenome-assembled
+
+    genomes (MAGs) obtained from existing tools. BinSPreader exploits the
+
+    assembly graph topology and other connectivity information, such as
+
+    paired-end and Hi-C reads, to refine the existing binning, correct binning
+
+    errors, propagate binning from longer contigs to shorter contigs and infer
+
+    contigs belonging to multiple bins.
+
+    '
+  home: https://cab.spbu.ru/software/binspreader/
+  license: GPL-2.0-only
+  license_family: GPL2
+  license_file: LICENSE
+  summary: 'BinSPreader is a tool for improving existing binning using assembly
+
+    graph and other sources of connectivity information
+
+    '
+build:
+  number: 0
+extra:
+  identifiers:
+  - biotools:binspreader
+  - doi:10.1016/j.isci.2022.104770
+package:
+  name: binspreader
+  version: 3.16.0.dev
+requirements:
+  build:
+  - None
+  - None
+  - clangdev
+  - llvm-openmp
+  - openmp
+  - cmake
+  - make
+  - pkg-config
+  - sysroot_linux-64 >=2.17
+  host:
+  - llvm-openmp
+  - openmp
+  - zlib
+  - bzip2
+  - sysroot_linux-64 >=2.17
+  run:
+  - llvm-openmp
+  - openmp
+  - sysroot_linux-64 >=2.17
+source:
+  sha256: c4e2520879f8d60a728d3b057a02aed20fd4f0cb0fb60d02698940446ba89b49
+  url: https://cab.spbu.ru/files/binspreader/BinSPreader-3.16.0-dev.tar.gz
+test:
+  commands:
+  - bin-refine 2>&1 | grep SYNOPSIS -A 1

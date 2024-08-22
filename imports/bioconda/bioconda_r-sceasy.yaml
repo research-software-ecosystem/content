@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/cellgeni/sceasy
+  home: https://github.com/cellgeni/sceasy
+  license: GPL3
+  license_family: GPL
+  license_file: LICENSE
+  summary: A package providing functions to convert between different single-cell
+    data formats.
+build:
+  noarch: generic
+  number: 2
+extra:
+  recipe-maintainers:
+  - nh3
+  - wikiselev
+package:
+  name: r-sceasy
+  version: 0.0.7
+requirements:
+  host:
+  - r-base
+  - r-reticulate
+  - r-seurat >=3.0.1
+  - bioconductor-singlecellexperiment >=1.4.0
+  - bioconductor-loomexperiment >=1.1.5
+  run:
+  - r-base
+  - r-reticulate
+  - r-seurat >=3.0.1
+  - r-monocle3 >=1.0.0
+  - bioconductor-singlecellexperiment >=1.4.0
+  - bioconductor-loomexperiment >=1.1.5
+  - anndata
+  - scipy
+source:
+  sha256: bc6a2dba2111067f3247ff1ee617cc85ab6c7d89950f7d8ca486a3e34b27f9d6
+  url: https://github.com/cellgeni/sceasy/archive/v0.0.7.tar.gz
+test:
+  commands:
+  - $R -e "library('sceasy'); library('Seurat'); library('SingleCellExperiment');
+    library('LoomExperiment');"

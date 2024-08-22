@@ -1,0 +1,56 @@
+about:
+  description: 'geno2phenoTB is a machine learning based tool to predict resistance
+    of Mycobacterium tuberculosis against antibiotics using whole-genome sequencing
+    data.
+
+    '
+  dev_url: https://github.com/msmdev/geno2phenoTB
+  doc_url: https://geno2phenotb.readthedocs.io/en/latest
+  home: https://github.com/msmdev/geno2phenoTB
+  license: LGPL-3.0-only
+  license_file: LICENSE.txt
+  summary: Prediction of Mycobacterium tuberculosis drug resistance from WGS data
+build:
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - msmdev
+  - not_a_feature
+package:
+  name: geno2phenotb
+  version: 1.0.1
+requirements:
+  host:
+  - python =3.8.17
+  - pip
+  - setuptools
+  run:
+  - bwa =0.7.17
+  - gatk =3.8
+  - imbalanced-learn =0.8.1
+  - joblib =1.2
+  - mtbseq =1.0.4
+  - numpy =1.21.5
+  - packaging =21
+  - pandas =0.25.3
+  - perl-base =2.23
+  - python =3.8.17
+  - requests =2
+  - samtools =1.6
+  - scikit-learn =0.24.2
+  - scipy =1.7.3
+  - setuptools
+  - tqdm =4
+  - importlib_metadata
+  - wheel =0.37
+source:
+  sha256: c1c3c06e5b87d5eabd7f75b33d86e870ac52fe04025a382b40049212f5e3ee25
+  url: https://github.com/msmdev/geno2phenoTB/archive/refs/tags/1.0.1.tar.gz
+test:
+  commands:
+  - geno2phenotb --help
+  - geno2phenotb test -f
+  imports:
+  - geno2phenotb

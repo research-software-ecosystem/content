@@ -1,0 +1,78 @@
+about:
+  doc_url: https://meme-suite.org/meme/doc/overview.html
+  home: https://meme-suite.org
+  license: Custom
+  license_file: COPYING
+  summary: Motif-based sequence analysis tools.
+build:
+  detect_binary_files_with_prefix: true
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:meme_suite
+  - usegalaxy-eu:meme_dreme
+  - doi:10.1093/nar/gkv416
+package:
+  name: meme
+  version: 5.5.6
+requirements:
+  build:
+  - None
+  - make
+  - autoconf
+  - automake
+  - libtool
+  host:
+  - nodejs >=16.4.1
+  - libgomp
+  - llvm-openmp
+  - yaml
+  - icu >=72.1,<73.0a0
+  - ghostscript
+  - zlib
+  - xz
+  - libxslt
+  - libxml2
+  - expat
+  - perl
+  run:
+  - python >=3.7
+  - perl
+  - perl-app-cpanminus
+  - perl-module-build
+  - perl-yaml
+  - perl-cgi
+  - perl-math-cdf
+  - perl-log-log4perl
+  - perl-xml-simple
+  - perl-xml-parser
+  - perl-file-which
+  - perl-html-parser
+  - perl-html-template
+  - perl-html-tree
+  - perl-json
+  - perl-sys-info
+source:
+  sha256: 8f719002c3a2177f6bb9da6861098ccf4f08b3006f002a88bb3afe9473596c67
+  url: https://meme-suite.org/meme/meme-software/5.5.6/meme-5.5.6.tar.gz
+test:
+  commands:
+  - meme -version
+  - streme -version
+  - xstreme -version
+  - meme-chip -version
+  - glam2 -version
+  - tomtom -version
+  - centrimo -version
+  - ame 2>&1 | grep -i usage
+  - spamo -version
+  - gomo -version
+  - fimo -version
+  - mast -version
+  - mcast -version
+  - glam2scan -version
+  - momo simple -version
+  - getsize -version
+  - dreme -version

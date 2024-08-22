@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/RIVM-bioinformatics/auriclass
+  home: https://rivm-bioinformatics.github.io/auriclass/
+  license: GNU Affero General Public v3
+  license_family: AGPL
+  license_file: LICENSE
+  summary: AuriClass is a tool for quickly predicting the clade of a Candida auris
+    genome.
+build:
+  entry_points:
+  - auriclass = auriclass.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - boasvdp
+  - ids-bioinformatics
+package:
+  name: auriclass
+  version: 0.5.4
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  run:
+  - python >=3.10
+  - mash >=2
+  - mypy
+  - pandas >=2
+  - pandas-stubs
+  - pyfastx
+  - pytest
+  - pip
+source:
+  sha256: 10ff5421fc968097ff64812be5b248bf14e6c5b9a086ef0156e3de1cc4c2902b
+  url: https://github.com/RIVM-bioinformatics/auriclass/archive/v0.5.4.tar.gz
+test:
+  commands:
+  - auriclass --help
+  imports:
+  - auriclass

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/BackofenLab/Peakhood
+  license: MIT
+  license_file: LICENSE
+  summary: Individual site context extraction for CLIP-Seq peak regions
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON -m pip install . --ignore-installed --no-deps -vv --use-feature=in-tree-build
+package:
+  name: peakhood
+  version: 0.3
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - seaborn
+  - bedtools
+  - samtools
+  - markdown
+  - ucsc-twobittofa
+  - ucsc-twobitinfo
+source:
+  sha256: da836dbfcdb5abc97d16aab0b9c61c60865ec5809de5f4f1009ee4e25fa873bc
+  url: https://github.com/BackofenLab/Peakhood/archive/v0.3.tar.gz
+test:
+  commands:
+  - peakhood -h

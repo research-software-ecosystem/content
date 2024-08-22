@@ -1,0 +1,44 @@
+about:
+  description: The package contains BioGRID interactions for arabidopsis(thale cress),
+    c.elegans, fruit fly, human, mouse, yeast( budding yeast ) and S.pombe (fission
+    yeast) . Entrez ids, official names and unique ids can be used to find proteins.
+    The format of interactions are lists. For each gene/protein, there is an entry
+    in the list with "name" containing name of the gene/protein and "interactors"
+    containing the list of genes/proteins interacting with it.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/simpIntLists.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: The package contains BioGRID interactions for various organisms in a simple
+    format
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-simpintlists
+    path: recipes/bioconductor-simpintlists
+    version: 1.16.0
+package:
+  name: bioconductor-simpintlists
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 9dbe0a1f390843a49bb11d05ac5f2e28
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/simpIntLists_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/simpIntLists/simpIntLists_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/simpIntLists_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-simpintlists/bioconductor-simpintlists_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('simpIntLists')"

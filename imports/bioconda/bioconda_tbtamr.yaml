@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/MDU-PHL/tbtamr
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A tool implementing TB-Profiler for reporting of genomic DST for M. tuberculosis
+    in a CPHL
+build:
+  entry_points:
+  - tbtamr=tbtamr.tbtamr:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - kristyhoran
+package:
+  name: tbtamr
+  version: 0.0.4
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - psutil
+  - pandas
+  - csvtk
+  - bwa
+  - samtools =1.12
+  - snpeff =5.0
+  - samclip
+  - freebayes
+  - bcftools
+  - bedtools
+  - delly
+  - xlsxwriter
+  - requests
+  - tqdm
+source:
+  sha256: 72db1eb835574f02b0d7768e6b04e310bd2229d0f684100004b20a133eecd882
+  url: https://pypi.io/packages/source/t/tbtamr/tbtamr-0.0.4.tar.gz
+test:
+  commands:
+  - tbtamr --help
+  imports:
+  - tbtamr

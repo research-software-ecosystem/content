@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/moritzbuck/mOTUlizer/
+  doc_url: https://github.com/moritzbuck/mOTUlizer/
+  home: https://github.com/moritzbuck/mOTUlizer/
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: making OTUs from genomes, and stats on them. and even core-genomes
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - moritzbuck
+package:
+  name: motulizer
+  version: 0.3.2
+requirements:
+  host:
+  - biopython
+  - pip
+  - python >=3
+  - python-igraph
+  run:
+  - biopython
+  - python >=3
+  - python-igraph
+  - mmseqs2
+  - cd-hit
+  - fastani
+  - tqdm
+source:
+  sha256: e489889766f556f99c3199de9da92a1374e81fdf182ac5e4ec90d4fe890445a1
+  url: https://pypi.io/packages/source/m/mOTUlizer/mOTUlizer-0.3.2.tar.gz
+test:
+  commands:
+  - mOTUlize.py --help
+  - mOTUpan.py --help
+  - mOTUconvert.py --help
+  imports:
+  - mOTUlizer
+  - mOTUlizer.bin
+  - mOTUlizer.classes
+  - mOTUlizer.scripts

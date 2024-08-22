@@ -1,0 +1,48 @@
+about:
+  home: http://tools.proteomecenter.org/wiki/index.php?title=Software:TPP
+  license: GPL v. 2.0 and LGPL
+  summary: 'The Trans-Proteomic Pipeline (TPP) is a collection of integrated tools
+    for MS/MS proteomics developed at the Seattle Proteome Center. The Bioconda package
+    includes the command-line versions of the TPP toolset. These programs include
+    tools for validation (PeptideProphet, iProphet, ProteinProphet, Mayu) and quantification
+    (XPRESS, ASAPRatio, Libra) as well as a number of parsers and converters (Out2XML,
+    Mascot2XML, Tandem2XML, etc).
+
+    '
+build:
+  detect_binary_files_with_prefix: true
+  number: 1
+  skip: true
+package:
+  name: tpp
+  version: 5.0.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - perl
+  - perl-xml-parser
+  - perl-findbin-libs
+  - zlib
+  - bzip2
+  - perl-extutils-makemaker
+  - perl-app-cpanminus
+  run:
+  - perl
+  - perl-findbin-libs
+  - perl-xml-parser
+  - hardklor
+  - zlib
+  - bzip2
+source:
+  patches:
+  - tpp5.0.0.patch
+  sha256: caed7a664be42fb9a168df699204816672e640569179cddaa42cf178d339534e
+  url: https://downloads.sourceforge.net/project/sashimi/Trans-Proteomic%20Pipeline%20%28TPP%29/TPP%20v5.0%20%28Typhoon%29%20rev%200/TPP_5.0.0-src.tgz
+test:
+  commands:
+  - ProteinProphet
+  requires:
+  - git

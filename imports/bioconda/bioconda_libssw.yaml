@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/mengyao/Complete-Striped-Smith-Waterman-Library
+  license: MIT
+  summary: An SIMD Smith-Waterman C/C++/Python/Java Library for Use in Genomic Applications
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+package:
+  name: libssw
+  version: 1.2.5
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  - None
+  host:
+  - openjdk
+  - python
+  - zlib
+  run:
+  - openjdk
+  - python
+  - zlib
+source:
+  sha256: b294c0cb6f0f3d578db11b4112a88b20583b9d4190b0a9cf04d83bb6a8704d9a
+  url: https://github.com/mengyao/Complete-Striped-Smith-Waterman-Library/archive/v1.2.5.tar.gz
+test:
+  commands:
+  - test -e ${PREFIX}/include/ssw.h
+  - test -e ${PREFIX}/include/ssw_cpp.h
+  - ssw_test 2>&1 | grep ssw_test
+  - pyssw.py -h
+  - java -Djava.library.path=${PREFIX}/lib -jar ${PREFIX}/bin/ssw.jar -h

@@ -1,0 +1,61 @@
+about:
+  description: SDePER (Spatial Deconvolution method with Platform Effect Removal)
+    is a hybrid machine learning and regression method to deconvolve Spatial barcoding-based
+    transcriptomic data using reference single-cell RNA sequencing data, considering
+    platform effects removal, sparsity of cell types per capture spot and across-spots
+    spatial correlation in cell type compositions. SDePER is also able to impute cell
+    type compositions and gene expression at unmeasured locations in a tissue map
+    with enhanced resolution.
+  dev_url: https://github.com/az7jh2/SDePER
+  doc_url: https://sdeper.readthedocs.io/en/latest/
+  home: https://az7jh2.github.io/SDePER/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Spatial Deconvolution method with Platform Effect Removal
+build:
+  entry_points:
+  - runDeconvolution = cvaeglrm:main
+  - runImputation = imputation:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - az7jh2
+package:
+  name: sdeper
+  version: 1.6.2
+requirements:
+  host:
+  - python >=3.9,<=3.10
+  - pip
+  run:
+  - distinctipy ==1.2.2
+  - matplotlib-base ==3.5.2
+  - networkx ==2.8.4
+  - numba ==0.59.1
+  - numpy ==1.26.4
+  - openpyxl ==3.0.10
+  - pandas ==1.4.3
+  - python >=3.9,<=3.10
+  - reportlab ==4.1.0
+  - scanpy ==1.9.1
+  - scikit-learn ==1.1.1
+  - scikit-misc ==0.1.4
+  - scipy ==1.11.4
+  - seaborn ==0.13.2
+  - tensorflow-base 2.15.0 cpu_*
+  - umap-learn ==0.5.3
+  - libopencv ==4.9.0 headless_*
+  - opencv ==4.9.0
+  - py-opencv ==4.9.0
+source:
+  sha256: 271371a6cdd717244c96ce7ba0c6e282f9cd85112048aac3a0ab40975724a1e4
+  url: https://pypi.io/packages/source/s/sdeper/sdeper-1.6.2.tar.gz
+test:
+  commands:
+  - runDeconvolution --help
+  - runImputation --help

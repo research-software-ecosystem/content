@@ -1,0 +1,53 @@
+about:
+  description: Large data files can be difficult to work with in R, where data generally
+    resides in memory. This package encourages a style of programming where data is
+    'streamed' from disk into R via a `producer' and through a series of `consumers'
+    that, typically reduce the original data to a manageable size. The package provides
+    useful Producer and Consumer stream components for operations such as data input,
+    sampling, indexing, and transformation; see package?Streamer for details.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Streamer.html
+  license: Artistic-2.0
+  summary: Enabling stream processing of large files
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:streamer
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-streamer
+    path: recipes/bioconductor-streamer
+    version: 1.26.0
+package:
+  name: bioconductor-streamer
+  version: 1.48.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rbgl >=1.78.0,<1.79.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-rbgl >=1.78.0,<1.79.0
+  - r-base
+source:
+  md5: d41ea52d04a44b0705846078ffe3b1e7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Streamer_1.48.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Streamer/Streamer_1.48.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Streamer_1.48.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-streamer/bioconductor-streamer_1.48.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Streamer')"

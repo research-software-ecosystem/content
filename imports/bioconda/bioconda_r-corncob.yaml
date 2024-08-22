@@ -1,0 +1,56 @@
+about:
+  home: https://github.com/bryandmartin/corncob
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  license_file:
+  - /lib/R/share/licenses/GPL-2
+  summary: Statistical modeling for correlated count data using the beta-binomial
+    distribution, described in Martin et al. (2020) <doi:10.1214/19-AOAS1283>. It
+    allows for both mean and overdispersion covariates.
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+package:
+  name: r-corncob
+  version: 0.4.1
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-vgam
+  - r-detectseparation
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-numderiv
+  - r-rlang
+  - r-scales
+  - r-trust
+  run:
+  - r-base
+  - r-vgam
+  - r-detectseparation
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-numderiv
+  - r-rlang
+  - r-scales
+  - r-trust
+source:
+  sha256: 9658ee516843ed7e229e24e77df3f7c0e361c428f1700818209c21e3d24f5089
+  url:
+  - /src/contrib/corncob_0.4.1.tar.gz
+  - /src/contrib/Archive/corncob/corncob_0.4.1.tar.gz
+test:
+  commands:
+  - $R -e "library('corncob')"
+  - '"%R%" -e "library(''corncob'')"'

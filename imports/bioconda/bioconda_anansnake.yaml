@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/vanheeringen-lab/anansnake
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Automated ANANSE analysis with seq2science & snakemake!
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv
+extra:
+  identifiers:
+  - biotools:ananse
+  recipe-maintainers:
+  - siebrenf
+package:
+  name: anansnake
+  version: 0.1.0
+requirements:
+  host:
+  - python
+  - pip
+  - hatchling >=1.5.0
+  run:
+  - python
+  - seq2science =1.2.1
+source:
+  sha256: baafb8a89c14e15965916968ac55994594c2f51426a3806f7b2cd8b212cb4fa7
+  url: https://github.com/vanheeringen-lab/anansnake/releases/download/0.1.0/anansnake-0.1.0.tar.gz
+test:
+  commands:
+  - anansnake -h
+  - anansnake -v

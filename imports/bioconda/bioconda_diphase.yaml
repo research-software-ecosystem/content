@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/zhangjuncsu/Diphase
+  license: MIT
+  summary: A diploid genome phasing tool
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+package:
+  name: diphase
+  version: 1.0.1
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  - xz
+  - bzip2
+  - libdeflate
+  - libcurl 7.87.0
+  - openssl 1.1.1
+  run:
+  - python 3.9.0
+  - zlib
+  - samtools
+  - bwa
+source:
+  sha256: 64a65bcf026b9401797e92bf1a4ec0a8151f0e7e27f7308166cdb24c9f89f03a
+  url: https://github.com/zhangjuncsu/Diphase/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - phasing -h 2>&1 | grep 'Usage'
+  - pipeline.py -h 2>&1 | grep 'phase'

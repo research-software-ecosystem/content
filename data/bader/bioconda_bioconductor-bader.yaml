@@ -1,0 +1,48 @@
+about:
+  description: For RNA sequencing count data, BADER fits a Bayesian hierarchical model.
+    The algorithm returns the posterior probability of differential expression for
+    each gene between two groups A and B. The joint posterior distribution of the
+    variables in the model can be returned in the form of posterior samples, which
+    can be used for further down-stream analyses such as gene set enrichment.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BADER.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Bayesian Analysis of Differential Expression in RNA Sequencing Data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:bader
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-bader
+    path: recipes/bioconductor-bader
+    version: 1.20.0
+package:
+  name: bioconductor-bader
+  version: 1.40.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - r-base
+source:
+  md5: 10d4e5e231ff178df7922078024f9d89
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BADER_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BADER/BADER_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BADER_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bader/bioconductor-bader_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BADER')"

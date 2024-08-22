@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/tseemann/kounta
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Generate multi-sample k-mer count matrix
+build:
+  noarch: generic
+  number: 2
+package:
+  name: kounta
+  version: 0.2.3
+requirements:
+  build: null
+  run:
+  - perl >=5.26
+  - parallel
+  - kmc >=3.1
+  - coreutils
+source:
+  sha256: adf17fb77afb66a8756d002fafc6497ac2249cb18f102d9ad8eb90851d423fb2
+  url: https://github.com/tseemann/kounta/archive/v0.2.3.tar.gz
+test:
+  commands:
+  - kounta --version | grep '0.2.3'
+  - kounta --help

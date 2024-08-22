@@ -1,0 +1,36 @@
+about:
+  description: 'SegAlign is a Scalable GPU System for Pairwise Whole Genome
+
+    Alignments based on LASTZ''s seed-filter-extend paradigm.
+
+    '
+  dev_url: https://github.com/galaxyproject/SegAlign
+  doc_url: https://github.com/galaxyproject/SegAlign/blob/main/README.md
+  home: https://github.com/galaxyproject/SegAlign
+  license: MIT
+  license_family: MIT
+  license_url: https://github.com/galaxyproject/SegAlign/blob/main/LICENSE
+  summary: 'SegAlign: A Scalable GPU-Based Whole Genome Aligner'
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1109/SC41405.2020.00043
+  - doi:10.5281/zenodo.3880947
+package:
+  name: segalign-full
+  version: 0.1.2.7
+requirements:
+  run:
+  - segalign =0.1.2.7
+  - lastz
+  - ucsc-fatotwobit
+test:
+  commands:
+  - segalign --help
+  - segalign_repeat_masker --help
+  - lastz --version 2>&1 | grep released
+  - which faToTwoBit

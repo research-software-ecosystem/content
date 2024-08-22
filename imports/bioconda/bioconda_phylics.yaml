@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/bioinformatics-polito/PhyliCS
+  license: AGPL3
+  summary: Single-cell CNV data analysis toolkit
+build:
+  noarch: python
+  number: 0
+  script: touch README_PyPI.md &&  -m pip install . --no-deps -vv
+package:
+  name: phylics
+  version: 1.0.7
+requirements:
+  host:
+  - python >=3.7,<3.9
+  - setuptools_scm
+  - pip
+  - sinfo
+  - pytoml
+  run:
+  - python >=3.7,<3.9
+  - numpy  >=1.19.5
+  - scipy  >=1.6.0
+  - pandas >=1.1.3
+  - matplotlib-base >=3.3.1
+  - seaborn >=0.11.1
+  - scikit-learn >=0.24
+  - statsmodels >=0.12.0
+  - anndata >=0.7.5
+  - typing
+  - umap-learn >=0.4.6
+  - IPython >=7.19.0
+  - joblib >=1.0.0
+source:
+  sha256: 2e202f22c91b2687f98923b335ff15017a2f383a5f1086347867c8a7e3fb3578
+  url: https://pypi.python.org/packages/source/p/phylics/phylics-1.0.7.tar.gz
+test:
+  imports:
+  - phylics

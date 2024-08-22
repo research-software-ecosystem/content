@@ -1,0 +1,75 @@
+about:
+  description: 'DifferentialRegulation is a method for detecting differentially regulated
+    genes between two groups of samples (e.g., healthy vs. disease, or treated vs.
+    untreated samples), by targeting differences in the balance of spliced and unspliced
+    mRNA abundances, obtained from single-cell RNA-sequencing (scRNA-seq) data. From
+    a mathematical point of view, DifferentialRegulation accounts for the sample-to-sample
+    variability, and embeds multiple samples in a Bayesian hierarchical model. Furthermore,
+    our method also deals with two major sources of mapping uncertainty: i) ''ambiguous''
+    reads, compatible with both spliced and unspliced versions of a gene, and ii)
+    reads mapping to multiple genes. In particular, ambiguous reads are treated separately
+    from spliced and unsplced reads, while reads that are compatible with multiple
+    genes are allocated to the gene of origin. Parameters are inferred via Markov
+    chain Monte Carlo (MCMC) techniques (Metropolis-within-Gibbs).'
+  home: https://bioconductor.org/packages/3.18/bioc/html/DifferentialRegulation.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Differentially regulated genes from scRNA-seq data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-differentialregulation
+  version: 2.0.2
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-bandits >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tximport >=1.30.0,<1.31.0
+  - r-base
+  - r-data.table
+  - r-doparallel
+  - r-dorng
+  - r-foreach
+  - r-ggplot2
+  - r-gridextra
+  - r-mass
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-bandits >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tximport >=1.30.0,<1.31.0
+  - r-base
+  - r-data.table
+  - r-doparallel
+  - r-dorng
+  - r-foreach
+  - r-ggplot2
+  - r-gridextra
+  - r-mass
+  - r-matrix
+  - r-rcpp
+  - r-rcpparmadillo
+source:
+  md5: 875793d502c3e521b4faa3eba0d1c2e7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DifferentialRegulation_2.0.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DifferentialRegulation/DifferentialRegulation_2.0.2.tar.gz
+  - https://bioarchive.galaxyproject.org/DifferentialRegulation_2.0.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-differentialregulation/bioconductor-differentialregulation_2.0.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DifferentialRegulation')"

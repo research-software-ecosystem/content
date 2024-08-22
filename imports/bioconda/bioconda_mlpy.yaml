@@ -1,0 +1,38 @@
+about:
+  dev_url: http://hg.code.sf.net/p/mlpy/code/
+  doc_url: http://mlpy.sourceforge.net/docs
+  home: http://mlpy.sourceforge.net/index.html
+  license: GPL3
+  license_file: LICENSE_merge
+  summary: mlpy is a Python module for Machine Learning built on top of NumPy/SciPy
+    and the GNU Scientific Libraries.
+build:
+  number: 3
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+extra:
+  recipe-maintainers:
+  - jfallmann
+package:
+  name: mlpy
+  version: 3.5.0
+requirements:
+  build:
+  - None
+  host:
+  - pip
+  - python
+  - numpy >=1.3.0
+  - scipy >=0.7.0
+  - gsl >=1.11
+  run:
+  - python
+  - numpy >=1.3.0
+  - scipy >=0.7.0
+  - gsl >=1.11
+source:
+  sha256: 344fa75fbf9f76af72f6a346d5309613defc4d244bac13c218e509a51d68bf6a
+  url: https://sourceforge.net/projects/mlpy/files/mlpy%203.5.0/mlpy-3.5.0.tar.gz
+test:
+  imports:
+  - mlpy

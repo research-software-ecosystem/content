@@ -1,0 +1,43 @@
+about:
+  description: The Molecular Degree of Perturbation webtool quantifies the heterogeneity
+    of samples. It takes a data.frame of omic data that contains at least two classes
+    (control and test) and assigns a score to all samples based on how perturbed they
+    are compared to the controls. It is based on the Molecular Distance to Health
+    (Pankla et al. 2009), and expands on this algorithm by adding the options to calculate
+    the z-score using the modified z-score (using median absolute deviation), change
+    the z-score zeroing threshold, and look at genes that are most perturbed in the
+    test versus control classes.
+  home: https://bioconductor.org/packages/3.18/bioc/html/mdp.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Molecular Degree of Perturbation calculates scores for transcriptome data
+    samples based on their perturbation from controls
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-mdp
+  version: 1.22.0
+requirements:
+  host:
+  - r-base
+  - r-ggplot2
+  - r-gridextra
+  run:
+  - r-base
+  - r-ggplot2
+  - r-gridextra
+source:
+  md5: a947b52acd7f930a3babcdb4e429bb0c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mdp_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mdp/mdp_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mdp_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mdp/bioconductor-mdp_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('mdp')"

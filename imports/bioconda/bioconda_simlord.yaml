@@ -1,0 +1,35 @@
+about:
+  home: https://bitbucket.org/genomeinformatics/simlord/
+  license: MIT License
+  summary: SimLoRD is a read simulator for long reads from third generation sequencing.
+    Currently, it supports the Pacific Biosciences SMRT error model.
+build:
+  entry_points:
+  - simlord = simlord.simlord:main
+  number: 4
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: simlord
+  version: 1.0.4
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  run:
+  - python
+  - numpy
+  - scipy
+  - pysam >=0.8.4
+  - dinopy
+source:
+  sha256: 8f3f018da10b91ad865c602eb3926513dcdbfd3b0108f5d5006aee4bca4a74b6
+  url: https://files.pythonhosted.org/packages/b7/41/0deb50e6d2b003799371dda32a2b81d254e5b665f8435c75d656a7d6d080/simlord-1.0.4.zip
+test:
+  commands:
+  - simlord --help
+  imports:
+  - simlord

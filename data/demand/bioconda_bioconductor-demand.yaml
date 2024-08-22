@@ -1,0 +1,44 @@
+about:
+  description: DEMAND predicts Drug MoA by interrogating a cell context specific regulatory
+    network with a small number (N >= 6) of compound-induced gene expression signatures,
+    to elucidate specific proteins whose interactions in the network is dysregulated
+    by the compound.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DeMAND.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: DeMAND
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:demand
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-demand
+    path: recipes/bioconductor-demand
+    version: 1.10.0
+package:
+  name: bioconductor-demand
+  version: 1.32.0
+requirements:
+  host:
+  - r-base
+  - r-kernsmooth
+  run:
+  - r-base
+  - r-kernsmooth
+source:
+  md5: ccb354bddebbebda6c42453810f10e70
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DeMAND_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DeMAND/DeMAND_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DeMAND_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-demand/bioconductor-demand_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DeMAND')"

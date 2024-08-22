@@ -1,0 +1,50 @@
+about:
+  description: This package provides a web interface to compute transcriptional regulatory
+    modules with rTRM.
+  home: https://bioconductor.org/packages/3.18/bioc/html/rTRMui.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A shiny user interface for rTRM
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rtrmui
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-rtrmui
+    path: recipes/bioconductor-rtrmui
+    version: 1.18.0
+package:
+  name: bioconductor-rtrmui
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-motifdb >=1.44.0,<1.45.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-org.mm.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtrm >=1.40.0,<1.41.0
+  - r-base
+  - r-shiny >=0.9
+  run:
+  - bioconductor-motifdb >=1.44.0,<1.45.0
+  - bioconductor-org.hs.eg.db >=3.18.0,<3.19.0
+  - bioconductor-org.mm.eg.db >=3.18.0,<3.19.0
+  - bioconductor-rtrm >=1.40.0,<1.41.0
+  - r-base
+  - r-shiny >=0.9
+source:
+  md5: 6e1589a0f3e51870f4eb71a0eb56d915
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/rTRMui_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/rTRMui/rTRMui_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rTRMui_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rtrmui/bioconductor-rtrmui_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rTRMui')"

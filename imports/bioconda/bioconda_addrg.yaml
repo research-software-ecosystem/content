@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/holtgrewe/addrg
+  license: MIT
+  summary: Add read group to BAM files
+build:
+  number: 12
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: addrg
+  version: 0.2.1
+requirements:
+  build:
+  - None
+  host:
+  - htslib
+  - zlib
+  run:
+  - htslib
+source:
+  sha256: 8d8873d77afc456b4e69dabe3c5cc839ab4b4a12ed1d9f7fe8a7524001a235b2
+  url: https://github.com/holtgrewe/addrg/archive/v0.2.1.tar.gz
+test:
+  commands:
+  - '{ >&1 addrg || true; } | grep Usage'

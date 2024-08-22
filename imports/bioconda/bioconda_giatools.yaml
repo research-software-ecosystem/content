@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/BMCV/giatools
+  home: https://github.com/BMCV/giatools
+  license: MIT
+  summary: Tools required for Galaxy Image Analysis
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install --no-deps --ignore-installed . -vv '
+extra:
+  recipe-maintainers:
+  - kostrykin
+package:
+  name: giatools
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.8,<3.12
+  - pip
+  - setuptools
+  - numpy >=1.18
+  - scikit-image >=0.18
+  run:
+  - python >=3.8,<3.12
+  - numpy >=1.18
+  - scikit-image >=0.18
+source:
+  sha256: a16291b3f3d1868559e8a87d9656a254da9f438e0dcd178ea331b707df3d8f1f
+  url: https://github.com/BMCV/giatools/archive/refs/tags/0.1.2.zip
+test:
+  commands:
+  - python -c "import giatools; print(giatools.VERSION)"

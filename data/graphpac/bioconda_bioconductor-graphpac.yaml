@@ -1,0 +1,49 @@
+about:
+  description: Identifies mutational clusters of amino acids in a protein while utilizing
+    the proteins tertiary structure via a graph theoretical model.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GraphPAC.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Identification of Mutational Clusters in Proteins via a Graph Theoretical
+    Approach.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:graphpac
+  - doi:10.1186/1471-2105-15-86
+  parent_recipe:
+    name: bioconductor-graphpac
+    path: recipes/bioconductor-graphpac
+    version: 1.22.1
+package:
+  name: bioconductor-graphpac
+  version: 1.44.0
+requirements:
+  host:
+  - bioconductor-ipac >=1.46.0,<1.47.0
+  - r-base
+  - r-igraph
+  - r-rmallow
+  - r-tsp
+  run:
+  - bioconductor-ipac >=1.46.0,<1.47.0
+  - r-base
+  - r-igraph
+  - r-rmallow
+  - r-tsp
+source:
+  md5: 68794a35ae528c5cde68e7915611ace8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GraphPAC_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GraphPAC/GraphPAC_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GraphPAC_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-graphpac/bioconductor-graphpac_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GraphPAC')"

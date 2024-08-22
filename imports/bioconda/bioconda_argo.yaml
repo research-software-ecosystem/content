@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/xinehc/argo
+  license: MIT
+  license_family: MIT
+  summary: 'Argo: species-resolved profiling of antibiotic resistant genes with long-read
+    metagenomics'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - xinehc
+package:
+  name: argo
+  version: 0.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - python >=3.7
+  - diamond ==2.1.8
+  - melon >=0.2.0
+  - scikit-learn
+source:
+  sha256: 8dbe2606024c78ca471dea675e4aeaa88140cca0a2f989b2d40081cf6cd62cdc
+  url: https://github.com/xinehc/argo/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - argo -h
+  imports:
+  - argo

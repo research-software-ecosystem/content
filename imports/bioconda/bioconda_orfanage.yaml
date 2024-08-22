@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/alevar/ORFanage
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: Ultra-efficient and sensitive method to search for ORFs in spliced genomes
+    guided by reference annotation to maximize protein similarity within genes.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: orfanage
+  version: 1.2.0
+requirements:
+  build:
+  - None
+  - None
+  - cmake >=3.2
+  - make
+  - libgomp
+  - llvm-openmp
+  host:
+  - gsl
+  - libcblas
+  - zlib
+  - libbigwig
+source:
+  sha256: 480646b3d4ce91768004a0b0b36a9766709bf3d99a23e291f37ea353ceb58b5c
+  url: https://github.com/alevar/orfanage/archive/refs/tags/1.2.0.tar.gz
+test:
+  commands:
+  - orfanage --help > /dev/null

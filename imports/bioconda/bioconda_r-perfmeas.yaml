@@ -1,0 +1,49 @@
+about:
+  home: https://CRAN.R-project.org/package=PerfMeas
+  license: GPL-2.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Package that implements different performance measures for classification
+    and ranking tasks. AUC, precision at a given recall, F-score for single and multiple
+    classes are available.
+build:
+  number: 3
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - MathiasHaudgaard
+  - FrodePedersen
+  - ArneKr
+  - johanneskoester
+  - bgruening
+  - daler
+  - jdblischak
+package:
+  name: r-perfmeas
+  version: 1.2.5
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - bioconductor-rbgl
+  - bioconductor-graph
+  - bioconductor-limma
+  run:
+  - r-base
+  - bioconductor-rbgl
+  - bioconductor-graph
+  - bioconductor-limma
+source:
+  sha256: 4b4212182203d7ee1ae4c132ac1c9935e425e407ee435300e558afcb2798d28f
+  url:
+  - /src/contrib/PerfMeas_1.2.5.tar.gz
+  - /src/contrib/Archive/PerfMeas/PerfMeas_1.2.5.tar.gz
+test:
+  commands:
+  - $R -e "library('PerfMeas')"
+  - '"%R%" -e "library(''PerfMeas'')"'

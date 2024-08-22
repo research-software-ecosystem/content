@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/ebi-gene-expression-group/monocle-scripts
+  home: https://github.com/ebi-gene-expression-group/monocle-scripts
+  license: Apache-2.0
+  license_family: Apache
+  summary: A set of wrappers for individual components of the monocle3 package. Functions
+    R packages are hard to call when building workflows outside of R, so this package
+    adds a set of simple wrappers with robust argument parsing. Intermediate steps
+    are currently monocle3 R objects, but the ultimate objective is to have language-agnostic
+    intermediate formats allowing composite workflows using a variety of software
+    packages.
+build:
+  noarch: generic
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - nh3
+  - ktpolanski
+package:
+  name: monocle3-cli
+  version: 0.0.9
+requirements:
+  host:
+  - r-base
+  - r-optparse
+  - r-monocle3 <=0.2.0
+  run:
+  - r-base
+  - r-optparse
+  - r-monocle3 <=0.2.0
+  - fonts-conda-ecosystem
+source:
+  sha256: 0a31e83765300078e297970a7a410d9bf6d22d4693a423255fde9eae830001d0
+  url: https://github.com/ebi-gene-expression-group/monocle-scripts/archive/v0.0.9.tar.gz
+test:
+  commands:
+  - $R -e "suppressPackageStartupMessages(library('monocle3'))"
+  - monocle3 create --help > /dev/null
+  - monocle3 preprocess --help > /dev/null
+  - monocle3 reduceDim --help > /dev/null
+  - monocle3 partition --help > /dev/null
+  - monocle3 learnGraph --help > /dev/null
+  - monocle3 orderCells --help > /dev/null
+  - monocle3 diffExp --help > /dev/null
+  - monocle3 plotCells --help > /dev/null
+  - monocle3 topMarkers --help > /dev/null

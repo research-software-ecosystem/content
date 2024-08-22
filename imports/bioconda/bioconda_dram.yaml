@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/shafferm/DRAM/
+  doc_url: https://github.com/shafferm/DRAM/wiki
+  home: https://github.com/shafferm/DRAM/
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'Distilled and Refined Annotation of Metabolism: A tool for the annotation
+    and curation of function for microbial and viral genomes'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  identifiers:
+  - doi:10.1101/2020.06.29.177501
+  notes: Databases are required. Please run 'DRAM-setup.py prepare_databases' with
+    the respective options.
+package:
+  name: dram
+  version: 1.5.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - altair >=4
+  - networkx
+  - numpy
+  - openpyxl
+  - pandas >=1.5, <2
+  - scikit-bio >=0.5.8, <0.6
+  - sqlalchemy
+  - prodigal
+  - scipy >=1.9
+  - mmseqs2 >10.6d92c
+  - hmmer
+  - trnascan-se >=2
+  - barrnap
+  - ruby
+  - parallel
+  - wget
+  - curl
+source:
+  patches:
+  - fix_setup.patch
+  sha256: 2d4a503fa806e33b580afb6d21879b2399178e48ba3b05ada882449fee571889
+  url: https://pypi.io/packages/source/D/DRAM-bio/DRAM-bio-1.5.0.tar.gz
+test:
+  commands:
+  - DRAM-setup.py --help
+  - DRAM.py --help
+  - DRAM-v.py --help

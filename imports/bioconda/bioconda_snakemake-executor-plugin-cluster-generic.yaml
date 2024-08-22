@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/snakemake/snakemake-executor-plugin-cluster-generic
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Generic cluster executor for Snakemake
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koesterlab
+package:
+  name: snakemake-executor-plugin-cluster-generic
+  version: 1.0.9
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-executor-plugins >=9.0.0,<10.0.0
+  - snakemake-interface-common >=1.13.0,<2.0.0
+source:
+  sha256: ad0dc2d8bde7d4f336364bebe11a3b2209653c481ce8fbb0ae8bec81016a9a14
+  url: https://pypi.io/packages/source/s/snakemake-executor-plugin-cluster-generic/snakemake_executor_plugin_cluster_generic-1.0.9.tar.gz
+test:
+  imports:
+  - snakemake_executor_plugin_cluster_generic

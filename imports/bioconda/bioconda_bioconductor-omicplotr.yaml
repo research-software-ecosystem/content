@@ -1,0 +1,58 @@
+about:
+  description: A Shiny app for visual exploration of omic datasets as compositions,
+    and differential abundance analysis using ALDEx2. Useful for exploring RNA-seq,
+    meta-RNA-seq, 16s rRNA gene sequencing with visualizations such as principal component
+    analysis biplots (coloured using metadata for visualizing each variable), dendrograms
+    and stacked bar plots, and effect plots (ALDEx2). Input is a table of counts and
+    metadata file (if metadata exists), with options to filter data by count or by
+    metadata to remove low counts, or to visualize select samples according to selected
+    metadata.
+  home: https://bioconductor.org/packages/3.18/bioc/html/omicplotR.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Visual Exploration of Omic Datasets Using a Shiny App
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-omicplotr
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-aldex2 >=1.34.0,<1.35.0
+  - r-base
+  - r-compositions
+  - r-dt
+  - r-jsonlite
+  - r-knitr
+  - r-matrixstats
+  - r-rmarkdown
+  - r-shiny
+  - r-vegan
+  - r-zcompositions
+  run:
+  - bioconductor-aldex2 >=1.34.0,<1.35.0
+  - r-base
+  - r-compositions
+  - r-dt
+  - r-jsonlite
+  - r-knitr
+  - r-matrixstats
+  - r-rmarkdown
+  - r-shiny
+  - r-vegan
+  - r-zcompositions
+source:
+  md5: 1ab1c2e82c98f8086b4dba4f65a613e7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/omicplotR_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/omicplotR/omicplotR_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/omicplotR_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-omicplotr/bioconductor-omicplotr_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('omicplotR')"

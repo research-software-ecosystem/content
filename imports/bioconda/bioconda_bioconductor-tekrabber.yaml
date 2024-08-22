@@ -1,0 +1,58 @@
+about:
+  description: TEKRABber is made to provide a user-friendly pipeline for comparing
+    orthologs and transposable elements (TEs) between two species. It considers the
+    orthology confidence between two species from BioMart to normalize expression
+    counts and detect differentially expressed orthologs/TEs. Then it provides one
+    to one correlation analysis for desired orthologs and TEs. There is also an app
+    function to have a first insight on the result. Users can prepare orthologs/TEs
+    RNA-seq expression data by their own preference to run TEKRABber following the
+    data structure mentioned in the vignettes.
+  home: https://bioconductor.org/packages/3.18/bioc/html/TEKRABber.html
+  license: LGPL (>=3)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: An R package estimates the correlations of orthologs and transposable elements
+    between two species
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-tekrabber
+  version: 1.6.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-apeglm >=1.24.0,<1.25.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-scbn >=1.20.0,<1.21.0
+  - r-base
+  - r-dplyr
+  - r-magrittr
+  - r-rcpp >=1.0.7
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-apeglm >=1.24.0,<1.25.0
+  - bioconductor-biomart >=2.58.0,<2.59.0
+  - bioconductor-deseq2 >=1.42.0,<1.43.0
+  - bioconductor-scbn >=1.20.0,<1.21.0
+  - r-base
+  - r-dplyr
+  - r-magrittr
+  - r-rcpp >=1.0.7
+source:
+  md5: 145026d8a5e02ec94f8a2a1f5405851e
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/TEKRABber_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/TEKRABber/TEKRABber_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TEKRABber_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tekrabber/bioconductor-tekrabber_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TEKRABber')"

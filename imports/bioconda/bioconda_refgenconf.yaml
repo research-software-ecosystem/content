@@ -1,0 +1,36 @@
+about:
+  home: https://refgenie.databio.org
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A standardized configuration object for reference genome assemblies
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - stolarczyk
+package:
+  name: refgenconf
+  version: 0.12.2
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - python >=3.6
+  - pyyaml
+  - requests
+  - yacman >=0.8.0
+  - future
+  - rich >=9.0.1
+  - jsonschema >=3.0.1
+source:
+  sha256: 6c9f9ecd8b91b4f75a535cfbdbdfb136f2dc9e9864142d07aa0352c61cf0cf78
+  url: https://pypi.io/packages/source/r/refgenconf/refgenconf-0.12.2.tar.gz
+test:
+  imports:
+  - refgenconf
+  requires:
+  - pytest

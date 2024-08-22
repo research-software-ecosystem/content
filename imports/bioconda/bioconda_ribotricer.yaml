@@ -1,0 +1,59 @@
+about:
+  description: "Ribotricer is a method for detecting actively-translating \nORFs by\
+    \ directly leveraging the three-nucleotide periodicity of\nRibo-seq data. It accurately\
+    \ identifies both short and long\nactive ORFs.\n"
+  home: https://github.com/smithlabcode/ribotricer
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Python package to detect translating ORF from Ribo-seq data
+build:
+  entry_points:
+  - ribotricer=ribotricer.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - saketkc
+package:
+  name: ribotricer
+  version: 1.4.0
+requirements:
+  host:
+  - click >=6.0
+  - click-help-colors >=0.3
+  - matplotlib-base >=2.1.0
+  - numpy >=1.11.0
+  - pandas >=0.20.3
+  - pip
+  - pyfaidx >=0.5.0
+  - pysam >=0.11.2.2
+  - python >3
+  - quicksect >=0.2.0
+  - scipy >=0.19.1
+  - tqdm >=4.23.4
+  run:
+  - click >=6.0
+  - click-help-colors >=0.3
+  - matplotlib-base >=2.1.0
+  - numpy >=1.11.0
+  - pandas >=0.20.3
+  - pyfaidx >=0.5.0
+  - pysam >=0.11.2.2
+  - python >3
+  - quicksect >=0.2.0
+  - scipy >=0.19.1
+  - tqdm >=4.23.4
+source:
+  sha256: f0f612796f65460f58639cafe297afb1350d6fe7f50d06ea38f372447bdbc63b
+  url: https://pypi.io/packages/source/r/ribotricer/ribotricer-1.4.0.tar.gz
+test:
+  commands:
+  - ribotricer --help
+  imports:
+  - ribotricer

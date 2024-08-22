@@ -1,0 +1,43 @@
+about:
+  description: Test two sets of gene lists and visualize the results.
+  home: https://bioconductor.org/packages/3.18/bioc/html/GeneOverlap.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Test and visualize gene overlaps
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:geneoverlap
+  - doi:10.1167/iovs.16-20618
+  parent_recipe:
+    name: bioconductor-geneoverlap
+    path: recipes/bioconductor-geneoverlap
+    version: 1.16.0
+package:
+  name: bioconductor-geneoverlap
+  version: 1.38.0
+requirements:
+  host:
+  - r-base
+  - r-gplots
+  - r-rcolorbrewer
+  run:
+  - r-base
+  - r-gplots
+  - r-rcolorbrewer
+source:
+  md5: 0b5179a1183a82869935ca6c2c55aab3
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/GeneOverlap_1.38.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/GeneOverlap/GeneOverlap_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GeneOverlap_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-geneoverlap/bioconductor-geneoverlap_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GeneOverlap')"

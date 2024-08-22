@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/davebx/kc-align
+  doc_url: https://github.com/davebx/kc-align/blob/master/README.md
+  home: https://github.com/davebx/kc-align
+  license: AFL-3.0-only
+  license_family: OTHER
+  summary: Kalgin-based codon-aware aligner for multiple sequences
+build:
+  entry_points:
+  - kc-align=kcalign.cli:main
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: kcalign
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - biopython
+  - python >=3.6
+  - kalign3
+  - mafft
+source:
+  sha256: 06d0050ea3fb786981e2ffbbc5bf8251c1aebf15d2e9987776c920e0e09a7ef1
+  url: https://pypi.io/packages/source/k/kcalign/kcalign-1.0.2.tar.gz
+test:
+  commands:
+  - kc-align --help
+  imports:
+  - kcalign

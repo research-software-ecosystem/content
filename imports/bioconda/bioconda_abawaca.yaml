@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/CK7/abawaca
+  license: open source
+  summary: abawaca is a binning program for metagenomics
+build:
+  number: 7
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1038/nature14486
+  maintainers:
+  - keuv-grvl
+package:
+  name: abawaca
+  version: 1.0
+requirements:
+  build:
+  - make
+  - None
+  host: null
+  run: null
+source:
+  patches:
+  - 0001-Use-CXX-and-flags.patch
+  sha256: 57465bb291c3a9af93605ffb11d704324079036205e5ac279601c9e98c467529
+  url: https://github.com/CK7/abawaca/archive/v1.00.tar.gz
+test:
+  commands:
+  - abawaca 2>&1 | grep Usage

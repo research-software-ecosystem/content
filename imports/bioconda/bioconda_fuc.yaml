@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/sbslee/fuc
+  doc_url: https://sbslee-fuc.readthedocs.io/en/latest/
+  home: https://github.com/sbslee/fuc
+  license: MIT
+  license_family: MIT
+  summary: Frequently used commands in bioinformatics
+build:
+  entry_points:
+  - fuc=fuc.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - sbslee
+package:
+  name: fuc
+  version: 0.38.0
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - biopython
+  - lxml
+  - matplotlib-base
+  - matplotlib-venn
+  - numpy
+  - pandas
+  - pyranges
+  - pysam
+  - python
+  - scipy
+  - seaborn
+  - statsmodels
+source:
+  sha256: 379ffdfeaa77ba4d9fd38360e1032986ad3e3da8b380f57652cbcf4b9c1c13dc
+  url: https://pypi.io/packages/source/f/fuc/fuc-0.38.0.tar.gz
+test:
+  commands:
+  - fuc --help
+  imports:
+  - fuc
+  - fuc.api
+  - fuc.cli

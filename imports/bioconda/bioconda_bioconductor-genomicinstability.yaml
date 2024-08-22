@@ -1,0 +1,41 @@
+about:
+  description: This package contain functions to run genomic instability analysis
+    (GIA) from scRNA-Seq data. GIA estimates the association between gene expression
+    and genomic location of the coding genes. It uses the aREA algorithm to quantify
+    the enrichment of sets of contiguous genes (loci-blocks) on the gene expression
+    profiles and estimates the Genomic Instability Score (GIS) for each analyzed cell.
+  home: https://bioconductor.org/packages/3.18/bioc/html/genomicInstability.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Genomic Instability estimation for scRNA-Seq
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-genomicinstability
+  version: 1.8.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-checkmate
+  - r-mixtools
+  run:
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-checkmate
+  - r-mixtools
+source:
+  md5: 0d7c244a904ea9286d4e965cddeaf2d7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/genomicInstability_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/genomicInstability/genomicInstability_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/genomicInstability_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genomicinstability/bioconductor-genomicinstability_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('genomicInstability')"

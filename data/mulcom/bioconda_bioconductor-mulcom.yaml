@@ -1,0 +1,49 @@
+about:
+  description: Identification of differentially expressed genes and false discovery
+    rate (FDR) calculation by Multiple Comparison test.
+  home: https://bioconductor.org/packages/3.18/bioc/html/Mulcom.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Calculates Mulcom test
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mulcom
+  - doi:10.1186/1471-2105-12-382
+  parent_recipe:
+    name: bioconductor-mulcom
+    path: recipes/bioconductor-mulcom
+    version: 1.30.0
+package:
+  name: bioconductor-mulcom
+  version: 1.52.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-fields
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-fields
+source:
+  md5: 87375077f62104b18567db2e68a07488
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Mulcom_1.52.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Mulcom/Mulcom_1.52.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Mulcom_1.52.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mulcom/bioconductor-mulcom_1.52.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Mulcom')"

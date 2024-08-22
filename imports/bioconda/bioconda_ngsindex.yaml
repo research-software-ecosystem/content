@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/jdidion/ngsindex
+  license: MIT
+  license_family: MIT
+  license_file: null
+  summary: Utilities for working with NGS index formats.
+build:
+  entry_points:
+  - summarize-index=ngsindex.cli:summarize
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - matthdsm
+package:
+  name: ngsindex
+  version: 0.1.7
+requirements:
+  host:
+  - pip
+  - python
+  - xphyle >=4.0.0rc0
+  run:
+  - python
+  - xphyle >=4.0.0rc0
+source:
+  sha256: 8996c6e762df0814631e2e5f5b97733ebcf30cd7ac0884f149b6422a9a1eb38a
+  url: https://pypi.io/packages/source/n/ngsindex/ngsindex-0.1.7.tar.gz
+test:
+  commands:
+  - summarize-index --help
+  imports:
+  - ngsindex
+  requires:
+  - dataclasses
+  - pytest
+  - pytest-cov
+  - pytest-datadir

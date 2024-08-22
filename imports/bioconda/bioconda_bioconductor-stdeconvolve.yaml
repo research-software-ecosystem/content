@@ -1,0 +1,64 @@
+about:
+  description: STdeconvolve as an unsupervised, reference-free approach to infer latent
+    cell-type proportions and transcriptional profiles within multi-cellular spatially-resolved
+    pixels from spatial transcriptomics (ST) datasets. STdeconvolve builds on latent
+    Dirichlet allocation (LDA), a generative statistical model commonly used in natural
+    language processing for discovering latent topics in collections of documents.
+    In the context of natural language processing, given a count matrix of words in
+    documents, LDA infers the distribution of words for each topic and the distribution
+    of topics in each document. In the context of ST data, given a count matrix of
+    gene expression in multi-cellular ST pixels, STdeconvolve applies LDA to infer
+    the putative transcriptional profile for each cell-type and the proportional representation
+    of each cell-type in each multi-cellular ST pixel.
+  home: https://bioconductor.org/packages/3.18/bioc/html/STdeconvolve.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Reference-free Cell-Type Deconvolution of Multi-Cellular Spatially Resolved
+    Transcriptomics Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-stdeconvolve
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-clue
+  - r-ggplot2
+  - r-liger
+  - r-matrix
+  - r-mgcv
+  - r-reshape2
+  - r-scatterpie
+  - r-slam
+  - r-topicmodels
+  - r-viridis
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - r-base
+  - r-clue
+  - r-ggplot2
+  - r-liger
+  - r-matrix
+  - r-mgcv
+  - r-reshape2
+  - r-scatterpie
+  - r-slam
+  - r-topicmodels
+  - r-viridis
+source:
+  md5: 2908e0d59713b2c3ef6c7bc549d0d123
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/STdeconvolve_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/STdeconvolve/STdeconvolve_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/STdeconvolve_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-stdeconvolve/bioconductor-stdeconvolve_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('STdeconvolve')"

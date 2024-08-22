@@ -1,0 +1,49 @@
+about:
+  description: UCell is a package for evaluating gene signatures in single-cell datasets.
+    UCell signature scores, based on the Mann-Whitney U statistic, are robust to dataset
+    size and heterogeneity, and their calculation demands less computing time and
+    memory than other available methods, enabling the processing of large datasets
+    in a few minutes even on machines with limited computing power. UCell can be applied
+    to any single-cell data matrix, and includes functions to directly interact with
+    SingleCellExperiment and Seurat objects.
+  home: https://bioconductor.org/packages/3.18/bioc/html/UCell.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: Rank-based signature enrichment analysis for single-cell data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-ucell
+  version: 2.6.2
+requirements:
+  host:
+  - bioconductor-biocneighbors >=1.20.0,<1.21.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-data.table >=1.13.6
+  - r-matrix
+  run:
+  - bioconductor-biocneighbors >=1.20.0,<1.21.0
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-data.table >=1.13.6
+  - r-matrix
+source:
+  md5: c02318fc6a9ac12b0d902460be5204d4
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/UCell_2.6.2.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/UCell/UCell_2.6.2.tar.gz
+  - https://bioarchive.galaxyproject.org/UCell_2.6.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ucell/bioconductor-ucell_2.6.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('UCell')"

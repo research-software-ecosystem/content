@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/indralab/protmapper
+  doc_url: https://protmapper.readthedocs.io
+  home: https://github.com/indralab/protmapper
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Map protein sites to human reference sequence.
+build:
+  entry_points:
+  - protmapper = protmapper.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - bgyori
+package:
+  name: protmapper
+  version: 0.0.29
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - requests
+  - boto3
+  - pystow >=0.1.0
+  - rdflib
+source:
+  sha256: d0d10198fb000401d03ba6c271869970caf8e1c8b46db686d2eed153fa8c2257
+  url: https://pypi.io/packages/source/p/protmapper/protmapper-0.0.29.tar.gz
+test:
+  commands:
+  - protmapper --help
+  imports:
+  - protmapper

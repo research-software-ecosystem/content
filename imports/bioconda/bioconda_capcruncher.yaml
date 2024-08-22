@@ -1,0 +1,67 @@
+about:
+  dev_url: https://github.com/sims-lab/CapCruncher
+  doc_url: https://sims-lab.github.io/CapCruncher/
+  home: https://github.com/sims-lab/CapCruncher.git
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: An end-to-end solution for processing Capture-C, Tri-C and Tiled-C data
+build:
+  entry_points:
+  - capcruncher = capcruncher.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.3.12
+extra:
+  recipe-maintainers:
+  - asmith
+package:
+  name: capcruncher
+  version: 0.3.12
+requirements:
+  host:
+  - pip
+  - python >=3.10
+  - setuptools-scm
+  - wheel
+  run:
+  - python >=3.10
+  - click <=8.2.0
+  - cooler
+  - duckdb
+  - h5py
+  - loguru
+  - more-itertools
+  - natsort
+  - numpy
+  - pandas <=2.0.1
+  - plotly >5.0.0,<=5.10.0
+  - pyarrow >8.0.0,<=9.0.0
+  - pybedtools
+  - pyranges
+  - pysam >0.15.0,<=0.19.1
+  - pyyaml >=6.0
+  - quarto
+  - ray
+  - seaborn
+  - sh
+  - snakemake <=7.30.2
+  - tqdm
+  - trackhub
+  - tracknado
+  - ujson
+  - xopen
+  - python-xxhash
+source:
+  sha256: 43b1e634dac4eee5f801b69b2adafb07b61c72556cc32b1cd5e03518ed2e407b
+  url: https://pypi.io/packages/source/c/capcruncher/capcruncher-0.3.12.tar.gz
+test:
+  commands:
+  - capcruncher --help
+  imports:
+  - capcruncher
+  - capcruncher.cli

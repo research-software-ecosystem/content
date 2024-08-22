@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/daquang/YAMDA
+  license: MIT
+  license_file: LICENSE
+  summary: A highly scalable GPU-accelerated de novo motif discovery software package
+build:
+  noarch: python
+  number: 0
+extra:
+  identifiers:
+  - biotools:yamda
+package:
+  name: yamda
+  version: 0.1.00e9c9d
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - numpy
+  - scipy
+  - pyfaidx
+  - tqdm
+  - pytorch
+  - torchvision
+  - biopython
+  - bedtools
+source:
+  sha256: 4b3afc528bcc1925cbd4717e90c7ced049da017cc14c721e2f73edb096247436
+  url: https://github.com/daquang/YAMDA/archive/00e9c9d.tar.gz
+test:
+  commands:
+  - run_em.py -h | grep 'usage'
+  - erase_annoying_sequences.py -h | grep usage

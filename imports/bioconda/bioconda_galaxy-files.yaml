@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/galaxyproject/galaxy
+  doc_url: https://docs.galaxyproject.org
+  home: https://galaxyproject.org
+  license: AFL-3.0
+  license_file: LICENSE.txt
+  summary: The Galaxy file sources framework and default plugins.
+build:
+  noarch: python
+  number: 0
+  run_exports: -None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  identifiers:
+  - biotools:galaxy
+  - doi:10.1093/nar/gky379
+  recipe-maintainers:
+  - bernt-matthias
+package:
+  name: galaxy-files
+  version: 24.1.1
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - galaxy-util >=24.1
+  - fs
+  - typing-extensions
+  - python >=3.7
+source:
+  sha256: d3c23617eed928515fd492fd97588790b1c095fdd298b5f5584307f34846c4ca
+  url: https://pypi.io/packages/source/g/galaxy-files/galaxy_files-24.1.1.tar.gz
+test:
+  imports:
+  - galaxy
+  - galaxy.files

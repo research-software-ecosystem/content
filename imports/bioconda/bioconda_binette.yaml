@@ -1,0 +1,42 @@
+about:
+  doc_url: https://binette.readthedocs.io
+  home: https://github.com/genotoul-bioinfo/binette
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A fast and accurate binning refinement tool to constructs high quality
+    MAGs from the output of multiple binning tools.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --ignore-installed -vv .
+package:
+  name: binette
+  version: 1.0.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python >=3.7
+  - numpy =1.19.2
+  - diamond =2.0.4
+  - pandas =1.4.0
+  - checkm2
+  - requests
+  - packaging
+  - tqdm
+  - networkx >=3
+  - pyfastx >=2
+  - pyrodigal >=2
+source:
+  sha256: 968c6568b862f4586388fbc63d8fd6054fb2dd0b177d5594099235f48ddea7ab
+  url: https://github.com/genotoul-bioinfo/binette/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - binette -h
+  imports:
+  - binette

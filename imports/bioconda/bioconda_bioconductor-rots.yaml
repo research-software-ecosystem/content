@@ -1,0 +1,49 @@
+about:
+  description: Calculates the Reproducibility-Optimized Test Statistic (ROTS) for
+    differential testing in omics data.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ROTS.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Reproducibility-Optimized Test Statistic
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rots
+  - doi:10.1109/tcbb.2007.1078
+  parent_recipe:
+    name: bioconductor-rots
+    path: recipes/bioconductor-rots
+    version: 1.8.0
+package:
+  name: bioconductor-rots
+  version: 1.30.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-rcpp
+source:
+  md5: 02d51e24e501790ad3049c1bb5b3f90b
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ROTS_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ROTS/ROTS_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ROTS_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rots/bioconductor-rots_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ROTS')"

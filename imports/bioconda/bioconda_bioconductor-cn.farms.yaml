@@ -1,0 +1,66 @@
+about:
+  description: This package implements the cn.FARMS algorithm for copy number variation
+    (CNV) analysis. cn.FARMS allows to analyze the most common Affymetrix (250K-SNP6.0)
+    array types, supports high-performance computing using snow and ff.
+  home: https://bioconductor.org/packages/3.18/bioc/html/cn.farms.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: cn.FARMS - factor analysis for copy number estimation
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cn.farms
+  - doi:10.1093/nar/gkr197
+  parent_recipe:
+    name: bioconductor-cn.farms
+    path: recipes/bioconductor-cn.farms
+    version: 1.28.0
+package:
+  name: bioconductor-cn.farms
+  version: 1.50.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-oligo >=1.66.0,<1.67.0
+  - bioconductor-oligoclasses >=1.64.0,<1.65.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - r-base
+  - r-dbi
+  - r-ff
+  - r-lattice
+  - r-snow
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-affxparser >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-dnacopy >=1.76.0,<1.77.0
+  - bioconductor-oligo >=1.66.0,<1.67.0
+  - bioconductor-oligoclasses >=1.64.0,<1.65.0
+  - bioconductor-preprocesscore >=1.64.0,<1.65.0
+  - r-base
+  - r-dbi
+  - r-ff
+  - r-lattice
+  - r-snow
+source:
+  md5: 8a991cf7fb9deb2d6ed855617dcfb853
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cn.farms_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cn.farms/cn.farms_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cn.farms_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cn.farms/bioconductor-cn.farms_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cn.farms')"

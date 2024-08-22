@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/varfish-org/varfish-server-worker
+  license: MIT
+  summary: 'Rust-based tool for the heavy lifting in varfish-server.
+
+    '
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - holtgrewe
+package:
+  name: varfish-server-worker
+  version: 0.13.0
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - clangdev
+  - pkg-config
+  - protobuf
+  - make
+  - cmake
+  host:
+  - clangdev
+  - openssl
+  - sqlite
+  - zlib
+  run:
+  - sqlite
+source:
+  sha256: 2a593575ae37bd1c9f934e45b378024912108d2391cccba1b9120c4685c2362a
+  url: https://github.com/varfish-org/varfish-server-worker/archive/refs/tags/v0.13.0.tar.gz
+test:
+  commands:
+  - varfish-server-worker --help

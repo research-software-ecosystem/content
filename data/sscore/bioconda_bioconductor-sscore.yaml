@@ -1,0 +1,43 @@
+about:
+  description: This package contains an implementation of the S-Score algorithm as
+    described by Zhang et al (2002).
+  home: https://bioconductor.org/packages/3.17/bioc/html/sscore.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: S-Score Algorithm for Affymetrix Oligonucleotide Microarrays
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  identifiers:
+  - biotools:sscore
+  - doi:10.1016/S1046-2023(03)00156-7
+  parent_recipe:
+    name: bioconductor-sscore
+    path: recipes/bioconductor-sscore
+    version: 1.52.0
+package:
+  name: bioconductor-sscore
+  version: 1.72.0
+requirements:
+  host:
+  - bioconductor-affy >=1.78.0,<1.79.0
+  - bioconductor-affyio >=1.70.0,<1.71.0
+  - r-base
+  run:
+  - bioconductor-affy >=1.78.0,<1.79.0
+  - bioconductor-affyio >=1.70.0,<1.71.0
+  - r-base
+source:
+  md5: 3f61e0bf6176b6ee7f4b29b0af6e2091
+  url:
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/sscore_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/sscore/sscore_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/sscore_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sscore/bioconductor-sscore_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('sscore')"

@@ -1,0 +1,63 @@
+about:
+  dev_url: https://github.com/dnanexus/dx-toolkit
+  doc_url: http://autodoc.dnanexus.com/bindings/python/current/
+  home: https://github.com/dnanexus/dx-toolkit
+  license: Apache-2.0
+  license_family: Apache
+  summary: DNAnexus Platform API bindings for Python
+build:
+  entry_points:
+  - dx-build-applet = dxpy.scripts.dx_build_applet:main
+  - dx-build-app = dxpy.scripts.dx_build_app:main
+  - dx = dxpy.scripts.dx:main
+  - dx-app-wizard = dxpy.scripts.dx_app_wizard:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - notestaff
+package:
+  name: dxpy
+  version: 0.380.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - argcomplete >=1.9.4
+  - certifi
+  - cryptography >=3.4.2,<37
+  - psutil >=3.3.0
+  - python
+  - python-dateutil >=2.5
+  - requests >=2.8.0,<2.27.1
+  - urllib3 >=1.25,<2.2
+  - websocket-client ==0.54.0
+  - pandas >=1.3.5
+source:
+  sha256: e3fb70b283a9eda2f861d6b85322841d78b2655cd7de11f1e946643b58de3d4f
+  url: https://pypi.io/packages/source/d/dxpy/dxpy-0.380.0.tar.gz
+test:
+  commands:
+  - dx-build-applet --help
+  - dx-build-app --help
+  - dx --help
+  - dx-app-wizard --help
+  imports:
+  - dxpy
+  - dxpy.bindings
+  - dxpy.cli
+  - dxpy.packages
+  - dxpy.scripts
+  - dxpy.templating
+  - dxpy.utils
+  requires:
+  - mock >=2.0.0
+  - pexpect >=4.6
+  - pyopenssl >=17.5.0
+  - pytest >=4.6.9
+  - pytest-timeout >=1.3.4
+  - pytest-xdist >=1.31.0

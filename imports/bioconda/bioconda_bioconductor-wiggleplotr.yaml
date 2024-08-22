@@ -1,0 +1,57 @@
+about:
+  description: Tools to visualise read coverage from sequencing experiments together
+    with genomic annotations (genes, transcripts, peaks). Introns of long transcripts
+    can be rescaled to a fixed length for better visualisation of exonic read coverage.
+  home: https://bioconductor.org/packages/3.18/bioc/html/wiggleplotr.html
+  license: Apache License 2.0
+  summary: Make read coverage plots from BigWig files
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-wiggleplotr
+    path: recipes/bioconductor-wiggleplotr
+    version: 1.4.0
+package:
+  name: bioconductor-wiggleplotr
+  version: 1.26.0
+requirements:
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-assertthat
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-ggplot2 >=2.2.0
+  - r-purrr
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rtracklayer >=1.62.0,<1.63.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-assertthat
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-ggplot2 >=2.2.0
+  - r-purrr
+source:
+  md5: 9e05d485ba51bf035918d23e686e60ba
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/wiggleplotr_1.26.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/wiggleplotr/wiggleplotr_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/wiggleplotr_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-wiggleplotr/bioconductor-wiggleplotr_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('wiggleplotr')"

@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/brentp/vcfanno
+  license: MIT
+  summary: annotate a VCF with other VCFs/BEDs/tabixed files
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: vcfanno
+  version: 0.3.5
+requirements: null
+source:
+- sha256: 2f51637c6358fec7e7fcb1dbbfc1b2cbbed6ff47a7c6b7ef386f1152ff74829f
+  url: https://github.com/brentp/vcfanno/releases/download/v0.3.5/vcfanno_osx
+- sha256: a98a9be6dfec32b039b21563659c4ecf0ec884ad3cdfaf0732b44c3857520592
+  url: https://github.com/brentp/vcfanno/releases/download/v0.3.5/vcfanno_linux64
+- sha256: 732007523998f9a48071fa3dd75d4492c972dd786861b0a5d36cd0669f5d5288
+  url: https://github.com/brentp/vcfanno/releases/download/v0.3.5/vcfanno_linux_aarch64
+test:
+  commands:
+  - vcfanno 2>&1 | grep 'vcfanno'

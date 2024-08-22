@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/incertae-sedis/smof
+  license: MIT
+  summary: UNIX-style utilities for FASTA file exploration
+build:
+  entry_points:
+  - smof=smof.ui:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - arendsee
+package:
+  name: smof
+  version: 2.22.4
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - python >=3
+source:
+  sha256: 0f5967ea73fd7031f0a0f0e36c30546d12090a0c35498d79dbf3a6c19a3bd717
+  url: https://pypi.io/packages/source/s/smof/smof-2.22.4.tar.gz
+test:
+  commands:
+  - smof --help
+  imports:
+  - smof

@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/maiziex/MARS
+  license: MIT
+  license_file: LICENSE
+  summary: Multiple Alignment-based Refinement of SVs (MARS)
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  recipe-maintainers:
+  - volcano1998
+package:
+  name: mars
+  version: 1.2.4
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - biopython
+  - samtools
+  - pysam
+  - minimap2
+  - openpyxl
+  - pandas
+source:
+  sha256: 96ee480fe274994af74f196259c685f2cb524c1c0c5179df2579ba549e8278f8
+  url: https://github.com/maiziex/MARS/archive/v1.2.4.tar.gz
+test:
+  commands:
+  - MARS_step1 --help
+  - MARS_step2 --help

@@ -1,0 +1,52 @@
+about:
+  description: 'The Metawatt binner is a graphical binning tool that makes use of
+
+    multivariate statistics of tetranucleotide frequencies and differential
+
+    coverage based binning. It also performs taxonomic assessment of binning
+
+    quality (via diamond BLASTx). Created bins can be edited and exported as
+
+    fasta. The Metawatt is implemented in Java SWING and minimally depends on
+
+    Diamond, HMMer3.1, BBMap, Prodigal and the Batik library for the export of
+
+    SVG graphics.
+
+    '
+  home: https://sourceforge.net/projects/metawatt/
+  license: AFL
+  summary: MetaWatt is a metagenomic binning tool
+build:
+  noarch: generic
+  number: 3
+extra:
+  identifiers:
+  - doi:10.3389/fmicb.2012.00410
+  notes: metawatt --help
+  recipe-maintainers:
+  - keuv-grvl
+package:
+  name: metawatt
+  version: 3.5.3
+requirements:
+  build: null
+  run:
+  - wget
+  - openjdk
+  - prodigal
+  - diamond 0.7*
+  - hmmer
+  - bbmap
+  - aragorn
+  - samtools
+  - mafft
+  - blast
+  - fasttree
+source:
+  md5: 3ca327c0b6c4f816ffff674095015889
+  sha256: 6a7ab1ce79b8798e4e43feeebb88b923cef1b7dd643a512229afd8404756e10b
+  url: http://downloads.sourceforge.net/project/metawatt/MetaWatt-3.5.3.zip
+test:
+  commands:
+  - metawatt --check-dependencies 2>&1 >/dev/null

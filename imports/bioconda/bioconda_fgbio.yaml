@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/fulcrumgenomics/fgbio
+  license: MIT
+  license_family: MIT
+  summary: A set of tools for working with genomic and high throughput sequencing
+    data, including UMIs
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: fgbio
+  version: 2.3.0
+requirements:
+  run:
+  - openjdk >=8
+  - python
+  - r-base
+  - r-ggplot2
+  - r-scales
+source:
+  sha256: a0748b52a92403d88e7cf799368c313a05f89c5e3da04f7f8829593a603b7c69
+  url: https://github.com/fulcrumgenomics/fgbio/releases/download/2.3.0/fgbio-2.3.0.jar
+test:
+  commands:
+  - fgbio 2>&1 | grep "CallMolecularConsensusReads"
+  - fgbio --version 2>&1 | grep "Version"

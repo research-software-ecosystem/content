@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/bioFAM/MOFA
+  license: LGPL 3.0
+  license_family: LGPL
+  license_file: LICENSE
+  summary: Multi-Omics Factor Analysis
+build:
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - abotzki
+package:
+  name: mofapy
+  version: '1.2'
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - h5py
+  - numpy
+  - pandas
+  - python
+  - scipy
+  - scikit-learn
+source:
+  sha256: 6a5cef1354a1f25a9b9cdf8506d0ee1f59a4e7e6b98a0a59e26705b149b24f7a
+  url: https://pypi.io/packages/source/m/mofapy/mofapy-1.2.tar.gz
+test:
+  imports:
+  - mofapy
+  - mofapy.core
+  - mofapy.run
+  - sklearn.decomposition

@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/SimonGreenhill/treemaker
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: A python tool for generating a Newick formatted tree from alist of classifications
+build:
+  entry_points:
+  - treemaker = treemaker:main
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: treemaker
+  version: '1.4'
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+source:
+  sha256: 2f5bc4669c5a49b35f877c3a317c0f683caeae77ec4509df095969a684d154a1
+  url: https://pypi.io/packages/source/t/treemaker/treemaker-1.4.tar.gz
+test:
+  commands:
+  - treemaker --help
+  imports:
+  - treemaker

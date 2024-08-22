@@ -1,0 +1,29 @@
+about:
+  home: https://gitlab.com/mcfrith/lamassemble
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Merge overlapping "long" DNA reads into a consensus sequence
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+package:
+  name: lamassemble
+  version: 1.7.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - last
+  - mafft
+source:
+  sha256: 786f509c4b4b61521ff4d6bbe589acd7fdd49969bf190db345d501a823a91a75
+  url: https://gitlab.com/mcfrith/lamassemble/-/archive/1.7.2/lamassemble-1.7.2.tar.gz
+test:
+  commands:
+  - lamassemble --help

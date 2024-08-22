@@ -1,0 +1,42 @@
+about:
+  description: Given admixed individuals' bi-allelic SNP genotypes and ancestry pairs
+    (where each ancestry can take one of three values) for multiple SNPs, perform
+    an EM algorithm to deal with the fact that SNP genotypes are unphased with respect
+    to ancestry pairs, in order to estimate ancestry-specific allele frequencies for
+    all SNPs.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ASAFE.html
+  license: Artistic-2.0
+  summary: Ancestry Specific Allele Frequency Estimation
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:asafe
+  - doi:10.1093/bioinformatics/btw220
+  parent_recipe:
+    name: bioconductor-asafe
+    path: recipes/bioconductor-asafe
+    version: 1.6.0
+package:
+  name: bioconductor-asafe
+  version: 1.28.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: e054d986c3b6f2574c26498eaf6e4f7c
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ASAFE_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ASAFE/ASAFE_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ASAFE_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-asafe/bioconductor-asafe_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ASAFE')"

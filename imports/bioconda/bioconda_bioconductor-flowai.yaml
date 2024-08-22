@@ -1,0 +1,60 @@
+about:
+  description: 'The package is able to perform an automatic or interactive quality
+    control on FCS data acquired using flow cytometry instruments. By evaluating three
+    different properties: 1) flow rate, 2) signal acquisition, 3) dynamic range, the
+    quality control enables the detection and removal of anomalies.'
+  home: https://bioconductor.org/packages/3.18/bioc/html/flowAI.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Automatic and interactive quality control for flow cytometry data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:flowai
+  - doi:10.1093/bioinformatics/btw191
+  parent_recipe:
+    name: bioconductor-flowai
+    path: recipes/bioconductor-flowai
+    version: 1.10.1
+package:
+  name: bioconductor-flowai
+  version: 1.32.0
+requirements:
+  host:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-changepoint
+  - r-ggplot2
+  - r-knitr
+  - r-plyr
+  - r-rcolorbrewer
+  - r-reshape2
+  - r-rmarkdown
+  - r-scales
+  run:
+  - bioconductor-flowcore >=2.14.0,<2.15.0
+  - r-base
+  - r-changepoint
+  - r-ggplot2
+  - r-knitr
+  - r-plyr
+  - r-rcolorbrewer
+  - r-reshape2
+  - r-rmarkdown
+  - r-scales
+source:
+  md5: 714cb015ac01ee026e02fc24536770e5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/flowAI_1.32.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/flowAI/flowAI_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowAI_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowai/bioconductor-flowai_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowAI')"

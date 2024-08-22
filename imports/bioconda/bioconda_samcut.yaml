@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/gshiba/samcut
+  license: MIT
+  summary: samcut is `cut` for sam. Select (cut) columns from the output of `samtools
+    view` using human-readale field names.
+build:
+  number: 2
+extra:
+  recipe-maintainers:
+  - gshiba
+package:
+  name: samcut
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - rust >=1.60
+  - pkg-config
+  - make
+  - cmake
+source:
+  sha256: 4982a25c7510ee8098a6261be773a5234efb0e199e6c5dd1792ba29619dfb35b
+  url: https://github.com/gshiba/samcut/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - samcut -h
+  - "VER=$(samcut -V)\nif [ \"$VER\" = \"samcut 0.1.1\" ]; then\n  echo \"Version\
+    \ check: OK\"\nelse\n  echo \"Version check: FAIL (expected: 'samcut 0.1.1' |\
+    \ actual: '$VER' )\"\n  exit 1\nfi\n"

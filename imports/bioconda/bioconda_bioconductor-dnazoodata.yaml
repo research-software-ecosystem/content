@@ -1,0 +1,44 @@
+about:
+  description: DNAZooData is a data package giving programmatic access to genome assemblies
+    and Hi-C contact matrices uniformly processed by the [DNA Zoo Consortium](https://www.dnazoo.org/).
+    The matrices are available in the multi-resolution `.hic` format. A URL to corrected
+    genome assemblies in `.fastq` format is also provided to the end-user.
+  home: https://bioconductor.org/packages/3.18/data/experiment/html/DNAZooData.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: DNA Zoo data package
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-dnazoodata
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-hicexperiment >=1.2.0,<1.3.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rjson
+  run:
+  - bioconductor-biocfilecache >=2.10.0,<2.11.0
+  - bioconductor-hicexperiment >=1.2.0,<1.3.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-rjson
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: 06c4b9dbbaddc3dd4dcdc51e34150aa7
+  url:
+  - https://bioconductor.org/packages/3.18/data/experiment/src/contrib/DNAZooData_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DNAZooData/DNAZooData_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DNAZooData_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dnazoodata/bioconductor-dnazoodata_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DNAZooData')"

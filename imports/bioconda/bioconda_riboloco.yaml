@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/Delayed-Gitification/riboloco.git
+  license: MIT
+  license_family: MIT
+  summary: Riboseq analysis
+build:
+  entry_points:
+  - riboloco=riboloco.__main__:main
+  - riboloco_convert_gtf=riboloco.convert_gtf:main
+  - riboloco_find_orfs=riboloco.find_orfs:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv --no-deps'
+extra:
+  recipe-maintainers:
+  - Delayed-Gitification
+package:
+  name: riboloco
+  version: 0.3.9
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - gffutils
+  - matplotlib-base
+  - pandas
+  - pysam
+  - python
+  - scipy
+  - seaborn
+  - scikit-learn
+source:
+  sha256: 34667a80097b7b717afa95a961d6737cc68aa70a0ffec2f6221a0775a1ce66ca
+  url: https://pypi.io/packages/source/r/riboloco/riboloco-0.3.9.tar.gz
+test:
+  commands:
+  - riboloco --help
+  - riboloco_convert_gtf --help
+  - riboloco_find_orfs --help
+  imports:
+  - riboloco

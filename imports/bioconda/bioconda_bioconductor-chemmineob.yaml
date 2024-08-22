@@ -1,0 +1,57 @@
+about:
+  description: ChemmineOB provides an R interface to a subset of cheminformatics functionalities
+    implemented by the OpelBabel C++ project. OpenBabel is an open source cheminformatics
+    toolbox that includes utilities for structure format interconversions, descriptor
+    calculations, compound similarity searching and more. ChemineOB aims to make a
+    subset of these utilities available from within R. For non-developers, ChemineOB
+    is primarily intended to be used from ChemmineR as an add-on package rather than
+    used directly.
+  home: https://bioconductor.org/packages/3.18/bioc/html/ChemmineOB.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: R interface to a subset of OpenBabel functionalities
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-chemmineob
+  version: 1.40.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-bh
+  - r-rcpp >=0.11.0
+  - libblas
+  - liblapack
+  - openbabel >=3
+  - eigen
+  run:
+  - bioconductor-biocgenerics >=0.48.0,<0.49.0
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - r-bh
+  - r-rcpp >=0.11.0
+  - openbabel >=3
+  - eigen
+source:
+  md5: 5bd759ca398ffb70214a8076028bf0b2
+  patches:
+  - patch
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ChemmineOB_1.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ChemmineOB/ChemmineOB_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ChemmineOB_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chemmineob/bioconductor-chemmineob_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ChemmineOB')"

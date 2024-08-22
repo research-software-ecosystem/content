@@ -1,0 +1,31 @@
+about:
+  description: "Lukasa combines MetaEUK and spaln to rapidly identify matches between\
+    \ proteins and genomic contigs and\naccurately map the proteins to the identified\
+    \ regions. The output is GFF3, suitable for use in \neukaryotic genome annotation."
+  home: https://github.com/pvanheus/lukasa
+  license: GPL-3.0
+  license_family: GPL
+  license_file: LICENSE
+  summary: Fast and accurate mapping of proteins against eukaryotic genomes
+build:
+  noarch: generic
+  number: 0
+package:
+  name: lukasa
+  version: 0.15.0
+requirements:
+  build:
+  - cwltool
+  run:
+  - cwltool
+  - metaeuk
+  - python
+  - spaln
+  - samtools
+  - nodejs
+source:
+  sha256: a7b45a420abe25928bdd91a93b28f133e1a48f2ee4c8edff8c1f42275be44146
+  url: https://github.com/pvanheus/lukasa/archive/0.15.0.tar.gz
+test:
+  commands:
+  - lukasa.py --help

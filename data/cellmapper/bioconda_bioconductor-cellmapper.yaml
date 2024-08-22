@@ -1,0 +1,41 @@
+about:
+  description: Infers cell type-specific expression based on co-expression similarity
+    with known cell type marker genes. Can make accurate predictions using publicly
+    available expression data, even when a cell type has not been isolated before.
+  home: https://bioconductor.org/packages/3.18/bioc/html/CellMapper.html
+  license: Artistic-2.0
+  summary: Predict genes expressed selectively in specific cell types
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cellmapper
+  parent_recipe:
+    name: bioconductor-cellmapper
+    path: recipes/bioconductor-cellmapper
+    version: 1.6.0
+package:
+  name: bioconductor-cellmapper
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  run:
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+source:
+  md5: ca94af55dbc55bb2bf40c69f4965b553
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/CellMapper_1.28.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/CellMapper/CellMapper_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CellMapper_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cellmapper/bioconductor-cellmapper_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CellMapper')"

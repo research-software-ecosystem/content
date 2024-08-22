@@ -1,0 +1,34 @@
+about:
+  description: "A small script to turn multiple GenBank records (either in multiple\
+    \ files or a single multi-record file) into a \nsingle record.\nSequences are\
+    \ merged by concatenating them in order, and putting a spacer sequence between\
+    \ them.\nSpacer sequence length can be given in kbp. It is possible to pick an\
+    \ all-N spacer, or using a spacer\nconsisting of all-frame stop codons."
+  home: http://github.com/kblin/merge-gbk-records
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: Turn multiple GenBank records (either in multiple files or a single multi-record
+    file) into a single record
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: merge-gbk-records
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.7
+  - biopython >=1.79
+source:
+  sha256: 4e204552a87787e1fbe3eba629c0e05dbe0cd6bddc81c256cc813066d67b8be4
+  url: https://pypi.io/packages/source/m/merge-gbk-records/merge-gbk-records-0.2.0.tar.gz
+test:
+  commands:
+  - merge-gbk-records --help

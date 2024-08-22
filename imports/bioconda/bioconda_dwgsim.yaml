@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/nh13/DWGSIM
+  license: GNU General Public License v2 (GPLv2)
+  license_family: GPL
+  license_file: LICENSE
+  summary: Whole Genome Simulator for Next-Generation Sequencing
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - notestaff
+  - nh13
+package:
+  name: dwgsim
+  version: 1.1.14
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  - ncurses
+  run:
+  - zlib
+  - ncurses
+source:
+- sha256: a974a253bf6bcd5a2162f9ebc6c78c56a29c541850f375a45ddb2b649574ce1b
+  url: https://github.com/nh13/DWGSIM/archive/dwgsim.0.1.14.tar.gz
+- folder: samtools
+  sha256: b17bc6564eef101aeefc2d572347f7141bdb8eb5cdaa81725fdd768cf80d1a2b
+  url: http://github.com/samtools/samtools/archive/28391e5898804ce6b805016.tar.gz
+test:
+  commands:
+  - printf ">a\nAAAAA" > ref.fa; dwgsim ref.fa pref

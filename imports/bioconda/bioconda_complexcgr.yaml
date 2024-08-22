@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/AlgoLab/complexCGR
+  license: MIT
+  license_file: LICENSE
+  summary: Encoders and Image representation of DNA/RNA sequences based on the Chaos
+    Game Representation of DNA
+build:
+  build: null
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jorgeavilacartes
+package:
+  name: complexcgr
+  version: 0.8.0
+requirements:
+  host:
+  - python >=3.9,<4.0
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.9.0,<4.0.0
+  - tqdm >=4.61.2,<5.0.0
+  - matplotlib-base >=3.4.2,<4.0.0
+  - pillow >=10.0.0,<11.0.0
+  - numpy >=1.22.3,<2.0.0
+  - biopython >=1.79.0,<2.0.0
+source:
+  sha256: 800085b4f2187a0acc4c2cb09d4c8459d9192f6d91a502101393e012978960dd
+  url: https://pypi.io/packages/source/c/complexcgr/complexcgr-0.8.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - complexcgr
+  requires:
+  - pip

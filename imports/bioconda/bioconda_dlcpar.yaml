@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/davidemms/OrthoFinder
+  license: GPLv3
+  summary: Accurate inference of orthogroups, orthologues, gene trees and rooted species
+    tree made easy!
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: dlcpar
+  version: '1.0'
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - numpy
+source:
+  sha256: 774319caba0f10d1230b8f85b8a147eda5871f9a316d7b3381b91c1bde97aa0a
+  url: https://www.cs.hmc.edu/~yjw/software/dlcpar/pub/sw/dlcpar-1.0.tar.gz
+test:
+  commands:
+  - dlcpar --help > /dev/null
+  - dlcpar_search --help > /dev/null
+  - dlcpar_to_dlcoal --help > /dev/null
+  - dlcoal_to_dlcpar --help > /dev/null
+  - tree-events-dlc --help > /dev/null
+  - tree-events-dlcpar --help > /dev/null

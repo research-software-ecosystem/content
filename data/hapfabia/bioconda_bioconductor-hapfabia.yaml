@@ -1,0 +1,57 @@
+about:
+  description: A package to identify very short IBD segments in large sequencing data
+    by FABIA biclustering. Two haplotypes are identical by descent (IBD) if they share
+    a segment that both inherited from a common ancestor. Current IBD methods reliably
+    detect long IBD segments because many minor alleles in the segment are concordant
+    between the two haplotypes. However, many cohort studies contain unrelated individuals
+    which share only short IBD segments. This package provides software to identify
+    short IBD segments in sequencing data. Knowledge of short IBD segments are relevant
+    for phasing of genotyping data, association studies, and for population genetics,
+    where they shed light on the evolutionary history of humans. The package supports
+    VCF formats, is based on sparse matrix operations, and provides visualization
+    of haplotype clusters in different formats.
+  home: https://bioconductor.org/packages/3.18/bioc/html/hapFabia.html
+  license: LGPL (>= 2.1)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: 'hapFabia: Identification of very short segments of identity by descent
+    (IBD) characterized by rare variants in large sequencing data'
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:hapfabia
+  parent_recipe:
+    name: bioconductor-hapfabia
+    path: recipes/bioconductor-hapfabia
+    version: 1.22.0
+package:
+  name: bioconductor-hapfabia
+  version: 1.44.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-fabia >=2.48.0,<2.49.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-fabia >=2.48.0,<2.49.0
+  - r-base
+source:
+  md5: a14370aec9e86245541aea68b90c3812
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/hapFabia_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/hapFabia/hapFabia_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hapFabia_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hapfabia/bioconductor-hapfabia_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('hapFabia')"

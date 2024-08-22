@@ -1,0 +1,58 @@
+about:
+  description: An integrated web interface for doing microarray analysis using several
+    of the Bioconductor packages. It is intended to be deployed as a centralized bioinformatics
+    resource for use by many users. (Currently only Affymetrix oligonucleotide analysis
+    is supported.)
+  home: https://bioconductor.org/packages/3.18/bioc/html/webbioc.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Bioconductor Web Interface
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:webbioc
+  - doi:10.1007/0-387-29362-0_18
+  parent_recipe:
+    name: bioconductor-webbioc
+    path: recipes/bioconductor-webbioc
+    version: 1.52.0
+package:
+  name: bioconductor-webbioc
+  version: 1.74.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-annaffy >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-biocmanager
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-annaffy >=1.74.0,<1.75.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-gcrma >=2.74.0,<2.75.0
+  - bioconductor-multtest >=2.58.0,<2.59.0
+  - bioconductor-qvalue >=2.34.0,<2.35.0
+  - bioconductor-vsn >=3.70.0,<3.71.0
+  - r-base
+  - r-biocmanager
+source:
+  md5: 59774accefb60098cdf15cfcd1cda508
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/webbioc_1.74.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/webbioc/webbioc_1.74.0.tar.gz
+  - https://bioarchive.galaxyproject.org/webbioc_1.74.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-webbioc/bioconductor-webbioc_1.74.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('webbioc')"

@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/faircloth-lab/illumiprocessor
+  license: BSD
+  license_file: LICENSE.txt
+  summary: illumiprocessor is a tool to batch process illumina sequencing reads using
+    the excellent trimmomatic package.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: illumiprocessor
+  version: 2.1
+requirements:
+  build:
+  - python 3.6
+  - pip
+  run:
+  - python 3.6
+  - trimmomatic 0.39
+  - openjdk 11.0.8
+source:
+  sha256: 11694c25df15e0f75644a7d650476c2ddf3dbf83135b3ca5cd57a122804581a8
+  url: https://github.com/faircloth-lab/illumiprocessor/archive/v2.10.tar.gz
+test:
+  commands:
+  - illumiprocessor --help
+  imports:
+  - illumiprocessor

@@ -1,0 +1,93 @@
+about:
+  dev_url: https://github.com/bioconvert/bioconvert
+  doc_url: https://bioconvert.readthedocs.io/en/dev/
+  home: https://pypi.org/project/bioconvert/
+  license: GPL-3.0
+  license_file: COPYING
+  summary: Convert between bioinformatics formats
+build:
+  entry_points:
+  - bioconvert=bioconvert.scripts.converter:main
+  - bioconvert_init=bioconvert.scripts.init_convert:main
+  - bioconvert_stats=bioconvert.scripts.stats:main
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --use-pep517 -vv
+extra:
+  container:
+    extended-base: true
+  skip-lints:
+  - should_use_compilers
+package:
+  name: bioconvert
+  version: 1.1.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - cython
+  run:
+  - python >=3.8
+  - easydev
+  - biosniff
+  - colorlog
+  - deeptools
+  - gffread
+  - pandas
+  - biopython >=1.70
+  - mappy
+  - matplotlib-base
+  - networkx
+  - picard-slim
+  - pyyaml
+  - pysam
+  - pyexcel
+  - pyexcel-ods3
+  - pyexcel-xls
+  - pyexcel-xlsx
+  - psutil
+  - xlrd >2.0
+  - pybigwig
+  - py2bit
+  - statsmodels
+  - tqdm
+  - bamtools
+  - bcftools
+  - bedtools
+  - bedops
+  - dsrc
+  - go 1.10.*
+  - mosdepth
+  - pbzip2
+  - pigz
+  - plink
+  - sambamba
+  - samtools >=1.17
+  - seqtk
+  - seqkit
+  - squizz
+  - sra-tools
+  - ucsc-bedgraphtobigwig
+  - ucsc-bigwigtobedgraph
+  - ucsc-wigtobigwig
+  - ucsc-fatotwobit
+  - ucsc-twobittofa
+  - wiggletools 1.2.*
+  - sed
+  - mawk
+  - graphviz
+  - numpydoc
+  - jinja2 <3.1
+  - openpyxl <=3.0.10
+source:
+  sha256: 5f0ddbe5ce90a3273cfa24792058dd584859f801984fe6bc47890cfabf7cfc96
+  url: https://pypi.io/packages/source/b/bioconvert/bioconvert-1.1.1.tar.gz
+test:
+  commands:
+  - MPLBACKEND=agg bioconvert --help
+  - MPLBACKEND=agg bioconvert_init --help
+  - MPLBACKEND=agg bioconvert_stats --help
+  imports:
+  - bioconvert
+  - bioconvert.core
+  - bioconvert.scripts

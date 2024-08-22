@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/r3fang/SnapTools.git
+  license: LICENSE
+  license_family: OTHER
+  summary: A module for working with snap files in Python
+build:
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+package:
+  name: snaptools
+  version: 1.4.8
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - future
+  - h5py
+  - numpy
+  - pybedtools >=0.7
+  - pysam
+  - python
+  - python-louvain
+source:
+  sha256: 76b9aa1d61024143f80b2de1aea751cd9edc693bfea78107847a4959de38a3e8
+  url: https://pypi.io/packages/source/s/snaptools/snaptools-1.4.8.tar.gz
+test:
+  commands:
+  - which snaptools
+  - snaptools | grep "1.4.8"

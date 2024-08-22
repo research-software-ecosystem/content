@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/pinellolab/CRISPResso2
+  license: Partners
+  license_file: LICENSE.txt
+  summary: A software pipeline designed to enable rapid and intuitive interpretation
+    of genome editing experiments
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: crispresso2
+  version: 2.3.1
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - pip
+  - cython
+  - numpy
+  run:
+  - python
+  - scipy
+  - numpy <=1.26.4
+  - pandas
+  - plotly
+  - matplotlib-base <=3.8.4
+  - jinja2
+  - fastp
+  - samtools
+  - bowtie2
+  - seaborn-base
+source:
+  sha256: e1f3f87e392529d441f0b3b6983600d643fbcdf40cde621eb24f40b3f7195fa4
+  url: https://github.com/pinellolab/CRISPResso2/archive/v2.3.1.tar.gz
+test:
+  commands:
+  - CRISPResso -h
+  imports:
+  - CRISPResso2

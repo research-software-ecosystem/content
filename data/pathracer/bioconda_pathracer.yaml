@@ -1,0 +1,51 @@
+about:
+  description: "PathRacer is a novel standalone tool that aligns profile HMM directly\
+    \ to the assembly graph (performing the codon translation on fly for amino acid\
+    \ \npHMMs). The tool provides the set of most probable paths traversed by a HMM\
+    \ through the whole assembly graph, regardless whether the sequence of \ninterested\
+    \ is encoded on the single contig or scattered across the set of edges, therefore\
+    \ significantly improving the recovery of sequences of \ninterest even from fragmented\
+    \ metagenome assemblies.\n"
+  home: http://cab.spbu.ru/software/pathracer/
+  license: GPLv2
+  license_family: GPL
+  license_file: LICENSE
+  summary: PathRacer is a tool for alignment of profile HMM against assembly graph.
+build:
+  number: 0
+extra:
+  identifiers:
+  - biotools:pathracer
+  - doi:10.1007/978-3-030-18174-1_6
+  skip-lints:
+  - should_not_be_noarch_source
+package:
+  name: pathracer
+  version: 3.16.0.dev
+requirements:
+  build:
+  - None
+  - None
+  - clangdev
+  - llvm-openmp
+  - openmp
+  - cmake
+  - make
+  - pkg-config
+  - sysroot_linux-64=2.17
+  host:
+  - llvm-openmp
+  - openmp
+  - zlib
+  - bzip2
+  - sysroot_linux-64=2.17
+  run:
+  - llvm-openmp
+  - openmp
+  - sysroot_linux-64=2.17
+source:
+  sha256: 21aeefb2b2ca39980a38e2df9e7158d448547379f57c05ad08cee0a6d637bf92
+  url: http://cab.spbu.ru/files/pathracer/SPAdes-3.16.0-pathracer-dev.tar.gz
+test:
+  commands:
+  - pathracer 2>&1 | grep SYNOPSIS -A 1

@@ -1,0 +1,40 @@
+about:
+  home: https://bibiserv.cebitec.uni-bielefeld.de/rapidshapes
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: RapidShapes computes a thermodynamic matcher (TDM), using a runtime heuristic
+    for probabilistic shape analysis.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btq014
+  - doi:10.1093/bioinformatics/btu649
+package:
+  name: rapidshapes
+  version: 2.1.0
+requirements:
+  build:
+  - make
+  - None
+  - libcxx <17
+  - rsync
+  host:
+  - perl
+  - bellmans-gapc >=2024.01.12
+  - libcxx <17
+  - rsync
+  run:
+  - perl
+  - bellmans-gapc >=2024.01.12
+  - libcxx <17
+  - gxx_linux-64
+  - clangxx_osx-64
+source:
+  sha256: d3e6cc8d2ecd31d4764b41fea589b98c637ff227d7ab3dcfe66f2ad3f24dece5
+  url: https://github.com/jlab/fold-grammars/archive/refs/tags/2.3.2.tar.gz
+test:
+  commands:
+  - RapidShapes ccaaagg

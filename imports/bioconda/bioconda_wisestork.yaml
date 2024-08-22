@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/sndrtj/wisestork
+  license: GNU General Public v3 or later (GPLv3+)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Within-sample CNV calling
+build:
+  entry_points:
+  - wisestork = wisestork.wisestork:main
+  noarch: python
+  number: 1
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - sndrtj
+package:
+  name: wisestork
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.5
+  - pip
+  run:
+  - biopython
+  - click
+  - matplotlib-base
+  - numpy
+  - progressbar2
+  - pyfaidx
+  - pysam
+  - python >=3.5
+  - scipy
+  - statsmodels
+source:
+  sha256: f363a5d794d6aa4c4b2305e6af976916909bfa6f058ddf9304ac6a71fa3013d1
+  url: https://pypi.io/packages/source/w/wisestork/wisestork-0.1.2.tar.gz
+test:
+  commands:
+  - wisestork --help
+  - wisestork --version
+  - wisestork count --help
+  - wisestork gc-correct --help
+  - wisestork newref --help
+  - wisestork zscore --help
+  imports:
+  - wisestork

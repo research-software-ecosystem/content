@@ -1,0 +1,39 @@
+about:
+  description: 'A hidden Markov model approach for simultaneously estimating local
+    ancestry and admixture
+
+    time using next generation sequence data in samples of arbitrary ploidy.
+
+    '
+  home: https://github.com/russcd/Ancestry_HMM
+  license: GPL3
+  license_file: LICENSE
+  summary: Software for local ancestry inference
+build:
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1371/journal.pgen.1006529
+package:
+  name: ancestry_hmm
+  version: 1.0.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - armadillo
+  run:
+  - armadillo
+  - selam
+source:
+  sha256: 4c389adf30eff2c3900c95479946a73eb1a26305498e0434386fb48c4f865126
+  url: https://github.com/russcd/ancestry_hmm/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - ahmm-s --help &> /dev/null
+  - ancestry_hmm --help &> /dev/null

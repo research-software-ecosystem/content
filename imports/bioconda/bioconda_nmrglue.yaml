@@ -1,0 +1,34 @@
+about:
+  home: http://www.nmrglue.com
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A module for working with NMR data in Python
+build:
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: nmrglue
+  version: 0.9
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy
+  - scipy
+source:
+  sha256: be2602a08b4453bccd2b276640ebe2f06e1598aa3883492be7d11c686f623507
+  url: https://files.pythonhosted.org/packages/5e/64/33f04fc1487b1606a7888c0eb75a53ddd73d83b3ed16a6dc9f6b211e2456/nmrglue-0.9.tar.gz
+test:
+  imports:
+  - nmrglue
+  - nmrglue.analysis
+  - nmrglue.fileio
+  - nmrglue.process
+  - nmrglue.process.nmrtxt
+  - nmrglue.util

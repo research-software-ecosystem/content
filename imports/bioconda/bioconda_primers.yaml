@@ -1,0 +1,32 @@
+about:
+  doc_url: https://github.com/Lattice-Automation/primers
+  home: https://github.com/Lattice-Automation/primers
+  license: MIT
+  license_file: LICENSE
+  summary: This is a small, straightforward tool for creating PCR primers. Its target
+    use-case is DNA assembly.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: primers
+  version: 0.5.10
+requirements:
+  host:
+  - pip
+  - python =3
+  - setuptools
+  run:
+  - python =3
+  - seqfold >=0.7.3
+source:
+  patches:
+  - 0001-directly-write-requirements-in-setup.py.patch
+  sha256: 3ff2cd4c27a47326faeb8e54f36649752e6905109fdd3b22b90c2c167233f060
+  url: https://pypi.io/packages/source/p/primers/primers-0.5.10.tar.gz
+test:
+  imports:
+  - primers

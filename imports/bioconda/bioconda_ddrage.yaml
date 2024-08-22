@@ -1,0 +1,54 @@
+about:
+  home: https://bitbucket.org/genomeinformatics/rage
+  license: MIT License
+  license_family: MIT
+  summary: Simulator for ddRADseq (double digest restriction site associated DNA sequencing)
+    datasets. Generates reads (FASTQ format) that can be analyzed and validated using
+    a ground truth file (YAML).
+build:
+  entry_points:
+  - rage = ddrage.__main__:main
+  - ddrage = ddrage.__main__:main
+  - randomize_fastq = ddrage.tools.randomize_fastq:main
+  - learn_qmodel = ddrage.tools.learn_qmodel:main
+  - visualize_bbd = ddrage.tools.bbd_visualization:main_standalone
+  - remove_annotation = ddrage.tools.remove_annotation:main
+  - split_by_p7_barcode = ddrage.tools.split_by_p7_barcode:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: ddrage
+  version: 1.8.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy
+  - numba
+  - matplotlib-base
+  - scipy >=1.4.1
+  - pyyaml
+  - dinopy
+  - seaborn
+source:
+  sha256: a08962227144a8de0d47b8dbfb51aaf692660d5a7c519a11561b91c6217186ac
+  url: https://files.pythonhosted.org/packages/f8/bf/a3156beda9476a3ed69d1fd049465f70cad5f3df1de0a0efeb55c401f0e3/ddrage-1.8.1.tar.gz
+test:
+  commands:
+  - ddrage --help
+  - randomize_fastq --help
+  - learn_qmodel --help
+  - remove_annotation --help
+  - split_by_p7_barcode --help
+  imports:
+  - ddrage
+  - ddrage.barcode_handler
+  - ddrage.tools

@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/xguse/extract-genome-region
+  license: BSD License
+  summary: Given a CSV file of variable information defining the regions of interest,
+    return a file that contains a fasta-formatted representation of these regions.
+build:
+  entry_points:
+  - extract_genome_region = extract_genome_region.__main__:main
+  noarch: python
+  number: 3
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: extract_genome_region
+  version: 0.0.3
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - click
+  - pyfaidx
+source:
+  md5: 3d45e601ff036ebf62405ce7fa482bd8
+  url: https://github.com/xguse/extract-genome-region/archive/v0.0.3.tar.gz
+test:
+  commands:
+  - extract_genome_region --help

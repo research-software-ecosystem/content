@@ -1,0 +1,56 @@
+about:
+  doc_url: https://coolpuppy.readthedocs.io
+  home: https://github.com/open2c/coolpuppy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A versatile tool to perform pile-up analysis on Hi-C data in .cool format '
+build:
+  entry_points:
+  - coolpup.py = coolpuppy.CLI:main
+  - plotpup.py = coolpuppy.plotpuppy_CLI:main
+  - dividepups.py = coolpuppy.divide_pups_CLI:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - phlya
+package:
+  name: coolpuppy
+  version: 1.1.0
+requirements:
+  host:
+  - cython
+  - pip
+  - python
+  - numpy
+  run:
+  - h5py >=3.0
+  - h5sparse
+  - bioframe >=0.3.3
+  - cooler >=0.8.5
+  - cooltools >=0.5.2
+  - matplotlib-base
+  - numba
+  - numpy >=1.16.5
+  - pandas
+  - python
+  - scipy
+  - pytables
+  - more-itertools
+  - seaborn
+  - natsort
+  - m2r2
+  - conda-forge::multiprocessing-logging
+source:
+  sha256: 02667b5c5f52bc3b5f25d9732b4fa04ffb9b31331180f7e1c072110bb3462d10
+  url: https://github.com/open2c/coolpuppy/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - coolpup.py --help
+  - plotpup.py --help
+  - dividepups.py --help
+  imports:
+  - coolpuppy
+  - coolpuppy.coolpup

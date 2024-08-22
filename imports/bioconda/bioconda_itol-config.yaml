@@ -1,0 +1,37 @@
+about:
+  doc_url: https://jodyphelan.github.io/itol-config/
+  home: https://github.com/jodyphelan/itol-config
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Package to create iTOL config files
+build:
+  entry_points:
+  - itol-config = itol_config.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jodyphelan
+package:
+  name: itol-config
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.8
+  - flit-core >=3.2,<4
+  - pip
+  run:
+  - python >=3.8
+  - tomli
+source:
+  sha256: e4fb28eb6c434a7a2c823f0d34b86a483c67a7f139e2c18832d564b9b4555bb6
+  url: https://github.com/jodyphelan/itol-config/archive/v0.1.0.tar.gz
+test:
+  commands:
+  - itol-config --help
+  imports:
+  - itol_config

@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/iqbal-lab-org/varifier
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'varifier: variant call verification'
+build:
+  entry_points:
+  - varifier = varifier.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps --ignore-installed . -vv'
+extra:
+  recipe-maintainers:
+  - mbhall88
+  - martinghunt
+  - leoisl
+package:
+  name: varifier
+  version: 0.3.1
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  - minimap2 >=2.17
+  - mummer4
+  run:
+  - mummer4
+  - minimap2 >=2.17
+  - biopython
+  - cluster_vcf_records >=0.13.2
+  - mappy >=2.17
+  - pandas
+  - pyfastaq >=3.14.0
+  - pymummer
+  - pysam
+  - python >=3.6
+  - seaborn
+source:
+  sha256: 74d0da83508b0ffd2c838d0cd6dc59db244df0bd50fce5271a8d7e01a0a931f1
+  url: https://pypi.io/packages/source/v/varifier/varifier-0.3.1.tar.gz
+test:
+  commands:
+  - varifier --help
+  - varifier vcf_eval --help
+  - varifier make_truth_vcf --help
+  imports:
+  - varifier
+  - varifier.tasks

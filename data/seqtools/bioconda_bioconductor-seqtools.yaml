@@ -1,0 +1,45 @@
+about:
+  description: Analyze read length, phred scores and alphabet frequency and DNA k-mers
+    on uncompressed and compressed fastq files.
+  home: https://bioconductor.org/packages/3.18/bioc/html/seqTools.html
+  license: Artistic-2.0
+  summary: Analysis of nucleotide, sequence and quality content on fastq files
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:seqtools
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-seqtools
+    path: recipes/bioconductor-seqtools
+    version: 1.14.0
+package:
+  name: bioconductor-seqtools
+  version: 1.36.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+source:
+  md5: be9be6eb0ee1ff4ab001720970d68da8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/seqTools_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/seqTools/seqTools_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/seqTools_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seqtools/bioconductor-seqtools_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('seqTools')"

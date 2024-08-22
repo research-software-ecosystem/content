@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/chapmanb/bcbio-nextgen-vm
+  license: MIT
+  summary: Run bcbio-nextgen genomic sequencing analyses using isolated containers
+    and virtual machines
+build:
+  noarch: python
+  number: 3
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: bcbio-nextgen-vm
+  version: 0.1.6
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - six
+  - bcbio-nextgen >1.1.4
+  - python-dateutil >=2.5.0
+  - ipyparallel >=6.0.2
+  - pysam >=0.15.2
+  - boto3
+  - cachecontrol ==0.11.7
+  - pathlib2 ==2.3.2
+  - cwltool
+  - arvados-cwl-runner >=1.3.1.20190301150258
+  - cromwell >=0.36
+  - ruamel.yaml >=0.13.0
+  - rabix-bunny >=1.0.4
+  - nodejs
+  - nose
+  - sbg-cwl-runner
+  - sevenbridges-python >=0.17.5
+  - synapseclient
+  - dxpy
+  - dx-cwl >=0.1.0a20180820
+  - google-cloud-sdk
+source:
+  sha256: 94fb816019d8f1d3fb713f824b0f0c49654724bf68fb7d909d969e8402112fb3
+  url: https://github.com/bcbio/bcbio-nextgen-vm/archive/8b46793.tar.gz
+test:
+  commands:
+  - bcbio_vm.py -h
+  imports:
+  - bcbiovm.version

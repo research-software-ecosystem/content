@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/Genomon-Project/EBFilter
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL
+  summary: EBFilter (Empirical Bayesian Mutation Filtering)
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: ebfilter
+  version: 0.2.2
+requirements:
+  host:
+  - python >=3
+  - pysam
+  - scipy
+  - numpy
+  - pyvcf
+  run:
+  - python >=3
+  - pysam
+  - scipy
+  - numpy
+  - pyvcf
+source:
+  sha256: c838beea404e83dd61e630ee2ee4f44ebb537dddb4da503f59e5c6c19b041529
+  url: https://github.com/Genomon-Project/EBFilter/archive/v0.2.2.tar.gz
+test:
+  commands:
+  - EBFilter --help

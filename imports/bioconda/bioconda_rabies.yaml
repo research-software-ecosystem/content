@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/CoBrALab/RABIES
+  license: GPL-2.0
+  license_file: LICENSE
+  summary: 'RABIES: Rodent Automated Bold Improvement of EPI Sequences.'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jaeakle
+package:
+  name: rabies
+  version: 0.5.1
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  run:
+  - python >=3.9
+  - matplotlib-base ==3.3.4
+  - nibabel ==3.2.1
+  - nilearn ==0.7.1
+  - nipype ==1.6.1
+  - numpy ==1.20.1
+  - pandas ==1.2.4
+  - pathos ==0.2.7
+  - pybids ==0.16.3
+  - scikit-learn ==0.24.1
+  - scipy ==1.8.1
+  - seaborn ==0.11.1
+  - simpleitk ==2.0.2
+  - qbatch ==2.3
+  - networkx <3
+  - etelemetry >=0.2.0
+source:
+  sha256: 8ae93c1b8c5ba00c21a42a23f39cc36f365e5962596fdbe9760c0f504cea3a36
+  url: https://pypi.io/packages/source/r/rabies/rabies-0.5.1.tar.gz
+test:
+  imports:
+  - rabies

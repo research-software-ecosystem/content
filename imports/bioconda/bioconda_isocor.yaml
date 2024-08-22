@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/MetaSys-LISBP/IsoCor/
+  doc_url: https://isocor.readthedocs.io/
+  home: https://github.com/MetaSys-LISBP/IsoCor/
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE.md
+  summary: A Isotope Correction for mass spectrometry labeling experiments
+build:
+  entry_points:
+  - isocorcli = isocor.ui.isocorcli:start_cli
+  - isocor = isocor.ui.isocorgui:start_gui
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btz209
+  recipe-maintainers:
+  - gmat
+package:
+  name: isocor
+  version: 2.2.2
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - pandas >=0.17.1
+  - python >=3.7
+  - scipy >=0.12.1
+  - numpy >=1.15
+source:
+  sha256: eb4c91d2ed5b626adc6208454fd82b3e2ddd9a3ad0ccd964c8f16f9a310673e7
+  url: https://pypi.io/packages/source/i/isocor/IsoCor-2.2.2.tar.gz
+test:
+  commands:
+  - isocorcli --help
+  imports:
+  - isocor
+  - isocor.tests
+  - isocor.ui

@@ -1,0 +1,26 @@
+about:
+  home: ftp://ftp.ncbi.nlm.nih.gov/pub/lewisg/omssa/
+  license: Public Domain
+  license_file: disclaimer.txt
+  summary: Open Mass Spectrometry Search Algorithm (OMSSA)
+build:
+  binary_relocation: false
+  number: 1
+  skip: true
+extra:
+  skip-lints:
+  - should_not_be_noarch_source
+  - should_be_noarch_generic
+package:
+  name: omssa
+  version: 2.1.9
+source:
+- sha256: c82300776a22df9b3c1676e576f97be764c7eaed03b3df90d7a511f2987f6453
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/lewisg/omssa/2.1.9/omssa-2.1.9.linux.tar.gz
+- sha256: 24eb0ae92117ade782de2ed0055f7cab9a10e0fd15bdadb793920d56e3d2b8bb
+  url: ftp://ftp.ncbi.nlm.nih.gov/pub/lewisg/omssa/2.1.9/omssa-2.1.9.macos.tar.gz
+test:
+  commands:
+  - omssacl -h
+  - omssamerge -h
+  - omssa2pepXML -h

@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/remiolsen/anglerfish
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Anglerfish, a tool to demultiplex Illumina libraries from ONT data
+build:
+  entry_points:
+  - anglerfish=anglerfish.anglerfish:anglerfish
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: cp ${RECIPE_DIR}/requirements.txt ${SRC_DIR} &&  -m pip install . --no-deps
+    --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - remiolsen
+package:
+  name: anglerfish
+  version: 0.6.1
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  run:
+  - biopython
+  - click
+  - minimap2
+  - numpy
+  - pandas
+  - python >=3.7
+  - python-levenshtein
+  - pyyaml
+source:
+  sha256: 91a62cbbc388009bd503df0d3f64441c0e86ab377da46f721f5fcf82b9cce331
+  url: https://pypi.io/packages/source/b/bio-anglerfish/bio-anglerfish-0.6.1.tar.gz
+test:
+  commands:
+  - anglerfish --help
+  imports:
+  - anglerfish.demux
+  - anglerfish.demux.demux
+  - anglerfish.demux.samplesheet

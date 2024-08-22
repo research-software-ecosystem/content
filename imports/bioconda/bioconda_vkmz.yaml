@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/HegemanLab/vkmz
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
+  summary: metabolomics formula prediction and van Krevelen diagram generation
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-manage --record=record.txt
+package:
+  name: vkmz
+  version: 1.4.6
+requirements:
+  host:
+  - python >=3.6
+  run:
+  - python >=3.6
+source:
+  sha256: fb1c7c5aaecc4b3906aaee945a7e52939dc2246a4a2f784c54808885986612c5
+  url: https://github.com/HegemanLab/vkmz/archive/1.4.6.tar.gz
+test:
+  commands:
+  - vkmz --help
+  - vkmz tabular --help
+  - vkmz w4m-xcms --help

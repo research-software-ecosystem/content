@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/nh13/callerpp
+  license: MIT
+  license_file: LICENSE
+  summary: A simple consensus caller based on partial order alignment with spoa
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - nh13
+package:
+  name: callerpp
+  version: 0.1.6
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  - None
+  host:
+  - spoa >=4.1.4
+  run:
+  - spoa >=4.1.4
+source:
+- sha256: d2d3b233164fe28f056e4cfea0518122ec8aefddf6f30e7c84f6b1827154ae3e
+  url: https://github.com/nh13/callerpp/archive/0.1.6.tar.gz
+test:
+  commands:
+  - callerpp --version
+  - printf ">1\nAAAAAGAAAAA\nAAAAACAAAAA\nAAAAAGAAAAA" > ref.fa; callerpp -a 2 --input
+    ref.fa

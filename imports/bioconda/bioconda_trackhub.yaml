@@ -1,0 +1,34 @@
+about:
+  home: http://github.com/daler/trackhub
+  license: MIT
+  summary: Create and manage UCSC track hubs from Python
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+package:
+  name: trackhub
+  version: '1.0'
+requirements:
+  host:
+  - python
+  - setuptools
+  - docutils
+  run:
+  - python
+  - docutils
+  - requests
+  - beautifulsoup4
+  - html5lib
+  - openpyxl
+source:
+  sha256: b7d85fcb0b17834343a900bb713d2e7e01d06bb4bf1dd0e06680e270572bda22
+  url: https://files.pythonhosted.org/packages/f1/76/42a10f8849a56de359fde3e34f495e60709fbb75a8048afac4fb239fb424/trackhub-1.0.tar.gz
+test:
+  commands:
+  - trackhub_from_excel -h
+  imports:
+  - trackhub
+  - trackhub.test
+  - trackhub.test.data

@@ -1,0 +1,42 @@
+about:
+  home: https://mojolicious.org
+  license: Artistic-2.0
+  summary: Job queue
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+    weak:
+    - perl-minion =10.30
+extra:
+  recipe-maintainers:
+  - khaled196
+package:
+  name: perl-minion
+  version: 10.3
+requirements:
+  host:
+  - perl =>5.32
+  - perl-mojolicious
+  - perl-yaml-libyaml
+  - perl-mojo-pg
+  - make
+  run:
+  - perl =>5.32
+  - perl-yaml-libyaml
+  - perl-mojolicious
+  - perl-mojo-pg
+source:
+  sha256: b704bd66ec4af1c03394689f02c0ac0480ebd06ce9cca17291501b9202c6ed1c
+  url: https://cpan.metacpan.org/authors/id/S/SR/SRI/Minion-10.30.tar.gz
+test:
+  imports:
+  - Minion
+  - Minion::Backend
+  - Minion::Backend::Pg
+  - Minion::Command::minion
+  - Minion::Command::minion::job
+  - Minion::Command::minion::worker
+  - Minion::Iterator
+  - Minion::Job
+  - Minion::Worker

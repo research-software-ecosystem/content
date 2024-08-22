@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/PacificBiosciences/pbbioconda
+  license: BSD-3-Clause-Clear
+  summary: PacBio Arrow Consensus library for Sequel data
+build:
+  number: 1
+  skip: true
+extra:
+  recipe-maintainers:
+  - pb-dseifert
+  - mhsieh
+  skip-lints:
+  - should_not_be_noarch_source
+  - should_be_noarch_python
+package:
+  name: python-consensuscore2
+  version: 3.4.1
+requirements:
+  host:
+  - python
+  - pip
+  - numpy >=1.16.2
+  run:
+  - python
+  - numpy >=1.16.2
+source:
+- sha256: ade98653139d64cd52c4b160ce2c0ca3542341927183a18e69dfa95124b5a656
+  url: https://github.com/PacificBiosciences/unanimity/releases/download/v3.4.1/ConsensusCore2-3.4.1-cp27-cp27mu-linux_x86_64.whl
+- sha256: b8fc5d9f755d5cb17e9376a60ebb012a01f6253013a1a65be0d2c56a1d12031c
+  url: https://github.com/PacificBiosciences/unanimity/releases/download/v3.4.1/ConsensusCore2-3.4.1-cp27-cp27m-macosx_10_9_x86_64.whl
+test:
+  commands:
+  - python -c 'import ConsensusCore2; ConsensusCore2.__version__'
+  imports:
+  - ConsensusCore2

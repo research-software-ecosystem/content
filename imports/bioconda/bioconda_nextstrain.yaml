@@ -1,0 +1,42 @@
+about:
+  description: 'Nextstrain is an open-source project to harness the scientific and
+    public health potential of pathogen genome data.  It includes a collection of
+    open-source tools to aid in our understanding of pathogen spread and evolution,
+    especially in outbreak scenarios.  These tools are designed to be used with a
+    wide range of data sources and designed to be modular so they can be replaced
+    with your own tooling when necessary.
+
+    '
+  dev_url: https://github.com/nextstrain/
+  doc_url: https://docs.nextstrain.org/
+  home: https://nextstrain.org
+  license: 'The license for this meta-package is MIT; individual tools vary.
+
+    '
+  summary: Nextstrain toolchain (meta-package)
+build:
+  noarch: generic
+  number: 2
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/bty407
+  recipe-maintainers:
+  - tsibley
+  - huddlej
+package:
+  name: nextstrain
+  version: 20200304
+requirements:
+  run:
+  - augur
+  - auspice
+  - nextclade
+  - nextstrain-cli
+  - awscli
+  - git
+  - pip
+test:
+  commands:
+  - augur --help
+  - auspice --help
+  - nextstrain --help

@@ -1,0 +1,42 @@
+about:
+  home: http://segtools.hoffmanlab.org/
+  license: GPL2
+  license_file: LICENSE
+  summary: a python package for analyzing genomic segmentations
+build:
+  noarch: python
+  number: 0
+extra:
+  identifiers:
+  - doi:10.1186/1471-2105-12-415
+  recipe-maintainers:
+  - ericr86
+package:
+  name: segtools
+  version: 1.3.0
+requirements:
+  host:
+  - python >=3.7
+  - setuptools
+  run:
+  - python
+  - numpy
+  - r-base
+  - rpy2 >=2.6.0
+  - r-cairo
+  - r-latticeextra
+  - r-reshape2
+  - r-cluster
+  - gmtk
+  - textinput
+  - genomedata
+  - graphviz
+  - pygraphviz
+source:
+  sha256: f870f423b0d20ca2b8aafbed261ac9af3896c1ace8e8c0c560128257bce47888
+  url: https://pypi.io/packages/source/s/segtools/segtools-1.3.0.tar.gz
+test:
+  commands:
+  - segtools-gmtk-parameters --help
+  imports:
+  - segtools

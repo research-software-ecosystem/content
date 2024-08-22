@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/apeltzer/CircularMapper
+  license: GPLv3
+  summary: ' A method to improve mappings on circular genomes, using the BWA mapper.'
+build:
+  noarch: generic
+  number: 3
+package:
+  name: circularmapper
+  version: 1.93.5
+requirements:
+  host:
+  - curl
+  - coreutils
+  - wget
+  run:
+  - openjdk
+  - python
+source:
+  sha256: 7ace2727e32935618838408fef2c0dedd7b728018cf3dae1ff871d13e2e37678
+  url: https://github.com/apeltzer/circularmapper/releases/download/v1.93.5/generator-1.93.5.jar
+test:
+  commands:
+  - circulargenerator > /dev/null
+  - realignsamfile > /dev/null

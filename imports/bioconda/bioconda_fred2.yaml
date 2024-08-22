@@ -1,0 +1,33 @@
+about:
+  home: https://fred-2.github.io
+  license: BSD
+  summary: Python-based framework for computational immunomics.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: fred2
+  version: 2.0.7
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - pyomo
+  - pandas
+  - pyvcf
+  - biopython
+  - pymysql
+  - pysvmlight
+  - svmlight
+source:
+  sha256: 2171a81ebaa15bf30d01424a449bc6243548c4125ad8d06c29f2e4389a2037fa
+  url: https://github.com/FRED-2/Fred2/archive/v2.0.7.tar.gz
+test:
+  commands:
+  - python -c "from Fred2.Core import Allele, Peptide, Protein,generate_peptides_from_proteins"

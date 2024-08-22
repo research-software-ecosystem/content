@@ -1,0 +1,49 @@
+about:
+  doc_url: https://demuxEM.readthedocs.io
+  home: https://github.com/lilab-bcb/demuxEM
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: DemuxEM is the demultiplexing module of Pegasus, which works on cell-hashing
+    and nucleus-hashing genomics data.
+build:
+  entry_points:
+  - demuxEM = demuxEM.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --use-pep517 -vvv'
+extra:
+  identifiers:
+  - doi:10.1038/s41467-019-10756-2
+  recipe-maintainers:
+  - yihming
+  - bli25
+package:
+  name: demuxem
+  version: 0.1.7.post1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools_scm
+  run:
+  - python >=3.8
+  - docopt
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - seaborn
+  - pegasusio >=0.2.12
+  - importlib_metadata >=0.7
+source:
+  sha256: f6e6608c37875fb2db6cbd1abe48ce1149b41c7b2b26380cd4d581dca6cac260
+  url: https://pypi.io/packages/source/d/demuxEM/demuxEM-0.1.7.post1.tar.gz
+test:
+  commands:
+  - demuxEM --help
+  imports:
+  - demuxEM
+  - demuxEM.commands

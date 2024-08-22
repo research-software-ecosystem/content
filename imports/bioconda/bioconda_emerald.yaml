@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/algbio/emerald
+  license: AGPL-3.0
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Unlocking the suboptimal pairwise alignment space for protein sequences
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:Emerald
+package:
+  name: emerald
+  version: 1.2.1
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  host:
+  - gmp
+  - openmp
+  run:
+  - gmp
+  - openmp
+source:
+  patches:
+  - no_filesystem.patch
+  sha256: b2544882906d60bfb0ea93f9d9396857ed11374bb0f9b282b823b3f055d549fa
+  url: https://github.com/algbio/emerald/archive/v1.2.1.tar.gz
+test:
+  commands:
+  - emerald --help > /dev/null

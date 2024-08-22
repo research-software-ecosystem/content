@@ -1,0 +1,44 @@
+about:
+  description: This package provides a supervised technique able to identify differentially
+    expressed genes, based on the construction of \emph{Fuzzy Patterns} (FPs). The
+    Fuzzy Patterns are built by means of applying 3 Membership Functions to discretized
+    gene expression values.
+  home: https://bioconductor.org/packages/3.18/bioc/html/DFP.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Gene Selection
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:dfp
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-dfp
+    path: recipes/bioconductor-dfp
+    version: 1.38.0
+package:
+  name: bioconductor-dfp
+  version: 1.60.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: 5eb14fe67a6dd0599cd24c3473eec349
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/DFP_1.60.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/DFP/DFP_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DFP_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dfp/bioconductor-dfp_1.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DFP')"

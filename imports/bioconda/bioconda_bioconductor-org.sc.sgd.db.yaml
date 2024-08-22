@@ -1,0 +1,40 @@
+about:
+  description: Genome wide annotation for Yeast, primarily based on mapping using
+    ORF identifiers from SGD.
+  home: https://bioconductor.org/packages/3.18/data/annotation/html/org.Sc.sgd.db.html
+  license: Artistic-2.0
+  summary: Genome wide annotation for Yeast
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  parent_recipe:
+    name: bioconductor-org.sc.sgd.db
+    path: recipes/bioconductor-org.sc.sgd.db
+    version: 3.6.0
+package:
+  name: bioconductor-org.sc.sgd.db
+  version: 3.18.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.64.0,<1.65.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20231203
+source:
+  md5: cd83de7109be623e7a294a47ca65f160
+  url:
+  - https://bioconductor.org/packages/3.18/data/annotation/src/contrib/org.Sc.sgd.db_3.18.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/org.Sc.sgd.db/org.Sc.sgd.db_3.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/org.Sc.sgd.db_3.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-org.sc.sgd.db/bioconductor-org.sc.sgd.db_3.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('org.Sc.sgd.db')"

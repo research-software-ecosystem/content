@@ -1,0 +1,62 @@
+about:
+  description: "The Nextstrain command-line interface (CLI)\u2014a program called\
+    \ nextstrain\u2014aims to provide a consistent way to run and visualize pathogen\
+    \ builds and access Nextstrain components like Augur and Auspice across computing\
+    \ environments such as Docker, Conda, and AWS Batch.\n"
+  dev_url: https://github.com/nextstrain/cli
+  doc_url: https://docs.nextstrain.org/projects/cli/
+  home: https://docs.nextstrain.org/projects/cli/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: The Nextstrain command-line interface (CLI)
+build:
+  entry_points:
+  - nextstrain = nextstrain.cli.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/bty407
+  recipe-maintainers:
+  - tsibley
+  - corneliusroemer
+  - genehack
+  - victorlin
+package:
+  name: nextstrain-cli
+  version: 8.5.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - docutils
+  - fasteners
+  - importlib_resources >=5.3.0
+  - packaging >=3.0.0
+  - pyjwt >=2.0.0
+  - cryptography
+  - pyparsing
+  - requests
+  - typing_extensions >=3.6.4
+  - wcmatch >=6.0
+  - wrapt
+  - fsspec !=2023.9.1
+  - boto3
+  - s3fs >=2021.04.0,!=2023.9.1
+source:
+  sha256: 5318296512acc4e47fe7d0ffa11b0654ec47ad7822006be3b75864f17b94ea67
+  url: https://pypi.io/packages/source/n/nextstrain-cli/nextstrain_cli-8.5.1.tar.gz
+test:
+  imports:
+  - nextstrain.cli
+  requires:
+  - snakemake-minimal
+  - augur
+  - git
+  - pytest

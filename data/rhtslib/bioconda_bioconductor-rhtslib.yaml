@@ -1,0 +1,47 @@
+about:
+  description: This package provides version 1.15.1 of the 'HTSlib' C library for
+    high-throughput sequence analysis. The package is primarily useful to developers
+    of other R packages who wish to make use of HTSlib. Motivation and instructions
+    for use of this package are in the vignette, vignette(package="Rhtslib", "Rhtslib").
+  home: https://bioconductor.org/packages/3.18/bioc/html/Rhtslib.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: HTSlib high-throughput sequencing library as an R package
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:rhtslib
+  - doi:10.1038/nmeth.3252
+package:
+  name: bioconductor-rhtslib
+  version: 2.4.0
+requirements:
+  build:
+  - None
+  - automake
+  - make
+  host:
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - r-base
+source:
+  md5: 8aa7fa3050a484702c3065c797948ba8
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rhtslib_2.4.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rhtslib/Rhtslib_2.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rhtslib_2.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rhtslib/bioconductor-rhtslib_2.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rhtslib')"

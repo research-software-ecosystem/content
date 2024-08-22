@@ -1,0 +1,24 @@
+about:
+  doc_url: https://github.com/clintval/cvbio
+  home: https://github.com/clintval/cvbio
+  license: MIT
+  license_family: MIT
+  summary: Tools for working with genomic and sequencing data, including multi-species
+    read disambiguation
+build:
+  noarch: generic
+  number: 1
+package:
+  name: cvbio
+  version: 3.0.0
+requirements:
+  run:
+  - openjdk>=8
+  - python
+source:
+  sha256: 85b6412d2855eb85fdc8681859f7cbfa9d8cee15638495284f1e0fd32e3c325f
+  url: https://github.com/clintval/cvbio/releases/download/3.0.0/cvbio.jar
+test:
+  commands:
+  - cvbio 2>&1 | grep "Disambiguate"
+  - cvbio --version 2>&1 | grep "Version"

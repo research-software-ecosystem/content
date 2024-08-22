@@ -1,0 +1,50 @@
+about:
+  description: Provides various methods to load the pathways from the NCI Pathways
+    Database in R graph objects and to re-format them.
+  home: https://bioconductor.org/packages/3.18/bioc/html/NCIgraph.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Pathways from the NCI Pathways Database
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:ncigraph
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-ncigraph
+    path: recipes/bioconductor-ncigraph
+    version: 1.28.0
+package:
+  name: bioconductor-ncigraph
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-rbgl >=1.78.0,<1.79.0
+  - bioconductor-rcy3 >=2.22.0,<2.23.0
+  - r-base
+  - r-r.oo
+  run:
+  - bioconductor-graph >=1.80.0,<1.81.0
+  - bioconductor-kegggraph >=1.62.0,<1.63.0
+  - bioconductor-rbgl >=1.78.0,<1.79.0
+  - bioconductor-rcy3 >=2.22.0,<2.23.0
+  - r-base
+  - r-r.oo
+source:
+  md5: ed568ded26dce9e64d5f38606e65c13d
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/NCIgraph_1.50.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/NCIgraph/NCIgraph_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/NCIgraph_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ncigraph/bioconductor-ncigraph_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('NCIgraph')"

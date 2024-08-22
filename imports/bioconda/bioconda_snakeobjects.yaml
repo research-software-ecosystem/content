@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/iossifovlab/snakeobjects
+  license: MIT
+  license_file: LICENSE
+  summary: Snakeobjects, an object-oriented workflow management system based on snakemake
+build:
+  entry_points:
+  - sobjects = snakeobjects.cli:cli
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed -vv .
+extra:
+  maintainers:
+  - yamrom
+package:
+  name: snakeobjects
+  version: 3.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - snakemake-minimal
+source:
+  sha256: b95951c084c5d4ab047bb4dccbb2d7c1573bf9652eabde29b5c6fab93c1075e4
+  url: https://github.com/iossifovlab/snakeobjects/archive/refs/tags/3.1.2.tar.gz
+test:
+  commands:
+  - sobjects --help
+  - sobjects version
+  imports:
+  - snakeobjects

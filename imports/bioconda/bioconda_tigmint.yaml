@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/bcgsc/tigmint
+  doc_url: https://github.com/bcgsc/tigmint#readme
+  home: https://bcgsc.github.io/tigmint/
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  summary: Correct misassemblies using linked or long reads
+build:
+  number: 2
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1101/304253
+  recipe-maintainers:
+  - sjackman
+package:
+  name: tigmint
+  version: 1.2.10
+requirements:
+  build:
+  - None
+  host:
+  - make
+  - llvm-openmp
+  - libgomp
+  - cmake
+  - meson
+  - ninja
+  - pip
+  - python
+  - zlib
+  - btllib
+  run:
+  - python
+  - intervaltree
+  - make
+  - pybedtools
+  - pysam >=0.15.3
+  - minimap2
+  - bwa
+  - zsh
+  - samtools
+  - btllib
+source:
+  sha256: 8e7b5d424ff69d5da7b117bef9996463b02205078ce0fb6e3074ca6c9933efa9
+  url: https://github.com/bcgsc/tigmint/releases/download/v1.2.10/tigmint-1.2.10.tar.gz
+test:
+  commands:
+  - tigmint-make version | grep -q "1.2.10"
+  - tigmint-cut --version | grep -q "1.2.10"
+  - tigmint_molecule.py --version | grep -q "1.2.10"

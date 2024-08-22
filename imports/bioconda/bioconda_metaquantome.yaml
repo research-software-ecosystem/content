@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/galaxyproteomics/metaquantome
+  home: https://github.com/galaxyproteomics/metaquantome
+  license: Apache Software License
+  license_family: APACHE
+  license_file: /LICENSE
+  summary: Quantitative metaproteomics analysis of taxonomy and function.
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+extra:
+  container:
+    extended-base: true
+package:
+  name: metaquantome
+  version: 2.0.2
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - ete3 3.1.2
+  - goatools 0.7.*
+  - statsmodels 0.8.*
+  - biopython 1.73.*
+  - pandas 0.23.*
+  - numpy 1.15.*
+  - r-gplots 3.0.*
+  - r-ggplot2 3.0.*
+  - r-base 3.5.1
+  - r-jsonlite 1.5.*
+  - r-scico 1.1.0
+  - r-dplyr 0.8.*
+  - r-tidyr 0.8.*
+  - libiconv 1.15.*
+source:
+  sha256: 71ea1cffd82f11be87efd92a922baef12f1214caab0ea3d682d7057e1f6b8750
+  url: https://github.com/galaxyproteomics/metaquantome/archive/v2.0.2.tar.gz
+test:
+  commands:
+  - metaquantome -h
+  - metaquantome expand -h
+  - metaquantome filter -h
+  - metaquantome stat -h
+  - metaquantome viz -h
+  import:
+  - metaquantome

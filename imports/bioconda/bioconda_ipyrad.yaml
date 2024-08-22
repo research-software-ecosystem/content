@@ -1,0 +1,50 @@
+about:
+  home: http://github.com/dereneaton/ipyrad
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE.txt
+  summary: Interactive assembly and analysis of RAD-seq data sets.
+build:
+  entry_points:
+  - ipyrad = ipyrad.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+package:
+  name: ipyrad
+  version: 0.9.99
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - pandas
+  - scipy
+  - numpy
+  - numba >=0.37
+  - future
+  - h5py
+  - ipyparallel >=6.0.2
+  - requests
+  - cutadapt
+  - pysam >=0.15
+  - mpi4py >=3.0
+  - notebook
+  - bedtools
+  - muscle <5
+  - vsearch >=2.13
+  - bwa
+  - samtools
+  - toyplot
+source:
+  sha256: 7a769bcfea004d603415c1d5d2d782857c3d960e38c48586abe93f7f31667d9c
+  url: https://github.com/dereneaton/ipyrad/archive/0.9.99.tar.gz
+test:
+  commands:
+  - ipyrad -h
+  imports:
+  - ipyrad
+  - ipyrad.analysis

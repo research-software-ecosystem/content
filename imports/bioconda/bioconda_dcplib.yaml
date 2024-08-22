@@ -1,0 +1,40 @@
+about:
+  description: "The Data Coordination Platform (DCP) comprises the infrastructure\
+    \ that \nsupports operation of the Human Cell Atlas (HCA). This package provides\n\
+    modules to DCP components, including the HCA command line interface (CLI).\n"
+  home: http://github.com/HumanCellAtlas/dcplib
+  license: MIT
+  license_family: MIT
+  summary: Modules shared among multiple Data Coordination Platform components.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - pinin4fjords
+package:
+  name: dcplib
+  version: 3.12.0
+requirements:
+  host:
+  - boto3 >=1.7.13
+  - crc32c
+  - pip
+  - puremagic ==1.4
+  - python >=3
+  - requests >=2.18.4,<3
+  run:
+  - boto3 >=1.7.13
+  - crc32c
+  - puremagic ==1.4
+  - python >=3
+  - requests >=2.18.4,<3
+source:
+  sha256: 63039cc1a8f9c142e5f9e8a56528618bec8c033487c00da7aedc3ab328c828ed
+  url: https://pypi.io/packages/source/d/dcplib/dcplib-3.12.0.tar.gz
+test:
+  imports:
+  - dcplib
+  - dcplib.checksumming_io
+  - dcplib.media_types

@@ -1,0 +1,26 @@
+about:
+  home: https://github.com/artic-network/readucks
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: 'Readucks: a simple demultiplexer for nanopore reads'
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: readucks
+  version: 0.0.3
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython
+  - parasail-python
+source:
+  sha256: ec5e15599576beb3cd47a11eee8bedad37b989d6b675f2d129779c93abf994b4
+  url: https://github.com/artic-network/readucks/archive/v0.0.3.tar.gz
+test:
+  commands:
+  - readucks --help

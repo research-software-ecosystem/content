@@ -1,0 +1,49 @@
+about:
+  description: Import, analyze and visualize data from Roche(R) xCELLigence RTCA systems.
+    The package imports real-time cell electrical impedance data into R. As an alternative
+    to commercial software shipped along the system, the Bioconductor package RTCA
+    provides several unique transformation (normalization) strategies and various
+    visualization tools.
+  home: https://bioconductor.org/packages/3.18/bioc/html/RTCA.html
+  license: LGPL-3
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Open-source toolkit to analyse data from xCELLigence System (RTCA)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:rtca
+  - doi:10.1016/j.compbiolchem.2013.12.004
+  parent_recipe:
+    name: bioconductor-rtca
+    path: recipes/bioconductor-rtca
+    version: 1.32.0
+package:
+  name: bioconductor-rtca
+  version: 1.54.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-gtools
+  - r-rcolorbrewer
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  - r-gtools
+  - r-rcolorbrewer
+source:
+  md5: 8e1039d013ef1d5e08b48003ecffc25a
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/RTCA_1.54.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/RTCA/RTCA_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RTCA_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rtca/bioconductor-rtca_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RTCA')"

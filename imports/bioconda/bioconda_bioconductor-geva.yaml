@@ -1,0 +1,44 @@
+about:
+  description: Statistic methods to evaluate variations of differential expression
+    (DE) between multiple biological conditions. It takes into account the fold-changes
+    and p-values from previous differential expression (DE) results that use large-scale
+    data (*e.g.*, microarray and RNA-seq) and evaluates which genes would react in
+    response to the distinct experiments. This evaluation involves an unique pipeline
+    of statistical methods, including weighted summarization, quantile detection,
+    cluster analysis, and ANOVA tests, in order to classify a subset of relevant genes
+    whose DE is similar or dependent to certain biological factors.
+  home: https://bioconductor.org/packages/3.18/bioc/html/geva.html
+  license: LGPL-3
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Gene Expression Variation Analysis (GEVA)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-geva
+  version: 1.10.0
+requirements:
+  host:
+  - r-base
+  - r-dbscan
+  - r-fastcluster
+  - r-matrixstats
+  run:
+  - r-base
+  - r-dbscan
+  - r-fastcluster
+  - r-matrixstats
+source:
+  md5: ac06c7a9df29f5eb16fe102c81369ccb
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/geva_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/geva/geva_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geva_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-geva/bioconductor-geva_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('geva')"

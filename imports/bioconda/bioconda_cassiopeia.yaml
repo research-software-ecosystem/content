@@ -1,0 +1,58 @@
+about:
+  dev_url: https://github.com/YosefLab/Cassiopeia
+  home: https://github.com/YosefLab/Cassiopeia
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: An end-to-end pipeline for single-cell lineage tracing experiments.
+build:
+  entry_points:
+  - cassiopeia-preprocess = cassiopeia.preprocess.cassiopeia_preprocess:main
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir --use-pep517
+extra:
+  recipe-maintainers:
+  - mencian
+package:
+  name: cassiopeia
+  version: 2.0.0
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy
+  run:
+  - python
+  - biopython >=1.71
+  - bokeh >=0.12.15
+  - ccphylo
+  - ete3 >=3.1.1
+  - hits
+  - itolapi
+  - matplotlib-base >=2.2.2
+  - nbconvert >=5.4.0
+  - nbformat >=4.4.0
+  - networkx >=2.5
+  - ngs-tools >=1.5.3
+  - numba >=0.51.0
+  - pandas >=1.1.4
+  - pysam >=0.14.1
+  - python-levenshtein
+  - pyyaml >=3.12
+  - scipy >=1.2.0
+  - typing-extensions >=3.7.4
+  - tqdm >=4
+  - None
+source:
+  sha256: 28ae7495152683f5733222255056a1e7b2f7a51e1cee2f23f0d9f8ae5f4c3742
+  url: https://github.com/YosefLab/Cassiopeia/archive/2.0.0.tar.gz
+test:
+  commands:
+  - cassiopeia-preprocess --help
+  imports:
+  - cassiopeia

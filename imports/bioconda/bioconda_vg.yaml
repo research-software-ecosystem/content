@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/vgteam/vg
+  license: MIT
+  license_family: MIT
+  summary: Variation graph data structures, interchange formats, alignment, genotyping,
+    and variant calling methods
+build:
+  number: 1
+  run_exports:
+  - None
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - cp vg* ${PREFIX}/bin/vg
+  - chmod +x ${PREFIX}/bin/vg
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: vg
+  version: 1.56.0
+source:
+- sha256: 8b82e300a386d6bf34d0d1025a7dc806b2b95bb57bd063226fc3984e920710e4
+  url: https://github.com/vgteam/vg/releases/download/v1.56.0/vg
+- sha256: 35693928a3aa049809fd906088f54594940e2de20e8b396cffe2b6b6b73a9e7a
+  url: https://github.com/vgteam/vg/releases/download/v1.56.0/vg-arm64
+test:
+  commands:
+  - vg help

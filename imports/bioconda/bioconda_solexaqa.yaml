@@ -1,0 +1,36 @@
+about:
+  home: http://solexaqa.sourceforge.net/
+  license: GPLv3
+  summary: Quality statistics and visual representations for second-generation sequencing
+    data
+build:
+  number: 6
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1186/1471-2105-11-485
+package:
+  name: solexaqa
+  version: 3.1.7.1
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - boost-cpp
+  - icu
+  - zlib
+  run:
+  - boost-cpp
+  - icu
+  - zlib
+source:
+  patches:
+  - 0001-No-static-build.patch
+  - 0002-Replace-hardcoded-BOOST_PATH.patch
+  sha256: b3bdabf955387a4f6176dbdfda1cf03bb869c077b4eec152304f2e76be5f0cf6
+  url: https://downloads.sourceforge.net/project/solexaqa/src/SolexaQA++_v3.1.7.1.zip
+test:
+  commands:
+  - printf '@HWI-ST871:91:C0JGJACXX:8:1302:10862:157183 1:N:0:TAGCTT\nTGTCTCTGCTTTTGAATATGCTATCTAGGTTGGTCATAACTTTCTTTCCAAGGAGTAATCATCTTTTAATTTCATGGCTACAATCACCATTTGCAGTTATT\n+\nCCCCFFFFFHHHHHJIJIJJJIIJJIGJJIJIJHIGHIJJJJJJJJIJJJJIIIGFEGIGGIJIIIJI>FHIJIHHJIHIHG>CEFFFFFED@C:>AC@>;\n'
+    >tiny.fastq ; SolexaQA++ dynamictrim tiny.fastq

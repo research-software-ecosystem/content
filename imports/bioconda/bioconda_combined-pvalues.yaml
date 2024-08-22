@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/brentp/combined-pvalues
+  license: MIT
+  license_file: LICENSE
+  summary: 'A library to combine, analyze, group and correct p-values in BED files.
+
+    Unique tools involve correction for spatial autocorrelation.
+
+    This is useful for ChIP-Seq probes and Tiling arrays, or any data with spatial
+    correlation.'
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: combined-pvalues
+  version: 0.50.6
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - numpy
+  - scipy
+  - toolshed
+  - interlap
+source:
+  sha256: 6cdd0fd62a6172fad04285fc99778b84631f0f1f3738fe27bceaf8e7f9d99044
+  url: https://github.com/brentp/combined-pvalues/archive/v0.50.6.tar.gz
+test:
+  command:
+  - comb-p
+  imports:
+  - cpv

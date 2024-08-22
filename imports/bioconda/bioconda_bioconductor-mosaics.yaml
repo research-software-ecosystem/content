@@ -1,0 +1,66 @@
+about:
+  description: This package provides functions for fitting MOSAiCS and MOSAiCS-HMM,
+    a statistical framework to analyze one-sample or two-sample ChIP-seq data of transcription
+    factor binding and histone modification.
+  home: https://bioconductor.org/packages/3.18/bioc/html/mosaics.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: MOSAiCS (MOdel-based one and two Sample Analysis and Inference for ChIP-Seq)
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:mosaics
+  - doi:10.1198/jasa.2011.ap09706
+  parent_recipe:
+    name: bioconductor-mosaics
+    path: recipes/bioconductor-mosaics
+    version: 2.18.0
+package:
+  name: bioconductor-mosaics
+  version: 2.40.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-lattice
+  - r-mass
+  - r-rcpp
+  - libblas
+  - liblapack
+  - perl >=5.6.0
+  run:
+  - bioconductor-genomeinfodb >=1.38.0,<1.39.0
+  - bioconductor-genomicalignments >=1.38.0,<1.39.0
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - bioconductor-iranges >=2.36.0,<2.37.0
+  - bioconductor-rsamtools >=2.18.0,<2.19.0
+  - bioconductor-s4vectors >=0.40.0,<0.41.0
+  - r-base
+  - r-lattice
+  - r-mass
+  - r-rcpp
+  - perl >=5.6.0
+source:
+  md5: 0648fcfd9fd595974e0602fbb2a37cac
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mosaics_2.40.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mosaics/mosaics_2.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mosaics_2.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mosaics/bioconductor-mosaics_2.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('mosaics')"

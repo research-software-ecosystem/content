@@ -1,0 +1,61 @@
+about:
+  description: "Cell clustering is one of the most important and commonly performed\
+    \ tasks in single-cell RNA sequencing (scRNA-seq) data analysis. An important\
+    \ step in cell clustering is to select a subset of genes (referred to as \u201C\
+    features\u201D), whose expression patterns will then be used for downstream clustering.\
+    \ A good set of features should include the ones that distinguish different cell\
+    \ types, and the quality of such set could have significant impact on the clustering\
+    \ accuracy. FEAST is an R library for selecting most representative features before\
+    \ performing the core of scRNA-seq clustering. It can be used as a plug-in for\
+    \ the etablished clustering algorithms such as SC3, TSCAN, SHARP, SIMLR, and Seurat.\
+    \ The core of FEAST algorithm includes three steps: 1. consensus clustering; 2.\
+    \ gene-level significance inference; 3. validation of an optimized feature set."
+  home: https://bioconductor.org/packages/3.18/bioc/html/FEAST.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: FEAture SelcTion (FEAST) for Single-cell clustering
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-feast
+  version: 1.10.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-sc3 >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tscan >=1.40.0,<1.41.0
+  - r-base
+  - r-irlba
+  - r-matrixstats
+  - r-mclust
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-sc3 >=1.30.0,<1.31.0
+  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
+  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-tscan >=1.40.0,<1.41.0
+  - r-base
+  - r-irlba
+  - r-matrixstats
+  - r-mclust
+source:
+  md5: 5b32fdf869bc97368c62f50ccd8fe9f5
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/FEAST_1.10.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/FEAST/FEAST_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FEAST_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-feast/bioconductor-feast_1.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FEAST')"

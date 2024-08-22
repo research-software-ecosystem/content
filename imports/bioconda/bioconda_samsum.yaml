@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/hallamlab/samsum
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A light-weight python package for summarizing sequence coverage from SAM
+    and BAM files
+build:
+  entry_points:
+  - samsum = samsum.__main__:main
+  number: 5
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - cmorganl
+package:
+  name: samsum
+  version: 0.1.4
+requirements:
+  build:
+  - None
+  host:
+  - numpy
+  - pip
+  - pytest
+  - python
+  run:
+  - None
+  - pytest
+  - python
+  - pyfastx
+source:
+  sha256: 36b1fc0eaa4da1b7a70d2791357c7547612c9653e4e0ea7db39ba96cdd03ffc5
+  url: https://pypi.io/packages/source/s/samsum/samsum-0.1.4.tar.gz
+test:
+  commands:
+  - samsum --help
+  - samsum info
+  imports:
+  - samsum

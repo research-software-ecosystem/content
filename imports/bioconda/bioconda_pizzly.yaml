@@ -1,0 +1,30 @@
+about:
+  home: https://github.com/pmelsted/pizzly
+  license: BSD-2
+  license_file: LICENSE
+  summary: Fast fusion detection using kallisto
+build:
+  number: 3
+extra:
+  notes: Auxilliary scripts are available as commands ``pizzly_flatten_json.py`` and
+    ``pizzly_get_fragment_length.py`` along with the ``pizzly`` binary.
+package:
+  name: pizzly
+  version: 0.37.3
+requirements:
+  build:
+  - None
+  host:
+  - wget
+  run:
+  - python
+  - numpy
+  - h5py
+source:
+  sha256: bdd07e0aaaded045fee03e5eb0cae9a9b5c509c28cca501617ded3e0e1307138
+  url: https://github.com/pmelsted/pizzly/releases/download/v0.37.3/pizzly_mac.tar.gz
+test:
+  commands:
+  - pizzly --help
+  - pizzly_flatten_json.py
+  - pizzly_get_fragment_length.py

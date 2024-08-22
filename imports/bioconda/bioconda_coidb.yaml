@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/johnne/coidb
+  license: MIT
+  summary: A tool to obtain and maintain a database of COI metabarcode references
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: coidb
+  version: 0.4.8
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  run:
+  - python >=3.8
+  - biopython
+  - vsearch
+  - tqdm
+  - pandas
+  - snakemake
+  - importlib_resources
+  - unzip
+  - seqkit
+source:
+  sha256: 10703d02033fdaac73abe311309b53ec974fdde6d51305943a99aaf54021e553
+  url: https://github.com/johnne/coidb/archive/v0.4.8.tar.gz
+test:
+  commands:
+  - coidb -h
+  - coidb download -n
+  - coidb extract -n
+  - coidb filter -n
+  - coidb cluster -n
+  - coidb clean -n
+  - coidb format -n
+  - rm -rf .snakemake
+  imports:
+  - coidb

@@ -1,0 +1,48 @@
+about:
+  description: Multiple HMM - search via synteny structures in Python
+  dev_url: http://github.com/robaina/Pynteny
+  doc_url: https://robaina.github.io/Pynteny/
+  home: http://github.com/robaina/Pynteny
+  license: Apache-2.0 license
+  summary: Multiple HMM - search via synteny structures in Python
+build:
+  entry_points:
+  - pynteny = pynteny.cli:main
+  number: 0
+  script: -m pip install --no-deps --ignore-installed .
+  skip: true
+extra:
+  identifiers:
+  - DOI:10.5281/zenodo.7082448
+  recipe-maintainers:
+  - Robaina
+package:
+  name: pynteny
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  host:
+  - python >=3.8,<3.11
+  - poetry
+  - pip
+  run:
+  - pyfastx >=0.8
+  - python >=3.8,<3.11
+  - hmmer
+  - prodigal
+  - biopython
+  - numpy
+  - pandas
+  - psutil
+  - seqkit
+  - requests
+  - tqdm
+source:
+  sha256: 3dd88029304936f3d60a4da3752d5d3d17d7422c5794d9637720598e5e54b5c0
+  url: https://github.com/Robaina/pynteny/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - pynteny --help
+  imports:
+  - pynteny

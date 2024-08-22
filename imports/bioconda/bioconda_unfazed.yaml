@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/jbelyeu/unfazed
+  license: MIT
+  summary: Extended read-backed and allele-balance phasing for de novo variation (SNVs,
+    INDELS, SVs, and CNVs)
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: unfazed
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - pip
+  - python
+  - cyvcf2
+  - numpy
+  - pysam>=0.15.2
+source:
+  sha256: 200e02c1e54d56fd50757d540dc94823c294d405eca3981c392f5058463959b9
+  url: https://github.com/jbelyeu/unfazed/archive/v1.0.2.tar.gz
+test:
+  commands:
+  - unfazed -h

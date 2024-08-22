@@ -1,0 +1,58 @@
+about:
+  description: This package provides modified versions and novel implementation of
+    functions for parallel evaluation, tailored to use with Bioconductor objects.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BiocParallel.html
+  license: GPL-2 | GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Bioconductor facilities for parallel evaluation
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:biocparallel
+  - doi:10.1214/14-STS476
+  parent_recipe:
+    name: bioconductor-biocparallel
+    path: recipes/bioconductor-biocparallel
+    version: 1.14.2
+package:
+  name: bioconductor-biocparallel
+  version: 1.36.0
+requirements:
+  build:
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - r-base
+  - r-bh
+  - r-codetools
+  - r-cpp11
+  - r-futile.logger
+  - r-snow
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-bh
+  - r-codetools
+  - r-cpp11
+  - r-futile.logger
+  - r-snow
+source:
+  md5: a6a331ac453920e713836ddd0de38e25
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocParallel_1.36.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BiocParallel/BiocParallel_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BiocParallel_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biocparallel/bioconductor-biocparallel_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BiocParallel')"

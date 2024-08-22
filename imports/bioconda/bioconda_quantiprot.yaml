@@ -1,0 +1,36 @@
+about:
+  home: https://git.e-science.pl/wdyrka/quantiprot
+  license: MIT
+  license_family: MIT
+  summary: Quantiprot is a Python package for quantitative analysis of protein sequences
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+extra:
+  recipe-maintainers:
+  - jaidevjoshi83
+package:
+  name: quantiprot
+  version: 0.2.5
+requirements:
+  host:
+  - numpy >=1.11.0
+  - pip
+  - python
+  - requests >=2.10.0
+  run:
+  - numpy >=1.11.0
+  - python
+  - requests >=2.10.0
+source:
+  sha256: 3fd64270399fcd764c3bf150993ab54b4f6d386e1145df97924799b1c53975fd
+  url: https://pypi.io/packages/source/q/quantiprot/quantiprot-0.2.5.tar.gz
+test:
+  imports:
+  - quantiprot
+  - quantiprot.analysis
+  - quantiprot.metrics
+  - quantiprot.utils

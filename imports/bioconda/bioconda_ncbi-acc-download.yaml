@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/kblin/ncbi-acc-download/
+  license: Apache Software License
+  license_family: Apache
+  summary: Download files from NCBI Entrez by accession.
+build:
+  entry_points:
+  - ncbi-acc-download=ncbi_acc_download.__main__:main
+  - nad=ncbi_acc_download.__main__:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+package:
+  name: ncbi-acc-download
+  version: 0.2.8
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - python
+  - biopython
+  - requests >=2.4.3
+source:
+  sha256: 6f6832fe0c44630d794f98680520d061bd9bb192f5f918d4d0a9b24d07243308
+  url: https://pypi.io/packages/source/n/ncbi-acc-download/ncbi-acc-download-0.2.8.tar.gz
+test:
+  commands:
+  - ncbi-acc-download --help
+  - nad --help
+  imports:
+  - ncbi_acc_download

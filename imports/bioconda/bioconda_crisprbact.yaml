@@ -1,0 +1,39 @@
+about:
+  home: https://gitlab.pasteur.fr/dbikard/crisprbact
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Tools to design and analyse CRISPRi experiments
+build:
+  entry_points:
+  - crisprbact = crisprbact.cli:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --ignore-installed --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - rplanel
+package:
+  name: crisprbact
+  version: 0.3.11
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  - poetry
+  run:
+  - poetry
+  - python >=3.7
+  - biopython >=1.75,<2.0
+  - click >=7.0,<8.0
+  - numpy >=1.17,<2.0
+  - pandas >=0.25.3
+  - rope >=0.16.0
+source:
+  sha256: 47df73d6fed40539fbb5dda5fbc7a5010ca0aeed8ffc05fb1e277413e4de234f
+  url: https://pypi.io/packages/source/c/crisprbact/crisprbact-0.3.11.tar.gz
+test:
+  commands:
+  - crisprbact --help
+  imports:
+  - crisprbact

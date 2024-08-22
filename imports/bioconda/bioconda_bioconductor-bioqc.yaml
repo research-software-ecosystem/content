@@ -1,0 +1,55 @@
+about:
+  description: BioQC performs quality control of high-throughput expression data based
+    on tissue gene signatures. It can detect tissue heterogeneity in gene expression
+    data. The core algorithm is a Wilcoxon-Mann-Whitney test that is optimised for
+    high performance.
+  home: https://bioconductor.org/packages/3.18/bioc/html/BioQC.html
+  license: GPL-3.0-or-later + file LICENSE
+  license_file: LICENSE
+  summary: Detect tissue heterogeneity in expression profiles with gene sets
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:bioqc
+  - doi:10.1186/s12864-017-3661-2
+  parent_recipe:
+    name: bioconductor-bioqc
+    path: recipes/bioconductor-bioqc
+    version: 1.8.0
+package:
+  name: bioconductor-bioqc
+  version: 1.30.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - r-base
+  - r-rcpp
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-edger >=4.0.0,<4.1.0
+  - r-base
+  - r-rcpp
+source:
+  md5: 9e9b338e001fdeb614091e4fa0cf50cd
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/BioQC_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/BioQC/BioQC_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BioQC_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bioqc/bioconductor-bioqc_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BioQC')"

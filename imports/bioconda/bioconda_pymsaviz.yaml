@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/moshi4/pyMSAviz/
+  doc_url: https://moshi4.github.io/pyMSAviz/
+  home: https://moshi4.github.io/pyMSAviz/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: MSA visualization python package for sequence analysis
+build:
+  entry_points:
+  - pymsaviz = pymsaviz.scripts.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vvv
+extra:
+  recipe-maintainers:
+  - moshi4
+package:
+  name: pymsaviz
+  version: 0.4.2
+requirements:
+  host:
+  - python >=3.8
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.8
+  - biopython >=1.79
+  - matplotlib-base >=3.5.2
+  - pytest
+source:
+  sha256: a6506c75b52e8e0c9f28c13f0cca2d2c5cd642c8136dbb42426ab5f19e5ff6f7
+  url: https://pypi.io/packages/source/p/pymsaviz/pymsaviz-0.4.2.tar.gz
+test:
+  commands:
+  - pymsaviz --help
+  imports:
+  - pymsaviz
+  source_files:
+  - tests/

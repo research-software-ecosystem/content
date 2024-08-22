@@ -1,0 +1,38 @@
+about:
+  home: http://chipexo.sourceforge.net
+  license: GPL3
+  license_family: GPL3
+  license_file: /LICENSE
+  summary: Model Based Analysis for ChIP-exo data
+build:
+  number: 4
+  script: ' -m pip install . --no-deps --ignore-installed -vvv '
+  skip: true
+package:
+  name: mace
+  version: '1.2'
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy
+  - gsl
+  - zlib
+  run:
+  - python
+  - numpy
+  - bx-python
+  - gsl
+  - zlib
+  - ucsc-wigtobigwig
+source:
+  patches:
+  - source.patch
+  sha256: 300a15e37d4d4387e7ecb87f7e4f0ac73654b2c92c898dc4621f96117167386d
+  url: https://ayera.dl.sourceforge.net/project/chipexo/MACE-1.2.tar.gz
+test:
+  commands:
+  - mace.py -h

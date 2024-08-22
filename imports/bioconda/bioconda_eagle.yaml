@@ -1,0 +1,45 @@
+about:
+  home: https://bitbucket.org/christopherschroeder/eagle
+  license: MIT License
+  license_family: MIT
+  summary: Eagle is a webtool for genome variants and snp analysis
+build:
+  entry_points:
+  - eagle=run:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+extra:
+  recipe-maintainers:
+  - christopher-schroeder
+package:
+  name: eagle
+  version: 0.9.4.6
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  - numpy
+  run:
+  - python >=3
+  - flask
+  - numpy
+  - scipy
+  - h5py
+  - cyvcf2
+  - sqt
+  - pybedtools
+  - pysam
+source:
+  sha256: 3b33ed1ef2313ea661c7549a0dffbf1de338df5faf42eef77342a2db47d1467e
+  url: https://pypi.io/packages/source/g/gi-eagle/gi-eagle-0.9.4.6.tar.gz
+test:
+  commands:
+  - eagle --help
+  imports:
+  - eagle
+  - eagle.core
+  - eagle.core.wrap
+  - eagle.scripts
+  - eagle.tests
+  - eagle.views

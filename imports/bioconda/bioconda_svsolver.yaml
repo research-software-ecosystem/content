@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/SimVascular/svSolver
+  home: https://simtk.org/projects/simvascular/
+  license: BSD
+  license_family: BSD
+  license_file: Distribution/license.txt
+  summary: 'The svSolver includes three executable programs: Presolver(svpre), Flowsolver(svsolver),
+    Postsolver(svpost).'
+build:
+  number: 0
+  skip: true
+  string: _h_0
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - acaprez
+package:
+  name: svsolver
+  version: 2022.07.20
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - make
+  - cmake
+  host:
+  - vtk
+  - null
+  - tbb-devel
+  - zlib
+  run:
+  - vtk
+  - null
+  - tbb
+  - zlib
+source:
+  patches:
+  - 001-build-fixes.patch
+  - 002-packaging-fixes.patch
+  sha256: 450a935cb02de6123f702fda46ee126004aa392272b0e4a47057cc14ad92306e
+  url: https://github.com/SimVascular/svSolver/archive/8736834.zip
+test:
+  commands:
+  - svpre | grep svpre > /dev/null
+  - svpost | grep step > /dev/null
+  - svsolver | grep Solver > /dev/null

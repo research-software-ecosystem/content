@@ -1,0 +1,56 @@
+about:
+  home: https://github.com/GoekeLab/m6anet
+  license: MIT
+  license_file: LICENSE
+  summary: m6anet is a python package for detection of m6a modifications from Nanopore
+    direct RNA sequencing data.
+build:
+  entry_points:
+  - m6anet = m6anet:main
+  - m6anet-dataprep=m6anet.deprecated.dataprep:main
+  - m6anet-run_inference=m6anet.deprecated.inference:main
+  - m6anet-compute_norm_factors=m6anet.deprecated.compute_norm_factors:main
+  - m6anet-train=m6anet.deprecated.train:main
+  noarch: python
+  number: 0
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - chrishendra93
+package:
+  name: m6anet
+  version: 2.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.7, <3.9
+  run:
+  - python >=3.7, <3.9
+  - numpy >=1.18.0
+  - pandas >=0.25.3
+  - scikit-learn >=0.24.0
+  - scikit-learn >=0.24.0, <1.1.0
+  - scipy >=1.10
+  - scipy >=1.4.1, <1.8.0
+  - toml >=0.10.2
+  - pytorch ==1.6.0
+  - tqdm
+  - typing-extensions
+  - ujson
+  - joblib
+source:
+  sha256: 73dcf93f37259ae7962c9f62da326c2f33f7d28a502db509d833995dda752c60
+  url: https://pypi.io/packages/source/m/m6anet/m6anet-2.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  - m6anet --help
+  - m6anet dataprep --help
+  - m6anet inference --help
+  - m6anet compute_norm_factors --help
+  - m6anet train --help
+  imports:
+  - m6anet
+  - m6anet.deprecated
+  requires:
+  - pip

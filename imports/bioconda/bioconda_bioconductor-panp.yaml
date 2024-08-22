@@ -1,0 +1,48 @@
+about:
+  description: A function to make gene presence/absence calls based on distance from
+    negative strand matching probesets (NSMP) which are derived from Affymetrix annotation.
+    PANP is applied after gene expression values are created, and therefore can be
+    used after any preprocessing method such as MAS5 or GCRMA, or PM-only methods
+    like RMA. NSMP sets have been established for the HGU133A and HGU133-Plus-2.0
+    chipsets to date.
+  home: https://bioconductor.org/packages/3.18/bioc/html/panp.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Presence-Absence Calls from Negative Strand Matching Probesets
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:panp
+  - doi:10.1109/BIBE.2007.4375552
+  parent_recipe:
+    name: bioconductor-panp
+    path: recipes/bioconductor-panp
+    version: 1.50.0
+package:
+  name: bioconductor-panp
+  version: 1.72.0
+requirements:
+  host:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+  run:
+  - bioconductor-affy >=1.80.0,<1.81.0
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - r-base
+source:
+  md5: 1cc532873dbc4e2cde6c04ca995545db
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/panp_1.72.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/panp/panp_1.72.0.tar.gz
+  - https://bioarchive.galaxyproject.org/panp_1.72.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-panp/bioconductor-panp_1.72.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('panp')"

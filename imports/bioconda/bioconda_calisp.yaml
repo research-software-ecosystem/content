@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/kinestetika/Calisp
+  home: https://github.com/kinestetika/Calisp
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Estimate isotopic composition of peptides from proteomics mass spectrometry
+    data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+extra:
+  recipe-maintainers:
+  - bernt-matthias
+package:
+  name: calisp
+  version: 3.0.13
+requirements:
+  host:
+  - pip
+  - python >=3.6
+  run:
+  - numpy
+  - scipy
+  - pandas
+  - tqdm
+  - pymzml
+  - pyarrow
+source:
+  sha256: ebd848548c6bfd00da234f9f9ffcadc6e8a83adfc68f47897f1a13aab51368ec
+  url: https://pypi.io/packages/source/c/calisp/calisp-3.0.13.tar.gz
+test:
+  commands:
+  - calisp -h
+  import:
+  - calisp

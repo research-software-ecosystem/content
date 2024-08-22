@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/izsvenezie-virology/FluMutDB
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file: LICENSE
+  summary: Utility module for FluMut database.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - EdoardoGiussani
+  - AlexSartori
+package:
+  name: flumutdb
+  version: 6.2
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+source:
+  sha256: 7a604b2c2b0eeebf3dcb453b597d012bfed4d768821799c8b6598b2af3caf625
+  url: https://pypi.io/packages/source/f/flumutdb/flumutdb-6.2.tar.gz
+test:
+  commands:
+  - python -c "import flumutdb"
+  imports:
+  - flumutdb

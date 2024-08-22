@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/dpryan79/pyBigWig
+  home: https://github.com/dpryan79/pyBigWig
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: A python extension written in C for quick access to bigWig files.
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: pybigwig
+  version: 0.3.22
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - curl
+  - libcurl
+  - zlib
+  - numpy
+  run:
+  - python
+  - libcurl
+  - zlib
+  - None
+source:
+  sha256: 5d4426f754bd7b7f6dc21d6c3f93b58a96a65b6eb2e578ae03b31a71272d2243
+  url: https://files.pythonhosted.org/packages/f0/57/334db9a75d6941876ef282cc7eb1885a24fe71d3c6522c19f717db4f8b73/pyBigWig-0.3.22.tar.gz
+test:
+  commands:
+  - python -c "import pyBigWig; assert(pyBigWig.numpy == 1); assert(pyBigWig.remote
+    == 1)"
+  imports:
+  - pyBigWig

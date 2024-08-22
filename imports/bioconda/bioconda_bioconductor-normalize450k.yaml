@@ -1,0 +1,44 @@
+about:
+  description: Precise measurements are important for epigenome-wide studies investigating
+    DNA methylation in whole blood samples, where effect sizes are expected to be
+    small in magnitude. The 450K platform is often affected by batch effects and proper
+    preprocessing is recommended. This package provides functions to read and normalize
+    450K '.idat' files. The normalization corrects for dye bias and biases related
+    to signal intensity and methylation of probes using local regression. No adjustment
+    for probe type bias is performed to avoid the trade-off of precision for accuracy
+    of beta-values.
+  home: https://bioconductor.org/packages/3.18/bioc/html/normalize450K.html
+  license: BSD_2_clause + file LICENSE
+  license_file: LICENSE
+  summary: Preprocessing of Illumina Infinium 450K data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-normalize450k
+  version: 1.30.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-illuminaio >=0.44.0,<0.45.0
+  - r-base
+  - r-quadprog
+  run:
+  - bioconductor-biobase >=2.62.0,<2.63.0
+  - bioconductor-illuminaio >=0.44.0,<0.45.0
+  - r-base
+  - r-quadprog
+source:
+  md5: f5ea0fdcbdd43103b5ee941c96fe43fa
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/normalize450K_1.30.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/normalize450K/normalize450K_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/normalize450K_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-normalize450k/bioconductor-normalize450k_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('normalize450K')"

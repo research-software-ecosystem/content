@@ -1,0 +1,28 @@
+about:
+  home: https://github.com/slncky/slncky
+  license: MIT
+  license_family: MIT
+  summary: slncky is a tool for lncRNA discovery from RNA-Seq data. slncky filters
+    a high-quality set of noncoding transcripts, discovers lncRNA orthologs, and characterizes
+    conserved lncRNA evolution. slncky was developed as a collaboration between the
+    Garber Lab at UMass Medical and the Regev Lab at the Broad Institute.
+build:
+  noarch: generic
+  number: 2
+package:
+  name: slncky
+  version: 1.0.4
+requirements:
+  run:
+  - python <3
+  - bedtools >=2.17.0,<=2.24.0
+  - ucsc-liftover
+  - lastz
+  - numpy
+source:
+  sha256: 4abbd842f219ed1100a577b3a3628649993409ea799ae21bca4a7478182cd0f3
+  url: https://github.com/slncky/slncky/archive/v1.0.4.tar.gz
+test:
+  commands:
+  - slncky --help > /dev/null 2>&1
+  - makeWebsite --help > /dev/null 2>&1

@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/quadram-institute-bioscience/galru
+  license: GPL3
+  license_file: LICENSE
+  summary: Rapid spoligotyping for Mycobacterium tuberculosis directly from long read
+    sequencing
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - thanhleviet
+package:
+  name: galru
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - biopython >=1.68
+  - pyfastaq >=3.12
+  - PyYAML
+  - blast
+  - cd-hit
+  - minimap2
+  - mlst
+  - minced
+  - bedtools
+  - ncbi-genome-download
+  - samtools
+source:
+  sha256: 56fc62a4800c340d53b7825a1e79c56d3c44432502710bc0966df047d4ac4ad2
+  url: https://github.com/quadram-institute-bioscience/galru/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - galru --version
+  - galru_create_database --version

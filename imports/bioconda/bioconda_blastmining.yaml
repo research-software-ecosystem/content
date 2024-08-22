@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/NuruddinKhoiry/blastMining
+  doc_url: https://github.com/NuruddinKhoiry/blastMining/blob/master/README.md
+  home: https://github.com/NuruddinKhoiry/blastMining
+  license: GNU GENERAL PUBLIC V3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'blastMining: Mining NCBI BLAST outputs'
+build:
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed .
+extra:
+  identifiers:
+  - biotools:blastMining
+  - doi:10.5281/zenodo.7431488
+  recipe-maintainers:
+  - NuruddinKhoiry
+package:
+  name: blastmining
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - taxonkit
+  - blast >=2.12.0
+  - csvtk
+  - krona
+  - numpy
+  - pandas
+  - fastnumbers
+  - parallel
+source:
+  sha256: af51681e235813f63011c0e0b03b5693e73c0b4febced051bb80f5569588573e
+  url: https://github.com/NuruddinKhoiry/blastMining/releases/download/1.2.0/blastMining-1.2.0.tar.gz
+test:
+  commands:
+  - blastMining
+  - blastMining vote
+  - blastMining voteSpecies
+  - blastMining lca
+  - blastMining besthit
+  - blastMining full_pipeline
+  - tab2krona.py

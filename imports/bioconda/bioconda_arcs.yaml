@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/bcgsc/arcs
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: /LICENSE
+  summary: Scaffolding genome sequence assemblies using linked or long reads
+build:
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: arcs
+  version: 1.2.7
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - boost-cpp
+  - sparsehash
+  - zlib
+  - llvm-openmp
+  - libgomp
+  - btllib
+  run:
+  - llvm-openmp
+  - make
+source:
+  sha256: 3162cff3286a033b494ace8050abc96d4083f846cafe921bb0122170f705eca8
+  url: https://github.com/bcgsc/arcs/releases/download/v1.2.7/arcs-1.2.7.tar.gz
+test:
+  commands:
+  - arcs --version | grep 'arcs 1.2.7'
+  - arcs-make help

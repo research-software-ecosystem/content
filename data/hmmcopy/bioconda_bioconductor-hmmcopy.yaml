@@ -1,0 +1,51 @@
+about:
+  description: Corrects GC and mappability biases for readcounts (i.e. coverage) in
+    non-overlapping windows of fixed length for single whole genome samples, yielding
+    a rough estimate of copy number for furthur analysis.  Designed for rapid correction
+    of high coverage whole genome tumour and normal samples.
+  home: https://bioconductor.org/packages/3.18/bioc/html/HMMcopy.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Copy number prediction with correction for GC and mappability bias for
+    HTS data
+build:
+  number: 2
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - biotools:hmmcopy
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-hmmcopy
+    path: recipes/bioconductor-hmmcopy
+    version: 1.22.0
+package:
+  name: bioconductor-hmmcopy
+  version: 1.44.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - r-data.table >=1.11.8
+  - libblas
+  - liblapack
+  run:
+  - r-base
+  - r-data.table >=1.11.8
+source:
+  md5: 4785371e1642cd191330693396010a6e
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/HMMcopy_1.44.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/HMMcopy/HMMcopy_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HMMcopy_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hmmcopy/bioconductor-hmmcopy_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HMMcopy')"

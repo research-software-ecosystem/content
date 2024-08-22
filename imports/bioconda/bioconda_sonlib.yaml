@@ -1,0 +1,50 @@
+about:
+  home: https://github.com/ComparativeGenomicsToolkit/sonLib
+  license: MIT
+  summary: Small general purpose library for C and Python with focus on bioinformatics.
+build:
+  number: 1
+  run_exports:
+  - None
+package:
+  name: sonlib
+  version: 2.0.dev88
+requirements:
+  build:
+  - None
+  - make
+  - pkg-config
+  host:
+  - python
+  - zlib
+  - quicktree
+  run:
+  - python
+  - networkx
+source:
+  patches:
+  - patches/0001-Add-devendored-shared-library-build.patch
+  - patches/0002-Remove-need-for-CuTest-during-build.patch
+  sha256: 6669056081bc96205de14b3c59c70c379dd57ab031d630480e8110e3d448628b
+  url: https://github.com/ComparativeGenomicsToolkit/sonLib/archive/9734083dffb180e3d76c323609c082b401336c0a.tar.gz
+test:
+  imports:
+  - sonLib
+  - sonLib.bioio
+  - sonLib.misc
+  - sonLib.nxnewick
+  - sonLib.nxtree
+  - sonLib.tree
+  requires:
+  - None
+  - make
+  - zlib
+  - cutest
+  source_files:
+  - Makefile
+  - include.mk
+  - allTests.py
+  - bioioTest.py
+  - cigarsTest.py
+  - C/Makefile
+  - C/tests/*

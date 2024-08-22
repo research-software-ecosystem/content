@@ -1,0 +1,28 @@
+about:
+  home: http://people.virginia.edu/~wc9c/KING/
+  license: GPLv3
+  summary: '`Kinship-based INference for Gwas (KING) is a toolset that makes use of
+    high-throughput SNP data typically seen in a genome-wide association study <http://people.virginia.edu/~wc9c/KING/>`_'
+build:
+  number: 2
+extra:
+  recipe-maintainers:
+  - mtekman
+package:
+  name: king
+  version: 2.2.7
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - openmp
+  run:
+  - zlib
+  - openmp
+source:
+  sha256: 486e7e94dde16d427f9d3fc99a33fa3f72f67e2f61b7264b4579111c9fb95be3
+  url: https://www.kingrelatedness.com/executables/KING2.2.7code.tar.gz
+test:
+  commands:
+  - king 2>&1 | grep "Genotype files"

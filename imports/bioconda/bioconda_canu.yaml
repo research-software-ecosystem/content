@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/marbl/canu
+  home: http://canu.readthedocs.org/
+  license: GPLv2 and others
+  license_family: GPL
+  license_file: README.licenses
+  summary: Canu is a fork of the Celera Assembler designed for high-noise single-molecule
+    sequencing.
+build:
+  number: 0
+  skip: true
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - usegalaxy-eu:canu
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: canu
+  version: 2.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - gnuplot >=5.2
+  - xorg-libxfixes
+  run:
+  - perl
+  - perl-filesys-df
+  - openjdk  >=8
+  - minimap2
+  - gnuplot >=5.2
+source:
+  md5: 63219165fc45b3dbbeb73ed920a23db5
+  patches:
+  - fewreads.patch
+  url: https://github.com/marbl/canu/releases/download/v2.2/canu-2.2.Linux-amd64.tar.xz
+test:
+  commands:
+  - canu --version
+  - sqStoreDumpFASTQ --version
+  requires:
+  - curl

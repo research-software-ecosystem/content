@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/Yasas1994/Jaeger
+  doc_url: https://readthedocs.org/projects/jaeger-docs/
+  home: https://github.com/Yasas1994/Jaeger
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A quick and precise pipeline for detecting phages in sequence assemblies.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-cache-dir -vvv'
+extra:
+  identifiers:
+  - biotools:jaeger
+  recipe-maintainers:
+  - Yasas1994
+package:
+  name: jaeger-bio
+  version: 1.1.26
+requirements:
+  host:
+  - python =3
+  - pip
+  run:
+  - python =3
+  - pip
+  - h5py >=3.8
+  - biopython >=1.78
+  - kneed >=0.8.5
+  - matplotlib-base >=3.7
+  - numpy >=1.24
+  - pandas >=1.5
+  - psutil >=5
+  - ruptures >=1.1.9
+  - scikit-learn ==1.3.2
+  - seaborn >=0.12.2
+  - tqdm >=4.64.0
+  - tensorflow >=2.15,<2.16
+  - parasail-python >=1.3.4
+source:
+  sha256: 7f7d8794cd04185f7787d92a6ccc89fa59bb58acbe0fe929c6bffbee39a90fe4
+  url: https://pypi.io/packages/source/j/jaeger-bio/jaeger-bio-1.1.26.tar.gz
+test:
+  commands:
+  - Jaeger --help
+  imports:
+  - jaegeraa
+  - jaegeraa.data
+  - jaegeraa.nnlib

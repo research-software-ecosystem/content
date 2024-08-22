@@ -1,0 +1,50 @@
+about:
+  description: This package is intended to facilitate gene-set association with rare
+    CNVs in case-control studies.
+  home: https://bioconductor.org/packages/3.18/bioc/html/cnvGSA.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Gene Set Analysis of (Rare) Copy Number Variants
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  identifiers:
+  - biotools:cnvgsa
+  - doi:10.1038/nmeth.3252
+  parent_recipe:
+    name: bioconductor-cnvgsa
+    path: recipes/bioconductor-cnvgsa
+    version: 1.24.0
+package:
+  name: bioconductor-cnvgsa
+  version: 1.46.0
+requirements:
+  host:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-brglm
+  - r-doparallel
+  - r-foreach
+  - r-splitstackshape
+  run:
+  - bioconductor-genomicranges >=1.54.0,<1.55.0
+  - r-base
+  - r-brglm
+  - r-doparallel
+  - r-foreach
+  - r-splitstackshape
+source:
+  md5: b3216442e27ff2c602e908aeb6a6f6e7
+  url:
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/cnvGSA_1.46.0.tar.gz
+  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/cnvGSA/cnvGSA_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cnvGSA_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cnvgsa/bioconductor-cnvgsa_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cnvGSA')"

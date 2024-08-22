@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/robertopreste/vcfpy2
+  license: MIT
+  license_family: MIT
+  summary: Python 3 VCF library, based on vcfpy.
+build:
+  noarch: python
+  number: 0
+  script: sed -i.bak "s/pytest-runner//g" setup.py;  -m pip install --no-deps --ignore-installed
+    -vv .
+extra:
+  recipe-maintainers:
+  - sysbiocoder
+package:
+  name: vcfpy2
+  version: 0.1.2
+requirements:
+  host:
+  - pip >=21.3.1
+  - python >=3.6
+  run:
+  - pysam >=0.19.0
+  - python >=3.6
+source:
+  sha256: 18928d49109477e05dcb7a29d7b175ee3dcf313dfc2ebfd9c2fe16ba26db6904
+  url: https://pypi.io/packages/source/v/vcfpy2/vcfpy2-0.1.2.tar.gz
+test:
+  imports:
+  - vcfpy2

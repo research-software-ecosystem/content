@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/maiziezhoulab/AquilaSV
+  license: MIT
+  summary: A region-based diploid assembly and variants calling tool
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: aquilasv
+  version: 1.5
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - samtools
+  - pysam
+  - minimap2
+  - scipy
+  - numpy
+  - spades
+source:
+  sha256: 0eba3386074eda70fb8bb0c02d67f9654c64ee203c65f21bf1f66428d29e3579
+  url: https://github.com/maiziezhoulab/AquilaSV/archive/v1.5.tar.gz
+test:
+  commands:
+  - AquilaSV_step1 --help
+  - AquilaSV_step2 --help
+  - AquilaSV_step3 --help

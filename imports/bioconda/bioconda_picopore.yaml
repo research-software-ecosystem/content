@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/scottgigante/picopore
+  license: GNU General Public License (GPL)
+  license_family: LGPL
+  summary: A tool for reducing the size of Oxford Nanopore Technologies' datasets
+    without losing information.
+build:
+  entry_points:
+  - picopore = picopore.__main__:main
+  - picopore-test = picopore.test:main
+  - picopore-realtime = picopore.realtime:main
+  - picopore-rename = picopore.rename:main
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: picopore
+  version: 1.2.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - h5py >2.2.0
+  - watchdog
+  - hdf5
+  - future
+  run:
+  - python
+  - h5py >2.2.0
+  - watchdog
+  - hdf5
+  - future
+source:
+  md5: 5022bda29808de873c676b47727d1d6d
+  url: https://files.pythonhosted.org/packages/98/e6/2431eebb5370c84e4071475206be805f7059d83ead8c53ba509ecf6e25d6/picopore-1.2.0.zip
+test:
+  commands:
+  - picopore --help
+  - picopore-test --help
+  - picopore-realtime --help
+  - picopore-rename --help
+  imports:
+  - picopore
