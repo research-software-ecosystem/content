@@ -1,0 +1,49 @@
+about:
+  doc_url: https://elkebir-group.github.io/TRIBAL
+  home: https://github.com/elkebir-group/TRIBAL
+  license: BSD-3-Clause
+  summary: TRIBAL is a package to infer B cell lineage trees from single-cell RNA
+    sequencing data.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - ' -m pip install . --no-deps --ignore-installed -vvv'
+  - $CC -c tribal/dnapars/phylip.c -o tribal/dnapars/phylip.o -fcommon
+  - $CC -c tribal/dnapars/seq.c -o tribal/dnapars/seq.o -fcommon
+  - $CC -c tribal/dnapars/dnapars.c -o tribal/dnapars/dnapars.o -fcommon
+  - $CC tribal/dnapars/seq.o tribal/dnapars/phylip.o tribal/dnapars/dnapars.o -lm
+    -o $PREFIX/bin/dnapars
+package:
+  name: tribal
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python >=3.9,<3.11
+  - pip
+  - setuptools
+  run:
+  - python >=3.9,<3.11
+  - numpy >=1.26,<2.0
+  - pandas
+  - networkx >=3.1
+  - pygraphviz >=1.10
+  - ete3 >=3.1.2
+  - mafft ==7.526
+  - glpk >=5.0
+  - pyomo >=6.7
+  - biopython >=1.81
+source:
+  sha256: 3859295c1e615ce9ce5d34e73c9dea33a08a105a502096e7640e0feeda83756e
+  url: https://github.com/elkebir-group/TRIBAL/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - tribal --help
+  - tribal preprocess -h
+  - tribal fit -h
+  imports:
+  - tribal
