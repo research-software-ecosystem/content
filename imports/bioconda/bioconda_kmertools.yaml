@@ -11,19 +11,28 @@ build:
   number: 0
   run_exports:
   - None
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - anuradhawick
   - Vini2
 package:
   name: kmertools
-  version: 0.1.0
+  version: 0.1.3
 requirements:
   build:
   - None
+  - python
+  host:
+  - maturin >=1.7,<2.0
+  - python
+  - pip
 source:
-  sha256: 3c8cf78c95ab0baf0f69e7bc631ea52a54733bed0122b9d20e76d49df5639a4c
-  url: https://github.com/anuradhawick/kmertools/archive/v0.1.0.tar.gz
+  sha256: 02892ce148db4043bede10267f390c9fea14d49f65b43e1f05092153939bd5e0
+  url: https://github.com/anuradhawick/kmertools/archive/v0.1.3.tar.gz
 test:
   commands:
   - kmertools --help
