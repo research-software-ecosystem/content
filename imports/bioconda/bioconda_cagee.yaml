@@ -7,35 +7,38 @@ about:
   summary: Analyzes changes in gene expression in a way that accounts for phylogenetic
     history and provides a statistical foundation for evolutionary inferences
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
+  skip: true
 extra:
   recipe-maintainers:
   - benfulton
 package:
   name: cagee
-  version: 1.0
+  version: 1.1.1
 requirements:
   build:
   - None
-  - None
   - binutils >=2.33.1
+  - binutils_impl_linux-aarch64
   - cmake >=3.13
   - make
-  - llvm-openmp
   host:
   - eigen >=3.4.0
   - boost-cpp
   - mkl >=2020.4
   - mkl-include
+  - libgomp
+  - llvm-openmp
   - zlib
   - zstd
   run:
   - boost-cpp
   - mkl >=2020.4
-  - zlib
 source:
-  sha256: 3aec98af3552ef86df03d42a068925e2becd69daac3720ea9fd136b084198f57
-  url: https://github.com/hahnlab/CAGEE/releases/download/1.0/CAGEE1.0.tar.gz
+  sha256: b282b954249491f5379c27e36ad0c7b7d5cd120c798e11e6e355b13b5849dfc3
+  url: https://github.com/hahnlab/CAGEE/releases/download/1.1.1/CAGEE1.1.1.tar.gz
 test:
   commands:
   - cagee --help

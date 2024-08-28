@@ -1,21 +1,19 @@
 about:
-  home: http://hgdownload.cse.ucsc.edu/admin/exe/
-  license: varies; see http://genome.ucsc.edu/license
-  summary: Convert DNA from fasta to 2bit format
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v469_base/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe
+  license: Varies; see http://genome.ucsc.edu/license
+  summary: Convert DNA from fasta to 2bit format.
 build:
-  ignore_run_exports:
-  - libpng
-  - libuuid
-  number: 2
+  number: 1
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
 package:
   name: ucsc-fatotwobit
-  version: '455'
+  version: '469'
 requirements:
   build:
   - make
@@ -26,20 +24,20 @@ requirements:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
   - libopenssl-static
-  - zlib >=1.3.1,<2.0a0
+  - clangdev
+  - zlib
   run:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
+  - libopenssl-static
 source:
   patches:
   - include.patch
-  - htmshell.patch
-  sha256: e458cadad7c4a5c1b8385edafffa1b29380ac725a0c20535bf5a3bab99fe80db
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v455.src.tgz
+  - include.macos.patch
+  sha256: 3f95b26ccca854c965c05773481c269f2a0e6fb1906ae8a7fe2437c6ad543963
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v469.src.tgz
 test:
   commands:
-  - which faToTwoBit
+  - test -x ${PREFIX}/bin/faToTwoBit

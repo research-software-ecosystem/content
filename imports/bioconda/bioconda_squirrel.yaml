@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/aineniamh/squirrel
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Some QUIck Reconstruction to Resolve Evolutionary Links
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: squirrel
+  version: 1.0.8
+requirements:
+  host:
+  - python ==3.10
+  - pip
+  run:
+  - python ==3.10
+  - biopython >=1.74
+  - minimap2 >=2.16
+  - snakemake-minimal ==7.32
+  - matplotlib-base >=3.3.1
+  - seaborn
+  - gofasta
+  - baltic
+  - mako ==1.2
+  - pandas
+  - iqtree >=2.1
+  - jclusterfunk >=0.0.25
+source:
+  sha256: 9e89d062f849c0b947a1d469f3864936164ea912645131e5120f86a5e12dc00d
+  url: https://github.com/aineniamh/squirrel/archive/refs/tags/1.0.8.tar.gz
+test:
+  commands:
+  - squirrel --help

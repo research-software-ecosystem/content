@@ -1,13 +1,20 @@
 about:
-  home: http://hgdownload.cse.ucsc.edu/admin/exe/
-  license: varies; see http://genome.ucsc.edu/license
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe/
+  license: Varies; see http://genome.ucsc.edu/license
   summary: Make histogram of coverage percentage of mRNA in psl.
 build:
-  number: 4
+  number: 0
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: ucsc-pslmrnacover
-  version: '377'
+  version: '469'
 requirements:
   build:
   - make
@@ -16,19 +23,19 @@ requirements:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
+  - libopenssl-static
   - zlib
   run:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
+  - libopenssl-static
   - zlib
 source:
   patches:
   - include.patch
-  sha256: 932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v377.src.tgz
+  sha256: 3f95b26ccca854c965c05773481c269f2a0e6fb1906ae8a7fe2437c6ad543963
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v469.src.tgz
 test:
   commands:
-  - which pslMrnaCover
+  - test -x ${PREFIX}/bin/pslMrnaCover
