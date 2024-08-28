@@ -1,0 +1,33 @@
+package: libatomicqueue-dev
+distribution: prospective
+release: vcs
+component: main
+version: 0.0+git20200609.b6da4a9
+source: libatomicqueue
+homepage: https://github.com/max0x7ba/atomic_queue
+license: MIT
+blend: debian-med
+descr:
+- package: libatomicqueue-dev
+  description: devel files for C++ atomic_queue library
+  long_description: " C++11 multiple-producer-multiple-consumer lockless queues based
+    on\n circular buffer with std::atomic.  The main design principle these\n queues
+    follow is simplicity: the bare minimum of atomic operations,\n fixed size buffer,
+    value semantics.\n .\n The circular buffer side-steps the memory reclamation problem
+    inherent\n in linked-list based queues for the price of fixed buffer size. See\n
+    Effective memory reclamation for lock-free data structures in C++\n for more details.\n
+    .\n These qualities are also limitations:\n .\n  * The maximum queue size must
+    be set at compile time or construction time.\n  * There are no OS-blocking push/pop
+    functions.\n .\n Nevertheless, ultra-low-latency applications need just that and
+    nothing\n more. The simplicity pays off, see the throughput and latency benchmarks.\n
+    .\n Available containers are:\n .\n  * AtomicQueue - a fixed size ring-buffer
+    for atomic elements.\n  * OptimistAtomicQueue - a faster fixed size ring-buffer
+    for atomic\n    elements which busy-waits when empty or full.\n  * AtomicQueue2
+    - a fixed size ring-buffer for non-atomic elements.\n  * OptimistAtomicQueue2
+    - a faster fixed size ring-buffer for non-atomic\n    elements which busy-waits
+    when empty or full.\n .\n These containers have corresponding AtomicQueueB, OptimistAtomicQueueB,\n
+    AtomicQueueB2, OptimistAtomicQueueB2 versions where the buffer size is\n specified
+    as an argument to the constructor."
+  release: vcs
+  license: MIT
+  blend: debian-med

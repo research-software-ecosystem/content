@@ -1,0 +1,42 @@
+package: pufferfish
+distribution: prospective
+release: vcs
+component: main
+version: 1.8.0
+source: pufferfish
+homepage: https://github.com/COMBINE-lab/pufferfish
+license: GPL-3+
+blend: debian-med
+descr:
+- package: pufferfish
+  description: Efficient index for the colored, compacted, de Bruijn graph
+  long_description: " Pufferfish is a new time and memory-efficient data structure
+    for indexing a\n compacted, colored de Bruijn graph (ccdBG).\n .\n Though the
+    de Bruijn Graph (dBG) has enjoyed tremendous popularity as an\n assembly and sequence
+    comparison data structure, it has only relatively\n recently begun to see use
+    as an index of the reference sequences (e.g. deBGA,\n kallisto). Particularly,
+    these tools index the compacted dBG (cdBG), in which\n all non-branching paths
+    are collapsed into individual nodes and labeled with\n the string they spell out.
+    This data structure is particularly well-suited for\n representing repetitive
+    reference sequences, since a single contig in the cdBG\n represents all occurrences
+    of the repeated sequence. The original positions in\n the reference can be recovered
+    with the help of an auxiliary \"contig table\"\n that maps each contig to the
+    reference sequence, position, and orientation\n where it appears as a substring.
+    The deBGA paper has a nice description how\n this kind of index looks (they call
+    it a unipath index, because the contigs we\n index are unitigs in the cdBG), and
+    how all the pieces fit together to be able\n to resolve the queries we care about.\
+    \  Moreover, the cdBG can be built on\n multiple reference sequences (transcripts,
+    chromosomes, genomes), where each\n reference is given a distinct color (or colour,
+    if you're of the British\n persuasion). The resulting structure, which also encodes
+    the relationships\n between the cdBGs of the underlying reference sequences, is
+    called the\n compacted, colored de Bruijn graph (ccdBG).  This is not, of course,
+    the only\n variant of the dBG that has proven useful from an indexing perspective.
+    The\n (pruned) dBG has also proven useful as a graph upon which to build a path\n
+    index of arbitrary variation / sequence graphs, which has enabled very\n interesting
+    and clever indexing schemes like that adopted in GCSA2. Also,\n thinking about
+    sequence search in terms of the dBG has led to interesting\n representations for
+    variation-aware sequence search backed by indexes like the\n vBWT (implemented
+    in the excellent gramtools package)."
+  release: vcs
+  license: GPL-3+
+  blend: debian-med
