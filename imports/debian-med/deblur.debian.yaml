@@ -1,0 +1,66 @@
+package: deblur
+distribution: debian
+release: sid
+component: main
+version: 1.1.1
+source: deblur
+homepage: https://github.com/biocore/deblur
+license: unknown
+blend: debian-med
+description_md5: 4921fec74cbf30ee8bccd475c9017e08
+descr:
+- package: deblur
+  description: deconvolution for Illumina amplicon sequencing
+  long_description: " Deblur is a greedy deconvolution algorithm for amplicon sequencing\n
+    based on Illumina Miseq/Hiseq error profiles.  The authors recommend\n using Deblur
+    via the QIIME2 plugin q2-deblur. Examples of its use can be\n found within the
+    plugin itself. However, Deblur itself does not depend\n on QIIME2.\n .\n The input
+    to Deblur workflow is a directory of FASTA or FASTQ files\n (1 per sample) or
+    a single demultiplexed FASTA or FASTQ file. These\n files can be gzip'd. The output
+    directory will contain three BIOM\n tables in which the observation IDs are the
+    Deblurred sequences. The\n outputs are contingent on the reference databases used
+    and a more\n focused discussion on them is in the subsequent README section titled\n
+    \"Positive and Negative Filtering.\" The output files are as follows:\n .\n  *
+    reference-hit.biom : contains only Deblurred reads matching the\n    positive
+    filtering database. By default, a reference composed of 16S\n    sequences is
+    used, and this resulting table will contain only those\n    reads which recruit
+    at a coarse level to it will be retained. Reads\n    are also filtered against
+    the negative reference, which by default\n    will remove any read which appears
+    to be PhiX or adapter.\n .\n  * reference-hit.seqs.fa : a fasta file containing
+    all the sequences\n    in reference-hit.biom\n .\n  * reference-non-hit.biom :
+    contains only Deblurred reads that did not\n    align to the positive filtering
+    database. Negative filtering is also\n    appied to this table, so by default,
+    PhiX and adapter are removed.\n .\n  * reference-non-hit.seqs.fa : a fasta file
+    containing all the\n    sequences in reference-non-hit.biom\n .\n  * all.biom
+    : contains all Deblurred reads. This file represents the\n    union of the \"\
+    reference-hit.biom\" and \"reference-non-hit.biom\" tables.\n .\n    * all.seqs.fa
+    : a fasta file containing all the sequences in all.biom\n .\n Deblur uses two
+    types of filtering on the sequences:\n .\n  * Negative mode - removes known artifact
+    sequences (i.e. sequences\n    aligning to PhiX or Adapter with >=95% identity
+    and coverage).\n .\n  * Positive mode - keeps only sequences similar to a reference
+    database\n    (by default known 16S sequences). SortMeRNA is used, and any sequence\n\
+    \    with an e-value <= 10 is retained. Deblur also outputs a BIOM table\n   \
+    \ without this positive filtering step (named all.biom).\n .\n The FASTA files
+    for both of these filtering steps can be supplied via\n the --neg-ref-fp and --pos-ref-fp
+    options. By default, the negative\n database is composed of PhiX and adapter sequence
+    and the positive\n database of known 16S sequences.\n .\n Deblur uses negative
+    mode filtering to remove known artifact (i.e. PhiX\n and Adapter sequences) prior
+    to denoising. The output of Deblur contains\n three files: all.biom, which includes
+    all sOTUs, reference-hit.biom,\n which contains the output of positive filtering
+    of the sOTUs (default\n only sOTUs similar to 16S sequences), and reference-non-hit.biom,\n
+    which contains only sOTUs failing the positive filtering (default only\n non-16S
+    sOTUs).\n"
+  release: sid
+  description_md5: 4921fec74cbf30ee8bccd475c9017e08
+  license: unknown
+  blend: debian-med
+- package: deblur
+  description: Dekonvolution for illumina amplicon sequencing
+  long_description: " Deblur er en grådig dekonvolutionsalgoritme for amplicon sequencing
+    baseret på Illumina Miseq/Hiseq-fejlprofiler. Forfatterne anbefaler at bruge Deblur
+    via QIIME2-udvidelsesmodulet q2-deblur. Eksempler på brug kan findes i selve udvidelsesmodulet.
+    Selve Deblur afhænger dog ikke af QIIME2.\n"
+  release: sid
+  description_md5: 4921fec74cbf30ee8bccd475c9017e08
+  license: unknown
+  blend: debian-med

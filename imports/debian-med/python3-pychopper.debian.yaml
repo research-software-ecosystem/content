@@ -1,0 +1,76 @@
+package: python3-pychopper
+distribution: debian
+release: sid
+component: main
+version: 2.7.10
+source: pychopper
+homepage: https://github.com/epi2me-labs/pychopper
+license: unknown
+blend: debian-med
+description_md5: c2116885230163a610c0268475202885
+registries:
+- entry: pychopper
+  name: conda:bioconda
+popcon:
+- insts: 4
+  olde: 3
+  recent: 1
+descr:
+- package: python3-pychopper
+  description: identify, orient and trim full-length Nanopore cDNA reads
+  long_description: " Pychopper v2 is a Python module to identify, orient and trim
+    full-length\n Nanopore cDNA reads. It is also able to rescue fused reads and provides\n
+    the script 'pychopper.py'.  The general approach of Pychopper v2\n is the following:\n
+    .\n  * Pychopper first identifies alignment hits of the primers across the\n \
+    \   length of the sequence. The default method for doing this is using\n    nhmmscan
+    with the pre-trained strand specific profile HMMs, included\n    with the package.
+    Alternatively, one can use the edlib backend,\n    which uses a combination of
+    global and local alignment to identify\n    the primers within the read.\n  *
+    After identifying the primer hits by either of the backends, the\n    reads are
+    divided into segments defined by two consecutive primer\n    hits. The score of
+    a segment is its length if the configuration of\n    the flanking primer hits
+    is valid (such as SPP,-VNP for forward reads)\n    or zero otherwise.\n  * The
+    segments are assigned to rescued reads using a dynamic programming\n    algorithm
+    maximizing the sum of used segment scores (hence the amount\n    of rescued bases).
+    A crucial observation about the algorithm is that\n    if a segment is included
+    as a rescued read, then the next segment\n    must be excluded as one of the primer
+    hits defining it was \"used\n    up\" by the previous segment. This put constraints
+    on the dynamic\n    programming graph. The arrows in read define the optimal path
+    for\n    rescuing two fused reads with the a total score of l1 + l3.\n .\n A crucial
+    parameter of Pychopper v2 is -q, which determines the\n stringency of primer alignment
+    (E-value in the case of the pHMM\n backend). This can be explicitly specified
+    by the user, however by\n default it is optimized on a random sample of input
+    reads to produce\n the maximum number of classified reads.\n"
+  release: sid
+  description_md5: c2116885230163a610c0268475202885
+  license: unknown
+  blend: debian-med
+- package: python3-pychopper
+  description: Identificer, orienter og trim fuldlængde Nanopore cDNS-læsninger
+  long_description: " Pychopper v2 er et Pythonmodul til at identificere, orientere
+    og trimme fuldlængde Nanopore cDNA-læsninger. Kan også redde fused-læsninger og
+    tilbyder skriptet »pychopper.py«. Den generelle tilgang til Pychopper v2 er følgende:\n
+    .\n  * Pychopper identificerer først justeringshit for primerne på tværs af\n\
+    \    længden af ​​sekvensen. Standardmetoden til at gøre dette er at bruge\n \
+    \   nhmmscan med de prætrænede strengspecifikke profil-HMM'er, inkluderet\n  \
+    \  med pakken. Alternativt kan man bruge edlib-backend, der bruger en\n    kombination
+    af global og lokal tilpasning til at identificere\n    primerne i læsningen.\n\
+    \  * Efter identifikation af primer-hit'ene af en af motorerne, bliver\n    læsningerne
+    opdelt i segmenter defineret af to fortløbende primer-hit.\n    Bedømmelsen af
+    et segment er dets længde hvis konfiguration af flanking-\n    primer-hit'ene
+    er gyldige (såsom SPP, -VNP for fremadrettede læsninger)\n    eller nul.\n  *
+    Segmenterne tildeles til reddes læsninger via en dynamisk\n    programmeringsalgoritme
+    maksimerer summen af brugte segmentbedømmelser\n    (derfor mængden af reddede
+    baser). En vigtig observation om algoritmen\n    er at hvis et segment er inkluderet
+    som en reddet læsning, så skal det\n    næste segment ekskluderes som en af primer-hit'ene
+    definerende det som\n    »brugt af« af det forrige segment. Dette placerer begrænsninger
+    på den\n    dynamiske programmeringsgraf. Pilene i læs definerer den optimale
+    sti\n    for redning af to fused-læsninger med en samlet bedømmelse på l1 + l3.\n
+    .\n Et væsentlig parameter i Pychopper v2 er -q, der bestemmer stringensen af
+    primerjusteringen (E-værdi i tilfælde af pHMM-motoren). Dette kan udtrykkeligt
+    angives af brugeren, som standard er den dog optimeret på en tilfældig prøve af
+    inddatalæsninger for at fremstille det maksimale antal klassificerede læsninger.\n"
+  release: sid
+  description_md5: c2116885230163a610c0268475202885
+  license: unknown
+  blend: debian-med
