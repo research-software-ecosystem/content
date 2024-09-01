@@ -6,19 +6,20 @@ about:
 build:
   ignore_run_exports:
   - libglx
+  - libgles
+  - libegl
   - xorg-libsm
   - xorg-libice
   - xorg-libx11
   - xorg-libxau
   - xorg-libxext
-  - libegl
   - libxcb
   - freetype
   - fontconfig
   - zlib
   - libuuid
   - libdeflate
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -54,6 +55,7 @@ requirements:
   - libegl-devel
   - libgl-devel
   - libglx-devel
+  - libgles-devel
   run:
   - glfw >=3.3
   - htslib >=1.12
@@ -62,9 +64,11 @@ requirements:
   - xorg-libxfixes
   - xorg-libxxf86vm
   - xorg-libxdamage
+  - mesalib
 source:
   patches:
   - fix-linker-issues.patch
+  - fix-context.patch
   sha256: 7247a8ec9efb7ebcd9566f6a3759520ee87f305efc91c8ce658307308ee6368a
   url: https://github.com/kcleal/gw/archive/refs/tags/v1.0.3.tar.gz
 test:

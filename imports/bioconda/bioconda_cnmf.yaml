@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/dylkot/cNMF
+  home: https://github.com/dylkot/cNMF
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Consensus NMF for scRNA-Seq data.
+build:
+  entry_points:
+  - cnmf = cnmf:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  identifiers:
+  - doi:10.7554/eLife.43803
+package:
+  name: cnmf
+  version: 1.6.0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  run:
+  - python >=3.7
+  - scikit-learn >=1.0
+  - anndata >=0.9
+  - scanpy
+  - pandas
+  - numpy
+  - fastcluster
+  - matplotlib-base
+  - palettable
+  - scipy
+  - pyyaml
+source:
+  sha256: a38dfe82261087ed1945aac069a77a04fc12f5e8621bfa1c9b3e662339432c2a
+  url: https://pypi.org/packages/source/c/cnmf/cnmf-1.6.0.tar.gz
+test:
+  commands:
+  - cnmf --help
+  imports:
+  - cnmf
