@@ -1,0 +1,33 @@
+about:
+  description: 'KegAlign is a Scalable GPU System for Pairwise Whole Genome
+
+    Alignments based on LASTZ''s seed-filter-extend paradigm.
+
+    '
+  dev_url: https://github.com/galaxyproject/KegAlign
+  doc_url: https://github.com/galaxyproject/KegAlign/blob/main/README.md
+  home: https://github.com/galaxyproject/KegAlign
+  license: MIT
+  license_family: MIT
+  license_url: https://github.com/galaxyproject/KegAlign/blob/main/LICENSE
+  summary: 'KegAlign: A Scalable GPU-Based Whole Genome Aligner'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: kegalign-full
+  version: 0.1.2.7
+requirements:
+  run:
+  - kegalign =0.1.2.7
+  - lastz
+  - mbuffer
+  - samtools
+  - ucsc-fatotwobit
+test:
+  commands:
+  - kegalign --help
+  - lastz --version 2>&1 | grep released
+  - which faToTwoBit
