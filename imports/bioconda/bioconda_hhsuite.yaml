@@ -1,10 +1,11 @@
 about:
+  doc_url: https://github.com/soedinglab/hh-suite/wiki
   home: https://github.com/soedinglab/hh-suite
   license: GPLv3
   license_file: LICENSE
   summary: HH-suite3 for fast remote homology detection and deep protein annotation
 build:
-  number: 12
+  number: 13
   run_exports:
   - None
 extra:
@@ -36,6 +37,7 @@ requirements:
 source:
   patches:
   - fix_cs219_include.patch
+  - reformat_pl.patch
   sha256: dd67f7f3bf601e48c9c0bc4cf1fbe3b946f787a808bde765e9436a48d27b0964
   url: https://github.com/soedinglab/hh-suite/archive/v3.3.0.tar.gz
 test:
@@ -43,3 +45,4 @@ test:
   - hhblits -h > /dev/null
   - hhsearch -h > /dev/null
   - hhalign -h > /dev/null
+  - reformat.pl > /dev/null

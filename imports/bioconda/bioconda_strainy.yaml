@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/katerinakazantseva/strainy
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: assembly-based metagenomic strain phasing using long reads
+build:
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install -vv .
+package:
+  name: strainy
+  version: 1.1
+requirements:
+  host:
+  - python
+  run:
+  - python >=3.8
+  - samtools >=1.14
+  - bcftools >=1.14
+  - minimap2
+  - pygraphviz
+  - matplotlib-base
+  - biopython
+  - python-edlib
+  - networkx >=2.6,<3.4
+  - gfapy
+  - karateclub
+  - numpy >=1.24,<1.27
+  - pandas >=1.3,<3
+  - pysam >=0.20,<0.23
+  - scipy >=1.8,<1.13
+  - flye
+source:
+  sha256: bdbac3961fa840344ac67e249de8f6d4114e0796c5b40bb5535d8e59f4dc63d1
+  url: https://github.com/katerinakazantseva/strainy/archive/refs/tags/1.1.tar.gz
+test:
+  commands:
+  - strainy -h

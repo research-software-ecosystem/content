@@ -5,7 +5,7 @@ about:
   summary: TRIBAL is a package to infer B cell lineage trees from single-cell RNA
     sequencing data.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
   script:
@@ -15,6 +15,10 @@ build:
   - $CC -c tribal/dnapars/dnapars.c -o tribal/dnapars/dnapars.o -fcommon
   - $CC tribal/dnapars/seq.o tribal/dnapars/phylip.o tribal/dnapars/dnapars.o -lm
     -o $PREFIX/bin/dnapars
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: tribal
   version: 0.1.1

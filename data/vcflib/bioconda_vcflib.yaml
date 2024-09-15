@@ -1,11 +1,13 @@
 about:
+  dev_url: https://github.com/vcflib/vcflib
+  doc_url: https://github.com/vcflib/vcflib/blob/v1.0.10/README.md
   home: https://github.com/vcflib/vcflib
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Command-line tools for manipulating VCF files
+  summary: Command-line tools for manipulating VCF files.
 build:
-  number: 6
+  number: 0
   run_exports:
   - None
 extra:
@@ -15,11 +17,35 @@ extra:
   - biotools:vcflib
   - doi:10.1371/journal.pcbi.1009123
   - usegalaxy-eu:vcfsort
+  - usegalaxy-eu:vcfallelicprimitives
+  - usegalaxy-eu:vcfbreakcreatemulti
+  - usegalaxy-eu:vcffilter2
+  - usegalaxy-eu:vcfcheck
+  - usegalaxy-eu:vcfcombine
+  - usegalaxy-eu:vcfaddinfo
+  - usegalaxy-eu:vcf2tsv
+  - usegalaxy-eu:vcfleftalign
+  - usegalaxy-eu:vcfhethom
+  - usegalaxy-eu:vcfrandomsample
+  - usegalaxy-eu:vcfbedintersect
+  - usegalaxy-eu:vcfgenotypes
+  - usegalaxy-eu:vcffixup
+  - usegalaxy-eu:vcfgeno2haplo
+  - usegalaxy-eu:vcfvcfintersect
+  - usegalaxy-eu:vcfanno
+  - usegalaxy-eu:vcfannotate
+  - usegalaxy-eu:vcfcommonsamples
+  - usegalaxy-eu:vcfflatten2
+  - usegalaxy-eu:vcfdistance
+  - usegalaxy-eu:vcfannotategenotypes
+  - usegalaxy-eu:vcfselectsamples
   recipe-maintainers:
   - jpuritz
+  skip-lints:
+  - uses_vcs_url
 package:
   name: vcflib
-  version: 1.0.9
+  version: 1.0.10
 requirements:
   build:
   - None
@@ -35,6 +61,7 @@ requirements:
   - htslib
   - tabixpp
   - wfa2-lib
+  - pandoc
   run:
   - python >=3
   - perl
@@ -43,14 +70,17 @@ requirements:
   - eigen
   - jsoncpp
   - wfa2-lib
+  - wget
 source:
-- patches:
+- git_rev: v1.0.10
+  git_url: https://github.com/vcflib/vcflib.git
+  patches:
   - pkg-config.patch
   - shared_lib.patch
   - backport_pr_394.patch
   - tabix.patch
-  sha256: 493204cb8e0515defa1383d56280d00b8efbed55312c6055162f8cb3a4ffb210
-  url: https://github.com/vcflib/vcflib/releases/download/v1.0.9/vcflib-1.0.9-src.tar.gz
+  - march_native.patch
+  sha256: unused
 - folder: zig-linux-x86_64-0.10.1
   sha256: 6699f0e7293081b42428f32c9d9c983854094bd15fee5489f12c4cf4518cc380
   url: https://ziglang.org/download/0.10.1/zig-linux-x86_64-0.10.1.tar.xz

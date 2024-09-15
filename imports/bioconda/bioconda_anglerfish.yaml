@@ -1,12 +1,12 @@
 about:
-  home: https://github.com/remiolsen/anglerfish
+  home: https://github.com/NationalGenomicsInfrastructure/anglerfish
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Anglerfish, a tool to demultiplex Illumina libraries from ONT data
 build:
   entry_points:
-  - anglerfish=anglerfish.anglerfish:anglerfish
+  - anglerfish=anglerfish.cli:app
   noarch: python
   number: 0
   run_exports:
@@ -18,23 +18,24 @@ extra:
   - remiolsen
 package:
   name: anglerfish
-  version: 0.6.1
+  version: 0.7.0
 requirements:
   host:
   - pip
-  - python >=3.7
+  - python >=3.12
   run:
   - biopython
-  - click
   - minimap2
   - numpy
   - pandas
-  - python >=3.7
+  - python >=3.12
   - python-levenshtein
   - pyyaml
+  - typer
+  - typing_extensions
 source:
-  sha256: 91a62cbbc388009bd503df0d3f64441c0e86ab377da46f721f5fcf82b9cce331
-  url: https://pypi.io/packages/source/b/bio-anglerfish/bio-anglerfish-0.6.1.tar.gz
+  sha256: f756fbc32a55cc98b2fd5e315f503bdebe52d85cc36eb3d12771d0deb2fce846
+  url: https://pypi.io/packages/source/b/bio-anglerfish/bio_anglerfish-0.7.0.tar.gz
 test:
   commands:
   - anglerfish --help

@@ -1,7 +1,7 @@
 about:
   dev_url: https://github.com/laxeye/zga/
   home: https://github.com/laxeye/zga
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   summary: Prokaryotic genome assembly and annotation pipeline
 build:
@@ -9,21 +9,22 @@ build:
   - zga = zga.zga:main
   noarch: python
   number: 0
-  script: ' -m pip install . -vv'
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - laxeye
 package:
   name: zga
-  version: 0.1.0
+  version: 0.1.1
 requirements:
   host:
-  - biopython
   - pip
-  - python >=3.6
+  - python >=3.8
   run:
   - biopython
-  - python  >=3.6
+  - python >=3.8
   - fastp
   - bbmap
   - mash >=2
@@ -33,13 +34,13 @@ requirements:
   - checkm-genome >=1.1.0
   - blast
   - samtools >=1.9
-  - dfast >=1.2.12
+  - bakta
   - nxtrim
   - racon
   - minimap2
 source:
-  sha256: f0ecaefd7d535a69aabf2ddeee9408a45773baa3779abfebe3621d0a505778d2
-  url: https://pypi.io/packages/source/z/zga/zga-0.1.0.tar.gz
+  sha256: dd159db1cb4c0afcfb9bd47d9b4bd804e6b479507c49e77c38247abd1c8a4ca4
+  url: https://pypi.io/packages/source/z/zga/zga-0.1.1.tar.gz
 test:
   commands:
   - zga --help

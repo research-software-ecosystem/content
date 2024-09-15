@@ -5,20 +5,23 @@ about:
   summary: Detect somatic copy number variants (CNV) in tumour-normal samples using
     next generation sequencing data
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
   skip: true
 extra:
   maintainers:
   - Dario Beraldi
 package:
   name: cnv_facets
-  version: 0.16.0
+  version: 0.16.1
 requirements:
   build:
   - None
   - None
   - None
   host:
+  - r-argparse >=2.1.6
   - r-base
   - r-devtools
   - r-data.table
@@ -31,6 +34,7 @@ requirements:
   - bcftools >=1.9
   - snp-pileup
   run:
+  - r-argparse >=2.1.6
   - r-base
   - r-data.table
   - r-ggplot2
@@ -43,8 +47,8 @@ requirements:
   - snp-pileup
   - python
 source:
-  sha256: 3628bc0970942e79292d60a972df85f75c7a8699c633f79fb96ba071e83600a2
-  url: https://github.com/dariober/cnv_facets/archive/v0.16.0.tar.gz
+  sha256: 64c29e2719306cc8e20318ff9a857fa2bb4fcd2af5eea30e733dad4867475972
+  url: https://github.com/dariober/cnv_facets/archive/v0.16.1.tar.gz
 test:
   commands:
   - cnv_facets.R -h > /dev/null 2>&1 || [[ $? == 1 ]]
