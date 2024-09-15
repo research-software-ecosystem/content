@@ -1,0 +1,113 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2024-09-12T12:29:17.740903Z",
+    "biotoolsCURIE": "biotools:scGraph2Vec",
+    "biotoolsID": "scGraph2Vec",
+    "confidence_flag": "tool",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "name": "Peilin Jia",
+            "orcidid": "https://orcid.org/0000-0003-4523-4153"
+        },
+        {
+            "name": "Shiqi Lin",
+            "orcidid": "https://orcid.org/0000-0001-9518-2027"
+        }
+    ],
+    "description": "a deep generative model for gene embedding augmented by Graph Neural Network and single-cell omics data",
+    "download": [
+        {
+            "type": "Source code",
+            "url": "https://github.com/LPH-BIG/scGraph2Vec",
+            "version": "1.1"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "python3.7 train3d.py --dataset=brain_lake --features=True --output=./test --task=task_2 --model=gcn_vae3d --iterations=10 --learning_rate=0.0001 --hidden2=256 --hidden=64 --dimension=16 --beta=10 --lamb=0.1 --gamma=0.1 --s_reg=10 --nb_run=2 --simple=False --validation=True",
+            "input": [
+                {
+                    "data": {
+                        "term": "Gene expression matrix",
+                        "uri": "http://edamontology.org/data_3112"
+                    },
+                    "format": [
+                        {
+                            "term": "Matrix format",
+                            "uri": "http://edamontology.org/format_3033"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Pathway or network",
+                        "uri": "http://edamontology.org/data_2600"
+                    },
+                    "format": [
+                        {
+                            "term": "MAT",
+                            "uri": "http://edamontology.org/format_3626"
+                        }
+                    ]
+                }
+            ],
+            "note": "The input of scGraph2Vec is an adjacency matrix from the gene interaction network and a feature matrix from single-cell data. The core function of the scGraph2Vec method provided in train3d.py, and the detailed structure of the model has been given in the model.py. In model training, we provided a three-layer neural network (default: 256-64-16) encoder and a two-layer neural network (default: 64-16) encoder. The Adam optimizer strategy and learning rate = 1×10^(-4) were adopted. After a hyperparameter sweep, we recommended using β=10,λ=1,γ=0.1,s=10 as the hyperparameter combination.",
+            "operation": [
+                {
+                    "term": "Feature extraction",
+                    "uri": "http://edamontology.org/operation_3937"
+                },
+                {
+                    "term": "Gene regulatory network prediction",
+                    "uri": "http://edamontology.org/operation_2437"
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/LPH-BIG/scGraph2Vec",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2024-09-12T12:35:26.267629Z",
+    "license": "MIT",
+    "maturity": "Mature",
+    "name": "scGraph2Vec",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "otherID": [
+        {
+            "type": "rrid",
+            "value": "RRID: SCR_025322"
+        }
+    ],
+    "owner": "ShiqiLin",
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Functional genomics",
+            "uri": "http://edamontology.org/topic_0085"
+        },
+        {
+            "term": "Gene regulation",
+            "uri": "http://edamontology.org/topic_0204"
+        },
+        {
+            "term": "Human genetics",
+            "uri": "http://edamontology.org/topic_3574"
+        },
+        {
+            "term": "Machine learning",
+            "uri": "http://edamontology.org/topic_3474"
+        }
+    ],
+    "version": [
+        "1.1"
+    ]
+}
