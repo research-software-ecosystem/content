@@ -1,7 +1,8 @@
 about:
+  dev_url: https://github.com/tongzhouxu/mashpit
   home: https://github.com/tongzhouxu/mashpit
-  license: GPL-2
-  license_family: GPL
+  license: GPL-2.0-or-later
+  license_family: GPL2
   license_file: LICENSE
   summary: Sketch-based surveillance platform
 build:
@@ -9,10 +10,10 @@ build:
   number: 0
   run_exports:
   - None
-  script: python -m pip install --no-deps --ignore-installed .
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
 package:
   name: mashpit
-  version: 0.9.6
+  version: 0.9.7
 requirements:
   host:
   - python >=3.8
@@ -32,9 +33,10 @@ requirements:
   - screed >=1.0.5
   - sourmash >=4.6.1
   - tqdm
+  - phytreeviz
 source:
-  sha256: 94754449251e51fff771c5d9579ef7016cf1d2984dfcdc5f01a558ceac772d14
-  url: https://github.com/tongzhouxu/mashpit/archive/refs/tags/v0.9.6.tar.gz
+  sha256: 4f93e00f8ff5cdb1eb81bc5cf01db824dbb8f54e67dbe9aab910b21fdd38fbed
+  url: https://github.com/tongzhouxu/mashpit/archive/refs/tags/v0.9.7.tar.gz
 test:
   commands:
   - mashpit --help

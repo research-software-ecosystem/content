@@ -9,26 +9,30 @@ about:
 build:
   noarch: python
   number: 0
-  script: ' -m pip install . -vv --no-deps --ignore-installed'
+  run_exports:
+  - None
+  script: ' -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir'
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.6.0
 extra:
   recipe-maintainers:
   - ohsu-comp-bio
 package:
   name: bioutils
-  version: 0.5.7
+  version: 0.6.0
 requirements:
   host:
   - pip
-  - python >=3.6
-  - setuptools_scm
-  - pytest-runner
+  - python >=3.10
+  - setuptools-scm
   run:
-  - python >=3.6
+  - python >=3.10
   - attrs
   - requests
+  - urllib3 >=1.26,<2.dev0
 source:
-  sha256: 2610f8d940a613bc9fb0f400fd21b27a4a4f2795a86de26a38b6857577aaabf2
-  url: https://pypi.io/packages/source/b/bioutils/bioutils-0.5.7.tar.gz
+  sha256: 6487a5565bb798b88202d1f5aa3a4ee6b229151e86dc8ff77cbf0e3b4f4dad4b
+  url: https://pypi.io/packages/source/b/bioutils/bioutils-0.6.0.tar.gz
 test:
   imports:
   - bioutils

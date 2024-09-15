@@ -3,15 +3,19 @@ about:
   license: MIT
   summary: Population-scale genotyping using pangenome graphs
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   skip-lints:
   - uses_vcs_url
   - missing_hash
 package:
   name: graphtyper
-  version: 2.7.2
+  version: 2.7.7
 requirements:
   build:
   - automake
@@ -33,8 +37,10 @@ requirements:
   - bzip2
   - xz
 source:
-  git_rev: v2.7.2
+  git_rev: v2.7.7
   git_url: https://github.com/DecodeGenetics/graphtyper.git
+  patches:
+  - arm_hwcap.patch
 test:
   commands:
   - graphtyper construct -h
