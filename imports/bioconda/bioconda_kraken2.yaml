@@ -6,8 +6,9 @@ about:
   summary: Kraken2 is a system for assigning taxonomic labels to short DNA sequences,
     usually obtained through metagenomic studies.
 build:
-  number: 1
-  run_exports: None
+  number: 2
+  run_exports:
+  - None
 extra:
   identifiers:
   - biotools:kraken2
@@ -35,6 +36,7 @@ requirements:
   - tar
   - rsync
   - zlib
+  - python
 source:
   patches:
   - Makefile.patch
@@ -45,3 +47,4 @@ test:
   - kraken2 --version
   - kraken2-build --version
   - kraken2-inspect --version
+  - k2 --help

@@ -8,6 +8,8 @@ about:
 build:
   noarch: generic
   number: 0
+  run_exports:
+  - None
 extra:
   recipe-maintainers:
   - pcm32
@@ -15,7 +17,7 @@ extra:
   - nh3
 package:
   name: seurat-scripts
-  version: 4.0.0
+  version: 4.4.0
 requirements:
   host:
   - r-base
@@ -23,20 +25,21 @@ requirements:
   - r-optparse
   - libpng
   - r-cairo
-  - r-seurat =4.0.0
-  - r-uwot <0.1.11
   - r-workflowscriptscommon >=0.0.8
+  - r-seurat <=4.4
   - r-loom
   - r-svglite
   - bioconductor-scater
   - r-seuratdisk
+  - r-remotes
   - bioconductor-multtest
   - r-metap
   - pandoc
+  - bioconductor-limma
   - mscorefonts
 source:
-  sha256: 2ee6f3bf471809efe8455131af763dfa17b84d0134a57cc9d33d7c347898dc29
-  url: https://github.com/ebi-gene-expression-group/r-seurat-scripts/archive/4.0.0.tar.gz
+  sha256: 907d30d3c2326565654af170670fc09b6bbda5fbfa356b17486a239ebf022bfb
+  url: https://github.com/ebi-gene-expression-group/r-seurat-scripts/archive/4.4.0.tar.gz
 test:
   commands:
   - seurat-read-10x.R --help

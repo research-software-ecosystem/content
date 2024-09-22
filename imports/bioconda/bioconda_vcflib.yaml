@@ -7,7 +7,7 @@ about:
   license_file: LICENSE
   summary: Command-line tools for manipulating VCF files.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -67,9 +67,9 @@ requirements:
   - perl
   - htslib
   - tabixpp
+  - wfa2-lib
   - eigen
   - jsoncpp
-  - wfa2-lib
   - wget
 source:
 - git_rev: v1.0.10
@@ -80,6 +80,7 @@ source:
   - backport_pr_394.patch
   - tabix.patch
   - march_native.patch
+  - 0006-wfa2-lib.patch
   sha256: unused
 - folder: zig-linux-x86_64-0.10.1
   sha256: 6699f0e7293081b42428f32c9d9c983854094bd15fee5489f12c4cf4518cc380
@@ -90,6 +91,9 @@ source:
 - folder: zig-macos-x86_64-0.10.1
   sha256: 02483550b89d2a3070c2ed003357fd6e6a3059707b8ee3fbc0c67f83ca898437
   url: https://ziglang.org/download/0.10.1/zig-macos-x86_64-0.10.1.tar.xz
+- folder: zig-macos-aarch64-0.10.1
+  sha256: b9b00477ec5fa1f1b89f35a7d2a58688e019910ab80a65eac2a7417162737656
+  url: https://ziglang.org/download/0.10.1/zig-macos-aarch64-0.10.1.tar.xz
 test:
   commands:
   - vcfwave -h
