@@ -1,8 +1,9 @@
 about:
   home: https://github.com/mbhall88/nohuman
   license: MIT
-  license_family: MIT
-  license_file: LICENSE
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
   summary: Remove human reads from a sequencing run
 build:
   number: 0
@@ -13,18 +14,18 @@ extra:
   - mbhall88
 package:
   name: nohuman
-  version: 0.1.1
+  version: 0.2.1
 requirements:
   build:
   - None
-  host:
-  - rust >=1.70
-  - openssl
+  - None
+  - cargo-bundle-licenses
   run:
   - kraken2 =2.1
 source:
-  sha256: 73a79909e487e0669e1604407024c8f1db1a3a0adf2fb3d76d80987823d85fd2
-  url: https://github.com/mbhall88/nohuman/archive/0.1.1.tar.gz
+  sha256: 0d9c647131077bfec327d3d8aeddb67cff1f0f93873543dbb97b4bac4948aed8
+  url: https://github.com/mbhall88/nohuman/archive/0.2.1.tar.gz
 test:
   commands:
   - nohuman --help
+  - nohuman --check

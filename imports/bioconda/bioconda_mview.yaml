@@ -1,0 +1,43 @@
+about:
+  description: "MView is a command line utility that extracts and reformats the results\
+    \ of a sequence database search or a multiple alignment,\noptionally adding HTML\
+    \ markup for web page layout. It can also be used as a filter to extract and convert\
+    \ searches or alignments to common formats.\n\nInputs:\n  - Sequence database\
+    \ search: BLAST, FASTA suites.\n  - Multiple sequence alignment: CLUSTAL, HSSP,\
+    \ MSF, FASTA, PIR, MAF.\n\nOutputs:\n  - HTML, FASTA, CLUSTAL, MSF, PIR, RDB (tab-separated).\n\
+    \nThe tool is used in molecular biology and biomedical research for data analyses\
+    \ and as a component in various bioinformatics web services.\nResearch papers\
+    \ citing MView are indexed on [Google Scholar](https://scholar.google.com/citations?user=4ughzM0AAAAJ&hl=en).\n"
+  dev_url: https://github.com/desmid/mview
+  doc_url: https://desmid.github.io/mview/contents.html
+  home: https://desmid.github.io/mview
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  license_file: LICENSE.md
+  summary: MView extracts and reformats the results of a sequence database search
+    or multiple alignment.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - eunos-1128
+package:
+  name: mview
+  version: 1.68
+requirements:
+  host:
+  - perl >=5.0,<6.0
+  run:
+  - perl >=5.0,<6.0
+source:
+  sha256: 4c3c75ba7f3cead82e641a83f3ad43b38169fef16aa8b9c8414e35f1eb1081c7
+  url: https://github.com/desmid/mview/archive/refs/tags/v1.68.tar.gz
+test:
+  commands:
+  - wget https://rest.uniprot.org/uniprotkb/Q16602.fasta
+  - mview -in fasta Q16602.fasta -width 77
+  requires:
+  - wget
