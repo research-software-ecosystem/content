@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/xjtu-omics/msisensor-rna
+  home: https://github.com/xjtu-omics/msisensor-rna
+  license: Community-Spec-1.0
+  license_file: LICENSE
+  summary: 'MSIsensor-RNA: Microsatellite instability detection using RNA sequencing
+    data.'
+build:
+  entry_points:
+  - msisensor-rna = msisensor_rna.msisensor_rna:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  identifiers:
+  - doi:10.1093/gpbjnl/qzae004
+package:
+  name: msisensor-rna
+  version: 0.1.6
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - pandas >=1.0
+  - numpy >=1.16
+  - scikit-learn >=0.24
+  - imbalanced-learn >=0.8.0
+source:
+  sha256: 69a420f5850aa412244d252451cc98071a4a410e51ff40e5cf676e7560f89d0c
+  url: https://github.com/xjtu-omics/msisensor-rna/archive/0.1.6.tar.gz
+test:
+  commands:
+  - msisensor-rna --help
+  imports:
+  - msisensor_rna

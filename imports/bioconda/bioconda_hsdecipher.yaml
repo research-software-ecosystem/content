@@ -1,0 +1,33 @@
+about:
+  description: Many tools have been developed to measure the degree of similarity
+    between gene duplicates within and between species.Here, we present HSDecipher,
+    a bioinformatics pipeline to assist users in the analysis and visualization of
+    highly similar duplicate genes (HSDs). We describe the steps for analysis of HSDs
+    statistics, expanding HSD gene set, and visualizing the results of comparative
+    genomic analyses. HSDecipher represents a useful tool for researchers exploring
+    the evolution of duplicate genes in select eukaryotic species.
+  home: https://github.com/zx0223winner/HSDecipher
+  license: GPL-3.0-or-later
+  license_file: license
+  summary: Pipeline for the downstream analysis of highly similar duplicate genes
+build:
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: bash conda_build_package.sh
+package:
+  name: hsdecipher
+  version: 1.0.0
+requirements:
+  run:
+  - python >=3.7
+  - pandas
+  - seaborn
+  - matplotlib-base
+source:
+  sha256: 54ab84f8584c69a50db4678b49279b0a0b4b05cf0028eec9c2f2ea2205917b76
+  url: https://github.com/zx0223winner/hsdecipher_conda/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - hsdecipher -h
