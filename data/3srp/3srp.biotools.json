@@ -1,0 +1,884 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2019-08-30T10:28:42Z",
+    "biotoolsCURIE": "biotools:3SRP",
+    "biotoolsID": "3SRP",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "audrey.bihouee@univ-nantes.fr",
+            "name": "Audrey Bihouée",
+            "orcidid": "https://orcid.org/0000-0002-8689-2083",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
+            "email": "eric.charpentier@univ-nantes.fr",
+            "name": "Eric Charpentier",
+            "orcidid": "https://orcid.org/0000-0002-8571-7603",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Primary contact",
+                "Support"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr/about-us/members/"
+        },
+        {
+            "email": "solenne.dumont@univ-nantes.fr",
+            "name": "Solenne Dumont",
+            "orcidid": "https://orcid.org/0000-0003-3237-7382",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr/qui-sommes-nous-/membres/"
+        },
+        {
+            "email": "dimitri.meistermann@univ-nantes.fr",
+            "name": "Dimitri MEISTERMANN",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "philippe.bordron@univ-nantes.fr",
+            "name": "Philippe Bordron",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "pf-bird@univ-nantes.fr",
+            "name": "BiRD bioinformatics facility",
+            "typeEntity": "Division",
+            "typeRole": [
+                "Provider",
+                "Support"
+            ],
+            "url": "https://pf-bird.univ-nantes.fr"
+        },
+        {
+            "name": "Broad Institute",
+            "note": "Some scripts of the pipeline regarding sample demultiplexing and UMI counting have been adapated and modified from this paper:\nXiong, Y., Soumillon, M., Wu, J. et al. A Comparison of mRNA Sequencing with Random Primed and 3′-Directed Libraries. Sci Rep 7, 14626 (2017).",
+            "typeEntity": "Institute"
+        }
+    ],
+    "description": "A Snakemake-based pipeline for 3' sequencing RNA profiling data analysis.  This 3’ Digital gene expression sequencing technique allows a precise and low-cost transcriptome profiling.\n\nThe main steps of the pipeline are:\n- Samples demultiplexing transform the raw paired-end fastq files into a single-end fastq file for each sample.\n- Alignment on refseq reference transcriptome is performed using bwa.\n- Aligned reads are parsed and UMI are counted for each gene in each sample to create an expression matrix.\nIf secondary analysis has been asked (providing a comparisons file), the expression matrix is normalized and differentially expressed genes (DEG) are searched using deseq2.\n- If DEG are found, annotation is performed using the database GO and KEGG.\n- A report is provided listing the main quality controls performed and the results found.\n\nCite : https://dx.doi.org/10.21203/rs.3.pex-1336/v1",
+    "documentation": [
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/srp-pipeline/-/wikis/home"
+        }
+    ],
+    "download": [
+        {
+            "type": "Source code",
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/srp-pipeline"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "audrey.bihouee",
+            "echarpentier"
+        ],
+        "type": "group"
+    },
+    "elixirNode": [
+        "France"
+    ],
+    "function": [
+        {
+            "cmd": "python SCRIPTS/make_dge_config.py -s TESTDATA/samplesheet.tsv -r TESTDATA/REFERENCES/ -w RESULTS -f TESTDATA/fastqFiles.txt -c TESTDATA/conditions.tsv --minGenes 0 --minReads 0 > config.json ; \nsnakemake -rp --config conf=\"config.json\"",
+            "input": [
+                {
+                    "data": {
+                        "term": "RNA sequence",
+                        "uri": "http://edamontology.org/data_3495"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ-illumina",
+                            "uri": "http://edamontology.org/format_1931"
+                        }
+                    ]
+                }
+            ],
+            "note": "First generate a configuration file and then run the pipeline with the Snakemake engine.",
+            "operation": [
+                {
+                    "term": "Clustering profile plotting",
+                    "uri": "http://edamontology.org/operation_2935"
+                },
+                {
+                    "term": "Differential gene expression analysis",
+                    "uri": "http://edamontology.org/operation_3223"
+                },
+                {
+                    "term": "Heat map generation",
+                    "uri": "http://edamontology.org/operation_0531"
+                },
+                {
+                    "term": "RNA-seq read count analysis",
+                    "uri": "http://edamontology.org/operation_3563"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Clustered expression profiles",
+                        "uri": "http://edamontology.org/data_3768"
+                    },
+                    "format": [
+                        {
+                            "term": "PDF",
+                            "uri": "http://edamontology.org/format_3508"
+                        },
+                        {
+                            "term": "PNG",
+                            "uri": "http://edamontology.org/format_3603"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Gene expression matrix",
+                        "uri": "http://edamontology.org/data_3112"
+                    },
+                    "format": [
+                        {
+                            "term": "DSV",
+                            "uri": "http://edamontology.org/format_3751"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/srp-pipeline",
+    "language": [
+        "Python",
+        "R"
+    ],
+    "lastUpdate": "2023-09-19T14:54:48.081069Z",
+    "maturity": "Emerging",
+    "name": "3SRP",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "owner": "alban.gaignard@univ-nantes.fr",
+    "publication": [
+        {
+            "doi": "10.1038/s41467-017-02107-w",
+            "metadata": {
+                "abstract": "Induced pluripotent stem cells (iPSCs) have considerably impacted human developmental biology and regenerative medicine, notably because they circumvent the use of cells of embryonic origin and offer the potential to generate patient-specific pluripotent stem cells. However, conventional reprogramming protocols produce developmentally advanced, or primed, human iPSCs (hiPSCs), restricting their use to post-implantation human development modeling. Hence, there is a need for hiPSCs resembling preimplantation naive epiblast. Here, we develop a method to generate naive hiPSCs directly from somatic cells, using OKMS overexpression and specific culture conditions, further enabling parallel generation of their isogenic primed counterparts. We benchmark naive hiPSCs against human preimplantation epiblast and reveal remarkable concordance in their transcriptome, dependency on mitochondrial respiration and X-chromosome status. Collectively, our results are essential for the understanding of pluripotency regulation throughout preimplantation development and generate new opportunities for disease modeling and regenerative medicine.",
+                "authors": [
+                    {
+                        "name": "Abel L."
+                    },
+                    {
+                        "name": "Albert M.L."
+                    },
+                    {
+                        "name": "Alcover A."
+                    },
+                    {
+                        "name": "Astrom K."
+                    },
+                    {
+                        "name": "Barriere P."
+                    },
+                    {
+                        "name": "Bihouee A."
+                    },
+                    {
+                        "name": "Bourdon J."
+                    },
+                    {
+                        "name": "Bousso P."
+                    },
+                    {
+                        "name": "Bruhns P."
+                    },
+                    {
+                        "name": "Casanova M."
+                    },
+                    {
+                        "name": "Chariau C."
+                    },
+                    {
+                        "name": "Charpentier E."
+                    },
+                    {
+                        "name": "Cumano A."
+                    },
+                    {
+                        "name": "DI Santo J."
+                    },
+                    {
+                        "name": "David L."
+                    },
+                    {
+                        "name": "Deb W."
+                    },
+                    {
+                        "name": "Demangel C."
+                    },
+                    {
+                        "name": "Deriano L."
+                    },
+                    {
+                        "name": "Donnart A."
+                    },
+                    {
+                        "name": "Dromer F."
+                    },
+                    {
+                        "name": "Duffy D."
+                    },
+                    {
+                        "name": "Eberl G."
+                    },
+                    {
+                        "name": "Enninga J."
+                    },
+                    {
+                        "name": "Fellay J."
+                    },
+                    {
+                        "name": "Firmin J."
+                    },
+                    {
+                        "name": "Flippe L."
+                    },
+                    {
+                        "name": "Freitas A."
+                    },
+                    {
+                        "name": "Freour T."
+                    },
+                    {
+                        "name": "Gaignerie A."
+                    },
+                    {
+                        "name": "Gelpi O."
+                    },
+                    {
+                        "name": "Gomperts-Boneca I."
+                    },
+                    {
+                        "name": "Hercberg S."
+                    },
+                    {
+                        "name": "Kilens S."
+                    },
+                    {
+                        "name": "Lammers J."
+                    },
+                    {
+                        "name": "Lantz O."
+                    },
+                    {
+                        "name": "Le Caignec C."
+                    },
+                    {
+                        "name": "Leclerc C."
+                    },
+                    {
+                        "name": "Lelievre Y."
+                    },
+                    {
+                        "name": "Marec N."
+                    },
+                    {
+                        "name": "Meistermann D."
+                    },
+                    {
+                        "name": "Mikkelsen T.S."
+                    },
+                    {
+                        "name": "Moreno D."
+                    },
+                    {
+                        "name": "Mouquet H."
+                    },
+                    {
+                        "name": "Nedellec S."
+                    },
+                    {
+                        "name": "Pasque V."
+                    },
+                    {
+                        "name": "Patin E."
+                    },
+                    {
+                        "name": "Pecqueur C."
+                    },
+                    {
+                        "name": "Pellegrini S."
+                    },
+                    {
+                        "name": "Pol S."
+                    },
+                    {
+                        "name": "Quintana-Murci L."
+                    },
+                    {
+                        "name": "Redon R."
+                    },
+                    {
+                        "name": "Reignier A."
+                    },
+                    {
+                        "name": "Rogge L."
+                    },
+                    {
+                        "name": "Rougeulle C."
+                    },
+                    {
+                        "name": "Sakuntabhai A."
+                    },
+                    {
+                        "name": "Schwartz O."
+                    },
+                    {
+                        "name": "Schwikowski B."
+                    },
+                    {
+                        "name": "Shorte S."
+                    },
+                    {
+                        "name": "Song J."
+                    },
+                    {
+                        "name": "Soumelis V."
+                    },
+                    {
+                        "name": "Soumillon M."
+                    },
+                    {
+                        "name": "Tangy F."
+                    },
+                    {
+                        "name": "Tartour E."
+                    },
+                    {
+                        "name": "Toubert A."
+                    },
+                    {
+                        "name": "Ungeheuer M.-N."
+                    },
+                    {
+                        "name": "Vallot C."
+                    }
+                ],
+                "citationCount": 78,
+                "date": "2018-12-01T00:00:00Z",
+                "journal": "Nature Communications",
+                "title": "Parallel derivation of isogenic human primed and naive induced pluripotent stem cells"
+            },
+            "pmcid": "PMC5783949",
+            "pmid": "29367672",
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.1038/s41598-017-14892-x",
+            "metadata": {
+                "abstract": "reating a cDNA library for deep mRNA sequencing (mRNAseq) is generally done by random priming, creating multiple sequencing fragments along each transcript. A 3′-end-focused library approach cannot detect differential splicing, but has potentially higher throughput at a lower cost, along with the ability to improve quantification by using transcript molecule counting with unique molecular identifiers (UMI) that correct PCR bias. Here, we compare an implementation of such a 3′-digital gene expression (3′-DGE) approach with \"conventional\" random primed mRNAseq. Given our particular datasets on cultured human cardiomyocyte cell lines, we find that, while conventional mRNAseq detects ∼15% more genes and needs ∼500,000 fewer reads per sample for equivalent statistical power, the resulting differentially expressed genes, biological conclusions, and gene signatures are highly concordant between two techniques. We also find good quantitative agreement at the level of individual genes between two techniques for both read counts and fold changes between given conditions. We conclude that, for high-throughput applications, the potential cost savings associated with 3′-DGE approach are likely a reasonable tradeoff for modest reduction in sensitivity and inability to observe alternative splicing, and should enable many larger scale studies focusing on not only differential expression analysis, but also quantitative transcriptome profiling.",
+                "authors": [
+                    {
+                        "name": "Azeloglu E.U."
+                    },
+                    {
+                        "name": "Birtwistle M.R."
+                    },
+                    {
+                        "name": "Bochicchio J."
+                    },
+                    {
+                        "name": "Bouhaddou M."
+                    },
+                    {
+                        "name": "Gomez E."
+                    },
+                    {
+                        "name": "Hansen J."
+                    },
+                    {
+                        "name": "Hu B."
+                    },
+                    {
+                        "name": "Iyengar R."
+                    },
+                    {
+                        "name": "Jayaraman G."
+                    },
+                    {
+                        "name": "Lenaeus L."
+                    },
+                    {
+                        "name": "Lim R."
+                    },
+                    {
+                        "name": "Mahajan M."
+                    },
+                    {
+                        "name": "Ornelas L."
+                    },
+                    {
+                        "name": "Sareen D."
+                    },
+                    {
+                        "name": "Shim J."
+                    },
+                    {
+                        "name": "Sobie E.A."
+                    },
+                    {
+                        "name": "Soumillon M."
+                    },
+                    {
+                        "name": "Stocksdale J."
+                    },
+                    {
+                        "name": "Svendsen C."
+                    },
+                    {
+                        "name": "Thompson L.M."
+                    },
+                    {
+                        "name": "Van Hasselt J.G.C."
+                    },
+                    {
+                        "name": "Wu J."
+                    },
+                    {
+                        "name": "Xiong Y."
+                    }
+                ],
+                "citationCount": 30,
+                "date": "2017-12-01T00:00:00Z",
+                "journal": "Scientific Reports",
+                "title": "A Comparison of mRNA Sequencing with Random Primed and 3′-Directed Libraries"
+            },
+            "pmcid": "PMC5676863",
+            "pmid": "29116112",
+            "type": [
+                "Primary"
+            ]
+        },
+        {
+            "doi": "10.1172/jci.insight.90088",
+            "metadata": {
+                "abstract": "Rat and human CD4+ and CD8+ Tregs expressing low levels of CD45RC have strong immunoregulatory properties. We describe here that human CD45 isoforms are nonredundant and identify distinct subsets of cells. We show that CD45RC is not expressed by CD4+ and CD8+ Foxp3+ Tregs, while CD45RA/RB/RO are. Transient administration of a monoclonal antibody (mAb) targeting CD45RC in a rat cardiac allotransplantation model induced transplant tolerance associated with inhibition of allogeneic humoral responses but maintained primary and memory responses against cognate antigens. Anti-CD45RC mAb induced rapid death of CD45RChigh T cells through intrinsic cell signaling but preserved and potentiated CD4+ and CD8+ CD45RClow/- Tregs, which are able to adoptively transfer donor-specific tolerance to grafted recipients. Anti-CD45RC treatment results in distinct transcriptional signature of CD4+ and CD8+ CD45RClow/- Tregs. Finally, we demonstrate that anti-human CD45RC treatment inhibited graft-versus-host disease (GVHD) in immune-humanized NSG mice. Thus, short-term anti-CD45RC is a potent therapeutic candidate to induce transplantation tolerance in human.",
+                "authors": [
+                    {
+                        "name": "Anegon I."
+                    },
+                    {
+                        "name": "Autrusseau E."
+                    },
+                    {
+                        "name": "Bezie S."
+                    },
+                    {
+                        "name": "Boucault L."
+                    },
+                    {
+                        "name": "Charpentier E."
+                    },
+                    {
+                        "name": "Daguin V."
+                    },
+                    {
+                        "name": "David L."
+                    },
+                    {
+                        "name": "Donnart A."
+                    },
+                    {
+                        "name": "Guillonneau C."
+                    },
+                    {
+                        "name": "Kilens S."
+                    },
+                    {
+                        "name": "Martinet B."
+                    },
+                    {
+                        "name": "Meistermann D."
+                    },
+                    {
+                        "name": "Picarda E."
+                    }
+                ],
+                "citationCount": 34,
+                "date": "2017-02-09T00:00:00Z",
+                "journal": "JCI Insight",
+                "title": "Transient antibody targeting of CD45RC induces transplant tolerance and potent antigen-specific regulatory T cells"
+            },
+            "pmcid": "PMC5291739",
+            "pmid": "28194440",
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.3390/nu12051464",
+            "metadata": {
+                "abstract": "Fetal brain development is closely dependent on maternal nutrition and metabolic status. Maternal protein restriction (PR) is known to be associated with alterations in the structure and function of the hypothalamus, leading to impaired control of energy homeostasis and food intake. The objective of this study was to identify the cellular and molecular systems underlying these effects during fetal development. We combined a global transcriptomic analysis on the fetal hypothalamus from a rat model of maternal PR with in vitro neurosphere culture and cellular analyses. Several genes encoding proteins from the mitochondrial respiratory chain complexes were overexpressed in the PR group and mitochondrial metabolic activity in the fetal hypothalamus was altered. The level of the N6-methyladenosine epitranscriptomic mark was reduced in the PR fetuses, and the expression of several genes involved in the writing/erasing/reading of this mark was indeed altered, as well as genes encoding several RNA-binding proteins. Additionally, we observed a higher number of neuronal-committed progenitors at embryonic day 17 (E17) in the PR fetuses. Together, these data strongly suggest a metabolic adaptation to the amino acid shortage, combined with the post-transcriptional control of protein expression, which might reflect alterations in the control of the timing of neuronal progenitor differentiation.",
+                "authors": [
+                    {
+                        "name": "Amarger V."
+                    },
+                    {
+                        "name": "Frapin M."
+                    },
+                    {
+                        "name": "Grit I."
+                    },
+                    {
+                        "name": "Guignard S."
+                    },
+                    {
+                        "name": "Meistermann D."
+                    },
+                    {
+                        "name": "Moulle V.S."
+                    },
+                    {
+                        "name": "Paille V."
+                    },
+                    {
+                        "name": "Parnet P."
+                    }
+                ],
+                "citationCount": 5,
+                "date": "2020-05-01T00:00:00Z",
+                "journal": "Nutrients",
+                "title": "Maternal protein restriction in rats alters the expression of genes involved in mitochondrial metabolism and epitranscriptomics in fetal hypothalamus"
+            },
+            "pmcid": "PMC7284977",
+            "pmid": "32438566",
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.1016/j.celrep.2020.108419",
+            "metadata": {
+                "abstract": "Human trophoblast stem cells (hTSCs) derived from blastocysts and first-trimester cytotrophoblasts offer an unprecedented opportunity to study the placenta. However, access to human embryos and first-trimester placentas is limited, thus preventing the establishment of hTSCs from diverse genetic backgrounds associated with placental disorders. Here, we show that hTSCs can be generated from numerous genetic backgrounds using post-natal cells via two alternative methods: (1) somatic cell reprogramming of adult fibroblasts with OCT4, SOX2, KLF4, MYC (OSKM) and (2) cell fate conversion of naive and extended pluripotent stem cells. The resulting induced/converted hTSCs recapitulated hallmarks of hTSCs including long-term self-renewal, expression of specific transcription factors, transcriptomic signature, and the potential to differentiate into syncytiotrophoblast and extravillous trophoblast cells. We also clarified the developmental stage of hTSCs and show that these cells resemble day 8 cytotrophoblasts. Altogether, hTSC lines of diverse genetic origins open the possibility to model both placental development and diseases in a dish. Castel et al. report the generation of patient-specific human induced trophoblast stem cells via two methods: (1) somatic cell reprogramming with OSKM and (2) conversion of naive and extended hiPSCs. Their findings open avenues to study placental diseases and relations between the trophoblast lineage, pluripotency, and the human embryo.",
+                "authors": [
+                    {
+                        "name": "Arima T."
+                    },
+                    {
+                        "name": "Blin J."
+                    },
+                    {
+                        "name": "Bourdon J."
+                    },
+                    {
+                        "name": "Bretin B."
+                    },
+                    {
+                        "name": "Bruneau A."
+                    },
+                    {
+                        "name": "Castel G."
+                    },
+                    {
+                        "name": "Chariau C."
+                    },
+                    {
+                        "name": "Charpentier E."
+                    },
+                    {
+                        "name": "Chevolleau S."
+                    },
+                    {
+                        "name": "David L."
+                    },
+                    {
+                        "name": "Dietrich B."
+                    },
+                    {
+                        "name": "Firmin J."
+                    },
+                    {
+                        "name": "Flippe L."
+                    },
+                    {
+                        "name": "Fournier T."
+                    },
+                    {
+                        "name": "Francheteau Q."
+                    },
+                    {
+                        "name": "Francois--Campion V."
+                    },
+                    {
+                        "name": "Freour T."
+                    },
+                    {
+                        "name": "Gaignerie A."
+                    },
+                    {
+                        "name": "Haider S."
+                    },
+                    {
+                        "name": "Kagawa H."
+                    },
+                    {
+                        "name": "Kilens S."
+                    },
+                    {
+                        "name": "Knofler M."
+                    },
+                    {
+                        "name": "Loubersac S."
+                    },
+                    {
+                        "name": "Masson D."
+                    },
+                    {
+                        "name": "Meistermann D."
+                    },
+                    {
+                        "name": "Okae H."
+                    },
+                    {
+                        "name": "Rivron N."
+                    }
+                ],
+                "citationCount": 84,
+                "date": "2020-11-24T00:00:00Z",
+                "journal": "Cell Reports",
+                "title": "Induction of Human Trophoblast Stem Cells from Somatic Cells and Pluripotent Stem Cells"
+            },
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.1016/j.jaut.2017.10.005",
+            "metadata": {
+                "abstract": "Several lines of evidence support a key role for CD8 + T cells in central nervous system tissue damage of patients with multiple sclerosis. However, the precise phenotype of the circulating CD8 + T cells that may be recruited from the peripheral blood to invade the CNS remains largely undefined to date. It has been suggested that IL-17 secreting CD8 (Tc17) T cells may be involved, and in humans these cells are characterized by the expression of CD161. We focused our study on a unique and recently described subset of CD8 T cells characterized by an intermediate expression of CD161 as its role in neuroinflammation has not been investigated to date. The frequency, phenotype, and function of CD8 + T cells with an intermediate CD161 expression level were characterized ex-vivo, in vitro, and in situ using RNAseq, RT-PCR, flow cytometry, TCR sequencing, and immunohistofluorescence of cells derived from healthy volunteers (n = 61), MS subjects (n = 90), as well as inflammatory (n = 15) and non-inflammatory controls (n = 6). We report here that CD8 + CD161 int T cells present characteristics of effector cells, up-regulate cell-adhesion molecules and have an increased ability to cross the blood-brain barrier and to secrete IL-17, IFNγ GM-CSF, and IL-22. We further demonstrate that these cells are recruited and enriched in the CNS of MS subjects where they produce IL-17. In the peripheral blood, RNAseq, RT-PCR, high-throughput TCR repertoire analyses, and flow cytometry confirmed an increased effector and transmigration pattern of these cells in MS patients, with the presence of supernumerary clones compared to healthy controls. Our data demonstrate that intermediate levels of CD161 expression identifies activated and effector CD8 + T cells with pathogenic properties that are recruited to MS lesions. This suggests that CD161 may represent a biomarker and a valid target for the treatment of neuroinflammation.",
+                "authors": [
+                    {
+                        "name": "Berthelot L."
+                    },
+                    {
+                        "name": "Bourreille A."
+                    },
+                    {
+                        "name": "Brouard S."
+                    },
+                    {
+                        "name": "Charpentier E."
+                    },
+                    {
+                        "name": "David L."
+                    },
+                    {
+                        "name": "Degauque N."
+                    },
+                    {
+                        "name": "Donnart A."
+                    },
+                    {
+                        "name": "Dugast E."
+                    },
+                    {
+                        "name": "Garcia A."
+                    },
+                    {
+                        "name": "Gourraud P.-A."
+                    },
+                    {
+                        "name": "Jacq-Foucher M."
+                    },
+                    {
+                        "name": "Kilens S."
+                    },
+                    {
+                        "name": "Laplaud D.-A."
+                    },
+                    {
+                        "name": "Le Frere F."
+                    },
+                    {
+                        "name": "Michel L."
+                    },
+                    {
+                        "name": "Morille J."
+                    },
+                    {
+                        "name": "Nedellec S."
+                    },
+                    {
+                        "name": "Nicol B."
+                    },
+                    {
+                        "name": "Nicot A.B."
+                    },
+                    {
+                        "name": "Salou M."
+                    },
+                    {
+                        "name": "Vogel I."
+                    },
+                    {
+                        "name": "Wiertlewski S."
+                    }
+                ],
+                "citationCount": 17,
+                "date": "2018-03-01T00:00:00Z",
+                "journal": "Journal of Autoimmunity",
+                "title": "An intermediate level of CD161 expression defines a novel activated, inflammatory, and pathogenic subset of CD8 + T cells involved in multiple sclerosis"
+            },
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.1038/s41419-020-2505-1",
+            "metadata": {
+                "abstract": "Multiple myeloma is a plasma cell malignancy that escapes from apoptosis by heterogeneously over-expressing anti-apoptotic BCL2 proteins. Myeloma cells with a t(11;14) translocation present a particular vulnerability to BCL2 inhibition while a majority of myeloma cells relies on MCL1 for survival. The present study aimed to determine whether the combination of BCL2 and MCL1 inhibitors at low doses could be of benefit for myeloma cells beyond the single selective inhibition of BCL2 or MCL1. We identified that half of patients were not efficiently targeted neither by BCL2 inhibitor nor MCL1 inhibitor. Seventy percent of these myeloma samples, either from patients at diagnosis or relapse, presented a marked increase of apoptosis upon low dose combination of both inhibitors. Interestingly, primary cells from a patient in progression under venetoclax treatment were not sensitive ex vivo to neither venetoclax nor to MCL1 inhibitor, whereas the combination of both efficiently induced cell death. This finding suggests that the combination could overcome venetoclax resistance. The efficacy of the combination was also confirmed in U266 xenograft model resistant to BCL2 and MCL1 inhibitors. Mechanistically, we demonstrated that the combination of both inhibitors favors apoptosis in a BAX/BAK dependent manner. We showed that activated BAX was readily increased upon the inhibitor combination leading to the formation of BAK/BAX hetero-complexes. We found that BCLXL remains a major resistant factor of cell death induced by this combination. The present study supports a rational for the clinical use of venetoclax/S63845 combination in myeloma patients with the potential to elicit significant clinical activity when both single inhibitors would not be effective but also to overcome developed in vivo venetoclax resistance.",
+                "authors": [
+                    {
+                        "name": "Amiot M."
+                    },
+                    {
+                        "name": "Bellanger C."
+                    },
+                    {
+                        "name": "Descamps G."
+                    },
+                    {
+                        "name": "Gomez-Bougie P."
+                    },
+                    {
+                        "name": "Kervoelen C."
+                    },
+                    {
+                        "name": "Maiga S."
+                    },
+                    {
+                        "name": "Maillet L."
+                    },
+                    {
+                        "name": "Moreau P."
+                    },
+                    {
+                        "name": "Pellat-Deceunynck C."
+                    },
+                    {
+                        "name": "Seiller C."
+                    },
+                    {
+                        "name": "Touzeau C."
+                    }
+                ],
+                "citationCount": 27,
+                "date": "2020-05-01T00:00:00Z",
+                "journal": "Cell Death and Disease",
+                "title": "Dual targeting of BCL2 and MCL1 rescues myeloma cells resistant to BCL2 and MCL1 inhibitors associated with the formation of BAX/BAK hetero-complexes"
+            },
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.3390/ijms21041368",
+            "metadata": {
+                "abstract": "Recent studies strongly support the use of the aryl hydrocarbon receptor (AhR) as a therapeutic target in breast cancer. Glyceollins, a group of soybean phytoalexins, are known to exert therapeutic effects in chronic human diseases and also in cancer. To investigate the interaction between glyceollin I (GI), glyceollin II (GII) and AhR, a computational docking analysis, luciferase assays, immunofluorescence and transcriptome analyses were performed with different cancer cell lines. The docking experiments predicted that GI and GII can enter into the AhR binding pocket, but their interactions with the amino acids of the binding site differ, in part, from those interacting with 2,3,7,8-tetrachlorodibenzo-p-dioxin (TCDD). Both GI and GII were able to weakly and partially activate AhR, with GII being more potent. The results from the transcriptome assays showed that approximately 10% of the genes regulated by TCDD were also modified by both GI and GII, which could have either antagonistic or synergistic effects upon TCDD activation. In addition, we report here, on the basis of phenotype, that GI and GII inhibit the migration of triple-negative (ER-, PgR-, HER2NEU-) MDA-MB-231 breast cancer cells, and that they inhibit the expression of genes which code for important regulators of cell migration and invasion in cancer tissues. In conclusion, GI and GII are AhR ligands that should be further investigated to determine their usefulness in cancer treatments.",
+                "authors": [
+                    {
+                        "name": "Balaguer P."
+                    },
+                    {
+                        "name": "Chalmel F."
+                    },
+                    {
+                        "name": "Efstathiou T."
+                    },
+                    {
+                        "name": "Evrard B."
+                    },
+                    {
+                        "name": "Ferriere F."
+                    },
+                    {
+                        "name": "Lardenois A."
+                    },
+                    {
+                        "name": "Le Guevel R."
+                    },
+                    {
+                        "name": "Lecomte S."
+                    },
+                    {
+                        "name": "Pakdel F."
+                    },
+                    {
+                        "name": "Pham T.H."
+                    }
+                ],
+                "citationCount": 8,
+                "date": "2020-02-02T00:00:00Z",
+                "journal": "International Journal of Molecular Sciences",
+                "title": "Characterization of glyceollins as novel aryl hydrocarbon receptor ligands and their role in cell migration"
+            },
+            "type": [
+                "Usage"
+            ]
+        },
+        {
+            "doi": "10.21203/rs.3.pex-1336/v1",
+            "type": [
+                "Method"
+            ]
+        },
+        {
+            "pmcid": "PMC5797797",
+            "pmid": "29445370",
+            "type": [
+                "Usage"
+            ]
+        }
+    ],
+    "toolType": [
+        "Workflow"
+    ],
+    "topic": [
+        {
+            "term": "Transcriptomics",
+            "uri": "http://edamontology.org/topic_3308"
+        }
+    ],
+    "validated": 1,
+    "version": [
+        "1.0"
+    ]
+}

@@ -1,0 +1,387 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2023-02-07T11:33:59.368666Z",
+    "biotoolsCURIE": "biotools:redundans",
+    "biotoolsID": "redundans",
+    "collectionID": [
+        "IMPaCT-Data"
+    ],
+    "cost": "Free of charge",
+    "description": "Redundans is a pipeline that assists the assembly of heterozygous genomes. It takes as input assembled contigs, sequencing libraries and/or reference sequence and returns scaffolded homozygous genome assembly. Final assembly should be less fragmented and with total size smaller than the input contigs. In addition, Redundans will automatically close the gaps resulting from genome assembly or scaffolding.",
+    "download": [
+        {
+            "note": "Bioconda package",
+            "type": "Software package",
+            "url": "https://anaconda.org/bioconda/redundans/",
+            "version": "v2.01"
+        },
+        {
+            "note": "Docker file",
+            "type": "Container file",
+            "url": "https://hub.docker.com/repository/docker/cgenomics/redundans",
+            "version": "v2.0.0"
+        },
+        {
+            "note": "Singularity file",
+            "type": "Container file",
+            "url": "https://cloud.sylabs.io/library/cgenomics/redundans/redundans",
+            "version": "v2.0.0"
+        },
+        {
+            "type": "Source code",
+            "url": "https://github.com/Gabaldonlab/redundans/tags"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "elixirCommunity": [
+        "Marine Metagenomics",
+        "Microbial Biotechnology",
+        "Plant Sciences"
+    ],
+    "elixirNode": [
+        "Spain"
+    ],
+    "elixirPlatform": [
+        "Tools"
+    ],
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Return assembly stats: N50, L50, N's, # contigs, % heterozygous contigs...",
+            "operation": [
+                {
+                    "term": "Sequence assembly validation",
+                    "uri": "http://edamontology.org/operation_3180"
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Perform Gap closing using GapCloser",
+            "operation": [
+                {
+                    "term": "Scaffold gap completion",
+                    "uri": "http://edamontology.org/operation_3217"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Perform a reduction step using LASTal or Minimap2 to detect and remove the heterozygous contigs. Use SSPACE for the scaffolding of short reads",
+            "operation": [
+                {
+                    "term": "Dimensionality reduction",
+                    "uri": "http://edamontology.org/operation_3935"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Scaffolding based on a reference genome (LAST or Minimap2 ) or long reads (custom code or by generating a Miniasm assembly of the long reads and using reference-based scaffolding).",
+            "operation": [
+                {
+                    "term": "Scaffolding",
+                    "uri": "http://edamontology.org/operation_3216"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Use Meryl and Merqury to plot k-mer composition and analysis of the assembly",
+            "operation": [
+                {
+                    "term": "k-mer counting",
+                    "uri": "http://edamontology.org/operation_3472"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Plot",
+                        "uri": "http://edamontology.org/data_2884"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence trace",
+                        "uri": "http://edamontology.org/data_0924"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "Optionally run Platanus to generate an assembly out of your raw short reads",
+            "operation": [
+                {
+                    "term": "Genome assembly",
+                    "uri": "http://edamontology.org/operation_0525"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/Gabaldonlab/redundans",
+    "language": [
+        "Perl",
+        "Python",
+        "Shell"
+    ],
+    "lastUpdate": "2023-11-08T11:31:56.643246Z",
+    "license": "Other",
+    "link": [
+        {
+            "note": "Docker image",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://hub.docker.com/repository/docker/cgenomics/redundans"
+        },
+        {
+            "note": "Singularity image",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://cloud.sylabs.io/library/cgenomics/redundans/redundans"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://anaconda.org/bioconda/redundans/"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/Gabaldonlab/redundans"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "Redundans",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "Gabaldonlab",
+    "publication": [
+        {
+            "doi": "10.1093/nar/gkw294",
+            "metadata": {
+                "abstract": "Many genomes display high levels of heterozygosity (i.e. presence of different alleles at the same loci in homologous chromosomes), being those of hybrid organisms an extreme such case. The assembly of highly heterozygous genomes from short sequencing reads is a challenging task because it is difficult to accurately recover the different haplotypes. When confronted with highly heterozygous genomes, the standard assembly process tends to collapse homozygous regions and reports heterozygous regions in alternative contigs. The boundaries between homozygous and heterozygous regions result in multiple assembly paths that are hard to resolve, which leads to highly fragmented assemblies with a total size larger than expected. This, in turn, causes numerous problems in downstream analyses such as fragmented gene models, wrong gene copy number, or broken synteny. To circumvent these caveats we have developed a pipeline that specifically deals with the assembly of heterozygous genomes by introducing a step to recognise and selectively remove alternative heterozygous contigs. We tested our pipeline on simulated and naturally-occurring heterozygous genomes and compared its accuracy to other existing tools. Our method is freely available at https://github.com/Gabaldonlab/redundans.",
+                "authors": [
+                    {
+                        "name": "Gabaldon T."
+                    },
+                    {
+                        "name": "Pryszcz L.P."
+                    }
+                ],
+                "citationCount": 271,
+                "date": "2016-07-08T00:00:00Z",
+                "journal": "Nucleic Acids Research",
+                "title": "Redundans: An assembly pipeline for highly heterozygous genomes"
+            },
+            "pmcid": "PMC4937319",
+            "pmid": "27131372",
+            "type": [
+                "Method"
+            ]
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "bwa",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "gfastats",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "merqury",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "meryl",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "miniasm",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "minimap2",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "snap-align",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "sspace",
+            "type": "uses"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Comparative genomics",
+            "uri": "http://edamontology.org/topic_0797"
+        },
+        {
+            "term": "Sequence assembly",
+            "uri": "http://edamontology.org/topic_0196"
+        },
+        {
+            "term": "Sequence composition, complexity and repeats",
+            "uri": "http://edamontology.org/topic_0157"
+        }
+    ],
+    "version": [
+        "v2.01"
+    ]
+}
