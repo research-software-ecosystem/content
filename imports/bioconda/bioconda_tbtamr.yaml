@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/MDU-PHL/tbtamr
   home: https://github.com/MDU-PHL/tbtamr
   license: GPL-3.0-or-later
   license_family: GPL3
@@ -9,25 +10,23 @@ build:
   entry_points:
   - tbtamr=tbtamr.tbtamr:main
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - kristyhoran
 package:
   name: tbtamr
-  version: 0.0.4
+  version: 1.0.2
 requirements:
   host:
-  - python >=3.8
+  - python >=3.10
   - pip
   run:
-  - python >=3.8
-  - psutil
+  - python >=3.10
   - pandas
-  - csvtk
   - bwa
   - samtools =1.12
   - snpeff =5.0
@@ -39,9 +38,15 @@ requirements:
   - xlsxwriter
   - requests
   - tqdm
+  - joblib
+  - pydantic
+  - pytest
+  - tabulate
+  - unidecode
+  - pysam
 source:
-  sha256: 72db1eb835574f02b0d7768e6b04e310bd2229d0f684100004b20a133eecd882
-  url: https://pypi.io/packages/source/t/tbtamr/tbtamr-0.0.4.tar.gz
+  sha256: 3b1e669a015ed7bb40977c104ae22f3a4e1e49f07c84b7043f0e6b21c8a0957a
+  url: https://pypi.io/packages/source/t/tbtamr/tbtamr-1.0.2.tar.gz
 test:
   commands:
   - tbtamr --help

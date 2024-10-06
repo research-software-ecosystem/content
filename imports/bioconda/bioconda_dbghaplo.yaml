@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/bluenote-1577/dbghaplo
+  license: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Haplotyping small sequences from heterogeneous long-read sequencing samples
+    with a SNP-encoded positional de Bruijn Graph.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - bluenote-1577
+package:
+  name: dbghaplo
+  version: 0.0.2
+requirements:
+  build:
+  - None
+  - None
+  - cargo-bundle-licenses
+  - make
+  - cmake >=3.12
+  run:
+  - python
+  - samtools
+  - minimap2
+  - lofreq >=2.1.5
+  - tabix
+  - pysam >=0.16
+source:
+  sha256: e7e2741afb0c7f12718ec969815d3c8f18ce7ba66517e21c6fcfb3fe4262780b
+  url: https://github.com/bluenote-1577/dbghaplo/archive/v0.0.2.tar.gz
+test:
+  commands:
+  - dbghaplo -h
+  - run_dbghaplo_pipeline -h
+  - haplotag_bam -h
