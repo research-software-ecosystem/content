@@ -13,17 +13,22 @@ about:
 build:
   entry_points:
   - phables=phables.__main__:main
-  noarch: python
-  number: 0
+  noarch: false
+  number: 1
   run_exports:
   - None
   script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - Vini2
+  skip-lints:
+  - should_be_noarch_generic
 package:
   name: phables
-  version: 1.4.0
+  version: 1.4.1
 requirements:
   host:
   - python >=3.9,<3.11
@@ -38,8 +43,8 @@ requirements:
   - metasnek >=0.0.5
   - snaketool-utils >=0.0.3
 source:
-  sha256: 09b843141ab32cda5016741b7f31ccefcb659448f0fd4aa55697c509680e16e9
-  url: https://github.com/Vini2/phables/archive/refs/tags/v1.4.0.tar.gz
+  sha256: f456260bf710073986ecd524975e09083c5cf7d0ad3a0e6808ba48a2b7dc0ee4
+  url: https://github.com/Vini2/phables/archive/refs/tags/v1.4.1.tar.gz
 test:
   commands:
   - phables --help

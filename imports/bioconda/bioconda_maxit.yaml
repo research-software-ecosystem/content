@@ -1,23 +1,12 @@
 about:
-  description: 'MAXIT assists in the processing and curation of macromolecular structure
-    data. MAXIT can:
-
-    - Read and write PDB and mmCIF format files, and translate between file formats.
-
-    - Perform consistency checks on coordinates, sequence, and crystal data.
-
-    - Automatically construct, transform, and merge information between formats
-
-    - Align residue numbering in the coordinates with the sequence
-
-    - Reorder and rename atoms in standard and nonstandard residues and ligands according
-    to the Chemical Component Dictionary
-
-    - Assign ligands the same chain IDs as the adjacent polymers
-
-    - Detect missing or additional atoms
-
-    '
+  description: "MAXIT assists in the processing and curation of macromolecular structure\
+    \ data. MAXIT can:\n  - Read and write PDB and mmCIF format files, and translate\
+    \ between file formats.\n  - Perform consistency checks on coordinates, sequence,\
+    \ and crystal data.\n  - Automatically construct, transform, and merge information\
+    \ between formats\n  - Align residue numbering in the coordinates with the sequence\n\
+    \  - Reorder and rename atoms in standard and nonstandard residues and ligands\
+    \ according to the Chemical Component Dictionary\n  - Assign ligands the same\
+    \ chain IDs as the adjacent polymers\n  - Detect missing or additional atoms\n"
   doc_url: https://sw-tools.rcsb.org/apps/MAXIT/README-source
   home: https://sw-tools.rcsb.org/apps/MAXIT
   license: RCSB PDB Software License
@@ -25,12 +14,11 @@ about:
   summary: MAXIT assists in the processing and curation of macromolecular structure
     data.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
   additional-platforms:
-  - linux-aarch64
   - osx-arm64
   recipe-maintainers:
   - eunos-1128
@@ -45,11 +33,29 @@ requirements:
   - bison
   - flex
   - coreutils
+  host:
+  - tcsh
+  run:
+  - tcsh
 source:
-  patches:
+- patches:
   - platform.sh.patch
+  - generate_assembly_cif_file.C.patch
+  - maxit.C.patch
+  - process_entry.C.patch
+  - make.platform.gnu8.patch
+  - binary.csh.patch
+  - system-util.C.patch
+  - Makefile.patch
   sha256: 658e236c6310cf7e55218a0500f82050ef86074f5d5b3f61d2a161b04a38cc39
   url: https://sw-tools.rcsb.org/apps/MAXIT/maxit-v11.200-prod-src.tar.gz
+- path: ./data-binary_linux-x86_64.tar.xz
+  sha256: 44a626b2f082a91c8dcdf110a0a0779dbb0e9aaa72b128a7dbd523f1456bb0be
 test:
   commands:
-  - output=$(maxit 2>&1 || true) && echo ${output} | grep -q 'maxit -input inputfile'
+  - wget https://files.rcsb.org/view/7KNT.pdb
+  - maxit -input 7KNT.pdb -output 7KNT.cif -o 1
+  - cat maxit.log
+  - test -f 7KNT.cif
+  requires:
+  - wget
