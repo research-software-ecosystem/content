@@ -6,22 +6,29 @@ about:
   summary: Kmer-db is a fast and memory-efficient tool for estimating evolutionary
     distances.
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
+  script: 'mkdir -p "${PREFIX}/bin"
+
+    cp -v kmer-db "${PREFIX}/bin/" || { echo "Error: Failed to copy kmer-db binary";
+    exit 1; }
+
+    '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
 package:
   name: kmer-db
-  version: 1.11.1
-requirements:
-  build:
-  - make
-  - None
-  - make
-  host:
-  - zlib
-  run:
-  - zlib
+  version: 2.2.2
 source:
-  sha256: 63886057a752a890f492bf4ca7ec97435eceebb4ac5ecb5664c69ae2736eaa80
-  url: https://github.com/refresh-bio/kmer-db/archive/v1.11.1.tar.gz
+  sha256: 6ba58753b1141a005e8a97bf581c1eada5cec6713a1f516518167f1da71b820b
+  url: https://github.com/refresh-bio/kmer-db/releases/download/v2.2.2/kmer-db-v2.2.2-arm64_mac.tar.gz
 test:
   commands:
   - kmer-db > /dev/null
+  - kmer-db -help

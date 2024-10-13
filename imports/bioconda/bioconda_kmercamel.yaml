@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/OndrejSladky/kmercamel/
+  license: MIT
+  license_file: LICENSE.txt
+  summary: "KmerCamel\U0001F42B - compressing k-mer sets using masked superstrings"
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: kmercamel
+  version: 1.0.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  - glpk
+  run:
+  - zlib
+  - glpk
+source:
+  sha256: b37449ef3f5d1bb6a45e24e4eba8102c40e689aa4e3eccc119d30a998b5790fa
+  url: https://github.com/OndrejSladky/kmercamel/archive/v1.0.2.tar.gz
+test:
+  commands:
+  - kmercamel -h 2>&1 | grep "KmerCamel"

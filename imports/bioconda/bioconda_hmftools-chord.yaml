@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/blob/master/chord/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Predict HRD using somatic mutations contexts
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-chord
+  version: 2.1.0_beta
+requirements:
+  host:
+  - r-base
+  - r-randomforest
+  - r-stringr
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
+  run:
+  - openjdk >=8
+  - r-base
+  - r-randomforest
+  - r-stringr
+  - bioconductor-bsgenome
+  - bioconductor-bsgenome.hsapiens.ucsc.hg19
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
+source:
+- folder: jar
+  sha256: 26d0a40e20635c4b797d28e0c7819b1653c9f8fa28180b9a556215d22387968c
+  url: https://github.com/hartwigmedical/hmftools/releases/download/chord-v2.1.0_beta/chord-2.1.0_beta.jar
+- folder: src
+  sha256: ed039e7b405130a1e52df71c3535c6a5ed8aab0f80724bc83df88ae14aeaa257
+  url: https://github.com/hartwigmedical/hmftools/archive/refs/tags/chord-v2.1.0_beta.tar.gz
+test:
+  commands:
+  - $R -e "library('CHORD')"
+  - $R -e "library('mutSigExtractor')"
+  - chord com.hartwig.hmftools.chord.ChordRunner -version | grep CHORD

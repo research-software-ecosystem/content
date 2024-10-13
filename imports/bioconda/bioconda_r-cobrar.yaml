@@ -9,7 +9,7 @@ about:
   summary: COnstraint-based Reconstruction and Analysis (COBRA) of metabolic networks
     in R
 build:
-  number: 0
+  number: 1
   rpaths:
   - lib/R/lib/
   - lib/
@@ -17,11 +17,14 @@ build:
   - None
   script: R CMD INSTALL --build .
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - Waschina
 package:
   name: r-cobrar
-  version: 0.1.0
+  version: 0.1.1
 requirements:
   build:
   - None
@@ -41,9 +44,9 @@ requirements:
   - r-rcpparmadillo
   - r-matrix
 source:
-  sha256: 8b8d7f7604fd93130f999a41ee30ce94c16f998520dfd73d6842d34ff96270a6
+  sha256: 0b22d09dde91ee01f735074a8bfb3a7129a799fabf3aa21dcb77d5842f119be4
   url:
-  - https://github.com/Waschina/cobrar/archive/refs/tags/v0.1.0.tar.gz
+  - https://github.com/Waschina/cobrar/archive/refs/tags/v0.1.1.tar.gz
 test:
   commands:
   - $R -e "library('cobrar')"

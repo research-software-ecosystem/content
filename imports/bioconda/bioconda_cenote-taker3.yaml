@@ -1,7 +1,9 @@
 about:
   dev_url: https://github.com/mtisza1/Cenote-Taker3
+  doc_url: https://github.com/mtisza1/Cenote-Taker3/blob/v3.3.2/README.md
   home: https://github.com/mtisza1/Cenote-Taker3
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: 'Cenote-Taker 3: Discover and annotate the virome'
 build:
@@ -13,19 +15,20 @@ build:
   run_exports:
   - None
   script:
-  - -m pip install . --no-deps -vv
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - mtisza1
 package:
   name: cenote-taker3
-  version: 3.3.1
+  version: 3.3.2
 requirements:
   host:
   - pip
-  - python >=3.10
+  - python >=3.6
+  - setuptools
   run:
-  - python >=3.10
+  - python >=3.6
   - seqkit
   - prodigal
   - pyrodigal-gv >=0.3.1
@@ -45,9 +48,10 @@ requirements:
   - samtools
   - pandas
   - pyarrow
+  - numpy
 source:
-  sha256: ce595208f3d925f7798e579b2d72b995b192eac802e24bb3d9d0a2ca856b5a99
-  url: https://github.com/mtisza1/cenote-taker3/archive/v3.3.1.tar.gz
+  sha256: b3b646825cedaaee15ac4e448408b8cedda2f3e1faa13a4601930bc7ff482d8b
+  url: https://github.com/mtisza1/Cenote-Taker3/archive/v3.3.2.tar.gz
 test:
   commands:
   - cenotetaker3 --version
