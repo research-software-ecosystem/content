@@ -1,0 +1,133 @@
+{
+    "additionDate": "2024-10-11T15:08:50.098419Z",
+    "biotoolsCURIE": "biotools:deeparg",
+    "biotoolsID": "deeparg",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "gustavo1@vt.edu",
+            "name": "Gustavo Arango-Argoty",
+            "typeRole": [
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "A deep learning based approach to predict Antibiotic Resistance Genes (ARGs) from metagenomes.",
+    "documentation": [
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://github.com/gaarangoa/deeparg?tab=readme-ov-file"
+        }
+    ],
+    "editPermission": {
+        "type": "public"
+    },
+    "function": [
+        {
+            "cmd": "deeparg short_reads_pipeline \\\n    --forward_pe_file ./test/F.fq.gz \\\n    --reverse_pe_file ./test/R.fq.gz \\\n    --output_file ./test/reads \\\n    -d ~/Desktop/darg \\\n    --bowtie_16s_identity 100",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        },
+                        {
+                            "term": "GZIP format",
+                            "uri": "http://edamontology.org/format_3989"
+                        }
+                    ]
+                }
+            ],
+            "note": "ARG prediction from raw reads",
+            "operation": [
+                {
+                    "term": "Antimicrobial resistance prediction",
+                    "uri": "http://edamontology.org/operation_3482"
+                }
+            ]
+        },
+        {
+            "cmd": "deeparg predict \\\n    --model LS \\\n    -i ./test/ORFs.fa \\\n    -o ./test/X \\\n    -d /path/to/data/ \\\n    --type nucl \\\n    --min-prob 0.8 \\\n    --arg-alignment-identity 30 \\\n    --arg-alignment-evalue 1e-10 \\\n    --arg-num-alignments-per-entry 1000",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Prediction of ARGs from assembled reads (short sequences or long sequences)",
+            "operation": [
+                {
+                    "term": "Antimicrobial resistance prediction",
+                    "uri": "http://edamontology.org/operation_3482"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Annotation track",
+                        "uri": "http://edamontology.org/data_3002"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/gaarangoa/deeparg",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2024-10-11T15:08:50.101943Z",
+    "license": "MIT",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/gaarangoa/deeparg"
+        }
+    ],
+    "name": "DeepARG",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
+    "owner": "hugo-lefeuvre",
+    "publication": [
+        {
+            "doi": "10.1186/s40168-018-0401-z"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Microbiology",
+            "uri": "http://edamontology.org/topic_3301"
+        }
+    ],
+    "version": [
+        "1.0.4"
+    ]
+}
