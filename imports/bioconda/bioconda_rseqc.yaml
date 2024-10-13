@@ -4,10 +4,11 @@ about:
   license_family: GPL2
   summary: RNA-seq QC Package
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --use-pep517 -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv'
   skip: true
 extra:
   additional-platforms:
@@ -29,11 +30,11 @@ requirements:
   run:
   - bx-python
   - numpy
-  - pip
   - pybigwig
   - pysam
   - python
   - r-base
+  - pandas
 source:
   sha256: 869f542e08f50c8874280d58e4f5565857b0aebac66a8eceef3f23016175061e
   url: https://pypi.io/packages/source/R/RSeQC/RSeQC-5.0.3.tar.gz

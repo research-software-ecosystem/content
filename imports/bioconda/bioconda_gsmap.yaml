@@ -1,0 +1,62 @@
+about:
+  authors:
+  - email: songliyang@westlake.edu.cn
+    name: liyang
+  - email: chenwenhao@westlake.edu.cn
+    name: wenhao
+  description: 'gsMap integrates spatial transcriptomics (ST) data with genome-wide
+    association study (GWAS) summary statistics to map cells to human complex traits,
+    including diseases, in a spatially resolved manner.
+
+    '
+  dev_url: https://github.com/LeonSong1995/gsMap
+  doc_url: https://yanglab.westlake.edu.cn/gsmap/document
+  home: https://github.com/LeonSong1995/gsMap
+  license: MIT
+  license_file: LICENSE
+  summary: gsMap (genetically informed spatial mapping of cells for complex traits)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vv
+extra:
+  recipe-maintainers:
+  - Ganten-Hornby
+  - leonSong1995
+package:
+  name: gsmap
+  version: 1.7
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - flit >=3.2,<4
+  run:
+  - python >=3.8
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  - seaborn
+  - tqdm
+  - progress
+  - pyyaml
+  - pyranges
+  - pyfiglet
+  - plotly
+  - kaleido-core
+  - jinja2
+  - scanpy >=1.8
+  - zarr
+  - bitarray
+  - pyarrow
+  - scikit-misc
+source:
+  sha256: 54a8373c79c1ffe71e0b4c1e2cf33aed1a61b742e23efa05b00b8466b3ec3da9
+  url: https://pypi.io/packages/source/g/gsMap/gsmap-1.70.tar.gz
+test:
+  commands:
+  - gsmap --help

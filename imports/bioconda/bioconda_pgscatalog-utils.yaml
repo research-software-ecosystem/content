@@ -6,16 +6,17 @@ about:
   summary: Utilities for working with PGS Catalog API and scoring files
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - nebfield
+  - smlmbrt
 package:
   name: pgscatalog-utils
-  version: 1.3.1
+  version: 1.4.1
 requirements:
   host:
   - python >=3.10,<4.0
@@ -23,14 +24,15 @@ requirements:
   - pip
   run:
   - python >=3.10.0,<4.0.0
-  - pgscatalog.calc >=0.2.1,<0.3.0
-  - pgscatalog.core >=0.2.1,<0.3.0
-  - pgscatalog.match >=0.2.1,<0.3.0
+  - pgscatalog.calc >=0.3.0,<0.4.0
+  - pgscatalog.core >=0.3.1,<0.4.0
+  - pgscatalog.match >=0.3.3,<0.4.0
 source:
-  sha256: 7816a0de184e385a1afeec153a5079f751ccda578d702af91391be389c0f09a7
-  url: https://pypi.io/packages/source/p/pgscatalog-utils/pgscatalog_utils-1.3.1.tar.gz
+  sha256: e54e67f9a372e91a7cc640528c66a9989258bc5ae61e7d6972a5b8ef4e1aa2da
+  url: https://pypi.io/packages/source/p/pgscatalog-utils/pgscatalog_utils-1.4.1.tar.gz
 test:
   commands:
+  - pip check
   - pgscatalog-download --help
   - pgscatalog-combine --help
   - pgscatalog-match --help
@@ -42,3 +44,5 @@ test:
   - pgscatalog.match
   - pgscatalog.calc
   - pgscatalog.core
+  requires:
+  - pip

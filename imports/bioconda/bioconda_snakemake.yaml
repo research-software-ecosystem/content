@@ -56,6 +56,7 @@ outputs:
     host:
     - python >=3.11
     - pip
+    - setuptools
     run:
     - python >=3.11,<3.13
     - appdirs
@@ -76,7 +77,7 @@ outputs:
     - requests >=2.8.1
     - reretry
     - smart_open >=4.0,<8.0
-    - snakemake-interface-executor-plugins >=9.2.0,<10.0.0
+    - snakemake-interface-executor-plugins >=9.3.2,<10.0.0
     - snakemake-interface-common >=1.17.0,<2.0
     - snakemake-interface-storage-plugins >=3.2.3,<4.0
     - snakemake-interface-report-plugins >=1.0.0,<2.0.0
@@ -91,28 +92,28 @@ outputs:
     commands:
     - export GIT\_PYTHON_REFRESH=warn
     - snakemake --version
-    - snakemake --version | grep "8.20.5"
+    - snakemake --version | grep "8.21.0"
     imports:
     - snakemake
 package:
   name: snakemake
-  version: 8.20.5
+  version: 8.21.0
 requirements:
   run:
-  - snakemake-minimal =8.20.5
+  - snakemake-minimal =8.21.0
   - pandas
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: 5b877b6cf9403397977b0ac0442a6e3aff70d8d893f74b586f988ff7e9c025d7
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-8.20.5.tar.gz
+  sha256: dcb30052645ab89facf680ef4ec021143eb5ef862bb2d2de2ec190a616c3c471
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-8.21.0.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - snakemake --version
-  - snakemake --version | grep "8.20.5"
+  - snakemake --version | grep "8.21.0"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:

@@ -1,6 +1,8 @@
 about:
+  dev_url: https://github.com/GitEnricoNeko/srahunter
   home: https://github.com/GitEnricoNeko/srahunter
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: srahunter is a tool for processing SRA accession numbers.
 build:
@@ -10,14 +12,15 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-build-isolation --no-deps -vvv
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 package:
   name: srahunter
-  version: 0.0.2
+  version: 0.0.3
 requirements:
   host:
   - python >=3.6
   - pip
+  - setuptools
   run:
   - datavzrd
   - entrez-direct
@@ -29,11 +32,8 @@ requirements:
   - tqdm >=4.66.1
   - sra-tools
 source:
-  sha256: 635dbea61296fc84857b8290fb8858b5dbc26301031d8fce3a5de2e340c78740
-  url: https://github.com/GitEnricoNeko/srahunter/archive/refs/tags/0.0.2.tar.gz
+  sha256: f8efc31a28f84bbf62aa4b9b5b78703273ed3b6fdc29a36edc9f835838e6dd2b
+  url: https://github.com/GitEnricoNeko/srahunter/archive/refs/tags/0.0.3.tar.gz
 test:
   commands:
-  - pip check
   - srahunter --help
-  requires:
-  - pip
