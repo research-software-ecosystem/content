@@ -8,14 +8,15 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps -vv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 package:
   name: biocode
-  version: 0.11.0
+  version: 0.12.0
 requirements:
   host:
   - pip
   - python >=3.6
+  - setuptools
   run:
   - jinja2
   - matplotlib-base
@@ -25,8 +26,8 @@ requirements:
   - taxadb
   - biopython
 source:
-  sha256: 5c0df506d07e6b073b56da360bba4dad8e0b90e4ceb6f62009ae51c56a83b162
-  url: https://pypi.io/packages/source/b/biocode/biocode-0.11.0.tar.gz
+  sha256: 42e6713223521337c04e3a7f92e1ae6229c5e00999b05a95a6c20643649475e2
+  url: https://pypi.io/packages/source/b/biocode/biocode-0.12.0.tar.gz
 test:
   commands:
   - append_to_column_9_value.py -h

@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/OndrejSladky/fmsi
+  doc_url: https://github.com/OndrejSladky/fmsi/blob/v0.2.4/README.md
+  home: https://github.com/OndrejSladky/fmsi
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: FMSI - memory efficient k-mer set index based on masked superstrings and
+    Burrows-Wheeler transform.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1101/2024.03.06.583483
+  - doi:10.1101/2023.02.01.526717
+package:
+  name: fmsi
+  version: 0.2.4
+requirements:
+  build:
+  - make
+  - cmake
+  - None
+  host:
+  - zlib
+  - sdsl-lite
+  run:
+  - sdsl-lite
+source:
+  patches:
+  - 0001-Makefile.patch
+  - 0002-version.patch
+  sha256: 67c930b8bad30e786fb7a59cc8592e1a7231024debc95af7e2c203bb7022b0b3
+  url: https://github.com/OndrejSladky/fmsi/archive/v0.2.4.tar.gz
+test:
+  commands:
+  - fmsi -h 2>&1 | grep "FMSI"
