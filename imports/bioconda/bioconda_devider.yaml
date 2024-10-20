@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/bluenote-1577/devider
+  license: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Haplotyping small sequences from heterogeneous long-read sequencing samples
+    with a SNP-encoded positional de Bruijn graphs.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - bluenote-1577
+package:
+  name: devider
+  version: 0.0.1
+requirements:
+  build:
+  - None
+  - None
+  - cargo-bundle-licenses
+  - make
+  - cmake >=3.12
+  host:
+  - clangdev >=16,<17
+  run:
+  - python
+  - samtools
+  - minimap2
+  - lofreq >=2.1.5
+  - tabix
+  - pysam >=0.16
+source:
+  patches:
+  - devider-aarch64.patch
+  sha256: e2c5e4a2faa51dbfd0ad4cb867d0dc25ea4012e83ec8fea27c1624592fce7dce
+  url: https://github.com/bluenote-1577/devider/archive/v0.0.1.tar.gz
+test:
+  commands:
+  - devider -h
+  - run_devider_pipeline -h
+  - haplotag_bam -h

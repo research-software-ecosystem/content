@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/refresh-bio/vclust
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  summary: Fast and accurate tool for calculating ANI and clustering virus genomes
+    and metagenomes.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: 'mkdir -p ${PREFIX}/bin
+
+    cp -r vclust.py bin ${PREFIX}/bin/
+
+    chmod +x ${PREFIX}/bin/vclust.py
+
+    '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: vclust
+  version: 1.2.7
+requirements:
+  host:
+  - python >=3.7
+  run:
+  - python >=3.7
+source:
+  sha256: b917c5af92e806b4244a62a32063c81bc9de3eae3760498444398fe7c5a7f623
+  url: https://github.com/refresh-bio/vclust/releases/download/v1.2.7/vclust-v1.2.7-arm64_mac.tar.gz
+test:
+  commands:
+  - vclust.py --help
+  - vclust.py info

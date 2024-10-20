@@ -1,4 +1,5 @@
 about:
+  doc_url: https://immunogenomics.github.io/presto/
   home: https://github.com/immunogenomics/presto
   license: GPL-3.0-only
   license_family: GPL3
@@ -8,13 +9,16 @@ about:
     Interfaces to dense and sparse matrices, as well as genomics analysis frameworks
     Seurat and SingleCellExperiment.
 build:
-  number: 0
+  number: 1
   rpaths:
   - lib/R/lib/
   - lib/
   run_exports:
   - None
   script: $R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - mfansler
 package:
   name: r-presto
   version: 1.0.0
@@ -45,8 +49,8 @@ requirements:
   - r-tibble
   - r-tidyr
 source:
-  sha256: 720ef58aba219af03344e0ae0408fc48feda50e6b7f7f4af2251eb24ce1bfb88
-  url: https://github.com/immunogenomics/presto/archive/31dc97fed5e2e7fc323ae4af62f72181cc51d9a3.tar.gz
+  sha256: 96e1b3a2fec84bbd0781d4d3235e33003cd4eb28944a433868ba446b956abcdb
+  url: https://github.com/immunogenomics/presto/archive/refs/tags/1.0.0.tar.gz
 test:
   commands:
   - $R -e "library('presto')"

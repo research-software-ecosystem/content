@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/sbooeshaghi/seqspec
+  license: MIT
+  license_file: LICENSE
+  summary: File format that describes data generated from genomics experiments.  File
+    format and seqspec tool enable uniform processing of genomics data.
+build:
+  entry_points:
+  - seqspec=seqspec.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - visze
+package:
+  name: seqspec
+  version: 0.3.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  run:
+  - python >=3.6
+  - pyyaml >=6.0
+  - jsonschema
+  - python-newick
+  - requests
+  - biopython
+  - packaging
+source:
+  sha256: d9e6c283daaca06f58f1090c0c7dcfecf646b9658e62aa873a4e85fef56c56c9
+  url: https://pypi.org/packages/source/s/seqspec/seqspec-0.3.0.tar.gz
+test:
+  commands:
+  - pip check
+  - seqspec version -h
+  imports:
+  - seqspec
+  requires:
+  - pip
