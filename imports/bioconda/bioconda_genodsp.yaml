@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/rsharris/genodsp
+  license: GPL-3.0-only
+  license_file: LICENSE
+  license_url: https://github.com/rsharris/genodsp/blob/master/LICENSE
+  summary: General workbench for processing signals along genomic (chromosomal) intervals
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: genodsp
+  version: 0.0.3
+requirements:
+  build:
+  - None
+  - make
+source:
+  patches:
+  - stringop-truncation.patch
+  sha256: a7fb2218311d1ae5231041863d28adb8b5fffe724fc5ff2422310ce90a9f894a
+  url: https://github.com/rsharris/genodsp/archive/refs/tags/v0.0.3+.zip
+test:
+  commands:
+  - genodsp --help
+  - ls -l ${PREFIX}/bin/
+  - ${PREFIX}/bin/genodsp --help

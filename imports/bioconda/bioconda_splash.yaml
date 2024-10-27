@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/refresh-bio/splash
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  summary: Unsupervised and reference-free unifying framework to discover regulated
+    sequence variation through statistical analysis of k-mer composition in both DNA
+    and RNA sequence.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: 'mkdir -p ${PREFIX}/bin
+
+    cp -r * ${PREFIX}/bin/
+
+    '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/s41587-024-02381-2
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: splash
+  version: 2.11.0
+requirements:
+  host:
+  - python >=3.7
+  run:
+  - python >=3.7
+source:
+  sha256: 2eb9856a39870d02e1663daa74d7468b730ca5f2b0260e16b712c02b15dc90d4
+  url: https://github.com/refresh-bio/SPLASH/releases/download/v2.11.0/splash-2.11.0.mac.arm64.tar.gz
+test:
+  commands:
+  - splash --help
