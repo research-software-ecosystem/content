@@ -1,17 +1,24 @@
 about:
+  dev_url: https://github.com/bbuchfink/diamond
   doc_url: https://github.com/bbuchfink/diamond/wiki
   home: https://github.com/bbuchfink/diamond
   license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: Accelerated BLAST compatible local sequence aligner
+  summary: Accelerated BLAST compatible local sequence aligner.
 build:
-  number: 0
+  number: 2
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - osx-arm64
+  - linux-aarch64
   identifiers:
-  - biotools:Diamond
+  - biotools:diamond
+  - usegalaxy-eu:bg_diamond
+  - usegalaxy-eu:bg_diamond_makedb
+  - usegalaxy-eu:bg_diamond_view
   - doi:10.1038/s41592-021-01101-x
 package:
   name: diamond
@@ -24,11 +31,7 @@ requirements:
   - make
   host:
   - zlib
-  - blast
   - zstd-static
-  run:
-  - blast
-  - zlib
 source:
   sha256: c6ede5df30d9d496af314e740964c35a0e358458d9c8d9b8dd517d69828d9981
   url: https://github.com/bbuchfink/diamond/archive/v2.1.10.tar.gz

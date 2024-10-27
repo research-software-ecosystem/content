@@ -22,6 +22,7 @@ build:
   number: 0
   run_exports:
   - None
+  skip: true
 extra:
   additional-platforms:
   - osx-arm64
@@ -31,7 +32,7 @@ extra:
   - kcleal
 package:
   name: gw
-  version: 1.1.0
+  version: 1.1.1
 requirements:
   build:
   - make
@@ -71,9 +72,12 @@ source:
   patches:
   - fix-linker-issues.patch
   - fix-context.patch
-  sha256: dc96521b8252bde02d9cc68bb3cee156c0469889d2783ee72682338d10657892
-  url: https://github.com/kcleal/gw/archive/refs/tags/v1.1.0.tar.gz
+  sha256: 5ac0430d9179d1a48938f24011c329fe807e72aba0c20eb191c566d129115f86
+  url: https://github.com/kcleal/gw/archive/refs/tags/v1.1.1.tar.gz
 test:
   commands:
-  - gw hg19 -b https://github.com/kcleal/gw/releases/download/v1.0.0/demo1.bam -r
-    chr8:37047270-37055161 -n > test.png; ls -lh test.png
+  - which gw && ls -lh $(which gw)
+  - uname -a
+  - if [[ "$(uname)" == "Darwin" ]]; then file $(which gw); otool -L $(which gw);
+    nm $(which gw); fi
+  - gw --version

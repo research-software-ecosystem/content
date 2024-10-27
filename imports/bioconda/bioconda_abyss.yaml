@@ -1,11 +1,12 @@
 about:
   dev_url: https://github.com/bcgsc/abyss
-  doc_url: https://github.com/bcgsc/abyss#readme
-  home: http://www.bcgsc.ca/platform/bioinfo/software/abyss
+  doc_url: https://github.com/bcgsc/abyss/blob/v2.3.10/README.md
+  home: https://www.bcgsc.ca/platform/bioinfo/software/abyss
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: LICENSE
   summary: Assembly By Short Sequences - a de novo, parallel, paired-end short read
-    sequence assembler
+    sequence assembler.
 build:
   number: 0
   run_exports:
@@ -18,32 +19,35 @@ extra:
     extended-base: true
   identifiers:
   - biotools:abyss
+  - usegalaxy-eu:abyss-pe
   - doi:10.1101/gr.214346.116
   - doi:10.1101/gr.089532.108
 package:
   name: abyss
-  version: 2.3.9
+  version: 2.3.10
 requirements:
   build:
   - None
   - make
+  - automake
+  - autoconf
+  - libtool
   host:
   - boost-cpp
   - sparsehash
   - openmpi
   - btllib
   run:
+  - boost-cpp
   - openmpi
   - make
   - util-linux
   - perl
 source:
-  patches:
-  - config.patch
-  sha256: 55f0b27b67b4486dc6cbe132c0f4c228ee4f9e86c56292a7b50633df87e3212e
-  url: https://github.com/bcgsc/abyss/releases/download/2.3.9/abyss-2.3.9.tar.gz
+  sha256: bbe42e00d1ebb53ec6afaad07779baaaee994aa5c65b9a38cf4ad2011bb93c65
+  url: https://github.com/bcgsc/abyss/releases/download/2.3.10/abyss-2.3.10.tar.gz
 test:
   commands:
-  - ABYSS-P --version | grep -q "2.3.9"
-  - ABYSS --version | grep -q "2.3.9"
+  - ABYSS-P --version | grep -q "2.3.10"
+  - ABYSS --version | grep -q "2.3.10"
   - abyss-pe help | grep -q "Assemble reads into contigs and scaffolds"

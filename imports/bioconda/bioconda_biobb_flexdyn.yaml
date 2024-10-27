@@ -14,39 +14,45 @@ about:
     Licensed under the\n[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0),\
     \ see the file LICENSE for details.\n\n![](https://bioexcel.eu/wp-content/uploads/2019/04/Bioexcell_logo_1080px_transp.png\
     \ \"Bioexcel\")\n\n\n"
+  dev_url: https://github.com/bioexcel/biobb_flexdyn
   home: https://github.com/bioexcel/biobb_flexdyn
-  license: Apache Software License
+  license: Apache-2.0
   license_family: APACHE
+  license_file: LICENSE
   summary: Biobb_flexdyn is a BioBB category for studies on the conformational landscape
     of native proteins.
 build:
+  entry_points:
+  - concoord_dist = biobb_flexdyn.flexdyn.concoord_dist:main
+  - concoord_disco = biobb_flexdyn.flexdyn.concoord_disco:main
+  - imod_imode = biobb_flexdyn.flexdyn.imod_imode:main
+  - imod_imove = biobb_flexdyn.flexdyn.imod_imove:main
+  - imod_imc = biobb_flexdyn.flexdyn.imod_imc:main
+  - nolb_nma = biobb_flexdyn.flexdyn.nolb_nma:main
+  - prody_anm = biobb_flexdyn.flexdyn.prody_anm:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 package:
   name: biobb_flexdyn
-  version: 4.2.0
+  version: 5.0.0
 requirements:
   host:
-  - python >=3.8
-  - setuptools
-  - biobb_common ==4.2.0
-  - concoord
-  - prody
-  - imods
-  - nolb
+  - python >=3.9,<3.12
+  - pip
   run:
-  - python >=3.8
-  - biobb_common ==4.2.0
+  - python >=3.9,<3.12
+  - biobb_common ==5.0.0
+  - scipy >=1.13.0,<1.14.0
   - concoord
   - prody
   - imods
   - nolb
 source:
-  sha256: 5cfe112fb35a86fff4d452efb966fa18757bad4ea1f4017b226e765a8e6f776e
-  url: https://pypi.io/packages/source/b/biobb_flexdyn/biobb_flexdyn-4.2.0.tar.gz
+  sha256: ae30f8f64e851b1e7546c7c212a079839d1e26cf01fb9d4c88bb0eb1f29f6203
+  url: https://pypi.io/packages/source/b/biobb_flexdyn/biobb_flexdyn-5.0.0.tar.gz
 test:
   imports:
   - biobb_flexdyn

@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/snipe-bio/snipe
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file: LICENSE.txt
+  summary: SRA-Scale sequence QC and analysis
+build:
+  entry_points:
+  - snipe = snipe.cli.main:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  authors:
+  - mr-eyes
+  - drtamermanosur
+  recipe-maintainers:
+  - mr-eyes
+package:
+  name: snipe
+  version: 0.1.5
+requirements:
+  host:
+  - python <3.12
+  - pip
+  - hatchling
+  run:
+  - python >=3.7,<3.12
+  - requests >=2.25.1
+  - click >=8.0.0
+  - numpy >=1.22,<2
+  - pathos
+  - pandas
+  - tqdm
+  - lzstring
+  - rapidfuzz
+  - zlib
+  - pyfastx >=2.1.0,<3.0a0
+  - sourmash >=4.8.11
+source:
+  sha256: 70fbf5dddc7e843cf5a2225e66423e4842c21757b7d8646542913aa2cddbf1b6
+  url: https://github.com/snipe-bio/snipe/archive/refs/tags/v0.1.5.tar.gz
+test:
+  imports:
+  - snipe
+  requires:
+  - pytest
