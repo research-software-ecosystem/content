@@ -1,0 +1,52 @@
+about:
+  home: https://github.com/earmingol/cell2cell
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  summary: Inferring cell-cell interactions from transcriptomes with cell2cell
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: cell2cell
+  version: 0.7.4
+requirements:
+  build:
+  - None
+  host:
+  - python <=3.9
+  - cython
+  - pip
+  run:
+  - python <=3.9
+  - numpy >=1.16,<2.0
+  - pandas >=1.0.0
+  - xlrd >=1.1
+  - openpyxl >=2.6.2
+  - networkx >=2.3
+  - matplotlib-base >=3.2.0,<3.7.3
+  - seaborn >=0.11.0
+  - scikit-learn
+  - umap-learn
+  - tqdm
+  - statsmodels
+  - statannotations
+  - tensorly ==0.8.1
+  - kneed
+  - scanpy <=1.9.3
+  - gseapy ==1.0.3
+source:
+  sha256: 2e17a1556d90c187434aa492000b2ced0d755cf6d437732f07df42e6670370e0
+  url: https://pypi.org/packages/source/c/cell2cell/cell2cell-0.7.4.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - benchmarks
+  - cell2cell
+  requires:
+  - pip

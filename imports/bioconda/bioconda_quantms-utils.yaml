@@ -1,9 +1,11 @@
 about:
   dev_url: https://www.github.com/bigbio/quantms-utils
+  doc_url: https://quantms.org/home
   home: https://www.github.com/bigbio/quantms-utils
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Python package with scripts and helpers for the quantms workflow
+  summary: Python package with scripts and helpers for the quantms workflow.
 build:
   entry_points:
   - quantmsutilsc=quantmsutils.quantmsutilsc:main
@@ -11,22 +13,24 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - ypriverol
 package:
   name: quantms-utils
-  version: 0.0.11
+  version: 0.0.12
 requirements:
   host:
-  - python >=3.8,<4.0
+  - python >=3.8
   - pip
+  - poetry-core
+  - setuptools
   run:
   - python >=3.7.0,<4.0.0
   - click >=7.0
   - pydantic >=1.10,<2
-  - sdrf-pipelines >=0.0.29
+  - sdrf-pipelines >=0.0.31
   - pyopenms >=2.9.1
   - ms2rescore ==3.0.3
   - psm-utils ==0.8.2
@@ -37,13 +41,14 @@ requirements:
   - scipy ==1.13.1
   - scikit-learn
   - deeplcretrainer
+  - protobuf >=3.9.2
+  - pyarrow
+  - pygam
 source:
-  sha256: f1205db7526f09d36606288782363b352546a100b4763c16d988d7cdb45bf26f
-  url: https://pypi.io/packages/source/q/quantms-utils/quantms_utils-0.0.11.tar.gz
+  sha256: 99ecf7e68acad272749040b231701018aaa76c391ceb234eaefd6f6842c2a4e6
+  url: https://pypi.io/packages/source/q/quantms-utils/quantms_utils-0.0.12.tar.gz
 test:
   commands:
   - quantmsutilsc --help
   imports:
   - quantmsutils
-  requires:
-  - pip

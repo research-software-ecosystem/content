@@ -3,17 +3,22 @@ about:
   license: BSD-3-Clause-Clear
   summary: PacBio tool to cluster HiFi reads and generate high quality consensus sequences
 build:
-  noarch: generic
+  binary_relocation: false
   number: 0
+  run_exports:
+  - None
+  skip: true
 extra:
   recipe-maintainers:
   - zeeev
+  skip-lints:
+  - should_be_noarch_generic
 package:
   name: pbaa
-  version: 1.0.3
+  version: 1.1.0
 source:
-- sha256: 39ee21fc8b94d15f2004afeb34c6370bcb7661f8e29d35ebd50349f0dced472c
-  url: https://github.com/PacificBiosciences/pbAA/releases/download/1.0.3/pbaa
+- sha256: fb94e8122593a3a6ce6405239645f2f3b15a996113c00ce3872058be9caa1b89
+  url: https://github.com/PacificBiosciences/pbAA/releases/download/1.1.0/pbaa
 test:
   commands:
   - pbaa -h

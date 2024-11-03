@@ -1,0 +1,50 @@
+about:
+  description: 'DeepChopper is a genomic language model designed to identify artificial
+    sequences.
+
+    It provides functionality for encoding FASTQ files, making predictions, and chopping
+    sequences.
+
+    '
+  dev_url: https://github.com/ylab-hi/DeepChopper
+  doc_url: https://github.com/ylab-hi/DeepChopper
+  home: https://github.com/ylab-hi/DeepChopper
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: A CLI for Genomic Language Model for Chimera Artifact Detection in Nanopore
+    Direct RNA Sequencing.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - yangyangli
+package:
+  name: deepchopper-cli
+  version: 1.2.5
+requirements:
+  build:
+  - None
+  - None
+  - make
+  - cmake
+  host:
+  - python
+  - pip
+  - maturin >=1.2.1,<2
+  - setuptools-rust
+  - setuptools
+  run:
+  - python
+source:
+  sha256: fc5ceaf204f82eeae1b82488ee44d020c66b0df13d27a86658ed86a7b1774dbb
+  url: https://pypi.io/packages/source/d/deepchopper-cli/deepchopper_cli-1.2.5.tar.gz
+test:
+  commands:
+  - deepchopper-chop -h
