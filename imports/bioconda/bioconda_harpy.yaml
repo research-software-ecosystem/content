@@ -15,14 +15,14 @@ about:
 build:
   entry_points:
   - harpy = harpy.__main__:cli
-  number: 1
+  number: 0
   run_exports:
   - None
   script: "mkdir -p ${PREFIX}/bin\n\"${CXX}\" harpy/bin/extractReads.cpp -O3 -o ${PREFIX}/bin/extractReads\n\
     ${PYTHON} -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv\n\
     chmod 0755 harpy/bin/* \ncp -rf harpy/bin/* ${PREFIX}/bin/\n"
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=1.9
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.10
   skip: true
 extra:
   additional-platforms:
@@ -31,7 +31,7 @@ extra:
   - pdimens
 package:
   name: harpy
-  version: '1.9'
+  version: '1.10'
 requirements:
   build:
   - None
@@ -43,7 +43,6 @@ requirements:
   - apptainer
   - bcftools =1.20
   - conda >24.7
-  - pandas
   - pysam
   - python
   - rich-click
@@ -52,8 +51,8 @@ requirements:
   - seqtk
   - tabix
 source:
-  sha256: 9b9b717eea2eff2d35b3096d5867f34813d1d7ca9d8946df10844c0635b98fd8
-  url: https://github.com/pdimens/harpy/releases/download/1.9/harpy.1.9.tar.gz
+  sha256: a2664cf94e89f1a1ab20519445c0649425ddf4c9204bdfe91cfc36a77e835f82
+  url: https://github.com/pdimens/harpy/releases/download/1.10/harpy.1.10.tar.gz
 test:
   commands:
   - snakemake --version

@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/saezlab/corneto/
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: 'CORNETO: A Unified Framework for Omics-Driven Network Inference'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: corneto
+  version: 1.0.0a0
+requirements:
+  host:
+  - python >=3.9
+  - poetry-core >=1.0.0
+  - pip
+  run:
+  - python >=3.9
+  - numpy >=1.15,<2.0.0
+  - cvxpy-base >=1.5.0,<2.0.0
+  - scipy >=1.11.0,<2.0.0
+source:
+  sha256: 966d50762f92047ea4e5d1a136607f20ae9ec1d585530a24ad5c95e700b24180
+  url: https://pypi.org/packages/source/c/corneto/corneto-1.0.0a0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - corneto
+  requires:
+  - pip

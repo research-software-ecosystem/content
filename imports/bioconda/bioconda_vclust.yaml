@@ -8,11 +8,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: 'mkdir -p ${PREFIX}/bin
-
-    cp -r vclust.py bin ${PREFIX}/bin/
-
-    chmod +x ${PREFIX}/bin/vclust.py
+  script: '-m pip install vclust-1.2.8-py3-none-macosx_11_0_arm64.whl
 
     '
 extra:
@@ -24,16 +20,17 @@ extra:
   - should_not_be_noarch_source
 package:
   name: vclust
-  version: 1.2.7
+  version: 1.2.8
 requirements:
   host:
   - python >=3.7
+  - pip
   run:
   - python >=3.7
 source:
-  sha256: b917c5af92e806b4244a62a32063c81bc9de3eae3760498444398fe7c5a7f623
-  url: https://github.com/refresh-bio/vclust/releases/download/v1.2.7/vclust-v1.2.7-arm64_mac.tar.gz
+  sha256: 8c70fd4b684c233743c98b5dc1004ad0a4c1c9ad793278a2337a26962dfe1ad6
+  url: https://files.pythonhosted.org/packages/0e/a8/d35b83baff04e299b3600b91b3f4f5df9aa08210381198ee5ab814e6881c/vclust-1.2.8-py3-none-macosx_11_0_arm64.whl
 test:
   commands:
-  - vclust.py --help
-  - vclust.py info
+  - vclust --help
+  - vclust info

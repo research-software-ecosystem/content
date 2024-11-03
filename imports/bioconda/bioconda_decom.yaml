@@ -1,12 +1,15 @@
 about:
-  dev_url: https://camiladuitama.github.io/gradfolio/
+  description: 'decOM is a similarity-based microbial source tracking tool for contamination
+    assessment of ancient oral samples using k-mer-based methods.
+
+    '
+  dev_url: https://github.com/CamilaDuitama/decOM
   doc_url: https://github.com/CamilaDuitama/decOM
   home: https://github.com/CamilaDuitama/decOM
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'decOM: Similarity-based microbial source tracking for contamination assessment
-    of ancient oral samples using k-mer-based methods'
+  summary: 'decOM: Microbial source tracking of ancient oral samples using k-mers.'
 build:
   entry_points:
   - decOM = decOM.__main__:main
@@ -16,10 +19,10 @@ build:
   - decOM-CV = decOM.CV.__main__:main
   - decOM-MST = decOM.MST.__main__:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: ' -m pip install . -vv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - CamilaDuitama
@@ -29,16 +32,18 @@ package:
 requirements:
   host:
   - pip
-  - python
+  - python >=3.6
+  - setuptools
   run:
+  - python >=3.6
+  - setuptools
   - colorama
+  - numpy
+  - pandas
+  - plotly >=5.5.0
   - dask >=2021.12.0
   - importlib_resources >=5.4.0
   - python-kaleido
-  - numpy >=1.7
-  - pandas
-  - plotly >=5.5.0
-  - python
   - git
 source:
   sha256: c9efaa97b7abfe6f19f01a199ca6c7a7b32ec699f886d226667b8b5fe562dd88
@@ -51,3 +56,12 @@ test:
   - decOM-LOO --help
   - decOM-CV --help
   - decOM-MST --help
+  imports:
+  - decOM
+  - decOM.CV
+  - decOM.LOO
+  - decOM.MST
+  - decOM.aOralOut
+  - decOM.data
+  - decOM.format
+  - decOM.modules

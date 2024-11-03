@@ -1,0 +1,72 @@
+about:
+  description: 'MeTA is a workflow implemented to minimize microstructural heterogeneity
+    in diffusion MRI (dMRI) metrics by extracting and parcellating the core volume
+    along the bundle length in the voxel-space directly while effectively preserving
+    bundle shape and efficiently capturing the regional variation within and along
+    white matter (WM) bundles.
+
+    '
+  dev_url: https://github.com/bagari/meta
+  doc_url: https://github.com/bagari/meta/wiki
+  home: https://github.com/bagari/meta
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  summary: Medial Tractography Analysis (MeTA)
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  bulk: true
+  recipe-maintainers:
+  - bagari
+package:
+  name: meta
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+  host:
+  - python >=3.9,<3.10
+  - pip
+  - boost =1.82
+  - itk =5.3.0
+  - libitk =5.3.0
+  - libitk-devel =5.3.0
+  - hdf5 >=1.14.2,<1.14.3.0a0
+  - vtk-base >=9.2.6,<9.3.0 build=*qt*
+  - libexpat >=2.5.0,<2.6.0
+  - vtk-io-ffmpeg >=9.2.6,<9.3.0 build=*qt*
+  run:
+  - qhull
+  - boost =1.82
+  - itk =5.3.0
+  - libitk =5.3.0
+  - libitk-devel =5.3.0
+  - hdf5 >=1.14.2,<1.14.3.0a0
+  - vtk-base >=9.2.6,<9.3.0 build=*qt*
+  - numpy >=1.21
+  - nibabel
+  - pandas
+  - pyvista
+  - scipy
+  - tqdm
+  - tslearn
+  - dipy
+  - libexpat >=2.5.0,<2.6.0
+  - vtk-io-ffmpeg >=9.2.6,<9.3.0 build=*qt*
+source:
+  sha256: a35dd5bc3ccffaaf83aa488233467ae85dc5374aea3068c34a6dc85ea29e27a9
+  url: https://github.com/bagari/meta/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - meta --help 2>&1 || exit 1
+  - vtklevelset resources/CST_R.nii.gz CST_R.vtk 0.1 && test -f CST_R.vtk
+  - cmrep_vskel -c 3 -p 1.5 -g CST_R.vtk CST_R_skeleton.vtk && test -f CST_R_skeleton.vtk
+  imports:
+  - meta
+  source_files:
+  - resources/CST_R.nii.gz
