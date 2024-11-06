@@ -18,11 +18,13 @@ build:
   - None
   skip: true
 extra:
+  additional-platforms:
+  - osx-arm64
   bulk: true
   recipe-maintainers:
   - bagari
 package:
-  name: meta
+  name: meta-neuro
   version: 1.0.0
 requirements:
   build:
@@ -30,43 +32,36 @@ requirements:
   - cmake
   - make
   host:
-  - python >=3.9,<3.10
+  - vtk >=9.2.6,<9.3.0 build=**
+  - libitk-devel ==5.3.0
+  - hdf5 >=1.14.2,<1.14.3.0a0
+  - libboost-python-devel >=1.82.0,<1.83.0
+  - python
   - pip
-  - boost =1.82
-  - itk =5.3.0
-  - libitk =5.3.0
-  - libitk-devel =5.3.0
-  - hdf5 >=1.14.2,<1.14.3.0a0
-  - vtk-base >=9.2.6,<9.3.0 build=*qt*
-  - libexpat >=2.5.0,<2.6.0
-  - vtk-io-ffmpeg >=9.2.6,<9.3.0 build=*qt*
+  - setuptools
   run:
-  - qhull
-  - boost =1.82
-  - itk =5.3.0
-  - libitk =5.3.0
-  - libitk-devel =5.3.0
+  - vtk >=9.2.6,<9.3.0 build=**
+  - libitk-devel ==5.3.0
   - hdf5 >=1.14.2,<1.14.3.0a0
-  - vtk-base >=9.2.6,<9.3.0 build=*qt*
-  - numpy >=1.21
-  - nibabel
-  - pandas
-  - pyvista
-  - scipy
+  - libboost-python-devel >=1.82.0,<1.83.0
+  - qhull
+  - python
+  - pip
+  - setuptools
+  - numpy
   - tqdm
-  - tslearn
   - dipy
-  - libexpat >=2.5.0,<2.6.0
-  - vtk-io-ffmpeg >=9.2.6,<9.3.0 build=*qt*
+  - scipy
+  - pandas
+  - nibabel
+  - tslearn
+  - pyvista
 source:
-  sha256: a35dd5bc3ccffaaf83aa488233467ae85dc5374aea3068c34a6dc85ea29e27a9
+  sha256: c67bcad0899fc3f9c890ee26e9c1c2ab1a892430ce00a9ac090e36697efc9434
   url: https://github.com/bagari/meta/archive/refs/tags/v1.0.0.tar.gz
 test:
   commands:
-  - meta --help 2>&1 || exit 1
-  - vtklevelset resources/CST_R.nii.gz CST_R.vtk 0.1 && test -f CST_R.vtk
-  - cmrep_vskel -c 3 -p 1.5 -g CST_R.vtk CST_R_skeleton.vtk && test -f CST_R_skeleton.vtk
+  - vtklevelset $PREFIX/share/meta-neuro/example/test.nii.gz test.vtk 0.1
+  - cmrep_vskel -c 3 -p 1.5 -g test.vtk test_skeleton.vtk
   imports:
   - meta
-  source_files:
-  - resources/CST_R.nii.gz

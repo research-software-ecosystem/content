@@ -1,28 +1,35 @@
 about:
+  dev_url: https://github.com/Adamtaranto/TE-insertion-scanner
+  doc_url: https://github.com/Adamtaranto/TE-insertion-scanner/blob/0.2.1/README.md
   home: https://github.com/Adamtaranto/TE-insertion-scanner
-  license: MIT License
+  license: MIT
   license_family: MIT
   summary: Find alignment signatures characteristic of transposon insertion sites.
 build:
   entry_points:
-  - tinscan-prep=tinscan.run_prep:main
-  - tinscan-align=tinscan.run_align:main
-  - tinscan-find=tinscan.run_scan:main
+  - tinscan-prep = tinscan.run_prep:main
+  - tinscan-align = tinscan.run_align:main
+  - tinscan-find = tinscan.run_scan:main
   noarch: python
-  number: 2
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 package:
   name: tinscan
-  version: 0.2.0
+  version: 0.2.1
 requirements:
   host:
-  - python >=3
+  - python >=3.8
   - pip
+  - hatchling
+  - hatch-vcs
   run:
-  - python >=3
+  - python >=3.8
   - biopython >=1.70
 source:
-  md5: 3e420a6dd9ac68563324cc8dad0d2612
-  url: https://pypi.python.org/packages/c9/99/d6e16cb82532feb854e9e4fd403567d6c3fa462ff3a506685cfa4d545ba3/tinscan-0.2.0.tar.gz
+  sha256: e3ca443aeff3bc0f94050e5d46c0f79db65f20e7f13ab440b5963a8a4ed06c48
+  url: https://pypi.org/packages/source/t/tinscan/tinscan-0.2.1.tar.gz
 test:
   commands:
   - tinscan-prep --help
