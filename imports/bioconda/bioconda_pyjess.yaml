@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/althonos/pyjess
+  doc_url: https://pyjess.readthedocs.org
+  home: https://github.com/althonos/pyjess
+  license: MIT
+  license_family: MIT
+  license_file: COPYING
+  summary: Cython bindings and Python interface to JESS, a 3D template matching software.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv'
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - althonos
+package:
+  name: pyjess
+  version: 0.3.3
+requirements:
+  build:
+  - None
+  - cmake >=3.20
+  - make
+  host:
+  - python
+  - pip
+  - cython
+  - scikit-build-core
+  run:
+  - python
+source:
+  sha256: dc7d9a39ce75112d672780a57a9629afb3a78af6194028d8fad7a7138024de6f
+  url: https://pypi.io/packages/source/p/pyjess/pyjess-0.3.3.tar.gz
+test:
+  commands:
+  - python -m unittest -vv pyjess.tests
+  imports:
+  - pyjess

@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/bcgsc/ntStat
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: a toolkit for statistical analysis of k-mer frequency and depth
+build:
+  number: 0
+  run_exports:
+  - None
+package:
+  name: ntstat
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - meson
+  - meson-python
+  - cmake
+  - python
+  host:
+  - python
+  - llvm-openmp
+  - libgomp
+  - btllib >=1.7.2
+  - cpp-argparse
+  - cpp-tabulate
+  - indicators
+  - pybind11
+  run:
+  - python
+  - ntcard
+  - btllib >=1.7.2
+  - matplotlib-base
+  - numpy
+  - scipy
+  - tabulate
+source:
+  sha256: cbdf691033727466aaa774c5b9a7fc549448280b53f59579d1a43d9e943f9abd
+  url: https://github.com/bcgsc/ntStat/releases/download/v1.0.0/ntStat-1.0.0.tar.gz
+test:
+  commands:
+  - ntstat --version
+  - ntstat count --help
