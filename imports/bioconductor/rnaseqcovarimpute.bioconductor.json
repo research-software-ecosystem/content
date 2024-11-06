@@ -1,0 +1,74 @@
+{
+    "Archs": "x64",
+    "Author": "Brennan Baker [aut, cre] (<https://orcid.org/0000-0001-5459-9141>), Sheela Sathyanarayana [aut], Adam Szpiro [aut], James MacDonald [aut], Alison Paquette [aut]",
+    "BugReports": "https://github.com/brennanhilton/RNAseqCovarImpute/issues",
+    "Date/Publication": "2024-10-29",
+    "Depends": [
+        "R (>= 4.3.0)"
+    ],
+    "Description": "The RNAseqCovarImpute package makes linear model analysis for RNA sequencing read counts compatible with multiple imputation (MI) of missing covariates. A major problem with implementing MI in RNA sequencing studies is that the outcome data must be included in the imputation prediction models to avoid bias. This is difficult in omics studies with high-dimensional data. The first method we developed in the RNAseqCovarImpute package surmounts the problem of high-dimensional outcome data by binning genes into smaller groups to analyze pseudo-independently. This method implements covariate MI in gene expression studies by 1) randomly binning genes into smaller groups, 2) creating M imputed datasets separately within each bin, where the imputation predictor matrix includes all covariates and the log counts per million (CPM) for the genes within each bin, 3) estimating gene expression changes using `limma::voom` followed by `limma::lmFit` functions, separately on each M imputed dataset within each gene bin, 4) un-binning the gene sets and stacking the M sets of model results before applying the `limma::squeezeVar` function to apply a variance shrinking Bayesian procedure to each M set of model results, 5) pooling the results with Rubins’ rules to produce combined coefficients, standard errors, and P-values, and 6) adjusting P-values for multiplicity to account for false discovery rate (FDR). A faster method uses principal component analysis (PCA) to avoid binning genes while still retaining outcome information in the MI models. Binning genes into smaller groups requires that the MI and limma-voom analysis is run many times (typically hundreds). The more computationally efficient MI PCA method implements covariate MI in gene expression studies by 1) performing PCA on the log CPM values for all genes using the Bioconductor `PCAtools` package, 2) creating M imputed datasets where the imputation predictor matrix includes all covariates and the optimum number of PCs to retain (e.g., based on Horn’s parallel analysis or the number of PCs that account for >80% explained variation), 3) conducting the standard limma-voom pipeline with the `voom` followed by `lmFit` followed by `eBayes` functions on each M imputed dataset, 4) pooling the results with Rubins’ rules to produce combined coefficients, standard errors, and P-values, and 5) adjusting P-values for multiplicity to account for false discovery rate (FDR).",
+    "Imports": [
+        "Biobase",
+        "BiocGenerics",
+        "BiocParallel",
+        "dplyr",
+        "edgeR",
+        "foreach",
+        "limma",
+        "magrittr",
+        "mice",
+        "rlang",
+        "stats"
+    ],
+    "License": "GPL-3",
+    "MD5sum": "2b8770546c6f7feeacc2935c0db3065a",
+    "Maintainer": "Brennan Baker <brennanhilton@gmail.com>",
+    "NeedsCompilation": "no",
+    "Package": "RNAseqCovarImpute",
+    "Rank": 2143,
+    "Rfiles": [
+        "vignettes/RNAseqCovarImpute/inst/doc/Example_Data_for_RNAseqCovarImpute.R",
+        "vignettes/RNAseqCovarImpute/inst/doc/Impute_Covariate_Data_in_RNA_sequencing_Studies.R"
+    ],
+    "Suggests": [
+        "BiocStyle",
+        "PCAtools",
+        "knitr",
+        "rmarkdown",
+        "stringr",
+        "testthat (>= 3.0.0)",
+        "tidyr"
+    ],
+    "Title": "Impute Covariate Data in RNA Sequencing Studies",
+    "URL": "https://github.com/brennanhilton/RNAseqCovarImpute",
+    "Version": "1.4.0",
+    "VignetteBuilder": "knitr",
+    "biocViews": [
+        "DifferentialExpression",
+        "GeneExpression",
+        "RNASeq",
+        "Sequencing",
+        "Software"
+    ],
+    "dependencyCount": "82",
+    "git_branch": "RELEASE_3_20",
+    "git_last_commit": "a863a3d",
+    "git_last_commit_date": "2024-10-29",
+    "git_url": "https://git.bioconductor.org/packages/RNAseqCovarImpute",
+    "hasINSTALL": false,
+    "hasLICENSE": false,
+    "hasNEWS": true,
+    "hasREADME": false,
+    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.4/RNAseqCovarImpute_1.3.0.tgz",
+    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.4/RNAseqCovarImpute_1.4.0.tgz",
+    "source.ver": "src/contrib/RNAseqCovarImpute_1.4.0.tar.gz",
+    "vignetteTitles": [
+        "Example Data for RNAseqCovarImpute",
+        "Impute Covariate Data in RNA-sequencing Studies"
+    ],
+    "vignettes": [
+        "vignettes/RNAseqCovarImpute/inst/doc/Example_Data_for_RNAseqCovarImpute.html",
+        "vignettes/RNAseqCovarImpute/inst/doc/Impute_Covariate_Data_in_RNA_sequencing_Studies.html"
+    ],
+    "win.binary.ver": "bin/windows/contrib/4.4/RNAseqCovarImpute_1.4.0.zip"
+}
