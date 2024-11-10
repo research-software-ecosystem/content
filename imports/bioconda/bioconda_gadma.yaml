@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/ctlab/GADMA
   doc_url: https://gadma.readthedocs.io/en/latest/
   home: https://github.com/ctlab/GADMA
   license: GNU General Public (GPL)
@@ -16,37 +17,41 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=2.0.0
+  - SETUPTOOLS_SCM_PRETEND_VERSION=2.0.2
 extra:
   identifiers:
   - doi:10.1093/gigascience/giaa005
 package:
   name: gadma
-  version: 2.0.0
+  version: 2.0.2
 requirements:
   host:
-  - python >=3.6,<3.9
+  - python >=3.6
   - pip
   - setuptools-scm
+  - setuptools
   run:
-  - python >=3.6,<3.9
+  - python >=3.6
   - dadi
+  - demes
+  - demesdraw
+  - h5py ==3.10.0
   - matplotlib-base
   - mpmath
   - nlopt
   - numpy
-  - pandas
+  - pandas <=2.2.2
   - pillow
-  - ruamel.yaml
-  - scipy
+  - ruamel.yaml ==0.16.12
+  - scipy <1.14
   - networkx
   - moments
   - scikit-allel
 source:
-  sha256: 1e891b87749261ce9c1866fd3e0ac389306096e3b940eb364101448efeca4cfd
-  url: https://pypi.io/packages/source/g/gadma/gadma-2.0.0.tar.gz
+  sha256: f7b610d0d347e97afb30e6b5f9a814c19e479203838de31aa2e44f7427073db5
+  url: https://pypi.io/packages/source/g/gadma/gadma-2.0.2.tar.gz
 test:
   commands:
   - gadma --help
