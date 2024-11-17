@@ -16,17 +16,21 @@ extra:
   - biotools:muscle
 package:
   name: muscle
-  version: 5.2
+  version: 5.3
 requirements:
   build:
   - None
   - llvm-openmp
+  - macports-legacy-support
   - make
 source:
   patches:
   - support-linux-aarch64.patch
-  sha256: 7aff1473241a36da94a88f37920a343fae91d2b6faae22e15c06591d1d0339b6
-  url: https://github.com/rcedgar/muscle/archive/refs/tags/v5.2.tar.gz
+  sha256: 74b22a94e630b16015c2bd9ae83aa2be2c2048d3e41f560b2d4a954725c81968
+  url: https://github.com/rcedgar/muscle/archive/refs/tags/v5.3.tar.gz
 test:
   commands:
-  - muscle -version
+  - muscle --version
+  - muscle --help
+  files:
+  - test_data.fna

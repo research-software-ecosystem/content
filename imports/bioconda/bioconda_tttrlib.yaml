@@ -1,0 +1,63 @@
+about:
+  description: "tttrlib is a simple, fast, libray to read, write and process\ntime-resolved\
+    \ imaging and spectroscopic data. For speed, it \nis written in C++ and wrapped\
+    \ for Python via SWIG.\n"
+  dev_url: https://github.com/fluorescence-tools/tttrlib
+  doc_url: https://tttrlib.readthedocs.io
+  home: https://github.com/fluorescence-tools/tttrlib
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A file format agnostic library for time-resolved imaging and spectroscopic
+    data.
+build:
+  number: 0
+  run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - tpeulen
+  - khemmen
+package:
+  name: tttrlib
+  version: 0.25.1
+requirements:
+  build:
+  - None
+  - None
+  - pkg-config
+  - cmake
+  - ninja
+  - make
+  host:
+  - swig <4.3.0
+  - doxygen
+  - llvm-openmp
+  - libgomp
+  - boost-cpp
+  - hdf5
+  - python
+  - pip
+  - numpy
+  run:
+  - python
+  - llvm-openmp
+  - libgomp
+  - boost-cpp
+  - tqdm
+  - click
+  - click-didyoumean
+  - numpy
+  - scikit-image
+  - matplotlib-base
+  - hdf5
+source:
+  sha256: a224214e50d7a202ef1d264c64641ab0b26f29bf756a96659489847953b698a6
+  url: https://github.com/Fluorescence-Tools/tttrlib/archive/refs/tags/v0.25.1.tar.gz
+test:
+  commands:
+  - tttrlib --help
+  imports:
+  - tttrlib

@@ -1,25 +1,30 @@
 about:
+  dev_url: https://github.com/elsasserlab/minute
+  doc_url: https://minute.readthedocs.io/en/latest
   home: https://github.com/elsasserlab/minute/
   license: MIT
+  license_family: MIT
+  license_file: LICENSE
   summary: MINUTE-ChIP data analysis workflow
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps -vv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - marcelm
 package:
   name: minute
-  version: 0.9.0
+  version: 0.10.0
 requirements:
   host:
   - pip
-  - python >=3.8
+  - python >=3.7
+  - setuptools
   run:
-  - python >=3.8
+  - python >=3.7
   - ruamel.yaml
   - snakemake-minimal >=7.22.0
   - samtools >=1.13
@@ -39,8 +44,8 @@ requirements:
   - r-ggplot2 >=3.3.0
   - r-dplyr >=1.0.0
 source:
-  sha256: bac0252f635ff015d80abd35375407ccf48b12babd947f900889d6475f2cac13
-  url: https://github.com/elsasserlab/minute/archive/refs/tags/v0.9.0.tar.gz
+  sha256: f784a571601ac2e673fe0783b13e9b7ef8ba8d1e4bab7f48aff67365e607f0fd
+  url: https://github.com/elsasserlab/minute/archive/refs/tags/v0.10.0.tar.gz
 test:
   commands:
   - minute init testdir && rm testdir/minute.yaml

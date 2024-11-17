@@ -1,22 +1,40 @@
 about:
+  description: 'NoTrAmp is a Tool for super fast trimming and read-depth normalization
+    of amplicon reads. It is designed to be used in amplicon-tiling panels (or similar
+    multiplexed amplicon sequencing approaches) to cap coverage of each amplicon (if
+    desired) and to trim amplicons to their appropriate length removing barcodes,
+    adpaters and primers (if desired) in a single clipping step.
+
+
+    NoTrAmp is suitable for use with both long (e.g. ONT/PacBio) and short reads (e.g
+    Illumina). When using reads that are significantly shorter than amplicon sizes,
+    you should adjust the minimum required alignment length using the --set_min_len
+    argument.
+
+
+    See the projects [home](https://github.com/simakro/NoTrAmp) for usage and additional
+    documentation.'
   doc_url: https://github.com/simakro/NoTrAmp/blob/main/README.md
   home: https://github.com/simakro/NoTrAmp.git
   license: BSD-2
   license_family: BSD
   license_file: LICENSE
-  summary: Normalization and Trimming of long-read (ONT, PB) amplicon sequencing data
+  summary: Super-fast Normalization and Trimming for Amplicon Sequencing Data (Long-
+    and Short-read)
 build:
   entry_points:
   - notramp = notramp.notramp_main:run_notramp
   noarch: python
-  number: 0
+  number: 1
+  run_exports:
+  - None
   script: ' -m pip install . -vv'
 extra:
   recipe-maintainers:
-  - 74452164
+  - simakro (simon.magin)
 package:
   name: notramp
-  version: 1.0.5
+  version: 1.1.6
 requirements:
   host:
   - pip
@@ -26,8 +44,8 @@ requirements:
   - python
   - minimap2
 source:
-  sha256: de54fae8cc4c66dcd8abc94ae88957aa533cb8e2e6764e847afa26fbe4b36ec9
-  url: https://pypi.io/packages/source/n/notramp/notramp-1.0.5.tar.gz
+  sha256: d17dafed1f9afa119c48aca5486c59049774590ca5b90b6802a011d9eaec85ca
+  url: https://pypi.io/packages/source/n/notramp/notramp-1.1.6.tar.gz
 test:
   commands:
   - notramp --help

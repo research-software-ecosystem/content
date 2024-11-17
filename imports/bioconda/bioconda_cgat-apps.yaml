@@ -1,29 +1,31 @@
 about:
-  home: https://cgat-apps.readthedocs.io/en/latest/
+  dev_url: https://github.com/cgat-developers/cgat-apps
+  doc_url: https://cgat-apps.readthedocs.io/en/latest
+  home: https://github.com/cgat-developers/cgat-apps
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Computational Genomics Analysis Toolkit
+  summary: Computational Genomics Analysis Toolkit.
 build:
   entry_points:
   - cgat = cgat.cgat:main
-  number: 2
+  number: 0
   run_exports:
   - None
-  skip: true
 package:
   name: cgat-apps
-  version: 0.7.2
+  version: 0.7.4
 requirements:
   build:
   - None
   - None
   host:
   - python
-  - cython
+  - pip
+  - cython >=0.29.35
   - numpy
   - pysam
   - htslib
-  - setuptools
   run:
   - python
   - cgatcore
@@ -46,10 +48,11 @@ requirements:
   - ucsc-wigtobigwig
   - coreutils
   - grep
-  - zlib
 source:
-  sha256: 746701d1a6677e8200092894c35c942383123fd8e22ab172f3ef6b2222b8eaef
-  url: https://pypi.io/packages/source/c/cgat/cgat-0.7.2.tar.gz
+  patches:
+  - 0001-setup.py.patch
+  sha256: 3e161597c6e4cf59fc121a8527aeddefd1526f7d13c370d5eaf15b4d3a1894e6
+  url: https://github.com/cgat-developers/cgat-apps/archive/refs/tags/v0.7.4.tar.gz
 test:
   commands:
   - cgat --help
