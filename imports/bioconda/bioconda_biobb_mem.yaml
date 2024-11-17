@@ -1,11 +1,10 @@
 about:
-  description: '# biobb_chemistry
+  description: '# biobb_mem
 
 
     ### Introduction
 
-    Biobb_chemistry is the Biobb module collection to perform chemistry over molecular
-    dynamics simulations.
+    Biobb_mem is the Biobb module for membrane structure analysis.
 
     Biobb (BioExcel building blocks) packages are Python building blocks that
 
@@ -15,7 +14,7 @@ about:
 
     The latest documentation of this package can be found in our readthedocs site:
 
-    [latest API documentation](http://biobb_chemistry.readthedocs.io/en/latest/).
+    [latest API documentation](http://biobb_analysis.readthedocs.io/en/latest/).
 
 
 
@@ -45,11 +44,11 @@ about:
     '
   dev_url: ''
   doc_url: ''
-  home: https://github.com/bioexcel/biobb_chemistry
+  home: https://github.com/bioexcel/biobb_mem
   license: Apache Software License
   license_family: APACHE
   license_file: ''
-  summary: Biobb_chemistry is the Biobb module collection to perform chemical conversions.
+  summary: Biobb_mem is the Biobb module for membrane structure analysis.
 build:
   noarch: python
   number: 0
@@ -59,28 +58,30 @@ build:
 extra:
   recipe-maintainers: ''
 package:
-  name: biobb_chemistry
-  version: 5.0.3
+  name: biobb_mem
+  version: 5.0.1
 requirements:
   host:
   - python >=3.9
   - setuptools
   - biobb_common ==5.0.0
-  - openbabel ==3.1.1
-  - ambertools ==22.5
-  - acpype >=2023.10.27
+  - lipyphilic ==0.10.0
+  - ambertools >=22.5
+  - gromacs
+  - hole2
   run:
   - python >=3.9
   - biobb_common ==5.0.0
-  - openbabel ==3.1.1
-  - ambertools ==22.5
-  - acpype >=2023.10.27
+  - lipyphilic ==0.10.0
+  - ambertools >=22.5
+  - gromacs
+  - hole2
 source:
-  sha256: cc89a00439b85b71bd37980cbfe00a2dbbf201613298bac731cd3830c6fb4f6e
-  url: https://pypi.io/packages/source/b/biobb_chemistry/biobb_chemistry-5.0.3.tar.gz
+  sha256: bb82d828a3be20ca577162aca4ae9a7073598a08f181e079277c7f13f1e1950c
+  url: https://pypi.io/packages/source/b/biobb_mem/biobb_mem-5.0.1.tar.gz
 test:
   imports:
-  - biobb_chemistry
-  - biobb_chemistry.acpype
-  - biobb_chemistry.babelm
-  - biobb_chemistry.ambertools
+  - biobb_mem
+  - biobb_mem.mdanalysis_biobb
+  - biobb_mem.lipyphilic_biobb
+  - biobb_mem.ambertools

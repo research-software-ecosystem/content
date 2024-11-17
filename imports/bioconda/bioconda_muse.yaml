@@ -1,26 +1,53 @@
 about:
-  home: http://bioinformatics.mdanderson.org/main/MuSE
-  license: https://github.com/danielfan/MuSE/blob/master/LICENSE
-  summary: Somatic point mutation caller
+  dev_url: https://github.com/wwylab/MuSE
+  doc_url: https://bioinformatics.mdanderson.org/public-software/muse
+  home: https://github.com/wwylab/MuSE
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: An accurate and ultra-fast somatic point mutation calling tool for whole-genome
+    sequencing (WGS) and whole-exome sequencing (WES) data from heterogeneous tumor
+    samples.
 build:
-  number: 8
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1101/gr.278456.123
+  - doi:10.1186/s13059-016-1029-6
 package:
   name: muse
-  version: 1.0.rc
+  version: 2.1.2
 requirements:
   build:
+  - None
+  - None
   - make
-  - None
-  - None
+  - autoconf
+  - automake
+  - libtool
   host:
+  - llvm-openmp
+  - libgomp
+  - libcurl
+  - icu
+  - bzip2
+  - xz
   - zlib
   run:
-  - zlib
+  - llvm-openmp
+  - libgomp
 source:
-  md5: c63fdb48c041f6f9545879f1a7e4da58
-  patches:
-  - 0001-add-LDFLAGS.patch
-  url: https://github.com/danielfan/MuSE/archive/v1.0-rc.tar.gz
+- patches:
+  - 0001-Makefile.patch
+  - fix-install_muse.sh.patch
+  sha256: 48df7ec3f64244400243163b48eb658105854b7b0d6287af98242dd89f396f59
+  url: https://github.com/wwylab/MuSE/archive/refs/tags/v2.1.2.tar.gz
+- folder: boost-1.86.0
+  sha256: 2128a4c96862b5c0970c1e34d76b1d57e4a1016b80df85ad39667f30b1deba26
+  url: https://github.com/boostorg/boost/releases/download/boost-1.86.0/boost-1.86.0-b2-nodocs.tar.gz
 test:
   commands:
   - MuSE 2>&1 | grep Version > /dev/null

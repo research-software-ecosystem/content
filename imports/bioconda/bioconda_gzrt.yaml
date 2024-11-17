@@ -1,0 +1,38 @@
+about:
+  description: 'gzrecover is a program that will attempt to extract any readable data
+
+    out of a gzip file that has been corrupted.
+
+    '
+  dev_url: https://github.com/arenn/gzrt
+  home: https://www.urbanophile.com/arenn/hacking/gzrt
+  license: GPL-2.0-only
+  license_family: GPL
+  license_file: gpl-2.0.txt
+  summary: Unofficial build of the gzip Recovery Toolkit aka gzrecover
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - mazzalab
+package:
+  name: gzrt
+  version: 0.8
+requirements:
+  build:
+  - None
+  - make
+  - zlib
+  host:
+  - zlib
+source:
+  sha256: b0b7dc53dadd8309ad9f43d6d6be7ac502c68ef854f1f9a15bd7f543e4571fee
+  url: https://www.urbanophile.com/arenn/hacking/gzrt/gzrt-0.8.tar.gz
+test:
+  commands:
+  - gzrecover -h
+  - echo "test" | gzip > test.gz
+  - dd if=/dev/zero of=test.gz bs=1 count=1 seek=5 conv=notrunc
+  - gzrecover test.gz || [[ $? -eq 1 ]]

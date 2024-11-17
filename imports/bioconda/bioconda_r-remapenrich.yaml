@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/nigiord/ReMapEnrich
+  license: AGPL-3
+  license_family: AGPL
+  license_file:
+  - /lib/R/share/licenses/AGPL-3
+  summary: Bioinformatics tools to compute statistical enrichment of geonomic regions
+    for ReMap peaks
+build:
+  merge_build_host: true
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - nigiord
+package:
+  name: r-remapenrich
+  version: 0.99.0
+requirements:
+  build:
+  - filesystem
+  - git
+  - zip
+  host:
+  - r-base >=3.3
+  - bioconductor-genomicranges
+  - r-r.utils
+  - r-rmysql
+  - r-data.table
+  run:
+  - r-base >=3.3
+  - bioconductor-genomicranges
+  - r-r.utils
+  - r-rmysql
+  - r-data.table
+source:
+  sha256: 87764400fbe3fbb41fda2395b669c9e926f7e39323a590f53f2944a9cd720aaf
+  url: https://github.com/nigiord/ReMapEnrich/archive/refs/tags/v0.99.0.tar.gz
+test:
+  commands:
+  - $R -e "library('ReMapEnrich')"
+  - '"%R%" -e "library(''ReMapEnrich'')"'

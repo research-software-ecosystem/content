@@ -1,5 +1,7 @@
 about:
-  home: https://gitlab.com/paulklemm_PHD/proteinortho/
+  dev_url: https://gitlab.com/paulklemm_PHD/proteinortho
+  doc_url: https://gitlab.com/paulklemm_PHD/proteinortho/-/blob/master/README.md
+  home: https://gitlab.com/paulklemm_PHD/proteinortho
   license: GPL-3.0-only
   license_family: GPL
   license_file: LICENSE
@@ -9,32 +11,39 @@ build:
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:proteinortho
   - doi:10.3389/fbinf.2023.1322477
+  - usegalaxy-eu:proteinortho
+  - usegalaxy-eu:proteinortho_summary
+  - usegalaxy-eu:proteinortho_grab_proteins
 package:
   name: proteinortho
-  version: 6.3.2
+  version: 6.3.3
 requirements:
   build:
   - make
   - None
   - None
-  - llvm-openmp
-  - libgomp
   - cmake
   host:
+  - llvm-openmp
+  - libgomp
   - liblapack
   - blis
   run:
+  - llvm-openmp
+  - libgomp
   - perl
   - python
   - diamond >=0.9.29
   - liblapack
   - blis
 source:
-  sha256: 3b3c58e814ca10f77a25954b0bcddc479b9f61682f3dc5c93d85b07f109342a4
-  url: https://gitlab.com/paulklemm_PHD/proteinortho/-/archive/v6.3.2/proteinortho-v6.3.2.tar.gz
+  sha256: 989eed292e6e65c3725d4395cb7aed3c59754b5dc60d4a1e034aa1c4a6504c6c
+  url: https://gitlab.com/paulklemm_PHD/proteinortho/-/archive/v6.3.3/proteinortho-v6.3.3.tar.gz
 test:
   commands:
   - proteinortho --version
