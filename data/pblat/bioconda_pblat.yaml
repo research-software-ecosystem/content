@@ -5,8 +5,13 @@ about:
   license_file: LICENSE
   summary: blat with multi-threads support
 build:
-  number: 2
+  number: 3
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:pblat
   - doi:10.1186/s12859-019-2597-8
@@ -29,6 +34,8 @@ requirements:
   - zlib
   - openssl
 source:
+  patches:
+  - pblat-aarch64.patch
   sha256: e85a4d752b8e159502d529f0f9e47579851a6b466b6c2f1f4d49f598642bc615
   url: https://github.com/icebert/pblat/archive/2.5.1.tar.gz
 test:

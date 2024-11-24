@@ -5,12 +5,13 @@ about:
   summary: MATS is a computational tool to detect differential alternative splicing
     events from RNA-Seq data.
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: rmats
   version: 4.3.0
@@ -26,17 +27,20 @@ requirements:
   - python
   - cython
   - numpy
-  - gsl 2.5
+  - gsl
   - zlib
   - libblas
   - liblapack
+  - setuptools
   run:
   - python
   - numpy
-  - gsl 2.5
+  - gsl
   - zlib
   - star >=2.5
 source:
+  patches:
+  - rmats_pipeline_setup.patch
   sha256: c78e6411b7c6634cc31511b69d37a6a3da2e2e076e87609679818debd513aa7a
   url: https://github.com/Xinglab/rmats-turbo/releases/download/v4.3.0/rmats_turbo_v4_3_0.tar.gz
 test:

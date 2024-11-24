@@ -1,8 +1,7 @@
 about:
   home: https://github.com/shiro-kur/PDIVAS
   license: MIT
-  license_family: OTHER
-  license_file: null
+  license_file: LICENSE
   summary: 'PDIVAS: Pathogenicity predictor of Deep-Intronic Variants causing Aberrant
     Splicing'
 build:
@@ -10,28 +9,33 @@ build:
   - pdivas=pdivas.__main__:main
   noarch: python
   number: 0
-  script: ' -m pip install . -vv'
+  run_exports:
+  - None
+  script: -m pip install . -vv
 extra:
   recipe-maintainers:
   - shiro-kur
 package:
   name: pdivas
-  version: 1.1.0
+  version: 1.2.0
 requirements:
   host:
+  - python
   - pip
-  - python
   run:
-  - cyvcf2
-  - numpy
-  - pandas
   - python
-  - scikit-learn
+  - pandas >=1.3
+  - numpy >=1.21
+  - cyvcf2 >=0.11
+  - scikit-learn =1.0.2
 source:
-  sha256: ca33dc31ecfa9c505105a25146ea8efcdddb1a13cc1ac990c29561cc911d74b9
-  url: https://pypi.io/packages/source/p/pdivas/pdivas-1.1.0.tar.gz
+  sha256: 4a2234564557622c5bd2213478956c4a4858ba6768251d24ee43a4fc7550f721
+  url: https://pypi.io/packages/source/p/pdivas/pdivas-1.2.0.tar.gz
 test:
   commands:
+  - pip check
   - pdivas --help
   imports:
   - pdivas
+  requires:
+  - pip
