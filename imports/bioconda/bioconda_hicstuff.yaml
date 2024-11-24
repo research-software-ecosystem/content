@@ -1,9 +1,9 @@
 about:
   dev_url: https://github.com/koszullab/hicstuff
-  doc_url: https://hicstuff.readthedocs.io/en/latest/
+  doc_url: https://hicstuff.readthedocs.io/en/latest
   home: https://github.com/koszullab/hicstuff
-  license: GPL-3.0-only
-  license_family: GPL3
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
   summary: General purpose stuff to generate and handle Hi-C data in its simplest
     form.
@@ -14,19 +14,20 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - lecorguille
 package:
   name: hicstuff
-  version: 3.2.3
+  version: 3.2.4
 requirements:
   host:
-  - python >=3.7
+  - python >=3.6
   - pip
+  - setuptools
   run:
-  - python >=3.7
+  - python >=3.6
   - biopython
   - docopt
   - matplotlib-base
@@ -44,8 +45,8 @@ requirements:
   - cooler
   - pairtools
 source:
-  sha256: 11a88844a5a75928c7e48b391829b7e0d73aae86cb7c116a0618560d2a16f283
-  url: https://pypi.io/packages/source/h/hicstuff/hicstuff-3.2.3.tar.gz
+  sha256: 7d74bcbddaff40029a07ed18283701110b338617fbbda13b9b6ec6e3cc107d02
+  url: https://pypi.io/packages/source/h/hicstuff/hicstuff-3.2.4.tar.gz
 test:
   commands:
   - hicstuff --help

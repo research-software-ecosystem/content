@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/HUPO-PSI/mzspeclib-py
+  doc_url: https://mzspeclib-py.readthedocs.io/en/latest/
+  home: https://github.com/HUPO-PSI/mzSpecLib
+  license: CC-BY-4.0
+  license_family: CC
+  license_file: docs/LICENSE.txt
+  summary: HUPO-PSI Spectral library format
+build:
+  entry_points:
+  - mzspeclib = mzspeclib.tools.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: mzspeclib
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.8
+  - setuptools
+  - pip
+  run:
+  - python >=3.8
+  - sqlalchemy
+  - click
+  - psims >=1.3.4
+  - pyteomics >=4.5.3
+  - mzpaf
+source:
+  sha256: 44ed541be54f08d68b89b71f5892bbfc7458c8243df70c60774e2b07a939aaa2
+  url: https://pypi.io/packages/source/m/mzspeclib/mzspeclib-1.0.1.tar.gz
+test:
+  commands:
+  - pip check
+  - mzspeclib --help
+  imports:
+  - mzspeclib
+  requires:
+  - pip
