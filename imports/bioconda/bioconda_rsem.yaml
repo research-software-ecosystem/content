@@ -41,11 +41,15 @@ about:
   summary: RSEM is a software package for estimating gene and isoform expression levels
     from RNA-Seq data.
 build:
-  number: 8
+  number: 9
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1186/1471-2105-12-323
   - biotools:rsem
@@ -57,6 +61,7 @@ requirements:
   - make
   - None
   - None
+  - zlib
   host:
   - perl
   - perl-module-build
@@ -70,6 +75,7 @@ requirements:
   - r-base
   - samtools
   - htslib
+  - zlib
 source:
   patches:
   - 01_fix_cxx_11.patch
@@ -81,4 +87,5 @@ test:
   - rsem-prepare-reference 2>&1 | grep reference_name > /dev/null
   - rsem-for-ebseq-find-DE 2>&1 | grep Usage > /dev/null
   - rsem-bam2wig foo bar foobar 2>&1 | grep "Failed to open file" > /dev/null
-  - which rsem-for-ebseq-calculate-clustering-info
+  - "which rsem-for-ebseq-calculate-clustering-info \_# [not aarch64]"
+  - test -x ${PREFIX}/bin/rsem-for-ebseq-calculate-clustering-info

@@ -1,14 +1,13 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/README
-  home: https://hgdownload.cse.ucsc.edu/admin/exe/
-  license: Varies; see http://genome.ucsc.edu/license
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v473_base/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe
+  license: Varies; see https://genome.ucsc.edu/license
   summary: 'Convert bed file to bigBed. (BigBed version: 4)'
 build:
   number: 0
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -17,28 +16,32 @@ extra:
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-bedtobigbed
-  version: '469'
+  version: '473'
 requirements:
   build:
   - make
+  - None
   - None
   host:
   - libpng
   - libuuid
   - mysql-connector-c
   - libopenssl-static
+  - clangdev
+  - ucsc-stringify
   - zlib
   run:
   - libpng
   - libuuid
   - mysql-connector-c
   - libopenssl-static
-  - zlib
+  - ucsc-stringify
 source:
   patches:
   - include.patch
-  sha256: 3f95b26ccca854c965c05773481c269f2a0e6fb1906ae8a7fe2437c6ad543963
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v469.src.tgz
+  - include.macos.patch
+  sha256: ed929a7141440e0718ed453283e6e7dde103e8e2facf27d2367be7b34e53e597
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v473.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/bedToBigBed

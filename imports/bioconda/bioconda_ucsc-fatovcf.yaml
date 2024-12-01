@@ -1,42 +1,44 @@
 about:
-  home: http://hgdownload.cse.ucsc.edu/admin/exe/
-  license: varies; see http://genome.ucsc.edu/license
-  summary: Extract VCF from a multi-sequence FASTA alignment
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/v473_base/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe
+  license: Varies; see https://genome.ucsc.edu/license
+  summary: Extract VCF from a multi-sequence FASTA alignment.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
 package:
   name: ucsc-fatovcf
-  version: 448
+  version: 473
 requirements:
   build:
   - make
   - None
   - None
-  - binutils
   host:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
   - libopenssl-static
+  - clangdev
+  - ucsc-stringify
   - zlib
   run:
   - libpng
   - libuuid
   - mysql-connector-c
-  - openssl
+  - libopenssl-static
+  - ucsc-stringify
 source:
   patches:
   - include.patch
-  - htmshell.patch
-  sha256: 90c28f06f3f5b6d79ff141cbf745e6a0c1b289a2ce640bbd1b0a14c826f08a85
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v448.src.tgz
+  - include.macos.patch
+  sha256: ed929a7141440e0718ed453283e6e7dde103e8e2facf27d2367be7b34e53e597
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v473.src.tgz
 test:
   commands:
-  - which faToVcf
+  - test -x ${PREFIX}/bin/faToVcf

@@ -7,11 +7,15 @@ about:
   summary: A method to assess how well mixed cells with different labels are in single
     cell RNAseq.
 build:
-  number: 5
+  number: 7
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports: None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - tdido
 package:
@@ -26,6 +30,8 @@ requirements:
   - r-base
   - r-rcpparmadillo
   - r-rann
+  - libblas
+  - liblapack
   run:
   - r-base
   - r-testthat

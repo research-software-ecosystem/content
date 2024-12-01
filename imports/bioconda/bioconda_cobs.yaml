@@ -8,13 +8,15 @@ build:
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   recipe-maintainers:
   - luizirber
   - johnlees
   - leoisl
 package:
   name: cobs
-  version: 0.3.0
+  version: 0.3.1
 requirements:
   build:
   - None
@@ -29,8 +31,10 @@ requirements:
   - boost-cpp =1.72.0
   - zlib
 source:
-  sha256: cbbb9039ac0077f139d1ba2841f88d75efc351296e48ac9d388822d1f95063c1
-  url: https://github.com/iqbal-lab-org/cobs/releases/download/v0.3.0/cobs-0.3.0.tar.gz
+  patches:
+  - cobs-aarch64.patch
+  sha256: 181cda165d2fd8633b9f9de96b7a6f00d5994effe37ffaf7734e428f83d29d5d
+  url: https://github.com/iqbal-lab-org/cobs/releases/download/v0.3.1/cobs-0.3.1.tar.gz
 test:
   commands:
   - cobs

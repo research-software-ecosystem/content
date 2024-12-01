@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/refresh-bio/clusty
-  doc_url: https://github.com/refresh-bio/clusty/blob/v1.1.4/README.md
+  doc_url: https://github.com/refresh-bio/clusty/blob/v1.1.5/README.md
   home: https://github.com/refresh-bio/clusty
   license: GPL-3.0-or-later
   license_family: GPL3
@@ -10,29 +10,25 @@ build:
   number: 0
   run_exports:
   - None
+  script: 'mkdir -p "${PREFIX}/bin"
+
+    cp -v clusty "${PREFIX}/bin/" || { echo "Error: Failed to copy clusty binary";
+    exit 1; }
+
+    '
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
   skip-lints:
-  - uses_vcs_url
-  - missing_hash
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
 package:
   name: clusty
-  version: 1.1.4
-requirements:
-  build:
-  - make
-  - None
-  - None
-  - cmake
-  - flex
-  - bison
+  version: 1.1.5
 source:
-  git_rev: v1.1.4
-  git_url: https://github.com/refresh-bio/clusty.git
-  patches:
-  - buildfixes.patch
+  sha256: b304648854fcf8c006a9f66dcecf6612a2f495723eb8b54a6da182120210c3c9
+  url: https://github.com/refresh-bio/clusty/releases/download/v1.1.5/clusty-v1.1.5-arm64_mac.tar.gz
 test:
   commands:
   - clusty > /dev/null
