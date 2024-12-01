@@ -56,7 +56,7 @@
         "R",
         "Shell"
     ],
-    "lastUpdate": "2021-10-18T17:05:54.928355Z",
+    "lastUpdate": "2024-11-24T20:17:40.359837Z",
     "license": "GPL-2.0",
     "link": [
         {
@@ -88,9 +88,82 @@
     "owner": "hans",
     "publication": [
         {
+            "doi": "10.1093/bioinformatics/btab452",
+            "metadata": {
+                "abstract": "Motivation: Large-scale and high-dimensional genome sequencing data poses computational challenges. Generalpurpose optimization tools are usually not optimal in terms of computational and memory performance for genetic data. Results: We develop two efficient solvers for optimization problems arising from large-scale regularized regressions on millions of genetic variants sequenced from hundreds of thousands of individuals. These genetic variants are encoded by the values in the set f0; 1; 2; NAg. We take advantage of this fact and use two bits to represent each entry in a genetic matrix, which reduces memory requirement by a factor of 32 compared to a double precision floating point representation. Using this representation, we implemented an iteratively reweighted least square algorithm to solve Lasso regressions on genetic matrices, which we name snpnet-2.0. When the dataset contains many rare variants, the predictors can be encoded in a sparse matrix. We utilize the sparsity in the predictor matrix to further reduce memory requirement and computational speed. Our sparse genetic matrix implementation uses both the compact two-bit representation and a simplified version of compressed sparse block format so that matrix-vector multiplications can be effectively parallelized on multiple CPU cores. To demonstrate the effectiveness of this representation, we implement an accelerated proximal gradient method to solve group Lasso on these sparse genetic matrices. This solver is named sparse-snpnet, and will also be included as part of snpnet R package. Our implementation is able to solve Lasso and group Lasso, linear, logistic and Cox regression problems on sparse genetic matrices that contain 1 000 000 variants and almost 100 000 individuals within 10 min and using less than 32GB of memory.",
+                "authors": [
+                    {
+                        "name": "Chang C."
+                    },
+                    {
+                        "name": "Hastie T."
+                    },
+                    {
+                        "name": "Li R."
+                    },
+                    {
+                        "name": "Narasimhan B."
+                    },
+                    {
+                        "name": "Rivas M.A."
+                    },
+                    {
+                        "name": "Tanigawa Y."
+                    },
+                    {
+                        "name": "Tibshirani R."
+                    }
+                ],
+                "citationCount": 11,
+                "date": "2021-11-15T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "Fast numerical optimization for genome sequencing data in population biobanks"
+            },
+            "pmcid": "PMC9206591",
+            "pmid": "34146108"
+        },
+        {
+            "doi": "10.1093/biostatistics/kxaa038",
+            "metadata": {
+                "abstract": "We develop a scalable and highly efficient algorithm to fit a Cox proportional hazard model by maximizing the $L^1$-regularized (Lasso) partial likelihood function, based on the Batch Screening Iterative Lasso (BASIL) method developed in Qian and others (2019). Our algorithm is particularly suitable for large-scale and high-dimensional data that do not fit in the memory. The output of our algorithm is the full Lasso path, the parameter estimates at all predefined regularization parameters, as well as their validation accuracy measured using the concordance index (C-index) or the validation deviance. To demonstrate the effectiveness of our algorithm, we analyze a large genotype-survival time dataset across 306 disease outcomes from the UK Biobank (Sudlow and others, 2015). We provide a publicly available implementation of the proposed approach for genetics data on top of the PLINK2 package and name it snpnet-Cox.",
+                "authors": [
+                    {
+                        "name": "Chang C."
+                    },
+                    {
+                        "name": "Hastie T."
+                    },
+                    {
+                        "name": "Justesen J.M."
+                    },
+                    {
+                        "name": "Li R."
+                    },
+                    {
+                        "name": "Qian J."
+                    },
+                    {
+                        "name": "Rivas M.A."
+                    },
+                    {
+                        "name": "Tanigawa Y."
+                    },
+                    {
+                        "name": "Tibshirani R."
+                    }
+                ],
+                "citationCount": 15,
+                "date": "2022-04-01T00:00:00Z",
+                "journal": "Biostatistics",
+                "title": "Fast Lasso method for large-scale and ultrahigh-dimensional Cox model with applications to UK Biobank"
+            },
+            "pmcid": "PMC9007437",
+            "pmid": "32989444"
+        },
+        {
             "doi": "10.1371/journal.pgen.1009141",
             "metadata": {
-                "abstract": "Copyright: © 2020 Qian et al. This is an open access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.The UK Biobank is a very large, prospective population-based cohort study across the United Kingdom. It provides unprecedented opportunities for researchers to investigate the relationship between genotypic information and phenotypes of interest. Multiple regression methods, compared with genome-wide association studies (GWAS), have already been showed to greatly improve the prediction performance for a variety of phenotypes. In the high-dimensional settings, the lasso, since its first proposal in statistics, has been proved to be an effective method for simultaneous variable selection and estimation. However, the large-scale and ultrahigh dimension seen in the UK Biobank pose new challenges for applying the lasso method, as many existing algorithms and their implementations are not scalable to large applications. In this paper, we propose a computational framework called batch screening iterative lasso (BASIL) that can take advantage of any existing lasso solver and easily build a scalable solution for very large data, including those that are larger than the memory size. We introduce snpnet, an R package that implements the proposed algorithm on top of glmnet and optimizes for single nucleotide polymorphism (SNP) datasets. It currently supports ℓ1-penalized linear model, logistic regression, Cox model, and also extends to the elastic net with ℓ1/ℓ2 penalty. We demonstrate results on the UK Biobank dataset, where we achieve competitive predictive performance for all four phenotypes considered (height, body mass index, asthma, high cholesterol) using only a small fraction of the variants compared with other established polygenic risk score methods.",
+                "abstract": "The UK Biobank is a very large, prospective population-based cohort study across the United Kingdom. It provides unprecedented opportunities for researchers to investigate the relationship between genotypic information and phenotypes of interest. Multiple regression methods, compared with genome-wide association studies (GWAS), have already been showed to greatly improve the prediction performance for a variety of phenotypes. In the high-dimensional settings, the lasso, since its first proposal in statistics, has been proved to be an effective method for simultaneous variable selection and estimation. However, the large-scale and ultrahigh dimension seen in the UK Biobank pose new challenges for applying the lasso method, as many existing algorithms and their implementations are not scalable to large applications. In this paper, we propose a computational framework called batch screening iterative lasso (BASIL) that can take advantage of any existing lasso solver and easily build a scalable solution for very large data, including those that are larger than the memory size. We introduce snpnet, an R package that implements the proposed algorithm on top of glmnet and optimizes for single nucleotide polymorphism (SNP) datasets. It currently supports ℓ1-penalized linear model, logistic regression, Cox model, and also extends to the elastic net with ℓ1/ℓ2 penalty. We demonstrate results on the UK Biobank dataset, where we achieve competitive predictive performance for all four phenotypes considered (height, body mass index, asthma, high cholesterol) using only a small fraction of the variants compared with other established polygenic risk score methods.",
                 "authors": [
                     {
                         "name": "Aguirre M."
@@ -117,21 +190,13 @@
                         "name": "Tibshirani R."
                     }
                 ],
-                "citationCount": 10,
+                "citationCount": 64,
                 "date": "2020-10-23T00:00:00Z",
                 "journal": "PLoS Genetics",
                 "title": "A fast and scalable framework for large-scale and ultrahigh-dimensional sparse regression with application to the UK biobank"
             },
             "pmcid": "PMC7641476",
             "pmid": "33095761"
-        },
-        {
-            "doi": "10.1093/bioinformatics/btab452",
-            "pmid": "34146108"
-        },
-        {
-            "doi": "10.1093/biostatistics/kxaa038",
-            "pmid": "32989444"
         }
     ],
     "toolType": [
