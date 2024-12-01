@@ -10,7 +10,7 @@ about:
   summary: Python API for Arvados
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -22,29 +22,25 @@ package:
   version: 3.0.0
 requirements:
   host:
-  - python >=3
+  - python 3.8
   - setuptools >=40.3.0
   - pip
   run:
-  - python >=3
+  - python >=3.8
   - setuptools >=40.3.0
   - ciso8601 >=2.0.0
-  - future
-  - google-api-core <2.11.0
   - google-api-python-client >=2.1.0
-  - google-auth <2
-  - httplib2 >=0.9.2,<0.20.2
-  - pycurl >=7.19.5.1,<7.45.0
-  - ruamel.yaml >=0.15.54,<0.17.22
-  - typing-extensions >=3.7.4
-  - ws4py >=0.4.2
-  - protobuf <4.0.0
-  - pyparsing <3
-  - dataclasses
+  - google-auth
+  - httplib2 >=0.9.2
+  - pycurl >=7.19.5.1
   - websockets
 source:
   sha256: 7f980029b27a27f0f348f610784757ca6ff419aee6eb903b046c37b719e1b820
-  url: https://pypi.io/packages/source/a/arvados-python-client/arvados-python-client-3.0.0.tar.gz
+  url: https://pypi.org/packages/source/a/arvados-python-client/arvados-python-client-3.0.0.tar.gz
 test:
+  commands:
+  - pip check
   imports:
   - arvados
+  requires:
+  - pip

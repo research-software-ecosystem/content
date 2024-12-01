@@ -50,12 +50,11 @@ about:
   license_file: LICENSE
   summary: Biobb_mem is the Biobb module for membrane structure analysis.
 build:
-  noarch: python
-  number: 1
+  number: 2
   run_exports:
   - None
   script:
-  - ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+  - -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - RubenChM
@@ -63,10 +62,11 @@ package:
   name: biobb_mem
   version: 5.0.2
 requirements:
-  commands:
-  - pip install fatslim --no-deps
+  build:
+  - None
   host:
-  - python >=3.9
+  - python
+  - cython
   - pip
   - setuptools
   - biobb_common ==5.0.0
@@ -75,7 +75,7 @@ requirements:
   - gromacs
   - hole2
   run:
-  - python >=3.9
+  - python
   - pip
   - biobb_common ==5.0.0
   - lipyphilic ==0.10.0
@@ -83,9 +83,13 @@ requirements:
   - gromacs
   - hole2
 source:
-  sha256: f307bb5f51e7ae5802401eabd24ed2d35e405e4d0b09847b9f2a58aa53a77308
+- sha256: f307bb5f51e7ae5802401eabd24ed2d35e405e4d0b09847b9f2a58aa53a77308
   url: https://pypi.io/packages/source/b/biobb_mem/biobb_mem-5.0.2.tar.gz
+- sha256: 6f82cd73387b8fe046c08e00029ed07f0cb449f4ecf407e5cca9fa5bfc423ba9
+  url: https://files.pythonhosted.org/packages/3f/bb/d2d63385cb16e8db530cab3375c9c94ebb5bc1a7d9eac9649bae0443fa0e/fatslim-0.2.2.tar.gz
 test:
+  commands:
+  - fatslim -h
   imports:
   - biobb_mem
   - biobb_mem.ambertools
