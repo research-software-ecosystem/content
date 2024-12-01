@@ -1,32 +1,141 @@
 package: augustus
-distribution: prospective
-release: vcs
-component: contrib
-version: 1.4.1
-source: julius
-homepage: https://github.com/bvschaik/julius
-license: AGPL-3.0
-blend: pkg-games
+distribution: debian
+release: sid
+component: main
+version: 3.5.0
+source: augustus
+homepage: https://bioinf.uni-greifswald.de/augustus/
+license: unknown
+blend: debian-med
+description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+topics:
+- Gene transcripts
+- Gene and protein families
+edam_scopes:
+- name: summary
+  function:
+  - Gene prediction
+- name: gene_prediction_using_experimental_evidence_(gene_products)
+  function:
+  - Gene prediction
+- name: ab-initio_gene_prediction
+  function:
+  - Ab-initio gene prediction
+- name: multi-genome_annotation_(simultaneous_gene_finding_in_multiple_genomes)
+  function:
+  - Homology-based gene prediction
+- name: gene_prediction_using_protein_sequence_profiles
+  function:
+  - Homology-based gene prediction
+- name: training_the_parameters_for_individual_species_of_interest
+  function:
+  - Optimisation and refinement
+registries:
+- entry: OMICS_07777
+  name: OMICtools
+- entry: SCR_008417
+  name: SciCrunch
+- entry: AUGUSTUS
+  name: bio.tools
+- entry: augustus
+  name: conda:bioconda
+bib:
+- key: doi
+  value: 10.1093/bioinformatics/btw494
+- key: doi
+  rank: 1
+  value: 10.1093/bioinformatics/btr010
+- key: doi
+  rank: 2
+  value: 10.1093/bioinformatics/btn013
+- key: doi
+  rank: 3
+  value: 10.1186/1471-2105-7-62
+- key: doi
+  rank: 4
+  value: 10.1093/bioinformatics/btg1080
 popcon:
-- insts: 38
-  olde: 29
+- insts: 40
+  olde: 32
   recent: 4
-  vote: 5
+  vote: 4
 descr:
 - package: augustus
-  description: Re-implementation of the Caesar III engine with gameplay changes
-  long_description: " Augustus is a fully working open-source version of Caesar 3,
-    with mostly the\n same logic as the original, but with some gameplay and UI enhancements:\n
-    .\n  - Roadblocks\n  - Market special orders\n  - Global labour pool\n  - Partial
-    warehouse storage\n  - Increased game limits\n  - Zoom controls\n  - Support for
-    widescreen resolutions\n  - Windowed mode support for 32-bit desktops\n  - Several
-    small in-game quality of life improvements\n .\n Augustus requires the original
-    assets (graphics, sounds, etc) from Caesar 3 to\n run. It optionally supports
-    the high-quality MP3 files once provided on the\n Sierra website.\n .\n Because
-    of gameplay changes and additions, save files from Augustus are NOT\n compatible
-    with Caesar 3 or Julius. Augustus is able to load Caesar 3 save\n files, but not
-    the other way around. If you want vanilla experience with\n visual and UI improvements,
-    or want to use save files in base Caesar 3, check\n Julius."
-  release: vcs
-  license: AGPL-3.0
-  blend: pkg-games
+  description: 진핵생물 게놈의 유전자 예측
+  long_description: " AUGUSTUS는 서열과 그 유전자 구조의 확율 모델인, 일반화된 은닉 마르코프 모델 (HMM)을 기반으로
+    하는 진핵생물 게놈 서열의 유전자 예측용 소프트웨어입니다. AUGUSTUS는 참조 주석에서 유전자 구조를 학습한후, HMM을 사용해서 새로운
+    서열에 유전자를 인식하고 식별된 유전자 영역에 주석을 답니다. RNA 서열, EST 또는 단백질 정렬 같은, 외부 힌트를 통해 유전자 발견
+    과정을 안내하고 개선하는데 사용할 수 있습니다. 해당 유전자가 존재하는 경우, 결과는 주어진 모든 사용자 제약 조건을 준수하는 가장 가능성
+    높은 유전자 구조 세트입니다.\n AUGUSTUS는 많은 종에 대해 사전 구축된 HMM은 물론 주석 달린 게놈을 사용해서 맞춤형 모델을 훈련하는
+    스크립트도 포함합니다.\n"
+  release: sid
+  description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+  license: unknown
+  blend: debian-med
+- package: augustus
+  description: predizione di geni in genomi di eucarioti
+  long_description: " AUGUSTUS è un software per la predizione di geni in sequenze
+    genomiche di\n eucarioti che è basato su un modello di Markov nascosto (HMM)\n
+    generalizzato, un modello probabilistico di una sequenza e della sua\n struttura
+    di geni. Dopo aver appreso le strutture dei geni da una\n annotazione di riferimento,
+    AUGUSTUS usa l'HMM per riconoscere i geni in\n una nuova sequenza e la annota
+    con le regioni di geni identificati.\n Suggerimenti esterni, es. dal sequenziamento
+    di RNA, EST o allineamenti di\n proteine, ecc., possono essere usati per guidare
+    e migliorare il processo\n di ricerca dei geni. Il risultato è l'insieme delle
+    strutture di geni più\n probabili che rispettano tutti i vincoli dati dall'utente,
+    se tali\n strutture di geni esistono.\n AUGUSTUS include già HMM pronti per molte
+    specie e script per istruire\n modelli personalizzati usando genomi annotati.\n"
+  release: sid
+  description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+  license: unknown
+  blend: debian-med
+- package: augustus
+  description: gene prediction in eukaryotic genomes
+  long_description: " AUGUSTUS is a software for gene prediction in eukaryotic genomic
+    sequences\n that is based on a generalized hidden Markov model (HMM), a probabilistic\n
+    model of a sequence and its gene structure. After learning gene structures\n from
+    a reference annotation, AUGUSTUS uses the HMM to recognize genes in a new\n sequence
+    and annotates it with the regions of identified genes. External hints,\n e.g.
+    from RNA sequencing, EST or protein alignments etc. can be used to guide\n and
+    improve the gene finding process. The result is the set of most likely gene\n
+    structures that comply with all given user constraints, if such gene\n structures
+    exist.\n AUGUSTUS already includes prebuilt HMMs for many species, as well as
+    scripts\n to train custom models using annotated genomes.\n"
+  release: sid
+  description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+  license: unknown
+  blend: debian-med
+- package: augustus
+  description: Genforudsigelse i eukaryote genomer
+  long_description: " AUGUSTUS er et program til genforudsigelse i eukaryote genomsekvenser,
+    som\n er baseret på en generel skjult Markovmodel (HMM), en probabilistisk model\n
+    af en sekvens og dens genstruktur. Efter at have lært genstrukturer fra en\n referenceanmærkning,
+    bruger AUGUSTUS HMM til at genkende gener i en ny\n sekvens og anmærke dem med
+    regioner af identificerede gener. Eksterne fif,\n f.eks. fra RNA-sekventering,
+    EST eller proteinsammenligninger etc. kan\n bruges til at guide og forbedre genkonstateringsprocessen.
+    Resultatet er\n det sæt af mest sandsynlige genstrukturer, der opfylder alle givne\n
+    brugerbegrænsninger, hvis sådanne genstrukturer findes. AUGUSTUS indeholder\n
+    allerede præbyggede HMM'er til mange arter, såvel som skripter til at træne\n
+    brugerdefinerede modeller ved hjælp af kommenterede genomer.\n"
+  release: sid
+  description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+  license: unknown
+  blend: debian-med
+- package: augustus
+  description: prédiction de gènes dans les génomes eucaryotes
+  long_description: " AUGUSTUS est un logiciel de prédiction de gènes dans les séquences\n
+    génomiques eucaryotes basé sur un modèle de Markov caché généralisé (HMM),\n un
+    modèle probabiliste de séquence et sa structure de gène. Après\n l'apprentissage
+    de structures de gènes à partir d'une annotation de\n référence, AUGUSTUS utilise
+    le HMM pour reconnaître les gènes dans une\n nouvelle séquence et l'annote avec
+    les régions des gènes identifiés. Des\n indices externes, par exemple depuis des
+    séquences d'ARN, des EST ou des\n alignements de protéines, etc., peuvent être
+    utilisés pour guider et\n améliorer le processus de découverte de gène. Le résultat
+    est l'ensemble\n des structures de gènes les plus probables qui respectent toutes
+    les\n contraintes utilisateurs, si de telles structures de gènes existent.\n AUGUSTUS
+    comprend déjà des HMM préconstruits pour de nombreuses espèces,\n ainsi que des
+    scripts d'entraînement de modèles personnalisés grâce à des\n génomes annotés.\n"
+  release: sid
+  description_md5: ab0f2f2c476597fc454d6e64ee4cdcaf
+  license: unknown
+  blend: debian-med
