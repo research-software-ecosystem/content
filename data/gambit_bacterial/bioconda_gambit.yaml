@@ -21,44 +21,46 @@ about:
 build:
   entry_points:
   - gambit = gambit.cli:cli
-  number: 1
+  number: 2
   run_exports:
   - None
-  script: ' -m pip install --no-deps --no-build-isolation . -vvv'
+  script: ' -m pip install --no-deps -vvv .'
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1371/journal.pone.0277575
   - biotools:gambit_bacterial
   recipe-maintainers:
   - jlumpe
-  skip-lints:
-  - uses_setuptools
 package:
   name: gambit
-  version: 1.0.1
+  version: 1.1.0
 requirements:
   build:
   - None
+  - libgomp
+  - llvm-openmp
   host:
   - python
   - pip
-  - numpy >=1.13
-  - cython >=0.27,<1
+  - cython >=3
   run:
   - python
-  - None
-  - sqlalchemy >=1.1,<2.dev0
-  - biopython >=1.69
-  - alembic >=1.0
+  - numpy >=1.13,<2
+  - sqlalchemy >=1.4
+  - biopython >=1.79
   - attrs >=20
-  - cattrs >=1.0
+  - cattrs >=23.2
   - click >=7.0
   - h5py >=3.0
-  - setuptools
   - scipy >=1.7
+  - typing-extensions >=4
 source:
-  sha256: d99285b1b8df971d36292ca3639bab5998b501262db8c72769dc1287920f73e8
-  url: https://github.com/jlumpe/gambit/archive/v1.0.1.tar.gz
+  sha256: 19ec968f75366a5129f4db79024f8a717575fef88b0265c9dd281f767a0d888d
+  url: https://github.com/jlumpe/gambit/archive/v1.1.0.tar.gz
 test:
   commands:
   - gambit --help

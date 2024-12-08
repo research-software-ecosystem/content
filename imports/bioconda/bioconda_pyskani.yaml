@@ -1,0 +1,40 @@
+about:
+  doc_url: https://pyskani.readthedocs.io
+  home: https://github.com/althonos/pyskani/
+  license: MIT
+  license_family: MIT
+  license_file: COPYING
+  summary: PyO3 bindings and Python interface to skani, a method for fast fast genomic
+    identity calculation using sparse chaining.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv'
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - althonos
+package:
+  name: pyskani
+  version: 0.1.3
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - maturin
+  run:
+  - python
+source:
+  sha256: cb8b05f18f12d49a989d21d8bfe9180c9ddb00c595eb8481a3532716b94c4db3
+  url: https://pypi.io/packages/source/p/pyskani/pyskani-0.1.3.tar.gz
+test:
+  commands:
+  - python -m unittest -vv pyskani.tests
+  imports:
+  - pyskani

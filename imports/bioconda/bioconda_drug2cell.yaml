@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/teichlab/drug2cell/
+  license: non-commercial license
+  license_file: LICENSE
+  summary: This is a collection of utility functions for gene group activity evaluation
+    in scanpy
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: drug2cell
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10,<3.11
+  - pip
+  run:
+  - python >=3.10,<3.11
+  - anndata
+  - pandas >=1.5.3,<2.0
+  - numpy
+  - statsmodels
+  - scipy
+  - blitzgsea
+source:
+  sha256: f9e03762f84320bd2357c92ca576b9a67346dbaf157620a69c617841e089495a
+  url: https://pypi.io/packages/source/d/drug2cell/drug2cell-0.1.1.tar.gz
+test:
+  commands:
+  - python -c "import drug2cell"

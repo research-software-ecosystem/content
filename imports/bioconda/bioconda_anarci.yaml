@@ -7,23 +7,25 @@ about:
 build:
   noarch: python
   number: 0
+  run_exports:
+  - None
   script:
   - ' setup.py install'
   - rm -f ${PREFIX}/bin/muscle ${PREFIX}/bin/muscle_macOS
 package:
   name: anarci
-  version: 2021.02.04
+  version: 2024.05.21
 requirements:
   build:
-  - hmmer >=3.1
+  - hmmer >=3.3.2
   host:
-  - python >=3.6
+  - python <=3.11
   run:
-  - hmmer >=3.1
+  - hmmer >=3.3.2
   - biopython
 source:
-  sha256: d84f672baf241d9d67fd3bd02063ef1c4e4ce9e9ef371520c4589a8cf4f5318b
-  url: https://github.com/oxpig/ANARCI/archive/fd2f694c2c45033f356fb7077b866e3a62acfc7c.zip
+  sha256: 805f227cd165dd1930871ef98de48c30eaa24b4597be501a26d69e4d09a2d54e
+  url: https://github.com/oxpig/ANARCI/archive/79f6c575056dedef86cb8f405ebb039197923eec.zip
 test:
   commands:
   - ANARCI -h

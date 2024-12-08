@@ -11,57 +11,61 @@ build:
   entry_points:
   - immune-ml = immuneML.app.ImmuneMLApp:main
   - immune-ml-quickstart = immuneML.workflows.instructions.quickstart:main
-  number: 1
+  - ligo = immuneML.app.LigoApp:main
+  number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
-  skip: true [py2k or py <= 36 or py > 39]
+  script: 'echo ''Installing immuneML...''
+
+    $PYTHON -m pip install . --no-deps --no-build-isolation -vvv || exit 1
+
+    echo ''Done installing immuneML''
+
+    '
+  skip: true
 extra:
   recipe-maintainers:
   - knutwa-ext
   - BlueBasilisk
   - pavlovicmilena
+  - pavelvazquez
   skip-lints:
   - cython_must_be_in_host
 package:
   name: immuneml
-  version: 2.2.6
+  version: 3.0.3
 requirements:
   build:
   - None
   host:
-  - pip
   - python
-  - cython
   run:
-  - airr >=1
-  - dill >=0.3
-  - editdistance ==0.5.3
-  - fishersapi
-  - gensim >=3.8,<4
-  - h5py >=2.9.0
-  - logomaker >=0.8
-  - matplotlib-base >=3.1
-  - matplotlib-venn >=0.11
-  - numpy >=1.18
-  - pandas >=1
-  - plotly >=4
-  - pystache ==0.5.4
+  - numpy <2.0.0
   - pytest >=4
-  - pytorch >=1.5.1
-  - python
-  - pyyaml >=5.3
-  - regex
-  - requests >=2.21
+  - pandas
+  - PyYAML >=5.3
   - scikit-learn >=0.23
-  - scipy
-  - tensorboard >=1.14.0
-  - tqdm >=0.24
+  - gensim >=4
+  - matplotlib-base >=3.1
+  - editdistance
+  - regex
   - tzlocal
-  - cython
+  - airr >=1, <1.4
+  - pystache
+  - dill >=0.3
+  - plotly >=4
+  - logomaker >=0.8
+  - matplotlib-venn >=0.11
+  - scipy <1.13
+  - umap-learn
+  - bionumpy >=0.2.31
+  - npstructures
+  - olga >=1.2.4
+  - keras =2.11.0
+  - tensorflow >=2.11.0
 source:
-  sha256: 29dcfdeeaf561a1878631aa235b0d6dcb7205a206bb1cbd981c299fa658d9d99
-  url: https://pypi.io/packages/source/i/immuneML/immuneML-2.2.6.tar.gz
+  sha256: e8bb82c987ebdc8960cae3c8441b495741916f7ad0ec59e9b0fd3d1c59711240
+  url: https://pypi.io/packages/source/i/immuneml/immuneml-3.0.3.tar.gz
 test:
   commands:
   - immune-ml -h

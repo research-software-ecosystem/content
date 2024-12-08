@@ -1,26 +1,33 @@
 about:
-  home: http://lcb.infotech.monash.edu.au/mustang/
+  doc_url: https://lcb.infotech.monash.edu.au/mustang
+  home: https://lcb.infotech.monash.edu.au/mustang
   license: file
   license_file: COPYING
   summary: Mustang is a program that implements an algorithm for structural alignment
     of multiple protein structures.
 build:
-  number: 1
+  number: 0
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:mustang
   - doi:10.1002/prot.20921
 package:
   name: mustang
-  version: 3.2.3
+  version: 3.2.4
 requirements:
   build:
   - make
   - None
-  run: null
 source:
-  md5: 8ace0194a374a60dbce15fa0b1579b44
-  url: http://lcb.infotech.monash.edu.au/mustang/mustang_v3.2.3.tgz
+  patches:
+  - 0001-Makefile.patch
+  sha256: c05e91c955f491a1fddc404a36ef963b057fd725bcc6d22ef6df1c23b26ce237
+  url: https://lcb.infotech.monash.edu.au/mustang/mustang_v3.2.4.tgz
 test:
   commands:
   - mustang -h
