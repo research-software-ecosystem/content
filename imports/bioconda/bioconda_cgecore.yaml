@@ -3,27 +3,35 @@ about:
   home: https://bitbucket.org/genomicepidemiology/cge_core_module
   license: Apache-2.0
   license_family: Apache
+  license_file: LICENSE.txt
   summary: Center for Genomic Epidemiology Core Module
 build:
   noarch: python
   number: 0
-  script: ' -m pip install . --no-deps --ignore-installed -vv'
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - npavlovikj
 package:
   name: cgecore
-  version: 1.5.6
+  version: 2.0.0
 requirements:
   host:
   - pip
-  - python
+  - python >=3.10
+  - pdm-backend
   run:
-  - python
-  - biopython
+  - python >=3.10
+  - biopython >=1.81
+  - python-dateutil >=2.8.2
+  - gitpython >=3.1.40
+  - numpy >=1.26.2
+  - pandas >=2.1.4
 source:
-  sha256: 310dbaf02c6791dcc17cff7b01930a6260d92328c07cfaaf431742f073fcc758
-  url: https://pypi.io/packages/source/c/cgecore/cgecore-1.5.6.tar.gz
+  sha256: 48474c65e84c33f880839b6f01540e8f5dd74946b119e29255f18fa9f1cd8416
+  url: https://pypi.io/packages/source/c/cgecore/cgecore-2.0.0.tar.gz
 test:
   imports:
   - cgecore
@@ -32,5 +40,4 @@ test:
   - cgecore.alignment
   - cgecore.argumentparsing
   - cgecore.cgefinder
-  - cgecore.cmdline
   - cgecore.utility

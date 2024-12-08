@@ -3,23 +3,33 @@ about:
   license: GPL-3.0-only
   summary: Structural variant and indel caller for mapped sequencing data
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
+  skip: "True \_#\_[osx]"
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:Manta9235
-  skip-lints:
-  - should_be_noarch_generic
 package:
   name: manta
   version: 1.6.0
 requirements:
+  build:
+  - cmake
+  - make
+  - None
+  host:
+  - boost-cpp
+  - python ==2.7.*
   run:
-  - python >=2.6,<3
+  - python ==2.7.*
 source:
-  sha256: ae19b1b934cf5bb605dfb58b29e8e2b843cb469ec5ff12441ca3d9d39179abf4
-  url: https://github.com/Illumina/manta/releases/download/v1.6.0/manta-1.6.0.centos6_x86_64.tar.bz2
+  patches:
+  - boost-shlibs.patch
+  sha256: c846d61b02483265c09d58bd85dacf5326a94f38179b5ae4f70694be96e1368f
+  url: https://github.com/Illumina/manta/releases/download/v1.6.0/manta-1.6.0.release_src.tar.bz2
 test:
   commands:
   - configManta.py -h

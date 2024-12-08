@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/flu-crew/parnas
+  license: MIT
+  license_file: LICENSE
+  summary: Representative taxon sampling from phylogenetic trees
+build:
+  entry_points:
+  - parnas=parnas.cli:run_parnas_cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1093/sysbio/syad028
+  recipe-maintainers:
+  - fdecarpentier
+package:
+  name: parnas
+  version: 0.1.6
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  - setuptools-scm
+  run:
+  - python >=3.7,<=3.12
+  - setuptools >=75
+  - numpy >=1.17
+  - numba >=0.57.0
+  - biopython >=1.67
+  - dendropy >=4.5.0
+  - treetime >=0.9.4
+source:
+  sha256: 0352ee655ac7e045c14d3ababafa502eb451abcb8e9cef10b500212c70c836b3
+  url: https://pypi.org/packages/source/p/parnas/parnas-0.1.6.tar.gz
+test:
+  commands:
+  - pip check
+  - parnas --help
+  imports:
+  - parnas
+  requires:
+  - pip

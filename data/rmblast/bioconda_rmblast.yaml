@@ -1,13 +1,16 @@
 about:
-  home: https://www.repeatmasker.org/rmblast/
+  doc_url: https://www.repeatmasker.org/rmblast
+  home: https://www.repeatmasker.org/rmblast
   license: OSL-2.1
   summary: RMBlast is a RepeatMasker compatible version of the standard NCBI BLAST+
     suite.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:rmblast
   recipe-maintainers:
@@ -26,10 +29,11 @@ requirements:
   - pcre
   - curl
   - time
+  - ncbi-vdb
+  - sqlite =3
   run:
-  - zlib
-  - bzip2
   - entrez-direct
+  - ncbi-vdb
   - perl
   - perl-list-moreutils
   - perl-archive-tar
