@@ -1,15 +1,19 @@
 about:
-  home: http://subread.sourceforge.net/
+  dev_url: https://sourceforge.net/projects/subread
+  doc_url: https://subread.sourceforge.net/SubreadUsersGuide.pdf
+  home: https://subread.sourceforge.net
   license: GPL-3.0-only
-  license_file:
-  - LICENSE
-  summary: High-performance read alignment, quantification, and mutation discovery
+  license_family: GPL3
+  license_file: LICENSE
+  summary: High-performance read alignment, quantification, and mutation discovery.
 build:
-  number: 2
-  run_exports: None
+  number: 0
+  run_exports:
+  - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:subread
   - usegalaxy-eu:featurecounts
@@ -18,7 +22,7 @@ extra:
   - mjsteinbaugh
 package:
   name: subread
-  version: 2.0.6
+  version: 2.0.8
 requirements:
   build:
   - make
@@ -28,8 +32,12 @@ requirements:
 source:
   patches:
   - unsignedchar.patch
-  sha256: f0fdda6b98634d2946028948c220253e10a0f27c7fa5f24913b65b3ac6cbb045
-  url: https://downloads.sourceforge.net/project/subread/subread-2.0.6/subread-2.0.6-source.tar.gz
+  - 0001-macOS-Makefile.patch
+  - 0002-longread-Makefile.patch
+  - 0003-Linux-Makefile.patch
+  - 0004-macOS-sse.patch
+  sha256: cb5dadf71c850f128a8347223fe0ce19e1c17e3959e9f3eba90e8090671f8570
+  url: https://downloads.sourceforge.net/project/subread/subread-2.0.8/subread-2.0.8-source.tar.gz
 test:
   commands:
   - featureCounts -v
@@ -39,6 +47,5 @@ test:
   - subjunc || [[ $? == 1 ]]
   - subindel || [[ $? = 255 ]]
   - repair -h
-  - txUnique || [[ $? == 1 ]]
   - qualityScores
   - subread-fullscan || [[ $? == 255 ]]

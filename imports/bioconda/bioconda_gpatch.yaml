@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/adadiehl/GPatch.git
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Starting with alignments of contigs to a reference genome, produce a chromosome-scale
+    pseudoassembly by patching gaps between mapped contigs with sequences from the
+    reference."
+build:
+  entry_points:
+  - GPatch = GPatch.GPatch:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+package:
+  name: gpatch
+  version: 0.3.5
+requirements:
+  host:
+  - python >=3.7,<3.13
+  - pip
+  run:
+  - python >=3.7,<3.13
+  - biopython >=1.84
+  - pysam >=0.22.1
+source:
+  sha256: 1443daef746825d0749b7870f6b9e49d874ac4d057486d934f702abd194c52c1
+  url: https://pypi.io/packages/source/G/GPatch/GPatch-0.3.5.tar.gz
+test:
+  commands:
+  - GPatch --help
+  imports:
+  - GPatch

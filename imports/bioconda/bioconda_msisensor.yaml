@@ -1,11 +1,18 @@
 about:
+  dev_url: https://github.com/ding-lab/msisensor
   home: https://github.com/ding-lab/msisensor
   license: MIT
+  license_file: LICENSE
   summary: MSIsensor is a C++ program to detect replication slippage variants at microsatellite
     regions, and differentiate them as somatic or germline.
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: msisensor
   version: 0.5
@@ -14,15 +21,16 @@ requirements:
   - make
   - None
   - None
-  - llvm-openmp
-  - libgomp
   host:
   - zlib
-  - openmp
+  - llvm-openmp
+  - libgomp
+  - bamtools
   - ncurses
   run:
   - zlib
-  - openmp
+  - llvm-openmp
+  - libgomp
   - ncurses
 source:
   sha256: d2142ca4345901a4e23b8779615d88772bdb62ec3e58fdb5078e92470c40b44f

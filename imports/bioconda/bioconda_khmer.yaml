@@ -5,12 +5,15 @@ about:
   license_family: BSD
   summary: khmer k-mer counting library
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
   script: -m pip install . --no-deps -vv
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:khmer
   - doi:10.12688/f1000research.6924.1
@@ -40,6 +43,7 @@ requirements:
 source:
   patches:
   - 0001-Inject-compiler-and-flags-for-third-party-compilation.patch
+  - 0002-remove-m64.patch
   sha256: 9850baec8b905c0896f00d0e427d4564f4c87dd7f1abae64734ad0361678e620
   url: https://github.com/dib-lab/khmer/archive/v3.0.0a3.tar.gz
 test:

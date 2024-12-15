@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/PixelgenTechnologies/pixelator
   home: https://github.com/PixelgenTechnologies/pixelator
   license: MIT
   license_family: MIT
@@ -12,7 +13,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - johandahlberg
@@ -20,7 +21,7 @@ extra:
   - fbdtemme
 package:
   name: pixelator
-  version: 0.18.3
+  version: 0.19.0
 requirements:
   host:
   - python >=3.10,<3.12
@@ -39,6 +40,7 @@ requirements:
   - numpy <1.24.0
   - python-annoy <=1.17.0
   - xopen <1.9.0
+  - python-xxhash
   - anndata >=0.8.0
   - numba >=0.56.4
   - scanpy
@@ -58,13 +60,10 @@ requirements:
   - fastp
   - plotly
 source:
-  sha256: cc3ae8ef379b13c07fc1a8511f849b914791d6ecbf64055594a0026708b39708
-  url: https://pypi.io/packages/source/p/pixelgen-pixelator/pixelgen_pixelator-0.18.3.tar.gz
+  sha256: 080caa68a328f2e64268163ee6f129896254d2a095a71a28d7886e7f42515473
+  url: https://pypi.io/packages/source/p/pixelgen-pixelator/pixelgen_pixelator-0.19.0.tar.gz
 test:
   commands:
-  - pip check
   - pixelator --help
   imports:
   - pixelator
-  requires:
-  - pip
