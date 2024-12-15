@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/kcleal/superintervals
+  home: https://github.com/kcleal/superintervals
+  license: MIT
+  license_file: LICENSE
+  summary: Rapid interval intersections
+build:
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  additional-platforms:
+  - linux-aarch64
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - kcleal
+  skip-lints:
+  - cython_must_be_in_host
+package:
+  name: superintervals
+  version: 0.2.3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - setuptools >=42
+  - wheel
+  - cython
+  - pip
+  run:
+  - python
+  - cython
+source:
+  sha256: a09ce005548513c70fd152d1cd9f26d6f54de1ad567db66ebbcd8001abce05a0
+  url: https://github.com/kcleal/superintervals/archive/v0.2.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - superintervals
+  requires:
+  - pip
