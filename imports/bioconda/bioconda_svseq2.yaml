@@ -1,0 +1,33 @@
+about:
+  doc_url: https://sites.google.com/site/jinzhangwebsite/svseq2
+  home: https://sourceforge.net/projects/svseq2/
+  license: CC-PDDC
+  license_family: PUBLIC-DOMAIN
+  summary: An improved approach for accurate and efficient calling of structural variations
+    with low-coverage sequence data
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: svseq2
+  version: 2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - samtools ==0.1.19
+  - zlib
+  run: null
+source:
+  patches:
+  - svseq2.patch
+  sha256: a7a72887a4ef6c70600a3c5ad7b6188237c2e67e877f4b7db80a9eeced0f5a31
+  url: https://sourceforge.net/projects/svseq2/files/SVseq2_2/SVseq2_2.tar.gz
+test:
+  commands:
+  - SVseq2_2 --help 2>&1 | grep SVseq2

@@ -8,26 +8,28 @@ about:
   summary: 'genome_updater: bash script to download/update snapshots of refseq/genbank'
 build:
   noarch: generic
-  number: 1
+  number: 0
+  run_exports:
+  - None
 extra:
   recipe-maintainers:
   - pirovc
 package:
   name: genome_updater
-  version: 0.6.3
+  version: 0.6.4
 requirements:
   run:
   - tar
   - bc
-  - parallel
+  - parallel >=20160822
   - gawk
   - coreutils
   - wget
   - findutils
   - curl
 source:
-  sha256: 07171e3d7f6973e98599b2b594f41655a8249478f94f56c4f09f2fc13ec70060
-  url: https://github.com/pirovc/genome_updater/archive/v0.6.3.tar.gz
+  sha256: 898bd0ce6f8f043bbecb2a0677ce0e0547a3522762bede1ec6c85109ae29553e
+  url: https://github.com/pirovc/genome_updater/archive/v0.6.4.tar.gz
 test:
   commands:
   - "genome_updater.sh -h 2>&1 | grep -e \"\u250C\" -e \"\u2514\" -e \"\u2502\""

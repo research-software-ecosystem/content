@@ -1,0 +1,37 @@
+about:
+  doc_url: https://sourceforge.net/projects/softsv
+  home: https://sourceforge.net/projects/softsv
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: license.txt
+  summary: SoftSV is a tool for the detection of small and large deletions, inversions,
+    tandem duplications and translocations from paired-end sequencing data.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: softsv
+  version: 1.4.2
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - boost-cpp
+  - bamtools
+  - seqan ==2.1.1
+  run:
+  - boost-cpp
+source:
+  patches:
+  - softsv.patch
+  sha256: b3caea962569f7c30f1257ad148fd1e833f8d0737105b9983579d91da2bed6e8
+  url: https://sourceforge.net/projects/softsv/files/SoftSV_1.4.2.zip
+test:
+  commands:
+  - SoftSV --help | grep 1.4.2

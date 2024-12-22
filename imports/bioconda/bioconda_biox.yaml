@@ -1,0 +1,41 @@
+about:
+  description: "BioX is an efficient, lossless compression tool designed specifically\
+    \ for \nbiological sequence data. It supports compression of DNA, RNA, protein\
+    \ \nsequences, and FASTQ data.\n"
+  dev_url: https://github.com/TianMayCry9/BioX
+  home: https://github.com/TianMayCry9/BioX
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: Biological Sequence Compression Tool
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  recipe-maintainers:
+  - TianMayCry9
+package:
+  name: biox
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.6
+  - numpy >=1.19.0
+  - tqdm >=4.45.0
+  - multiprocess >=0.70.0
+source:
+  sha256: ecbaf5d74f93361fdfa1798fc34edc27b18b131b2943f66da1347856444fb9f1
+  url: https://github.com/TianMayCry9/BioX/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - biox -h
+  - printf ">test_seq\nACGTCGCGCGCGCG\n" > test.fa
+  - biox -c -t dna test.fa

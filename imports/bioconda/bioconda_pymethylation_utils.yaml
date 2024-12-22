@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/SebastianDall/pymethylation_utils
+  license: MIT
+  license_file: LICENSE
+  summary: Python wrapper for the methylation_utils Rust binary
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - SebastianDall
+package:
+  name: pymethylation_utils
+  version: 0.4.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+source:
+  sha256: 310e976c5abf7b555b1525a3e25ed89193af0a04fea0d02c93dc85c4a252f8b7
+  url: https://pypi.org/packages/source/p/pymethylation_utils/pymethylation_utils-0.4.1.tar.gz
+test:
+  commands:
+  - python -c "import pymethylation_utils; print(pymethylation_utils.__version__)"
+  imports:
+  - pymethylation_utils
+  requires:
+  - pip

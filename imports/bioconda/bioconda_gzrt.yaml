@@ -5,11 +5,12 @@ about:
 
     '
   dev_url: https://github.com/arenn/gzrt
+  doc_url: https://github.com/arenn/gzrt/blob/v0.9.1/README
   home: https://www.urbanophile.com/arenn/hacking/gzrt
   license: GPL-2.0-only
   license_family: GPL
   license_file: gpl-2.0.txt
-  summary: Unofficial build of the gzip Recovery Toolkit aka gzrecover
+  summary: Unofficial build of the gzip Recovery Toolkit aka gzrecover.
 build:
   number: 1
   run_exports:
@@ -17,11 +18,12 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - mazzalab
 package:
   name: gzrt
-  version: 0.8
+  version: 0.9.1
 requirements:
   build:
   - None
@@ -30,8 +32,10 @@ requirements:
   host:
   - zlib
 source:
-  sha256: b0b7dc53dadd8309ad9f43d6d6be7ac502c68ef854f1f9a15bd7f543e4571fee
-  url: https://www.urbanophile.com/arenn/hacking/gzrt/gzrt-0.8.tar.gz
+  patches:
+  - 0001-Makefile.patch
+  sha256: 97543b5c11bcbfd1fd42671c61fae11fa3040ba8235641ae77ce3fb91c2d5863
+  url: https://github.com/arenn/gzrt/archive/refs/tags/v0.9.1.tar.gz
 test:
   commands:
   - gzrecover -h
