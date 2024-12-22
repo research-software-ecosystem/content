@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/onecodex/needletail
+  home: https://github.com/onecodex/needletail
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Fast FASTX parsing in Python
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - apcamargo
+  skip-lints:
+  - version_constraints_missing_whitespace
+package:
+  name: needletail
+  version: 0.6.1
+requirements:
+  build:
+  - python
+  - cross-python_
+  - crossenv
+  - maturin >=1,<2
+  - None
+  - None
+  - None
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1,<2
+  run:
+  - python
+source:
+  patches:
+  - patches/01-maturin-pyo3.patch
+  sha256: 58c1e04fc706060192fa2669327d45ebad1ab99fb15f73f2e040e4f8b1d051d9
+  url: https://github.com/onecodex/needletail/archive/refs/tags/v0.6.1.tar.gz
+test:
+  files:
+  - test.fa
+  - test.fq

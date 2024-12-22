@@ -6,7 +6,7 @@ about:
     genomes
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
   script: -m pip install --no-deps --ignore-installed .
@@ -21,9 +21,11 @@ requirements:
   host:
   - python >=3.6,<3.11
   - pip
+  - setuptools
   run:
   - python >=3.6,<3.11
   - python-edlib
+  - setuptools
   - scipy
   - numpy
   - pillow
@@ -40,3 +42,10 @@ source:
 test:
   commands:
   - trycycler --version
+  - trycycler subsample --help
+  - trycycler cluster --help
+  - trycycler dotplot --help
+  - trycycler reconcile --help
+  - trycycler msa --help
+  - trycycler partition --help
+  - trycycler consensus --help

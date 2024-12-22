@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/AndreaGuarracino/chain2paf
+  home: https://github.com/AndreaGuarracino/chain2paf
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: convert CHAIN format to PAF format
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - AndreaGuarracino
+package:
+  name: chain2paf
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - cargo-bundle-licenses
+  - cmake
+  - make
+  - pkg-config
+  - clangdev
+  - None
+  - None
+source:
+  sha256: d5a3fe9aa72372b6b868665e56b1ebf6f1e07dea056c5203c9232284ece07e31
+  url: https://github.com/AndreaGuarracino/chain2paf/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - chain2paf --help
