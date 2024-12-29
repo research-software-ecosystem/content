@@ -1,13 +1,13 @@
 about:
   dev_url: https://github.com/vgl-hub/rdeval
-  doc_url: https://github.com/vgl-hub/rdeval/blob/v0.0.2/README.md
+  doc_url: https://github.com/vgl-hub/rdeval/blob/v0.0.3/README.md
   home: https://github.com/vgl-hub/rdeval
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: A general purpose, multithreaded read analysis and manipulation tool.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
@@ -16,19 +16,24 @@ extra:
   - osx-arm64
 package:
   name: rdeval
-  version: 0.0.2
+  version: 0.0.3
 requirements:
   build:
   - None
   - make
   host:
   - zlib
+  - htslib
+  - openssl
+  run:
+  - htslib
+  - openssl
 source:
   patches:
   - Makefile.patch
   - gfalibs-Makefile.patch
-  sha256: 56c2f4d7d2c22b27d1b380dc41b81cc77a2d97c792a69b9360bed9e0027bac4d
-  url: https://github.com/vgl-hub/rdeval/releases/download/v0.0.2/rdeval.v0.0.2-with_submodules.zip
+  sha256: bd8fd59c98aed5fdbb8930207c3ecd9351f6345c26495e762bcc3c274fdba701
+  url: https://github.com/vgl-hub/rdeval/releases/download/v0.0.3/rdeval.v0.0.3-with_submodules.zip
 test:
   commands:
   - rdeval --help

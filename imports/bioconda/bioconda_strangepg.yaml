@@ -9,15 +9,17 @@ build:
   number: 0
   run_exports:
   - None
-  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   container:
     extended-base: true
   recipe-maintainers:
   - qwx9
 package:
   name: strangepg
-  version: 0.8.15
+  version: 0.8.16
 requirements:
   build:
   - None
@@ -27,10 +29,13 @@ requirements:
   - None
   - None
   - None
+  - None
   host:
+  - libegl-devel
   - xorg-libx11
   - xorg-libxcursor
   - xorg-libxi
+  - xorg-xorgproto
   run:
   - libxcb
   - xorg-libx11
@@ -42,8 +47,8 @@ requirements:
   - xorg-libxi
   - xorg-libxrandr
 source:
-  sha256: 2393be1be300b0d9d3d252482277d9735b53fa7aa2156bcdad2215c3cc2ae093
-  url: https://github.com/qwx9/strangepg/archive/refs/tags/0.8.15.tar.gz
+  sha256: bd331051a496aa93deaca170a77c7a69bf0459fb53a2e577a84ac17236ef894d
+  url: https://github.com/qwx9/strangepg/archive/refs/tags/0.8.16.tar.gz
 test:
   source_files:
-  - cmd/main.awk
+  - test/frag10.gfa
