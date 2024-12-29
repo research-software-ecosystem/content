@@ -1,0 +1,32 @@
+about:
+  details: "LoDEI - the local differential editing index - offers a collection of\
+    \ programs \nto detect and analyze differentially edited A-to-I regions in two\
+    \ sets of RNA-seq samples."
+  doi: 10.1038/s41467-024-53298-y
+  home: https://github.com/rna-editing1/lodei
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: Analyze differentially edited A-to-I regions in two sets of RNA-seq samples.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install . --no-deps --no-build-isolation -vvv
+package:
+  name: lodei
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - pysamstats
+  - pandas
+  - matplotlib-base
+source:
+  sha256: e71d7bbd28a8227c8e5757c79f4c94f1bf9e1db278782cb82e5bcc2147721dfe
+  url: https://github.com/rna-editing1/lodei/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - lodei --help
