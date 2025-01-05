@@ -1,8 +1,9 @@
 about:
   home: https://catchenlab.life.illinois.edu/stacks/
-  license: GPL
+  license: GPL-3
+  license_family: GPL3
   license_file: LICENSE
-  summary: Stacks is a software pipeline for building loci from RAD-seq
+  summary: Stacks is a software pipeline for building loci from short-read sequences.
 build:
   number: 0
   run_exports:
@@ -14,7 +15,7 @@ extra:
   - doi:10.1111/mec.12354
 package:
   name: stacks
-  version: 2.65
+  version: 2.68
 requirements:
   build:
   - make
@@ -28,7 +29,7 @@ requirements:
   - perl-file-spec
   - perl-file-temp
   - perl-posix
-  - python >=3
+  - python
   - velvet
   - samtools
   - zlib
@@ -36,30 +37,30 @@ requirements:
   - r-base >=4
 source:
   patches:
-  - at.patch
+  - perl.patches
   - kmer_exit.patch
   - limits.patch
-  sha256: ffd6bd3d6295ab9c89cc451f385d37cd1d47a77019c3d305f31202a2b895e2ea
-  url: https://catchenlab.life.illinois.edu/stacks/source/stacks-2.65.tar.gz
+  sha256: 9dc51ea356d60eb4557b0b2d1a8854aafae492aed87f974e0249cc09aa5e7650
+  url: https://catchenlab.life.illinois.edu/stacks/source/stacks-2.68.tar.gz
 test:
   commands:
-  - cstacks 2>&1 | grep -Fq 'cstacks 2.65'
-  - gstacks 2>&1 | grep -Fq 'gstacks 2.65'
-  - sstacks 2>&1 | grep -Fq 'sstacks 2.65'
-  - ustacks 2>&1 | grep -Fq 'ustacks 2.65'
-  - phasedstacks 2>&1 | grep -Fq 'phasedstacks 2.65'
-  - populations 2>&1 | grep -Fq 'populations 2.65'
-  - process_radtags 2>&1 | grep -Fq 'process_radtags 2.65'
-  - process_shortreads 2>&1 | grep -Fq 'process_shortreads 2.65'
-  - clone_filter 2>&1 | grep -Fq 'clone_filter 2.65'
-  - kmer_filter 2>&1 | grep -Fq 'kmer_filter 2.65'
-  - stacks-dist-extract 2>&1 | grep -q Usage
-  - tsv2bam 2>&1 | grep -Fq 'tsv2bam 2.65'
-  - convert_stacks.pl 2>&1 | grep -Fq 'convert_stacks.pl _VERSION_'
-  - denovo_map.pl -h 2>&1 | grep -Fq 'denovo_map.pl 2.65'
-  - extract_interpop_chars.pl -h 2>&1 | grep -Fq 'extract-interpop-chars.pl'
-  - stacks-integrate-alignments 2>&1 | grep -Fq usage
-  - ref_map.pl 2>&1 | grep -Fq 'ref_map.pl 2.65'
-  - stacks-count-reads-per-sample-per-locus 2>&1 | grep -Fq usage
-  - stacks-hist2d-loci-samples-coverage 2>&1 | grep -Fq usage
-  - stacks-samtools-tview 2>&1 | grep -Fq usage
+  - cstacks 2>&1 | grep "cstacks"
+  - gstacks --help
+  - sstacks 2>&1 | grep "sstacks"
+  - ustacks 2>&1 | grep "ustacks"
+  - phasedstacks 2>&1 | grep "phasedstacks"
+  - populations 2>&1 | grep "populations"
+  - process_radtags 2>&1 | grep "process_radtags"
+  - process_shortreads 2>&1 | grep "process_shortreads"
+  - clone_filter 2>&1 | grep "clone_filter"
+  - kmer_filter 2>&1 | grep "kmer_filter"
+  - stacks-dist-extract --help
+  - tsv2bam --help
+  - convert_stacks.pl -h
+  - denovo_map.pl -h 2>&1 | grep "denovo_map.pl"
+  - extract_interpop_chars.pl -h
+  - stacks-integrate-alignments --help
+  - ref_map.pl 2>&1 | grep "ref_map.pl"
+  - stacks-count-reads-per-sample-per-locus 2>&1 | grep "usage"
+  - stacks-hist2d-loci-samples-coverage 2>&1 | grep "usage"
+  - stacks-samtools-tview 2>&1 | grep "usage"

@@ -1,0 +1,64 @@
+about:
+  dev_url: https://github.com/sebgra/hicberg
+  doc_url: null
+  home: https://github.com/sebgra/hicberg
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Statistical profiling based tool for contact data (Hi-C, ChIA-PET, Capture-C,
+    etc.) and genomics data reconstruction
+build:
+  entry_points:
+  - hicberg=hicberg.__main__:cli
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - sebgra
+package:
+  name: hicberg
+  version: 1.0.0
+requirements:
+  host:
+  - bioframe
+  - biopython
+  - click
+  - cooler
+  - funcy
+  - hicstuff
+  - matplotlib-base
+  - numpy
+  - pandas
+  - pip
+  - pysam
+  - python
+  - scikit-learn
+  - scipy
+  - statsmodels
+  run:
+  - bioframe
+  - biopython
+  - click
+  - cooler
+  - funcy
+  - hicstuff
+  - matplotlib-base
+  - numpy
+  - pandas
+  - pysam
+  - python
+  - scikit-learn
+  - scipy
+  - statsmodels
+source:
+  sha256: 8ce20f1fa8b15244d880544de214adf6105432cebfab4c0eb6b4448d329f5b91
+  url: https://pypi.io/packages/source/h/hicberg/hicberg-1.0.0.tar.gz
+test:
+  commands:
+  - hicberg --help
+  imports:
+  - hicberg
+  - tests
