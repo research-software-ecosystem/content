@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/swittouck/scarap
+  home: https://pypi.org/project/scarap
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: A toolkit for prokaryotic comparative genomics
+build:
+  entry_points:
+  - scarap = scarap.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btae735
+  recipe-maintainers:
+  - TheOafidian
+  - swittouck
+package:
+  name: scarap
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.6.7,<=3.10
+  - setuptools
+  - setuptools-scm
+  - pip
+  run:
+  - python >=3.6.7,<=3.10
+  - wheel
+  - biopython >=1.67
+  - ete3 >=3.1.1
+  - numpy >=1.16.5
+  - scipy >=1.4.1
+  - pandas
+  - mafft
+  - mmseqs2
+  - iqtree
+source:
+  sha256: 00fb084a63dad9da7c981173241dd17361ec16d5c4132e311cb4da16ff0f8b07
+  url: https://pypi.org/packages/source/s/scarap/scarap-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  - scarap --help
+  imports:
+  - scarap
+  requires:
+  - pip
