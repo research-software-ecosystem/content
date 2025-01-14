@@ -8,10 +8,10 @@ jobs:
     name: Analyze biotools differences 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         path: content
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: bio-tools/content-ecosystem-utils
         path: content-ecosystem-utils
@@ -31,7 +31,7 @@ jobs:
         python3 ${{ github.workspace }}/content-ecosystem-utils/scripts/biotools-pullrequest-bot/biotools_pullrequest_analyzer.py ${{ github.workspace }}/content biotools-content${{ github.run_id }}/master ${{ github.run_id }} > output.txt
         cat output.txt
     - name: Upload output
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
           name: output
           path: output.txt
@@ -40,9 +40,9 @@ jobs:
     name: Add PR comments
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - name: Download output
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: output
       - name: copy output to workflow dir

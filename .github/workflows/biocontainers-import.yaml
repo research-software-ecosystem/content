@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: bio-tools/content-ecosystem-utils
         path: content-ecosystem-utils
         ref: 'biocontainers-annotation-import'
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         path: content
     - name: import biocontainers annotations
@@ -44,7 +44,7 @@ jobs:
         ${{ github.workspace }}/content-ecosystem-utils/scripts/git-utils/import-changes.sh $IS_PR_CREATED biocontainers-import
 
     - name: Cache multiple paths
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: |
           .venv/
