@@ -1,0 +1,41 @@
+about:
+  description: PIPETS provides statistically robust analysis for 3'-seq/term-seq data.
+    It utilizes a sliding window approach to apply a Poisson Distribution test to
+    identify genomic positions with termination read coverage that is significantly
+    higher than the surrounding signal. PIPETS then condenses proximal signal and
+    produces strand specific results that contain all significant termination peaks.
+  home: https://bioconductor.org/packages/3.20/bioc/html/PIPETS.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Poisson Identification of PEaks from Term-Seq data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-pipets
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-genomicranges >=1.58.0,<1.59.0
+  - r-base
+  - r-dplyr
+  run:
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-genomicranges >=1.58.0,<1.59.0
+  - r-base
+  - r-dplyr
+source:
+  md5: c7f07b225d88c0172f2f4c5afb6da639
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/PIPETS_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/PIPETS/PIPETS_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PIPETS_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pipets/bioconductor-pipets_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PIPETS')"

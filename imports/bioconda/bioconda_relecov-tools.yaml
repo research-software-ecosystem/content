@@ -1,0 +1,62 @@
+about:
+  author: Sara Monzon
+  author_email: smonzon@isciii.es
+  description: 'Tools for managing and processing of relecov network data, including
+    download, metadata parsing, validation, and update to public databases.
+
+    '
+  home: https://github.com/BU-ISCIII/relecov-tools
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: Tools for managing and processing of relecov data.
+build:
+  entry_points:
+  - relecov-tools=relecov_tools.__main__:run_relecov_tools
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - saramonzon
+  - svarona
+  - Shettland
+package:
+  name: relecov-tools
+  version: 1.3.0
+requirements:
+  host:
+  - python >=3.7
+  - setuptools
+  - setuptools-scm
+  - pip
+  run:
+  - python >=3.7
+  - click
+  - questionary
+  - jsonschema
+  - packaging
+  - prompt_toolkit >=3.0.3
+  - rich >=10.0.0
+  - requests ==2.27.1
+  - paramiko >=2.10.1
+  - pyyaml ==6.0.1
+  - openpyxl >=3.1.2
+  - xlsxwriter ==3.2.0
+  - bs4 >=0.0.2
+  - tabulate
+  - pandas
+  - jinja2 >=3.0.0
+  - ena-upload-cli
+  - bio >=1.4.0
+source:
+  sha256: 283a19a523cb7fc9b735edfd0cbc6293b0af15db0053855ced5fce143d3eecca
+  url: https://pypi.org/packages/source/r/relecov-tools/relecov_tools-1.3.0.tar.gz
+test:
+  commands:
+  - relecov-tools --help
+  imports:
+  - relecov_tools
+  requires:
+  - pip

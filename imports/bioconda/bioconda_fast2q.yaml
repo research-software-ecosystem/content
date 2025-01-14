@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/afombravo/2FAST2Q
+  license: GPL-3.0
+  license_file: LICENSE.txt
+  summary: A Python3 program that counts sequence occurrences in FASTQ files.
+build:
+  entry_points:
+  - 2fast2q=fast2q.fast2q:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install .
+extra:
+  recipe-maintainers:
+  - afombravo
+package:
+  name: fast2q
+  version: 2.7.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy
+  - matplotlib-base
+  - numba
+  - psutil
+  - tqdm
+  - dataclasses
+  - colorama
+source:
+  sha256: bcfd692bb55d8c08dd08097b3c25d0683e4d89f4b51eb85a1f2c63b30f0b41e1
+  url: https://pypi.org/packages/source/f/fast2q/fast2q-2.7.2.tar.gz
+test:
+  commands:
+  - 2fast2q -v

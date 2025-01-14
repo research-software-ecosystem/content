@@ -9,16 +9,20 @@ about:
 build:
   entry_points:
   - parascopy=parascopy.entry_point:main
-  number: 0
+  number: 1
   run_exports:
   - None
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: parascopy
-  version: 1.17.1
+  version: 1.17.2
 requirements:
   build:
   - None
   - None
+  - cmake
   - meson
   - ninja
   - pkg-config
@@ -31,6 +35,8 @@ requirements:
   - htslib
   - tabixpp
   - clangdev
+  - liblzma
+  - xz
   run:
   - python
   - numpy >=1.15
@@ -45,8 +51,8 @@ requirements:
   - tabixpp
   - construct
 source:
-  sha256: 3b6871a198e60b76a0d1f94dd219134c8662547d3a98fb20786443916e964a5b
-  url: https://github.com/tprodanov/parascopy/archive/v1.17.1.tar.gz
+  sha256: 2673bb922c5d61b8054f8ea0cb4e213b028df6ea3bab9f7e844dc1420b05875f
+  url: https://github.com/tprodanov/parascopy/archive/v1.17.2.tar.gz
 test:
   commands:
   - parascopy help

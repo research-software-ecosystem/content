@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/ChrisgKent/primalbedtools
+  license: MPL-2.0
+  license_file: LICENSE
+  summary: A collection of tools for working with primer.bed files
+build:
+  entry_points:
+  - primalbedtools = primalbedtools.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - chriskent
+package:
+  name: primalbedtools
+  version: 0.6.2
+requirements:
+  host:
+  - python >=3.9,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.9.0,<4.0.0
+source:
+  sha256: fe8d656fef3824c9f9af623cdad61a2ee00ca829c5856522b5f5b8a05d8860dc
+  url: https://pypi.org/packages/source/p/primalbedtools/primalbedtools-0.6.2.tar.gz
+test:
+  commands:
+  - pip check
+  - primalbedtools --help
+  imports:
+  - primalbedtools
+  requires:
+  - pip

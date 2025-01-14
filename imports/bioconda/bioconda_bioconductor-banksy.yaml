@@ -1,0 +1,65 @@
+about:
+  description: Banksy is an R package that incorporates spatial information to cluster
+    cells in a feature space (e.g. gene expression). To incorporate spatial information,
+    BANKSY computes the mean neighborhood expression and azimuthal Gabor filters that
+    capture gene expression gradients. These features are combined with the cell's
+    own expression to embed cells in a neighbor-augmented product space which can
+    then be clustered, allowing for accurate and spatially-aware cell typing and tissue
+    domain segmentation.
+  home: https://bioconductor.org/packages/3.20/bioc/html/Banksy.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Spatial transcriptomic clustering
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-banksy
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-aricode
+  - r-base
+  - r-data.table
+  - r-dbscan
+  - r-igraph
+  - r-irlba
+  - r-leidenalg >=1.1.0
+  - r-matrixstats
+  - r-mclust
+  - r-rcpphungarian
+  - r-uwot
+  run:
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-aricode
+  - r-base
+  - r-data.table
+  - r-dbscan
+  - r-igraph
+  - r-irlba
+  - r-leidenalg >=1.1.0
+  - r-matrixstats
+  - r-mclust
+  - r-rcpphungarian
+  - r-uwot
+source:
+  md5: 93df59b263b0be76ca53c924154f6c04
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Banksy_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/Banksy/Banksy_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Banksy_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-banksy/bioconductor-banksy_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Banksy')"

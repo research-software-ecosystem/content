@@ -8,7 +8,7 @@ about:
     et al. 2011. Furthermore, OmnipathR features a close integration with the NicheNet
     method for ligand activity prediction from transcriptomics data, and its R implementation
     `nichenetr` (available only on github).
-  home: https://bioconductor.org/packages/3.18/bioc/html/OmnipathR.html
+  home: https://bioconductor.org/packages/3.20/bioc/html/OmnipathR.html
   license: MIT + file LICENSE
   license_file: LICENSE
   summary: OmniPath web service client and more
@@ -21,7 +21,7 @@ build:
   run_exports: None
 package:
   name: bioconductor-omnipathr
-  version: 3.10.1
+  version: 3.14.0
 requirements:
   host:
   - r-base
@@ -39,20 +39,25 @@ requirements:
   - r-magrittr
   - r-progress
   - r-purrr
+  - r-r.utils
   - r-rappdirs
   - r-readr >=2.0.0
   - r-readxl
   - r-rlang
   - r-rmarkdown
+  - r-rsqlite
   - r-rvest
   - r-stringi
   - r-stringr
   - r-tibble
   - r-tidyr
   - r-tidyselect
+  - r-vctrs
   - r-withr
+  - r-xml
   - r-xml2
   - r-yaml
+  - r-zip
   run:
   - r-base
   - r-checkmate
@@ -69,28 +74,32 @@ requirements:
   - r-magrittr
   - r-progress
   - r-purrr
+  - r-r.utils
   - r-rappdirs
   - r-readr >=2.0.0
   - r-readxl
   - r-rlang
   - r-rmarkdown
+  - r-rsqlite
   - r-rvest
   - r-stringi
   - r-stringr
   - r-tibble
   - r-tidyr
   - r-tidyselect
+  - r-vctrs
   - r-withr
+  - r-xml
   - r-xml2
   - r-yaml
+  - r-zip
 source:
-  md5: c51296b40e8d580f14dc3ff6839495f6
+  md5: d2e2da1697eb72a8c6313883043682ca
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/OmnipathR_3.10.1.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/OmnipathR/OmnipathR_3.10.1.tar.gz
-  - https://bioarchive.galaxyproject.org/OmnipathR_3.10.1.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-omnipathr/bioconductor-omnipathr_3.10.1_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/OmnipathR_3.14.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/OmnipathR/OmnipathR_3.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/OmnipathR_3.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-omnipathr/bioconductor-omnipathr_3.14.0_src_all.tar.gz
 test:
   commands:
-  - $R -e "options(omnipath.logfile='none'); library('OmnipathR')"
-  - find /tmp -name omnipathr-log -exec rm -rf {} +
+  - $R -e "library('OmnipathR')"

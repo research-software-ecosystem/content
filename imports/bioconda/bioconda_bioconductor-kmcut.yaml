@@ -1,0 +1,48 @@
+about:
+  description: The purpose of the package is to identify prognostic biomarkers and
+    an optimal numeric cutoff for each biomarker that can be used to stratify a group
+    of test subjects (samples) into two sub-groups with significantly different survival
+    (better vs. worse). The package was developed for the analysis of gene expression
+    data, such as RNA-seq. However, it can be used with any quantitative variable
+    that has a sufficiently large proportion of unique values.
+  home: https://bioconductor.org/packages/3.20/bioc/html/kmcut.html
+  license: Artistic-2.0
+  summary: Optimized Kaplan Meier analysis and identification and validation of prognostic
+    biomarkers
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-kmcut
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-pracma
+  - r-survival
+  run:
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-pracma
+  - r-survival
+source:
+  md5: 505c5a27bd7430ae58156933038d3f38
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/kmcut_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/kmcut/kmcut_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/kmcut_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kmcut/bioconductor-kmcut_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('kmcut')"

@@ -1,0 +1,44 @@
+about:
+  description: Method for segmentation of spatial domains and spatially-aware clustering
+    in spatial transcriptomics data. The method generates spatial domains with smooth
+    boundaries by smoothing gene expression profiles across neighboring spatial locations,
+    followed by unsupervised clustering. Spatial domains consisting of consistent
+    mixtures of cell types may then be further investigated by applying cell type
+    compositional analyses or differential analyses.
+  home: https://bioconductor.org/packages/3.20/bioc/html/smoothclust.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: smoothclust
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-smoothclust
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-spdep
+  run:
+  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-spdep
+source:
+  md5: 0f0e9229aea3dfa58353ce1ac4c0e662
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/smoothclust_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/smoothclust/smoothclust_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/smoothclust_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-smoothclust/bioconductor-smoothclust_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('smoothclust')"

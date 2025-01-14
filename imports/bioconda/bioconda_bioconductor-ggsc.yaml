@@ -1,10 +1,10 @@
 about:
   description: Useful functions to visualize single cell and spatial data. It supports
-    both 'SingleCellExperiment' and 'Seurat' objects. It also supports visualizing
-    the data using grammar of graphics implemented in 'ggplot2'.
-  home: https://bioconductor.org/packages/3.18/bioc/html/ggsc.html
+    visualizing 'Seurat', 'SingleCellExperiment' and 'SpatialExperiment' objects through
+    grammar of graphics syntax implemented in 'ggplot2'.
+  home: https://bioconductor.org/packages/3.20/bioc/html/ggsc.html
   license: Artistic-2.0
-  summary: Visualizing Single Cell Data
+  summary: Visualizing Single Cell and Spatial Transcriptomics
 build:
   number: 0
   rpaths:
@@ -13,23 +13,26 @@ build:
   run_exports: None
 package:
   name: bioconductor-ggsc
-  version: 1.0.2
+  version: 1.4.0
 requirements:
   build:
   - None
   - None
   - make
   host:
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-cli
   - r-dplyr
+  - r-ggfun >=0.1.5
   - r-ggplot2
+  - r-rcolorbrewer
   - r-rcpp
   - r-rcpparmadillo
   - r-rcppparallel
   - r-rlang
+  - r-scales
   - r-scattermore
   - r-seurat
   - r-tibble
@@ -39,16 +42,19 @@ requirements:
   - libblas
   - liblapack
   run:
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-cli
   - r-dplyr
+  - r-ggfun >=0.1.5
   - r-ggplot2
+  - r-rcolorbrewer
   - r-rcpp
   - r-rcpparmadillo
   - r-rcppparallel
   - r-rlang
+  - r-scales
   - r-scattermore
   - r-seurat
   - r-tibble
@@ -56,12 +62,12 @@ requirements:
   - r-tidyr
   - r-yulab.utils
 source:
-  md5: 4c0a1656e9943cadf436244c65b18242
+  md5: 1caafa93bcd57a5ba6fbf0725f899fa4
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ggsc_1.0.2.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ggsc/ggsc_1.0.2.tar.gz
-  - https://bioarchive.galaxyproject.org/ggsc_1.0.2.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-ggsc/bioconductor-ggsc_1.0.2_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/ggsc_1.4.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/ggsc/ggsc_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ggsc_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ggsc/bioconductor-ggsc_1.4.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('ggsc')"

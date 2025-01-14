@@ -1,0 +1,49 @@
+about:
+  description: survClust is an outcome weighted integrative clustering algorithm used
+    to classify multi-omic samples on their available time to event information. The
+    resulting clusters are cross-validated to avoid over overfitting and output classification
+    of samples that are molecularly distinct and clinically meaningful. It takes in
+    binary (mutation) as well as continuous data (other omic types).
+  home: https://bioconductor.org/packages/3.20/bioc/html/survClust.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Identification Of Clinically Relevant Genomic Subtypes Using Outcome Weighted
+    Learning
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-survclust
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-multiassayexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-pdist
+  - r-rcpp
+  - r-survival
+  - libblas
+  - liblapack
+  run:
+  - bioconductor-multiassayexperiment >=1.32.0,<1.33.0
+  - r-base
+  - r-pdist
+  - r-rcpp
+  - r-survival
+source:
+  md5: ea7b5d530a1188fe7133b5be851ee739
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/survClust_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/survClust/survClust_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/survClust_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-survclust/bioconductor-survclust_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('survClust')"

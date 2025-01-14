@@ -1,0 +1,46 @@
+about:
+  description: This package provides a roclet for roxygen2 that identifies and processes
+    code blocks in your documentation marked with `@longtests`. These blocks should
+    contain tests that take a long time to run and thus cannot be included in the
+    regular test suite of the package. When you run `roxygen2::roxygenise` with the
+    `longtests_roclet`, it will extract these long tests from your documentation and
+    save them in a separate directory. This allows you to run these long tests separately
+    from the rest of your tests, for example, on a continuous integration server that
+    is set up to run long tests.
+  home: https://bioconductor.org/packages/3.20/bioc/html/biocroxytest.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Handle Long Tests in Bioconductor Packages
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-biocroxytest
+  version: 1.2.0
+requirements:
+  host:
+  - r-base
+  - r-cli
+  - r-glue
+  - r-roxygen2
+  - r-stringr
+  run:
+  - r-base
+  - r-cli
+  - r-glue
+  - r-roxygen2
+  - r-stringr
+source:
+  md5: 5fb89e73aaa2844888086004a9b06a0f
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/biocroxytest_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/biocroxytest/biocroxytest_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/biocroxytest_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biocroxytest/bioconductor-biocroxytest_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('biocroxytest')"

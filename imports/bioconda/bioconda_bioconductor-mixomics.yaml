@@ -20,7 +20,7 @@ about:
     to combine multiple data sets: N-integration with variants of Generalised Canonical
     Correlation Analysis and P-integration with variants of multi-group Partial Least
     Squares.'
-  home: https://bioconductor.org/packages/3.18/bioc/html/mixOmics.html
+  home: https://bioconductor.org/packages/3.20/bioc/html/mixOmics.html
   license: GPL (>= 2)
   license_file: /lib/R/share/licenses/GPL-3
   summary: Omics Data Integration Project
@@ -31,12 +31,22 @@ build:
   - lib/R/lib/
   - lib/
   run_exports: None
+extra:
+  container:
+    extended-base: true
 package:
   name: bioconductor-mixomics
-  version: 6.26.0
+  version: 6.30.0
 requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - xorg-libxfixes
   host:
-  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
   - r-base
   - r-corpcor
   - r-dplyr
@@ -44,6 +54,7 @@ requirements:
   - r-ggplot2
   - r-ggrepel
   - r-gridextra
+  - r-gsignal
   - r-igraph
   - r-lattice
   - r-mass
@@ -51,9 +62,10 @@ requirements:
   - r-rarpack
   - r-rcolorbrewer
   - r-reshape2
+  - r-rgl
   - r-tidyr
   run:
-  - bioconductor-biocparallel >=1.36.0,<1.37.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
   - r-base
   - r-corpcor
   - r-dplyr
@@ -61,6 +73,7 @@ requirements:
   - r-ggplot2
   - r-ggrepel
   - r-gridextra
+  - r-gsignal
   - r-igraph
   - r-lattice
   - r-mass
@@ -68,14 +81,16 @@ requirements:
   - r-rarpack
   - r-rcolorbrewer
   - r-reshape2
+  - r-rgl
   - r-tidyr
 source:
-  md5: d735d1aec6a3576238256244e87031ff
+  md5: bc07fef3c1ce86dbad92753050c4742e
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/mixOmics_6.26.0.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/mixOmics/mixOmics_6.26.0.tar.gz
-  - https://bioarchive.galaxyproject.org/mixOmics_6.26.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-mixomics/bioconductor-mixomics_6.26.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/mixOmics_6.30.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/mixOmics/mixOmics_6.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mixOmics_6.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mixomics/bioconductor-mixomics_6.30.0_src_all.tar.gz
 test:
   commands:
-  - $R -e "library('mixOmics')"
+  - LD_LIBRARY_PATH="${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${BUILD_PREFIX}/lib"
+    $R -e "library('mixOmics')"

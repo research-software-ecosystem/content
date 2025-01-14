@@ -1,14 +1,14 @@
 about:
-  description: This package provides version 1.15.1 of the 'HTSlib' C library for
-    high-throughput sequence analysis. The package is primarily useful to developers
-    of other R packages who wish to make use of HTSlib. Motivation and instructions
-    for use of this package are in the vignette, vignette(package="Rhtslib", "Rhtslib").
-  home: https://bioconductor.org/packages/3.18/bioc/html/Rhtslib.html
+  description: This package provides version 1.18 of the 'HTSlib' C library for high-throughput
+    sequence analysis. The package is primarily useful to developers of other R packages
+    who wish to make use of HTSlib. Motivation and instructions for use of this package
+    are in the vignette, vignette(package="Rhtslib", "Rhtslib").
+  home: https://bioconductor.org/packages/3.20/bioc/html/Rhtslib.html
   license: LGPL (>= 2)
   license_file: /lib/R/share/licenses/LGPL-3
   summary: HTSlib high-throughput sequencing library as an R package
 build:
-  number: 2
+  number: 1
   rpaths:
   - lib/R/lib/
   - lib/
@@ -21,27 +21,31 @@ extra:
   - doi:10.1038/nmeth.3252
 package:
   name: bioconductor-rhtslib
-  version: 2.4.0
+  version: 3.2.0
 requirements:
   build:
   - None
   - automake
   - make
   host:
-  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - bioconductor-zlibbioc >=1.52.0,<1.53.0
   - r-base
   - libblas
   - liblapack
+  - zlib
+  - liblzma-devel
   run:
-  - bioconductor-zlibbioc >=1.48.0,<1.49.0
+  - bioconductor-zlibbioc >=1.52.0,<1.53.0
   - r-base
 source:
-  md5: 8aa7fa3050a484702c3065c797948ba8
+  md5: 1d8eabf0934373b61aca2dc20cab712b
+  patches:
+  - arm_hwcap.patch
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Rhtslib_2.4.0.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/Rhtslib/Rhtslib_2.4.0.tar.gz
-  - https://bioarchive.galaxyproject.org/Rhtslib_2.4.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-rhtslib/bioconductor-rhtslib_2.4.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Rhtslib_3.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/Rhtslib/Rhtslib_3.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rhtslib_3.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rhtslib/bioconductor-rhtslib_3.2.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('Rhtslib')"
