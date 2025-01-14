@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/Alvarosmb/ExcludonFinder
+  license: MIT
+  license_file: LICENSE
+  summary: A tool for identifying and analyzing excludons in genomic data using RNA-seq
+    data
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p $PREFIX/bin
+  - cp scripts/ExcludonFinder $PREFIX/bin/
+  - chmod +x $PREFIX/bin/ExcludonFinder
+package:
+  name: excludonfinder
+  version: 0.1.1
+requirements:
+  run:
+  - r-base >=4.1
+  - bwa-mem2 >=2.2.1
+  - minimap2 >=2.24
+  - samtools >=1.15
+  - subread >=2.0.1
+  - r-dplyr >=1.0.7
+  - r-foreach >=1.5.2
+  - r-doparallel >=1.0.17
+  - r-data.table >=1.14
+  - r-biocmanager >=1.30.19
+  - bioconductor-rtracklayer >=1.54.0
+  - parallel >=20211022
+source:
+  sha256: cc0a4a3c23d99c473563113e693f00511e1f9fc5a77dec2826ee956b32c323e1
+  url: https://github.com/Alvarosmb/ExcludonFinder/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - ExcludonFinder --help

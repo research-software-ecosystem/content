@@ -1,0 +1,59 @@
+about:
+  description: This package calculates a similarity coefficient using the fold changes
+    of shared features (e.g. genes) among clusters of different samples/batches/datasets.
+    The similarity coefficient is calculated using the dot-product (Hadamard product)
+    of every pairwise combination of Fold Changes between a source cluster i of sample/dataset
+    n and all the target clusters j in sample/dataset m
+  home: https://bioconductor.org/packages/3.20/bioc/html/ClusterFoldSimilarity.html
+  license: Artistic-2.0
+  summary: Calculate similarity of clusters from different single cell samples using
+    foldchanges
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-clusterfoldsimilarity
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-ggdendro
+  - r-ggplot2
+  - r-igraph
+  - r-matrix
+  - r-reshape2
+  - r-scales
+  - r-seurat
+  - r-seuratobject
+  run:
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-ggdendro
+  - r-ggplot2
+  - r-igraph
+  - r-matrix
+  - r-reshape2
+  - r-scales
+  - r-seurat
+  - r-seuratobject
+source:
+  md5: 3c0b4aa95db88e8ccb61bef1d552df7a
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/ClusterFoldSimilarity_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/ClusterFoldSimilarity/ClusterFoldSimilarity_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ClusterFoldSimilarity_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-clusterfoldsimilarity/bioconductor-clusterfoldsimilarity_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ClusterFoldSimilarity')"

@@ -8,45 +8,55 @@ about:
     \ to measure its global similar-ity, and adaptively learns neighbour representation\
     \ of a cell as its local similarity. The overall similar-ity of a cell to other\
     \ cells is a linear combination of its global similarity and local similarity."
-  home: https://bioconductor.org/packages/3.17/bioc/html/RCSL.html
-  license: GPL-3
-  license_file: /lib/R/share/licenses/GPL-3
+  home: https://bioconductor.org/packages/3.20/bioc/html/RCSL.html
+  license: Artistic-2.0
   summary: Rank Constrained Similarity Learning for single cell RNA sequencing data
 build:
-  noarch: generic
   number: 0
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports: None
 package:
   name: bioconductor-rcsl
-  version: 1.8.0
+  version: 1.14.0
 requirements:
+  build:
+  - None
+  - None
   host:
+  - bioconductor-matrixgenerics >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
   - r-base
-  - r-ggplot2
+  - r-ggplot2 >=3.4.0
   - r-igraph
   - r-nbclust
   - r-pracma
+  - r-rcpp >=0.11.0
   - r-rcppannoy
   - r-rtsne
   - r-umap
+  - libblas
+  - liblapack
   run:
+  - bioconductor-matrixgenerics >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
   - r-base
-  - r-ggplot2
+  - r-ggplot2 >=3.4.0
   - r-igraph
   - r-nbclust
   - r-pracma
+  - r-rcpp >=0.11.0
   - r-rcppannoy
   - r-rtsne
   - r-umap
 source:
-  md5: 014987c88b4b2941c8badfc38c37db2c
+  md5: 2624ecbd83fdbb8adbd2478ca9c59f40
   url:
-  - https://bioconductor.org/packages/3.17/bioc/src/contrib/RCSL_1.8.0.tar.gz
-  - https://bioconductor.org/packages/3.17/bioc/src/contrib/Archive/RCSL/RCSL_1.8.0.tar.gz
-  - https://bioarchive.galaxyproject.org/RCSL_1.8.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-rcsl/bioconductor-rcsl_1.8.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/RCSL_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/RCSL/RCSL_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RCSL_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rcsl/bioconductor-rcsl_1.14.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('RCSL')"

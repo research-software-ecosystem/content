@@ -1,5 +1,6 @@
 about:
-  doc_url: https://prokbert.readthedocs.io/en/latest/
+  dev_url: https://github.com/nbrg-ppcu/prokbert
+  doc_url: https://prokbert.readthedocs.io/en/latest
   home: https://github.com/nbrg-ppcu/prokbert
   license: MIT
   license_family: MIT
@@ -14,7 +15,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   identifiers:
   - doi:10.1101/2023.11.09.566411
@@ -22,26 +23,29 @@ extra:
   - obalasz
 package:
   name: prokbert
-  version: 0.0.44
+  version: 0.0.46
 requirements:
   host:
   - python >=3.10
   - pip
+  - setuptools
   run:
   - python >=3.10
   - pytorch
   - torchvision
   - biopython
-  - pandas >=2.0.0
+  - pandas >=1.5.0
   - datasets >=2.0.1
   - scikit-learn >=1.2.2
-  - scipy >=1.10.0
+  - scipy >=1.10.1
   - transformers >=4.23
-  - tables >=3.8.0
+  - pytables >=3.8.0
   - h5py >=3.7.0
+  - python-blosc2
+  - accelerate >=0.20.1
 source:
-  sha256: 19a6c9890c7689d795a8898061d48e7023b64226388c1c67f2f68a91c42a5012
-  url: https://pypi.io/packages/source/p/prokbert/prokbert-0.0.44.tar.gz
+  sha256: 580a4b8845f32c5327617772bd964fb3c7a68f3d6643f56cfebe704d70570920
+  url: https://pypi.io/packages/source/p/prokbert/prokbert-0.0.46.tar.gz
 test:
   imports:
   - prokbert

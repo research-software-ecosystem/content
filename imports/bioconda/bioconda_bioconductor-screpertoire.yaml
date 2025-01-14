@@ -1,16 +1,15 @@
 about:
-  description: scRepertoire was built to process data derived from the 10x Genomics
-    Chromium Immune Profiling for both T-cell receptor (TCR) and immunoglobulin (Ig)
-    enrichment workflows and subsequently interacts with the popular Seurat and SingleCellExperiment
-    R packages. It also allows for general analysis of single-cell clonotype information
-    without the use of expression information. The package functions as a wrapper
-    for Startrac and powerTCR R packages.
-  home: https://bioconductor.org/packages/3.18/bioc/html/scRepertoire.html
-  license: GPL-2
-  license_file: /lib/R/share/licenses/GPL-2
+  description: scRepertoire is a toolkit for processing and analyzing single-cell
+    T-cell receptor (TCR) and immunoglobulin (Ig). The scRepertoire framework supports
+    use of 10x, AIRR, BD, MiXCR, Omniscope, TRUST4, and WAT3R single-cell formats.
+    The functionality includes basic clonal analyses, repertoire summaries, distance-based
+    clustering and interaction with the popular Seurat and SingleCellExperiment/Bioconductor
+    R workflows.
+  home: https://bioconductor.org/packages/3.20/bioc/html/scRepertoire.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
   summary: A toolkit for single-cell immune receptor profiling
 build:
-  noarch: generic
   number: 0
   rpaths:
   - lib/R/lib/
@@ -18,53 +17,75 @@ build:
   run_exports: None
 package:
   name: bioconductor-screpertoire
-  version: 1.12.0
+  version: 2.2.0
 requirements:
+  build:
+  - None
+  - None
+  - make
   host:
-  - bioconductor-powertcr >=1.22.0,<1.23.0
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
-  - r-doparallel
+  - r-cubature
   - r-dplyr
+  - r-evmix
   - r-ggalluvial
+  - r-ggdendro
   - r-ggplot2
   - r-ggraph
+  - r-hash
   - r-igraph
+  - r-inext
   - r-plyr
+  - r-quantreg
+  - r-rcpp
   - r-reshape2
+  - r-rjson
   - r-rlang
   - r-seuratobject
   - r-stringdist
   - r-stringr
   - r-tidygraph
-  - r-vegan
+  - r-truncdist
+  - r-vgam
+  - libblas
+  - liblapack
   run:
-  - bioconductor-powertcr >=1.22.0,<1.23.0
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-s4vectors >=0.44.0,<0.45.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
-  - r-doparallel
+  - r-cubature
   - r-dplyr
+  - r-evmix
   - r-ggalluvial
+  - r-ggdendro
   - r-ggplot2
   - r-ggraph
+  - r-hash
   - r-igraph
+  - r-inext
   - r-plyr
+  - r-quantreg
+  - r-rcpp
   - r-reshape2
+  - r-rjson
   - r-rlang
   - r-seuratobject
   - r-stringdist
   - r-stringr
   - r-tidygraph
-  - r-vegan
+  - r-truncdist
+  - r-vgam
 source:
-  md5: 3debd173702ebe6c551ba6c572a76c25
+  md5: eb321afd64fa19bda15b6e574b19ef7a
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/scRepertoire_1.12.0.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/scRepertoire/scRepertoire_1.12.0.tar.gz
-  - https://bioarchive.galaxyproject.org/scRepertoire_1.12.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-screpertoire/bioconductor-screpertoire_1.12.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/scRepertoire_2.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/scRepertoire/scRepertoire_2.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scRepertoire_2.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-screpertoire/bioconductor-screpertoire_2.2.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('scRepertoire')"

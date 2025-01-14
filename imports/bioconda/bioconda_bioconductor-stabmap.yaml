@@ -1,0 +1,60 @@
+about:
+  description: StabMap performs single cell mosaic data integration by first building
+    a mosaic data topology, and for each reference dataset, traverses the topology
+    to project and predict data onto a common embedding. Mosaic data should be provided
+    in a list format, with all relevant features included in the data matrices within
+    each list object. The output of stabMap is a joint low-dimensional embedding taking
+    into account all available relevant features. Expression imputation can also be
+    performed using the StabMap embedding and any of the original data matrices for
+    given reference and query cell lists.
+  home: https://bioconductor.org/packages/3.20/bioc/html/StabMap.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Stabilised mosaic single cell data integration using unshared features
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-stabmap
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-biocneighbors >=2.0.0,<2.1.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-biocsingular >=1.22.0,<1.23.0
+  - bioconductor-matrixgenerics >=1.18.0,<1.19.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-abind
+  - r-base
+  - r-igraph
+  - r-mass
+  - r-matrix
+  - r-slam
+  run:
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-biocneighbors >=2.0.0,<2.1.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-biocsingular >=1.22.0,<1.23.0
+  - bioconductor-matrixgenerics >=1.18.0,<1.19.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-abind
+  - r-base
+  - r-igraph
+  - r-mass
+  - r-matrix
+  - r-slam
+source:
+  md5: d6f3b17a6b922b54b815d22481ed956f
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/StabMap_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/StabMap/StabMap_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/StabMap_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-stabmap/bioconductor-stabmap_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('StabMap')"

@@ -1,12 +1,14 @@
 about:
-  description: Visualization functions for spatially resolved transcriptomics datasets
-    stored in SpatialExperiment format. Includes functions to create several types
-    of plots for data from from spot-based (e.g. 10x Genomics Visium) and molecule-based
-    (e.g. seqFISH) technological platforms.
-  home: https://bioconductor.org/packages/3.18/bioc/html/ggspavis.html
+  description: Visualization functions for spatial transcriptomics data. Includes
+    functions to generate several types of plots, including spot plots, feature (molecule)
+    plots, reduced dimension plots, spot-level quality control (QC) plots, and feature-level
+    QC plots, for datasets from the 10x Genomics Visium and other technological platforms.
+    Datasets are assumed to be in either SpatialExperiment or SingleCellExperiment
+    format.
+  home: https://bioconductor.org/packages/3.20/bioc/html/ggspavis.html
   license: MIT + file LICENSE
   license_file: LICENSE
-  summary: Visualization functions for spatially resolved transcriptomics data
+  summary: Visualization functions for spatial transcriptomics data
 build:
   noarch: generic
   number: 0
@@ -16,29 +18,35 @@ build:
   run_exports: None
 package:
   name: bioconductor-ggspavis
-  version: 1.8.0
+  version: 1.12.0
 requirements:
   host:
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-spatialexperiment >=1.12.0,<1.13.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-ggplot2
+  - r-ggrepel
   - r-ggside
+  - r-rcolorbrewer
+  - r-scales
   run:
-  - bioconductor-singlecellexperiment >=1.24.0,<1.25.0
-  - bioconductor-spatialexperiment >=1.12.0,<1.13.0
-  - bioconductor-summarizedexperiment >=1.32.0,<1.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-ggplot2
+  - r-ggrepel
   - r-ggside
+  - r-rcolorbrewer
+  - r-scales
 source:
-  md5: c79337783dc059e449506a61c5579337
+  md5: 625803fb55152e66fda4a8491a6edcbe
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/ggspavis_1.8.0.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/ggspavis/ggspavis_1.8.0.tar.gz
-  - https://bioarchive.galaxyproject.org/ggspavis_1.8.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-ggspavis/bioconductor-ggspavis_1.8.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/ggspavis_1.12.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/ggspavis/ggspavis_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ggspavis_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ggspavis/bioconductor-ggspavis_1.12.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('ggspavis')"

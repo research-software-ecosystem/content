@@ -1,0 +1,55 @@
+about:
+  description: Peptide Set Test (PepSetTest) is a peptide-centric strategy to infer
+    differentially expressed proteins in LC-MS/MS proteomics data. This test detects
+    coordinated changes in the expression of peptides originating from the same protein
+    and compares these changes against the rest of the peptidome. Compared to traditional
+    aggregation-based approaches, the peptide set test demonstrates improved statistical
+    power, yet controlling the Type I error rate correctly in most cases. This test
+    can be valuable for discovering novel biomarkers and prioritizing drug targets,
+    especially when the direct application of statistical analysis to protein data
+    fails to provide substantial insights.
+  home: https://bioconductor.org/packages/3.20/bioc/html/PepSetTest.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Peptide Set Test
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+package:
+  name: bioconductor-pepsettest
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-limma >=3.62.0,<3.63.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-dplyr
+  - r-lme4
+  - r-mass
+  - r-matrixstats
+  - r-reshape2
+  - r-tibble
+  run:
+  - bioconductor-limma >=3.62.0,<3.63.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
+  - r-base
+  - r-dplyr
+  - r-lme4
+  - r-mass
+  - r-matrixstats
+  - r-reshape2
+  - r-tibble
+source:
+  md5: 34543a61d708ed84e035f27ff8634055
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/PepSetTest_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/PepSetTest/PepSetTest_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PepSetTest_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pepsettest/bioconductor-pepsettest_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PepSetTest')"

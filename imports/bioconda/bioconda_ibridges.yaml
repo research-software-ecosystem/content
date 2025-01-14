@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/iBridges-for-iRODS/iBridges
+  doc_url: https://ibridges.readthedocs.io/en/latest/
+  home: https://github.com/iBridges-for-iRODS/iBridges
+  license: MIT
+  license_file: LICENSE
+  summary: Package for accessing data and metadata on iRods servers.
+build:
+  entry_points:
+  - ibridges = ibridges.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Christine Staiger
+package:
+  name: ibridges
+  version: 1.3.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=45
+  - setuptools-scm >=6.2
+  - pip
+  run:
+  - python >=3.8
+  - python-irodsclient >=2.0.0
+  - tqdm
+  - importlib-metadata
+source:
+  sha256: 9f33912beca365298d29427b037b57ae278c6d4bd870f27241ac3aae0231343c
+  url: https://files.pythonhosted.org/packages/7c/35/0f575295b819c46bc31c262e64daf6a312bae65f8fccf848356646092d65/ibridges-1.3.0.tar.gz
+test:
+  commands:
+  - pip check
+  - ibridges --help
+  imports:
+  - ibridges
+  requires:
+  - pip

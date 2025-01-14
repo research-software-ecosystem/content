@@ -1,12 +1,15 @@
 about:
-  description: Many analysis workflows include approximation of a nearest neighbors
-    graph followed by clustering of the graph structure. The concordex coefficient
-    estimates the concordance between the graph and clustering results. The package
-    'concordexR' is an R implementation of the original concordex Python-based command
-    line tool.
-  home: https://bioconductor.org/packages/3.18/bioc/html/concordexR.html
+  description: Spatial homogeneous regions (SHRs) in tissues are domains that are
+    homogenous with respect to cell type composition. We present a method for identifying
+    SHRs using spatial transcriptomics data, and demonstrate that it is efficient
+    and effective at finding SHRs for a wide variety of tissue types. concordex relies
+    on analysis of k-nearest-neighbor (kNN) graphs. The tool is also useful for analysis
+    of non-spatial transcriptomics data, and can elucidate the extent of concordance
+    between partitions of cells derived from clustering algorithms, and transcriptomic
+    similarity as represented in kNN graphs.
+  home: https://bioconductor.org/packages/3.20/bioc/html/concordexR.html
   license: Artistic-2.0
-  summary: Calculate the concordex coefficient
+  summary: Identify Spatial Homogeneous Regions with concordex
 build:
   noarch: generic
   number: 0
@@ -16,35 +19,45 @@ build:
   run_exports: None
 package:
   name: bioconductor-concordexr
-  version: 1.2.0
+  version: 1.6.0
 requirements:
   host:
-  - bioconductor-biocparallel >=1.36.0,<1.37.0
-  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-biocneighbors >=2.0.0,<2.1.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-bluster >=1.16.0,<1.17.0
+  - bioconductor-delayedarray >=0.32.0,<0.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-cli
-  - r-ggplot2
   - r-matrix
-  - r-pheatmap
+  - r-purrr
   - r-rlang
-  - r-scales
   run:
-  - bioconductor-biocparallel >=1.36.0,<1.37.0
-  - bioconductor-delayedarray >=0.28.0,<0.29.0
+  - bioconductor-biocgenerics >=0.52.0,<0.53.0
+  - bioconductor-biocneighbors >=2.0.0,<2.1.0
+  - bioconductor-biocparallel >=1.40.0,<1.41.0
+  - bioconductor-bluster >=1.16.0,<1.17.0
+  - bioconductor-delayedarray >=0.32.0,<0.33.0
+  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
+  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.16.0,<1.17.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   - r-base
   - r-cli
-  - r-ggplot2
   - r-matrix
-  - r-pheatmap
+  - r-purrr
   - r-rlang
-  - r-scales
 source:
-  md5: 5ffab81582264ccb300c9f937c698adf
+  md5: 8fb2be578b2e5a9b744cbec0db41bc2b
   url:
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/concordexR_1.2.0.tar.gz
-  - https://bioconductor.org/packages/3.18/bioc/src/contrib/Archive/concordexR/concordexR_1.2.0.tar.gz
-  - https://bioarchive.galaxyproject.org/concordexR_1.2.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-concordexr/bioconductor-concordexr_1.2.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/concordexR_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/concordexR/concordexR_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/concordexR_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-concordexr/bioconductor-concordexr_1.6.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('concordexR')"

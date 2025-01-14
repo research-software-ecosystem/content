@@ -1,0 +1,82 @@
+about:
+  description: "A novel framework to correct for batch effects prior to any downstream\
+    \ analysis in microbiome data based on Projection to Latent Structures Discriminant\
+    \ Analysis. The main method is named \u201CPLSDA-batch\u201D. It first estimates\
+    \ treatment and batch variation with latent components, then subtracts batch-associated\
+    \ components from the data whilst preserving biological variation of interest.\
+    \ PLSDA-batch is highly suitable for microbiome data as it is non-parametric,\
+    \ multivariate and allows for ordination and data visualisation. Combined with\
+    \ centered log-ratio transformation for addressing uneven library sizes and compositional\
+    \ structure, PLSDA-batch addresses all characteristics of microbiome data that\
+    \ existing correction methods have ignored so far. Two other variants are proposed\
+    \ for 1/ unbalanced batch x treatment designs that are commonly encountered in\
+    \ studies with small sample sizes, and for 2/ selection of discriminative variables\
+    \ amongst treatment groups to avoid overfitting in classification problems. These\
+    \ two variants have widened the scope of applicability of PLSDA-batch to different\
+    \ data settings."
+  home: https://bioconductor.org/packages/3.20/bioc/html/PLSDAbatch.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: PLSDA-batch
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: None
+extra:
+  container:
+    extended-base: true
+package:
+  name: bioconductor-plsdabatch
+  version: 1.2.0
+requirements:
+  build:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - xorg-libxfixes
+  host:
+  - bioconductor-biobase >=2.66.0,<2.67.0
+  - bioconductor-biocstyle >=2.34.0,<2.35.0
+  - bioconductor-mixomics >=6.30.0,<6.31.0
+  - bioconductor-treesummarizedexperiment >=2.14.0,<2.15.0
+  - r-base
+  - r-ggplot2
+  - r-ggpubr
+  - r-gridextra
+  - r-lmertest
+  - r-performance
+  - r-pheatmap
+  - r-rdpack
+  - r-scales
+  - r-vegan
+  run:
+  - bioconductor-biobase >=2.66.0,<2.67.0
+  - bioconductor-biocstyle >=2.34.0,<2.35.0
+  - bioconductor-mixomics >=6.30.0,<6.31.0
+  - bioconductor-treesummarizedexperiment >=2.14.0,<2.15.0
+  - r-base
+  - r-ggplot2
+  - r-ggpubr
+  - r-gridextra
+  - r-lmertest
+  - r-performance
+  - r-pheatmap
+  - r-rdpack
+  - r-scales
+  - r-vegan
+source:
+  md5: fecfcef01e7bfb9786857c0baf735fc0
+  url:
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/PLSDAbatch_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/PLSDAbatch/PLSDAbatch_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PLSDAbatch_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-plsdabatch/bioconductor-plsdabatch_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - LD_LIBRARY_PATH="${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${BUILD_PREFIX}/lib"
+    $R -e "library('PLSDAbatch')"

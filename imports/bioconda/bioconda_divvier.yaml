@@ -1,11 +1,18 @@
 about:
+  dev_url: https://github.com/simonwhelan/Divvier
   home: https://github.com/simonwhelan/Divvier
-  license: GNU General Public v3 or later (GPLv3+)
+  license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: A program for removing MSA uncertainty
+  summary: A program for removing MSA uncertainty.
 build:
-  number: 4
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: divvier
   version: 1.01
@@ -17,6 +24,9 @@ requirements:
   host:
   - zlib
 source:
+  patches:
+  - 0001-Makefile.patch
+  - 0002-aarch64.patch
   sha256: c18ea5946c1e3d6732d85d5da41adeee65e18cde30f319426f1a66051cae29e1
   url: https://github.com/simonwhelan/Divvier/archive/v1.01.tar.gz
 test:
