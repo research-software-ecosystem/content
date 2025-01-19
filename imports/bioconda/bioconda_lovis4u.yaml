@@ -1,0 +1,44 @@
+about:
+  home: https://art-egorov.github.io/lovis4u/
+  license: BSD-3-Clause AND GPL-3.0 AND WTFPL
+  license_file:
+  - LICENSE
+  - lovis4u/lovis4u_data/bin/mmseqs_mac/LICENSE.md
+  - lovis4u/lovis4u_data/fonts/LICENSE
+  summary: Loci Visualisation Tool.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - art-egorov
+package:
+  name: lovis4u
+  version: 0.1.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - biopython
+  - configs
+  - distinctipy
+  - pandas
+  - reportlab
+  - bcbio-gff
+  - matplotlib-base
+  - seaborn
+  - scipy
+  - pyhmmer
+  - progress
+  - requests
+source:
+  sha256: fbd63d37deca47befe09f28808ad3233317c3e9e73992b1fbd8d04f8a4619781
+  url: https://pypi.org/packages/source/l/lovis4u/lovis4u-0.1.1.2.tar.gz
+test:
+  imports:
+  - lovis4u
