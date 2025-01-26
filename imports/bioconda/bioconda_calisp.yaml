@@ -4,24 +4,30 @@ about:
   license: MIT
   license_file: LICENSE.txt
   summary: Estimate isotopic composition of peptides from proteomics mass spectrometry
-    data
+    data.
 build:
+  entry_points:
+  - calisp=calisp.main:main
+  - calisp_filter_patterns=calisp.calisp_filter_patterns:main
+  - calisp_compute_medians=calisp.calisp_compute_medians:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - bernt-matthias
 package:
   name: calisp
-  version: 3.0.13
+  version: 3.1
 requirements:
   host:
   - pip
   - python >=3.6
+  - setuptools
   run:
+  - python >=3.6
   - numpy
   - scipy
   - pandas
@@ -29,8 +35,8 @@ requirements:
   - pymzml
   - pyarrow
 source:
-  sha256: ebd848548c6bfd00da234f9f9ffcadc6e8a83adfc68f47897f1a13aab51368ec
-  url: https://pypi.io/packages/source/c/calisp/calisp-3.0.13.tar.gz
+  sha256: a2c1a7a6d01bd1326bf1046d2d0f604f7ce130c45be2b2a245b57a887f4016a0
+  url: https://pypi.io/packages/source/c/calisp/calisp-3.1.tar.gz
 test:
   commands:
   - calisp -h

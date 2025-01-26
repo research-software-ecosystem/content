@@ -9,40 +9,25 @@ about:
   summary: HADDOCK3 is the next generation integrative modelling software in the long-lasting
     HADDOCK project.
 build:
-  number: 2
+  noarch: python
+  number: 0
   run_exports:
   - None
 extra:
-  build:
-    python:
-    - 3.8
-    - 3.9
-    - 3.1
-  skip: true
+  notes: The Haddock3 package requires `gcc` hardcoded in the `setup.py`, which is
+    unavailable in the Bioconda test environment. Therefore, the post-link test is
+    skipped.
+  recipe-maintainers: gbayarri
 package:
   name: haddock_biobb
-  version: 3.0.6
+  version: 3.0.7
 requirements:
-  build:
-  - None
-  - None
-  - make
-  - binutils
-  - pip
-  - python
-  - git
-  - setuptools
   host:
-  - python
+  - python >=3.9,<3.13
   - setuptools
-  - pip
-  - git
   run:
-  - python 3.8.*
-  - python 3.9.*
-  - python 3.10.*
+  - python >=3.9,<3.13
   - pip
-  - git
   - biopython
   - jsonpickle
   - numpy
@@ -55,9 +40,6 @@ requirements:
   - kaleido-core
   - freesasa
   - pdb-tools
-source:
-  sha256: e0651a4913fb659a57e897ac68c4f8e8f29b61e00abfcab3f3bbd623e1977f7b
-  url: https://github.com/haddocking/haddock3/archive/refs/tags/v3.0.0-beta.5.tar.gz
 test:
   commands:
   - echo "DONE!"

@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/RealYHD/autoBIGS.engine
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: A library to rapidly fetch fetch MLST profiles given sequences for various
+    diseases.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Harrison Deng
+package:
+  name: autobigs-engine
+  version: 0.8.0
+requirements:
+  host:
+  - python >=3.12
+  - setuptools >=64
+  - setuptools-scm >=8
+  - pip
+  run:
+  - python >=3.12
+  - biopython
+  - aiohttp
+source:
+  sha256: 8d2a66aea26f0704f4be21b2882f4514011455bb2897d23f118fd02b75d5480c
+  url: https://pypi.org/packages/source/a/autoBIGS.engine/autobigs_engine-0.8.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - autobigs
+  requires:
+  - pip

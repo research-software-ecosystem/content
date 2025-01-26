@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/fulcrumgenomics/pybwa
+  doc_url: https://pybwa.readthedocs.io/en/latest
+  home: https://github.com/fulcrumgenomics/pybwa
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Pybwa is a python module that makes it easy to align sequence data. It
+    is a lightweight wrapper of bwa.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+package:
+  name: pybwa
+  version: 1.4.3
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - cython
+  - pip
+  - python
+  - poetry-core
+  - zlib
+  run:
+  - python
+  - fgpyo >=0.7.0
+  - pysam >=0.22.1
+  - typing-extensions >=3.7.4
+source:
+  sha256: 6573c897ae97b4c4dd951da26939b4cb1d0c9ccde7e99794358b0d62743e157a
+  url: https://github.com/fulcrumgenomics/pybwa/releases/download/1.4.3/pybwa-1.4.3.tar.gz
+test:
+  imports:
+  - pybwa

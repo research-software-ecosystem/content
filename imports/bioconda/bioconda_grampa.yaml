@@ -10,8 +10,11 @@ about:
 build:
   noarch: python
   number: 0
+  run_exports:
+  - None
   script:
   - cp grampa.py ${PREFIX}/bin
+  - ln -s ${PREFIX}/bin/grampa.py ${PREFIX}/bin/grampa
   - mkdir -p ${SP_DIR}
   - cp -R grampa_lib ${SP_DIR}/grampa_lib
 extra:
@@ -19,15 +22,15 @@ extra:
   - gwct
 package:
   name: grampa
-  version: 1.4.0
+  version: 1.4.1
 requirements:
   host:
   - python >=3
   run:
   - python >=3
 source:
-  sha256: 30266c84c9a7ffa38b4eb7371adeda3fea32cc924237a0a4286d92f1b64ddf33
-  url: https://github.com/gwct/grampa/archive/refs/tags/v1.4.0.tar.gz
+  sha256: 973d741006ce5adad311cbc96c8b174415b537deac1e46326db024c63d16b337
+  url: https://github.com/gwct/grampa/archive/refs/tags/v1.4.1.tar.gz
 test:
   commands:
   - grampa.py --version 2>&1 | grep -q GRAMPA

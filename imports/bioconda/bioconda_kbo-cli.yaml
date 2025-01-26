@@ -1,0 +1,45 @@
+about:
+  description: 'kbo is an aligner that can do approximate reference-based alignment
+    and find
+
+    sequences of interest in a query genome, without a separate indexing step or
+
+    any temporary disk space usage. kbo-cli provides a command-line interface to
+
+    the find, map, and build functions from kbo.
+
+    '
+  dev_url: https://github.com/tmaklin/kbo-cli
+  doc_source_url: https://github.com/tmaklin/kbo
+  doc_url: https://docs.rs/kbo
+  home: https://docs.rs/kbo
+  license: Dual-licensed under the MIT and Apache 2.0 licenses.
+  license_file:
+  - LICENSE-APACHE
+  - LICENSE-MIT
+  - THIRDPARTY.yml
+  summary: Command-line interface for the kbo local aligner
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: kbo-cli
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - cargo-bundle-licenses
+source:
+  sha256: 2d8d61740a41b6ecf7a75e4a32259dccc899367dbcfe26878f84e650d2e0fbae
+  url:
+  - https://github.com/tmaklin/kbo-cli/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - kbo --version
