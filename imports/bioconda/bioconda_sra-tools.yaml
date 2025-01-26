@@ -10,17 +10,19 @@ about:
   license: Public Domain
   summary: The SRA Toolkit and SDK from NCBI.
 build:
-  number: 2
+  number: 0
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:sra-tools
   notes: 'After installation, you should run the configuration tool: ./vdb-config
     -i. This tool will setup your download/cache area for downloaded files and references.'
 package:
   name: sra-tools
-  version: 3.1.1
+  version: 3.2.0
 requirements:
   build:
   - None
@@ -29,22 +31,22 @@ requirements:
   - bison
   - flex
   host:
-  - ncbi-vdb >=3.1.1
+  - ncbi-vdb >=3.2.0
   run:
   - ca-certificates
   - curl
-  - ncbi-vdb >=3.1.1
+  - ncbi-vdb >=3.2.0
   - ossuuid
   - perl
   - perl-xml-libxml
   - perl-uri
 source:
 - folder: sra-tools
-  sha256: 96b110bd5a30ad312e2f02552062b48a77d40c763e6aba5bb84e83662a505cf1
-  url: https://github.com/ncbi/sra-tools/archive/refs/tags/3.1.1.tar.gz
+  sha256: 5ed9d0a61aa72c55566fb80b8b9293ad9006f528e7e11cba875d9377a0fc7b09
+  url: https://github.com/ncbi/sra-tools/archive/refs/tags/3.2.0.tar.gz
 - folder: ncbi-vdb
-  sha256: e9766f259853c696be48e289b08cb5ae6e198d82d7ffee79f09ce7f720487991
-  url: https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.1.1.tar.gz
+  sha256: 49fea92d9ec5ab38a5c06d1bcb057d1e7c9d4d39adcb7f31a3485ecc35bd5b77
+  url: https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.2.0.tar.gz
 test:
   commands:
   - if ! grep "/LIBS/GUID" ~/.ncbi/user-settings.mkfg &> /dev/null; then mkdir -p
@@ -57,8 +59,6 @@ test:
   - vdb-config --help > /dev/null
   - vdb-decrypt --help > /dev/null
   - fastq-dump SRR002702 && grep '@SRR002702.1 EX35NVW14INCVK' SRR002702.fastq &&
-    rm SRR002702.fastq
-  - fasterq-dump SRR002702 && grep '@SRR002702.1 EX35NVW14INCVK' SRR002702.fastq  &&
     rm SRR002702.fastq
   - prefetch SRR002702 -O ./ && test -d SRR002702 && rm -r SRR002702
   - sam-dump SRR002702 | grep 'EX35NVW14ISYAK'

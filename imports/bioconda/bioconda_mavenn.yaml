@@ -1,36 +1,41 @@
 about:
   dev_url: http://github.com/jbkinney/mavenn
+  doc_url: https://mavenn.readthedocs.io
   home: http://mavenn.readthedocs.io
   license: MIT
   license_family: MIT
-  summary: 'MAVE-NN: genotype-phenotype maps from multiplex assays of variant effect'
+  license_file: LICENSE
+  summary: 'MAVE-NN: genotype-phenotype maps from multiplex assays of variant effect.'
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . -vv --ignore-installed --no-deps'
+  script: ' -m pip install . -vvv --no-build-isolation --no-deps --no-cache-dir'
 extra:
   recipe-maintainers:
   - andrefaure
 package:
   name: mavenn
-  version: 1.0.2
+  version: 1.1.0
 requirements:
   host:
   - pip
-  - python >=3
+  - python >=3.8
+  - setuptools
   run:
-  - logomaker >=0.8
-  - matplotlib-base >=3.2.0
+  - logomaker
+  - matplotlib-base
   - numpy
-  - pandas >=1.1.2
-  - python >=3
-  - scikit-learn >=0.22
-  - tensorflow >=2.3.0
+  - pandas
+  - python >=3.8
+  - scikit-learn
+  - scipy
+  - seaborn-base
+  - tensorflow
 source:
-  sha256: 979f829ceb404399c2638feb971296b847d4c00c9d7fb8659c9f464b22ed25be
-  url: https://pypi.io/packages/source/m/mavenn/mavenn-1.0.2.tar.gz
+  sha256: e86e759095e9de402a324453c5b0b222d39318ade8a8481bbcc2e4cfa0604b3d
+  url: https://pypi.io/packages/source/m/mavenn/mavenn-1.1.0.tar.gz
 test:
   imports:
   - sklearn

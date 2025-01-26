@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/althonos/nafcodec
+  doc_url: https://nafcodec.readthedocs.io/
+  home: https://github.com/althonos/nafcodec
+  license: MIT
+  license_family: MIT
+  license_file:
+  - COPYING
+  - THIRDPARTY.yml
+  summary: 'PyO3 bindings and Python interface to nafcodec, an encoder/decoder for
+    Nucleotide Archive Format (NAF) files.
+
+    '
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  additional-platforms:
+  - osx-arm64
+  recipe-maintainers:
+  - apcamargo
+  skip-lints:
+  - version_constraints_missing_whitespace
+package:
+  name: nafcodec
+  version: 0.2.0
+requirements:
+  build:
+  - None
+  - python
+  - cross-python_
+  - crossenv
+  - setuptools-rust >=1.10,<2
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - setuptools-rust >=1.10,<2
+  run:
+  - python
+source:
+  sha256: 8194203409f9e0b7aa762530747da4db4dc4c19de0b8fb0419b894e89368e6b8
+  url: https://pypi.org/packages/source/n/nafcodec/nafcodec-0.2.0.tar.gz
+test:
+  commands:
+  - python -m unittest -vv nafcodec.tests
+  imports:
+  - nafcodec
