@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/unipept/FragGeneScanRs
+  license: GPL-3.0-or-later
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Rust implementation of the gene prediction model for short and error-prone
+    reads
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - ninewise
+package:
+  name: frag_gene_scan_rs
+  version: 1.1.0
+requirements:
+  build:
+  - None
+  - cargo-bundle-licenses
+source:
+  sha256: 759df973bff4f608d23f7df94068aa6b9943ed7138a660eff988ed0efd3e114f
+  url: https://github.com/unipept/FragGeneScanRs/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - FragGeneScanRs --version
