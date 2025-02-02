@@ -3,7 +3,7 @@ about:
   license: GPL-3.0-only
   summary: Structural variant and indel caller for mapped sequencing data
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
   skip: "True \_#\_[osx]"
@@ -25,6 +25,7 @@ requirements:
   - python ==2.7.*
   run:
   - python ==2.7.*
+  - libboost
 source:
   patches:
   - boost-shlibs.patch
@@ -33,3 +34,4 @@ source:
 test:
   commands:
   - configManta.py -h
+  - ${PREFIX}/libexec/CheckSVLoci -h 2>&1 | grep usage

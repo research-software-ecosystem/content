@@ -1,0 +1,59 @@
+about:
+  description: get_pangenes.pl computes whole genome alignments (WGA) to define clusters
+    of collinear, orthologous genes/features annotated in GFF files, defining pangenes
+    across a pangenome. currently the bioconda version supports nly minimap2.
+  home: https://github.com/Ensembl/plant-scripts/tree/master/pangenes
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: A versatile software package for calling pangenes from whole genome alignments
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script_env:
+  - LC_ALL=POSIX
+extra:
+  container:
+    extended-base: true
+  identifiers:
+  - doi:https://doi.org/10.1186/s13059-023-03071-z
+  notes: 'This package installs the GET_PANGENES code. It is recommended to run it
+    in a
+
+    computer cluster with LSF or slurm, particularly for large genomes.
+
+    To configure it for HPC (get_pangenes.pl -m) please check the documentation and
+
+    edit your own HPC.conf file , which should be placed in the same location as the
+
+    main script get_pangenes.pl . Documentation can be found at
+
+
+    https://github.com/Ensembl/plant-scripts/tree/master/pangenes'
+package:
+  name: get_pangenes
+  version: 20250123
+requirements:
+  run:
+  - perl
+  - perl-db_file
+  - minimap2 =2.24
+  - gffread =0.12.7
+  - gmap
+  - gsalign
+  - samtools
+  - bedtools
+  - get_homologues
+  - grep
+  - coreutils
+  - gzip
+  - bzip2
+  - wget
+source:
+  sha256: 67665e4359dd16ae6fe1359c55a0a1d3eed07efa431c07a87c8c298a8bdbdde3
+  url: https://github.com/Ensembl/plant-scripts/archive/refs/tags/20250123.tar.gz
+test:
+  commands:
+  - get_pangenes.pl -v

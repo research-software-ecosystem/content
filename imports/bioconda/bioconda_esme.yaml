@@ -1,0 +1,225 @@
+about:
+  description: "ESME (Earth System Modelling Environment) is a package designed to\
+    \ facilitate the installation and management of various scientific computing libraries\
+    \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVAPIch\
+    \ and ParaStationMPI). This bundle currently includes:\n  - PnetCDF: Version 1.14.0\n\
+    \  - HDF5: Version 1.14.5\n  - netCDF_C: Version 4.9.2\n  - netCDF_Fortran: Version\
+    \ 4.6.1\n  - ParallelIO: Version 2.6.2\n  - ESMF: Version 8.8.0\n  - OSU_Micro_Benchmarks:\
+    \ Version 7.5\n"
+  home: https://github.com/j34ni/bioconda-recipes
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE_ESME
+  summary: Earth System Modelling Environment (ESME) - A bundle for scientific computing
+    packages for climate modelling with MPI support.
+build:
+  ignore_run_exports:
+  - libacl
+  - libstdcxx
+  - zlib
+  number: 0
+  run_exports:
+  - None
+  skip: true
+  string: _h_0
+extra:
+  recipe-maintainers:
+  - j34ni
+  skip-lints:
+  - version_constraints_missing_whitespace
+  - compilers_must_be_in_build
+outputs:
+- build:
+    string: h_0
+  name: pnetcdf_
+  requirements:
+    build:
+    - None
+    - None
+    - None
+    - make
+    - m4
+    host:
+    - null
+  script: build_pnetcdf.sh
+  test:
+    commands:
+    - export PATH=$PATH:${PREFIX}/bin
+    - pnetcdf-config --all
+  version: 1.14.0
+- build:
+    string: h_0
+  name: hdf5_
+  requirements:
+    build:
+    - None
+    - None
+    - None
+    - make
+    host:
+    - libaec
+    - libacl
+    - null
+    - zlib
+    run:
+    - libaec
+    - zlib
+  script: build_hdf5.sh
+  test:
+    commands:
+    - export PATH=$PATH:${PREFIX}/bin
+    - h5pfc -showconfig
+  version: 1.14.5
+- build:
+    string: h_0
+  name: netcdf-c_
+  requirements:
+    build:
+    - None
+    - None
+    - make
+    - m4
+    host:
+    - hdf5_
+    - libcurl
+    - libxml2
+    - null
+    - pnetcdf_
+    - zlib
+  script: build_netcdf-c.sh
+  test:
+    commands:
+    - export PATH=$PATH:${PREFIX}/bin
+    - nc-config --all
+  version: 4.9.2
+- build:
+    string: h_0
+  name: netcdf-fortran_
+  requirements:
+    build:
+    - None
+    - None
+    - None
+    - make
+    - m4
+    host:
+    - hdf5_
+    - null
+    - netcdf-c_
+    - pnetcdf_
+  script: build_netcdf-fortran.sh
+  test:
+    commands:
+    - export PATH=$PATH:${PREFIX}/bin
+    - nf-config --all
+  version: 4.6.1
+- build:
+    string: h_0
+  name: pio_
+  requirements:
+    build:
+    - autoconf
+    - automake
+    - None
+    - None
+    - None
+    - libtool
+    - make
+    - m4
+    - pkg-config
+    host:
+    - hdf5_
+    - null
+    - netcdf-c_
+    - netcdf-fortran_
+    - pnetcdf_
+  script: build_pio.sh
+  test:
+    commands:
+    - test -f ${PREFIX}/include/pio.h
+  version: 2.6.2
+- build:
+    string: h_0
+  name: esmf_
+  requirements:
+    build:
+    - cmake
+    - None
+    - None
+    - None
+    - make
+    host:
+    - hdf5_
+    - null
+    - netcdf-c_
+    - netcdf-fortran_
+    - openblas
+    - pio_
+    - pnetcdf_
+    run:
+    - null
+    - netcdf-c_
+    - netcdf-fortran_
+    - pio_
+    - pnetcdf_
+  script: build_esmf.sh
+  test:
+    commands:
+    - if test -f ${ESMFMKFILE}; then echo "ESMF makefile found"; else echo "ESMF makefile
+      not found"; exit 1; fi
+  version: 8.8.0
+- build:
+    skip: true
+    string: h_0
+  name: omb_
+  requirements:
+    build:
+    - None
+    - None
+    - make
+    host:
+    - null
+    run:
+    - null
+  script: build_omb.sh
+  test:
+    commands:
+    - mpiexec -n 2 $PREFIX/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency -m 1024:1024
+  version: 7.5
+package:
+  name: esme
+  version: 1.0.0
+requirements:
+  run:
+  - cmake
+  - None
+  - None
+  - None
+  - null
+  - esmf_
+  - omb_
+source:
+- folder: esme_pnetcdf
+  sha256: 575f189fb01c53f93b3d6ae0e506f46e19694807c81af0b9548e947995acf704
+  url: https://parallel-netcdf.github.io/Release/pnetcdf-1.14.0.tar.gz
+- folder: esme_hdf5
+  sha256: ec2e13c52e60f9a01491bb3158cb3778c985697131fc6a342262d32a26e58e44
+  url: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.5/hdf5-1.14.5.tar.gz
+- folder: esme_netcdf-c
+  sha256: bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7
+  url: https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz
+- folder: esme_netcdf-fortran
+  sha256: b50b0c72b8b16b140201a020936aa8aeda5c79cf265c55160986cd637807a37a
+  url: https://downloads.unidata.ucar.edu/netcdf-fortran/4.6.1/netcdf-fortran-4.6.1.tar.gz
+- folder: esme_pio
+  sha256: c318894f0230197458917e932ec66301b4407a744df481e9c6a6d9d85f7e5ab1
+  url: https://github.com/NCAR/ParallelIO/archive/refs/tags/pio2_6_2.tar.gz
+- folder: esme_esmf
+  sha256: f89327428aeef6ad34660b5b78f30d1c55ec67efb8f7df1991fdaa6b1eb3a27c
+  url: https://github.com/esmf-org/esmf/archive/refs/tags/v8.8.0.tar.gz
+- folder: esme_omb
+  sha256: 1cf84ac5419456202757a757c5f9a4f5c6ecd05c65783c7976421cfd6020b3b3
+  url: https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-7.5.tar.gz
+test:
+  commands:
+  - echo "Skipping ESME tests, for now"
