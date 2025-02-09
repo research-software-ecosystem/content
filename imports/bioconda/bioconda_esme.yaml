@@ -2,10 +2,10 @@ about:
   description: "ESME (Earth System Modelling Environment) is a package designed to\
     \ facilitate the installation and management of various scientific computing libraries\
     \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVAPIch\
-    \ and ParaStationMPI). This bundle currently includes:\n  - PnetCDF: Version 1.14.0\n\
-    \  - HDF5: Version 1.14.5\n  - netCDF_C: Version 4.9.2\n  - netCDF_Fortran: Version\
-    \ 4.6.1\n  - ParallelIO: Version 2.6.2\n  - ESMF: Version 8.8.0\n  - OSU_Micro_Benchmarks:\
-    \ Version 7.5\n"
+    \ and ParaStationMPI). This bundle currently includes:\n- PnetCDF: Version 1.14.0\n\
+    - HDF5: Version 1.14.5\n- netCDF_C: Version 4.9.2\n- netCDF_Fortran: Version 4.6.1\n\
+    - ParallelIO: Version 2.6.2 \n- ESMF: Version 8.8.0\n- OSU_Micro_Benchmarks: Version\
+    \ 7.5\n"
   home: https://github.com/j34ni/bioconda-recipes
   license: BSD-3-Clause
   license_family: BSD
@@ -17,11 +17,11 @@ build:
   - libacl
   - libstdcxx
   - zlib
-  number: 0
+  number: 2
   run_exports:
   - None
   skip: true
-  string: _h_0
+  string: _h_2
 extra:
   recipe-maintainers:
   - j34ni
@@ -29,8 +29,18 @@ extra:
   - version_constraints_missing_whitespace
   - compilers_must_be_in_build
 outputs:
-- build:
-    string: h_0
+- about:
+    description: 'PnetCDF is a high-performance parallel I/O library for accessing
+      files in netCDF formats.
+
+      '
+    home: https://parallel-netcdf.github.io/
+    license: PnetCDF License
+    license_family: OTHER
+    license_file: LICENSE_PNETCDF
+    summary: PnetCDF - Parallel netCDF
+  build:
+    string: h_2
   name: pnetcdf_
   requirements:
     build:
@@ -47,8 +57,18 @@ outputs:
     - export PATH=$PATH:${PREFIX}/bin
     - pnetcdf-config --all
   version: 1.14.0
-- build:
-    string: h_0
+- about:
+    description: 'HDF5 (Hierarchical Data Format 5) is a file format and set of tools
+      designed for managing, storing, and organizing large and complex data.
+
+      '
+    home: https://www.hdfgroup.org/
+    license: BSD-3-Clause
+    license_family: BSD
+    license_file: LICENSE_HDF5
+    summary: HDF5 - Hierarchical Data Format 5
+  build:
+    string: h_2
   name: hdf5_
   requirements:
     build:
@@ -70,8 +90,19 @@ outputs:
     - export PATH=$PATH:${PREFIX}/bin
     - h5pfc -showconfig
   version: 1.14.5
-- build:
-    string: h_0
+- about:
+    description: 'NetCDF-C is the C implementation of the Unidata''s network Common
+      Data Form (netCDF), providing an interface for storing, accessing, and sharing
+      array-oriented scientific data in a platform-independent format.
+
+      '
+    home: http://www.unidata.ucar.edu/software/netcdf/
+    license: MIT
+    license_family: MIT
+    license_file: COPYRIGHT_NETCDF-C
+    summary: NetCDF-C - netCDF interface for C
+  build:
+    string: h_2
   name: netcdf-c_
   requirements:
     build:
@@ -92,8 +123,19 @@ outputs:
     - export PATH=$PATH:${PREFIX}/bin
     - nc-config --all
   version: 4.9.2
-- build:
-    string: h_0
+- about:
+    description: 'NetCDF-Fortran provides Fortran language bindings for the NetCDF
+      library, allowing Fortran programs to read and write scientific data in netCDF
+      format.
+
+      '
+    home: http://www.unidata.ucar.edu/software/netcdf/
+    license: MIT
+    license_family: MIT
+    license_file: COPYRIGHT_NETCDF-FORTRAN
+    summary: NetCDF-Fortran - netCDF interface for Fortran
+  build:
+    string: h_2
   name: netcdf-fortran_
   requirements:
     build:
@@ -113,8 +155,17 @@ outputs:
     - export PATH=$PATH:${PREFIX}/bin
     - nf-config --all
   version: 4.6.1
-- build:
-    string: h_0
+- about:
+    description: 'A high-level Parallel I/O Library for structured grid applications.
+
+      '
+    home: https://github.com/NCAR/ParallelIO
+    license: Apache-2.0
+    license_family: Apache
+    license_file: LICENSE_PIO
+    summary: ParallelIO - High-level parallel I/O library
+  build:
+    string: h_2
   name: pio_
   requirements:
     build:
@@ -138,8 +189,19 @@ outputs:
     commands:
     - test -f ${PREFIX}/include/pio.h
   version: 2.6.2
-- build:
-    string: h_0
+- about:
+    description: 'The Earth System Modeling Framework (ESMF) is a suite of software
+      tools for developing high-performance, multi-component Earth science modeling
+      applications.
+
+      '
+    home: http://earthsystemmodeling.org/
+    license: ESMF License
+    license_family: OTHER
+    license_file: LICENSE_ESMF
+    summary: ESMF - Earth System Modeling Framework
+  build:
+    string: h_2
   name: esmf_
   requirements:
     build:
@@ -157,9 +219,11 @@ outputs:
     - pio_
     - pnetcdf_
     run:
+    - hdf5_
     - null
     - netcdf-c_
     - netcdf-fortran_
+    - openblas
     - pio_
     - pnetcdf_
   script: build_esmf.sh
@@ -168,9 +232,19 @@ outputs:
     - if test -f ${ESMFMKFILE}; then echo "ESMF makefile found"; else echo "ESMF makefile
       not found"; exit 1; fi
   version: 8.8.0
-- build:
+- about:
+    description: 'The OSU Micro Benchmarks (OMB) is a suite of performance measurement
+      tools developed by The Ohio State University.
+
+      '
+    home: https://mvapich.cse.ohio-state.edu/
+    license: BSD-3-Clause
+    license_family: BSD
+    license_file: LICENSE_OMB
+    summary: OSU Micro Benchmarks
+  build:
     skip: true
-    string: h_0
+    string: h_2
   name: omb_
   requirements:
     build:
@@ -195,9 +269,16 @@ requirements:
   - None
   - None
   - None
-  - null
   - esmf_
+  - libgcc-ng >=10.3.0
+  - libgfortran-ng >=10.3.0
+  - libstdcxx-ng >=10.3.0
+  - make
+  - null
   - omb_
+  - perl
+  - perl-xml-libxml
+  - python=3.8
 source:
 - folder: esme_pnetcdf
   sha256: 575f189fb01c53f93b3d6ae0e506f46e19694807c81af0b9548e947995acf704
@@ -222,4 +303,4 @@ source:
   url: https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-7.5.tar.gz
 test:
   commands:
-  - echo "Skipping ESME tests, for now"
+  - echo "Skipping ESME tests, since individual packages were already tested"

@@ -3,7 +3,7 @@ about:
   license: GPL-3.0-only
   summary: Structural variant and indel caller for mapped sequencing data
 build:
-  number: 5
+  number: 6
   run_exports:
   - None
   skip: "True \_#\_[osx]"
@@ -34,4 +34,6 @@ source:
 test:
   commands:
   - configManta.py -h
+  - convertInversion.py -h 2>&1| grep "<samtools path>"
+  - denovo_scoring.py -h 2>&1 | grep "<vcf file>"
   - ${PREFIX}/libexec/CheckSVLoci -h 2>&1 | grep usage

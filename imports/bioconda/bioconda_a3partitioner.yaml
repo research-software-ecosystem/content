@@ -1,0 +1,38 @@
+about:
+  doc_url: https://github.com/DaanJansen94/a3partitioner/blob/main/README.md
+  home: https://github.com/DaanJansen94/a3partitioner
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A bioinformatics tool for creating APOBEC3 and non-APOBEC3 partitions
+build:
+  entry_points:
+  - A3Partitioner=a3partitioner.cli:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - DaanJansen94
+package:
+  name: a3partitioner
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.6,<4.0
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.6,<4.0
+  - biopython >=1.80
+source:
+  sha256: f88e6776bd6feb440175879a3cbdcb6c297bafff23b5c5f6883d1c832b5596aa
+  url: https://github.com/DaanJansen94/a3partitioner/archive/v0.1.0.tar.gz
+test:
+  commands:
+  - A3Partitioner --help
+  imports:
+  - a3partitioner

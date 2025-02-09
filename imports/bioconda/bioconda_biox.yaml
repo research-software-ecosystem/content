@@ -1,13 +1,13 @@
 about:
   description: "BioX is an efficient, lossless compression tool designed specifically\
-    \ for \nbiological sequence data. It supports compression of DNA, RNA, protein\
-    \ \nsequences, and FASTQ data.\n"
+    \ for \nbiological sequence data.Also offers sequence analysis features and phylogenetic\
+    \ tree construction.\n"
   dev_url: https://github.com/TianMayCry9/BioX
   home: https://github.com/TianMayCry9/BioX
   license: GPL-3.0-only
-  license_family: GPL
+  license_family: GPL3
   license_file: LICENSE
-  summary: Biological Sequence Compression Tool
+  summary: Biological Sequence Compression and Analysis Tool
 build:
   noarch: python
   number: 0
@@ -19,7 +19,7 @@ extra:
   - TianMayCry9
 package:
   name: biox
-  version: 1.1.0
+  version: 1.2.0
 requirements:
   host:
   - python >=3.6
@@ -29,13 +29,19 @@ requirements:
   run:
   - python >=3.6
   - numpy >=1.19.0
-  - tqdm >=4.45.0
   - multiprocess >=0.70.0
+  - scikit-learn
+  - biopython
+  - taxonomy
 source:
-  sha256: cf45ef8bf1e114d815f668af5e781e8fd5e05bb35795bf89c034c392c5694e0c
-  url: https://github.com/TianMayCry9/BioX/archive/refs/tags/v1.1.0.tar.gz
+  sha256: cd4febca028bcf93540262dea6498fd152b15f4dc6a5f06fb41f86bbdb80f03d
+  url: https://github.com/TianMayCry9/BioX/archive/refs/tags/v1.2.0.tar.gz
 test:
   commands:
   - biox -h
   - printf ">test_seq\nACGTCGCGCGCGCG\n" > test.fa
-  - biox -c -t dna test.fa
+  - biox -c -t dna -i test.fa
+  requires:
+  - scikit-learn
+  - biopython
+  - taxonomy
