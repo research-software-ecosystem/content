@@ -3,25 +3,40 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Python library for identification and masking of low-complexity regions
+  summary: 'Python library for identification and masking of low-complexity regions
     in nucleotide sequences.
+
+    '
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - version_constraints_missing_whitespace
 package:
   name: pydustmasker
   version: 1.0.0
 requirements:
   build:
-  - None
-  host:
-  - pip
-  - maturin
   - python
+  - cross-python_
+  - crossenv
+  - maturin >=1.5,<2
+  - None
+  - None
+  - None
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1.5,<2
   run:
   - python
 source:

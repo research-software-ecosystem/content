@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/codialab/spp-dcj
+  home: https://github.com/codialab/spp-dcj
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: A tool for solving the small parsimony problem for natural genomes
+build:
+  entry_points:
+  - spp-dcj = spp_dcj.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
+extra:
+  recipe-maintainers:
+  - danydoerr
+package:
+  name: spp-dcj
+  version: 2.0.0
+requirements:
+  host:
+  - python
+  - pip
+  - hatchling
+  run:
+  - python
+  - matplotlib-base
+  - networkx
+source:
+  sha256: 9bf5204891be4d336a7931cbe99c669aa720e8fa412809a3a92d64707b4d6c49
+  url: https://github.com/codialab/spp-dcj/archive/refs/tags/2.0.0.tar.gz
+test:
+  commands:
+  - spp-dcj --help
+  imports:
+  - spp_dcj

@@ -3,10 +3,15 @@ about:
   license: perl_5
   summary: Perl interface to the gd2 graphics library
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: perl-gd
-  version: 2.76
+  version: 2.83
 requirements:
   build:
   - make
@@ -18,18 +23,20 @@ requirements:
   - perl-extutils-makemaker
   - perl-extutils-pkgconfig
   - perl-test-fork
+  - perl-test-nowarnings
   - perl-extutils-constant
+  - perl-file-which
   - libgd
   - zlib
+  - expat
   run:
   - libgd
   - perl
   - zlib
 source:
-  sha256: 693d9e3d709e9188a682cb9090a77b70aac12a04e84128677577b94e4331775b
-  url: https://cpan.metacpan.org/authors/id/R/RU/RURBAN/GD-2.76.tar.gz
+  sha256: 75ee23c67f699d94f7320eba731a3fbf97f0381a54d710e60a0abffc9c45a754
+  url: https://cpan.metacpan.org/authors/id/R/RU/RURBAN/GD-2.83.tar.gz
 test:
   imports:
   - GD
-  - GD::Polygon
   - GD::Simple

@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/ChaissonLab/Ctyper
+  home: https://github.com/ChaissonLab/Ctyper
+  license: USC-RL v1.0
+  license_file: License.txt
+  summary: Genotyping sequence-resolved copy-number variation using pangenomes.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: ctyper
+  version: 1.0
+requirements:
+  build:
+  - make
+  - None
+  - None
+  host:
+  - zlib
+  - htslib
+  - boost-cpp
+  - eigen
+  run:
+  - htslib
+  - eigen
+source:
+  patches:
+  - 0001-Makefile.patch
+  - 0002-src.patch
+  sha256: 55ea1f5a46149e5c5da1e1c2ebe4159a175d8af649ee579174fe97e8da4b91c0
+  url: https://github.com/ChaissonLab/Ctyper/archive/refs/tags/v1.0.tar.gz
+test:
+  commands:
+  - ctyper | grep 'Usage'

@@ -1,0 +1,38 @@
+about:
+  description: MUSET is a software for generating an abundance unitig matrix from
+    a collection of input samples (in FASTA/Q format).
+  dev_url: https://github.com/CamilaDuitama/muset
+  home: https://github.com/CamilaDuitama/muset
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: A pipeline for building an abundance unitig matrix from FASTA/FASTQ files
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - CamilaDuitama
+  skip-lints:
+  - missing_hash
+  - uses_vcs_url
+package:
+  name: muset
+  version: 0.5.1
+requirements:
+  build:
+  - None
+  - cmake >=3.15
+  - make
+  host:
+  - zlib
+  run:
+  - ggcat >=1.1.0
+source:
+  git_rev: v0.5.1
+  git_url: https://github.com/camiladuitama/muset.git
+test:
+  commands:
+  - muset --version 2>&1 | grep 0.5.1
+  - muset --help 2>&1 | grep "show this message and exit"
