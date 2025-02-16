@@ -13,7 +13,8 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script: "export LDFLAGS=$(echo \"${LDFLAGS}\" | sed 's/-Wl,--version//g')\n -m pip\
+    \ install . -vvv --no-deps --no-build-isolation --no-cache-dir\n"
   skip: true
 extra:
   additional-platforms:
@@ -21,7 +22,7 @@ extra:
   - osx-arm64
 package:
   name: seismic-rna
-  version: 0.23.0
+  version: 0.23.1
 requirements:
   build:
   - None
@@ -48,8 +49,8 @@ requirements:
   - scipy >=1.13
   - jinja2 >=3.0
 source:
-  sha256: 4f457f95a5f07b85a994f80e25cdf10b9377e091c8ee4ab3e10531b5ed772435
-  url: https://github.com/rouskinlab/seismic-rna/archive/refs/tags/v0.23.0.tar.gz
+  sha256: 7af0f569db199197551086a2abf7ddb3fb7d7ef5790f11095a209fdd4d22989a
+  url: https://github.com/rouskinlab/seismic-rna/archive/refs/tags/v0.23.1.tar.gz
 test:
   imports:
   - seismicrna

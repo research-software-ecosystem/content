@@ -17,17 +17,18 @@ build:
   - libacl
   - libstdcxx
   - zlib
-  number: 2
+  number: 0
   run_exports:
   - None
   skip: true
-  string: _h_2
+  string: _h_0
 extra:
   recipe-maintainers:
   - j34ni
   skip-lints:
   - version_constraints_missing_whitespace
   - compilers_must_be_in_build
+  - folder_and_package_name_must_match
 outputs:
 - about:
     description: 'PnetCDF is a high-performance parallel I/O library for accessing
@@ -40,8 +41,8 @@ outputs:
     license_file: LICENSE_PNETCDF
     summary: PnetCDF - Parallel netCDF
   build:
-    string: h_2
-  name: pnetcdf_
+    string: h_0
+  name: esme_pnetcdf__
   requirements:
     build:
     - None
@@ -68,8 +69,8 @@ outputs:
     license_file: LICENSE_HDF5
     summary: HDF5 - Hierarchical Data Format 5
   build:
-    string: h_2
-  name: hdf5_
+    string: h_0
+  name: esme_hdf5__
   requirements:
     build:
     - None
@@ -102,8 +103,8 @@ outputs:
     license_file: COPYRIGHT_NETCDF-C
     summary: NetCDF-C - netCDF interface for C
   build:
-    string: h_2
-  name: netcdf-c_
+    string: h_0
+  name: esme_netcdf-c__
   requirements:
     build:
     - None
@@ -111,11 +112,11 @@ outputs:
     - make
     - m4
     host:
-    - hdf5_
+    - esme_hdf5__
     - libcurl
     - libxml2
     - null
-    - pnetcdf_
+    - esme_pnetcdf__
     - zlib
   script: build_netcdf-c.sh
   test:
@@ -135,8 +136,8 @@ outputs:
     license_file: COPYRIGHT_NETCDF-FORTRAN
     summary: NetCDF-Fortran - netCDF interface for Fortran
   build:
-    string: h_2
-  name: netcdf-fortran_
+    string: h_0
+  name: esme_netcdf-fortran__
   requirements:
     build:
     - None
@@ -145,10 +146,10 @@ outputs:
     - make
     - m4
     host:
-    - hdf5_
+    - esme_hdf5__
     - null
-    - netcdf-c_
-    - pnetcdf_
+    - esme_netcdf-c__
+    - esme_pnetcdf__
   script: build_netcdf-fortran.sh
   test:
     commands:
@@ -165,8 +166,8 @@ outputs:
     license_file: LICENSE_PIO
     summary: ParallelIO - High-level parallel I/O library
   build:
-    string: h_2
-  name: pio_
+    string: h_0
+  name: esme_pio__
   requirements:
     build:
     - autoconf
@@ -179,11 +180,11 @@ outputs:
     - m4
     - pkg-config
     host:
-    - hdf5_
+    - esme_hdf5__
     - null
-    - netcdf-c_
-    - netcdf-fortran_
-    - pnetcdf_
+    - esme_netcdf-c__
+    - esme_netcdf-fortran__
+    - esme_pnetcdf__
   script: build_pio.sh
   test:
     commands:
@@ -201,8 +202,8 @@ outputs:
     license_file: LICENSE_ESMF
     summary: ESMF - Earth System Modeling Framework
   build:
-    string: h_2
-  name: esmf_
+    string: h_0
+  name: esme_esmf__
   requirements:
     build:
     - cmake
@@ -211,21 +212,21 @@ outputs:
     - None
     - make
     host:
-    - hdf5_
+    - esme_hdf5__
     - null
-    - netcdf-c_
-    - netcdf-fortran_
+    - esme_netcdf-c__
+    - esme_netcdf-fortran__
     - openblas
-    - pio_
-    - pnetcdf_
+    - esme_pio__
+    - esme_pnetcdf__
     run:
-    - hdf5_
+    - esme_hdf5__
     - null
-    - netcdf-c_
-    - netcdf-fortran_
+    - esme_netcdf-c__
+    - esme_netcdf-fortran__
     - openblas
-    - pio_
-    - pnetcdf_
+    - esme_pio__
+    - esme_pnetcdf__
   script: build_esmf.sh
   test:
     commands:
@@ -244,8 +245,8 @@ outputs:
     summary: OSU Micro Benchmarks
   build:
     skip: true
-    string: h_2
-  name: omb_
+    string: h_0
+  name: esme_omb__
   requirements:
     build:
     - None
@@ -255,28 +256,21 @@ outputs:
     - null
     run:
     - null
+    - openssh
   script: build_omb.sh
   test:
     commands:
     - mpiexec -n 2 $PREFIX/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency -m 1024:1024
   version: 7.5
 package:
-  name: esme
+  name: esme__
   version: 1.0.0
 requirements:
   run:
   - cmake
-  - None
-  - None
-  - None
-  - esmf_
-  - libgcc-ng >=10.3.0
-  - libgfortran-ng >=10.3.0
-  - libstdcxx-ng >=10.3.0
+  - esme_esmf__
   - make
-  - null
-  - omb_
-  - perl
+  - esme_omb__
   - perl-xml-libxml
   - python=3.8
 source:
@@ -290,8 +284,8 @@ source:
   sha256: bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7
   url: https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz
 - folder: esme_netcdf-fortran
-  sha256: b50b0c72b8b16b140201a020936aa8aeda5c79cf265c55160986cd637807a37a
-  url: https://downloads.unidata.ucar.edu/netcdf-fortran/4.6.1/netcdf-fortran-4.6.1.tar.gz
+  sha256: 40b534e0c81b853081c67ccde095367bd8a5eead2ee883431331674e7aa9509f
+  url: https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.1.tar.gz
 - folder: esme_pio
   sha256: c318894f0230197458917e932ec66301b4407a744df481e9c6a6d9d85f7e5ab1
   url: https://github.com/NCAR/ParallelIO/archive/refs/tags/pio2_6_2.tar.gz

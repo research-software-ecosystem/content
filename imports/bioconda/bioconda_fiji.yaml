@@ -4,7 +4,7 @@ about:
   summary: "Fiji is an image processing package\u2014a \"batteries-included\" distribution\
     \ of ImageJ, bundling a lot of plugins which facilitate scientific image analysis."
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
   skip: true
@@ -31,6 +31,7 @@ source:
   url: https://downloads.imagej.net/fiji/future/fiji-future-linux-arm64-20241022.zip
 test:
   commands:
-  - ls -la
+  - bunwarpj 2>&1 | grep 'Usage'
+  - ImageJ --help 2>&1 | grep ImageJ
   files:
   - hello.py
