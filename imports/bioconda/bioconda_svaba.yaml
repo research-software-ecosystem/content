@@ -4,30 +4,37 @@ about:
   license_file: LICENSE
   summary: Structural variation and indel detection by local assembly
 build:
-  number: 6
+  number: 0
+  run_exports:
+  - None
 extra:
   skip-lints:
   - uses_vcs_url
+  - missing_hash
 package:
   name: svaba
-  version: 1.1.0
+  version: 1.2.0
 requirements:
   build:
+  - autoconf
   - make
+  - cmake
   - None
   - None
   host:
-  - zlib
   - bzip2
+  - htslib
+  - libcurl
+  - libdeflate
   - xz
+  - zlib
   run:
-  - zlib
   - bzip2
   - xz
+  - zlib
 source:
-  git_rev: d12cf224f7a488b913eabbcf54a215e17238032c
-  git_url: https://github.com/walaj/svaba.git
-  md5: unused
+- git_url: https://github.com/walaj/svaba.git
+- git_rev: cee0b619373294718727a34ce358febbdea2f4b7
 test:
   commands:
   - 'svaba --help 2>&1 | grep "Usage: svaba"'

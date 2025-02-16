@@ -1,6 +1,6 @@
 about:
   home: https://github.com/yukiteruono/pbsim3
-  license: GPLv2
+  license: GPL-2.0-only
   license_file: COPYING
   summary: A simulator for all types of Pacific Biosciences (PacBio) and Oxford Nanopore
     Technologies (ONT) long reads
@@ -9,6 +9,9 @@ build:
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1093/nargab/lqac092
   recipe-maintainers:
@@ -16,20 +19,21 @@ extra:
   - notestaff
 package:
   name: pbsim3
-  version: 3.0.4
+  version: 3.0.5
 requirements:
   build:
   - make
   - None
   - autoconf
   - automake
+  - m4
   host: null
 source:
   include-package-data: true
   manifest:
   - recursive-include data *
-  sha256: d9dd51d7522d9f2f21d3cab6f5f7ff0131702cba73dd1baa0b7d13f813d3854e
-  url: https://github.com/yukiteruono/pbsim3/archive/refs/tags/v3.0.4.tar.gz
+  sha256: 0e2b68085ecc8775540d4364413956b544961f944f0915e75c198aefff1b5a74
+  url: https://github.com/yukiteruono/pbsim3/archive/refs/tags/v3.0.5.tar.gz
 test:
   commands:
   - 'pbsim 2>&1 | grep -q ''USAGE: pbsim'''
