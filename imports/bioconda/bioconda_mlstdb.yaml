@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/himal2007/mlstdb
+  home: https://github.com/himal2007/mlstdb
+  license: MIT
+  license_file: LICENSE.txt
+  summary: A Python package to update and manage the MLST database for the MLST tool.
+build:
+  entry_points:
+  - mlstdb = mlstdb.cli:mlstdb
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - himal2007
+package:
+  name: mlstdb
+  version: 0.1.3
+requirements:
+  host:
+  - python
+  - hatchling
+  - pip
+  run:
+  - python >=3.0
+  - click >=8.0.0
+  - requests >=2.25.0
+  - tqdm >=4.65.0
+  - rauth >=0.7.3
+  - configparser >=5.0.0
+  - mlst
+source:
+  sha256: 5a2406f2baaada3ecd51c067740f8b95564da584b6317f89efe85a4821397a4f
+  url: https://pypi.org/packages/source/m/mlstdb/mlstdb-0.1.3.tar.gz
+test:
+  commands:
+  - pip check
+  - mlstdb --help
+  - mlst --help
+  imports:
+  - mlstdb
+  requires:
+  - pip
