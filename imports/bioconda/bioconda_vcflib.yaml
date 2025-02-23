@@ -1,18 +1,19 @@
 about:
   dev_url: https://github.com/vcflib/vcflib
-  doc_url: https://github.com/vcflib/vcflib/blob/v1.0.10/README.md
+  doc_url: https://github.com/vcflib/vcflib/blob/v1.0.12/README.md
   home: https://github.com/vcflib/vcflib
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Command-line tools for manipulating VCF files.
 build:
-  number: 2
+  number: 1
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:vcflib
   - doi:10.1371/journal.pcbi.1009123
@@ -41,62 +42,49 @@ extra:
   - usegalaxy-eu:vcfselectsamples
   recipe-maintainers:
   - jpuritz
-  skip-lints:
-  - uses_vcs_url
+  - mencian
 package:
   name: vcflib
-  version: 1.0.10
+  version: 1.0.12
 requirements:
   build:
   - None
   - make
   - cmake
-  - pybind11-global
+  - pybind11
   - python >=3
   - pkg-config
+  - autoconf
+  - automake
+  - libtool
   host:
   - libgomp
   - llvm-openmp
-  - zlib
   - htslib
   - tabixpp
   - wfa2-lib
   - pandoc
+  - zlib
+  - bzip2
+  - xz
   run:
   - python >=3
   - perl
+  - libgomp
+  - llvm-openmp
   - htslib
   - tabixpp
   - wfa2-lib
-  - eigen
-  - jsoncpp
   - wget
 source:
-- git_rev: v1.0.10
-  git_url: https://github.com/vcflib/vcflib.git
-  patches:
-  - pkg-config.patch
-  - shared_lib.patch
-  - backport_pr_394.patch
+- patches:
+  - 0001-CMakeLists.patch
+  - 0002-CMakeLists.macos.patch
   - tabix.patch
-  - march_native.patch
-  - 0006-wfa2-lib.patch
-  sha256: unused
-- folder: zig-linux-x86_64-0.10.1
-  sha256: 6699f0e7293081b42428f32c9d9c983854094bd15fee5489f12c4cf4518cc380
-  url: https://ziglang.org/download/0.10.1/zig-linux-x86_64-0.10.1.tar.xz
-- folder: zig-linux-aarch64-0.10.1
-  sha256: db0761664f5f22aa5bbd7442a1617dd696c076d5717ddefcc9d8b95278f71f5d
-  url: https://ziglang.org/download/0.10.1/zig-linux-aarch64-0.10.1.tar.xz
-- folder: zig-macos-x86_64-0.10.1
-  sha256: 02483550b89d2a3070c2ed003357fd6e6a3059707b8ee3fbc0c67f83ca898437
-  url: https://ziglang.org/download/0.10.1/zig-macos-x86_64-0.10.1.tar.xz
-- folder: zig-macos-aarch64-0.10.1
-  sha256: b9b00477ec5fa1f1b89f35a7d2a58688e019910ab80a65eac2a7417162737656
-  url: https://ziglang.org/download/0.10.1/zig-macos-aarch64-0.10.1.tar.xz
+  sha256: cb1e78d675f06ae3b22ffed7e1dea317e4c7f826e51e5b5dabd80240efbe1019
+  url: https://github.com/vcflib/vcflib/releases/download/v1.0.12/vcflib-1.0.12-src.tar.gz
 test:
   commands:
-  - vcfwave -h
   - vcffirstheader < /dev/null
   - vcfsort < /dev/null
   - vcfstreamsort --help

@@ -9,7 +9,7 @@ about:
   license_file: LICENSE
   summary: Context-Aware Transcript Quantification from Long Read RNA-Seq data
 build:
-  number: 1
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
@@ -17,9 +17,13 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  parent_recipe:
+    name: bioconductor-bambu
+    path: recipes/bioconductor-bambu
+    version: 3.8.3
 package:
   name: bioconductor-bambu
-  version: 3.8.0
+  version: 3.8.3
 requirements:
   build:
   - None
@@ -46,6 +50,7 @@ requirements:
   - r-xgboost
   - libblas
   - liblapack
+  - libcxx
   run:
   - bioconductor-biocgenerics >=0.52.0,<0.53.0
   - bioconductor-biocparallel >=1.40.0,<1.41.0
@@ -66,12 +71,12 @@ requirements:
   - r-tidyr
   - r-xgboost
 source:
-  md5: 91905c0b974b39b990bf3fe3c42c0937
+  sha256: 87eace188139c96c14aedbbb20716de51eeaa784c4db3b2fc367cfce506dbe16
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/bambu_3.8.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/bambu/bambu_3.8.0.tar.gz
-  - https://bioarchive.galaxyproject.org/bambu_3.8.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-bambu/bioconductor-bambu_3.8.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/bambu_3.8.3.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/bambu/bambu_3.8.3.tar.gz
+  - https://bioarchive.galaxyproject.org/bambu_3.8.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bambu/bioconductor-bambu_3.8.3_src_all.tar.gz
 test:
   commands:
   - $R -e "library('bambu')"

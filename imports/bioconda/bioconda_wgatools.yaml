@@ -4,17 +4,20 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: A Rust library and tools for whole genome alignment files
+  summary: A Rust library and tools for whole genome alignment files.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - AndreaGuarracino
 package:
   name: wgatools
-  version: 0.1.1
+  version: 1.0.0
 requirements:
   build:
   - None
@@ -22,13 +25,16 @@ requirements:
   - make
   - cmake
   - pkg-config
+  - clangdev
   host:
   - openssl
   run:
   - perl
 source:
-  sha256: 07e15a7e7e918318f781805b670294601481b5009c922b140c71ee5f298c2390
-  url: https://github.com/wjwei-handsome/wgatools/archive/refs/tags/v0.1.1.tar.gz
+  patches:
+  - rust-htslib-0.49.0.patch
+  sha256: bda11c98bca471d29a6bb3bd0afc6b7a15aa2a7c76b7cd8bf52738020c05466e
+  url: https://github.com/wjwei-handsome/wgatools/archive/refs/tags/v1.0.0.tar.gz
 test:
   commands:
   - wgatools --help

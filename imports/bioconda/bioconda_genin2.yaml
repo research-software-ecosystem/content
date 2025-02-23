@@ -1,0 +1,45 @@
+about:
+  home: https://github.com/izsvenezie-virology/genin2
+  license: AGPL-3.0
+  license_file: LICENSE
+  summary: Genin2 is a lightining-fast bioinformatic tool to predict genotypes for
+    H5 viruses belonging to the European clade 2.3.4.4b
+build:
+  entry_points:
+  - genin2 = genin2.cli:start_cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - AlexSartori
+  - EdoardoGiussani
+package:
+  name: genin2
+  version: 2.0.1
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=61.2
+  - pip
+  run:
+  - python >=3.9
+  - biopython >=1.81
+  - click >=8.0.0
+  - importlib-resources >=1.3
+  - numpy >=2.0.0
+  - joblib >=1.4.2
+  - scikit-learn >=1.6.1
+source:
+  sha256: 1076d5b96e98016a5abfdf2049bad14b3dd5060af08b8ffa20b2935b8aedff87
+  url: https://pypi.org/packages/source/g/genin2/genin2-2.0.1.tar.gz
+test:
+  commands:
+  - pip check
+  - genin2 --help
+  imports:
+  - genin2
+  requires:
+  - pip
