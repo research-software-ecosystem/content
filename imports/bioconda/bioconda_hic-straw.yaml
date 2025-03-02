@@ -1,13 +1,24 @@
 about:
+  dev_url: https://github.com/aidenlab/straw
+  doc_url: https://github.com/aidenlab/straw/wiki
   home: https://github.com/aidenlab/straw
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Straw bound with pybind11
+  summary: Straw bound with pybind11.
 build:
-  number: 5
-  script: -m pip install . -vv
+  number: 6
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1016/j.cels.2015.07.012
   recipe-maintainers:
   - Phlya
 package:
@@ -30,9 +41,5 @@ source:
   sha256: fb0f878127f6b1d096303c67793477c83fddf3f4a1a8e29a9d92952634989876
   url: https://pypi.io/packages/source/h/hic-straw/hic-straw-1.3.1.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - hicstraw
-  requires:
-  - pip

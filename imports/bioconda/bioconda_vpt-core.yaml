@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/Vizgen/vpt-core
+  license: Apache-2.0
+  license_file: LICENSE.md
+  summary: Core components for the Vizgen Post-processing Tool
+build:
+  noarch: python
+  number: 0
+  run_exports: None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: vpt-core
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.9,<3.11
+  - poetry-core
+  - pip
+  run:
+  - python >=3.9,<3.11
+  - boto3 >=1.17
+  - fsspec >=2021.10.0
+  - geopandas >=0.13.2
+  - gcsfs >=2021.10.0
+  - numpy
+  - pandas >=2.0.3,<3.0.0
+  - psutil
+  - pyarrow >=8.0.0,<14.0.0
+  - python-dotenv >=0.20.0
+  - rasterio
+  - s3fs >=2021.10.0
+  - scikit-image >=0.19.3
+  - shapely
+  - tenacity >=8.2.2
+  - tqdm
+  - pillow >=9.4.0
+  - opencv-python-headless
+  - geos >=3.10.2
+source:
+  sha256: 841b60ef5acfe15c6fb10444d08780129225aadf92f89ed9893c93e44ffe3f60
+  url: https://pypi.org/packages/source/v/vpt-core/vpt_core-1.2.0.tar.gz
+test:
+  imports:
+  - vpt_core

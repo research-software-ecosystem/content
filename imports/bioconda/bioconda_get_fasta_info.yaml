@@ -4,10 +4,12 @@ about:
   license_file: LICENSE
   summary: get_FAST{A,Q}_info - Get fast info on fasta and fastq files
 build:
-  number: 3
+  number: 0
+  run_exports:
+  - None
 package:
   name: get_fasta_info
-  version: '2.4'
+  version: 2.5.0
 requirements:
   build:
   - make
@@ -15,12 +17,13 @@ requirements:
   - autoconf
   - automake
   host:
+  - libzlib
   - zlib
   run:
-  - zlib
+  - libzlib
 source:
-  sha256: ebe27e3481597cac86468fdf0917a605c4672183ab65a9dc7a34d309b33d0457
-  url: https://github.com/nylander/get_fasta_info/archive/refs/tags/v.2.4.tar.gz
+  sha256: 6f401933da823766223a1b1af4bbfa1fd420f008d58ac3f88ab178004d968715
+  url: https://github.com/nylander/get_fasta_info/archive/refs/tags/v2.5.0.tar.gz
 test:
   commands:
   - get_fasta_info -h 2>/dev/null
