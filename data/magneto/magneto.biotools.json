@@ -7,6 +7,10 @@
     "cost": "Free of charge",
     "credit": [
         {
+            "email": "hugo.lefeuvre@univ-nantes.fr",
+            "name": "Hugo Lefeuvre"
+        },
+        {
             "email": "samuel.chaffron@ls2n.fr",
             "name": "Samuel Chaffron",
             "typeEntity": "Person"
@@ -22,6 +26,26 @@
         }
     ],
     "description": "An automated workflow for genome-resolved metagenomics",
+    "documentation": [
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/wikis/home"
+        }
+    ],
+    "download": [
+        {
+            "type": "Software package",
+            "url": "https://anaconda.org/bioconda/magneto",
+            "version": "1.2"
+        },
+        {
+            "type": "Source code",
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/releases/1.2",
+            "version": "1.2"
+        }
+    ],
     "editPermission": {
         "authors": [
             "hugo-lefeuvre"
@@ -30,7 +54,30 @@
     },
     "function": [
         {
+            "cmd": "magneto run all --profile config/slurm/ --config target=single_assembly --rerun-incomplete",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        },
+                        {
+                            "term": "GZIP format",
+                            "uri": "http://edamontology.org/format_3989"
+                        }
+                    ]
+                }
+            ],
             "operation": [
+                {
+                    "term": "Gene prediction",
+                    "uri": "http://edamontology.org/operation_2454"
+                },
                 {
                     "term": "Genome annotation",
                     "uri": "http://edamontology.org/operation_0362"
@@ -47,6 +94,32 @@
                     "term": "Sequence trimming",
                     "uri": "http://edamontology.org/operation_3192"
                 }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Gene report",
+                        "uri": "http://edamontology.org/data_0916"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Taxonomic classification",
+                        "uri": "http://edamontology.org/data_1872"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
             ]
         }
     ],
@@ -54,8 +127,16 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-01-28T14:29:58.401207Z",
-    "license": "Not licensed",
+    "lastUpdate": "2025-02-24T16:29:20.503951Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto"
+        }
+    ],
     "name": "MAGNETO",
     "operatingSystem": [
         "Linux",
@@ -119,5 +200,8 @@
             "uri": "http://edamontology.org/topic_0769"
         }
     ],
-    "validated": 1
+    "validated": 1,
+    "version": [
+        "1.2"
+    ]
 }
