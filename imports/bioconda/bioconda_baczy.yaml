@@ -1,0 +1,45 @@
+about:
+  description: Bacterial genome analysis workflow that identifies antibiotic resistance,
+    defense mechanisms, virulence factors, prophages, and capsule-related genes.
+  dev_url: https://github.com/npbhavya/baczy
+  doc_url: https://github.com/npbhavya/baczy
+  home: https://github.com/npbhavya/baczy/
+  license: MIT
+  license_family: MIT
+  license_file: baczy/baczy.LICENSE
+  summary: Bacterial toolkit
+build:
+  entry_points:
+  - baczy=baczy.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - npbhavya-
+package:
+  name: baczy
+  version: 1.0.3
+requirements:
+  host:
+  - python <3.12
+  - pip
+  run:
+  - python <3.12
+  - snakemake-minimal >=7.14.0
+  - pyyaml >=6.0
+  - click >=8.1.3
+  - jinja2 >=3.0.2
+  - metasnek >=0.0.4
+  - snaketool-utils >=0.0.4
+  - attrmap >=0.0.7
+  - biopython >=1.8.1
+  - pandas
+source:
+  sha256: a514a758a0322ba30be6f4e95f1f94daeb4f2a093d6ab1fd4765809e011e3019
+  url: https://github.com/npbhavya/baczy/archive/refs/tags/v1.0.3.tar.gz
+test:
+  commands:
+  - baczy --help

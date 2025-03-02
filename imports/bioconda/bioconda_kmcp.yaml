@@ -4,10 +4,13 @@ about:
   summary: accurate metagenomic profiling of both prokaryotic and viral populations
     by pseudo-mapping
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   skip-lints:
   - should_be_noarch_generic
   - should_not_be_noarch_source
@@ -15,8 +18,14 @@ package:
   name: kmcp
   version: 0.9.4
 source:
-  md5: f2161625f31d2b553c055832ea560c07
+- md5: 744d24450760913571b89d9188bd52b0
+  url: https://github.com/shenwei356/kmcp/releases/download/v0.9.4/kmcp_darwin_amd64.tar.gz
+- md5: f2161625f31d2b553c055832ea560c07
   url: https://github.com/shenwei356/kmcp/releases/download/v0.9.4/kmcp_linux_amd64.tar.gz
+- md5: ef3b2e60c8397b57047dc5bd5014124b
+  url: https://github.com/shenwei356/kmcp/releases/download/v0.9.4/kmcp_linux_arm64.tar.gz
+- md5: 65ca0e05b6a30f512cbd6b090940291f
+  url: https://github.com/shenwei356/kmcp/releases/download/v0.9.4/kmcp_darwin_arm64.tar.gz
 test:
   commands:
   - kmcp version --help

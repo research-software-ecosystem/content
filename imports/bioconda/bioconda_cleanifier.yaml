@@ -1,0 +1,42 @@
+about:
+  dev_url: https://gitlab.com/rahmannlab/cleanifier
+  home: https://gitlab.com/rahmannlab/cleanifier
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A fast lightweight tool to remove contamination using k-mers.
+build:
+  entry_points:
+  - cleanifier = cleanifier.cleanifier.cleanifier_main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - JZentgraf
+package:
+  name: cleanifier
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.12
+  - setuptools >=69.0.3
+  - pip
+  run:
+  - python >=3.12
+  - numpy
+  - numba
+  - pytest
+  - jsonargparse >=4.29.0
+source:
+  sha256: 70e636dda9c5f9b36007071121803954061e841a29fe830cda6f2ecaaec1e632
+  url: https://pypi.org/packages/source/c/cleanifier/cleanifier-0.1.1.tar.gz
+test:
+  commands:
+  - cleanifier --help
+  - cleanifier index --help
+  - cleanifier filter --help
+  imports:
+  - cleanifier

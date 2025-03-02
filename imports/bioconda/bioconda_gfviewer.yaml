@@ -1,0 +1,45 @@
+about:
+  description: 'This tool is designed for processing genomic data, visualizing chromosomes,
+
+    and localizing multi-gene families using Biopython and Matplotlib.
+
+    '
+  home: https://github.com/sakshar/GFViewer
+  license: MIT
+  license_file: LICENSE
+  summary: A bioinformatics tool for visualizing the localization of multi-gene families
+    across the genome of a given organism.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
+extra:
+  recipe-maintainers:
+  - sakshar
+package:
+  name: gfviewer
+  version: 1.0.4
+requirements:
+  host:
+  - python >=3.8,<3.13
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.8,<3.13
+  - biopython
+  - pandas
+  - matplotlib-base
+  - reportlab
+  - pypdf2
+  - openpyxl
+source:
+  sha256: a24ba214514423b6a4b50ed9a4f37feb6406046aea9f849e78401eef142bc8ce
+  url: https://github.com/sakshar/GFViewer/archive/refs/tags/v1.0.4.tar.gz
+test:
+  commands:
+  - gfviewer --help
+  imports:
+  - gfviewer

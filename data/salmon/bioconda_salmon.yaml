@@ -8,20 +8,23 @@ about:
   summary: Highly-accurate & wicked fast transcript-level quantification from RNA-seq
     reads using selective alignment.
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:salmon
   - usegalaxy-eu:salmon
+  - usegalaxy-eu:salmonquantmerge
   - usegalaxy-eu:alevin
   - doi:10.1038/nmeth.4197
   recipe-maintainers:
   - rob-p
   - k3yavi
+  - mjsteinbaugh
 package:
   name: salmon
   version: 1.10.3
@@ -33,19 +36,31 @@ requirements:
   - libtool
   - cmake
   - make
+  - pkg-config
   host:
   - boost-cpp
   - jemalloc >=5.1.0
   - tbb-devel >=2021.4.0
+  - staden_io_lib >=1.15.0
+  - libgff
+  - cereal
+  - libcurl
+  - libiconv
+  - libdeflate
+  - xz
   - zlib
+  - zstd
   - bzip2
   - unzip
   run:
   - boost-cpp
   - icu
+  - staden_io_lib >=1.15.0
 source:
+  patches:
+  - 0001-CMakeLists.patch
   sha256: a053fba63598efc4ade3684aa2c8e8e2294186927d4fcdf1041c36edc2aa0871
-  url: https://github.com/COMBINE-lab/salmon/archive/v1.10.3.tar.gz
+  url: https://github.com/COMBINE-lab/salmon/archive/refs/tags/v1.10.3.tar.gz
 test:
   commands:
   - salmon --help
