@@ -6,7 +6,9 @@ about:
     on transcript sequences reconstructed via RNA-Seq de novo transcriptome assembly.
 build:
   noarch: generic
-  number: 2
+  number: 3
+  run_exports:
+  - None
 package:
   name: gmap-fusion
   version: 0.4.0
@@ -15,7 +17,7 @@ requirements:
   run:
   - perl
   - perl-set-intervaltree
-  - perl-db-file
+  - perl-db_file
   - samtools >=1.3
   - bowtie2 >=2.1
   - gmap >=2017.11.15
@@ -25,24 +27,24 @@ source:
 test:
   commands:
   - GMAP-fusion --help 2>&1 | grep Required
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/compare_fusion_align_to_best_nonfusion_align.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/compare_fusion_align_to_best_nonfusion_align.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/estimate_fusion_read_support.pl 2>&1 |
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/estimate_fusion_read_support.pl 2>&1 |
     grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/filter_gmap_chims_via_dist_from_exon_bounds.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/filter_gmap_chims_via_dist_from_exon_bounds.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/gmap_genome_gff3_to_chim_summary.pl 2>&1
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/gmap_genome_gff3_to_chim_summary.pl 2>&1
     | grep Required
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/prep_evidence_for_IGV.pl 2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/retrieve_fusion_transcript_candidates.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/prep_evidence_for_IGV.pl 2>&1 | grep usage
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/retrieve_fusion_transcript_candidates.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/revise_chim_candidate_list_via_split_align_reassessment.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/revise_chim_candidate_list_via_split_align_reassessment.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/screen_fusion_genome_breakpoint_for_confounding_kmers.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/screen_fusion_genome_breakpoint_for_confounding_kmers.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/screen_fusion_trans_genes_for_kmer_confounders.pl
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/screen_fusion_trans_genes_for_kmer_confounders.pl
     2>&1 | grep usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/split_fusion_gmap_parts.pl 2>&1 | grep
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/split_fusion_gmap_parts.pl 2>&1 | grep
     usage
-  - $PREFIX/share/gmap-fusion-0.4.0-2/util/write_GMAP_Fusion_annot_report.pl 2>&1
+  - $PREFIX/share/gmap-fusion-0.4.0-3/util/write_GMAP_Fusion_annot_report.pl 2>&1
     | grep usage

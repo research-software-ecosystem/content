@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/ChaissonLab/danbing-tk
+  license: BSD-3-Clause
+  summary: Toolkit for VNTR genotyping and repeat-pan genome graph construction
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: True [osx]
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1038/s41467-021-24378-0
+package:
+  name: danbing-tk
+  version: 1.3.2.5
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - cereal
+  - eigen
+  run:
+  - eigen
+source:
+  path: ./
+  sha256: 93c15224d80bbd35ca14ecca4411ce52f4bacc0bcc80f945c97628e1e935ba59
+  url: https://github.com/ChaissonLab/danbing-tk/archive/refs/tags/v1.3.2.5.tar.gz
+test:
+  commands:
+  - danbing-tk 2>&1 | grep "Usage"
+  - danbing-tk-pred 2>&1 | grep "Usage"
+  - genPanKmers 2>&1 | grep "Usage"
+  - ktools 2>&1 | grep "Usage"
+  - vntr2kmers_thread 2>&1 | grep "Usage"
