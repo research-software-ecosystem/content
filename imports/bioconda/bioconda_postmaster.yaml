@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/COMBINE-lab/postmaster
+  license: BSD 3-Clause
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Postmaster is a tool for annotating transcriptome alignments with posterior
+    alignment probabilities derived from salmon quantifications.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - RUST_BACKTRACE=1 cargo install --verbose --root $PREFIX --path . --no-track
+  skip: true
+extra:
+  maintainers:
+  - rob-p
+  skip-lints:
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: postmaster
+  version: 0.1.0
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - cargo-bundle-licenses
+source:
+  git_rev: b4cb875f8365adb20732b941aa83029cb8a14ffa
+  git_url: https://github.com/COMBINE-lab/postmaster
+test:
+  commands:
+  - postmaster -h

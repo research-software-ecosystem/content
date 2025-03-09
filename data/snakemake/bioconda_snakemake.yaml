@@ -14,7 +14,7 @@ about:
   summary: A popular workflow management system aiming at full in-silico reproducibility.
 build:
   noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -63,7 +63,6 @@ outputs:
     - immutables
     - configargparse
     - connection_pool >=0.0.3
-    - datrie
     - docutils
     - gitpython
     - humanfriendly
@@ -91,28 +90,28 @@ outputs:
     commands:
     - export GIT\_PYTHON_REFRESH=warn
     - snakemake --version
-    - snakemake --version | grep "8.29.0"
+    - snakemake --version | grep "8.29.2"
     imports:
     - snakemake
 package:
   name: snakemake
-  version: 8.29.0
+  version: 8.29.2
 requirements:
   run:
-  - snakemake-minimal =8.29.0
+  - snakemake-minimal =8.29.2
   - pandas
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: 9f8648f95e27b7c44c4de23a38956840a047a59065a344cba06935a18559162f
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-8.29.0.tar.gz
+  sha256: 59fab787d3d26d3b1b0218b6304dbd65a116661ca20bfec84da2305b65ae97c6
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-8.29.2.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - snakemake --version
-  - snakemake --version | grep "8.29.0"
+  - snakemake --version | grep "8.29.2"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:

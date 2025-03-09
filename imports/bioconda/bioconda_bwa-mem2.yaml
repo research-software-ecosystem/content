@@ -4,13 +4,13 @@ about:
   license_file: LICENSE
   summary: The next version of bwa-mem
 build:
-  number: 7
+  number: 8
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1109/IPDPS.2019.00041
 package:
@@ -21,12 +21,14 @@ requirements:
   - make
   - wget
   - None
+  - git
   host:
   - zlib
 source:
 - patches:
   - Makefile.patch
-  - simde.patch
+  - safestr-makefile.patch
+  - sse2neon.patch
   sha256: 9b001bdc7666ee3f14f3698b21673714d429af50438b894313b05bc4688b1f6d
   url: https://github.com/bwa-mem2/bwa-mem2/releases/download/v2.2.1/Source_code_including_submodules.tar.gz
 test:

@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/SoSongzhi/PVGA
+  license: MIT
+  summary: PVGA is a powerful virus-focused assembler that does both assembly and
+    polishing.
+build:
+  entry_points:
+  - pvga=pvga:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+package:
+  name: pvga
+  version: 0.1.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python =3.10
+  - numpy >=1.21
+  - pandas >=1.5
+  - biopython >=1.85
+  - networkx >=3.1
+source:
+  sha256: e8b60edbb83a9e38831a813c4e75bdcfd4fd8c1f35b804191f24ba49e83cbd9e
+  url: https://pypi.io/packages/source/p/pvga/pvga-0.1.1.tar.gz
+test:
+  commands:
+  - pvga --help
+  imports:
+  - pvga

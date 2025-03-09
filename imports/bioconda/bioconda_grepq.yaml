@@ -1,29 +1,33 @@
 about:
+  dev_url: https://github.com/Rbfinch/grepq
+  doc_url: https://github.com/Rbfinch/grepq/blob/grepq-v1.5.1/README.md
   home: https://github.com/Rbfinch/grepq
   license: MIT
   license_file:
   - LICENSE.md
   - THIRDPARTY.yml
-  summary: Quickly filter FASTQ files
+  summary: Quickly filter FASTQ files.
 build:
   number: 0
   run_exports:
   - None
   script:
-  - export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
+  - export CFLAGS="${CFLAGS} -O3 -Wno-implicit-function-declaration"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
   - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-  - cargo install -v --locked --no-track --root $PREFIX --path .
+  - cargo install -v --no-track --root "${PREFIX}" --path .
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
   identifiers:
-  - DOI:10.5281/zenodo.14031703
+  - doi:10.5281/zenodo.14031703
   recipe-maintainers:
   - Rbfinch
 package:
   name: grepq
-  version: 1.4.8
+  version: 1.5.1
 requirements:
   build:
   - None
@@ -31,9 +35,12 @@ requirements:
   - cargo-bundle-licenses
   - cmake
   - make
+  - pkg-config
+  host:
+  - sqlite
 source:
-  sha256: 8acfecc70e8d6c12faefa31be87553fab6c9c2763970684afb6bd8609e8db60d
-  url: https://github.com/Rbfinch/grepq/archive/refs/tags/grepq-v1.4.8.tar.gz
+  sha256: 13326d99c6d9bc405e32ffdd22b23894ccdabfbfa6b5fec08b8bb335e103ff81
+  url: https://github.com/Rbfinch/grepq/archive/refs/tags/grepq-v1.5.1.tar.gz
 test:
   commands:
   - grepq --version
