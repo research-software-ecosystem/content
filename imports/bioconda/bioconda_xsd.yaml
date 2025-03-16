@@ -6,8 +6,13 @@ about:
     it generates C++ classes that represent the given vocabulary as well as XML parsing
     and serialization code.
 build:
-  number: 5
+  number: 6
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: xsd
   version: 4.0.0_dep
@@ -22,7 +27,9 @@ requirements:
   - xerces-c
 source:
   md5: ae64d7fcd258addc9b045fe3f96208bb
-  url: http://www.codesynthesis.com/download/xsd/4.0/xsd-4.0.0+dep.tar.bz2
+  patches:
+  - ostream-include.patch
+  url: https://www.codesynthesis.com/download/xsd/4.0/xsd-4.0.0+dep.tar.bz2
 test:
   commands:
   - xsd version

@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/xinehc/pilea
+  license: MIT
+  license_family: MIT
+  summary: 'Pilea: profiling bacterial growth dynamics from metagenomes with sketching'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - xinehc
+package:
+  name: pilea
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.7
+  - setuptools
+  - pip
+  run:
+  - python >=3.7
+  - kmc >=3.2.4
+  - mmh3 >=5.1.0
+  - scikit-learn >=1.6.1
+  - tqdm
+  - biopython
+  - threadpoolctl
+  - rich-argparse
+source:
+  sha256: 458be9e796b0db0c2d0d0399d1fae850418f27d6c7836430336fe149096a2387
+  url: https://github.com/xinehc/pilea/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - pilea -h
+  imports:
+  - pilea
