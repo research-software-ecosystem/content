@@ -1,0 +1,32 @@
+about:
+  description: "Mutserve Variant Calling:\n```\nmutserve call \n  --reference rCRS.fasta\
+    \ \n  --output HG00096.vcf.gz \n  --threads 4 \n  *.bam\n```\nThe full list of\
+    \ parameters is available [here](https://github.com/seppinho/mutserve#:~:text=output%20AnnotatedVariants.txt-,Parameters,-Parameter).\n\
+    \n\nMutserve Variant Annotation:\n```\nmutserve annotate \n  --input variantfile.txt\
+    \ \n  --annotation rCRS_annotation_2020-08-20.txt \n  --output AnnotatedVariants.txt\n\
+    ```\n`rCRS.fasta`, `rCRS_annotation_2020-08-20.txt`, and `rCRS_annotation_descriptions.md`\
+    \ are available in the Mutserve2 repository (`$MUTSERVE_DATA/`).\n"
+  home: https://github.com/seppinho/mutserve
+  license: MIT
+  summary: Mutserve2 is a variant caller for the mitochondrial genome to detect homoplasmic
+    and heteroplasmic sites in sequence data.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - tm4zza
+package:
+  name: mutserve
+  version: 2.0.3
+requirements:
+  run:
+  - openjdk >=11
+source:
+  sha256: 59b85d263906b73e3b8c9bbd21c29557af8e50e5d17d3926850b1877ce19ce2c
+  url: https://github.com/seppinho/mutserve/releases/download/v2.0.3/mutserve.zip
+test:
+  commands:
+  - mutserve --version

@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/MatthiasLienhard/isotools
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Framework for the analysis of long read transcriptome sequencing data
+build:
+  entry_points:
+  - run_isotools = isotools.run_isotools:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - kbseah
+package:
+  name: isotools
+  version: 0.3.4
+requirements:
+  host:
+  - python >=3.6
+  - setuptools >=46.4
+  - wheel
+  - pip
+  run:
+  - python >=3.6
+  - numpy
+  - pandas
+  - tqdm
+  - intervaltree
+  - matplotlib-base
+  - seaborn
+  - biopython
+  - pysam
+  - umap-learn
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - pyhmmer
+  - psutil ~=6.0
+  - requests
+  - cpat >=3.0
+source:
+  sha256: f3877cff039515efc3dc3fadb6940557dedd1f1c26ee4749e2b3eb8f68e3fb47
+  url: https://pypi.org/packages/source/i/isotools/isotools-0.3.4.tar.gz
+test:
+  commands:
+  - pip check
+  - run_isotools --help
+  imports:
+  - isotools
+  requires:
+  - pip

@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/NDAR/nda-tools
   home: https://github.com/NDAR/nda-tools
   license: MIT
   license_family: MIT
@@ -14,17 +15,18 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-build-isolation --no-deps -vvv
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
   recipe-maintainer:
   - npavlovikj
 package:
   name: nda-tools
-  version: 0.3.0
+  version: 0.4.0
 requirements:
   host:
   - python
   - pip
+  - setuptools
   run:
   - python
   - keyring
@@ -35,9 +37,12 @@ requirements:
   - tqdm
   - boto3
   - pandas
+  - s3transfer
+  - tabulate
+  - pydantic >=2
 source:
-  sha256: 7315dcf21bf2597485e930f1199c259f1f82c9bc79ebcefb5ef3e8e02aff56f1
-  url: https://pypi.io/packages/source/n/nda_tools/nda_tools-0.3.0.tar.gz
+  sha256: 9a425cdf099f44d03b1a8a526aa9c304d62a35de6ad0fdbb6fb2dd0cba60fe14
+  url: https://pypi.io/packages/source/n/nda_tools/nda_tools-0.4.0.tar.gz
 test:
   commands:
   - vtcmd -h

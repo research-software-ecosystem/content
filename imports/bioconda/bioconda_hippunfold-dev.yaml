@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/khanlab/hippunfold
+  license: MIT
+  summary: 'Meta-package that installs hippunfold with development dependencies.
+
+    '
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: echo "This is a meta-package, no build script required"
+extra:
+  recipe-maintainers:
+  - Dhananjhay
+package:
+  name: hippunfold-dev
+  version: 2.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python >=3.9,<4.0
+  - hippunfold
+  - flake8 >=4.0.1
+  - pytest-console-scripts >=1.2.1
+  - pytest >=6.2.5
+  - black >=24.0.0
+  - pylint >=2.11.1
+  - isort >=5.10.1
+  - poethepoet >=0.10.0
+  - snakefmt >=0.10.0
+test:
+  commands:
+  - hippunfold --help
+  imports:
+  - hippunfold

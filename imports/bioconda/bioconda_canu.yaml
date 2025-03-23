@@ -8,7 +8,7 @@ about:
   summary: Canu is a fork of the Celera Assembler designed for high-noise single-molecule
     sequencing.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -24,6 +24,8 @@ extra:
   - doi:10.1101/gr.215087.116
   - doi:10.1038/nbt.4277
   - doi:10.1101/gr.263566.120
+  skip-lints:
+  - uses_vcs_url
 package:
   name: canu
   version: 2.3
@@ -51,10 +53,11 @@ requirements:
   - gnuplot >=5.2
   - samtools
 source:
+  git_commit: 13903848e95311cb437b78423cdee34ad55a8b2e
+  git_url: https://github.com/marbl/canu.git
   patches:
   - arm_hwcap.patch
-  sha256: ecb071943cde722152deb861d4ab897090f00b227fd0b261592e1e3fdd3e3e1a
-  url: https://github.com/marbl/canu/releases/download/v2.3/canu-2.3.tar.xz
+  sha256: ignored
 test:
   commands:
   - canu --version
