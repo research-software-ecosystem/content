@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/soedinglab/spacedust
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENCE.md
+  summary: De novo discovery of conserved gene clusters in microbial genomes with
+    Spacedust
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1101/2024.10.02.616292v1
+  - biotools:spacedust
+  recipe-maintainers:
+  - milot-mirdita
+package:
+  name: spacedust
+  version: 2.e56c505
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - llvm-openmp
+  - libgomp
+  host:
+  - zlib
+  - bzip2
+  run:
+  - aria2
+  - gawk
+  - zlib
+  - bzip2
+  - foldseek >=10.941cd33
+source:
+  patches:
+  - 3e436173321a2d0365a08bfb3b281108ed9ad414.patch
+  sha256: 303e3760d73f7d942127e86dbeccef6555d7cff49f39737e55d2f6d56b0e768d
+  url: https://github.com/soedinglab/spacedust/archive/2-e56c505.tar.gz
+test:
+  commands:
+  - spacedust > /dev/null

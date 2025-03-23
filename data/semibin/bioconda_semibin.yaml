@@ -3,10 +3,9 @@ about:
   home: https://github.com/BigDataBiology/SemiBin
   license: MIT
   license_family: MIT
-  summary: Metagenomic binning with semi-supervised siamese neural networks
+  summary: Metagenomic binning with siamese neural networks
 build:
   entry_points:
-  - SemiBin=SemiBin.main:main_no_version
   - SemiBin1=SemiBin.main:main1
   - SemiBin2=SemiBin.main:main2
   noarch: python
@@ -24,11 +23,12 @@ extra:
   - psj1997
 package:
   name: semibin
-  version: 2.1.0
+  version: 2.2.0
 requirements:
   host:
   - pip
   - python >=3.7
+  - setuptools
   run:
   - numpy
   - pandas
@@ -40,17 +40,17 @@ requirements:
   - coloredlogs
   - pytorch
   - tqdm
-  - mmseqs2 13.45111
   - bedtools
   - hmmer
   - numexpr
   - prodigal
   - samtools
 source:
-  sha256: 5345982bbc38e283043867d361ca8db727fec34a4c40b3a70e01914154d39bd5
-  url: https://pypi.io/packages/source/S/SemiBin/SemiBin-2.1.0.tar.gz
+  sha256: aef60a99f75be5d45226a1fd6aabe5526d78d6dbca0f578c45b0c5bc198d9513
+  url: https://pypi.io/packages/source/S/SemiBin/semibin-2.2.0.tar.gz
 test:
   commands:
-  - SemiBin --help
+  - SemiBin2 --help
+  - SemiBin2 check_install
   imports:
   - SemiBin

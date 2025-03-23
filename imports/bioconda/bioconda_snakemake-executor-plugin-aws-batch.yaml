@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/snakemake/snakemake-executor-plugin-aws-batch
+  license: MIT
+  license_file: LICENSE
+  summary: A Snakemake executor plugin for submitting jobs to AWS Batch.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jakevc
+package:
+  name: snakemake-executor-plugin-aws-batch
+  version: 0.2.1
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - boto3 >=1.36.5
+  - snakemake-interface-common >=1.17.4
+  - snakemake-interface-executor-plugins >=9.3.2
+  - snakemake-storage-plugin-s3 >=0.3.1
+source:
+  sha256: e43052c214532519e5552cd7aba47cd1708278ca302bc6d261281148e2806d7e
+  url: https://pypi.io/packages/source/s/snakemake-executor-plugin-aws-batch/snakemake_executor_plugin_aws_batch-0.2.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - snakemake_executor_plugin_aws_batch
+  requires:
+  - pip

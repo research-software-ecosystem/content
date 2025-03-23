@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/freeseek/score
+  license: MIT
+  summary: Tools to work with GWAS-VCF summary statistics files (liftover plugin only)
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: bcftools-liftover-plugin
+  version: 1.21
+requirements:
+  build:
+  - None
+  - make
+  - autoconf
+  host:
+  - gsl
+  - zlib
+  - None
+  - None
+  run:
+  - gsl
+  - zlib
+  - None
+  - None
+source:
+- folder: liftover
+  sha256: bdfcd293656a540648056f69ab240260ab7ba04288e2f7c5f2abd208e7a53302
+  url: https://github.com/freeseek/score/archive/db4da22.tar.gz
+- folder: bcftools
+  sha256: 528a4cc1d3555368db75a700b22a3c95da893fd1827f6d304716dfd45ea4e282
+  url: https://github.com/samtools/bcftools/releases/download/1.21/bcftools-1.21.tar.bz2
+test:
+  commands:
+  - bcftools plugin -lv | grep liftover

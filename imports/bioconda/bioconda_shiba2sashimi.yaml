@@ -1,0 +1,36 @@
+about:
+  description: A utility to create Sashimi plots, a publication-quality visualization
+    of RNA-seq data, from Shiba output.
+  dev_url: https://github.com/Sika-Zheng-Lab/shiba2sashimi
+  doc_url: https://github.com/Sika-Zheng-Lab/shiba2sashimi
+  home: https://github.com/Sika-Zheng-Lab/shiba2sashimi
+  license: MIT
+  license_file: LICENSE
+  summary: A utility for creating sashimi plot from Shiba output
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: $PYTHON -m pip install . --no-deps --ignore-installed -vvv
+extra:
+  recipe-maintainers:
+  - NaotoKubota
+package:
+  name: shiba2sashimi
+  version: 0.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy >=1.18.0,<2.0.0
+  - matplotlib-base >=3.1.0
+  - pysam >=0.22.0
+source:
+  sha256: 44175c6ef2d3799a33d8ef9d625637346e9bf9563b1e5691bd221a66e088cafe
+  url: https://files.pythonhosted.org/packages/0e/e5/06d8aa090903e3b82dbdb55a2151487bb7725b76c54bc54f28be70edcda8/shiba2sashimi-0.1.2.tar.gz
+test:
+  imports:
+  - shiba2sashimi

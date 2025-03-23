@@ -30,7 +30,7 @@ build:
   - mapseq_to_asv_table = mgnify_pipelines_toolkit.analysis.amplicon.mapseq_to_asv_table:main
   - primer_val_classification = mgnify_pipelines_toolkit.analysis.amplicon.primer_val_classification:main
   - add_rhea_chebi_annotation = mgnify_pipelines_toolkit.analysis.assembly.add_rhea_chebi_annotation:main
-  - cgc_merge = mgnify_pipelines_toolkit.analysis.assembly.cgc_merge:combine_main
+  - combined_gene_caller_merge = mgnify_pipelines_toolkit.analysis.assembly.combined_gene_caller_merge:main
   - generate_gaf = mgnify_pipelines_toolkit.analysis.assembly.generate_gaf:main
   - summarise_goslims = mgnify_pipelines_toolkit.analysis.assembly.summarise_goslims:main
   - fasta_to_delimited = mgnify_pipelines_toolkit.utils.fasta_to_delimited:main
@@ -43,9 +43,10 @@ build:
 extra:
   recipe-maintainers:
   - chrisAta
+  - mberacochea
 package:
   name: mgnify-pipelines-toolkit
-  version: 1.0.0
+  version: 1.0.2
 requirements:
   host:
   - python >=3.9
@@ -61,9 +62,10 @@ requirements:
   - pandera
   - requests
   - pyfastx >=2.2.0
+  - intervaltree ==3.1.0
 source:
-  sha256: 072ad821da2a4297073e9cf2dfff5013d9e88a3275f48a90e7fd40a02aeff437
-  url: https://pypi.io/packages/source/m/mgnify-pipelines-toolkit/mgnify_pipelines_toolkit-1.0.0.tar.gz
+  sha256: deba7e8ce0cef5eb740a248606ab2e23618dce841ac4ff62cb5a5ba279077136
+  url: https://pypi.io/packages/source/m/mgnify-pipelines-toolkit/mgnify_pipelines_toolkit-1.0.2.tar.gz
 test:
   commands:
   - get_subunits --help
@@ -78,5 +80,6 @@ test:
   - remove_ambiguous_reads --help
   - rev_comp_se_primers --help
   - standard_primer_matching --help
+  - combined_gene_caller_merge --help
   imports:
   - mgnify_pipelines_toolkit

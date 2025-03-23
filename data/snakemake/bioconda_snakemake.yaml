@@ -80,6 +80,7 @@ outputs:
     - snakemake-interface-common >=1.17.0,<2.0
     - snakemake-interface-storage-plugins >=3.2.3,<4.0
     - snakemake-interface-report-plugins >=1.1.0,<2.0.0
+    - snakemake-interface-logger-plugins
     - tabulate
     - throttler
     - wrapt
@@ -90,28 +91,28 @@ outputs:
     commands:
     - export GIT\_PYTHON_REFRESH=warn
     - snakemake --version
-    - snakemake --version | grep "8.30.0"
+    - snakemake --version | grep "9.1.1"
     imports:
     - snakemake
 package:
   name: snakemake
-  version: 8.30.0
+  version: 9.1.1
 requirements:
   run:
-  - snakemake-minimal =8.30.0
+  - snakemake-minimal =9.1.1
   - pandas
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: fd4c1c2c5521c38c507fed81f90a3756279ca5bca0cd17613ace2883d0c46622
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-8.30.0.tar.gz
+  sha256: 53d2ccef9f063e73975c1d8846ae1ed20595e323e81552013b282c25ffec6385
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.1.1.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - snakemake --version
-  - snakemake --version | grep "8.30.0"
+  - snakemake --version | grep "9.1.1"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:

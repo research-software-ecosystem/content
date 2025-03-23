@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/moonso/vcf_parser
+  license: MIT
+  license_family: MIT
+  summary: Small library for parsing vcf files.
+build:
+  entry_points:
+  - vcf_parser = vcf_parser.cli.command_line:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - ljwharbers
+package:
+  name: vcf_parser
+  version: 1.6
+requirements:
+  host:
+  - python >=3
+  - pip
+  - setuptools
+  run:
+  - python >=3
+  - click
+  - pytest
+  - setuptools
+source:
+  sha256: d3200aee08ef3407abd9af4cc5e977c9086cec21582d9f66f26a12da3e806ddd
+  url: https://pypi.org/packages/source/v/vcf_parser/vcf_parser-1.6.tar.gz
+test:
+  commands:
+  - vcf_parser --version
+  imports:
+  - vcf_parser
