@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/jakobnissen/vambcore
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Performant backend functions for the Vamb binning tool
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - version_constraints_missing_whitespace
+package:
+  name: vambcore
+  version: 0.1.2
+requirements:
+  build:
+  - python >=3.10
+  - cross-python_
+  - crossenv
+  - maturin >=1.8,<2
+  - None
+  - None
+  - None
+  - cargo-bundle-licenses
+  host:
+  - python >=3.10
+  - pip
+  - maturin >=1.8,<2
+  run:
+  - python >=3.10
+source:
+  sha256: 10f19ba46fa87f64ce4f7449e1643792f8e0208e303ff08c6deafe82204a118c
+  url: https://pypi.io/packages/source/v/vambcore/vambcore-0.1.2.tar.gz
+test:
+  imports:
+  - vambcore
