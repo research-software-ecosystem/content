@@ -3,8 +3,7 @@ about:
   license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: Strain-level taxonomic classification of metagenomic data using pangenome
-    graphs
+  summary: Strain-level metagenomic profiling using pangenome graphs with PanTax
 build:
   number: 0
   run_exports:
@@ -15,7 +14,7 @@ extra:
   - should_be_noarch_python
 package:
   name: pantax
-  version: 1.0.2
+  version: 1.2.0
 requirements:
   build:
   - None
@@ -24,12 +23,14 @@ requirements:
   - pip
   run:
   - python =3.10
+  - r-base >=4.2
   - samtools =1.19.2
   - bcftools =1.19
   - htslib =1.19.1
-  - pggb =0.6.0
-  - vg
+  - pggb >=0.6.0
+  - vg >=1.59
   - graphaligner =1.0.17
+  - sylph
   - h5py =3.10.0
   - pandas =2.2.0
   - tqdm
@@ -37,8 +38,8 @@ requirements:
   - networkx =3.2.1
   - pyarrow =14.0.2
 source:
-- sha256: 9433f3d6c5ca6870de4aa0d92cfc591973fda5f8620f5a8e9befa01f954b8dfb
-  url: https://github.com/LuoGroup2023/PanTax/releases/download/v1.0.2/pantax.tar.gz
+- sha256: 2ca6c057c5f09ef49f7ae41111fd1b5d3690d1afdfac86a704be6236eea103ed
+  url: https://github.com/LuoGroup2023/PanTax/releases/download/v1.2.0/pantax.tar.gz
 test:
   commands:
   - pantax -h

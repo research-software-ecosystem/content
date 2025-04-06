@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/SC-Git1/OGTFinder
+  home: https://github.com/SC-Git1/OGTFinder
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: OGTFinder is an optimal growth temperature prediction tool for prokaryotes
+    using proteome-derived features.
+build:
+  entry_points:
+  - ogtfinder = ogtfinder.ogtfinder:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - SC-Git1
+package:
+  name: ogtfinder
+  version: 0.0.1
+requirements:
+  host:
+  - python >=3.9
+  - hatchling
+  - pip
+  run:
+  - python >=3.9
+  - pandas ==2.2.2
+  - numpy ==2.0.0
+  - scikit-learn ==1.5.1
+  - biopython >=1.84
+source:
+  sha256: adef000ca940c6890725a41262f7b2d71a8f43f38a8eda7b647c1ff077eaa11d
+  url: https://pypi.org/packages/source/o/ogtfinder/ogtfinder-0.0.1.tar.gz
+test:
+  commands:
+  - ogtfinder --help
+  imports:
+  - ogtfinder

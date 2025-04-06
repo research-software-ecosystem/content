@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/zhangrengang/SOI/
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: Orthology Index (OrthoIndex or OI) determines the orthology of a syntenic
+    block.
+build:
+  entry_points:
+  - soi = soi.options:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ${PYTHON} -m pip install . --no-deps --no-build-isolation --ignore-installed
+    -vv
+package:
+  name: soi
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=68.2.2
+  - pip >=23.2.1
+  - biopython
+  - lazy-property
+  - networkx
+  run:
+  - python
+  - mafft
+  - trimal
+  - iqtree
+  - newick_utils
+  - pal2nal
+  - biopython
+  - networkx
+  - lazy-property
+  - drmaa
+  - psutil
+  - matplotlib-base
+source:
+  sha256: d6d1d5fcd5cfcf1b70a641413d8b09190399d5e064fcff515155282adc54f92e
+  url: https://github.com/zhangrengang/SOI/archive/refs/tags/v1.2.0.tar.gz
+test:
+  commands:
+  - soi -h

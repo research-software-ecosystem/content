@@ -1,0 +1,63 @@
+about:
+  description: 'Yleaf-pipelines is a pipeline-optimized version of Yleaf, a tool for
+    Y-chromosome haplogroup prediction from next-generation sequencing data.
+
+    It provides a comprehensive solution for analyzing Y-chromosome genetic data and
+    determining
+
+    haplogroup assignments.
+
+    '
+  dev_url: https://github.com/trianglegrrl/Yleaf-pipelines
+  doc_url: https://github.com/trianglegrrl/Yleaf-pipelines
+  home: https://github.com/trianglegrrl/Yleaf-pipelines
+  license: MIT
+  license_family: MIT
+  summary: Yleaf-pipelines - A pipeline-optimized version of Yleaf, a tool for Y-chromosome
+    haplogroup prediction.
+build:
+  entry_points:
+  - Yleaf=yleaf.Yleaf:main
+  - predict_haplogroup=yleaf.predict_haplogroup:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/molbev/msy032
+  notes: "Yleaf requires reference genome files for analysis. These will be downloaded\
+    \ automatically\nwhen needed, or you can specify their location in the config.txt\
+    \ file.\nBasic usage:\n  Yleaf -fastq input.fastq -rg hg38 -o output_dir -fg /path/to/full-genome.fa\
+    \ -yr /path/to/ychr.fa\"\nFor more information, see the documentation at:\n  https://github.com/trianglegrrl/Yleaf-pipelines"
+  recipe-maintainers:
+  - trianglegrrl
+package:
+  name: yleaf-pipelines
+  version: 3.3.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - pip
+  - graphviz >=2.40
+  - networkx >=2.6
+  - numpy
+  - pandas >=1.3
+  - python-dateutil >=2.8
+  - pytz >=2021
+  - six >=1.16
+source:
+  sha256: 3c26e46d5d110d43f3a6ca7e84d5ab59d949f49ad7e75afa9db6acad6776d697
+  url: https://github.com/trianglegrrl/Yleaf-pipelines/archive/refs/tags/3.3.0.tar.gz
+test:
+  commands:
+  - Yleaf --help
+  - predict_haplogroup --help
+  - python -c "import yleaf; print(yleaf.__version__)"
+  - test -f $PREFIX/lib/python*/site-packages/yleaf/__init__.py
+  imports:
+  - yleaf

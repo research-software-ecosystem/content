@@ -1,9 +1,10 @@
 about:
   description: "Tool for training model and classifying reads from environmental ONT\
     \ amplicon sequencing. \n"
-  doc_source_url: https://github.com/AntonS-bio/EnviroAmpDesigner/blob/main/README.md
+  doc_url: https://github.com/AntonS-bio/EnviroAmpDesigner/blob/main/README.md
   home: https://github.com/AntonS-bio/EnviroAmpDesigner
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: LICENSE
   summary: Tool for training model and classifying reads from environmental ONT amplicon
     sequencing.
@@ -12,13 +13,13 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - AntonS-bio
 package:
   name: enviroampdesigner
-  version: 0.1.2
+  version: 0.1.3
 requirements:
   host:
   - pip
@@ -33,11 +34,10 @@ requirements:
   - tqdm >=4.66.*
   - primer3-py >=2.0.*
   - numpy >=1.20.*
+  - minimap2
 source:
-  sha256: c5b277586e48b06b65d8b034b3444fe6e64483af3e9317509759ae0e9ebcb0a5
-  url: https://github.com/AntonS-bio/EnviroAmpDesigner/archive/0.1.2.tar.gz
+  sha256: e1b11b896034c58e018ff9f2b68951569a394219c208922d96b7bf2397efb0d7
+  url: https://github.com/AntonS-bio/EnviroAmpDesigner/archive/0.1.3.tar.gz
 test:
   commands:
   - design_primers -h
-  requires:
-  - pip
