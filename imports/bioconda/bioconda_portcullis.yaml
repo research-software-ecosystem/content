@@ -4,8 +4,13 @@ about:
   license_file: COPYING
   summary: Splice junction analysis and filtering from BAM files
 build:
-  number: 2
+  number: 3
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: portcullis
   version: 1.2.4
@@ -17,21 +22,25 @@ requirements:
   - autoconf
   - automake >=1.15.1
   - libtool
-  - perl
   host:
   - zlib
   - pandas
-  - python
-  - samtools >=1.9
+  - python <3.10
   - boost-cpp
+  - libboost-python-devel
+  - samtools >=1.9
   run:
   - python
-  - boost-cpp
+  - libboost
+  - libboost-python-devel
   - tabulate
   - numpy
   - pandas
   - samtools >=1.9
 source:
+  patches:
+  - boost-leaf.patch
+  - m64.patch
   sha256: 9183c4e8108af1e813dbc35e537e16e5d0e13f53ed4c0a36b182c3f8bfcea438
   url: https://github.com/EI-CoreBioinformatics/portcullis/archive/refs/tags/Release-1.2.4.tar.gz
 test:

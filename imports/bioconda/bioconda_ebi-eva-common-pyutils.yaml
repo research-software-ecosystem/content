@@ -1,34 +1,38 @@
 about:
+  dev_url: https://github.com/EBIVariation/eva-common-pyutils
   home: https://github.com/EBIVariation/eva-common-pyutils
   license: Apache-2.0
+  license_family: APACHE
   license_file: LICENSE
-  summary: EBI EVA - Common Python Utilities
+  summary: EBI EVA - Common Python Utilities.
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - apriltuesday
 package:
   name: ebi-eva-common-pyutils
-  version: 0.6.14
+  version: 0.6.16
 requirements:
   host:
   - python
   - pip
+  - setuptools
   run:
   - python
   - requests
-  - lxml
+  - lxml ==4.*
   - pyyaml
   - cached-property
   - retry
+  - openpyxl ==3.*
 source:
-  sha256: d3af2766709c0aed780043eaf067144bff680397ca754845991040b3f233fd34
-  url: https://pypi.io/packages/source/e/ebi-eva-common-pyutils/ebi_eva_common_pyutils-0.6.14.tar.gz
+  sha256: 590719d800c4f1c7634023e6f3adba4d4beee839f7b0068c228b04a19c11baf1
+  url: https://pypi.io/packages/source/e/ebi-eva-common-pyutils/ebi_eva_common_pyutils-0.6.16.tar.gz
 test:
   commands:
   - pip check

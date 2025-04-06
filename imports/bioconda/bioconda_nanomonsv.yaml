@@ -1,9 +1,11 @@
 about:
+  dev_url: https://github.com/friend1ws/nanomonsv
   home: https://github.com/friend1ws/nanomonsv
-  license: GPL-3.0
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
   summary: Python tools for detecting structural variation from nanopore sequence
-    data
+    data.
 build:
   entry_points:
   - nanomonsv = nanomonsv:main
@@ -11,17 +13,18 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-deps --no-cache-dir -vvv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - aokad
 package:
   name: nanomonsv
-  version: 0.7.2
+  version: 0.8.0
 requirements:
   host:
   - python >=3.6
   - pip
+  - setuptools
   run:
   - python >=3.6
   - htslib
@@ -32,11 +35,11 @@ requirements:
   - parasail-python >=1.2.4
   - minimap2 >=2.24
   - bwa >=0.7.17
-  - RepeatMasker >=4.1.1
+  - repeatMasker >=4.1.1
   - bedtools >=2.30.0
 source:
-  sha256: 25aefec185f09e3fad057c98b8f28c03c4997dbb7771f67ff658674ce36ecbb6
-  url: https://pypi.io/packages/source/n/nanomonsv/nanomonsv-0.7.2.tar.gz
+  sha256: 5bc10b38f1f0cb695f5b25bd0f7c3145295f718b087b5660932328006fc11b15
+  url: https://pypi.io/packages/source/n/nanomonsv/nanomonsv-0.8.0.tar.gz
 test:
   commands:
   - nanomonsv --help
