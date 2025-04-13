@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/yeeus/GCI
+  doc_url: https://github.com/yeeus/GCI/blob/v1.0/README.md
+  home: https://github.com/yeeus/GCI
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A program for assessing genome contiguity.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - sed -i.bak '1s|^|#!/usr/bin/env python\n\n|' GCI.py
+  - chmod +x GCI.py
+  - cp -f GCI.py ${PREFIX}/bin/GCI
+package:
+  name: gci
+  version: 1.0
+requirements:
+  run:
+  - python >=3.10
+  - pysam >=0.21.0
+  - biopython
+  - numpy
+  - matplotlib-base
+source:
+  sha256: 7d3aa44c71c03ccb99c8a6b55cfc8f38c18534d434fdf88fb3605b9798259cee
+  url: https://github.com/yeeus/GCI/archive/refs/tags/v1.0.tar.gz
+test:
+  commands:
+  - GCI --help

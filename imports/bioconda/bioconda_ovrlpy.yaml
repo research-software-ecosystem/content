@@ -1,0 +1,48 @@
+about:
+  doc_url: https://ovrlpy.readthedocs.io/
+  home: https://github.com/HiDiHlabs/ovrl.py
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A python tool to investigate cell overlaps in imaging-based spatial transcriptomics
+    data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - sebastiantiesmeyer
+  - niklasmueboe
+package:
+  name: ovrlpy
+  version: 0.2.1
+requirements:
+  host:
+  - python >=3.11,<3.14
+  - setuptools >=64
+  - setuptools-scm >=8
+  - pip
+  run:
+  - python >=3.11,<3.14
+  - matplotlib-base >=3.8,<4.dev0
+  - matplotlib-scalebar
+  - numpy >=1.25,<2.dev0
+  - pandas >=2.0,<3.dev0
+  - scikit-image >=0.18
+  - scikit-learn >=1.1,<2.dev0
+  - scipy >=1.11,<2.dev0
+  - tqdm >=4.65,<5.dev0
+  - umap-learn >=0.5,<1.dev0
+source:
+  sha256: 3b160bd67ecf3b576086834279ed313bbdc9f97b520bea932078c688e3c8f3f5
+  url: https://pypi.org/packages/source/o/ovrlpy/ovrlpy-0.2.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - ovrlpy
+  requires:
+  - pip
