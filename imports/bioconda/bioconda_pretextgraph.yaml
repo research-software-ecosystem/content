@@ -1,16 +1,20 @@
 about:
-  description: This is a tool for converting data from a bedgraph format and embedding
+  description: 'This is a tool for converting data from a bedgraph format and embedding
     into a Hi-C contact map in the Pretext format. The graph data can then be displayed
-    alongside the contact map using the PretextView desktop software (https://github.com/wtsi-hpag/PretextView).
-    See https://github.com/wtsi-hpag/PretextMap for how to generate Pretext contact
+    alongside the contact map using the PretextView desktop software (https://github.com/sanger-tol/PretextView).
+    See https://github.com/sanger-tol/PretextMap for how to generate Pretext contact
     maps, or search for pretextmap on bioconda.
-  home: https://github.com/wtsi-hpag/PretextGraph
+
+    '
+  dev_url: https://github.com/sanger-tol/PretextGraph
+  doc_url: https://github.com/sanger-tol/PretextGraph/blob/0.0.9/README.md
+  home: https://github.com/sanger-tol/PretextGraph
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Embeds bedgraph data into Pretext contact maps.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 package:
@@ -19,10 +23,16 @@ package:
 requirements:
   build:
   - None
-  - clang >=11.0.1
-  - clangxx >=11.0.1
-  - meson >=0.57.1
+  - cmake
+  - make
+  - clangdev
+  - meson
+  host:
+  - libdeflate
 source:
+  patches:
+  - 0001-PretextGraph-aarch64.patch
+  - 0002-CMakeLists-aarch64.patch
   sha256: 7658c58ee8f5a6335a361462bb8dc14a1e8b509bca38aa5b757daab4b4497a88
   url: https://github.com/sanger-tol/PretextGraph/releases/download/0.0.9/pretextgraph-0.0.9.tar.xz
 test:

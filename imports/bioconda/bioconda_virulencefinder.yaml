@@ -5,8 +5,8 @@ about:
   summary: VirulenceFinder identifies virulence genes in total or partial sequenced
     isolates of bacteria
 build:
-  noarch: generic
-  number: 1
+  noarch: python
+  number: 0
   run_exports:
   - None
 extra:
@@ -14,20 +14,27 @@ extra:
   - doi:10.1128/JCM.03617-13
 package:
   name: virulencefinder
-  version: 2.0.4
+  version: 3.1.0
 requirements:
+  host:
+  - python >=3.10
+  - pip
+  - pdm-backend
   run:
-  - python >=3
+  - python >=3.10
   - kma
-  - biopython
-  - tabulate
-  - cgecore
+  - biopython >=1.79
+  - tabulate >=0.8.9
+  - cgecore >=2.0.0
   - blast
+  - pandas >=1.4.2
+  - wget
   - git
 source:
-  sha256: 2ec47b79fc34b6c89f416771ac9af9f405c64da82f98c05c528fb2ddc728a8dc
-  url: https://bitbucket.org/genomicepidemiology/virulencefinder/get/2.0.4.tar.gz
+  sha256: 5106428c239dd9c232bd5f65ae18b765d8f5a1578332d06148f01bd067fd8620
+  url: https://pypi.io/packages/source/v/virulencefinder/virulencefinder-3.1.0.tar.gz
 test:
   commands:
-  - virulencefinder.py --help
-  - git --help
+  - python -m virulencefinder --version
+  imports:
+  - virulencefinder

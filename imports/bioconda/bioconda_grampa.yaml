@@ -1,7 +1,7 @@
 about:
   dev_url: https://github.com/gwct/grampa
-  doc_url: https://gwct.github.io/grampa/
-  home: https://gwct.github.io/grampa/
+  doc_url: https://gwct.github.io/grampa
+  home: https://gwct.github.io/grampa
   license: GPL-3.0-only
   license_family: GPL3
   license_file: LICENSE
@@ -12,25 +12,21 @@ build:
   number: 0
   run_exports:
   - None
-  script:
-  - cp grampa.py ${PREFIX}/bin
-  - ln -s ${PREFIX}/bin/grampa.py ${PREFIX}/bin/grampa
-  - mkdir -p ${SP_DIR}
-  - cp -R grampa_lib ${SP_DIR}/grampa_lib
 extra:
   recipe-maintainers:
   - gwct
 package:
   name: grampa
-  version: 1.4.2
+  version: 1.4.4
 requirements:
   host:
   - python >=3
   run:
   - python >=3
 source:
-  sha256: 309a4d2e07e9147985d41d9c3eba4bcad8502341bddaf2447bcb37aae2ec8287
-  url: https://github.com/gwct/grampa/archive/refs/tags/v1.4.2.tar.gz
+  sha256: 81325b44291227f9cd4e93da98909f103a0c99123e08f39adf795a334465b578
+  url: https://github.com/gwct/grampa/archive/refs/tags/v1.4.4.tar.gz
 test:
-  commands:
-  - grampa.py --version 2>&1 | grep -q GRAMPA
+  requires:
+  - wget
+  - unzip

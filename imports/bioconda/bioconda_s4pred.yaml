@@ -8,7 +8,7 @@ about:
     sequence
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
@@ -20,6 +20,7 @@ package:
 requirements:
   host:
   - python >=3.7
+  - wget
   run:
   - python >=3.7
   - pytorch =2.6.0
@@ -29,4 +30,7 @@ source:
   url: https://github.com/psipred/s4pred/archive/refs/tags/v1.2.1.tar.gz
 test:
   commands:
-  - run_model.py -h
+  - echo '>1QYS_1|Chain A|TOP7|Computationally Designed Sequence\n' > test.fasta
+  - echo 'MGDIQVQVNIDDNGKNFDYTYTVTTESELQKVLNELMDYIKKQGAKRVRISITARTKKEAEKFAAILIKVFAELGYNDINVTFDGDTVTVEGQL'
+    >> test.fasta
+  - run_model -t horiz --save-files ./test.fasta

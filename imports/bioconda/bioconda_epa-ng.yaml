@@ -4,8 +4,12 @@ about:
   license_file: LICENSE
   summary: Massively parallel phylogenetic placement of genetic sequences
 build:
-  number: 5
+  number: 6
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1093/sysbio/syy054
 package:
@@ -19,7 +23,7 @@ requirements:
   - flex
   - bison 3.4
   - m4
-  - cmake
+  - cmake <4
   - automake
   - autoconf
   - llvm-openmp
@@ -30,6 +34,8 @@ requirements:
   - zlib
   - llvm-openmp
 source:
+  patches:
+  - cmake.patch
   sha256: d1db23919f49cfad202b18623e5eb30c3d6cedcc1705b944221daea8131cbb74
   url: https://github.com/Pbdas/epa-ng/archive/v0.3.8.tar.gz
 test:

@@ -1,39 +1,48 @@
 about:
-  home: http://rsat.eu/
-  license: AGPL-3
+  description: Detection and analysis of regulatory signals in non-coding sequences.
+  home: http://rsat.eu
+  license: GNU Affero General Public License v3
   license_file: LICENSE.txt
-  summary: Detection of regulatory signals in non-coding sequences.
+  summary: Regulatory Sequence Analysis Tools (RSAT)
 build:
-  number: 2
+  number: 0
   run_exports:
   - None
+  script_env:
+  - LC_ALL=POSIX
   skip: true
 extra:
   identifiers:
   - biotools:rsat
   - doi:10.1093/nar/gky317
+  notes: "This package installs RSAT tools to analyse cis-regulatory elements, supporting:\n\
+    * motif discovery (support genome-wide data sets like ChIP-seq)\n* transcription\
+    \ factor binding motif analysis (quality assessment, comparisons and clustering)\n\
+    * comparative genomics\n* analysis of regulatory variations\n\nDocumentation can\
+    \ be found at https://rsa-tools.github.io/installing-RSAT\n\nNote that this package\
+    \ does not include genome sequences nor DNA motif collections, \nplease check\
+    \ https://rsa-tools.github.io/installing-RSAT/RSAT-Docker/RSAT-Docker-tuto.html\n\
+    to learn how to add them in your system."
 package:
   name: rsat-core
-  version: 2020.02.29
+  version: 2025.04.04
 requirements:
   build:
   - None
   - None
   - None
   - make
-  host:
   - r-base
-  - python
-  - perl
   run:
   - python
   - numpy
   - scipy
-  - matplotlib
+  - matplotlib-base
   - httplib2
   - pygraphviz
   - snakemake
   - pyyaml
+  - opencv
   - r-base
   - r-gplots
   - r-jpeg
@@ -55,6 +64,7 @@ requirements:
   - bioconductor-ctc
   - bioconductor-qvalue
   - perl
+  - perl-app-cpanminus
   - perl-bioperl
   - perl-bio-das
   - perl-yaml
@@ -81,8 +91,6 @@ requirements:
   - perl-xml-parser
   - perl-log-log4perl
   - perl-number-format
-  - perl-ole-storage_lite
-  - perl-spreadsheet-writeexcel
   - perl-readonly
   - perl-rest-client
   - perl-http-tiny
@@ -92,6 +100,8 @@ requirements:
   - perl-ensembl-genomes
   - perl-parallel-forkmanager
   - perl-mce-shared
+  - perl-postscript-simple
+  - perl-email-simple
   - seqlogo
   - weblogo
   - bedtools
@@ -100,13 +110,12 @@ requirements:
   - ghostscript
   - gnuplot
   - vmatch
-  - perl-email-simple
 source:
-  sha256: e964d960f8fa57d39f1add2763ea6cb5eef12beae54c01dc1fd7c50c1f01aaa6
-  url: http://pedagogix-tagc.univ-mrs.fr/download_rsat/rsat-core_2020.02.29.tar.gz
+  sha256: e1391de42c9115f1675f6399f02b5e364fc229d4ae185643a78ac75d1fe97c62
+  url: https://github.com/rsa-tools/rsat-code/archive/refs/tags/2025.04.04.tar.gz
 test:
   commands:
-  - rsat --help
+  - rsat -h
   - rsat oligo-analysis -h
   - rsat random-seq -l 100 -n 2
   - rsat random-seq -l 100 -n 2 | rsat purge-sequence

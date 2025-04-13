@@ -1,0 +1,43 @@
+about:
+  description: "VCFX is a collection of specialized command-line tools designed for\
+    \ efficient \nmanipulation, analysis, and transformation of VCF (Variant Call\
+    \ Format) files\nused in genomic research and bioinformatics. The toolkit follows\
+    \ the Unix \nphilosophy, creating small, focused tools that do one thing well\
+    \ and can be\ncombined into powerful workflows.\n"
+  dev_url: https://github.com/jorgeMFS/VCFX
+  doc_url: https://jorgeMFS.github.io/VCFX/
+  home: https://github.com/jorgeMFS/VCFX
+  license: MIT
+  license_file: LICENSE
+  summary: 'VCFX: A Comprehensive VCF Manipulation Toolkit'
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - jorgeMFS
+package:
+  name: vcfx
+  version: 1.0.2
+requirements:
+  build:
+  - None
+  - cmake >=3.14
+  - make
+  - pkg-config
+  host:
+  - zlib
+  - bzip2
+  run:
+  - zlib
+  - bzip2
+source:
+  sha256: 10c47b8ead54a96e8cb322afc5cddda5f34cefd41df4a02d08fe38db5f5f891d
+  url: https://github.com/jorgeMFS/VCFX/archive/v1.0.2.tar.gz
+test:
+  commands:
+  - VCFX_validator --help || true
+  - VCFX_subsampler --help || true
+  - VCFX_variant_counter --help || true

@@ -1,0 +1,55 @@
+about:
+  description: 'sr2silo is a tool for converting short read data to SILO format,
+
+    designed for bioinformatics applications.
+
+    '
+  dev_url: https://github.com/cbg-ethz/sr2silo
+  doc_url: https://github.com/cbg-ethz/sr2silo/blob/v0.0.4/README.md
+  home: https://github.com/cbg-ethz/sr2silo
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Short-read to SILO format converter.
+build:
+  build: null
+  entry_points:
+  - sr2silo = sr2silo.main:app
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - koehng
+package:
+  name: sr2silo
+  version: 0.0.4
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - poetry-core
+  run:
+  - python >=3.10
+  - pyyaml >=6.0.2
+  - boto3 >=1.35.72
+  - psutil >=6.1.1
+  - tqdm >=4.67.1
+  - click >=8.1.8
+  - pydantic >=2.10.6
+  - zstandard >=0.23.0
+  - typer >=0.15.1
+  - biopython >=1.83
+  - pysam >=0.23.0
+  - requests >=2.25.0
+  - moto >=5.0.22
+source:
+  sha256: 57e7198287ba0535f066a984e729ad3c156854c3fd430873b1f9183e5affac7a
+  url: https://github.com/cbg-ethz/sr2silo/archive/v0.0.4.tar.gz
+test:
+  commands:
+  - sr2silo --help
+  imports:
+  - sr2silo
