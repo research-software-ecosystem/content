@@ -1,13 +1,14 @@
 {
-    "Author": "Hervé Pagès",
+    "Archs": "x64",
+    "Author": "Hervé Pagès [aut, cre] (ORCID: <https://orcid.org/0009-0002-8272-4522>)",
     "BugReports": "https://github.com/Bioconductor/HDF5Array/issues",
-    "Date/Publication": "2024-10-29",
+    "Date/Publication": "2025-04-15",
     "Depends": [
-        "DelayedArray (>= 0.31.8)",
+        "DelayedArray (>= 0.33.5)",
         "R (>= 3.4)",
-        "SparseArray (>= 1.5.42)",
-        "methods",
-        "rhdf5 (>= 2.31.6)"
+        "SparseArray (>= 1.7.5)",
+        "h5mread (>= 0.99.4)",
+        "methods"
     ],
     "Description": "The HDF5Array package is an HDF5 backend for DelayedArray objects. It implements the HDF5Array, H5SparseMatrix, H5ADMatrix, and TENxMatrix classes, 4 convenient and memory-efficient array-like containers for representing and manipulating either: (1) a conventional (a.k.a. dense) HDF5 dataset, (2) an HDF5 sparse matrix (stored in CSR/CSC/Yale format), (3) the central matrix of an h5ad file (or any matrix in the /layers group), or (4) a 10x Genomics sparse matrix. All these containers are DelayedArray extensions and thus support all operations (delayed or block-processed) supported by DelayedArray objects.",
     "Imports": [
@@ -16,39 +17,42 @@
         "Matrix",
         "S4Arrays (>= 1.1.1)",
         "S4Vectors",
-        "rhdf5filters",
+        "rhdf5",
         "stats",
         "tools",
         "utils"
     ],
     "License": "Artistic-2.0",
-    "LinkingTo": [
-        "Rhdf5lib",
-        "S4Vectors (>= 0.27.13)"
-    ],
-    "MD5sum": "82321c8a1bad0392f898462a6d8a1d60",
+    "MD5sum": "2cd2344bb6c4db92c317b9af5dad2c98",
     "Maintainer": "Hervé Pagès <hpages.on.github@gmail.com>",
-    "NeedsCompilation": "yes",
+    "NeedsCompilation": "no",
     "Package": "HDF5Array",
     "Rank": 50,
+    "Rfiles": [
+        "vignettes/HDF5Array/inst/doc/HDF5Array_performance.R"
+    ],
     "Suggests": [
         "BiocParallel",
+        "BiocStyle",
         "DelayedMatrixStats",
         "ExperimentHub",
         "GenomicFeatures",
         "GenomicRanges",
+        "RSpectra",
         "RUnit",
         "SingleCellExperiment",
         "SummarizedExperiment (>= 1.15.1)",
         "TENxBrainData",
         "genefilter",
         "h5vcData",
+        "knitr",
+        "rmarkdown",
         "zellkonverter"
     ],
-    "SystemRequirements": "GNU make",
     "Title": "HDF5 datasets as array-like objects in R",
     "URL": "https://bioconductor.org/packages/HDF5Array",
-    "Version": "1.34.0",
+    "Version": "1.36.0",
+    "VignetteBuilder": "knitr",
     "biocViews": [
         "Annotation",
         "Coverage",
@@ -62,15 +66,15 @@
         "SingleCell",
         "Software"
     ],
-    "dependencyCount": "25",
+    "dependencyCount": "26",
     "dependsOnMe": [
         "MAGAR",
         "TENxBrainData",
         "TENxPBMCData"
     ],
-    "git_branch": "RELEASE_3_20",
-    "git_last_commit": "dab3921",
-    "git_last_commit_date": "2024-10-29",
+    "git_branch": "RELEASE_3_21",
+    "git_last_commit": "1e32d9f",
+    "git_last_commit_date": "2025-04-15",
     "git_url": "https://git.bioconductor.org/packages/HDF5Array",
     "hasINSTALL": false,
     "hasLICENSE": false,
@@ -123,18 +127,21 @@
         "transformGamPoi",
         "xenLite"
     ],
-    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.4/HDF5Array_1.34.0.tgz",
-    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.4/HDF5Array_1.34.0.tgz",
-    "source.ver": "src/contrib/HDF5Array_1.34.0.tar.gz",
+    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.5/HDF5Array_1.36.0.tgz",
+    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.5/HDF5Array_1.36.0.tgz",
+    "source.ver": "src/contrib/HDF5Array_1.36.0.tar.gz",
     "suggestsMe": [
         "BiocGenerics",
         "BiocSklearn",
+        "DeconvoBuddies",
         "DelayedArray",
         "DelayedMatrixStats",
         "MAST",
         "MuData",
         "MultiAssayExperiment",
+        "PDATK",
         "QFeatures",
+        "S4Arrays",
         "SCArray",
         "STexampleData",
         "SeuratObject",
@@ -143,6 +150,7 @@
         "SummarizedExperiment",
         "beachmat",
         "cellxgenedp",
+        "h5mread",
         "iSEE",
         "mbkmeans",
         "metabolomicsWorkbenchR",
@@ -150,8 +158,13 @@
         "scran",
         "scry",
         "spatialHeatmap",
-        "spicyWorkflow",
         "zellkonverter"
     ],
-    "win.binary.ver": "bin/windows/contrib/4.4/HDF5Array_1.34.0.zip"
+    "vignetteTitles": [
+        "HDF5Array performance"
+    ],
+    "vignettes": [
+        "vignettes/HDF5Array/inst/doc/HDF5Array_performance.html"
+    ],
+    "win.binary.ver": "bin/windows/contrib/4.5/HDF5Array_1.36.0.zip"
 }
