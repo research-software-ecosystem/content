@@ -1,12 +1,13 @@
 {
-    "Author": "Lihua Julie Zhu, Paul Scemama, Benjamin R. Holmes, Hervé Pagès, Kai Hu, Hui Mao, Michael Lawrence, Isana Veksler-Lublinsky, Victor Ambros, Neil Aronin and Michael Brodsky",
-    "Date/Publication": "2024-10-29",
+    "Author": "Lihua Julie Zhu Paul Scemama Benjamin R. Holmes Hervé Pagès Kai Hu Hui Mao Michael Lawrence Isana Veksler-Lublinsky Victor Ambros Neil Aronin Michael Brodsky Devin M Burris",
+    "Date/Publication": "2025-04-15",
     "Depends": [
         "BiocGenerics",
         "Biostrings",
+        "GenomicFeatures",
         "R (>= 3.5.0)"
     ],
-    "Description": "The package includes functions to find potential guide RNAs for the CRISPR editing system including Base Editors and the Prime Editor for input target sequences, optionally filter guide RNAs without restriction enzyme cut site, or without paired guide RNAs, genome-wide search for off-targets, score, rank, fetch flank sequence and indicate whether the target and off-targets are located in exon region or not. Potential guide RNAs are annotated with total score of the top5 and topN off-targets, detailed topN mismatch sites, restriction enzyme cut sites, and paired guide RNAs. The package also output indels and their frequencies for Cas9 targeted sites.",
+    "Description": "The package encompasses functions to find potential guide RNAs for the CRISPR-based genome-editing systems including the Base Editors and the Prime Editors when supplied with target sequences as input. Users have the flexibility to filter resulting guide RNAs based on parameters such as the absence of restriction enzyme cut sites or the lack of paired guide RNAs. The package also facilitates genome-wide exploration for off-targets, offering features to score and rank off-targets, retrieve flanking sequences, and indicate whether the hits are located within exon regions. All detected guide RNAs are annotated with the cumulative scores of the top5 and topN off-targets together with the detailed information such as mismatch sites and restrictuion enzyme cut sites. The package also outputs INDELs and their frequencies for Cas9 targeted sites.",
     "Imports": [
         "BSgenome",
         "DelayedArray",
@@ -17,40 +18,50 @@
         "XVector",
         "data.table",
         "dplyr",
+        "gtools",
         "hash",
         "keras",
         "methods",
         "mltools",
+        "openxlsx",
         "parallel",
         "reticulate",
         "rhdf5",
-        "seqinr"
+        "rio",
+        "rlang",
+        "seqinr",
+        "stringr"
     ],
-    "License": "GPL (>= 2)",
-    "MD5sum": "3bde56994f0385dbdf55ef70a04525f2",
-    "Maintainer": "Lihua Julie Zhu <julie.zhu@umassmed.edu>",
+    "License": "file LICENSE",
+    "MD5sum": "77b27f813177508b05f0681aadfa7b9c",
+    "Maintainer": "Lihua Julie Zhu <julie.zhu@umassmed.edu> Kai Hu <kai.hu@umassmed.edu>",
     "NeedsCompilation": "no",
     "Package": "CRISPRseek",
-    "Rank": 675,
+    "Rank": 673,
     "Rfiles": [
         "vignettes/CRISPRseek/inst/doc/CRISPRseek.R"
     ],
     "Suggests": [
         "BSgenome.Hsapiens.UCSC.hg19",
+        "BSgenome.Hsapiens.UCSC.hg38",
         "BSgenome.Mmusculus.UCSC.mm10",
+        "BiocFileCache",
         "BiocStyle",
         "MASS",
         "RUnit",
         "TxDb.Hsapiens.UCSC.hg19.knownGene",
+        "TxDb.Hsapiens.UCSC.hg38.knownGene",
         "TxDb.Mmusculus.UCSC.mm10.knownGene",
+        "knitr",
         "lattice",
         "org.Hs.eg.db",
         "org.Mm.eg.db",
         "tensorflow",
         "testthat"
     ],
-    "Title": "Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems",
-    "Version": "1.46.0",
+    "Title": "Design of guide RNAs in CRISPR genome-editing systems",
+    "Version": "1.48.0",
+    "VignetteBuilder": "knitr",
     "biocViews": [
         "CRISPR",
         "GeneRegulation",
@@ -58,26 +69,27 @@
         "SequenceMatching",
         "Software"
     ],
-    "dependencyCount": "107",
-    "git_branch": "RELEASE_3_20",
-    "git_last_commit": "8f7dfec",
-    "git_last_commit_date": "2024-10-29",
+    "dependencyCount": "141",
+    "git_branch": "RELEASE_3_21",
+    "git_last_commit": "d7b7729",
+    "git_last_commit_date": "2025-04-15",
     "git_url": "https://git.bioconductor.org/packages/CRISPRseek",
     "hasINSTALL": false,
-    "hasLICENSE": false,
+    "hasLICENSE": true,
     "hasNEWS": true,
     "hasREADME": false,
     "importsMe": [
         "GUIDEseq",
         "multicrispr"
     ],
-    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.4/CRISPRseek_1.46.0.tgz",
-    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.4/CRISPRseek_1.46.0.tgz",
-    "source.ver": "src/contrib/CRISPRseek_1.46.0.tar.gz",
+    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.5/CRISPRseek_1.48.0.tgz",
+    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.5/CRISPRseek_1.48.0.tgz",
+    "source.ver": "src/contrib/CRISPRseek_1.48.0.tar.gz",
     "vignetteTitles": [
-        "CRISPRseek Vignette"
+        "CRISPRseek: guide RNA design and off-target analysis"
     ],
     "vignettes": [
-        "vignettes/CRISPRseek/inst/doc/CRISPRseek.pdf"
-    ]
+        "vignettes/CRISPRseek/inst/doc/CRISPRseek.html"
+    ],
+    "win.binary.ver": "bin/windows/contrib/4.5/CRISPRseek_1.48.0.zip"
 }
