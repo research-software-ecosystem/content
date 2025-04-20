@@ -7,13 +7,13 @@ about:
   license_file: LICENSE
   summary: Library containing code to manipulate mmCIF and PDB files.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - multimeric
 package:
@@ -22,14 +22,22 @@ package:
 requirements:
   build:
   - None
-  - None
   - cmake
   - make
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  - ninja
   host:
   - zlib
   - boost-cpp
+  - eigen
+  - clangdev
+  - llvmlite
   run:
   - boost-cpp
+  - eigen
 source:
   sha256: 526f9c670984c65f55972d8a7f6f9ebeaede63628eeabef7e48759981db008d4
   url: https://github.com/PDB-REDO/libcifpp/archive/v8.0.0.tar.gz

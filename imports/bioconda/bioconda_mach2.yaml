@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/elkebir-group/mach2
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Migration Analysis of Clonal Histories 2
+build:
+  entry_points:
+  - mach2 = mach2.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - roddur
+package:
+  name: mach2
+  version: 1.0.1.1
+requirements:
+  host:
+  - python >=3.12
+  - pdm-backend
+  - pip
+  run:
+  - python >=3.12
+  - pandas
+  - networkx
+  - jupyterlab
+  - python-graphviz
+source:
+  sha256: 7545661ad79a1be50b40afc16c6937b86fa0af6a6804f9412da24ce0443302c2
+  url: https://github.com/elkebir-group/MACH2/archive/refs/tags/v1.0.1.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - mach2
+  requires:
+  - pip

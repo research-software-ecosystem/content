@@ -1,10 +1,12 @@
 about:
+  dev_url: https://github.com/mzytnicki/srnaMapper
   home: https://github.com/mzytnicki/srnaMapper
   license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
   summary: Mapping small RNA data to a genome.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
@@ -13,25 +15,21 @@ extra:
   - osx-arm64
   recipe-maintainers:
   - mzytnicki
-  skip-lints:
-  - uses_vcs_url
-  - missing_hash
 package:
   name: srnamapper
-  version: 1.0.11
+  version: 1.0.12
 requirements:
   build:
   - make
   - None
   host:
   - zlib
-  run:
-  - zlib
-  - make
 source:
-  git_rev: 1.0.11
-  git_url: https://github.com/mzytnicki/srnaMapper.git
-  sha256: 582b2f891ae181cf9754cd5d8968dc1eafa0f1d5978d7f8d588f1136a005e467
+- sha256: b4d8cd436bac2b66f574dadec83881b62afbeaf61f9764cdb4ed4d838052dfcf
+  url: https://github.com/mzytnicki/srnaMapper/archive/refs/tags/1.0.12.tar.gz
+- folder: Libs/bwa
+  sha256: cdff5db67652c5b805a3df08c4e813a822c65791913eccfb3cf7d528588f37bc
+  url: https://github.com/lh3/bwa/archive/refs/tags/v0.7.19.tar.gz
 test:
   commands:
   - srnaMapper -h
