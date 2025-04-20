@@ -1,26 +1,30 @@
 about:
   description: ESKRIM is a reference-free tool that compares microbial richness in
-    shotgun metagenomic samples by counting k-mers
+    shotgun metagenomic samples by counting k-mers.
+  dev_url: https://github.com/metagenopolis/ESKRIM
   home: https://forgemia.inra.fr/metagenopolis/eskrim
   license: GPL-3.0-or-later
   license_family: GPL3
   license_file: COPYING
-  summary: 'ESKRIM: EStimate with K-mers the RIchness in a Microbiome'
+  summary: 'ESKRIM: EStimate with K-mers the RIchness in a Microbiome.'
 build:
+  entry_points:
+  - eskrim = eskrim.eskrim:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 package:
   name: eskrim
   version: 1.0.9
 requirements:
   host:
-  - python >=3.12
-  - poetry
+  - python >=3.12,<3.13
+  - poetry-core
+  - pip
   run:
-  - python >=3.12
+  - python >=3.12,<3.13
   - kmer-jellyfish >=2.3.1
 source:
   sha256: de2888bc281f4d2e7e66e1219cce0c1a193f82873ecb35e47e8882a31331b5dc

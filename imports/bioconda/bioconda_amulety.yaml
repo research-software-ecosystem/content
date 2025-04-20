@@ -10,13 +10,13 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - ggabernet
 package:
   name: amulety
-  version: 1.0
+  version: 1.1
 requirements:
   host:
   - python >=3.8,<4.0
@@ -34,9 +34,10 @@ requirements:
   - pre-commit
   - pytest-workflow >=1.6.0
   - pytest >=7.0.0
+  - protobuf
 source:
-  sha256: 5dde40ffe45a22bf32be74f6fa116de2540bf5bcbc3f164fb5e4b9db5344afaa
-  url: https://pypi.org/packages/source/a/amulety/amulety-1.0.tar.gz
+  sha256: fd00cfce179902b422ac818138d2ea6317c1e91cf78082ac1177315214e6c09a
+  url: https://pypi.org/packages/source/a/amulety/amulety-1.1.tar.gz
 test:
   commands:
   - pip check
@@ -44,5 +45,4 @@ test:
   imports:
   - amulety
   requires:
-  - pip
   - igblast

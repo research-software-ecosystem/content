@@ -1,0 +1,96 @@
+about:
+  dev_url: https://github.com/bnprks/BPCells
+  home: https://bnprks.github.io/BPCells
+  license: Apache-2.0 or MIT
+  license_family: MIT
+  license_file:
+  - COPYRIGHT
+  - LICENSE-APACHE
+  - LICENSE-MIT
+  summary: Efficient operations for single cell ATAC-seq fragments and RNA counts
+    matrices. Interoperable with standard file formats, and introduces efficient bit-packed
+    formats that allow large storage savings and increased read speeds.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - mfansler
+package:
+  name: r-bpcells
+  version: 0.3.0
+requirements:
+  build:
+  - cross-r-base
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-dplyr >=1.0.0
+  - r-ggplot2 >=3.4.0
+  - r-ggrepel
+  - r-hexbin
+  - r-lifecycle
+  - r-magrittr
+  - r-matrix
+  - r-patchwork
+  - r-rcolorbrewer
+  - r-rcpp
+  - r-rcppeigen
+  - r-readr
+  - r-rlang
+  - r-scales
+  - r-scattermore
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-vctrs
+  - hdf5
+  - libhwy
+  - zlib
+  run:
+  - r-base
+  - r-dplyr >=1.0.0
+  - r-ggplot2 >=3.4.0
+  - r-ggrepel
+  - r-hexbin
+  - r-lifecycle
+  - r-magrittr
+  - r-matrix
+  - r-patchwork
+  - r-rcolorbrewer
+  - r-rcpp
+  - r-readr
+  - r-rlang
+  - r-scales
+  - r-scattermore
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-vctrs
+source:
+  patches:
+  - patches/0001-fix-libhwy-config.patch
+  - patches/0002-granges-conversion.patch
+  sha256: 231e91a3d60d2bc400324c5b60fb4644fda16261048d6b1a49bfac4aa269cd1f
+  url: https://github.com/bnprks/BPCells/archive/refs/tags/v0.3.0.tar.gz
+test:
+  commands:
+  - $R -e "library('BPCells')"
+  - if command -v macs3; then $R -e "testthat::test_package('BPCells', stop_on_failure=TRUE)";
+    fi
+  requires:
+  - r-testthat
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - r-igraph
+  - r-matrixstats
+  - r-rspectra
+  - r-withr
+  - macs3

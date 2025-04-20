@@ -1,20 +1,23 @@
 about:
   dev_url: https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer
-  doc_url: https://edinburgh-genome-foundry.github.io/DnaFeaturesViewer/
+  doc_url: https://edinburgh-genome-foundry.github.io/DnaFeaturesViewer
   home: https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer
   license: MIT
   license_family: MIT
-  license_file: LICENSE
-  summary: Plot features from DNA sequences (e.g. Genbank) with Python
+  license_file: LICENCE.txt
+  summary: Plot features from DNA sequences (e.g. Genbank) with Python.
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script:
+  - sed -i.bak -e 's|"MIT"|{file = "LICENCE.txt"}|' pyproject.toml
+  - rm -rf *.bak
+  - ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 package:
   name: dna_features_viewer
-  version: 3.1.3
+  version: 3.1.4
 requirements:
   host:
   - pip
@@ -26,8 +29,8 @@ requirements:
   - python
   - packaging
 source:
-  sha256: 7af179ab1b3c0dedd09e9e667cbd0fb804721ecbfc0cb4d0dda8a165437b3919
-  url: https://pypi.io/packages/source/d/dna_features_viewer/dna_features_viewer-3.1.3.tar.gz
+  sha256: e844c2e23c775d16d7599d1e26dd2a830cad2c9d3b7d16e3b6b76db4e0164c29
+  url: https://pypi.io/packages/source/d/dna_features_viewer/dna_features_viewer-3.1.4.tar.gz
 test:
   imports:
   - dna_features_viewer

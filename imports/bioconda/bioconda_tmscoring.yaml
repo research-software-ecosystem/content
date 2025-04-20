@@ -1,0 +1,42 @@
+about:
+  description: '# tmscoring
+
+    Python implementation of the [TMscore](https://zhanglab.ccmb.med.umich.edu/TM-score/)
+    program to compare structures of the same protein.'
+  dev_url: https://github.com/Dapid/tmscoring
+  doc_url: https://github.com/Dapid/tmscoring/blob/master/README.md
+  home: https://github.com/Dapid/tmscoring
+  license: BSD 3-Clause
+  license_family: BSD
+  summary: Python implementation of the TMscore program.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script:
+  - -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - RubenChM
+  - Dapid
+package:
+  name: tmscoring
+  version: 0.4.post0
+requirements:
+  host:
+  - python <3.12
+  - numpy
+  - iminuit <2
+  - biopython
+  run:
+  - python <3.12
+  - numpy
+  - iminuit <2
+  - biopython
+source:
+- sha256: 7cabd668e4db548719e840ceb188b197f93cd77cb6c6db81a22ed045300e92be
+  url: https://pypi.io/packages/source/t/tmscoring/tmscoring-0.4.post0.tar.gz
+test:
+  imports:
+  - tmscoring

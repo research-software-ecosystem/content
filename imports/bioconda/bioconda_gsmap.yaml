@@ -15,8 +15,10 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: gsMap (genetically informed spatial mapping of cells for complex traits)
+  summary: gsMap (genetically informed spatial mapping of cells for complex traits).
 build:
+  entry_points:
+  - gsmap = gsMap.main:main
   noarch: python
   number: 0
   run_exports:
@@ -28,15 +30,15 @@ extra:
   - leonSong1995
 package:
   name: gsmap
-  version: 1.71.2
+  version: 1.73.1
 requirements:
   host:
-  - python >=3.8
+  - python >=3.10
   - pip
   - flit-core >=3.2,<4
   run:
-  - python >=3.8
-  - numpy
+  - python >=3.10
+  - numpy <2.0.0
   - pandas
   - scipy
   - scikit-learn
@@ -48,16 +50,17 @@ requirements:
   - pyranges
   - pyfiglet
   - plotly
-  - kaleido-core
+  - python-kaleido
   - jinja2
   - scanpy >=1.8
   - zarr
   - bitarray
   - pyarrow
   - scikit-misc
+  - psutil
 source:
-  sha256: d058fb9c1e346b40cf3e6a1cf27fc6458acf3cdb29eb7d4dd74cb119ab0f88a9
-  url: https://pypi.io/packages/source/g/gsMap/gsmap-1.71.2.tar.gz
+  sha256: b400532e6f1764b3e128d7864153511e05f84c05a51060e932e7e867633af94f
+  url: https://pypi.io/packages/source/g/gsMap/gsmap-1.73.1.tar.gz
 test:
   commands:
   - gsmap --help

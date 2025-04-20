@@ -8,12 +8,13 @@ about:
     geometric reasoning
 build:
   entry_points:
-  - stripepy = stripepy:main
+  - stripepy = stripepy.main:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -v'
+  script: ' -m pip install ''.[all]'' --no-deps --no-build-isolation --no-cache-dir
+    -v'
 extra:
   identifiers:
   - biotools:stripepy-hic
@@ -24,7 +25,7 @@ extra:
   - jonnings
 package:
   name: stripepy-hic
-  version: 0.0.2
+  version: 1.0.0
 requirements:
   host:
   - python >=3.9
@@ -33,22 +34,24 @@ requirements:
   - hatch-vcs
   run:
   - h5py >=3
-  - hictkpy >=1
+  - hictkpy >=1.2
   - matplotlib-base >=3.8
-  - numpy
+  - numpy >=2
   - pandas >=2
-  - scikit-learn
   - scipy
-  - seaborn-base >=0.13
+  - structlog >=24
+  - colorama
+  - rich >=13.9
 source:
-  sha256: 4e0e14f365334095b9af04874b01bae25fb385560add5f6f0bc91b35f757e556
-  url: https://pypi.org/packages/source/s/stripepy_hic/stripepy_hic-0.0.2.tar.gz
+  sha256: 8c0d65e091ad9c5f68659a18762156852dd8532cef4823babf89a2516f1e244a
+  url: https://pypi.org/packages/source/s/stripepy_hic/stripepy_hic-1.0.0.tar.gz
 test:
   imports:
   - stripepy
   requires:
   - curl
   - perl-digest-md5
+  - pyarrow
   - pytest>=8
   source_files:
   - test/*

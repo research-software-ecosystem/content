@@ -14,13 +14,13 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - cbrueffer
 package:
   name: checkqc
-  version: 4.0.5
+  version: 4.0.6
 requirements:
   host:
   - pip
@@ -35,9 +35,10 @@ requirements:
   - sample-sheet >=0.13.0
   - numpy >=1.26.4
   - pandas >=2.2.2
+  - jsonschema
 source:
-  sha256: f5ff8985baeb079d2e6731fbfebc0a26a2d14c752cdcddffd322b251053acd71
-  url: https://github.com/Molmed/checkQC/archive/refs/tags/v4.0.5.tar.gz
+  sha256: ed9113322324f6c133e4b1f7bcd25754a211bf4e88ef5ca370e93c4dcd5843e8
+  url: https://github.com/Molmed/checkQC/archive/refs/tags/v4.0.6.tar.gz
 test:
   commands:
   - checkqc --help
