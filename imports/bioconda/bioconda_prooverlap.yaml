@@ -1,0 +1,43 @@
+about:
+  dev_url: null
+  doc_url: null
+  home: https://github.com/ngualand/ProOvErlap
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Assessing feature proximity/overlap and testing statistical significance
+    from genomic intervals
+build:
+  entry_points:
+  - prooverlap = prooverlap.prooverlap:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - ngualand
+  - alessio134298
+package:
+  name: prooverlap
+  version: 0.1.2
+requirements:
+  host:
+  - pip
+  - python >=3.8,<3.11
+  run:
+  - biopython
+  - numpy
+  - pandas
+  - pybedtools
+  - python >=3.8,<3.11
+  - scipy
+source:
+  sha256: 5545a2b8371b04e3e77756923217e28d2386783dd8b8b9c64b9952c761af62d4
+  url: https://pypi.io/packages/source/p/prooverlap/prooverlap-0.1.2.tar.gz
+test:
+  commands:
+  - prooverlap --help
+  imports:
+  - prooverlap

@@ -1,15 +1,16 @@
 about:
   dev_url: https://github.com/vcflib/vcflib
-  doc_url: https://github.com/vcflib/vcflib/blob/v1.0.12/README.md
+  doc_url: https://github.com/vcflib/vcflib/blob/v1.0.13/README.md
   home: https://github.com/vcflib/vcflib
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Command-line tools for manipulating VCF files.
 build:
-  number: 3
+  number: 0
   run_exports:
   - None
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -45,18 +46,18 @@ extra:
   - mencian
 package:
   name: vcflib
-  version: 1.0.12
+  version: 1.0.13
 requirements:
   build:
   - None
   - make
   - cmake
-  - pybind11
   - python >=3
   - pkg-config
   - autoconf
   - automake
   - libtool
+  - pybind11
   host:
   - libgomp
   - llvm-openmp
@@ -67,6 +68,8 @@ requirements:
   - zlib
   - bzip2
   - xz
+  - libcurl
+  - libdeflate
   - fastahack
   run:
   - python >=3
@@ -82,11 +85,24 @@ source:
 - patches:
   - 0001-CMakeLists.patch
   - 0002-CMakeLists.macos.patch
-  - tabix.patch
-  sha256: cb1e78d675f06ae3b22ffed7e1dea317e4c7f826e51e5b5dabd80240efbe1019
-  url: https://github.com/vcflib/vcflib/releases/download/v1.0.12/vcflib-1.0.12-src.tar.gz
+  - 0003-tabix.patch
+  sha256: 059d8b0c1f9bdb21929c672e4b1dc2a80730c38e696d2edec18f442b395532bc
+  url: https://github.com/vcflib/vcflib/releases/download/v1.0.13/vcflib-1.0.13-src.tar.gz
+- folder: zig-linux-x86_64-0.15.0-dev
+  sha256: 1e556712dbcdcb73a7d7d592311ea25c88c4c9134ed8b0cc42f18a0eddb03789
+  url: https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.377+f01833e03.tar.xz
+- folder: zig-linux-aarch64-0.15.0-dev
+  sha256: 9f79d60852df62dd60fb7648321518965125e6c4edc89506b5f9245253b12dcb
+  url: https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.377+f01833e03.tar.xz
+- folder: zig-macos-x86_64-0.15.0-dev
+  sha256: 36b91b9de6f1a1b529dd44c5be37492216527f79c90a356f903243f9364da2b2
+  url: https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.377+f01833e03.tar.xz
+- folder: zig-macos-aarch64-0.15.0-dev
+  sha256: f64b2b1d23355862ac2561944f808e47bb20a2036c400d62cca66a085adef0ac
+  url: https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.377+f01833e03.tar.xz
 test:
   commands:
+  - vcfwave -h
   - vcffirstheader < /dev/null
   - vcfsort < /dev/null
   - vcfstreamsort --help
