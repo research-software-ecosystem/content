@@ -1,0 +1,62 @@
+about:
+  dev_url: https://github.com/caravagn/easypar
+  home: https://caravagnalab.github.io/easypar/
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: The easypar package makes it easy to implement parallel computations in
+    R. To use this package, you need to have a function that carries out your desired
+    computation. easypar will take care of the burden of turning that function into
+    a runnable parallel piece of code, offering a soilution based on the foreach and
+    doParallel paradigms for parallel computing, or generating array jobs for the
+    popular LSF workload for distributed high performance computing.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - valerianilucrezia
+package:
+  name: r-easypar
+  version: 1.0.0
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-progress
+  - r-cli
+  - r-tibble
+  - r-crayon
+  - r-readr
+  - r-markdown
+  - r-prettydoc
+  run:
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-progress
+  - r-cli
+  - r-tibble
+  - r-crayon
+  - r-readr
+  - r-markdown
+  - r-prettydoc
+source:
+  sha256: 9fd0340f62d39981e6f08835ce2b00e5574607ddb5349cb2251386d0a65dd506
+  url:
+  - https://github.com/caravagnalab/easypar/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - $R -e "library('easypar')"
+  - '"%R%" -e "library(''easypar'')"'

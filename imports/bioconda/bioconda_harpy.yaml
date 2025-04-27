@@ -15,7 +15,7 @@ about:
 build:
   entry_points:
   - harpy = harpy.__main__:cli
-  number: 0
+  number: 1
   run_exports:
   - None
   script: "mkdir -p ${PREFIX}/bin\n\"${CXX}\" harpy/bin/extractReads.cpp -O3 -o ${PREFIX}/bin/extractReads\n\
@@ -43,14 +43,14 @@ requirements:
   - apptainer
   - bcftools =1.20
   - conda >24.7
+  - htslib =1.20
   - lrez
-  - pysam
-  - python
+  - pysam =0.22
+  - python >=3.11
   - rich-click
-  - snakemake-minimal >7
+  - snakemake-minimal =8.30
   - samtools =1.20
   - seqtk
-  - tabix
 source:
   sha256: 81479a85742ff0df6bf5385ae6045bf7db11b19bc312396f2a2306bd33662c94
   url: https://github.com/pdimens/harpy/releases/download/1.16.3/harpy.1.16.3.tar.gz

@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/hanjunlee21/conservation
+  license: MIT
+  license_family: MIT
+  summary: Evolutionary Conservation of Amino Acids and Codons
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: "set -ex\n -m pip install . --no-deps -vv\n"
+extra:
+  recipe-maintainers:
+  - hanjunlee21
+package:
+  name: conservation
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools >=42
+  - wheel
+  run:
+  - python >=3.6
+  - numpy
+  - pandas
+  - biopython
+  - scipy
+  - matplotlib-base
+  - tqdm
+  - importlib-resources
+source:
+  sha256: fffe0f487c0343853783c67b79e3e9dba30247d4f5d4645698a82567b0f3d9b9
+  url: https://pypi.io/packages/source/c/conservation/conservation-1.0.1.tar.gz
+test:
+  commands:
+  - conservation --help
+  imports:
+  - conservation
