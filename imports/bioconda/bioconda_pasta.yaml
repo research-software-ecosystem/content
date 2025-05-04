@@ -1,31 +1,37 @@
 about:
+  dev_url: https://github.com/smirarab/pasta
+  doc_url: https://github.com/smirarab/pasta/blob/v1.9.2/README.md
   home: https://github.com/smirarab/pasta
   license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
   summary: An implementation of the PASTA (Practical Alignment using Sate and TrAnsitivity)
-    algorithm
+    algorithm.
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
-  skip-lints:
-  - should_be_noarch_generic
+  - osx-arm64
+  identifiers:
+  - doi:10.1007/978-3-319-05269-4_15
+  - doi:10.1089/cmb.2014.0156
 package:
   name: pasta
   version: 1.9.2
 requirements:
+  build:
+  - None
   host:
-  - python 3.12.*
-  - setuptools 68.2.2.*
+  - python
+  - pip
   - dendropy
   - wget
   - openjdk
   - pcre
-  - pymongo >=3.3.0
+  - pymongo
   - clustalw
   - fasttree
   - raxml
@@ -33,12 +39,15 @@ requirements:
   - mafft
   - hmmer
   - prank
+  - libgomp
+  - llvm-openmp
+  - openmpi
   run:
-  - python 3.12.*
+  - python
   - dendropy
   - openjdk
   - pcre
-  - pymongo >=3.3.0
+  - pymongo
   - clustalw
   - fasttree
   - raxml
@@ -46,8 +55,11 @@ requirements:
   - mafft
   - hmmer
   - prank
+  - libgomp
+  - llvm-openmp
+  - openmpi
 source:
-- patches:
+  patches:
   - fix_tooldir.patch
   - mpstart.patch
   sha256: 06c20f022765d2c1daab13a916ec2ea2277c5ef43afcf3e54c6a7ade7aed0944
@@ -60,7 +72,6 @@ test:
   - muscle -version | grep -i MUSCLE
   - prank -help | grep prank
   - raxml -h | grep -i raxml
-  - raxmlp -h | grep -i raxml
   - export PASTA_LOGGING_LEVEL=DEBUG; export PASTA_LOGGING_FORMAT=RICH; run_pasta.py
     -i $PREFIX/share/pasta/data/small.fasta
   imports:

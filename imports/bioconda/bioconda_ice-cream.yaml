@@ -1,36 +1,50 @@
 about:
-  home: https://github.com/xinehc/ICEcream
+  dev_url: https://github.com/xinehc/ice-cream
+  home: https://github.com/xinehc/ice-cream
   license: MIT
   license_family: MIT
+  license_file: LICENSE
   summary: 'ICEcream: Integrative and Conjugative Elements Classification and gRaphical
-    gEne Arrangement Method'
+    gEne Arrangement Method.'
 build:
-  noarch: generic
-  number: 1
+  entry_points:
+  - ICEcream = icecream_pkg.ICEcream:main
+  - draw_segment = icecream_pkg.plotting_script:plotting_script
+  - arrange_orf = icecream_pkg.organize_orfs:organize_orfs
+  - gbff2gbk = icecream_pkg.gbff2gbk:main
+  noarch: python
+  number: 0
   run_exports:
   - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 package:
   name: ice-cream
-  version: '1.10'
+  version: 2.0.0
 requirements:
+  host:
+  - python ==3.10.14
+  - pip
+  - setuptools
+  - zlib
+  - bzip2
+  - libidn
+  - libnsl
   run:
-  - python >=3.6
-  - perl >=5.26
-  - prokka
-  - biopython
-  - aragorn
-  - hmmer
-  - vmatch
-  - blast
-  - prodigal
-  - pandas
-  - r-base >=4.2
-  - r-reshape2
+  - python ==3.10.14
+  - bakta ==1.9.4
+  - blast ==2.16.0
+  - macsyfinder ==2.1.4
+  - prodigal ==2.6.3
+  - vmatch ==2.3.0
   - dna_features_viewer
+  - biopython
+  - pandas
+  - r-base
+  - r-essentials
+  - r-reshape2
 source:
-  sha256: 47b6ce064775e918a1aef48d87eeda5de4ab3ffdd19614f863cedec645c98939
-  url: https://github.com/xinehc/ICEcream/archive/refs/tags/v1.10.tar.gz
+  sha256: accdc66306fec9015959188b79c135101a50b1c0aacc763485f18dc7e9125ee6
+  url: https://github.com/xinehc/ice-cream/archive/refs/tags/v2.0.0.tar.gz
 test:
   commands:
-  - plotting_script.py --help
-  - ICEcream.sh --help
+  - ICEcream --help

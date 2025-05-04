@@ -21,25 +21,30 @@ about:
   license_file: LICENSE
   summary: Fast phylogenetic diversity calculations
 build:
-  number: 1
+  number: 0
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - osx-arm64
   recipe-maintainers:
   - sfiligoi
   - wasade
 package:
   name: unifrac-binaries
-  version: 1.4
+  version: 1.5
 requirements:
   build:
   - None
   - None
-  - gfortran_linux-64
+  - libcxx-devel
+  - llvm-openmp
   - hdf5 =*=nompi*
-  - mkl-include
   - hdf5-static =*=nompi*
   - lz4
   - zlib
   - libcblas
+  - blas-devel
   - liblapacke
   - make
   - curl
@@ -49,17 +54,15 @@ requirements:
   - libcblas
   - liblapacke
   - libaec
-  - mpi
   run:
   - lz4
   - zlib
   - libcblas
   - liblapacke
   - libaec
-  - mpi
 source:
-  sha256: 7067a3bcee8702caa8c3ea6e5fd8f1bb059f84a791b237762730fbf232ae785f
-  url: https://github.com/biocore/unifrac-binaries/archive/refs/tags/v1.4.tar.gz
+  sha256: 566cae407e4bb0f94dbc712cc367177ac24bd894254ded39f1157f7d2837ff1b
+  url: https://github.com/biocore/unifrac-binaries/archive/refs/tags/v1.5.tar.gz
 test:
   commands:
   - ssu --help

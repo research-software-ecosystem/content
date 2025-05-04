@@ -15,26 +15,21 @@ about:
 build:
   entry_points:
   - harpy = harpy.__main__:cli
-  number: 1
+  noarch: python
+  number: 0
   run_exports:
   - None
-  script: "mkdir -p ${PREFIX}/bin\n\"${CXX}\" harpy/bin/extractReads.cpp -O3 -o ${PREFIX}/bin/extractReads\n\
-    ${PYTHON} -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv\n\
-    chmod 0755 harpy/bin/* \ncp -rf harpy/bin/* ${PREFIX}/bin/\n"
+  script: "mkdir -p ${PREFIX}/bin\n${PYTHON} -m pip install . --no-deps --no-build-isolation\
+    \ --no-cache-dir -vvv\nchmod 0755 harpy/bin/* \ncp -rf harpy/bin/* ${PREFIX}/bin/\n"
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=1.16.3
-  skip: true
+  - SETUPTOOLS_SCM_PRETEND_VERSION=2.1
 extra:
-  additional-platforms:
-  - linux-aarch64
   recipe-maintainers:
   - pdimens
 package:
   name: harpy
-  version: 1.16.3
+  version: '2.1'
 requirements:
-  build:
-  - None
   host:
   - python
   - pip
@@ -44,16 +39,15 @@ requirements:
   - bcftools =1.20
   - conda >24.7
   - htslib =1.20
-  - lrez
   - pysam =0.22
   - python >=3.11
   - rich-click
-  - snakemake-minimal =8.30
+  - snakemake-minimal =9
   - samtools =1.20
   - seqtk
 source:
-  sha256: 81479a85742ff0df6bf5385ae6045bf7db11b19bc312396f2a2306bd33662c94
-  url: https://github.com/pdimens/harpy/releases/download/1.16.3/harpy.1.16.3.tar.gz
+  sha256: d6a32a1b17bbaa2314ffc38cba907fc5c7191312ee87d115c9504b2e7888e5f1
+  url: https://github.com/pdimens/harpy/releases/download/2.1/harpy.2.1.tar.gz
 test:
   commands:
   - snakemake --version

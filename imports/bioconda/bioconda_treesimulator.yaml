@@ -6,7 +6,7 @@ about:
   dev_url: https://github.com/evolbioinfo/treesimulator
   doc_url: https://github.com/evolbioinfo/treesimulator
   home: https://github.com/evolbioinfo/treesimulator
-  license: GPL-3.0-or-later
+  license: GPL-3.0-only
   license_family: GPL3
   license_file: LICENSE
   summary: "Simulation of rooted phylogenetic trees under a given Multitype Birth\u2013\
@@ -16,6 +16,7 @@ build:
   - generate_bd = treesimulator.simulate_forest_bd:main
   - generate_bdei = treesimulator.simulate_forest_bdei:main
   - generate_bdss = treesimulator.simulate_forest_bdss:main
+  - generate_bdeiss = treesimulator.simulate_forest_bdeiss:main
   - generate_mtbd = treesimulator.simulate_forest:main
   noarch: python
   number: 0
@@ -27,22 +28,24 @@ extra:
   - annazhukova
 package:
   name: treesimulator
-  version: 0.2.8
+  version: 0.2.15
 requirements:
   host:
   - pip
   - python >=3.9
   - setuptools
   run:
-  - six >=1.16.0
-  - ete3 >=3.1.1
-  - numpy >=1.22
+  - six
+  - ete3
+  - numpy
   - python >=3.9
-  - scipy >=1.5.0
   - python-build
+  - scipy
+  - sympy
+  - legacy-cgi
 source:
-  sha256: 8adfa0138205aa95936e109937e3919962ab4501fb1c954fea1ee003e3267cb3
-  url: https://pypi.io/packages/source/t/treesimulator/treesimulator-0.2.8.tar.gz
+  sha256: 8ed9660a9689776afb36796571b88230a9835b6cc65ed41617a4b690061c96bf
+  url: https://pypi.io/packages/source/t/treesimulator/treesimulator-0.2.15.tar.gz
 test:
   commands:
   - generate_bd --help
