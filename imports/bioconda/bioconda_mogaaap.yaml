@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/dirkjanvw/MoGAAAP
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'MoGAAAP: Modular Genome Assembly, Annotation and quality Assessment Pipeline'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed . -vvv
+extra:
+  recipe-maintainers:
+  - dirkjanvw
+package:
+  name: mogaaap
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python =3.11
+  - poetry-core >=1.0.0
+  run:
+  - apptainer >=1.3
+  - python =3.11
+  - snakemake >=8.0.0
+source:
+- sha256: 5e6c4dd8f33159de9acce1a37ab88489883600e9dde650be06615a82b18fd9bd
+  url: https://github.com/dirkjanvw/MoGAAAP/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - MoGAAAP --version
+  - MoGAAAP --help

@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/kfuku52/amalgkit
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Tools for transcriptome amalgamation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-build-isolation --no-use-pep517 -vv'
+extra:
+  recipe-maintainers:
+  - kfuku52
+package:
+  name: amalgkit
+  version: 0.12.15
+requirements:
+  host:
+  - python >=3.8,<3.13
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.8,<3.13
+  - numpy
+  - pandas
+  - biopython
+  - lxml
+source:
+  sha256: 390a28b0159e8761da020f0edc1909e89293bc34f7db40a069bd06f522c860e6
+  url: https://github.com/kfuku52/amalgkit/archive/refs/tags/v0.12.15.tar.gz
+test:
+  commands:
+  - amalgkit --help
+  imports:
+  - amalgkit

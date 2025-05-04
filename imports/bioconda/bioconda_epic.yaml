@@ -3,10 +3,15 @@ about:
   license: GNU General Public License v3 (GPLv3)
   summary: Chip-Seq broad peak/domain finder.
 build:
-  number: 7
+  number: 8
+  run_exports:
+  - None
   script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
     && $PYTHON setup.py build_ext --inplace
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: epic
   version: 0.2.12

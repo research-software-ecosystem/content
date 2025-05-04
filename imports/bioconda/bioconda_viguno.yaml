@@ -1,9 +1,11 @@
 about:
+  dev_url: https://github.com/bihealth/varfish-org
   home: https://github.com/bihealth/varfish-org
   license: MIT
-  summary: Lookup OMIM genes and HPO terms and compute similarities
+  license_family: MIT
+  summary: Lookup OMIM genes and HPO terms and compute similarities.
 build:
-  number: 2
+  number: 0
   run_exports:
   - None
   skip: true
@@ -12,27 +14,29 @@ extra:
   - linux-aarch64
 package:
   name: viguno
-  version: 0.3.2
+  version: 0.4.0
 requirements:
   build:
   - None
   - None
   - None
   - cmake
-  - protobuf
   - make
+  - cargo-bundle-licenses
   - pkg-config
-  - rust >=1.64
   host:
   - clangdev
+  - llvmlite
   - openssl
-  - sqlite
+  - protobuf
+  - libprotobuf
   - zlib
+  - sqlite
   run:
   - sqlite
 source:
-  sha256: 828490fac6f06913b0f65232c2fed446cbef4a9d48ccb4a7bc83fc57b5d7f9ff
-  url: https://github.com/varfish-org/viguno/archive/v0.3.2.tar.gz
+  sha256: 459895be75bdf7982998dd9eca20a2c87feafe10a05794ea24e35badb4a1fbcd
+  url: https://github.com/varfish-org/viguno/archive/v0.4.0.tar.gz
 test:
   commands:
   - viguno -h
