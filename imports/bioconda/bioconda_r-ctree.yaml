@@ -1,0 +1,85 @@
+about:
+  description: "The ctree package implements clones trees for cancer evolutionary\
+    \ studies. \nThese models are built from Cancer Cell Franctions (CCFs) clusters\
+    \ computed via \ntumour subclonal deconvolution, using either one or more tumour\
+    \ biopsies at once. \nThey can be used to model evolutionary trajectories from\
+    \ bulk sequencing data, \nespecially if whole-genome sequencing is available.\
+    \ The package implements S3 \nobjects for the mutation trees, as well as a Monte\
+    \ Carlo sampler to generate them, \nas well as functions to plot and analyze the\
+    \ trees. The sibling of a clone tree is \na mutation tree, which is built from\
+    \ binary mutation profiles; refer to the mtree \npackage for mutation trees.\n"
+  doc_url: https://caravagnalab.github.io/ctree/
+  home: https://github.com/caravagnalab/ctree
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Clone trees for Cancer Evolution studies from bulk sequencing data.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - elena-buscaroli
+package:
+  name: r-ctree
+  version: 1.1.0
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-pio
+  - r-easypar
+  - r-tidyverse
+  - r-tidygraph
+  - r-ggraph
+  - r-crayon
+  - r-igraph
+  - r-ggrepel
+  - r-RColorBrewer
+  - r-clisymbols
+  - r-entropy
+  - r-matrixcalc
+  - r-reshape2
+  - r-dplyr
+  - r-ggplot2
+  - r-cli
+  - r-knitr
+  - r-rmarkdown
+  - r-matrixStats
+  - r-covr
+  run:
+  - r-base
+  - r-pio
+  - r-easypar
+  - r-tidyverse
+  - r-tidygraph
+  - r-ggraph
+  - r-crayon
+  - r-igraph
+  - r-ggrepel
+  - r-RColorBrewer
+  - r-clisymbols
+  - r-entropy
+  - r-matrixcalc
+  - r-reshape2
+  - r-dplyr
+  - r-ggplot2
+  - r-cli
+  - r-knitr
+  - r-rmarkdown
+  - r-matrixStats
+  - r-covr
+source:
+  sha256: 1ceb8cb6b21e7903023517e2bdb7f99a13f7e4bfe2559e472c0a3a7b3c7f078c
+  url: https://github.com/caravagnalab/ctree/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library(ctree)"
+  - '"%R%" -e "library(ctree)"'

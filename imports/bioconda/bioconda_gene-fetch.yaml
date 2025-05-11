@@ -1,0 +1,45 @@
+about:
+  description: 'Gene Fetch is a tool designed for high-throughput retrieval of sequences
+
+    from NCBI databases. It enables researchers to efficiently obtain genomic
+
+    sequences based on taxonomic and genomic criteria.
+
+    '
+  dev_url: https://github.com/bge-barcoding/gene_fetch
+  home: https://github.com/bge-barcoding/gene_fetch
+  license: MIT
+  license_family: MIT
+  summary: High-throughput NCBI Sequence Retrieval Tool
+build:
+  entry_points:
+  - gene-fetch = gene_fetch.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . -vvv --no-deps --no-build-isolation --ignore-installed
+    --no-cache-dir'
+extra:
+  recipe-maintainers:
+  - SchistoDan
+package:
+  name: gene-fetch
+  version: 1.0.9
+requirements:
+  host:
+  - pip
+  - python
+  - poetry-core >=1.0.0
+  run:
+  - python >=
+  - biopython >=1.80
+  - ratelimit >=2.2.1
+source:
+  sha256: 5c5a12da53929a1931e9b923c9966885c51bfb347ea43d4bb61fb5aef9c8bfcc
+  url: ' https://pypi.io/packages/source/g/gene-fetch/gene_fetch-1.0.9.tar.gz'
+test:
+  commands:
+  - gene-fetch --help
+  imports:
+  - gene_fetch

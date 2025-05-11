@@ -1,0 +1,72 @@
+about:
+  description: 'Description: This package contains functions for studying selection
+    on coding
+
+    sequences using a Poisson implementation of dN/dS. A Poisson model of dN/dS
+
+    facilitates the study of selection beyond traditional codon models, including
+
+    complex context-dependent mutation effects and selection on nonsense and
+
+    splice site mutations. This model is best suited for resequencing studies,
+
+    with very low density of mutations per base pair. The model was initially
+
+    developed for cancer genome sequencing studies, and specific functions are
+
+    provided to perform driver gene discovery using the dNdScv method on human
+
+    cancer genomic data.
+
+    '
+  doc_url: https://htmlpreview.github.io/?http://github.com/im3sanger/dndscv/blob/master/vignettes/dNdScv.html
+  home: https://github.com/im3sanger/dndscv
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: dN/dS methods to quantify selection in cancer and somatic evolution.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - elena-buscaroli
+package:
+  name: r-dndscv
+  version: 0.1.0
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-seqinr
+  - r-mass
+  - bioconductor-genomicranges
+  - bioconductor-biostrings
+  - bioconductor-iranges
+  - bioconductor-rsamtools
+  - r-poilog
+  - r-plyr
+  run:
+  - r-base
+  - r-seqinr
+  - r-mass
+  - bioconductor-genomicranges
+  - bioconductor-biostrings
+  - bioconductor-iranges
+  - bioconductor-rsamtools
+  - r-poilog
+  - r-plyr
+source:
+  sha256: c4e408a69910bb9d6add5a6bea51d9fafc86b74ae3ba8c55db394c33b576a081
+  url: https://github.com/im3sanger/dndscv/archive/refs/tags/0.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library(dndscv)"
+  - '"%R%" -e "library(dndscv)"'

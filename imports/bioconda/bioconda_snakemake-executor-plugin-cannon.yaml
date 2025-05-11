@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/harvardinformatics/snakemake-executor-plugin-cannon
+  home: https://github.com/harvardinformatics/snakemake-executor-plugin-cannon
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A Snakemake executor plugin for submitting jobs to the Cannon cluster at
+    Harvard University.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - harvardinformatics
+  - gwct
+  - nsohail19
+package:
+  name: snakemake-executor-plugin-cannon
+  version: 1.2.1a0
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.13.0,<2.0.0
+  - snakemake-interface-executor-plugins >=9.1.1,<10.0.0
+  - snakemake-executor-plugin-slurm-jobstep >=0.3.0,<0.4.0
+  - throttler >=1.2.2,<2.0.0
+source:
+  sha256: e5aef2e9f81b68606468d47d42e34c86dc28d7ca9b739c940dd97ad5a4731608
+  url: https://pypi.io/packages/source/s/snakemake-executor-plugin-cannon/snakemake_executor_plugin_cannon-1.2.1a0.tar.gz
+test:
+  imports:
+  - snakemake_executor_plugin_cannon

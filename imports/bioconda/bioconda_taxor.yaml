@@ -1,40 +1,47 @@
 about:
+  dev_url: https://github.com/JensUweUlrich/Taxor
+  doc_url: https://github.com/JensUweUlrich/Taxor/blob/0.2.1/README.md
   home: https://github.com/JensUweUlrich/Taxor
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.md
-  summary: Fast and space-efficient taxonomic classification of long reads
+  summary: Fast and space-efficient taxonomic classification of long reads.
 build:
   number: 0
   run_exports:
   - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1101/gr.278623.123
 package:
   name: taxor
-  version: 0.2.0
+  version: 0.2.1
 requirements:
   build:
+  - None
   - make
-  - None
-  - None
   - cmake >=3.21
   host:
-  - zlib
-  - bzip2
   - libgomp
   - cxxopts >=2.2.0
   - grep
   - coreutils
   - curl
   - diffutils
+  - zlib
+  - bzip2
   run:
+  - libgomp
   - grep
   - coreutils
   - curl
   - diffutils
 source:
-  md5: a5d7adafa66b43ba4c9d9a170f5cc163
-  url: https://github.com/JensUweUlrich/Taxor/archive/refs/tags/0.2.0.tar.gz
+  sha256: c595c6a9e47b9fb15c21f4585255cb58e1ccfc32a8ddf4f47b5fe0483067eb17
+  url: https://github.com/JensUweUlrich/Taxor/archive/refs/tags/0.2.1.tar.gz
 test:
   commands:
   - taxor --help
