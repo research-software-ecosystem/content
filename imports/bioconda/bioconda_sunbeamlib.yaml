@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/sunbeam-labs/sunbeam
+  doc_url: https://sunbeam.readthedocs.io/
+  home: https://github.com/sunbeam-labs/sunbeam
+  license: MIT
+  summary: A robust, extensible metagenomic sequencing pipeline
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --ignore-installed --no-deps -vv
+extra:
+  recipe-maintainers:
+  - Ulthran
+package:
+  name: sunbeamlib
+  version: 5.0.1
+requirements:
+  host:
+  - pip
+  - setuptools
+  - python >=3.11
+  run:
+  - python >=3.11
+  - snakemake ==9.3.3
+  - more-itertools ==10.7.0
+  - pyyaml ==6.0.2
+  - pandas ==2.2.3
+source:
+  sha256: bbf06a4f2571ee62fb3ea8a78eef66f0f7fc1fee209cab3d50587c4f7eec3754
+  url: https://pypi.io/packages/source/s/sunbeamlib/sunbeamlib-5.0.1.tar.gz
+test:
+  commands:
+  - sunbeam --help
+  imports:
+  - sunbeam

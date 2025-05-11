@@ -13,10 +13,11 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script: "mkdir src\nmv biorun src/biorun\n -m pip install . -vvv --no-deps --no-build-isolation\
+    \ --no-cache-dir\n"
 package:
   name: bio
-  version: 1.7.1
+  version: 1.8.0
 requirements:
   host:
   - python >=3.10
@@ -32,8 +33,11 @@ requirements:
   - pooch
   - gprofiler-official
 source:
-  sha256: df3252905b0b1e739eca3760c91fd519d5af07b09632df25c2bd4ecd20da2724
-  url: https://pypi.io/packages/source/b/bio/bio-1.7.1.tar.gz
+  sha256: b15bc8cd9b93bdaed83a9da57ac92708216beade2d4351d782f70da3868f95a5
+  url: https://pypi.io/packages/source/b/bio/bio-1.8.0.tar.gz
 test:
   commands:
   - pip check
+  - bio 2>&1 | grep '^bio'
+  imports:
+  - biorun

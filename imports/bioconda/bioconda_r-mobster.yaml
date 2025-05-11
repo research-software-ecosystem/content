@@ -1,0 +1,85 @@
+about:
+  description: 'MOBSTER is a package that implements a statistical model for tumour
+
+    subclonal deconvolution which combines Dirichlet mixtures with distributions
+
+    predicted by theoretical population genetics. The model implemented is a
+
+    parametric (finite) mixture with multiple Beta components, and one Pareto
+
+    power law tail. Beta components capture mutations that rise up in frequency
+
+    by positive selection, and the Pareto tail models alleles resulting from
+
+    neutral, intra-clone, evolutionary dynamics.
+
+    '
+  doc_url: https://caravagnalab.github.io/mobster/
+  home: https://github.com/caravagnalab/mobster
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Model-based subclonal deconvolution from bulk sequencing.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - elena-buscaroli
+package:
+  name: r-mobster
+  version: 0.1.1
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-sads
+  - r-crayon
+  - r-ggplot2
+  - r-ggthemes
+  - r-tidyverse
+  - r-pio
+  - r-ggpubr
+  - r-ggrepel
+  - r-dplyr
+  - r-easypar
+  - r-clisymbols
+  - r-dndscv
+  - r-cli
+  - r-tidyr
+  - r-magrittr
+  - r-vcfr
+  - r-cowplot
+  run:
+  - r-base
+  - r-sads
+  - r-crayon
+  - r-ggplot2
+  - r-ggthemes
+  - r-tidyverse
+  - r-pio
+  - r-ggpubr
+  - r-ggrepel
+  - r-dplyr
+  - r-easypar
+  - r-clisymbols
+  - r-dndscv
+  - r-cli
+  - r-tidyr
+  - r-magrittr
+  - r-vcfr
+  - r-cowplot
+source:
+  sha256: c18dbae9ca8baf27039ac665772becb0fb143190c4ba4e77885d860402cc733b
+  url: https://github.com/caravagnalab/mobster/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - $R -e "library(mobster)"
+  - '"%R%" -e "library(mobster)"'
