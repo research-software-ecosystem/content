@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/kostrykin/LibCarna-Python
+  doc_url: https://libcarna.readthedocs.io
+  home: https://github.com/kostrykin/LibCarna-Python
+  license: MIT
+  summary: Real-time 3D visualization of biomedical data and beyond in Python
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - kostrykin
+package:
+  name: libcarna-python
+  version: 0.2.0
+requirements:
+  build:
+  - None
+  - make
+  - cmake >=3.5, <=3.28.3
+  - eigen >=3.0.5
+  - libcarna ==3.4
+  - pybind11 <3
+  - libxcrypt
+  host:
+  - libgl-devel
+  - libegl-devel
+  - libopengl-devel
+  - libglu
+  - libcarna ==3.4
+  - python
+  - python-build
+  - setuptools
+  run:
+  - python
+  - libcarna ==3.4
+  - matplotlib-base
+  - numpngw >=0.1.4, <0.2
+  - typing_extensions
+  - scikit-video =1.1
+  - scikit-image
+  - tifffile
+  - ffmpeg
+  - scipy
+  - pooch
+source:
+  sha256: 1e2ebfc7486c78d7588b7c4d8917f482e0248b9864c773815ca93b2b8d90e78a
+  url: https://github.com/kostrykin/LibCarna-Python/archive/refs/tags/0.2.0.zip
+test:
+  commands:
+  - pip check
+  - python -c "import libcarna; print(libcarna.version)"
+  requires:
+  - pip

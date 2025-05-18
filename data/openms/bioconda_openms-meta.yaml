@@ -1,12 +1,17 @@
 about:
+  dev_url: https://github.com/OpenMS/OpenMS
+  doc_url: https://openms.readthedocs.io/en/latest/index.html
   home: https://github.com/OpenMS/OpenMS
-  license: BSD
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
   summary: OpenMS is an open-source software C++ library for LC-MS data management
-    and analyses
+    and analyses.
 build:
-  number: 0
+  number: 1
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:openms
   - usegalaxy-eu:openms_fileconverter
@@ -33,20 +38,26 @@ outputs:
     build:
     - cmake
     - sysroot_linux-64 =2.17
-    host:
-    - llvm-openmp
-    - zlib
     - libtool
+    - pkg-config
+    - qt6-main
+    host:
+    - libgomp
+    - llvm-openmp
     - xerces-c
     - boost-cpp
-    - eigen >=3.3.4
-    - hdf5 >=1.10
-    - bzip2
-    - qt6-main
+    - eigen >=3.4.0
+    - hdf5
     - libsvm
     - coinmp
-    - sysroot_linux-64 =2.17
     - yaml-cpp
+    - doxygen >=1.8.13
+    - sysroot_linux-64 =2.17
+    - zlib
+    - bzip2
+    run:
+    - libgomp
+    - llvm-openmp
   script: package_libopenms.sh
   version: 3.4.0
 - name: openms
@@ -54,22 +65,27 @@ outputs:
     build:
     - cmake
     - sysroot_linux-64 =2.17
+    - libtool
+    - pkg-config
+    - qt6-main
     host:
     - None
+    - libgomp
     - llvm-openmp
-    - zlib
-    - libtool
     - xerces-c
     - boost-cpp
-    - eigen >=3.3.4
-    - hdf5 >=1.10
-    - bzip2
-    - qt6-main
+    - eigen >=3.4.0
+    - hdf5
     - libsvm
     - coinmp
-    - sysroot_linux-64 =2.17
     - yaml-cpp
+    - doxygen >=1.8.13
+    - sysroot_linux-64 =2.17
+    - zlib
+    - bzip2
     run:
+    - libgomp
+    - llvm-openmp
     - None
     - None
     - None
@@ -97,7 +113,7 @@ outputs:
     - luciphor2 ==2020_04_03
     - msgf_plus ==2024.03.26
     - percolator ==3.7.1
-    - sirius-ms ==6.1.1
+    - sirius-ms >=6.1.0
     - thermorawfileparser ==1.4.3
     - sage-proteomics ==0.14.7
     - gnuplot
@@ -113,24 +129,30 @@ requirements:
   build:
   - None
   - cmake
-  - make
+  - ninja
   - autoconf
   - automake
+  - libtool
+  - pkg-config
+  - qt6-main
   - sysroot_linux-64 =2.17
   host:
+  - libgomp
   - llvm-openmp
-  - zlib
-  - libtool
   - xerces-c
   - boost-cpp
-  - eigen >=3.3.4
-  - hdf5 >=1.10
-  - bzip2
-  - qt6-main
+  - eigen >=3.4.0
+  - hdf5
   - libsvm
   - coinmp
-  - sysroot_linux-64 =2.17
   - yaml-cpp
+  - doxygen >=1.8.13
+  - sysroot_linux-64 =2.17
+  - zlib
+  - bzip2
+  run:
+  - libgomp
+  - llvm-openmp
 source:
   md5: b4125500bd1180f222d3640588b45b8a
   url: https://github.com/OpenMS/OpenMS/releases/download/release%2F3.4.0/OpenMS-3.4.tar.gz

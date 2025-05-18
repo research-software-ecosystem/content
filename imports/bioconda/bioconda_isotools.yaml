@@ -1,8 +1,11 @@
 about:
-  home: https://github.com/MatthiasLienhard/isotools
+  dev_url: https://github.com/HerwigLab/IsoTools2
+  doc_url: https://isotools.readthedocs.io/en/latest
+  home: https://github.com/HerwigLab/IsoTools2
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
-  summary: Framework for the analysis of long read transcriptome sequencing data
+  summary: Framework for the analysis of long read transcriptome sequencing data.
 build:
   entry_points:
   - run_isotools = isotools.run_isotools:main
@@ -10,27 +13,26 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - kbseah
 package:
   name: isotools
-  version: 0.3.4
+  version: 2.0.0
 requirements:
   host:
-  - python >=3.6
+  - python >=3.10
   - setuptools >=46.4
-  - wheel
   - pip
   run:
-  - python >=3.6
+  - python >=3.10
   - numpy
   - pandas
   - tqdm
   - intervaltree
   - matplotlib-base
-  - seaborn
+  - seaborn-base
   - biopython
   - pysam
   - umap-learn
@@ -38,17 +40,14 @@ requirements:
   - scipy
   - statsmodels
   - pyhmmer
-  - psutil ~=6.0
   - requests
   - cpat >=3.0
+  - python-ternary
 source:
-  sha256: f3877cff039515efc3dc3fadb6940557dedd1f1c26ee4749e2b3eb8f68e3fb47
-  url: https://pypi.org/packages/source/i/isotools/isotools-0.3.4.tar.gz
+  sha256: 897467286f8ad1b51e843692a6e045250c49dee0c40dc4ccf6329962189e5bfc
+  url: https://pypi.org/packages/source/i/isotools/isotools-2.0.0.tar.gz
 test:
   commands:
-  - pip check
   - run_isotools --help
   imports:
   - isotools
-  requires:
-  - pip

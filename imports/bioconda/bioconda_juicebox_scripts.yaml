@@ -1,0 +1,24 @@
+about:
+  home: https://github.com/phasegenomics/juicebox_scripts
+  license: GNU GPLv3
+  license_file: LICENSE
+  summary: A collection of scripts for working with Hi-C data, Juicebox, and other
+    genomic file formats
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: juicebox_scripts
+  version: 0.1.0gita7ae991
+requirements:
+  run:
+  - python >=3.9
+source:
+  sha256: 615d1878a2a45434ba8bb312e182e6ec97c038e45c65501c525501273bdb58e2
+  url: https://github.com/phasegenomics/juicebox_scripts/archive/a7ae9915401eb677b8058b0118011ce440999bc0.zip
+test:
+  commands:
+  - makeAgpFromFasta.py | grep "makeAgpFromFasta.py <fasta_file> <agp_out_file>"
+  - agp2assembly.py | grep "agp2assembly.py <input_agp_file> <output_assembly_file>"

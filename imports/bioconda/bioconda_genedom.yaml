@@ -1,20 +1,21 @@
 about:
-  home: https://github.com/Edinburgh-Genome-Foundry/genedom#
+  dev_url: https://github.com/Edinburgh-Genome-Foundry/genedom
+  home: https://github.com/Edinburgh-Genome-Foundry/genedom
   license: MIT
-  license_file: LICENCE.txt
-  summary: Genetic part standardization
+  license_family: MIT
+  summary: Genetic part standardization.
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - ramez17khaled
 package:
   name: genedom
-  version: 0.2.1
+  version: 0.2.2
 requirements:
   host:
   - python
@@ -32,9 +33,8 @@ requirements:
   - flametree
   - pdf-reports
 source:
-  patches: patches/0001-restrict-installed-modules.patch
-  sha256: 2b10083590aecfbfa1faaab55074ecf837931cfa3f33758f9124e915f2aaa549
-  url: https://github.com/Edinburgh-Genome-Foundry/genedom/archive/refs/tags/v0.2.1.tar.gz
+  sha256: 0ff304250a6be8b71dcd19969dce3a0b14ffba17731487e28b406e32a86de0d6
+  url: https://github.com/Edinburgh-Genome-Foundry/genedom/archive/refs/tags/v0.2.2.tar.gz
 test:
   commands:
   - if command -v pytest >/dev/null 2>&1; then pytest tests/; else echo "pytest not
