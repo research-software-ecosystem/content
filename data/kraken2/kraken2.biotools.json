@@ -20,13 +20,20 @@
             "typeEntity": "Person"
         }
     ],
-    "description": "Kraken 2 is the newest version of Kraken, a taxonomic classification system using exact k-mer matches to achieve high accuracy and fast classification speeds. This classifier matches each k-mer within a query sequence to the lowest common ancestor (LCA) of all genomes containing the given k-mer. The k-mer assignments inform the classification algorithm.",
+    "description": "Kraken 2 is the newest version of Kraken, a taxonomic classification system using exact k-mer matches to achieve high accuracy and fast classification speeds. This classifier matches each k-mer within a query sequence to the lowest common ancestor (LCA) of all genomes containing the given k-mer. The k-mer assignments inform the classification algorithm.\nAny assumption that Kraken’s raw read assignments can be directly translated into species or strain-level abundance estimates is flawed. Bracken (Bayesian Reestimation of Abundance after Classification with KrakEN), estimates species abundances in metagenomics samples by probabilistically re-distributing reads in the taxonomic tree. (Lu, Jennifer et al. “Bracken: estimating species abundance in metagenomics data.”)",
     "documentation": [
+        {
+            "note": "Links to multiple Kraken 2 and bracken databases and indexes",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://benlangmead.github.io/aws-indexes/k2"
+        },
         {
             "type": [
                 "User manual"
             ],
-            "url": "https://ccb.jhu.edu/software/kraken2/index.shtml?t=manual"
+            "url": "https://github.com/DerrickWood/kraken2/wiki/Manual"
         }
     ],
     "download": [
@@ -37,11 +44,14 @@
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "vashokan"
+        ],
+        "type": "group"
     },
     "function": [
         {
-            "cmd": "`kraken2 --db standard_kraken2_db input.fastq`",
+            "cmd": "`kraken2 --db <kraken2_database> <input.fastq>`",
             "input": [
                 {
                     "data": {
@@ -87,7 +97,7 @@
         "C++",
         "Perl"
     ],
-    "lastUpdate": "2019-09-13T12:52:32Z",
+    "lastUpdate": "2025-05-15T14:35:24.829481Z",
     "license": "MIT",
     "link": [
         {
@@ -105,6 +115,10 @@
         }
     ],
     "relation": [
+        {
+            "biotoolsID": "bracken",
+            "type": "usedBy"
+        },
         {
             "biotoolsID": "kraken",
             "type": "isNewVersionOf"
