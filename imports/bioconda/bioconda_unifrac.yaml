@@ -2,51 +2,60 @@ about:
   description: "UniFrac is a commonly phylogenetic diversity distance metric used\
     \ in \nmicrobiome research. The metric relates two microbiome samples together\n\
     within the context of an evolutionary history, and produces a distance\nthat corresponds\
-    \ to how similar two samples by the amount of overlapping\nbranch length.  \n"
+    \ to how similar two samples by the amount of overlapping\nbranch length.\n"
   dev_url: https://github.com/biocore/unifrac
-  doc_url: https://github.com/biocore/unifrac
+  doc_url: https://github.com/biocore/unifrac/blob/1.5/README.md
   home: https://github.com/biocore/unifrac
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: Fast phylogenetic diversity calculations
+  summary: Fast phylogenetic diversity calculations.
 build:
   number: 0
   run_exports:
   - None
+  script:
+  - sed -i.bak "s#CONDA_PREFIX#PREFIX#g" setup.py
+  - rm -rf *.bak
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
+  additional-platforms:
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/s41592-018-0187-8
+  - doi:10.1128/msystems.00028-22
   recipe-maintainers:
   - wasade
   - sfiligoi
 package:
   name: unifrac
-  version: 1.3.2
+  version: 1.5
 requirements:
   build:
   - None
   host:
   - python
   - pip
-  - h5py <3.0.0 | >3.3.0
+  - h5py >=3.3.0
   - cython >=0.26
   - numpy >=1.21
   - biom-format
   - scipy >=1.9.0
-  - scikit-bio >=0.5.8
-  - unifrac-binaries >=1.3.2
+  - scikit-bio >=0.6.0
+  - unifrac-binaries >=1.5
   - iow
   run:
   - python
   - None
-  - h5py <3.0.0 | >3.3.0
+  - h5py >=3.3.0
   - biom-format
   - scipy >=1.9.0
-  - scikit-bio >=0.5.8
-  - unifrac-binaries >=1.3.2
+  - scikit-bio >=0.6.0
+  - unifrac-binaries >=1.5
   - iow
 source:
-  sha256: 169fb2ee0583075265e5a2a85d97e4fea139214b8f066c95f334fc33604a77d4
-  url: https://github.com/biocore/unifrac/archive/refs/tags/1.3.2.tar.gz
+  sha256: ab2298db4e92aba081444d8b979f142a0f77455233670f8cfb0d464c758c8167
+  url: https://github.com/biocore/unifrac/archive/refs/tags/1.5.tar.gz
 test:
   commands:
   - ssu --help

@@ -1,0 +1,67 @@
+about:
+  description: 'VIBER is a package that implements a variational Bayesian model to
+
+    fit multi-variate Binomial mixtures. The statistical model is
+
+    semi-parametric and fit by a variational mean-field approximation to
+
+    the model posterior. The components are Binomial distributions which
+
+    can model count data; these can be used to model sequencing counts in
+
+    the context of cancer, for instance. The package implements methods to
+
+    fit and visualize clustering results.
+
+    '
+  doc_url: https://caravagnalab.github.io/VIBER/
+  home: https://github.com/caravagnalab/VIBER
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Variational Binomial Mixtures.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - elena-buscaroli
+package:
+  name: r-viber
+  version: 1.0.0
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-crayon
+  - r-pio
+  - r-easypar
+  - r-dplyr
+  - r-ggplot2
+  - r-reshape2
+  - r-ctree
+  - r-cli
+  run:
+  - r-base
+  - r-crayon
+  - r-pio
+  - r-easypar
+  - r-dplyr
+  - r-ggplot2
+  - r-reshape2
+  - r-ctree
+  - r-cli
+source:
+  sha256: c058904821536e1d659cf27362f5550d9c266681061d480429bb8ed5b1abf5cb
+  url: https://github.com/caravagnalab/VIBER/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - $R -e "library(VIBER)"
+  - '"%R%" -e "library(VIBER)"'

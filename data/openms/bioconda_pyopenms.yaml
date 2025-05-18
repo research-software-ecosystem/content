@@ -1,62 +1,75 @@
 about:
+  dev_url: https://github.com/OpenMS/OpenMS
+  doc_url: https://openms.readthedocs.io/en/latest
   home: https://github.com/OpenMS/OpenMS
-  license: BSD
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  summary: python bindings for OpenMS, an open-source software C++ library for LC-MS
-    data management and analyses
+  summary: Python bindings for OpenMS, an open-source software C++ library for LC-MS
+    data management and analyses.
 build:
-  number: 5
+  number: 0
   run_exports:
   - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:openms
-  - doi:10.1038/nmeth.3959
+  - doi:10.1038/s41592-024-02197-7
 package:
   name: pyopenms
-  version: 3.3.0
+  version: 3.4.0
 requirements:
   build:
   - None
-  - make
+  - ninja
   - cmake
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  - qt6-main
   - sysroot_linux-64 =2.17
   host:
-  - eigen >=3.3.4
-  - libopenms >=3.3.0
+  - python
+  - pip
+  - cython <3.1
+  - eigen >=3.4.0
+  - libopenms >=3.4.0
+  - libgomp
   - llvm-openmp
   - libsvm
+  - coinmp
+  - yaml-cpp
+  - doxygen >=1.8.13
   - xerces-c
   - boost-cpp
-  - qt-main >=5.15.8
-  - python
-  - cython >=0.25.2
-  - autowrap >=0.22.10
-  - setuptools
-  - wheel
-  - pip
-  - numpy >=1.23.*
+  - autowrap >=0.22.11
+  - numpy >=2.0
   - pandas
   - matplotlib-base
   - sysroot_linux-64 =2.17
   - icu >=75.1,<76.0a0
+  - pytest
+  - zlib
   run:
-  - libopenms >=3.3.0
+  - python
+  - libopenms >=3.4.0
+  - libgomp
   - llvm-openmp
   - libsvm
   - xerces-c
   - boost-cpp
-  - qt-main >=5.15.8
-  - eigen >=3.3.4
-  - python >=3.9
-  - numpy >=1.23.*
+  - eigen >=3.4.0
+  - numpy >=2.0
   - pandas
   - matplotlib-base
   - sysroot_linux-64 =2.17
 source:
-  md5: 7a5839e307801a7c9a02258f9da61357
-  url: https://github.com/OpenMS/OpenMS/releases/download/release%2F3.3.0/OpenMS-3.3.tar.gz
+  md5: b4125500bd1180f222d3640588b45b8a
+  url: https://github.com/OpenMS/OpenMS/releases/download/release%2F3.4.0/OpenMS-3.4.tar.gz
 test:
   commands:
   - python -c "import pyopenms; print(pyopenms.__version__)"

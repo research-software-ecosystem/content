@@ -6,16 +6,13 @@ about:
   license_file: LICENSE
   summary: Uncertainty aware HLA typing and general haplotype quantification.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
   skip: true
-extra:
-  additional-platforms:
-  - linux-aarch64
 package:
   name: orthanq
-  version: 1.10.0
+  version: 1.12.1
 requirements:
   build:
   - None
@@ -25,6 +22,10 @@ requirements:
   - make
   - cmake
   - perl-findbin
+  - python >=3.10
+  - cross-python_
+  - nodejs
+  - pnpm
   host:
   - gsl
   - libcblas
@@ -34,13 +35,13 @@ requirements:
   - xz
   - clangdev
   - coincbc
-  - hdf5 =1.10.5
   - fontconfig
   - htslib
-  - varlociraptor =8.4.7
-  - samtools =1.19
-  - vg =1.56
+  - varlociraptor ==8.4.7
+  - samtools ==1.19
+  - vg ==1.63.1
   - minimap2
+  - python >=3.10
   - bwa
   run:
   - gsl
@@ -48,11 +49,12 @@ requirements:
   - openssl
   - clangdev
   - coincbc
-  - hdf5 =1.10.5
   - fontconfig
+  - python >=3.10
+  - yte
 source:
-  sha256: 213bf294190b36fdacd6191f159f11b48d7dc9a5f2469e387d8e6af3e1783a06
-  url: https://github.com/orthanq/orthanq/archive/v1.10.0.tar.gz
+  sha256: d86de2cef1127a0f51c421e0df35c772d3f9cbbafadead59e2ffa67615e492e6
+  url: https://github.com/orthanq/orthanq/archive/v1.12.1.tar.gz
 test:
   commands:
   - orthanq -h

@@ -1,28 +1,33 @@
 about:
-  home: https://noble.gs.washington.edu/proj/fido/
-  license: MIT license
+  dev_url: https://noble.gs.washington.edu/proj/fido
+  doc_url: https://noble.gs.washington.edu/proj/fido
+  home: https://noble.gs.washington.edu/proj/fido
+  license: MIT
+  license_family: MIT
+  license_file: Fido MIT license.txt
   summary: A method for protein identification in MS/MS proteomics. Think of it like
     a protein delivery dog. You bring it the scored matches between peptides and spectra,
     and it fetches a list of proteins ranked by posterior probability by doing clever
     tricks.
 build:
-  number: 8
+  number: 9
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: fido
-  version: '1.0'
+  version: 1.0
 requirements:
   build:
   - make
   - None
-  run: null
 source:
   md5: 6ee89316f492105a6fb06729475c37e0
+  patches:
+  - 0001-makefile.patch
   url: https://noble.gs.washington.edu/proj/fido/fido.tgz
 test:
   commands:

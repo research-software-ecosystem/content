@@ -10,9 +10,12 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script:
+  - export CFLAGS="${CFLAGS} -O3 -Wno-int-conversion -Wno-implicit-function-declaration"
+  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=1.3.1
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.4.2
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -23,7 +26,7 @@ extra:
   - doi:10.1093/molbev/msz265
 package:
   name: moments
-  version: 1.3.1
+  version: 1.4.2
 requirements:
   build:
   - None
@@ -46,8 +49,8 @@ requirements:
   - mpmath
   - demes
 source:
-  sha256: 0a3090462379a09bb16af494d8887258c9ad0e62698365fb84d80a6ab9eec638
-  url: https://pypi.org/packages/source/m/moments-popgen/moments_popgen-1.3.1.tar.gz
+  sha256: e24bd1ed8ba1c6cf5a056ab4471cb0d8f1397acc7206e3a7bac20ed1295ba006
+  url: https://pypi.org/packages/source/m/moments-popgen/moments_popgen-1.4.2.tar.gz
 test:
   imports:
   - moments

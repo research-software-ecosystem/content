@@ -3,7 +3,9 @@ about:
   license: MIT
   summary: DNA multiple sequence aligner from Penn State's Miller lab.
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - None
 extra:
   identifiers:
   - biotools:multiz
@@ -11,16 +13,18 @@ extra:
   - biotools:roast
 package:
   name: multiz
-  version: '11.2'
+  version: 11.2
 requirements:
   build:
   - make
   - None
   host: null
-  run: null
+  run:
+  - coreutils
+  - grep
 source:
   sha256: 2c03f6a34d9a53a00ee2f6069e889a2eff8cb3e1039680b6bc69f9bef4ef532a
-  url: https://github.com/multiz/multiz/archive/20190527.tar.gz
+  url: https://github.com/multiz/multiz/archive/refs/tags/20190527.tar.gz
 test:
   commands:
   - multiz 2>&1 | grep -qF 'multiz.v11.2'

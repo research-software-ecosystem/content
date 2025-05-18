@@ -1,21 +1,28 @@
 about:
-  description: "An implementation of the balanced parentheses tree structure as described\
-    \ by\n[Cordova and Navarro](http://www.dcc.uchile.cl/~gnavarro/ps/tcs16.2.pdf).\
-    \ \n"
-  dev_url: https://github.com/biocore/improved-octo-waddle
+  description: 'An implementation of the balanced parentheses tree structure as described
+    by
+
+    [Cordova and Navarro](http://www.dcc.uchile.cl/~gnavarro/ps/tcs16.2.pdf).
+
+    '
+  dev_url: https://github.com/biocore/improved-octo-waddle/blob/1.0.8/README.md
   doc_url: https://github.com/biocore/improved-octo-waddle
   home: https://github.com/biocore/improved-octo-waddle
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: Implementation of Balanced Parentheses
+  summary: Implementation of Balanced Parentheses.
 build:
-  number: 0
+  entry_points:
+  - bp = bp._cli:cli
+  number: 1
   run_exports:
   - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir --use-pep517
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - wasade
 package:
@@ -24,16 +31,15 @@ package:
 requirements:
   build:
   - None
-  - None
   - make
   host:
   - python
   - pip
-  - cython >=0.28.3
+  - cython
   - numpy >=1.12.1
   run:
   - python
-  - None
+  - pytest
   - None
   - scikit-bio >=0.5.1
   - click
