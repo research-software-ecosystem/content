@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/barricklab/seabreeze
+  doc_url: https://barricklab.github.io/seabreeze
+  home: https://github.com/barricklab/seabreeze
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Analyzing Structural Variation Between Bacterial Genome Assemblies.
+build:
+  entry_points:
+  - seabreeze = seabreeze.seabreeze:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - ira-zibbu
+  - jeffreybarrick
+package:
+  name: seabreeze-genomics
+  version: 1.4.0
+requirements:
+  host:
+  - pip
+  - python >=3.11
+  - setuptools
+  run:
+  - python >=3.11
+  - snakemake-minimal <8
+  - numpy
+  - pandas
+  - pytest
+  - click
+  - coloredlogs
+source:
+  sha256: 6d2dd262e1963b1050ac323c82d5068b15bddfe9e690e66d38e09aa26fd07ffe
+  url: https://github.com/barricklab/seabreeze/archive/refs/tags/v1.4.0.tar.gz
+test:
+  commands:
+  - seabreeze run -h
+  - seabreeze batch -h
+  imports:
+  - seabreeze

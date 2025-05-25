@@ -1,45 +1,46 @@
 about:
+  dev_url: https://github.com/google/deepvariant
+  doc_url: https://github.com/google/deepvariant/blob/v1.9.0/README.md
   home: https://github.com/google/deepvariant
-  license: MIT
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
   summary: DeepVariant is an analysis pipeline that uses a deep neural network to
-    call genetic variants from next-generation DNA sequencing data
+    call genetic variants from next-generation DNA sequencing data.
 build:
-  number: 2
+  noarch: python
+  number: 0
   run_exports:
   - None
-  skip: true
 extra:
   skip-lints:
-  - should_be_noarch_generic
   - missing_tests
 package:
   name: deepvariant
-  version: 1.5.0
+  version: 1.9.0
 requirements:
   host:
-  - python
+  - python <3.11
+  - pip
+  - setuptools
   - unzip
   - zip
   - zlib
   - curl
   run:
-  - openjdk >=8,<9
-  - python <=3.10.*
+  - openjdk 11.0.*
+  - python <3.11
   - absl-py
   - google-cloud-sdk
-  - zlib
-  - boost
+  - boost-cpp
   - htslib
-  - numpy
-  - curl
-  - tensorflow-gpu 2.11.*
+  - numpy >=1.21.2
+  - tensorflow 2.11.*
   - tensorflow-estimator 2.11.*
   - protobuf
   - contextlib2
-  - enum34
   - intervaltree
   - mock
-  - numpy 1.19.*
   - psutil
   - requests
   - scipy
@@ -48,9 +49,8 @@ requirements:
   - six
   - crcmod
   - parallel
-  - unzip
 source:
-  sha256: d9b015f7c7358792f57e7bd154a6cb15151d3fbb43bcd4bf491ffdd1cca63a0d
-  url: https://github.com/google/deepvariant/releases/download/v1.5.0/deepvariant.zip
+  sha256: 6f7f413bb2feced916553b9dc0957369545883f67b4777280f1dabcd9fd2ab3b
+  url: https://github.com/google/deepvariant/archive/v1.9.0.tar.gz
 test:
   commands: null
