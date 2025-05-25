@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/kfuku52/radte
+  license: MIT
+  license_file: LICENSE
+  summary: Reconciliation-Assisted Divergence Time Estimation for gene families.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  build:
+    test-matrix:
+    - r-base 3.6.*
+    - r-base 4.1.*
+    - r-base 4.2.*
+    - r-base 4.3.*
+  recipe-maintainers:
+  - kfuku52
+package:
+  name: radte
+  version: 0.2.3
+requirements:
+  host:
+  - r-base
+  - r-ape
+  - bioconductor-treeio
+run:
+- r-base >=3.5
+- r-ape
+- bioconductor-treeio
+- notung
+- generax
+source:
+  sha256: c2084ac220e632c339a23484be0fa57f248cacdbbee210962caeaffe66b1b160
+  url: https://github.com/kfuku52/radte/archive/refs/tags/v0.2.3.tar.gz
+test:
+  commands:
+  - radte --help || [[ "$?" == 1 ]]
+  files:
+  - radte.r

@@ -1,47 +1,53 @@
 about:
+  dev_url: https://github.com/iomega/ms2query
+  doc_url: https://github.com/iomega/ms2query/blob/1.5.4/README.md
   home: https://github.com/iomega/ms2query
   license: Apache-2.0
+  license_family: APACHE
   license_file: LICENSE
-  summary: Reliable and fast MS/MS spectral based analogue search
+  summary: Reliable and fast MS/MS spectral based analogue search.
 build:
   entry_points:
-  - ms2query=ms2query:command_line
+  - ms2query = ms2query:command_line
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   identifiers:
-  - doi:https://doi.org/10.1038/s41467-023-37446-4
+  - doi:10.1038/s41467-023-37446-4
   recipe-maintainers:
   - niekdejonge
   - hechth
 package:
   name: ms2query
-  version: 1.5.3
+  version: 1.5.4
 requirements:
   host:
   - python >=3.9
+  - pip
+  - setuptools
   run:
   - python >=3.9
-  - matchms =0.26.4
-  - spec2vec =0.8.0
-  - numpy =1.24.4
-  - h5py =3.11.0
-  - scikit-learn =1.5.0
-  - pyarrow =16.1.0
-  - ms2deepscore =2.0.0
-  - pandas =2.2.2
+  - matchms >=0.24.0,<=0.26.4
+  - spec2vec >=0.6.0
+  - numpy
+  - h5py
+  - scikit-learn
+  - pyarrow
+  - ms2deepscore ==2.0.0
+  - gensim >=4.0.0
+  - pandas
   - matplotlib-base
-  - skl2onnx =1.16.0
-  - onnxruntime =1.17.0
-  - pytest =8.2.2
-  - pytest-cov =5.0.0
-  - rdkit
+  - pytorch <2.6
+  - skl2onnx
+  - onnx <1.16.2
+  - onnxruntime <1.16
+  - tqdm
 source:
-  sha256: d1e79994e2bdee9317d2dc87a8f9360a86ff406a103558024e1f93e0261cd535
-  url: https://github.com/iomega/ms2query/archive/refs/tags/1.5.3.tar.gz
+  sha256: cfe64b50670639d2f4eede3154d527c2d98ff5b2c592dc0b4cf78c485c052c5d
+  url: https://github.com/iomega/ms2query/archive/refs/tags/1.5.4.tar.gz
 test:
   imports:
   - ms2query

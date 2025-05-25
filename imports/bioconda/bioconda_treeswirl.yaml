@@ -1,0 +1,49 @@
+about:
+  dev_url: https://bitbucket.org/wegmannlab/treeswirl
+  doc_url: https://bitbucket.org/wegmannlab/treeswirl/wiki/Home
+  home: https://bitbucket.org/wegmannlab/treeswirl
+  license: MPL-2.0
+  license_file: LICENSE
+  summary: 'TreeSwirl: A tool to infer locus-specific population mixtures from linked
+    genome-wide allele frequencies.'
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/molbev/msae137
+package:
+  name: treeswirl
+  version: 2.0.0
+requirements:
+  build:
+  - None
+  - cmake
+  - ninja
+  host:
+  - armadillo
+  - fmt
+  - mkl
+  - lapack
+  - libgomp
+  - llvm-openmp
+  - openblas
+  - zlib
+  run:
+  - armadillo
+  - fmt
+  - mkl
+  - lapack
+  - libgomp
+  - llvm-openmp
+  - openblas
+source:
+  sha256: 7404693ec0c7fd6ccf0380028ba205080e1c375442eb0e6aefae81ef81b0ead4
+  url: https://bitbucket.org/wegmannlab/treeswirl/get/2.0.0.tar.gz
+test:
+  commands:
+  - TreeSwirl | grep "successfully"

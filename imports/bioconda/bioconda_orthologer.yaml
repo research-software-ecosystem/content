@@ -1,15 +1,16 @@
 about:
-  description: Map genes to OrthoDB as well as finding orthology among a set of fasta
-    files.
+  description: Ortholog detection for comparative genomics and fast functional annotation
+    behind OrthoDB and BUSCO.
   dev_url: https://gitlab.com/ezlab/orthologer_container
   doc_url: https://orthologer.ezlab.org/#on-orthodb-data
   home: https://orthologer.ezlab.org
-  license: GPL3
+  license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: Establish orthology among fasta files.
+  summary: Ortholog detection for comparative genomics and fast functional annotation
+    behind OrthoDB and BUSCO.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
@@ -17,29 +18,34 @@ extra:
     extended-base: true
   identifiers:
   - biotools:orthologer
-  - doi:10.1093/nar/gkac996
-  - PMID:36350662
+  - doi:10.1093/nar/gkae987
+  - PMID:39535043
   recipe-maintainers:
   - ftegenfe
 package:
   name: orthologer
-  version: 3.5.0
+  version: 3.7.1
 requirements:
   build:
   - None
   - None
   - cmake
   - make
-  - bash >=4.1
   host:
+  - bash >=4.1
   - llvm-openmp
   - libgomp
   - rsync
   - wget
   - bash >=4.1
+  - python >=3.4,<3.12
+  - spdlog
+  - ete3
+  - boost-cpp
   run:
+  - boost-cpp
   - bash >=4.1
-  - python >=3.4
+  - python >=3.4,<3.12
   - llvm-openmp
   - libgomp
   - rsync
@@ -51,9 +57,10 @@ requirements:
   - biopython
   - numpy
   - busco >=5.7.0
+  - ete3
 source:
-  sha256: 76bd68cd73d5989d658a6ba0ecefec84e674f85878b75904c76fa557ce5dd2b5
-  url: https://data.orthodb.org/current/download/software/orthologer_3.5.0.tgz
+  sha256: 49a6239431548e50f973e4399260e93bba76aa2272657f8c5ea5c5d732c89c19
+  url: https://data.orthodb.org/current/download/software/orthologer_3.7.1.tgz
 test:
   commands:
   - ALLOW_RUNAS_ROOT=1 orthologer -h

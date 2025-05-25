@@ -1,15 +1,24 @@
 about:
+  dev_url: https://github.com/OpenGene/repaq
+  doc_url: https://github.com/OpenGene/repaq/blob/v0.5.1/README.md
   home: https://github.com/OpenGene/repaq
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: A fast lossless FASTQ compressor with ultra-high compression ratio
+  summary: A fast lossless FASTQ compressor with ultra-high compression ratio.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.3389/fgene.2023.1260531
 package:
   name: repaq
-  patches:
-  - patch
-  version: 0.3.0
+  version: 0.5.1
 requirements:
   build:
   - make
@@ -17,11 +26,11 @@ requirements:
   - None
   host:
   - zlib
-  run:
-  - zlib
 source:
-  sha256: 97a2f48eb47020aea416df5ff8d5a231db11284622bdcc9816758ac3bbe244d3
-  url: https://github.com/OpenGene/repaq/archive/v0.3.0.tar.gz
+  patches:
+  - endian.patch
+  sha256: 19720e87ce83327d8c8de6176fa85bb32ada4d722eea86ee5210d2d55cd4e787
+  url: https://github.com/OpenGene/repaq/archive/v0.5.1.tar.gz
 test:
   commands:
   - repaq --help

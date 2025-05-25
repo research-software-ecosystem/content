@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/galantelab/sideRETRO
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: COPYING
+  summary: A pipeline for detecting Somatic Insertion of DE novo RETROcopies
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btaa689
+package:
+  name: sideretro
+  version: 1.1.6
+requirements:
+  build:
+  - None
+  - meson >=0.58.0
+  - ninja
+  host:
+  - htslib
+  - libsqlite
+  - zlib
+  run:
+  - htslib
+  - libsqlite
+  - zlib
+source:
+  patches:
+  - fix-macos.patch
+  sha256: 378b49030bef1627494c81bbd285d85f3b78843f691f68963bd6e703ae7bac20
+  url: https://github.com/galantelab/sideRETRO/archive/refs/tags/1.1.6.tar.gz
+test:
+  commands:
+  - sider --help

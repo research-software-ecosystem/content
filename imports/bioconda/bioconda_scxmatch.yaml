@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/bionetslab/scxmatch
+  license: MIT
+  license_file: LICENSE
+  summary: Python implementation for single-cell cross match test, an efficient implementation
+    of Rosenbaum's test.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - annmoel
+package:
+  name: scxmatch
+  version: 0.0.2
+requirements:
+  build:
+  - python >=3.9
+  host:
+  - python >=3.9
+  - hatchling
+  - pip
+  run:
+  - python >=3.9
+  - anndata >=0.10.9
+  - scanpy >=1.10.3,<2
+  - scipy >=1.13.1,<2
+  - graph-tool >=2.92,<3
+source:
+  sha256: 50dbde490f0cd28357874dbd099c1309190d89974a95fd9c2c697b10de42a619
+  url: https://github.com/bionetslab/scxmatch/releases/download/scxmatch-0.0.2/scxmatch-0.0.2.tar.gz
+test:
+  imports:
+  - scxmatch
