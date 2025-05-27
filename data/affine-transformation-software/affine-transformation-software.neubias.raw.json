@@ -2,19 +2,21 @@
     "body": [
         {
             "format": "markdown",
-            "processed": "This C routine is based on the following two papers:\n\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal\tProcessing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.\n\nIt implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by\n\n```\nA = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\n```\nwill result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be `output(x) = input(A x)`, it should be easy to modify the code (mainly: remove the call to `invertTrsf()` and assign `invTRsf = trsf)`. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.\n\nThe input volume (the volume to transform) is given by `inPtr`, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the `affineTransform()` routine is called.\n\nAll routines are local, with the exception of the routine to call, named `affineTransform()`, and the routine `errorReport()`. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c.",
+            "processed": "<p>This C routine is based on the following two papers:</p>\n<ul><li>M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal\tProcessing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.</li>\n<li>M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.</li>\n</ul><p>It implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by</p>\n<pre><code>A = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\n</code></pre>\n<p>will result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be <code>output(x) = input(A x)</code>, it should be easy to modify the code (mainly: remove the call to <code>invertTrsf()</code> and assign <code>invTRsf = trsf)</code>. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.</p>\n<p>The input volume (the volume to transform) is given by <code>inPtr</code>, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the <code>affineTransform()</code> routine is called.</p>\n<p>All routines are local, with the exception of the routine to call, named <code>affineTransform()</code>, and the routine <code>errorReport()</code>. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c.</p>",
             "summary": "",
             "value": "This C routine is based on the following two papers:\r\n\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal\tProcessing: Part I--Theory,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 821-832, February 1993.\r\n- M. Unser, A. Aldroubi and M. Eden, \"B-Spline Signal Processing: Part II--Efficient Design and Applications,\" IEEE Transactions on Signal Processing, vol. 41, no. 2, pp. 834-848, February 1993.\r\n\r\nIt implements the resampling of an image/volume under an affine transformation. The continuous model is based on splines of degree 0 (nearest neighbours), degree 1 (linear interpolation), degree 2 (quadratic), 3 (cubic), 4 (quartic), 5 (quintic), 6 and 7. By convention, the affine transformation is given by an homogenous matrix; the operation performed is output(A x) = input(x). In other words, a matrix given by\r\n\r\n```\r\nA = { {2,0,0,0}, {0,2,0,0}, {0,0,2,0}, {0,0,0,1} }\r\n```\r\nwill result in a magnification by a factor 2 in linear dimensions. In case the desired operation would be `output(x) = input(A x)`, it should be easy to modify the code (mainly: remove the call to `invertTrsf()` and assign `invTRsf = trsf)`. The origin relative to which the transformation is performed is given with respect to the center of the top-upper-left voxel; the coordinate system is right-handed. Output values in need of extrapolation are set to the value background.\r\n\r\nThe input volume (the volume to transform) is given by `inPtr`, a pointer to an array of float values in raster order. More precisely, the values are ordered such that the x values are incremented first, then the y values, finally the z values. The size of the volume is given by nx, ny and nz, respectively. The output volume has necessarily the same size and follows the same organization. Its memory space cannot be shared with the input, and is supposed to be already allocated when the `affineTransform()` routine is called.\r\n\r\nAll routines are local, with the exception of the routine to call, named `affineTransform()`, and the routine `errorReport()`. The latter is not included in this distribution; its purpose is to display an error message given by a C-string. Else, the code is self-contained (provided a standard ANSI-C environment is available). It consists of only two files: affine.h and affine.c."
         }
     ],
     "changed": [
         {
-            "value": 1539876765
+            "format": "Y-m-d\\TH:i:sP",
+            "value": "2018-10-18T15:32:45+00:00"
         }
     ],
     "created": [
         {
-            "value": 1381496923
+            "format": "Y-m-d\\TH:i:sP",
+            "value": "2013-10-11T13:08:43+00:00"
         }
     ],
     "default_langcode": [
@@ -23,6 +25,7 @@
         }
     ],
     "field_attribution_instructions": [],
+    "field_comments2023": [],
     "field_free_tagging": [
         {
             "target_id": 4529,
@@ -143,7 +146,7 @@
             "target_type": "file",
             "target_uuid": "6c4262f2-ad4f-43b9-aa3a-fa7a3119c21d",
             "title": "",
-            "url": "http://biii.eu/sites/default/files/2018-05/Components-icon_4.png",
+            "url": "http://dev.biii.eurobioimaging.eu/sites/default/files/2018-05/Components-icon_4.png",
             "width": 256
         }
     ],
@@ -220,7 +223,8 @@
     "revision_log": [],
     "revision_timestamp": [
         {
-            "value": 1526327884
+            "format": "Y-m-d\\TH:i:sP",
+            "value": "2018-05-14T19:58:04+00:00"
         }
     ],
     "revision_translation_affected": [

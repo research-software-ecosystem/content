@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://dev.biii.eurobioimaging.eu/classification-hemp-fibers-based-morphological-features",
+  "@type": "http://schema.org/SoftwareApplication",
+  "http://schema.org/applicationCategory": [
+    {
+      "@id": "http://edamontology.org/operation_Object_detection"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Feature_extraction"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Morphological_operations"
+    },
+    {
+      "@id": "http://edamontology.org/operation__RyCFuPLOeGxpcGjYbWcWWD"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Watershed"
+    }
+  ],
+  "http://schema.org/dateCreated": "2016-10-01T18:11:30+00:00",
+  "http://schema.org/dateModified": "2018-08-16T15:37:52+00:00",
+  "http://schema.org/description": "<p>&nbsp;</p>\r\n\r\n<p>In this workflow, you can use MorphoLibJ to generate accurate morphometric measurements</p>\r\n\r\n<ul>\r\n\t<li>First the fibers are segmented by mathematical morphology:\r\n\t<ul>\r\n\t\t<li>for example by using MorphoLibJ:\r\n\t\t<ul>\r\n\t\t\t<li>Create a marker image by creating a rough mask with extended regional maxima (similar to Find Max), such that you have one max per fiber</li>\r\n\t\t\t<li>Use the marker controlled watershed (in MorpholLibJ/ Segmentation/ marker controlled watershed) : indicate the original grayscale image as the input, Marker will be your maxima image, select None for mask</li>\r\n\t\t\t<li>it will create a label mask of your fibers</li>\r\n\t\t</ul>\r\n\t\t</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>&nbsp;In MorphoLibJ /analyze/ select Region Morphometry: this will compute different shape factors which are more robust than the ones implemented by default in ImageJ</li>\r\n\t<li>Export the result table created to a csv file</li>\r\n\t<li>Then for example in Matlab or R, you can apply a PCA analysis (Principal component analysis) followed by a k-means with the number of class (clusters) (different fibers type) you want to separate.</li>\r\n\t<li>You can then add this class as a new feature to your csv file.</li>\r\n\t<li>From this you can sort your labelled fibers into these clusters for a visual feedback or further spatial analysis</li>\r\n</ul>\r\n",
+  "http://schema.org/featureList": [
+    {
+      "@id": "http://edamontology.org/operation_Watershed"
+    },
+    {
+      "@id": "http://edamontology.org/operation__RyCFuPLOeGxpcGjYbWcWWD"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Object_detection"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Feature_extraction"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Morphological_operations"
+    }
+  ],
+  "http://schema.org/name": "classification of hemp fibers based on morphological features",
+  "http://schema.org/publisher": "David Legland",
+  "http://schema.org/softwareRequirements": [
+    {
+      "@id": "http://biii.eu/node/1057"
+    },
+    {
+      "@id": "http://biii.eu/node/101"
+    },
+    {
+      "@id": "http://biii.eu/node/38"
+    }
+  ]
+}
