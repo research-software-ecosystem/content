@@ -13,82 +13,19 @@ registries:
   name: conda:bioconda
 popcon:
 - insts: 41
-  olde: 33
-  recent: 6
+  olde: 31
+  recent: 8
   vote: 2
 descr:
 - package: dazzdb
-  description: gestione dei dati di letture di sequenziamento di nucleotidi
-  long_description: " Per facilitare le fasi multiple dell'assemblatore dazzler, tutti
-    i dati\n delle letture sono organizzati in ciò che a tutti gli effetti è un database\n
-    delle letture e delle loro meta-informazioni. Gli obiettivi del progetto di\n
-    questo database sono i seguenti:\n  * il database memorizza le informazioni sulle
-    letture Pacbio sorgenti in\n    maniera tale che possa ricreare i dati di input
-    originali, permettendo\n    perciò a un utente di rimuovere i file sorgenti (effettivamente\n\
-    \    ridondanti); ciò permette di evitare di duplicare gli stessi dati, una\n\
-    \    volta nel file sorgente e una volta nel database;\n  * il database può essere
-    costruito in maniera incrementale, cioè nuovi\n    dati sulle sequenze possono
-    essere aggiunti al database nel tempo;\n  * il database permette in maniera flessibile
-    di memorizzare qualsiasi\n    metadato desiderato per le letture; ciò è realizzato
-    con il concetto\n    delle *tracce* che gli implementatori possono aggiungere
-    quando ne hanno\n    bisogno;\n  * i dati sono tenuti in una forma compressa equivalente
-    ai file .dexta e\n    .dexqv del modulo di estrazione dati; sia le informazioni
-    .fasta sia\n    .quiva per ogni lettura sono tenute nel database e possono essere\n\
-    \    ricreate a partire da esso; le informazioni .quiva possono essere\n    aggiunte
-    separatamente e successivamente se lo si desidera;\n  * per facilitare lavori
-    paralleli e operazioni su cluster delle fasi\n    dell'assemblatore, il database
-    ha un concetto di *partizionamento\n    corrente* in cui tutte le letture che
-    sono sopra una data lunghezza e\n    opzionalmente uniche per un pozzetto, sono
-    divise in *blocchi*\n    contenenti approssimativamente un dato numero di basi,
-    eccetto\n    eventualmente l'ultimo blocco che può avere un conteggio ridotto;\n\
-    \    spesso i programmi possono essere eseguiti su blocchi o coppie di\n    blocchi
-    e ognuno di tali lavori è ragionevolmente ben bilanciato dal\n    momento che
-    i blocchi sono tutti della stessa dimensione; è necessario\n    essere cauti nel
-    cambiare la partizione durante un assemblaggio perché\n    ciò potrebbe annullare
-    la validità strutturale di qualsiasi risultato\n    parziale basato sui blocchi.\n"
-  release: sid
-  description_md5: 7e00727db0845d5aaf47b78dbb71d5bc
-  license: unknown
-  blend: debian-med
-- package: dazzdb
-  description: manage nucleotide sequencing read data
-  long_description: " To facilitate the multiple phases of the dazzler assembler,
-    all the read data\n is organized into what is effectively a database of the\n
-    reads and their meta-information. The design goals for this data base\n are as
-    follows:\n  * The database stores the source Pacbio read information in such a\n\
-    \    way that it can re-create the original input data, thus permitting\n    a
-    user to remove the (effectively redundant) source files. This\n    avoids duplicating
-    the same data, once in the source file and once\n    in the database.\n  * The
-    data base can be built up incrementally, that is new sequence\n    data can be
-    added to the data base over time.\n  * The data base flexibly allows one to store
-    any meta-data desired for\n    reads. This is accomplished with the concept of
-    *tracks* that\n    implementors can add as they need them.\n  * The data is held
-    in a compressed form equivalent to the .dexta and\n    .dexqv files of the data
-    extraction module. Both the .fasta and\n    .quiva information for each read is
-    held in the data base and can be\n    recreated from it. The .quiva information
-    can be added separately and\n    later on if desired.\n  * To facilitate job parallel,
-    cluster operation of the phases of the\n    assembler, the database has a concept
-    of a *current partitioning* in\n    which all the reads that are over a given
-    length and optionally\n    unique to a well, are divided up into *blocks* containing
-    roughly a\n    given number of bases, except possibly the last block which may
-    have\n    a short count. Often programs can be run on blocks or pairs of blocks\n\
-    \    and each such job is reasonably well balanced as the blocks are all\n   \
-    \ the same size. One must be careful about changing the partition\n    during
-    an assembly as doing so can void the structural validity of\n    any interim block-based
-    results.\n"
-  release: sid
-  description_md5: 7e00727db0845d5aaf47b78dbb71d5bc
-  license: unknown
-  blend: debian-med
-- package: dazzdb
   description: Håndter data for nukleotidsekventeringslæsning
   long_description: " For at lette de mange faser i Dazzler-assembleren, så bliver
-    alle de\n aflæste data organiseret i, hvad der reelt er en database over læsningerne\n
-    og deres metainformation. Designmålene for denne database er som følger:\n  *
-    Databasen gemmer kildeinformationerne for Pacbiolæsninger på en sådan\n    måde,
-    at de kan genskabe de oprindelige inddata, hvilket tillader,\n    at en bruger
-    kan fjerne (reelt overflødige) kildefilerne. Dermed\n    undgås duplikering af
-    de samme data, en gang i kildefilen, og en gang\n    i databasen.\n  * Databasen
+    alle de\n aflæste data organiseret i, hvad der reelt er en database over læsningerne\n\
+    \ og deres metainformation. Designmålene for denne database er som følger:\n \
+    \ * Databasen gemmer kildeinformationerne for Pacbiolæsninger på en sådan\n  \
+    \  måde, at de kan genskabe de oprindelige inddata, hvilket tillader,\n    at
+    en bruger kan fjerne (reelt overflødige) kildefilerne. Dermed\n    undgås duplikering
+    af de samme data, en gang i kildefilen, og en gang\n    i databasen.\n  * Databasen
     kan opbygges trinvist, der er ny sekvens\n    data kan tilføjes til databasen
     over tid.\n  * Databasen fleksibelt tillade en at gemme eventuelle alle metadata\n\
     \    for læsninger. Dette opnås med begrebet *spor*, som en der\n    implementerer
@@ -104,6 +41,69 @@ descr:
     velafbalanceret da blokkene alle er\n    af samme størrelse. Man skal være forsigtig
     med at ændre partitionen\n    under en samling, da dette kan ugyldiggøre strukturel
     gyldighed\n    for eventuelle mellemliggende blokbaserede resultater.\n"
+  release: sid
+  description_md5: 7e00727db0845d5aaf47b78dbb71d5bc
+  license: unknown
+  blend: debian-med
+- package: dazzdb
+  description: manage nucleotide sequencing read data
+  long_description: " To facilitate the multiple phases of the dazzler assembler,
+    all the read data\n is organized into what is effectively a database of the\n\
+    \ reads and their meta-information. The design goals for this data base\n are
+    as follows:\n  * The database stores the source Pacbio read information in such
+    a\n    way that it can re-create the original input data, thus permitting\n  \
+    \  a user to remove the (effectively redundant) source files. This\n    avoids
+    duplicating the same data, once in the source file and once\n    in the database.\n\
+    \  * The data base can be built up incrementally, that is new sequence\n    data
+    can be added to the data base over time.\n  * The data base flexibly allows one
+    to store any meta-data desired for\n    reads. This is accomplished with the concept
+    of *tracks* that\n    implementors can add as they need them.\n  * The data is
+    held in a compressed form equivalent to the .dexta and\n    .dexqv files of the
+    data extraction module. Both the .fasta and\n    .quiva information for each read
+    is held in the data base and can be\n    recreated from it. The .quiva information
+    can be added separately and\n    later on if desired.\n  * To facilitate job parallel,
+    cluster operation of the phases of the\n    assembler, the database has a concept
+    of a *current partitioning* in\n    which all the reads that are over a given
+    length and optionally\n    unique to a well, are divided up into *blocks* containing
+    roughly a\n    given number of bases, except possibly the last block which may
+    have\n    a short count. Often programs can be run on blocks or pairs of blocks\n\
+    \    and each such job is reasonably well balanced as the blocks are all\n   \
+    \ the same size. One must be careful about changing the partition\n    during
+    an assembly as doing so can void the structural validity of\n    any interim block-based
+    results.\n"
+  release: sid
+  description_md5: 7e00727db0845d5aaf47b78dbb71d5bc
+  license: unknown
+  blend: debian-med
+- package: dazzdb
+  description: gestione dei dati di letture di sequenziamento di nucleotidi
+  long_description: " Per facilitare le fasi multiple dell'assemblatore dazzler, tutti
+    i dati\n delle letture sono organizzati in ciò che a tutti gli effetti è un database\n\
+    \ delle letture e delle loro meta-informazioni. Gli obiettivi del progetto di\n\
+    \ questo database sono i seguenti:\n  * il database memorizza le informazioni
+    sulle letture Pacbio sorgenti in\n    maniera tale che possa ricreare i dati di
+    input originali, permettendo\n    perciò a un utente di rimuovere i file sorgenti
+    (effettivamente\n    ridondanti); ciò permette di evitare di duplicare gli stessi
+    dati, una\n    volta nel file sorgente e una volta nel database;\n  * il database
+    può essere costruito in maniera incrementale, cioè nuovi\n    dati sulle sequenze
+    possono essere aggiunti al database nel tempo;\n  * il database permette in maniera
+    flessibile di memorizzare qualsiasi\n    metadato desiderato per le letture; ciò
+    è realizzato con il concetto\n    delle *tracce* che gli implementatori possono
+    aggiungere quando ne hanno\n    bisogno;\n  * i dati sono tenuti in una forma
+    compressa equivalente ai file .dexta e\n    .dexqv del modulo di estrazione dati;
+    sia le informazioni .fasta sia\n    .quiva per ogni lettura sono tenute nel database
+    e possono essere\n    ricreate a partire da esso; le informazioni .quiva possono
+    essere\n    aggiunte separatamente e successivamente se lo si desidera;\n  * per
+    facilitare lavori paralleli e operazioni su cluster delle fasi\n    dell'assemblatore,
+    il database ha un concetto di *partizionamento\n    corrente* in cui tutte le
+    letture che sono sopra una data lunghezza e\n    opzionalmente uniche per un pozzetto,
+    sono divise in *blocchi*\n    contenenti approssimativamente un dato numero di
+    basi, eccetto\n    eventualmente l'ultimo blocco che può avere un conteggio ridotto;\n\
+    \    spesso i programmi possono essere eseguiti su blocchi o coppie di\n    blocchi
+    e ognuno di tali lavori è ragionevolmente ben bilanciato dal\n    momento che
+    i blocchi sono tutti della stessa dimensione; è necessario\n    essere cauti nel
+    cambiare la partizione durante un assemblaggio perché\n    ciò potrebbe annullare
+    la validità strutturale di qualsiasi risultato\n    parziale basato sui blocchi.\n"
   release: sid
   description_md5: 7e00727db0845d5aaf47b78dbb71d5bc
   license: unknown
