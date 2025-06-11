@@ -1,14 +1,24 @@
 about:
-  home: http://ccb.nki.nl/software/
-  license: GPL-3
+  dev_url: https://github.com/NKI-CCB/cimpl
+  doc_url: https://github.com/NKI-CCB/cimpl/blob/v1.1/README.md
+  home: https://www.nki.nl/research/research-groups/lodewyk-wessels/our-resources
+  license: GPL-3.0-or-later
+  license_family: GPL3
   summary: An analysis package for multi sample insertional mutagenesis data (including
     viral- and transposon-based systems) using Gaussian kernel convolution to identify
     common insertion sites.
 build:
-  number: 7
+  noarch: generic
+  number: 8
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - None
+  script:
+  - export LC_ALL="en_US.UTF-8"
+  - export DISABLE_AUTOBREW=1
+  - $R CMD INSTALL --build . "${R_ARGS}"
 extra:
   recipe-maintainers:
   - MathiasHaudgaard
@@ -23,14 +33,14 @@ package:
   version: 1.1
 requirements:
   host:
-  - r-base
+  - r-base >=3.6.3
   - r-kernsmooth
   - r-mass
   - r-xtable
   - bioconductor-biomart
   - bioconductor-biostrings
   run:
-  - r-base
+  - r-base >=3.6.3
   - r-kernsmooth
   - r-mass
   - r-xtable

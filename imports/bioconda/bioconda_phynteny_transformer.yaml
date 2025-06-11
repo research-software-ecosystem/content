@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/susiegriggo/Phynteny_transformer
+  doc_url: https://github.com/susiegriggo/Phynteny_transformer/blob/v0.1.2/README.md
+  home: https://github.com/susiegriggo/Phynteny_transformer
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Phynteny: Synteny-based prediction of bacteriophage genes.'
+build:
+  entry_points:
+  - generate_training_data = train_phynteny.generate_training_data:main
+  - train_model = train_phynteny.train_phyntenty:main
+  - compute_confidence = train_phynteny.compute_confidence:main
+  - install_models = src.install_models:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - susiegriggo
+package:
+  name: phynteny_transformer
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools
+  run:
+  - python >=3.9
+  - biopython
+  - click
+  - loguru
+  - numpy
+  - pandas
+  - scikit-learn
+  - pytorch >=2.1.2
+  - tqdm
+  - transformers
+source:
+  sha256: 89c1aaad4fc095f5f8b188e40b1a08077f20268ca53104642fa6bdf024293241
+  url: https://pypi.io/packages/source/p/phynteny_transformer/phynteny_transformer-0.1.2.tar.gz
+test:
+  commands:
+  - install_models --help
+  - phynteny_transformer --help
+  imports:
+  - phynteny_utils
+  - src

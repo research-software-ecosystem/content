@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/labsyspharm/UnMicst
+  license: MIT
+  license_file: UnMicst-2.6.6/LICENSE
+  summary: UNMICST - UnMicst Nuclear Segmentation Tool
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script:
+  - mkdir -p "/unmicst"
+  - cp -r * "/unmicst"
+extra:
+  recipe-maintainers:
+  - jaidevjoshi83
+package:
+  name: unmicst
+  version: 2.6.6
+requirements:
+  host:
+  - python
+  run:
+  - python >=
+  - numpy
+  - scipy
+  - tifffile
+  - keras
+  - tensorflow
+  - matplotlib-base
+source:
+  folder: UnMicst-2.6.6
+  sha256: d4da6cf35c6a2ab14009038c4308b85d458070dfbe158dfa02af173d9503b912
+  url: https://github.com/labsyspharm/UnMicst/archive/refs/tags/2.6.6.tar.gz
+test:
+  commands:
+  - python -c "import unmicst"
+  source_files:
+  - .

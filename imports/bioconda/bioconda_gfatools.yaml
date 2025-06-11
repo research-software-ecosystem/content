@@ -1,15 +1,23 @@
 about:
+  dev_url: https://github.com/lh3/gfatools
+  doc_url: https://github.com/lh3/gfatools/blob/master/README.md
   home: https://github.com/lh3/gfatools
-  license: Unknown
-  summary: Tools for manipulating sequence graphs in the GFA and rGFA formats
+  license: MIT
+  license_family: MIT
+  summary: Tools for manipulating sequence graphs in the GFA and rGFA formats.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - natir
 package:
   name: gfatools
-  version: 0.5
+  version: 0.5.5
 requirements:
   build:
   - make
@@ -17,8 +25,11 @@ requirements:
   host:
   - zlib
 source:
-  sha256: 0653dc143c2224743afb6bb638da3465231ec0bb476c0d55e2eb6708ee105712
-  url: https://github.com/lh3/gfatools/archive/v0.5.tar.gz
+  patches:
+  - 0001-Makefile.patch
+  - 0002-asm.c.patch
+  sha256: 5eb23232d8f2b8ec883264cd3500c25dc6a1be33f433d567718bccb442df56e9
+  url: https://github.com/lh3/gfatools/archive/refs/tags/final-gt.tar.gz
 test:
   commands:
   - gfatools 2>&1 | grep "gfatools"

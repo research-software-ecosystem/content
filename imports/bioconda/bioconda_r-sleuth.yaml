@@ -1,22 +1,26 @@
 about:
   dev_url: https://github.com/pachterlab/sleuth
-  home: http://pachterlab.github.io/sleuth/
-  license: GPLv3
-  license_family: GPL
+  doc_url: https://pachterlab.github.io/sleuth
+  home: https://pachterlab.github.io/sleuth
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
   summary: Tools for investigating RNA-Seq.
 build:
   noarch: generic
-  number: 1
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - None
+  script: ${R} CMD INSTALL --build . ${R_ARGS}
 extra:
   recipe-maintainers:
   - mjsteinbaugh
 package:
   name: r-sleuth
-  version: 0.30.1
+  version: 0.30.2
 requirements:
   host:
   - r-base >=3.2.1
@@ -47,8 +51,8 @@ requirements:
   - r-tidyr
   - r-mass
 source:
-  sha256: 4c8efca5d726471cb71187e8db07097a50f63aadf42f6fa25c59e7eed635f982
-  url: https://github.com/pachterlab/sleuth/archive/v0.30.1.tar.gz
+  sha256: 043ce093124cef931090ceb1933111f43e92d324d16a5aa1d97e1597f67b9f91
+  url: https://github.com/pachterlab/sleuth/archive/v0.30.2.tar.gz
 test:
   commands:
   - $R -e "library('sleuth')"

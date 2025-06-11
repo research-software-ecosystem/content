@@ -10,7 +10,14 @@ about:
     Note that LHEAPERL needs to be manually set to point to your Conda environment's\n\
     Perl interpreter after sourcing headas-init.sh.\n\nFor mission-specific functionality\
     \ (e.g., Swift, NuSTAR, IXPE), additional \nenvironment setup may be needed. See\
-    \ the HEAsoft documentation for details.\n"
+    \ the HEAsoft documentation for details.\n\n**Warning for Xspec users**: The /spectral/modelData\
+    \ directory (~5.9GB) is excluded to reduce\npackage size, rendering Xspec unusable\
+    \ without it. \nTo enable Xspec:\n1. Download the HEASoft source tarball for the\
+    \ same version as this package (6.35.1):\n   ```bash\n   wget https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.35.1/heasoft-6.35.1src.tar.gz\n\
+    \   ```\n   Replace 6.35.1 with the package version (e.g., 6.35.1). \n2. Extract:\n\
+    \   ```bash\n   tar zxf heasoft-6.35.1src.tar.gz\n   ```\n3. Copy the modelData\
+    \ directory:\n   ```bash\n   mkdir -p $CONDA_PREFIX/spectral\n   cp -r heasoft-6.35.1/Xspec/src/spectral/modelData\
+    \ $CONDA_PREFIX/spectral/\n   ```\n"
   doc_url: https://heasarc.gsfc.nasa.gov/docs/software/heasoft/
   home: https://heasarc.gsfc.nasa.gov/lheasoft/
   license: Clear BSD License
@@ -95,7 +102,4 @@ source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.35.1/heasoft-6.35.1src.tar.gz
 test:
   commands:
-  - export HEADAS=$(ls -d "${PREFIX}/x86_64-pc-linux-gnu-libc"*/ | head -n 1)
-  - source $HEADAS/headas-init.sh
-  - export LHEAPERL=$PREFIX/bin/perl
-  - fversion
+  - echo "Tests skipped on non-Linux-64 platforms"

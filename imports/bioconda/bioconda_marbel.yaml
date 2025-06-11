@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/jlab/marbel
+  license: Apache-2.0
+  summary: Marbel generates realistic in silico metatranscriptomic dataset based on
+    specified parameters.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+package:
+  name: marbel
+  version: 0.2.4
+requirements:
+  build:
+  - python
+  - hatchling
+  run:
+  - python
+  - arviz
+  - pymc
+  - typer
+  - biopython
+  - pyarrow
+  - typing-extensions
+  - pandas
+  - ete4
+  - progress
+  - joblib
+  - polars
+  - pysam
+  - requests
+  - threadpoolctl
+source:
+- sha256: 1354d6c015c4828fd2d702d7fc9fb2f3e20f6e9f2d54aaa38abbc9cb6b1fce04
+  url: https://github.com/jlab/marbel/archive/refs/tags/v0.2.4.tar.gz
+- folder: marbeldep/
+  sha256: 75d0a0074634ceb1c1ab860c006077809ff2dbe94adf92e68a08676ccfa83a8d
+  url: https://github.com/jlab/InSilicoSeq/archive/refs/tags/v0.1.2.marbeldep.tar.gz
+test:
+  commands:
+  - marbel --help

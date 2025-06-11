@@ -1,27 +1,35 @@
 about:
+  dev_url: https://github.com/rderelle/fastlin
+  doc_url: https://github.com/rderelle/fastlin/blob/0.4.2/README.md
   home: https://github.com/rderelle/fastlin
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: fastlin, ultra-fast MTBC lineage typing
+  summary: fastlin, ultra-fast MTBC lineage typing.
 build:
   number: 0
   run_exports:
   - None
-  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - RUST_BACKTRACE=1 cargo install --no-track --locked --verbose --root "${PREFIX}"
+    --path .
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
 package:
   name: fastlin
-  version: 0.4.1
+  version: 0.4.2
 requirements:
   build:
   - None
+  - cargo-bundle-licenses
 source:
-  sha256: 928730bbd2b7c7397b0b69da2e3cc90391f9771bcd33870c7037cc0e4ca1fc4f
-  url: https://github.com/rderelle/fastlin/archive/0.4.1.tar.gz
+  sha256: 6140f2a784b2c87e9f6a68a8345ee95191c56ded061c108a208c20553ce85c4c
+  url: https://github.com/rderelle/fastlin/archive/0.4.2.tar.gz
 test:
   commands:
   - fastlin -h

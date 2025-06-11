@@ -11,38 +11,55 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Ultra Scalable Framework for DNA Search, Alignment, Assembly
+  summary: Ultra Scalable Framework for DNA Search, Alignment, Assembly.
 build:
-  number: 4
+  number: 0
+  run_exports:
+  - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   recipe-maintainers:
   - izcram
   - karasikov
+  skip-lints:
+  - uses_vcs_url
 package:
   name: metagraph
-  version: 0.3.6
+  version: 0.4.3
 requirements:
   build:
-  - make
   - None
+  - make
   - cmake
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
   host:
+  - bzip2
   - htslib
   - jemalloc
-  - boost
-  - bzip2
+  - boost-cpp ==1.71.0
   - llvm-openmp
   - libgomp
+  - clangdev
+  - llvmlite
+  - doxygen
   run:
   - htslib
   - jemalloc
-  - bzip2
+  - boost-cpp ==1.71.0
   - llvm-openmp
   - libgomp
 source:
-  sha256: 9ea6fd1ac8343286a97f8adf7734c5607ce05b850fadfcb2c8487cb5d599191f
-  url: https://github.com/ratschlab/metagraph/releases/download/v0.3.6/v0.3.6-sources-with-submodules.tar.gz
+  git_tag: v0.4.3
+  git_url: https://github.com/ratschlab/metagraph.git
+  patches:
+  - 0001-boost-cmake.patch
+  - arm_hwcap.patch
+  sha256: unused
 test:
   commands:
   - metagraph_DNA --help

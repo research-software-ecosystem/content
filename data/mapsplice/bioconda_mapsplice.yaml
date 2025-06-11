@@ -1,4 +1,6 @@
 about:
+  dev_url: https://github.com/davidroberson/MapSplice2
+  doc_url: http://www.netlab.uky.edu/p/bioinfo/MapSplice2
   home: http://www.netlab.uky.edu/p/bioinfo/MapSplice2
   license: Custom
   license_file: Copyright.txt
@@ -6,9 +8,13 @@ about:
     splice junction discovery that depends only on reference genome, and not on any
     further annotations.
 build:
-  number: 1
+  number: 2
+  run_exports:
+  - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:mapsplice
 package:
@@ -18,14 +24,12 @@ requirements:
   build:
   - make
   - None
-  - None
   host:
   - python
   - zlib
   - ncurses
   run:
   - python
-  - zlib
   - ncurses
 source:
   patches:
@@ -38,4 +42,4 @@ source:
   url: http://protocols.netlab.uky.edu/~zeng/MapSplice-v2.2.1.zip
 test:
   commands:
-  - mapsplice.py -v 2>&1 | grep MapSplice > /dev/null
+  - mapsplice.py 2>&1 | grep "mapsplice" > /dev/null

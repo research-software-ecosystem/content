@@ -1,0 +1,60 @@
+about:
+  description: 'MSMS is a fast algorithm for computing molecular surfaces.
+
+    It was developed by Dr. Michel F. Sanner as part of his PhD thesis.
+
+    It has been widely used for computing and displaying Solvent Excluded Surfaces
+    for proteins.
+
+    MSMS is used by various molecular visualization programs including VMD, Chimera,
+    and PMV.
+
+    '
+  doc_url: https://ccsb.scripps.edu/msms/documentation/
+  home: https://ccsb.scripps.edu/msms/
+  license: Free for academic use (research-only license)
+  summary: Fast algorithm for computing molecular surfaces
+build:
+  binary_relocation: false
+  has_prefix_files:
+  - bin/pdb_to_xyzr
+  - bin/pdb_to_xyzrn
+  number: 0
+  requirements:
+    run:
+    - awk
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - osx-arm64
+  identifiers:
+  - doi:10.1002/(SICI)1097-0282(199603)38:3<305::AID-BIP4>3.0.CO;2-Y
+  skip-lints:
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: scripps-msms
+  version: 2.6.1
+source:
+- patches:
+  - pdb_to_xyzr.patch
+  - pdb_to_xyzrn.patch
+  sha256: 5f0ca50360b5938e74c538e0399d582abc4a40ef4cf410e66f31a1f91e6e3e1f
+  url: https://ccsb.scripps.edu/msms/download/933/scripps-MSMS-2.6.1.tar.gz
+- patches:
+  - pdb_to_xyzr.patch
+  - pdb_to_xyzrn.patch
+  sha256: aa9c6fcdffd78f20a48990d7ce6cbe19394bb88071e2a9cc26c675171eccfcc8
+  url: https://ccsb.scripps.edu/msms/download/950/scripps-MSMS-2.6.1.tar.gz
+- patches:
+  - pdb_to_xyzr.patch
+  - pdb_to_xyzrn.patch
+  sha256: 87679f0666b388dfcf022ee2e8caace93d5953ef3d67689fd3fafc33eb9c25d3
+  url: https://ccsb.scripps.edu/msms/download/942/scripps-MSMS-2.6.1.tar.gz
+test:
+  commands:
+  - msms -h
+  source_files:
+  - 1crn.pdb
+  - 1crn.xyzr

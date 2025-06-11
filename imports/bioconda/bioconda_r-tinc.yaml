@@ -1,0 +1,79 @@
+about:
+  home: https://github.com/caravagnalab/TINC
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: TINC is a package that implements algorithms to determine the contamination
+    of a bulk sequencing sample in the context of cancer studies (matched tumour/
+    normal). The contamination estimated by TINC can be either due to normal cells
+    sampled in the tumour biopsy or to tumour cells in the normal biopsy. The former
+    case is traditionally called purity, or cellularity, and a number of tools exist
+    to estimate it. The latter case is less common, and that is the main reason TINC
+    has been developed. For this reason, the package takes name TINC, Tumour-in-Normal
+    contamination. TINC is part of the evoverse, a package that gathers multiple R
+    packages to implement Cancer Evolution analyses.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - valerianilucrezia
+package:
+  name: r-tinc
+  version: 0.1.0
+requirements:
+  build:
+  - git
+  - zip
+  host:
+  - r-base
+  - r-bmix
+  - r-cnaqc
+  - r-viber
+  - r-cli
+  - r-cowplot
+  - r-crayon
+  - r-dplyr
+  - r-ggplot2
+  - r-ggpubr
+  - r-ggrepel
+  - r-mobster
+  - r-pio
+  - r-purrr
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-vcfr
+  run:
+  - r-base
+  - r-bmix
+  - r-cnaqc
+  - r-viber
+  - r-cli
+  - r-cowplot
+  - r-crayon
+  - r-dplyr
+  - r-ggplot2
+  - r-ggpubr
+  - r-ggrepel
+  - r-mobster
+  - r-pio
+  - r-purrr
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-vcfr
+source:
+  sha256: 8b5f79026392421a09470d94de86f18a46722e6611e9c819e15966c0b72f2f85
+  url:
+  - https://github.com/caravagnalab/TINC/archive/refs/tags/0.1.0.tar.gz
+test:
+  commands:
+  - $R -e "library('TINC')"
+  - '"%R%" -e "library(''TINC'')"'

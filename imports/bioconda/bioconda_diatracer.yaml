@@ -1,0 +1,42 @@
+about:
+  description: "diaTracer is a computational tool that enables spectrum-centric analysis\
+    \ of Bruker\u2019s diaPASEF data-independent acquisition proteomics data,\nfacilitating\
+    \ direct (\u201Cspectral-library free\u201D) peptide identification and quantification\n\
+    \ndiaTracer is available freely for academic research and educational purposes\
+    \ only, in accordance with the terms at https://msfragger.arsci.com/diatracer/LICENSE-ACADEMIC.pdf.\n"
+  home: https://diatracer.nesvilab.org/
+  license: Academic License
+  license_file:
+  - licenses/LICENSE-ACADEMIC.pdf
+  summary: A diaPASEF spectrum-centric analysis tool
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1038/s41467-024-55448-8
+  notes: 'The "diatracer" command runs the diaTracer java program.
+
+    '
+  recipe-maintainers:
+  - reid-wagner
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: diatracer
+  version: 1.2.5
+requirements:
+  host:
+  - python =3.11
+  - unzip
+  run:
+  - openjdk >=11
+  - msfragger >=4.2
+source:
+  sha256: 293a9faac5b9fac7b13965d3bd0f7da2b2d1f4a284b0b5fd04cd864b38bfbfb9
+  url: https://msfragger-upgrader.nesvilab.org/diatracer/download.php?token=0000000&download=1.2.5%24zip
+test:
+  commands:
+  - which diatracer

@@ -1,31 +1,45 @@
 about:
+  dev_url: https://github.com/uym2/TreeShrink
+  doc_url: https://github.com/uym2/TreeShrink/blob/v1.3.9/README.md
   home: https://github.com/uym2/TreeShrink
-  license: GPL-3
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: an algorithm for detecting (and removing) abnormally long branches in one
-    or more phylogenetic trees
+  summary: An algorithm for detecting (and removing) abnormally long branches in one
+    or more phylogenetic trees.
 build:
-  noarch: generic
-  number: 0
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  - cp -f ${PREFIX}/bin/run_treeshrink.py ${PREFIX}/bin/run_treeshrink
+  - chmod 0755 ${PREFIX}/bin/run_treeshrink
+extra:
+  identifiers:
+  - doi:10.1186/s12864-018-4620-2
+  - doi:10.1007/978-3-319-67979-2_7
 package:
   name: treeshrink
   version: 1.3.9
 requirements:
   host:
-  - python >=3.6,<=3.9.16
+  - python >=3.6
+  - pip
   - setuptools
-  - r-base
   run:
-  - python >=3.6,<=3.9.16
+  - python >=3.6
   - r-base
   - r-bms >=0.3.5
 source:
+  patches:
+  - 0001-python-3.10.patch
   sha256: 460894699250b7fc1a7096d84bebb0b52b5551612e9faa283c600a15d3f756a3
   url: https://github.com/uym2/TreeShrink/archive/refs/tags/v1.3.9.tar.gz
 test:
   commands:
-  - $R -e "library('BMS')"
   - run_treeshrink -h
   imports:
   - treeshrink

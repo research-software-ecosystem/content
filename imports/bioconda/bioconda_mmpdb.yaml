@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/rdkit/mmpdb
+  doc_url: https://github.com/rdkit/mmpdb/blob/master/README.md
+  home: https://github.com/rdkit/mmpdb
+  license: BSD-4-Clause
+  license_file: LICENSE.txt
+  summary: A package to identify matched molecular pairs and use them to predict property
+    changes
+build:
+  entry_points:
+  - mmpdb = mmpdblib.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1021/acs.jcim.8b00173
+package:
+  name: mmpdb
+  version: 3.1.3
+requirements:
+  host:
+  - python >=3.10
+  - hatchling
+  - pip
+  run:
+  - python >=3.10
+  - click
+  - peewee >=3.0
+  - rdkit >=2024.03
+  - scipy
+  - psutil
+  - psycopg2
+source:
+  sha256: d0cca9320d81777bafcc91080f7a0a14393922efbbe08504d05daf40991cfa3c
+  url: https://pypi.org/packages/source/m/mmpdb/mmpdb-3.1.3.tar.gz
+test:
+  commands:
+  - pip check
+  - mmpdb --help
+  requires:
+  - pip

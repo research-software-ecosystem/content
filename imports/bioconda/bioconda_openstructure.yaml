@@ -1,0 +1,94 @@
+about:
+  description: 'This project aims to provide an open-source, modular, flexible, molecular
+    modelling and visualization environment.
+
+    It is targeted at interested method developers in the field of structural bioinformatics.
+
+    '
+  dev_url: https://git.scicore.unibas.ch/schwede/openstructure
+  doc_url: https://openstructure.org/docs
+  home: https://openstructure.org
+  license: LGPL-3.0-or-later
+  license_family: LGPL
+  license_file: LICENSE.txt
+  summary: Open-Source Computational Structural Biology Framework
+build:
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:openstructure
+  - doi:10.1107/S0907444913007051
+package:
+  name: openstructure
+  version: 2.10.0
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - pkg-config
+  - wget
+  host:
+  - python
+  - libboost-devel >=1.86,<1.87
+  - libboost-python-devel >=1.86,<1.87
+  - eigen
+  - fftw
+  - libpng
+  - libtiff
+  - parasail
+  - numpy >=1,<2
+  - pandas >=1
+  - scipy >=1,<2
+  - networkx >=2,<3
+  - sqlite >=3,<4
+  - openmm >=7
+  - qt >=5,<6
+  - pyqt >=5,<6
+  - pyqt5-sip
+  - voronota
+  - zlib
+  - khronos-opencl-icd-loader
+  - ocl-icd
+  - opencl-headers
+  - glew
+  - glfw
+  - glm
+  - libglvnd-devel
+  - libopengl-devel
+  - libgl-devel
+  - libegl-devel
+  - libglx-devel
+  - libgles-devel
+  - libxcb
+  - mesalib
+  run:
+  - python
+  - None
+  - None
+  - None
+  - None
+  - None
+  - ocl-icd-system
+  - ocl_icd_wrapper_apple
+source:
+  patches: conda.patch
+  sha256: 88009b3d5b477f753e4ce1c731da19fb733aea4ed4ccac6c5fbaf6e1359a9560
+  url: https://git.scicore.unibas.ch/schwede/openstructure/-/archive/2.10.0/openstructure-2.10.0.tar.gz
+test:
+  commands:
+  - ost -h 2>&1 | grep -q Usage
+  - lddt --help 2>&1 | grep -q usage
+  - molck --help
+  - ost compare-ligand-structures --help
+  - ost compare-structures --help
+  - ost compare-structures-legacy --help
+  source_files:
+  - examples/scoring/model.pdb
+  - examples/scoring/reference.cif.gz

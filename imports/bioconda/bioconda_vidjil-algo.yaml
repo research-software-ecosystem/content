@@ -1,0 +1,41 @@
+about:
+  dev_url: https://gitlab.inria.fr/vidjil/vidjil
+  doc_url: https://www.vidjil.org/doc
+  home: https://gitlab.inria.fr/vidjil/vidjil
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Vidjil is an open-source platform for the analysis of high-throughput sequencing
+    data from lymphocytes.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - mkdir -p "${PREFIX}/bin"
+  - make CXX="${CXX}" CXXFLAGS="${CXXFLAGS} -O3 -std=c++14" LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+    algo -j"${CPU_COUNT}"
+  - install -v -m 0755 vidjil-algo "${PREFIX}/bin"
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1186/1471-2164-15-409
+  - doi:10.1371/journal.pone.0166126
+package:
+  name: vidjil-algo
+  version: 2025.02
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - zlib
+source:
+  sha256: 9a600472005bf7ef188849d61a5b4c9517bc911a9cb23509f628350738defd53
+  url: https://gitlab.inria.fr/vidjil/vidjil/-/archive/release-2025.02/vidjil-release-2025.02.tar.gz
+test:
+  commands:
+  - vidjil-algo --help

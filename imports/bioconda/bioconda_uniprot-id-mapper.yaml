@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/David-Araripe/UniProtMapper
+  doc_url: https://david-araripe.github.io/UniProtMapper/stable/index.html
+  home: https://github.com/David-Araripe/UniProtMapper
+  license: MIT
+  license_file: LICENSE
+  summary: A Python wrapper for the UniProt Mapping RESTful API.
+build:
+  entry_points:
+  - protmap = UniProtMapper.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+package:
+  name: uniprot-id-mapper
+  version: 1.1.4
+requirements:
+  host:
+  - python
+  - setuptools >=64
+  - setuptools-scm >=6.2
+  - wheel
+  - pip
+  run:
+  - python
+  - requests
+  - pandas
+  - numpy
+  - tqdm
+source:
+  sha256: c398a03d5cab00254bd72aa43ec3df0f02799a56c7950b7c0cba58ad52cd79a3
+  url: https://pypi.org/packages/source/u/uniprot-id-mapper/uniprot_id_mapper-1.1.4.tar.gz
+test:
+  commands:
+  - protmap --help
+  imports:
+  - UniProtMapper
+  requires:
+  - pip

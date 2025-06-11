@@ -1,29 +1,32 @@
 about:
+  dev_url: https://github.com/enasequence/enaBrowserTools
   home: https://github.com/enasequence/enaBrowserTools
   license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
   summary: enaBrowserTools is a set of scripts that interface with the ENA web services
-    to download data from ENA easily
+    to download data from ENA easily.
 build:
   noarch: python
   number: 0
+  run_exports:
+  - None
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - install -v -m 0755 python3/*.py ${PREFIX}/bin
 package:
   name: enabrowsertools
-  version: 1.5.4
+  version: 1.7.1
 requirements:
   run:
-  - python
+  - python >=3,<3.12
+  - requests
 source:
   patches:
-  - assemblyget_py.patch
-  - enadataget.patch
-  - enadataget_py.patch
-  - enagroupget.patch
-  - enagroupget_py.patch
-  - readget_py.patch
-  - sequenceget_py.patch
-  sha256: 450c3c35be787939b51369a2706f8dfb3b43ed13641711ef1bc6efe3c4e1b4f1
-  url: https://github.com/enasequence/enaBrowserTools/archive/v1.5.4.tar.gz
+  - 0001-shebang.patch
+  sha256: bf04d481ab0d6fef8ff49ad3fbe8b76c1a7475fe8c6f9d3ea891d4089d4966d5
+  url: https://github.com/enasequence/enaBrowserTools/archive/v1.7.1.tar.gz
 test:
   commands:
-  - enaDataGet --help |grep enaDataGet >/dev/null
-  - enaGroupGet --help |grep enaGroupGet >/dev/null
+  - enaDataGet.py --help | grep enaDataGet
+  - enaGroupGet.py --help | grep enaGroupGet

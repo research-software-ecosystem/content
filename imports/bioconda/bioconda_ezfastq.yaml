@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/bioforensics/ezfastq/
+  home: https://github.com/bioforensics/ezfastq/
+  license: BSD License
+  license_family: BSD
+  summary: Organize FASTQs by sample for analysis
+build:
+  entry_points:
+  - ezfastq = ezfastq.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install --no-deps --ignore-installed .
+extra:
+  recipe-maintainers:
+  - standage
+package:
+  name: ezfastq
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10,<3.14
+  - pip
+  - setuptools
+  run:
+  - python >=3.10,<3.14
+  - rich
+source:
+  sha256: b3c35cb9c38a5df2c0d5748b86eb292ad342179a7e117553235175397ccf9642
+  url: https://github.com/bioforensics/ezfastq/archive/0.1.1.tar.gz
+test:
+  imports:
+  - ezfastq
+  requires:
+  - pytest
+  - pytest-cov

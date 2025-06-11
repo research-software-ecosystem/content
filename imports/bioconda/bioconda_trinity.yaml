@@ -7,7 +7,7 @@ about:
   license_file: LICENSE
   summary: Trinity assembles transcript sequences from Illumina RNA-Seq data.
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
 extra:
@@ -32,7 +32,10 @@ requirements:
   - zlib
   - htslib
   - perl
+  - rsync
   run:
+  - libgomp
+  - llvm-openmp
   - openjdk >=17
   - perl
   - perl-db_file
@@ -66,6 +69,7 @@ source:
   patches:
   - makefile.patch
   - cflags-remove-m64.patch
+  - 0003-installer.patch
   sha256: baab87e4878ad097e265c46de121414629bf88fa9342022baae5cac12432a15c
   url: https://github.com/trinityrnaseq/trinityrnaseq/releases/download/Trinity-v2.15.2/trinityrnaseq-v2.15.2.FULL.tar.gz
 test:

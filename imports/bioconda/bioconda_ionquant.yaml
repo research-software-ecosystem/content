@@ -10,22 +10,19 @@ about:
 
 
     IonQuant is available freely for academic research and educational purposes only,
-    in accordance with the terms at https://msfragger.arsci.com/ionquant/IonQuant%20Academic%20Use%20License%2005162022.pdf.
+    in accordance with the terms at https://msfragger.arsci.com/upgrader/LICENSE-ACADEMIC.pdf.
 
     '
   home: https://github.com/Nesvilab/IonQuant
   license: Academic License
   license_file:
-  - licenses/IonQuant Academic Use License 05162022.pdf
-  - licenses/IonQuant-LICENSE-3RD-PARTY.txt
+  - licenses/LICENSE-ACADEMIC.pdf
   summary: A label free quantification tool
 build:
   noarch: generic
   number: 0
   run_exports:
   - None
-  script_env:
-  - SHA256SUM=235772cc6cb1404e612ea1eec09d95ee6250c74c0a3444616ec107a53ede8cab
 extra:
   identifiers:
   - biotools:fragpipe
@@ -37,15 +34,18 @@ extra:
   - reid-wagner
 package:
   name: ionquant
-  version: 1.10.27
+  version: 1.11.9
 requirements:
   host:
-  - python >=3.9
+  - python =3.11
   - unzip
   run:
   - openjdk >=11
-  - python >=3.9
+  - python =3.11
+source:
+  sha256: add4b096923b6d68ad0bbfc93b9d862cd1aad37508e8154228bcb46cf3c548af
+  url: https://msfragger-upgrader.nesvilab.org/ionquant/download.php?token=0000000&download=1.11.9%24zip
 test:
   commands:
-  - ionquant --key 47cb2953-b4bf7726-2c96f5fe-8f1013aa -Xms512m -Xmx1g --help | grep
+  - ionquant --key 1da1ae9c-664ada0c-b1f76870-8a2bacaa  -Xms512m -Xmx1g --help | grep
     'License key verified'
