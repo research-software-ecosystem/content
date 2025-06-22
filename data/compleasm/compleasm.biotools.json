@@ -3,8 +3,11 @@
     "additionDate": "2024-03-18T14:51:49.667412Z",
     "biotoolsCURIE": "biotools:compleasm",
     "biotoolsID": "compleasm",
+    "collectionID": [
+        "ONTeater"
+    ],
     "cost": "Free of charge",
-    "description": "\"Compleasm: a faster and more accurate reimplementation of BUSCO\"",
+    "description": "Compleasm: a faster and more accurate reimplementation of BUSCO.\nIt provides measures for quantitative assessment of genome assembly, gene set, and transcriptome completeness based on evolutionarily informed expectations of gene content from near-universal single-copy orthologs.",
     "documentation": [
         {
             "type": [
@@ -18,22 +21,34 @@
     },
     "function": [
         {
+            "cmd": "compleasm run -l \"$lineage\" -a assembly.fa -o output_prefix",
+            "input": [
+                {
+                    "data": {
+                        "term": "Sequence set (nucleic acid)",
+                        "uri": "http://edamontology.org/data_1234"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA-like",
+                            "uri": "http://edamontology.org/format_2546"
+                        }
+                    ]
+                }
+            ],
+            "note": "Runs compleasm using the BUSCO set corresponding to the lineage given.",
             "operation": [
-                {
-                    "term": "Scaffolding",
-                    "uri": "http://edamontology.org/operation_3216"
-                },
-                {
-                    "term": "Sequence analysis",
-                    "uri": "http://edamontology.org/operation_2403"
-                },
                 {
                     "term": "Sequence assembly validation",
                     "uri": "http://edamontology.org/operation_3180"
-                },
+                }
+            ],
+            "output": [
                 {
-                    "term": "Transcriptome assembly",
-                    "uri": "http://edamontology.org/operation_3258"
+                    "data": {
+                        "term": "Sequence report",
+                        "uri": "http://edamontology.org/data_2955"
+                    }
                 }
             ]
         }
@@ -42,14 +57,56 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2024-11-06T10:22:11.000970Z",
+    "lastUpdate": "2025-06-18T12:00:20.662241Z",
     "license": "Apache-2.0",
+    "link": [
+        {
+            "note": "List of accepted lineages (taxonomic groups with curated BUSCO sets)",
+            "type": [
+                "Other"
+            ],
+            "url": "https://busco.ezlab.org/list_of_lineages.html"
+        },
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/huangnengCSU/compleasm/issues"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/huangnengCSU/compleasm"
+        }
+    ],
     "maturity": "Mature",
-    "name": "compleasm",
+    "name": "Compleasm",
     "owner": "rlibouban",
     "publication": [
         {
-            "doi": "10.1093/bioinformatics/btad595"
+            "doi": "10.1093/bioinformatics/btad595",
+            "metadata": {
+                "abstract": "Motivation: Evaluating the gene completeness is critical to measuring the quality of a genome assembly. An incomplete assembly can lead to errors in gene predictions, annotation, and other downstream analyses. Benchmarking Universal Single-Copy Orthologs (BUSCO) is a widely used tool for assessing the completeness of genome assembly by testing the presence of a set of single-copy orthologs conserved across a wide range of taxa. However, BUSCO is slow particularly for large genome assemblies. It is cumbersome to apply BUSCO to a large number of assemblies. Results: Here, we present compleasm, an efficient tool for assessing the completeness of genome assemblies. Compleasm utilizes the miniprot protein-to-genome aligner and the conserved orthologous genes from BUSCO. It is 14 times faster than BUSCO for human assemblies and reports a more accurate completeness of 99.6% than BUSCO's 95.7%, which is in close agreement with the annotation completeness of 99.5% for T2T-CHM13.",
+                "authors": [
+                    {
+                        "name": "Huang N."
+                    },
+                    {
+                        "name": "Li H."
+                    }
+                ],
+                "citationCount": 92,
+                "date": "2023-10-01T00:00:00Z",
+                "journal": "Bioinformatics",
+                "title": "compleasm: a faster and more accurate reimplementation of BUSCO"
+            }
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "busco",
+            "type": "isNewVersionOf"
         }
     ],
     "toolType": [
@@ -74,6 +131,6 @@
         }
     ],
     "version": [
-        "0.2.5"
+        "v.0.2.5"
     ]
 }
