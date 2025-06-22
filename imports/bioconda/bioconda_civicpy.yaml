@@ -1,43 +1,43 @@
 about:
   dev_url: https://github.com/griffithlab/civicpy
-  doc_url: https://docs.civicpy.org/en/latest/
-  home: http://civicpy.org
+  doc_url: https://docs.civicpy.org/en/latest
+  home: https://civicpy.org
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: CIViC variant knowledgebase analysis toolkit.
 build:
   entry_points:
-  - civicpy=civicpy.cli:cli
+  - civicpy = civicpy.cli:cli
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
 package:
   name: civicpy
-  version: 4.1.0
+  version: 5.0.0
 requirements:
   host:
   - pip
-  - python >=3.5
+  - python >=3.10
   - setuptools
   run:
-  - python >=3.5
-  - backports-datetime-fromisoformat =2.0.0
+  - python >=3.10
+  - backports
+  - backports-datetime-fromisoformat
   - click
   - deprecation
   - networkx
-  - obonet =0.2.3
+  - obonet
   - pandas
   - pysam
   - requests
   - vcfpy
 source:
-  sha256: 108e972445c6da2f89b9d54f3c1c782d3bb273cb2e42c7f769353a20bedd82c9
-  url: https://pypi.io/packages/source/c/civicpy/civicpy-4.1.0.tar.gz
+  sha256: d663e5649428289569c00a622d9e5f00e26ccf0dddde81790387c201eb449783
+  url: https://pypi.io/packages/source/c/civicpy/civicpy-5.0.0.tar.gz
 test:
-  commands:
-  - civicpy --help
   imports:
   - civicpy

@@ -1,34 +1,36 @@
 about:
-  description: "HEAsoft is a unified release of FTOOLS and XANADU software packages\n\
-    for high energy astrophysics data analysis, including tools like XSPEC.\n\nAfter\
-    \ installation, users should initialize the HEAsoft environment with:\n\n```\n\
-    export HEADAS=$(ls -d \"${CONDA_PREFIX}/x86_64-pc-linux-gnu-libc\"*/ | head -n\
-    \ 1)\nsource ${HEADAS}/headas-init.sh\nexport LHEAPERL=${CONDA_PREFIX}/bin/perl\n\
-    ```\n\nThis setup configures numerous environment variables required for HEAsoft,\
-    \ including:\nPATH, LD_LIBRARY_PATH, PFILES, PERL5LIB, PYTHONPATH, and various\
-    \ component-specific\nvariables like PGPLOT_DIR, XANADU, and POW_LIBRARY.\n\n\
-    Note that LHEAPERL needs to be manually set to point to your Conda environment's\n\
-    Perl interpreter after sourcing headas-init.sh.\n\nFor mission-specific functionality\
-    \ (e.g., Swift, NuSTAR, IXPE), additional \nenvironment setup may be needed. See\
-    \ the HEAsoft documentation for details.\n\n**Warning for Xspec users**: The /spectral/modelData\
-    \ directory (~5.9GB) is excluded to reduce\npackage size, rendering Xspec unusable\
-    \ without it. \nTo enable Xspec:\n1. Download the HEASoft source tarball for the\
-    \ same version as this package (6.35.1):\n   ```bash\n   wget https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.35.1/heasoft-6.35.1src.tar.gz\n\
-    \   ```\n   Replace 6.35.1 with the package version (e.g., 6.35.1). \n2. Extract:\n\
-    \   ```bash\n   tar zxf heasoft-6.35.1src.tar.gz\n   ```\n3. Copy the modelData\
-    \ directory:\n   ```bash\n   mkdir -p $CONDA_PREFIX/spectral\n   cp -r heasoft-6.35.1/Xspec/src/spectral/modelData\
-    \ $CONDA_PREFIX/spectral/\n   ```\n"
+  description: "HEAsoft is a unified release of the FTOOLS and XANADU software packages\
+    \ for high-energy astrophysics data analysis, including tools like XSPEC.\n\n\
+    After installation, users must **initialize the HEAsoft environment** by running\
+    \ the following commands:\n\n```\nexport HEADAS=$(ls -d \"${CONDA_PREFIX}/x86_64-pc-linux-gnu-libc\"\
+    */ | head -n 1)\nsource \"${HEADAS}/headas-init.sh\"\nexport LHEAPERL=\"${CONDA_PREFIX}/bin/perl\"\
+    \n```\n\nThis setup configures several environment variables required for HEAsoft,\
+    \ including `PATH`, `LD_LIBRARY_PATH`, `PFILES`, `PERL5LIB`, `PYTHONPATH`, and\
+    \ component-specific variables such as `PGPLOT_DIR`, `XANADU`, and `POW_LIBRARY`.\n\
+    \n**Note**: `LHEAPERL` must be manually set to point to your Conda environment's\
+    \ Perl interpreter after sourcing `headas-init.sh`.\n\nFor mission-specific functionality\
+    \ (e.g., Swift, NuSTAR, IXPE), additional environment setup may be required. Refer\
+    \ to the HEAsoft documentation for details.\n\n**Warning for XSPEC Users**: The\
+    \ `/spectral/modelData` directory (~5.9GB) is excluded from this package to reduce\
+    \ its size, making XSPEC unusable without it. \n\nTo enable XSPEC, follow these\
+    \ steps:\n\n1. Download the HEAsoft source tarball for the same version as this\
+    \ package (6.35.1):\n   ```\n   wget https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.35.1/heasoft-6.35.1src.tar.gz\n\
+    \   ```\n   Replace `6.35.1` by the actual the package version (e.g., 6.35.1).\n\
+    \n2. Extract the tarball:\n   ```\n   tar zxf heasoft-6.35.1src.tar.gz\n   ```\n\
+    \n3. Copy the `modelData` directory to the appropriate location:\n   ```\n   mkdir\
+    \ -p \"${CONDA_PREFIX}/spectral\"\n   cp -r heasoft-6.35.1/Xspec/src/spectral/modelData\
+    \ \"${CONDA_PREFIX}/spectral/\"\n   ```\n"
   doc_url: https://heasarc.gsfc.nasa.gov/docs/software/heasoft/
   home: https://heasarc.gsfc.nasa.gov/lheasoft/
   license: Clear BSD License
   license_file: LICENSE
   summary: NASA High Energy Astrophysics Software (HEAsoft)
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
   skip: true
-  string: h_0
+  string: h_1
 extra:
   recipe-maintainers:
   - j34ni

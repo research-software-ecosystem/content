@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/minjeongjj/DupHIST
   home: https://github.com/minjeongjj/DupHIST
   license: MIT
   license_file: LICENSE
@@ -13,19 +14,18 @@ build:
 
     cp -r scripts/* $PREFIX/bin/scripts/
 
-    cp duphist $PREFIX/bin/
-
-    chmod +x $PREFIX/bin/duphist
+    install -v -m 755 duphist $PREFIX/bin
 
     '
 package:
   name: duphist
-  version: 1.0.0
+  version: 1.0.6
 requirements:
   run:
   - perl
   - perl-config-tiny
   - perl-data-dumper
+  - perl-statistics-r
   - r-base
   - r-cluster
   - r-desctools
@@ -33,10 +33,13 @@ requirements:
   - r-foreach
   - r-doparallel
   - r-tictoc
+  - r-agricolae
+  - r-ape
   - prank
+  - kakscalculator2
 source:
-  sha256: e84dadffa07f8e157f21784b61fd784275b8836a2dae05faa6126a5fa4c797ad
-  url: https://github.com/minjeongjj/DupHIST/archive/refs/tags/v1.0.0.tar.gz
+  sha256: 297e50accceb730b6ffab6465d64399c705ee390e65c4df6263bace4df486731
+  url: https://github.com/minjeongjj/DupHIST/archive/refs/tags/v1.0.6.tar.gz
 test:
   commands:
   - duphist --help || true

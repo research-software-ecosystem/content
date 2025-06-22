@@ -1,0 +1,42 @@
+about:
+  dev_url: https://gitlab.com/StuntsPT/Structure_threader
+  home: https://gitlab.com/StuntsPT/Structure_threader
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A program to parallelize runs of 'Structure', 'fastStructure' and 'MavericK'.
+build:
+  binary_relocation: false
+  detect_binary_files_with_prefix: false
+  entry_points:
+  - structure_threader = structure_threader.structure_threader:main
+  ignore_prefix_files: true
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - StuntsPT
+  - fonors
+package:
+  name: structure-threader
+  version: 1.3.11
+requirements:
+  host:
+  - python >=3.4
+  - pip
+  - setuptools
+  run:
+  - python >=3.4
+  - plotly >=4.1.1
+  - numpy >=1.12.1
+  - colorlover >=0.3.0
+  - matplotlib-base
+source:
+  sha256: 6da669746359c5ac4d829a6ba69523eba3344411d788aef6c360c1edb84e1bfe
+  url: https://pypi.org/packages/source/s/structure-threader/structure_threader-1.3.11.tar.gz
+test:
+  imports:
+  - structure_threader

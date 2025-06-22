@@ -1,13 +1,18 @@
 about:
   dev_url: https://github.com/arshajii/ema
   doc_url: https://github.com/arshajii/ema#usage
-  home: http://ema.csail.mit.edu/
+  home: https://cb.csail.mit.edu/ema
   license: MIT
-  summary: Fast & accurate alignment of barcoded short-reads
+  license_family: MIT
+  summary: Fast & accurate alignment of barcoded short-reads.
 build:
-  number: 1
-  skip: true
+  number: 2
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1101/220236
 package:
@@ -20,13 +25,15 @@ requirements:
   - None
   host:
   - zlib
+  - libgomp
   - llvm-openmp
   run:
-  - zlib
+  - libgomp
   - llvm-openmp
 source:
   patches:
-  - bwa.patch
+  - 0001-Makefile.patch
+  - 0002-bwa-Makefile.patch
   sha256: e09038cb21a069c1c04d6e57a64caf2a0df2623f9a87a15aa630e60c3d23e03d
   url: https://github.com/arshajii/ema/releases/download/v0.7.0/ema-v0.7.0.tar.gz
 test:
