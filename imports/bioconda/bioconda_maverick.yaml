@@ -1,0 +1,38 @@
+about:
+  description: 'MavericK is a C++ program for model-based clustering of population-genetic
+    data using Bayesian inference.
+
+    '
+  dev_url: https://github.com/bobverity/MavericK
+  doc_url: https://github.com/bobverity/MavericK/blob/master/README.md
+  home: https://github.com/bobverity/MavericK
+  license: MIT
+  license_family: MIT
+  summary: Bayesian clustering for genetic data.
+build:
+  number: 0
+  run_exports:
+  - None
+  script: 'mkdir -p ${PREFIX}/bin
+
+    ${CXX} ${CXXFLAGS} -std=c++14 *.cpp -O3 -o MavericK
+
+    install -v -m 755 MavericK ${PREFIX}/bin
+
+    '
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: maverick
+  version: 1.0.5
+requirements:
+  build:
+  - None
+source:
+  sha256: 8f333495e4ce97c99edb504dadc0d3ab85173f163693455fa1e02eeb84f799a3
+  url: https://github.com/bobverity/MavericK/archive/v1.0.5.tar.gz
+test:
+  script:
+  - run_test.sh

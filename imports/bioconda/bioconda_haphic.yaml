@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/zengxiaofei/HapHiC
+  license: BSD 3-Clause License
+  license_file: LICENSE
+  summary: 'HapHiC: a fast, reference-independent, allele-aware scaffolding tool based
+    on Hi-C data'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: haphic
+  version: 1.0.7
+requirements:
+  run:
+  - python >=3.12
+  - mkl
+  - sparse_dot_mkl
+  - numpy <2.0.0
+  - scipy
+  - matplotlib-base
+  - scikit-learn
+  - networkx
+  - pysam
+  - portion
+source:
+  sha256: 66ea84d499bd24b2f207d2adcee91f9419b4136f18101916a64dae6ea60d76a5
+  url: https://github.com/zengxiaofei/haphic/archive/refs/tags/v1.0.7.tar.gz
+test:
+  commands:
+  - haphic --version
+  - haphic --help
+  - haphic check
+  - haphic refsort --help

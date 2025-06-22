@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v481_base/README
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v482_base/README
   home: https://hgdownload.cse.ucsc.edu/admin/exe
   license: Varies; see https://genome.ucsc.edu/license
   summary: Convert a bedGraph file to bigWig format.
@@ -11,12 +11,13 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:UCSC_Genome_Browser_Utilities
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-bedgraphtobigwig
-  version: '481'
+  version: 482
 requirements:
   build:
   - make
@@ -27,6 +28,7 @@ requirements:
   - mysql-connector-c
   - libopenssl-static
   - clangdev
+  - rsync
   - zlib
   - bzip2
   - liblzma-devel
@@ -39,8 +41,8 @@ source:
   patches:
   - include.patch
   - include.linux.patch
-  sha256: 0df96181560e2cac3c29628b51140d60a56a0bf088c361bfd5eeb233009f98ec
-  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v481.src.tgz
+  sha256: 745d0f0a980e9f863373b0b0a6ad7961a1d0f53a9d7c446e92fc28fc4909431a
+  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v482.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/bedGraphToBigWig

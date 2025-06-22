@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/KoslickiLab/YACHT
-  doc_url: https://github.com/KoslickiLab/YACHT/wiki
+  doc_url: https://usher-wiki.readthedocs.io/en/latest
   home: https://github.com/KoslickiLab/YACHT
   license: MIT
   license_family: MIT
@@ -9,35 +9,31 @@ about:
     absence of organisms in a metagenomic sample, based on average nucleotide identity
     (ANI).
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
-  skip: true
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - sed -i.bak 's|g++|$(CXX)|' Makefile
+  - sed -i.bak 's|-lpthread|-pthread|' Makefile
+  - sed -i.bak 's|-Wsign-compare|-Wsign-compare -I$(PREFIX)/include|' Makefile
+  - rm -rf *.bak
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   authors:
   - dkoslicki
   - chunyuma
-  - mahmudhera
-  - sew347
-  - mlupei
-  - mfl15
-  - ShaopengLiu1
-  - raquellewei
-  - mohsenht
   identifiers:
   - doi:10.1093/bioinformatics/btae047
   recipe-maintainers:
   - chunyuma
   - dkoslicki
-  skip-lints:
-  - should_use_compilers
-  - should_be_noarch_generic
 package:
   name: yacht
-  version: 1.3.0
+  version: 1.3.1
 requirements:
   build:
   - None
@@ -53,7 +49,6 @@ requirements:
   - tqdm
   - biom-format
   - numpy >=1.22.4
-  - setuptools
   - requests
   run:
   - python >3.6,<3.12
@@ -75,8 +70,8 @@ requirements:
   - ruff
   - sourmash_plugin_branchwater
 source:
-  sha256: 68d272daeb70ed7390aa2d468934dc4bf0aa9a021f99fe99847b8a664e8ac8cf
-  url: https://github.com/KoslickiLab/YACHT/releases/download/v1.3.0/yacht-1.3.0.tar.gz
+  sha256: 451d9fc14eaa331a50d4dcdf0c4467ebcc85c880c2efe227c6c61e5389e22157
+  url: https://github.com/KoslickiLab/YACHT/archive/v1.3.1.tar.gz
 test:
   commands:
   - yacht --help

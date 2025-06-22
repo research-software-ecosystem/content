@@ -10,17 +10,19 @@ about:
     and characters.'
 build:
   entry_points:
-  - sumtrees=dendropy.application.sumtrees:main
-  - sumlabels=dendropy.application.sumlabels:main_cli
-  - dendropy-format=dendropy.application.dendropy_format:main
-  - sumtrees.py=dendropy.application.sumtrees:main
-  - sumlabels.py=dendropy.application.sumlabels:main_cli
+  - sumtrees = dendropy.application.sumtrees:main
+  - sumlabels = dendropy.application.sumlabels:main_cli
+  - dendropy-format = dendropy.application.dendropy_format:main
+  - sumtrees.py = dendropy.application.sumtrees:main
+  - sumlabels.py = dendropy.application.sumlabels:main_cli
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install . --use-pep517 --no-deps --no-build-isolation --no-cache-dir
-    -vvv
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -rf *.bak
+  - -m pip install . --use-pep517 --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   identifiers:
   - biotools:dendropy

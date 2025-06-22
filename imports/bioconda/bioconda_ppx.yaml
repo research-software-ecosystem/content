@@ -13,13 +13,15 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.5.0
 extra:
   recipe-maintainers:
   - wfondrie
 package:
   name: ppx
-  version: 1.4.4
+  version: 1.5.0
 requirements:
   host:
   - pip
@@ -31,8 +33,8 @@ requirements:
   - tqdm >=4.60.0
   - cloudpathlib >=0.7.1
 source:
-  sha256: 97eacbc9272faf98ab2fa16f0949eb55bd0eab5cecf9e8381321e754808e2cd8
-  url: https://pypi.io/packages/source/p/ppx/ppx-1.4.4.tar.gz
+  sha256: 623d48cc8ad6954c77abb8daaa18d1a2fb2d426a747c9d921e5173811ee3c1b1
+  url: https://pypi.org/packages/source/p/ppx/ppx-1.5.0.tar.gz
 test:
   commands:
   - ppx --help

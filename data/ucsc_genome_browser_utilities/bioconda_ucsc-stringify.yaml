@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v472_base/README
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v482_base/README
   home: https://hgdownload.cse.ucsc.edu/admin/exe
   license: Varies; see https://genome.ucsc.edu/license
   summary: Convert file to C strings.
@@ -11,16 +11,16 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:UCSC_Genome_Browser_Utilities
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-stringify
-  version: '472'
+  version: 482
 requirements:
   build:
   - make
-  - None
   - None
   host:
   - libpng
@@ -28,7 +28,10 @@ requirements:
   - mysql-connector-c
   - libopenssl-static
   - clangdev
+  - rsync
   - zlib
+  - bzip2
+  - liblzma-devel
   run:
   - libpng
   - libuuid
@@ -37,9 +40,9 @@ requirements:
 source:
   patches:
   - include.patch
-  - include.macos.patch
-  sha256: 26d126c51d0ba3165519b116b6461af8bfd938505f6c0871cb325a7ab82368f2
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v472.src.tgz
+  - include.linux.patch
+  sha256: 745d0f0a980e9f863373b0b0a6ad7961a1d0f53a9d7c446e92fc28fc4909431a
+  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v482.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/stringify

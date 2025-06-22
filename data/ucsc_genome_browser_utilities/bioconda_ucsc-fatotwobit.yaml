@@ -1,8 +1,8 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v480_base/README
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v482_base/README
   home: https://hgdownload.cse.ucsc.edu/admin/exe
-  license: Varies; see http://genome.ucsc.edu/license
+  license: Varies; see https://genome.ucsc.edu/license
   summary: Convert DNA from fasta to 2bit format.
 build:
   number: 0
@@ -11,22 +11,23 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:UCSC_Genome_Browser_Utilities
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-fatotwobit
-  version: 480
+  version: 482
 requirements:
   build:
   - make
-  - None
   - None
   host:
   - libpng
   - libuuid
   - mysql-connector-c
   - libopenssl-static
+  - rsync
   - clangdev
   - zlib
   - bzip2
@@ -40,8 +41,8 @@ source:
   patches:
   - include.patch
   - include.linux.patch
-  sha256: 4667a4221740c426e0d6a709eb59029d3b48f55346fea464ff5490e3ee0c7aed
-  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v480.src.tgz
+  sha256: 745d0f0a980e9f863373b0b0a6ad7961a1d0f53a9d7c446e92fc28fc4909431a
+  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v482.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/faToTwoBit

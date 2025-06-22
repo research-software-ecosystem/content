@@ -3,62 +3,55 @@ about:
   home: https://github.com/cmmr/EsViritu
   license: MIT
   license_file: LICENSE
-  summary: 'EsViritu: Read mapping pipeline for detection and measurement of virus
-    pathogens from metagenomic or clinical data'
+  summary: Read mapping pipeline for detection and measurement of human and animal
+    virus pathogens from short read metagenomic environmental or clinical samples.
 build:
   entry_points:
-  - EsViritu = EsViritu.EsViritu:EsViritu
+  - EsViritu = EsViritu:esviritu
+  - summarize_esv_runs = EsViritu.summarize_esv_runs:summarize_esv_runs
   noarch: python
   number: 0
-  script:
-  - -m pip install . --no-deps -vv
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
   identifiers:
-  - https://doi.org/10.1101/2023.05.03.23289441
+  - https://doi.org/10.1038/s41467-023-42064-1
   recipe-maintainers:
   - mtisza1
 package:
   name: esviritu
-  version: 0.2.3
+  version: 1.0.1
 requirements:
   host:
+  - python >=3.11
+  - setuptools >=61.0
   - pip
-  - python >=3.8
   run:
-  - python >=3.8
-  - blast >=2.13.0
-  - minimap2 >=2.21
-  - dashing =1.0
-  - bwa-mem2 =2.2.1
-  - samtools >=1.9
-  - bioawk =1.0
-  - fastani >=1.3
-  - coverm =0.6.1
-  - seqkit =2.4.0
-  - bedtools =2.30.0
-  - fastp >=0.23.2
-  - seqfu >=1.17.1
-  - r-rcolorbrewer
-  - r-scales
-  - r-htmltools
-  - r-knitr
-  - r-viridis
-  - r-reactablefmtr
-  - r-dplyr
-  - scipy
+  - python >=3.11
   - numpy
-  - tqdm
-  - r-data.table
+  - polars
+  - pysam
+  - pyyaml
+  - minimap2 >=2.21
+  - samtools >=1.15
+  - fastp >=0.23.2
+  - seqkit
   - r-base
-  - r-remotes
+  - r-htmltools
+  - r-scales
   - r-reactable
-  - r-readxl
-  - r-lubridate
-  - r-stringr
-  - biopython
+  - r-reactablefmtr
+  - r-magrittr
+  - r-remotes
 source:
-  sha256: 19c0afbb59097f81ada768a2c55a0915678ebaf2f843589beb962ebf8522be31
-  url: https://github.com/cmmr/esviritu/archive/v0.2.3.tar.gz
+  sha256: a9c1b44be91f9972ca7c144759e776845be71f306b09a3532b58eb33c127f06c
+  url: https://github.com/cmmr/EsViritu/archive/v1.0.1.tar.gz
 test:
   commands:
-  - EsViritu --version
+  - pip check
+  - EsViritu --help
+  imports:
+  - EsViritu
+  requires:
+  - pip

@@ -15,18 +15,21 @@ about:
   summary: CroCoDeEL is a tool that detects cross-sample contamination in shotgun
     metagenomic data
 build:
+  entry_points:
+  - crocodeel = crocodeel.crocodeel:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 package:
   name: crocodeel
-  version: 1.0.6
+  version: 1.0.7
 requirements:
   host:
   - python >=3.12
-  - poetry
+  - poetry-core
+  - pip
   run:
   - python >=3.12
   - pandas >=2.2
@@ -37,8 +40,8 @@ requirements:
   - matplotlib-base >=3.8
   - tqdm >=4.66
 source:
-  sha256: c529f578c960cff244d834be8bf2e54f491bead68a29a0ed3bc9768045a670ea
-  url: https://github.com/metagenopolis/crocodeel/archive/v1.0.6.tar.gz
+  sha256: fd91c31e305f722684cda2485d64705a20926fab1ea9a6a8999c3c5fb10a5dc7
+  url: https://pypi.io/packages/source/c/crocodeel/crocodeel-1.0.7.tar.gz
 test:
   commands:
   - crocodeel test_install
