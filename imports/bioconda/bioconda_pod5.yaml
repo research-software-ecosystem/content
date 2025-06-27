@@ -30,31 +30,32 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 package:
   name: pod5
-  version: 0.3.15
+  version: 0.3.27
 requirements:
   host:
   - python >=3.8
   - pip
+  - setuptools
   run:
   - python >=3.8
-  - lib-pod5 ==0.3.15
+  - lib-pod5 ==0.3.27
   - iso8601
-  - importlib-metadata
   - more-itertools
   - numpy >=1.21.0
   - typing-extensions
-  - pyarrow >=16.1.0,<16.2.dev0
+  - pyarrow >=18.0.0
   - pytz
   - packaging
-  - polars >=0.19,<1.dev0
-  - h5py >=3.11.0,<3.12.dev0
+  - polars >=1.20
+  - h5py >=3.11
+  - vbz-h5py-plugin
   - tqdm
 source:
-  sha256: 85e3196bfc375b7d6eb36787a312af5276b19829ceded551b55e9e193939e8f4
-  url: https://github.com/nanoporetech/pod5-file-format/releases/download/0.3.15/pod5-0.3.15.tar.gz
+  sha256: 710b631177dd0c5b0a7422ed98e503516c61066d858a2c66097a3c89cf29f017
+  url: https://github.com/nanoporetech/pod5-file-format/releases/download/0.3.27/pod5-0.3.27.tar.gz
 test:
   commands:
   - pod5 --help

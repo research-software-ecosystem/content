@@ -1,35 +1,42 @@
 about:
+  dev_url: https://github.com/Illumina/ExpansionHunterDenovo
   home: https://github.com/Illumina/ExpansionHunterDenovo
-  license: Apache License 2.0
+  license: Apache-2.0
+  license_family: APACHE
   summary: ExpansionHunter Denovo (EHdn) is a suite of tools for detecting novel expansions
     of short tandem repeats (STRs).
 build:
-  number: 9
+  number: 10
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: expansionhunterdenovo
   version: 0.9.0
 requirements:
   build:
   - make
+  - cmake
   - None
   - None
+  - pkg-config
   host:
   - zlib
   - bzip2
-  - cmake
   - backports.lzma
   - htslib
   - boost-cpp
-  - spdlog=1.4.2
+  - spdlog
+  - fmt
   run:
-  - zlib
-  - bzip2
-  - cmake
   - backports.lzma
   - htslib
   - boost-cpp
-  - spdlog=1.4.2
+  - spdlog
+  - fmt
 source:
   sha256: 2cddd07a2b2a6a438d1b1cb756b2b6fc8d76a0213699e035db72f265f98a6b44
   url: https://github.com/Illumina/ExpansionHunterDenovo/archive/v0.9.0.tar.gz

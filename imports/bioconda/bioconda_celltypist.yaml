@@ -1,19 +1,20 @@
 about:
   dev_url: https://github.com/Teichlab/celltypist
-  doc_rul: https://github.com/Teichlab/celltypist
+  doc_url: https://www.celltypist.org
   home: https://github.com/Teichlab/celltypist
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: A tool for semi-automatic cell type annotation
+  summary: A tool for semi-automatic cell type annotation.
 build:
   entry_points:
-  - celltypist=celltypist.command_line:main
+  - celltypist = celltypist.command_line:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
 extra:
   identifiers:
   - doi:10.1126/science.abl5197
@@ -22,14 +23,15 @@ extra:
   - mp33
 package:
   name: celltypist
-  version: 1.6.3
+  version: 1.7.1
 requirements:
   host:
   - pip
   - python >=3.6
+  - setuptools
   run:
   - click >=7.1.2
-  - leidenalg >=0.8.3
+  - leidenalg >=0.9.0
   - numpy >=1.19.0
   - openpyxl >=3.0.4
   - pandas >=1.0.5
@@ -39,8 +41,8 @@ requirements:
   - scikit-learn >=0.24.1
   - python-annoy
 source:
-  sha256: 7f3657a78e5eba2ee839e2ba94ae0d4c14599990c0c9a3d205ae2be9206ea976
-  url: https://pypi.io/packages/source/c/celltypist/celltypist-1.6.3.tar.gz
+  sha256: 6ffaebc0f296d24785ffce25951ad70a00553bd8d06aff2f55f98251b739ce00
+  url: https://pypi.org/packages/source/c/celltypist/celltypist-1.7.1.tar.gz
 test:
   commands:
   - celltypist --help

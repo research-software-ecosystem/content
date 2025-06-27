@@ -1,12 +1,14 @@
 about:
-  home: pypi.org/project/rmlst-api
+  dev_url: https://github.com/domenico-simone/rmlst_api
+  doc_url: https://pubmlst.org/species-id/species-identification-via-api
+  home: https://github.com/domenico-simone/rmlst_api
   license: MIT
   license_family: MIT
-  license_file: null
-  summary: API to perform rMLST on PubMLST.org
+  license_file: LICENSE
+  summary: Python package to perform rMLST through the PubMLST API.
 build:
   entry_points:
-  - rmlst-api = rmlst_api.cli:run_all
+  - rmlst-api = src.rmlst_api.cli:run_all
   noarch: python
   number: 0
   run_exports:
@@ -17,22 +19,19 @@ extra:
   - domenico-simone
 package:
   name: rmlst_api
-  version: 0.1.6
+  version: 0.1.8
 requirements:
   host:
-  - hatchling
-  - click
+  - poetry-core
   - pip
-  - python
+  - python >=3.9
   run:
-  - requests 2.28.1
+  - requests >=2.32.3
   - click
-  - python
+  - python >=3.9
 source:
-  sha256: d5f7b74402c5bfb18a6b84af08227b8066e32f5b49b4cba3a624a0bcc83dfa24
-  url: https://pypi.io/packages/source/r/rmlst_api/rmlst_api-0.1.6.tar.gz
+  sha256: 6f8259958b1b159f338188112d8f05f7c6380ba4fb97ecf9584e6f85635acc8d
+  url: https://pypi.io/packages/source/r/rmlst_api/rmlst_api-0.1.8.tar.gz
 test:
   commands:
   - rmlst-api --help
-  imports:
-  - rmlst_api

@@ -1,44 +1,52 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/master/README
-  home: https://hgdownload.cse.ucsc.edu/admin/exe/
-  license: Varies; see http://genome.ucsc.edu/license
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v482_base/README
+  home: https://hgdownload.cse.ucsc.edu/admin/exe
+  license: Varies; see https://genome.ucsc.edu/license
   summary: Sum columns in a text file.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:UCSC_Genome_Browser_Utilities
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-addcols
-  version: '469'
+  version: '482'
 requirements:
   build:
   - make
+  - None
   - None
   host:
   - libpng
   - libuuid
   - mysql-connector-c
   - libopenssl-static
+  - clangdev
+  - rsync
+  - libiconv
+  - bzip2
+  - liblzma-devel
   - zlib
   run:
   - libpng
   - libuuid
   - mysql-connector-c
   - libopenssl-static
-  - zlib
 source:
   patches:
-  - include.patch
-  sha256: 3f95b26ccca854c965c05773481c269f2a0e6fb1906ae8a7fe2437c6ad543963
-  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v469.src.tgz
+  - 0001-include.patch
+  - 0002-include.linux.patch
+  - 0003-common.mk.patch
+  - 0004-straw.patch
+  sha256: 745d0f0a980e9f863373b0b0a6ad7961a1d0f53a9d7c446e92fc28fc4909431a
+  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v482.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/addCols
