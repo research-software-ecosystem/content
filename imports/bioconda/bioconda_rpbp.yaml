@@ -5,7 +5,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Ribosome profiling with Bayesian predictions (Rp-Bp)
+  summary: Ribosome profiling with Bayesian predictions (Rp-Bp).
 build:
   entry_points:
   - extract-orf-coordinates = rpbp.reference_preprocessing.extract_orf_coordinates:main
@@ -36,13 +36,14 @@ build:
   - compile-rpbp-models = rpbp.ribo_utils.compile_rpbp_models:main
   - create-read-length-orf-profiles = rpbp.analysis.profile_construction.create_read_length_orf_profiles:main
   - collect-read-length-orf-profiles = rpbp.analysis.profile_construction.collect_read_length_orf_profiles:main
-  number: 2
+  number: 3
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv &&
-    compile-rpbp-models'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv && compile-rpbp-models
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1093/nar/gkw1350
 package:

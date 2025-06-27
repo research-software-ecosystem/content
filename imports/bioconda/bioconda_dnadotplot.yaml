@@ -1,0 +1,41 @@
+about:
+  description: 'A tool for generating DNA dot plots for bioinformatics analysis.
+
+    # Add more detailed description based on actual functionality
+
+    '
+  dev_url: https://github.com/quadram-institute-bioscience/dnadotplot
+  doc_url: https://github.com/quadram-institute-bioscience/dnadotplot
+  home: https://github.com/quadram-institute-bioscience/dnadotplot
+  license: MIT
+  license_family: MIT
+  summary: DNA dot plot generator.
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --locked --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - telatin
+package:
+  name: dnadotplot
+  version: 0.1.4
+requirements:
+  build:
+  - None
+  - None
+  - cargo-bundle-licenses
+  - pkg-config
+source:
+  sha256: 92db68007f6b9ed3d0b2e40779a784a48b31ca206b2c1412f66b119ff8ad74ad
+  url: https://github.com/quadram-institute-bioscience/dnadotplot/archive/refs/tags/v0.1.4.tar.gz
+test:
+  commands:
+  - dnadotplot --help
+  - dnadotplot --version

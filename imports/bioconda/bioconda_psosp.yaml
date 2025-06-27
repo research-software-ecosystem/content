@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/mujiezhang/PSOSP
+  doc_url: https://github.com/mujiezhang/PSOSP/blob/main/README.md
+  home: https://github.com/mujiezhang/PSOSP
+  license: MIT
+  license_file: LICENSE
+  summary: PSOSP (Prophage SOS-dependency Predictor)
+build:
+  entry_points:
+  - psosp = psosp:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - mujiezhang
+package:
+  name: psosp
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools
+  run:
+  - python >=3.10
+  - biopython
+  - scikit-learn
+  - diamond >=2.0.4
+  - meme ==5.5.5
+  - prodigal
+  - checkv ==1.0.3
+source:
+  sha256: 155916e961732e717a9e665b694fe22218563a7e26cb55350cc607a270d18f11
+  url: https://github.com/mujiezhang/PSOSP/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - psosp --version

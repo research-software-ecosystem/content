@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/jodyphelan/tgtools
+  doc_url: https://github.com/jodyphelan/tgtools/blob/v0.0.4/README.md
+  home: https://github.com/jodyphelan/tgtools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A command-line tool to help manipulate transjson files which are used to
+    store transmission/relatedness networks.
+build:
+  entry_points:
+  - tgtools = tgtools.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+package:
+  name: tgtools
+  version: 0.0.4
+requirements:
+  host:
+  - python >=3
+  - flit-core >=3.2,<4
+  - pip
+  run:
+  - python >=3
+  - networkx
+  - pydantic >=2.0
+  - tqdm
+source:
+  sha256: ea13088b785effcd033e2021d12fdcc01ea35f63cdc3bedc6d4353674bcab0d2
+  url: https://github.com/jodyphelan/tgtools/archive/v0.0.4.tar.gz
+test:
+  commands:
+  - tgtools --help
+  imports:
+  - tgtools

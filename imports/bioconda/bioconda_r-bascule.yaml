@@ -1,0 +1,110 @@
+about:
+  description: 'BASCULE is a Bayesian model to fit multiple signature types from multiple
+    patients, leveraging
+
+    a pre-existing catalogue of known signatures such as COSMIC. BASCULE searches
+    for known
+
+    signatures from the input catalogue as well as for new signatures that outside
+    the catalogue,
+
+    accounting for hidden structure in the input data (e.g., distinct tumour types).
+    Moreover,
+
+    bascule performs tensor clustering to retrieve latent groups in the input cohort
+    from the
+
+    exposures of multiple signature types jointly. The model uses non-negative matrix
+    factorisation
+
+    and variational inference implemented in the pybascule Python package.
+
+    '
+  doc_url: https://caravagnalab.github.io/bascule/
+  home: https://github.com/caravagnalab/bascule
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Bayesian inference and clustering of mutational signatures leveraging biological
+    priors
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - elena-buscaroli
+package:
+  name: r-bascule
+  version: 1.0.1
+requirements:
+  build:
+  - git
+  host:
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-gridextra
+  - r-reticulate
+  - r-tidyr
+  - r-reshape2
+  - r-tibble
+  - r-dplyr
+  - r-magrittr
+  - r-doparallel
+  - r-cli
+  - r-stringr
+  - r-ggtext
+  - r-pheatmap
+  - r-ggplotify
+  - r-patchwork
+  - r-scales
+  - r-quadprog
+  - r-progress
+  - r-ggh4x
+  - r-polychrome
+  - r-ggrepel
+  - r-ggsci
+  - r-lsa
+  - r-gtools
+  - r-ggpubr
+  run:
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-gridextra
+  - r-reticulate
+  - r-tidyr
+  - r-reshape2
+  - r-tibble
+  - r-dplyr
+  - r-magrittr
+  - r-doparallel
+  - r-cli
+  - r-stringr
+  - r-ggtext
+  - r-pheatmap
+  - r-ggplotify
+  - r-patchwork
+  - r-scales
+  - r-quadprog
+  - r-progress
+  - r-ggh4x
+  - r-polychrome
+  - r-ggrepel
+  - r-ggsci
+  - r-lsa
+  - r-gtools
+  - r-ggpubr
+source:
+  sha256: 2b4499e4a418fdc244d68f59f8c98609a98bee35e1a632ab341cfd9d68f2a798
+  url: https://github.com/caravagnalab/bascule/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - $R -e "library(bascule)"
+  - '"%R%" -e "library(bascule)"'

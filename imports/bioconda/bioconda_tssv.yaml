@@ -1,16 +1,24 @@
 about:
   dev_url: https://github.com/jfjlaros/tssv
-  doc_url: https://tssv.readthedocs.io/en/latest/
-  home: The package home page
+  doc_url: https://tssv.readthedocs.io/en/latest
+  home: https://github.com/jfjlaros/tssv
   license: MIT
   license_family: MIT
-  license_file: null
   summary: Targeted characterisation of short structural variation.
 build:
-  number: 5
-  script: ' -m pip install . -vv'
+  entry_points:
+  - tssv = tssv.cli:main
+  - tannotate = tssv_extras.annotate:main
+  number: 6
+  run_exports:
+  - None
+  script:
+  - export CFLAGS="${CFLAGS} -DNO_SSE -O3 -Xlinker -zmuldefs"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   recipe-maintainers:
   - Redmar-van-den-Berg
 package:
@@ -30,8 +38,9 @@ requirements:
   - xopen
   - setuptools
 source:
+  patches: tssv-sources.patch
   sha256: 28b0b5071bcb50362841a053e94d860be371bc0fc1420c28678399b3abb22383
-  url: https://pypi.io/packages/source/t/tssv/tssv-1.1.2.tar.gz
+  url: https://pypi.org/packages/source/t/tssv/tssv-1.1.2.tar.gz
 test:
   commands:
   - tssv -h
