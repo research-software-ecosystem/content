@@ -12,6 +12,17 @@
     "cost": "Free of charge",
     "credit": [
         {
+            "email": "contact@arb-silva.de",
+            "gridid": "grid.507782.f",
+            "name": "SILVA Team",
+            "rorid": "027z9pz32",
+            "typeEntity": "Division",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://www.arb-silva.de/contact/team/"
+        },
+        {
             "email": "hub@dsmz.de",
             "gridid": "grid.420081.f",
             "name": "Leibniz Institute DSMZ-German Collection of Microorganisms and Cell Cultures",
@@ -21,13 +32,6 @@
                 "Provider"
             ],
             "url": "https://www.dsmz.de"
-        },
-        {
-            "email": "contact@arb-silva.de",
-            "typeEntity": "Project",
-            "typeRole": [
-                "Primary contact"
-            ]
         }
     ],
     "description": "SILVA provides comprehensive, quality checked and regularly updated datasets of aligned small (16S/18S, SSU) and large subunit (23S/28S, LSU) ribosomal RNA (rRNA) sequences for all three domains of life (Bacteria, Archaea and Eukaryota).",
@@ -48,7 +52,7 @@
             "type": [
                 "General"
             ],
-            "url": "http://www.arb-silva.de/documentation/"
+            "url": "https://www.arb-silva.de/documentation/"
         },
         {
             "type": [
@@ -147,13 +151,29 @@
             "output": [
                 {
                     "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": [
+                        {
+                            "term": "ARB",
+                            "uri": "http://edamontology.org/format_3830"
+                        },
+                        {
+                            "term": "FASTA-aln",
+                            "uri": "http://edamontology.org/format_1984"
+                        }
+                    ]
+                },
+                {
+                    "data": {
                         "term": "Sequence alignment (nucleic acid)",
                         "uri": "http://edamontology.org/data_1383"
                     },
                     "format": [
                         {
-                            "term": "Binary format",
-                            "uri": "http://edamontology.org/format_2333"
+                            "term": "ARB",
+                            "uri": "http://edamontology.org/format_3830"
                         },
                         {
                             "term": "FASTA-aln",
@@ -184,55 +204,26 @@
                     },
                     "format": [
                         {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ],
-            "note": "SILVA Incremental Aligner (SINA) is used to align the rRNA gene databases provided by SILVA, as well as user submitted sequences. SINA uses a combination of k-mer searching and partial order alignment (POA) to maintain very high alignment accuracy while satisfying high throughput performance demands. Aligned sequences can be dowloaded as FASTA or ARB files",
-            "operation": [
-                {
-                    "term": "Sequence alignment",
-                    "uri": "http://edamontology.org/operation_0292"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence alignment (nucleic acid)",
-                        "uri": "http://edamontology.org/data_1383"
-                    },
-                    "format": [
-                        {
-                            "term": "Binary format",
-                            "uri": "http://edamontology.org/format_2333"
-                        },
-                        {
                             "term": "FASTA-aln",
                             "uri": "http://edamontology.org/format_1984"
                         }
                     ]
                 }
-            ]
-        },
-        {
-            "input": [
-                {
-                    "data": {
-                        "term": "Nucleic acid sequence",
-                        "uri": "http://edamontology.org/data_2977"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
             ],
-            "note": "SINA can also operate as a taxonomic classification tool. It uses the search result to derive a classification with the LCA (lowest common ancestor) method. Each query sequence is assigned the shared part of the classifications of the search results. Aligned sequences can be dowloaded as FASTA or ARB files Taxonomic classification results can be downloaded as csv files.",
+            "note": "The Alignment, Classification and Tree Service (ACT) of SILVA allows to align and optionally classify sequences using the SILVA Incremental Aligner (SINA). From aligned sequences, (optionally) phylogenetic trees can be inferred using FastTree or RAxML.",
             "operation": [
+                {
+                    "term": "Global alignment",
+                    "uri": "http://edamontology.org/operation_0496"
+                },
+                {
+                    "term": "Multiple sequence alignment",
+                    "uri": "http://edamontology.org/operation_0492"
+                },
+                {
+                    "term": "Phylogenetic inference (maximum likelihood and Bayesian methods)",
+                    "uri": "http://edamontology.org/operation_0547"
+                },
                 {
                     "term": "Taxonomic classification",
                     "uri": "http://edamontology.org/operation_3460"
@@ -241,17 +232,45 @@
             "output": [
                 {
                     "data": {
-                        "term": "Sequence alignment (nucleic acid)",
+                        "term": "Nucleic acid sequence alignment",
                         "uri": "http://edamontology.org/data_1383"
                     },
                     "format": [
                         {
-                            "term": "Binary format",
-                            "uri": "http://edamontology.org/format_2333"
+                            "term": "ARB",
+                            "uri": "http://edamontology.org/format_3830"
                         },
                         {
                             "term": "FASTA-aln",
                             "uri": "http://edamontology.org/format_1984"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Phylogenetic tree",
+                        "uri": "http://edamontology.org/data_0872"
+                    },
+                    "format": [
+                        {
+                            "term": "newick",
+                            "uri": "http://edamontology.org/format_1910"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence alignment report",
+                        "uri": "http://edamontology.org/data_0867"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
                         }
                     ]
                 },
@@ -262,8 +281,8 @@
                     },
                     "format": [
                         {
-                            "term": "Textual format",
-                            "uri": "http://edamontology.org/format_2330"
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
                         }
                     ]
                 }
@@ -282,9 +301,21 @@
                             "uri": "http://edamontology.org/format_1207"
                         }
                     ]
+                },
+                {
+                    "data": {
+                        "term": "PCR primers",
+                        "uri": "http://edamontology.org/data_1240"
+                    },
+                    "format": [
+                        {
+                            "term": "nucleotide",
+                            "uri": "http://edamontology.org/format_1207"
+                        }
+                    ]
                 }
             ],
-            "note": "The SILVA Probe Match and Evaluation Tool detects and displays all occurrences of a given probe or primer sequence in the SILVA datasets. TestPrime allows you to evaluate the performance of primer pairs by running an in silico PCR on the SILVA databases. From the results of the PCR, TestPrime computes coverages for each taxonomic group in all of the taxonomies offered by SILVA.",
+            "note": "The SILVA Probe Match and Evaluation Tool detects and displays all occurrences of a given probe or primer sequence in the SILVA datasets. \n\nTestPrime allows you to evaluate the performance of primer pairs by running an in silico PCR on the SILVA databases. From the results of the PCR, TestPrime computes coverages for each taxonomic group in all of the taxonomies offered by SILVA.",
             "operation": [
                 {
                     "term": "Primer and probe design",
@@ -294,21 +325,69 @@
             "output": [
                 {
                     "data": {
+                        "term": "Nucleic acid sequence",
+                        "uri": "http://edamontology.org/data_2977"
+                    },
+                    "format": [
+                        {
+                            "term": "ARB",
+                            "uri": "http://edamontology.org/format_3830"
+                        },
+                        {
+                            "term": "FASTA-aln",
+                            "uri": "http://edamontology.org/format_1984"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Nucleic acid sequence alignment",
+                        "uri": "http://edamontology.org/data_1383"
+                    },
+                    "format": [
+                        {
+                            "term": "ARB",
+                            "uri": "http://edamontology.org/format_3830"
+                        },
+                        {
+                            "term": "FASTA-aln",
+                            "uri": "http://edamontology.org/format_1984"
+                        }
+                    ]
+                },
+                {
+                    "data": {
                         "term": "Report",
                         "uri": "http://edamontology.org/data_2048"
                     },
                     "format": [
                         {
-                            "term": "Textual format",
-                            "uri": "http://edamontology.org/format_2330"
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence set",
+                        "uri": "http://edamontology.org/data_0850"
+                    },
+                    "format": [
+                        {
+                            "term": "Binary format",
+                            "uri": "http://edamontology.org/format_2333"
                         }
                     ]
                 }
             ]
         }
     ],
-    "homepage": "http://www.arb-silva.de",
-    "lastUpdate": "2025-01-22T09:59:03.064970Z",
+    "homepage": "https://www.arb-silva.de",
+    "lastUpdate": "2025-06-30T13:26:42.882897Z",
     "license": "CC-BY-4.0",
     "link": [
         {
@@ -379,7 +458,7 @@
                         "name": "Pruesse E."
                     }
                 ],
-                "citationCount": 2352,
+                "citationCount": 2408,
                 "date": "2012-07-01T00:00:00Z",
                 "journal": "Bioinformatics",
                 "title": "SINA: Accurate high-throughput multiple sequence alignment of ribosomal RNA genes"
@@ -417,7 +496,7 @@
                         "name": "Quast C."
                     }
                 ],
-                "citationCount": 5145,
+                "citationCount": 5291,
                 "date": "2007-12-01T00:00:00Z",
                 "journal": "Nucleic Acids Research",
                 "title": "SILVA: A comprehensive online resource for quality checked and aligned ribosomal RNA sequence data compatible with ARB"
@@ -458,7 +537,7 @@
                         "name": "Yilmaz P."
                     }
                 ],
-                "citationCount": 20831,
+                "citationCount": 22633,
                 "date": "2013-01-01T00:00:00Z",
                 "journal": "Nucleic Acids Research",
                 "title": "The SILVA ribosomal RNA gene database project: Improved data processing and web-based tools"
@@ -505,7 +584,7 @@
                         "name": "Yilmaz P."
                     }
                 ],
-                "citationCount": 2372,
+                "citationCount": 2590,
                 "date": "2014-01-01T00:00:00Z",
                 "journal": "Nucleic Acids Research",
                 "title": "The SILVA and \"all-species Living Tree Project (LTP)\" taxonomic frameworks"
@@ -555,7 +634,7 @@
                         "name": "Yilmaz P."
                     }
                 ],
-                "citationCount": 578,
+                "citationCount": 635,
                 "date": "2017-11-10T00:00:00Z",
                 "journal": "Journal of Biotechnology",
                 "title": "25 years of serving the community with ribosomal RNA gene reference databases and tools"
@@ -586,7 +665,7 @@
                         "name": "Yilmaz P."
                     }
                 ],
-                "citationCount": 28,
+                "citationCount": 29,
                 "date": "2017-09-30T00:00:00Z",
                 "journal": "BMC Bioinformatics",
                 "title": "SILVA tree viewer: Interactive web browsing of the SILVA phylogenetic guide trees"
