@@ -9,8 +9,15 @@ about:
 build:
   entry_points:
   - cnvkit.py = cnvlib.cnvkit:main
+  - cnv_annotate.py = cnvlib.cli.cnv_annotate:main
+  - cnv_expression_correlate.py = cnvlib.cli.cnv_expression_correlate:main
+  - cnv_updater.py = cnvlib.cli.cnv_updater:main
+  - genome_instability_index.py = cnvlib.cli.genome_instability_index:main
+  - guess_baits.py = cnvlib.cli.guess_baits:main
+  - reference2targets.py = cnvlib.cli.reference2targets:main
+  - skg_convert.py = skgenome.cli.skg_convert:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
@@ -60,13 +67,19 @@ requirements:
   - scikit-learn >=1.1.0
   - scipy >=1.10.1
 source:
+  patches:
+  - install-scripts.patch
   sha256: 39d65ba3d9c541dfd80986ace298b2d521067d1b81edef7169196b8dcc5d63d5
   url: https://github.com/etal/cnvkit/archive/v0.9.12.tar.gz
 test:
   commands:
   - cnvkit.py -h
+  - cnv_updater.py --help
+  - skg_convert.py --help
   imports:
   - cnvlib
+  - cnvlib.cli
   - cnvlib.segmentation
   - skgenome
+  - skgenome.cli
   - skgenome.tabio

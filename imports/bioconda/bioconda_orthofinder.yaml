@@ -1,7 +1,10 @@
 about:
-  home: https://github.com/davidemms/OrthoFinder
-  license: GPLv3
-  license_file: License.md
+  dev_url: https://github.com/OrthoFinder/OrthoFinder
+  doc_url: https://orthofinder.github.io/OrthoFinder
+  home: https://github.com/OrthoFinder/OrthoFinder
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
   summary: Accurate inference of orthogroups, orthologues, gene trees and rooted species
     tree made easy!
 build:
@@ -13,11 +16,17 @@ files:
 - ExampleData
 package:
   name: orthofinder
-  version: 3.0.1b1
+  version: 3.1.0
 requirements:
   run:
-  - python >=3.7,<3.12
+  - python >=3.8,<3.12
+  - numpy
   - scipy
+  - scikit-learn
+  - biopython
+  - six
+  - ete3
+  - rich
   - blast
   - diamond <2.1|>=2.1.7
   - mcl
@@ -30,12 +39,12 @@ requirements:
   - iqtree
   - bzip2
   - mmseqs2
-  - scikit-learn
-  - biopython
   - aster
+  - famsa
 source:
-  sha256: 0252560f7ee2303ac3400f130e9eb81b3f6419062aa677642a7258659b43a68c
-  url: https://github.com/davidemms/OrthoFinder/releases/download/3.0.1b1/OrthoFinder_source.tar.gz
+  sha256: 1a4c95bd65feb8b337c191d209e0dc7fe7bedbf7ae1b3f2f077caad7cc196d27
+  url: https://github.com/OrthoFinder/OrthoFinder/releases/download/v3.1.0/orthofinder-3.1.0.tar.gz
 test:
   commands:
-  - orthofinder > /dev/null
+  - orthofinder -h
+  - orthofinder -v

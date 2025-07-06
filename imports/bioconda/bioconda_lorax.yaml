@@ -5,15 +5,17 @@ about:
   license_file: LICENSE
   summary: A long-read analysis toolbox for cancer genomics
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1016/j.xgen.2023.100281
 package:
   name: lorax
-  version: 0.3.9
+  version: 0.5.1
 requirements:
   build:
   - make
@@ -21,16 +23,18 @@ requirements:
   host:
   - zlib
   - bzip2
+  - libdeflate
   - boost-cpp
   - htslib
   run:
   - zlib
   - bzip2
+  - libdeflate
   - boost-cpp
   - htslib
 source:
-  sha256: f4fa1f92f75d53af696225a42c3b1ee689a78eee41c09040146da9692a34fd6f
-  url: https://github.com/tobiasrausch/lorax/archive/v0.3.9.tar.gz
+  sha256: debdf849ae79e755a0ee7188a326a1230dc11350bb3fc48aa60eaba45acd9471
+  url: https://github.com/tobiasrausch/lorax/archive/v0.5.1.tar.gz
 test:
   commands:
   - lorax --help
