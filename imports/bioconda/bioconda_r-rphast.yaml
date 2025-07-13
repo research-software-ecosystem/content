@@ -1,0 +1,49 @@
+about:
+  additional-platforms:
+  - linux-aarch64
+  home: http://compgen.cshl.edu/rphast
+  license: BSD_3_clause + file LICENSE
+  license_family: BSD
+  summary: Provides an R interface to the 'PHAST'(<http://compgen.cshl.edu/phast/>)
+    software (Phylogenetic Analysis with Space/Time Models).  It can be used for many
+    types of analysis in comparative and evolutionary genomics, such as estimating
+    models of evolution from sequence data, scoring alignments for conservation or
+    acceleration, and predicting elements based on conservation or custom phylogenetic
+    hidden Markov models.  It can also perform many basic operations on multiple sequence
+    alignments and phylogenetic trees.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+package:
+  name: r-rphast
+  version: 1.6.11
+requirements:
+  build:
+  - None
+  - autoconf
+  - automake
+  - pkg-config
+  - make
+  host:
+  - r-base >=3.6.3
+  - pcre
+  - liblapack
+  - blis >=0.9.0
+  run:
+  - r-base >=3.6.3
+  - pcre
+  - liblapack
+  - blis >=0.9.0
+source:
+  patches:
+  - 0001-fix-lapack-interfaces.patch
+  sha256: bda02d6d1129c01c625927321b341791dfee3e470aaad00dc74a2a705a94e5c7
+  url:
+  - http://compgen.cshl.edu/rphast/downloads/rphast_1.6.11.tar.gz
+test:
+  commands:
+  - $R -e "library('rphast')"

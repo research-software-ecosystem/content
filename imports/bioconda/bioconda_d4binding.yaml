@@ -1,22 +1,23 @@
 about:
   dev_url: https://github.com/38/d4-format
+  doc_url: https://github.com/38/d4-format/blob/v0.3.11/README.md
   home: https://github.com/38/d4-format
   license: MIT
   license_family: MIT
-  summary: 'The C/C++ binding for the D4 file format.
-
-    '
+  license_file: LICENSE
+  summary: The C/C++ binding for the D4 file format.
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/s43588-021-00085-0
   recipe-maintainers:
   - haohou
-  skip-lints:
-  - should_use_compilers
 package:
   name: d4binding
   version: 0.3.11
@@ -24,12 +25,16 @@ requirements:
   build:
   - None
   - None
-  - rust >=1.30
-  - gcc
+  - None
+  - cargo-bundle-licenses
   - clangdev
   - pkg-config
   - make
   - cmake
+  - perl
+  host:
+  - curl
+  - tar
   run:
   - starcode
 source:

@@ -1,0 +1,56 @@
+about:
+  home: https://github.com/epifluidlab/FinaleToolkit
+  license: MIT
+  license_file: LICENSE
+  summary: Extract cfDNA fragmentation features from sequencing data.
+build:
+  entry_points:
+  - finaletoolkit = finaletoolkit.cli.main_cli:main_cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script:
+  - pip install loess-2.1.2-py3-none-any.whl plotbin-3.1.7-py3-none-any.whl --no-index
+    --find-links .
+  - -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Kudostoy0u
+package:
+  name: finaletoolkit
+  version: 0.10.7
+requirements:
+  host:
+  - python >=3.9,<3.13
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.9,<3.13
+  - numpy
+  - pysam
+  - pybigwig
+  - py2bit
+  - tqdm
+  - numba
+  - scipy
+  - pandas
+  - statsmodels
+  - matplotlib-base
+source:
+- sha256: 4bd04c3be90f10eda39dcfa82c7f9ccaf653eb04ccf1161edc1f65060919a85b
+  url: https://pypi.org/packages/source/f/finaletoolkit/finaletoolkit-0.10.7.tar.gz
+- sha256: 105f12daa0fdff5185855ae57c2d3f25420fb30b475ae3f4078843a5c61699b9
+  url: https://files.pythonhosted.org/packages/a7/91/676f1839b94259e30ed85c962be6009c819e61b3fd29c64b34c0894e69b4/loess-2.1.2-py3-none-any.whl
+- sha256: 3f95758fdf178572051ba7de0e30f3a2b7e4702f1d3c3a4bfc87a5cb232a0539
+  url: https://files.pythonhosted.org/packages/1e/00/6b6b084717523a3bba465c42b7309849c9ee580d64f2baccf972bc3d462d/plotbin-3.1.7-py3-none-any.whl
+test:
+  commands:
+  - pip check
+  - finaletoolkit --help
+  imports:
+  - finaletoolkit
+  - loess
+  - plotbin
+  requires:
+  - pip

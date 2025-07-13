@@ -1,0 +1,55 @@
+about:
+  dev_url: https://github.com/hoffmangroup/newmap
+  doc_url: https://newmap.readthedocs.io/en/latest
+  home: https://github.com/hoffmangroup/newmap
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Tool for creating mappability data for reference sequences.
+build:
+  number: 1
+  run_exports:
+  - None
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION_FOR_NEWMAP=0.2
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: newmap
+  version: 0.2
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  - make
+  - pkg-config
+  host:
+  - python
+  - pip
+  - setuptools-scm
+  - libgomp
+  - llvm-openmp
+  run:
+  - python
+  - numpy
+  - libgomp
+  - llvm-openmp
+source:
+- sha256: 8a6df757a70f0345ad526bbd54b8168d12f646dee5dc8f9697d993667f198a1d
+  url: https://github.com/hoffmangroup/newmap/archive/refs/tags/0.2.tar.gz
+- folder: AvxWindowFmIndex
+  git_rev: v1.7.3
+  git_url: https://github.com/TravisWheelerLab/AvxWindowFmIndex.git
+  patches:
+  - 0001-CMakeLists.patch
+  sha256: unused
+test:
+  source_files:
+  - tests/run_all.sh
+  - tests/data/*.fa

@@ -1,18 +1,26 @@
 about:
+  dev_url: https://github.com/DReichLab/AdmixTools
+  doc_url: https://github.com/DReichLab/AdmixTools/blob/v8.0.2/README
   home: https://github.com/DReichLab/AdmixTools
-  license: Free for Academic Use
+  license: Academic License
+  license_file: src/LICENSE.txt
   summary: ADMIXTOOLS (Patterson et al. 2012) is a software package that supports
     formal tests of whether admixture occurred, and makes it possible to infer admixture
     proportions and dates.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:AdmixTools
   - doi:10.1534/genetics.112.145037
 package:
   name: admixtools
-  version: 7.0.2
+  version: 8.0.2
 requirements:
   build:
   - make
@@ -20,15 +28,17 @@ requirements:
   host:
   - gsl
   - openblas
+  - argp-standalone
   run:
   - gsl
   - openblas
+  - argp-standalone
 source:
   patches:
-  - patch
-  - makefile-compiler.patch
-  sha256: d1dc1963e01017f40e05e28009008e14388a14a3facc75cff46653da585bd91e
-  url: https://github.com/DReichLab/AdmixTools/archive/refs/tags/v7.0.2.tar.gz
+  - 0001-Makefile.patch
+  - 0002-nicksrc-Makefile.patch
+  sha256: fea3eaabc5c47aa85dbc4346b6be0c377249064ccba087c246cbc7bec4b18777
+  url: https://github.com/DReichLab/AdmixTools/archive/refs/tags/v8.0.2.tar.gz
 test:
   commands:
   - qp3Pop 2>&1 | grep Usage

@@ -4,7 +4,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: A fast xenograft read sorter based on space-efficient k-mer hashing
+  summary: A fast xenograft read sorter based on space-efficient k-mer hashing.
 build:
   entry_points:
   - xengsort = xengsort.xengsort.xengsort_main:main
@@ -12,7 +12,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   identifiers:
   - doi:10.4230/LIPIcs.WABI.2020.4
@@ -20,22 +20,24 @@ extra:
   - JZentgraf
 package:
   name: xengsort
-  version: 2.0.8
+  version: 2.0.9
 requirements:
   host:
   - pip
   - python >=3.12
+  - setuptools
   run:
   - python >=3.12
-  - numpy >=1.22
-  - numba >=0.56
+  - numpy
+  - numba
   - zarr
   - pytest
   - pyyaml
   - jsonargparse
+  - zstd
 source:
-  sha256: 22ca92e0548effb263f843a2233381f4a6d3073c2931ee0ec0cdbbddb625cf17
-  url: https://pypi.io/packages/source/x/xengsort/xengsort-2.0.8.tar.gz
+  sha256: 5ed08159b0a7ee300e81e9e91e0a63e5021f1cbc0a363d0454ada5e2e27e198d
+  url: https://pypi.org/packages/source/x/xengsort/xengsort-2.0.9.tar.gz
 test:
   commands:
   - xengsort --help

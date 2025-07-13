@@ -11,7 +11,7 @@ about:
   summary: Assessment of assembly completeness using Universal Single Copy Orthologs.
 build:
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
@@ -25,49 +25,48 @@ extra:
   - berkelem
 package:
   name: busco
-  version: 5.8.3
+  version: 6.0.0
 requirements:
   host:
   - python >=3.3
   - pip
   - wget
-  - blast >=2.16.0
+  - blast >=2.10.1
   - hmmer >=3.1b2
-  - augustus >=3.5.0
+  - augustus >=3.3
   - biopython >=1.79
   - prodigal
-  - sepp
+  - sepp >=4.5.5
   - metaeuk >=6.a5d39d9
   - pandas
   - bbmap
   - miniprot
   - requests
+  - matplotlib-base
   run:
   - python >=3.3
   - wget
-  - blast >=2.16.0
+  - blast >=2.10.1
   - hmmer >=3.1b2
-  - augustus >=3.5.0
+  - augustus >=3.3
   - biopython >=1.79
-  - r-base
-  - r-ggplot2 >=2.2.1
   - prodigal
-  - sepp
+  - sepp >=4.5.5
   - metaeuk >=6.a5d39d9
   - pandas
   - bbmap
   - miniprot
   - requests
+  - matplotlib-base
   - fonts-conda-ecosystem
 source:
   patches:
   - 0001-Add-default-config-path-within-prefix-updated.patch
   - 0001-Set-conda-distribution.patch
-  sha256: c6393b927cab5d328cb7af4f7d8a735c1e0b85f0ae7fee5dd3910d91bf94d068
-  url: https://gitlab.com/ezlab/busco/-/archive/5.8.3/busco-5.8.3.tar.gz
+  sha256: f5510d6e2eac7931fad8f0cb13445f706f2ddac4d7b9216c6d4c3eedc9289b03
+  url: https://gitlab.com/ezlab/busco/-/archive/6.0.0/busco-6.0.0.tar.gz
 test:
   commands:
   - busco -h
-  - generate_plot.py -h
   source_files:
   - test_data
