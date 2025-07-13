@@ -1,23 +1,21 @@
 about:
-  description: 'a program to calculate size metrics of a FASTA (or FASTQ) file: minimum,
-    maximum, average length, N50, N75, N90 and the area of the Nx curve (auN).
-
-    Gzipped files are supported as input, and the output can be in compact, csv, tsv,
-    json or screen friendly format.
-
-    '
-  dev_url: https://github.com/quadram-institute-bioscience/seqfu/
-  doc_url: https://github.com/quadram-institute-bioscience/seqfu/wiki/n50
-  home: http://metacpan.org/pod/Proch::N50
-  license: mit
-  summary: calculate N50 from FASTA/FASTQ files, producing both machine and human
-    friendly outputs
+  description: This repository provides tools for N50 calculation and dataset simulation.
+  dev_url: https://github.com/quadram-institute-bioscience/n50
+  doc_url: https://github.com/quadram-institute-bioscience/n50/blob/v1.9.3/README.md
+  home: https://github.com/quadram-institute-bioscience/n50
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A command-line tool to calculate the N50 value of a set of sequences and
+    other utilities.
 build:
-  noarch: generic
   number: 0
   run_exports:
   - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:n50
   - doi:10.3390/bioengineering8050059
@@ -25,37 +23,20 @@ extra:
   - telatin
 package:
   name: n50
-  version: 1.7.0
+  version: 1.9.3
 requirements:
   build:
   - make
+  - None
   host:
-  - perl
-  - perl-app-cpanminus
-  - perl-perlio-encoding
-  - perl-file-which
-  - perl-json-pp
-  - perl-fastx-reader >=1.8.0
-  - perl-getopt-long
-  - perl-exporter
-  - perl-text-asciitable
-  - perl-pod-usage
-  run:
-  - perl
-  - perl-perlio-encoding
-  - perl-file-which
-  - perl-getopt-long
-  - perl-json-pp
-  - perl-fastx-reader >=1.8.0
-  - perl-exporter
-  - perl-text-asciitable
-  - perl-pod-usage
+  - zlib
 source:
-  sha256: a9e34fb1cbfada5d4b3e286d1e1ad5b214af330179cea6d7af8b199144c5d649
-  url: https://cpan.metacpan.org/authors/id/P/PR/PROCH/Proch-N50-1.7.0.tar.gz
+  sha256: 007f9dab944f5a51c752838f9d68130ffd652c1c104d325a1edd4b31342f59b9
+  url: https://github.com/quadram-institute-bioscience/n50/archive/refs/tags/v1.9.3.tar.gz
 test:
   commands:
-  - perl -e "use FASTX::Reader"
-  - perl -e "use Proch::N50"
-  files:
-  - test.fa
+  - n50 --help
+  - n50 --version
+  - n50_simseqs --version
+  - n50 --version | grep -q "1.9.3"
+  - n50_simseqs --version | grep -q "1.9.3"

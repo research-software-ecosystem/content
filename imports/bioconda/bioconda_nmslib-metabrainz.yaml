@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/nmslib/nmslib
+  home: https://github.com/nmslib/nmslib
+  license: Apache-2.0 AND MIT
+  license_family: APACHE
+  license_file:
+  - LICENSE-Apache-2.0
+  - LICENSE
+  summary: Non-Metric Space Library (NMSLIB).
+build:
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: nmslib-metabrainz
+  version: 2.1.3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - pybind11 >=2.2.3
+  - psutil
+  - numpy >=1.10.0
+  run:
+  - python
+  - pybind11 >=2.2.3
+  - psutil
+  - numpy
+source:
+  sha256: b6daaad3c58fd99269b81038be18724a90d80bd766bf8c3fecce0e6792b7a320
+  url: https://pypi.org/packages/source/n/nmslib-metabrainz/nmslib-metabrainz-2.1.3.tar.gz
+test:
+  imports:
+  - nmslib

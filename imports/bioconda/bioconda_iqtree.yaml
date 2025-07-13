@@ -1,5 +1,5 @@
 about:
-  dev_url: https://github.com/iqtree/iqtree2
+  dev_url: https://github.com/iqtree/iqtree3
   doc_url: http://www.iqtree.org/doc
   home: http://www.iqtree.org
   license: GPL-2.0-or-later
@@ -16,19 +16,30 @@ extra:
   - osx-arm64
   identifiers:
   - biotools:iqtree
-  - doi:10.1093/molbev/msu300
-  - doi:10.1038/nmeth.4285
-  - doi:10.1093/molbev/msx281
-  - doi:10.1093/sysbio/syae008
+  - doi:10.32942/X2P62N
+  - doi:10.1093/molbev/msae264
+  - doi:10.1093/molbev/msae174
   - doi:10.1093/molbev/msae134
+  - doi:10.1093/sysbio/syae008
+  - doi:10.1093/bioinformatics/btac741
+  - doi:10.1093/bioinformatics/btad540
+  - doi:10.1093/sysbio/syab010
+  - doi:10.1093/sysbio/syz051
+  - doi:10.1093/gbe/evz193
+  - doi:10.1093/molbev/msz043
+  - doi:10.1093/molbev/msx281
+  - doi:10.1093/sysbio/syx068
+  - doi:10.1038/nmeth.4285
+  - doi:10.1093/sysbio/syw037
+  - doi:10.1093/nar/gkw256
+  - doi:10.1093/molbev/msu300
+  - doi:10.1093/molbev/msaa015
   - usegalaxy-eu:iqtree
   recipe-maintainers:
   - corneliusroemer
-  skip-lints:
-  - uses_vcs_url
 package:
   name: iqtree
-  version: 2.4.0
+  version: 3.0.1
 requirements:
   build:
   - None
@@ -44,15 +55,18 @@ requirements:
   - libgomp
   - llvm-openmp
 source:
-  git_rev: v2.4.0
-  git_url: https://github.com/iqtree/iqtree2.git
-  patches:
-  - patch
-  sha256: unused
+- sha256: 2daff8eaa24faaeac3dee9ac63af9fd7b79cc94cf7031671f0068b051b12c55f
+  url: https://github.com/iqtree/iqtree3/archive/refs/tags/v3.0.1.tar.gz
+- folder: cmaple
+  sha256: 9a220795463da8b857105275571ae71ae043617e58f9a6118b8eafc93df567ab
+  url: https://github.com/iqtree/cmaple/archive/46f86a9d9e3ece6e4f1a54dc72325e8afeb88738.zip
+- folder: lsd2
+  sha256: a1f0cf7dab48d975713d70457f6b79403a74e3e7a27270bd14d5c92cba1fcf63
+  url: https://github.com/tothuhien/lsd2/archive/c61110f3a4fa05325b45c97b2134792ff9d55d4c.zip
 test:
   commands:
   - iqtree
-  - iqtree2
+  - iqtree3
   - iqtree --pathogen-force -s cmaple/example/input.fa
   - grep -v "not compiled with CMAPLE integrated" cmaple/example/input.fa.log
   source_files:
