@@ -1,0 +1,35 @@
+about:
+  dev_url: https://github.com/GeoGenetics/unicorn
+  doc_url: https://github.com/GeoGenetics/unicorn/blob/v1.0.0/README.md
+  home: https://github.com/GeoGenetics/unicorn
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A tool for computing statistics on short read alignments.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - 7pintsofcherrygarcia
+package:
+  name: bio-unicorn
+  version: 1.0.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - htslib >=1.10
+  run:
+  - htslib >=1.10
+source:
+  sha256: 3613ebfc220afc5cca36d5f74e9ccd2c43f4a9cbb317e79f86d4514ca0bcf7fa
+  url: https://github.com/GeoGenetics/unicorn/releases/download/v1.0.0/v1.0.0.tar.gz
+test:
+  commands:
+  - unicorn 2>&1 | grep "1.0.0"

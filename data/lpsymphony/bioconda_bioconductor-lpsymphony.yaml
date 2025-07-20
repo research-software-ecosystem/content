@@ -10,12 +10,11 @@ about:
   license: EPL
   summary: Symphony integer linear programming solver in R
 build:
-  number: 1
+  number: 2
   rpaths:
   - lib/R/lib/
   - lib/
   run_exports: None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -40,10 +39,15 @@ requirements:
   - r-base
   - libblas
   - liblapack
+  - zlib
+  - liblzma-devel
   run:
   - r-base
 source:
   md5: 54ce27cefa98d444f06b137ba5ca4a70
+  patches:
+  - 0001-configure.patch
+  - 0002-SYMPHONY-configure.patch
   url:
   - https://bioconductor.org/packages/3.20/bioc/src/contrib/lpsymphony_1.34.0.tar.gz
   - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/lpsymphony/lpsymphony_1.34.0.tar.gz

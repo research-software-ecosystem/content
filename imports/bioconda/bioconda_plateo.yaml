@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/Edinburgh-Genome-Foundry/Plateo
+  doc_url: https://github.com/Edinburgh-Genome-Foundry/Plateo/blob/v0.3.1/README.rst
+  home: https://github.com/Edinburgh-Genome-Foundry/Plateo
+  license: MIT
+  license_family: MIT
+  summary: Read/write microplate and picklist data for lab automation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - ramez17khaled
+  - tduigou
+  - breakthewall
+package:
+  name: plateo
+  version: 0.3.1
+requirements:
+  host:
+  - python
+  - setuptools
+  - pip
+  run:
+  - python >=
+  - pandas
+  - xlwt
+  - xlrd
+  - openpyxl
+  - numpy
+  - matplotlib-base
+  - tqdm
+  - fuzzywuzzy
+  - sequenticon
+  - flametree
+  - pdf-reports
+source:
+  sha256: 18f7f894b6e90e19f9b287d3a5820e713ec8cf98c1d41235e71f1f9c433bc036
+  url: https://github.com/Edinburgh-Genome-Foundry/Plateo/archive/refs/tags/v0.3.1.tar.gz
+test:
+  commands:
+  - if command -v pytest >/dev/null 2>&1; then pytest tests/; else echo "pytest not
+    available, skipping tests."; fi
+  imports:
+  - plateo
+  requires:
+  - python
+  - matplotlib-base
+  - pytest
+  - pytest-cov
+  - pytest-mock
+  source_files:
+  - tests/

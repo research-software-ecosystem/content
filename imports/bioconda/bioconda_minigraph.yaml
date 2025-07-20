@@ -5,14 +5,15 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: Proof-of-concept seq-to-graph mapper and graph generator
+  summary: Proof-of-concept seq-to-graph mapper and graph generator.
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1186/s13059-020-02168-z
 package:
@@ -22,11 +23,13 @@ requirements:
   build:
   - make
   - None
+  - zlib
   host:
   - zlib
 source:
   patches:
-  - minigraph-aarch64.patch
+  - 0001-Makefile.patch
+  - 0002-minigraph-aarch64.patch
   sha256: 4272447393f0ae1e656376abe144de96cbafc777414d4c496f735dd4a6d3c06a
   url: https://github.com/lh3/minigraph/archive/refs/tags/v0.21.tar.gz
 test:

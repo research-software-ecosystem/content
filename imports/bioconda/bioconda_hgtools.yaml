@@ -1,28 +1,37 @@
 about:
+  dev_url: https://github.com/jaraco/hgtools
+  doc_url: https://github.com/jaraco/jaraco.vcs/blob/main/README.rst
   home: https://github.com/jaraco/hgtools
-  license: GNU General Public License (GPL)
-  summary: Classes and setuptools plugin for Mercurial and Git repositories
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Classes for Mercurial and Git repositories.
 build:
   noarch: python
   number: 0
-  preserve_egg_dir: true
-  script: -m pip install . --ignore-installed --no-deps -vv
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=10.1.0
 package:
   name: hgtools
-  version: 8.2.1
+  version: 10.1.0
 requirements:
   host:
-  - python >=3.6
-  - setuptools
-  - setuptools_scm
+  - python >=3.7
+  - pip
+  - setuptools-scm
   run:
-  - python >=3.6
-  - backports.unittest_mock
+  - python >=3.7
+  - jaraco.classes
+  - more-itertools
+  - packaging
+  - python-dateutil
+  - tempora
 source:
-  sha256: 6d0aa3eb4b73e937d6e1f928a011911621b54a95cee8d999839362039dfe8d4b
-  url: https://files.pythonhosted.org/packages/e5/38/9b57a47cd0d2b0d197f1639c1e1d77736954cd990baa154e166135771459/hgtools-8.2.1.tar.gz
+  sha256: 4724ee0fd3202039831ca966aefd4d93426b0d3dd34bb163ae881e0b31d70ab7
+  url: https://pypi.org/packages/source/h/hgtools/hgtools-10.1.0.tar.gz
 test:
   imports:
   - hgtools
-  - hgtools.managers
-  - hgtools.tests

@@ -1,14 +1,20 @@
 about:
   dev_url: https://github.com/refresh-bio/FAMSA
   home: https://github.com/refresh-bio/FAMSA
-  license: GPL-3.0-only
+  license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
   summary: Algorithm for large-scale multiple sequence alignments.
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
+  script: 'mkdir -p "${PREFIX}/bin"
+
+    cp -v famsa "${PREFIX}/bin/" || { echo "Error: Failed to copy famsa binary"; exit
+    1; }
+
+    '
 extra:
   additional-platforms:
   - linux-aarch64
@@ -17,19 +23,14 @@ extra:
   - doi:10.1038/srep33964
   - biotools:famsa
   skip-lints:
-  - uses_vcs_url
-  - missing_hash
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
 package:
   name: famsa
-  version: 2.2.3
-requirements:
-  build:
-  - None
-  - cmake
-  - make
+  version: 2.4.1
 source:
-  git_rev: v2.2.3
-  git_url: https://github.com/refresh-bio/FAMSA.git
+  sha256: 6d318d3904ad4e0adc5376f6a41d1f5afd74f234df4f3fcd42ebe5977cf75394
+  url: https://github.com/refresh-bio/famsa/releases/download/v2.4.1/famsa-v2.4.1-arm64_mac.tar.gz
 test:
   commands:
   - famsa > /dev/null

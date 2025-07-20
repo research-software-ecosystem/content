@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/alekseyzimin/EviAnn_release
+  doc_url: https://github.com/alekseyzimin/EviAnn_release/blob/v2.0.3/README.md
+  home: https://github.com/alekseyzimin/EviAnn_release
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Evidence-based eukaryotic genome annotation software.
+build:
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1101/2025.05.07.652745v1
+package:
+  name: eviann
+  version: 2.0.3
+requirements:
+  build:
+  - make
+  - None
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  host:
+  - perl
+  - zlib
+  - bzip2
+  - tar
+  run:
+  - perl
+  - blast
+  - hisat2
+  - minimap2
+  - miniprot
+  - samtools
+  - stringtie
+  - wget
+source:
+  sha256: fe798921b8997b03859ecd68d5ea361e4e11f345629e8cdada0a68948b49185d
+  url: https://github.com/alekseyzimin/EviAnn_release/releases/download/v2.0.3/EviAnn-2.0.3.tar.gz
+test:
+  commands:
+  - eviann.sh --version

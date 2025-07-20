@@ -1,19 +1,35 @@
 about:
-  home: http://apcamargo.github.io/kcounter/
+  home: https://github.com/apcamargo/kcounter
   license: GPL-3
   license_family: GPL
   license_file: LICENSE
-  summary: A simple package for counting DNA k-mers in Python. Written in Rust.
+  summary: A simple library for counting DNA k-mers in Python. Written in Rust.
 build:
-  number: 7
+  number: 8
   run_exports:
   - None
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - version_constraints_missing_whitespace
 package:
   name: kcounter
   version: 0.1.1
 requirements:
   build:
   - None
+  - None
+  - None
+  - cargo-bundle-licenses
+  - python
+  - cross-python_
+  - crossenv
+  - maturin <=1.7.8
   host:
   - pip
   - maturin <=1.7.8

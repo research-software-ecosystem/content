@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/Rosemeis/pcangsd
+  doc_url: https://github.com/Rosemeis/pcangsd
+  home: https://github.com/Rosemeis/pcangsd
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'Framework for analyzing low-depth next-generation sequencing (NGS)
+
+    data in heterogeneous/structured populations using principal component
+
+    analysis (PCA).
+
+    '
+build:
+  entry_points:
+  - pcangsd = pcangsd.main:main
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - pdimens
+package:
+  name: pcangsd
+  version: 1.36.4
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - setuptools
+  - cython >3.0.0
+  - numpy >2.0.0
+  run:
+  - python
+  - numpy >2.0.0
+  - scipy >1.14.0
+source:
+  sha256: 25df22d2816cd651f0cb297e7adcf57a206098daac29499b8e8fdb036ba4713f
+  url: https://github.com/Rosemeis/pcangsd/archive/refs/tags/v1.36.4.tar.gz
+test:
+  commands:
+  - pcangsd -h
