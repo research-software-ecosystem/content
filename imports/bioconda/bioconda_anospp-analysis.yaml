@@ -1,14 +1,22 @@
 about:
-  home: https://pypi.org/project/anospp-analysis/
+  home: https://pypi.org/project/anospp-analysis
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: ANOSPP data analysis
+  summary: ANOSPP data analysis.
 build:
+  entry_points:
+  - anospp-prep = anospp_analysis.prep:main
+  - anospp-qc = anospp_analysis.qc:main
+  - anospp-plasm = anospp_analysis.plasm:main
+  - anospp-nn = anospp_analysis.nn:main
+  - anospp-vae = anospp_analysis.vae:main
+  - anospp-agg = anospp_analysis.agg:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - amakunin
@@ -18,24 +26,25 @@ package:
 requirements:
   host:
   - pip
-  - poetry 1.5
-  - python 3.10.*
+  - poetry-core
+  - python >=3.10,<3.11
   run:
-  - python 3.10
-  - cutadapt 4.9
-  - numpy 1.26.3
-  - scipy 1.14.1
-  - pandas 2.2.2
-  - seaborn 0.13.2
-  - bokeh 3.5.2
-  - keras 2.15.0
-  - tensorflow-base 2.15.0
-  - blast 2.14
+  - python >=3.10,<3.11
+  - cutadapt
+  - numpy
+  - scipy
+  - pandas
+  - seaborn-base
+  - bokeh
+  - pyarrow
+  - keras ==2.15.0
+  - tensorflow-base ==2.15.0
+  - blast ==2.16
   - fasttree
   - mafft
 source:
   sha256: f1c261f8e93b807e5296e05bd57b2b88a3f71516a54a6247ebba1345c70eb7a4
-  url: https://pypi.io/packages/source/a/anospp-analysis/anospp_analysis-0.4.0.tar.gz
+  url: https://pypi.org/packages/source/a/anospp-analysis/anospp_analysis-0.4.0.tar.gz
 test:
   commands:
   - anospp-prep -h

@@ -19,9 +19,11 @@ extra:
   - linux-aarch64
   identifiers:
   - biotools:rbowtie2
+  skip-lints:
+  - version_constraints_missing_whitespace
 package:
   name: bioconductor-rbowtie2
-  version: 2.12.0
+  version: 2.12.3
 requirements:
   build:
   - None
@@ -34,17 +36,20 @@ requirements:
   - libblas
   - liblapack
   - zlib
+  - liblzma-devel
   run:
   - bioconductor-rsamtools >=2.22.0,<2.23.0
   - r-base
   - r-magrittr
 source:
-  md5: 8f768a243738cb290ab05e0699b70d80
+  md5: 0a0bc644c8f368b6b6d667b2a8195b72
+  patches:
+  - 0001-Makefile.patch
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Rbowtie2_2.12.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/Rbowtie2/Rbowtie2_2.12.0.tar.gz
-  - https://bioarchive.galaxyproject.org/Rbowtie2_2.12.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-rbowtie2/bioconductor-rbowtie2_2.12.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Rbowtie2_2.12.3.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/Rbowtie2/Rbowtie2_2.12.3.tar.gz
+  - https://bioarchive.galaxyproject.org/Rbowtie2_2.12.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbowtie2/bioconductor-rbowtie2_2.12.3_src_all.tar.gz
 test:
   commands:
   - $R -e "library('Rbowtie2')"
