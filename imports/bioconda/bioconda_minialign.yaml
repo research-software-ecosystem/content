@@ -6,27 +6,35 @@ about:
 
     three key algorithms, minimizer-based index of the minimap overlapper,
 
-    array-based seed chaining, and SIMD-parallel Smith-Waterman-Gotoh extension.'
+    array-based seed chaining, and SIMD-parallel Smith-Waterman-Gotoh extension.
+
+    '
+  dev_url: https://github.com/ocxtal/minialign
+  doc_url: https://github.com/ocxtal/minialign/blob/0.6.0/README.md
   home: https://github.com/ocxtal/minialign
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
   summary: Fast and accurate alignment tool for PacBio and Nanopore long reads.
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
 package:
   name: minialign
-  version: 0.5.3
+  version: 0.6.0
 requirements:
   build:
   - make
   - None
+  - zlib
   host:
   - zlib
-  run:
-  - zlib
 source:
-  md5: d6fc134ae301662376da62e01a130729
-  url: https://github.com/ocxtal/minialign/archive/minialign-0.5.3.tar.gz
+  patches:
+  - 0001-master.patch
+  sha256: f83ee382ffc06107c66ac3a0ada88705c303b1413f4171407b46640aadbffade
+  url: https://github.com/ocxtal/minialign/archive/refs/tags/0.6.0.tar.gz
 test:
   commands:
   - minialign -v

@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/hartwigmedical/hmftools/tree/master/wisp
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: WISP performs tumor fraction estimate for longitudinal samples
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: hmftools-wisp
+  version: '1.2'
+requirements:
+  run:
+  - openjdk >=8,<=21
+  - r-tidyverse
+source:
+  sha256: 0cec6a04f232bff67ae38327c58deade20f35ddb1d050d47d7f4029d77deea13
+  url: https://github.com/hartwigmedical/hmftools/releases/download/wisp-v1.2/wisp_v1.2.jar
+test:
+  commands:
+  - wisp -version | grep Wisp

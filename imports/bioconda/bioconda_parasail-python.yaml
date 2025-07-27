@@ -8,14 +8,14 @@ about:
   summary: Python bindings for the parasail C library containing implementations of
     pairwise sequence alignment algorithms.
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
   script:
   - export LC_ALL="en_US.UTF-8"
-  - export M4="${BUILD_PREFIX}/bin/m4"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
   - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
-  - export CFLAGS="${CFLAGS} -O3 -I${PREFIX}/include"
+  - export CFLAGS="${CFLAGS} -O3"
   - sed -i.bak '1 s|^.*$|#!/usr/bin/env perl|g' $PREFIX/bin/aclocal
   - sed -i.bak '1 s|^.*$|#!/usr/bin/env perl|g' $PREFIX/bin/automake
   - sed -i.bak '1 s|^.*$|#!/usr/bin/env perl|g' $PREFIX/bin/autom4te
@@ -25,7 +25,6 @@ build:
   - sed -i.bak '1 s|^.*$|#!/usr/bin/env perl|g' $PREFIX/bin/autoscan
   - sed -i.bak '1 s|^.*$|#!/usr/bin/env perl|g' $PREFIX/bin/autoupdate
   - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -54,10 +53,10 @@ requirements:
   - numpy
 source:
   patches:
-  - 0001-setup.py.patch
   - darwin-libtool-name.patch
+  - 0001-setup.py.patch
   sha256: d6a7035dfae3ef5aafdd7e6915711214c22b572ea059fa69d9d7ecbfb9b61b0f
-  url: https://pypi.io/packages/source/p/parasail/parasail-1.3.4.tar.gz
+  url: https://pypi.org/packages/source/p/parasail/parasail-1.3.4.tar.gz
 test:
   imports:
   - parasail

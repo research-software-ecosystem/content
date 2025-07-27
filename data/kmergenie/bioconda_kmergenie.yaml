@@ -1,11 +1,18 @@
 about:
+  dev_url: http://kmergenie.bx.psu.edu
+  doc_url: http://kmergenie.bx.psu.edu/README
   home: http://kmergenie.bx.psu.edu
-  license: free software license
-  summary: KmerGenie estimates the best k-mer length for genome de novo assembly
+  license: Free Software License
+  license_file: LICENSE
+  summary: KmerGenie estimates the best k-mer length for genome de novo assembly.
 build:
-  number: 9
+  number: 10
+  run_exports:
+  - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:kmergenie
   - doi:10.1093/bioinformatics/btt310
@@ -14,16 +21,18 @@ package:
   version: 1.7051
 requirements:
   build:
+  - None
   - make
-  - None
-  - None
+  - pkg-config
   host:
-  - python
+  - python 2.7.*
+  - r-base 4.0.*
   - zlib
-  - r-base
+  - wget
   run:
-  - python
-  - r-base
+  - python 2.7.*
+  - r-base 4.0.*
+  - ntcard
 source:
   md5: 4cce0cf67b3e6499c3e6870389a6e560
   url: http://kmergenie.bx.psu.edu/kmergenie-1.7051.tar.gz
