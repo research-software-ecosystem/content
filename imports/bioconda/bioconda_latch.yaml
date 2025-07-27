@@ -8,30 +8,30 @@ about:
     \ static typing\n  * Containerization and versioning of every registered change\n\
     \  * Reliable and scalable managed cloud infrastructure\n  * Single line definition\
     \ of arbitrary resource requirements (eg. CPU, GPU) for serverless execution\n"
+  dev_url: https://github.com/latchbio/latch
   home: https://github.com/latchbio/latch
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: The Latch python bioinformatics framework
+  summary: The Latch python bioinformatics framework.
 build:
   entry_points:
-  - latch=latch_cli.main:main
+  - latch = latch_cli.main:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps  --no-build-isolation
+  script: -m pip install . --no-deps  --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - nh13
-  skip-lints:
-  - uses_setuptools
 package:
   name: latch
-  version: 2.65.2
+  version: 2.65.7
 requirements:
   host:
-  - python >=3.9,<3.13
-  - hatchling >=1.27.0
+  - python >=3.9
+  - hatchling
   - pip
   run:
   - python >=3.9
@@ -63,13 +63,11 @@ requirements:
   - watchfiles ==0.19.0
   - websockets ==11.0.3
 source:
-  sha256: 67549ccd038ea3d7c0b680d3f11237fa26a565d26794a67942b88dde04518d75
-  url: https://pypi.io/packages/source/l/latch/latch-2.65.2.tar.gz
+  sha256: 0d6924cdfd6baac730ce1666ab32f45d7df4e20e169297422e5cb0d5e51678d4
+  url: https://pypi.org/packages/source/l/latch/latch-2.65.7.tar.gz
 test:
   commands:
   - latch --help
   imports:
   - latch
   - latch_cli
-  requires:
-  - pip

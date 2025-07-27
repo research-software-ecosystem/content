@@ -7,7 +7,7 @@ about:
   license_file: LICENSE
   summary: An RNA-seq read aligner.
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
 extra:
@@ -32,15 +32,19 @@ requirements:
   host:
   - htslib >=1.21
   - llvm-openmp
+  - libgomp
   - zlib
   run:
   - htslib >=1.21
+  - llvm-openmp
+  - libgomp
 source:
   patches:
   - patches/0001-do-not-enforce-avx2.patch
   - patches/0002-donotuse_own_htslib.patch
   - patches/0003-create-simd-dispatch.patch
   - patches/0004-use-cxxflags-depends.patch
+  - patches/0005-arm64.patch
   sha256: 3f65305e4112bd154c7e22b333dcdaafc681f4a895048fa30fa7ae56cac408e7
   url: https://github.com/alexdobin/STAR/archive/2.7.11b.tar.gz
 test:

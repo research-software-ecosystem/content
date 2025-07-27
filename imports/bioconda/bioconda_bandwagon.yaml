@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/Edinburgh-Genome-Foundry/bandwagon
+  doc_url: https://github.com/Edinburgh-Genome-Foundry/bandwagon/blob/v0.3.4/README.rst
+  home: https://github.com/Edinburgh-Genome-Foundry/bandwagon
+  license: MIT
+  license_family: MIT
+  summary: Simulate DNA band patterns for gel migration experiments
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - ramez17khaled
+  - tduigou
+  - breakthewall
+package:
+  name: bandwagon
+  version: 0.3.4
+requirements:
+  host:
+  - python
+  - setuptools
+  - pip
+  run:
+  - python >=
+  - biopython
+  - scipy
+  - matplotlib-base
+  - numpy
+  - snapgene-reader
+  - dna_features_viewer
+source:
+  sha256: 8fa1cd3cfa35dadd30e6f6e1bc4e8f9ab1e2fd4246b73fc1f11bd10ffe2f2d43
+  url: https://github.com/Edinburgh-Genome-Foundry/BandWagon/archive/refs/tags/v0.3.4.tar.gz
+test:
+  commands:
+  - if command -v pytest >/dev/null 2>&1; then pytest tests/; else echo "pytest not
+    available, skipping tests."; fi
+  imports:
+  - bandwagon
+  requires:
+  - python
+  - matplotlib-base
+  - pytest
+  - pytest-cov
+  - pytest-mock
+  - bokeh
+  source_files:
+  - tests/
