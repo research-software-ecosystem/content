@@ -1,18 +1,21 @@
 about:
+  dev_url: https://github.com/tofazzalh/circRNAFull
   home: https://github.com/tofazzalh/circRNAFull
-  license: unknown
+  license: Unknown
   summary: An R package for reconstruction of full length circRNA sequence using chimeric
-    alignment information
+    alignment information.
 build:
   noarch: generic
-  number: 0
+  number: 1
   rpaths:
   - lib/R/lib
   - lib
-  run_exports: None
+  run_exports:
+  - None
+  script:
+  - export DISABLE_AUTOBREW=1
+  - ${R} CMD INSTALL --build . ${R_ARGS}
 extra:
-  additional-platforms:
-  - linux-aarch64
   identifiers:
   - doi:10.3390/ijms23126776
   recipe-maintainers:

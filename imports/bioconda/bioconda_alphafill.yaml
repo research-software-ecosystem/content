@@ -1,0 +1,51 @@
+about:
+  description: "AlphaFill is an algorithm based on sequence and structure similarity\
+    \ that \u201Ctransplants\u201D missing ligands, cofactors and (metal) ions to\
+    \ the AlphaFold models.\nBy adding the molecular context to these protein structures,\
+    \ the models can be more easily appreciated in terms of function and structural\
+    \ integrity.\nConsequently, the AlphaFill models can be helpful in designing downstream\
+    \ wet-lab experiments and/or computational studies.\n"
+  dev_url: https://github.com/PDB-REDO/alphafill
+  doc_url: https://alphafill.eu/manual
+  home: https://alphafill.eu
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Transplant missing compounds to the AlphaFold models
+build:
+  number: 0
+  run_exports: []
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/s41592-022-01685-y
+  recipe-maintainers:
+  - eunos-1128
+package:
+  name: alphafill
+  version: 2.2.0
+requirements:
+  build:
+  - None
+  - cmake
+  - ninja
+  - pkg-config
+  host:
+  - bzip2
+  - libboost-devel ==1.86.0
+  - libcifpp >=7.0.0,<8.0.0a0
+  - libmcfp
+  - libzeep >=6.0.16,<7.0.0a0
+  - zlib
+source:
+  sha256: b2d0f471a77ec076ff62a879aeab891239393fc9471fc6b7c98c07021d168b1c
+  url: https://github.com/PDB-REDO/alphafill/archive/refs/tags/v2.2.0.tar.gz
+test:
+  commands:
+  - alphafill --version
+  - alphafill --help
+  source_files:
+  - test
+  - test/*

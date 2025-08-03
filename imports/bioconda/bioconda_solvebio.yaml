@@ -1,10 +1,11 @@
 about:
-  doc_url: https://docs.solvebio.com/
+  dev_url: https://github.com/solvebio/solvebio-python
+  doc_url: https://docs.solvebio.com
   home: https://github.com/solvebio/solvebio-python
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: The SolveBio Python client
+  summary: The SolveBio Python client.
 build:
   entry_points:
   - solvebio = solvebio.cli.main:main
@@ -13,13 +14,13 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
-extra:
-  additional-platforms:
-  - linux-aarch64
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -rf *.bak
+  - -m pip install --no-deps --no-build-isolation --no-cache-dir --use-pep517 . -vvv
 package:
   name: solvebio
-  version: 2.31.1
+  version: 2.31.2
 requirements:
   host:
   - python
@@ -36,8 +37,8 @@ requirements:
   - flask
   - flask-seasurf
 source:
-  sha256: bc6cae39e5d250baa75d7c9f644132f005e15fa70cadc2729c4bc860b5f174c4
-  url: https://pypi.io/packages/source/s/solvebio/solvebio-2.31.1.tar.gz
+  sha256: 7da6c4985cbdc23c7f7be686e73d5adf12cb3c4f98733cbda9bd80f95a93c606
+  url: https://pypi.org/packages/source/s/solvebio/solvebio-2.31.2.tar.gz
 test:
   commands:
   - solvebio --help

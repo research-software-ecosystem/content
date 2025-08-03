@@ -1,11 +1,14 @@
 about:
+  dev_url: https://github.com/rcedgar/muscle
+  doc_url: https://drive5.com/muscle5
   home: https://github.com/rcedgar/muscle
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: LICENSE
   summary: Multiple sequence and structure alignment with top benchmark scores scalable
-    to thousands of sequences
+    to thousands of sequences.
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
 extra:
@@ -13,16 +16,24 @@ extra:
   - linux-aarch64
   - osx-arm64
   identifiers:
+  - doi:10.1038/s41467-022-34630-w
   - biotools:muscle
+  - usegalaxy-eu:muscle
 package:
   name: muscle
   version: 5.3
 requirements:
   build:
   - None
-  - llvm-openmp
-  - macports-legacy-support
   - make
+  - pkg-config
+  - macports-legacy-support
+  host:
+  - libgomp
+  - llvm-openmp
+  run:
+  - libgomp
+  - llvm-openmp
 source:
   patches:
   - support-linux-aarch64.patch

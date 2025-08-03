@@ -1,16 +1,21 @@
 about:
+  dev_url: https://github.com/bcgsc/ntCard
+  doc_url: https://github.com/bcgsc/ntCard/blob/1.2.2/README.md
   home: https://github.com/bcgsc/ntCard
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Estimating k-mer coverage histogram of genomics data
+  summary: Estimating k-mer coverage histogram of genomics data.
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btw832
 package:
   name: ntcard
   version: 1.2.2
@@ -20,15 +25,19 @@ requirements:
   - None
   - automake
   - autoconf
-  - llvm-openmp
-  - m4
+  - libtool
+  - pkg-config
   host:
   - perl
+  - libgomp
+  - llvm-openmp
   - zlib
   run:
-  - zlib
+  - libgomp
   - llvm-openmp
 source:
+  patches:
+  - 0001-master.patch
   sha256: bace4e6da2eb8e59770d38957d1a916844071fb567696994c8605fd5f92b5eea
   url: https://github.com/bcgsc/ntCard/releases/download/1.2.2/ntcard-1.2.2.tar.gz
 test:
