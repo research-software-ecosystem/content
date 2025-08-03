@@ -19,6 +19,11 @@ build:
   number: 0
   run_exports:
   - None
+  script:
+  - echo "include antismash/detection/genefinding/data/train_crypto" >> MANIFEST.in
+  - df -h
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py && rm -f *.bak
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir --use-pep517 -vvv
 extra:
   identifiers:
   - biotools:antismash
@@ -32,7 +37,7 @@ extra:
   - usegalaxy-eu:antismash
 package:
   name: antismash
-  version: 8.0.1
+  version: 8.0.2
 requirements:
   host:
   - python >=3.11
@@ -64,8 +69,8 @@ requirements:
   - blast
   - prodigal
 source:
-  sha256: e008eaeab13a92a657de82d077b2ffd782a97bc334c248ff22618c52f04fbc02
-  url: https://github.com/antismash/antismash/archive/8-0-1.tar.gz
+  sha256: 4fd5abb391b1dcad951939e3ee139626ba7b2d4feb7314f5aea594786211dc1f
+  url: https://github.com/antismash/antismash/archive/refs/tags/8-0-2.tar.gz
 test:
   commands:
   - antismash -h

@@ -1,29 +1,37 @@
 about:
+  dev_url: https://github.com/chapmanb/bcbb
+  doc_url: https://biopython.org/wiki/GFF_Parsing
   home: https://github.com/chapmanb/bcbb/tree/master/gff
   license: Biopython License Agreement
   license_file: LICENSE
   summary: A Python library to read and write Generic Feature Format (GFF).
 build:
   noarch: python
-  number: 2
+  number: 3
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -rf *.bak
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 package:
   name: bcbio-gff
   version: 0.7.1
 requirements:
   host:
-  - python
+  - python >=3
   - pip
+  - setuptools
   run:
-  - python
+  - python >=3
   - six
-  - biopython <=1.86
+  - biopython
   - bx-python
 source:
+  patches:
+  - 0001-distutils.patch
   sha256: d1dc3294147b95baced6033f6386a0fed45c43767ef02d1223df5ef497e9cca6
-  url: https://pypi.io/packages/source/b/bcbio-gff/bcbio-gff-0.7.1.tar.gz
+  url: https://pypi.org/packages/source/b/bcbio-gff/bcbio-gff-0.7.1.tar.gz
 test:
   imports:
   - BCBio.GFF

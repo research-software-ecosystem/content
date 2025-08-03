@@ -1,18 +1,20 @@
 about:
   dev_url: https://github.com/bxlab/bx-python
-  doc_url: https://buildmedia.readthedocs.org/media/pdf/bx-python/latest/bx-python.pdf
+  doc_url: https://bx-python.readthedocs.io/en/latest
   home: https://github.com/bxlab/bx-python
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Tools for manipulating biological data, particularly multiple sequence
-    alignments
+    alignments.
 build:
-  number: 2
+  number: 0
   run_exports:
   - None
   script:
-  - export CFLAGS="${CFLAGS} -O3 -fno-define-target-os-macros"
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CFLAGS="${CFLAGS} -I${PREFIX}/include -O3"
+  - export CFLAGS="${CFLAGS} -I${PREFIX}/include -O3 -fno-define-target-os-macros"
   - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
@@ -24,24 +26,25 @@ extra:
   - nsoranzo
 package:
   name: bx-python
-  version: 0.13.0
+  version: 0.14.0
 requirements:
   build:
   - None
+  - pkg-config
   host:
   - python
-  - cython
-  - numpy >=1.25
   - pip
   - setuptools
+  - cython
+  - numpy >=1.25
   - zlib
   run:
   - python
-  - None
   - pyparsing
+  - numpy >=1.25
 source:
-  sha256: ce04696543367efc6b7995d9463efeda691b9a58f6f55a7bd831e642159b0644
-  url: https://pypi.io/packages/source/b/bx-python/bx_python-0.13.0.tar.gz
+  sha256: c46eef1006d6107e31d2ff42f1ca27c34ddb080151309a909b4d2e53ca812cc6
+  url: https://pypi.org/packages/source/b/bx-python/bx_python-0.14.0.tar.gz
 test:
   imports:
   - bx

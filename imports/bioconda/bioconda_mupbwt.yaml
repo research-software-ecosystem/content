@@ -1,14 +1,21 @@
 about:
+  dev_url: https://github.com/dlcgold/muPBWT
+  doc_url: https://github.com/dlcgold/muPBWT/blob/v0.1.2/README.md
   home: https://github.com/dlcgold/muPBWT
   license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: A light pbwt-based index
+  summary: A light pbwt-based index.
 build:
-  number: 4
-  skip: true
+  number: 5
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - biotools:mupbwt
+  - doi:10.1093/bioinformatics/btad552
   recipe-maintainers:
   - dlcgold
 package:
@@ -24,7 +31,12 @@ requirements:
   - zlib
   - sdsl-lite
   - htslib
-  - openmp
+  - llvm-openmp
+  - libgomp
+  run:
+  - htslib
+  - llvm-openmp
+  - libgomp
 source:
   patches:
   - cmake.patch

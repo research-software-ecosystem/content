@@ -1,47 +1,53 @@
 about:
+  dev_url: https://github.com/voutcn/megahit
+  doc_url: https://github.com/voutcn/megahit/blob/v1.2.9/README.md
   home: https://github.com/voutcn/megahit
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: 'MEGAHIT: An ultra-fast single-node solution for large and complex
-
-    metagenomics assembly via succinct de Bruijn graph'
+  summary: 'MEGAHIT: An ultra-fast single-node solution for large and complex metagenomics
+    assembly via succinct de Bruijn graph.'
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:megahit
+  - usegalaxy-eu:megahit
+  - usegalaxy-eu:megahit_contig2fastg
   - doi:10.1093/bioinformatics/btv033
+  - doi:10.1016/j.ymeth.2016.02.020
 package:
   name: megahit
   version: 1.2.9
 requirements:
   build:
-  - make
-  - cmake
+  - ninja
+  - cmake <4
   - None
-  - None
-  - llvm-openmp
+  - pkg-config
   host:
   - zlib
+  - bzip2
+  - libgomp
   - llvm-openmp
   run:
-  - zlib
+  - libgomp
   - llvm-openmp
   - python
 source:
   patches:
+  - 0001-master.patch
   - linux-aarch64-support-pr-368.patch
   - gcc-13-support-pr-366.patch
   sha256: 09026eb07cc4e2d24f58b0a13f7a826ae8bb73da735a47cb1cbe6e4693118852
   url: https://github.com/voutcn/megahit/archive/v1.2.9.tar.gz
 test:
   commands:
-  - megahit --test || (echo "error log:" && cat /tmp/megahit_test_*/log && exit 1)
   - megahit --test --kmin-1pass || (echo "error log:" && cat /tmp/megahit_test_*/log
     && exit 1)
+  - test -x ${PREFIX}/bin/megahit

@@ -1,0 +1,49 @@
+about:
+  description: 'fishplotpy is a Python translation of the R package fishplot by Chris
+    Miller et al.
+
+    It provides functionality for calculating plot layout for clonal evolution and
+    supports
+
+    multiple plot shapes (polygon, spline, bezier) with customizable appearance and
+    annotations.
+
+    Designed for cancer genomics and evolutionary biology applications.
+
+    '
+  dev_url: https://github.com/Sayitobar/fishplotpy
+  home: https://github.com/Sayitobar/fishplotpy
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: A Python implementation for visualizing clonal evolution dynamics using
+    fish plots
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - tdido
+package:
+  name: fishplotpy
+  version: 1.0.0
+requirements:
+  host:
+  - pip
+  - python
+  - setuptools
+  run:
+  - python >=
+  - numpy
+  - pandas
+  - matplotlib-base
+  - scipy
+source:
+  sha256: 2fcb133781e6c61d74dffde58171e6ef9b60c0edcde4f9114281ce876afd7975
+  url: https://github.com/Sayitobar/fishplotpy/archive/refs/tags/v1.0.0.tar.gz
+test:
+  imports:
+  - fishplotpy

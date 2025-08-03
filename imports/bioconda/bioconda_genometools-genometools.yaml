@@ -1,8 +1,9 @@
 about:
   dev_url: https://github.com/genometools/genometools
-  doc_url: http://genometools.org/documentation.html
-  home: http://genometools.org/
+  doc_url: https://genometools.org/documentation.html
+  home: https://genometools.org
   license: BSD
+  license_family: BSD
   license_file: LICENSE
   summary: GenomeTools genome analysis system.
 build:
@@ -13,6 +14,7 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1109/TCBB.2013.68
   recipe-maintainers:
@@ -25,15 +27,16 @@ requirements:
   - make
   - None
   - None
+  - pkg-config
   host:
   - python
   - glib
   - pango
   - cairo
   run:
+  - python
   - fontconfig
   - font-ttf-dejavu-sans-mono
-  - python
   - gettext
   - pango
   - cairo
@@ -41,6 +44,8 @@ requirements:
   - xorg-libsm
   - xorg-libxext
 source:
+  patches:
+  - 0001-Makefile.patch
   sha256: f71b95c84761847223cd52a17d30ad9e6d55854448c2139fcd0aac437f73fbbe
   url: https://github.com/genometools/genometools/archive/v1.6.5.tar.gz
 test:

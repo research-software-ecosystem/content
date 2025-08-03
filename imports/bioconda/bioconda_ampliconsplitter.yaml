@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/RolandFaure/AmpliconSplitter
+  home: https://github.com/RolandFaure/AmpliconSplitter
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Split highly similar collapsed amplicons to obtain all amplicons from a
+    sample.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - rolandfaure
+package:
+  name: ampliconsplitter
+  version: 1.9.22
+requirements:
+  build:
+  - cmake
+  - ninja
+  - None
+  - pkg-config
+  host:
+  - libgomp
+  - llvm-openmp
+  run:
+  - python
+  - libgomp
+  - llvm-openmp
+  - scipy
+  - numpy
+  - minimap2
+  - minigraph >=0.20
+  - racon
+  - samtools >=1.16
+  - raven-assembler
+source:
+  sha256: b8a220ac17f1e1e69f6f45a315876c597ef90e7e19abff35c1d7d536eb836939
+  url: https://github.com/RolandFaure/AmpliconSplitter/archive/refs/tags/v1.9.22.tar.gz
+test:
+  commands:
+  - ampliconsplitter.py --help

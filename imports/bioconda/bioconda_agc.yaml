@@ -1,6 +1,8 @@
 about:
+  dev_url: https://github.com/refresh-bio/agc
   home: https://github.com/refresh-bio/agc
   license: MIT
+  license_family: MIT
   summary: 'Assembled Genomes Compressor (AGC) is a tool designed to compress collections
     of de-novo assembled genomes. It can be used for various types of datasets: short
     genomes (viruses) as well as long (humans).'
@@ -8,7 +10,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: mkdir -p ${PREFIX}/bin; cp agc ${PREFIX}/bin
+  script: mkdir -p ${PREFIX}/bin; install -v -m 0755 agc ${PREFIX}/bin
 extra:
   additional-platforms:
   - linux-aarch64
@@ -16,14 +18,11 @@ extra:
   skip-lints:
   - should_be_noarch_generic
   - should_not_be_noarch_source
-  watch:
-    enable: true
 package:
   name: agc
-  version: 3.2
+  version: 3.2.1
 requirements:
   build: null
-  run: null
 source:
 - sha256: 279fd46b4e764ec14617fdc9d88b847becf4ff3008588cb919480316099be264
   url: https://github.com/refresh-bio/agc/releases/download/v3.2.1/agc-3.2_arm_linux.tar.gz

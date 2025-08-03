@@ -8,16 +8,14 @@ about:
   summary: Fast genome-wide functional annotation through orthology assignment.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
   script:
   - sed -i.bak "s/eggnogmapper.bin/#eggnogmapper.bin/g" setup.cfg
+  - rm -rf *.bak
   - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
-  additional-platforms:
-  - linux-aarch64
-  - osx-arm64
   container:
     extended-base: true
   identifiers:

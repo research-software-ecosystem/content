@@ -1,41 +1,44 @@
 about:
+  dev_url: https://github.com/maickrau/ribotin
+  doc_url: https://github.com/maickrau/ribotin/blob/v1.5/README.md
   home: https://github.com/maickrau/ribotin
   license: MIT
+  license_family: MIT
   license_file: LICENSE.md
-  summary: Ribosomal DNA assembly tool
+  summary: Ribosomal DNA assembly tool.
 build:
   number: 0
   run_exports:
   - None
   skip: true
 extra:
-  maintainers:
+  recipe-maintainers:
   - maickrau
   skip-lints:
   - uses_vcs_url
-  - missing_hash
 package:
   name: ribotin
-  version: 1.4
+  version: 1.5
 requirements:
   build:
   - make
   - None
-  host:
-  - zlib =1.2
   - pkg-config
-  - bamtools
+  host:
+  - zlib
+  - bamtools ==2.5.3
   run:
   - graphaligner
-  - mbg
+  - mbg >=1.0.17
   - liftoff =1.6.3
   - winnowmap
   - samtools
 source:
-  git_rev: v1.4
+  git_rev: v1.5
   git_url: https://github.com/maickrau/ribotin
   patches:
   - makefile.patch
+  sha256: unused
 test:
   commands:
-  - (ribotin-ref -h 2>&1 || true) | grep ribotin
+  - (ribotin-ref -h 2>&1 || true) | grep 'ribotin'

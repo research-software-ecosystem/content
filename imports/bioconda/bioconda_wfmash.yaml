@@ -1,8 +1,11 @@
 about:
+  dev_url: https://github.com/waveygang/wfmash
+  doc_url: https://github.com/waveygang/wfmash/blob/v0.24.1/README.md
   home: https://github.com/waveygang/wfmash
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: a pangenome-scale aligner
+  summary: A pangenome-scale aligner.
 build:
   number: 0
   run_exports:
@@ -17,15 +20,17 @@ extra:
   - uses_vcs_url
 package:
   name: wfmash
-  version: 0.23.0
+  version: 0.24.1
 requirements:
   build:
   - None
   - None
-  - llvm-openmp
   - cmake
   - make
+  - pkg-config
   host:
+  - llvm-openmp
+  - libgomp
   - gsl
   - zlib
   - jemalloc
@@ -35,11 +40,11 @@ requirements:
   - xz
   run:
   - llvm-openmp
+  - libgomp
   - python >=3.7
-  - xz
 source:
-  sha256: ff683a0460af281dd65fbba8802e2f82e3fe462e63f44e2892036b40f548a905
-  url: https://github.com/waveygang/wfmash/releases/download/v0.23.0/wfmash-v0.23.0.tar.gz
+  sha256: 82c55ebdfa506a1e8c44e3a84e6a5e07e3c1af26a2752237d140cb35c14c08f9
+  url: https://github.com/waveygang/wfmash/releases/download/v0.24.1/wfmash-v0.24.1.tar.gz
 test:
   commands:
   - wfmash --help
