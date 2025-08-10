@@ -2,10 +2,10 @@ about:
   description: "ESME (Earth System Modelling Environment) is a package designed to\
     \ facilitate the installation and management of various scientific computing libraries\
     \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVAPIch\
-    \ and ParaStationMPI). This bundle currently includes:\n- PnetCDF: Version 1.14.0\n\
-    - HDF5: Version 1.14.5\n- netCDF_C: Version 4.9.2\n- netCDF_Fortran: Version 4.6.1\n\
-    - ParallelIO: Version 2.6.5 \n- ESMF: Version 8.8.0\n- OSU_Micro_Benchmarks: Version\
-    \ 7.5\n"
+    \ and ParaStationMPI). This bundle currently includes:\n- PnetCDF: Version 1.14.1\n\
+    - HDF5: Version 1.14.6\n- netCDF_C: Version 4.9.3\n- netCDF_Fortran: Version 4.6.2\n\
+    - ParallelIO: Version 2.6.6 \n- ESMF: Version 8.8.1\n- OSU_Micro_Benchmarks: Version\
+    \ 7.5.1\n"
   home: https://github.com/j34ni/bioconda-recipes
   license: BSD-3-Clause
   license_family: BSD
@@ -23,6 +23,8 @@ build:
   skip: true
   string: _h_0
 extra:
+  additional-platforms:
+  - linux-aarch64
   recipe-maintainers:
   - j34ni
   skip-lints:
@@ -57,7 +59,7 @@ outputs:
     commands:
     - export PATH=$PATH:${PREFIX}/bin
     - pnetcdf-config --all
-  version: 1.14.0
+  version: 1.14.1
 - about:
     description: 'HDF5 (Hierarchical Data Format 5) is a file format and set of tools
       designed for managing, storing, and organizing large and complex data.
@@ -90,7 +92,7 @@ outputs:
     commands:
     - export PATH=$PATH:${PREFIX}/bin
     - h5pfc -showconfig
-  version: 1.14.5
+  version: 1.14.6
 - about:
     description: 'NetCDF-C is the C implementation of the Unidata''s network Common
       Data Form (netCDF), providing an interface for storing, accessing, and sharing
@@ -123,7 +125,7 @@ outputs:
     commands:
     - export PATH=$PATH:${PREFIX}/bin
     - nc-config --all
-  version: 4.9.2
+  version: 4.9.3
 - about:
     description: 'NetCDF-Fortran provides Fortran language bindings for the NetCDF
       library, allowing Fortran programs to read and write scientific data in netCDF
@@ -155,7 +157,7 @@ outputs:
     commands:
     - export PATH=$PATH:${PREFIX}/bin
     - nf-config --all
-  version: 4.6.1
+  version: 4.6.2
 - about:
     description: 'A high-level Parallel I/O Library for structured grid applications.
 
@@ -189,7 +191,7 @@ outputs:
   test:
     commands:
     - test -f ${PREFIX}/include/pio.h
-  version: 2.6.5
+  version: 2.6.6
 - about:
     description: 'The Earth System Modeling Framework (ESMF) is a suite of software
       tools for developing high-performance, multi-component Earth science modeling
@@ -232,7 +234,7 @@ outputs:
     commands:
     - if test -f ${ESMFMKFILE}; then echo "ESMF makefile found"; else echo "ESMF makefile
       not found"; exit 1; fi
-  version: 8.8.0
+  version: 8.8.1
 - about:
     description: 'The OSU Micro Benchmarks (OMB) is a suite of performance measurement
       tools developed by The Ohio State University.
@@ -260,10 +262,10 @@ outputs:
   test:
     commands:
     - mpiexec -n 2 $PREFIX/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency -m 1024:1024
-  version: 7.5
+  version: 7.5.1
 package:
-  name: esme_psmpi_
-  version: 1.0.1
+  name: esme_mvapich_
+  version: 1.0.2
 requirements:
   run:
   - cmake
@@ -274,26 +276,26 @@ requirements:
   - python=3.8
 source:
 - folder: esme_pnetcdf
-  sha256: 575f189fb01c53f93b3d6ae0e506f46e19694807c81af0b9548e947995acf704
-  url: https://parallel-netcdf.github.io/Release/pnetcdf-1.14.0.tar.gz
+  sha256: 6f0f7221006c211fce9ddd2c008796b8c69dd717b2ad1be0b4027fc328fd3220
+  url: https://parallel-netcdf.github.io/Release/pnetcdf-1.14.1.tar.gz
 - folder: esme_hdf5
-  sha256: ec2e13c52e60f9a01491bb3158cb3778c985697131fc6a342262d32a26e58e44
-  url: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.5/hdf5-1.14.5.tar.gz
+  sha256: e4defbac30f50d64e1556374aa49e574417c9e72c6b1de7a4ff88c4b1bea6e9b
+  url: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.14.6.tar.gz
 - folder: esme_netcdf-c
-  sha256: bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7
-  url: https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz
+  sha256: 990f46d49525d6ab5dc4249f8684c6deeaf54de6fec63a187e9fb382cc0ffdff
+  url: https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.3.tar.gz
 - folder: esme_netcdf-fortran
-  sha256: 40b534e0c81b853081c67ccde095367bd8a5eead2ee883431331674e7aa9509f
-  url: https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.1.tar.gz
+  sha256: 44cc7b5626b0b054a8503b8fe7c1b0ac4e0a79a69dad792c212454906a9224ca
+  url: https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.2.tar.gz
 - folder: esme_pio
-  sha256: 6ae51aa3f76e597a3a840a292ae14eca21359b1a4ea75e476a93aa2088c0677a
-  url: https://github.com/NCAR/ParallelIO/archive/refs/tags/pio2_6_5.tar.gz
+  sha256: e32e018a521d38c9424940c7cfa7e9b1931b605f3511ee7ab3a718b69faeeb04
+  url: https://github.com/NCAR/ParallelIO/archive/refs/tags/pio2_6_6.tar.gz
 - folder: esme_esmf
-  sha256: f89327428aeef6ad34660b5b78f30d1c55ec67efb8f7df1991fdaa6b1eb3a27c
-  url: https://github.com/esmf-org/esmf/archive/refs/tags/v8.8.0.tar.gz
+  sha256: b0acb59d4f000bfbdfddc121a24819bd2a50997c7b257b0db2ceb96f3111b173
+  url: https://github.com/esmf-org/esmf/archive/refs/tags/v8.8.1.tar.gz
 - folder: esme_omb
-  sha256: 1cf84ac5419456202757a757c5f9a4f5c6ecd05c65783c7976421cfd6020b3b3
-  url: https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-7.5.tar.gz
+  sha256: 160d0d5e3c3cb022520ecb247e9875bb0973b1d3cadccd6c17624f8407c52e22
+  url: https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-7.5.1.tar.gz
 test:
   commands:
   - echo "Skipping ESME tests, since individual packages were already tested"

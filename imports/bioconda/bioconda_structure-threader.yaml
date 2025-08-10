@@ -10,13 +10,15 @@ build:
   detect_binary_files_with_prefix: false
   entry_points:
   - structure_threader = structure_threader.structure_threader:main
-  ignore_prefix_files: true
+  ignore_prefix_files: false
   noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - None
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
+  identifiers:
+  - doi:10.1111/1755-0998.12702
   recipe-maintainers:
   - StuntsPT
   - fonors
@@ -38,5 +40,7 @@ source:
   sha256: 6da669746359c5ac4d829a6ba69523eba3344411d788aef6c360c1edb84e1bfe
   url: https://pypi.org/packages/source/s/structure-threader/structure_threader-1.3.11.tar.gz
 test:
+  commands:
+  - structure_threader --help
   imports:
   - structure_threader

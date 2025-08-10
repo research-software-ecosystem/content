@@ -1,24 +1,27 @@
 about:
-  home: https://mics-lab.github.io/novae/
+  dev_url: https://github.com/MICS-Lab/novae
+  doc_url: https://mics-lab.github.io/novae
+  home: https://mics-lab.github.io/novae
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  summary: Graph-based foundation model for spatial transcriptomics data
+  summary: Graph-based foundation model for spatial transcriptomics data.
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - quentinblampey
 package:
   name: novae
-  version: 0.2.4
+  version: 1.0.0
 requirements:
   host:
   - python >=3.10,<3.13
-  - poetry-core >=1.0.0
+  - hatchling
   - pip
   run:
   - python >=3.10,<3.13
@@ -29,6 +32,7 @@ requirements:
   - huggingface_hub >=0.24.0
   - safetensors >=0.4.3
   - pandas >=2.0.0
+  - python-igraph >=0.11.8
   run_constrained:
   - wandb >=0.17.2
   - black >=22.8.0
@@ -46,12 +50,8 @@ requirements:
   - pydantic >=2.8.2
   - pre-commit >=3.8.0
 source:
-  sha256: 4aef7fb0c90b870869ce38bcac8e4b4f33f5a42fa582357c9b5fbe8d5fc15d46
-  url: https://pypi.org/packages/source/n/novae/novae-0.2.4.tar.gz
+  sha256: ea31b2f7c3929659d0a45d59cab3d5c62a9ae5e9b15b4ca9fe90e24a28174d73
+  url: https://pypi.org/packages/source/n/novae/novae-1.0.0.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - novae
-  requires:
-  - pip

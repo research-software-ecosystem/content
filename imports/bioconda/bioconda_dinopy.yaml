@@ -1,6 +1,10 @@
 about:
+  dev_url: https://bitbucket.org/HenningTimm/dinopy
+  doc_url: https://dinopy.readthedocs.io/en/latest
   home: https://bitbucket.org/HenningTimm/dinopy
   license: MIT
+  license_family: MIT
+  license_file: LICENSE.rst
   summary: DNA input and output library for Python and Cython. Includes reader and
     writer for FASTA and FASTQ files, support for samtools faidx files, and generators
     for solid and gapped q-grams (k-mers).
@@ -8,9 +12,18 @@ build:
   number: 2
   run_exports:
   - None
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export LDFLAGS="${LDFLAGS} -headerpad_max_install_names"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - export CFLAGS="${CFLAGS} -O3 -Wno-implicit-function-declaration"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=3.0.0
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: dinopy
   version: 3.0.0
@@ -19,15 +32,16 @@ requirements:
   - None
   host:
   - python
-  - setuptools
-  - cython >=3.0.0
-  - numpy =1.21
+  - pip
+  - setuptools-scm
+  - cython <3.1
+  - numpy =1.26.4
   run:
   - python
-  - numpy =1.21
+  - numpy =1.26.4
 source:
   sha256: 9b2238c20c946a7ea34b979fec4dd182f3474958e9a03075dfbbb464e9d84028
-  url: https://files.pythonhosted.org/packages/e3/fd/06182a3e21bd400c172ef973512a070968c039a0f18f41c54c933fcafef9/dinopy-3.0.0.tar.gz
+  url: https://pypi.org/packages/source/d/dinopy/dinopy-3.0.0.tar.gz
 test:
   imports:
   - dinopy

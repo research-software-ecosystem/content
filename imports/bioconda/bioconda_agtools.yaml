@@ -1,0 +1,48 @@
+about:
+  description: 'agtools is a toolkit for manipulating assembly graphs for downstream
+    metagenomic applications, with a focus on the Graphical Fragment Assembly (GFA)
+    format.
+
+    '
+  dev_url: https://github.com/Vini2/agtools
+  doc_url: https://agtools.readthedocs.io/
+  home: https://github.com/Vini2/agtools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'agtools: Tools for manipulating assembly graphs'
+build:
+  entry_points:
+  - agtools = agtools.cli:main
+  noarch: true
+  number: 0
+  run_exports:
+  - None
+  script:
+  - ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - Vini2
+package:
+  name: agtools
+  version: 0.1.2
+requirements:
+  host:
+  - pip
+  - python >=3.9
+  - flit-core
+  run:
+  - python >=3.9
+  - click
+  - loguru
+  - bidict
+  - biopython
+  - python-igraph
+  - pycairo
+  - pandas
+source:
+  sha256: be66358c126b8d0e2040b7dd89529584573f1758dc430efa9f54d854e7f77aac
+  url: https://github.com/Vini2/agtools/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - agtools --help
