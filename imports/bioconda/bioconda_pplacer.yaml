@@ -7,17 +7,41 @@ about:
     maximize phylogenetic likelihood or posterior probability according to a reference
     alignment.
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - None
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   skip-lints:
-  - should_be_noarch_generic
+  - uses_vcs_url
 package:
   name: pplacer
-  version: 1.1.alpha19
+  version: 1.1.alpha20
+requirements:
+  build:
+  - make
+  - None
+  - ocaml
+  - opam
+  host:
+  - zlib
+  - sqlite
+  - gsl 2.8
+  run:
+  - gsl
 source:
-  sha256: 9131b45c35ddb927f866385f149cf64af5dffe724234cd4548c22303a992347d
-  url: https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip
+- sha256: f88b4f0bf460d08e040e7178b5327c305f9b707af5e15b0522cdf6f2d5268ee5
+  url: https://github.com/matsen/pplacer/archive/refs/tags/v1.1.alpha20.tar.gz
+- depth: 1
+  folder: mcl
+  git_rev: b1f7a969371d434eaa6848bdbb79a851de617c1f
+  git_url: https://github.com/fhcrc/mcl
+  sha256: unused
+- sha256: 0c7bc46ae1225b91e27983c0bddb6354b2d843ab4409d542dca87de1e83a33fb
+  url: https://github.com/matsen/pplacer/releases/download/v1.1.alpha20/pplacer-macos-arm64.zip
 test:
   commands:
   - pplacer --help > /dev/null

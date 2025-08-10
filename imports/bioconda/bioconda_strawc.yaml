@@ -1,12 +1,19 @@
 about:
+  dev_url: https://github.com/aidenlab/straw
   home: https://github.com/aidenlab/straw
   license: MIT
   license_family: MIT
-  summary: Straw bound with pybind11
+  summary: Straw bound with pybind11.
 build:
-  number: 5
-  skip: true
+  number: 6
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - Nanguage
 package:
@@ -25,10 +32,9 @@ requirements:
   run:
   - pybind11 >=2.4
   - python
-  - zlib
 source:
   sha256: 26d798c98bb8a08011e4c233816f6c76c66605ca09ce068d8f1952532cf22ffc
-  url: https://pypi.io/packages/source/s/strawC/strawC-0.0.2.1.tar.gz
+  url: https://pypi.org/packages/source/s/strawC/strawC-0.0.2.1.tar.gz
 test:
   imports:
   - strawC

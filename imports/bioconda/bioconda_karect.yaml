@@ -9,12 +9,16 @@ about:
 
     '
 build:
-  number: 7
+  number: 8
+  run_exports:
+  - None
   script: "install -d \"${PREFIX}/bin\"\n\"${CXX}\" ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}\
     \ \\\n    -O3 -Wall -pthread -lpthread \\\n    karect.cpp \\\n    -o \"${PREFIX}/bin/karect\"\
     \n"
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1093/bioinformatics/btv415
   recipe-maintainers:

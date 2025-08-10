@@ -1,27 +1,42 @@
 about:
-  home: http://bedops.readthedocs.io
-  license: GPLv2
+  dev_url: https://github.com/bedops/bedops
+  doc_url: https://bedops.readthedocs.io
+  home: https://github.com/bedops/bedops
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: LICENSE
   summary: High-performance genomic feature operations.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:Bedops
+  - usegalaxy-eu:bedops-sort-bed
   - doi:10.1093/bioinformatics/bts277
 package:
   name: bedops
   version: 2.4.42
 requirements:
   build:
-  - make
   - None
+  - None
+  - make
+  - pkg-config
+  host:
+  - jansson
+  - bzip2
+  - zlib
   run:
   - samtools
 source:
+  patches:
+  - 0001-Makefile.patch
+  - 0002-Makefile-darwin.patch
   sha256: 9daa0c098e37490a07f84664d2c61ff8909689995cf7e1673d259ccd4f1c453c
   url: https://github.com/bedops/bedops/archive/v2.4.42.tar.gz
 test:

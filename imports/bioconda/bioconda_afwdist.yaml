@@ -1,0 +1,24 @@
+about:
+  home: https://github.com/PathoGenOmics-Lab/afwdist
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A lightweight tool to calculate a pairwise distance metric based on fixed
+    and non-fixed allele frequencies.
+build:
+  number: 0
+  run_exports:
+  - pin_subpackage(name, max_pin="x.x")
+  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+package:
+  name: afwdist
+  version: 1.0.0
+requirements:
+  build:
+  - None
+source:
+  sha256: 6ec8646f7117171b01b922500449da7e62ef05b2eb9b46eafdaf558c0b73df15
+  url: https://github.com/PathoGenOmics-Lab/afwdist/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - afwdist --version

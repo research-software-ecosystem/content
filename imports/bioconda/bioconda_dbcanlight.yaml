@@ -1,40 +1,38 @@
 about:
   description: 'Dbcanlight is a lightweight rewrite of a widely used CAZyme annotation
-    tool run_dbcan. It uses pyhmmer, a Cython bindings to
+    tool run_dbcan. It uses pyhmmer, a Cython binding to
 
-    HMMER3, to instead the cli version of HMMER3 suite as the backend for the search
-    processes, which improves the multithreading
+    HMMER3, in place of the HMMER3 CLI suite as the backend for search processes,
+    improving multithreading performance. In
 
-    performance. In addition, it also solves the inconvenience process in the run
-    dbcan that the large sequence file required
-
-    manual splitting beforehand.
+    addition, it removes a limitation in run_dbcan that required manual splitting
+    of large sequence files beforehand.
 
 
-    The main program dbcanlight comprises 3 modules - build, search and conclude.
-    The build module help to download the required
+    The main program dbcanlight comprises three modules - build, search and conclude.
+    The build module help to download the
 
-    databases from dbcan website; the search module searches against protein HMM,
-    substrate HMM or diamond databases and reports
+    required databases from dbcan website; the search module searches against protein
+    HMM, substrate HMM or diamond databases and
 
-    the hits separately; and the conclude module gathers all the results made by each
-    module and provides a brief overview. The
+    reports the hits separately; and the conclude module gathers all the results made
+    by each module and provides a summary. The
 
-    output of dbcanlight is resemble to run_dbcan with slight cleanup. Run_dbcan output
-    the same substrate several times for a
+    output format closely resembles that of run_dbcan, with minor cleanup. For example,
+    run_dbcan may report the same substrate
 
-    gene that hits multiple profiles with the same substrate; in dbcanlight we only
-    report it once.
+    multiple times for a gene matching several profiles with that substrate, whereas
+    dbcanlight reports it only once.
 
 
-    Dbcanlight only re-implemented the core features of run_dbcan, that is searching
+    Dbcanlight only reimplemented the core features of run_dbcan, that is searching
     for CAZyme and substrate matches by
 
     hmmer/diamond/dbcansub. Submodules like signalP, CGCFinder, etc. are not implemented.
 
     '
   dev_url: https://github.com/chtsai0105/dbcanlight
-  doc_url: https://github.com/chtsai0105/dbcanlight/blob/v1.1.0/README.md
+  doc_url: https://github.com/chtsai0105/dbcanlight/blob/v1.1.1/README.md
   home: https://github.com/chtsai0105/dbcanlight
   license: MIT
   license_family: MIT
@@ -51,24 +49,27 @@ build:
   - None
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
+  identifies:
+  - 10.5281/zenodo.13586881
   recipe-maintainers:
   - chtsai0105
 package:
   name: dbcanlight
-  version: 1.1.0
+  version: 1.1.1
 requirements:
   host:
   - pip
-  - python >=3.7
-  - pytest >=6.0
+  - python >=3.9
+  - setuptools >=61.0
   run:
   - biopython >=1.81
+  - pyhmmer >=0.11.0
+  - python >=3.9
+  - urllib3 >=2.3.0
   - importlib-metadata
-  - pyhmmer >=0.10.4
-  - python >=3.7
 source:
-  sha256: dee95b9e8295fc749013283af43706b777646beb55d0881360b68b7efc7a60b6
-  url: https://github.com/chtsai0105/dbcanlight/archive/refs/tags/v1.1.0.tar.gz
+  sha256: ef48baed2d34f7863d1ce91130936c3aaafa2f0c49290bcbb69854fb4742e66d
+  url: https://github.com/chtsai0105/dbcanlight/archive/refs/tags/v1.1.1.tar.gz
 test:
   commands:
   - dbcanlight -h

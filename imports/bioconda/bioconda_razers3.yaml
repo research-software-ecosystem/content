@@ -1,35 +1,40 @@
 about:
   dev_url: https://github.com/seqan/seqan/tree/main/apps/razers3
-  home: http://www.seqan.de/projects/razers/
+  doc_url: https://www.seqan.de/apps/razers3.html
+  home: https://www.seqan.de/apps/razers3.html
   license: GPL-3.0-only
-  license_family: GPL
+  license_family: GPL3
   license_file: LICENSE
-  summary: RazerS 3 - Faster, fully sensitive read mapping
+  summary: RazerS 3 - Faster, fully sensitive read mapping.
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: razers3
   version: 3.5.8
 requirements:
   build:
-  - make
+  - ninja
   - None
-  - cmake
-  - llvm-openmp
+  - cmake <4
+  - pkg-config
   host:
   - zlib
   - bzip2
+  - boost-cpp
+  - libgomp
+  - llvm-openmp
   run:
-  - zlib
-  - bzip2
+  - libgomp
+  - llvm-openmp
 source:
   sha256: d7084d17729214003e84818e0280a16f223c8f1c6a30eeef040c27e0c0047bd7
-  url: http://packages.seqan.de/seqan-src/seqan-src-2.4.0.tar.gz
+  url: https://packages.seqan.de/seqan-src/seqan-src-2.4.0.tar.gz
 test:
   commands:
   - razers3 --help
