@@ -1,18 +1,21 @@
 about:
+  dev_url: https://github.com/hzi-bifo/mdasim
   home: https://github.com/hzi-bifo/mdasim
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE.txt
-  summary: "This is MDAsim 2+, a tool to simulate whole genome amplification of a\
-    \ DNA sequence with multiple displacement amplification. A citation for this version\
-    \ will be provided when available. MDAsim 2+ extends MDAsim 1.2, so please also\
-    \ always cite: Tagliavi Z, Draghici S. MDAsim: A multiple displacement amplification\
-    \ simulator. 2012 IEEE International Conference on Bioinformatics and Biomedicine\
-    \ (BIBM). 2012. pp. 1\u20134. doi:10.1109/BIBM.2012.6392622"
+  summary: This is MDAsim 2+, a tool to simulate whole genome amplification.
 build:
-  number: 6
-  script: make prefix=$PREFIX CPP="${CXX} ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}"
+  number: 7
+  run_exports:
+  - None
+  script: "if [[ \"${target_platform}\" == \"linux-aarch64\" ]]; then\n  sed -i.bak\
+    \ 's/-m64/-mcpu=cortex-a53/g' Makefile\nfi\nmake prefix=\"${PREFIX}\" CPP=\"${CXX}\
+    \ ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}\" -j\"${CPU_COUNT}\"\n"
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: mdasim
   version: 2.1.1

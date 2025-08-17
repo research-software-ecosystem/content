@@ -1,11 +1,19 @@
 about:
+  dev_url: https://github.com/gtonkinhill/pairsnp
   home: https://github.com/gtonkinhill/pairsnp
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: pairsnp calculates pairwise SNP distance matrices from multiple sequence
     alignment fasta files.
 build:
-  number: 3
+  number: 4
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: pairsnp
   version: 0.3.1
@@ -13,12 +21,14 @@ requirements:
   build:
   - make
   - None
+  - pkg-config
+  host:
   - libgomp
   - llvm-openmp
-  host:
   - zlib
   run:
-  - zlib
+  - libgomp
+  - llvm-openmp
 source:
   sha256: 5d3be3fe446cbd0861ea601e48641e13e8039de1e02c469f73cdce61e099fbc4
   url: https://github.com/gtonkinhill/pairsnp-cpp/archive/v0.3.1.tar.gz

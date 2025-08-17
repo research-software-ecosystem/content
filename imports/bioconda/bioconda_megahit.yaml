@@ -8,7 +8,7 @@ about:
   summary: 'MEGAHIT: An ultra-fast single-node solution for large and complex metagenomics
     assembly via succinct de Bruijn graph.'
 build:
-  number: 7
+  number: 8
   run_exports:
   - None
 extra:
@@ -48,6 +48,6 @@ source:
   url: https://github.com/voutcn/megahit/archive/v1.2.9.tar.gz
 test:
   commands:
+  - test -x ${PREFIX}/bin/megahit
   - megahit --test --kmin-1pass || (echo "error log:" && cat /tmp/megahit_test_*/log
     && exit 1)
-  - test -x ${PREFIX}/bin/megahit

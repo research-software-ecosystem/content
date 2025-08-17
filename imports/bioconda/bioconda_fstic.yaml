@@ -1,0 +1,25 @@
+about:
+  home: https://github.com/PathoGenOmics-Lab/fstic
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: "High-performance Rust tool for computing multiple genetic distance metrics\
+    \ (FST, GST, Jost\u2019s D, etc.) from VCFs or allele-frequency tables, with parallel\
+    \ processing and advanced filtering."
+build:
+  number: 0
+  run_exports:
+  - None
+  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+package:
+  name: fstic
+  version: 1.0.0
+requirements:
+  build:
+  - None
+source:
+  sha256: 28b30226090ecc4cf340dcc7697f49f06b5076d8d245e361510dabaf5fd43050
+  url: https://github.com/PathoGenOmics-Lab/fstic/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - fstic --version

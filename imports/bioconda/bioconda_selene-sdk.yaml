@@ -1,16 +1,21 @@
 about:
+  dev_url: https://github.com/FunctionLab/selene
   home: https://github.com/FunctionLab/selene
-  license: BSD 3-clause clear
+  license: BSD 3-Clause Clear
+  license_family: BSD
   license_file: LICENSE
   summary: Framework for developing sequence-level deep learning networks.
 build:
-  number: 1
+  entry_points:
+  - selene_sdk = selene_sdk.cli:main
+  number: 2
   run_exports:
   - None
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - kathyxchen
 package:
@@ -20,19 +25,18 @@ requirements:
   build:
   - None
   host:
-  - python >=3.8,<3.9
+  - python
   - setuptools
-  - wheel
   - cython >=0.29.24
   - numpy >=1.21.4
   - poetry-core
   - pip
   run:
-  - python >=3.8,<3.9
+  - python
   - click
   - h5py
   - matplotlib-base >=2.2.3
-  - None
+  - numpy >=1.21.4
   - pandas
   - plotly
   - pyfaidx
@@ -41,7 +45,7 @@ requirements:
   - ruamel.yaml
   - scikit-learn
   - scipy
-  - seaborn
+  - seaborn-base
   - statsmodels
   - pytorch >=1.0.0,<=2.3.1
 source:

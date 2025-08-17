@@ -1,7 +1,7 @@
 about:
   description: "ESME (Earth System Modelling Environment) is a package designed to\
     \ facilitate the installation and management of various scientific computing libraries\
-    \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVAPIch\
+    \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVApich\
     \ and ParaStationMPI). This bundle currently includes:\n- PnetCDF: Version 1.14.1\n\
     - HDF5: Version 1.14.6\n- netCDF_C: Version 4.9.3\n- netCDF_Fortran: Version 4.6.2\n\
     - ParallelIO: Version 2.6.6 \n- ESMF: Version 8.8.1\n- OSU_Micro_Benchmarks: Version\
@@ -21,7 +21,7 @@ build:
   run_exports:
   - None
   skip: true
-  string: _h_0
+  string: mvapich_ofi_h_0
 extra:
   additional-platforms:
   - linux-aarch64
@@ -44,7 +44,7 @@ outputs:
     summary: PnetCDF - Parallel netCDF
   build:
     string: h_0
-  name: esme_pnetcdf__
+  name: esme_pnetcdf_mvapich__ofi
   requirements:
     build:
     - None
@@ -53,7 +53,7 @@ outputs:
     - make
     - m4
     host:
-    - null
+    - mvapich==ofi*
   script: build_pnetcdf.sh
   test:
     commands:
@@ -72,7 +72,7 @@ outputs:
     summary: HDF5 - Hierarchical Data Format 5
   build:
     string: h_0
-  name: esme_hdf5__
+  name: esme_hdf5_mvapich__ofi
   requirements:
     build:
     - None
@@ -82,7 +82,7 @@ outputs:
     host:
     - libaec
     - libacl
-    - null
+    - mvapich==ofi*
     - zlib
     run:
     - libaec
@@ -106,7 +106,7 @@ outputs:
     summary: NetCDF-C - netCDF interface for C
   build:
     string: h_0
-  name: esme_netcdf-c__
+  name: esme_netcdf-c_mvapich__ofi
   requirements:
     build:
     - None
@@ -114,11 +114,11 @@ outputs:
     - make
     - m4
     host:
-    - esme_hdf5__
+    - esme_hdf5_mvapich__ofi
     - libcurl
     - libxml2
-    - null
-    - esme_pnetcdf__
+    - mvapich==ofi*
+    - esme_pnetcdf_mvapich__ofi
     - zlib
   script: build_netcdf-c.sh
   test:
@@ -139,7 +139,7 @@ outputs:
     summary: NetCDF-Fortran - netCDF interface for Fortran
   build:
     string: h_0
-  name: esme_netcdf-fortran__
+  name: esme_netcdf-fortran_mvapich__ofi
   requirements:
     build:
     - None
@@ -148,10 +148,10 @@ outputs:
     - make
     - m4
     host:
-    - esme_hdf5__
-    - null
-    - esme_netcdf-c__
-    - esme_pnetcdf__
+    - esme_hdf5_mvapich__ofi
+    - mvapich==ofi*
+    - esme_netcdf-c_mvapich__ofi
+    - esme_pnetcdf_mvapich__ofi
   script: build_netcdf-fortran.sh
   test:
     commands:
@@ -169,7 +169,7 @@ outputs:
     summary: ParallelIO - High-level parallel I/O library
   build:
     string: h_0
-  name: esme_pio__
+  name: esme_pio_mvapich__ofi
   requirements:
     build:
     - autoconf
@@ -182,11 +182,11 @@ outputs:
     - m4
     - pkg-config
     host:
-    - esme_hdf5__
-    - null
-    - esme_netcdf-c__
-    - esme_netcdf-fortran__
-    - esme_pnetcdf__
+    - esme_hdf5_mvapich__ofi
+    - mvapich==ofi*
+    - esme_netcdf-c_mvapich__ofi
+    - esme_netcdf-fortran_mvapich__ofi
+    - esme_pnetcdf_mvapich__ofi
   script: build_pio.sh
   test:
     commands:
@@ -205,7 +205,7 @@ outputs:
     summary: ESMF - Earth System Modeling Framework
   build:
     string: h_0
-  name: esme_esmf__
+  name: esme_esmf_mvapich__ofi
   requirements:
     build:
     - cmake
@@ -214,64 +214,35 @@ outputs:
     - None
     - make
     host:
-    - esme_hdf5__
-    - null
-    - esme_netcdf-c__
-    - esme_netcdf-fortran__
+    - esme_hdf5_mvapich__ofi
+    - mvapich==ofi*
+    - esme_netcdf-c_mvapich__ofi
+    - esme_netcdf-fortran_mvapich__ofi
     - openblas
-    - esme_pio__
-    - esme_pnetcdf__
+    - esme_pio_mvapich__ofi
+    - esme_pnetcdf_mvapich__ofi
     run:
-    - esme_hdf5__
-    - null
-    - esme_netcdf-c__
-    - esme_netcdf-fortran__
+    - esme_hdf5_mvapich__ofi
+    - mvapich==ofi*
+    - esme_netcdf-c_mvapich__ofi
+    - esme_netcdf-fortran_mvapich__ofi
     - openblas
-    - esme_pio__
-    - esme_pnetcdf__
+    - esme_pio_mvapich__ofi
+    - esme_pnetcdf_mvapich__ofi
   script: build_esmf.sh
   test:
     commands:
     - if test -f ${ESMFMKFILE}; then echo "ESMF makefile found"; else echo "ESMF makefile
       not found"; exit 1; fi
   version: 8.8.1
-- about:
-    description: 'The OSU Micro Benchmarks (OMB) is a suite of performance measurement
-      tools developed by The Ohio State University.
-
-      '
-    home: https://mvapich.cse.ohio-state.edu/
-    license: BSD-3-Clause
-    license_family: BSD
-    license_file: LICENSE_OMB
-    summary: OSU Micro Benchmarks
-  build:
-    string: h_0
-  name: esme_omb__
-  requirements:
-    build:
-    - None
-    - None
-    - make
-    host:
-    - null
-    run:
-    - null
-    - openssh
-  script: build_omb.sh
-  test:
-    commands:
-    - mpiexec -n 2 $PREFIX/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_latency -m 1024:1024
-  version: 7.5.1
 package:
-  name: esme_mvapich_
+  name: esme_mvapich__ofi
   version: 1.0.2
 requirements:
   run:
   - cmake
-  - esme_esmf__
+  - esme_esmf_mvapich__ofi
   - make
-  - esme_omb__
   - perl-xml-libxml
   - python=3.8
 source:
