@@ -1,11 +1,15 @@
 about:
-  description: "PyBDEI provides tools for fast and accurate maximum likelihood estimation\
-    \ \nof Birth-Death Exposed-Infectious (BDEI) epidemiological model parameters\
-    \ \nfrom phylogenetic trees.\n"
+  description: 'PyBDEI provides tools for fast and accurate maximum likelihood estimation
+
+    of Birth-Death Exposed-Infectious (BDEI) epidemiological model parameters
+
+    from phylogenetic trees.
+
+    '
   dev_url: https://github.com/evolbioinfo/bdei
   home: https://github.com/evolbioinfo/bdei
-  license: LGPL-2.1
-  license_family: GPL2
+  license: LGPL-2.1-or-later
+  license_family: LGPL
   license_file: LICENSE
   summary: Maximum likelihood estimation of Birth-Death Exposed-Infectious (BDEI)
     epidemiological model parameters from phylogenetic trees.
@@ -14,13 +18,17 @@ build:
   - bdei_infer = pybdei.inference:main
   - bdei_loglikelihood = pybdei.loglikelihood:main
   - bdei_u = pybdei.u_calculator:main
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation --no-binary=pybdei
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --no-binary=pybdei
+    -vvv
   script_env:
   - CC=$CXX
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1093/sysbio/syad059
   recipe-maintainers:
@@ -31,29 +39,27 @@ package:
 requirements:
   build:
   - None
+  - pkg-config
   host:
-  - python >=3.9
+  - python
   - setuptools
   - numpy >=1.24.0
   - pip
   - nlopt
   run:
-  - python >=3.9
+  - python
   - ete3 >=3.1.3
   - scipy >=1.11.1
   - six >=1.16.0
   - treesimulator >=0.1.22
-  - None
+  - numpy >=1.24.0
 source:
   sha256: 4fcd3950aa60a25538bb8716a88ed5d5b24f63b1deebf1828e2e0ea9ac45441f
-  url: https://pypi.io/packages/source/p/pybdei/pybdei-0.13.tar.gz
+  url: https://pypi.org/packages/source/p/pybdei/pybdei-0.13.tar.gz
 test:
   commands:
-  - pip check
   - bdei_infer --help
   - bdei_loglikelihood --help
   - bdei_u --help
   imports:
   - pybdei
-  requires:
-  - pip

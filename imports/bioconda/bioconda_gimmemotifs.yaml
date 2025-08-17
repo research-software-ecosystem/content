@@ -1,33 +1,54 @@
 about:
-  description: Motif prediction pipeline and various motif-related tools
+  description: Motif prediction pipeline and various motif-related tools.
+  dev_url: https://github.com/vanheeringen-lab/gimmemotifs
+  doc_url: https://gimmemotifs.readthedocs.io/en/master
   home: https://github.com/vanheeringen-lab/gimmemotifs
   license: MIT
-  summary: Motif prediction pipeline and various motif-related tools
+  license_family: MIT
+  license_file: COPYING
+  summary: Motif prediction pipeline and various motif-related tools.
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
   - None
-  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:gimmemotifs
+  - doi:10.1093/bioinformatics/btq636
+  - doi:10.1101/474403
   recipe-maintainers:
   - simonvh
   - siebrenf
 outputs:
 - build:
-    script: python -m pip install . --no-deps --ignore-installed -vvv
+    script:
+    - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+    - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+    - export CFLAGS="${CFLAGS} -O3 -Wno-deprecated-declarations -Wno-implicit-int
+      -Wno-int-conversion"
+    - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+    - sed -i.bak 's|"CONDA_BUILD"|"PREFIX"|' setup.py
+    - sed -i.bak 's|SafeConfigParser|ConfigParser|' versioneer.py
+    - sed -i.bak 's|readfp|read_file|' versioneer.py
+    - python -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+      -vvv
     skip: true
   name: gimmemotifs-minimal
   requirements:
     build:
     - None
-    - None
     host:
-    - pip
     - python
+    - pip
+    - libgomp
+    - llvm-openmp
     run:
+    - libgomp
+    - llvm-openmp
     - biofluff >=3.0.4
     - configparser
     - diskcache
@@ -39,7 +60,7 @@ outputs:
     - loguru
     - matplotlib-base >=3.3
     - numpy >=1.18
-    - pandas >=1.3, <2
+    - pandas >=1.3
     - pybedtools >=0.9.0
     - pysam >=0.16
     - python
@@ -47,7 +68,7 @@ outputs:
     - qnorm  >=0.8.1
     - scikit-learn >=0.23.2
     - scipy >=1.5
-    - seaborn >=0.10.1
+    - seaborn-base >=0.10.1
     - statsmodels
     - tqdm >=4.46.1
     - xdg
@@ -58,8 +79,8 @@ outputs:
     - dinamo >=1.0
     - gadem >=1.3.1
     - homer >=4.11
-    - meme >=5.4.1
-    - prosampler >=1.0
+    - meme >=5.5.7
+    - prosampler >=1.5
     - trawler >=2.0
     - weeder >=2.0
     - xxmotif >=1.6
@@ -71,6 +92,4 @@ source:
   url: https://github.com/vanheeringen-lab/gimmemotifs/releases/download/0.18.0/gimmemotifs-0.18.0.tar.gz
 test:
   commands:
-  - gimme --help
-  imports:
-  - gimmemotifs
+  - export LD_PRELOAD="${PREFIX}/lib/libgomp.so.1" && gimme --help

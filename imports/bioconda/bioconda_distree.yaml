@@ -1,0 +1,23 @@
+about:
+  home: https://github.com/PathoGenOmics-Lab/distree
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A tool to calculate distances between phylogenetic trees.
+build:
+  number: 0
+  run_exports:
+  - pin_subpackage(name, max_pin="x.x")
+  script: cargo install --no-track --verbose --root "${PREFIX}" --path .
+package:
+  name: distree
+  version: 1.0.0
+requirements:
+  build:
+  - None
+source:
+  sha256: ac529cc942d854246b77fc0ebe808c20394bd42cb3c195d0c8578edf92616e92
+  url: https://github.com/PathoGenOmics-Lab/distree/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - distree --version

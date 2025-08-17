@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/cmatKhan/unifire/
+  license: Apache-2.0
+  license_family: APACHE
+  summary: UniFIRE is the official protein annotator from Uniprot. It runs both UniRule
+    and ARBA to assign protein function.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+package:
+  name: unifire
+  version: 1.0.1
+requirements:
+  build:
+  - openjdk >=17,<18
+  - maven
+  - rsync
+  run:
+  - openjdk >=17,<18
+  - grep
+  - hmmer
+  - python >=3.8,<4
+  - ete4 >=4.3.0
+  - lxml
+source:
+  sha256: 181a934c2daf956be822dca580fa4c22103bcf2f8fc85d493b16a1094f1f19b9
+  url: https://github.com/cmatKhan/unifire/archive/refs/tags/1.0.1.tar.gz
+test:
+  commands:
+  - unifire --help
+  - pirsr -h
+  - hmmalign -h
+  - updateIPRScanWithTaxonomicLineage --help
+  files:
+  - proteins.fasta

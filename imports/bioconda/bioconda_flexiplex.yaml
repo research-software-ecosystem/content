@@ -3,38 +3,55 @@ about:
     \ tool \nfor omics data. For more information, see the accompanying bioRxiv preprint\n\
     \"Davidson et al. Flexiplex: A versatile demultiplexer and search tool for omics\
     \ data.\"\n"
-  home: https://github.com/DavidsonGroup/flexiplex/
-  license: MIT License
+  dev_url: https://github.com/DavidsonGroup/flexiplex
+  doc_url: https://davidsongroup.github.io/flexiplex
+  home: https://github.com/DavidsonGroup/flexiplex
+  license: MIT
   license_family: MIT
-  summary: 'flexiplex: the flexible demultiplexer'
+  license_file: LICENSE
+  summary: 'flexiplex: the flexible demultiplexer (filter barcodes by whitelist and
+    inflection point)'
 build:
   entry_points:
   - flexiplex-filter = flexiplex_filter.main:cli
   number: 0
   run_exports:
   - None
+  script:
+  - export DIR="${PREFIX}/bin"
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CFLAGS="${CFLAGS} -O3 -I${PREFIX}/include -L${PREFIX}/lib"
+  - mkdir -p "${DIR}"
+  - make -j"${CPU_COUNT}"
+  - make install DIR="${DIR}"
 extra:
+  additional-platforms:
+  - osx-arm64
+  - linux-aarch64
   identifiers:
   - doi:10.1101/2023.08.21.554084
 package:
   name: flexiplex
-  version: 1.02.4
+  version: 1.02.5
 requirements:
   build:
   - make
   - None
+  - pkg-config
   host:
   - python
   - pip
   - setuptools
   run:
   - python
+  - cachetools
+  - requests
+  - matplotlib-base
   - numpy
   - pandas
-  - matplotlib-base
 source:
-  sha256: 24de54886043ebe89c4617575b59282761f3ffe8526c94906231ac13037d2940
-  url: https://github.com/DavidsonGroup/flexiplex/archive/refs/tags/v1.02.4.tar.gz
+  sha256: 6a14395cdefa91a1ad631a3ae839198715f22279c70cbcd51e660f15cee9228e
+  url: https://github.com/DavidsonGroup/flexiplex/archive/refs/tags/v1.02.5.tar.gz
 test:
   commands:
   - flexiplex -h
