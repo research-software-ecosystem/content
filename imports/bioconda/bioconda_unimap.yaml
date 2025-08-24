@@ -9,15 +9,23 @@ about:
     Unimap does not replace minimap2 for other types of alignment. It drops the support
     of multi-part index and short-read mapping. Its long-read alignment is different
     from minimap2 but is not necessarily better. Unimap is more of a specialized minimap2
-    at the moment.'
+    at the moment.
+
+    '
   dev_url: https://github.com/lh3/unimap
   doc_url: https://github.com/lh3/unimap
   home: https://github.com/lh3/unimap
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
   summary: Unimap is a fork of minimap2 optimized for assembly-to-reference alignment.
 build:
-  number: 5
+  number: 6
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: unimap
   version: 0.1
@@ -27,7 +35,6 @@ requirements:
   - make
   host:
   - zlib
-  run: null
 source:
   patches:
   - 0001-gh-4-Consider-LDFLAGS-while-linking.patch

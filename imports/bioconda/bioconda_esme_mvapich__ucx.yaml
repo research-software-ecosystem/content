@@ -4,7 +4,7 @@ about:
     \ with support for multiple MPI implementations (namely MPIch, OpenMPI, MVApich\
     \ and ParaStationMPI). This bundle currently includes:\n- PnetCDF: Version 1.14.1\n\
     - HDF5: Version 1.14.6\n- netCDF_C: Version 4.9.3\n- netCDF_Fortran: Version 4.6.2\n\
-    - ParallelIO: Version 2.6.6 \n- ESMF: Version 8.8.1\n- OSU_Micro_Benchmarks: Version\
+    - ParallelIO: Version 2.6.6 \n- ESMF: Version 8.9.0\n- OSU_Micro_Benchmarks: Version\
     \ 7.5.1\n"
   home: https://github.com/j34ni/bioconda-recipes
   license: BSD-3-Clause
@@ -21,10 +21,8 @@ build:
   run_exports:
   - None
   skip: true
-  string: mvapich_ofi_h_0
+  string: mvapich_ucx_h_0
 extra:
-  additional-platforms:
-  - linux-aarch64
   recipe-maintainers:
   - j34ni
   skip-lints:
@@ -44,7 +42,7 @@ outputs:
     summary: PnetCDF - Parallel netCDF
   build:
     string: h_0
-  name: esme_pnetcdf_mvapich__ofi
+  name: esme_pnetcdf_mvapich__ucx
   requirements:
     build:
     - None
@@ -53,7 +51,7 @@ outputs:
     - make
     - m4
     host:
-    - mvapich==ofi*
+    - mvapich==ucx*
   script: build_pnetcdf.sh
   test:
     commands:
@@ -72,7 +70,7 @@ outputs:
     summary: HDF5 - Hierarchical Data Format 5
   build:
     string: h_0
-  name: esme_hdf5_mvapich__ofi
+  name: esme_hdf5_mvapich__ucx
   requirements:
     build:
     - None
@@ -82,7 +80,7 @@ outputs:
     host:
     - libaec
     - libacl
-    - mvapich==ofi*
+    - mvapich==ucx*
     - zlib
     run:
     - libaec
@@ -106,7 +104,7 @@ outputs:
     summary: NetCDF-C - netCDF interface for C
   build:
     string: h_0
-  name: esme_netcdf-c_mvapich__ofi
+  name: esme_netcdf-c_mvapich__ucx
   requirements:
     build:
     - None
@@ -114,11 +112,11 @@ outputs:
     - make
     - m4
     host:
-    - esme_hdf5_mvapich__ofi
+    - esme_hdf5_mvapich__ucx
     - libcurl
     - libxml2
-    - mvapich==ofi*
-    - esme_pnetcdf_mvapich__ofi
+    - mvapich==ucx*
+    - esme_pnetcdf_mvapich__ucx
     - zlib
   script: build_netcdf-c.sh
   test:
@@ -139,7 +137,7 @@ outputs:
     summary: NetCDF-Fortran - netCDF interface for Fortran
   build:
     string: h_0
-  name: esme_netcdf-fortran_mvapich__ofi
+  name: esme_netcdf-fortran_mvapich__ucx
   requirements:
     build:
     - None
@@ -148,10 +146,10 @@ outputs:
     - make
     - m4
     host:
-    - esme_hdf5_mvapich__ofi
-    - mvapich==ofi*
-    - esme_netcdf-c_mvapich__ofi
-    - esme_pnetcdf_mvapich__ofi
+    - esme_hdf5_mvapich__ucx
+    - mvapich==ucx*
+    - esme_netcdf-c_mvapich__ucx
+    - esme_pnetcdf_mvapich__ucx
   script: build_netcdf-fortran.sh
   test:
     commands:
@@ -169,7 +167,7 @@ outputs:
     summary: ParallelIO - High-level parallel I/O library
   build:
     string: h_0
-  name: esme_pio_mvapich__ofi
+  name: esme_pio_mvapich__ucx
   requirements:
     build:
     - autoconf
@@ -182,11 +180,11 @@ outputs:
     - m4
     - pkg-config
     host:
-    - esme_hdf5_mvapich__ofi
-    - mvapich==ofi*
-    - esme_netcdf-c_mvapich__ofi
-    - esme_netcdf-fortran_mvapich__ofi
-    - esme_pnetcdf_mvapich__ofi
+    - esme_hdf5_mvapich__ucx
+    - mvapich==ucx*
+    - esme_netcdf-c_mvapich__ucx
+    - esme_netcdf-fortran_mvapich__ucx
+    - esme_pnetcdf_mvapich__ucx
   script: build_pio.sh
   test:
     commands:
@@ -205,7 +203,7 @@ outputs:
     summary: ESMF - Earth System Modeling Framework
   build:
     string: h_0
-  name: esme_esmf_mvapich__ofi
+  name: esme_esmf_mvapich__ucx
   requirements:
     build:
     - cmake
@@ -214,34 +212,34 @@ outputs:
     - None
     - make
     host:
-    - esme_hdf5_mvapich__ofi
-    - mvapich==ofi*
-    - esme_netcdf-c_mvapich__ofi
-    - esme_netcdf-fortran_mvapich__ofi
+    - esme_hdf5_mvapich__ucx
+    - mvapich==ucx*
+    - esme_netcdf-c_mvapich__ucx
+    - esme_netcdf-fortran_mvapich__ucx
     - openblas
-    - esme_pio_mvapich__ofi
-    - esme_pnetcdf_mvapich__ofi
+    - esme_pio_mvapich__ucx
+    - esme_pnetcdf_mvapich__ucx
     run:
-    - esme_hdf5_mvapich__ofi
-    - mvapich==ofi*
-    - esme_netcdf-c_mvapich__ofi
-    - esme_netcdf-fortran_mvapich__ofi
+    - esme_hdf5_mvapich__ucx
+    - mvapich==ucx*
+    - esme_netcdf-c_mvapich__ucx
+    - esme_netcdf-fortran_mvapich__ucx
     - openblas
-    - esme_pio_mvapich__ofi
-    - esme_pnetcdf_mvapich__ofi
+    - esme_pio_mvapich__ucx
+    - esme_pnetcdf_mvapich__ucx
   script: build_esmf.sh
   test:
     commands:
     - if test -f ${ESMFMKFILE}; then echo "ESMF makefile found"; else echo "ESMF makefile
       not found"; exit 1; fi
-  version: 8.8.1
+  version: 8.9.0
 package:
-  name: esme_mvapich__ofi
+  name: esme_mvapich__ucx
   version: 1.0.2
 requirements:
   run:
   - cmake
-  - esme_esmf_mvapich__ofi
+  - esme_esmf_mvapich__ucx
   - make
   - perl-xml-libxml
   - python=3.8
@@ -262,8 +260,8 @@ source:
   sha256: e32e018a521d38c9424940c7cfa7e9b1931b605f3511ee7ab3a718b69faeeb04
   url: https://github.com/NCAR/ParallelIO/archive/refs/tags/pio2_6_6.tar.gz
 - folder: esme_esmf
-  sha256: b0acb59d4f000bfbdfddc121a24819bd2a50997c7b257b0db2ceb96f3111b173
-  url: https://github.com/esmf-org/esmf/archive/refs/tags/v8.8.1.tar.gz
+  sha256: 586e0101d76ff9842d9ad43567fae50317ee794d80293430d9f1847dec0eefa5
+  url: https://github.com/esmf-org/esmf/archive/refs/tags/v8.9.0.tar.gz
 - folder: esme_omb
   sha256: 160d0d5e3c3cb022520ecb247e9875bb0973b1d3cadccd6c17624f8407c52e22
   url: https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-7.5.1.tar.gz

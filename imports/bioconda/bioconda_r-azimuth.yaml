@@ -1,4 +1,6 @@
 about:
+  dev_url: https://github.com/satijalab/azimuth
+  doc_url: https://satijalab.org/azimuth
   home: https://github.com/satijalab/azimuth
   license: GPL-3.0-only
   license_family: GPL3
@@ -8,12 +10,19 @@ about:
   summary: Azimuth is a Shiny app demonstrating a query-reference mapping algorithm
     for single-cell data.
 build:
-  number: 1
+  number: 2
   rpaths:
   - lib/R/lib/
+  - lib/
   run_exports:
   - None
-  script: $R CMD INSTALL --build .
+  script:
+  - export DISABLE_AUTOBREW=1
+  - $R CMD INSTALL --build . $R_ARGS
+extra:
+  additional-platforms:
+  - osx-arm64
+  - linux-aarch64
 package:
   name: r-azimuth
   version: 0.5.0
@@ -23,15 +32,15 @@ requirements:
   - None
   host:
   - r-base
-  - bioconductor-bsgenome.hsapiens.ucsc.hg38 >=1.4.0,<1.5.0
+  - bioconductor-bsgenome.hsapiens.ucsc.hg38
   - r-dt >=0.15
   - bioconductor-ensdb.hsapiens.v86
   - r-matrix >=1.2.18
   - r-rcpp >=1.0.7
   - r-seurat >=5.0.0
-  - r-seurat-data ==0.2.1
-  - r-seurat-disk ==0.0.0.9021
-  - r-seuratobject >=5.0.0
+  - r-seurat-data
+  - r-seurat-disk
+  - r-seuratobject
   - r-future >=1.19.1
   - r-ggplot2 >=3.3.2
   - bioconductor-glmgampoi >=1.0.0
@@ -61,8 +70,8 @@ requirements:
   - r-matrix >=1.2.18
   - r-rcpp >=1.0.7
   - r-seurat >=5.0.0
-  - r-seurat-data ==0.2.1
-  - r-seurat-disk ==0.0.0.9021
+  - r-seurat-data
+  - r-seurat-disk
   - r-seuratobject >=5.0.0
   - r-future >=1.19.1
   - r-ggplot2 >=3.3.2

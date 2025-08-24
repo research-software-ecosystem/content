@@ -8,7 +8,7 @@ about:
   summary: A package of programs for phylogenetic analyses of DNA or protein sequences
     using maximum likelihood.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
   skip: true
@@ -26,11 +26,14 @@ requirements:
   build:
   - make
   - None
+  host:
+  - wget
+  - tar
 source:
   sha256: 19ca9d484d729324748b9c86453e4c8f4a1fa79ad6fa3ac7cdbfaa7d0bfb8c22
   url: https://github.com/abacus-gene/paml/archive/refs/tags/v4.10.9.tar.gz
 test:
   commands:
   - chi2 1 .1
-  - evolver 1 | grep EVOLVER
-  - codeml /dev/null 2>&1 | grep paml
+  - evolver 1 | grep 'EVOLVER'
+  - codeml /dev/null 2>&1 | grep 'paml'

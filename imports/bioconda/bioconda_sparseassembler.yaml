@@ -1,26 +1,29 @@
 about:
+  dev_url: https://github.com/yechengxi/SparseAssembler
   home: https://github.com/yechengxi/SparseAssembler
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: A sparse k-mer graph based, memory-efficient genome assembler
+  summary: A sparse k-mer graph based, memory-efficient genome assembler.
 build:
-  number: 10
-  script: 'mkdir -p "${PREFIX}/bin"
-
-    "${CXX}" ${CPPFLAGS} ${CXXFLAGS} -O3 -o SparseAssembler *.cpp
-
-    mv SparseAssembler "${PREFIX}/bin/"
-
-    '
+  number: 11
+  run_exports:
+  - None
+  script:
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - mkdir -p "${PREFIX}/bin"
+  - ${CXX} ${CPPFLAGS} ${CXXFLAGS} -O3 -o SparseAssembler *.cpp
+  - install -v -m 0755 SparseAssembler "${PREFIX}/bin"
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: sparseassembler
   version: 20160205
 requirements:
   build:
   - None
-  host: null
-  run: null
 source:
   md5: e9c6b25a8f9983badff01094615596f0
   url: https://github.com/yechengxi/SparseAssembler/archive/7ce06016160de6dc0e245530689cefed8d5db19f.tar.gz
