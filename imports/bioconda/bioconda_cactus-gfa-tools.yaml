@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/ComparativeGenomicsToolkit/cactus-gfa-tools
+  doc_url: https://github.com/ComparativeGenomicsToolkit/cactus-gfa-tools/blob/main/README.md
+  home: https://github.com/ComparativeGenomicsToolkit/cactus-gfa-tools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Command-line utilitites required for the Cactus Pangenome Pipeline.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: cactus-gfa-tools
+  version: 0.1
+requirements:
+  build:
+  - make
+  - None
+  - pkg-config
+  - libgomp
+  - llvm-openmp
+  run:
+  - libgomp
+  - llvm-openmp
+source:
+  git_rev: f9b999e
+  git_url: https://github.com/ComparativeGenomicsToolkit/cactus-gfa-tools.git
+  sha256: unused
+test:
+  commands:
+  - gaf2paf 2>&1 | grep "gaf2paf"

@@ -2,33 +2,43 @@ about:
   description: Determine variation in chromatin accessibility across sets of annotations
     or peaks. Designed primarily for single-cell or sparse chromatin accessibility
     data, e.g. from scATAC-seq or sparse bulk ATAC or DNAse-seq experiments.
-  home: https://bioconductor.org/packages/3.20/bioc/html/chromVAR.html
-  license: MIT + file LICENSE
+  dev_url: https://bioconductor.org/packages/devel/bioc/html/chromVAR.html
+  doc_url: https://bioconductor.org/packages/3.21/bioc/html/chromVAR.html
+  home: https://bioconductor.org/packages/3.21/bioc/html/chromVAR.html
+  license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Chromatin Variation Across Regions
+  summary: Chromatin Variation Across Regions.
 build:
-  number: 1
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
-  run_exports: None
+  run_exports:
+  - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:chromvar
+  - doi:10.1038/nmeth.4401
   parent_recipe:
     name: bioconductor-chromvar
     path: recipes/bioconductor-chromvar
     version: 1.2.0
 package:
   name: bioconductor-chromvar
-  version: 1.28.0
+  version: 1.30.1
 requirements:
   build:
   - None
   - None
+  - None
   - make
+  - pkg-config
+  - clangdev
+  - llvmlite
   host:
   - bioconductor-biocgenerics >=0.52.0,<0.53.0
   - bioconductor-biocparallel >=1.40.0,<1.41.0
@@ -80,12 +90,12 @@ requirements:
   - r-rtsne
   - r-shiny
 source:
-  md5: aee29f3a8176335fd69099d868a7e461
+  sha256: 576372e0cd42647e77083b7f8e414a4a560feae075283ca73062f8d199c1baf1
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/chromVAR_1.28.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/chromVAR/chromVAR_1.28.0.tar.gz
-  - https://bioarchive.galaxyproject.org/chromVAR_1.28.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-chromvar/bioconductor-chromvar_1.28.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.21/bioc/src/contrib/chromVAR_1.30.1.tar.gz
+  - https://bioconductor.org/packages/3.21/bioc/src/contrib/Archive/chromVAR/chromVAR_1.30.1.tar.gz
+  - https://bioarchive.galaxyproject.org/chromVAR_1.30.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chromvar/bioconductor-chromvar_1.30.1_src_all.tar.gz
 test:
   commands:
   - $R -e "library('chromVAR')"

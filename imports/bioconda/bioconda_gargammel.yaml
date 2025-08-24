@@ -2,43 +2,48 @@ about:
   description: "gargammel is a set of programs aimed at simulating ancient DNA\nfragments.\
     \ For ancient hominin samples our program can also \nsimulate various levels of\
     \ present-day human contamination and \nmicrobial contamination.\n"
+  dev_url: https://github.com/grenaud/gargammel
   home: https://github.com/grenaud/gargammel
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: gargammel/LICENSE
-  summary: Tool for simulating ancient DNA datasets
+  summary: Tool for simulating ancient DNA datasets.
 build:
-  number: 7
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: gargammel
-  version: 1.1.2
+  version: 1.1.4
 requirements:
   build:
   - make
   - None
+  - pkg-config
   host:
   - gsl
   - zlib
-  - bamtools
+  - bamtools ==2.5.3
   run:
-  - zlib
-  - openssl 1.0.2n
+  - openssl
   - perl
   - gsl
   - art
   - samtools
 source:
 - folder: gargammel/libgab
-  sha256: ef4d4e980918f48b9a5c454f46afe3ffe6d97a075bbbf89abb7e3553cd6b9827
-  url: https://github.com/grenaud/libgab/archive/d2bbab7d88fbfdaa0ce57a26dc908d2fc66bf656.tar.gz
+  sha256: 2cadc9dedccbd19f274585b830ecc3ecde635a001e7ddd7f88ba9fe8e3a537e3
+  url: https://github.com/grenaud/libgab/archive/304eeb83444201b4b5557e954ee6c7ffa367adc0.tar.gz
 - folder: gargammel
   patches:
   - 0001-gargammel-Makefile-nobamtools.patch
-  - 0002-gargammel-src-Makefile-change-CXXFLAGS-and-LDFLAGS.patch
-  - 0003-libgab-gzstream-Makefile-use-CXXFLAGS-and-LDFLAGS.patch
-  - 0004-libgab-Makefile-removed-CXX.patch
-  - 0005-libgab-ReconsReferenceBAM-OSX.patch
-  sha256: c4b5ca081087fa5ecf086dbd49a4db0fb3c7d2d3d13eb30bdfc96b964661c3c1
-  url: https://github.com/grenaud/gargammel/archive/1.1.2.tar.gz
+  - 0002-libgab-Makefile-removed-CXX.patch
+  sha256: 620631e18ee2b4094a154a85cbd2fba9a5771c04daa028d7d1401f8a115a2963
+  url: https://github.com/grenaud/gargammel/archive/refs/tags/1.1.4.tar.gz
 test:
   commands:
   - gargammel --help

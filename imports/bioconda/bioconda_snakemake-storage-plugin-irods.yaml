@@ -1,20 +1,22 @@
 about:
+  dev_url: https://github.com/snakemake/snakemake-storage-plugin-irods
   home: https://github.com/snakemake/snakemake-storage-plugin-irods
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: A Snakemake plugin for handling input and output on iRODS
+  summary: A Snakemake plugin for handling input and output on iRODS.
 build:
   noarch: python
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - koesterlab
 package:
   name: snakemake-storage-plugin-irods
-  version: 0.2.0
+  version: 0.3.1
 requirements:
   host:
   - python >=3.11,<4.0
@@ -23,11 +25,11 @@ requirements:
   run:
   - python >=3.11.0,<4.0.0
   - snakemake-interface-common >=1.15.0,<2.0.0
-  - snakemake-interface-storage-plugins >=3.0.0,<4.0.0
-  - python-irodsclient >=1.1.9,<2.0.0
+  - snakemake-interface-storage-plugins >=4.1.0,<5.0.0
+  - python-irodsclient >=3.0.0,<4.0.0
 source:
-  sha256: 8b8316a4bb024a3a506c918231bda0b101d1c64c1c782fff45968934bf56ec95
-  url: https://pypi.io/packages/source/s/snakemake-storage-plugin-irods/snakemake_storage_plugin_irods-0.2.0.tar.gz
+  sha256: d5bfe18866ab669abc653a2482bfb96f7cb1c11df516946989534ac74a24daab
+  url: https://pypi.org/packages/source/s/snakemake-storage-plugin-irods/snakemake_storage_plugin_irods-0.3.1.tar.gz
 test:
   commands:
   - pip check
