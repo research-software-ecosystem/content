@@ -1,7 +1,9 @@
 about:
-  home: https://github.com/PGScatalog/pygscatalog/
+  dev_url: https://github.com/PGScatalog/pygscatalog
+  home: https://github.com/PGScatalog/pygscatalog
   license: Apache-2.0
-  summary: Libraries and applications for working with calculated polygenic scores
+  license_family: APACHE
+  summary: Libraries and applications for working with calculated polygenic scores.
 build:
   entry_points:
   - pgscatalog-aggregate = pgscatalog.calc.cli.aggregate_cli:run_aggregate
@@ -10,18 +12,18 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - nebfield
 package:
   name: pgscatalog.calc
-  version: 0.3.0
+  version: 0.3.1
 requirements:
   host:
   - python >=3.10
-  - poetry-core
   - pip
+  - setuptools
   run:
   - python >=3.10
   - pgscatalog.core >=0.3.0,<0.4.0
@@ -31,14 +33,11 @@ requirements:
   - scikit-learn >=1.4.0,<2.0.0
   - scipy >=1.12.0,<2.0.0
 source:
-  sha256: d5821cabb42558698ff862ec9edc5dad79863d5321db95580459f8a08c2c2c92
-  url: https://pypi.io/packages/source/p/pgscatalog.calc/pgscatalog_calc-0.3.0.tar.gz
+  sha256: 2dea2426c0bdf579662bf5b42fd2b047e662d5bc612bf2a39cb433142ffe5206
+  url: https://pypi.org/packages/source/p/pgscatalog.calc/pgscatalog_calc-0.3.1.tar.gz
 test:
   commands:
-  - pip check
   - pgscatalog-aggregate --help
   - pgscatalog-ancestry-adjust --help
   imports:
   - pgscatalog.calc
-  requires:
-  - pip

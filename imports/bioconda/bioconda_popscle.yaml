@@ -1,32 +1,36 @@
 about:
+  dev_url: https://github.com/statgen/popscle
   home: https://github.com/statgen/popscle
   license: MIT
+  license_family: MIT
   summary: A suite of population scale analysis tools for single-cell genomics data
-    including implementation of Demuxlet / Freemuxlet methods and auxilary tools
+    including implementation of Demuxlet / Freemuxlet methods and auxilary tools.
 build:
-  number: 0
+  number: 1
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: popscle
-  version: '0.1'
+  version: 0.1
 requirements:
   build:
   - make
   - None
   - cmake
+  - pkg-config
   host:
-  - samtools
-  - htslib
+  - htslib =1.10
   - openssl
   - bzip2
   - xz
   - zlib
   run:
-  - samtools
-  - htslib
+  - htslib =1.10
   - openssl
-  - bzip2
-  - xz
-  - zlib
 source:
   patches:
   - patch

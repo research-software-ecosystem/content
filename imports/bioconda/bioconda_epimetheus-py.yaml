@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/SebastianDall/epimetheus
+  license: MIT
+  summary: Cli tool for fast lookup in pileup for motif methylation
+build:
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - SebastianDall
+  skip-lints:
+  - version_constraints_missing_whitespace
+package:
+  name: epimetheus-py
+  version: 0.6.2
+requirements:
+  build:
+  - None
+  - None
+  - None
+  host:
+  - python
+  - maturin >=1.5,<2
+  - pip
+  run:
+  - python
+source:
+  sha256: db77abad6917feb67ca1667f81c992ae02ca1b6af2b3a951b994a1c465a6ccac
+  url: https://pypi.org/packages/source/e/epimetheus-py/epimetheus_py-0.6.2.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - epymetheus
+  requires:
+  - pip
