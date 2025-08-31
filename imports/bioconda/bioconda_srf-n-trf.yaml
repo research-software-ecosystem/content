@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/koisland/srf-n-trf
+  home: https://github.com/koisland/srf-n-trf
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Extract specific monomers, motifs, and regions from srf and trf output
+build:
+  number: 0
+  run_exports:
+  - None
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - koisland
+package:
+  name: srf-n-trf
+  version: 0.1.1
+requirements:
+  build:
+  - None
+  - cargo-bundle-licenses
+source:
+  sha256: 1230b438a789ae9c479f8ef48604ddf00c03c3be1311821f8bd86f408e6845ea
+  url: https://github.com/koisland/srf-n-trf/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - srf-n-trf --help

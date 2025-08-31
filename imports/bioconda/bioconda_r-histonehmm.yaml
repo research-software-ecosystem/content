@@ -1,17 +1,23 @@
 about:
   dev_url: https://github.com/matthiasheinig/histoneHMM
-  home: http://histonehmm.molgen.mpg.de/
+  home: http://histonehmm.molgen.mpg.de
   license: GPL
   summary: histoneHMM is a software to analyse ChIP-seq data of histone modifications
     with broad genomic footprints like H3K27me3. It allows for calling modified regions
     in single samples as well as for calling differentially modified regions in a
-    comparison of two samples
+    comparison of two samples.
 build:
-  number: 7
+  number: 8
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: r-histonehmm
   version: 1.8
@@ -20,8 +26,10 @@ requirements:
   - None
   - None
   - None
+  - make
+  - pkg-config
   host:
-  - r-base
+  - r-base >=3.6.3
   - r-rcpp
   - bioconductor-genomicranges
   - bioconductor-rsamtools
@@ -29,7 +37,7 @@ requirements:
   - r-optparse
   - bioconductor-biocstyle
   run:
-  - r-base
+  - r-base >=3.6.3
   - r-rcpp
   - bioconductor-genomicranges
   - bioconductor-rsamtools
@@ -39,6 +47,7 @@ requirements:
 source:
   patches:
   - patch
+  - fix-dgemm-call.patch
   sha256: 89f420e9f705594af57301d07c2136e2b56079aa3e93d9723dd0ba3a686ce3ee
   url: https://github.com/matthiasheinig/histoneHMM/archive/v1.8.tar.gz
 test:
