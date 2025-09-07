@@ -1,4 +1,6 @@
 about:
+  dev_url: https://github.com/wwood/galah
+  doc_url: https://github.com/wwood/galah/blob/v0.4.2/README.md
   home: https://github.com/wwood/galah
   license: GPL-3.0-only
   license_family: GPL3
@@ -6,23 +8,31 @@ about:
   summary: Galah aims to be a more scalable metagenome assembled genome (MAG) dereplication
     method.
 build:
-  number: 1
+  number: 2
   run_exports:
   - None
-  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - uses_vcs_url
 package:
   name: galah
   version: 0.4.2
 requirements:
   build:
-  - rust >=1.19
   - None
+  - None
+  - cargo-bundle-licenses
+  - pkg-config
   run:
-  - dashing ==0.4.0
-  - fastani >=1.31
+  - skani >=0.2.2
+  - fastani >=1.34
 source:
-  sha256: 6908d5038925032e8e2a2b2533bb5b1cb7ad2b51a89fe144b34bb57677ee287a
-  url: https://github.com/wwood/galah/archive/v0.4.2.tar.gz
+  git_rev: 73d6c06
+  git_url: https://github.com/wwood/galah.git
+  sha256: unused
 test:
   commands:
   - galah --version | grep '0.4.2'

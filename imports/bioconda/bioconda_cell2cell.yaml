@@ -1,37 +1,41 @@
 about:
+  dev_url: https://github.com/earmingol/cell2cell
   home: https://github.com/earmingol/cell2cell
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
-  summary: Inferring cell-cell interactions from transcriptomes with cell2cell
+  summary: Inferring cell-cell interactions from transcriptomes with cell2cell.
 build:
-  number: 3
+  number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - nilchia
 package:
   name: cell2cell
-  version: 0.7.4
+  version: 0.8.1
 requirements:
   build:
   - None
   host:
-  - python <=3.10
+  - python
   - cython
   - pip
   run:
-  - python <=3.10
+  - python
   - numpy >=1.16,<2.0
   - pandas >=1.0.0
   - xlrd >=1.1
   - openpyxl >=2.6.2
   - networkx >=2.3
   - matplotlib-base >=3.2.0,<3.7.3
-  - seaborn >=0.11.0
+  - seaborn-base >=0.11.0
   - scikit-learn
   - umap-learn
   - tqdm
@@ -45,13 +49,9 @@ requirements:
 source:
   patches:
   - cell2cell-aarch64.patch
-  sha256: 2e17a1556d90c187434aa492000b2ced0d755cf6d437732f07df42e6670370e0
-  url: https://pypi.org/packages/source/c/cell2cell/cell2cell-0.7.4.tar.gz
+  sha256: d016b6a4a3b755a575be5e15a0d47971fa32ab2cd762796e017a21506bd3212c
+  url: https://pypi.org/packages/source/c/cell2cell/cell2cell-0.8.1.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - benchmarks
   - cell2cell
-  requires:
-  - pip

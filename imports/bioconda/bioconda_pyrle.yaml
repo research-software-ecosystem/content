@@ -1,18 +1,19 @@
 about:
+  dev_url: https://github.com/endrebak/pyrle
   home: https://github.com/endrebak/pyrle
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Genomic Rle-objects for Python
+  summary: Genomic Rle-objects for Python.
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: python setup.py install --single-version-externally-managed --record=record.txt
-  skip: true
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   skip-lints:
   - uses_setuptools
 package:
@@ -23,6 +24,7 @@ requirements:
   - None
   host:
   - python
+  - pip
   - setuptools
   - cython
   run:
@@ -34,7 +36,7 @@ requirements:
   - setuptools
 source:
   sha256: f0b1bb593947db965e229db6da3f2c29d0a52b535c2cca43f7cf6aed75f6f829
-  url: https://pypi.io/packages/source/p/pyrle/pyrle-0.0.42.tar.gz
+  url: https://pypi.org/packages/source/p/pyrle/pyrle-0.0.42.tar.gz
 test:
   imports:
   - pyrle

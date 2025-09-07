@@ -8,7 +8,7 @@ about:
   summary: QC package for RNA-seq data.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
   script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
@@ -23,7 +23,7 @@ requirements:
   host:
   - pip
   - python >=3.5
-  - setuptools
+  - setuptools <81
   run:
   - bx-python
   - numpy
@@ -31,6 +31,7 @@ requirements:
   - pysam
   - python >=3.5
   - logomaker
+  - r-base
 source:
   sha256: b7f3996f3de0b0b0a09eec949281a8f3e665a20827fcb3cbbd7546b94574a088
   url: https://pypi.org/packages/source/r/rseqc/rseqc-5.0.4.tar.gz
@@ -38,6 +39,7 @@ test:
   commands:
   - read_distribution.py 2>&1 | grep Usage > /dev/null
   - geneBody_coverage.py 2>&1 | grep Usage > /dev/null
+  - Rscript --help
   imports:
   - qcmodule
   - qcmodule.SAM

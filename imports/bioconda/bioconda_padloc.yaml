@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/padlocbio/padloc
+  license: MIT
+  license_file: LICENSE
+  summary: Locate antiviral defence systems in prokaryotic genomes
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+extra:
+  identifiers:
+  - biotools:padloc
+  recipe-maintainers:
+  - leightonpayne
+  - pentamorfico
+package:
+  name: padloc
+  version: 2.0.0
+requirements:
+  run:
+  - hmmer ==3.3.2
+  - prodigal ==2.6.3
+  - r-base ==4.3.1
+  - r-tidyverse ==2.0.0
+  - r-getopt ==1.20.3
+  - r-yaml ==2.3.7
+  - grep
+  - curl
+source:
+  sha256: d3d90b76c041e1f2292846f664798fb83da0487f61d2f40917153cae439bd683
+  url: https://github.com/padlocbio/padloc/archive/refs/tags/v2.0.0.tar.gz
+test:
+  commands:
+  - padloc --help
+  - padloc --db-update
+  - padloc --fna ${PREFIX}/test/GCF_004358345.1.fna
+  - padloc --faa ${PREFIX}/test/GCF_001688665.2.faa --gff ${PREFIX}/test/GCF_001688665.2.gff

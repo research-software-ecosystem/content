@@ -1,15 +1,21 @@
 about:
   dev_url: https://github.com/vals/umis
+  doc_url: https://github.com/vals/umis/blob/v1.0.9/README.md
   home: https://github.com/vals/umis
   license: MIT
-  summary: Tools for processing UMI RNA-tag data
+  license_family: MIT
+  summary: Tools for processing UMI RNA-tag data.
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
+  script:
+  - export MACOSX_DEPLOYMENT_TARGET=11.3
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   container:
     extended-base: true
   recipe-maintainers:
@@ -23,6 +29,7 @@ requirements:
   - None
   host:
   - python
+  - pip
   - setuptools
   - cython
   run:

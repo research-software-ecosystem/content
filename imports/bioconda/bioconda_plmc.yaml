@@ -1,10 +1,18 @@
 about:
+  dev_url: https://github.com/debbiemarkslab/plmc
   home: https://github.com/debbiemarkslab/plmc
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Inference of couplings in proteins and RNAs from sequence variation.
 build:
-  number: 1
+  number: 2
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: plmc
   version: 20221105
@@ -12,17 +20,16 @@ requirements:
   build:
   - make
   - None
-  - openmp
+  - None
   - clangdev
-  - llvm-openmp
   host:
-  - openmp
   - llvm-openmp
+  - libgomp
   run:
-  - openmp
   - llvm-openmp
+  - libgomp
 source:
-  sha256: 67c57fb5a771950638bb7e4c1228f105491a27f6e9e2397ccdb6dcc49cd1bd75
+  sha256: 3141129e9c9e9185ffb5abd728e8f9de789e8056e96a92ba6cce38b5d16b67e4
   url: https://github.com/debbiemarkslab/plmc/archive/refs/heads/master.zip
 test:
   commands:

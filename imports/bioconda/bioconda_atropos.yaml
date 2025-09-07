@@ -1,17 +1,19 @@
 about:
+  dev_url: https://github.com/jdidion/atropos
   doc_url: https://atropos.readthedocs.io
   home: https://github.com/jdidion/atropos
   license: CC0 and partly MIT
-  summary: trim adapters from high-throughput sequencing reads
+  summary: Trim adapters from high-throughput sequencing reads.
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
   script: find . "(" -name "*.c" -o -name PKG-INFO ")" -exec rm {} ";" &&  -m pip
-    install --no-deps --no-build-isolation . -vvv
+    install --no-deps --no-build-isolation --no-cache-dir . -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: atropos
   version: 1.1.32
@@ -30,7 +32,7 @@ requirements:
   - jinja2
 source:
   sha256: 17e9dc3d76d7a2ca607a12da191a6d7ba1cfbd1a8c924215870417f85858fd83
-  url: https://pypi.io/packages/source/a/atropos/atropos-1.1.32.tar.gz
+  url: https://pypi.org/packages/source/a/atropos/atropos-1.1.32.tar.gz
 test:
   commands:
   - atropos | grep "Atropos version"
