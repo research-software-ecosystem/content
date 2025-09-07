@@ -1,11 +1,18 @@
 about:
+  dev_url: https://github.com/jts/nanopolish
   home: https://github.com/jts/nanopolish
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Signal-level algorithms for MinION data.
 build:
-  number: 5
+  number: 6
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - usegalaxy-eu:nanopolish_eventalign
   skip-lints:
@@ -18,24 +25,29 @@ requirements:
   - make
   - None
   - None
+  - pkg-config
+  host:
   - libgomp
   - llvm-openmp
-  - eigen
-  host:
   - htslib
-  - hdf5
-  - zlib
+  - hdf5 =1.14.3
   - eigen
+  - tar
+  - unzip
+  - wget
+  - zlib
   run:
+  - libgomp
+  - llvm-openmp
   - biopython
   - python
-  - ont_vbz_hdf_plugin
+  - ont_vbz_hdf_plugin =1.0.12
 source:
   git_rev: v0.14.0
-  git_url: https://github.com/jts/nanopolish
+  git_url: https://github.com/jts/nanopolish.git
   patches:
   - nanopolish.patch
-  sha256: bcc1a7e2d23941592d817da3af9165b3843ae52b11a3ca5983d6417f1614ef78
+  sha256: unused
 test:
   commands:
   - nanopolish --help

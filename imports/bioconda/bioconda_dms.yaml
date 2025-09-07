@@ -1,33 +1,39 @@
 about:
+  dev_url: https://github.com/qibebt-bioinfo/dynamic-meta-storms
   home: https://github.com/qibebt-bioinfo/dynamic-meta-storms
-  license: GPL3
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
   summary: Comprehensive taxonomic and phylogenetic comparison of shotgun metagenomes
-    at the species level
+    at the species level.
 build:
-  number: 1
+  number: 2
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1093/bioinformatics/btz910
 package:
   name: dms
-  version: '1.1'
+  version: 1.1
 requirements:
   build:
   - make
   - None
-  - openmp
-  - llvm-openmp
+  - pkg-config
   host:
-  - openmp
   - llvm-openmp
+  - libgomp
   run:
-  - openmp
   - llvm-openmp
+  - libgomp
 source:
   sha256: c4f90d781465f1fa11d02c33dcd6412a80196889b200aec8493c6cde50e73a4a
   url: https://github.com/qdu-zyf/dynamic-meta-storms/archive/v1.1.tar.gz
 test:
   commands:
-  - export DynamicMetaStorms=${PREFIX}
+  - test -x ${PREFIX}/bin/MS-comp-taxa-dynamic
   - MS-comp-taxa-dynamic -h

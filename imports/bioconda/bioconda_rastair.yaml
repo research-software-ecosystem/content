@@ -1,0 +1,42 @@
+about:
+  description: rastair is a fast and accurate tool for methylation calling from TAPS
+    sequencing data, written in Rust.
+  home: https://bitbucket.org/bsblabludwig/rastair/src/v0.8.2/
+  license: GPL-3.0
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Rust tool for TAPS-based methylation calling.
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - None
+extra:
+  recipe-maintainers:
+  - andrew-watchmaker
+package:
+  name: rastair
+  version: 0.8.2
+requirements:
+  build:
+  - None
+  - cargo-bundle-licenses
+  host:
+  - r-base >=4.3.2,<5.0.0
+  - r-ggplot2 >=3.5.1,<4.0.0
+  - r-gtable >=0.3.6,<0.4.0
+  - bioconductor-rsamtools
+  run:
+  - r-base >=4.3.2,<5.0.0
+  - r-ggplot2 >=3.5.1,<4.0.0
+  - r-gtable >=0.3.6,<0.4.0
+  - bioconductor-rsamtools
+source:
+  sha256: 3f7ddc246168ed5901724a5ee0e45ea73eb9b81bf6d93caa4a07c6b41c04e0b8
+  url: https://bitbucket.org/bsblabludwig/rastair/get/v0.8.2.tar.gz
+test:
+  commands:
+  - rastair --help

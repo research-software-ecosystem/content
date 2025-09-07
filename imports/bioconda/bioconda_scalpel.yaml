@@ -1,15 +1,17 @@
 about:
-  home: http://scalpel.sourceforge.net/
+  doc_url: https://scalpel.sourceforge.net
+  home: https://scalpel.sourceforge.net
   license: MIT
-  summary: Sensitive detection of INDELs (INsertions and DELetions)
+  license_family: MIT
+  summary: Sensitive detection of INDELs (INsertions and DELetions).
 build:
-  number: 8
+  number: 9
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: scalpel
   version: 0.5.4
@@ -17,8 +19,12 @@ requirements:
   build:
   - make
   - None
-  - cmake
+  - cmake <4
+  - pkg-config
+  host:
   - bamtools
+  - samtools
+  - bcftools
   run:
   - bamtools
   - samtools

@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/jermp/sshash
+  license: MIT
+  license_file: LICENSE
+  summary: SSHash is a compressed dictionary data structure for k-mers (strings of
+    length k over the DNA alphabet {A,C,G,T}), based on Sparse and Skew Hashing.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: sshash
+  version: 4.0.0
+requirements:
+  build:
+  - cmake <4.0.0
+  - autoconf
+  - make
+  - None
+  - pkg-config
+  host:
+  - zlib
+  - bzip2
+  - jemalloc >=5.2.1
+  - tapi
+  run:
+  - __osx >=10.9
+source:
+  sha256: 7fb62131ae0a78601b6b3acc826aee3c59ca5fbcc3fbad74561fc2b2d6d46967
+  url: https://github.com/jermp/sshash/releases/download/v4.0.0/v4.0.0.tar.gz
+test:
+  commands:
+  - sshash build --help
