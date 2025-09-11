@@ -1,0 +1,49 @@
+name: 'validate bio.tools json and auto-merge'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  validate-and-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: set branch name
+        run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+        
+      - name: get tool ID from branch name
+        id: vars
+        shell: bash
+        run: |
+          TOOL_ID="${BRANCH_NAME#*__}"  # Extract after '__'
+          FILE="data/$TOOL_ID/$TOOL_ID.biotools.json"
+          echo "tool_id=$TOOL_ID" >> "$GITHUB_OUTPUT"
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          
+      - name: reformat json to a predictable format with jq and sponge
+        if: ${{ !endsWith(github.head_ref, '__delete') }}
+        shell: bash
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install moreutils
+          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" | sponge "${{ steps.vars.outputs.file }}"
+          echo "Processed ${{ steps.vars.outputs.file }}!"
+          
+      - name: merge pull requests
+        id: automerge
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: "${{ secrets.REPO_TOKEN }}"
+          MERGE_LABELS: ""
+          
+      - name: feedback
+        if: ${{ steps.automerge.outputs.mergeResult == 'merged' }}
+        run: |
+          echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
+        
