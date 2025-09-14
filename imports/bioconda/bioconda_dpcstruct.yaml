@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/RitAreaSciencePark/DPCstruct
+  home: https://github.com/RitAreaSciencePark/DPCstruct
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Unsupervised clustering algorithm for identifying and classifying protein
+    domains based on structural similarity.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1101/2024.08.21.608992
+  - biotools:dpcstruct
+  recipe-maintainers:
+  - fede112
+package:
+  name: dpcstruct
+  version: 0.1.1
+requirements:
+  build:
+  - cmake
+  - make
+  - None
+  - pkg-config
+  host:
+  - libgomp
+  - llvm-openmp
+  run:
+  - libgomp
+  - llvm-openmp
+source:
+  sha256: cc7ae7829ce227e8eb5622134be9a2fef7c11c4811d63174b3e08004350796b6
+  url: https://github.com/RitAreaSciencePark/DPCstruct/archive/0.1.1.tar.gz
+test:
+  commands:
+  - dpcstruct > /dev/null

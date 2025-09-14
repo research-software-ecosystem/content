@@ -1,25 +1,35 @@
 about:
+  dev_url: https://github.com/PathoScope/PathoScope
+  doc_url: https://github.com/PathoScope/PathoScope/wiki
   home: https://github.com/PathoScope/PathoScope
-  license: GPLv3
+  license: GPL-3.0-or-later
+  license_family: GPL3
   summary: Species identification and strain attribution with unassembled sequencing
-    data
+    data.
 build:
   noarch: python
-  number: 1
-  script: -m pip install . --ignore-installed --no-deps -vv
+  number: 2
+  run_exports:
+  - None
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -f *.bak
+  - 2to3 -w -n pathoscope
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir --use-pep517 -vvv
 extra:
-  maintainers:
+  recipe-maintainers:
   - davebx
 package:
   name: pathoscope
   version: 2.0.7
 requirements:
   host:
-  - python <3
+  - python >=3
+  - setuptools
   - pip
   run:
-  - python <3
-  - samtools <1.0
+  - python >=3
+  - samtools
   - bowtie2
 source:
   sha256: 59e473d5671b310da9bf9a541b78d15148f279df0635b016503a861905f11bb0

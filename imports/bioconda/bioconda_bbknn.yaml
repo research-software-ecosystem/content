@@ -1,17 +1,21 @@
 about:
+  dev_url: https://github.com/Teichlab/bbknn
   home: https://github.com/Teichlab/bbknn
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Batch balanced KNN
+  summary: Batch balanced KNN.
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btz625
   recipe-maintainers:
   - jenzopr
 package:
@@ -32,6 +36,7 @@ requirements:
   - scikit-learn >=1.0.2
   - umap-learn
   - pandas
+  - zstd
   run:
   - python
   - python-annoy
@@ -43,7 +48,7 @@ requirements:
   - pandas
 source:
   sha256: 1c01a9d6df2fc52a527de8a403617897a4b672724863299a7026f2132f1b041b
-  url: https://pypi.io/packages/source/b/bbknn/bbknn-1.6.0.tar.gz
+  url: https://pypi.org/packages/source/b/bbknn/bbknn-1.6.0.tar.gz
 test:
   imports:
   - bbknn
