@@ -10,14 +10,16 @@ build:
   entry_points:
   - megalodon = megalodon.__main__:_main
   - megalodon_extras = megalodon_extras.__main__:_main
-  number: 3
+  number: 4
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - marcus1487
   - npavlovikj
@@ -29,25 +31,25 @@ requirements:
   - None
   host:
   - python
-  - setuptools >=38.3
-  - cython >=0.25.2,<3
-  - pyscaffold >=3.2a0,<3.3a0
   - pip
-  - numpy >=1.9.0
+  - setuptools
+  - cython <3
+  - numpy >=1.9.0,2
+  - pyscaffold >=3.2a0,<3.3a0
   run:
   - python
   - h5py >=2.2.1
-  - numpy >=1.9.0
+  - numpy >=1.9.0,2
   - scipy >=1.1.0
   - mappy >=2.16
   - pysam >=0.15
   - ont-fast5-api >=3.2
   - tqdm >=2.17
   - scikit-learn
-  - seaborn
+  - seaborn-base
 source:
   sha256: 60ad1f1191b86d9a1423dcb9c934c7577cf1ce083689337646937be2538953a3
-  url: https://pypi.io/packages/source/m/megalodon/megalodon-2.5.0.tar.gz
+  url: https://pypi.org/packages/source/m/megalodon/megalodon-2.5.0.tar.gz
 test:
   commands:
   - megalodon --help

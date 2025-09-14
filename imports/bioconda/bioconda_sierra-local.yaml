@@ -1,0 +1,34 @@
+about:
+  doc_url: https://github.com/PoonLab/sierra-local
+  home: https://github.com/PoonLab/sierra-local
+  license: GPLv3
+  license_family: GPL3
+  license_file: LICENSE
+  summary: sierra-local is a Python3 implementation of the Stanford HIVdb Sierra service
+    for generating drug resistance predictions from HIV-1 sequences.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - None
+  script:
+  - $PYTHON -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+package:
+  name: sierra-local
+  version: 0.4.3
+requirements:
+  host:
+  - pip
+  - python >=3.9,<=3.10
+  - setuptools
+  - wheel
+  run:
+  - python >=3.9,<=3.10
+  - requests
+  - pandas
+source:
+  sha256: e7cec70505a641262598803cea82e7b7dd7be075f8995c1bab2c2c847010544f
+  url: https://github.com/PoonLab/sierra-local/archive/refs/tags/v0.4.3.tar.gz
+test:
+  commands:
+  - sierralocal -h

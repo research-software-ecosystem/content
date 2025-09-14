@@ -1,17 +1,21 @@
 about:
+  dev_url: http://github.com/dputhier/pygtftk
   home: http://github.com/dputhier/pygtftk
   license: MIT
+  license_family: MIT
   summary: The gtftk suite providing facilities to manipulate genomic annotations
     in gtf format.
 build:
-  number: 4
+  number: 5
   run_exports:
   - None
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: pygtftk
   version: 1.6.2
@@ -19,6 +23,7 @@ requirements:
   build:
   - None
   - None
+  - pkg-config
   host:
   - python
   - pip
@@ -26,6 +31,8 @@ requirements:
   - cython <1
   - setuptools
   - zlib
+  - liblapack
+  - openblas
   run:
   - python
   - bedtools >=2.23.1
@@ -46,14 +53,10 @@ requirements:
   - mpmath >=1.1.0
   - scikit-learn >=0.21.2,<1
   - python-graphviz
-  - seaborn
+  - seaborn-base
   - future
   - nose
-  - xz
-  - bzip2
   - billiard >=3.6.4.0
-  - liblapack >=3.9.0
-  - openblas >=0.3.17
 source:
   sha256: e31b1db156a2d20427c03b6ad868ef2e90a9a834a8842feb7fa284c9eb0690b7
   url: https://github.com/dputhier/pygtftk/archive/v1.6.2.tar.gz

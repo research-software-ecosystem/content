@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/logsdon-lab/NucFlag
+  license: MIT
+  license_file: LICENSE
+  summary: NucFlag misassembly identifier.
+build:
+  entry_points:
+  - nucflag = nucflag.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koisland
+package:
+  name: nucflag
+  version: 0.3.7
+requirements:
+  host:
+  - python >=3.12
+  - setuptools
+  - pip
+  run:
+  - python >=3.12
+  - matplotlib-base >=3.8.3
+  - numpy >=1.26.4
+  - polars >=1.6.0
+  - intervaltree >=3.1.0
+  - pysam >=0.22.0
+  - scipy >=1.12.0
+  - pybigwig >=0.3.24
+source:
+  sha256: 6c467b6cfce47fffb80e75826cd3e999a505e76f817822dc95f15913bd4fd250
+  url: https://pypi.org/packages/source/n/nucflag/nucflag-0.3.7.tar.gz
+test:
+  commands:
+  - pip check
+  - nucflag --help
+  imports:
+  - nucflag
+  requires:
+  - pip

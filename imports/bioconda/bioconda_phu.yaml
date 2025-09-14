@@ -4,8 +4,10 @@ about:
     \ dereplication and clustering of viral contigs into vOTUs and putative species-level\
     \ groups.\n  * `taxasimplify`: simplification and parsing of viral taxonomy assignments.\n"
   dev_url: https://github.com/camilogarciabotero/phu
+  doc_url: https://camilogarciabotero.github.io/phu
   home: https://github.com/camilogarciabotero/phu
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: 'Phage Utilities (phu): modular toolkit for clustering, classifying, and
     analyzing viral sequences.'
@@ -16,13 +18,13 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
-  maintainers:
+  recipe-maintainers:
   - camilogarciabotero
 package:
   name: phu
-  version: 0.1.1
+  version: 0.3.0
 requirements:
   host:
   - python >=3.10
@@ -31,6 +33,7 @@ requirements:
   - wheel
   run:
   - python >=3.10
+  - pandas
   - typer
   - ruff
   - pytest
@@ -38,8 +41,8 @@ requirements:
   - vclust
   - seqkit
 source:
-  sha256: d349d482c9e8204a421d41bf7c5b48ddc0194af36ec1fc8a51fbd9be03945722
-  url: https://github.com/camilogarciabotero/phu/archive/refs/tags/v0.1.1.tar.gz
+  sha256: 2050e520c78dfab522ddac30fae65b544780933c10952d961ecd8e2d37652ec8
+  url: https://github.com/camilogarciabotero/phu/archive/refs/tags/v0.3.0.tar.gz
 test:
   commands:
   - phu --help

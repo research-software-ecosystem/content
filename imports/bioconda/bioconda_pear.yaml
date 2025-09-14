@@ -1,33 +1,35 @@
 about:
-  home: http://sco.h-its.org/exelixis/web/software/pear/
-  license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
-  summary: paired-end read merger
+  home: https://sco.h-its.org/exelixis/web/software/pear/
+  license: CC-BY-NC-SA-3.0
+  license_file: LICENSE.txt
+  summary: Paired-End reAd mergeR
 build:
-  number: 12
+  number: 13
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:PEAR
+  recipe-maintainers:
+  - mfansler
 package:
   name: pear
   version: 0.9.6
 requirements:
   build:
-  - make
   - None
+  - make
   - pkgconfig
   host:
-  - zlib
   - bzip2
-  run:
   - zlib
-  - bzip2
 source:
-  md5: 5ed68d50c1620cd55c58681e38771799
+  patches:
+  - patches/0001-skip-unused-asm-code.patch
+  sha256: f7728371e26a5b46fa928b0f7ae1b552ed6a78815b117ba48ef1af98e96c8e2b
   url: https://depot.galaxyproject.org/software/pear/pear_0.9.6_src_all.tar.gz
 test:
   commands:

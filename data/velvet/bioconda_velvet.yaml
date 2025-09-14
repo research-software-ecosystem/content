@@ -1,21 +1,24 @@
 about:
   dev_url: https://github.com/dzerbino/velvet
-  doc_url: https://europepmc.org/article/pmc/2336801#free-full-text
-  home: https://europepmc.org/article/pmc/2336801
+  doc_url: https://github.com/dzerbino/velvet/blob/master/Manual.pdf
+  home: https://github.com/dzerbino/velvet
   license: GPL-2.0-only
   license_family: GPL
   license_file: LICENSE.txt
-  summary: Sequence Assembler for short reads
+  summary: Sequence Assembler for short reads.
 build:
-  number: 8
+  number: 9
   run_exports:
   - None
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:velvet
+  - usegalaxy-eu:velvetg
+  - usegalaxy-eu:velveth
+  - doi:10.1101/gr.074492.107
 package:
   name: velvet
   version: 1.2.10
@@ -24,9 +27,12 @@ requirements:
   - make
   - None
   host:
+  - libgomp
+  - llvm-openmp
   - zlib
   run:
-  - zlib
+  - libgomp
+  - llvm-openmp
 source:
   sha256: 4615e52dc2e8a05f1009daf2c0978c218860be364afa044f73677cd298f10c7b
   url: https://github.com/dzerbino/velvet/archive/refs/tags/v1.2.10.tar.gz

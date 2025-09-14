@@ -9,13 +9,15 @@ about:
 build:
   entry_points:
   - tiddit = tiddit.__main__:main
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    . -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: tiddit
   version: 3.9.3
@@ -30,7 +32,7 @@ requirements:
   - pysam
   run:
   - python
-  - None
+  - numpy
   - pysam
   - fermi2
   - bwa
