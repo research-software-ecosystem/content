@@ -1,30 +1,43 @@
 about:
-  home: https://ecogenomics.github.io/GroopM/
-  license: LGPL-3.0
+  dev_url: https://github.com/centre-for-microbiome-research/GroopM
+  home: https://github.com/centre-for-microbiome-research/GroopM
+  license: LGPL-3.0-or-later
+  license_family: LGPL
   license_file: LICENSE.txt
-  summary: Metagenomic binning suite
+  summary: Metagenomic binning suite.
 build:
   noarch: python
-  number: 1
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  number: 2
+  run_exports:
+  - None
+  script: "find . -name \"*.py\" -exec 2to3 -w -n {} \\;\n2to3 -w -n bin/groopm ||\
+    \ true\nsed -i 's/from string import maketrans as s_maketrans/s_maketrans = str.maketrans/'\
+    \ groopm/mstore.py\n -m pip install . --no-deps --no-build-isolation --no-cache-dir\
+    \ --use-pep517 -vvv\n"
 package:
   name: groopm
   version: 0.3.4
 requirements:
   host:
+  - setuptools
   - pip
-  - python <3
+  - python >=3
   run:
-  - matplotlib >=1.1.0
-  - numpy >=1.6.1
-  - python <3
-  - scipy >=0.10.1
-  - pytables >=2.3
+  - matplotlib-base
+  - numpy
+  - python >=3
+  - scipy
+  - pytables
   - pillow
   - bamm
+  - imageio
 source:
+  patches:
+  - fix_maketrans.patch
+  - fix_imsave.patch
+  - fix_indent.patch
   sha256: 48bdaeb9010e7d81785697a55edc394ef36c2646b310d625a24bec740f1b6080
-  url: https://pypi.io/packages/source/G/GroopM/GroopM-0.3.4.tar.gz
+  url: https://pypi.org/packages/source/G/GroopM/GroopM-0.3.4.tar.gz
 test:
   commands:
   - groopm

@@ -7,21 +7,21 @@ about:
     type compositions and gene expression at unmeasured locations in a tissue map
     with enhanced resolution.
   dev_url: https://github.com/az7jh2/SDePER
-  doc_url: https://sdeper.readthedocs.io/en/latest/
-  home: https://az7jh2.github.io/SDePER/
+  doc_url: https://sdeper.readthedocs.io/en/latest
+  home: https://az7jh2.github.io/SDePER
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Spatial Deconvolution method with Platform Effect Removal
+  summary: Spatial Deconvolution method with Platform Effect Removal.
 build:
   entry_points:
   - runDeconvolution = cvaeglrm:main
   - runImputation = imputation:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: ' -m pip install . -vv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - az7jh2
@@ -41,20 +41,21 @@ requirements:
   - openpyxl ==3.0.10
   - pandas ==1.4.3
   - python >=3.9,<=3.10
-  - reportlab ==4.1.0
+  - reportlab
   - scanpy ==1.9.1
-  - scikit-learn ==1.1.1
-  - scikit-misc ==0.1.4
-  - scipy ==1.11.4
-  - seaborn ==0.13.2
-  - tensorflow-base 2.15.0 cpu_*
-  - umap-learn ==0.5.3
-  - libopencv ==4.9.0 headless_*
-  - opencv ==4.9.0
-  - py-opencv ==4.9.0
+  - scikit-learn
+  - scikit-misc
+  - scipy
+  - seaborn-base ==0.13.2
+  - tensorflow
+  - libprotobuf
+  - umap-learn
+  - libopencv
+  - opencv
+  - py-opencv
 source:
   sha256: 660f1484419f965069d1d9cd7142da68d419fa020824bf57d5ccd2ef30f7ed9e
-  url: https://pypi.io/packages/source/s/sdeper/sdeper-1.6.4.tar.gz
+  url: https://pypi.org/packages/source/s/sdeper/sdeper-1.6.4.tar.gz
 test:
   commands:
   - runDeconvolution --help

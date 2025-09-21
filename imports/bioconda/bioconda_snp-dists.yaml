@@ -1,15 +1,18 @@
 about:
+  dev_url: https://github.com/tseemann/snp-dists
   home: https://github.com/tseemann/snp-dists
-  license: GPL3
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: Convert a FASTA alignment to SNP distance matrix
+  summary: Convert a FASTA alignment to SNP distance matrix.
 build:
-  number: 5
+  number: 6
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: snp-dists
   version: 0.8.2
@@ -17,12 +20,13 @@ requirements:
   build:
   - None
   - make
+  host:
   - libgomp
   - llvm-openmp
-  host:
   - zlib
   run:
-  - zlib
+  - libgomp
+  - llvm-openmp
 source:
   patches:
   - 0001-Makefile-append-CFLAGS-LIBS.patch
