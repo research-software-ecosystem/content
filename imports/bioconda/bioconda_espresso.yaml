@@ -5,18 +5,18 @@ about:
   summary: ESPRESSO (Error Statistics PRomoted Evaluator of Splice Site Options) processes
     long read RNA-seq data
 build:
-  number: 1
+  number: 0
   run_exports:
   - None
   skip: true
 package:
   name: espresso
-  version: 1.5.0
+  version: 1.6.0
 requirements:
   build:
   - None
   - None
-  - cmake
+  - cmake >=3.2, <4
   - make
   host:
   - perl >=5.8
@@ -28,8 +28,10 @@ requirements:
   - perl-storable >=3.0
   - samtools >=1.6
 source:
-  sha256: 7cc7dd73465f434c98e8c5a41c510bfc419edb32954f2736b20af3f05cc7e348
-  url: https://github.com/Xinglab/espresso/releases/download/v1.5.0/espresso_v_1_5_0.tar.gz
+  patches:
+  - check_for_cc_env_var.patch
+  sha256: 1e3dc1b58fe8e9900b955db97a8421669a08fb7994e4f505361ba6c3b2fc180b
+  url: https://github.com/Xinglab/espresso/releases/download/v1.6.0/espresso_v_1_6_0.tar.gz
 test:
   commands:
   - perl $PREFIX/bin/ESPRESSO_S.pl --help > /dev/null

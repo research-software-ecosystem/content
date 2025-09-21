@@ -1,40 +1,25 @@
 about:
+  dev_url: https://github.com/noraracht/kf2vec
   home: https://github.com/noraracht/kf2vec
-  license: MIT
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
   summary: K-mer frequency to vector tool.
 build:
+  entry_points:
+  - kf2vec = kf2vec.main:main
   noarch: python
   number: 0
   run_exports:
   - None
-  script: $PYTHON -m pip install . --no-deps  --ignore-installed
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir
 package:
   name: kf2vec
-  version: 1.0.62
+  version: 0.1.3
 requirements:
-  build:
-  - python >=3.11,<3.12
-  - pip
-  - numpy >=1.22,<1.27
-  - setuptools
-  - make
-  - git
-  - zlib
-  - gcc_linux-64
-  - clang_osx-64
-  - treecluster >=1.0.3
-  - treeswift >=1.1.45
   host:
   - python >=3.11,<3.12
   - pip
-  - numpy >=1.22,<1.27
-  - pandas
-  - scikit-learn
-  - pytorch
-  - setuptools
-  - treecluster >=1.0.3
-  - treeswift >=1.1.45
-  - openmpi 4.*
   run:
   - python >=3.11,<3.12
   - numpy >=1.22,<1.27
@@ -46,11 +31,12 @@ requirements:
   - kmer-jellyfish
   - seqtk
   - seqkit
-  - pip
-  - openmpi 4.*
+  - openmpi
 source:
-  sha256: f2e5befd6b591228c31a46f0e04fccd9d96f8dd9ab4928cfa685e33e88cacf28
-  url: https://github.com/noraracht/kf2vec/archive/refs/tags/v0.1.1.tar.gz
+  sha256: bba1076b0125196cbf880ef1cb2311f6e0c228bec1bbf1977b3f9177cb92d16a
+  url: https://github.com/noraracht/kf2vec/archive/refs/tags/v0.1.3.tar.gz
 test:
+  commands:
+  - kf2vec --help
   imports:
   - kf2vec

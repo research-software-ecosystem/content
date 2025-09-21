@@ -1,18 +1,19 @@
 about:
-  dev_url: https://github.com/linsalrob/PhiSpy/
+  dev_url: https://github.com/linsalrob/PhiSpy
   doc_url: https://github.com/linsalrob/PhiSpy/blob/master/README.md
   home: https://github.com/linsalrob/PhiSpy
   license: MIT
   license_family: MIT
   summary: Prophage finder using multiple metrics
 build:
-  number: 7
+  number: 8
   run_exports:
   - None
-  script: ' -m pip install . --no-deps -vv '
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.5281/zenodo.3475717
   recipe-maintainers:
@@ -23,6 +24,7 @@ package:
 requirements:
   build:
   - None
+  - pkg-config
   host:
   - pip
   - python
@@ -35,7 +37,7 @@ requirements:
   - bcbio-gff
 source:
   sha256: 1dc3ec45c15328577557908517254d8e4ba152416f0e6bbad39e965b86730e28
-  url: https://pypi.io/packages/source/p/phispy/PhiSpy-4.2.21.tar.gz
+  url: https://pypi.org/packages/source/p/phispy/PhiSpy-4.2.21.tar.gz
 test:
   commands:
   - PhiSpy.py -v

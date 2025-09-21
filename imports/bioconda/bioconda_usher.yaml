@@ -7,7 +7,7 @@ about:
   license_file: LICENSE
   summary: Ultrafast Sample Placement on Existing Trees (UShER).
 build:
-  number: 2
+  number: 3
   run_exports:
   - None
 extra:
@@ -39,8 +39,9 @@ requirements:
   - libgomp
   - openmpi
   - openssh
-  - tbb-devel ==2022.2.0
+  - tbb-devel <2021.1.1
   - isa-l
+  - curl
   - wget
   run:
   - mafft
@@ -51,11 +52,12 @@ requirements:
   - libgomp
   - openmpi
   - openssh
-  - tbb-devel ==2022.2.0
+  - tbb-devel <2021.1.1
   - isa-l
 source:
   patches:
-  - 0001-tbb.patch
+  - 0001-CMakeLists.patch
+  - 0002-main-cpp.patch
   sha256: 9630654895050a0cf83a60b66299c2ad940694580dcdae3536227ce5a521baec
   url: https://github.com/yatisht/usher/archive/v0.6.6.tar.gz
 test:

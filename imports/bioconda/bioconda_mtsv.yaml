@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/FofanovLab/MTSv
   home: https://github.com/FofanovLab/MTSv
   license: MIT
   license_family: MIT
@@ -9,12 +10,16 @@ build:
   - mtsv = mtsv.main:main
   - mtsv_setup = mtsv.mtsv_prep.main:main
   - mtsv_plugin = mtsv.mtsv_plugin.main:main
-  number: 4
+  number: 5
+  run_exports:
+  - None
   skip: true
 extra:
-  comment: python 3.7 is currently incompatible with sqlite=3.13, readline=6.2 and
-    tk=8.5, so building for it is blocked.
-  recipe_maintainers: tfursten
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainer:
+  - tfursten
 package:
   name: mtsv
   version: 1.0.6
@@ -26,8 +31,8 @@ requirements:
   - pip
   run:
   - python
-  - snakemake>=4.1.0
-  - pandas>=0.20.3
+  - snakemake-minimal >=4.1.0
+  - pandas >=0.20.3
   - ete3
   - biopython
   - scipy
@@ -42,14 +47,15 @@ requirements:
   - bwa
   - samtools
   - gsl
-  - mtsv-tools<2
+  - kraken2 >=2.1.2
+  - bracken >=2.6.1
 source:
   sha256: 7fe3d20c76de44faa03e5540433d83b9cd6403b3d934cdf13d99cebcefefda1b
   url: https://github.com/FofanovLab/MTSv/archive/1.0.6.tar.gz
 test:
   commands:
   - mtsv --help > /dev/null
-  - mtsv_setup --help > /dev/null
-  - mtsv_plugin --help > /dev/null
+  - kraken2 --version
+  - bracken --version
   imports:
   - mtsv

@@ -1,18 +1,26 @@
 about:
+  dev_url: https://github.com/mehrdadbakhtiari/adVNTR
   home: https://github.com/mehrdadbakhtiari/adVNTR
-  license: BSD 3-Clause
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
   summary: A tool for genotyping Variable Number Tandem Repeats (VNTR) from sequence
-    data
+    data.
 build:
   entry_points:
-  - advntr=advntr.__main__:main
-  number: 0
+  - advntr = advntr.__main__:main
+  number: 1
+  run_exports:
+  - None
   script:
-  - make install CXX="${CXX} ${CXXFLAGS}" PREFIX=${PREFIX}
-  - python -m pip install --no-deps --ignore-installed .
+  - export CXXFLAGS="${CXXFLAGS} -O3"
+  - make install CXX="${CXX} ${CXXFLAGS}" PREFIX="${PREFIX}" -j"${CPU_COUNT}"
+  - -m pip install --no-deps --no-build-isolation --no-cache-dir --use-pep517 . -vvv
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   skip-lints:
   - cython_must_be_in_host
 package:
@@ -23,28 +31,28 @@ requirements:
   - make
   - None
   - None
+  - pkg-config
   host:
   - python
   - pip
   - setuptools
-  - cython
+  - cython <3
   - numpy
   - scipy
   run:
   - python
-  - None
-  - None
+  - numpy
+  - scipy
   - matplotlib-base
-  - networkx 1.11
+  - networkx
   - joblib
   - scikit-learn
-  - cython
+  - cython <3
   - biopython
-  - muscle 3.8.1551
-  - pysam 0.15.1
-  - htslib 1.9
-  - keras 2.2.4
-  - tensorflow 1.13.1
+  - muscle
+  - pysam
+  - htslib
+  - tensorflow
 source:
   sha256: 440ea416e6ac003c9249fa104b4f15284ced1a311f2689243bb5ca2564bc91dc
   url: https://github.com/mehrdadbakhtiari/adVNTR/archive/1.5.0.tar.gz

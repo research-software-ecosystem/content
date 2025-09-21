@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/pyranges/ruranges
+  home: https://github.com/pyranges/ruranges
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Rust-backed interval kernels exposed to Python/NumPy.
+build:
+  number: 1
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: ruranges
+  version: 0.0.13
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - maturin
+  - numpy
+  run:
+  - python
+  - numpy
+source:
+  sha256: 00b0d9a71683211ab659e48d517f4834852793b8605dc2fa97386044e58a8111
+  url: https://files.pythonhosted.org/packages/source/r/ruranges/ruranges-0.0.13.tar.gz
+test:
+  commands:
+  - python -c "import ruranges; print(getattr(ruranges, '__version__', ''))"
+  imports:
+  - ruranges

@@ -5,10 +5,13 @@ about:
   license_file: LICENSE
   summary: Code to work with Genbank files
 build:
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: -m pip install . -vvv --no-deps --no-build-isolation
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -f *.bak
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 extra:
   additional-platforms:
   - linux-aarch64
@@ -22,11 +25,12 @@ requirements:
   host:
   - python
   - pip
+  - setuptools
   run:
   - python
 source:
   sha256: 959df344018f8e104ef6d3c9d78f576228cb4997f4fa186050cfa69b231cb5af
-  url: https://pypi.io/packages/source/g/genbank/genbank-0.121.tar.gz
+  url: https://pypi.org/packages/source/g/genbank/genbank-0.121.tar.gz
 test:
   imports:
   - genbank
