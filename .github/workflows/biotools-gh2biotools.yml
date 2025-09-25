@@ -113,11 +113,10 @@ jobs:
         run: |
           changed_files="${{ steps.check_changes.outputs.files }}"
 
-          command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py --token \"$BIOTOOLS_API_TOKEN\""
+          command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py"
 
           if [[ -n "$changed_files" ]]; then
             command="$command --files \"$changed_files\""
           fi
 
-          echo "Running..."
           eval "$command"
