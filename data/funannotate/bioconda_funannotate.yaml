@@ -10,7 +10,7 @@ build:
   entry_points:
   - funannotate = funannotate.funannotate:main
   noarch: python
-  number: 2
+  number: 3
   run_exports:
   - None
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
@@ -49,7 +49,7 @@ requirements:
   - scipy
   - distro
   - augustus ==3.5.0
-  - bamtools
+  - bamtools !=2.5.2
   - bedtools
   - blast
   - codingquarry
@@ -103,5 +103,6 @@ source:
 test:
   commands:
   - funannotate --help 2>&1 | grep "Funannotate"
+  - bam2hints -h
   import:
   - funannotate

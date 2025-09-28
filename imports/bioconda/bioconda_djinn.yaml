@@ -1,0 +1,56 @@
+about:
+  description: 'There are disagreements between formats for linked-read data. Haplotagging
+    thinks
+
+    linked-read barcodes and FASTQ files should look one way, stLFR a different way,
+    and
+
+    TELLseq yet another. Djinn lets you convert to a standard format, convert between
+    these
+
+    FASTQ formats, barcode styles, etc. It also provides a convenient method to upload
+    linked-read
+
+    data to NCBI that preserves barcode information.
+
+    '
+  dev_url: https://github.com/pdimens/djinn
+  doc_url: https://pdimens.github.io/djinn
+  home: https://github.com/pdimens/djinn
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Convert your linked-read data between formats, almost like magic.
+build:
+  entry_points:
+  - djinn = djinn.__main__:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.0.1
+extra:
+  recipe-maintainers:
+  - pdimens
+package:
+  name: djinn
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools-scm >=8
+  run:
+  - click >=8.2
+  - pysam >=0.23
+  - python >=3.11
+  - rich-click =1.9
+  - samtools >=1.22
+source:
+  sha256: 436b142b6224e529585f18b95120231c806d60d24262bea724fdad823e27857c
+  url: https://github.com/pdimens/djinn/releases/download/1.0.1/djinn.1.0.1.tar.gz
+test:
+  commands:
+  - djinn --version

@@ -17,11 +17,17 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - export CFLAGS="${CFLAGS} -O3 -Wno-implicit-function-declaration"
+  - export CPATH="${PREFIX}/include"
+  - export LIBRARY_PATH="${PREFIX}/lib"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=3.5.2
   skip: true
 extra:
-  additional-platforms:
-  - linux-aarch64
   identifiers:
   - doi:10.1111/1755-0998.13672
   - biotools:egglib
@@ -29,23 +35,39 @@ extra:
   - ranwez
 package:
   name: egglib
-  version: 3.3.5
+  version: 3.5.2
 requirements:
   build:
   - None
   - None
+  - cmake
+  - make
+  - pkg-config
   host:
-  - pip
   - python
-  - setuptools
+  - pip
+  - setuptools-scm
+  - svgwrite
+  - sphinx
+  - numpydoc
+  - htslib
+  - swig
   run:
   - python
   - platformdirs
   - click
+  - htslib
+  - scipy
 source:
-  sha256: 69dad3b35adb4cddb59d4ab13ba807d980fa3eed09e5520f9963b2aeb189ca3c
-  url: https://pypi.io/packages/source/e/egglib/EggLib-3.3.5.zip
+  patches:
+  - 0001-setup.py.patch
+  - 0002-setup-macOS.patch
+  sha256: 5b0d9c7a5713fdef72ce72a174294a7faed12b239d808988695e9dacc60bd373
+  url: https://pypi.org/packages/source/e/egglib/egglib-3.5.2.tar.gz
 test:
+  commands:
+  - egglib-config --help
+  - egglib-test --help
   imports:
   - egglib
   - egglib.coalesce

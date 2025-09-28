@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/gymrek-lab/LongTR
+  doc_url: https://github.com/gymrek-lab/LongTR
+  home: https://github.com/gymrek-lab/LongTR
+  license: BSD-2-Clause
+  license_family: BSD
+  summary: Tandem repeat genotyping with long reads.
+build:
+  number: 1
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:longtr
+  recipe-maintainers:
+  - awgymer
+package:
+  name: longtr
+  version: 1.2
+requirements:
+  build:
+  - make
+  - cmake <4
+  - None
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  host:
+  - htslib
+  - spoa
+  - zlib
+source:
+- sha256: 781531168f89ef59dd6124290cfb95e329dd1ddfc107bee918720b96500cf66d
+  url: https://github.com/gymrek-lab/LongTR/archive/refs/tags/v1.2.tar.gz
+- folder: extlibs/googletest
+  sha256: 94c634d499558a76fa649edb13721dce6e98fb1e7018dfaeba3cd7a083945e91
+  url: https://github.com/google/googletest/archive/release-1.10.0.zip
+test:
+  commands:
+  - LongTR --help

@@ -1,10 +1,13 @@
 about:
-  home: http://www.vmatch.de/
+  doc_url: http://www.vmatch.de
+  home: http://www.vmatch.de
   license: Unknown
   license_family: OTHER
-  summary: The Vmatch large scale sequence analysis software
+  summary: The Vmatch large scale sequence analysis software.
 build:
-  number: 6
+  number: 0
+  run_exports:
+  - None
 extra:
   identifiers:
   - biotools:vmatch
@@ -12,7 +15,7 @@ extra:
   - should_not_be_noarch_source
 package:
   name: vmatch
-  version: 2.3.0
+  version: 2.3.1
 requirements:
   build:
   - None
@@ -22,16 +25,14 @@ requirements:
 source:
 - patches:
   - 0001-Remove-direct-call-to-GCC-in-Makefile.patch
-  sha256: 5e18d0dddf04e86dad193fcdde6e48f3901365932634125602d8808f35acf979
-  url: http://www.vmatch.de/distributions/vmatch-2.3.0-Linux_x86_64-64bit.tar.gz
+  sha256: 2b28f1f5f6ca3780d75889c63f2b5c9ac4b63c9807d98035668c9beddbd9241a
+  url: http://www.vmatch.de/distributions/vmatch-2.3.1-Linux_x86_64-64bit.tar.gz
 - patches:
   - 0001-Remove-direct-call-to-GCC-in-Makefile.patch
-  sha256: 39695c7d20158446ff27656f9ba415097052570bcc67ed12efec376fc3b0b4c6
-  url: http://www.vmatch.de/distributions/vmatch-2.3.0-Darwin_i386-64bit.tar.gz
+  sha256: 0def2a69515cd36a68724b76f60eca904d2445125d956a7974e34cb72904feda
+  url: http://www.vmatch.de/distributions/vmatch-2.3.1-Darwin_i386-64bit.tar.gz
 test:
   commands:
-  - mkvtree -help > /dev/null
-  - mkdna6idx -help > /dev/null
   - vmatch -help > /dev/null
   - vmatchselect -help > /dev/null
   - matchcluster -help > /dev/null

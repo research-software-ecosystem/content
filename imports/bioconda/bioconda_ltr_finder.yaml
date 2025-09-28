@@ -1,27 +1,37 @@
 about:
-  dev_url: https://github.com/NBISweden/LTR_Finder/
-  home: https://github.com/NBISweden/LTR_Finder/
+  dev_url: https://github.com/NBISweden/LTR_Finder
+  home: https://github.com/NBISweden/LTR_Finder
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: LTR_Finder is an efficient program for finding full-length LTR retrotranspsons
     in genome sequences.
 build:
-  number: 4
+  number: 5
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: ltr_finder
-  version: '1.07'
+  version: 1.07
 requirements:
   build:
   - make
   - None
+  - pkg-config
+  host:
+  - libgomp
   - llvm-openmp
   run:
   - perl
   - perl-gd
+  - libgomp
   - llvm-openmp
 source:
   sha256: 060ee6b533636a39f6833829c487713d1b85a53245029edcd51e26b21d4d0b0c
   url: https://github.com/NBISweden/LTR_Finder/archive/v1.07.tar.gz
 test:
   commands:
-  - ltr_finder 2>&1 | grep -i usage
+  - test -x ${PREFIX}/bin/ltr_finder

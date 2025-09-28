@@ -1,10 +1,11 @@
 about:
+  dev_url: https://github.com/KolmogorovLab/Wakhan
   home: https://github.com/KolmogorovLab/Wakhan
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: A tool to analyze haplotype-specific chromosome-scale somatic copy number
-    aberrations and aneuploidy using long reads
+    aberrations and aneuploidy using long reads.
 build:
   entry_points:
   - wakhan = src.main:main
@@ -12,14 +13,14 @@ build:
   number: 0
   run_exports:
   - None
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - ljwharbers
   - villena-francis
 package:
   name: wakhan
-  version: 0.1.2
+  version: 0.2.0
 requirements:
   host:
   - python >=3.7
@@ -32,6 +33,7 @@ requirements:
   - pysam
   - pandas
   - pyfaidx
+  - intervaltree
   - numpy ==1.24.4
   - plotly ==5.24.1
   - scikit-learn ==1.2.0
@@ -41,13 +43,11 @@ requirements:
   - python-kaleido
   - vcf_parser
 source:
-  sha256: 0924e576c019301b09cb227b1faf37851eb7d33d307c66463b00e082e499bc76
-  url: https://github.com/KolmogorovLab/Wakhan/archive/refs/tags/0.1.2.tar.gz
+  sha256: fc019ad01e2a38ab86ae03620ad860abc34add55a3e7cf2a20b2b8c4763c4123
+  url: https://github.com/KolmogorovLab/Wakhan/archive/refs/tags/0.2.0.tar.gz
 test:
   commands:
   - wakhan --help
   imports:
   - pysam
   - vcf_parser
-  requires:
-  - pip

@@ -8,16 +8,17 @@ about:
   summary: lsaBGC-Pan - refined workflow for pan-BGC-omic evolutionary investigations.
 build:
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - None
-  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
+  script:
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - raufs
 package:
   name: lsabgc
-  version: 1.1.7
+  version: 1.1.8
 requirements:
   host:
   - python >=3.10
@@ -51,9 +52,15 @@ requirements:
   - r-data.table
   - r-plyr
   - r-gridextra
+  - intbitset
+  - networkx
+  - gffutils
+  - edlib
+  - joblib
+  - cd-hit
 source:
-  sha256: 004282d7a761d8444b20c8d8720724a495ce91ebd258382cbffd29c42681eb67
-  url: https://github.com/Kalan-Lab/lsaBGC-Pan/archive/refs/tags/v1.1.7.tar.gz
+  sha256: e04b599b10737293d48a21a0963235f7ab7743991716081b0901e44507b535bb
+  url: https://github.com/Kalan-Lab/lsaBGC-Pan/archive/refs/tags/v1.1.8.tar.gz
 test:
   commands:
   - lsaBGC-Pan -h

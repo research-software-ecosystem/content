@@ -1,5 +1,6 @@
 about:
   dev_url: https://github.com/orthanq/orthanq
+  doc_url: https://orthanq.github.io
   home: https://github.com/orthanq/orthanq
   license: MIT
   license_family: MIT
@@ -10,51 +11,49 @@ build:
   run_exports:
   - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: orthanq
-  version: 1.14.0
+  version: 1.15.0
 requirements:
   build:
   - None
   - None
   - None
-  - pkg-config
+  - cargo-bundle-licenses
   - make
   - cmake
-  - perl-findbin
-  - python >=3.10
-  - cross-python_
+  - pkg-config
+  host:
+  - python
+  - pkg-config
+  - clangdev
   - nodejs
   - pnpm
-  host:
   - gsl
   - libcblas
   - openssl
+  - coincbc
+  - fontconfig
   - zlib
   - bzip2
   - xz
-  - clangdev
-  - coincbc
-  - fontconfig
-  - htslib
-  - varlociraptor ==8.4.7
-  - samtools ==1.19
-  - vg ==1.63.1
-  - minimap2
-  - python >=3.10
-  - bwa
   run:
+  - python
   - gsl
-  - libcblas
   - openssl
-  - clangdev
-  - coincbc
-  - fontconfig
-  - python >=3.10
-  - yte
+  - varlociraptor ==8.7.3
+  - samtools ==1.20
+  - vg ==1.63.1
+  - htslib
+  - minimap2
+  - bwa
 source:
-  sha256: ea441de07e135639797a55e66d8c4db55692de35c9068b73080489d0f26da560
-  url: https://github.com/orthanq/orthanq/archive/v1.14.0.tar.gz
+  sha256: 8dd4c111d42a685e229da5d9bc05f12c7237e07a0e83d979e5c5a39e4474f30c
+  url: https://github.com/orthanq/orthanq/archive/v1.15.0.tar.gz
 test:
   commands:
   - orthanq -h

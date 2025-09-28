@@ -1,12 +1,19 @@
 about:
-  home: http://stat.sys.i.kyoto-u.ac.jp/prog/consel/
-  license: GNU GENERAL PUBLIC LICENSE Version 2
+  dev_url: https://github.com/shimo-lab/consel
+  doc_url: https://stat.sys.i.kyoto-u.ac.jp/prog/consel
+  home: https://github.com/shimo-lab/consel
+  license: GPL-2.0-or-later
+  license_family: GPL
   summary: CONSEL calculates the probability value (i.e., p-value) to assess the confidence
-    in the selection problem. Although CONSEL is applicable to any selection problem,
-    it is mainly designed for the phylogenetic tree selection
+    in the selection problem.
 build:
-  number: 2
-  skip: true
+  number: 3
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: consel
   version: 0.2
@@ -14,10 +21,9 @@ requirements:
   build:
   - make
   - None
-  host: null
 source:
-  sha256: cc6e8ee6077693817db475229aa47b9d9fb66bf5f48a3aace63e4b525f05238b
-  url: http://stat.sys.i.kyoto-u.ac.jp/prog/consel/pub/cnsls020.tgz
+  sha256: 023206ba06c0dbb641a17d2eb3bb9496ddb45efe267c10f6657c508fc0f49c2e
+  url: https://github.com/shimo-lab/consel/archive/1a532a4fe9e7d4e9101f2bbe64613f3b0cfc6274.tar.gz
 test:
   commands:
   - catass -h 2>&1 | grep 'error in command line.'

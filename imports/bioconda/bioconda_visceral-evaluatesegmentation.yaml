@@ -1,13 +1,20 @@
 about:
+  dev_url: https://github.com/Visceral-Project/EvaluateSegmentation
   home: https://github.com/Visceral-Project/EvaluateSegmentation
-  license: Apache License, Version 2.0
+  license: Apache-2.0
   summary: EvaluateSegmentation is a tool that compares two volumes (a test segmentation
     and a ground truth segmentation) using 22 different metrics that were selected
     as a result of a comprehensive research into the metrics used in the medical volume
     segmentations.
 build:
   number: 0
+  run_exports:
+  - None
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: visceral-evaluatesegmentation
   version: 2021.03.25
@@ -15,14 +22,16 @@ requirements:
   build:
   - make
   - None
-  - cmake
+  - cmake <4
+  - pkg-config
   host:
-  - libitk <5
+  - libitk-devel
+  - libitk
   run:
-  - libitk <5
-  - jpeg
+  - libitk-devel
+  - libitk
 source:
-  md5: 321aed8e10e4f7e2f2f1cd2523c69d77
+  sha256: 88ef07e0221dee16921658de4250a45bde4a1c096b98682f3ffc397b5fcfcc29
   url: https://github.com/Visceral-Project/EvaluateSegmentation/archive/master.zip
 test:
   commands:

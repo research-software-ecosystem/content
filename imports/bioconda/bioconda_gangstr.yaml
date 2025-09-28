@@ -1,15 +1,19 @@
 about:
+  dev_url: https://github.com/gymreklab/GangSTR
   home: https://github.com/gymreklab/GangSTR
   license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: COPYING
   summary: GangSTR is a tool for genome-wide profiling tandem repeats from short reads.
 build:
-  number: 9
+  number: 10
   run_exports:
   - None
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1093/nar/gkz501
 package:
@@ -25,8 +29,9 @@ requirements:
   - gsl
   - htslib
   - nlopt
+  - bzip2
+  - xz
   - zlib
-  run: null
 source:
   patches:
   - 0001-Unvendor-dependencies-use-pkg-config-instead.patch

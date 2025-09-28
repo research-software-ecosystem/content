@@ -1,6 +1,7 @@
 about:
+  dev_url: https://github.com/jts/sga
   home: https://github.com/jts/sga
-  license: GPLv3
+  license: GPL-3.0-or-later
   license_family: GPL
   license_file: src/COPYING
   summary: SGA - String Graph Assembler. SGA is a de novo assembler for DNA sequence
@@ -8,8 +9,13 @@ about:
     the FM-index/Burrows-Wheeler transform to efficiently find overlaps between sequence
     reads.
 build:
-  number: 10
+  number: 11
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:sga
 package:
@@ -22,7 +28,9 @@ requirements:
   - None
   - autoconf
   - automake
-  - m4
+  - libtool
+  - pkg-config
+  - gnuconfig
   host:
   - sparsehash
   - bamtools
@@ -30,7 +38,6 @@ requirements:
   run:
   - sparsehash
   - bamtools
-  - zlib
 source:
   patches:
   - gcc.patch

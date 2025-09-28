@@ -29,33 +29,31 @@ about:
     to a residue-level biophysical index.
 
     '
-  dev_url: http://bitbucket.org/bio2byte/b2btools_releases
-  doc_url: https://pypi.org/project/b2bTools/
+  dev_url: https://bitbucket.org/bio2byte/b2btools_releases
+  doc_url: https://bio2byte.be/b2btools
   home: https://bio2byte.be/b2btools
-  license: GNU General Public License v3 (GPLv3)
+  license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: The bio2Byte software suite to predict protein biophysical properties
+  summary: The bio2Byte software suite to predict protein biophysical properties.
 build:
   entry_points:
   - b2bTools = b2bTools.__main__:main
   - b2btools = b2bTools.__main__:main
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: ' -m pip install . --ignore-installed --no-deps -vv'
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   author: Wim Vranken <wim.vranken@vub.be>
   identifiers:
   - doi:10.48550/arXiv.2405.02136
   - biotools:b2btools
-  maintainers:
-  - "Adri\xE1n D\xEDaz <adrian.diaz@vub.be> (@agdiaz)"
-  - "Jose Gavald\xE1-Garc\xEDa <jose.gavalda.garcia@vub.be> (@GavaldaGarcia)"
   recipe-maintainers:
-  - "Adri\xE1n D\xEDaz <adrian.diaz@vub.be> (@agdiaz)"
-  - "Jose Gavald\xE1-Garc\xEDa <jose.gavalda.garcia@vub.be> (@GavaldaGarcia)"
+  - agdiaz
 package:
   name: b2btools
   version: 3.0.7
@@ -63,13 +61,12 @@ requirements:
   build:
   - None
   - None
-  - clang_osx-64
-  - clangxx_osx-64
+  - clangdev
   host:
-  - python <3.11
+  - python
   - pip
   run:
-  - python <3.11
+  - python
   - hmmer
   - t-coffee
   - biopython >=1.80,<2
@@ -91,7 +88,7 @@ requirements:
   - urllib3 >=1.26.6,<1.27
 source:
   sha256: b3c9f10c10c8a12c390a79016e01b7e4d165bf1c94dce48e72d31891cb552c29
-  url: https://pypi.io/packages/source/b/b2btools/b2btools-3.0.7.tar.gz
+  url: https://pypi.org/packages/source/b/b2btools/b2btools-3.0.7.tar.gz
 test:
   files:
   - test.singleseq.fasta

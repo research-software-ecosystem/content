@@ -1,10 +1,12 @@
 about:
+  dev_url: https://github.com/bcgsc/LINKS
   home: https://github.com/bcgsc/LINKS
-  license: GPLv3
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: /LICENSE
-  summary: Long Interval Nucleotide K-mer Scaffolder
+  summary: Long Interval Nucleotide K-mer Scaffolder.
 build:
-  number: 6
+  number: 7
   run_exports:
   - None
 extra:
@@ -18,10 +20,16 @@ requirements:
   build:
   - None
   - make
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
   run:
   - make
   - perl
 source:
+  patches:
+  - 0001-cstdint.patch
   sha256: f6f664b854b9dcc51a399af8d5ce2634f788ccdbc35e7d2732c927ca50bc7f70
   url: https://github.com/bcgsc/LINKS/releases/download/v2.0.1/links-v2.0.1.tar.gz
 test:
