@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://dev.biii.eurobioimaging.eu/tubeness",
+  "@type": "http://schema.org/SoftwareApplication",
+  "http://schema.org/applicationCategory": {
+    "@id": "http://edamontology.org/operation_Object_detection"
+  },
+  "http://schema.org/citation": [
+    {
+      "@id": "https://www.ncbi.nlm.nih.gov/pubmed/10646760"
+    },
+    "Sato Y, Nakajima S, Shiraga N, Atsumi H, Yoshida S, Koller T, Gerig G, Kikinis R.  1998.  Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images.. Med Image Anal. 2(2):143-68."
+  ],
+  "http://schema.org/dateCreated": "2017-09-13T13:27:04+00:00",
+  "http://schema.org/dateModified": "2019-10-21T09:10:09+00:00",
+  "http://schema.org/description": "<p>This plugin filters a 3D image stack (or 2D image) to produce a score for how \"tube-like\" each point in the image is. This is useful as a preprocessing step for tracing neurons or blood vessels, for example. For 3D image stacks, the plugin uses the eigenvalues of the Hessian matrix to calculate this measure of \"tubeness\", using a&nbsp;metrics mentioned in Sato et al 1997 ¹: if the larger two eigenvalues (λ₂ and λ₃) are both negative then value is √(λ₂λ₃), otherwise the value is 0. For 2D images, if the large eigenvalue is negative, we return its absolute value and otherwise return 0.</p>\r\n\r\n<p>This plugin is now bundled as part of Fiji.</p>\r\n",
+  "http://schema.org/featureList": {
+    "@id": "http://edamontology.org/operation_Object_detection"
+  },
+  "http://schema.org/license": "GPL",
+  "http://schema.org/name": "Tubeness",
+  "http://schema.org/publisher": [
+    "Johannes Schindelin",
+    "Stephan Preibisch  orcid.org/0000-0002-0276-494X",
+    "Mark Longair"
+  ],
+  "http://schema.org/softwareRequirements": {
+    "@id": "http://biii.eu/node/38"
+  }
+}
