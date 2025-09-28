@@ -1,23 +1,29 @@
 about:
+  dev_url: https://github.com/cchauve/hyplas
   home: https://github.com/cchauve/hyplas
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Hybrid long- short- plasmid assembler
+  summary: Hybrid long- short- plasmid assembler.
 build:
   entry_points:
   - hyplas = hyplas.hyplas:main
-  number: 0
+  - unicycler_hyplas_modified = unicycler_hyplas_modified.unicycler:main
+  number: 1
   run_exports:
   - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: hyplas
   version: 1.0.1
 requirements:
   build:
-  - python
   - None
   - make
+  - pkg-config
   host:
   - python
   - pip
@@ -40,3 +46,4 @@ source:
 test:
   commands:
   - hyplas --help
+  - unicycler_hyplas_modified --help

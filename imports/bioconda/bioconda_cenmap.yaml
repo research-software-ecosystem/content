@@ -1,0 +1,71 @@
+about:
+  dev_url: https://github.com/logsdon-lab/CenMAP
+  doc_url: https://github.com/logsdon-lab/CenMAP/blob/v1.0.4/README.md
+  home: https://github.com/logsdon-lab/CenMAP
+  license: MIT
+  license_family: MIT
+  summary: A centromere mapping and annotation pipeline for T2T human and primate
+    genome assemblies implemented in Snakemake.
+build:
+  number: 2
+  run_exports:
+  - None
+  skip: true
+extra:
+  recipe-maintainers:
+  - koisland
+package:
+  name: cenmap
+  version: 1.0.4
+requirements:
+  build:
+  - make
+  - None
+  host:
+  - zlib
+  run:
+  - python >=3.12
+  - findutils
+  - coreutils
+  - bedops
+  - hmmer
+  - gzip
+  - gawk
+  - bedtools
+  - kmc >=3.2.4
+  - minimap2 >=2.29
+  - ont-modkit >=0.3.2
+  - pbmm2 >=1.17.0
+  - repeatmasker ==4.1.2.p1
+  - rustybam
+  - samtools >=1.13
+  - seqkit
+  - seqtk
+  - srf-n-trf >=0.1.1
+  - stringdecomposer
+  - snakemake >=8.24.0,<9.11.4
+  - intervaltree
+  - matplotlib-base
+  - numpy
+  - polars
+  - pyarrow
+  - pyyaml
+  - scipy
+  - seaborn
+  - nucflag >=0.3.7
+  - cenplot >=0.1.4
+  - censtats >=0.1.0
+source:
+  sha256: 200a57ff65274532fe08b83287f0da421ff5e9c939726057f27ea676a79e3507
+  url: https://github.com/logsdon-lab/CenMAP/releases/download/v1.0.4/srcs-full-CenMAP.tar.gz
+test:
+  commands:
+  - cenmap --version
+  - touch test.fa && cenmap -i test.fa -s example --snake-opts="-n" -o results &&
+    rm -rf results
+  import:
+  - numpy
+  - scipy
+  - pysam
+  - cenplot
+  - censtats

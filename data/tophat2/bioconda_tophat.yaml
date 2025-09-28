@@ -1,29 +1,55 @@
 about:
-  home: http://ccb.jhu.edu/software/tophat/index.shtml
+  dev_url: https://github.com/infphilo/tophat
+  doc_url: http://ccb.jhu.edu/software/tophat
+  home: http://ccb.jhu.edu/software/tophat
   license: Boost Software License
-  summary: A spliced read mapper for RNA-Seq
+  summary: A spliced read mapper for RNA-Seq.
 build:
-  number: 4
-  skip: true
+  number: 0
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:tophat2
   - usegalaxy-eu:tophat2
-  skip-lints:
-  - should_be_noarch_generic
-  - should_not_be_noarch_source
 package:
   name: tophat
-  version: 2.1.1
+  version: 2.1.2
 requirements:
+  build:
+  - None
+  - None
+  - python >=3
+  - make
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  - gnuconfig
+  host:
+  - libgomp
+  - llvm-openmp
+  - boost-cpp
+  - ncurses
+  - zlib
   run:
-  - python
-  - bowtie2 <=2.2.5
+  - python >=3
+  - setuptools
+  - libgomp
+  - llvm-openmp
+  - ncurses
+  - boost-cpp
+  - bowtie2
 source:
-- md5: 97fe58465a01cb0a860328fdb1993660
-  url: http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
-- md5: 1e4e7f8d08f182d2db3202975f284294
-  url: https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.OSX_x86_64.tar.gz
+  patches:
+  - 0001-configure.ac.patch
+  - 0002-make_pair.patch
+  - 0004-Makefile.patch
+  sha256: 15016b82255dad085d4ee7d970e50f0e53a280d466335553d47790d8344ff4b1
+  url: https://github.com/infphilo/tophat/archive/refs/tags/v2.1.2.tar.gz
 test:
   commands:
   - (tophat --version 2>&1) > /dev/null

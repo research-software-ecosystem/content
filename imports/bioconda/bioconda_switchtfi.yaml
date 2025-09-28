@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/bionetslab/SwitchTFI
+  doc_url: https://github.com/bionetslab/SwitchTFI#readme
+  home: https://github.com/bionetslab/SwitchTFI
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: 'Implementation of the SwitchTFI method as presented in: https://doi.org/10.1101/2025.01.20.633856'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - PaMartini
+package:
+  name: switchtfi
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.9,<3.13
+  - setuptools >=61
+  - wheel
+  - pip
+  run:
+  - python >=3.9,<3.13
+  - numpy >=1.26
+  - pandas >=2.1
+  - scipy >=1.10
+  - scikit-learn >=1.5
+  - statsmodels >=0.13
+  - matplotlib-base >=3.5
+  - seaborn >=0.12
+  - anndata >=0.8
+  - scanpy >=1.9
+  - python-igraph >=0.10
+  - magic-impute >=3.0.0
+  - leidenalg >=0.10
+  - networkx >=3.0
+  - graph-tool >=2.45
+  - pillow >=9.0
+  - pymupdf >=1.20
+source:
+  sha256: f7c3344ca6cccf1bb0e2d1c344a8fc84fe42c193cb068d42d8d878b51602368d
+  url: https://pypi.org/packages/source/s/switchtfi/switchtfi-0.1.0.tar.gz
+test:
+  imports:
+  - switchtfi

@@ -1,0 +1,83 @@
+about:
+  dev_url: https://github.com/NKI-CCB/imfusion
+  doc_url: https://nki-ccb.github.io/imfusion
+  home: https://github.com/NKI-CCB/imfusion
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: IM-Fusion - Tool for identifying transposon insertions and their effects
+    from RNA-sequencing data
+build:
+  entry_points:
+  - imfusion = imfusion.main.dispatch:main
+  - imfusion-build = imfusion.main.build:main
+  - imfusion-insertions = imfusion.main.insertions:main
+  - imfusion-ctg = imfusion.main.ctg:main
+  - imfusion-expression = imfusion.main.expression:main
+  - imfusion-merge = imfusion.main.merge:main
+  noarch: python
+  number: 1
+  run_exports:
+  - None
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -f *.bak
+  - -m pip install . --no-build-isolation --no-deps --no-cache-dir --use-pep517 -vvv
+package:
+  name: imfusion
+  version: 0.3.2
+requirements:
+  host:
+  - setuptools
+  - python <3.10
+  - pip
+  - future
+  - pandas
+  - numexpr
+  - pysam >=0.9.1
+  - toolz
+  - scipy
+  - pyfaidx
+  - intervaltree
+  - pathlib2
+  - typing
+  - htslib
+  - htseq
+  - matplotlib-base
+  - seaborn-base
+  run:
+  - python <3.10
+  - intervaltree
+  - future
+  - pandas
+  - numexpr
+  - pysam
+  - toolz
+  - scipy
+  - seaborn-base
+  - pyfaidx
+  - intervaltree
+  - pathlib2
+  - typing
+  - htslib
+  - htseq
+  - matplotlib-base
+  - star
+  - subread
+  - stringtie
+  - tophat >=2.1.0
+  - bowtie
+source:
+  sha256: 957747b0c2cb91c18860991e809be84595d9fc3ed88d575b474344fdbe95bd56
+  url: https://github.com/NKI-CCB/imfusion/archive/0.3.2.tar.gz
+test:
+  commands:
+  - imfusion-build -h
+  - imfusion-insertions -h
+  - imfusion-expression -h
+  - imfusion-merge -h
+  - imfusion-ctg -h
+  - STAR --version
+  - featureCounts -v
+  imports:
+  - imfusion

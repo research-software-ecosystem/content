@@ -1,14 +1,17 @@
 about:
+  dev_url: https://github.com/sanger-pathogens/assembly-stats
   home: https://github.com/sanger-pathogens/assembly-stats
-  license: GPL-3.0
+  license: GPL-3.0-or-later
+  license_family: GPL3
   summary: Get assembly statistics from FASTA and FASTQ files
 build:
-  number: 9
+  number: 10
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: assembly-stats
   version: 1.0.1
@@ -16,9 +19,8 @@ requirements:
   build:
   - make
   - None
-  - cmake
-  host: null
-  run: null
+  - cmake <4
+  - pkg-config
 source:
   patches:
   - 0001-Fix-macOS-compilation.patch
