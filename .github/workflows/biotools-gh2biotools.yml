@@ -1,0 +1,122 @@
+name: Validate & run gh2biotools on .biotools.json changes
+
+on:
+  push:
+    paths:
+      - 'data/**/*.biotools.json'
+    branches:
+      - master
+
+jobs:
+  run-gh2biotools:
+    runs-on: ubuntu-latest
+    if: github.actor != 'biotools-bot'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: 'data'
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
+
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+
+      - name: Check for updated/created .biotools.json files
+        id: check_changes
+        run: |
+          files=$(git diff-tree --no-commit-id --name-only --diff-filter=d -r ${{ github.sha }} | grep '\.biotools\.json$' || true)
+
+          if [ -z "$files" ]; then
+            echo "No relevant biotools.json files changed."
+            echo "changed=false" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Files changed:"
+            echo "$files"
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "files=${files}" >> $GITHUB_OUTPUT
+          fi
+
+
+      - name: Validate allowed fields in modified biotools.json files
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          echo "Validating fields in changed .biotools.json files..."
+          PROTECTED_FIELDS=(
+            "biotoolsID"
+            "biotoolsCURIE"
+            "additionDate"
+            "collectionID"
+            "elixirPlatform"
+            "elixirNode"
+            "elixirCommunity"
+            "lastUpdate"
+            "owner"
+            "editPermission"
+            "validated"
+            "homepage_status"
+            "elixir_badge"
+            "confidence_flag"
+          )
+
+          failed=false
+
+          for file in $(echo "${{ steps.check_changes.outputs.files }}"); do
+            echo "Checking $file..."
+        
+            git show ${{ github.event.before }}:$file > old.json || continue
+            cat $file > new.json
+
+            for field in "${PROTECTED_FIELDS[@]}"; do
+              old_val=$(jq -e ".$field" old.json 2>/dev/null || echo "")
+              new_val=$(jq -e ".$field" new.json 2>/dev/null || echo "")
+              if [ "$old_val" != "$new_val" ]; then
+                echo "❌ Field '$field' has been modified in $file"
+                failed=true
+              fi
+            done
+          done
+
+          if [ "$failed" = true ]; then
+            echo "::error ::One or more not allowed fields have been modified."
+            exit 1
+          else
+            echo "✅ All changed fields are allowed."
+          fi
+
+
+      - name: Checkout utils repo
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: actions/checkout@v3
+        with:
+          repository: research-software-ecosystem/utils
+          path: content-ecosystem-utils
+          
+
+      - name: Install dependencies
+        if: steps.check_changes.outputs.changed == 'true'
+        working-directory: content-ecosystem-utils/scripts/runbiotools
+        run: |
+          pip3 install -r requirements.txt
+
+
+      - name: Run gh2biotools.py script
+        if: steps.check_changes.outputs.changed == 'true'
+        env:
+          BIOTOOLS_API_TOKEN: ${{ secrets.BIOTOOLS_API_TOKEN }}
+        run: |
+          changed_files="${{ steps.check_changes.outputs.files }}"
+
+          command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py"
+
+          if [[ -n "$changed_files" ]]; then
+            command="$command --files \"$changed_files\""
+          fi
+
+          eval "$command"
