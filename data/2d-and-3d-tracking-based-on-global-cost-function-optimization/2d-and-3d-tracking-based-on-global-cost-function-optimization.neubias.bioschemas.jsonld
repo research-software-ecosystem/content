@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://dev.biii.eurobioimaging.eu/2d-and-3d-tracking-based-global-cost-function-optimization",
+  "@type": "http://schema.org/SoftwareApplication",
+  "http://schema.org/applicationCategory": [
+    {
+      "@id": "http://edamontology.org/operation_Particle_tracking"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Image_tracking"
+    },
+    {
+      "@id": "http://edamontology.org/operation___Trajectory_analysis"
+    }
+  ],
+  "http://schema.org/citation": [
+    "Chenouard et al.(2014) Objective comparison of particle tracking methods",
+    {
+      "@id": "http://doi.org/10.1038/nmeth.2808"
+    }
+  ],
+  "http://schema.org/dateCreated": "2014-12-15T11:19:23+00:00",
+  "http://schema.org/dateModified": "2023-04-27T15:15:32+00:00",
+  "http://schema.org/description": "The workflow consists of firstly identifying spot (which can be also gravity center of cells identified by another method), and then secondly compute trajectories by linking these spots by global optimisation with a cost function. This method is part of the methods evaluated in Chanouard et al (2014) as \"method 9\" and is described in detail in its supplementary PDF  (page 65). \r\n\r\n## Dependencies\r\n\r\nFollowing plugins are required.  \r\n\r\n1. [JAR to be placed under IJ plugin directory](http://xfer.curie.fr/get/192esfJKxA1/Trackingv2.0.zip)\r\n  1. A pdf file with instructions and output description is also available in the zip .\r\n1. [MTrackJ](https://imagescience.org/meijering/software/mtrackj/) : Used for visualization of tracks. Preinstalled in Fiji.\r\n2. [Imagescience.jar](http://www.imagescience.org/meijering/software/download/imagescience.jar):  This library is used by MTrackJ. Use update site to install this plugin. \r\n3. [jama.jar](http://math.nist.gov/javanumerics/jama/). Preinstalled in Fiji.\r\n\r\n##Advantages: \r\n\r\n-  support blinking (with a parameters allowing it or not)\r\n-  fast, \r\n-  can be used in batch, some analysis results provided.\r\n-  No dynamic model.\r\n-  The tracking part is not dependent of ImageJ.\r\n\r\n## Pitfalls: \r\n-  does not support division\r\n-  the optimization algorithm used is a simulated annealing, so results can be slightly different between two runs. \r\n-  No Dynamic model (so less good results but can be used for a first study of the kind of movements)\r\n\r\n##The sample data \r\n\r\nThe parameters used  for this example data Beads, were \r\n\r\n1.  detection: 150 \r\n2. the max distance in pixels: 20 \r\n3. max allowed disappearance in frame: 1\r\n",
+  "http://schema.org/featureList": [
+    {
+      "@id": "http://edamontology.org/operation_Image_tracking"
+    },
+    {
+      "@id": "http://edamontology.org/operation___Trajectory_analysis"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Particle_tracking"
+    }
+  ],
+  "http://schema.org/name": "2D and 3D tracking based on global cost function optimization",
+  "http://schema.org/publisher": "Perrine Paul-Gilloteaux",
+  "http://schema.org/softwareRequirements": [
+    {
+      "@id": "http://biii.eu/node/1040"
+    },
+    {
+      "@id": "http://biii.eu/node/38"
+    },
+    {
+      "@id": "http://biii.eu/node/1309"
+    },
+    {
+      "@id": "http://biii.eu/node/1310"
+    },
+    {
+      "@id": "http://biii.eu/node/1311"
+    }
+  ]
+}
