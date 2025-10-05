@@ -1,0 +1,62 @@
+about:
+  description: 'This is a fork of MrBayes v3.2.7a, a programme for estimation of phylogenetic
+    trees using
+
+    Bayesian inference. This fork differs from the original in that the standard character
+
+    coding is no longer intended for morphology in biological datasets but rather
+    for the encoding
+
+    of plainchant melodies in the volpiano format. The original README is provided
+    below as well
+
+    as the license and modified source code. A note has been added to the greeting
+    text to make it
+
+    clear that this is a fork only intended to be used for analysing plainchant melodies
+    in volpiano
+
+    format rather than the original biological sequence data.
+
+    '
+  dev_url: https://github.com/gaballench/mrbayes_volpiano
+  doc_url: https://github.com/gaballench/mrbayes_volpiano
+  home: https://github.com/gaballench/mrbayes_volpiano
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: COPYING
+  summary: Bayesian Inference of Phylogeny (Volpiano edition)
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:mrbayes_volpiano
+package:
+  name: mrbayes_volpiano
+  version: 3.2.7a
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - readline
+  - openmpi
+  - beagle-lib <4
+  - ncurses
+  run:
+  - readline
+  - openmpi
+  - beagle-lib <4
+  - ncurses
+source:
+  sha256: 3e09cc1ade9598faa42048d5e085e688841713f2a69c0ef793802c26b1a821ef
+  url: https://github.com/gaballench/mrbayes_volpiano/archive/v3.2.7a.tar.gz
+test:
+  commands:
+  - echo Version | mb
+  - echo Version | mpirun -mca plm_rsh_agent true --allow-run-as-root mb-mpi

@@ -1,0 +1,40 @@
+about:
+  doc_url: https://panorama.readthedocs.io
+  home: https://github.com/labgem/panorama
+  license: CeCiLL 2.1
+  license_file: LICENSE
+  summary: A robust pangenome-based method for predicting and comparing biological
+    systems across species.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install --no-deps --ignore-installed -vv .
+extra:
+  recipe-maintainers:
+  - jpjarnoux
+  - JeanMainguy
+package:
+  name: panorama
+  version: 0.5.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools
+  run:
+  - python >=3.10
+  - ppanggolin >=2.1.0
+  - pyhmmer >=0.6
+  - lxml >=4.9.2
+  - selenium >=4.35.0
+  - geckodriver >=0.36.0
+source:
+  sha256: 5f2131e3af5a7c86f16651c70a50736b6ef0f570505adcea11272c8099f5fd36
+  url: https://github.com/labgem/panorama/archive/0.5.0.tar.gz
+test:
+  commands:
+  - panorama -h
+  imports:
+  - panorama

@@ -1,10 +1,18 @@
 about:
+  dev_url: https://github.com/mcveanlab/mccortex
+  doc_url: https://github.com/mcveanlab/mccortex/wiki
   home: https://github.com/mcveanlab/mccortex
   license: MIT
-  summary: 'De novo genome assembly and multisample variant calling '
+  license_family: MIT
+  summary: De novo genome assembly and multisample variant calling.
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:mccortex
 package:
@@ -16,10 +24,18 @@ requirements:
   - None
   - autoconf
   - automake
+  - libtool
+  - pkg-config
+  - gnuconfig
   host:
+  - libdeflate
+  - libcurl
+  - bzip2
   - zlib
-  run:
-  - zlib
+  - xz
 source:
+  patches:
+  - 0001-Makefile.patch
+  - 0002-sys-types.patch
   sha256: 79a74b5e20646a7d7a4e5c7927bca58beeded97df9889f13fe33c126331cf886
   url: https://github.com/mcveanlab/mccortex/releases/download/mccortex-1.0/mccortex1_0.tar.gz
