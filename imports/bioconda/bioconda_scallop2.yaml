@@ -1,12 +1,19 @@
 about:
+  dev_url: https://github.com/Shao-Group/scallop2
   home: https://github.com/Shao-Group/scallop2
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
   summary: A reference-based transcript assembler optimized for paired-/multiple-end
     RNA-seq data.
 build:
-  number: 7
+  number: 8
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - shaogroup
 package:
@@ -17,10 +24,21 @@ requirements:
   - make
   - None
   - None
+  - pkg-config
+  - autoconf
+  - automake
+  - libtool
+  - gnuconfig
   host:
+  - libgomp
+  - llvm-openmp
   - htslib
+  - libxcrypt
   - boost-cpp
+  - zlib
   run:
+  - libgomp
+  - llvm-openmp
   - htslib
   - boost-cpp
 source:

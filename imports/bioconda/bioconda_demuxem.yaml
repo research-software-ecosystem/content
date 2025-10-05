@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/lilab-bcb/demuxEM
   doc_url: https://demuxEM.readthedocs.io
   home: https://github.com/lilab-bcb/demuxEM
   license: BSD-3-Clause
@@ -13,7 +14,12 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --no-build-isolation --use-pep517 -vvv'
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -f *.bak
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.1.8
 extra:
   identifiers:
   - doi:10.1038/s41467-019-10756-2
@@ -22,12 +28,12 @@ extra:
   - bli25
 package:
   name: demuxem
-  version: 0.1.7.post1
+  version: 0.1.8
 requirements:
   host:
   - python >=3.8
   - pip
-  - setuptools_scm
+  - setuptools-scm
   run:
   - python >=3.8
   - docopt
@@ -35,12 +41,12 @@ requirements:
   - pandas
   - scipy
   - scikit-learn
-  - seaborn
-  - pegasusio >=0.2.12
+  - seaborn-base
+  - pegasusio >=0.10.0
   - importlib_metadata >=0.7
 source:
-  sha256: f6e6608c37875fb2db6cbd1abe48ce1149b41c7b2b26380cd4d581dca6cac260
-  url: https://pypi.io/packages/source/d/demuxEM/demuxEM-0.1.7.post1.tar.gz
+  sha256: 388dec2399430b4ac8d7c89f9697144639b2745460dba686ad44660f1ef41f50
+  url: https://pypi.org/packages/source/d/demuxEM/demuxem-0.1.8.tar.gz
 test:
   commands:
   - demuxEM --help

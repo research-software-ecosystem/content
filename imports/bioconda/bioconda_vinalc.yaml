@@ -1,0 +1,50 @@
+about:
+  dev_url: https://github.com/XiaohuaZhangLLNL/VinaLC
+  home: https://github.com/XiaohuaZhangLLNL/VinaLC
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: License
+  summary: 'VinaLC: MPI-accelerated molecular docking program for virtual screening.'
+build:
+  number: 0
+  run_exports:
+  - None
+  script: "cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \\\n    -DCMAKE_BUILD_TYPE=Release\
+    \ \\\n    -DWITH_MPI=ON \\\n    -DWITH_OPENMP=ON \\\n    .\nmake -j$CPU_COUNT\n\
+    make install\n"
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: vinalc
+  version: 1.4.2
+requirements:
+  build:
+  - None
+  - None
+  - pkg-config
+  - autoconf
+  - automake
+  - libtool
+  - cmake >=3.29
+  - make
+  host:
+  - mpich
+  - mpich-mpicxx
+  - libboost
+  - boost-cpp
+  - libboost-mpi
+  - zlib
+  run:
+  - mpich
+  - mpich-mpicxx
+  - boost-cpp
+  - libboost
+  - libboost-mpi
+source:
+  sha256: 2186471f8041460dc4f0dc3d4169807e5d5ead08b028c554ffdfb44484a345a2
+  url: https://github.com/XiaohuaZhangLLNL/VinaLC/archive/refs/tags/v1.4.2.tar.gz
+test:
+  commands:
+  - mpiexec -n 2 vinalc --help

@@ -1,10 +1,17 @@
 about:
+  dev_url: https://github.com/Kingsford-Group/scallop
   home: https://github.com/Kingsford-Group/scallop
-  license: BSD 3-Clause License
-  summary: Scallop is a reference-based transcriptome assembler for RNA-seq
+  license: BSD-3-Clause
+  license_family: BSD
+  summary: Scallop is a reference-based transcriptome assembler for RNA-seq.
 build:
-  number: 8
+  number: 9
+  run_exports:
+  - None
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - shaomingfu
 package:
@@ -14,11 +21,23 @@ requirements:
   build:
   - make
   - None
-  - None
+  - pkg-config
+  - autoconf
+  - automake
+  - libtool
+  - gnuconfig
   host:
+  - libgomp
+  - llvm-openmp
+  - coin-or-clp
+  - liblapack
   - htslib
+  - libxcrypt
   - boost-cpp
+  - zlib
   run:
+  - libgomp
+  - llvm-openmp
   - htslib
   - boost-cpp
 source:

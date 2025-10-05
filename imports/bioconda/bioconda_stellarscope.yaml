@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/nixonlab/stellarscope
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Single-cell Transposable Element Locus Level Analysis of scRNA Sequencing
+build:
+  number: 0
+  run_exports:
+  - None
+  script: "export SETUPTOOLS_SCM_PRETEND_VERSION=1.5\n -m pip install . -vv\n"
+extra:
+  identifiers:
+  - doi:10.1016/j.crmeth.2025.101086
+package:
+  name: stellarscope
+  version: 1.5
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - setuptools
+  - cython
+  - pysam >=0.19
+  - setuptools_scm
+  run:
+  - python
+  - future >=0.17.1
+  - pyyaml >=5.1
+  - None
+  - scipy >=1.2.1
+  - pysam >=0.19
+  - intervaltree >=3.0.2
+  - pandas
+  - packaging
+  - samtools >=1.16
+source:
+  patches:
+  - 0001_pyproject_toml.patch
+  sha256: cb8f4aceeac0ddbe591846aabc7da17e1086a221c84ec65f601516e75ea34c88
+  url: https://github.com/nixonlab/stellarscope/archive/refs/tags/1.5.tar.gz
+test:
+  commands:
+  - stellarscope --version

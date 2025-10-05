@@ -1,11 +1,17 @@
 about:
-  home: http://kmer.sourceforge.net/wiki/index.php/Getting_Started_with_ESTmapper
-  license: GPL
+  dev_url: https://sourceforge.net/projects/kmer
+  home: https://sourceforge.net/projects/kmer
+  license: GPL-3.0-or-later
   summary: Software package for the high-throughput alignment of large cDNA (EST,
     mRNA) sequence sets to a large eukaryotic genome of the same species.
 build:
-  number: 6
-  skip: true
+  number: 7
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: estmapper
   version: 2008
@@ -14,6 +20,7 @@ requirements:
   - make
   - None
   - None
+  - pkg-config
   host:
   - python
   - perl
@@ -21,12 +28,12 @@ requirements:
   run:
   - python
   - perl
-  - bzip2
 source:
   patches:
   - Makefile.patch
+  - 0001-configure.sh.patch
   sha256: 2ee66fe0708b01c7fcee8836019f2b648ccd7015a7f6bd7fee29d59967a6f341
   url: https://sourceforge.net/projects/kmer/files/ESTmapper-r2008.tar.bz2
 test:
   commands:
-  - ESTmapper.pl 2>&1 | grep ESTmapper
+  - ESTmapper.pl 2>&1 | grep "ESTmapper"
