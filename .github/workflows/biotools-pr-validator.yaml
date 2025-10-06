@@ -30,14 +30,11 @@ jobs:
           
       - name: reformat json to a predictable format with jq and sponge
         if: ${{ !endsWith(github.head_ref, '__delete') }}
-        shell: bash -x {0}
+        shell: bash
         run: |
           sudo apt-get update -y
           sudo apt-get install moreutils
           jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" | sponge "${{ steps.vars.outputs.file }}"
-          pwd
-          git branch
-          cat ${{ steps.vars.outputs.file }}
           echo "Processed ${{ steps.vars.outputs.file }}!"
 
       - name: Pull Remote Changes
