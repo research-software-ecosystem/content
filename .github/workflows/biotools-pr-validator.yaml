@@ -36,6 +36,16 @@ jobs:
           sudo apt-get install moreutils
           jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" | sponge "${{ steps.vars.outputs.file }}"
           echo "Processed ${{ steps.vars.outputs.file }}!"
+
+      - uses: stefanzweifel/git-auto-commit-action@v6
+        id: commit
+        with:
+          commit_message: "reformat json with jq"
+          commit_user_name: Tools Platform Ecosystem bot
+          commit_user_email: tpe-bot@github.com
+          commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+          branch: ${{ env.BRANCH_NAME }}
+          file_pattern: ${{ steps.vars.outputs.file }}
           
       - name: merge pull requests
         id: automerge
