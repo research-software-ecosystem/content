@@ -37,6 +37,9 @@ jobs:
           jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" | sponge "${{ steps.vars.outputs.file }}"
           echo "Processed ${{ steps.vars.outputs.file }}!"
 
+      - name: Pull Remote Changes
+        run: git pull
+
       - uses: stefanzweifel/git-auto-commit-action@v6
         id: commit
         with:
@@ -46,7 +49,7 @@ jobs:
           commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
           branch: ${{ env.BRANCH_NAME }}
           file_pattern: ${{ steps.vars.outputs.file }}
-          
+
       - name: merge pull requests
         id: automerge
         uses: pascalgn/automerge-action@v0.16.4
