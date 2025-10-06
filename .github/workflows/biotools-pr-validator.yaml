@@ -16,10 +16,9 @@ jobs:
       - name: checkout contents repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.head_ref }}
       - name: set branch name
-        run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
-        
+        run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV        
       - name: get tool ID from branch name
         id: vars
         shell: bash
