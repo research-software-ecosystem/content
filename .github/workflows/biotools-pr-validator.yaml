@@ -67,7 +67,7 @@ jobs:
           git checkout master
           git merge --no-ff "${GITHUB_HEAD_REF}" -m "Auto-merge PR #${{ github.event.pull_request.number }}"
           git push origin master
-          echo "✅ Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
+          echo "✅ Pull request #${{ github.event.pull_request.number }} merged!"
         env:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
