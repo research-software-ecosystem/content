@@ -43,8 +43,10 @@ jobs:
         shell: bash
         run: |
           tmpfile=$(mktemp)
+          trap 'rm -f "$tmpfile"' EXIT ERR
           jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" > "$tmpfile"
           mv "$tmpfile" "${{ steps.vars.outputs.file }}"
+          trap - EXIT ERR
           echo "✅ Processed ${{ steps.vars.outputs.file }}!"
 
       - uses: stefanzweifel/git-auto-commit-action@v6
