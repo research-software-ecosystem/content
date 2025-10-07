@@ -82,5 +82,9 @@ jobs:
             exit 0
           fi
           echo "⏳ Deleting branch ${BRANCH_NAME} from the repository..."
-          gh api -X DELETE "/repos/${{ github.repository }}/git/refs/heads/${BRANCH_NAME}" && \
-          echo "✅ Branch ${BRANCH_NAME} deleted."
+          if gh api -X DELETE "/repos/${{ github.repository }}/git/refs/heads/${BRANCH_NAME}"; then
+            echo "✅ Branch ${BRANCH_NAME} deleted."
+          else
+            echo "❌ Failed to delete branch ${BRANCH_NAME}."
+            exit 1
+          fi
