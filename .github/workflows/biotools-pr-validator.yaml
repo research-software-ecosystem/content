@@ -58,21 +58,21 @@ jobs:
           commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
           branch: ${{ env.BRANCH_NAME }}
           file_pattern: ${{ steps.vars.outputs.file }}
-
-      - name: merge pull requests
-        id: automerge
-        uses: pascalgn/automerge-action@v0.16.4
-        env:
-          GITHUB_TOKEN: "${{ secrets.REPO_TOKEN }}"
-          MERGE_LABELS: ""
-
-      - name: feedback
-        if: ${{ steps.automerge.outputs.mergeResult == 'merged' }}
+      
+      - name: Merge PR branch into main
         run: |
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git fetch origin master
+          git checkout master
+          git merge --no-ff "${GITHUB_HEAD_REF}" -m "Auto-merge PR #${{ github.event.pull_request.number }}"
+          git push origin master
           echo "✅ Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
+        env:
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: delete source branch after merge
-        if: ${{ steps.automerge.outputs.mergeResult == 'merged' }}
         # Uses the GitHub CLI to delete the branch after merge
         env:
           GITHUB_TOKEN: "${{ secrets.REPO_TOKEN }}"
