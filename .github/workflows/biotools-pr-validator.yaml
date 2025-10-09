@@ -17,8 +17,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+
       - name: set branch name
         run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV        
+
       - name: get tool ID from branch name
         id: vars
         shell: bash
@@ -27,18 +29,24 @@ jobs:
           FILE="data/$TOOL_ID/$TOOL_ID.biotools.json"
           echo "tool_id=$TOOL_ID" >> "$GITHUB_OUTPUT"
           echo "file=$FILE" >> "$GITHUB_OUTPUT"
-          
-      - name: reformat json to a predictable format with jq and sponge
+
+      - name: verify TOOL_ID is all lowercase
+        shell: bash
+        run: |
+          if [[ "${{ steps.vars.outputs.tool_id }}" =~ [A-Z] ]]; then
+            echo "❌ Error: TOOL_ID ('${{ steps.vars.outputs.tool_id }}') must be all lowercase."
+            exit 1
+          fi
+
+      - name: reformat json to a predictable format with jq (no sponge)
         if: ${{ !endsWith(github.head_ref, '__delete') }}
         shell: bash
         run: |
-          sudo apt-get update -y
-          sudo apt-get install moreutils
-          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" | sponge "${{ steps.vars.outputs.file }}"
-          echo "Processed ${{ steps.vars.outputs.file }}!"
-
-      - name: Pull Remote Changes
-        run: git pull
+          tmpfile=$(mktemp)
+          trap 'rm -f "$tmpfile"' EXIT ERR
+          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" > "$tmpfile"
+          mv "$tmpfile" "${{ steps.vars.outputs.file }}"
+          echo "✅ Processed ${{ steps.vars.outputs.file }}!"
 
       - uses: stefanzweifel/git-auto-commit-action@v6
         id: commit
@@ -49,16 +57,33 @@ jobs:
           commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
           branch: ${{ env.BRANCH_NAME }}
           file_pattern: ${{ steps.vars.outputs.file }}
+      
+      - name: Merge PR branch into main
+        run: |
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git fetch origin master
+          git checkout master
+          git merge --no-ff "${GITHUB_HEAD_REF}" -m "Auto-merge PR #${{ github.event.pull_request.number }}"
+          git push origin master
+          echo "✅ Pull request #${{ github.event.pull_request.number }} merged!"
+        env:
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: merge pull requests
-        id: automerge
-        uses: pascalgn/automerge-action@v0.16.4
+      - name: delete source branch after merge
+        # Uses the GitHub CLI to delete the branch after merge
         env:
           GITHUB_TOKEN: "${{ secrets.REPO_TOKEN }}"
-          MERGE_LABELS: ""
-          
-      - name: feedback
-        if: ${{ steps.automerge.outputs.mergeResult == 'merged' }}
         run: |
-          echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
-        
+          if [[ -z "${BRANCH_NAME}" ]]; then
+            echo "⚪ Branch name is missing, skipping delete."
+            exit 0
+          fi
+          echo "⏳ Deleting branch ${BRANCH_NAME} from the repository..."
+          if gh api -X DELETE "/repos/${{ github.repository }}/git/refs/heads/${BRANCH_NAME}"; then
+            echo "✅ Branch ${BRANCH_NAME} deleted."
+          else
+            echo "❌ Failed to delete branch ${BRANCH_NAME}."
+            exit 1
+          fi
