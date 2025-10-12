@@ -1,11 +1,20 @@
 about:
-  home: http://sift.bii.a-star.edu.sg/sift4g/
-  license: GPL-3.0
+  dev_url: https://github.com/rvaser/sift4g
+  doc_url: https://sift.bii.a-star.edu.sg/sift4g
+  home: https://github.com/rvaser/sift4g
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
   summary: SIFT 4G is a faster version of SIFT that enables us to scale up and provide
     SIFT predictions for more organisms.
 build:
-  number: 7
-  skip: true
+  number: 8
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: sift4g
   version: 2.0.0
@@ -14,11 +23,18 @@ requirements:
   - make
   - None
   - None
-  host: null
-  run: null
+  - pkg-config
+  host:
+  - libgomp
+  - llvm-openmp
+  run:
+  - libgomp
+  - llvm-openmp
 source:
   patches:
   - 0001-Remove-superfluous-use-of-non-imported-function.patch
+  - 0002-cstdint.patch
+  - 0003-sstream.patch
   sha256: c55c0690cc6437eb6c726be3390d5368a2145bda726130d8a6b0c2faaf4152fb
   url:
   - https://depot.galaxyproject.org/software/sift4g/sift4g_2.0.0_src_all.tar.gz

@@ -1,38 +1,46 @@
 about:
+  dev_url: https://github.com/kfuku52/csubst
+  doc_url: https://github.com/kfuku52/csubst/blob/v1.4.20/README.md
   home: https://github.com/kfuku52/csubst
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
   summary: Tool for analyzing combinatorial codon substitutions in DNA sequences.
 build:
-  number: 2
+  number: 0
   run_exports:
   - None
-  script: 'export CPPFLAGS="${CPPFLAGS} -I$(python -c ''import numpy; print(numpy.get_include())'')"
-    &&  setup.py build_ext --inplace &&  -m pip install . -vv
-
-    '
-  script_env:
-  - CPPFLAGS
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include -I$(python -c 'import numpy;
+    print(numpy.get_include())')"
+  - sed -i.bak 's|find_packages|find_namespace_packages|' setup.py
+  - rm -f *.bak
+  - setup.py build_ext --inplace
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 extra:
   additional-platforms:
+  - linux-aarch64
   - osx-arm64
+  identifiers:
+  - doi:10.1038/s41559-022-01932-7
   recipe-maintainers:
   - kfuku52
 package:
   name: csubst
-  version: 1.4.0
+  version: 1.4.20
 requirements:
   build:
   - None
   - None
   host:
-  - python >=3.8
+  - python
   - pip
   - cython
-  - setuptools >=18.0
+  - setuptools
   - numpy
   run:
-  - python >=3.8
+  - python
   - ete3
   - numpy
   - scipy
@@ -46,8 +54,8 @@ requirements:
   - pymol-open-source
   - mafft
 source:
-  sha256: 2d49d684c9934208854cfb4ef0f05b2f4a0d09e57af517b659cbe01e5045120b
-  url: https://github.com/kfuku52/csubst/archive/refs/tags/v1.4.0.tar.gz
+  sha256: 744939e9525f68cfa452d4fe7534fea9df0b4c7f34a92ffa880dfb6a691deb2c
+  url: https://github.com/kfuku52/csubst/archive/refs/tags/v1.4.20.tar.gz
 test:
   commands:
   - csubst --help

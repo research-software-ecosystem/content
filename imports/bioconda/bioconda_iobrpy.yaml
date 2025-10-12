@@ -1,0 +1,54 @@
+about:
+  dev_url: https://github.com/IOBR/IOBRpy
+  doc_url: https://github.com/IOBR/IOBRpy
+  home: https://github.com/IOBR/IOBRpy
+  license: MIT
+  license_file: LICENSE
+  summary: Immuno-Oncology Biological Research using Python (IOBRpy)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . --no-deps -vv
+extra:
+  recipe-maintainers:
+  - hhn123123
+package:
+  name: iobrpy
+  version: 0.1.3
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.9
+  - numpy >=1.22
+  - pandas >=1.5
+  - scipy >=1.9
+  - scikit-learn >=1.2
+  - statsmodels >=0.13
+  - matplotlib-base >=3.7
+  - tqdm >=4.66
+  - gseapy >=1.0.6
+  - joblib >=1.3
+  - multiqc >=1.31
+  - fastp
+  - star
+  - salmon
+source:
+  sha256: 71bd6c3c64347a85a75241295080aa3b28b9b17a251a7afb218ca61e00748269
+  url: https://files.pythonhosted.org/packages/source/i/iobrpy/iobrpy-0.1.3.tar.gz
+test:
+  commands:
+  - iobrpy --help
+  - python -c "import importlib.resources as ir, sys; pkg='iobrpy.resources'; req=['anno_eset.pkl','IPS_genes.txt','lm22.txt','c2.cp.kegg.v2023.1.Hs.symbols.gmt'];
+    missing=[x for x in req if not (ir.files(pkg)/x).is_file()]; (print('Missing packaged
+    resources:', missing) or sys.exit(1)) if missing else print('conda recipe smoke
+    test OK')"
+  - fastp --version
+  - STAR --version
+  - salmon --version
+  - multiqc --version

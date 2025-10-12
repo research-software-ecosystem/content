@@ -7,13 +7,15 @@ about:
   license_file: LICENSE
   summary: Ultrafast Sample Placement on Existing Trees (UShER).
 build:
-  number: 3
+  number: 4
   run_exports:
   - None
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  container:
+    extended-base: true
   identifiers:
   - doi:10.1038/s41588-021-00862-7
   - biotools:usher
@@ -33,27 +35,25 @@ requirements:
   - ninja
   - pkg-config
   host:
-  - boost-cpp
-  - protobuf <5
   - llvm-openmp
   - libgomp
   - openmpi
-  - openssh
+  - boost-cpp
+  - protobuf <5
   - tbb-devel <2021.1.1
   - isa-l
   - curl
   - wget
   run:
-  - mafft
-  - boost-cpp
-  - protobuf <5
-  - ucsc-fatovcf
   - llvm-openmp
   - libgomp
   - openmpi
-  - openssh
+  - boost-cpp
+  - protobuf <5
   - tbb-devel <2021.1.1
   - isa-l
+  - ucsc-fatovcf
+  - mafft
 source:
   patches:
   - 0001-CMakeLists.patch
