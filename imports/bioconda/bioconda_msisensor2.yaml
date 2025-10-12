@@ -1,22 +1,25 @@
 about:
+  dev_url: https://github.com/niu-lab/msisensor2
+  doc_url: https://github.com/niu-lab/msisensor2/blob/master/README.md
   home: https://github.com/niu-lab/msisensor2
-  license: GPL3
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   summary: MSIsensor2 is a novel algorithm based machine learning, featuring a large
     upgrade in the microsatellite instability (MSI) detection for tumor only sequencing
     data, including Cell-Free DNA (cfDNA), Formalin-Fixed Paraffin-Embedded(FFPE)
     and other sample types.
 build:
-  number: 3
+  binary_relocation: false
+  number: 4
+  run_exports:
+  - None
   skip: true
-extra:
-  skip-lints:
-  - should_be_noarch_generic
 package:
   name: msisensor2
   version: 0.1
 requirements:
   build:
+  - patchelf
   - None
   host:
   - libgomp
@@ -24,10 +27,11 @@ requirements:
   run:
   - libgomp
   - zlib
+  - libgcc-ng
+  - libstdcxx-ng
 source:
   sha256: aa70fede43c8c6637621fbd9a52582f7affc1558d0ba52bae582f22aa5ae8245
   url: https://github.com/niu-lab/msisensor2/raw/master/msisensor2
 test:
   commands:
-  - msisensor2 2>&1 | grep Version
-  - msisensor2 2>&1 | grep Version
+  - msisensor2 2>&1 | grep -i version

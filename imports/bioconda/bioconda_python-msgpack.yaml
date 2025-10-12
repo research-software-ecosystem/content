@@ -1,29 +1,35 @@
 about:
-  home: https://pypi.org/project/msgpack/#description
-  license: Apache 2.0
+  dev_url: https://github.com/msgpack/msgpack-python
+  doc_url: https://msgpack.org
+  home: https://github.com/msgpack/msgpack-python
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: COPYING
   summary: It's like JSON. But fast and small.
 build:
-  number: 11
+  number: 0
   run_exports:
   - None
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
-  web: http://msgpack.org/
+  - osx-arm64
 package:
   name: python-msgpack
-  version: 0.6.1
+  version: 1.1.2
 requirements:
   build:
   - None
   host:
   - python
+  - pip
   - setuptools
   run:
   - python
 source:
-  sha256: 4008c72f5ef2b7936447dcb83db41d97e9791c83221be13d5e19db0796df1972
-  url: https://files.pythonhosted.org/packages/81/9c/0036c66234482044070836cc622266839e2412f8108849ab0bfdeaab8578/msgpack-0.6.1.tar.gz
+  sha256: 3b60763c1373dd60f398488069bcdc703cd08a711477b5d480eecc9f9626f47e
+  url: https://pypi.org/packages/source/m/msgpack/msgpack-1.1.2.tar.gz
 test:
   imports:
   - msgpack
