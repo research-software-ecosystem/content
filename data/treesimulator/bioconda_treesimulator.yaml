@@ -4,7 +4,7 @@ about:
     \ BD model, \nthe BD Exposed-Infectious (BDEI) model, and BD with superspreading\
     \ (BDSS).\n"
   dev_url: https://github.com/evolbioinfo/treesimulator
-  doc_url: https://github.com/evolbioinfo/treesimulator/blob/0.2.19/README.md
+  doc_url: https://github.com/evolbioinfo/treesimulator/blob/0.2.20/README.md
   home: https://github.com/evolbioinfo/treesimulator
   license: GPL-3.0-only
   license_family: GPL3
@@ -22,7 +22,7 @@ build:
   number: 0
   run_exports:
   - None
-  script: ' -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir'
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   identifiers:
   - doi:10.1101/2024.09.09.24313296
@@ -31,24 +31,25 @@ extra:
   - annazhukova
 package:
   name: treesimulator
-  version: 0.2.19
+  version: 0.2.20
 requirements:
   host:
   - pip
   - python >=3.9
   - setuptools
   run:
+  - python >=3.9
+  - python-build
+  - legacy-cgi
   - six
   - ete3
   - numpy
-  - python >=3.9
-  - python-build
   - scipy
   - sympy
-  - legacy-cgi
+  - lifelines
 source:
-  sha256: 85ddb895d035710c258a23cee911352f00d5ea74d41c341fb1a7b102fde19dcc
-  url: https://pypi.io/packages/source/t/treesimulator/treesimulator-0.2.19.tar.gz
+  sha256: 6287f6a12e50463cf8c65734444a1cee6cf809e5655936741a35d185684cf3fd
+  url: https://pypi.org/packages/source/t/treesimulator/treesimulator-0.2.20.tar.gz
 test:
   commands:
   - generate_bd --help
