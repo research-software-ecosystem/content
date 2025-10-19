@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/DecodeGenetics/BamHash
+  home: https://github.com/DecodeGenetics/BamHash
+  license: GPL-3-0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Hash BAM and FASTQ files to verify data integrity.
+build:
+  number: 0
+  run_exports:
+  - None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: bamhash
+  version: '2.0'
+requirements:
+  build:
+  - make
+  - None
+  - pkg-config
+  host:
+  - htslib
+  - openssl
+  - zlib
+  run:
+  - htslib
+  - openssl
+source:
+  sha256: 068310ca8e8730ef8d726229cc0f4df0f6503e3a443a5a2907c978e5f8655163
+  url: https://github.com/DecodeGenetics/BamHash/archive/b64352c02184b72350d92eed6e2872a62b3e70ee.tar.gz
+test:
+  commands:
+  - bamhash_checksum_bam --version
+  - bamhash_checksum_fastq --version
+  - bamhash_checksum_fasta --version

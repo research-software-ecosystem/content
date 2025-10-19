@@ -1,26 +1,30 @@
 about:
   dev_url: https://github.com/sib-swiss/pftools3
-  home: https://web.expasy.org/pftools/
-  license: GPLv2
+  doc_url: https://web.expasy.org/pftools
+  home: https://github.com/sib-swiss/pftools3
+  license: GPL-2.0-or-later
   license_family: GPL
   license_file: LICENSE
   summary: A generalized profile syntax for biomolecular sequence motifs and its function
     in automatic sequence interpretation.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - None
   skip: true
 extra:
   container:
     extended-base: true
 package:
   name: pftools
-  version: 3.2.12
+  version: 3.2.13
 requirements:
   build:
   - make
   - None
   - None
   - cmake
+  - pkg-config
   host:
   - r-base
   - perl
@@ -30,12 +34,11 @@ requirements:
   run:
   - r-base
   - perl
-  - zlib
   - pcre2
   - perl-file-slurp
 source:
-  sha256: 1de33d6444015942afa690d54a103ad5a3d68f416fad63f247c12fa3f71a550c
-  url: https://github.com/sib-swiss/pftools3/archive/refs/tags/v3.2.12.tar.gz
+  sha256: 8ce94eee80e2801fa783574101efe2da8e094cd2353acb6655de9811237d6b95
+  url: https://github.com/sib-swiss/pftools3/archive/refs/tags/v3.2.13.tar.gz
 test:
   commands:
   - gtop -h 2>&1 | grep -i usage

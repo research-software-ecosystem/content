@@ -5,23 +5,30 @@ about:
     further interpretation; downstream applications can enrich this metadata with
     context-specific properties.
   home: https://bioconductor.org/packages/3.20/bioc/html/alabaster.base.html
-  license: MIT + file LICENSE
-  license_file: LICENSE
+  license: MIT
+  license_file:
+  - /lib/R/share/licenses/MIT
+  - LICENSE
   summary: Save Bioconductor Objects To File
 build:
-  number: 1
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
   run_exports: None
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: bioconductor-alabaster.base
-  version: 1.6.0
+  version: 1.6.1
 requirements:
   build:
   - None
   - None
   - make
+  - sed
   host:
   - bioconductor-alabaster.schemas >=1.6.0,<1.7.0
   - bioconductor-rhdf5 >=2.50.0,<2.51.0
@@ -33,6 +40,7 @@ requirements:
   - r-rcpp
   - libblas
   - liblapack
+  - zlib
   run:
   - bioconductor-alabaster.schemas >=1.6.0,<1.7.0
   - bioconductor-rhdf5 >=2.50.0,<2.51.0
@@ -43,12 +51,12 @@ requirements:
   - r-jsonvalidate
   - r-rcpp
 source:
-  md5: caec8d8c552e814f0d2d38c30a947286
+  sha256: 30b810d74e682e7a1e1a382636a6f43cc3dc0468f898809a30b1897b7ec16f09
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/alabaster.base_1.6.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/alabaster.base/alabaster.base_1.6.0.tar.gz
-  - https://bioarchive.galaxyproject.org/alabaster.base_1.6.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-alabaster.base/bioconductor-alabaster.base_1.6.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/alabaster.base_1.6.1.tar.gz
+  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/alabaster.base/alabaster.base_1.6.1.tar.gz
+  - https://bioarchive.galaxyproject.org/alabaster.base_1.6.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-alabaster.base/bioconductor-alabaster.base_1.6.1_src_all.tar.gz
 test:
   commands:
   - $R -e "library('alabaster.base')"
