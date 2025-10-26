@@ -1,0 +1,38 @@
+about:
+  doc_url: https://github.com/eblerjana/pangenie/wiki
+  home: https://github.com/eblerjana/pangenie
+  license: MIT
+  license_file: LICENSE.md
+  summary: Genotyping toolkit based on k-mer counting and haplotype panels.
+build:
+  number: 0
+  run_exports:
+  - None
+  skip: true
+extras:
+  identifiers:
+  - doi:10.1038/s41588-022-01043-w
+package:
+  name: pangenie
+  version: 4.2.1
+requirements:
+  build:
+  - None
+  - cmake
+  - make
+  - pkg-config
+  host:
+  - kmer-jellyfish
+  - cereal
+  - zlib
+  run:
+  - cereal
+source:
+  sha256: 78d9a82df73c2502d965ad959552573e9492d585a7e2a30b594161ce9e3a491d
+  url: https://github.com/eblerjana/pangenie/archive/refs/tags/v4.2.1.tar.gz
+test:
+  commands:
+  - PanGenie -h
+  - PanGenie-index -h
+  - PanGenie-vcf -h
+  - PanGenie-sampling -h
