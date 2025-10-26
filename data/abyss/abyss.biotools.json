@@ -1,0 +1,233 @@
+{
+    "additionDate": "2016-03-16T22:35:17Z",
+    "biotoolsCURIE": "biotools:abyss",
+    "biotoolsID": "abyss",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "sjackman@gmail.com",
+            "name": "Shaun Jackman",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ],
+            "url": "https://sjackman.ca"
+        },
+        {
+            "email": "sjackman@gmail.com",
+            "name": "Shaun Jackman",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://sjackman.ca"
+        },
+        {
+            "name": "BC Cancer Agency Genome Sciences Centre",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "name": "bcgsc.ca",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        }
+    ],
+    "description": "De novo genome sequence assembler using short reads.",
+    "documentation": [
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://github.com/bcgsc/abyss#abyss"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "ELIXIR-CZ",
+            "jw"
+        ],
+        "type": "group"
+    },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence (raw)",
+                        "uri": "http://edamontology.org/data_3497"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "De-novo assembly",
+                    "uri": "http://edamontology.org/operation_0524"
+                },
+                {
+                    "term": "Genome assembly",
+                    "uri": "http://edamontology.org/operation_0525"
+                },
+                {
+                    "term": "Scaffolding",
+                    "uri": "http://edamontology.org/operation_3216"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/bcgsc/abyss/",
+    "language": [
+        "C++"
+    ],
+    "lastUpdate": "2024-11-24T14:35:15.636530Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/bcgsc/abyss"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "ABySS",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "owner": "sjackman@bcgsc.ca",
+    "publication": [
+        {
+            "doi": "10.1101/gr.089532.108",
+            "metadata": {
+                "abstract": "Widespread adoption of massively parallel deoxyribonucleic acid (DNA) sequencing instruments has prompted the recent development of de novo short read assembly algorithms. A common shortcoming of the available tools is their inability to efficiently assemble vast amounts of data generated from large-scale sequencing projects, such as the sequencing of individual human genomes to catalog natural genetic variation. To address this limitation, we developed ABySS (Assembly By Short Sequences), a parallelized sequence assembler. As a demonstration of the capability of our software, we assembled 3.5 billion paired-end reads from the genome of an African male publicly released by Illumina, Inc. Approximately 2.76 million contigs ≥100 base pairs (bp) in length were created with an N50 size of 1499 bp, representing 68% of the reference human genome. Analysis of these contigs identified polymorphic and novel sequences not present in the human reference assembly, which were validated by alignment to alternate human assemblies and to other primate genomes. © 2009 by Cold Spring Harbor Laboratory Press.",
+                "authors": [
+                    {
+                        "name": "Birol I."
+                    },
+                    {
+                        "name": "Jackman S.D."
+                    },
+                    {
+                        "name": "Jones S.J.M."
+                    },
+                    {
+                        "name": "Schein J.E."
+                    },
+                    {
+                        "name": "Simpson J.T."
+                    },
+                    {
+                        "name": "Wong K."
+                    }
+                ],
+                "citationCount": 2817,
+                "date": "2009-06-01T00:00:00Z",
+                "journal": "Genome Research",
+                "title": "ABySS: A parallel assembler for short read sequence data"
+            },
+            "pmcid": "PMC2694472",
+            "pmid": "19251739",
+            "type": [
+                "Primary"
+            ]
+        },
+        {
+            "doi": "10.1101/gr.214346.116",
+            "metadata": {
+                "abstract": "The assembly of DNA sequences de novo is fundamental to genomics research. It is the first of many steps toward elucidating and characterizing whole genomes. Downstream applications, including analysis of genomic variation between species, between or within individuals critically depend on robustly assembled sequences. In the span of a single decade, the sequence throughput of leading DNA sequencing instruments has increased drastically, and coupled with established and planned large-scale, personalized medicine initiatives to sequence genomes in the thousands and even millions, the development of efficient, scalable and accurate bioinformatics tools for producing high-quality reference draft genomes is timely. With ABySS 1.0, we originally showed that assembling the human genome using short 50-bp sequencing reads was possible by aggregating the half terabyte of compute memory needed over several computers using a standardized message-passing system (MPI). We present here its redesign, which departs from MPI and instead implements algorithms that employ a Bloom filter, a probabilistic data structure, to represent a de Bruijn graph and reduce memory requirements. We benchmarked ABySS 2.0 human genome assembly using a Genome in a Bottle data set of 250-bp Illumina paired-end and 6-kbp matepair libraries from a single individual. Our assembly yielded a NG50 (NGA50) scaffold contiguity of 3.5 (3.0) Mbp using <35 GB of RAM. This is a modest memory requirement by today's standards and is often available on a single computer.We also investigate the use of BioNano Genomics and 10x Genomics' Chromium data to further improve the scaffold NG50 (NGA50) of this assembly to 42 (15) Mbp.",
+                "authors": [
+                    {
+                        "name": "Birol I."
+                    },
+                    {
+                        "name": "Chu J."
+                    },
+                    {
+                        "name": "Coombe L."
+                    },
+                    {
+                        "name": "Hammond S.A."
+                    },
+                    {
+                        "name": "Jackman S.D."
+                    },
+                    {
+                        "name": "Jahesh G."
+                    },
+                    {
+                        "name": "Khan H."
+                    },
+                    {
+                        "name": "Mohamadi H."
+                    },
+                    {
+                        "name": "Vandervalk B.P."
+                    },
+                    {
+                        "name": "Warren R.L."
+                    },
+                    {
+                        "name": "Yeo S."
+                    }
+                ],
+                "citationCount": 449,
+                "date": "2017-05-01T00:00:00Z",
+                "journal": "Genome Research",
+                "title": "ABySS 2.0: Resource-efficient assembly of large genomes using a Bloom filter"
+            },
+            "pmcid": "PMC5411771",
+            "pmid": "28232478",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "rresolver",
+            "type": "usedBy"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Sequence assembly",
+            "uri": "http://edamontology.org/topic_0196"
+        }
+    ],
+    "validated": 1,
+    "version": [
+        "1.0-2.3.7"
+    ]
+}

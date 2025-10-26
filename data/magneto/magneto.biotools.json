@@ -1,0 +1,207 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2022-08-28T00:23:42.459646Z",
+    "biotoolsCURIE": "biotools:magneto",
+    "biotoolsID": "magneto",
+    "confidence_flag": "tool",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "hugo.lefeuvre@univ-nantes.fr",
+            "name": "Hugo Lefeuvre"
+        },
+        {
+            "email": "samuel.chaffron@ls2n.fr",
+            "name": "Samuel Chaffron",
+            "typeEntity": "Person"
+        },
+        {
+            "name": "Audrey Bihouée"
+        },
+        {
+            "name": "Benjamin Churcheward"
+        },
+        {
+            "name": "Guillaume Fertin"
+        }
+    ],
+    "description": "An automated workflow for genome-resolved metagenomics",
+    "documentation": [
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/wikis/home"
+        }
+    ],
+    "download": [
+        {
+            "type": "Software package",
+            "url": "https://anaconda.org/bioconda/magneto",
+            "version": "1.2"
+        },
+        {
+            "type": "Source code",
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/releases/1.2",
+            "version": "1.2"
+        }
+    ],
+    "editPermission": {
+        "authors": [
+            "hugo-lefeuvre"
+        ],
+        "type": "group"
+    },
+    "function": [
+        {
+            "cmd": "magneto run all --profile config/slurm/ --config target=single_assembly --rerun-incomplete",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        },
+                        {
+                            "term": "GZIP format",
+                            "uri": "http://edamontology.org/format_3989"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Gene prediction",
+                    "uri": "http://edamontology.org/operation_2454"
+                },
+                {
+                    "term": "Genome annotation",
+                    "uri": "http://edamontology.org/operation_0362"
+                },
+                {
+                    "term": "Read pre-processing",
+                    "uri": "http://edamontology.org/operation_3219"
+                },
+                {
+                    "term": "Sequence assembly",
+                    "uri": "http://edamontology.org/operation_0310"
+                },
+                {
+                    "term": "Sequence trimming",
+                    "uri": "http://edamontology.org/operation_3192"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Gene report",
+                        "uri": "http://edamontology.org/data_0916"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Taxonomic classification",
+                        "uri": "http://edamontology.org/data_1872"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2025-02-24T16:29:20.503951Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto"
+        }
+    ],
+    "name": "MAGNETO",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
+    "owner": "Jennifer",
+    "publication": [
+        {
+            "doi": "10.1128/msystems.00432-22",
+            "metadata": {
+                "abstract": "Metagenome-assembled genomes (MAGs) represent individual genomes recovered from metagenomic data. MAGs are extremely useful to analyze uncultured microbial genomic diversity, as well as to characterize associated functional and metabolic potential in natural environments. Recent computational developments have considerably improved MAG reconstruction but also emphasized several limitations, such as the nonbinning of sequence regions with repetitions or distinct nucleotidic composition. Different assembly and binning strategies are often used; however, it still remains unclear which assembly strategy, in combination with which binning approach, offers the best performance for MAG recovery. Several workflows have been proposed in order to reconstruct MAGs, but users are usually limited to single-metagenome assembly or need to manually define sets of metagenomes to coassemble prior to genome binning. Here, we present MAGNETO, an automated workflow dedicated to MAG reconstruction, which includes a fully-automated coassembly step informed by optimal clustering of metagenomic distances, and implements complementary genome binning strategies, for improving MAG recovery. MAGNETO is implemented as a Snakemake workflow and is available at: https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto. IMPORTANCE Genome-resolved metagenomics has led to the discovery of previously untapped biodiversity within the microbial world. As the development of computational methods for the recovery of genomes from metagenomes continues, existing strategies need to be evaluated and compared to eventually lead to standardized computational workflows. In this study, we compared commonly used assembly and binning strategies and assessed their performance using both simulated and real metagenomic data sets. We propose a novel approach to automate coassembly, avoiding the requirement for a priori knowledge to combine metagenomic information. The comparison against a previous coassembly approach demonstrates a strong impact of this step on genome binning results, but also the benefits of informing coassembly for improving the quality of recovered genomes. MAGNETO integrates complementary assembly-binning strategies to optimize genome reconstruction and provides a complete reads-to-genomes workflow for the growing microbiome research community.",
+                "authors": [
+                    {
+                        "name": "Bihouee A."
+                    },
+                    {
+                        "name": "Chaffron S."
+                    },
+                    {
+                        "name": "Churcheward B."
+                    },
+                    {
+                        "name": "Fertin G."
+                    },
+                    {
+                        "name": "Millet M."
+                    }
+                ],
+                "citationCount": 8,
+                "date": "2022-08-01T00:00:00Z",
+                "journal": "mSystems",
+                "title": "MAGNETO: An Automated Workflow for Genome-Resolved Metagenomics"
+            },
+            "pmcid": "PMC9426564",
+            "pmid": "35703559"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Biodiversity",
+            "uri": "http://edamontology.org/topic_3050"
+        },
+        {
+            "term": "Metagenomics",
+            "uri": "http://edamontology.org/topic_3174"
+        },
+        {
+            "term": "Microbial ecology",
+            "uri": "http://edamontology.org/topic_3697"
+        },
+        {
+            "term": "Sequence assembly",
+            "uri": "http://edamontology.org/topic_0196"
+        },
+        {
+            "term": "Workflows",
+            "uri": "http://edamontology.org/topic_0769"
+        }
+    ],
+    "validated": 1,
+    "version": [
+        "1.2"
+    ]
+}

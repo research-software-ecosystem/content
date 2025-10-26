@@ -1,0 +1,85 @@
+{
+    "additionDate": "2024-02-22T14:00:52.358338Z",
+    "biotoolsCURIE": "biotools:mcr_toolkit",
+    "biotoolsID": "mcr_toolkit",
+    "confidence_flag": "tool",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "cristian.badea@duke.edu",
+            "name": "Cristian T. Badea"
+        }
+    ],
+    "description": "A GPU-based toolkit for multi-channel reconstruction of preclinical and clinical x-ray CT data.",
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "operation": [
+                {
+                    "term": "Regression analysis",
+                    "uri": "http://edamontology.org/operation_3659"
+                },
+                {
+                    "term": "Splitting",
+                    "uri": "http://edamontology.org/operation_3359"
+                }
+            ]
+        }
+    ],
+    "homepage": "http://gitlab.oit.duke.edu/dpc18/mcr-toolkit-public",
+    "language": [
+        "C",
+        "C++",
+        "MATLAB",
+        "Python"
+    ],
+    "lastUpdate": "2024-11-24T14:14:01.625634Z",
+    "license": "GPL-3.0",
+    "name": "MCR Toolkit",
+    "operatingSystem": [
+        "Linux",
+        "Windows"
+    ],
+    "owner": "Pub2Tools",
+    "publication": [
+        {
+            "doi": "10.1002/mp.16532",
+            "metadata": {
+                "abstract": "Background: The advancement of x-ray CT into the domains of photon counting spectral imaging and dynamic cardiac and perfusion imaging has created many new challenges and opportunities for clinicians and researchers. To address challenges such as dose constraints and scanning times while capitalizing on opportunities such as multi-contrast imaging and low-dose coronary angiography, these multi-channel imaging applications require a new generation of CT reconstruction tools. These new tools should exploit the relationships between imaging channels during reconstruction to set new image quality standards while serving as a platform for direct translation between the preclinical and clinical domains. Purpose: We outline and demonstrate a new Multi-Channel Reconstruction (MCR) Toolkit for GPU-based analytical and iterative reconstruction of preclinical and clinical multi-energy and dynamic x-ray CT data. To promote open science, open-source distribution of the Toolkit will coincide with the release of this publication (GPL v3; gitlab.oit.duke.edu/dpc18/mcr-toolkit-public). Methods: The MCR Toolkit source code is implemented in C/C++ and NVIDIA's CUDA GPU programming interface, with scripting support from MATLAB and Python. The Toolkit implements matched, separable footprint CT reconstruction operators for projection and backprojection in two geometries: planar, cone-beam CT (CBCT) and 3rd generation, cylindrical multi-detector row CT (MDCT). Analytical reconstruction is performed using filtered backprojection (FBP) for circular CBCT, weighted FBP (WFBP) for helical CBCT, and cone-parallel projection rebinning followed by WFBP for MDCT. Arbitrary combinations of energy and temporal channels are iteratively reconstructed under a generalized multi-channel signal model for joint reconstruction. We solve this generalized model algebraically using the split Bregman optimization method and the BiCGSTAB(l) linear solver interchangeably for both CBCT and MDCT data. Rank-sparse kernel regression (RSKR) and patch-based singular value thresholding (pSVT) are used to regularize the energy and time dimensions, respectively. Under a Gaussian noise model, regularization parameters are estimated automatically from the input data, dramatically reducing algorithm complexity for end users. Multi-GPU parallelization of the reconstruction operators is supported to manage reconstruction times. Results: Denoising with RSKR and pSVT and post-reconstruction material decomposition are illustrated with preclinical and clinical cardiac photon-counting (PC)CT data. A digital MOBY mouse phantom with cardiac motion is used to illustrate single energy (SE), multi-energy (ME), time resolved (TR), and combined multi-energy and time-resolved (METR) helical, CBCT reconstruction. A fixed set of projection data is used across all reconstruction cases to demonstrate the Toolkit's robustness to increasing data dimensionality. Identical reconstruction code is applied to in vivo cardiac PCCT data acquired in a mouse model of atherosclerosis (METR). Clinical cardiac CT reconstruction is illustrated using the XCAT phantom and the DukeSim CT simulator, while dual-source, dual-energy CT reconstruction is illustrated for data acquired with a Siemens Flash scanner. Benchmarking results with NVIDIA RTX 8000 GPU hardware demonstrate 61%–99% efficiency in scaling computation from one to four GPUs for these reconstruction problems. Conclusions: The MCR Toolkit provides a robust solution for temporal and spectral x-ray CT reconstruction problems and was built from the ground up to facilitate translation of CT research and development between preclinical and clinical applications.",
+                "authors": [
+                    {
+                        "name": "Badea C.T."
+                    },
+                    {
+                        "name": "Clark D.P."
+                    }
+                ],
+                "citationCount": 10,
+                "date": "2023-08-01T00:00:00Z",
+                "journal": "Medical Physics",
+                "title": "MCR toolkit: A GPU-based toolkit for multi-channel reconstruction of preclinical and clinical x-ray CT data"
+            },
+            "pmcid": "PMC10756497",
+            "pmid": "37285215"
+        }
+    ],
+    "toolType": [
+        "Desktop application"
+    ],
+    "topic": [
+        {
+            "term": "Preclinical and clinical studies",
+            "uri": "http://edamontology.org/topic_3379"
+        },
+        {
+            "term": "Tomography",
+            "uri": "http://edamontology.org/topic_3452"
+        },
+        {
+            "term": "Zoology",
+            "uri": "http://edamontology.org/topic_3500"
+        }
+    ]
+}
