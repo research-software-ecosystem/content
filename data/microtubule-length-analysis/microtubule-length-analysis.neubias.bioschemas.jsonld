@@ -1,0 +1,70 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://dev.biii.eurobioimaging.eu/microtubule-length-analysis",
+  "@type": "http://schema.org/SoftwareApplication",
+  "http://schema.org/applicationSubCategory": [
+    {
+      "@id": "http://edamontology.org/topic_Fluorescent_microscopy"
+    },
+    {
+      "@id": "http://edamontology.org/topic__RBDp7HwdUBEjpS6PRjYfV2V"
+    }
+  ],
+  "http://schema.org/dateCreated": "2014-12-08T14:32:27+00:00",
+  "http://schema.org/dateModified": "2023-05-03T08:39:51+00:00",
+  "http://schema.org/description": "Task\nQuantify the length of microtubules (MT) and the MT average density per cell.\nWorkflow descriptions\nSimple two step workflow, allowing visual & manual correction of microtubule between the 2 steps. Batch measurement of microtubule lengths for multiple images is achieved by segmenting the MTs and then their skeletonizations. The number of pixels in the microtubule is proportional to their length, so the length can be estimated.\nScript\nWorkflow is written as an ImageJ macro (Fiji) with following steps:\n1. The enhancement of tubular structure by computing eigenvalues of the hessian matrix on a Gaussian filtered version of the image ( sigma 1 pixel), as implemented in the tubeness plugin.\n2. The tubules were then thresholded , and structures containing less than 3 pixels were discarded.\n3. If needed, a visual check and correction of segmented microtubule is then performed.\n4. After correction, segmented MTs were then reduced to a 1-pixel thick line using the skeletonize plugin of Fiji. The length of the skeletonized microtubules was then directly proportional to their length.\n5. Data were grouped by condition and converted back to micrometers units under Matlab for the statistical tests.\nPitfalls\nCommented but not that general without editing some fields in the macros.\nSample Data\nSample data and workflow (see above URL) can be accessed by - login: biii - password Biii!\nMisc\n3D version also available here. Use of components Skeletonize and Tubeness Filter\n",
+  "http://schema.org/featureList": [
+    {
+      "@id": "http://edamontology.org/operation_Image_segmentation"
+    },
+    {
+      "@id": "http://edamontology.org/operation__R9Qf06vxvFj2UbAk7pW3IMG"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Skeletonization"
+    }
+  ],
+  "http://schema.org/name": "Microtubule Length Analysis",
+  "http://schema.org/publisher": "Perrine Paul-Gilloteaux",
+  "http://schema.org/softwareRequirements": [
+    {
+      "@id": "http://biii.eu/node/79"
+    },
+    {
+      "@id": "http://biii.eu/node/261"
+    },
+    {
+      "@id": "http://biii.eu/node/1140"
+    }
+  ]
+}

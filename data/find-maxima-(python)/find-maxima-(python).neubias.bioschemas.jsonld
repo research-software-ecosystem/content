@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dc1": "http://dcterms/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://dev.biii.eurobioimaging.eu/find-maxima-python",
+  "@type": "http://schema.org/SoftwareApplication",
+  "http://schema.org/dateCreated": "2018-10-17T17:47:03+00:00",
+  "http://schema.org/dateModified": "2021-05-26T08:05:03+00:00",
+  "http://schema.org/description": "Maxima finding algorithm implemented in Python recreated from implementation in Fiji(ImageJ)\nThis is a re-implementation of the java plugin written by Michael Schmid and Wayne Rasband for ImageJ. The original java code source can be found in: https://imagej.nih.gov/ij/developer/source/ij/plugin/filter/MaximumFinder.java.html \nThis implementation remains faithful to the original implementation but is not 100% optimised. The java version is faster but this could be alleviated by compiling c code for parts of the code. This script is simply to provide the functionality of the ImageJ find maxima algorithm to individuals writing pure python script.\nThe algorithm works as follows:\nThe first stage in the maxima finding algorithm is to find the local maxima. This involves processing the image with a 3x3 neighbourhood maximum filter. Once filtered this image is compared back to the original, where the pixels are the same value represents the locations of the local maxima. Typically there are far too many local maxima to be meaningful so the goal is then to merge and prune this maxima using some kind of measure of quality. In the case of algorithm a single parameter is used, the noise tolerance (Prominence). If a maxima is close to another then the maxima will be merged or removed based on the below criteria.\nStarting with the brightest maxima and working down the intensities:\n\nExpand out (‘flood fill’) from each maxima location. Neighbouring pixels within a noise tolerance (notl) of the maxima are scanned until the region within tolerance is exhausted.\r\n\t\nIf the pixels are equal to the maxima, mark this as equal.\nIf a greater maxima is met, ignore the active maxima.\nIf the pixels are less than maxima, but greater than maxima minus the noise tolerance, mark as listed.\nMark all ‘listed’ pixels 'processed' if they are included within a valid peak region, otherwise reset them.\nFrom the regions containing a peak, calculate the best pixel to be considered as maxima based on minimum distance calculation with all those maxima considered equal.\r\n\t\t \n\n\n\nFor a video detailing how this algorithm works please see:\nhttps://youtu.be/f9vXOMKOlaY\nOr for examples of it being used in practise, please see:\nhttps://youtu.be/9wvPsEzRWzI\n \n",
+  "http://schema.org/featureList": [
+    {
+      "@id": "http://edamontology.org/operation_3443"
+    },
+    {
+      "@id": "http://edamontology.org/operation_Object_detection"
+    }
+  ],
+  "http://schema.org/license": "GNU General Public License v3.0",
+  "http://schema.org/name": "Find Maxima (Python)",
+  "http://schema.org/publisher": "Waithe, Dominic orcid.org/0000-0003-2685-4226",
+  "http://schema.org/softwareRequirements": [
+    {
+      "@id": "http://biii.eu/node/1287"
+    },
+    {
+      "@id": "http://biii.eu/node/1312"
+    },
+    {
+      "@id": "http://biii.eu/node/1286"
+    },
+    {
+      "@id": "http://biii.eu/node/1368"
+    },
+    {
+      "@id": "http://biii.eu/node/1369"
+    }
+  ]
+}
