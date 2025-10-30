@@ -13,78 +13,41 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: checkout contents repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          fetch-depth: 0
+          fetch-depth: 2
 
       - name: set branch name
         run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV        
 
       - name: get tool ID from branch name
         id: vars
-        shell: bash
         run: |
-          TOOL_ID="${BRANCH_NAME#*__}"  # Extract after '__'
+          TOOL_ID="${BRANCH_NAME#*__}"
           FILE="data/$TOOL_ID/$TOOL_ID.biotools.json"
           echo "tool_id=$TOOL_ID" >> "$GITHUB_OUTPUT"
           echo "file=$FILE" >> "$GITHUB_OUTPUT"
 
-      - name: verify TOOL_ID is all lowercase
-        shell: bash
-        run: |
-          if [[ "${{ steps.vars.outputs.tool_id }}" =~ [A-Z] ]]; then
-            echo "❌ Error: TOOL_ID ('${{ steps.vars.outputs.tool_id }}') must be all lowercase."
-            exit 1
-          fi
-
-      - name: reformat json to a predictable format with jq (no sponge)
+      - name: reformat json and commit
         if: ${{ !endsWith(github.head_ref, '__delete') }}
-        shell: bash
         run: |
-          tmpfile=$(mktemp)
-          trap 'rm -f "$tmpfile"' EXIT ERR
-          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" > "$tmpfile"
-          mv "$tmpfile" "${{ steps.vars.outputs.file }}"
-          echo "✅ Processed ${{ steps.vars.outputs.file }}!"
+          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" > tmp.json
+          mv tmp.json "${{ steps.vars.outputs.file }}"
+          git config user.name "biotools-bot"
+          git config user.email "support-bio-tools@sdu.dk"
+          git add "${{ steps.vars.outputs.file }}"
+          git commit -m "reformat json with jq" || echo "No changes to commit"
+          git push origin HEAD:${{ github.head_ref }}
+          echo "✅ Reformatted JSON and pushed changes"
 
-      - uses: stefanzweifel/git-auto-commit-action@v6
-        id: commit
-        with:
-          commit_message: "reformat json with jq"
-          commit_user_name: Tools Platform Ecosystem bot
-          commit_user_email: tpe-bot@github.com
-          commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
-          branch: ${{ env.BRANCH_NAME }}
-          file_pattern: ${{ steps.vars.outputs.file }}
-      
-      - name: Merge PR branch into main
-        run: |
-          git config --local user.email "tpe-bot@github.com"
-          git config --local user.name "Tools Platform Ecosystem bot"
-          git fetch origin master
-          git checkout master
-          git merge --no-ff "${GITHUB_HEAD_REF}" -m "Auto-merge PR #${{ github.event.pull_request.number }}"
-          git push origin master
-          echo "✅ Pull request #${{ github.event.pull_request.number }} merged!"
+      - name: Merge PR (server-side)
         env:
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: delete source branch after merge
-        # Uses the GitHub CLI to delete the branch after merge
-        env:
-          GITHUB_TOKEN: "${{ secrets.REPO_TOKEN }}"
         run: |
-          if [[ -z "${BRANCH_NAME}" ]]; then
-            echo "⚪ Branch name is missing, skipping delete."
-            exit 0
-          fi
-          echo "⏳ Deleting branch ${BRANCH_NAME} from the repository..."
-          if gh api -X DELETE "/repos/${{ github.repository }}/git/refs/heads/${BRANCH_NAME}"; then
-            echo "✅ Branch ${BRANCH_NAME} deleted."
-          else
-            echo "❌ Failed to delete branch ${BRANCH_NAME}."
-            exit 1
-          fi
+          git fetch origin master
+          gh pr merge ${{ github.event.pull_request.number }} --squash --delete-branch
+          echo "✅ Merged PR #${{ github.event.pull_request.number }} into master"
+
+
+ 
