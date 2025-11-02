@@ -1,0 +1,82 @@
+{
+    "Author": "Itunu. Godwin Osuntoki [aut, cre] (ORCID: <https://orcid.org/0009-0005-1037-9346>), Nicolae. Radu Zabet [aut]",
+    "BugReports": "https://github.com/igosungithub/HiCPotts/issues",
+    "Date/Publication": "2025-10-29",
+    "Depends": [
+        "R (>= 4.5)"
+    ],
+    "Description": "The HiCPotts package provides a comprehensive Bayesian framework for analyzing Hi-C interaction data, integrating both spatial and genomic biases within a probabilistic modeling framework. At its core, HiCPotts leverages the Potts model (Wu, 1982)—a well-established graphical model—to capture and quantify spatial dependencies across interaction loci arranged on a genomic lattice. By treating each interaction as a spatially correlated random variable, the Potts model enables robust segmentation of the genomic landscape into meaningful components, such as noise, true signals, and false signals. To model the influence of various genomic biases, HiCPotts employs a regression-based approach incorporating multiple covariates: Genomic distance (D): The distance between interacting loci, recognized as a fundamental driver of contact frequency. GC-content (GC): The local GC composition around the interacting loci, which can influence chromatin structure and interaction patterns. Transposable elements (TEs): The presence and abundance of repetitive elements that may shape contact probability through chromatin organization. Accessibility score (Acc): A measure of chromatin openness, informing how accessible certain genomic regions are to interaction. By embedding these covariates into a hierarchical mixture model, HiCPotts characterizes each interaction’s probability of belonging to one of several latent components. The model parameters, including regression coefficients, zero-inflation parameters (for ZIP/ZINB distributions), and dispersion terms (for NB/ZINB distributions), are inferred via a MCMC sampler. This algorithm draws samples from the joint posterior distribution, allowing for flexible posterior inference on model parameters and hidden states. From these posterior samples, HiCPotts computes posterior means of regression parameters and other quantities of interest. These posterior estimates are then used to calculate the posterior probabilities that assign each interaction to a specific component. The resulting classification sheds light on the underlying structure: distinguishing genuine high-confidence interactions (signal) from background noise and potential false signals, while simultaneously quantifying the impact of genomic biases on observed interaction frequencies. In summary, HiCPotts seamlessly integrates spatial modeling, bias correction, and probabilistic classification into a unified Bayesian inference framework. It provides rich posterior summaries and interpretable, model-based assignments of interaction states, enabling researchers to better understand the interplay between genomic organization, biases, and spatial correlation in Hi-C data.",
+    "Imports": [
+        "BSgenome",
+        "BSgenome.Dmelanogaster.UCSC.dm6",
+        "Biostrings",
+        "GenomicRanges",
+        "IRanges",
+        "Rcpp(>= 0.11.0)",
+        "S4Vectors",
+        "parallel",
+        "rhdf5",
+        "rtracklayer",
+        "stats",
+        "strawr"
+    ],
+    "License": "GPL-3",
+    "LinkingTo": [
+        "Rcpp",
+        "RcppArmadillo"
+    ],
+    "MD5sum": "7456c94b3d76cfd65b6a907d11d61c3d",
+    "Maintainer": "Itunu. Godwin Osuntoki <hitunes4@gmail.com>",
+    "NeedsCompilation": "yes",
+    "Package": "HiCPotts",
+    "Rank": 2315,
+    "Rfiles": [
+        "vignettes/HiCPotts/inst/doc/HiCPotts_vignette.R"
+    ],
+    "Suggests": [
+        "BiocManager",
+        "BiocStyle",
+        "ggplot2 (>= 3.5.0)",
+        "knitr (>= 1.30)",
+        "reshape2 (>= 1.4.4)",
+        "rmarkdown (>= 2.10)",
+        "testthat (>= 3.0.0)"
+    ],
+    "Title": "HiCPotts: Hierarchical Modeling to Identify and Correct Genomic Biases in Hi-C",
+    "URL": "https://github.com/igosungithub/HiCPotts",
+    "Version": "1.0.0",
+    "VignetteBuilder": "knitr",
+    "biocViews": [
+        "Bayesian",
+        "Classification",
+        "DataImport",
+        "FunctionalGenomics",
+        "GenomeAnnotation",
+        "GenomeWideAssociation",
+        "HiddenMarkovModel",
+        "PeakDetection",
+        "Regression",
+        "Software",
+        "Spatial",
+        "StatisticalMethod"
+    ],
+    "dependencyCount": "65",
+    "git_branch": "RELEASE_3_22",
+    "git_last_commit": "d5f20b8",
+    "git_last_commit_date": "2025-10-29",
+    "git_url": "https://git.bioconductor.org/packages/HiCPotts",
+    "hasINSTALL": false,
+    "hasLICENSE": true,
+    "hasNEWS": true,
+    "hasREADME": false,
+    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.5/HiCPotts_1.0.0.tgz",
+    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.5/HiCPotts_1.0.0.tgz",
+    "source.ver": "src/contrib/HiCPotts_1.0.0.tar.gz",
+    "vignetteTitles": [
+        "Bayesian Analysis of Hi-C Interactions with HiCPotts"
+    ],
+    "vignettes": [
+        "vignettes/HiCPotts/inst/doc/HiCPotts_vignette.html"
+    ],
+    "win.binary.ver": "bin/windows/contrib/4.5/HiCPotts_0.99.6.zip"
+}
