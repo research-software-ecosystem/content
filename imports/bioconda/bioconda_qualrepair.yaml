@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/clintval/qualrepair
+  license: MIT
+  license_file: LICENSE
+  summary: Update the FASTQ quality scores from a subsequence FASTQ.
+build:
+  entry_points:
+  - qualrepair = qualrepair._qualrepair:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - clintval
+package:
+  name: qualrepair
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.11
+  - hatchling
+  - pip
+  run:
+  - python >=3.11
+  - pysam >=0.23.3
+  - syncup >=0.1.0
+source:
+  sha256: 3bff1875e9dbeb3b6568a8078910712756063e28c3ff3ae3ebb1cd89cd55b8b1
+  url: https://pypi.org/packages/source/q/qualrepair/qualrepair-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  - qualrepair --help
+  imports:
+  - qualrepair
+  requires:
+  - pip

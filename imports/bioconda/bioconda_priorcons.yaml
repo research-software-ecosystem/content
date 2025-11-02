@@ -1,0 +1,39 @@
+about:
+  author: "Germ\xE1n Vallejo Palma"
+  home: https://github.com/GERMAN00VP/priorcons
+  license: APL-1.0
+  license_file: LICENSE
+  maintainer: "Germ\xE1n Vallejo Palma"
+  summary: Tool for integrating consensus sequences using prior information.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: python -m pip install . --no-deps -vv
+extra:
+  recipe-maintainers:
+  - GERMAN00VP
+package:
+  name: priorcons
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.8
+  - numpy
+  - pandas
+  - biopython
+  - pyarrow
+source:
+  sha256: bc2511125a7bbc73af5fc320d4961413d49783d874aa55c71b00d51376003cca
+  url: https://files.pythonhosted.org/packages/a4/63/8a49058b938b9be4ed746e5109054c737d884cb97c449320cc7423c03a32/priorcons-0.1.0.tar.gz
+test:
+  commands:
+  - priorcons --help
+  imports:
+  - priorcons
