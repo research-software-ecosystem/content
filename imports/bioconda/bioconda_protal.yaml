@@ -3,7 +3,9 @@ about:
     \ analyses of bacterial communities from \nmetagenomic shotgun sequencing data\
     \ (short-reads). Following a reference-based approach, protal uses the same\n\
     120 universal marker genes GTDB uses to build their phylogeny (TIGRFAM, PFAM)\
-    \ and thus integrates well with other\ntools working in the GTDB taxonomy space."
+    \ and thus integrates well with other\n120 universal marker genes GTDB uses to\
+    \ build their phylogeny (TIGRFAM, PFAM) and thus integrates well with other\n\
+    tools working in the GTDB taxonomy space."
   dev_url: https://github.com/4less/protal
   home: https://github.com/4less/protal
   license: MIT
@@ -17,7 +19,7 @@ build:
   skip: true
 package:
   name: protal
-  version: 0.1.0a
+  version: 0.2.0a
 requirements:
   build:
   - cmake
@@ -26,23 +28,19 @@ requirements:
   - None
   - pkg-config
   - python >=3
+  - setuptools
   host:
   - libgomp
   - llvm-openmp
   - zlib
   run:
   - python >=3
+  - pigz
   - libgomp
   - llvm-openmp
 source:
-  patches:
-  - 0001-CMakeLists.patch
-  - 0001-Comment-out-RTLIB.patch
-  - 0001-Change-versioning-in-wfa2.patch
-  - 0001-Change-include-path-robinset-for-MACOS.patch
-  - 0001-Change-Utils-path-due-to-potential-conflict-on-MacOS.patch
-  sha256: 1cc67ff6c5c39112b7a3c7bff91506e37ed467868607ba482f3aac3a724bd19c
-  url: https://github.com/4less/protal/archive/refs/tags/0.1.0a.tar.gz
+  sha256: 54b0704391553a0afcd226ed37e8953e2e7ffa2c96fadf0dbefdd95a908bf576
+  url: https://github.com/4less/protal/archive/refs/tags/0.2.0a.tar.gz
 test:
   commands:
   - protal --help

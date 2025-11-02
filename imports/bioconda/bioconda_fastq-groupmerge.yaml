@@ -1,0 +1,31 @@
+about:
+  dev_url: https://github.com/SantaMcCloud/fastq-groupmerge
+  home: https://github.com/SantaMcCloud/fastq-groupmerge
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A tool for merging reads based on metadata groups.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+package:
+  name: fastq-groupmerge
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  run:
+  - python >=3.6
+  - pandas
+source:
+  sha256: 4ef2e52d4416efbfdad7897eccc3bf44ac23526277d3a3d4fed1a95722106bb7
+  url: https://github.com/SantaMcCloud/fastq-groupmerge/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - fastq_groupmerge.py --help
+  - fastq_groupmerge.py --version

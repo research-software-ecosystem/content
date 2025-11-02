@@ -7,10 +7,11 @@ about:
   summary: MITOS is a tool for the annotation of metazoan mitochondrial genomes.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - None
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vv '
 extra:
   recipe-maintainers:
   - bernt-matthias
@@ -21,11 +22,12 @@ requirements:
   host:
   - pip
   - python >=3
+  - setuptools
   run:
   - biopython <1.82
   - python >=3
   - blast >=2.9
-  - hmmer =3.2
+  - hmmer =3.4
   - infernal >=1.1.5
   - viennarna
   - r-base

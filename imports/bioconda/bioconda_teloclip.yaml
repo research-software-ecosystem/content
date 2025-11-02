@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/Adamtaranto/teloclip
-  doc_url: https://github.com/Adamtaranto/teloclip/blob/0.2.0/README.md
+  doc_url: https://github.com/Adamtaranto/teloclip/blob/0.3.2/README.md
   home: https://github.com/Adamtaranto/teloclip
   license: MIT
   license_family: MIT
@@ -9,8 +9,7 @@ about:
     alignments.
 build:
   entry_points:
-  - teloclip=teloclip.app:main
-  - teloclip-extract=teloclip.app_extract:main
+  - teloclip=teloclip.cli:main
   noarch: python
   number: 0
   run_exports:
@@ -21,7 +20,7 @@ extra:
   - Adamtaranto
 package:
   name: teloclip
-  version: 0.2.0
+  version: 0.3.2
 requirements:
   host:
   - python >=3.8
@@ -30,12 +29,20 @@ requirements:
   - hatch-vcs
   run:
   - python >=3.8
+  - biopython
+  - click
+  - pyfaidx
+  - pysam
+  - rich
 source:
-  sha256: 4d468c542456574e30925526ce08171fd4ab0232c2cf5440c190805d6f0e5df9
-  url: https://pypi.io/packages/source/t/teloclip/teloclip-0.2.0.tar.gz
+  sha256: c2c8573dc33a2f1e37cfd058d7409ed09e603dd6921bfb26983aa8ddfda3ecf2
+  url: https://pypi.io/packages/source/t/teloclip/teloclip-0.3.2.tar.gz
 test:
   commands:
+  - teloclip --version | grep 0.3.2
   - teloclip --help
-  - teloclip-extract --help
+  - teloclip filter --help
+  - teloclip extract --help
+  - teloclip extend --help
   imports:
   - teloclip
