@@ -51,11 +51,105 @@
     "editPermission": {
         "type": "private"
     },
+    "function": [
+        {
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict --study_path /data/input --series_folders <series-folder> --output_dir /data/output",
+            "input": [
+                {
+                    "data": {
+                        "term": "MRI image",
+                        "uri": "http://edamontology.org/data_3442"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ],
+            "note": "Image annotation for individual DICOM and Nifti images: Please note that it is easier to mount the input and output paths path and keep `--study_path` always as `/data/input` and `--output_dir` always as `/data/output`. This way only `--series_folders` requires any change. `--series_folders` can refer both to a Nifti file (if the input is Nifti) or the a DICOM series folder.\n\nIf the input is DICOM, `--is_dicom` should be used.",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example_dataset:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict-batch {{--data_json /data/input/<dataset_json>.json|--data_dir /data/input --output_dir /data/output}}",
+            "input": [
+                {
+                    "data": {
+                        "term": "MRI image",
+                        "uri": "http://edamontology.org/data_3442"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ],
+            "note": "Batch image annotation for DICOM and Nifti images using dataset JSON and data directory supports two methods: using a dataset JSON and using a data directory. \n\nThe dataset JSON-based method relies on having a dataset JSON which has a list of dictionaries that follow this structure: `{\"study_path\": str, \"series_folders\": [[str]], \"output_dir\": str}`. These are analogous to the previous modes. Be mindful that paths should be specified accordingly for the Docker file-system. The dataset JSON should be specified using `--data_json`.\n\nThe data directory-based method relies on having a directory structured as patient/study/series, where each series follows an nnU-Net-like convention (i.e. `<series_id>_0000`, `<series_id>_0001`, etc.). In this case, it should be `<series-id>_0000`. The data directory should be specified using `--data_dir` and requires the specification of an `--output_dir`.\n\nIf the input is DICOM, `--is_dicom` should be specified.",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "MRI image",
+                        "uri": "http://edamontology.org/data_3442"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "homepage": "https://github.com/josegcpa/nnunet_serve",
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-07T18:15:49.964577Z",
+    "lastUpdate": "2025-11-07T18:17:59.196564Z",
     "license": "CC-BY-NC-4.0",
     "link": [
         {
