@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0002-1887-0157",
+      "@type": "sc:Person"
+    },
+    {
+      "@id": "https://bio.tools/prostate_zone_segmentation_tool",
+      "@type": "sc:SoftwareApplication",
+      "biotools:primaryContact": {
+        "@id": "https://orcid.org/0000-0002-1887-0157"
+      },
+      "bsc:input": [
+        {
+          "@id": "_:N777f915b5382489286f384823b077040"
+        },
+        {
+          "@id": "_:N00229e590e0e4cc28ab503b2d0243f98"
+        }
+      ],
+      "bsc:output": [
+        {
+          "@id": "_:N983f9004b547450882606d7d1a630c3a"
+        },
+        {
+          "@id": "_:Nc956f41717334bac8534e55b0d1dc80c"
+        }
+      ],
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Command-line tool",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_3063"
+      },
+      "sc:author": [
+        {
+          "@id": "https://orcid.org/0000-0002-1887-0157"
+        },
+        "Nuno Rodrigues"
+      ],
+      "sc:citation": [
+        {
+          "@id": "https://doi.org/10.1016/j.compbiomed.2024.108216"
+        },
+        "pubmed:38442555"
+      ],
+      "sc:description": "This tool automatically segments the the prostate into two zones: the central and transition zones (TZ+CZ) and the peripheral zone (PZ). It takes as input a T2-weighted image and produces a segmentation in the same input format.\n\nThree datasets were used to train this model: ProstateX (n=152), Prostate158 (n=119) and ProstateNet (the ProCAncer-I dataset; n=532). We used the T2-weighted images available in each dataset and trained a standard three-class nnU-Net model with three classes: background, peripheral zone and the combination of the transition and central zones as annotated by radiologists. Using 149 cases from the three previously noted datasets, this model achieved DSC=0.81 (95% CI=[0.59, 0.92]) for PZ and 0.87 (95% CI=[0.60, 0.96]) for CZ+TZ. In a clinical validation using ProCAncer-I data, this model achieved, for PZ and TZ+CZ, DSC=0.65 and DSC=0.77, respectively, comparable to the observed between-radiologist DSC for a subset of cases (DSC=0.61 and DSC=0.73, respectively).",
+      "sc:featureList": {
+        "@id": "edam:operation_3553"
+      },
+      "sc:isAccessibleForFree": true,
+      "sc:license": "CC-BY-NC-4.0",
+      "sc:name": "Prostate zone segmentation tool",
+      "sc:operatingSystem": "Linux",
+      "sc:softwareHelp": {
+        "@id": "https://github.com/josegcpa/nnunet_serve"
+      },
+      "sc:url": "https://github.com/josegcpa/nnunet_serve"
+    },
+    {
+      "@id": "_:N777f915b5382489286f384823b077040",
+      "@type": "bsct:FormalParameter",
+      "sc:additionalType": {
+        "@id": "edam:data_3442"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_3548"
+        },
+        {
+          "@id": "edam:format_3549"
+        }
+      ],
+      "sc:name": "MRI image"
+    },
+    {
+      "@id": "_:N00229e590e0e4cc28ab503b2d0243f98",
+      "@type": "bsct:FormalParameter",
+      "sc:additionalType": {
+        "@id": "edam:data_3442"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_3548"
+        },
+        {
+          "@id": "edam:format_3549"
+        }
+      ],
+      "sc:name": "MRI image"
+    },
+    {
+      "@id": "_:N983f9004b547450882606d7d1a630c3a",
+      "@type": "bsct:FormalParameter",
+      "sc:additionalType": {
+        "@id": "edam:data_3442"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_3548"
+        },
+        {
+          "@id": "edam:format_3549"
+        }
+      ],
+      "sc:name": "MRI image"
+    },
+    {
+      "@id": "_:Nc956f41717334bac8534e55b0d1dc80c",
+      "@type": "bsct:FormalParameter",
+      "sc:additionalType": {
+        "@id": "edam:data_2968"
+      },
+      "sc:encodingFormat": [
+        {
+          "@id": "edam:format_3548"
+        },
+        {
+          "@id": "edam:format_3549"
+        }
+      ],
+      "sc:name": "Image"
+    },
+    {
+      "@id": "https://doi.org/10.1016/j.compbiomed.2024.108216",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}
