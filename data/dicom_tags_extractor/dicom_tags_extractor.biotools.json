@@ -13,6 +13,14 @@
         }
     ],
     "description": "The tool scans the imaging DICOM files of a defined directory at the series level, and produces as output one single JSON file containing all the DICOM tags for each detected series.\nIf a list of selected DICOM tags is provided, the tool can also produce one single csv file containing the listed DICOM tags.\nTo use this tool, the user can download an executable file (.exe). Two execution modes are available : manual execution and command line execution.\nFor the tool to scan data successfully, it is important that : 1/ the extension “.dcm” is visible, as the tool only scans those files, and discard any other; 2/ each DICOM series has its own folder, as the tool gets a single .dcm file from each folder and extracts the tags.",
+    "documentation": [
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://docs.google.com/document/d/1QCRHohdMe7lX1xTYaw8WxOW_9v2D9EAl/edit"
+        }
+    ],
     "download": [
         {
             "note": "1- Install ORAS tool (https://oras.land/docs/installation).\n2- Login in the registry using the command oras login harbor.eucaim.cancerimage.eu, and provide a username and a token\n3- Download the file by using the command oras pull harbor.eucaim.cancerimage.eu/ingestion-tools/dicom_tag_extraction:1.0",
@@ -22,14 +30,53 @@
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "ThomasTrouillard"
+        ],
+        "type": "group"
     },
     "function": [
         {
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
             "operation": [
                 {
-                    "term": "Data formatting",
-                    "uri": "http://edamontology.org/operation_0335"
+                    "term": "Image analysis",
+                    "uri": "http://edamontology.org/operation_3443"
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Image analysis",
+                    "uri": "http://edamontology.org/operation_3443"
                 }
             ]
         }
@@ -38,14 +85,14 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-10-03T14:35:52.682360Z",
+    "lastUpdate": "2025-11-04T10:59:21.506946Z",
     "license": "GPL-3.0",
     "link": [
         {
             "type": [
                 "Other"
             ],
-            "url": "https://www.bcplatforms.com/"
+            "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/3/repositories/dicom_tag_selection/info-tab"
         }
     ],
     "maturity": "Legacy",
@@ -55,6 +102,16 @@
         "Windows"
     ],
     "owner": "lsaint-aubert",
+    "relation": [
+        {
+            "biotoolsID": "eetl_toolset",
+            "type": "usedBy"
+        },
+        {
+            "biotoolsID": "eucaim_wizard_tool",
+            "type": "usedBy"
+        }
+    ],
     "toolType": [
         "Command-line tool"
     ],

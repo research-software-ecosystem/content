@@ -1,11 +1,40 @@
 {
+    "accessibility": "Open access (with restrictions)",
     "additionDate": "2025-04-15T17:42:40.968987Z",
     "biotoolsCURIE": "biotools:dicom_file_integrity_checker_by_gibi230",
     "biotoolsID": "dicom_file_integrity_checker_by_gibi230",
     "collectionID": [
         "EUCAIM"
     ],
+    "cost": "Free of charge (with restrictions)",
     "credit": [
+        {
+            "email": "adrian_galiana@iislafe.es",
+            "name": "Adrian Galiana-Bordera",
+            "orcidid": "https://orcid.org/0000-0002-8324-8284",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "carina_soler@iislafe.es",
+            "name": "Carina Soler-Pons",
+            "orcidid": "https://orcid.org/0009-0000-2991-1391",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martinez-Girones",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ]
+        },
         {
             "name": "GIBI230 - HULAFE"
         }
@@ -26,13 +55,95 @@
         ],
         "type": "group"
     },
+    "function": [
+        {
+            "cmd": "docker run -it --rm -v \"<input_path>:/input\" -v \"<output_path>:/output\" dicom_file_integrity_checker:2.1.0 \\\n  --config-string '{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}'",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Format validation",
+                    "uri": "http://edamontology.org/operation_0336"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/3/repositories/dicom_file_integrity_checker/artifacts-tab",
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-10-22T10:24:29.224315Z",
+    "lastUpdate": "2025-11-04T13:08:53.549989Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
+        {
+            "note": "Link to EUCAIM's Harbor",
+            "type": [
+                "Other"
+            ],
+            "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/3/repositories/dicom_file_integrity_checker/artifacts-tab"
+        },
         {
             "type": [
                 "Social media"
@@ -40,9 +151,11 @@
             "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
         }
     ],
+    "maturity": "Emerging",
     "name": "DICOM File Integrity Checker (EUCAIM-SW-002_T-01-01-002)",
     "operatingSystem": [
         "Linux",
+        "Mac",
         "Windows"
     ],
     "owner": "pedromiguel_martinez_HULAFE",
@@ -64,7 +177,7 @@
         }
     ],
     "version": [
-        "1.2.9",
-        "2.0.0"
+        "2.0.0",
+        "2.1.0"
     ]
 }
