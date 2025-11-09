@@ -23,7 +23,7 @@ about:
   summary: A popular workflow management system aiming at full in-silico reproducibility.
 build:
   noarch: generic
-  number: 1
+  number: 0
   run_exports:
   - None
 extra:
@@ -109,28 +109,28 @@ outputs:
     commands:
     - export GIT\_PYTHON_REFRESH=warn
     - snakemake --version
-    - snakemake --version | grep "9.13.4"
+    - snakemake --version | grep "9.13.6"
     imports:
     - snakemake
 package:
   name: snakemake
-  version: 9.13.4
+  version: 9.13.6
 requirements:
   run:
-  - snakemake-minimal =9.13.4
+  - snakemake-minimal =9.13.6
   - pandas
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: 5e88682f3e55670950483bc76cfb1bedff32e368177a0a02891efd00da9af923
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.13.4.tar.gz
+  sha256: 07646a4a8c75796928be3fb1773a9c923e8e9f6207f74f3bba9b1d09d8440237
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.13.6.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - snakemake --version
-  - snakemake --version | grep "9.13.4"
+  - snakemake --version | grep "9.13.6"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:
