@@ -1,0 +1,55 @@
+about:
+  doc_url: https://baktfold.readthedocs.io/en/latest/
+  home: https://github.com/gbouras13/baktfold
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Rapid & standardized annotation of bacterial genomes, MAGs & plasmids using
+    protein structural information
+build:
+  entry_points:
+  - baktfold = baktfold:main
+  noarch: python
+  number: 0
+  run_exports:
+  - None
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - gbouras13
+package:
+  name: baktfold
+  version: 0.0.2
+requirements:
+  host:
+  - python >=3.8,<4
+  - pip
+  - setuptools
+  run:
+  - foldseek ==10.941cd33
+  - python >=3.8,<4
+  - biopython >=1.76
+  - alive-progress >=3.0.1
+  - datasets >=2.15
+  - requests >=2.25
+  - pyarrow >=14.0.0
+  - pandas >=1.4.2
+  - loguru >=0.5.3
+  - pyyaml >=6.0
+  - click >=8.0.0
+  - sentencepiece >=0.1.99
+  - transformers >=4.34
+  - pytorch >=2.1.2
+  - numpy >=1.20
+  - h5py >=3.5
+  - tqdm >=4.35.0
+  - xopen >=1.5.0
+source:
+  sha256: 28c6fc541e844fd8fc768c254e286ae1ac02b8f140a36ed0728495f8cfac693c
+  url: https://pypi.io/packages/source/b/baktfold/baktfold-0.0.2.tar.gz
+test:
+  commands:
+  - baktfold --help
+  - baktfold run --help
+  imports:
+  - baktfold

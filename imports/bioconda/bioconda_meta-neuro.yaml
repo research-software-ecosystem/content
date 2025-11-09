@@ -7,7 +7,6 @@ about:
 
     '
   dev_url: https://github.com/bagari/meta
-  doc_url: https://github.com/USC-LoBeS/meta/wiki
   home: https://github.com/USC-LoBeS/meta
   license: BSD-3-Clause
   license_file: LICENSE.txt
@@ -25,23 +24,23 @@ extra:
   - bagari
 package:
   name: meta-neuro
-  version: 2.0.0
+  version: 2.0.1
 requirements:
   build:
   - None
   - cmake
-  - make
+  - ninja
   host:
-  - vtk >=9.2.6,<9.3.0 build=**
-  - libitk-devel ==5.3.0
-  - hdf5 >=1.14.2,<1.14.3.0a0
-  - libboost-python-devel >=1.82.0,<1.83.0
+  - vtk >=9.4.1,<9.6
+  - libitk-devel >=5.4.0,<5.5.0
+  - eigen >=3.4
+  - libxml2-devel
   - python
   - pip
   - setuptools
   run:
-  - vtk >=9.2.6,<9.3.0 build=**
-  - libitk-devel ==5.3.0
+  - vtk >=9.4.1,<9.6
+  - libitk-devel >=5.4.0,<5.5.0
   - qhull
   - python
   - pip
@@ -49,14 +48,14 @@ requirements:
   - numpy
   - tqdm
   - dipy
-  - scipy
+  - scipy >=1.15.0
   - pandas
   - nibabel
   - tslearn
   - pyvista
 source:
-  sha256: 710237b97145f519d10428f6c8f7aba49b8620153ebfe6304d85b641cb3653a1
-  url: https://github.com/bagari/meta/archive/refs/tags/v2.0.0.tar.gz
+  sha256: dcf5882de1f8cb8ef35242a8f627b79ae1dddc3b570554f94085dcbb10cf5ae4
+  url: https://github.com/bagari/meta/archive/refs/tags/v2.0.1.tar.gz
 test:
   commands:
   - vtklevelset $PREFIX/share/meta-neuro/example/test.nii.gz test.vtk 0.1
