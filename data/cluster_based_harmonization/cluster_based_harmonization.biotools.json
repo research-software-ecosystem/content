@@ -1,13 +1,38 @@
 {
+    "accessibility": "Open access (with restrictions)",
     "additionDate": "2025-05-29T10:41:57.535794Z",
     "biotoolsCURIE": "biotools:cluster_based_harmonization",
     "biotoolsID": "cluster_based_harmonization",
     "collectionID": [
         "EUCAIM"
     ],
+    "cost": "Free of charge (with restrictions)",
     "credit": [
         {
-            "name": "GIBI230 - HULAFE"
+            "email": "aikaterini_vraka@iislafe.es",
+            "name": "Aikaterini Vraka",
+            "orcidid": "https://orcid.org/0000-0001-5984-904X",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martínez-Gironés",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact",
+                "Support"
+            ]
+        },
+        {
+            "name": "GIBI230 - HULAFE",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
         }
     ],
     "description": "The tool is designed to perform radiomics harmonization on large and heterogeneous datasets, where the risk of over-harmonization is present. Instead of directly applying harmonization based on predefined batch labels, the tool first identifies groups of batches that share similar characteristics through clustering of the radiomics data. It then performs harmonization using these cluster-derived labels. The tool allows the harmonization of radiomics variables using two methods: (1) original ComBat (Rabinovic, 2007) method, where each original batch group is considered for the harmonization process and (2) cluster-based ComBat method, where batch groups with similar radiomics characteristics form clusters and the latter are being considered for the harmonization process.",
@@ -31,8 +56,98 @@
         ],
         "type": "group"
     },
+    "function": [
+        {
+            "cmd": "docker run -it --rm --name my-container -v /path_to_json/configuration.json:/app/configuration.json",
+            "input": [
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Clustering",
+                    "uri": "http://edamontology.org/operation_3432"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "xlsx",
+                            "uri": "http://edamontology.org/format_3620"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "TIDE TXT",
+                            "uri": "http://edamontology.org/format_3835"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "homepage": "https://www.acim.lafe.san.gva.es/acim/?page_id=675&lang=es",
-    "lastUpdate": "2025-11-17T13:59:23.723241Z",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2025-11-17T14:30:07.297498Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
         {
@@ -42,7 +157,13 @@
             "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
         }
     ],
+    "maturity": "Emerging",
     "name": "Cluster based harmonization (EUCAIM-SW-044_T-01-03-006)",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
     "owner": "casopon",
     "toolType": [
         "Library"
