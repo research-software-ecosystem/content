@@ -27,7 +27,7 @@ Committers are contributors who have demonstrated their ability and will to main
 
 ## Operations Committee (OC)
 
-The Operations Committee will be assembled from all Contributors. We explicitly and strongly encourage members of contributing communities to join the TEC by proposing new members to this committee. OC members are expected to participate in technical meetings, monitor the project user support, its development and evolve the project together with the SC. 
+The Operations Committee will be assembled from all Contributors. We explicitly and strongly encourage members of contributing communities to join the RSEc by proposing new members to this committee. OC members are expected to participate in technical meetings, monitor the project user support, its development and evolve the project together with the SC. 
 
 ## Strategic Committee (SC)
 
