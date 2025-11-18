@@ -14,16 +14,16 @@ This section lists a number of categories of roles and users for the tools ecosy
 
 ## Users
 
-Users are anyone who has a need for the TEC. For instance, a user can be a researcher looking for information about a specific software, or a software specialist analyzing aggregated metadata about software. These data are distributed under open licenses specific to each source.
+Users are anyone who has a need for the RSEc. For instance, a user can be a researcher looking for information about a specific software, or a software specialist analyzing aggregated metadata about software. These data are distributed under open licenses specific to each source.
 
 ## Contributors
 
-Contributors are community members who help maintain and develop the TEC. Any person can contribute. There is no expectation of commitment to the project, no specific skill requirements and no selection process.
+Contributors are community members who help maintain and develop the RSEc. Any person can contribute. There is no expectation of commitment to the project, no specific skill requirements and no selection process.
 Contributions can take multiple forms such as reporting bugs, writing documentation, contributing code (e.g. metadata processing pipelines), or providing and maintaining new metadata sources. Any form of contribution is welcome, and we will recognize all of them.
 
 ## Committers
 
-Committers are contributors who have demonstrated their ability and will to maintain and develop the TEC. Committership allows contributors to merge contribution requests and make changes directly to the metadata and code repositories. All these actions however have to follow the contribution and decision processes outlined in Organizations.md document..l
+Committers are contributors who have demonstrated their ability and will to maintain and develop the RSEc. Committership allows contributors to merge contribution requests and make changes directly to the metadata and code repositories. All these actions however have to follow the contribution and decision processes outlined in Organizations.md document..l
 
 ## Operations Committee (OC)
 
@@ -47,7 +47,7 @@ The official communication channels for user support and project discussions in 
 
 - The official contact email, tools-ecosystem@elixir-europe.org, which goes to all members of the OC
 - The Gitter messaging system channel for the ecosystem: https://gitter.im/bio-tools/ecosystem
-- The issue tracker of the TEC repository
+- The issue tracker of the RSEc repository
 
 # Support
 
