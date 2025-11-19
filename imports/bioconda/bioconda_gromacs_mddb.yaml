@@ -29,9 +29,9 @@ about:
   license_file: COPYING
   summary: GROMACS is a versatile package to perform molecular dynamics.
 build:
-  number: 0
+  number: 1
   run_exports:
-  - None
+  - null
   skip: true
 extra:
   recipe-maintainers:
@@ -42,7 +42,7 @@ package:
 requirements:
   build:
   - make
-  - None
+  - null
   - cmake >=3.28
   - pocl
   - python >=3.7
@@ -57,7 +57,9 @@ requirements:
   - fftw
   - libhwloc 2.*
 source:
-  patches: gmx-dump-json-2025.3.patch
+  patches:
+  - 1000-add-json-output-to-gmx-dump-v2025.3.patch
+  - 9000-add-virtual-sites.patch
   sha256: 8bdfca0268f3f10a7ca3c06e59b62f73ea02420c67211c0ff3912f32d7833c65
   url: https://ftp.gromacs.org/gromacs/gromacs-2025.3.tar.gz
 test:

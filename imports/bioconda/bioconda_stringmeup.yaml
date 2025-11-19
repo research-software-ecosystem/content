@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/danisven/StringMeUp
   home: https://github.com/danisven/StringMeUp
   license: MIT
   license_family: MIT
@@ -7,26 +8,29 @@ about:
     score and/or minimum minimizer hit groups.
 build:
   entry_points:
-  - stringmeup=stringmeup.stringmeup:stringmeup
+  - stringmeup = stringmeup.stringmeup:stringmeup
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  run_exports:
+  - null
+  script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
 extra:
   recipe-maintainers:
   - druvus
 package:
   name: stringmeup
-  version: 0.1.4
+  version: 0.1.5
 requirements:
   host:
   - pip
   - python >3
+  - setuptools
   run:
   - python >3
   - dataclasses
 source:
-  sha256: b3c313c11b608061764dacfeca33307057734e97b90db92b7b9c8900dbeca23c
-  url: https://github.com/danisven/StringMeUp/archive/0.1.4.tar.gz
+  sha256: ef4b9c5ee41c829179baca6b91940542c4286063c372d832a6063f19ec91d694
+  url: https://github.com/danisven/StringMeUp/archive/0.1.5.tar.gz
 test:
   commands:
   - stringmeup --help

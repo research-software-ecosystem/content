@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/maickrau/IsoformCheck
+  doc_url: https://github.com/maickrau/IsoformCheck/blob/v1.0.0/README.md
+  home: https://github.com/maickrau/IsoformCheck
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: Protein sequence comparison between de novo genome assemblies.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+package:
+  name: isoformcheck
+  version: 1.0.0
+requirements:
+  build: null
+  host: null
+  run:
+  - python >=3
+  - agc
+  - liftoff
+  - scipy
+source:
+  patches:
+  - version.patch
+  sha256: ea6a68a58e7619c29f2111e59db8a4c81f9af9cb079e79295833e98ba4f63f12
+  url: https://github.com/maickrau/IsoformCheck/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - (IsoformCheck -h || true) | grep IsoformCheck

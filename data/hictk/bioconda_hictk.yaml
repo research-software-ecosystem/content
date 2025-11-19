@@ -8,7 +8,7 @@ about:
 build:
   number: 0
   run_exports:
-  - None
+  - null
 extra:
   additional-platforms:
   - linux-aarch64
@@ -21,21 +21,28 @@ extra:
   - jonnings
 package:
   name: hictk
-  version: 2.1.5
+  version: 2.2.0
 requirements:
   build:
-  - None
-  - None
-  - cmake >=3.25
-  - conan >=2
+  - null
+  - null
+  - ccache
+  - clang-tools
+  - cmake >=3.29
+  - conan >=2.21
+  - curl >=7.71
   - make
   - catch2 >=3.8
-  - cli11 >=2.5
+  - cli11 >=2.6
   - fast_float >=8
+  - fmt >=12
   - highfive >=3
-  - libboost-devel >=1.88
+  - libboost-devel >=1.89
   - libopentelemetry-cpp-headers >=1
+  - lld
+  - llvm-tools
   - nlohmann_json >=3.12
+  - spdlog >=1.16
   - tomlplusplus >=3.3
   host:
   - hdf5 >=1.12
@@ -50,8 +57,8 @@ requirements:
   - libopentelemetry-cpp >=1
   - zstd >=1.5
 source:
-  sha256: 842e0193d3c8d9286de89cd8a02a50ef11bdfd55e63fc757c64ce363d0958980
-  url: https://github.com/paulsengroup/hictk/archive/refs/tags/v2.1.5.tar.gz
+  sha256: 989b6e84b967309d9822ee3274abf98daba66d3d6e6ae8c9abffcede07b24761
+  url: https://github.com/paulsengroup/hictk/archive/refs/tags/v2.2.0.tar.gz
 test:
   commands:
   - hictk --help
@@ -59,7 +66,7 @@ test:
   requires:
   - python >=3.11,<3.14
   - pip
-  - curl
+  - curl >=7.71
   - perl-digest-sha1
   - zstd
   source_files:
