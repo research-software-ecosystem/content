@@ -25,7 +25,7 @@ build:
   noarch: generic
   number: 0
   run_exports:
-  - None
+  - null
 extra:
   identifiers:
   - doi:10.1093/bioinformatics/bts480
@@ -65,7 +65,7 @@ outputs:
     - snakemake = snakemake.cli:main
     noarch: python
     run_exports:
-    - None
+    - null
     script: python -m pip install --no-deps --no-build-isolation --no-cache-dir .
       -vvv
   name: snakemake-minimal
@@ -109,28 +109,28 @@ outputs:
     commands:
     - export GIT\_PYTHON_REFRESH=warn
     - snakemake --version
-    - snakemake --version | grep "9.13.6"
+    - snakemake --version | grep "9.13.7"
     imports:
     - snakemake
 package:
   name: snakemake
-  version: 9.13.6
+  version: 9.13.7
 requirements:
   run:
-  - snakemake-minimal =9.13.6
+  - snakemake-minimal =9.13.7
   - pandas
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: 07646a4a8c75796928be3fb1773a9c923e8e9f6207f74f3bba9b1d09d8440237
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.13.6.tar.gz
+  sha256: c9e64fe5b8b57330680d4acc7ffd4e3d78c053379f940942dd3016281bc05383
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.13.7.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - snakemake --version
-  - snakemake --version | grep "9.13.6"
+  - snakemake --version | grep "9.13.7"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:

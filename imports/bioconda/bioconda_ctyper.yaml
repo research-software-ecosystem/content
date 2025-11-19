@@ -7,30 +7,27 @@ about:
 build:
   number: 0
   run_exports:
-  - None
-  skip: True [osx]
-extra:
-  additional-platforms:
-  - linux-aarch64
+  - null
+  skip: true
 package:
   name: ctyper
-  version: 1.0.1
+  version: 1.0.5
 requirements:
   build:
   - make
-  - None
-  - None
+  - null
+  - null
   host:
   - zlib
-  - htslib
+  - htslib >=1.21
   - boost-cpp
   - eigen
   run:
-  - htslib
+  - htslib >=1.21
   - eigen
 source:
-  sha256: f1651a80f437cb7f9e0f3b8a5b384eb24bd240cb001599d2a025b7b088930e1a
-  url: https://github.com/ChaissonLab/Ctyper/archive/refs/tags/v1.0.1.tar.gz
+  sha256: 96c9f36fd01e2d5ad8aafe1abf680c66c93f1826e69d4fdebb1996b86be28d6c
+  url: https://github.com/ChaissonLab/Ctyper/archive/refs/tags/v1.0.5.tar.gz
 test:
   commands:
-  - ctyper | grep 'Usage'
+  - ctyper -h | grep 'Usage'

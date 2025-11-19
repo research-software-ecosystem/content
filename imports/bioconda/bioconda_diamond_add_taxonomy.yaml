@@ -4,9 +4,11 @@ about:
   summary: Utility to work with NCBI taxonomy database including tool to annotate
     DIAMOND results with taxonomy lineage
 build:
-  number: 0
+  noarch: python
+  number: 1
+  run_exports:
+  - null
   script: ' -m pip install --no-deps . -vvv'
-  skip: true
 extra:
   container:
     extended-base: true
@@ -17,10 +19,11 @@ package:
   version: 0.1.2
 requirements:
   host:
-  - python
+  - python <=3.10
   - pip
+  - poetry
   run:
-  - python
+  - python <=3.10
   - click
   - ete3
 source:

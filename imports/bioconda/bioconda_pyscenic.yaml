@@ -15,9 +15,9 @@ build:
   - invertdb = pyscenic.cli.invertdb:main
   - gmt2regions = pyscenic.cli.gmt2regions:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
-  - None
+  - ''
   script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   identifiers:
@@ -29,43 +29,34 @@ package:
   version: 0.12.1
 requirements:
   host:
-  - python >=3.6
+  - python >=3.7,<=3.10
   - pip
   - setuptools
   run:
-  - python >=3.6
-  - aiohttp
-  - arboreto
-  - attrs
+  - python >=3.7,<=3.10
+  - arboreto >=0.1.6
   - boltons
-  - cloudpickle
+  - ctxcore >=0.2.0
   - cytoolz
-  - dill
-  - dask-core >=2023.4.1
-  - distributed >=2023.4.1,<2023.5.0
-  - frozendict
-  - fsspec
-  - llvmlite
+  - dask
+  - diptest
+  - distributed
+  - interlap
   - loompy
+  - multiprocessing_on_dill
   - networkx
   - numba >=0.51.2
   - numexpr
+  - numpy <1.24
   - pandas >=1.3.5
-  - pyyaml
-  - requests
-  - scikit-learn
+  - scikit-learn >=0.22.2
   - scipy
   - tqdm
-  - umap-learn
-  - numpy ==1.23.5
-  - pyarrow
-  - interlap
-  - ctxcore
 source:
-  patches:
-  - dill_patch.patch
   sha256: ae8fafa707d2578ffe08f9eed85f14a4cd9e1b53d57217420e2e956f0a8ddba2
   url: https://pypi.io/packages/source/p/pyscenic/pyscenic-0.12.1.tar.gz
 test:
+  commands:
+  - pyscenic -h
   imports:
   - pyscenic

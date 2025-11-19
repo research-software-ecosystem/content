@@ -1,0 +1,34 @@
+about:
+  description: 'This k-mer counter, based on Needletail''s efficient FASTA parser
+    is designed to tally
+
+    k-mer counts for large sequencing read sets. It was written with downstream processing
+
+    in TensorFlow or NumPy in mind, and stores the results in a npy file.
+
+    '
+  home: https://github.com/CobiontID/kmer-counter
+  license: MIT
+  summary: kmer-counter is an efficient kmer counter for large sequencing read sets.
+build:
+  number: 0
+  run_exports:
+  - null
+  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - prototaxites
+package:
+  name: kmer-counter
+  version: 0.1.2
+requirements:
+  build:
+  - null
+source:
+  sha256: d701c39ada74c6f7696ff1d4fea738e40e509ca6fc448a88ef3b87d57d36b7c7
+  url: https://github.com/CobiontID/kmer-counter/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - kmer-counter --help

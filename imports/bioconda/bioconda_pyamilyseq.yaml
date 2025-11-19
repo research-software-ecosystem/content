@@ -1,0 +1,70 @@
+about:
+  description: "PyamilySeq - A tool to investigate gene-centric prokaryote pangenomes\
+    \ built with \nclustering methods such as CD-HIT, DIAMOND, BLAST or MMseqs2.\n"
+  dev_url: https://github.com/NickJD/PyamilySeq
+  doc_url: https://github.com/NickJD/PyamilySeq
+  home: https://github.com/NickJD/PyamilySeq
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: 'PyamilySeq: A pangenome investigation tool'
+build:
+  entry_points:
+  - PyamilySeq = PyamilySeq.PyamilySeq:main
+  - pyamilyseq = PyamilySeq.PyamilySeq:main
+  - Seq-Combiner = PyamilySeq.Seq_Combiner:main
+  - seq-combiner = PyamilySeq.Seq_Combiner:main
+  - Group-Splitter = PyamilySeq.Group_Splitter:main
+  - group-splitter = PyamilySeq.Group_Splitter:main
+  - Group-Summary = PyamilySeq.Group_Summary:main
+  - group-summary = PyamilySeq.Group_Summary:main
+  - Group-Extractor = PyamilySeq.Group_Extractor:main
+  - group-extractor = PyamilySeq.Group_Extractor:main
+  - Seq-Finder = PyamilySeq.Seq_Finder:main
+  - seq-finder = PyamilySeq.Seq_Finder:main
+  - Seq-Extractor = PyamilySeq.Seq_Extractor:main
+  - seq-extractor = PyamilySeq.Seq_Extractor:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - NickJD
+package:
+  name: pyamilyseq
+  version: 1.3.2
+requirements:
+  host:
+  - python >=3.10
+  - setuptools
+  - wheel
+  - python-levenshtein
+  - pip
+  run:
+  - python >=3.10
+  - python-Levenshtein
+source:
+  sha256: 4a02f6b8d64d85550972f745cb11a2fdf06ff9558724c8b23e60f68bfedbcd2e
+  url: https://pypi.org/packages/source/p/pyamilyseq/pyamilyseq-1.3.2.tar.gz
+test:
+  commands:
+  - pip check
+  - PyamilySeq --help
+  - pyamilyseq --help
+  - Seq-Combiner --help
+  - seq-combiner --help
+  - Group-Splitter --help
+  - group-splitter --help
+  - Group-Summary --help
+  - group-summary --help
+  - Group-Extractor --help
+  - group-extractor --help
+  - Seq-Finder --help
+  - seq-finder --help
+  - Seq-Extractor --help
+  - seq-extractor --help
+  imports:
+  - PyamilySeq
+  requires:
+  - pip

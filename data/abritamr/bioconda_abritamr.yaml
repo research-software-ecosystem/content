@@ -3,15 +3,15 @@ about:
   home: https://github.com/MDU-PHL/abritamr
   license: GPL-3.0-only
   license_family: GPL3
-  summary: Running AMRFinderPlus for MDU
+  summary: Running AMRFinderPlus for MDU.
 build:
   entry_points:
-  - abritamr=abritamr.abritamr:main
+  - abritamr = abritamr.abritamr:main
   noarch: python
   number: 0
   run_exports:
-  - None
-  script: ' -m pip install . --no-build-isolation --no-deps -vvv'
+  - null
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
   identifiers:
   - biotools:abritamr
@@ -20,11 +20,13 @@ extra:
   - andergs
 package:
   name: abritamr
-  version: 1.0.19
+  version: 1.0.20
 requirements:
   host:
   - pip
   - python >=3.9
+  - setuptools
+  - libcurl
   run:
   - python >=3.9
   - pandas
@@ -32,11 +34,10 @@ requirements:
   - ncbi-amrfinderplus =3.12.8
   - blast
   - hmmer
-  - libcurl
   - parallel
 source:
-  sha256: a0571b3428186295ec27343fa4b648105be81a7fd871462a501c4c2bec43c335
-  url: https://pypi.io/packages/source/a/abritamr/abritamr-1.0.19.tar.gz
+  sha256: a2c2f0cd03a56a159a6d5192df9d2619a3a9a47f78a73f1b719cab475c73802c
+  url: https://pypi.org/packages/source/a/abritamr/abritamr-1.0.20.tar.gz
 test:
   commands:
   - abritamr --help
