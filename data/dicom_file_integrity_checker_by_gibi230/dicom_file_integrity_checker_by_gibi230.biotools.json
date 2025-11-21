@@ -70,7 +70,7 @@
     },
     "function": [
         {
-            "cmd": "docker run -it --rm --name my-container \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  <harbor_dicom_file_integrity_checker_image>:<version> \\ harbor.eucaim.cancerimage.eu/processing-tools/dicom_file_integrity_checker:latest\n  /app/entrypoint.sh --config-string \"{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}\"",
+            "cmd": "docker run -it --rm --name my-container \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  -v \"<config_path>:/config\" \\\n  harbor.eucaim.cancerimage.eu/ingestion-tools/dicom_file_integrity_checker:latest  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  <harbor_dicom_file_integrity_checker_image>:<version> \\ harbor.eucaim.cancerimage.eu/processing-tools/dicom_file_integrity_checker:latest\n  /app/entrypoint.sh --config-string \"{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}\"",
             "input": [
                 {
                     "data": {
@@ -101,6 +101,7 @@
                     ]
                 }
             ],
+            "note": "For Data Holders (ingestion-tools)",
             "operation": [
                 {
                     "term": "Format validation",
@@ -141,13 +142,71 @@
                     ]
                 }
             ]
+        },
+        {
+            "cmd": "docker run -it --rm --name my-container \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  harbor.eucaim.cancerimage.eu/processing-tools/dicom_file_integrity_checker:latest \\\n  /app/entrypoint.sh --config-string \"{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}\"",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "For Data Users (processing-tools)",
+            "operation": [
+                {
+                    "term": "Format validation",
+                    "uri": "http://edamontology.org/operation_0336"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "XML",
+                            "uri": "http://edamontology.org/format_2332"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/3/repositories/dicom_file_integrity_checker/artifacts-tab",
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-21T12:11:20.400923Z",
+    "lastUpdate": "2025-11-21T12:50:00.135336Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
         {
