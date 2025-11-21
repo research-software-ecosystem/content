@@ -13,7 +13,7 @@ __
 |------|----------------|----------|
 | **Mihail Anton** | @mihai-sysbio | mihail.anton@elixir-europe.org |
 | **Bérénice Batut** | @bebatut | berenice.batut@gmail.com |
-| **bedroesb** | @bedroesb | bert.droesbeke@vib.be |
+| **Bert Droesbeke** | @bedroesb | bert.droesbeke@vib.be |
 | **Piotr Chmura** |  | piotr.chmura@cpr.ku.dk |
 | **Saurabh Dome** | @domesaurabh | domesaurabh@gmail.com |
 | **Maria Doyle** | @mblue9 | maria.doyle@ul.ie |
