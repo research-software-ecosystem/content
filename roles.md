@@ -33,4 +33,4 @@ __
 | **Stian Soiland‑Reyes** | @stain | soiland-reyes@manchester.ac.uk |
 | **Olivier Sallou** | @osallou | olivier.sallou@irisa.fr |
 | **Oleg Zharkov** | @OlegZharkov | oleg.zharkov22@gmail.com, jos.to.new@gmail.com |
-| **Paul Zierep** | @paulzierep | paul.zierep@googlemail.com |
+| **Paul Zierep** | @paulzierep | zierep@informatik.uni-freiburg.de |
