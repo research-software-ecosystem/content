@@ -70,7 +70,7 @@
     },
     "function": [
         {
-            "cmd": "docker run -it --rm -v \"<input_path>:/input\" -v \"<output_path>:/output\" dicom_file_integrity_checker:2.1.0 \\\n  --config-string '{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}'",
+            "cmd": "docker run -it --rm --name my-container \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  <harbor_dicom_file_integrity_checker_image>:<version> \\\n  /app/entrypoint.sh --config-string \"{'QA': {'sequence_selection': ['ALL'], 'modality_selection': ['ALL'], 'input_directory': 'dataset_id'}}\"",
             "input": [
                 {
                     "data": {
@@ -147,7 +147,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-19T10:27:12.639912Z",
+    "lastUpdate": "2025-11-21T12:07:53.706196Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
         {
@@ -191,6 +191,7 @@
     ],
     "version": [
         "2.0.0",
-        "2.1.0"
+        "2.1.0",
+        "2.1.1"
     ]
 }
