@@ -18,7 +18,7 @@ __
 | **Saurabh Dome** | @domesaurabh | domesaurabh@gmail.com |
 | **Maria Doyle** | @mblue9 | maria.doyle@ul.ie |
 | **Alban Gaignard** | @albangaignard | alban.gaignard@univ-nantes.fr |
-| **Björn Grüning** | @bgruening | bjoern@gruenings.eu |
+| **Björn Grüning** | @bgruening | gruening@informatik.uni-freiburg.de |
 | **Johan Gustafsson** | @supernord | johan@biocommons.org.au |
 | **Alireza Heidari** | @itisalirh | itisalirh@gmail.com |
 | **Hans Ienasescu** | @hansioan | hans@bio.tools |
