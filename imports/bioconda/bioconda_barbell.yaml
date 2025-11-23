@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/rickbeeloo/barbell
+  license: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Extremely fast and accurate Nanopore demultiplexing
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - mv .cargo/config-portable.toml .cargo/config.toml
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - mbhall88
+  - rickbeeloo
+package:
+  name: barbell
+  version: 0.3.0
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 0e205cd56ea4bc96543f1cb8c9bc40f33bfe2aa763b78d7b965ccab4a200bb3f
+  url: https://github.com/rickbeeloo/barbell/archive/v0.3.0.tar.gz
+test:
+  commands:
+  - barbell --help
+  - barbell annotate --help
+  - barbell filter --help
+  - barbell trim --help
+  - barbell inspect --help
+  - barbell kit --help

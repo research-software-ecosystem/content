@@ -1,15 +1,20 @@
 about:
+  dev_url: https://github.com/andvides/CLAME
   home: https://github.com/andvides/CLAME
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
   summary: CLAME is a binning software for metagenomic reads. It immplements a fm-index
     search algorithm for nucleotide sequence alignment. Then it uses strongly connected
     component strategy to bin sequences with similar DNA composition.
 build:
-  number: 2
+  number: 3
+  run_exports:
+  - null
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
   identifiers:
   - doi:10.1186/s12864-018-5191-y
 package:
@@ -20,13 +25,16 @@ requirements:
   - make
   - null
   - null
-  - openmp
   - cmake
+  - pkg-config
+  host:
   - sdsl-lite
-  - libstdcxx-ng
   - libgomp
+  - llvm-openmp
   - openlibm
-  - gcc_impl_linux-64
+  run:
+  - libgomp
+  - llvm-openmp
 source:
   sha256: ccead68e51391f443b3c91d2234acd03ee2993d2c1ec730029093b30a3e61a2c
   url: https://github.com/andvides/CLAME/releases/download/v1.0/CLAME_v1.zip
