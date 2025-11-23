@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/zsethna/OLGA
   home: https://github.com/zsethna/OLGA
   license: GPL-3.0-only
   license_family: GPL3
@@ -9,29 +10,31 @@ about:
     recombination.
 build:
   entry_points:
-  - olga-compute_pgen=olga.compute_pgen:main
-  - olga-generate_sequences=olga.generate_sequences:main
+  - olga-compute_pgen = olga.compute_pgen:main
+  - olga-generate_sequences = olga.generate_sequences:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . -vv'
+  script: -m pip install . --no-build-isolation --no-cache-dir --no-deps -vvv
 extra:
   recipe-maintainers:
   - pavelvazquez
 package:
   name: olga
-  version: 1.2.4
+  version: 1.3.0
 requirements:
   host:
   - pip
   - python
+  - setuptools
   run:
   - python
   - numpy >=1.20
+  - numba
 source:
-  sha256: 66b537a5c53aa840466c27fc51d22c24d57eb0124eeaf2cd2dfb6bbe53b38dda
-  url: https://pypi.io/packages/source/o/olga/olga-1.2.4.tar.gz
+  sha256: 09cbfdbc3abd198b39540aacb009be3b6d634b24e0de410fffe86d101f8ca8f1
+  url: https://pypi.org/packages/source/o/olga/olga-1.3.0.tar.gz
 test:
   commands:
   - olga-compute_pgen --help
