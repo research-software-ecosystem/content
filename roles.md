@@ -29,6 +29,7 @@ __
 | **Hervé Ménager** | @hmenager | herve.menager@pasteur.fr |
 | **Steffen Möller** | @smoe | moeller@debian.org |
 | **Ana Mendes** | @anitamnd | 48804086+anitamnd@users.noreply.github.com |
+| **Dmitry Repchevsky** | @redmitry | dmitry.repchevski@bsc.es |
 | **Veit Schwämmle** | @veitveit | veitveit@gmail.com |
 | **Stian Soiland‑Reyes** | @stain | soiland-reyes@manchester.ac.uk |
 | **Olivier Sallou** | @osallou | olivier.sallou@irisa.fr |
