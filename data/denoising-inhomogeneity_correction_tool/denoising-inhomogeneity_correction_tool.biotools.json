@@ -27,7 +27,7 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm -v input_path:/input -v output_path:/output harbor.eucaim.cancerimage.eu/processing-tools/2d_digital_mammography_harmonization:1.1.0 --input_directory dataset_id --output_directory gaussian_output --num_workers 4 --series_number 2301101 --series_description_suffix _harmonized --zscore_enabled true --zscore_p_low 1.0 --zscore_p_high 99.0 --denoise_method gaussian --gaussian_ksize 3 --gaussian_sigma 0.8 --clahe_enabled true --clahe_clip_limit 0.01",
+            "cmd": "docker run --rm -v input_path:/input -v output_path:/output harbor.eucaim.cancerimage.eu/processin-tools/denoising_inhomogeneity_correction_tool:1.1.0 --paths /input/Dataset/Patient_1/Study/T1W /input/Dataset/Patient_2/Study/T2W --series_number 2000 --series_description_suffix \"_harmonized\" --denoising adf --conductance 0.5 --iterations 3 --time_step 0.0625 --n4 --bspline_size 50 --n4_iterations 50 30 --shrink_factor 2",
             "input": [
                 {
                     "data": {
@@ -64,7 +64,7 @@
             ]
         },
         {
-            "cmd": "docker run -it --rm --name container_name -v \"<input_path>:/input\" -v \"<output_path>:/output\" -v \"<config_path>:/config\" harbor.eucaim.cancerimage.eu/processing-tools/2d_digital_mammography_harmonization:1.1.0",
+            "cmd": "docker run -it --rm --name container_name -v \"<input_path>:/input\" -v \"<output_path>:/output\" -v \"<config_path>:/config\" harbor.eucaim.cancerimage.eu/processing-tools/denoising_inhomogeneity_correction_tool:1.1.0",
             "input": [
                 {
                     "data": {
@@ -114,7 +114,7 @@
         }
     ],
     "homepage": "https://www.acim.lafe.san.gva.es/acim/?page_id=675&lang=es",
-    "lastUpdate": "2025-11-25T16:10:55.215566Z",
+    "lastUpdate": "2025-11-25T16:17:16.794114Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
         {
