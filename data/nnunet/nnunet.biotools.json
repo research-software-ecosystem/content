@@ -34,7 +34,7 @@
     },
     "function": [
         {
-            "cmd": "docker run -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-pancreas-tumour",
+            "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-colon-cancer",
             "input": [
                 {
                     "data": {
@@ -49,7 +49,121 @@
                     ]
                 }
             ],
-            "note": "Run nnUnet using Pancreas & Pancreas Tumor pretrained model",
+            "note": "Run nnUnet pretrained on Task010_Colon targeting are colon cancer primaries.",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-hippocampus-segmentation",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "Run nnUnet pretrained on Task004_Hippocampus MRI data targeting posterior and anterior parts of the hippocampus",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-liver-tumour",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "Run nnUnet model pretrained on Task029_LiTS targeting are liver and liver tumor",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-pancreas-tumour",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "Run nnUnet pretrained on Task007_Pancreas targeting are pancras and pancreas tumor",
             "operation": [
                 {
                     "term": "Image annotation",
@@ -76,7 +190,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-28T06:33:53.277349Z",
+    "lastUpdate": "2025-11-28T06:49:26.592353Z",
     "license": "Apache-2.0",
     "maturity": "Mature",
     "name": "nnUNet",
