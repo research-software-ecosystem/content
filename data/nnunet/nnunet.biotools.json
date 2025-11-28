@@ -34,6 +34,44 @@
     },
     "function": [
         {
+            "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-abdominal-organ-segmentation",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "Run nnUNet model pretrained on Task017_AbdominalOrganSegmentation targeting thirteen different abdominal organs",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "cmd": "docker run --rm -v /host/data_input:/home/eucaim/nnUNet_input -v /host/data_out:/home/eucaim/nnUNet_output --gpus all nnunet-brain-tumour-pet",
             "input": [
                 {
@@ -228,7 +266,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-28T06:50:58.680605Z",
+    "lastUpdate": "2025-11-28T06:52:49.546441Z",
     "license": "Apache-2.0",
     "maturity": "Mature",
     "name": "nnUNet",
