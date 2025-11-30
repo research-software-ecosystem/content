@@ -9,30 +9,30 @@ __
 
 # RSEc contributors (past and present)
 
-| Name | GitHub | Email |
-|------|----------------|----------|
-| **Mihail Anton** | @mihai-sysbio | mihail.anton@elixir-europe.org |
-| **Bérénice Batut** | @bebatut | berenice.batut@gmail.com |
-| **Bert Droesbeke** | @bedroesb | bert.droesbeke@vib.be |
-| **Piotr Chmura** |  | piotr.chmura@cpr.ku.dk |
-| **Saurabh Dome** | @domesaurabh | domesaurabh@gmail.com |
-| **Maria Doyle** | @mblue9 | maria.doyle@ul.ie |
-| **Alban Gaignard** | @albangaignard | alban.gaignard@univ-nantes.fr |
-| **Björn Grüning** | @bgruening | gruening@informatik.uni-freiburg.de |
-| **Johan Gustafsson** | @supernord | johan@biocommons.org.au |
-| **Alireza Heidari** | @itisalirh | itisalirh@gmail.com |
-| **Hans Ienasescu** | @hansioan | hans@bio.tools |
-| **Jon Ison** | @joncison | jison@bioinformatics.dtu.dk |
-| **Arash Kadkhodaei** | @arash77 | arash77.kad@gmail.com |
-| **Matúš Kalaš** | @matuskalas | matus.kalas@uib.no |
-| **Sebastian Lobentanzer** | @slobentanzer | sebastian.lobentanzer@gmail.com |
-| **Hervé Ménager** | @hmenager | herve.menager@pasteur.fr |
-| **Steffen Möller** | @smoe | moeller@debian.org |
-| **Ana Mendes** | @anitamnd | 48804086+anitamnd@users.noreply.github.com |
-| **Dmitry Repchevsky** | @redmitry | dmitry.repchevski@bsc.es |
-| **Veit Schwämmle** | @veitveit | veitveit@gmail.com |
-| **Stian Soiland‑Reyes** | @stain | soiland-reyes@manchester.ac.uk |
-| **Olivier Sallou** | @osallou | olivier.sallou@irisa.fr |
-| **Oleg Zharkov** | @OlegZharkov | oleg.zharkov22@gmail.com, jos.to.new@gmail.com |
-| **Paul Zierep** | @paulzierep | zierep@informatik.uni-freiburg.de |
-| **Magnus Palmblad** | @magnuspalmblad | n.m.palmblad@lumc.nl |
+| Name | GitHub |
+|------|----------------|
+| **Mihail Anton** | @mihai-sysbio |
+| **Bérénice Batut** | @bebatut |
+| **Bert Droesbeke** | @bedroesb |
+| **Piotr Chmura** |  |
+| **Saurabh Dome** | @domesaurabh |
+| **Maria Doyle** | @mblue9 |
+| **Alban Gaignard** | @albangaignard |
+| **Björn Grüning** | @bgruening |
+| **Johan Gustafsson** | @supernord |
+| **Alireza Heidari** | @itisalirh |
+| **Hans Ienasescu** | @hansioan |
+| **Jon Ison** | @joncison |
+| **Arash Kadkhodaei** | @arash77 |
+| **Matúš Kalaš** | @matuskalas |
+| **Sebastian Lobentanzer** | @slobentanzer |
+| **Hervé Ménager** | @hmenager |
+| **Steffen Möller** | @smoe |
+| **Ana Mendes** | @anitamnd |
+| **Dmitry Repchevsky** | @redmitry |
+| **Veit Schwämmle** | @veitveit |
+| **Stian Soiland‑Reyes** | @stain |
+| **Olivier Sallou** | @osallou |
+| **Oleg Zharkov** | @OlegZharkov |
+| **Paul Zierep** | @paulzierep |
+| **Magnus Palmblad** | @magnuspalmblad |
