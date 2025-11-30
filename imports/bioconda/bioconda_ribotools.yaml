@@ -1,9 +1,12 @@
 about:
-  doc_url: https://ribotools.readthedocs.io/en/latest/
+  dev_url: https://github.com/eboileau/ribotools
+  doc_url: https://ribotools.readthedocs.io/en/latest
   home: https://github.com/eboileau/ribotools
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  summary: Ribo-seq analysis tools associated with the Rp-Bp package and more
+  summary: 'Ribotools: a toolbox for translation efficiency (TE) and differential
+    expression (DE) analyses.'
 build:
   entry_points:
   - get-all-bam-periodic = ribotools.pgrms.get_all_bam_periodic:main
@@ -20,34 +23,36 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --ignore-installed -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - eboileau
 package:
   name: ribotools
-  version: 1.0.4
+  version: 2.0.0
 requirements:
   host:
-  - python >=3.7,<3.11
+  - python >=3.11,<3.14
   - pip
+  - setuptools
   run:
-  - python >=3.7,<3.11
-  - rpbp >=3.0.1
-  - htseq >=2.0.2
-  - r-base >=4.2.3
+  - python >=3.11,<3.14
+  - rpbp >=4.0.1
+  - htseq
+  - r-base >=4.4.3
   - r-r.utils
   - r-devtools
   - r-tidyverse
   - r-openxlsx
   - r-yaml
   - r-ashr
+  - r-argparser
   - bioconductor-ihw
   - bioconductor-apeglm
   - bioconductor-deseq2
 source:
-  sha256: b40767cc80894566708025d5223c2c0dff475ef7d9a4332dc852b4c04388fea4
-  url: https://pypi.io/packages/source/r/ribotools/ribotools-1.0.4.tar.gz
+  sha256: aa0619ebb6a18193e6b665cd173d5275cd1d22f1f9ea4a7068269dbc233b79a3
+  url: https://pypi.org/packages/source/r/ribotools/ribotools-2.0.0.tar.gz
 test:
   commands:
   - get-all-bam-periodic --help

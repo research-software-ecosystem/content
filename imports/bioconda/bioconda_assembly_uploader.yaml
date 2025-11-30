@@ -14,7 +14,7 @@ build:
   - assembly_manifest = assembly_uploader.assembly_manifest:main
   - release_study = assembly_uploader.release_study:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -22,6 +22,7 @@ extra:
   recipe-maintainers:
   - ochkalova
   - Ge94
+  - KateSakharova
 package:
   name: assembly_uploader
   version: 1.3.5
@@ -33,7 +34,9 @@ requirements:
   run:
   - python >=3.8
   - requests ==2.32.3
-  - click >=8.1
+  - click >=8.1.8
+  - mgnify-pipelines-toolkit >=1.4.5
+  - ena-webin-cli >=9.0.1
 source:
   sha256: b68ff22643590ca3d371a5acf75cbd16db16d725252303f03bf1e1940de2ac0e
   url: https://pypi.org/packages/source/a/assembly_uploader/assembly_uploader-1.3.5.tar.gz
@@ -43,5 +46,6 @@ test:
   - submit_study --help
   - assembly_manifest --help
   - release_study --help
+  - webin_cli_handler --help
   imports:
   - assembly_uploader

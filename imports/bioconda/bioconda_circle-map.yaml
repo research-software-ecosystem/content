@@ -1,14 +1,17 @@
 about:
+  dev_url: https://github.com/iprada/Circle-Map
   home: https://github.com/iprada/Circle-Map
   license: MIT
   license_family: MIT
-  summary: Circular DNA analysis tools
+  summary: Circular DNA analysis tools.
 build:
   entry_points:
   - Circle-Map = circlemap.circle_map:main
   noarch: python
-  number: 2
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  number: 3
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - iprada
@@ -20,8 +23,7 @@ requirements:
   - pip
   - python
   run:
-  - biopython >=1.73,<=1.77
-  - edlib >=1.2.3
+  - biopython <1.78
   - python-edlib >=1.2.3
   - numba >=0.45.0
   - numpy >=1.16.3
@@ -33,7 +35,7 @@ requirements:
   - tqdm >=4.31.1
 source:
   sha256: 2c5337c93477bbb6a899612eb3defc5e2c5995d3958888d09a38e7bdb72437a1
-  url: https://pypi.io/packages/source/C/Circle-Map/Circle-Map-1.1.4.tar.gz
+  url: https://pypi.org/packages/source/C/Circle-Map/Circle-Map-1.1.4.tar.gz
 test:
   commands:
   - Circle-Map --help

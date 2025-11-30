@@ -6,27 +6,25 @@ about:
     '
   home: https://github.com/curoverse/arvados/tree/main/sdk/python
   license: Apache-2.0
+  license_family: APACHE
   license_file: LICENSE-2.0.txt
-  summary: Python API for Arvados
+  summary: Arvados client library.
 build:
   noarch: python
   number: 0
   run_exports:
   - null
-extra:
-  skip-lints:
-  - uses_setuptools
-  - should_be_noarch_generic
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 package:
   name: arvados-python-client
-  version: 3.1.2
+  version: 3.2.0
 requirements:
   host:
-  - python 3.8
+  - python >=3.10
   - setuptools >=40.3.0
   - pip
   run:
-  - python >=3.8
+  - python >=3.10
   - setuptools >=40.3.0
   - ciso8601 >=2.0.0
   - google-api-python-client >=2.1.0
@@ -35,12 +33,8 @@ requirements:
   - pycurl >=7.19.5.1
   - websockets
 source:
-  sha256: 9538e70073e489043e2c2ebd2e01c96215a90ee12e07678960cc3ef2f731534a
-  url: https://pypi.org/packages/source/a/arvados-python-client/arvados-python-client-3.1.2.tar.gz
+  sha256: d8ad0c1a5de55a12206a289e701c336dccccb23a5bc8977638c2b7cd50bd001f
+  url: https://pypi.org/packages/source/a/arvados-python-client/arvados_python_client-3.2.0.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - arvados
-  requires:
-  - pip

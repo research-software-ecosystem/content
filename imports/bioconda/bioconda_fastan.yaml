@@ -1,0 +1,31 @@
+about:
+  dev_url: https://github.com/thegenemyers/FASTAN
+  home: https://github.com/thegenemyers/FASTAN
+  license: Custom
+  license_file: LICENSE
+  summary: Fast Tandem Repeat Finder.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: fastan
+  version: 0.5
+requirements:
+  build:
+  - null
+  - make
+  host:
+  - zlib
+source:
+  patches:
+  - 0001-Makefile.patch
+  sha256: 0dbddc3b57e335574051311e49e45dfab45f38b5ffdf3865ad3a1a4c54df13c6
+  url: https://github.com/thegenemyers/FASTAN/archive/refs/tags/v0.5.tar.gz
+test:
+  commands:
+  - FasTAN 2>&1 | grep "Usage:"

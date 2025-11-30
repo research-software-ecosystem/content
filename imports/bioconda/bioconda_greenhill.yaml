@@ -1,12 +1,22 @@
 about:
+  dev_url: https://github.com/ShunOuchi/GreenHill
+  doc_url: https://github.com/ShunOuchi/GreenHill/blob/v1.1.0/README.md
   home: https://github.com/ShunOuchi/GreenHill
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: A de novo chromosomal-level scaffolding and phasing tool using Hi-C
+  summary: A de novo chromosomal-level scaffolding and phasing tool using Hi-C.
 build:
-  number: 2
+  number: 3
+  run_exports:
+  - null
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1186/s13059-023-03006-8
 package:
   name: greenhill
   version: 1.1.0
@@ -15,17 +25,19 @@ requirements:
   - make
   - null
   - null
+  host:
   - libgomp
   - llvm-openmp
-  host:
   - zlib
   - bzip2
   run:
-  - zlib
+  - libgomp
+  - llvm-openmp
   - gzip
-  - bzip2
   - minimap2
 source:
+  patches:
+  - 0001-master.patch
   sha256: 8158be353aabc4615f4a8bb5f1e39ab70d7a33bd4d2a16fcdf4b5a39a15e5780
   url: https://github.com/ShunOuchi/GreenHill/archive/refs/tags/v1.1.0.tar.gz
 test:

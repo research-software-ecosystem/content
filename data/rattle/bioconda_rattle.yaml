@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/comprna/RATTLE
+  doc_url: https://github.com/comprna/RATTLE/blob/v1.0/README.md
+  home: https://github.com/comprna/RATTLE
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Reference-free reconstruction and quantification of transcriptomes from
+    long-read sequencing.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:rattle
+  - doi:10.1186/s13059-022-02715-w
+package:
+  name: rattle
+  version: 1.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  - cmake <4
+  - pkg-config
+  host:
+  - zlib
+source:
+  patches:
+  - 0001-master.patch
+  - 0002-spoa.patch
+  - 0003-Makefile.patch
+  sha256: fb66de0e4665fd8ea421ec05f0a42b9b9895da71e46f092ca30eb2f280498941
+  url: https://github.com/comprna/RATTLE/releases/download/v1.0/RATTLE-1.0.tar.gz
+test:
+  commands:
+  - rattle cluster -h 2>&1 | grep 'shows this help message'

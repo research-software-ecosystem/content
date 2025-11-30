@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/aprilweilab/picovcf
+  doc_url: https://picovcf.readthedocs.io/en/latest/igdtools.html
+  home: https://aprilweilab.github.io/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Tools for converting VCF to IGD files and processing them.
+build:
+  binary_relocation: false
+  entry_points:
+  - igdtools=igdtools.main:main
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - dcdehaas
+package:
+  name: igdtools
+  version: '2.6'
+requirements:
+  build:
+  - null
+  - cmake
+  - make
+  host:
+  - python
+  - setuptools
+  - zlib
+  - pip
+  run:
+  - python
+source:
+  sha256: 5518d4c93fe2c7956203274e01455a50eabeec4646c82f8b025c22351101e2e9
+  url: https://pypi.io/packages/source/i/igdtools/igdtools-2.6.tar.gz
+test:
+  commands:
+  - igdtools --help
+  imports:
+  - igdtools

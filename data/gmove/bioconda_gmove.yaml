@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/institut-de-genomique/Gmove
+  doc_url: https://github.com/institut-de-genomique/Gmove/blob/v1.3/README.md
+  home: https://github.com/institut-de-genomique/Gmove
+  license: MIT
+  license_family: MIT
+  summary: Gmove is a gene prediction tool.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:Gmove
+  - doi:10.7490/f1000research.1111735.1
+package:
+  name: gmove
+  version: 1.3
+requirements:
+  build:
+  - null
+  - make
+  host:
+  - boost-cpp
+  run:
+  - boost-cpp
+source:
+  patches:
+  - 0001-Makefile.patch
+  sha256: 3c8939ecde8779b61e7bafae835d88afeb05982d816271833498acb7041060d3
+  url: https://github.com/institut-de-genomique/Gmove/archive/refs/tags/v1.3.tar.gz
+test:
+  commands:
+  - gmove -h 2>&1 | grep 'gmove'
