@@ -4,31 +4,39 @@ about:
     of Life). This iTOL API allows local software to upload trees to iTOL using itol.py
     and export uploaded trees using itolexport.py using direct Python calls or through
     shell.  An active internet connection to the iTOL website is required.'
+  dev_url: https://github.com/albertyw/itolapi
   home: https://github.com/albertyw/itolapi
-  license: MIT License
+  license: MIT
   license_family: MIT
-  summary: API for interacting with itol.embl.de
+  summary: API for interacting with itol.embl.de.
 build:
+  entry_points:
+  - itol = itolapi.itol:cli
+  - itolexport = itolapi.itolexport:cli
   noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --ignore-installed -vv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - cokelaer
 package:
   name: itolapi
-  version: 4.1.5
+  version: 4.1.6
 requirements:
   host:
-  - python >=3.6
+  - python >=3.7
+  - setuptools
   run:
-  - python >=3.6
+  - python >=3.7
   - requests >=2.0,<3.0
 source:
-  sha256: 8ce2f6c0560b4b3898913a61a821667ea62aca330aad008e4c71fe98ec26c874
-  url: https://pypi.io/packages/source/i/itolapi/itolapi-4.1.5.tar.gz
+  sha256: 2d124a244abbdf227801aad6a61bc9e466177001edd164fd731f3e18f008f00d
+  url: https://pypi.org/packages/source/i/itolapi/itolapi-4.1.6.tar.gz
 test:
+  commands:
+  - itol --help
+  - itolexport --help
   imports:
   - itolapi

@@ -8,7 +8,7 @@ about:
   summary: purge_dups is a package used to purge haplotigs and overlaps in an assembly
     based on read depth.
 build:
-  number: 2
+  number: 3
   run_exports:
   - null
 extra:
@@ -41,12 +41,12 @@ source:
   url: https://github.com/dfguan/purge_dups/archive/v1.2.6.tar.gz
 test:
   commands:
-  - purge_dups -h 2>&1 | grep Usage
-  - split_fa -h 2>&1 | grep Usage
-  - pbcstat -h 2>&1 | grep Usage
-  - ngscstat -h 2>&1 | grep Usage
-  - calcuts -h 2>&1 | grep Usage
-  - get_seqs -h 2>&1 | grep Usage
+  - purge_dups -h 2>&1 | grep "Usage:"
+  - split_fa -h 2>&1 | grep "Usage:"
+  - pbcstat -h 2>&1 | grep "Usage:"
+  - ngscstat -h 2>&1 | grep "Usage:"
+  - calcuts -h 2>&1 | grep "Usage:"
+  - get_seqs -h 2>&1 | grep "Usage:"
   - hist_plot.py -h
   - pd_config.py -h
   - run_purge_dups.py -h

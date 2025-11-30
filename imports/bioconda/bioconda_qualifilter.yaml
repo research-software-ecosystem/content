@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/buhlentozini/QualiFilter
+  home: https://github.com/buhlentozini/QualiFilter
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Generate a QC report summarizing key quality metrics and sample pass/fail
+    status according to user-defined thresholds.
+build:
+  entry_points:
+  - qualifilter = qualifilter.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - buhlentozini
+package:
+  name: qualifilter
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pandas >=1.0
+  - pyyaml
+source:
+  sha256: da3609142a24b143b73fe9acb60d7d7b9c7c28e36f604a114e0f955e173570fc
+  url: https://github.com/buhlentozini/QualiFilter/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - qualifilter --help
+  imports:
+  - qualifilter

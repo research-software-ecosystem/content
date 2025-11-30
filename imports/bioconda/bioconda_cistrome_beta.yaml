@@ -1,23 +1,28 @@
 about:
+  dev_url: https://github.com/hanfeisun/BETA
   home: https://github.com/hanfeisun/BETA
   license: This code is free software; you can redistribute it and/or modify it.
   summary: Binding and Expression Target Analysis of ChIP-seq TF with differential
-    gene expression
+    gene expression.
 build:
-  number: 5
-  skip: true
+  number: 6
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
 package:
   name: cistrome_beta
   version: 1.0.7
 requirements:
   build:
   - null
-  - unzip
   host:
-  - python
+  - python <3
   - pip
+  - unzip
   run:
-  - python
+  - python <3
   - numpy
   - r-base
 source:
@@ -25,4 +30,4 @@ source:
   url: http://cistrome.org/BETA/src/BETA_1.0.7.zip
 test:
   commands:
-  - BETA --help  2>&1 > /dev/null
+  - BETA --help 2>&1 > /dev/null
