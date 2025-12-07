@@ -23,15 +23,15 @@ extra:
   - boratyng
 package:
   name: elastic-blast
-  version: 1.4.0
+  version: 1.5.0
 requirements:
   host:
   - pip
-  - python >=3.7,<3.13
+  - python >=3.11,<3.14
   - python-packit
   - setuptools
   run:
-  - python >=3.7,<3.13
+  - python >=3.11,<3.14
   - boto3
   - awscli
   - awslimitchecker
@@ -41,10 +41,10 @@ requirements:
   - importlib-resources ==6.1.1
   - importlib-metadata
   - dataclasses-json
-  - pex ==2.24.1
+  - pex
 source:
-  sha256: 5a13a2f4e0eb71b1c7d8b68e4d7b1efccf35043218fa8dafa550b9f2817a7fe5
-  url: https://files.pythonhosted.org/packages/61/e8/7ad2f3cdc19b676aa5f003dbef9be1f1ff0f3c998a402709332668374aa8/elastic_blast-1.4.0.tar.gz
+  sha256: 92bd4e64638e58ef8565afd2d6e867c2ba9801f04d33237f9fb42847443263bc
+  url: https://pypi.org/packages/source/e/elastic-blast/elastic_blast-1.5.0.tar.gz
 test:
   commands:
   - elastic-blast --version
@@ -53,3 +53,7 @@ test:
   - gsutil --version
   - aws --version
   - kubectl version --client=true
+  imports:
+  - elastic_blast
+  requires:
+  - pip

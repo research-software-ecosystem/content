@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/aprilweilab/grgl
+  doc_url: https://grgl.readthedocs.io/en/stable/
+  home: https://aprilweilab.github.io/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Genotype Representation Graph Library for efficient storage/use of huge
+    genetic datasets
+build:
+  entry_points:
+  - grg=pygrgl.cli:main
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - dcdehaas
+package:
+  name: pygrgl
+  version: '2.4'
+requirements:
+  build:
+  - null
+  - cmake
+  - make
+  host:
+  - python
+  - zlib
+  - pip
+  - tqdm
+  run:
+  - python
+  - tqdm
+source:
+  sha256: 04998bf8f38ffd3f8cc943761f2a97e76fad7b537e068a5928712dfddbd2177d
+  url: https://pypi.io/packages/source/p/pygrgl/pygrgl-2.4.tar.gz
+test:
+  commands:
+  - grg --help
+  imports:
+  - pygrgl
