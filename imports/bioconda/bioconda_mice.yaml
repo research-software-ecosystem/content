@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/gi-bielefeld/mice
+  license: MIT
+  license_file: LICENSE
+  summary: Markers Inferred by Compacting Elements (mice). Synteny blocks from pangenomes.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --no-track --root "${PREFIX}" --path .
+extra:
+  recipe-maintainers:
+  - lucaparmigiani
+  - leobkmer
+package:
+  name: mice
+  version: 0.1.2
+requirements:
+  build:
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 1c2088d74fd234fa28bd1110545d27ee454de4f2aecaf3b0ac4d8288d198675d
+  url: https://github.com/gi-bielefeld/mice/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - mice --help

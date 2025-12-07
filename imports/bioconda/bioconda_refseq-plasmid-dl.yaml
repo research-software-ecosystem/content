@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/erinyoung/refseq-plasmid-dl
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: A command-line tool to download and curate RefSeq plasmid sequences from
+    NCBI.
+build:
+  entry_points:
+  - refseq-plasmid-dl = refseq_plasmid_dl.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - erinyoung
+package:
+  name: refseq-plasmid-dl
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=61.0
+  - wheel
+  - pip
+  run:
+  - python >=3.9
+  - requests
+  - beautifulsoup4
+  - tqdm
+  - biopython
+source:
+  sha256: 190db2ec8e76f20466b022ab08e49299c5c83ee6af28c7ea95b53cfb1f3e4679
+  url: https://pypi.org/packages/source/r/refseq-plasmid-dl/refseq_plasmid_dl-0.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  - refseq-plasmid-dl --help
+  imports:
+  - refseq_plasmid_dl
+  requires:
+  - pip

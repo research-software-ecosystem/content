@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/FATSLiM/fatslim
+  doc_url: https://pythonhosted.org/fatslim/
+  home: https://fatslim.github.io/
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: FATSLiM is a software dedicated to the analysis of molecular dynamics simulations
+    of lipid membranes
+build:
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - RubenChM
+package:
+  name: fatslim_biobb
+  version: 0.2.2
+requirements:
+  build:
+  - null
+  host:
+  - python
+  - cython <3.1.0
+  - pip
+  - setuptools
+  - numpy >=2
+  run:
+  - python
+  - numpy >=1.26
+source:
+- patches: numpy.patch
+  sha256: 6f82cd73387b8fe046c08e00029ed07f0cb449f4ecf407e5cca9fa5bfc423ba9
+  url: https://pypi.org/packages/source/f/fatslim/fatslim-0.2.2.tar.gz
+- sha256: d62f065830aa3739cc031156b9690805c7b2e811b4a178c8b4acd8725d561c94
+  url: https://raw.githubusercontent.com/FATSLiM/fatslim/refs/heads/master/LICENSE
+test:
+  commands:
+  - fatslim -h
+  - fatslim apl -h
