@@ -1,0 +1,136 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2025-12-02T17:37:57.215347Z",
+    "biotoolsCURIE": "biotools:auto-prostate-sequence-classifier",
+    "biotoolsID": "auto-prostate-sequence-classifier",
+    "collectionID": [
+        "EUCAIM"
+    ],
+    "confidence_flag": "tool",
+    "cost": "Free of charge (with restrictions)",
+    "credit": [
+        {
+            "email": "jose.almeida@research.fchampalimaud.org",
+            "name": "José Guilherme de Almeida",
+            "orcidid": "https://orcid.org/0000-0002-1887-0157",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer",
+                "Primary contact"
+            ],
+            "url": "https://josegcpa.net"
+        },
+        {
+            "name": "Nikolaos Papanikolaou",
+            "orcidid": "https://orcid.org/0000-0003-3298-2072",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        }
+    ],
+    "description": "XGBoost-based automatic classification of sequence types for prostate mpMRI into T2W, DWI, ADC, DCE and others (any other sequence type) using metadata alone. Works as a CLI, allows direct application to DICOM datasets or CSV/tsv/Excel/parquet datasets, features integration for Orthanc and DICOM-web as RESTful APIs. This was applied to all data on ProCAncer-I to derive initial results for sequence types. Refines predictions using rule-based heuristics for T2W, DWI and ADC.",
+    "documentation": [
+        {
+            "note": "Repository containing the code, README and additional information on how to run the tool. If used as an API (when integrated with Orthanc or DICOM-web), the documentation is available upon launching the API at <api-url>/docs.",
+            "type": [
+                "Other"
+            ],
+            "url": "https://github.com/CCIG-Champalimaud/metadata-classification"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "docker run -v <dir-with-dicom>:/data  harbor.eucaim.cancerimage.eu/processing-tools/champ-autoproseq --dicom_recursion <dicom-recursion> --input_paths /data",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ],
+            "note": "The input can be provided as a DICOM dataset (which will require --dicom-recursion, details below or in the documentation) or as a single DICOM study. This command will print a CSV with 5 columns:  i) patient_id, ii) study_uid, iii) series_uid, iv) classification from the XGBoost model, v) classification after heuristics-based corrections.\nThe sequence classification is performed between T2W, DWI, ADC, DCE or others. The provided <dicom-recursion> refers to the number of folders until a DICOM series is found. So if the provided input is a patient folder with nested studies with nested series, the level of DICOM recursion should be 2. If the provided input is a directory with patient folders, the level of DICOM recursion should be 3.",
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Keyword",
+                        "uri": "http://edamontology.org/data_0968"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/champ-autoproseq",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2025-12-03T09:27:04.489071Z",
+    "license": "MIT",
+    "link": [
+        {
+            "note": "Repository containing code, README and additional usage information for this tool.",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/CCIG-Champalimaud/metadata-classification"
+        }
+    ],
+    "maturity": "Emerging",
+    "name": "AutoProSeq - automatic classification of sequence types for prostate mpMRI",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "owner": "josegcpa",
+    "publication": [
+        {
+            "doi": "10.1186/s13244-025-01938-2",
+            "metadata": {
+                "citationCount": 1,
+                "date": "2025-12-01T00:00:00Z",
+                "journal": "Insights into Imaging",
+                "title": "Automatic sequence identification in multicentric prostate multiparametric MRI datasets for clinical machine-learning"
+            },
+            "pmcid": "PMC12187622",
+            "pmid": "40146375",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Web API"
+    ],
+    "topic": [
+        {
+            "term": "Medical informatics",
+            "uri": "http://edamontology.org/topic_3063"
+        }
+    ],
+    "version": [
+        "v0.1"
+    ]
+}
