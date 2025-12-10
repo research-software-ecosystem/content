@@ -31,8 +31,71 @@
         ],
         "type": "group"
     },
+    "function": [
+        {
+            "cmd": "docker run --rm \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  --gpus all \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr_based_neuroblastoma_tumour_detection_and_segmentation:2.0.0 \\\n  --mode dicom-seg \\\n  --series-selector /input/config/series_to_segment.csv \\\n  --seg-series-number 2302001 \\\n  --seg-algorithm-name \"nnUNet_Neuroblastoma_Primage_training\" \\\n  --seg-coordinating-center \"EUCAIM Consortium\" \\\n  --keep-nifti false",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/mr_based_neuroblastoma_tumour_detection_and_segmentation/artifacts-tab",
-    "lastUpdate": "2025-12-03T17:09:35.577747Z",
+    "lastUpdate": "2025-12-10T14:39:27.598382Z",
     "link": [
         {
             "type": [
@@ -52,24 +115,12 @@
     "publication": [
         {
             "doi": "10.3390/cancers14153648",
-            "metadata": {
-                "citationCount": 32,
-                "date": "2022-08-01T00:00:00Z",
-                "journal": "Cancers",
-                "title": "Comparative Multicentric Evaluation of Inter-Observer Variability in Manual and Automatic Segmentation of Neuroblastic Tumors in Magnetic Resonance Images"
-            },
             "type": [
                 "Primary"
             ]
         },
         {
             "doi": "10.3390/cancers15051622",
-            "metadata": {
-                "citationCount": 14,
-                "date": "2023-03-01T00:00:00Z",
-                "journal": "Cancers",
-                "title": "Independent Validation of a Deep Learning nnU-Net Tool for Neuroblastoma Detection and Segmentation in MR Images"
-            },
             "type": [
                 "Primary"
             ]
