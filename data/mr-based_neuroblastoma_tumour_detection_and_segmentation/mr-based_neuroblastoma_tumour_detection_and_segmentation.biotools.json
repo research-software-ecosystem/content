@@ -10,7 +10,7 @@
             "name": "GIBI230 - HULAFE"
         }
     ],
-    "description": "This tool is specifically designed and validated for automated detection and segmentation of neuroblastic tumours in T2-weighted magnetic resonance images (T2-MR) using deep learning. It processes DICOM or NIfTI input data and outputs in NIFTI or DICOM SEG.\n\nTRAINING & VALIDATION COHORTS:\n\nInitial Development (Veiga-Canuto 2022):\n-Training: 106 patients, 5-fold CV (median DSC 0.965 ± 0.018).\n-Internal validation: 26 patients (median DSC 0.918 ± 0.067).\n-Sources: La Fe (Spain), SIOPEN HR-NBL1/LINES, St. Anna (Austria), Pisa (Italy).\n-Mean age: 37.6 ± 39.3 months.\n-Median tumor volume: 116,518 mm³.\n\nExternal Validation (Veiga-Canuto 2023):\n-300 patients, 535 independent T2 MRI scans (486 at diagnosis, 49 post-chemotherapy).\n-Performance: median DSC 0.997 (0.944–1.000), 94% successful detection.\n-Sources: 12 European countries (HR-NBL1/SIOPEN 119, LINES/SIOPEN 107, German Registry 62, others 12).\n-Heterogeneous data: 1.5T (435), 3T (100); Siemens (318), Philips (109), GE (105), Canon (3).",
+    "description": "This tool is specifically designed and validated for automated detection and segmentation of neuroblastic tumours in T2-weighted magnetic resonance images (T2-MR) using deep learning. It processes DICOM or NIfTI input data and outputs in NIFTI or DICOM SEG.\n\nTRAINING & VALIDATION COHORTS:\n\nInitial Development (Veiga-Canuto 2022):\n-Training: 106 patients, 5-fold CV (median DSC 0.965 \u00b1 0.018).\n-Internal validation: 26 patients (median DSC 0.918 \u00b1 0.067).\n-Sources: La Fe (Spain), SIOPEN HR-NBL1/LINES, St. Anna (Austria), Pisa (Italy).\n-Mean age: 37.6 \u00b1 39.3 months.\n-Median tumor volume: 116,518 mm\u00b3.\n\nExternal Validation (Veiga-Canuto 2023):\n-300 patients, 535 independent T2 MRI scans (486 at diagnosis, 49 post-chemotherapy).\n-Performance: median DSC 0.997 (0.944\u20131.000), 94% successful detection.\n-Sources: 12 European countries (HR-NBL1/SIOPEN 119, LINES/SIOPEN 107, German Registry 62, others 12).\n-Heterogeneous data: 1.5T (435), 3T (100); Siemens (318), Philips (109), GE (105), Canon (3).",
     "documentation": [
         {
             "type": [
@@ -31,20 +31,83 @@
         ],
         "type": "group"
     },
-    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/mr_based_neuroblastoma_tumour_detection_and_segmentation/artifacts-tab",
-    "lastUpdate": "2025-12-03T17:09:35.577747Z",
-    "link": [
+    "function": [
         {
-            "type": [
-                "Social media"
+            "cmd": "docker run --rm \\\n  -v \"<input_path>:/input\" \\\n  -v \"<output_path>:/output\" \\\n  --gpus all \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr_based_neuroblastoma_tumour_detection_and_segmentation:2.0.0 \\\n  --mode dicom-seg \\\n  --series-selector /input/config/series_to_segment.csv \\\n  --seg-series-number 2302001 \\\n  --seg-algorithm-name \"nnUNet_Neuroblastoma_Primage_training\" \\\n  --seg-coordinating-center \"EUCAIM Consortium\" \\\n  --keep-nifti false",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
             ],
-            "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
-        },
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/mr_based_neuroblastoma_tumour_detection_and_segmentation/artifacts-tab",
+    "lastUpdate": "2025-12-10T14:39:27.598382Z",
+    "link": [
         {
             "type": [
                 "Software catalogue"
             ],
             "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/mr_based_neuroblastoma_tumour_detection_and_segmentation/artifacts-tab"
+        },
+        {
+            "type": [
+                "Social media"
+            ],
+            "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
         }
     ],
     "name": "MR-based neuroblastoma tumour detection and segmentation (EUCAIM-SW-019_T-01-02-002)",
@@ -52,24 +115,12 @@
     "publication": [
         {
             "doi": "10.3390/cancers14153648",
-            "metadata": {
-                "citationCount": 32,
-                "date": "2022-08-01T00:00:00Z",
-                "journal": "Cancers",
-                "title": "Comparative Multicentric Evaluation of Inter-Observer Variability in Manual and Automatic Segmentation of Neuroblastic Tumors in Magnetic Resonance Images"
-            },
             "type": [
                 "Primary"
             ]
         },
         {
             "doi": "10.3390/cancers15051622",
-            "metadata": {
-                "citationCount": 14,
-                "date": "2023-03-01T00:00:00Z",
-                "journal": "Cancers",
-                "title": "Independent Validation of a Deep Learning nnU-Net Tool for Neuroblastoma Detection and Segmentation in MR Images"
-            },
             "type": [
                 "Primary"
             ]
@@ -80,16 +131,16 @@
     ],
     "topic": [
         {
-            "term": "Data architecture, analysis and design",
-            "uri": "http://edamontology.org/topic_3365"
+            "term": "Oncology",
+            "uri": "http://edamontology.org/topic_2640"
         },
         {
             "term": "Machine learning",
             "uri": "http://edamontology.org/topic_3474"
         },
         {
-            "term": "Oncology",
-            "uri": "http://edamontology.org/topic_2640"
+            "term": "Data architecture, analysis and design",
+            "uri": "http://edamontology.org/topic_3365"
         }
     ],
     "version": [
