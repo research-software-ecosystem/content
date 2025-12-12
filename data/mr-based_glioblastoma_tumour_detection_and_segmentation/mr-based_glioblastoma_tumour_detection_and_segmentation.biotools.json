@@ -19,67 +19,6 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
-            "input": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    },
-                    "format": [
-                        {
-                            "term": "CSV",
-                            "uri": "http://edamontology.org/format_3752"
-                        },
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-list '[{\"dataset_id\":\"DS001\",\"patient_id\":\"PAT001\",\"study_id\":\"ST001\",\"series_path\":\"/input/DICOM/DS001/PAT001/ST001/T1_POST\"}]' \\\n  --target total-fused \\\n  --emit-config true",
             "input": [
                 {
@@ -89,12 +28,12 @@
                     },
                     "format": [
                         {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
                             "term": "DICOM format",
                             "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
                         }
                     ]
                 },
@@ -129,12 +68,73 @@
                     },
                     "format": [
                         {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
                             "term": "nii",
                             "uri": "http://edamontology.org/format_3549"
-                        },
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
                         {
                             "term": "DICOM format",
                             "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
                         }
                     ]
                 }
