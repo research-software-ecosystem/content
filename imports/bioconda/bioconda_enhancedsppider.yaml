@@ -1,0 +1,42 @@
+about:
+  description: "EnhancedSppIDer is a bioinformatics pipeline for species identification\
+    \ \nand read extraction from Illumina, PacBio, and Oxford Nanopore sequencing\
+    \ data.\n"
+  dev_url: https://github.com/JohnnyChen1113/EnhancedSppIDer
+  home: https://github.com/JohnnyChen1113/EnhancedSppIDer
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Enhanced sppIDer for species identification from sequencing data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - JohnnyChen1113
+package:
+  name: enhancedsppider
+  version: 0.2.2
+requirements:
+  host:
+  - python >=3.8
+  run:
+  - python >=3.8
+  - biopython
+  - bwa
+  - samtools
+  - bedtools
+  - seqtk
+  - r-base
+  - r-ggplot2
+  - r-dplyr
+source:
+  sha256: 94d103f32fdc9e1e2ce2c498bb6474baedde636d17f36dc87a0bd9da430c5dbc
+  url: https://github.com/JohnnyChen1113/EnhancedSppIDer/archive/v0.2.2.tar.gz
+test:
+  commands:
+  - sppIDer --version
+  - combineRefGenomes --version
+  - extractReadsBySpecies --version

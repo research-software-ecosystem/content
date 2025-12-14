@@ -13,10 +13,12 @@ about:
   summary: A pipeline for viral metagenomics
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
-  script: python -m pip install --no-deps --ignore-installed .
+  script:
+  - export SETUPTOOLS_SCM_PRETEND_VERSION="2.0.0"
+  - python -m pip install --no-deps --ignore-installed .
 extra:
   recipe-maintainers:
   - judithbergada

@@ -1,0 +1,50 @@
+about:
+  dev_url: https://www.github.com/bigbio/onsite
+  home: https://www.github.com/bigbio/onsite
+  license: MIT
+  license_file: LICENSE
+  summary: 'onsite: mass spectrometry post-translational localization tool'
+build:
+  entry_points:
+  - onsite = onsite.onsitec:main
+  - ascore = onsite.ascore.cli:main
+  - phosphors = onsite.phosphors.cli:main
+  - lucxor = onsite.lucxor.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - ypriverol
+  - weizhongchun
+package:
+  name: pyonsite
+  version: 0.0.1
+requirements:
+  host:
+  - python >=3.11,<3.13
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11,<3.13
+  - pyopenms >=3.4.0
+  - eigen >=3.4.0
+  - numpy >=1.26.0
+  - scipy >=1.16.0
+  - click >=8.0.0
+source:
+  sha256: f575a565dd9b9d5e0f34a8f0de7ec89125429bfbf4f97a45f2f7f18707649d9e
+  url: https://pypi.io/packages/source/p/pyonsite/pyonsite-0.0.1.tar.gz
+test:
+  commands:
+  - pip check
+  - onsite --help
+  - ascore --help
+  - phosphors --help
+  - lucxor --help
+  imports:
+  - onsite
+  requires:
+  - pip

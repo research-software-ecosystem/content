@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/Meltpinkg/cuteHap
+  license: MIT
+  license_file: LICENSE
+  summary: Haplotype-Aware Structural Variant Detector
+build:
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Meltpinkg
+package:
+  name: cutehap
+  version: 1.0.2
+requirements:
+  build:
+  - null
+  host:
+  - python >=3.7,<3.13
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.7,<3.13
+  - scipy
+  - pysam
+  - biopython
+  - cigar
+  - numpy
+  - Cython
+source:
+  sha256: 84547603bc0339ca3cce45739d98765c48c8bbe8083c1218acc8802cffe9df3f
+  url: https://pypi.io/packages/source/c/cutehap/cutehap-1.0.2.tar.gz
+test:
+  commands:
+  - cuteHap -h
+  imports:
+  - benchmarks
+  - cuteHap
+  requires:
+  - pip
