@@ -9,6 +9,33 @@
     "cost": "Free of charge (with restrictions)",
     "credit": [
         {
+            "name": "GIBI230 - HULAFE",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "maria_beser@iislafe.es",
+            "name": "Maria Beser-Robles",
+            "orcidid": "https://orcid.org/0000-0002-0072-5525",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martinez-Girones",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact",
+                "Developer",
+                "Support"
+            ]
+        },
+        {
             "email": "adrian_galiana@iislafe.es",
             "name": "Adrian Galiana-Bordera",
             "orcidid": "https://orcid.org/0000-0002-8324-8284",
@@ -43,33 +70,6 @@
             "typeRole": [
                 "Provider"
             ]
-        },
-        {
-            "email": "maria_beser@iislafe.es",
-            "name": "Maria Beser-Robles",
-            "orcidid": "https://orcid.org/0000-0002-0072-5525",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer"
-            ]
-        },
-        {
-            "email": "pedromiguel_martinez@iislafe.es",
-            "name": "Pedro-Miguel Martinez-Girones",
-            "orcidid": "https://orcid.org/0000-0002-9506-9451",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer",
-                "Primary contact",
-                "Support"
-            ]
-        },
-        {
-            "name": "GIBI230 - HULAFE",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
         }
     ],
     "description": "The tool performs an automatic segmentation of the possible glioblastoma tumours on MRI images and its subregions: necrosis (Intratumoral necrotic core), edema (Peritumoral vasogenic edema), enhancing (Contrast-enhancing tumor region), total (Total tumor including edema and necrosis by a single model) and total-fused (Total tumor fusioning of necrosis+edema+enhancing). It applies preprocessing steps as skull stripping, intra-patient registration, z-score normalization, patching, among others. It takes DICOM images as input and generates tumoral masks in DICOM SEG or NIFTI formats.",
@@ -81,67 +81,6 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-list '[{\"dataset_id\":\"DS001\",\"patient_id\":\"PAT001\",\"study_id\":\"ST001\",\"series_path\":\"/input/DICOM/DS001/PAT001/ST001/T1_POST\"}]' \\\n  --target total-fused \\\n  --emit-config true",
-            "input": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    },
-                    "format": [
-                        {
-                            "term": "CSV",
-                            "uri": "http://edamontology.org/format_3752"
-                        },
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
             "input": [
                 {
@@ -151,12 +90,12 @@
                     },
                     "format": [
                         {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
                             "term": "nii",
                             "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
                         }
                     ]
                 },
@@ -191,12 +130,73 @@
                     },
                     "format": [
                         {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
                             "term": "DICOM format",
                             "uri": "http://edamontology.org/format_3548"
-                        },
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-list '[{\"dataset_id\":\"DS001\",\"patient_id\":\"PAT001\",\"study_id\":\"ST001\",\"series_path\":\"/input/DICOM/DS001/PAT001/ST001/T1_POST\"}]' \\\n  --target total-fused \\\n  --emit-config true",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
                         {
                             "term": "nii",
                             "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        },
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
                         }
                     ]
                 }
@@ -207,27 +207,27 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-12-12T17:44:52.770153Z",
+    "lastUpdate": "2025-12-16T08:22:56.322315Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
-        {
-            "type": [
-                "Social media"
-            ],
-            "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
-        },
         {
             "type": [
                 "Software catalogue"
             ],
             "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/mr-based_glioblastoma_tumour_detection_and_segmentation/artifacts-tab"
+        },
+        {
+            "type": [
+                "Social media"
+            ],
+            "url": "https://www.linkedin.com/company/grupo-de-investigaci%C3%B3n-biom%C3%A9dica-en-imagen/"
         }
     ],
     "maturity": "Mature",
     "name": "MR-based glioblastoma tumour detection and segmentation (EUCAIM-SW-021_T-01-02-004)",
     "operatingSystem": [
-        "Linux",
         "Mac",
+        "Linux",
         "Windows"
     ],
     "owner": "casopon",
@@ -254,15 +254,15 @@
             "uri": "http://edamontology.org/topic_3365"
         },
         {
-            "term": "Machine learning",
-            "uri": "http://edamontology.org/topic_3474"
-        },
-        {
             "term": "Oncology",
             "uri": "http://edamontology.org/topic_2640"
+        },
+        {
+            "term": "Machine learning",
+            "uri": "http://edamontology.org/topic_3474"
         }
     ],
     "version": [
-        "2.0.0"
+        "2.1.1"
     ]
 }
