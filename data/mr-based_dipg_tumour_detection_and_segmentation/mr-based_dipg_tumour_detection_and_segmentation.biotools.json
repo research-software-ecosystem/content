@@ -7,34 +7,6 @@
     ],
     "credit": [
         {
-            "name": "GIBI230 - HULAFE",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
-        },
-        {
-            "email": "matias_fernandez@iislafe.es",
-            "name": "Matias Fernandez-Paton",
-            "orcidid": "https://orcid.org/0000-0001-9374-1411",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer"
-            ]
-        },
-        {
-            "email": "pedromiguel_martinez@iislafe.es",
-            "name": "Pedro-Miguel Martinez-Girones",
-            "orcidid": "https://orcid.org/0000-0002-9506-9451",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact",
-                "Developer",
-                "Documentor",
-                "Support"
-            ]
-        },
-        {
             "email": "adrian_galiana@iislafe.es",
             "name": "Adrian Galiana-Bordera",
             "orcidid": "https://orcid.org/0000-0002-8324-8284",
@@ -70,9 +42,37 @@
             "typeRole": [
                 "Provider"
             ]
+        },
+        {
+            "email": "matias_fernandez@iislafe.es",
+            "name": "Matias Fernandez-Paton",
+            "orcidid": "https://orcid.org/0000-0001-9374-1411",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martinez-Girones",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Documentor",
+                "Primary contact",
+                "Support"
+            ]
+        },
+        {
+            "name": "GIBI230 - HULAFE",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
         }
     ],
-    "description": "The tool performs an automatic segmentation of the possible DIPG tumours on MR images. DIPG (Diffuse Intrinsic Pontine Glioma), or more recently, DMG (Diffuse Midline Glioma) is a H3 K27M\u2013mutant pediatric brainstem cancer detected in T1W and Flair/T2-weighted magnetic resonance images. The tool includes a complete workflow from DICOM images to DICOM seg tumoral masks.",
+    "description": "The tool performs an automatic segmentation of the possible DIPG tumours on MR images. DIPG (Diffuse Intrinsic Pontine Glioma), or more recently, DMG (Diffuse Midline Glioma) is a H3 K27M–mutant pediatric brainstem cancer detected in T1W and Flair/T2-weighted magnetic resonance images. The tool includes a complete workflow from DICOM images to DICOM seg tumoral masks.",
     "documentation": [
         {
             "type": [
@@ -89,67 +89,6 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
-            "input": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    },
-                    "format": [
-                        {
-                            "term": "CSV",
-                            "uri": "http://edamontology.org/format_3752"
-                        },
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-list '[{\"dataset_id\":\"DS001\",\"patient_id\":\"PAT001\",\"study_id\":\"ST001\",\"series_path\":\"/input/DICOM/DS001/PAT001/ST001/T1_POST\"}]' \\\n  --target total-fused \\\n  --emit-config true",
             "input": [
                 {
@@ -159,12 +98,12 @@
                     },
                     "format": [
                         {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        },
-                        {
                             "term": "DICOM format",
                             "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
                         }
                     ]
                 },
@@ -199,12 +138,73 @@
                     },
                     "format": [
                         {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
                             "term": "nii",
                             "uri": "http://edamontology.org/format_3549"
-                        },
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
+            "input": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
                         {
                             "term": "DICOM format",
                             "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ],
+            "operation": [
+                {
+                    "term": "Image annotation",
+                    "uri": "http://edamontology.org/operation_3553"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "DICOM format",
+                            "uri": "http://edamontology.org/format_3548"
+                        },
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
                         }
                     ]
                 }
@@ -241,12 +241,12 @@
     ],
     "topic": [
         {
-            "term": "Oncology",
-            "uri": "http://edamontology.org/topic_2640"
-        },
-        {
             "term": "Machine learning",
             "uri": "http://edamontology.org/topic_3474"
+        },
+        {
+            "term": "Oncology",
+            "uri": "http://edamontology.org/topic_2640"
         }
     ],
     "version": [
