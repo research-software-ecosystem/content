@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/nh13/snakesee
+  doc_url: https://snakesee.readthedocs.io
+  home: https://github.com/nh13/snakesee
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A terminal UI for monitoring Snakemake workflows
+build:
+  entry_points:
+  - snakesee = snakesee.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - nh13
+package:
+  name: snakesee
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - rich >=13.0.0
+  - defopt >=6.4.0
+  - snakemake >=8.0.0
+source:
+  sha256: d98a511e628d4e4b66e42c8480825d47d4a7e3ab7ebd85913aa3fe47acfc79b2
+  url: https://pypi.org/packages/source/s/snakesee/snakesee-0.1.0.tar.gz
+test:
+  commands:
+  - snakesee --help
+  imports:
+  - snakesee

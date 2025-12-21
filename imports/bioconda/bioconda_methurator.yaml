@@ -13,11 +13,14 @@ build:
   - null
   script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - edogiuili
 package:
   name: methurator
-  version: 0.1.6
+  version: 0.1.7
 requirements:
   host:
   - python >=3.10,<3.14
@@ -31,17 +34,18 @@ requirements:
   - pandas
   - pyfaidx
   - pysam
+  - pyyaml
   - rich
   - rich-click
   - scipy
   - tqdm
   - plotly
-  - samtools 1.21
-  - htslib 1.21
+  - samtools >=1.21
+  - htslib >=1.21,<1.23.0a0
   - methyldackel 0.6.1
 source:
-  sha256: 5e8aa0669d246d4388a53e00a8ef62b6077e8acf915d86d32f5fa9cc6f91b88d
-  url: https://pypi.org/packages/source/m/methurator/methurator-0.1.6.tar.gz
+  sha256: 6950bb4086a998200d3b4b1761e3073ba023b99e5bd77aeaebd5b2c56e4b534f
+  url: https://pypi.org/packages/source/m/methurator/methurator-0.1.7.tar.gz
 test:
   commands:
   - pip check

@@ -1,0 +1,45 @@
+about:
+  doc_url: https://aertslab.github.io/scatac_fragment_tools/
+  home: https://github.com/aertslab/scatac_fragment_tools/
+  license: MIT
+  summary: Tools for working with scATAC-seq fragment files.
+build:
+  number: 0
+  run_exports: null
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: scatac-fragment-tools
+  version: 0.1.4
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+  - clangdev
+  host:
+  - python
+  - pip
+  - maturin >=1,<2
+  run:
+  - python >=3.8
+  - numpy <2
+  - pybigwig
+  - pybigtools >=0.2.0
+  - polars >=1.0.0
+  - pyarrow
+  - numba
+  - rich-argparse
+  - joblib
+source:
+  sha256: a3cc59d03118dabc2fd6b60fc7b54aa76a6a19b3581afeaf94c319f85418add6
+  url: https://pypi.io/packages/source/s/scatac-fragment-tools/scatac_fragment_tools-0.1.4.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - scatac_fragment_tools
+  requires:
+  - pip

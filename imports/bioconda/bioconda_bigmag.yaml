@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/jeffe107/BIgMAG
+  license: MIT
+  license_family: MIT
+  summary: 'BIgMAG: dashboard for extracting insights from MAG quality metrics'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  identifiers:
+  - doi:10.12688/f1000research.152290.2
+  recipe-maintainers:
+  - jeffe107
+package:
+  name: bigmag
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.9,<3.12
+  - pip
+  run:
+  - python >=3.9,<3.12
+  - dash
+  - dash-bootstrap-components
+  - dash-daq
+  - numpy <2
+  - pandas
+  - plotly
+  - gunicorn
+  - dash-bio
+  - scikit-posthocs
+  - scipy
+  - pingouin
+source:
+  sha256: 86d9a152e4944c39de3c01080b72706e4937648351b36ec68dccbb24428d7cdb
+  url: https://pypi.io/packages/source/b/bigmag/bigmag-1.1.0.tar.gz
+test:
+  commands:
+  - bigmag --help
+  - bigmag-lite --help

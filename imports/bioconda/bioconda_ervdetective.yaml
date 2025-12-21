@@ -6,11 +6,13 @@ about:
   summary: An efficient pipeline for identification and annotation of endogenous retroviruses
     (ERVs).
 build:
+  entry_points:
+  - ervdetective = ervdetective.main:starts
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
-  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - ZhijianZhou01
