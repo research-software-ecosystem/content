@@ -1,47 +1,47 @@
 about:
-  dev_url: https://github.com/KamilSJaron/smudgeplot
   home: https://github.com/KamilSJaron/smudgeplot
   license: Apache-2.0
-  license_family: APACHE
-  license_file: LICENSE
+  license_file: LICENSE.md
   summary: Inference of ploidy and heterozygosity structure using whole genome sequencing
-    data.
+    data
 build:
-  number: 1
+  entry_points:
+  - smudgeplot = smudgeplot.cli:main
+  number: 0
   run_exports:
   - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  recipe-maintainers:
+  - samebdon
 package:
   name: smudgeplot
-  version: 0.4.0
+  version: 0.5.3
 requirements:
   build:
   - null
-  - make
   host:
-  - r-devtools
-  - r-argparse
-  - r-base
-  - r-viridis
-  - python
-  - xorg-libxrender
+  - python >=3.9
+  - setuptools >=61.0
+  - wheel
+  - pip
   - zlib
   run:
-  - python
-  - r-base
-  - r-viridis
-  - r-argparse
-  - numpy
-  - scipy
-  - pandas
+  - python >=3.9
+  - numpy >=1.20.0
+  - matplotlib-base >=3.4.0
+  - pandas >=1.3.0
 source:
-  patches:
-  - 0001-Makefile.patch
-  sha256: 61ca437e29830a415e6f18f39d5d1fd994d20ea4a9bd46d1ab5fdcc52fa4008d
-  url: https://github.com/KamilSJaron/smudgeplot/archive/v0.4.0.tar.gz
+  sha256: f551a812cca280e4cd5341fe4167aa50039d5dae7ae64ca5d00c41c0fa0aca3b
+  url: https://pypi.org/packages/source/s/smudgeplot/smudgeplot-0.5.3.tar.gz
 test:
   commands:
-  - smudgeplot.py --version 2>&1
+  - pip check
+  - smudgeplot --help
+  imports:
+  - smudgeplot
+  requires:
+  - pip

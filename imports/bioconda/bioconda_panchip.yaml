@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/hanjunlee21/PanChIP
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Pan-ChIP-seq Analysis of Peak Sets
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hanjunlee21
+package:
+  name: panchip
+  version: 3.0.14
+requirements:
+  host:
+  - python
+  - setuptools >=61
+  - wheel
+  - pip
+  run:
+  - python
+  - pandas
+  - scipy
+  - bash
+  - coreutils
+  - gawk
+  - sed
+source:
+  sha256: 73db19984149d2e249bc7485f891349132acad3869c6edae7c8da6516173dbf5
+  url: https://pypi.org/packages/source/p/panchip/panchip-3.0.14.tar.gz
+test:
+  commands:
+  - pip check
+  - panchip --help
+  imports:
+  - PanChIP
+  requires:
+  - pip

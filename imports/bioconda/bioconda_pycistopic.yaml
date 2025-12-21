@@ -1,0 +1,60 @@
+about:
+  home: https://github.com/aertslab/pycistopic
+  license: OTHER
+  license_file: LICENSE.txt
+  summary: pycisTopic is a Python module to simultaneously identify cell states and
+    cis-regulatory topics from single cell epigenomics data.
+build:
+  noarch: python
+  number: 0
+  run_exports: null
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: pycistopic
+  version: 2.0a
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools
+  - setuptools_scm
+  run:
+  - python >=3.9
+  - numpy >=1.20.3
+  - pandas >=1.5,<2
+  - polars >=0.18.3
+  - pyarrow >=8.0.0
+  - pyranges <0.0.128
+  - ray-default
+  - scatac-fragment-tools
+  - scikit-learn
+  - matplotlib-base <3.7
+  - tmtoolkit
+  - gensim
+  - macs2
+  - pybiomart
+  - pyscenic
+  - scrublet
+  - harmonypy
+  - igraph
+  - leidenalg
+  - seaborn
+  - adjustText
+  - statsmodels
+  - scanpy
+  - scanorama
+  - bbknn
+  - loomxpy
+  - bs4
+  - lxml
+source:
+  sha256: fb9aa7cf12827220d6c063374cf28c03af0efc921126b14f1ea733c60b67b887
+  url: https://github.com/aertslab/pycisTopic/archive/787ce422a37f5975b0ebb9e7b19eeaed44847501.tar.gz
+test:
+  commands:
+  - pycistopic --help
+  imports:
+  - pycisTopic

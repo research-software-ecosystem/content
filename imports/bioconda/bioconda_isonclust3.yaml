@@ -1,0 +1,38 @@
+about:
+  description: 'isONclust3 is a tool for clustering either PacBio Iso-Seq reads, or
+    Oxford Nanopore reads into clusters, where each cluster represents all reads that
+    came from a gene family. Output is a tsv file with each read assigned to a cluster-ID
+    and a folder ''fastq'' containing one fastq file per cluster generated. Detailed
+    information is available in the isONclust3 paper https://doi.org/10.1093/bioinformatics/btaf207
+
+    '
+  home: https://github.com/aljpetri/isONclust3
+  license: GPL-3.0-or-later
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: De novo clustering of long transcript reads into genes
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  recipe-maintainers:
+  - kbseah
+package:
+  name: isonclust3
+  version: 0.3.0
+requirements:
+  build:
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: f62e3c35365fbe0ed7240a4ab83480f6dfa8b47fec29b27900689f2b85909079
+  url: https://github.com/aljpetri/isONclust3/archive/refs/tags/isONclust3-0.3.0.tar.gz
+test:
+  commands:
+  - isONclust3 --version
+  - isONclust3 --help &> /dev/null

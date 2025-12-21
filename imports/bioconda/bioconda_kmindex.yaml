@@ -1,0 +1,40 @@
+about:
+  description: Given a databank D = {S1,...,Sn}, with each Si being any genomic dataset
+    (genome or raw reads), kmindex allows to compute the percentage of shared k-mers
+    between a query Q and each Si.
+  dev_url: https://github.com/tlemane/kmindex/
+  doc_url: https://tlemane.github.io/kmindex
+  home: https://github.com/tlemane/kmindex
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file: LICENSE
+  summary: A tool for large-scale k-mer indexing
+build:
+  number: 1
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - tlemane
+package:
+  name: kmindex
+  version: 0.6.0
+requirements:
+  build:
+  - null
+  - make
+  - cmake
+  - zlib
+  - bzip2
+  - boost
+  run:
+  - kmtricks >=1.5.1
+source:
+  sha256: 788c92e4f8291891b1edb50166db39442a425c1bae5a0ba549253074377b8780
+  url: https://github.com/tlemane/kmindex/releases/download/v0.6.0/kmindex-v0.6.0-sources.tar.gz
+test:
+  commands:
+  - kmindex

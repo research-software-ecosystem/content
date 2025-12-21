@@ -1,0 +1,57 @@
+about:
+  description: 'vcf-pg-loader is a command-line tool for efficiently loading VCF variant
+    data
+
+    into PostgreSQL databases. It features streaming VCF parsing with cyvcf2,
+
+    variant normalization using the vt algorithm, proper Number=A/R/G field handling
+
+    during multi-allelic decomposition, and binary COPY protocol via asyncpg for
+
+    maximum insert performance.
+
+    '
+  dev_url: https://github.com/Zacharyr41/vcf-pg-loader
+  doc_url: https://github.com/Zacharyr41/vcf-pg-loader/tree/main/docs
+  home: https://github.com/Zacharyr41/vcf-pg-loader
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: High-performance VCF to PostgreSQL loader with clinical-grade compliance
+build:
+  entry_points:
+  - vcf-pg-loader = vcf_pg_loader.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - Zacharyr41
+package:
+  name: vcf-pg-loader
+  version: 0.5.1
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - hatchling
+  run:
+  - python >=3.9
+  - cyvcf2 >=0.31.0
+  - asyncpg >=0.29.0
+  - typer >=0.12.0
+  - rich >=13.7.0
+  - pydantic >=2.6.0
+  - anyio >=4.3.0
+  - docker-py >=7.0.0
+source:
+  sha256: 92abb87a08add6bd5c64050020216d8e035b4c9f059a73dfc48083a6cd3bd8d7
+  url: https://pypi.io/packages/source/v/vcf-pg-loader/vcf_pg_loader-0.5.1.tar.gz
+test:
+  commands:
+  - vcf-pg-loader --help
+  - vcf-pg-loader --version
+  imports:
+  - vcf_pg_loader

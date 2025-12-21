@@ -2,6 +2,7 @@ about:
   home: https://github.com/xryanglab/RiboCode
   license: MIT
   license_family: MIT
+  license_file: LICENSE
   summary: A package for detecting the actively translated ORFs using ribosome-profiling
     data
 build:
@@ -14,13 +15,15 @@ build:
   - ORFcount=RiboCode.RPF_count_ORF:main
   - GTFupdate=RiboCode.GTF_update:main
   noarch: python
-  number: 0
+  number: 1
+  run_exports:
+  - null
 package:
   name: ribocode
   version: 1.2.15
 requirements:
   host:
-  - python
+  - python >=3.8,<3.11
   - pip
   - setuptools
   - numpy
@@ -34,7 +37,7 @@ requirements:
   - minepy
   - statsmodels
   run:
-  - python
+  - python >=3.8,<3.11
   - numpy
   - pysam >0.8.4
   - matplotlib-base
@@ -47,6 +50,8 @@ requirements:
   - minepy
   - statsmodels
 source:
+  patches:
+  - fix-version.patch
   sha256: c59a45c3d5871615b5c8035469cc7faefb9db186a5609d85c62ef8e714f3bc08
   url: https://github.com/zhengtaoxiao/RiboCode/archive/refs/tags/v1.2.15.tar.gz
 test:

@@ -10,13 +10,13 @@ build:
   number: 0
   run_exports:
   - null
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation -vv
 extra:
   recipe-maintainers:
   - hhn0527
 package:
   name: iobrpy
-  version: 0.1.4
+  version: 0.1.6
 requirements:
   host:
   - python >=3.9
@@ -37,13 +37,15 @@ requirements:
   - regex >=2024.5
   - tiktoken >=0.11,<0.13
   - multiqc ==1.31
+  - xarray >=0.20
   - fastp
   - star
   - salmon
   - gzip
+  - trust4
 source:
-  sha256: 0807b6b95193b2ac73a2770e60241092cb59ae6cb36d61d47b319d2c728a0ca4
-  url: https://files.pythonhosted.org/packages/source/i/iobrpy/iobrpy-0.1.4.tar.gz
+  sha256: 0fdf3a2bc50817b815caa38860f529a7959f6033ad93826cdcf4dbb8cf9243d2
+  url: https://files.pythonhosted.org/packages/source/i/iobrpy/iobrpy-0.1.6.tar.gz
 test:
   commands:
   - iobrpy --help

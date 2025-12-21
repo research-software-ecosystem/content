@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/motu-tool/FetchMGs
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: FetchMGs extracts the 40 marker genes from genomes and metagenomes in an
+    easy and accurate manner.
+build:
+  entry_points:
+  - fetchMGs=fetchmgs.fetchmgs:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - kbseah
+package:
+  name: fetchmgs
+  version: 2.1.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - biopython
+  - tqdm
+  - pyrodigal ==3.6.3.post1
+  - pyhmmer ==0.11.2
+  - psutil
+source:
+  sha256: b478cafe73bedbd74698629b57f304f2cc5f6102b4d069adac8df71979ab20c4
+  url: https://pypi.org/packages/source/f/fetchmgs/fetchmgs-2.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  - fetchMGs 2>&1 | grep 'FetchMGs extracts the'
+  - fetchMGs extraction 2>&1 | grep 'fetchMGs extraction'
+  imports:
+  - fetchmgs
+  requires:
+  - pip
