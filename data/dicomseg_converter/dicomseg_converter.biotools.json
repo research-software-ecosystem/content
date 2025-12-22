@@ -27,8 +27,14 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm \\\n  -v $(pwd)/DATA:/data \\\n  -v $(pwd)/demo_output:/output \\\n  harbor.eucaim.cancerimage.eu/ingestion-tools/dicomseg_converter:1.4.0 \\\n  itkimage \\\n  --inputDICOM /data/dicomseries \\\n  --outputDirectory /output/demo2_source \\\n  -t nifti",
+            "cmd": "docker run --rm \\\n  -v $(pwd)/DATA:/data \\\n  -v $(pwd)/demo_output:/output \\\n  harbor.eucaim.cancerimage.eu/ingestion-tools/dicomseg_converter:1.4.0 \\\n  dicomseg \\\n  --inputImageList /output/demo2_source/1.nii.gz,/output/demo2_source/2.nii.gz \\\n  --inputMetadata /output/demo2_source/meta.json \\\n  --inputDICOMDirectory /data/dicom_series \\\n  --outputDICOM /output/demo2_nifti_to_dicomseg/output.dcm",
             "input": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    }
+                },
                 {
                     "data": {
                         "term": "Image",
@@ -72,24 +78,12 @@
                             "uri": "http://edamontology.org/format_3548"
                         }
                     ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    },
-                    "format": [
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
                 }
             ]
         }
     ],
     "homepage": "https://github.com/marver17/DICOMSEG_Converter",
-    "lastUpdate": "2025-12-22T15:44:26.661153Z",
+    "lastUpdate": "2025-12-22T15:47:13.359587Z",
     "license": "Apache-2.0",
     "link": [
         {
