@@ -9,10 +9,52 @@
     "cost": "Free of charge (with restrictions)",
     "credit": [
         {
-            "name": "GIBI230 - HULAFE"
+            "email": "adrian_galiana@iislafe.es",
+            "name": "Adrian Galiana-Bordera",
+            "orcidid": "https://orcid.org/0000-0002-8324-8284",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "carina_soler@iislafe.es",
+            "name": "Carina Soler-Pons",
+            "orcidid": "https://orcid.org/0009-0000-2991-1391",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Support"
+            ]
+        },
+        {
+            "email": "luis_marti@iislafe.es",
+            "name": "Luis Marti-Bonmati",
+            "orcidid": "https://orcid.org/0000-0002-8234-010X",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martinez-Girones",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Primary contact",
+                "Support"
+            ]
+        },
+        {
+            "name": "GIBI230 - HULAFE",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
         }
     ],
-    "description": "The tool performs an automatic segmentation of the possible neuroblastoma tumours on Contrast Enhanced CT images (CE-CTs)",
+    "description": "The tool performs by deep learning an automatic segmentation of the possible neuroblastoma tumours on Contrast Enhanced CT images (CE-CTs). Model architecture is Unet-based with residual operations, atrous dilation convolution and specific batch generator. It applies preprocessing steps as RAS conversion, resizing, z-score normalization, patching; and postprocessing operations. It takes DICOM images as input and generates tumoral masks in DICOM SEG or NIFTI formats.",
     "documentation": [
         {
             "type": [
@@ -29,68 +71,7 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-list '[{\"dataset_id\":\"DS001\",\"patient_id\":\"PAT001\",\"study_id\":\"ST001\",\"series_path\":\"/input/DICOM/DS001/PAT001/ST001/T1_POST\"}]' \\\n  --target total-fused \\\n  --emit-config true",
-            "input": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    },
-                    "format": [
-                        {
-                            "term": "CSV",
-                            "uri": "http://edamontology.org/format_3752"
-                        },
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "docker run --rm --gpus all \\\n  -v /path/to/input:/input \\\n  -v /path/to/output:/output \\\n  harbor.eucaim.cancerimage.eu/processing-tools/mr-based_glioblastoma_tumour_detection_and_segmentation:latest \\\n  --series-selector /input/config/series.csv \\\n  --target total \\\n  --emit-config true",
+            "cmd": "docker run --rm --gpus all \\\n\t-v /path/to/input:/input \\\n\t-v /path/to/output:/output \\\n\tharbor.eucaim.cancerimage.eu/processing-tools/ct-based_neuroblastoma_tumour_detection_and_segmentation:2.0.0 \\\n\t--series_csv /output/config/series_to_segment.csv \\\n\t--output_dir /output",
             "input": [
                 {
                     "data": {
@@ -155,7 +136,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-12-23T02:50:50.110385Z",
+    "lastUpdate": "2025-12-23T02:59:30.371384Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
         {
