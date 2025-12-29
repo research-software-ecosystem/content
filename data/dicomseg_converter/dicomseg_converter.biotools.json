@@ -4,13 +4,13 @@
     "biotoolsID": "dicomseg_converter",
     "credit": [
         {
+            "email": "marco.aiello@synlab.it",
+            "name": "Marco Aiello"
+        },
+        {
             "email": "mario.verdicchio@synlab.it",
             "name": "Mario Verdicchio",
             "orcidid": "https://orcid.org/0000-0002-3762-3100"
-        },
-        {
-            "email": "marco.aiello@synlab.it",
-            "name": "Marco Aiello"
         }
     ],
     "description": "This repository provides tools for segmentation files conversion in DicomSEG, with a primary focus on: DICOM RTSTRUCT to DICOM SEG: A Python script (rtstruct/rtstruct2dcmseg.py) converts DICOM Radiotherapy Structure Set (RTSTRUCT) files, along with their referenced DICOM image series, into DICOM Segmentation (SEG) objects. It can also optionally convert the individual Regions of Interest (ROIs) defined in the RTSTRUCT into separate NIfTI (.nii.gz) files. Nifti Conversions via dcmqi and Custom Scripts: The Docker image built from this repository also includes command-line tools from dcmqi (DICOM Quantitative Imaging Toolkit) and custom Python scripts for various conversions, such as: ITK image formats (NIfTI, NRRD) to/from DICOM SEG. DICOM series to NIfTI. DICOM SEG to NIfTI (custom alternative).",
@@ -29,6 +29,12 @@
         {
             "cmd": "docker run --rm \\\n  -v $(pwd)/DATA:/data \\\n  -v $(pwd)/demo_output:/output \\\n  harbor.eucaim.cancerimage.eu/ingestion-tools/dicomseg_converter:1.4.0 \\\n  dicomseg \\\n  --inputImageList /output/demo2_source/1.nii.gz,/output/demo2_source/2.nii.gz \\\n  --inputMetadata /output/demo2_source/meta.json \\\n  --inputDICOMDirectory /data/dicom_series \\\n  --outputDICOM /output/demo2_nifti_to_dicomseg/output.dcm",
             "input": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    }
+                },
                 {
                     "data": {
                         "term": "Image",
@@ -52,12 +58,6 @@
                             "uri": "http://edamontology.org/format_3549"
                         }
                     ]
-                },
-                {
-                    "data": {
-                        "term": "Report",
-                        "uri": "http://edamontology.org/data_2048"
-                    }
                 }
             ],
             "operation": [
@@ -185,23 +185,23 @@
     "license": "Apache-2.0",
     "link": [
         {
-            "type": [
-                "Repository"
-            ],
-            "url": "https://github.com/marver17/DICOMSEG_Converter"
-        },
-        {
             "note": "Harbor Repository",
             "type": [
                 "Repository"
             ],
             "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/3/repositories/dicomseg_converter/artifacts-tab"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/marver17/DICOMSEG_Converter"
         }
     ],
     "name": "Annotation Seg Converter",
     "operatingSystem": [
-        "Mac",
         "Linux",
+        "Mac",
         "Windows"
     ],
     "owner": "marioverd",
@@ -218,12 +218,12 @@
     ],
     "topic": [
         {
-            "term": "Medical informatics",
-            "uri": "http://edamontology.org/topic_3063"
-        },
-        {
             "term": "Data curation and archival",
             "uri": "http://edamontology.org/topic_0219"
+        },
+        {
+            "term": "Medical informatics",
+            "uri": "http://edamontology.org/topic_3063"
         }
     ],
     "version": [
