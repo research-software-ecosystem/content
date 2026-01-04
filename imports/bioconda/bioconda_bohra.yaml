@@ -1,5 +1,5 @@
 about:
-  doc_url: https://github.com/MDU-PHL/bohra/wiki
+  doc_url: https://mdu-phl.github.io/bohra/
   home: https://github.com/MDU-PHL/bohra
   license: GPL-3.0-or-later
   license_family: GPL3
@@ -7,7 +7,7 @@ about:
   summary: Pipeline for analysing Illumina data for microbiological public health.
 build:
   entry_points:
-  - bohra=bohra.bohra:main
+  - bohra=bohra.bohra:cli
   noarch: python
   number: 0
   run_exports:
@@ -19,36 +19,28 @@ extra:
   - tseemann
 package:
   name: bohra
-  version: 2.3.10
+  version: 3.0.6
 requirements:
   host:
   - python >=3.8
   - pip
-  - setuptools
+  - hatchling
   run:
-  - python >=3.8
-  - altair
-  - biopython 1.81
-  - nextflow 22.10.6
-  - pandas 1.0.5
-  - numpy 1.23.1
-  - jinja2
-  - packaging
-  - psutil
-  - pytest-runner
+  - python >=3.11
+  - nextflow
   - pytest
-  - sh
-  - any2fasta
+  - click
+  - pandas
+  - numpy
+  - psutil
+  - jinja2
   - csvtk
-  - perl-list-moreutils
-  - perl-text-csv
-  - perl-svg
 source:
-  sha256: 467b90fda9e94f6fcec5c03896ca734a00e6488e1e3188c1aa078e4de96c569b
-  url: https://pypi.io/packages/source/b/bohra/bohra-2.3.10.tar.gz
+  sha256: e50ba9eb64ec996468d54e06e45a0fee1fdb942f4ab682e0f4db84ea63385150
+  url: https://pypi.io/packages/source/b/bohra/bohra-3.0.6.tar.gz
 test:
   commands:
-  - bohra --version | grep -F '2.3.10'
+  - bohra --version | grep -F '3.0.6'
   - bohra --help
   imports:
   - bohra
