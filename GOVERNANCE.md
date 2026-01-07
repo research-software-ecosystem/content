@@ -45,7 +45,7 @@ The SC Chair is a single individual, member of the SC, and elected for a 2 year 
 
 The official communication channels for user support and project discussions in general are:
 
-- The official contact email, tools-ecosystem@elixir-europe.org, which goes to all members of the OC
+- The official contact email, research-software-ecosystem@elixir-europe.org, which goes to all members of the OC
 - The Gitter messaging system channel for the ecosystem: https://gitter.im/bio-tools/ecosystem
 - The issue tracker of the RSEc repository
 
