@@ -4,9 +4,8 @@ about:
     entropy or the Gini index. These measures can quantify transcript isoform diversity
     within samples or between conditions. Additionally, the package analyzes the isoform
     diversity data, looking for significant changes between conditions.
-  home: https://bioconductor.org/packages/3.20/bioc/html/SplicingFactory.html
-  license: GPL-3 + file LICENSE
-  license_file: LICENSE
+  home: https://www.bioconductor.org/packages/release/bioc/html/SplicingFactory.html
+  license: GPL-3.0-only
   summary: Splicing Diversity Analysis for Transcriptome Data
 build:
   noarch: generic
@@ -17,21 +16,23 @@ build:
   run_exports: ''
 package:
   name: bioconductor-splicingfactory
-  version: 1.14.0
+  version: 1.18.0
 requirements:
+  build:
+  - r-base >=4.1.0
+  - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
   host:
+  - r-base >=4.1.0
   - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
-  - r-base
   run:
+  - r-base >=4.1.0
   - bioconductor-summarizedexperiment >=1.36.0,<1.37.0
-  - r-base
+  - r-ggplot2
+  - r-reshape2
+  - r-optparse
 source:
-  md5: 5fb4a1d4f62f5b569978fb2582f3a9b4
-  url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/SplicingFactory_1.14.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/SplicingFactory/SplicingFactory_1.14.0.tar.gz
-  - https://bioarchive.galaxyproject.org/SplicingFactory_1.14.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-splicingfactory/bioconductor-splicingfactory_1.14.0_src_all.tar.gz
+  sha256: 90b6adf21e0011ee754d25225474fb6bbf32ae008e8a2cd79ae3ff8a62e53a8a
+  url: https://bioconductor.org/packages/release/bioc/src/contrib/SplicingFactory_1.18.0.tar.gz
 test:
   commands:
   - $R -e "library('SplicingFactory')"
