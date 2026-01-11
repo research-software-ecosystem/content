@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/tckumarasekara/stainwarpy
+  license: MIT
+  license_file: LICENSE
+  summary: Tools for image registration between multiplexed and H&E stained tissue
+    images
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - tckumarasekara
+package:
+  name: stainwarpy
+  version: 0.1.7
+requirements:
+  host:
+  - python >=3.11,<3.13
+  - pip
+  - setuptools
+  run:
+  - python >=3.11,<3.13
+  - numpy >=2.2
+  - scipy >=1.16
+  - scikit-image >=0.25
+  - imagecodecs >=2025.11.11
+  - tifffile >=2025.5.10
+  - typer >=0.20
+source:
+  sha256: 98edd1b0d5c97abb9994c18de3430a1d1018050a42f1a3e77f06763678e7b0f5
+  url: https://github.com/tckumarasekara/stainwarpy/releases/download/v0.1.7/stainwarpy-0.1.7.tar.gz
+test:
+  commands:
+  - stainwarpy --help
+  imports:
+  - stainwarpy
