@@ -16,8 +16,8 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          repository: bio-tools/content-ecosystem-utils
-          path: content-ecosystem-utils
+          repository: research-software-ecosystem/utils
+          path: utils
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -25,11 +25,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r ${{ github.workspace }}/content-ecosystem-utils/bioschemas/requirements.txt
+        run: pip install -r ${{ github.workspace }}/utils/bioschemas-gen/requirements.txt
 
       - name: publish biocontainers data as bioschemas files
         run: |
-          cd ${{ github.workspace }}/content-ecosystem-utils/bioschemas
+          cd ${{ github.workspace }}/utils/bioschemas-gen
           python biocontainers_to_bioschemas.py
 
       - name: commit all changes
