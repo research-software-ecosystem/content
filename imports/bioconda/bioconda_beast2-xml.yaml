@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/acorg/beast2-xml
+  license: MIT
+  license_file: LICENSE
+  summary: Command line script and Python class for generating BEAST2 XML config files.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - m-d-grunnill
+package:
+  name: beast2-xml
+  version: 1.5.0
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - dark-matter >=1.1.28
+  - pandas >=2.2.2
+  - ete3 >=3.1.3
+  - six >=1.16.0
+  - numpy >=1.10.0
+source:
+  sha256: 17f1b35338279b85c8cc875faf0dba5ddbb739d85a8ce5a5afff1ee10c7e9d26
+  url: https://pypi.org/packages/source/b/beast2-xml/beast2_xml-1.5.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - beast2xml
+  requires:
+  - pip

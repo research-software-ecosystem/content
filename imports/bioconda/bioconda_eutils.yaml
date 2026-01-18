@@ -1,0 +1,38 @@
+about:
+  doc_url: https://pythonhosted.org/eutils/
+  home: https://github.com/biocommons/eutils
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: Python interface to NCBI's eutilities API
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: eutils
+  version: 0.6.1
+requirements:
+  host:
+  - python >=3.12
+  - setuptools >=70.1
+  - setuptools-scm >=8.1,<9.dev0
+  - pip
+  run:
+  - python >=3.12
+  - lxml
+  - requests
+source:
+  sha256: 68d4e007996d4b08171a936413f6ec2cd4c045ac83acf7df9e9b7110df06c030
+  url: https://pypi.org/packages/source/e/eutils/eutils-0.6.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - eutils
+  requires:
+  - pip

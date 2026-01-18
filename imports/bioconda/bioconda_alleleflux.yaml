@@ -1,0 +1,113 @@
+about:
+  description: "AlleleFlux is a python package for analyzing allele frequencies trajectories\n\
+    in metagenomic data. It profiles MAG (Metagenome-Assembled Genome) populations\
+    \ \nacross samples, detecting parallel evolution through allele frequency changes.\n"
+  dev_url: https://github.com/MoellerLabPU/AlleleFlux
+  doc_url: https://alleleflux.readthedocs.io/en/latest/?badge=latest
+  home: https://github.com/MoellerLabPU/AlleleFlux
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A tool for fine-grained evolutionary analysis of microbial populations
+    and communities
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --use-pep517 --no-deps --no-build-isolation --no-cache-dir
+    -vvv
+extra:
+  recipe-maintainers:
+  - Sidduppal
+package:
+  name: alleleflux
+  version: 0.1.14
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=64.0.0
+  - wheel
+  run:
+  - python >=3.9
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib-base
+  - seaborn
+  - statsmodels
+  - tqdm
+  - intervaltree
+  - click
+  - questionary
+  - pyyaml
+  - pysam
+  - biopython
+  - snakemake-minimal >=8.0.0
+  - snakemake-executor-plugin-cluster-generic
+  - rpy2
+  - r-base
+  - r-tidyr
+source:
+  sha256: 1eac3ebdfe846f30e151f7cb867598fd129464e7860979fb6b9a10e318ca03dc
+  url: https://github.com/MoellerLabPU/AlleleFlux/archive/refs/tags/v0.1.14.tar.gz
+test:
+  commands:
+  - alleleflux --help > /dev/null 2>&1
+  - alleleflux-profile --help > /dev/null 2>&1
+  - alleleflux-allele-freq --help > /dev/null 2>&1
+  - alleleflux-scores --help > /dev/null 2>&1
+  - alleleflux-taxa-scores --help > /dev/null 2>&1
+  - alleleflux-gene-scores --help > /dev/null 2>&1
+  - alleleflux-outliers --help > /dev/null 2>&1
+  - alleleflux-cmh-scores --help > /dev/null 2>&1
+  - alleleflux-metadata --help > /dev/null 2>&1
+  - alleleflux-qc --help > /dev/null 2>&1
+  - alleleflux-eligibility --help > /dev/null 2>&1
+  - alleleflux-preprocess-between-groups --help > /dev/null 2>&1
+  - alleleflux-preprocess-within-group --help > /dev/null 2>&1
+  - alleleflux-preprocessing-eligibility --help > /dev/null 2>&1
+  - alleleflux-p-value-summary --help > /dev/null 2>&1
+  - alleleflux-lmm --help > /dev/null 2>&1
+  - alleleflux-single-sample --help > /dev/null 2>&1
+  - alleleflux-two-sample-paired --help > /dev/null 2>&1
+  - alleleflux-two-sample-unpaired --help > /dev/null 2>&1
+  - alleleflux-cmh --help > /dev/null 2>&1
+  - alleleflux-dnds-from-timepoints --help > /dev/null 2>&1
+  - alleleflux-create-mag-mapping --help > /dev/null 2>&1
+  - alleleflux-add-bam-path --help > /dev/null 2>&1
+  - alleleflux-coverage-allele-stats --help > /dev/null 2>&1
+  - alleleflux-list-mags --help > /dev/null 2>&1
+  - alleleflux-positions-qc --help > /dev/null 2>&1
+  - alleleflux-copy-profiles --help > /dev/null 2>&1
+  - alleleflux-prepare-metadata --help > /dev/null 2>&1
+  - alleleflux-terminal-nucleotide --help > /dev/null 2>&1
+  - alleleflux-track-alleles --help > /dev/null 2>&1
+  - alleleflux-plot-trajectories --help > /dev/null 2>&1
+  - "python - <<'PY'\nimport alleleflux, sys\nfrom pathlib import Path\nfrom alleleflux.workflow\
+    \ import get_snakefile, get_template_path\n\npkg = Path(alleleflux.__file__).parent\n\
+    \nsf = get_snakefile()\ntp = get_template_path()\n\nif not sf.exists():\n    raise\
+    \ SystemExit(f\"FATAL: get_snakefile() points to missing file: {sf}\")\nif not\
+    \ tp.exists():\n    raise SystemExit(f\"FATAL: get_template_path() points to missing\
+    \ file: {tp}\")\n\nrequired = [\n    \"smk_workflow/alleleflux_pipeline/Snakefile\"\
+    ,\n    \"smk_workflow/config.template.yml\",\n    \"smk_workflow/slurm_profile/config.yaml\"\
+    ,\n    \"smk_workflow/alleleflux_pipeline/shared/common.smk\",\n    \"smk_workflow/alleleflux_pipeline/shared/dynamic_targets.smk\"\
+    ,\n    \"smk_workflow/alleleflux_pipeline/rules/metadata.smk\",\n    \"smk_workflow/alleleflux_pipeline/rules/profiling.smk\"\
+    ,\n    \"smk_workflow/alleleflux_pipeline/rules/quality_control.smk\",\n    \"\
+    smk_workflow/alleleflux_pipeline/rules/eligibility.smk\",\n    \"smk_workflow/alleleflux_pipeline/rules/allele_analysis.smk\"\
+    ,\n    \"smk_workflow/alleleflux_pipeline/rules/gene_analysis.smk\",\n    \"smk_workflow/alleleflux_pipeline/rules/scoring.smk\"\
+    ,\n    \"smk_workflow/alleleflux_pipeline/rules/p_value_summary.smk\",\n    \"\
+    smk_workflow/alleleflux_pipeline/rules/dnds_analysis.smk\",\n    \"smk_workflow/accessory/coverage_and_allele_stats.smk\"\
+    ,\n    \"smk_workflow/visualization/visualization.smk\",\n    \"smk_workflow/visualization/visualization_config.yaml\"\
+    ,\n    \"smk_workflow/visualization/smks/metadata_prep.smk\",\n    \"smk_workflow/visualization/smks/analysis.smk\"\
+    ,\n    \"smk_workflow/visualization/smks/plotting.smk\",\n]\n\nmissing = []\n\
+    for rel in required:\n    if not (pkg / rel).exists():\n        missing.append(rel)\n\
+    if missing:\n    raise SystemExit(\"FATAL: Missing workflow files:\\n  - \" +\
+    \ \"\\n  - \".join(missing))\n\nprint(\"\u2705 All Snakemake workflow files verified!\"\
+    )\nPY\n"
+  imports:
+  - alleleflux
+  - alleleflux.scripts.analysis
+  - alleleflux.scripts.preprocessing
+  - alleleflux.scripts.statistics
