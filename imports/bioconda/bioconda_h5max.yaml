@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/jdcla/h5max
+  license: MIT
+  license_file: LICENCE
+  summary: scipy.sparse support on h5py
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jdcla
+package:
+  name: h5max
+  version: 0.3.4
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=45
+  - setuptools-scm >=6.2
+  - pip
+  run:
+  - python >=3.9
+  - numpy >=1.21.0
+  - scipy >=1.7.3
+  - h5py >=3.15.1
+source:
+  sha256: 0cef2a58fafd4673f7745df0f3d043a6cd200cd4735e923d5ce3731c90675b6b
+  url: https://pypi.org/packages/source/h/h5max/h5max-0.3.4.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - h5max
+  requires:
+  - pip

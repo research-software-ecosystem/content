@@ -1,34 +1,36 @@
 about:
-  dev_url: https://github.com/jheinz27/breakinator
   home: https://github.com/jheinz27/breakinator
   license: MIT
-  license_family: MIT
-  summary: Detection of foldback and chimeric read artifacts in PAF files.
+  summary: Detection of foldback and chimeric read artifacts in SAM/BAM/CRAM and PAF
+    files
 build:
-  entry_points:
-  - breakinator = breakinator:main
-  noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
-  script:
-  - cd py_breakinator
-  - -m pip install . --no-deps --no-cache-dir --no-build-isolation --use-pep517 -vvv
 package:
   name: breakinator
   version: 1.1.1
 requirements:
+  build:
+  - null
+  - null
+  - make
+  - pkg-config
   host:
-  - python >=3.7
-  - pip
-  - setuptools
+  - htslib
+  - zlib
+  - xz
+  - openssl
+  - libcurl
   run:
-  - python >=3.7
+  - htslib
+  - zlib
+  - xz
+  - openssl
+  - libcurl
 source:
   sha256: 3961a4c77e356881335c83f740517269993e391260dc4958f2f34a43c82e0516
   url: https://github.com/jheinz27/breakinator/archive/refs/tags/v1.1.1.tar.gz
 test:
   commands:
   - breakinator --help
-  imports:
-  - breakinator

@@ -1,0 +1,63 @@
+about:
+  home: https://metapub.org
+  license: Apache-2.0
+  license_file:
+  - LICENSE
+  - LICENSE-2.0.txt
+  summary: Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed
+    papers.
+build:
+  entry_points:
+  - pubmed_article = metapub.pubmedfetcher_cli:main
+  - convert = metapub.convert:main
+  - ncbi_health_check = metapub.ncbi_health_check:main
+  - metapub_build_registry = metapub.scripts.build_registry_from_yaml:main
+  - metapub-registry = metapub.findit.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: metapub
+  version: 0.6.4
+requirements:
+  host:
+  - python >=3.10,<=3.13
+  - pip
+  - setuptools
+  run:
+  - python >=3.10,<=3.13
+  - setuptools
+  - lxml
+  - lxml-html-clean
+  - requests
+  - eutils
+  - habanero
+  - tabulate
+  - cssselect
+  - unidecode
+  - docopt
+  - six
+  - coloredlogs
+  - python-levenshtein
+  - pyyaml
+source:
+  sha256: 119d69c86632034d7765a10d8522dd9db2d4ef2c8eb48039a8d2b8f020310d73
+  url: https://pypi.org/packages/source/m/metapub/metapub-0.6.4.tar.gz
+test:
+  commands:
+  - pip check
+  - pubmed_article --help
+  - convert --help
+  - ncbi_health_check --help
+  - metapub_build_registry --help
+  - metapub-registry --help
+  imports:
+  - CrossRefv2
+  - metapub
+  requires:
+  - pip
