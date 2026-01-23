@@ -1,0 +1,36 @@
+about:
+  description: 'A fast, streaming tool to rewrite FASTQ headers by reverse-complementing
+    the i5 (Index2 / P5)
+
+    barcode, without modifying read sequences or quality scores. Headers are expected
+    to end with the
+
+    standard Illumina `:<i7>+<i5>` format.
+
+    '
+  home: https://github.com/ssciwr/fastq-fix-i5
+  license: MIT
+  license_file: LICENSE
+  summary: Rewrite FASTQ headers by reverse-complementing the i5 (Index2/P5) barcode
+    in :i7+i5
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - lkeegan
+package:
+  name: fastq-fix-i5
+  version: 1.0.0
+requirements:
+  build:
+  - null
+source:
+  sha256: b61d0d8fdf9fef14ff1ab26fa3caa5fe477a2d9195c1370b03219691697a7e41
+  url: https://github.com/ssciwr/fastq-fix-i5/archive/refs/tags/1.0.0.tar.gz
+test:
+  commands:
+  - fastq-fix-i5 --help
+  - fastq-fix-i5 --version
+  - printf '@r1 1:N:0:AAAA+ACTAGCA\nACGT\n+\n!!!!\n' | fastq-fix-i5

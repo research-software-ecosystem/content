@@ -1,0 +1,46 @@
+about:
+  home: https://github.com/bionlplab/bioc
+  license: MIT
+  license_file: LICENSE
+  summary: bioc - Processing BioC, Brat, and PubTator with Python.
+build:
+  entry_points:
+  - bioc-split = bioc.cli.split_bioc:main
+  - brat2bioc = bioc.cli.brat2bioc:main
+  noarch: python
+  number: 0
+  run_exports:
+    weak:
+    - bioc
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - FelixMoelder
+  - fxwiegand
+package:
+  name: bioc
+  version: 2.1
+requirements:
+  host:
+  - python >=3.6
+  - setuptools
+  - pip
+  run:
+  - python >=3.6
+  - lxml >=4.6.3
+  - jsonlines >=1.2.0
+  - intervaltree
+  - tqdm
+  - docopt
+source:
+  sha256: 7d9248198bdae291b0ebb218de2dc653c96d32a7eac2fa0ef4ed0c74ce45aaaa
+  url: https://pypi.org/packages/source/b/bioc/bioc-2.1.tar.gz
+test:
+  commands:
+  - pip check
+  - bioc-split --help
+  - brat2bioc --help
+  imports:
+  - bioc
+  requires:
+  - pip

@@ -7,7 +7,7 @@ about:
   summary: A fast method for inferring clonal population structure
 build:
   entry_points:
-  - pyclone-vi= pyclone_vi.cli:main
+  - pyclone-vi = pyclone_vi.cli:main
   noarch: python
   number: 0
   run_exports:
@@ -18,26 +18,31 @@ extra:
   - doi:10.1186/s12859-020-03919-2
   recipe-maintainers:
   - aroth85
+  - elhurtado
 package:
   name: pyclone-vi
-  version: 0.1.6
+  version: 0.2.0
 requirements:
   host:
-  - python >=3.7
+  - python >=3.12
+  - setuptools >=77.0.3
   - pip
   run:
-  - python >=3.7
-  - click
-  - h5py
-  - numba
-  - numpy
-  - pandas
+  - python >=3.12
+  - numba >=0.61.2
+  - numpy >=2.0
   - scipy
+  - click >=8.3
+  - pandas >=2.2.2
+  - h5py >=3.0
+  - threadpoolctl >=3.6.0
 source:
-  sha256: 883ac95dd7903a9fb0418314e38a4bb5d028b5569942ab02135427201cef4f1f
-  url: https://github.com/Roth-Lab/pyclone-vi/archive/0.1.6.tar.gz
+  sha256: 30075cd218f299b0c8b35fd7200e3a2fa695795ee5e0364b76e247c2d09a643c
+  url: https://github.com/Roth-Lab/pyclone-vi/archive/0.2.0.tar.gz
 test:
   commands:
   - pyclone-vi --help
+  - pyclone-vi fit --help
+  - pyclone-vi write-results-file --help
   imports:
   - pyclone_vi
