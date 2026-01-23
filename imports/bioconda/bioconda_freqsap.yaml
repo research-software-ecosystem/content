@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/RECETOX/freqsap
+  license: MIT
+  license_file: LICENSE
+  summary: freqsap can be used to query the frequency of single amino-acid polymorphisms
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: freqsap
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=64.0.0
+  - setuptools-scm
+  - wheel
+  - pip
+  run:
+  - python >=3.8
+  - requests
+  - openpyxl
+source:
+  sha256: 08dcee1e6f1ce7db26919a7d5e2f516b648ffa12ca72f5f17c56775bb9b2b8b0
+  url: https://pypi.org/packages/source/f/freqsap/freqsap-1.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - freqsap
+  requires:
+  - pip

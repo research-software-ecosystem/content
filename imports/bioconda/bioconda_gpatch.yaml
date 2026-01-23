@@ -5,7 +5,10 @@ about:
   license_file: LICENSE
   summary: Starting with alignments of contigs to a reference genome, produce a chromosome-scale
     pseudoassembly by patching gaps between mapped contigs with sequences from the
-    reference."
+    reference. Download the github repository for helper scripts to automate GPatch
+    workflows, identify and correct misjoins in the contig assembly, produce dot-plots
+    of patched pseudoassemblies to a reference assembly, and generate chrom.sizes
+    and liftover chains for patched pseudoassemblies."
 build:
   entry_points:
   - GPatch = GPatch.GPatch:main
@@ -16,7 +19,7 @@ build:
   script: ' -m pip install . -vv'
 package:
   name: gpatch
-  version: 0.3.8
+  version: 0.4.0
 requirements:
   host:
   - python >=3.7,<3.13
@@ -26,8 +29,8 @@ requirements:
   - biopython >=1.84
   - pysam >=0.22.1
 source:
-  sha256: 2a36a5911f90cf44d100b2cff538bb8d76fb84447cc70a93fbe8bb6fb5b54384
-  url: https://pypi.io/packages/source/G/GPatch/GPatch-0.3.8.tar.gz
+  sha256: f9ed35addbdc57b74a7b76a66e6d52e63ea6f61176b5632df77fbc824fc4e80c
+  url: https://pypi.io/packages/source/g/gpatch/gpatch-0.4.0.tar.gz
 test:
   commands:
   - GPatch --help

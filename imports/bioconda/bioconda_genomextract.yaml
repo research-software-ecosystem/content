@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/KK260/GenomeXtract
+  license: GPL-3.0-only
+  license_file: LICENSE.txt
+  summary: GenomeXtract - A toolkit to easily find, compare, and assemble NCBI genomes.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv'
+package:
+  name: genomextract
+  version: 0.1.5
+requirements:
+  build: null
+  host:
+  - python >=3.6
+  - pip
+  - setuptools
+  run:
+  - python >=3.6
+  - biopython
+  - pandas
+  - requests
+  - openpyxl
+  - ncbi-datasets-cli ==18.9.0
+  - raxml-ng ==1.2.2
+  - iqtree ==3.0.1
+  - mafft ==7.525
+  - astral-tree ==5.7.8
+source:
+  sha256: 01f1d724b375da32b9c81fcc176fd15d6b99f70111532d7c52538f4dcb0f5af1
+  url: https://github.com/kk260/GenomeXtract/archive/v0.1.5.tar.gz
+test:
+  commands:
+  - findGenome --help
+  - findClosestGenome --help
+  - assembleOrgGenome --help
+  - assembleOrgGenes --help

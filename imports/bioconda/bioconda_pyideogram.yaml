@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/Balthasar-eu/pyideogram
+  license: LGPL-3.0-only
+  license_file: LICENSE
+  summary: plot ideograms in matplotlib
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - koisland
+package:
+  name: pyideogram
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10
+  - setuptools
+  - pip
+  run:
+  - python >=3.10
+  - matplotlib-base
+  - numpy
+source:
+  sha256: 93388687b060743cf6d945b3eb6493be120c663b49c0d5bf4abcaffa657ac0af
+  url: https://pypi.org/packages/source/p/pyideogram/pyideogram-0.1.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - pyideogram
+  requires:
+  - pip
