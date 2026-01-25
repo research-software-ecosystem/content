@@ -1,0 +1,53 @@
+about:
+  description: 'EASTR (Emending Alignments of Spliced Transcript Reads) identifies
+    and
+
+    eliminates systematic alignment errors in multi-exon genes from RNA-seq
+
+    data. This C++ implementation provides ~10x faster performance than the
+
+    original Python version with identical results.
+
+    '
+  dev_url: https://github.com/ishinder/eastr-cpp
+  doc_url: https://github.com/ishinder/eastr-cpp#readme
+  home: https://github.com/ishinder/eastr-cpp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Detect and remove spuriously spliced alignments from RNA-seq data
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1038/s41467-023-43017-4
+  - biotools:eastr
+  recipe-maintainers:
+  - ishinder
+package:
+  name: eastr-cpp
+  version: 2.0.2
+requirements:
+  build:
+  - null
+  - null
+  - cmake >=3.16
+  - make
+  - git
+  host:
+  - htslib >=1.15
+  - zlib
+  run:
+  - bowtie2 >=2.5.2
+source:
+- sha256: 811bc0fbc3883626c5c8903ecd11c90fd411ef22ad2c496b5d7cb88f8b7b234b
+  url: https://github.com/ishinder/eastr-cpp/archive/v2.0.2.tar.gz
+- folder: external/minimap2
+  sha256: 5ea6683b4184b5c49f6dbaef2bc5b66155e405888a0790d1b21fd3c93e474278
+  url: https://github.com/lh3/minimap2/archive/v2.28.tar.gz
+test:
+  commands:
+  - eastr --help

@@ -1,0 +1,36 @@
+about:
+  description: "Script for queue MAGs against MGnify database \n"
+  dev_url: https://github.com/SantaMcCloud/MGnify-genome-search
+  home: https://github.com/SantaMcCloud/MGnify-genome-search
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: MAGs queue script against MGnify database
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+package:
+  name: mgnify-genome-search
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.9
+  - pandas
+  - requests
+  - jsonapi-client
+  - sourmash
+  - biopython
+source:
+  sha256: a0bc9d7a4882d042c8c10bdd48f41e7736b1244408d9c7f530444eea91abf915
+  url: https://github.com/SantaMcCloud/mgnify-genome-search/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - mgnify_search --version
+  - mgnify_search --help

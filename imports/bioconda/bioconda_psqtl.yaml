@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/zkstewart/psQTL
+  doc_url: https://github.com/zkstewart/psQTL/wiki
+  home: https://github.com/zkstewart/psQTL
+  license: GPL-3
+  license_family: GPL
+  license_file: LICENSE
+  summary: A collection of Python scripts to predict QTLs using per-sample sequencing.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+package:
+  name: psqtl
+  version: 1.3.7
+requirements:
+  run:
+  - python >=3.11,<=3.13
+  - numpy
+  - biopython
+  - pandas
+  - matplotlib-base
+  - pycirclize
+  - qt6-wayland
+  - samtools
+  - bcftools
+  - vt
+  - ncls >=0.0.68
+  - r-base >=4.3.0
+  - r-argparser
+  - r-dplyr
+  - r-stringr
+  - r-biocmanager
+  - bioconductor-biocparallel
+  - bioconductor-mixomics >=6.26.0
+source:
+  sha256: 262ee79aaf746afb3e05987d7c1f4dfd32272e37150dba0a9e9b909a5f9e0ca6
+  url: https://github.com/zkstewart/psQTL/archive/v1.3.7.tar.gz
+test:
+  commands:
+  - psQTL_prep -h
+  - psQTL_proc -h
+  - psQTL_post -h
+  - Rscript $PREFIX/bin/utilities/windowed_splsda.R -h
+  - Rscript $PREFIX/bin/utilities/integrative_splsda.R -h
