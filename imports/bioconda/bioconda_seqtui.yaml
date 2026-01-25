@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/ranwez-search/SeqTUI
+  license: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Terminal-based viewer and CLI toolkit for biological sequences (DNA/AA).
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+  skip: true
+extra:
+  recipe-maintainers:
+  - ranwez
+package:
+  name: seqtui
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - make
+  - cargo-bundle-licenses
+source:
+  sha256: cc7cfa9054cd8f39b6d8060bca57ee9767b36e5eecb96401239317b45ac85f76
+  url: https://github.com/ranwez-search/SeqTUI/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - seqtui --version

@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/evolu-tion/GenomeManagement
+  license: MIT
+  license_file: LICENSE
+  summary: Genome Management Package for bioinformatics analysis
+build:
+  entry_points:
+  - promoter-retrieve = genomemanagement.promoter_retrieve:main
+  - proteins-retrieve = genomemanagement.proteins_retrieve:main
+  - get-genome-statistic = genomemanagement.get_genome_statistic:main
+  - plantpan2 = genomemanagement.PlantPAN2:main
+  - plantpan3 = genomemanagement.PlantPAN3:main
+  - meme-xml2bed = genomemanagement.memeXml2bed:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv
+extra:
+  recipe-maintainers:
+  - evolu-tion
+package:
+  name: genomemanagement
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  - setuptools
+  run:
+  - python >=3.7
+source:
+  sha256: 33e00138b7a003819436d8c9715049a9d349e005ca7181252b70f96f7998b978
+  url: https://pypi.io/packages/source/g/genomemanagement/genomemanagement-2.0.0.tar.gz
+test:
+  commands:
+  - promoter-retrieve --help
+  - proteins-retrieve --help
+  - get-genome-statistic --help
+  imports:
+  - genomemanagement
