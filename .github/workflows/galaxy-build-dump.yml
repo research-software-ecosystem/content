@@ -1,0 +1,48 @@
+name: dump galaxy data in a single bioschemas file
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 0'
+    
+jobs:
+  build-bioschemas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: content
+
+      - uses: actions/checkout@v4
+        with:
+          repository: research-software-ecosystem/utils
+          path: utils
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: pip install -r ${{ github.workspace }}/utils/bioschemas-gen/requirements.txt
+
+      - name: dump galaxy data in a single bioschemas file
+        run: |
+          cd ${{ github.workspace }}/utils/bioschemas-gen
+          python galaxy_bioschemas_dump.py
+      - name: commit new data
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd ${{ github.workspace }}/content/
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git add .
+          if git commit -m "build bioschemas RDF dump on $(date)"; then
+              git push origin HEAD
+              echo "successfully created new data"
+          else
+              echo "nothing new to add, exiting"            
+          fi
