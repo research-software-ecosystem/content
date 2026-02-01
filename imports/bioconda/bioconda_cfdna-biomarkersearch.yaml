@@ -1,0 +1,67 @@
+about:
+  description: "cfDNA-BiomarkerDiscovery is a pipeline designed to identify candidate\
+    \ biomarker sequences from cell-free DNA (cfDNA) derived from blood samples. The\
+    \ pipeline takes as input:\n\u2022\tAn archive of FASTQ files containing paired-end\
+    \ reads from whole-genome sequencing (WGS) of one or more case cohorts and a control\
+    \ cohort.\n\u2022\tAdditional required files: adapter sequences, genome version\
+    \ for download, genome information file, parameter file, and an archive with genome\
+    \ FASTA files.\nThe pipeline performs:\n1.\tPreprocessing: adapter trimming, quality\
+    \ filtering, and alignment to the reference genome.\n2.\tAnalysis: identification\
+    \ of candidate genomic regions as potential biomarkers.\nIf informative regions\
+    \ are identified, the pipeline generates a CSV file listing the candidate biomarker\
+    \ sequences along with their associated genomic coordinates.\n"
+  dev_url: https://github.com/avo-hcemm/cfDNA-biomarkers-pipeline
+  doc_url: https://github.com/avo-hcemm/cfDNA-biomarkers-pipeline/blob/master/README.md
+  home: https://github.com/avo-hcemm/cfDNA-biomarkers-pipeline
+  license: MIT
+  license_family: MIT
+  license_file: license/MIT_License
+  summary: Pipeline to identify candidate cfDNA biomarker sequences from WGS data
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - avo-hcemm
+package:
+  name: cfdna-biomarkersearch
+  version: 0.1.1
+requirements:
+  run:
+  - wget
+  - ca-certificates
+  - unzip
+  - tar
+  - curl
+  - gnupg
+  - openjdk >=21
+  - fastqc
+  - trimmomatic
+  - bowtie2
+  - samtools
+  - multiqc
+  - numpy
+  - pandas
+  - sklearn-compat
+  - imbalanced-learn
+  - xgboost
+  - scikit-bio
+  - scipy
+source:
+  sha256: 8bab410acf5a912e1bd235b24f2e611299e3ffc59906312a54d28dd1833a88e3
+  url: https://github.com/avo-hcemm/cfDNA-biomarkers-pipeline/archive/0.1.1.tar.gz
+test:
+  commands:
+  - pip install --upgrade shap-hypetune
+  - BASE_DIR="$PREFIX/share/cfdna-biomarkersearch"
+  - wget -P "$BASE_DIR/genome" https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr22.fa.gz
+  - gunzip "$BASE_DIR/genome/chr22.fa.gz"
+  - bowtie2-build "$BASE_DIR/genome/chr22.fa" "$BASE_DIR/genome/index"
+  - bash "$PREFIX"/share/cfdna-biomarkersearch/scripts/reads_preprocessing.sh \ -o
+    "$PREFIX"/share/cfdna-biomarkersearch \ raw_data \ test \ config/adapterfile.fa
+    \ genome/index
+  - bash "$PREFIX"/share/cfdna-biomarkersearch/scripts/run_pipeline_module2to6.sh
+    -o "$PREFIX"/share/cfdna-biomarkersearch input/human/genome.csv input/human/params.csv
+    human --chromosome chr22

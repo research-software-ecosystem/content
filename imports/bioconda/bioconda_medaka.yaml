@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/nanoporetech/medaka
-  doc_url: https://github.com/nanoporetech/medaka/blob/v2.1.1/README.md
+  doc_url: https://github.com/nanoporetech/medaka/blob/v2.2.0/README.md
   home: https://github.com/nanoporetech/medaka
   license: Oxford Nanopore Technologies PLC. Public License Version 1.0
   license_family: OTHER
@@ -16,6 +16,7 @@ build:
   number: 0
   run_exports:
   - null
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -28,7 +29,7 @@ extra:
   - biotools:medaka
 package:
   name: medaka
-  version: 2.1.1
+  version: 2.2.0
 requirements:
   build:
   - null
@@ -42,14 +43,15 @@ requirements:
   - bzip2
   - xz
   - zlib
-  - htslib >=1.14
+  - htslib >=1.20
   run:
   - python
   - grpcio
   - h5py
   - intervaltree
   - mappy
-  - numpy >=1.21.0,<2.0.0
+  - cffi
+  - numpy >=2.0.0
   - nomkl
   - ont-fast5-api
   - parasail-python
@@ -57,7 +59,8 @@ requirements:
   - pyspoa >=0.2.1
   - pysam >=0.16.0.1
   - python-edlib
-  - pytorch >=2.3,<2.4
+  - pytorch >=2.9.*
+  - tensordict
   - requests
   - toml
   - tqdm
@@ -65,12 +68,12 @@ requirements:
   - samtools >=1.14
   - bcftools >=1.14
   - minimap2 >=2.24
-  - htslib >=1.14
+  - htslib >=1.20
 source:
   patches:
   - 0001-setup.py.patch
-  sha256: 81f048bf0c56753bdfeee84114b78fa08655bc38e6f2fcdc06214de47e07426a
-  url: https://pypi.org/packages/source/m/medaka/medaka-2.1.1.tar.gz
+  sha256: 719c6ff2ff54841d3860f10582d62f2bea2f20db2a4b845e46f30a8b1b36e2aa
+  url: https://pypi.org/packages/source/m/medaka/medaka-2.2.0.tar.gz
 test:
   commands:
   - medaka --help
