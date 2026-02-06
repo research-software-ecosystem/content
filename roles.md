@@ -3,10 +3,13 @@
 | Name | GitHub |
 |------|----------------|
 | **Mihail Anton** | @mihai-sysbio |
+| **José María Fernández** | @jmfernandez |
+| **Alban Gaignard** | @albangaignard |
 | **Johan Gustafsson** | @supernord |
 | **Hervé Ménager** | @hmenager |
 | **Ana Mendes** | @anitamnd |
 | **Magnus Palmblad** | @magnuspalmblad |
+| **Claire Rioualen** | @rioualen |
 | **Veit Schwämmle** | @veitveit |
 | **Paul Zierep** | @paulzierep |
 
