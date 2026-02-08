@@ -1,27 +1,26 @@
 about:
-  home: https://alsmith151.github.io/SeqNado/
+  home: https://github.com/Milne-Group/SeqNado
   license: GPL-3.0-or-later
   license_file: LICENSE
-  summary: Pipelines for genomics analysis
+  summary: 'A unified and user-friendly collection of pipelines for: ATAC-seq, ChIP-seq,
+    CUT&RUN/TAG, RNA-seq, WGS, Methylation (Bisulphite/TAPS), CRISPR screens and Micro-Capture-C.'
 build:
   entry_points:
-  - seqnado = seqnado.cli:cli_pipeline
-  - seqnado-design = seqnado.cli:cli_design
-  - seqnado-config = seqnado.cli:cli_config
+  - seqnado = seqnado.cli:app
   noarch: python
   number: 0
   run_exports:
   - null
   script: -m pip install . --no-deps -vvv
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=0.7.6
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.0.1
 extra:
   recipe-maintainers:
   - alsmith151
   - CChahrour
 package:
   name: seqnado
-  version: 0.7.6
+  version: 1.0.1
 requirements:
   host:
   - python >=3.10
@@ -44,12 +43,10 @@ requirements:
   - tracknado
   - wget
 source:
-  sha256: 5bedf894aba91922f5befd4bef75c742236444012b78a0990de041e3aef64ea1
-  url: https://pypi.io/packages/source/s/seqnado/seqnado-0.7.6.tar.gz
+  sha256: b53bb50e8db341e9d1dabcc543d7077701f5de2576137f6aa70268e9818889f0
+  url: https://pypi.io/packages/source/s/seqnado/seqnado-1.0.1.tar.gz
 test:
   commands:
   - seqnado --help
-  - seqnado-design --help
-  - seqnado-config --help
   imports:
   - seqnado

@@ -8,34 +8,41 @@ build:
   number: 0
   run_exports:
   - null
+  script_env:
+  - CFLAGS=-I$PREFIX/include
+  - CXXFLAGS=-I$PREFIX/include
+  - LDFLAGS=-L$PREFIX/lib
+channels:
+- conda-forge
+- bioconda
+- defaults
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
 package:
   name: piscem
-  version: 0.14.2
+  version: 0.14.5
 requirements:
   build:
   - cmake <4.0.0
   - autoconf
   - make
-  - zlib
   - bzip2
   - jemalloc >=5.2.1
   - null
   - null
   - pkg-config
+  - curl
   host:
-  - zlib
   - bzip2
   - jemalloc >=5.2.1
   - tapi
   run:
   - __osx >=10.9
 source:
-  sha256: c5610ea4ce39287a0c16c686179c3a444f379eca47841a3034417c0314001bdf
-  url: https://github.com/COMBINE-lab/piscem/releases/download/v0.14.2/source.tar.gz
+  sha256: 2346051ffab22deb88a4f137a2ce39d75900be15ad214afe499d4bc3cb88aea3
+  url: https://github.com/COMBINE-lab/piscem/releases/download/v0.14.5/source-full.tar.gz
 test:
   commands:
   - piscem --help

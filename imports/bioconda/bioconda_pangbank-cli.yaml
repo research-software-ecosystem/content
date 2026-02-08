@@ -1,0 +1,44 @@
+about:
+  home: https://github.com/labgem/pangbank-cli
+  license: CECILL-2.1
+  license_file: LICENCE
+  summary: Command-line tool for retrieving pangenomes using the PanGBank API.
+build:
+  entry_points:
+  - pangbank = pangbank_cli.main:app
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - JeanMainguy
+package:
+  name: pangbank-cli
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10,<3.14
+  - setuptools >=61.0.0
+  - pip
+  run:
+  - python >=3.10,<3.14
+  - typer >=0.15.1
+  - requests >=2.32.3
+  - rich >=10.0.0
+  - pydantic >=2.10.0,<3.0.0
+  - pandas >=2.0.0,<3.0.0
+  - pangbank-api >=0.1.1
+  - mash >=2.3, <3.0.0
+source:
+  sha256: b5ec2a5eec45421160ed86e8772fac0e950a47ecc6eabf6daf8d6b3639be8d00
+  url: https://github.com/labgem/pangbank-cli/archive/0.1.1.tar.gz
+test:
+  commands:
+  - pip check
+  - pangbank --help
+  imports:
+  - pangbank_cli
+  requires:
+  - pip

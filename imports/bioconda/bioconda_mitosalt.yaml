@@ -9,7 +9,7 @@ about:
     \ - `mitosalt.pl <config_file> <fastq file 1> <fastq file 2> <study name>`\n-\
     \ runs the pipeline with single-end reads\n  - `mitosalt_se.pl <config_file> <fastq\
     \ file> <study name>`\n- provides configuration file template in the package at\
-    \ `$CONDA_PREFIX/share/mitosalt-1.1.1-2/`\n"
+    \ `$CONDA_PREFIX/share/mitosalt-1.1.1-3/`\n"
   home: https://sourceforge.net/projects/mitosalt/
   license: MIT-0
   license_family: MIT
@@ -20,7 +20,7 @@ about:
     as long as a proper configuration file is provided.
 build:
   noarch: generic
-  number: 2
+  number: 3
   run_exports:
   - null
 extra:
@@ -43,6 +43,12 @@ requirements:
   - r-plotrix =3.8_4
   - r-rcolorbrewer =1.1
   - bioconductor-biostrings =2.70.1
+  - bbmap
+  - hisat2
+  - sambamba
+  - ucsc-fasize
+  - ucsc-fasomerecords
+  - ucsc-bedgraphtobigwig
   - openjdk >=11.0.1
 source:
   patches:
@@ -54,5 +60,7 @@ source:
   url: https://sourceforge.net/projects/mitosalt/files/MitoSAlt_1.1.1.zip
 test:
   commands:
-  - test -f ${PREFIX}/bin/mitosalt.pl
-  - test -f ${PREFIX}/bin/mitosalt_se.pl
+  - test -x ${PREFIX}/bin/mitosalt
+  - test -x ${PREFIX}/bin/mitosalt_se
+  - test -f ${PREFIX}/bin/MitoSAlt1.1.1.pl
+  - test -f ${PREFIX}/bin/MitoSAlt_SE1.1.1.pl
