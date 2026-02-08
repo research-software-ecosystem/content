@@ -22,34 +22,43 @@ extra:
   - doi:10.1093/bioinformatics/btu638
 package:
   name: htseq
-  version: 2.0.9
+  version: 2.1.2
 requirements:
   build:
   - null
   host:
-  - python
+  - python >=3.10
   - pip
   - cython
+  - setuptools >=74.1
   - numpy
   - pysam >=0.15.1
   - swig >=3.0.8
   run:
-  - python
+  - python >=3.10
   - null
   - matplotlib-base >=1.4
+  - numpy
   - pysam >=0.15.1
   - scipy >=1.5.0
   - pandas >=1.1.0
 source:
-  sha256: 3bbec23f033d35f40ab33a40c2b5c43f75e382c424b804c099dea635b52c2b12
-  url: https://pypi.org/packages/source/h/htseq/htseq-2.0.9.tar.gz
+  sha256: 69d5a6b9a832ea85edf8a32fbac591a8af2e32bb961d1f3843c48c9d03a77a82
+  url: https://pypi.org/packages/source/h/htseq/htseq-2.1.2.tar.gz
 test:
   commands:
   - htseq-count -h
   - htseq-qa -h
+  - htseq-count-barcodes -h
   imports:
   - HTSeq._HTSeq_internal
   - HTSeq.StepVector
-  - HTSeq._version
-  - HTSeq.scripts.count
+  - HTSeq.StretchVector
   - HTSeq.scripts.qa
+  - HTSeq.scripts.count
+  - HTSeq.scripts.count_with_barcodes
+  - HTSeq.scripts.utils
+  - HTSeq.features
+  - HTSeq.scripts.count_features.count_features_per_file
+  - HTSeq.scripts.count_features.reads_io_processor
+  - HTSeq.scripts.count_features.reads_stats

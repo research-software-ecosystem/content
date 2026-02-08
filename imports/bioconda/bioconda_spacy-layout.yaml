@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/explosion/spacy-layout
+  home: https://github.com/explosion/spacy-layout
+  license: MIT
+  license_file: LICENSE
+  summary: Use spaCy with PDFs, Word docs and other documents
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: spacy-layout
+  version: 0.0.12
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.10
+  - spacy >=3.7.5
+  - docling >=2.45.0
+  - pypdfium2 >=4.30.0,<5.0.0,!=4.30.1
+  - pandas
+  - srsly
+source:
+  sha256: 5c96e8f6fdc2a059df2c3e02929f03cc5139c03aa1a454d5b82a5831ddeb454d
+  url: https://pypi.org/packages/source/s/spacy-layout/spacy_layout-0.0.12.tar.gz
+test:
+  commands:
+  - python -c "import spacy_layout"
+  imports:
+  - spacy_layout
+  requires:
+  - python

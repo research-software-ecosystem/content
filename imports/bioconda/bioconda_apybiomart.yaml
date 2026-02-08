@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/robertopreste/apybiomart
+  license: MIT
+  license_file: LICENSE
+  summary: Async pythonic interface to Biomart.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hschult
+package:
+  name: apybiomart
+  version: 0.5.3
+requirements:
+  host:
+  - python >=3.4
+  - pytest-runner
+  - pip
+  run:
+  - python >=3.4
+  - requests
+  - aiohttp
+  - pandas
+source:
+  patches:
+  - remove-asyncio.patch
+  sha256: 0fe723c166c52245b0b5a35d9ff977090049719b74834f365a82fc0c96736988
+  url: https://pypi.org/packages/source/a/apybiomart/apybiomart-0.5.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - apybiomart
+  requires:
+  - pip

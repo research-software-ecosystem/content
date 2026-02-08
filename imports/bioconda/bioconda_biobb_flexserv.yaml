@@ -46,8 +46,7 @@ about:
   summary: Biobb_flexserv is the Biobb module collection for biomolecular flexibility
     studies on protein 3D structures.
 build:
-  noarch: python
-  number: 0
+  number: 3
   run_exports:
   - null
   script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
@@ -55,22 +54,27 @@ extra:
   recipe-maintainers:
   - gbayarri
   - RubenChM
+  skip-lints:
+  - should_be_noarch_generic
 package:
   name: biobb_flexserv
   version: 5.2.0
 requirements:
   host:
-  - python >=3.10
+  - python 3.10
   - setuptools
   - biobb_common ==5.2.0
   - flexserv ==1.0.2
   - pcasuite ==1.0.0=h7baada4_6
+  - pcasuite ==1.0.0=h71b3ecd_6
+  - pip
   - perl
   run:
   - python >=3.10
   - biobb_common ==5.2.0
   - flexserv ==1.0.2
   - pcasuite ==1.0.0=h7baada4_6
+  - pcasuite ==1.0.0=h71b3ecd_6
   - perl
 source:
   sha256: d47875ed52521b16f15b4eca59ad9e90583c46b2eb72a4e4fb03fe71e5d7889e
