@@ -7,7 +7,59 @@
     ],
     "credit": [
         {
-            "name": "GIBI230 - HULAFE"
+            "email": "carina_soler@iislafe.es",
+            "name": "Carina Soler-Pons",
+            "orcidid": "https://orcid.org/0009-0000-2991-1391",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Documentor",
+                "Support"
+            ]
+        },
+        {
+            "email": "leonor_cerda@iislafe.es",
+            "name": "Leonor Cerda-Alberich",
+            "orcidid": "https://orcid.org/0000-0002-5567-4278",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "luis_marti@iislafe.es",
+            "name": "Luis Marti-Bonmati",
+            "orcidid": "https://orcid.org/0000-0002-8234-010X",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Provider"
+            ]
+        },
+        {
+            "email": "matias_fernandez@iislafe.es",
+            "name": "Matias Fernandez-Paton",
+            "orcidid": "https://orcid.org/0000-0001-9374-1411",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer"
+            ]
+        },
+        {
+            "email": "pedromiguel_martinez@iislafe.es",
+            "name": "Pedro-Miguel Martinez-Girones",
+            "orcidid": "https://orcid.org/0000-0002-9506-9451",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Documentor",
+                "Primary contact",
+                "Support"
+            ]
+        },
+        {
+            "name": "GIBI230 - HULAFE",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Provider"
+            ]
         }
     ],
     "description": "The tool is designed to perform a customisable image pre-processing to reduce noise and inhomogeneity field effect, thus improving image quality and reproducibility of radiomics features. This tool consists of two independent steps: one for denoising using one of the 5 integrated filters (Bilateral Filter, Anisotropic Diffusion Filter (ADF), Curvature Flow Filter (CFF), SUSAN and Non Local Means (NLM)), and another for the ANTs N4 and another for the ANT's N4 bias correction filter. The parameter configuration of this tool has been optimised for TW1, T2W, DWI and DCE sequences in neuroblastoma (NB) and paediatric brain tumours, but it can also be configured with some of their parameters using a JSON parameter configuration file.",
@@ -16,13 +68,19 @@
             "type": [
                 "Terms of use"
             ],
-            "url": "https://drive.google.com/file/d/1w1tdjaLdjBZYJTp_EpETN6nwyQIsy4vg/view?usp=drive_link"
+            "url": "https://drive.eucaim.cancerimage.eu/s/oseiKoeFZqwoRCA"
+        },
+        {
+            "type": [
+                "Training material"
+            ],
+            "url": "https://www.youtube.com/watch?v=HkHqFGXGEbo&list=PL3Q1XjQpjfg_GEmwPDrQeESh6nqCMnYyR&index=9"
         },
         {
             "type": [
                 "User manual"
             ],
-            "url": "https://drive.google.com/file/d/1W0aHAIG_bdU9Z1J3aDNsb1r39WBuX9Ot/view?usp=drive_link"
+            "url": "https://drive.eucaim.cancerimage.eu/s/wYJ7Fttnk6Dp7gc"
         }
     ],
     "editPermission": {
@@ -33,7 +91,7 @@
     },
     "function": [
         {
-            "cmd": "docker run --rm -v input_path:/input -v output_path:/output harbor.eucaim.cancerimage.eu/processin-tools/denoising_inhomogeneity_correction_tool:1.1.0 --paths /input/Dataset/Patient_1/Study/T1W /input/Dataset/Patient_2/Study/T2W --series_number 2000 --series_description_suffix \"_harmonized\" --denoising adf --conductance 0.5 --iterations 3 --time_step 0.0625 --n4 --bspline_size 50 --n4_iterations 50 30 --shrink_factor 2",
+            "cmd": "docker run --rm -v input_path:/input -v output_path:/output harbor.eucaim.cancerimage.eu/processin-tools/denoising_inhomogeneity_correction_tool:1.1.0 --paths /input/Dataset/Patient_1/Study/T1W /input/Dataset/Patient_2/Study/T2W --output /output --series_number 2000 --series_description_suffix \"_harmonized\" --denoising adf --conductance 0.5 --iterations 3 --time_step 0.0625 --n4 --bspline_size 50 --n4_iterations 50 30 --shrink_factor 2",
             "input": [
                 {
                     "data": {
@@ -123,16 +181,9 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-12-09T10:49:57.094252Z",
+    "lastUpdate": "2026-02-04T15:33:01.249605Z",
     "license": "CC-BY-NC-ND-4.0",
     "link": [
-        {
-            "note": "Link to Bitbucket repository",
-            "type": [
-                "Repository"
-            ],
-            "url": "https://bitbucket.org/gibi230/harmonization_tool/src/master/"
-        },
         {
             "type": [
                 "Social media"
@@ -156,23 +207,11 @@
     "publication": [
         {
             "doi": "10.1186/s41747-020-00150-9",
-            "metadata": {
-                "citationCount": 57,
-                "date": "2020-12-01T00:00:00Z",
-                "journal": "European Radiology Experimental",
-                "title": "PRIMAGE project: predictive in silico multiscale analytics to support childhood cancer personalised evaluation empowered by imaging biomarkers"
-            },
             "pmcid": "PMC7125275",
             "pmid": "32246291"
         },
         {
             "doi": "10.1007/s10278-021-00512-8",
-            "metadata": {
-                "citationCount": 12,
-                "date": "2021-10-01T00:00:00Z",
-                "journal": "Journal of Digital Imaging",
-                "title": "MR Denoising Increases Radiomic Biomarker Precision and Reproducibility in Oncologic Imaging"
-            },
             "pmcid": "PMC8554919",
             "pmid": "34505958",
             "type": [
