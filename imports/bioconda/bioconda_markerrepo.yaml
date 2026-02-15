@@ -1,0 +1,46 @@
+about:
+  home: https://pypi.org/project/markerrepo/
+  license: MIT
+  license_file: LICENSE
+  summary: A tool for marker list management and annotation in the single cell context.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hschult
+package:
+  name: markerrepo
+  version: 0.1.5
+requirements:
+  host:
+  - python
+  - setuptools >=77.0.3
+  - pip
+  run:
+  - python
+  - pandas >=1.5.3
+  - numpy
+  - matplotlib-base >=3.7.1
+  - seaborn >=0.12.2
+  - pyyaml >=6.0
+  - gitpython
+  - scikit-learn >=1.2.2
+  - apybiomart
+  - scanpy
+  - intervaltree
+  - ipython
+  - requests
+source:
+  sha256: b855718e7ec48e06330663050b028e4dab6bf0922aa9c3e33d352d618134c39c
+  url: https://pypi.org/packages/source/m/markerRepo/markerrepo-0.1.5.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - markerrepo
+  requires:
+  - pip

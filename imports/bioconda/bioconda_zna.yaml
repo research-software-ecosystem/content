@@ -1,0 +1,57 @@
+about:
+  description: "ZNA (Compressed Z-Nucleic N-Acid A) is a specialized binary format\
+    \ for \nstoring DNA/RNA sequences with exceptional compression and I/O speed.\n\
+    \nFeatures:\n- 135 MB/s roundtrip throughput (9.5x faster than Python baseline)\n\
+    - 2.8+ GB/s encoding/decoding for long reads\n- 3.7-4.0x compression ratio with\
+    \ Zstd\n- C++ acceleration with pure Python fallback\n- Block-based architecture\
+    \ for memory efficiency\n- Supports single-end, paired-end, and interleaved reads\n\
+    - Supports strand-specific protocols\n"
+  dev_url: https://github.com/mkiyer/zna
+  doc_url: https://github.com/mkiyer/zna/blob/main/README.md
+  home: https://github.com/mkiyer/zna
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: High-performance binary format for compressed nucleic acid sequences
+build:
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+  skip: true
+extra:
+  recipe-maintainers:
+  - mkiyer
+package:
+  name: zna
+  version: 0.1.8
+requirements:
+  build:
+  - null
+  - null
+  - cmake >=3.15
+  - make
+  - llvm-tools
+  host:
+  - python
+  - pip
+  - scikit-build-core >=0.10
+  - nanobind >=2.0
+  - zstandard
+  run:
+  - python
+  - zstandard
+source:
+  sha256: 51f357930ccdff1e09f1c86d2c3cce9ea3405f95c0dc51d5a9d3de254929e7e7
+  url: https://github.com/mkiyer/zna/archive/v0.1.8.tar.gz
+test:
+  commands:
+  - zna --help
+  - python -c "import zna; print('ZNA version:', zna.__version__)"
+  - python -c "from zna import is_accelerated; print('C++ acceleration:', is_accelerated())"
+  imports:
+  - zna
+  - zna.core
+  - zna.cli
+  requires:
+  - pytest

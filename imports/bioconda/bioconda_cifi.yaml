@@ -1,0 +1,48 @@
+about:
+  home: https://github.com/mr-eyes/cifi-toolkit
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: CiFi - toolkit for downstream processing of CiFi long reads
+build:
+  entry_points:
+  - cifi = cifi.cli:main
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+  skip: true
+extra:
+  recipe-maintainers:
+  - mr-eyes
+package:
+  name: cifi
+  version: 0.2.3
+requirements:
+  build:
+  - null
+  - null
+  - cmake >=3.15
+  - make
+  - pkg-config
+  host:
+  - python
+  - pip
+  - scikit-build-core >=0.4.3
+  - nanobind >=1.3.2
+  - htslib
+  - zlib
+  run:
+  - python >=3.9
+  - click >=8.0
+  - jinja2 >=3.0
+  - htslib
+source:
+  sha256: a67d2eb74cfa310f7c0d52289151a2379f9b3a02212c5715a97058a1ced0235f
+  url: https://pypi.io/packages/source/c/cifi/cifi-0.2.3.tar.gz
+test:
+  commands:
+  - cifi --help
+  - cifi enzymes
+  imports:
+  - cifi

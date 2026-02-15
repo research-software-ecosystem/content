@@ -7,7 +7,7 @@ about:
   license_file: LICENSE
   summary: SATe-enabled phylogenetic placement.
 build:
-  number: 3
+  number: 4
   run_exports:
   - null
 extra:
@@ -23,7 +23,7 @@ requirements:
   build:
   - null
   host:
-  - python
+  - python <3.13
   - setuptools
   - hatchling
   - pip
@@ -32,7 +32,7 @@ requirements:
   - hmmer
   run:
   - hmmer
-  - python
+  - python <3.13
   - pasta
   - pplacer >=1.1.alpha17
 source:
@@ -44,13 +44,11 @@ source:
 test:
   commands:
   - pplacer --version
-  - run_sepp.py --help
   - run-sepp.sh $PREFIX/share/sepp/ref/input_fragments.fasta testrun_tiny_sepp -a
     $PREFIX/share/sepp/ref/reference_alignment_tiny.fasta -t $PREFIX/share/sepp/ref/reference_phylogeny_tiny.nwk
     -r $PREFIX/share/sepp/ref/RAxML_info-reference-gg-raxml-bl.info -x 1 -b 1
   - grep "f__Halomonadaceae" testrun_tiny_sepp_placement.tog.relabelled.tre
   - grep "testseqd" testrun_tiny_sepp_placement.tog.relabelled.tre
-  - run_upp.py --help
-  - run_upp.py -s $PREFIX/share/sepp/ref/input_fragments.fasta -o testrun_tiny_upp
-    -a $PREFIX/share/sepp/ref/reference_alignment_tiny.fasta -t $PREFIX/share/sepp/ref/reference_phylogeny_tiny.nwk
-    -x 1
+  - run_upp.py -x 1 -s $PREFIX/share/sepp/ref/input_fragments.fasta -a $PREFIX/share/sepp/ref/reference_alignment_tiny.fasta
+    -t $PREFIX/share/sepp/ref/reference_phylogeny_tiny.nwk -o testrun_tiny_upp
+  - run_upp.py -x 1 -s $PREFIX/share/sepp/ref/input_fragments.fasta -o testrun_tiny_upp_with_pasta

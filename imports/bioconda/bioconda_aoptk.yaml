@@ -20,7 +20,7 @@ extra:
   - rdurnik
 package:
   name: aoptk
-  version: 0.1.6
+  version: 0.2.0
 requirements:
   host:
   - python
@@ -36,7 +36,6 @@ requirements:
   - requests
   - scispacy
   - spacy >=3.0.0,<3.8.0
-  - spacy-transformers
   - huggingface_hub >=0.1.0,<1.0
   - beautifulsoup4
   - biopython
@@ -44,12 +43,16 @@ requirements:
   - pytorch
   - openpyxl
   - click >=8.1
+  - python-dotenv
+  - openai
+  - spacy-layout
 source:
-  sha256: 59befc9a4847bc03399aa0c2b85eb06df71cc9e18bcf8f8d48a73cef81942a49
-  url: https://pypi.org/packages/source/a/aoptk/aoptk-0.1.6.tar.gz
+  patches:
+  - patch.file
+  sha256: 62237fccd66dfcf01676e1657a3a7f08908ca5e4e1d1b084c9c6a00b9fdfdde0
+  url: https://pypi.org/packages/source/a/aoptk/aoptk-0.2.0.tar.gz
 test:
   commands:
-  - pip check
   - chemical-identifier --help
   - publication-tracker --help
   imports:

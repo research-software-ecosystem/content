@@ -1,0 +1,65 @@
+about:
+  description: 'panqc is a pan-genome quality control toolkit that evaluates and corrects
+
+    for nucleotide redundancy in pan-genome analyses. The panqc Nucleotide
+
+    Redundancy Correction (NRC) pipeline adjusts for redundancy at the DNA
+
+    level within pan-genome estimates by comparing genes classified as absent
+
+    at the amino acid level against their corresponding assemblies at the
+
+    nucleotide level and by clustering genes using k-mer based nucleotide
+
+    similarity metrics.
+
+    '
+  dev_url: https://github.com/maxgmarin/panqc
+  doc_url: https://github.com/maxgmarin/panqc
+  home: https://github.com/maxgmarin/panqc
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A toolkit for quality control & adjustment of nucleotide redundancy in
+    bacterial pan-genome analyses
+
+    '
+build:
+  entry_points:
+  - panqc=panqc.__init__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - SaimMomin12
+package:
+  name: panqc
+  version: 0.0.4
+requirements:
+  host:
+  - python
+  - pip
+  - hatchling
+  run:
+  - python
+  - pandas
+  - mmh3
+  - screed
+  - mappy ==2.26
+  - networkx
+  - tqdm
+  - colored
+  - importlib-metadata
+source:
+  sha256: 9fb6821301e124f252fc0fc3682e3f75f4bea649817157164ddaca8850b21b51
+  url: https://pypi.io/packages/source/p/panqc/panqc-0.0.4.tar.gz
+test:
+  commands:
+  - panqc --help
+  - panqc nrc --help
+  - panqc utils --help
+  imports:
+  - panqc

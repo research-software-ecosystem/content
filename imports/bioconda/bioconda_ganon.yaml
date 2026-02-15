@@ -1,28 +1,37 @@
 about:
-  description: "ganon2 classifies genomic sequences against large sets of references\
-    \ efficiently, \nwith integrated download and update of databases (refseq/genbank),\
-    \ taxonomic profiling \n(ncbi/gtdb), binning and hierarchical classification,\
-    \ customized reporting and more\n"
+  description: 'ganon2 classifies genomic sequences against large sets of references
+    efficiently,
+
+    with integrated download and update of databases (refseq/genbank), taxonomic profiling
+
+    (ncbi/gtdb), binning and hierarchical classification, customized reporting and
+    more
+
+    '
   home: https://github.com/pirovc/ganon
   license: MIT License
   license_family: MIT
-  license_file: /ganon/LICENSE
-  summary: ganon2 classifies genomic sequences against large sets of references efficiently,
+  license_file: LICENSE
+  summary: ganon2 classifies genomic sequences against large sets of references efficiently
 build:
+  ignore_run_exports:
+  - seqan3
   number: 0
   run_exports:
   - null
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=2.2.0
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
   identifiers:
-  - doi:10.1101/406017
+  - doi:10.1093/nargab/lqaf094
   recipe-maintainers:
   - pirovc
 package:
   name: ganon
-  version: 2.1.1
+  version: 2.2.0
 requirements:
   build:
   - make
@@ -30,37 +39,36 @@ requirements:
   - cmake >=3.5
   host:
   - bzip2
-  - seqan3 ==3.3.0
   - catch2 ==2.*
+  - coreutils
+  - curl
   - cxxopts >=2.2.0
-  - python
-  - pandas >=1.2.0
-  - multitax >=1.3.1
-  - genome_updater >=0.6.4
-  - grep
-  - coreutils
-  - curl
   - diffutils
-  - zlib
+  - genome_updater >=0.7.0
+  - grep
+  - multitax >=1.4.0
+  - pandas >=1.2.0
   - parameterized >=0.9.0
-  - raptor ==3.*
-  run:
-  - bzip2
   - python
-  - pandas >=1.2.0
-  - multitax >=1.3.1
-  - genome_updater >=0.6.4
-  - grep
+  - raptor ==3.*
+  - seqan3 ==3.3.0
+  - setuptools
+  - setuptools_scm
+  - zlib
+  run:
   - coreutils
   - curl
   - diffutils
-  - zlib
+  - genome_updater >=0.7.0
+  - grep
+  - multitax >=1.4.0
+  - pandas >=1.2.0
+  - python
   - raptor ==3.*
 source:
-- folder: ganon
-  sha256: adba3d1e632a49c9c7b4c7bbf07dfa164cf826465b802e4f9b254a3bc5bc0634
-  url: https://github.com/pirovc/ganon/archive/2.1.1.tar.gz
-- folder: robin-hood-hashing
+- sha256: f413088fd7233a097358c54b0dbae190898706b42e5eed3129671bbbf47db585
+  url: https://github.com/pirovc/ganon/archive/v2.2.0.tar.gz
+- folder: libs/robin-hood-hashing
   sha256: dcf2b7fa9ef9dd0c67102d94c28e8df3effbe1845e0ed1f31f4772ca5e857fc4
   url: https://github.com/martinus/robin-hood-hashing/archive/refs/tags/3.11.3.tar.gz
 test:

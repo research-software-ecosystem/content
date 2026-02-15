@@ -14,18 +14,12 @@ about:
     data to constrain  or restrain structure prediction. These include chemical mapping,
     enzymatic  mapping, NMR, and SHAPE data.
 build:
-  number: 2
+  number: 0
   run_exports:
   - null
-extra:
-  additional-platforms:
-  - linux-aarch64
-  - osx-arm64
-  identifiers:
-  - biotools:rnastructure
 package:
   name: rnastructure
-  version: 6.4
+  version: 6.5
 requirements:
   build:
   - make
@@ -35,11 +29,13 @@ requirements:
   - libgomp
   host:
   - llvm-openmp
+  - libgomp
   run:
   - llvm-openmp
 source:
-  sha256: e2a372a739153293185eeffee3d3265f9f50dc6976053a1d013ccf086b06d975
-  url: http://rna.urmc.rochester.edu/Releases/6.4/RNAstructureSource.tgz
+  sha256: 2e6064aebe568549beca149df0e7a3d977ddf12b9907eea01ae7b81984c8ad45
+  url: http://rna.urmc.rochester.edu/Releases/6.5/RNAstructureSource.tgz
 test:
   commands:
-  - bifold -h
+  - bifold -h || true
+  - fold -h || true
