@@ -1,0 +1,121 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2026-02-12T14:54:22.759092Z",
+    "biotoolsCURIE": "biotools:segmentation_evaluation",
+    "biotoolsID": "segmentation_evaluation",
+    "collectionID": [
+        "EUCAIM"
+    ],
+    "confidence_flag": "tool",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "jose.almeida@research.fchampalimaud.org",
+            "name": "José Guilherme de Almeida",
+            "orcidid": "https://orcid.org/0000-0002-1887-0157",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Documentor",
+                "Maintainer",
+                "Primary contact"
+            ]
+        },
+        {
+            "name": "Nickolas Papanikolaou",
+            "orcidid": "https://orcid.org/0000-0003-3298-2072",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Contributor"
+            ]
+        }
+    ],
+    "description": "This tool calculates segmentation metrics (Dice score, intersection over union, Hausdorff distance, and normalised surface distance) between two sets of masks. It can be used to quickly calculate a number of metrics for segmentation models.",
+    "documentation": [
+        {
+            "type": [
+                "API documentation",
+                "Quick start guide"
+            ],
+            "url": "https://github.com/josegcpa/eucaim-metrics/tree/master"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "uv run eval_segmentation \\\n    --pred test_data/predicted/ \\\n    --gt test_data/groundtruth/ \\\n    --output test.json \\\n    --n_classes 2 \\\n    --verbose \\\n    --params '{\"normalised_surface_distance\": {\"max_distance\": 100.0}}'",
+            "input": [
+                {
+                    "data": {
+                        "term": "Raw image",
+                        "uri": "http://edamontology.org/data_3424"
+                    },
+                    "format": [
+                        {
+                            "term": "nii",
+                            "uri": "http://edamontology.org/format_3549"
+                        }
+                    ]
+                }
+            ],
+            "note": "This is the core command which can be used to calculate image segmentation metrics. For more options please run `uv run eval_segmentation --help`",
+            "operation": [
+                {
+                    "term": "Image analysis",
+                    "uri": "http://edamontology.org/operation_3443"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/josegcpa/eucaim-metrics/tree/master",
+    "lastUpdate": "2026-02-12T15:01:23.363666Z",
+    "license": "CC-BY-4.0",
+    "link": [
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/josegcpa/eucaim-metrics/tree/master"
+        }
+    ],
+    "maturity": "Emerging",
+    "name": "Segmentation evaluation",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
+    "owner": "josegcpa",
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "MRI",
+            "uri": "http://edamontology.org/topic_3444"
+        },
+        {
+            "term": "Medical informatics",
+            "uri": "http://edamontology.org/topic_3063"
+        }
+    ],
+    "version": [
+        "v0.1"
+    ]
+}

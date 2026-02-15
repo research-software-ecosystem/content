@@ -1,0 +1,200 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2026-02-12T16:06:53.794717Z",
+    "biotoolsCURIE": "biotools:vvv2_display",
+    "biotoolsID": "vvv2_display",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "fabrice.touzain@anses.fr",
+            "name": "Fabrice Touzain",
+            "note": "Dr. in Bioinformatics at ANSES (\"Swine virology, innovation and genomics\" Unit, Bioinformatics Team)",
+            "orcidid": "https://orcid.org/0000-0002-1103-2425",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Primary contact"
+            ],
+            "url": "https://github.com/ANSES-Ploufragan/vvv2_display"
+        }
+    ],
+    "description": "Display SNP proportions (vardict outputs), CDS (vadr annotations) of an assembly/genome, coverage depth (samtools depth), in png image and a tsv file, filtering results to summarize analyses (alignment, variant calling, annotation).",
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "vvv2_display.py -p vadr_pass_annotation.tbl -f vadr_fail_annotation.tbl -s vadr_seqstat.txt -n vardict-java_res.vcf -o samtools_depth_out.txt -r signif_snp_annot_res.png -u signif_snp_res.tsv -x signif_snp_res.vcf",
+            "input": [
+                {
+                    "data": {
+                        "term": "Feature table",
+                        "uri": "http://edamontology.org/data_1270"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence variations",
+                        "uri": "http://edamontology.org/data_3498"
+                    },
+                    "format": [
+                        {
+                            "term": "VCF",
+                            "uri": "http://edamontology.org/format_3016"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Text data",
+                        "uri": "http://edamontology.org/data_2526"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                }
+            ],
+            "note": "Inputs:\n- tbl pass vadr annotation file\n- tbl fail vadr annotation file\n- seqstat vadr output file\n- vcf vardict-java variant calling results (all)\n- samtools depth text file (coverage depth of an alignment)\nOutputs:\n- png summary file with all info\n- tsv file of indexed significant variant (index showed on png figure)\n- [optional] vcf file of significant variants only",
+            "operation": [
+                {
+                    "term": "Base position variability plotting",
+                    "uri": "http://edamontology.org/operation_0287"
+                },
+                {
+                    "term": "Sequence assembly visualisation",
+                    "uri": "http://edamontology.org/operation_3184"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Annotated text",
+                        "uri": "http://edamontology.org/data_3779"
+                    },
+                    "format": [
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Image",
+                        "uri": "http://edamontology.org/data_2968"
+                    },
+                    "format": [
+                        {
+                            "term": "PNG",
+                            "uri": "http://edamontology.org/format_3603"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence variations",
+                        "uri": "http://edamontology.org/data_3498"
+                    },
+                    "format": [
+                        {
+                            "term": "VCF",
+                            "uri": "http://edamontology.org/format_3016"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/ANSES-Ploufragan/vvv2_display",
+    "language": [
+        "Python",
+        "R"
+    ],
+    "lastUpdate": "2026-02-12T16:07:53.280544Z",
+    "license": "GPL-3.0",
+    "link": [
+        {
+            "note": "Galaxy wrapper",
+            "type": [
+                "Other"
+            ],
+            "url": "https://toolshed.g2.bx.psu.edu/view/ftouzain/vvv2_display/fcd3aa68bd39"
+        },
+        {
+            "note": "Listing of Galaxy workflow performing all steps:\n- alignment on ref/assembly\n- annotation of ref/assembly\n- coputation of coverage depth\n- vardict variant calling\n- vvv2_display synthesis\n\nOne can be found for each sequencing technology (Illumina SE/Proton, Illumina PE, nanopore, pacbio",
+            "type": [
+                "Other"
+            ],
+            "url": "https://workflowhub.eu/search?q=vvv2"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/ANSES-Ploufragan/vvv2_display"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "vvv2_display",
+    "operatingSystem": [
+        "Linux"
+    ],
+    "otherID": [
+        {
+            "type": "doi",
+            "value": "doi:10.3390/v17101385",
+            "version": "0.2.4.0"
+        }
+    ],
+    "owner": "fabrice",
+    "publication": [
+        {
+            "doi": "10.3390/v17101385",
+            "note": "published in Viruses journal",
+            "pmcid": "PMC12567792",
+            "pmid": "41157655",
+            "type": [
+                "Primary"
+            ],
+            "version": "0.2.4.0"
+        }
+    ],
+    "relation": [
+        {
+            "biotoolsID": "R",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "ggplot2",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "pysam",
+            "type": "uses"
+        }
+    ],
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
+        },
+        {
+            "term": "Virology",
+            "uri": "http://edamontology.org/topic_0781"
+        }
+    ],
+    "version": [
+        "0.2.5.0"
+    ]
+}
