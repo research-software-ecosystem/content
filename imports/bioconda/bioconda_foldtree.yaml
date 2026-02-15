@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/DessimozLab/fold_tree
+  license: MIT
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Foldtree creates phylogenetic trees from protein structures using Foldseek.
+additional-platforms:
+- linux-aarch64
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+extra: null
+identifiers:
+- doi:10.1038/s41594-025-01649-8
+package:
+  name: foldtree
+  version: 1.1.0rc2
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - click
+  - snakemake-minimal
+source:
+  sha256: 04c721a12a68c2121932d9f7c5ceb8549278f9bef4e0d0b0201e0fe0aaeb4c1a
+  url: https://github.com/DessimozLab/fold_tree/archive/refs/tags/v1.1.0rc2.tar.gz
+test:
+  commands:
+  - foldtree --help
+  - foldtree --version

@@ -1,36 +1,39 @@
 about:
-  description: "MultiTax is a Python package that provides a common and generalized\
-    \ set \nof functions to download, parse, filter and explore multiple biological\
-    \ \ntaxonomies (GTDB, NCBI, Silva, Greengenes, Open Tree taxonomy) and \ncustom\
-    \ formatted taxonomies.\n"
+  description: "MultiTax is a Python package that provides a standardised set \nof\
+    \ functions for downloading, parsing, filtering, exploring, \ntranslating, converting\
+    \ and writing multiple taxonomies, \nincluding GTDB, NCBI, Silva, Greengenes and\
+    \ Open Tree Taxonomy, \nas well as custom-formatted taxonomies.\n"
   dev_url: https://github.com/pirovc/multitax
   home: https://github.com/pirovc/multitax
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Python package to obtain, parse and explore biological taxonomies.
+  summary: A Python package for obtaining, parsing and exploring biological taxonomies.
 build:
   noarch: python
   number: 0
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.4.0
 extra:
   recipe-maintainers:
   - pirovc
 package:
   name: multitax
-  version: 1.3.2
+  version: 1.4.0
 requirements:
   host:
-  - python >=3.4
+  - python >=3.10
   - pip
   - setuptools
+  - setuptools_scm
   run:
-  - python >=3.4
+  - python >=3.10
 source:
-  sha256: b55cee6bc92e15adae0a6668af15210abd2f17b41996ae1f27a36b251c349d32
-  url: https://github.com/pirovc/multitax/archive/1.3.2.tar.gz
+  sha256: 46cf5509f1e43eca5650dcd5fe2a9300cbaabb2e8ee7b8c05d0410fb0a1e1dbe
+  url: https://github.com/pirovc/multitax/archive/v1.4.0.tar.gz
 test:
   imports:
   - multitax
