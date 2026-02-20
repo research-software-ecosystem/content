@@ -1,4 +1,4 @@
-name: generate Tools Platform Ecosystem contents report
+name: generate Research Software Ecosystem contents report
 
 on: 
   workflow_dispatch:
@@ -31,8 +31,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |  
         cd ${{ github.workspace }}/content
-        git config --local user.email "tpe-bot@github.com"
-        git config --local user.name "Tools Platform Ecosystem bot"
+        git config --local user.email "rsec-bot@github.com"
+        git config --local user.name "Research Software Ecosystem bot"
         cd report
         git add .
         if git commit -m "generate new contents report on $(date)"; then
