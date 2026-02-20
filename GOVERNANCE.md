@@ -8,7 +8,7 @@ Research software is a critical component of modern data-driven research. Thus, 
 
 ## Overview/Scope 
 
-This document defines the governance model, roles, responsibilities, and ecision-making processes of the Research Software Ecosystem (RSEc). As an open source initiative bringing together under the same umbrella different projects and initiatives, the RSEc follows the guidelines, recommendations and standards put forward by ELIXIR, and other communities driven initiatives in the framework of the Open Science efforts.
+This document defines the governance model, roles, responsibilities, and decision-making processes of the Research Software Ecosystem (RSEc). As an open source initiative bringing together under the same umbrella different projects and initiatives, the RSEc follows the guidelines, recommendations and standards put forward by ELIXIR, and other communities driven initiatives in the framework of the Open Science efforts.
 
 ## Roles And Responsibilities within the RSEc
 
