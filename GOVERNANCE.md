@@ -10,7 +10,7 @@ As an open source project bringing together under the same umbrella different pr
 
 # Roles And Responsibilities within the Research Software Ecosystem (RSEc)
 
-This section lists a number of categories of roles and users for the tools ecosystem. All users and contributors are subject to the code of conduct specified and available in the RSEc main repository and website.
+This section lists a number of categories of roles and users for the RSEc. All users and contributors are subject to the code of conduct specified and available in the RSEc main repository and website.
 
 ## Users
 
