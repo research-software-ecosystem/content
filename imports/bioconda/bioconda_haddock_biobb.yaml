@@ -9,34 +9,23 @@ about:
   summary: HADDOCK3 is the next generation integrative modelling software in the long-lasting
     HADDOCK project.
 build:
-  number: 3
+  noarch: python
+  number: 0
   run_exports:
   - null
-  script: "ln -sf $CC $BUILD_PREFIX/bin/gcc\nln -sf $CXX $BUILD_PREFIX/bin/g++\n -m\
-    \ pip install . --no-deps --no-build-isolation --no-cache-dir -vvv\n"
 extra:
-  additional-platforms:
-  - linux-aarch64
-  - osx-arm64
   recipe-maintainers:
   - gbayarri
   - RubenChM
 package:
   name: haddock_biobb
-  version: '2025.5'
+  version: '2025.11'
 requirements:
-  build:
-  - null
-  - null
-  - python
-  - pip
-  - setuptools
   host:
-  - python
+  - python >=3.10,<3.13
   - setuptools
-  - pip
   run:
-  - python
+  - python >=3.10,<3.13
   - pip
   - biopython
   - jsonpickle
@@ -50,9 +39,6 @@ requirements:
   - kaleido-core
   - freesasa
   - pdb-tools
-source:
-  sha256: 14f696e20a2ff5fcc2596abd57248100acd6ea695eeb1f03040de353b7ad2971
-  url: https://pypi.io/packages/source/h/haddock3/haddock3-2025.5.0.tar.gz
 test:
   commands:
-  - haddock3 -v
+  - echo "DONE!"

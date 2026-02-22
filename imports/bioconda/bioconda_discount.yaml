@@ -1,0 +1,32 @@
+about:
+  dev_url: https://github.com/jtnystrom/Discount
+  doc_url: https://github.com/jtnystrom/Discount/blob/v3.0.1/README.md
+  home: https://github.com/jtnystrom/Discount
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE.txt
+  summary: Discount is a very scalable k-mer counting and indexing tool based on Apache
+    Spark.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab156
+  recipe-maintainers:
+  - jtnystrom
+package:
+  name: discount
+  version: 3.0.1
+requirements:
+  run:
+  - openjdk >=17, <22
+  - pyspark >=3.1.0, <4.0.0
+source:
+  sha256: a94f4b55389ebe4e50a1d00deb44651ba297cfb071a3c70b778536a05bc5c929
+  url: https://github.com/jtnystrom/Discount/releases/download/v3.0.1/Discount-3.0.1_Spark3.1.zip
+test:
+  commands:
+  - discount.sh -h
