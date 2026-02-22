@@ -11,25 +11,27 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - PertuyF
 package:
   name: airr
-  version: 1.5.1
+  version: 1.6.1
 requirements:
   host:
   - pip
   - python
+  - setuptools
   run:
   - pandas >=0.18.0
   - python
   - pyyaml >=3.12
+  - setuptools <78
   - yamlordereddictloader >=0.4.0
 source:
-  sha256: 71f89eaf0c2fb4fe038a6e8aad9c58e1712cb06b92021e73d97d08c59b7b7149
-  url: https://pypi.io/packages/source/a/airr/airr-1.5.1.tar.gz
+  sha256: f701fde0440d5848e01374ce9026f6c6cf85cbbb412a148f95ffc53c9d1bdddb
+  url: https://pypi.io/packages/source/a/airr/airr-1.6.1.tar.gz
 test:
   commands:
   - airr-tools --help

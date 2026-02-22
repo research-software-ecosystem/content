@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/pinin4fjords/nf-metro
+  license: MIT
+  license_file: LICENSE
+  summary: Metromap-style pipeline workflow components
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - pinin4fjords
+  - matthdsm
+package:
+  name: nf-metro
+  version: 0.4.7
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - hatchling
+  run:
+  - python >=3.10
+  - click >=8.0
+  - drawsvg >=2.0
+  - networkx >=3.0
+  - pillow >=9.0
+source:
+  sha256: f5798c15c4943327402a46277111d6faa89594c8bfb7e9af60a28a2db177398a
+  url: https://pypi.io/packages/source/n/nf-metro/nf_metro-0.4.7.tar.gz
+test:
+  commands:
+  - nf-metro --help

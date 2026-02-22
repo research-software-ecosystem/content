@@ -10,8 +10,10 @@ build:
   entry_points:
   - tolkein = tolkein:cli
   noarch: python
-  number: 0
-  script: ' -m pip install . -vv'
+  number: 1
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
 extra:
   recipe-maintainers:
   - npavlovikj
@@ -22,11 +24,13 @@ requirements:
   host:
   - pip
   - python
+  - setuptools
   run:
   - docopt >=0.6.2
   - python
   - pyyaml
   - requests >=2.24.0
+  - setuptools <78
   - tqdm >=4.48.1
   - ujson >=3.0.0
   - xmltodict >=0.12.0
