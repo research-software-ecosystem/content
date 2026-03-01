@@ -1,0 +1,57 @@
+about:
+  description: 'AlphaBase provides foundational data structures and utilities for
+
+    mass spectrometry-based proteomics in the AlphaPept ecosystem.
+
+    '
+  dev_url: https://github.com/MannLabs/alphabase
+  doc_url: https://alphabase.readthedocs.io/en/latest/
+  home: https://github.com/MannLabs/alphabase
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE.txt
+  summary: An infrastructure Python package of the AlphaX ecosystem
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: alphabase
+  version: 1.8.1
+requirements:
+  host:
+  - python >=3.9
+  - setuptools
+  - pip
+  run:
+  - python >=3.9
+  - numba
+  - numpy
+  - pandas
+  - h5py
+  - contextlib2
+  - python-xxhash
+  - biopython
+  - tqdm
+  - regex
+  - pyarrow
+  - pyahocorasick
+  - pyteomics
+  - pyyaml
+  - lxml
+  - rdkit
+source:
+  sha256: 85e8e25b9864044b9776478622d8bf2929ef0f69b027a63e9dda733e97126d74
+  url: https://pypi.org/packages/source/a/alphabase/alphabase-1.8.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - alphabase
+  requires:
+  - pip

@@ -1,0 +1,37 @@
+about:
+  home: https://github.com/mokuno3430/a-liner
+  license: MIT
+  license_file: LICENSE
+  summary: Flexible command-line tool for linear visualization of genome-scale sequence
+    alignments
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - mokuno3430
+package:
+  name: a-liner
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61.0
+  run:
+  - python >=3.8
+  - matplotlib-base
+  - pandas
+  - biopython
+  - numpy
+  - openpyxl
+  - bcbio-gff
+source:
+  sha256: e00e17346e0414d8ffe063448dc89a71f7367de357f6a9e84b377c2963b47198
+  url: https://github.com/mokuno3430/a-liner/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - a-liner --help

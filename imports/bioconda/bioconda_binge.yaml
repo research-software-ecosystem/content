@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/zkstewart/BINge
+  doc_url: https://github.com/zkstewart/BINge/wiki
+  home: https://github.com/zkstewart/BINge
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: A Python process for clustering transcripts based on locus orthology.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+package:
+  name: binge
+  version: 1.1.0
+requirements:
+  run:
+  - python >=3.9,<=3.13
+  - ncls >=0.0.68
+  - biopython
+  - numpy
+  - scikit-learn
+  - networkx
+  - intervaltree
+  - pyfaidx
+  - goatools
+  - gmap
+  - mmseqs2
+  - salmon
+  - cd-hit
+source:
+  sha256: 9d9d3fabad6f8dfced0158389f143b4beade86fc56c61356575bbd5eafe6d954
+  url: https://github.com/zkstewart/BINge/archive/v1.1.0.tar.gz
+test:
+  commands:
+  - BINge -h
+  - BINge_post -h
+  - gmap --help
+  - mmseqs -h
+  - salmon -h

@@ -12,7 +12,7 @@ about:
   license_file: LICENSE
   summary: Tool to identify Multi-Nucleotide Variants (MNVs) in genomic sequences.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
   script: 'set -xe
@@ -41,9 +41,11 @@ build:
 
     export HTS_INCLUDE_DIR=$PREFIX/include
 
-    export LIBCLANG_PATH=$PREFIX/lib # [linux and aarch64]
+    export LIBCLANG_PATH=$PREFIX/lib # [linux or aarch64]
 
-    export CPLUS_INCLUDE_PATH=$PREFIX/include # [linux and aarch64]
+    export CPLUS_INCLUDE_PATH=$PREFIX/include # [linux or aarch64]
+
+    export BINDGEN_EXTRA_CLANG_ARGS="-I$PREFIX/include" # [linux or aarch64]
 
     export HTS_STATIC=1
 
@@ -63,9 +65,11 @@ extra:
   - PathoGenOmics-Lab
 package:
   name: get_mnv
-  version: 1.0.0
+  version: 1.0.1
 requirements:
   build:
+  - null
+  - null
   - null
   - pkg-config
   host:
@@ -84,10 +88,8 @@ requirements:
   - null
   - null
 source:
-  patches:
-  - get_mnv-aarch64.patch
-  sha256: b9ba6fe1a5f5f73afa98cde9e348f7861d44690f795338816a8a0724a66e1aa8
-  url: https://github.com/PathoGenOmics-Lab/get_mnv/archive/refs/tags/1.0.0.tar.gz
+  sha256: 68c771531b9f9b70f7e182cfebc6a6cacb98ce0786d937c7d39cfbde83af262a
+  url: https://github.com/PathoGenOmics-Lab/get_mnv/archive/refs/tags/1.0.1.tar.gz
 test:
   commands:
   - get_mnv --help
