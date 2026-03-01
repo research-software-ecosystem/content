@@ -1,0 +1,54 @@
+about:
+  description: 'AlphaRaw provides unified access to raw mass spectrometry data from
+
+    various instrument vendors, converting them to a standardized HDF5
+
+    format for downstream analysis in the AlphaPept ecosystem.
+
+    '
+  dev_url: https://github.com/MannLabs/alpharaw
+  home: https://github.com/MannLabs/alpharaw
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE.txt
+  summary: An open-source Python package to unify raw MS data access and storage
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: alpharaw
+  version: 0.5.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools
+  - pip
+  run:
+  - python >=3.8
+  - pythonnet
+  - h5py
+  - numba
+  - pandas
+  - numpy
+  - pyteomics
+  - lxml
+  - owlready2
+  - alphabase >=1.5.0
+  - alphatims
+source:
+  sha256: 3b184f4be58d382b9d9cec905494d27b9f6aab6e584c405c152c000e049a74d9
+  url: https://github.com/MannLabs/alpharaw/archive/refs/tags/v0.5.0.tar.gz
+test:
+  commands:
+  - pip check
+  - alpharaw --help
+  imports:
+  - alpharaw
+  requires:
+  - pip
