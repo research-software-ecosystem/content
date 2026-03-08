@@ -309,7 +309,7 @@ jobs:
         commit_message: import BioConductor tools data
         branch: bioconductor-import-branch
         create_branch: true
-  merge:
+  merge-imports:
     runs-on: ubuntu-latest
     needs:
       - biotools
@@ -350,10 +350,70 @@ jobs:
           merge_branch_if_exists "debianmed-import-branch"
           merge_branch_if_exists "bioconductor-import-branch"
           git push origin master
+  bioconductor-to-biotools:
+    runs-on: ubuntu-latest
+    needs:
+      - merge-imports
+    outputs:
+      commit_hash: ${{ steps.commit-and-push-bioconductor-to-biotools.outputs.commit_hash }}
+    steps:
+    - name: checkout contents repository
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
+    - name: delete previous import branch
+      run: |
+        branch_name="bioconductor-to-biotools-branch"
+        # Check if the branch exists on the remote repository
+        if git rev-parse --verify --quiet "origin/$branch_name"; then
+          # The branch exists, so it can be safely deleted
+          git push origin --delete "$branch_name"
+          echo "Branch $branch_name has been deleted."
+        else
+          # The branch does not exist
+          echo "Branch $branch_name does not exist on the remote repository."
+        fi
+    - name: Create and checkout feature branch
+      run: git checkout -b bioconductor-to-biotools-branch
+    - name: run bioconductor to biotools conversion
+      uses: research-software-ecosystem/utils/bioconductor-to-biotools@main
+      with:
+        repo-user: ${{ secrets.GITHUB_USER }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit and Push Changes
+      id: commit-and-push-bioconductor-to-biotools
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_user_name: Tools Platform Ecosystem bot
+        commit_user_email: tpe-bot@github.com
+        commit_author: Tools Platform Ecosystem bot <tpe-bot@github.com>
+        commit_message: convert bioconductor to biotools format
+        branch: bioconductor-to-biotools-branch
+        create_branch: true
+  merge-bioconductor:
+    runs-on: ubuntu-latest
+    needs:
+      - bioconductor-to-biotools
+    if: always()
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Merge bioconductor-to-biotools branch
+        run: |
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          if git ls-remote --exit-code --heads origin "bioconductor-to-biotools-branch" &>/dev/null; then
+            git fetch origin "bioconductor-to-biotools-branch"
+            git merge "origin/bioconductor-to-biotools-branch"
+            echo "Merged bioconductor-to-biotools-branch into the current branch."
+          else
+            echo "Branch bioconductor-to-biotools-branch does not exist on the remote repository."
+          fi
+          git push origin master
   clean-branches:
     runs-on: ubuntu-latest
     needs:
-      - merge
+      - merge-bioconductor
     if: always()
     steps:
       - name: Checkout Repository
@@ -382,3 +442,4 @@ jobs:
           delete_branch_if_exists "galaxytool-import-branch"
           delete_branch_if_exists "debianmed-import-branch"
           delete_branch_if_exists "bioconductor-import-branch"
+          delete_branch_if_exists "bioconductor-to-biotools-branch"
