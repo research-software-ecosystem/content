@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/omicscodeathon/cellitac
+  home: https://github.com/omicscodeathon/cellitac
+  license: MIT
+  license_file: LICENSE
+  summary: Cell type identification using Transcription factor Analysis and Chromatin
+    accessibility
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - RanaHamedAbuZeid
+  - laitanawe
+package:
+  name: cellitac
+  version: 1.0.4
+requirements:
+  host:
+  - python >=3.9,<3.13
+  - pip
+  - setuptools >=68
+  - wheel
+  run:
+  - python >=3.9,<3.13
+  - numpy
+  - pandas
+  - scikit-learn
+  - xgboost
+  - imbalanced-learn
+  - matplotlib-base
+  - seaborn
+  - plotly
+  - networkx
+  - openpyxl
+  - rpy2
+  - r-base >=4.3
+  - r-seurat
+  - r-signac
+  - bioconductor-singler
+  - bioconductor-celldex
+  - bioconductor-ensdb.hsapiens.v75
+  - r-hdf5r
+  - r-matrix
+source:
+  sha256: 2abc0de03e3728ecf2eb62a86baf93d672d8b79f155bc835cd115ae4695b1bf2
+  url: https://files.pythonhosted.org/packages/source/c/cellitac/cellitac-1.0.4.tar.gz
+test:
+  commands:
+  - cellitac --help
+  - cellitac-preprocess --help
+  - cellitac-model --help
+  imports:
+  - cellitac

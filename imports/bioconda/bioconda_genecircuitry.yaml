@@ -1,0 +1,82 @@
+about:
+  description: 'A modular, checkpoint-enabled pipeline for TRN analysis from
+
+    single-cell RNA-seq data. Integrates Scanpy for preprocessing and
+
+    clustering, CellOracle for GRN inference, and Hotspot for embedding-aware
+
+    gene modules identification. Provides an HTML/PDF reporting layer
+
+    and a standalone ``genecircuitry`` CLI entry point.
+
+    '
+  dev_url: https://github.com/samuelecancellieri/genecircuitry
+  doc_url: https://github.com/samuelecancellieri/genecircuitry/blob/main/README.md
+  home: https://github.com/samuelecancellieri/genecircuitry
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'GeneCircuitry: TRN analysis from single-cell data (Scanpy, CellOracle,
+    Hotspot)'
+build:
+  entry_points:
+  - genecircuitry = genecircuitry.pipeline.controller:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: $PYTHON -m pip install --no-deps --no-build-isolation -vv .
+extra:
+  recipe-maintainers:
+  - samuelecancellieri
+package:
+  name: genecircuitry
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.9,<3.11
+  - pip
+  - setuptools
+  - wheel
+  - setuptools_scm >=6.2
+  run:
+  - python >=3.9,<3.11
+  - numpy >=1.20
+  - scipy
+  - numba >=0.50.1
+  - h5py >=3.1.0
+  - pyarrow >=0.17
+  - joblib
+  - tqdm >=4.45
+  - pandas >=1.3.0
+  - anndata >=0.8.0
+  - scanpy >=1.9.0
+  - matplotlib-base >=3.6.3
+  - seaborn
+  - igraph >=0.10.1
+  - louvain
+  - leidenalg
+  - umap-learn
+  - scikit-learn
+  - networkx >=2.6.0
+  - velocyto.py >=0.17
+  - genomepy >=0.8.4
+  - gimmemotifs >=0.14.4
+  - goatools
+  - gseapy
+  - adjusttext >=0.7.3
+  - fa2_modified
+  - weasyprint
+  - jupyter
+source:
+  sha256: 268c351774b84c11bc2ad7f7ef723b3c16258e28632c29813de1140ce4d606a8
+  url: https://github.com/samuelecancellieri/genecircuitry/archive/refs/tags/v0.1.4.tar.gz
+test:
+  commands:
+  - genecircuitry --help
+  imports:
+  - genecircuitry
+  - genecircuitry.pipeline
+  - genecircuitry.preprocessing
+  - genecircuitry.plotting
+  - genecircuitry.reporting

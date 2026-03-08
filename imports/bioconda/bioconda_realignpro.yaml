@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/chulbioinfo/ReAlignPro
+  home: https://github.com/chulbioinfo/ReAlignPro
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: 'ReAlignPro: FASTA-to-MAF, MAF-to-BED, and TSV-to-figures utilities for
+    comparative genomics.'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - chulbioinfo
+package:
+  name: realignpro
+  version: 0.1.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python
+  - matplotlib-base >=3.5
+  - lastz
+  - samtools
+  - muscle >=3.8.1551
+source:
+  sha256: fd91f43e17bb572d6321f9a76c418f15f14b41fa74e011373e8cc76587def1b8
+  url: https://github.com/chulbioinfo/ReAlignPro/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - realignpro --help
+  - realignpro fa2maf --help
+  - realignpro maf2bed --help
+  - realignpro tsv2fig --help
+  - python -c "import realignpro; import realignpro.cli"

@@ -9,18 +9,20 @@ build:
   - iCount-Mini = iCount.cli:main
   noarch: python
   number: 0
+  run_exports:
+  - null
   script: ' -m pip install . -vv --ignore-installed --no-deps'
 extra:
   recipe-maintainers:
   - marc-jones
 package:
   name: icount-mini
-  version: 3.0.1
+  version: 4.0.0
 requirements:
   host:
   - pip
   - python
-  - sphinx >=1.4
+  - setuptools
   run:
   - cutadapt >=1.10
   - matplotlib-base
@@ -33,8 +35,8 @@ requirements:
   - sphinx >=1.4
   - bedtools ==2.30.0
 source:
-  sha256: 795e2ee77c5a23c96c01d4144c5b78103982ec3aa7274fea8f3ed94c0fd511ac
-  url: https://pypi.io/packages/source/i/iCount-Mini/iCount-Mini-3.0.1.tar.gz
+  sha256: a248b4017e9886502f71e0b1d53f6fa90b278d88448b046635c672b8f05c65fb
+  url: https://github.com/ulelab/iCount-Mini/archive/refs/tags/v4.0.0.tar.gz
 test:
   commands:
   - iCount-Mini --help

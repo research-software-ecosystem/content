@@ -10,32 +10,27 @@ build:
   run_exports:
   - null
   script:
-  - -m pip install . --no-deps -vv
+  - -m pip install . --no-deps --no-build-isolation -vv
 extra:
   recipe-maintainers:
   - MarkStreek
 package:
   name: pacini_typing
-  version: 2.0.2
+  version: 3.0.1
 requirements:
   host:
-  - python >=3.10,<=3.12
+  - python >=3.12
   - pip
+  - setuptools
   run:
-  - python >=3.10,<=3.12
-  - biopython
-  - pysam
-  - pyyaml
-  - networkx
-  - scipy
-  - numpy
-  - tqdm
+  - python >=3.12
   - pandas
+  - pyyaml
   - blast
   - kma
 source:
-  sha256: 3c4b064285cd48504ee41a43c704e1a3ef560335b75dcf40c178833db733acbb
-  url: https://github.com/RIVM-bioinformatics/Pacini-typing/archive/refs/tags/v2.0.2.tar.gz
+  sha256: 28b17639e9291c71797d8e477e1e8b67776e49f7bbf6d94d02e60591cbc91a19
+  url: https://github.com/RIVM-bioinformatics/Pacini-typing/archive/refs/tags/v3.0.1.tar.gz
 test:
   commands:
   - pacini_typing --help
