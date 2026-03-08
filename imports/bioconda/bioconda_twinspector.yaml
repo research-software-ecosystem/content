@@ -1,0 +1,35 @@
+about:
+  home: https://github.com/clementlab/TwInsPEctor
+  license: MIT
+  license_file: LICENSE
+  summary: 'TwInsPEctor: A tool for twin prime editing analysis.'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+package:
+  name: twinspector
+  version: 0.1.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.8
+  - numpy
+  - crispresso2
+  - pandas
+  - matplotlib-base
+  - seaborn
+source:
+  sha256: 24b027ea585e019f26995751522f54912153e6c90cfd95bc79d08ec33fbd3038
+  url: https://github.com/clementlab/TwInsPEctor/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - TwInsPEctor -h
+  imports:
+  - TwInsPEctor

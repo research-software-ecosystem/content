@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/SweBiTS/JolTax
+  license: MIT
+  license_file: LICENSE
+  summary: JolTax is a high-performance, vectorized taxonomy library for Python.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - danisven
+package:
+  name: joltax
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.8
+  - numpy >=1.20.0
+  - polars >=0.20.0
+  - rapidfuzz >=3.0.0
+source:
+  sha256: 11fccdf67dc7e11194cb540785425b7f13b8fced44e8e01ee7a7654862202716
+  url: https://pypi.org/packages/source/j/joltax/joltax-0.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - joltax
+  requires:
+  - pip
+  - python
