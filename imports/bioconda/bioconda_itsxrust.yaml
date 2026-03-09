@@ -1,14 +1,12 @@
 about:
   home: https://github.com/ayobi/ITSxRust
   license: MIT
-  license_file:
-  - LICENSE
-  - THIRDPARTY.yml
-  summary: ITSxRust is a tool for extracting ITS regions from DNA sequences.
+  license_file: LICENSE
+  summary: HMMER-based ITS subregion extraction for long-read fungal metabarcoding.
 build:
-  number: 0
+  number: 1
   run_exports:
-  - null
+  - itsxrust >=0.2.2,<0.3.0a0
 extra:
   recipe-maintainers:
   - ayobi
@@ -19,7 +17,8 @@ requirements:
   build:
   - null
   - cargo-bundle-licenses
-  host: []
+  host:
+  - openssl
   run:
   - hmmer
 source:
@@ -29,3 +28,4 @@ test:
   commands:
   - itsxrust --help
   - itsxrust extract --help
+  - test -f "$PREFIX/share/itsxrust/hmm/F.hmm"
