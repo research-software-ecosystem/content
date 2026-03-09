@@ -6,9 +6,11 @@
 | **José María Fernández** | @jmfernandez |
 | **Alban Gaignard** | @albangaignard |
 | **Johan Gustafsson** | @supernord |
+| **Matúš Kalaš** | @matuskalas |
 | **Hervé Ménager** | @hmenager |
 | **Ana Mendes** | @anitamnd |
 | **Magnus Palmblad** | @magnuspalmblad |
+| **Dmitry Repchevsky** | @redmitry |
 | **Claire Rioualen** | @rioualen |
 | **Veit Schwämmle** | @veitveit |
 | **Paul Zierep** | @paulzierep |
@@ -18,6 +20,8 @@
 
 | Name | GitHub |
 |------|----------------|
+| **Matúš Kalaš** | @matuskalas |
+| **Maria Chavero Diez** | @mariachavero |
 | **Hervé Ménager** | @hmenager |
 | **Veit Schwämmle** | @veitveit |
 | **Johan Gustafsson** | @supernord |
