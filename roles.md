@@ -13,18 +13,22 @@
 | **Veit Schwämmle** | @veitveit |
 | **Paul Zierep** | @paulzierep |
 
-__
 
 # RSEc strategic committee
+
+| Name | GitHub |
+|------|----------------|
 | **Hervé Ménager** | @hmenager |
 | **Veit Schwämmle** | @veitveit |
 | **Johan Gustafsson** | @supernord |
 | **Mihail Anton** | @mihai-sysbio |
 
-__
 
 # RSEc strategic committee chair
-__
+
+| Name | GitHub |
+|------|----------------|
+
 
 # RSEc contributors (past and present)
 
