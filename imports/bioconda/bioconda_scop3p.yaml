@@ -1,0 +1,56 @@
+about:
+  description: 'Scop3P provides a unique and powerful resource to explore and understand
+    the
+
+    impact of phospho-sites on human protein structure and function,
+
+    and can thus serve as a springboard for researchers seeking to analyse and,
+
+    interpret a given phospho-site or phosphoprotein in a structural, biophysical,
+
+    and biological context.
+
+    '
+  dev_url: https://github.com/Bio2Byte/scop3p-api-client
+  doc_url: https://iomics.ugent.be/scop3p/documentation
+  home: https://iomics.ugent.be/scop3p/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: The official Scop3P REST API Python client
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.18909477
+  - doi:10.1021/acs.jproteome.0c00306
+  recipe-maintainers:
+  - Pathmanaban
+  - dunecatnat
+  - agdiaz
+package:
+  name: scop3p
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.6
+  - requests >=2.0
+source:
+  sha256: bdbab752bd1a02590941f364742f7a19f8fcfb7bc1fcd6726d6e807aa2baae95
+  url: https://pypi.org/packages/source/s/scop3p/scop3p-1.1.0.tar.gz
+test:
+  commands:
+  - scop3p --help
+  - scop3p --version
+  - pip check
+  imports:
+  - scop3p_api_client
+  requires:
+  - pip
