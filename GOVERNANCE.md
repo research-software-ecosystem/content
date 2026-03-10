@@ -1,14 +1,14 @@
 # Governance of the Research Software Ecosystem (RSEc)
 
+This document defines the governance model, roles, responsibilities, and decision-making processes of the Research Software Ecosystem (RSEc). As an open source initiative bringing together under the same umbrella different projects and initiatives, the RSEc follows the guidelines, recommendations and standards put forward by ELIXIR, and other communities driven initiatives in the framework of the Open Science efforts.
+
+## Overview 
+
 The Research Software Ecosystem (RSEc) aims to act as a resource for collecting, maintaining, sharing, and preserving high-quality information (“metadata”) about research software across  scientific applications, building upon the ELIXIR’s work in life sciences.
 
 The RSEc currently focuses mainly on the platforms associated to the ELIXIR Tools platform that gather, curate, maintain and consume high-quality metadata associated to research software. Specifically, this ecosystem includes bio.tools, Biocontainers, OpenEBench and WorkflowHub as platforms, and EDAM as the chosen ontology for describing research software metadata. While each contributing platform has its governance model, the aim is to establish a governance model to facilitate the interactions among those systems, enable the inclusion of new contributors within ELIXIR and collaborators beyond ELIXIR, set roles and responsibilities and establish the overall decision making process.
 
 Research software is a critical component of modern data-driven research. Thus, being able to discover, understand and adequately utilize software is essential. Associated metadata software enables discovering, understanding and effective reuse of research software. However, such metadata is often sparse and inconsistent across different resources. The RSEc aims to act as a proxy to maintain and preserve high-quality metadata for describing research software. To make this possible, the RSEc needs to work closely together with heterogeneous metadata resources, often with different objectives, users communities and technical implementations, to bring metadata together, facilitate integration, curation, and re-usability by the contributors and anyone willing to consume the metadata produced in this context.
-
-## Overview/Scope 
-
-This document defines the governance model, roles, responsibilities, and decision-making processes of the Research Software Ecosystem (RSEc). As an open source initiative bringing together under the same umbrella different projects and initiatives, the RSEc follows the guidelines, recommendations and standards put forward by ELIXIR, and other communities driven initiatives in the framework of the Open Science efforts.
 
 ## Roles And Responsibilities within the RSEc
 
