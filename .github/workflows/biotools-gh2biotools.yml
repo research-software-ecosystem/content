@@ -1,4 +1,4 @@
-name: Validate & run gh2biotools on .biotools.json changes
+name: validate & run gh2biotools on .biotools.json changes to master
 
 on:
   push:
@@ -11,41 +11,24 @@ jobs:
   run-gh2biotools:
     runs-on: ubuntu-latest
     if: github.actor != 'biotools-bot'
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          sparse-checkout: 'data'
+          sparse-checkout: '**/*.biotools.json'
           sparse-checkout-cone-mode: false
-          fetch-depth: 0
+          fetch-depth: 2
 
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: check changes to biotools.json files
+        id: changes
+        uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323 # v47.0.5
         with:
-          python-version: '3.x'
+          files: | 
+            **/*.biotools.json
 
 
-      - name: Check for updated/created .biotools.json files
-        id: check_changes
-        run: |
-          files=$(git diff-tree --no-commit-id --name-only --diff-filter=d -r ${{ github.sha }} | grep '\.biotools\.json$' || true)
-
-          if [ -z "$files" ]; then
-            echo "No relevant biotools.json files changed."
-            echo "changed=false" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Files changed:"
-            echo "$files"
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "files=${files}" >> $GITHUB_OUTPUT
-          fi
-
-
-      - name: Validate allowed fields in modified biotools.json files
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: validate allowed fields
         run: |
           echo "Validating fields in changed .biotools.json files..."
           PROTECTED_FIELDS=(
@@ -67,7 +50,7 @@ jobs:
 
           failed=false
 
-          for file in $(echo "${{ steps.check_changes.outputs.files }}"); do
+          for file in $(echo "${{ steps.changes.outputs.all_changed_files }}"); do
             echo "Checking $file..."
         
             git show ${{ github.event.before }}:$file > old.json || continue
@@ -91,27 +74,33 @@ jobs:
           fi
 
 
-      - name: Checkout utils repo
-        if: steps.check_changes.outputs.changed == 'true'
-        uses: actions/checkout@v3
+      - name: checkout utils repo
+        uses: actions/checkout@v4
         with:
           repository: research-software-ecosystem/utils
           path: content-ecosystem-utils
-          
+          sparse-checkout: 'scripts/runbiotools'
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
 
-      - name: Install dependencies
-        if: steps.check_changes.outputs.changed == 'true'
+
+      - name: set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+
+      - name: install dependencies
         working-directory: content-ecosystem-utils/scripts/runbiotools
         run: |
           pip3 install -r requirements.txt
 
 
-      - name: Run gh2biotools.py script
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: run gh2biotools.py script
         env:
           BIOTOOLS_API_TOKEN: ${{ secrets.BIOTOOLS_API_TOKEN }}
         run: |
-          changed_files="${{ steps.check_changes.outputs.files }}"
+          changed_files="${{ steps.changes.outputs.all_changed_files }}"
 
           command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py"
 
