@@ -21,7 +21,7 @@
 | Name | GitHub |
 |------|----------------|
 | **Matúš Kalaš** | @matuskalas |
-| **Maria Chavero Diez** | @mariachavero |
+| **Maria Chavero Diez** | @mchdiez |
 | **Hervé Ménager** | @hmenager |
 | **Veit Schwämmle** | @veitveit |
 | **Johan Gustafsson** | @supernord |
