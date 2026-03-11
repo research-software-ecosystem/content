@@ -29,49 +29,11 @@ jobs:
 
 
       - name: validate allowed fields
+        env:
+          GITHUB_BEFORE_SHA: ${{ github.event.before }}
         run: |
-          echo "Validating fields in changed .biotools.json files..."
-          PROTECTED_FIELDS=(
-            "biotoolsID"
-            "biotoolsCURIE"
-            "additionDate"
-            "collectionID"
-            "elixirPlatform"
-            "elixirNode"
-            "elixirCommunity"
-            "lastUpdate"
-            "owner"
-            "editPermission"
-            "validated"
-            "homepage_status"
-            "elixir_badge"
-            "confidence_flag"
-          )
-
-          failed=false
-
-          for file in $(echo "${{ steps.changes.outputs.all_changed_files }}"); do
-            echo "Checking $file..."
-        
-            git show ${{ github.event.before }}:$file > old.json || continue
-            cat $file > new.json
-
-            for field in "${PROTECTED_FIELDS[@]}"; do
-              old_val=$(jq -e ".$field" old.json 2>/dev/null || echo "")
-              new_val=$(jq -e ".$field" new.json 2>/dev/null || echo "")
-              if [ "$old_val" != "$new_val" ]; then
-                echo "❌ Field '$field' has been modified in $file"
-                failed=true
-              fi
-            done
-          done
-
-          if [ "$failed" = true ]; then
-            echo "::error ::One or more not allowed fields have been modified."
-            exit 1
-          else
-            echo "✅ All changed fields are allowed."
-          fi
+          chmod +x .github/scripts/validate-biotools-fields.sh
+          .github/scripts/validate-biotools-fields.sh ${{ steps.changes.outputs.all_changed_files }}
 
 
       - name: checkout utils repo
@@ -82,6 +44,15 @@ jobs:
           sparse-checkout: 'scripts/runbiotools'
           sparse-checkout-cone-mode: false
           fetch-depth: 1
+
+
+      - name: validate allowed fields
+        working-directory: content-ecosystem-utils/scripts/runbiotools
+        env:
+          GITHUB_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          chmod +x ./validate-biotools-fields.sh
+          ./validate-biotools-fields.sh ${{ steps.changes.outputs.all_changed_files }}
 
 
       - name: set up Python
@@ -102,10 +73,9 @@ jobs:
         run: |
           changed_files="${{ steps.changes.outputs.all_changed_files }}"
 
-          command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py"
-
-          if [[ -n "$changed_files" ]]; then
-            command="$command --files \"$changed_files\""
+          if [[ -z "$changed_files" ]]; then
+            echo "ℹ️ No changed files to process"
+            exit 0
           fi
 
-          eval "$command"
+          python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py --files $changed_files
