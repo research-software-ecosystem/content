@@ -1,4 +1,4 @@
-# RSEc operational committee
+# RSEc operations committee
 
 | Name | GitHub |
 |------|----------------|
