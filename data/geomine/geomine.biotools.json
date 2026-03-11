@@ -2,7 +2,12 @@
     "additionDate": "2021-01-18T10:36:05Z",
     "biotoolsCURIE": "biotools:geomine",
     "biotoolsID": "geomine",
+    "collectionID": [
+        "de.NBI",
+        "de.NBI-biodata"
+    ],
     "confidence_flag": "tool",
+    "cost": "Free of charge",
     "credit": [
         {
             "email": "rarey@zbh.uni-hamburg.de",
@@ -10,56 +15,143 @@
             "typeEntity": "Person"
         }
     ],
-    "description": "Interactive Pattern Mining of Protein-Ligand Interfaces in the Protein Data Bank.\n\nProteinsPlus structure-based modeling support server. This server is a common web portal for all tools related to structure-based modeling created by the AMD group (Prof. M. Rarey) at ZBH, Hamburg, including DoGSite Scorer, EDIA, PPI, PoseView, SIENA and ProToss.",
+    "description": "GeoMine enables the automated mining of protein-ligand binding sites. Based on individually designed queries, users can search for spatial interaction patterns in huge collections of protein-ligand complexes and binding pockets. The regularly updated GeoMine database relies on the free database systems SQLite and PostgreSQL. It supports radius-based pockets (based on ligands and predicted pockets (based on DoGSite3) for query generation. The query management is based on XML (for the REST service) or JSON in the GUI mode. Its output consists of the query-based superpositions of the matched binding sites and statistics on matching points, distances, and angles.",
+    "documentation": [
+        {
+            "type": [
+                "General"
+            ],
+            "url": "http://proteinsplus.zbh.uni-hamburg.de/help/index"
+        }
+    ],
     "editPermission": {
         "authors": [
             "ehrt"
         ],
         "type": "group"
     },
+    "elixirNode": [
+        "Germany"
+    ],
+    "elixirPlatform": [
+        "Tools"
+    ],
     "function": [
         {
+            "input": [
+                {
+                    "data": {
+                        "term": "UniProt accession",
+                        "uri": "http://edamontology.org/data_3021"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Protein-ligand complex",
+                        "uri": "http://edamontology.org/data_1461"
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        },
+                        {
+                            "term": "SDF",
+                            "uri": "http://edamontology.org/format_3814"
+                        }
+                    ]
+                }
+            ],
             "operation": [
                 {
                     "term": "Database search",
                     "uri": "http://edamontology.org/operation_2421"
+                },
+                {
+                    "term": "Text mining",
+                    "uri": "http://edamontology.org/operation_0306"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Database search results",
+                        "uri": "http://edamontology.org/data_2080"
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        },
+                        {
+                            "term": "Textual format",
+                            "uri": "http://edamontology.org/format_2330"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Protein structure alignment",
+                        "uri": "http://edamontology.org/data_1481"
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        }
+                    ]
                 }
             ]
         }
     ],
-    "homepage": "https://proteins.plus",
-    "lastUpdate": "2025-12-23T14:50:35.515139Z",
+    "homepage": "https://www.zbh.uni-hamburg.de/forschung/amd/software/geomine.html",
+    "lastUpdate": "2026-03-11T09:46:47.804518Z",
+    "license": "Other",
+    "link": [
+        {
+            "note": "A web API to run GeoMine calculations for protein structures stored in the Protein Data Bank and AlphaFold Protein Structure Database.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://proteins.plus/help/geomine_rest"
+        },
+        {
+            "note": "A web service to run GeoMine calculations for protein structures stored in the Protein Data Bank and AlphaFold Protein Structure Database.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://proteins.plus"
+        }
+    ],
+    "maturity": "Mature",
     "name": "GeoMine",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
     "owner": "ehrt",
     "publication": [
         {
             "doi": "10.1093/BIOINFORMATICS/BTAA693",
-            "metadata": {
-                "abstract": "© The Author(s) 2020. Published by Oxford University Press. All rights reserved. For permissions, please e-mail: journals.permissions@oup.com.SUMMARY: The searching of user-defined 3D queries in molecular interfaces is a computationally challenging problem that is not satisfactorily solved so far. Most of the few existing tools focused on that purpose are desktop based and not openly available. Besides that, they show a lack of query versatility, search efficiency and user-friendliness. We address this issue with GeoMine, a publicly available web application that provides textual, numerical and geometrical search functionality for protein-ligand binding sites derived from structural data contained in the Protein Data Bank (PDB). The query generation is supported by a 3D representation of a start structure that provides interactively selectable elements like atoms, bonds and interactions. GeoMine gives full control over geometric variability in the query while performing a deterministic, precise search. Reasonably selective queries are processed on the entire set of protein-ligand complexes in the PDB within a few minutes. GeoMine offers an interactive and iterative search process of successive result analyses and query adaptations. From the numerous potential applications, we picked two from the field of side-effect analyze showcasing the usefulness of GeoMine. AVAILABILITY AND IMPLEMENTATION: GeoMine is part of the ProteinsPlus web application suite and freely available at https://proteins.plus. SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.",
-                "authors": [
-                    {
-                        "name": "Diedrich K."
-                    },
-                    {
-                        "name": "Graef J."
-                    },
-                    {
-                        "name": "Rarey M."
-                    },
-                    {
-                        "name": "Schoning-Stierand K."
-                    }
-                ],
-                "citationCount": 1,
-                "date": "2021-04-20T00:00:00Z",
-                "journal": "Bioinformatics (Oxford, England)",
-                "title": "GeoMine: interactive pattern mining of protein-ligand interfaces in the Protein Data Bank"
-            },
             "pmid": "32735322"
         }
     ],
     "toolType": [
-        "Web application"
+        "Web API",
+        "Web service"
     ],
     "topic": [
         {
@@ -67,12 +159,20 @@
             "uri": "http://edamontology.org/topic_0091"
         },
         {
-            "term": "Immunoproteins and antigens",
-            "uri": "http://edamontology.org/topic_2830"
+            "term": "Data mining",
+            "uri": "http://edamontology.org/topic_3473"
         },
         {
             "term": "Protein interactions",
             "uri": "http://edamontology.org/topic_0128"
+        },
+        {
+            "term": "Protein sites, features and motifs",
+            "uri": "http://edamontology.org/topic_3510"
+        },
+        {
+            "term": "Proteins",
+            "uri": "http://edamontology.org/topic_0078"
         }
     ],
     "validated": 1
