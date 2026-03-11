@@ -1,4 +1,4 @@
-# RSEc operational committee
+# RSEc operations committee
 
 | Name | GitHub |
 |------|----------------|
@@ -6,25 +6,33 @@
 | **José María Fernández** | @jmfernandez |
 | **Alban Gaignard** | @albangaignard |
 | **Johan Gustafsson** | @supernord |
+| **Matúš Kalaš** | @matuskalas |
 | **Hervé Ménager** | @hmenager |
 | **Ana Mendes** | @anitamnd |
 | **Magnus Palmblad** | @magnuspalmblad |
+| **Dmitry Repchevsky** | @redmitry |
 | **Claire Rioualen** | @rioualen |
 | **Veit Schwämmle** | @veitveit |
 | **Paul Zierep** | @paulzierep |
 
-__
 
 # RSEc strategic committee
+
+| Name | GitHub |
+|------|----------------|
+| **Matúš Kalaš** | @matuskalas |
+| **Maria Chavero Diez** | @mchdiez |
 | **Hervé Ménager** | @hmenager |
 | **Veit Schwämmle** | @veitveit |
 | **Johan Gustafsson** | @supernord |
 | **Mihail Anton** | @mihai-sysbio |
 
-__
 
 # RSEc strategic committee chair
-__
+
+| Name | GitHub |
+|------|----------------|
+
 
 # RSEc contributors (past and present)
 
