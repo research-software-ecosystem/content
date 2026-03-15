@@ -3,33 +3,47 @@
     "biotoolsCURIE": "biotools:edia",
     "biotoolsID": "edia",
     "collectionID": [
-        "COVID-19",
-        "de.NBI"
+        "de.NBI",
+        "de.NBI-biodata"
     ],
-    "cost": "Free of charge",
+    "confidence_flag": "tool",
+    "cost": "Free of charge (with restrictions)",
     "credit": [
         {
-            "email": "rarey-office.zbh@uni-hamburg.de",
-            "typeEntity": "Person",
+            "email": "proteinsplus.zbh@lists.uni-hamburg.de",
+            "name": "ProteinsPlus Support",
             "typeRole": [
-                "Primary contact"
+                "Support"
             ]
         },
         {
-            "name": "University of Hamburg - Center for Bioinformatics",
-            "typeEntity": "Institute",
+            "email": "software.zbh@uni-hamburg.de",
+            "name": "NAOMI ChemBio Suite Support",
+            "typeRole": [
+                "Support"
+            ]
+        },
+        {
+            "name": "University of Hamburg, ZBH - Center for Bioinformatics",
+            "rorid": "00g30e956",
             "typeRole": [
                 "Provider"
             ]
         }
     ],
-    "description": "Easily interpretable electron density score for individual atoms. It quantifies the electron density support of each single atom by computing a weighted sum over an oversampled electron density grid in the proximity of the atom. Atomic EDIA values can also be combined with the help of the power mean to compute EDIA_m, an electron density score for small molecules, fragments, or residues.",
+    "description": "The electron density score for individual atoms (EDIA) quantifies the electron density fit of each atom in a crystallographically resolved structure. Multiple EDIA values can be combined using the power mean to compute the EDIAm, i.e., the electron density score for a group of several atoms. It enables users to score a set of atoms, such as a ligand, a residue, or an active site.",
     "documentation": [
         {
             "type": [
                 "General"
             ],
-            "url": "http://proteinsplus.zbh.uni-hamburg.de/help/index"
+            "url": "https://proteins.plus/help/index"
+        }
+    ],
+    "download": [
+        {
+            "type": "Binaries",
+            "url": "https://uhh.de/naomi"
         }
     ],
     "editPermission": {
@@ -37,13 +51,13 @@
             "Bietz",
             "ehrt"
         ],
-        "type": "group"
+        "type": "private"
     },
-    "elixirCommunity": [
-        "3D-BioInfo"
-    ],
     "elixirNode": [
         "Germany"
+    ],
+    "elixirPlatform": [
+        "Tools"
     ],
     "function": [
         {
@@ -69,6 +83,10 @@
                         {
                             "term": "PDB",
                             "uri": "http://edamontology.org/format_1476"
+                        },
+                        {
+                            "term": "SDF",
+                            "uri": "http://edamontology.org/format_3814"
                         }
                     ]
                 }
@@ -89,26 +107,69 @@
                     "data": {
                         "term": "Protein structure",
                         "uri": "http://edamontology.org/data_1460"
-                    }
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        }
+                    ]
                 },
                 {
                     "data": {
                         "term": "Protein-ligand complex",
                         "uri": "http://edamontology.org/data_1461"
-                    }
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        }
+                    ]
                 },
                 {
                     "data": {
                         "term": "Score",
                         "uri": "http://edamontology.org/data_1772"
-                    }
+                    },
+                    "format": [
+                        {
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
+                        }
+                    ]
                 }
             ]
         }
     ],
-    "homepage": "http://proteinsplus.zbh.uni-hamburg.de/#edia",
-    "lastUpdate": "2026-03-05T10:16:31.584242Z",
-    "name": "EDIA",
+    "homepage": "https://www.zbh.uni-hamburg.de/en/forschung/amd/software/ediascorer.html",
+    "lastUpdate": "2026-03-11T12:24:53.162379Z",
+    "license": "Other",
+    "link": [
+        {
+            "note": "A link to download the standalone tool from the NAOMI ChemBio Suite.",
+            "type": [
+                "Software catalogue"
+            ],
+            "url": "https://uhh.de/naomi"
+        },
+        {
+            "note": "A web API to run EDIAscorer calculations for protein structures stored in the Protein Data Bank.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://proteins.plus/help/edia_rest"
+        },
+        {
+            "note": "A web service to run EDIAscorer calculations for protein structures stored in the Protein Data Bank.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://proteins.plus"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "EDIAscorer",
     "operatingSystem": [
         "Linux",
         "Mac",
@@ -124,10 +185,30 @@
             ]
         }
     ],
+    "relation": [
+        {
+            "biotoolsID": "structureprofiler",
+            "type": "usedBy"
+        }
+    ],
     "toolType": [
-        "Web application"
+        "Command-line tool",
+        "Web API",
+        "Web service"
     ],
     "topic": [
+        {
+            "term": "Bioinformatics",
+            "uri": "http://edamontology.org/topic_0091"
+        },
+        {
+            "term": "Drug discovery",
+            "uri": "http://edamontology.org/topic_3336"
+        },
+        {
+            "term": "Molecular modelling",
+            "uri": "http://edamontology.org/topic_2275"
+        },
         {
             "term": "Structure analysis",
             "uri": "http://edamontology.org/topic_0081"
