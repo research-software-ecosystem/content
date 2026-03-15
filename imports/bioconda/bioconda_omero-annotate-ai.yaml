@@ -1,0 +1,58 @@
+about:
+  description: 'Python package to support reproducible image annotation workflows
+    for AI
+
+    training using OMERO data repositories. Provides Jupyter widgets and tools
+
+    for reproducible annotation, training, and inference using micro-SAM,
+
+    Cellpose, and other AI models directly with OMERO datasets.
+
+    '
+  dev_url: https://github.com/Leiden-Cell-Observatory/omero_annotate_ai
+  doc_url: https://leiden-cell-observatory.github.io/omero_annotate_ai/
+  home: https://github.com/Leiden-Cell-Observatory/omero_annotate_ai
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: OMERO integration for AI-powered image annotation and segmentation workflows
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - maartenpaul
+package:
+  name: omero-annotate-ai
+  version: 0.2.1
+requirements:
+  host:
+  - python
+  - setuptools >=61.0
+  - wheel
+  - pip
+  run:
+  - python
+  - numpy >=1.21.0,<2.0
+  - pandas >=1.3.0
+  - imageio >=2.9.0
+  - dask >=2021.6.0
+  - pyyaml >=6.0
+  - pydantic >=2.0.0
+  - typing-extensions >=4.0.0
+  - ezomero >=3.1.0
+  - opencv >=4.5.0
+  - tifffile
+  - zeroc-ice >=3.6.4,<3.7
+  - micro_sam >=1.7.0,<2
+  - ipywidgets >=7.6.0
+  - keyring >=23.0.0
+  - ipykernel
+source:
+  sha256: 224ad848db1d858e953d2a7bd372d7850cd1e11967408e1b42292270fb47f832
+  url: https://pypi.org/packages/source/o/omero-annotate-ai/omero_annotate_ai-0.2.1.tar.gz
+test:
+  imports:
+  - omero_annotate_ai

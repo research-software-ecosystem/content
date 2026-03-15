@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/qtoussaint/pangenome_merge
+  license: MIT
+  license_file: LICENSE
+  summary: Create pangenome gene graphs for hundreds of thousands of bacterial genomes
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - qtoussaint
+package:
+  name: pangenomerge
+  version: 0.9.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python
+  - biopython >=1.80
+  - networkx >=3.4.2
+  - mmseqs2
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - edlib
+  - tqdm
+source:
+  sha256: f32c24668f906fd76092d3dc1ac1fd365d700a91424e22bc22fa86bad9761bb8
+  url: https://github.com/qtoussaint/pangenome_merge/archive/refs/tags/v0.9.0.tar.gz
+test:
+  commands:
+  - python -c "import pangenomerge; print(pangenomerge.__version__)"
+  imports:
+  - pangenomerge

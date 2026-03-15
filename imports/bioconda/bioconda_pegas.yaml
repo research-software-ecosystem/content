@@ -20,7 +20,6 @@ build:
   number: 0
   run_exports:
   - null
-  - null
 extra:
   recipe-maintainers:
   - liviurotiul
@@ -55,22 +54,26 @@ outputs:
     entry_points:
     - pegas = pegas.main:main
     noarch: python
-  name: pegas
+  name: pegas-snakemake
   requirements:
     host:
     - python >=3.10
     run:
-    - pegas-lite =1.2.3
+    - pegas-lite =1.2.4
     - snakemake-minimal >=7.32.4
   test:
     commands:
     - pegas --help
 package:
   name: pegas
-  version: 1.2.3
+  version: 1.2.4
+requirements:
+  run:
+  - pegas-snakemake =1.2.4
 source:
-  sha256: 66f4b3566b22c407a6f7fbe180533ad4a41745a4eda8ff4b2d343e3d9efab06b
-  url: https://github.com/liviurotiul/PeGAS/archive/refs/tags/v1.2.3.tar.gz
+  sha256: 1c3c62d01aeacd9652a66c5fff9ede611e6a50b8889c0034694cdef869d84983
+  url: https://github.com/liviurotiul/PeGAS/archive/refs/tags/v1.2.4.tar.gz
 test:
-  imports:
-  - pegas
+  commands:
+  - pegas --help
+  - pegas-lite --help

@@ -15,7 +15,7 @@ build:
   - chewBBACA.py = CHEWBBACA.chewBBACA:main
   - chewie = CHEWBBACA.chewBBACA:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install --no-deps --no-build-isolation . -vvv
@@ -26,28 +26,28 @@ extra:
   - rfm-targa
 package:
   name: chewbbaca
-  version: 3.5.2
+  version: 3.5.3
 requirements:
   host:
-  - python >=3.7
+  - python
   - pip
   - setuptools
   run:
-  - python >=3.7
-  - numpy >=1.24.3
-  - scipy >=1.10.1
-  - biopython >=1.79
-  - pandas >=1.5.1,<2.1
-  - plotly >=5.8.0
-  - requests >=2.27.1
+  - python
+  - numpy >=2.0.0
+  - scipy >=1.13.0
+  - biopython >=1.86
+  - plotly >=6.3.1
   - sparqlwrapper >=2.0.0
+  - requests >=2.27.1
+  - pandas >=2.3.3
   - pyrodigal >=3.0.0
   - blast >=2.9.0
   - mafft >=7.505
   - fasttree >=2.1.11
 source:
-  sha256: a7a38c4d9933b14fdbcd845bdc8ba0a44049c7ca265bc54a750bbaff658d1420
-  url: https://github.com/B-UMMI/chewBBACA/archive/refs/tags/v3.5.2.tar.gz
+  sha256: 24a762a53108d1589aae1ceebb08ff28a95102bf04a2d24855bbc9d43a641b8a
+  url: https://github.com/B-UMMI/chewBBACA/archive/refs/tags/v3.5.3.tar.gz
 test:
   commands:
   - chewBBACA.py --help
@@ -62,4 +62,6 @@ test:
   - CHEWBBACA.PrepExternalSchema
   - CHEWBBACA.UniprotFinder
   - CHEWBBACA.CHEWBBACA_NS
+  - CHEWBBACA.ComputeMSA
+  - CHEWBBACA.GetAlleles
   - CHEWBBACA.utils

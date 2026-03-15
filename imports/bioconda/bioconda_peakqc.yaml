@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/loosolab/PEAKQC
+  doc_url: https://loosolab.pages.gwdg.de/software/peakqc/
+  home: https://github.com/loosolab/PEAKQC
+  license: MIT
+  license_file: LICENSE
+  summary: Quality control of single cell ATAC-seq data based on fragment length distributions.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jan1034
+package:
+  name: peakqc
+  version: 0.1.6
+requirements:
+  host:
+  - python
+  - setuptools
+  - setuptools-scm >=9.0.3
+  - pip
+  run:
+  - python
+  - tqdm
+  - beartype
+  - scanpy >=1.9
+  - pysam
+  - scipy
+source:
+  sha256: cd41369c31caaa0dedd38080dae56de599ebebb9b1b7b2829ca805c7d2f2044c
+  url: https://pypi.org/packages/source/p/peakqc/peakqc-0.1.6.tar.gz
+test:
+  commands:
+  - pip check
+  - python -c "import peakqc; print(peakqc.__version__)"
+  imports:
+  - peakqc
+  requires:
+  - pip
+  - python

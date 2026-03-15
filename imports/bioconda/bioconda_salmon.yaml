@@ -8,7 +8,7 @@ about:
   summary: Highly-accurate & wicked fast transcript-level quantification from RNA-seq
     reads using selective alignment.
 build:
-  number: 5
+  number: 0
   run_exports:
   - null
 extra:
@@ -27,41 +27,38 @@ extra:
   - mjsteinbaugh
 package:
   name: salmon
-  version: 1.10.3
+  version: 1.11.4
 requirements:
   build:
   - null
-  - autoconf
-  - automake
-  - libtool
-  - cmake
+  - null
+  - cmake >=3.24
+  - ninja
   - make
   - pkg-config
-  - gnuconfig
   host:
-  - boost-cpp
-  - jemalloc >=5.1.0
-  - tbb-devel >=2021.4.0
-  - staden_io_lib >=1.15.0
-  - libgff
-  - cereal
-  - libcurl
+  - cereal >=1.3.2
+  - boost-cpp >=1.84
+  - tbb >=2021.4
+  - htslib >=1.23
+  - mimalloc >=3.2.8
+  - tbb-devel >=2022.3.0
   - libiconv
-  - libdeflate
-  - xz
-  - zlib
-  - zstd
   - bzip2
-  - unzip
+  - xz
+  - curl
   run:
+  - null
+  - null
+  - tbb
+  - bzip2
+  - xz
+  - curl
   - boost-cpp
   - icu
-  - staden_io_lib >=1.15.0
 source:
-  patches:
-  - 0001-CMakeLists.patch
-  sha256: a053fba63598efc4ade3684aa2c8e8e2294186927d4fcdf1041c36edc2aa0871
-  url: https://github.com/COMBINE-lab/salmon/archive/refs/tags/v1.10.3.tar.gz
+- sha256: 9410904fa787f1f9aca635626fcdca08f3af9b02f820963f9439e80fb56d23b8
+  url: https://github.com/COMBINE-lab/salmon/archive/refs/tags/v1.11.4.tar.gz
 test:
   commands:
   - salmon --help
