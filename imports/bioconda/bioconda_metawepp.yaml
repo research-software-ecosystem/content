@@ -1,0 +1,50 @@
+about:
+  description: "metaWEPP extends the current species-level resolution of existing\
+    \ metagenomic tools by providing near-haplotype detection and abundance estimation\
+    \ for multi-species samples. It utilizes a standard classifier to first segregate\
+    \ reads by species before applying the Wastewater-Based Epidemiology using Phylogenetic\
+    \ Placements (WEPP) pipeline to each segregated dataset. By performing parsimonious\
+    \ read placement on species-specific mutation-annotated trees (MATs), metaWEPP\
+    \ identifies the haplotypes that best explain the data and flags Unaccounted Alleles\u2014\
+    mutations observed in the sample but unexplained by selected haplotypes\u2014\
+    potentially indicating the presence of novel variants.\nThe pipeline enables high-resolution\
+    \ surveillance across diverse pathogens and includes an interactive dashboard\
+    \ for visualizing identified haplotypes within their global phylogenies. This\
+    \ allows for detailed, read-level analysis of emerging lineages within complex\
+    \ metagenomic datasets."
+  home: https://github.com/TurakhiaLab/metaWEPP
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'metaWEPP: Improving resolution of metagenomic analysis using WEPP'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - pgangwar-ucsd
+package:
+  name: metawepp
+  version: 0.1.0
+requirements:
+  run:
+  - python >=3.11
+  - requests
+  - conda >=24.7.1
+  - kraken2 >=2.1.0
+  - snakemake-minimal >=9.0
+  - pandas
+  - matplotlib-base
+  - pigz
+  - minimap2
+  - wepp
+  - viral_usher
+source:
+  sha256: 95bf69859561051fe7ebba442e8228842e66a414515014dffe64c5e376bb2717
+  url: https://github.com/TurakhiaLab/metaWEPP/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - run-metawepp help --cores 1
+  - rm -rf .snakemake
