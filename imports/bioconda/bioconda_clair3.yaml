@@ -1,13 +1,13 @@
 about:
+  dev_url: https://github.com/HKU-BAL/Clair3
+  doc_url: https://github.com/HKU-BAL/Clair3
   home: https://github.com/HKU-BAL/Clair3
   license: BSD-3-Clause
   license_file: LICENSE.md
-  summary: "Clair3 is a small variant caller for long-reads. Compare to PEPPER (r0.4),\
-    \ Clair3 (v0.1) shows a better SNP F1-score with \u226430-fold of ONT data (precisionFDA\
-    \ Truth Challenge V2), and a better Indel F1-score, while runs generally four\
-    \ times faster. Clair3 makes the best of both worlds of using pileup or full-alignment\
-    \ as input for deep-learning based long-read small variant calling. Clair3 is\
-    \ simple and modular for easy deployment and integration."
+  summary: Clair3 is a small variant caller for long-reads. Clair3 makes the best
+    of both worlds of using pileup or full-alignment as input for deep-learning based
+    long-read small variant calling. Clair3 is simple and modular for easy deployment
+    and integration.
 build:
   number: 0
   run_exports:
@@ -18,40 +18,47 @@ extra:
     extended-base: true
 package:
   name: clair3
-  version: 1.2.0
+  version: 2.0.0
 requirements:
   build:
   - null
   - null
+  - make
+  - automake
   host:
-  - cffi
+  - python 3.11.*
+  - pip
+  - mpmath
+  - cffi <2
   - bzip2
   - xz
   - zlib
-  - python <=3.10.0
-  - automake
-  - make
   - libcurl
   - openssl
+  - libdeflate
+  - longphase
   run:
-  - python <=3.10.0
-  - tensorflow <=2.16.0
+  - python 3.11.*
+  - pytorch-cpu
+  - torchmetrics
   - numpy
-  - pytables
-  - samtools
-  - whatshap
+  - h5py
+  - hdf5plugin
+  - numexpr
+  - tqdm
+  - samtools >=1.15
+  - whatshap >=1.0
   - pigz
-  - parallel
+  - parallel >=20191122
   - zstd
   - openssl
-  - cffi
+  - cffi <2
+  - longphase
 source:
-  sha256: a7c398148ebd2ddcf1970a4f44298d419739d00269ae2a46ddb47144c9805a13
-  url: http://www.bio8.cs.hku.hk/clair3/bioconda/Clair3_v1.2.0.zip
+- sha256: 8a2d6bb6ded3163361a1d762168013f599d232a65d9a4a7777dd3e178ae7951b
+  url: https://github.com/HKU-BAL/Clair3/archive/refs/tags/v2.0.0.tar.gz
 test:
   commands:
   - longphase --version
-  - which clair3.py
+  - which run_clair3.sh
   - run_clair3.sh -v
-  imports:
-  - tensorflow
