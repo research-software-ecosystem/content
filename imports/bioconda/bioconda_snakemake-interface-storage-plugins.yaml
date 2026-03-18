@@ -8,7 +8,7 @@ about:
     and its storage plugins.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -17,7 +17,7 @@ extra:
   - koesterlab
 package:
   name: snakemake-interface-storage-plugins
-  version: 4.3.3
+  version: 4.4.0
 requirements:
   host:
   - python >=3.11,<4.0
@@ -27,11 +27,16 @@ requirements:
   - python >=3.11.0,<4.0.0
   - snakemake-interface-common >=1.12.0,<2.0.0
   - wrapt >=1.15.0,<2.0.0
-  - reretry >=0.11.8,<0.12.0
+  - tenacity >=9.1.4,<10.0
   - throttler >=1.2.2,<2.0.0
+  - humanfriendly >=10.0,<11
 source:
-  sha256: fd6afe2f0bed6cb02fd4b34a54c3bd9bbc9a606ff27476b8a55edbc3b54a0905
-  url: https://pypi.io/packages/source/s/snakemake-interface-storage-plugins/snakemake_interface_storage_plugins-4.3.3.tar.gz
+  sha256: 8349bc298e65cfd888a8f995d7aa99ad0824ed713701e8f05111b30b4c760e7a
+  url: https://pypi.io/packages/source/s/snakemake-interface-storage-plugins/snakemake_interface_storage_plugins-4.4.0.tar.gz
 test:
+  commands:
+  - pip check
   imports:
   - snakemake_interface_storage_plugins
+  requires:
+  - pip

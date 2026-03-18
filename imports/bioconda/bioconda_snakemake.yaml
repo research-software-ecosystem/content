@@ -69,7 +69,7 @@ outputs:
     script: python -m pip install --no-deps --no-build-isolation --no-cache-dir .
       -vvv
     script_env:
-    - SETUPTOOLS_SCM_PRETEND_VERSION_SNAKEMAKE=9.17.1
+    - SETUPTOOLS_SCM_PRETEND_VERSION_SNAKEMAKE=9.17.2
   name: snakemake-minimal
   requirements:
     host:
@@ -115,32 +115,31 @@ outputs:
     - pip show snakemake
     - pip check
     - snakemake --version
-    - snakemake --version | grep "9.17.1"
+    - snakemake --version | grep "9.17.2"
     imports:
     - snakemake
     requires:
     - pip
 package:
   name: snakemake
-  version: 9.17.1
+  version: 9.17.2
 requirements:
   run:
-  - snakemake-minimal =9.17.1
+  - snakemake-minimal =9.17.2
   - pandas <3
   - slack_sdk
   - eido
   - peppy
-  - setuptools
   - pygments
 source:
-  sha256: a7aa8c404150328307430ceff65e7ea86425fc03eaa93e5fbf6c629a573ef8cf
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.17.1.tar.gz
+  sha256: 956a342b57ea76974ed21d048c374f1417410b57b50be3c6fb3b7ea7b9192d8c
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.17.2.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - pip check
   - snakemake --version
-  - snakemake --version | grep "9.17.1"
+  - snakemake --version | grep "9.17.2"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:

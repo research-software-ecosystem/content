@@ -14,7 +14,7 @@ build:
   - metapub_build_registry = metapub.scripts.build_registry_from_yaml:main
   - metapub-registry = metapub.findit.cli:main
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - null
   script: -m pip install . -vv --no-deps --no-build-isolation
@@ -23,19 +23,18 @@ extra:
   - hechth
 package:
   name: metapub
-  version: 0.6.4
+  version: 0.7.1
 requirements:
   host:
-  - python >=3.8
+  - python
   - pip
   - setuptools
   run:
-  - python >=3.8
+  - python
   - setuptools
   - lxml
   - lxml-html-clean
   - requests
-  - eutils
   - habanero
   - tabulate
   - cssselect
@@ -45,9 +44,10 @@ requirements:
   - coloredlogs
   - python-levenshtein
   - pyyaml
+  - brotli
 source:
-  sha256: 119d69c86632034d7765a10d8522dd9db2d4ef2c8eb48039a8d2b8f020310d73
-  url: https://pypi.org/packages/source/m/metapub/metapub-0.6.4.tar.gz
+  sha256: 656657a64a9677c6e3054ac87b923a28006170b1501406fb13ea0a07847bc9cd
+  url: https://pypi.org/packages/source/m/metapub/metapub-0.7.1.tar.gz
 test:
   commands:
   - pip check
@@ -57,7 +57,6 @@ test:
   - metapub_build_registry --help
   - metapub-registry --help
   imports:
-  - CrossRefv2
   - metapub
   requires:
   - pip

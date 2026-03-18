@@ -24,39 +24,38 @@ extra:
   - pgangwar-ucsd
 package:
   name: wepp
-  version: 0.1.5.2
+  version: 0.1.5.3
 requirements:
   build:
   - null
   - cmake
   - make
   - pkg-config
-  - nodejs
   host:
-  - pip
-  - boost-cpp =1.78.0
-  - tbb >=2021.0
-  - tbb-devel
+  - boost-cpp 1.78.*
+  - tbb >=2021.0,<2022.0
+  - tbb-devel >=2021.0,<2022.0
   - protobuf <4
   - mpich
   - jsoncpp
-  - nodejs
   run:
-  - conda
+  - python >=3.11
+  - conda >=24.7.1
   - pip
-  - boost =1.78.0
+  - boost 1.78.*
   - protobuf <4
-  - tbb >=2021.0
+  - tbb >=2021.0,<2022.0
   - mpich
   - jsoncpp
-  - snakemake-minimal >=7.0
+  - snakemake-minimal >=9.0
   - pandas
   - altair
   - aiohttp
   - biopython
+  - nodejs >=16,<24
 source:
-  sha256: 237e141f20f33e4c4c100042569b0304ec695c0d2b982d7de2c8bf9ba4084e6a
-  url: https://github.com/TurakhiaLab/WEPP/releases/download/v0.1.5.2/wepp-0.1.5.2.tar.gz
+  sha256: 071430ceef6742af4b6b07fa3bfe91eeade940c9b3cc278ac26205e1e9f98cc6
+  url: https://github.com/TurakhiaLab/WEPP/releases/download/v0.1.5.3/wepp-0.1.5.3.tar.gz
 test:
   commands:
   - run-wepp help --cores 1
