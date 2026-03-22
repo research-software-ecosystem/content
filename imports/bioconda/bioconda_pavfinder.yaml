@@ -1,5 +1,5 @@
 about:
-  home: https://github.com/bcgsc/pavfinder
+  home: https://github.com/BirolLab/pavfinder
   license: GPL-3.0
   license_file:
   - LICENSE
@@ -7,7 +7,9 @@ about:
     novo assemblies.
 build:
   noarch: python
-  number: 0
+  number: 1
+  run_exports:
+  - null
   script: ' -m pip install -vv --no-deps --ignore-installed --no-cache-dir .'
 extra:
   identifiers:
@@ -20,9 +22,10 @@ requirements:
   host:
   - pip
   - python >=3
+  - setuptools
   run:
   - python >=3
-  - pysam >=0.8.1
+  - pysam
   - pybedtools >=0.6.9
   - intspan >=0.701
   - biopython
@@ -38,7 +41,7 @@ requirements:
   - biobloomtools
 source:
   sha256: 5df4879e98a43bd866c401eeb4b500472f0782e7c3708080cb8c667698e54dc5
-  url: https://github.com/bcgsc/pavfinder/archive/v1.8.5.tar.gz
+  url: https://github.com/BirolLab/pavfinder/archive/v1.8.5.tar.gz
 test:
   commands:
   - check_support.py -h > /dev/null

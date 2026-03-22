@@ -8,7 +8,7 @@ about:
   summary: IsoQuant is a tool for reference-based analysis of long RNA reads, such
     as gene/transcript quantification and discovery.
 build:
-  noarch: generic
+  noarch: python
   number: 0
   run_exports:
   - null
@@ -17,8 +17,12 @@ extra:
   - doi:10.1038/s41587-022-01565-y
 package:
   name: isoquant
-  version: 3.12.0
+  version: 3.12.2
 requirements:
+  host:
+  - python
+  - pip
+  - setuptools >=64
   run:
   - python
   - argcomplete >=1.11.1
@@ -42,11 +46,11 @@ requirements:
   - star
   - ssw-py >=1.0
 source:
-  sha256: 0fa7f7b46bda19f3b542ef488c5367c6a98dd3675f135e18771c0b849e1594fc
-  url: https://github.com/ablab/IsoQuant/releases/download/v3.12.0/IsoQuant-3.12.0.tar.gz
+  sha256: 184d1970694536a24f9214095908fef6b22743a0f8722784adcecd06969d5e8f
+  url: https://github.com/ablab/IsoQuant/releases/download/v3.12.2/IsoQuant-3.12.2.tar.gz
 test:
   commands:
-  - isoquant.py --test
+  - isoquant --test
   - rm -rf isoquant_test
   source_files:
-  - tests
+  - isoquant_tests

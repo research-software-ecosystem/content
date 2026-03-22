@@ -7,7 +7,7 @@ about:
   summary: Quantifying abundances of transcripts from RNA-Seq data, or more generally
     of target sequences using high-throughput sequencing reads.
 build:
-  number: 2
+  number: 0
   run_exports:
   - null
 extra:
@@ -23,7 +23,7 @@ extra:
   - mjsteinbaugh
 package:
   name: kallisto
-  version: 0.51.1
+  version: 0.52.0
 requirements:
   build:
   - make
@@ -43,8 +43,10 @@ requirements:
   run:
   - hdf5
 source:
-  sha256: a8bcc23bca6ac758f15e30bb77e9e169e628beff2da3be2e34a53e1d42253516
-  url: https://github.com/pachterlab/kallisto/archive/refs/tags/v0.51.1.tar.gz
+  patches:
+  - patches/osx.patch
+  sha256: 68184e41706d77e409f05a598a87dacdf3cf227f18c028175e2bce8b284bdea4
+  url: https://github.com/pachterlab/kallisto/archive/refs/tags/v0.52.0.tar.gz
 test:
   commands:
   - kallisto cite

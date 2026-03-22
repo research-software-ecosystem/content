@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/treangenlab/Somatem
+  doc_url: https://github.com/treangenlab/Somatem#readme
+  home: https://github.com/treangenlab/Somatem
+  license: GPL-3.0
+  license_file: LICENSE
+  summary: Best practices pipeline for long-read metagenomics analysis.
+build:
+  noarch: generic
+  number: 0
+extra:
+  recipe-maintainers:
+  - ppreshant
+  - microbemarsh
+  skip-lints:
+  - missing_run_exports
+package:
+  name: somatem
+  version: 0.7.1
+requirements:
+  run:
+  - bash
+  - nextflow >=25.10.2
+  - micromamba
+  - coreutils
+source:
+  sha256: 32a4efe92ea1fa6ec89bd873c533ee15b6898d7b7991b648c8b17507059fad20
+  url: https://github.com/treangenlab/Somatem/archive/refs/tags/0.7.1.tar.gz
+test:
+  commands:
+  - somatem --help
+  - test -f "${PREFIX}/share/somatem-0.7.1/main.nf"
+  - test -f "${PREFIX}/share/somatem-0.7.1/nextflow.config"
+  - test -f "${PREFIX}/bin/somatem"

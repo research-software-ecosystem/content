@@ -1,0 +1,42 @@
+about:
+  description: This tool is designed to run a linear regression on bacterial data,
+    similar to a GWAS in human genetics.
+  dev_url: https://gitlab.pasteur.fr/statistical-genetics/MOGS
+  home: https://gitlab.pasteur.fr/statistical-genetics/MOGS
+  license: AGPL-3.0-only
+  license_family: AGPL
+  license_file: LICENSE
+  summary: MOGS (Metagenome Ocurrence-based Genetic Screening)
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - lhenches
+package:
+  name: mogs
+  version: 0.1.2
+requirements:
+  build:
+  - null
+  - make
+  - cmake
+  - catch2
+  host:
+  - fmt
+  - cxxopts
+  - llvm-openmp
+  - spdlog
+  - fast_float
+  - eigen =3.4.0
+  - gsl
+source:
+  sha256: 9e2a2d9695a6fd1c59e8a4ff19990005c0d5c69ae19d53a3991afa7516c1ea23
+  url: https://gitlab.pasteur.fr/statistical-genetics/MOGS/-/archive/0.1.2/MOGS-0.1.2.zip
+test:
+  commands:
+  - mogs -h
