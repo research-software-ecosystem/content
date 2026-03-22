@@ -1,0 +1,75 @@
+{
+  "@context": {
+    "biotools": "https://bio.tools/ontology/",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "bsc": "http://bioschemas.org/",
+    "bsct": "http://bioschemas.org/types/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "edam": "http://edamontology.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sc": "http://schema.org/",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://bio.tools/bioconductor-rnaseqcovarimpute",
+      "@type": "sc:SoftwareApplication",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": [
+        "Command-line tool",
+        "Library"
+      ],
+      "sc:author": [
+        "Alison Paquette",
+        "James MacDonald",
+        "Adam Szpiro",
+        "Sheela Sathyanarayana",
+        "Brennan Baker"
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.18129/B9.bioc.RNAseqCovarImpute"
+      },
+      "sc:description": "The RNAseqCovarImpute package makes linear model analysis for RNA sequencing read counts compatible with multiple imputation (MI) of missing covariates. A major problem with implementing MI in RNA sequencing studies is that the outcome data must be included in the imputation prediction models to avoid bias. This is difficult in omics studies with high-dimensional data. The first method we developed in the RNAseqCovarImpute package surmounts the problem of high-dimensional outcome data by binning genes into smaller groups to analyze pseudo-independently. This method implements covariate MI in gene expression studies by 1) randomly binning genes into smaller groups, 2) creating M imputed datasets separately within each bin, where the imputation predictor matrix includes all covariates and the log counts per million (CPM) for the genes within each bin, 3) estimating gene expression changes using `limma::voom` followed by `limma::lmFit` functions, separately on each M imputed dataset within each gene bin, 4) un-binning the gene sets and stacking the M sets of model results before applying the `limma::squeezeVar` function to apply a variance shrinking Bayesian procedure to each M set of model results, 5) pooling the results with Rubins’ rules to produce combined coefficients, standard errors, and P-values, and 6) adjusting P-values for multiplicity to account for false discovery rate (FDR). A faster method uses principal component analysis (PCA) to avoid binning genes while still retaining outcome information in the MI models. Binning genes into smaller groups requires that the MI and limma-voom analysis is run many times (typically hundreds). The more computationally efficient MI PCA method implements covariate MI in gene expression studies by 1) performing PCA on the log CPM values for all genes using the Bioconductor `PCAtools` package, 2) creating M imputed datasets where the imputation predictor matrix includes all covariates and the optimum number of PCs to retain (e.g., based on Horn’s parallel analysis or the number of PCs that account for >80% explained variation), 3) conducting the standard limma-voom pipeline with the `voom` followed by `lmFit` followed by `eBayes` functions on each M imputed dataset, 4) pooling the results with Rubins’ rules to produce combined coefficients, standard errors, and P-values, and 5) adjusting P-values for multiplicity to account for false discovery rate (FDR).",
+      "sc:license": "GPL-3.0-only",
+      "sc:name": "RNAseqCovarImpute",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://bioconductor.org/packages/RNAseqCovarImpute"
+      },
+      "sc:softwareVersion": "1.8.0",
+      "sc:url": "https://bioconductor.org/packages/RNAseqCovarImpute"
+    },
+    {
+      "@id": "https://doi.org/10.18129/B9.bioc.RNAseqCovarImpute",
+      "@type": "sc:CreativeWork"
+    }
+  ]
+}

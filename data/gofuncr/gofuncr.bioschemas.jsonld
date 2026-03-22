@@ -34,33 +34,43 @@
     "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "https://bio.tools/gofuncr",
-  "@type": "sc:SoftwareApplication",
-  "biotools:primaryContact": "Steffi Grote",
-  "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
-  "sc:additionalType": "Library",
-  "sc:applicationSubCategory": {
-    "@id": "edam:topic_0089"
-  },
-  "sc:description": "It performs a gene ontology enrichment analysis based on the ontology enrichment software FUNC. GO-annotations are obtained from OrganismDb or OrgDb packages; the GO-graph is included in the package and updated regularly. GOfuncR provides the standard candidate vs. background enrichment analysis using the hypergeometric test, as well as three additional tests.",
-  "sc:featureList": [
+  "@graph": [
     {
-      "@id": "edam:operation_2436"
+      "@id": "https://bio.tools/gofuncr",
+      "@type": "sc:SoftwareApplication",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Library",
+      "sc:applicationSubCategory": {
+        "@id": "edam:topic_0089"
+      },
+      "sc:citation": {
+        "@id": "https://doi.org/10.18129/B9.bioc.GOfuncR"
+      },
+      "sc:description": "GOfuncR performs a gene ontology enrichment analysis based on the ontology enrichment software FUNC. GO-annotations are obtained from OrganismDb or OrgDb packages ('Homo.sapiens' by default); the GO-graph is included in the package and updated regularly (01-May-2021). GOfuncR provides the standard candidate vs. background enrichment analysis using the hypergeometric test, as well as three additional tests: (i) the Wilcoxon rank-sum test that is used when genes are ranked, (ii) a binomial test that is used when genes are associated with two counts and (iii) a Chi-square or Fisher's exact test that is used in cases when genes are associated with four counts. To correct for multiple testing and interdependency of the tests, family-wise error rates are computed based on random permutations of the gene-associated variables. GOfuncR also provides tools for exploring the ontology graph and the annotations, and options to take gene-length or spatial clustering of genes into account. It is also possible to provide custom gene coordinates, annotations and ontologies.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_0226"
+        },
+        {
+          "@id": "edam:operation_2436"
+        }
+      ],
+      "sc:license": "GPL-2.0-or-later",
+      "sc:name": "GOfuncR",
+      "sc:operatingSystem": [
+        "Mac",
+        "Windows",
+        "Linux"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://bioconductor.org/packages/GOfuncR"
+      },
+      "sc:softwareVersion": "1.30.0",
+      "sc:url": "https://bioconductor.org/packages/GOfuncR"
     },
     {
-      "@id": "edam:operation_0226"
+      "@id": "https://doi.org/10.18129/B9.bioc.GOfuncR",
+      "@type": "sc:CreativeWork"
     }
-  ],
-  "sc:license": "GPL-2.0",
-  "sc:name": "GOfuncR",
-  "sc:operatingSystem": [
-    "Linux",
-    "Windows",
-    "Mac"
-  ],
-  "sc:softwareHelp": {
-    "@id": "http://bioconductor.org/packages/release/bioc/manuals/GOfuncR/man/GOfuncR.pdf"
-  },
-  "sc:softwareVersion": "1.0.0",
-  "sc:url": "http://bioconductor.org/packages/release/bioc/html/GOfuncR.html"
+  ]
 }

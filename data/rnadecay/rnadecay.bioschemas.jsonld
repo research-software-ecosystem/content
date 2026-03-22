@@ -34,47 +34,63 @@
     "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "https://bio.tools/rnadecay",
-  "@type": "sc:SoftwareApplication",
-  "biotools:primaryContact": "Reed Sorenson",
-  "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
-  "sc:additionalType": "Library",
-  "sc:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0203"
+      "@id": "https://doi.org/10.18129/B9.bioc.RNAdecay",
+      "@type": "sc:CreativeWork"
     },
     {
-      "@id": "edam:topic_0204"
-    },
-    {
-      "@id": "edam:topic_0749"
-    },
-    {
-      "@id": "edam:topic_3170"
+      "@id": "https://bio.tools/rnadecay",
+      "@type": "sc:SoftwareApplication",
+      "dcterms:conformsTo": "https://bioschemas.org/profiles/ComputationalTool/0.6-DRAFT",
+      "sc:additionalType": "Library",
+      "sc:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0204"
+        },
+        {
+          "@id": "edam:topic_3170"
+        },
+        {
+          "@id": "edam:topic_0749"
+        },
+        {
+          "@id": "edam:topic_0203"
+        }
+      ],
+      "sc:author": [
+        "Reed Sorenson",
+        "Frederick Adler",
+        "Katrina Johnson",
+        "Leslie Sieburth"
+      ],
+      "sc:citation": {
+        "@id": "https://doi.org/10.18129/B9.bioc.RNAdecay"
+      },
+      "sc:description": "RNA degradation is monitored through measurement of RNA abundance after inhibiting RNA synthesis. This package has functions and example scripts to facilitate (1) data normalization, (2) data modeling using constant decay rate or time-dependent decay rate models, (3) the evaluation of treatment or genotype effects, and (4) plotting of the data and models. Data Normalization: functions and scripts make easy the normalization to the initial (T0) RNA abundance, as well as a method to correct for artificial inflation of Reads per Million (RPM) abundance in global assessments as the total size of the RNA pool decreases. Modeling: Normalized data is then modeled using maximum likelihood to fit parameters. For making treatment or genotype comparisons (up to four), the modeling step models all possible treatment effects on each gene by repeating the modeling with constraints on the model parameters (i.e., the decay rate of treatments A and B are modeled once with them being equal and again allowing them to both vary independently). Model Selection: The AICc value is calculated for each model, and the model with the lowest AICc is chosen. Modeling results of selected models are then compiled into a single data frame. Graphical Plotting: functions are provided to easily visualize decay data model, or half-life distributions using ggplot2 package functions.",
+      "sc:featureList": [
+        {
+          "@id": "edam:operation_3659"
+        },
+        {
+          "@id": "edam:operation_3223"
+        },
+        {
+          "@id": "edam:operation_3435"
+        }
+      ],
+      "sc:license": "GPL-2.0-only",
+      "sc:name": "RNAdecay",
+      "sc:operatingSystem": [
+        "Windows",
+        "Linux",
+        "Mac"
+      ],
+      "sc:softwareHelp": {
+        "@id": "https://bioconductor.org/packages/RNAdecay"
+      },
+      "sc:softwareVersion": "1.30.0",
+      "sc:url": "https://bioconductor.org/packages/RNAdecay"
     }
-  ],
-  "sc:description": "RNA degradation is monitored through measurement of RNA abundance after inhibiting RNA synthesis. This package has functions and example scripts to facilitate (1) data normalization, (2) data modeling using constant decay rate or time-dependent decay rate models, (3) the evaluation of treatment or genotype effects, and (4) plotting of the data and models.",
-  "sc:featureList": [
-    {
-      "@id": "edam:operation_3435"
-    },
-    {
-      "@id": "edam:operation_3223"
-    },
-    {
-      "@id": "edam:operation_3659"
-    }
-  ],
-  "sc:license": "GPL-2.0",
-  "sc:name": "RNAdecay",
-  "sc:operatingSystem": [
-    "Linux",
-    "Windows",
-    "Mac"
-  ],
-  "sc:softwareHelp": {
-    "@id": "http://bioconductor.org/packages/release/bioc/manuals/RNAdecay/man/RNAdecay.pdf"
-  },
-  "sc:softwareVersion": "1.0.2",
-  "sc:url": "http://bioconductor.org/packages/release/bioc/html/RNAdecay.html"
+  ]
 }
