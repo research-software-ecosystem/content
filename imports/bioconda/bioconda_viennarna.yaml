@@ -4,7 +4,7 @@ about:
   license_file: COPYING
   summary: ViennaRNA package -- RNA secondary structure prediction and comparison
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -17,6 +17,7 @@ package:
 requirements:
   build:
   - make
+  - swig
   - null
   - null
   host:
@@ -29,6 +30,7 @@ requirements:
   - lapack
   - llvm-openmp
   run:
+  - perl
   - python
   - llvm-openmp
 source:
@@ -41,7 +43,10 @@ test:
   - RNAalifold --version
   - RNAeval    --version
   - RNAfold    --version
+  - RNAplot    --version
   - RNAplfold  --version
   - RNAsubopt  --version
   - RNAlocmin  --version
   - kinwalker  --help >& /dev/null
+  - python -c "import RNA"
+  - perl -MRNA -e "print qq(ok\n)"
