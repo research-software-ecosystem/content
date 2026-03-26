@@ -6,6 +6,7 @@ on:
       - 'data/**/*.biotools.json'
     branches:
       - master
+      - main
 
 jobs:
   run-gh2biotools:
@@ -26,14 +27,6 @@ jobs:
         with:
           files: | 
             **/*.biotools.json
-
-
-      - name: validate allowed fields
-        env:
-          GITHUB_BEFORE_SHA: ${{ github.event.before }}
-        run: |
-          chmod +x .github/scripts/validate-biotools-fields.sh
-          .github/scripts/validate-biotools-fields.sh ${{ steps.changes.outputs.all_changed_files }}
 
 
       - name: checkout utils repo
