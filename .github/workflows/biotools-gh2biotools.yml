@@ -39,6 +39,15 @@ jobs:
           fetch-depth: 1
 
 
+      - name: validate allowed fields
+        working-directory: content-ecosystem-utils/scripts/runbiotools
+        env:
+          GITHUB_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          chmod +x ./validate-biotools-fields.sh
+          ./validate-biotools-fields.sh ${{ steps.changes.outputs.all_changed_files }}
+
+
       - name: set up Python
         uses: actions/setup-python@v4
         with:
