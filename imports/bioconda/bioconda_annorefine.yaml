@@ -1,0 +1,50 @@
+about:
+  dev_url: https://github.com/nextgenusfs/annorefine
+  doc_url: https://nextgenusfs.github.io/annorefine/
+  home: https://github.com/nextgenusfs/annorefine
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Genome annotation refinement using RNA-seq data
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nextgenusfs
+package:
+  name: annorefine
+  version: 2026.2.22
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+  - pkg-config
+  - make
+  host:
+  - python >=3.9,<3.14
+  - pip
+  - maturin >=1.0,<2.0
+  - openssl
+  - bzip2
+  - zlib
+  - xz
+  - curl
+  run:
+  - python >=3.9,<3.14
+source:
+  sha256: 1c20bc7e5c93e7867ab7bd40d05db85e81f9bc7bba38c826b8c4df92865edfe4
+  url: https://github.com/nextgenusfs/annorefine/archive/refs/tags/v2026.2.22.tar.gz
+test:
+  commands:
+  - annorefine --help
+  imports:
+  - annorefine

@@ -1,0 +1,31 @@
+about:
+  home: https://github.com/YuefanHuang1998/BRAID
+  license: MIT
+  license_family: MIT
+  summary: A software tool for Block Resolution and Annotation of Integrated DNA.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv
+package:
+  name: braid
+  version: 1.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  - setuptools
+  run:
+  - python >=3.8
+  - pysam
+  - biopython
+source:
+  sha256: 6023725cd77855b59b2d4426f793fd38c468c3a2fdd55f2e5afb7c422d5e3737
+  url: https://pypi.io/packages/source/p/pybraid/pybraid-1.0.2.tar.gz
+test:
+  commands:
+  - braid --help
+  imports:
+  - braid

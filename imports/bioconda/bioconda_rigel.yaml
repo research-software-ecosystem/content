@@ -1,0 +1,71 @@
+about:
+  description: 'Rigel is a Bayesian transcript quantification method for RNA-seq data
+
+    that jointly models three nucleic acid species: mature mRNA, nascent
+
+    pre-mRNA (nRNA), and genomic DNA contamination (gDNA). It uses a linked
+
+    kinetic model coupling mRNA and nRNA through shared per-transcript
+
+    parameters, and a hierarchical empirical Bayes framework for initialization.
+
+    '
+  dev_url: https://github.com/mkiyer/rigel
+  doc_url: https://github.com/mkiyer/rigel/blob/main/docs/MANUAL.md
+  home: https://github.com/mkiyer/rigel
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Bayesian RNA-seq transcript quantification with joint mRNA, nRNA, and gDNA
+    deconvolution
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - mkiyer
+package:
+  name: rigel
+  version: 0.3.3
+requirements:
+  build:
+  - null
+  - null
+  - cmake >=3.15
+  - make
+  - pkg-config
+  host:
+  - python
+  - pip
+  - scikit-build-core >=0.4.3
+  - nanobind >=2.0
+  - htslib
+  - zlib
+  - libcurl
+  - openssl
+  - bzip2
+  - xz
+  - libdeflate
+  - numpy >=1.26
+  run:
+  - python >=3.12
+  - numpy >=1.26
+  - pandas >=2.1
+  - pyarrow >=14.0
+  - pysam >=0.22
+  - pyyaml >=6.0
+  - scipy >=1.11
+  - htslib
+source:
+  sha256: f744b31b775b1d97050a20a1f1b2e4f0904c0afd2ab214527b467aba1900dd41
+  url: https://pypi.org/packages/source/r/rigel-rnaseq/rigel_rnaseq-0.3.3.tar.gz
+test:
+  commands:
+  - rigel --help
+  imports:
+  - rigel

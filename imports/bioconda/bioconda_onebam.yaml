@@ -1,0 +1,62 @@
+about:
+  description: 'onebam converts read-sorted SAM/BAM/CRAM files into a compact ONEcode
+
+    .1read format, storing reads with sequences, quality scores, best-match
+
+    damage information, and taxonomy hit data. It supports merging, LCA
+
+    (Lowest Common Ancestor) assignment, taxonomic reporting, and read
+
+    extraction, making it suitable for eDNA workflows mapping against very
+
+    large reference databases such as all of NCBI.
+
+    '
+  dev_url: https://github.com/richarddurbin/onebam
+  doc_url: https://github.com/richarddurbin/onebam
+  home: https://github.com/richarddurbin/onebam
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: ONEcode replacement for SAM/BAM in large-scale eDNA mapping and taxonomic
+    analysis
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - 7PintsOfCherryGarcia
+package:
+  name: onebam
+  version: '0'
+requirements:
+  build:
+  - make
+  - null
+  - clang
+  - libclang-cpp
+  host:
+  - htslib
+  - zstd
+  - libcurl
+  - bzip2
+  - xz
+  - zlib
+  run:
+  - htslib
+  - zstd
+  - libcurl
+  - bzip2
+  - xz
+  - zlib
+source:
+  sha256: 61c4658ea1e5c6419232f05e569749641d2b8e90db13647fa467a883c7973740
+  url: https://github.com/richarddurbin/onebam/archive/6f609cac239f29d688709131bccac207d1cdeb60.tar.gz
+test:
+  commands:
+  - onebam 2>&1 | head -5
+  - ONEview 2>&1 | head -5
+  - ONEstat 2>&1 | head -5
+  - seqstat 2>&1 | head -5
+  - seqconvert 2>&1 | head -5

@@ -9,7 +9,7 @@ about:
     or constructed based on RNA-Seq alignments to the genome using Tophat and Cufflinks.
 build:
   noarch: generic
-  number: 2
+  number: 0
   run_exports:
   - null
 extra:
@@ -18,7 +18,7 @@ extra:
   - usegalaxy-eu:transdecoder
 package:
   name: transdecoder
-  version: 5.7.1
+  version: 6.0.0
 requirements:
   host:
   - perl
@@ -29,11 +29,8 @@ requirements:
   - bioconductor-seqlogo
   - r-ggplot2
 source:
-  patches:
-  - 0001-master.patch
-  sha256: 41dd5e95f6ba946ff21340417d867e5e99f123b4035779b25d3cffd20b828a30
-  url: https://github.com/TransDecoder/TransDecoder/archive/TransDecoder-v5.7.1.tar.gz
+  sha256: 53892ccedba4f8163adf4ffd0ceb2af1cf6685c6bae6f00491eeae74c3829799
+  url: https://github.com/TransDecoder/TransDecoder/archive/TransDecoder-v6.0.0.tar.gz
 test:
   commands:
-  - TransDecoder.Predict --version | grep -q "TransDecoder.Predict 5.7.1"
-  - TransDecoder.LongOrfs --version | grep -q "TransDecoder.LongOrfs 5.7.1"
+  - TransDecoder 2>&1 | grep "TransDecoder"

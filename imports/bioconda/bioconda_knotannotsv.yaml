@@ -1,0 +1,43 @@
+about:
+  description: 'knotAnnotSV is a simple tool to create a customizable html file
+
+    (or xlsm file compatible with thousands of SV) from an AnnotSV output.
+
+    '
+  dev_url: https://github.com/mobidic/knotAnnotSV
+  home: https://github.com/mobidic/knotAnnotSV
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: License.txt
+  summary: Post-processing and annotation helper around AnnotSV results (Perl-based).
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - tetedange13
+package:
+  name: knotannotsv
+  version: 1.1.5
+requirements:
+  run:
+  - perl
+  - perl-yaml-libyaml
+  - perl-sort-key
+  - perl-excel-writer-xlsx
+source:
+  patches:
+  - patch_perl_shebangs
+  sha256: ac1e0cc57807b81483b8e206a72dbb8b3755523f519a452ed6b3fd45dc9a7bdf
+  url: https://github.com/mobidic/knotAnnotSV/archive/v1.1.5.tar.gz
+test:
+  commands:
+  - perl -MYAML::XS -e 'print $YAML::XS::VERSION, "\n";'
+  - perl -MSort::Key::Natural -e 'print $Sort::Key::Natural::VERSION, "\n";'
+  - perl -MExcel::Writer::XLSX -e 'print $Excel::Writer::XLSX::VERSION, "\n";'
+  - knotAnnotSV.pl --annotSVfile $CONDA_PREFIX/share/knotAnnotSV/example/AnnotSV_3.4.tsv
+    --configFile $CONDA_PREFIX/share/knotAnnotSV/config_AnnotSV.yaml
+  - knotAnnotSV2XL.pl --annotSVfile $CONDA_PREFIX/share/knotAnnotSV/example/AnnotSV_3.4.tsv
+    --configFile $CONDA_PREFIX/share/knotAnnotSV/config_AnnotSV.yaml

@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/snakemake/snakemake-scheduler-plugin-greedy
+  home: https://github.com/snakemake/snakemake-scheduler-plugin-greedy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A greedy Snakemake scheduler plugin.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - johanneskoester
+  - fgvieira
+package:
+  name: snakemake-scheduler-plugin-greedy
+  version: 0.1.5
+requirements:
+  host:
+  - python >=3.11.0,<4.0.0
+  - hatchling
+  - pip
+  run:
+  - snakemake-interface-common >=1.23.0,<2.0.0
+  - snakemake-interface-scheduler-plugins >=2.0.2,<3.0.0
+source:
+  sha256: 2e865e0af902a903c974b7e78b9014db5b8185414bad379e75541cfe40979833
+  url: https://pypi.io/packages/source/s/snakemake-scheduler-plugin-greedy/snakemake_scheduler_plugin_greedy-0.1.5.tar.gz
+test:
+  imports:
+  - snakemake_scheduler_plugin_greedy

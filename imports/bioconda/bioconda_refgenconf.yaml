@@ -7,17 +7,20 @@ about:
 build:
   noarch: python
   number: 0
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - stolarczyk
 package:
   name: refgenconf
-  version: 0.12.2
+  version: 0.13.0
 requirements:
   host:
   - pip
   - python >=3.6
+  - setuptools
   run:
   - python >=3.6
   - pyyaml
@@ -27,8 +30,8 @@ requirements:
   - rich >=9.0.1
   - jsonschema >=3.0.1
 source:
-  sha256: 6c9f9ecd8b91b4f75a535cfbdbdfb136f2dc9e9864142d07aa0352c61cf0cf78
-  url: https://pypi.io/packages/source/r/refgenconf/refgenconf-0.12.2.tar.gz
+  sha256: ffc77f7d9c5662df4cd0ef921c706f1edd9d0b7f8348f3c6ddeb9571132b4af5
+  url: https://pypi.org/packages/source/r/refgenconf/refgenconf-0.13.0.tar.gz
 test:
   imports:
   - refgenconf

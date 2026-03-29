@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/ausswal/TEexpo
+  home: https://github.com/ausswal/TEexpo
+  license: MIT
+  license_file: LICENSE
+  summary: 'TEexpo: Automated and curated transposable element annotation pipeline
+    developed by Swarup Das and Subarna Thakur'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - ausswal
+package:
+  name: teexpo
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.10,<3.13
+  - pip
+  run:
+  - python >=3.10,<3.13
+  - pandas
+  - matplotlib-base
+  - hmmer >=3.3
+  - repeatmasker
+  - repeatmodeler
+  - bedtools
+  - seqkit
+  - cd-hit
+  - mafft
+  - trimal
+  - emboss
+  - trnascan-se
+  - genometools-genometools >=1.6.5
+  - vsearch
+  - transposonpsi
+  - samtools
+  - pyfiglet
+source:
+  sha256: 50b4cb2d8784d825206385684866b2452df359ba3228bf82f047e25ec4a5cc91
+  url: https://github.com/ausswal/TEexpo/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - teexpo --help
+  - teexpo --version

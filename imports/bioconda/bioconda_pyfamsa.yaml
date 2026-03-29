@@ -11,8 +11,11 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
-    -vvv'
+  script:
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CXXFLAGS="${CXXFLAGS} -std=c++23"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 extra:
   additional-platforms:
   - linux-aarch64
@@ -21,25 +24,28 @@ extra:
   - althonos
 package:
   name: pyfamsa
-  version: 0.5.3.post1
+  version: 0.7.0
 requirements:
   build:
   - null
   - null
   - cmake
   - make
+  - pkg-config
+  - clangdev
+  - llvmlite
   host:
   - python
   - pip
   - cython
   - scikit-build-core
-  - scoring-matrices >=0.2
+  - scoring-matrices >=0.3
   run:
   - python
-  - scoring-matrices >=0.2
+  - scoring-matrices >=0.3
 source:
-  sha256: 26e95de13adce18e923847591681f085a35fab20eac76887deb6ad12f1b6a06c
-  url: https://pypi.io/packages/source/p/pyfamsa/pyfamsa-0.5.3.post1.tar.gz
+  sha256: 5b1f3b60a319d5a5c92911cccec7ad7d506799aecac0926fecba4da370cf9b3d
+  url: https://pypi.org/packages/source/p/pyfamsa/pyfamsa-0.7.0.tar.gz
 test:
   commands:
   - python -m unittest -vv pyfamsa.tests

@@ -1,0 +1,54 @@
+about:
+  description: 'Genesis is a C++ library for working with phylogenetic and population
+
+    genetic data. It supports trees, placements (jplace), population genetics
+
+    (sam/bam/cram, pileup, sync, vcf), sequences (fasta, fastq, phylip),
+
+    and taxonomies. It provides distance measures, clustering, PCA, and
+
+    visualization tools.
+
+    '
+  dev_url: https://github.com/lczech/genesis
+  doc_url: http://doc.genesis-lib.org/
+  home: https://github.com/lczech/genesis
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE.txt
+  summary: A C++ library for working with phylogenetic and population genetic data
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btaa070
+package:
+  name: genesis
+  version: 0.34.0
+requirements:
+  build:
+  - make
+  - null
+  - null
+  - cmake >=3.14
+  - autoconf
+  - automake
+  - libtool
+  host:
+  - zlib
+  - bzip2
+  - xz
+  - libdeflate
+source:
+  sha256: a0d54612942629c6ae50cfac4f1c51a9393273be8e573706f111e9b310ad87bc
+  url: https://github.com/lczech/genesis/archive/refs/tags/v0.34.0.tar.gz
+test:
+  commands:
+  - test -f ${PREFIX}/lib/libgenesis.so
+  - test -f ${PREFIX}/lib/libgenesis.dylib
+  - test -f ${PREFIX}/include/genesis/genesis.hpp

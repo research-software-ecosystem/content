@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/fravadona/xumi
+  license: MIT
+  license_file: LICENSE
+  summary: CIGAR-aware extraction of per-read subsequences at specified reference
+    regions from SAM/BAM/CRAM files.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Fravadona
+package:
+  name: xumi
+  version: 1.0.3
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - flit-core >=3.4
+  run:
+  - python >=3.10
+  - pysam >=0.20
+source:
+  sha256: 9a4d67823d14ab734f5b5d1d522b6a8fcffeeb19b7dd721346ed51e58c8ab1bf
+  url: https://github.com/fravadona/xumi/archive/refs/tags/1.0.3.tar.gz
+test:
+  commands:
+  - xumi --help
+  imports:
+  - xumi

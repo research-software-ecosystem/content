@@ -1,0 +1,47 @@
+about:
+  description: 'Orographer reads a BAM file and one or more genomic regions, then
+    generates
+
+    interactive Bokeh-based HTML plots for reviewing alignments. It supports optional
+
+    GTF/GFF3 gene tracks and VCF variant overlay.
+
+    '
+  dev_url: https://github.com/PacificBiosciences/Orographer
+  doc_url: https://github.com/PacificBiosciences/Orographer/blob/main/docs/user_guide.md
+  home: https://github.com/PacificBiosciences/Orographer
+  license: Pacific Biosciences Software License Agreement
+  license_family: PROPRIETARY
+  license_file: LICENSE.md
+  summary: Command line tool for visualizing alignments from BAM files.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - jbelyeu
+package:
+  name: orographer
+  version: 0.1.0
+requirements:
+  host:
+  - pip
+  - python >=3.10
+  - hatchling
+  run:
+  - python >=3.10
+  - bokeh >=3.0
+  - intervaltree >=3.1
+  - pysam >=0.23
+source:
+  sha256: 54d50ac78c7bd5b744e2fbd92ca552b45cbfad5d104cfb5a7ba9bd517f1128e6
+  url: https://github.com/PacificBiosciences/Orographer/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - orographer --version
+  - orographer --help
+  imports:
+  - orographer
