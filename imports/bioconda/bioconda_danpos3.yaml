@@ -1,0 +1,34 @@
+about:
+  home: https://github.com/boenc28-cmyk/DANPOS
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: A toolkit for Dynamic Analysis of Nucleosome Positioning and Occupancy
+    by Sequencing - Version 3
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+package:
+  name: danpos3
+  version: 3.2.2
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.7
+  - samtools >=1.7
+  - rpy2 >=3.3.3
+  - numpy >=1.18.5
+  - pysam >=0.16.0.1
+  - scipy
+source:
+  sha256: dc498301b6abe6314c780454eafc33e1d76cbdb0753909b163a93b0bc3ed5fbe
+  url: https://github.com/boenc28-cmyk/DANPOS/archive/refs/tags/v3.2.2.tar.gz
+test:
+  commands:
+  - danpos -h

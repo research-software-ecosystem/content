@@ -1,31 +1,39 @@
 about:
+  dev_url: https://github.com/UWPR/Comet
   home: https://uwpr.github.io/Comet/
-  license: Apache License 2.0
-  summary: Comet is a command line tool that does MS/MS database search.
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Comet is an open source tandem mass spectrometry (MS/MS) sequence database
+    search tool.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
+  - osx-x86_64
   identifiers:
   - doi:10.1007/s13361-015-1179-x
   - doi:10.1002/pmic.201200439
+  skip-lints:
+  - should_be_noarch_generic
 package:
   name: comet-ms
-  version: '2024011'
+  version: 2026.01.1
 requirements:
-  build:
-  - make
-  - unzip
-  - null
-  - null
-  - sysroot_linux-64 2.17
+  build: []
+  run: []
 source:
-  md5: 3f0dc29582792620b0cc916c2117965f
-  url: https://github.com/UWPR/Comet/archive/refs/tags/v2024.01.1.zip
+- sha256: b05f24e22cfed69c6b5f3d7bf0370656fa338b7c96d305dc7c04d75760d14506
+  url: https://github.com/UWPR/Comet/releases/download/v2026.01.1/comet.aarch64.linux.exe
+- sha256: 5308289f8c1b193c59e12e03cfbf0ff3f7cde836b5e42f3ba785d365ee256abb
+  url: https://github.com/UWPR/Comet/releases/download/v2026.01.1/comet.aarch64.macos.exe
+- sha256: 14be7759e7bfe9076d75830deba97bce2cc688828be8c32794fd2a53e83e475b
+  url: https://github.com/UWPR/Comet/releases/download/v2026.01.1/comet.linux.exe
+- sha256: cfb9fb0ad25d5bc39353c41066566aa2dd66167e38218c9df78399904e48a2b5
+  url: https://github.com/UWPR/Comet/releases/download/v2026.01.1/comet.macos.exe
 test:
   commands:
   - comet.exe -p && rm comet.params.new

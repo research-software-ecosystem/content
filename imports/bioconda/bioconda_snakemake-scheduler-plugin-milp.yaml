@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/snakemake/snakemake-scheduler-plugin-milp
+  home: https://github.com/snakemake/snakemake-scheduler-plugin-milp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A Snakemake scheduler plugin using Mixed-Integer Linear Programming (MILP).
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - johanneskoester
+  - fgvieira
+package:
+  name: snakemake-scheduler-plugin-milp
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.11.0,<4.0.0
+  - hatchling
+  - pip
+  run:
+  - snakemake-interface-common >=1.23.0,<2.0.0
+  - snakemake-interface-scheduler-plugins >=2.0.2,<3.0.0
+source:
+  sha256: be1ff180af06923c26f11e3c6346f663b9dca4c332229502a9701870afeb8bb6
+  url: https://pypi.io/packages/source/s/snakemake-scheduler-plugin-milp/snakemake_scheduler_plugin_milp-0.1.1.tar.gz
+test:
+  imports:
+  - snakemake_scheduler_plugin_milp

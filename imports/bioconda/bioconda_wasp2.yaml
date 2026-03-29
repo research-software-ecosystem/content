@@ -1,0 +1,92 @@
+about:
+  description: 'WASP2 is a high-performance tool for allele-specific analysis of NGS
+    data.
+
+    It provides functionality for variant counting, read remapping for bias
+
+    correction, and statistical analysis of allelic imbalance. The package
+
+    includes a Rust extension for accelerated BAM processing.
+
+    '
+  dev_url: https://github.com/mcvickerlab/WASP2
+  doc_url: https://mcvickerlab.github.io/WASP2/
+  home: https://github.com/mcvickerlab/WASP2
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Allele-specific analysis of next-generation sequencing data with Rust acceleration
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:wasp2
+  recipe-maintainers:
+  - Jaureguy760
+package:
+  name: wasp2
+  version: 1.4.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - pkg-config
+  - cmake
+  - make
+  - clangdev
+  - python
+  - cross-python_
+  - crossenv
+  - maturin >=1.6,<2.0
+  host:
+  - python
+  - pip
+  - maturin >=1.6,<2.0
+  - htslib >=1.22
+  - bzip2
+  - xz
+  - zlib
+  - openssl
+  - libcurl
+  run:
+  - python >=3.11,<3.13.0a0
+  - numpy >=1.21.0
+  - pandas >=1.5.0,<3.0.0
+  - polars >=0.19.0
+  - scipy >=1.10.0
+  - pysam >=0.21.0
+  - pybedtools >=0.9.0
+  - anndata >=0.8.0,<0.12.0
+  - scanpy >=1.9.0
+  - typer >=0.12.0
+  - rich >=13.0.0
+  - samtools >=1.10
+  - bcftools
+  - bedtools
+source:
+  sha256: 8d73c53290eb7df01cb297661a7ca968a43cc04d132f278422221d09606c440c
+  url: https://pypi.org/packages/source/w/wasp2/wasp2-1.4.0.tar.gz
+test:
+  commands:
+  - wasp2-count --help
+  - wasp2-map --help
+  - wasp2-analyze --help
+  - python -c "import wasp2_rust; print('Rust extension OK')"
+  - pip check
+  imports:
+  - counting
+  - mapping
+  - analysis
+  - wasp2_rust
+  requires:
+  - pip

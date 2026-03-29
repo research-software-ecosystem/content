@@ -19,7 +19,7 @@ extra:
   - ze97286
 package:
   name: rastair
-  version: 2.0.0
+  version: 2.1.0
 requirements:
   build:
   - null
@@ -42,15 +42,21 @@ requirements:
   - r-rmarkdown
   - r-data.table
   - r-ggplot2
+  - r-ggside
+  - bioconductor-rsamtools
+  - bioconductor-genomicranges
+  - bioconductor-biostrings
+  - bcftools
   - pandoc
 source:
-  sha256: b52a81af13211cb3a9250ee4e3dee5bee743e6233953ceef45795df0cbc42d2f
-  url: https://s3.eu-west-2.amazonaws.com/com.rastair.releases/build/release-v2.0.0/rastair-2.0.0-vendored.tar.gz
+  sha256: e340de77407ad3d666159925c957ec562bbb1ee9cb75ee32547cc5b4f60e734b
+  url: https://s3.eu-west-2.amazonaws.com/com.rastair.releases/build/release-v2.1.0/rastair-2.1.0-vendored.tar.gz
 test:
   commands:
   - rastair --help
   - rastair --version
   - rastair mbias --help
+  - rastair bam --help
   - rastair internal shell-completions bash > /dev/null
   - test -f "${PREFIX}/share/rastair/scripts/mbias.R"
   - test -f "${PREFIX}/share/rastair/scripts/QC_report.Rmd"
