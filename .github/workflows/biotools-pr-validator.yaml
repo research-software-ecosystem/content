@@ -6,12 +6,19 @@ on:
     paths:
       - 'data/**/*.biotools.json'
 
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   validate-and-merge:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'biotools-bot'
+
     permissions:
       contents: write
       pull-requests: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,12 +39,13 @@ jobs:
       - name: reformat json and commit
         if: ${{ !endsWith(github.head_ref, '__delete') }}
         run: |
-          jq --indent 4 'walk( if type == "array" then sort else . end )' "${{ steps.vars.outputs.file }}" > tmp.json
-          mv tmp.json "${{ steps.vars.outputs.file }}"
+          FILE="${{ steps.vars.outputs.file }}"
+          jq --indent 4 'walk( if type == "array" then sort else . end )' "$FILE" > tmp.json
+          mv tmp.json "$FILE"
           git config user.name "biotools-bot"
           git config user.email "support-bio-tools@sdu.dk"
-          git add "${{ steps.vars.outputs.file }}"
-          git commit -m "reformat json with jq" || echo "No changes to commit"
+          git add "$FILE"
+          git commit -m "reformat json with jq [skip ci]" || echo "ℹ️ No changes to commit"
           git push origin HEAD:${{ github.head_ref }}
           echo "✅ Reformatted JSON and pushed changes"
 
@@ -48,6 +56,3 @@ jobs:
           git fetch origin master
           gh pr merge ${{ github.event.pull_request.number }} --squash --delete-branch
           echo "✅ Merged PR #${{ github.event.pull_request.number }} into master"
-
-
- 
