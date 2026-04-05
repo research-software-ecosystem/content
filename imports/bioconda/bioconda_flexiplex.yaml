@@ -13,7 +13,7 @@ about:
 build:
   entry_points:
   - flexiplex-filter = flexiplex_filter.main:cli
-  number: 1
+  number: 0
   run_exports:
   - null
   script:
@@ -23,6 +23,7 @@ build:
   - mkdir -p "${DIR}"
   - make -j"${CPU_COUNT}"
   - make install DIR="${DIR}"
+  skip: true
 extra:
   additional-platforms:
   - osx-arm64
@@ -31,26 +32,26 @@ extra:
   - doi:10.1093/bioinformatics/btae102
 package:
   name: flexiplex
-  version: 1.02.5
+  version: 1.02.6
 requirements:
   build:
   - make
   - null
   - pkg-config
   host:
-  - python >=3.9
+  - python
   - pip
   - setuptools
   run:
-  - python >=3.9
+  - python
   - cachetools
   - requests
   - matplotlib-base
   - numpy
   - pandas
 source:
-  sha256: 6a14395cdefa91a1ad631a3ae839198715f22279c70cbcd51e660f15cee9228e
-  url: https://github.com/DavidsonGroup/flexiplex/archive/refs/tags/v1.02.5.tar.gz
+  sha256: 2de64c7cc1db9ad8bce254c2f56610364fac6c0dc905a498ab368ea6664b1a13
+  url: https://github.com/DavidsonGroup/flexiplex/archive/refs/tags/v1.02.6.tar.gz
 test:
   commands:
   - flexiplex -h

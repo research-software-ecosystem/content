@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/xyfans111/recombass
+  doc_url: https://github.com/xyfans111/recombass
+  home: https://github.com/xyfans111/recombass
+  license: MIT
+  license_file: LICENSE
+  summary: Detect recombination hot/cold spots from SNP matrices using wavelet denoising
+build:
+  entry_points:
+  - recombass = recombass.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - xyfans111
+package:
+  name: recombass
+  version: 0.1.7
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=61.0
+  - wheel
+  run:
+  - python >=3.9
+  - click
+  - matplotlib-base
+  - numpy
+  - pandas
+  - polars
+  - pyarrow
+  - pywavelets <1.9.0
+  - scikit-learn
+  - seaborn
+  - snp-dists >=0.8.2
+source:
+  sha256: 86b83de089d14e1b75297c1ccd52c282e1040d810f6494c01f0b0d5847888f63
+  url: https://pypi.org/packages/source/r/recombass/recombass-0.1.7.tar.gz
+test:
+  commands:
+  - recombass --help
+  - recombass --version
+  - printf 'pos\tstrain1\tstrain2\tstrain3\tstrain4\n100\tA\tA\tT\tT\n200\tC\tC\tT\tT\n300\tG\tG\tG\tA\n400\tT\tT\tC\tC\n500\tA\tG\tA\tG\n600\tC\tT\tC\tT\n700\tG\tA\tG\tA\n800\tT\tC\tT\tC\n'
+    > toy_snps.tsv
+  - recombass -i toy_snps.tsv -o smoke -m 0.95 -n 0.01 -t 1
+  - test -f smoke.nr01.maf95.integrated.tsv
+  - test -f smoke.nr01.maf95.fa.pmr.30.2.wt.l.pdf
+  - test -f smoke.nr01.maf95.fa.pmr.all.2.wt.l.pdf
+  - test -f smoke.nr01.maf95.recx.txt
+  imports:
+  - recombass
+  requires:
+  - pip

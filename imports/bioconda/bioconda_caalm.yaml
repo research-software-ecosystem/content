@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/lczong/CAALM
+  doc_url: https://github.com/lczong/CAALM
+  home: https://github.com/lczong/CAALM
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Carbohydrate Activity Annotation with protein Language Models
+build:
+  entry_points:
+  - caalm = caalm.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - lczong
+  - vagkaratzas
+package:
+  name: caalm
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=68
+  - wheel
+  - pip
+  run:
+  - python >=3.10
+  - pytorch >=2.6.0
+  - numpy >=1.26
+  - biopython >=1.86
+  - transformers >=4.55.0,<5
+  - tqdm >=4.67
+  - pyyaml >=6.0
+  - jinja2 >=3.1
+  - markupsafe >=2.0
+  - faiss-cpu
+source:
+  sha256: f843b1339cae239c6fd971d8bbccea87631c33068c919e47f674f621890d1725
+  url: https://pypi.org/packages/source/c/caalm/caalm-1.0.0.tar.gz
+test:
+  commands:
+  - caalm --help
+  imports:
+  - caalm

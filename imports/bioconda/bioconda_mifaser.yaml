@@ -1,0 +1,41 @@
+about:
+  dev_url: https://bitbucket.org/bromberglab/mifaser
+  doc_url: https://bitbucket.org/bromberglab/mifaser/wiki/docs
+  home: https://bitbucket.org/bromberglab/mifaser
+  license: NPOSL-3.0
+  license_family: OTHER
+  license_file: LICENSE.md
+  summary: a python package for super-fast and accurate annotation of molecular functionality
+    using read data without prior assembly or gene finding
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - nickp60
+package:
+  name: mifaser
+  version: '1.60'
+requirements:
+  host:
+  - pip
+  - python
+  - setuptools
+  run:
+  - python >=3.6
+  - diamond
+  - sra-tools
+source:
+  sha256: 24a2db0c5b733d63ae9266857132aee8912e8fe0c8c1e11ae86727f53b386de3
+  url: https://pypi.io/packages/source/m/mifaser/mifaser-1.60.tar.gz
+test:
+  commands:
+  - mifaser --help
+  imports:
+  - mifaser
+  - mifaser.alignment
+  - mifaser.annotation
+  - mifaser.translate

@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/FofanovLab/MetaTracer
+  home: https://github.com/FofanovLab/MetaTracer
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: MetaTracer metatranscriptomic analysis pipeline.
+build:
+  entry_points:
+  - metatracer = metatracer.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+extra:
+  recipe-maintainers:
+  - tfursten
+package:
+  name: metatracer
+  version: 0.1.1
+requirements:
+  host:
+  - python <3.14
+  - setuptools >=64
+  - pip
+  run:
+  - python <3.14
+  - mtsv-tools >=2.1.0
+  - click >=8.1
+  - biopython >=1.80
+  - pysam >=0.21
+  - intervaltree >=3.1
+  - ete3 >=3.1
+  - tqdm >=4.64
+  - htslib
+source:
+  sha256: d72e04d0b193fac14bd78b9e49bae59bacc3c8d742e85750a13be34de32ee159
+  url: https://github.com/FofanovLab/metatracer/archive/refs/tags/0.1.1.tar.gz
+test:
+  commands:
+  - metatracer --help
+  imports:
+  - metatracer

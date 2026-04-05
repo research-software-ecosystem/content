@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/ljunwon1114/GenoChar
+  license: MIT
+  license_file: LICENSE
+  summary: 'GenoChar: Genome characterization workflow for generating publication-ready
+    tables from microbial genome assemblies'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - ljunwon1114
+package:
+  name: genochar
+  version: 0.6.3.2
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=68
+  - wheel
+  - pip
+  run:
+  - python >=3.10
+  - pandas >=2.0
+  - openpyxl >=3.1
+source:
+  sha256: f6feaf4dbc6c778736920bbbb8543b5633289b27a57c7aaef578e242d4c0b583
+  url: https://pypi.org/packages/source/g/genochar/genochar-0.6.3.2.tar.gz
+test:
+  commands:
+  - pip check
+  - genochar --help
+  imports:
+  - genochar
+  requires:
+  - pip
