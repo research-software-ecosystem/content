@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/whatever60/vsearch-plus
+  home: https://github.com/whatever60/vsearch-plus
+  license: GPL-3.0-or-later AND BSD-2-Clause
+  license_file: LICENSE.txt
+  summary: Paired-end VSEARCH extensions and paired-end RDP taxonomy launcher.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - whatever60
+package:
+  name: vsearch-plus
+  version: 0.1.0
+requirements:
+  build:
+  - autoconf
+  - automake
+  - pkg-config
+  - null
+  - null
+  - make
+  host:
+  - bzip2
+  - zlib
+  run:
+  - openjdk
+  - python >=3.10
+  - wget
+source:
+  sha256: 5d4bcd9bcf6c4da47131bb66c444ba34d05594aacc0c53cd45fbc50d466950de
+  url: https://github.com/whatever60/vsearch-plus/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - vsearch-plus --help
+  - bash -lc 'set -euo pipefail; tmp="${PWD}/.xdg-data"; XDG_DATA_HOME="$tmp" rdp-classifier
+    --help >/dev/null; rm -rf "$tmp"'
+  - test -e "${PREFIX}/share/vsearch-plus/scripts/get_rdp_classifier.py"
+  - test ! -e "${PREFIX}/bin/get_rdp_classifier.py"

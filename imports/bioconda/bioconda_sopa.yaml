@@ -1,19 +1,17 @@
 about:
-  dev_url: https://github.com/gustaveroussy/sopa
   doc_url: https://gustaveroussy.github.io/sopa
-  home: https://github.com/gustaveroussy/sopa
+  home: https://gustaveroussy.github.io/sopa
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
-  summary: Spatial-omics pipeline and analysis.
+  summary: Spatial-omics pipeline and analysis
 build:
   entry_points:
   - sopa = sopa.main:app
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - quentinblampey
@@ -22,25 +20,22 @@ package:
   version: 2.2.2
 requirements:
   host:
-  - python >=3.10,<3.13
+  - python >=3.11
   - hatchling
   - pip
   run:
-  - python >=3.10,<3.13
-  - spatialdata >=0.4.0
-  - spatialdata-io >=0.2.0
+  - python >=3.11
+  - spatialdata >=0.7.2
+  - spatialdata-io >=0.3.0
   - spatialdata-plot >=0.2.10
   - scanpy >=1.10.4
   - anndata >=0.11.0
+  - igraph >=0.11.0
   - typer >=0.9.0
-  - opencv >=4.8.0
   - dask-core >=2024.4.1
-  - click <8.2.0
 source:
   sha256: dd0c645f9028f86f44a77045569ec1c6fe451f435d01822b31c04ca90c8baffb
   url: https://pypi.org/packages/source/s/sopa/sopa-2.2.2.tar.gz
 test:
-  commands:
-  - sopa --help
   imports:
   - sopa

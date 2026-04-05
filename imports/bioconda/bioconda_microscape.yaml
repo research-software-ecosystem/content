@@ -1,0 +1,52 @@
+about:
+  description: 'microscape provides downstream analysis tools for amplicon sequencing
+    data,
+
+    designed to work with papa2''s output. Includes sequence table QC filtering,
+
+    MIMARKS metadata loading, taxonomic renormalization, phylogenetic tree
+
+    construction (MAFFT + NJ), Bray-Curtis ordination (t-SNE/PCA), SparCC-style
+
+    correlation networks, and JSON export for visualization.
+
+    '
+  dev_url: https://github.com/rec3141/microscape
+  doc_url: https://github.com/rec3141/microscape
+  home: https://github.com/rec3141/microscape
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: "Downstream analysis tools for amplicon sequencing \u2014 filtering, ordination,\
+    \ phylogeny, networks"
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - rec3141
+package:
+  name: microscape
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.9
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+source:
+  sha256: 7bf89d3db81c2e572c3caf0e412cca724dc1c4d6b7d9e0bbead953607e8f0062
+  url: https://github.com/rec3141/microscape/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - python -c "import microscape; print(microscape.__version__)"
+  imports:
+  - microscape

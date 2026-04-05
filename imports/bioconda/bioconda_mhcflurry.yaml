@@ -22,7 +22,7 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   identifiers:
   - doi:10.1016/j.cels.2018.05.014
@@ -30,25 +30,28 @@ extra:
   - jonasscheid
 package:
   name: mhcflurry
-  version: 2.1.5
+  version: 2.2.0
 requirements:
   host:
   - python
   - pip
+  - setuptools
   run:
+  - python
   - six
   - pandas >=0.20.3
   - appdirs
   - scikit-learn
   - mhcgnomes >=0.8.4
+  - pytorch
   - pyyaml
   - tqdm
   - tensorflow >=2.12.0
   - np_utils
   - tf-keras
 source:
-  sha256: 7536096d59dd72d9f6a7014f01c3461df52adc6b925c20568cc17a774b2229ae
-  url: https://pypi.io/packages/source/m/mhcflurry/mhcflurry-2.1.5.tar.gz
+  sha256: aaf352d3f9759f7d20b722382481d5a5ce0abb2c0ee9b8c302d90293ab8d9b5c
+  url: https://pypi.org/packages/source/m/mhcflurry/mhcflurry-2.2.0.tar.gz
 test:
   commands:
   - mhcflurry-downloads --help

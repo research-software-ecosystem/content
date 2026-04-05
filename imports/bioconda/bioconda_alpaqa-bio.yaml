@@ -1,0 +1,40 @@
+about:
+  home: https://pypi.org/project/alpaqa-bio/
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: a quality control tool for bacterial ONT-only assemblies
+build:
+  entry_points:
+  - alpaqa = alpaqa.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - MBiggel
+package:
+  name: alpaqa-bio
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.9
+  - hatchling >=1.20
+  - pip
+  - scipy >=1.10.0
+  run:
+  - python >=3.9
+  - scipy >=1.10.0
+source:
+  sha256: d2bccb4db18e66c7ce61b6e65694aab506a1de656394519c5230e2fd4b1fccc6
+  url: https://pypi.org/packages/source/a/alpaqa-bio/alpaqa_bio-0.1.4.tar.gz
+test:
+  commands:
+  - pip check
+  - alpaqa --help
+  imports:
+  - alpaqa
+  requires:
+  - pip
+  - python

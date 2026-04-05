@@ -9,7 +9,9 @@ build:
   - null
   script:
   - mv .cargo/config-portable.toml .cargo/config.toml
-  - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+  - cargo install --locked cargo-multivers
+  - cargo multivers --profile dist --out-dir "${PREFIX}/bin"
+  - cargo install --no-track --locked --profile dist --root "${PREFIX}" --path .
 extra:
   additional-platforms:
   - linux-aarch64
@@ -19,14 +21,14 @@ extra:
   - rickbeeloo
 package:
   name: sassy
-  version: 0.2.0
+  version: 0.2.2
 requirements:
   build:
   - null
   - cargo-bundle-licenses
 source:
-  sha256: 4082c3580259877c2aa633943846e52dc0b0c153d23972058031742ae4892454
-  url: https://github.com/ragnargrootkoerkamp/sassy/archive/v0.2.0.tar.gz
+  sha256: f1a446ed5eca2d9e653eb97abfca53dbc9a6baf81617c230560f929478c3d57d
+  url: https://github.com/ragnargrootkoerkamp/sassy/archive/v0.2.2.tar.gz
 test:
   commands:
   - sassy --help

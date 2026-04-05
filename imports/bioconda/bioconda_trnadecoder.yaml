@@ -1,0 +1,41 @@
+about:
+  home: https://pypi.org/project/tRNAdecoder/
+  license: MIT
+  license_file: LICENSE
+  summary: Isodecoder level analysis for Nano-tRNAseq runs
+build:
+  entry_points:
+  - tRNAdecoder = tRNAdecoder:__main__
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - lpryszcz
+package:
+  name: trnadecoder
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3.9
+  - hatchling >=1.26
+  - pip
+  run:
+  - python >=3.9
+  - mappy ==2.30
+  - numpy
+  - pysam
+source:
+  sha256: 75b45cca501d967c076f819995f657a75cb8234db7ec33b2a05443dab7aad883
+  url: https://pypi.org/packages/source/t/tRNAdecoder/trnadecoder-1.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  - tRNAdecoder --help
+  imports:
+  - tRNAdecoder
+  requires:
+  - pip
+  - python

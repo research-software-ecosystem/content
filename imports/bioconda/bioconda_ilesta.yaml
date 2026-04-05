@@ -1,10 +1,12 @@
 about:
+  dev_url: https://github.com/yvlaere/Ilesta
   home: https://github.com/yvlaere/Ilesta
-  license: GLP-3.0-only
+  license: GPL-3.0-only
+  license_family: GPL3
   license_file:
   - LICENSE
   - THIRDPARTY.yaml
-  summary: De novo genome assembler for long-read sequencing data
+  summary: De novo genome assembler for long-read sequencing data.
 build:
   number: 0
   run_exports:
@@ -13,18 +15,21 @@ build:
   - cargo-bundle-licenses --format yaml --output THIRDPARTY.yaml
   - cargo install -v --locked --no-track --root $PREFIX --path .
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - yvlaere
 package:
   name: ilesta
-  version: 1.1.0
+  version: 1.2.1
 requirements:
   build:
   - null
   - cargo-bundle-licenses
 source:
-  sha256: d29dbc2fdca40c3782800e36ed8e0fb6c985d7a1f91eab1429d89666688c5002
-  url: https://github.com/yvlaere/Ilesta/archive/refs/tags/v1.1.0.tar.gz
+  sha256: 7ab5f6468ccc9bbd33445e7459bf9f397ac62b7bed34eb87e6749f4a457b03f0
+  url: https://github.com/yvlaere/Ilesta/archive/refs/tags/v1.2.1.tar.gz
 test:
   commands:
   - Ilesta --help

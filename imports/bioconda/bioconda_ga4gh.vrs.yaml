@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/ga4gh/vrs-python
+  home: https://vrs.ga4gh.org
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: GA4GH Variation Representation Specification (VRS) reference implementation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - emmcauley
+package:
+  name: ga4gh.vrs
+  version: 2.3.1
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=65.3
+  - setuptools-scm >=8
+  - pip
+  run:
+  - python >=3.10
+  - click
+  - pydantic >=2.1,<3.dev0
+  - pysam
+  - bioutils >=0.6
+  - biocommons.seqrepo >=0.5.1
+  - dill
+  - hgvs >=1.5.5,<2.0
+  - requests
+  - canonicaljson
+  - typing_extensions
+source:
+  sha256: 911cff7eadc8a7ca9e746147d85a90fe1affbb78d68c3f9aca177bdfa9bb07db
+  url: https://pypi.org/packages/source/g/ga4gh.vrs/ga4gh_vrs-2.3.1.tar.gz
+test:
+  commands:
+  - vrs-annotate --help
+  imports:
+  - ga4gh

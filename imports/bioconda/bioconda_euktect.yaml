@@ -1,0 +1,68 @@
+about:
+  description: 'Euktect uses the HyenaDNA deep learning model to assess the quality
+    of
+
+    Eukaryotic Metagenome-Assembled Genomes (MAGs). This CPU-only build does
+
+    not require CUDA or GPU hardware.
+
+    '
+  home: https://github.com/NameFilled/Euktect
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Eukaryotic MAG quality assessment using HyenaDNA (CPU-only)
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  identifiers:
+  - biotools:euktect
+  recipe-maintainers:
+  - NameFilled
+package:
+  name: euktect
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=42
+  run:
+  - python >=3.8
+  - pytorch * cpu_*
+  - pytorch-lightning >=1.8,<1.9
+  - transformers ==4.26.1
+  - huggingface_hub <0.15
+  - hydra-core >=1.3
+  - omegaconf >=2.3
+  - protobuf <=3.20
+  - setuptools <78
+  - einops
+  - opt_einsum
+  - timm
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - matplotlib-base
+  - polars
+  - tqdm
+  - rich
+  - loguru
+  - pyyaml
+  - pyfaidx
+  - liftover
+source:
+  sha256: 4181141a01da2c1f0a5a1083636d9027f4a6631ee75b76b0cf6122403429fa17
+  url: https://github.com/NameFilled/Euktect/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - euktect-predict --help
+  - euktect-refine --help
+  imports:
+  - euktect
+  - flash_attn_cpu
+  - flash_attn_cpu.modules.mha

@@ -1,37 +1,33 @@
 about:
+  dev_url: https://github.com/FofanovLab/mtsv_tools
   home: https://github.com/FofanovLab/mtsv_tools
   license: MIT
   license_family: MIT
   license_file:
   - LICENSE
   - THIRDPARTY.yml
-  summary: 'mtsv_tools contains core tools for alignment-based metagenomic/metatranscriptomic
-    assignment
-
-    '
+  summary: mtsv_tools contains core tools for alignment-based metagenomic/metatranscriptomic
+    assignment.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
-  script:
-  - export C_INCLUDE_PATH="$PREFIX/include"
-  - export LIBRARY_PATH="$PREFIX/lib"
-  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-  - cargo install -v --locked --no-track --root $PREFIX --path .
-  skip: true
 extra:
-  recipe_maintainers: tfursten
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: mtsv-tools
-  version: 2.1.0
+  version: 2.1.1
 requirements:
   build:
   - null
-  - cargo-bundle-licenses
   - null
+  - cargo-bundle-licenses
+  - pkg-config
 source:
-  sha256: bf2aced57d10321b5806f76ed10511f1f24bb8071317f364d8aea5fa4e2f7276
-  url: https://github.com/FofanovLab/mtsv_tools/archive/2.1.0.tar.gz
+  sha256: 8b467f5e2df0254a8f24107b399516a37db2acd52ce7ed0c670bb21523f50e99
+  url: https://github.com/FofanovLab/mtsv_tools/archive/2.1.1.tar.gz
 test:
   commands:
   - mtsv-build --version

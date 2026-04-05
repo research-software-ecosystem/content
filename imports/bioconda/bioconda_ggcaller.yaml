@@ -11,18 +11,19 @@ build:
   run_exports:
   - null
   skip: true
+  string: h_
 package:
   name: ggcaller
-  version: 1.4.3
+  version: 1.5.0
 requirements:
   build:
   - null
   - null
   - cmake >=3.10
   - make
-  - tbb
-  - tbb-devel
-  - mkl-devel >=2021.4.0,<2023.0.0
+  - tbb =2021
+  - tbb-devel =2021
+  - mkl-devel =2022
   - openblas
   - protobuf
   - pytorch-cpu =1.10
@@ -40,12 +41,12 @@ requirements:
   - setuptools
   - llvm-openmp
   - libgomp
-  - mkl-devel >=2021.4.0,<2023.0.0
+  - mkl-devel =2022
   - lapack
   - openblas
   - eigen =3.3
-  - tbb
-  - tbb-devel
+  - tbb =2021
+  - tbb-devel =2021
   - protobuf
   run:
   - python >=3.9
@@ -55,12 +56,8 @@ requirements:
   - bifrost >=1.2
   - biopython =1.80
   - bcbio-gff
-  - diamond >=2.0
   - pytorch-cpu =1.10
   - pytorch =1.10
-  - hmmer
-  - mafft
-  - snp-sites
   - zlib
   - pthread-stubs
   - matplotlib-base
@@ -73,25 +70,19 @@ requirements:
   - xorg-libxpm
   - xorg-libxaw
   - xorg-libxfixes
-  - intbitset
-  - networkx
   - uncertainties
-  - tqdm
-  - seaborn
-  - rapidnj
   - python-edlib
   - joblib
   - gffutils
-  - cd-hit
   - python-wget
   - boost-cpp
+  - networkx
 source:
-  sha256: acc80252488e8a5c6d490d7f01961f129c14ceb9e91f1f26826632c71a9c6047
-  url: https://github.com/bacpop/ggCaller/archive/v1.4.3.tar.gz
+  sha256: 89e34fbc92c8595b19a27c9f3852026229ff88e2f977df5e08ba0e8ca5f6169a
+  url: https://github.com/bacpop/ggCaller/archive/v1.5.0.tar.gz
 test:
   commands:
   - ggcaller -h | grep -q "Generates ORFs from a Bifrost graph."
   imports:
   - ggCaller_cpp
   - ggCaller
-  - panaroo_runner

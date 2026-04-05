@@ -1,0 +1,33 @@
+about:
+  dev_url: https://github.com/YidanSunResearchLab/SnakeHichipTF
+  home: https://github.com/YidanSunResearchLab/SnakeHichipTF
+  license: MIT
+  license_file: LICENSE
+  summary: Snakemake-based HiChIP/TF analysis pipeline
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - YukivWu
+  - YidanSunResearchLab
+package:
+  name: snakehichiptf
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools
+  run:
+  - python >=3.11
+  - snakemake >=8.28.0
+source:
+  sha256: f7061c871ba123586b86964446511ce70ba1bde7d9e26535cdc00ba7650f5aad
+  url: https://pypi.io/packages/source/s/snakehichiptf/snakehichiptf-0.1.4.tar.gz
+test:
+  commands:
+  - snakehichiptf --help
