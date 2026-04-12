@@ -10,7 +10,7 @@ about:
   license_file: LICENSE.txt
   summary: MaSuRCA (Maryland Super-Read Celera Assembler) genome assembly software.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
   skip: true
@@ -18,6 +18,8 @@ extra:
   identifiers:
   - biotools:masurca
   - doi:10.1093/bioinformatics/btt476
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: masurca
   version: 4.1.4
@@ -26,6 +28,7 @@ requirements:
   - null
   - null
   - make
+  - cmake
   - automake
   - autoconf
   - libtool
@@ -35,11 +38,19 @@ requirements:
   - bzip2
   - libxcrypt
   - boost-cpp
+  - xz
+  - ncurses
+  - openssl
+  - gdbm
   run:
   - boost-cpp
   - perl
+  - python
   - grep
   - bwa
+  - file
+  - gzip
+  - coreutils
 source:
   patches:
   - 0002-48bit_iterator.patch

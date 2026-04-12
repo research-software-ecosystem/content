@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/diekhans/intron-prospector
+  doc_url: https://github.com/diekhans/intron-prospector/blob/v1.5.0/README.md
+  home: https://github.com/diekhans/intron-prospector
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Identify putative introns from RNA-Seq alignments of short and long reads
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - diekhans
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: intron-prospector
+  version: 1.5.0
+requirements:
+  build:
+  - make
+  - null
+  - pkg-config
+  host:
+  - htslib
+  - libxcrypt
+  - zlib
+  - bzip2
+  - xz
+  run:
+  - htslib
+source:
+  sha256: 7d3b76d936a8f7d5fbd78412b30f308dbf97e5d1cde68012d67846d5d6b31382
+  url: https://github.com/diekhans/intron-prospector/archive/refs/tags/v1.5.0.tar.gz
+test:
+  commands:
+  - intron-prospector --help
+  - intron-prospector-merge --help

@@ -1,34 +1,43 @@
 about:
-  doc_url: https://docs.rs/crate/ncbitaxonomy/1.0.7
-  home: https://github.com/pvanheus/ncbitaxonomy
-  license: MIT
-  license_file: LICENSE
-  summary: 'A Rust crate for working with a local copy of the NCBI Taxonomy database,
-    which provides utilities for taxonomic filtering.
+  description: 'This package provides some tools for working with (querying, converting)
+    the NCBI Taxonomy database as well as filtering based on the NCBI Taxonomy and
+    output of tools such as kraken2 and centrifuge.
 
     '
+  doc_url: https://docs.rs/crate/ncbitaxonomy/1.1.0
+  home: https://github.com/pvanheus/ncbitaxonomy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Tools and a Rust crate for working with the NCBI Taxonomy database.
 build:
-  number: 6
+  number: 0
   run_exports:
   - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root ${PREFIX} --path .
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  recipe-maintainers:
+  - pvanheus
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: rust-ncbitaxonomy
-  version: 1.0.7
+  version: 1.1.0
 requirements:
   build:
   - null
   - null
+  - cargo-bundle-licenses
   host:
   - sqlite
-  run:
-  - sqlite
 source:
-  sha256: fc78c0db6b2bac71db449f2da44740f08c192362a5dae516834d8f37fdacd801
-  url: https://github.com/pvanheus/ncbitaxonomy/archive/1.0.7.tar.gz
+  sha256: 961d38b3cec148fe839bc62e177afb50f78a1ea2765a1e7ab7173948321cd203
+  url: https://github.com/pvanheus/ncbitaxonomy/archive/1.1.0.tar.gz
 test:
   commands:
   - taxonomy_util --help | grep NCBI

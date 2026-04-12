@@ -3,13 +3,14 @@ about:
   doc_url: https://github.com/HKU-BAL/Clair3
   home: https://github.com/HKU-BAL/Clair3
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.md
   summary: Clair3 is a small variant caller for long-reads. Clair3 makes the best
     of both worlds of using pileup or full-alignment as input for deep-learning based
     long-read small variant calling. Clair3 is simple and modular for easy deployment
     and integration.
 build:
-  number: 1
+  number: 2
   run_exports:
   - null
   skip: true
@@ -19,6 +20,8 @@ extra:
   - osx-arm64
   container:
     extended-base: true
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: clair3
   version: 2.0.0
@@ -26,11 +29,14 @@ requirements:
   build:
   - null
   - null
+  - pkg-config
   - make
   - automake
+  - autoconf
+  - libtool
+  - gnuconfig
   host:
   - python 3.11.*
-  - pip
   - mpmath
   - cffi <2
   - bzip2
@@ -53,12 +59,14 @@ requirements:
   - whatshap >=1.0
   - pigz
   - parallel >=20191122
-  - zstd
   - openssl
   - cffi <2
   - longphase
 source:
-- sha256: 8a2d6bb6ded3163361a1d762168013f599d232a65d9a4a7777dd3e178ae7951b
+- patches:
+  - 0001-Makefile.patch
+  - 0002-build.py-link-libdeflate-on-arm.patch
+  sha256: 8a2d6bb6ded3163361a1d762168013f599d232a65d9a4a7777dd3e178ae7951b
   url: https://github.com/HKU-BAL/Clair3/archive/refs/tags/v2.0.0.tar.gz
 test:
   commands:
