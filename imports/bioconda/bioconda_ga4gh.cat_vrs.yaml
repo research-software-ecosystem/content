@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/ga4gh/cat-vrs-python
+  home: https://github.com/ga4gh/cat-vrs-python
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: GA4GH Categorical Variation Representation (Cat-VRS) reference implementation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - emmcauley
+package:
+  name: ga4gh.cat_vrs
+  version: 0.7.2
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=65.3
+  - setuptools-scm >=8
+  - pip
+  run:
+  - python >=3.10
+  - ga4gh.vrs >=2.1.3,<3.0
+  - pydantic >=2.0,<3.0
+source:
+  sha256: f06530d28aa21bf007ce0cfeee4a98458fc6506ce552029866414fd303fa4de6
+  url: https://pypi.org/packages/source/g/ga4gh.cat_vrs/ga4gh_cat_vrs-0.7.2.tar.gz
+test:
+  imports:
+  - ga4gh.cat_vrs

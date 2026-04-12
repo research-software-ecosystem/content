@@ -1,10 +1,10 @@
 about:
-  dev_url: https://github.com/kaizhang/SnapATAC2
-  doc_url: https://kzhang.org/SnapATAC2
-  home: https://github.com/kaizhang/SnapATAC2
+  dev_url: https://github.com/scverse/SnapATAC2
+  doc_url: https://scverse.org/SnapATAC2
+  home: https://github.com/scverse/SnapATAC2
   license: MIT
   license_family: MIT
-  license_file: snapatac2-python/LICENSE
+  license_file: snapatac2-core/LICENSE
   summary: 'SnapATAC2: Single-cell epigenomics analysis pipeline.'
 build:
   number: 1
@@ -12,6 +12,9 @@ build:
   - null
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:snapatac
   - doi:10.1038/s41592-023-02139-9
@@ -19,15 +22,19 @@ extra:
   - usegalaxy-eu:snapatac2_clustering
   - usegalaxy-eu:snapatac2_peaks_and_motif
   - usegalaxy-eu:snapatac2_plotting
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: snapatac2
-  version: 2.8.0
+  version: 2.9.0
 requirements:
   build:
   - null
   - null
+  - cargo-bundle-licenses
   - make
   - cmake
+  - pkg-config
   host:
   - python
   - pip
@@ -40,13 +47,13 @@ requirements:
   - multiprocess
   - macs3
   - natsort
-  - numpy >=1.16.0
-  - pandas >=1.0,<2.1.2
-  - plotly >=5.19.0
+  - numpy >=2.0.0,<3.0.0
+  - pandas >=2.2.0,<3.0.0
+  - plotly >=5.19.0,<7.0.0
   - polars >=1.0
   - pooch >=1.6.0
   - pyarrow
-  - pyfaidx >=0.7.0,<0.8.0
+  - pyfaidx >=0.7.0,<0.9.0
   - python-kaleido
   - rustworkx
   - scipy >=1.4
@@ -57,9 +64,8 @@ requirements:
 source:
   patches:
   - cargo.toml.patch
-  - pyproject.toml.patch
-  sha256: 962ebece9e8cbce57966ce67cb40f513b9035cc2b9c7a2b6ff97e32f7477e835
-  url: https://github.com/kaizhang/SnapATAC2/archive/refs/tags/v2.8.0.tar.gz
+  sha256: c9e94dcb9d22d8595c1ae5d56665e10bb11828f01e01c98463449537ed91b39a
+  url: https://pypi.org/packages/source/s/snapatac2/snapatac2-2.9.0.tar.gz
 test:
   imports:
   - snapatac2

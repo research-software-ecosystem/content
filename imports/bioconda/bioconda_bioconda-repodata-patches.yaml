@@ -5,8 +5,8 @@ about:
   summary: Generate tweaks to index metadata, hosted separately from anaconda.org
     index.
 build:
-  noarch: generic
-  number: 0
+  noarch: python
+  number: 1
   run_exports:
   - null
 extra:
@@ -14,14 +14,19 @@ extra:
   - bioconda/core
   skip-lints:
   - missing_hash
-  - should_be_noarch_python
+  - repodata_patches_no_version_bump
 package:
   name: bioconda-repodata-patches
   version: '20251216'
 requirements:
-  build:
-  - python 3.*
-  - setuptools
+  host:
+  - python =3
+  - setuptools <82
+  - requests
+  - tqdm
+  run:
+  - python =3
+  - setuptools <82
   - requests
   - tqdm
 source:

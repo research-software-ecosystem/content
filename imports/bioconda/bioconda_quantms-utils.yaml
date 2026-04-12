@@ -8,23 +8,24 @@ about:
   summary: Python package with scripts and helpers for the quantms workflow.
 build:
   entry_points:
-  - quantmsutilsc=quantmsutils.quantmsutilsc:main
+  - quantmsutilsc = quantmsutils.quantmsutilsc:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - ypriverol
 package:
   name: quantms-utils
-  version: 0.0.28
+  version: 0.0.29
 requirements:
   host:
-  - python
+  - python >=3.9,<3.13
   - pip
-  - poetry-core
+  - hatchling
+  - hatch-vcs
   run:
   - python >=3.9,<3.13
   - click
@@ -35,8 +36,8 @@ requirements:
   - pyarrow >=16.1.0
   - scipy
 source:
-  sha256: e81f40c8dbfeedf427bbf9d71cb2f4b6440fe06ba294909d1f35d281620ab586
-  url: https://pypi.io/packages/source/q/quantms-utils/quantms_utils-0.0.28.tar.gz
+  sha256: 23f5e92318b618a8f74d82e1545e7f58a059b1ee6366b899e012e92d2758f7f8
+  url: https://pypi.org/packages/source/q/quantms-utils/quantms_utils-0.0.29.tar.gz
 test:
   commands:
   - quantmsutilsc --help

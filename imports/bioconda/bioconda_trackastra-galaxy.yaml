@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/bioinfbrad/trackastra-galaxy
+  license: MIT
+  license_file: LICENSE
+  repository: https://github.com/bioinfbrad/trackastra-galaxy
+  summary: Standalone Python CLI wrapper around Trackastra for segmentation and tracking
+    on OME-Zarr data
+build:
+  noarch: python
+  number: 0
+  python:
+    entry_points:
+    - trackastra-galaxy = trackastra_galaxy.cli:main
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - xulman
+package:
+  name: trackastra-galaxy
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.11
+  - setuptools >=69
+  - wheel
+  - pip
+  run:
+  - python >=3.11
+  - numpy >=1.20.0, <2.1
+  - ome-zarr >=0.14.0,<0.15
+  - scikit-image
+  - cellpose <4.0
+  - trackastra >0.5
+source:
+  sha256: 9d487ba1bf247307d487c08a16d33d926e31813242036f41301d967c4b6fa950
+  url: https://pypi.org/packages/source/t/trackastra-galaxy/trackastra_galaxy-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - trackastra_galaxy
+  requires:
+  - pip
+  - python 3.11
+  script:
+  - trackastra-galaxy --help

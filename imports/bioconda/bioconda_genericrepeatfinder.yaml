@@ -1,12 +1,19 @@
 about:
   dev_url: https://github.com/bioinfolabmu/GenericRepeatFinder
+  doc_url: https://github.com/bioinfolabmu/GenericRepeatFinder/blob/v1.0.2/readme.txt
   home: https://github.com/bioinfolabmu/GenericRepeatFinder
-  license: GPLv3
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: license.txt
   summary: Generic Repeat Finder (GRF).
 build:
-  number: 1
+  number: 3
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: genericrepeatfinder
   version: 1.0.2
@@ -14,9 +21,12 @@ requirements:
   build:
   - make
   - null
+  host:
   - llvm-openmp
+  - libgomp
   run:
   - cd-hit
+  - libgomp
   - llvm-openmp
 source:
   sha256: f3b4be284427a5de4e3b2480627b6d576a82809bf8c92f1b1f41c99ec07320af

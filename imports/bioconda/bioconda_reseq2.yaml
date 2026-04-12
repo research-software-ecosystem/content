@@ -1,0 +1,59 @@
+about:
+  description: 'ReSeq2 is a maintained continuation of ReSeq (Schmeing & Robinson,
+
+    Genome Biology 2021). It learns error, quality, and coverage profiles
+
+    from real Illumina paired-end data and uses them to simulate synthetic
+
+    reads with matching k-mer spectra. Changes from upstream include C++20
+
+    migration, modernized CMake build, CI/CD, expanded test suite, binary/text
+
+    profile format conversion, and code quality tooling.
+
+    '
+  dev_url: https://github.com/berntpopp/ReSeq2
+  doc_url: https://berntpopp.github.io/ReSeq2
+  home: https://github.com/berntpopp/ReSeq2
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Realistic Illumina paired-end sequencing simulator.
+build:
+  number: 1
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  identifiers:
+  - doi:10.1186/s13059-021-02265-7
+  recipe-maintainers:
+  - berntpopp
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: reseq2
+  version: 2.0.3
+requirements:
+  build:
+  - cmake >=3.16
+  - make
+  - null
+  - null
+  - pkg-config
+  host:
+  - zlib
+  - bzip2
+  - boost-cpp
+  - nlopt
+  run:
+  - boost-cpp
+  - nlopt
+source:
+  sha256: 602889a08911556193cbd6d3e8308de20df9f36854e0bba73ccd2eb296fc2ea0
+  url: https://github.com/berntpopp/ReSeq2/archive/v2.0.3.tar.gz
+test:
+  commands:
+  - reseq2 --version

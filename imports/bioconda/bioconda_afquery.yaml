@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/dlopez-bioinfo/afquery
+  license: MIT
+  license_file: LICENSE
+  summary: Genomic allele frequency query engine with bitmap-encoded genotypes
+build:
+  entry_points:
+  - afquery = afquery.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - dlopez-bioinfo
+package:
+  name: afquery
+  version: 0.2.2
+requirements:
+  host:
+  - pip
+  - python >=3.10
+  - hatchling
+  - hatch-vcs
+  run:
+  - python >=3.10
+  - pyroaring >=0.4.8
+  - pyarrow >=14.0
+  - duckdb >=0.10
+  - click >=8.1
+  - cyvcf2 >=0.30
+  - tqdm >=4.60
+  - pyranges >=0.1.2,<0.2
+source:
+  sha256: 28ddc9afe5260ecdefab83679e0633684980666c49812215d1233ce3bae4fb7f
+  url: https://files.pythonhosted.org/packages/source/a/afquery/afquery-0.2.2.tar.gz
+test:
+  commands:
+  - afquery --help
+  imports:
+  - afquery

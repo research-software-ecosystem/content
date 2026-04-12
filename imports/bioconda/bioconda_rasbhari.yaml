@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/burkhard-morgenstern/rasbhari
+  home: https://github.com/burkhard-morgenstern/rasbhari
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Rapid approach for spaced-seed optimization.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1371/journal.pcbi.1005107
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: rasbhari
+  version: 1.4.0
+requirements:
+  build:
+  - make
+  - null
+source:
+  patches:
+  - 0001-cstdint.patch
+  sha256: a437fbdc07f4af5fa4dcd478495c9fe32bb0252546d707d3d12eb9341eadbac9
+  url: https://github.com/burkhard-morgenstern/rasbhari/archive/v1.4.0.tar.gz
+test:
+  commands:
+  - rasbhari --version |& grep 1.4.0
+  - rasbhari --help

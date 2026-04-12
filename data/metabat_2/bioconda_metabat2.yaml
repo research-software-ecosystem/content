@@ -7,13 +7,13 @@ about:
   license_file: license.txt
   summary: Metagenome binning.
 build:
-  number: 0
+  number: 2
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.7717/peerj.1165
   - biotools:MetaBAT_2
@@ -44,11 +44,16 @@ requirements:
   - llvm-openmp
   - libgomp
 source:
-  patches:
+- patches:
   - cmake.patch
   - cmake-htslib.patch
   sha256: 7decee72535c75c390e8ddfb84e2e4d23bab9a4c2c85438e2270b19a7f3e568a
   url: https://bitbucket.org/berkeleylab/metabat/get/v2.18.tar.bz2
+- patches:
+  - 0004-osx-CMakeLists.patch
+  - 0005-GetGitVersion.patch
+  sha256: 7f09be5dbff4ccf046088e967f68252a521b9c7372eb6cd8566925da6e8d4440
+  url: https://bitbucket.org/berkeleylab/metabat/get/cdb66e9c2fab2cf11ee156ad2e7d7690fb7c8a26.tar.bz2
 test:
   commands:
   - metabat2 -h
