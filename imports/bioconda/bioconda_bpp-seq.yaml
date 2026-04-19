@@ -1,29 +1,37 @@
 about:
+  dev_url: https://github.com/BioPP/bpp-seq
+  doc_url: https://github.com/BioPP/bpp-documentation/wiki
   home: https://github.com/BioPP/bpp-seq
-  license: CeCILL
-  license_file: COPYING.txt
+  license: CECILL-2.1
+  license_file: LICENSES/CECILL-2.1.txt
   summary: Bio++ is a set of C++ libraries for Bioinformatics.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: bpp-seq
-  version: 2.4.1
+  version: 3.0.0
 requirements:
   build:
   - make
   - null
   - cmake
+  - pkg-config
   host:
   - bpp-core
   run:
   - bpp-core
 source:
-  patches:
-  - 0001-do-not-override-CXXFLAGS.patch
-  sha256: dbfcb04803e4b7f08f9f159da8a947c91906c3ca8b20683ac193f6dc524d4655
-  url: https://github.com/BioPP/bpp-seq/archive/v2.4.1.tar.gz
+  sha256: e0155fa49301817f591627018c4b82e031fc55e8f2cd3379f764faba3ae82822
+  url: https://github.com/BioPP/bpp-seq/archive/v3.0.0.tar.gz
 test:
   commands:
-  - test -f ${PREFIX}/lib/libbpp-seq.a
   - test -f ${PREFIX}/lib/libbpp-seq.so
   - test -f ${PREFIX}/lib/libbpp-seq.dylib

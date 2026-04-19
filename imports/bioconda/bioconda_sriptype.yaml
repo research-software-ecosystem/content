@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/mobilome/SRIPType
+  home: https://github.com/mobilome/SRIPType
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: SRIPType - A bioinformatics tool for 51k-SINE-RIP chip genotyping
+build:
+  entry_points:
+  - sriptype = sriptype_modules.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - mobilome
+package:
+  name: sriptype
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.8
+  - flash
+  - pigz
+  - seqkit
+  - blast
+  - bedtools
+  - samtools
+source:
+  sha256: 97e47f170cce549d43d944b76a664c8a70ee7f985ab034faa9ce9ce02bf592ef
+  url: https://pypi.io/packages/source/s/sriptype/sriptype-0.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  - sriptype --help
+  imports:
+  - sriptype_modules.cli
+  requires:
+  - pip

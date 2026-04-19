@@ -1,14 +1,14 @@
 about:
-  dev_url: https://github.com/MDU-PHL/abritamr
   home: https://github.com/MDU-PHL/abritamr
+  licence_file: LICENSE
   license: GPL-3.0-only
   license_family: GPL3
-  summary: Running AMRFinderPlus for MDU.
+  summary: Idenify bacterial AMR genes and SNPs in genome assemblies
 build:
   entry_points:
   - abritamr = abritamr.abritamr:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
@@ -31,15 +31,17 @@ requirements:
   - pandas
   - xlsxwriter
   - ncbi-amrfinderplus >=4.0.0
-  - blast
-  - hmmer
   - parallel
 source:
   sha256: 784cf71a2a58adea6263fea07a6810bb0fe701dda5e316f454f906f274ec7e8a
   url: https://pypi.org/packages/source/a/abritamr/abritamr-1.2.0.tar.gz
 test:
   commands:
+  - abritamr --version
   - abritamr --help
+  - abritamr run --help
+  - abritamr report --help
+  - abritamr update_db --help
   imports:
   - abritamr
   requires:

@@ -1,0 +1,52 @@
+about:
+  description: 'A Python library for parsing, validating, converting, and merging
+
+    Illumina SampleSheet V1 and V2 files for BCLConvert and bcl2fastq.
+
+    Provides format auto-detection, bidirectional V1/V2 conversion,
+
+    structural and index validation, sheet diffing, and cross-project
+
+    merging with Hamming-distance collision detection.
+
+    '
+  dev_url: https://github.com/chaitanyakasaraneni/samplesheet-parser
+  doc_url: https://illumina-samplesheet.readthedocs.io
+  home: https://github.com/chaitanyakasaraneni/samplesheet-parser
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: "Format-agnostic parser for Illumina SampleSheet.csv files \u2014 supports\
+    \ IEM V1 and BCLConvert V2"
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - chaitanyakasaraneni
+package:
+  name: samplesheet-parser
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - hatchling
+  run:
+  - python >=3.12
+  - loguru >=0.7
+  - typer >=0.12
+source:
+  sha256: c508f7c4fbaba005a561ed43405c479f5e9c8d1349664710d0739417a1bbc641
+  url: https://pypi.org/packages/source/s/samplesheet_parser/samplesheet_parser-1.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  - python -c "from samplesheet_parser import __version__; print(__version__)"
+  - samplesheet --help
+  imports:
+  - samplesheet_parser
+  requires:
+  - pip

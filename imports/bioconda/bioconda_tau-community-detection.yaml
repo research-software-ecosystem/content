@@ -1,0 +1,39 @@
+about:
+  home: https://pypi.org/project/tau-community-detection/
+  license: MIT
+  license_file: LICENSE
+  summary: Community detection via Louvain/Leiden + Genetic Algorithm
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - HillelCharbit
+package:
+  name: tau-community-detection
+  version: 1.2.11
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools
+  run:
+  - python >=3.10
+  - networkx >=3.4
+  - numpy >=2.0
+  - python-igraph >=0.10
+  - scikit-learn >=1.6
+source:
+  sha256: 30184fbc51a7c6a67c59a2f2d9771cd3ddaa47ff7448cdecf6b3bf0c6668d7d2
+  url: https://pypi.io/packages/source/t/tau-community-detection/tau_community_detection-1.2.11.tar.gz
+test:
+  commands:
+  - tau --help
+  - pip check
+  imports:
+  - tau_community_detection
+  requires:
+  - pip

@@ -1,0 +1,61 @@
+about:
+  description: 'ohe-rs is an ultra-fast one-hot encoding library with Python bindings,
+
+    built in Rust for maximum performance. Designed for cgMLST allele profiles
+
+    and large-scale categorical data in bioinformatics pipelines.
+
+    '
+  dev_url: https://github.com/genpat-it/ohe-rs
+  doc_url: https://github.com/genpat-it/ohe-rs
+  home: https://github.com/genpat-it/ohe-rs
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Ultra-fast one-hot encoding for bioinformatics and ML, powered by Rust.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - -m pip install . --no-deps --no-build-isolation --disable-pip-version-check -vv
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - andreadlm
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: ohe-rs
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+  - python
+  - cross-python_
+  - crossenv
+  - maturin >=1.0,<2.0
+  host:
+  - python
+  - pip
+  - maturin >=1.0,<2.0
+  run:
+  - python
+  - numpy >=1.20
+  - scipy >=1.7
+source:
+  sha256: 9f145cacc4f937cfc334736867a51c439708099065961be5ba13649d086d5496
+  url: https://github.com/genpat-it/ohe-rs/archive/v0.1.0.tar.gz
+test:
+  commands:
+  - python -c "from ohe_rs import encode_sparse; import numpy as np; v,i,p,k = encode_sparse(np.array([0,1,2,0],
+    dtype=np.int64)); assert k == 3"
+  imports:
+  - ohe_rs

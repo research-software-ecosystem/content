@@ -1,34 +1,48 @@
 about:
+  dev_url: https://github.com/ZhouQiangwei/pydmtools
   home: https://github.com/ZhouQiangwei/pydmtools
   license: MIT
-  summary: A python extension written in C for quick access to DNA methylation DM
-    files.
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Python extension in C for fast access to DNA methylation DM files.
 build:
-  number: 2
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CFLAGS="${CFLAGS} -O3"
+  - export C_INCLUDE_PATH="$PREFIX/include"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: pydmtools
-  version: 0.1.1
+  version: 0.1.6
 requirements:
   build:
   - null
   host:
   - python
+  - pip
   - setuptools
+  - numpy
   - curl
   - libcurl
   - zlib
-  - numpy
   run:
   - python
-  - libcurl
-  - zlib
-  - null
+  - numpy
 source:
-  sha256: 5f24ea5d41431509adeed1c834c4efd88c5bb01ec969fb00b30d5f6841de83a9
-  url: https://3dgenomics.hzau.edu.cn:10068/tddownload/pydmtools-0.1.1.tar.gz
+  sha256: cd6da42965e6e13a57d681bcddd3b42c94f0bda773b7f4103ecd979c0e83d6ac
+  url: https://pypi.org/packages/source/p/pydmtools/pydmtools-0.1.6.tar.gz
 test:
   commands:
-  - python3 -c "import pydmtools as pydm; assert(pydm.numpy == 1); assert(pydm.remote
+  - python -c "import pydmtools as pydm; assert(pydm.numpy == 1); assert(pydm.remote
     == 1)"
   imports:
   - pydmtools

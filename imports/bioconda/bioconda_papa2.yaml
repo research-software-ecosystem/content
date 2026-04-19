@@ -1,0 +1,59 @@
+about:
+  description: 'papa2 is a complete Python port of the DADA2 amplicon denoising pipeline.
+
+    All 37 R functions have Python equivalents, producing byte-identical results
+
+    with no R dependency. Includes quality filtering, dereplication, error
+
+    learning, denoising, paired-end merging, chimera removal, and taxonomy
+
+    assignment backed by a compiled C/C++ core.
+
+    '
+  dev_url: https://github.com/rec3141/papa2
+  doc_url: https://rec3141.github.io/papa2
+  home: https://github.com/rec3141/papa2
+  license: LGPL-3.0-only
+  license_file: LICENSE
+  summary: "Python-first amplicon denoising \u2014 byte-identical to R's DADA2"
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/nmeth.3869
+  recipe-maintainers:
+  - rec3141
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: papa2
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - python
+  - pip
+  - setuptools >=68
+  - numpy
+  - zlib
+  run:
+  - python
+  - numpy
+  - pandas
+source:
+  sha256: 20c7ab4eb578c7a572a7e3a5a125efda8ee28943ac9823874dff7707d9ba6281
+  url: https://github.com/rec3141/papa2/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - python -c "import papa2; print(papa2.__version__)"
+  imports:
+  - papa2

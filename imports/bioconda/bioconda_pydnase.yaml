@@ -1,13 +1,24 @@
 about:
   description: A suite of tools for analysing DNase-seq data.
-  doc_url: http://pythonhosted.org/pyDNase/index.html
-  home: http://jpiper.github.io/pyDNase
+  dev_url: https://github.com/jpiper/pyDNase
+  doc_url: https://pythonhosted.org/pyDNase/index.html
+  home: https://jpiper.github.io/pyDNase
   license: MIT
   license_family: MIT
   summary: DNase-seq analysis library
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
+    -vvv
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: pydnase
   version: 0.3.0
@@ -29,7 +40,7 @@ requirements:
   - pybedtools
 source:
   sha256: dba03cadca37929a1cc41545e962136f29efc41f8e3c6de042c51c47ee04d558
-  url: https://pypi.io/packages/source/p/pyDNase/pyDNase-0.3.0.tar.gz
+  url: https://pypi.org/packages/source/p/pyDNase/pyDNase-0.3.0.tar.gz
 test:
   commands:
   - wellington_footprints.py --help

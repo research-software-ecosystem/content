@@ -2,36 +2,45 @@ about:
   dev_url: https://github.com/Rosemeis/emu
   home: https://github.com/Rosemeis/emu
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: LICENSE
   summary: EM-PCA for Ultra-low Coverage Sequencing Data.
 build:
   entry_points:
-  - emu=emu.main:main
+  - emu = emu.main:main
   number: 0
-  run_exports: null
+  run_exports:
+  - null
   script:
-  - ' -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir'
+  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btab027
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: emu-pca
-  version: 1.5.0
+  version: 1.6.0
 requirements:
   build:
   - null
   host:
   - pip
   - python
+  - setuptools
   - cython
   - numpy
   run:
   - python
 source:
-  sha256: b1128d2c3fd964b594cbbe35a7a6d268b45e6bcfd6009cee185492b3c2e3b0d5
-  url: https://github.com/Rosemeis/emu/archive/refs/tags/v1.5.0.tar.gz
+  patches:
+  - 0001-fstring.patch
+  sha256: 67c1cc2cdab2738b25e86837881790ed35da64d6f88c717fdd33d7a4356e4660
+  url: https://github.com/Rosemeis/emu/archive/refs/tags/v1.6.0.tar.gz
 test:
   commands:
   - emu --help

@@ -1,25 +1,26 @@
 about:
-  home: https://github.com/gpp-rnd/rs3/tree/master/
+  home: https://github.com/gpp-rnd/rs3
   license: Apache-2.0
   license_file: LICENSE
   summary: Predict the activity of CRISPR sgRNAs
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vv --no-deps --no-build-isolation
 package:
   name: rs3
-  version: 0.0.16
+  version: 0.0.18
 requirements:
   host:
   - python >=3.7
   - pip
-  - setuptools
+  - setuptools <82
   - wheel
   run:
   - python >=3.7
+  - setuptools <82
   - packaging
   - joblib >=1.0.1
   - pandas >=1.0.0
@@ -32,12 +33,8 @@ requirements:
   - requests >=2.25.1
   - numpy <=1.26.4
 source:
-  sha256: 06591b4bade00f18ece00a0a7e853fddcfe0ba07093e6f43872b4afe1ac88233
-  url: https://pypi.org/packages/source/r/rs3/rs3-0.0.16.tar.gz
+  sha256: 6edd942b3e266b3e838ddecc5b7b387c911c58c6024da06d5908ceb999827308
+  url: https://pypi.org/packages/source/r/rs3/rs3-0.0.18.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - rs3
-  requires:
-  - pip

@@ -23,7 +23,8 @@ build:
 
     export RUST_BACKTRACE=1
 
-    cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+    cargo install --no-track --locked --verbose --root "${PREFIX}" --path . --bin
+    get_mnv
 
     '
 extra:
@@ -34,18 +35,21 @@ extra:
   - Genomics
   - Variant Analysis
   recipe-maintainers:
+  - paururo
   - PathoGenOmics-Lab
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: get_mnv
-  version: 1.1.1
+  version: 1.1.2
 requirements:
   build:
   - null
   - null
   - pkg-config
 source:
-  sha256: 4f20a5f169a4eae3c7eb934e2621b21d4464c9f24ae99f770f70b4edc1b40d6a
-  url: https://github.com/PathoGenOmics-Lab/get_mnv/archive/refs/tags/1.1.1.tar.gz
+  sha256: dd64b4c54434e3ed17f220c95e0e16014a92d2868ffbb38a6152264a9b9283a0
+  url: https://github.com/PathoGenOmics-Lab/get_mnv/archive/refs/tags/1.1.2.tar.gz
 test:
   commands:
   - get_mnv --help

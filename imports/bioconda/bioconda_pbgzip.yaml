@@ -1,14 +1,18 @@
 about:
+  dev_url: https://github.com/nh13/pbgzip
   home: https://github.com/nh13/pbgzip
   license: MIT/Expat
   summary: Parallel Block GZIP
 build:
-  number: 6
+  number: 7
   run_exports:
   - null
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: pbgzip
   version: 2016.08.04
@@ -16,12 +20,11 @@ requirements:
   build:
   - make
   - null
+  - pkg-config
   - autoconf
   - automake
+  - gnuconfig
   host:
-  - zlib
-  - bzip2
-  run:
   - zlib
   - bzip2
 source:
@@ -29,4 +32,4 @@ source:
   url: https://github.com/nh13/pbgzip/archive/2b09f97b5f20b6d83c63a5c6b408d152e3982974.tar.gz
 test:
   commands:
-  - pbgzip -h 2>&1 | grep pbgzip
+  - pbgzip -h 2>&1 | grep "pbgzip"

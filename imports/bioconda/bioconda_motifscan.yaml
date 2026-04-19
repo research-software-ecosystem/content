@@ -1,15 +1,28 @@
 about:
-  home: https://github.com/shao-lab/MotifScan
-  license: BSD License
+  dev_url: https://github.com/shao-lab/MotifScan
+  doc_url: https://motifscan.readthedocs.io
+  home: http://bioinfo.sibs.ac.cn/shaolab/motifscan/index.php
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: A package for motif discovery and motif enrichment analysis
+  summary: A package for motif discovery and motif enrichment analysis.
 build:
   entry_points:
-  - motifscan=motifscan.cli.main:main
-  number: 5
-  script: ' -m pip install . --ignore-installed --no-deps -vv'
+  - motifscan = motifscan.cli.main:main
+  number: 6
+  run_exports:
+  - null
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir --use-pep517
+    -vvv
   skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1038/s41421-018-0045-y
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: motifscan
   version: 1.3.0
@@ -30,7 +43,7 @@ requirements:
   - tqdm >=4.42.1
 source:
   sha256: 8059ab3232dfe7580835c5e953a8edd3f843676d57a6afbc41c5518a8a4dfde2
-  url: https://pypi.io/packages/source/m/motifscan/motifscan-1.3.0.tar.gz
+  url: https://pypi.org/packages/source/m/motifscan/motifscan-1.3.0.tar.gz
 test:
   commands:
   - motifscan --help
