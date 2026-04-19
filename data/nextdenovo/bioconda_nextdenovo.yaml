@@ -7,16 +7,20 @@ about:
   license_file: LICENSE
   summary: String graph-based de novo assembler for long reads (CLR, HiFi and ONT)
 build:
-  binary_has_prefix_files:
-  - nextDenovo
-  number: 6
+  number: 7
   run_exports:
   - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1101/2023.03.09.531669
   - biotools:nextdenovo
   - usegalaxy-eu:nextdenovo
+  skip-lints:
+  - uses_vcs_url
+  - compiler_needs_stdlib_c
 package:
   name: nextdenovo
   version: 2.5.2
@@ -24,18 +28,31 @@ requirements:
   build:
   - null
   - make
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  - gnuconfig
   host:
   - python
-  - pip
-  - paralleltask
+  - libcurl
+  - libxcrypt
+  - libdeflate
+  - openssl
   - bzip2
   - zlib
   run:
   - python
+  - setuptools
   - paralleltask
 source:
-  sha256: 5c7ca4aa3de234f4e0efd8aaf9eaf60ebd79b5e545ad2878a76162b29d815fe0
-  url: https://github.com/Nextomics/NextDenovo/releases/download/2.5.2/NextDenovo.tgz
+  git_rev: 0e5fa5d
+  git_url: https://github.com/Nextomics/NextDenovo.git
+  patches:
+  - 0001-master.patch
+  - 0002-minimap2.patch
+  - 0003-makefile.patch
+  sha256: unused
 test:
   commands:
   - nextDenovo --help

@@ -1,0 +1,39 @@
+about:
+  description: "BacPrune-Rust prunes a haploid genotype matrix by linkage disequilibrium\n\
+    (LD) threshold. Three modes are available:\n\n  --r       Greedy pruning by r\xB2\
+    \ (Pearson r-squared) threshold (default).\n  --dprime  Greedy pruning by |D'|\
+    \ threshold.\n  --dedup   Hash-based exact-duplicate removal only (O(n\xB7v),\
+    \ no pairwise\n            LD calculation).\n\nAll modes first remove exact duplicate\
+    \ variant columns via hashing before\nany threshold-based pruning.  Output includes\
+    \ the pruned genotype matrix,\na pruning summary, and a per-variant correlation-direction\
+    \ file.\n"
+  home: https://github.com/bacpop/BacPrune-Rust
+  license: MIT
+  license_file: LICENSE
+  summary: Fast LD pruning of haploid genotype matrices
+build:
+  number: 0
+  run_exports:
+  - null
+  script: cargo install --locked --root "${PREFIX}" --path . --no-track
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - qtoussaint
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: bacprune
+  version: 0.9.0
+requirements:
+  build:
+  - null
+source:
+  sha256: f81039b4e666cf8e8787490b55031ba73a5d9a4192af58fdb4c7da74a6a7dab8
+  url: https://github.com/bacpop/BacPrune-Rust/archive/refs/tags/v0.9.0.tar.gz
+test:
+  commands:
+  - bacprune --help
+  - bacprune --version | grep -q "0.9.0"

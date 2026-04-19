@@ -12,6 +12,7 @@ build:
   - CFLAGS=-I$PREFIX/include
   - CXXFLAGS=-I$PREFIX/include
   - LDFLAGS=-L$PREFIX/lib
+  skip: true
 channels:
 - conda-forge
 - bioconda
@@ -20,9 +21,11 @@ extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: piscem
-  version: 0.18.0
+  version: 0.19.0
 requirements:
   build:
   - cmake <4.0.0
@@ -41,8 +44,8 @@ requirements:
   run:
   - __osx >=10.9
 source:
-  sha256: 115fe1fc682643433d524fa8dac67c257eb69d9a77e5d5f423fc90d0e4bb92be
-  url: https://github.com/COMBINE-lab/piscem/releases/download/v0.18.0/source-full.tar.gz
+  sha256: 5604007eceb9c0240627adb619871ba33d9422d5c084dc56d317bfd9a730260e
+  url: https://github.com/COMBINE-lab/piscem/releases/download/v0.19.0/source-full.tar.gz
 test:
   commands:
   - piscem --help

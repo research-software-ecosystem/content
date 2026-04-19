@@ -37,7 +37,7 @@ build:
   run_exports:
   - null
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=0.3.33
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.3.39
   skip: true
 extra:
   additional-platforms:
@@ -45,20 +45,22 @@ extra:
   - osx-arm64
   skip-lints:
   - uses_vcs_url
+  - compiler_needs_stdlib_c
 package:
   name: lib-pod5
-  version: 0.3.33
+  version: 0.3.39
 requirements:
   build:
   - null
   - cmake
-  - make
+  - ninja
   - pkg-config
   host:
   - python
   - pip
   - setuptools
-  - setuptools-scm
+  - setuptools-scm ==7.1.0
+  - python-build
   - pybind11
   - flatbuffers
   - pyarrow <21
@@ -69,8 +71,10 @@ requirements:
   - numpy >=1.21.0
   - pyarrow <21
 source:
-  git_rev: 0.3.33
+  git_rev: 0.3.39
   git_url: https://github.com/nanoporetech/pod5-file-format.git
+  patches:
+  - 0001-CMakeLists.patch
   sha256: unused
 test:
   imports:

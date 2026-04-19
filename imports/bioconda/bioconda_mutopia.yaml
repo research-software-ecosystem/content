@@ -1,0 +1,75 @@
+about:
+  description: "MuTopia learns topographic models of somatic mutation \u2014 it simultaneously\n\
+    decomposes a cancer cohort's mutations into signatures and explains how\nlocal\
+    \ genomic context (chromatin state, replication timing, transcription\nlevel,\
+    \ DNA sequence composition) shapes each signature's activity across\n10 kb windows\
+    \ genome-wide. Provides G-Tensor data structures, SHAP-based\nfeature interpretability,\
+    \ and per-mutation VCF annotation.\n"
+  dev_url: https://github.com/sigscape/MuTopia
+  doc_url: https://sigscape.github.io/MuTopia/
+  home: https://github.com/sigscape/MuTopia
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Topographic modeling of mutational signatures across the cancer genome
+build:
+  entry_points:
+  - gtensor = mutopia.cli.gtensor_cli:gtensor_cli
+  - topo-model = mutopia.cli.model_cli:model
+  - mutopia-sbs = mutopia.cli.sbs_cli:sbs
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - AllenWLynch
+package:
+  name: mutopia
+  version: 1.0.6
+requirements:
+  host:
+  - python >=3.11,<3.12
+  - pip
+  - setuptools
+  run:
+  - python >=3.11,<3.12
+  - scipy >=1.7,<2
+  - numpy >=1.21
+  - matplotlib-base >=3.5,<4
+  - scikit-learn ==1.4.2
+  - xarray ==2024.9.0
+  - pandas >=2.1.0
+  - sparse >=0.15.4
+  - numba >=0.60.0,<1
+  - netcdf4 >=1.7.1.post2,<2
+  - optuna >=3.4.0,<5
+  - pyfaidx
+  - tqdm
+  - click
+  - tabulate
+  - luigi >=3.3.0
+  - pydantic >=2.0.0
+  - pyyaml >=6.0.0
+  - colorlog >=6.0.0
+  - bedtools
+  - bcftools
+  - htslib
+  - ucsc-bigwigaverageoverbed
+source:
+  sha256: 55ebc2fc32900aab3423f2ccf09631bd87c2a55023eced5000282536e2121f15
+  url: https://pypi.io/packages/source/m/mutopia/mutopia-1.0.6.tar.gz
+test:
+  commands:
+  - gtensor --help
+  - topo-model --help
+  - mutopia-sbs --help
+  - bedtools --version
+  - bcftools --version
+  - tabix --version
+  - which bigWigAverageOverBed
+  imports:
+  - mutopia
+  - mutopia.analysis
+  - mutopia.gtensor

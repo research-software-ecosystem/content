@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/zhuyu534/FracSim
+  license: MIT
+  license_file: LICENSE
+  summary: a FracMinHash-based genome similarity estimator for bacteria
+build:
+  entry_points:
+  - fracsim = fracsim.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - zhuyu534
+package:
+  name: fracsim
+  version: 1.0.2
+requirements:
+  host:
+  - python >=3.8,<3.13
+  - pip
+  - setuptools
+  - mmh3 >=4.0.0
+  run:
+  - python >=3.8,<3.13
+  - mmh3 >=4.0.0
+source:
+  sha256: 9b44d02819095e6e5cf781072b8915f9f373a2d495412d7f57dfe83e4636ba85
+  url: https://pypi.io/packages/source/f/fracsim/fracsim-1.0.2.tar.gz
+test:
+  commands:
+  - fracsim --help
+  imports:
+  - fracsim
+  requires:
+  - pip

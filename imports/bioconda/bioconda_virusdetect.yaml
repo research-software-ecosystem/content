@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/kentnf/VirusDetect
+  home: https://github.com/kentnf/VirusDetect
+  license: MIT
+  license_file: LICENSE
+  summary: Python rewrite of the VirusDetect plant virus discovery pipeline
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  recipe-maintainers:
+  - kentnf
+package:
+  name: virusdetect
+  version: 2.0.0a0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=68
+  - wheel
+  run:
+  - python >=3.10
+  - bwa
+  - samtools
+  - blast
+  - hisat2
+  - spades
+  - velvet
+source:
+  sha256: d741cbb5150adae0e61962f5d26c0fbecae11b10a0744c24a9558e22c3b9e4c6
+  url: https://github.com/kentnf/VirusDetect/releases/download/v2.0.0a0/virusdetect-2.0.0a0.tar.gz
+test:
+  commands:
+  - virusdetect --version
+  - virusdetect db path --target
+  - virusdetect tools check --strict
+  - python -c "import virusdetect; print(virusdetect.__version__)"
+  - python -c "import shutil; required = ['bwa', 'samtools', 'blastn', 'blastx', 'makeblastdb',
+    'hisat2', 'hisat2-build', 'spades.py', 'velveth', 'velvetg']; missing = [name
+    for name in required if shutil.which(name) is None]; assert not missing, missing"

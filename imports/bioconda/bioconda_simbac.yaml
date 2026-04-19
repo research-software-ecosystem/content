@@ -1,13 +1,20 @@
 about:
   home: https://github.com/tbrown91/SimBac
-  license: GPL-3.0
+  license: GPL-3.0-or-later
   summary: SimBac simulates bacterial genomes with the clonal genealogy under a coalescent
     model with recombination.
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1099/mgen.0.000044
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: simbac
   version: 0.1a
@@ -19,8 +26,8 @@ requirements:
   run:
   - gsl
 source:
-  sha256: 82d42a4aef46c22c3d6472c1f3bf4915f6461bc7ec6eabca2bf1a3e9e3c2a914
-  url: https://github.com/tbrown91/SimBac/archive/50158978df536e10e4fcb2f9cd3871deb6da99ca.zip
+  sha256: 00224377bf1fbb8debcb2d3218d04b443dc06643d3dd520515d39809420864d5
+  url: https://github.com/tbrown91/SimBac/archive/0b6bcb01dced7207d41a22322220cccc95ed8b7d.tar.gz
 test:
   commands:
   - SimBac -h | grep "SimBac \[OPTIONS\]"
