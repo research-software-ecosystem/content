@@ -10,10 +10,10 @@ about:
     linear mixed models enables accounting for repeated measures study designs, high
     dimensional batch effects, and varying sequencing depth or observed cells per
     biosample.
-  home: https://bioconductor.org/packages/3.21/bioc/html/dreamlet.html
+  home: https://bioconductor.org/packages/3.22/bioc/html/dreamlet.html
   license: Artistic-2.0
-  summary: Cohort-scale differential expression analysis of single cell data using
-    linear (mixed) models
+  summary: Scalable differential expression analysis of single cell transcriptomics
+    datasets with complex study designs
 build:
   number: 0
   rpaths:
@@ -22,93 +22,107 @@ build:
   run_exports: ''
 package:
   name: bioconductor-dreamlet
-  version: 1.6.0
+  version: 1.8.0
 requirements:
   build:
   - null
   - null
   - make
   host:
-  - bioconductor-beachmat
-  - bioconductor-biocgenerics
-  - bioconductor-biocparallel
-  - bioconductor-delayedarray
-  - bioconductor-delayedmatrixstats
-  - bioconductor-edger
-  - bioconductor-gseabase
-  - bioconductor-iranges
-  - bioconductor-limma
-  - bioconductor-matrixgenerics
-  - bioconductor-s4vectors
-  - bioconductor-singlecellexperiment
-  - bioconductor-sparsematrixstats
-  - bioconductor-summarizedexperiment
-  - bioconductor-variancepartition
-  - bioconductor-zenith >=1.1.2
-  - r-ggbeeswarm
+  - bioconductor-beachmat >=2.26.0,<2.27.0
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-delayedarray >=0.36.0,<0.37.0
+  - bioconductor-delayedmatrixstats >=1.32.0,<1.33.0
+  - bioconductor-edger >=4.8.0,<4.9.0
+  - bioconductor-gseabase >=1.72.0,<1.73.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-limma >=3.66.0,<3.67.0
+  - bioconductor-matrixgenerics >=1.22.0,<1.23.0
+  - bioconductor-s4arrays >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-sparsearray >=1.10.0,<1.11.0
+  - bioconductor-sparsematrixstats >=1.22.0,<1.23.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - bioconductor-variancepartition >=1.40.0,<1.41.0
+  - bioconductor-zenith >=1.12.0,<1.13.0
   - r-ashr
   - r-base
+  - r-broom
   - r-data.table
   - r-dplyr
+  - r-ggbeeswarm
   - r-ggplot2
   - r-ggrepel
   - r-gtools
+  - r-irlba
   - r-lme4 >=1.1-33
   - r-mashr >=0.2.52
   - r-mass
   - r-matrix
+  - r-metafor
   - r-purrr
   - r-rcpp
   - r-rdpack
+  - r-remacor
   - r-reshape2
+  - r-rlang
   - r-scattermore
   - r-tidyr
   - libblas
   - liblapack
-  - r-metafor
+  - zlib
+  - liblzma-devel
   run:
-  - bioconductor-beachmat
-  - bioconductor-biocgenerics
-  - bioconductor-biocparallel
-  - bioconductor-delayedarray
-  - bioconductor-delayedmatrixstats
-  - bioconductor-edger
-  - bioconductor-gseabase
-  - bioconductor-iranges
-  - bioconductor-limma
-  - bioconductor-matrixgenerics
-  - bioconductor-s4vectors
-  - bioconductor-singlecellexperiment
-  - bioconductor-sparsematrixstats
-  - bioconductor-summarizedexperiment
-  - bioconductor-variancepartition
-  - bioconductor-zenith >=1.1.2
-  - r-ggbeeswarm
+  - bioconductor-beachmat >=2.26.0,<2.27.0
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-delayedarray >=0.36.0,<0.37.0
+  - bioconductor-delayedmatrixstats >=1.32.0,<1.33.0
+  - bioconductor-edger >=4.8.0,<4.9.0
+  - bioconductor-gseabase >=1.72.0,<1.73.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-limma >=3.66.0,<3.67.0
+  - bioconductor-matrixgenerics >=1.22.0,<1.23.0
+  - bioconductor-s4arrays >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-sparsearray >=1.10.0,<1.11.0
+  - bioconductor-sparsematrixstats >=1.22.0,<1.23.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - bioconductor-variancepartition >=1.40.0,<1.41.0
+  - bioconductor-zenith >=1.12.0,<1.13.0
   - r-ashr
   - r-base
+  - r-broom
   - r-data.table
   - r-dplyr
+  - r-ggbeeswarm
   - r-ggplot2
   - r-ggrepel
   - r-gtools
+  - r-irlba
   - r-lme4 >=1.1-33
   - r-mashr >=0.2.52
   - r-mass
   - r-matrix
+  - r-metafor
   - r-purrr
   - r-rcpp
   - r-rdpack
+  - r-remacor
   - r-reshape2
+  - r-rlang
   - r-scattermore
   - r-tidyr
-  - r-metafor
-  run_exports:
-  - null
 source:
-  sha256: 88f9b3a4eff71020733e9561b8e79f62176fa6f2f51d35e4b7298d3b1b8fe632
+  md5: 776c8d6f8d7a69b8e433e26ddac637cc
   url:
-  - https://bioconductor.org/packages/3.21/bioc/src/contrib/dreamlet_1.6.0.tar.gz
-  - https://bioconductor.org/packages/3.21/bioc/src/contrib/Archive/dreamlet/dreamlet_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/dreamlet_1.8.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/dreamlet/dreamlet_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/dreamlet_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dreamlet/bioconductor-dreamlet_1.8.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('dreamlet')"

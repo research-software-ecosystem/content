@@ -1,0 +1,42 @@
+about:
+  home: https://github.com/COMBINE-lab/mim
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: A small, auxiliary index to massively improve parallel fastq parsing.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - mv .cargo/config-portable.toml .cargo/config.toml
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path mim-index/
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - rob-p
+  - RagnarGrootKoerkamp
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: mim
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 3b7add1583b5c279364768415f88662332e0901153e4f571795876f82e6c1175
+  url: https://github.com/COMBINE-lab/mim/archive/v0.1.1.tar.gz
+test:
+  commands:
+  - mim --help
+  - mim build --help
+  - mim verify --help
+  - mim unzip --help
+  - mim server --help
+  - mim upload --help
+  - mim download --help

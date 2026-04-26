@@ -4,7 +4,7 @@ about:
   summary: MLST typing database for StaphScope
 build:
   noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - null
 package:
@@ -15,4 +15,4 @@ source:
   url: https://github.com/bbeckley-hub/staphscope-typing-tool/releases/download/v1.2.0/staphscope-mlst-data-v1.2.0.tar.gz
 test:
   commands:
-  - test -f $PREFIX/share/staphscope/modules/mlst_module/mlst_module.py
+  - test -n "$(find $PREFIX -name mlst_module.py -print -quit)"

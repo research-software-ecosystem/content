@@ -1,15 +1,13 @@
 about:
-  description: Implements utilities for installation of the basilisk package, primarily
-    for creation of the underlying Conda instance. This allows us to avoid re-writing
-    the same R code in both the configure script (for centrally administered R installations)
-    and in the lazy installation mechanism (for distributed package binaries). It
-    is highly unlikely that developers - or, heaven forbid, end-users! - will need
-    to interact with this package directly; they should be using the basilisk package
-    instead.
-  home: https://bioconductor.org/packages/3.20/bioc/html/basilisk.utils.html
+  description: Provides a centralized conda installation for use by other Bioconductor
+    packages. If conda is not already available on the system, it is downloaded and
+    installed from the Miniforge project; otherwise, no action is performed. Historically,
+    this package was used to provide a Python installation for basilisk, hence the
+    name.
+  home: https://bioconductor.org/packages/3.22/bioc/html/basilisk.utils.html
   license: GPL-3
   license_file: /lib/R/share/licenses/GPL-3
-  summary: Basilisk Installation Utilities
+  summary: Centralized Conda Installation for Bioconductor Packages
 build:
   noarch: generic
   number: 0
@@ -19,21 +17,21 @@ build:
   run_exports: ''
 package:
   name: bioconductor-basilisk.utils
-  version: 1.18.0
+  version: 1.22.0
 requirements:
   host:
-  - bioconductor-dir.expiry >=1.14.0,<1.15.0
+  - bioconductor-dir.expiry >=1.18.0,<1.19.0
   - r-base
   run:
-  - bioconductor-dir.expiry >=1.14.0,<1.15.0
+  - bioconductor-dir.expiry >=1.18.0,<1.19.0
   - r-base
 source:
-  md5: 89953864457a1974b657ed7dc01f8d50
+  md5: 76aac1d78e6fbc380bce0ca6cf85403a
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/basilisk.utils_1.18.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/basilisk.utils/basilisk.utils_1.18.0.tar.gz
-  - https://bioarchive.galaxyproject.org/basilisk.utils_1.18.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-basilisk.utils/bioconductor-basilisk.utils_1.18.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/basilisk.utils_1.22.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/basilisk.utils/basilisk.utils_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/basilisk.utils_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-basilisk.utils/bioconductor-basilisk.utils_1.22.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('basilisk.utils')"

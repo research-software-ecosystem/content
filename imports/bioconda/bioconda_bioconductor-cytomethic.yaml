@@ -1,12 +1,18 @@
 about:
-  description: This package provides DNA methylation-based prediction of cancer type,
-    molecular signature and clinical outcomes. It provides convenience functions for
-    missing value imputation, probe ID conversion, model interpretation and visualization.
-    The package links to our models on ExperimentHub. The package currently supports
-    HM450, EPIC and EPICv2.
-  home: https://bioconductor.org/packages/3.20/data/experiment/html/CytoMethIC.html
+  description: This package provides model data and functions for easily using machine
+    learning models that use data from the DNA methylome to classify cancer type and
+    phenotype from a sample. The primary motivation for the development of this package
+    is to abstract away the granular and accessibility-limiting code required to utilize
+    machine learning models in R. Our package provides this abstraction for RandomForest,
+    e1071 Support Vector, Extreme Gradient Boosting, and Tensorflow models. This is
+    paired with an ExperimentHub component, which contains models developed for epigenetic
+    cancer classification and predicting phenotypes. This includes CNS tumor classification,
+    Pan-cancer classification, race prediction, cell of origin classification, and
+    subtype classification models. The package links to our models on ExperimentHub.
+    The package currently supports HM450, EPIC, EPICv2, MSA, and MM285.
+  home: https://bioconductor.org/packages/3.22/data/experiment/html/CytoMethIC.html
   license: Artistic-2.0
-  summary: DNA methylation-based classification and regression
+  summary: DNA methylation-based machine learning models
 build:
   noarch: generic
   number: 0
@@ -16,33 +22,31 @@ build:
   run_exports: ''
 package:
   name: bioconductor-cytomethic
-  version: 1.2.0
+  version: 1.6.0
 requirements:
   host:
-  - bioconductor-biocparallel >=1.40.0,<1.41.0
-  - bioconductor-experimenthub >=2.14.0,<2.15.0
-  - bioconductor-sesame >=1.24.0,<1.25.0
-  - bioconductor-sesamedata >=1.24.0,<1.25.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - bioconductor-sesame >=1.28.0,<1.29.0
+  - bioconductor-sesamedata >=1.28.0,<1.29.0
   - r-base
   - r-biocmanager
-  - r-tibble
   run:
-  - bioconductor-biocparallel >=1.40.0,<1.41.0
-  - bioconductor-experimenthub >=2.14.0,<2.15.0
-  - bioconductor-sesame >=1.24.0,<1.25.0
-  - bioconductor-sesamedata >=1.24.0,<1.25.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - bioconductor-sesame >=1.28.0,<1.29.0
+  - bioconductor-sesamedata >=1.28.0,<1.29.0
   - r-base
   - r-biocmanager
-  - r-tibble
   - curl
-  - bioconductor-data-packages >=20241103
+  - bioconductor-data-packages >=20260207
 source:
-  md5: fec5611f2f4d02c220e277b66cea9439
+  md5: 723076e6036f3a27a4a06cd096ef32b8
   url:
-  - https://bioconductor.org/packages/3.20/data/experiment/src/contrib/CytoMethIC_1.2.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/CytoMethIC/CytoMethIC_1.2.0.tar.gz
-  - https://bioarchive.galaxyproject.org/CytoMethIC_1.2.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-cytomethic/bioconductor-cytomethic_1.2.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.22/data/experiment/src/contrib/CytoMethIC_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/CytoMethIC/CytoMethIC_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CytoMethIC_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cytomethic/bioconductor-cytomethic_1.6.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('CytoMethIC')"

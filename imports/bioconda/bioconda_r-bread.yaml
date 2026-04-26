@@ -1,0 +1,51 @@
+about:
+  home: https://github.com/MagicHead99/bread/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: A simple set of wrapper functions for data.table::fread() that allows subsetting
+    or filtering rows and selecting columns of table-formatted files too large for
+    the available RAM. 'b stands for 'big files'. bread makes heavy use of Unix commands
+    like 'grep', 'sed', 'wc', 'awk' and 'cut'. They are available by default in all
+    Unix environments. For Windows, you need to install those commands externally
+    in order to simulate a Unix environment and make sure that the executables are
+    in the Windows PATH variable. To my knowledge, the simplest ways are to install
+    'RTools', 'Git' or 'Cygwin'. If they have been correctly installed (with the expected
+    registry entries), they should be detected on loading the package and the correct
+    directories will be added automatically to the PATH.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-bread
+  version: 0.4.1
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-data.table
+  run:
+  - r-base
+  - r-data.table
+source:
+  sha256: 19a40d55b8be57be80d1fe4e4cba2a58cb3bf17fe6b777db65d28bf82eae5d6f
+  url:
+  - /src/contrib/bread_0.4.1.tar.gz
+  - /src/contrib/Archive/bread/bread_0.4.1.tar.gz
+test:
+  commands:
+  - $R -e "library('bread')"
+  - '"%R%" -e "library(''bread'')"'

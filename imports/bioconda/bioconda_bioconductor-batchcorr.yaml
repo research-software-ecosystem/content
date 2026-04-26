@@ -1,0 +1,48 @@
+about:
+  description: From the perspective of metabolites as the continuation of the central
+    dogma of biology, metabolomics provides the closest link to many phenotypes of
+    interest. This makes metabolomics research promising in teasing apart the complexities
+    of living systems. However, due to experimental reasons, the data includes non-biological
+    variation which limits quality and reproducibility, especially if the data is
+    obtained from several batches. The batchCorr package reduces unwanted variation
+    by way of between-batch alignment, within-batch drift correction and between-batch
+    normalization using batch-specific quality control samples and long-term reference
+    QC samples. Please see the associated article for more thorough descriptions of
+    algorithms.
+  home: https://bioconductor.org/packages/3.22/bioc/html/batchCorr.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Within And Between Batch Correction Of LC-MS Metabolomics Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-batchcorr
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-mclust
+  - r-reshape
+  run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-mclust
+  - r-reshape
+source:
+  md5: 767d2d7216e771158ae42e15ca98684c
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/batchCorr_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/batchCorr/batchCorr_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/batchCorr_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-batchcorr/bioconductor-batchcorr_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('batchCorr')"

@@ -1,0 +1,94 @@
+about:
+  description: "The HiCPotts package provides a comprehensive Bayesian framework for\
+    \ analyzing Hi-C interaction data, integrating both spatial and genomic biases\
+    \ within a probabilistic modeling framework. At its core, HiCPotts leverages the\
+    \ Potts model (Wu, 1982)\u2014a well-established graphical model\u2014to capture\
+    \ and quantify spatial dependencies across interaction loci arranged on a genomic\
+    \ lattice. By treating each interaction as a spatially correlated random variable,\
+    \ the Potts model enables robust segmentation of the genomic landscape into meaningful\
+    \ components, such as noise, true signals, and false signals. To model the influence\
+    \ of various genomic biases, HiCPotts employs a regression-based approach incorporating\
+    \ multiple covariates: Genomic distance (D): The distance between interacting\
+    \ loci, recognized as a fundamental driver of contact frequency. GC-content (GC):\
+    \ The local GC composition around the interacting loci, which can influence chromatin\
+    \ structure and interaction patterns. Transposable elements (TEs): The presence\
+    \ and abundance of repetitive elements that may shape contact probability through\
+    \ chromatin organization. Accessibility score (Acc): A measure of chromatin openness,\
+    \ informing how accessible certain genomic regions are to interaction. By embedding\
+    \ these covariates into a hierarchical mixture model, HiCPotts characterizes each\
+    \ interaction\u2019s probability of belonging to one of several latent components.\
+    \ The model parameters, including regression coefficients, zero-inflation parameters\
+    \ (for ZIP/ZINB distributions), and dispersion terms (for NB/ZINB distributions),\
+    \ are inferred via a MCMC sampler. This algorithm draws samples from the joint\
+    \ posterior distribution, allowing for flexible posterior inference on model parameters\
+    \ and hidden states. From these posterior samples, HiCPotts computes posterior\
+    \ means of regression parameters and other quantities of interest. These posterior\
+    \ estimates are then used to calculate the posterior probabilities that assign\
+    \ each interaction to a specific component. The resulting classification sheds\
+    \ light on the underlying structure: distinguishing genuine high-confidence interactions\
+    \ (signal) from background noise and potential false signals, while simultaneously\
+    \ quantifying the impact of genomic biases on observed interaction frequencies.\
+    \ In summary, HiCPotts seamlessly integrates spatial modeling, bias correction,\
+    \ and probabilistic classification into a unified Bayesian inference framework.\
+    \ It provides rich posterior summaries and interpretable, model-based assignments\
+    \ of interaction states, enabling researchers to better understand the interplay\
+    \ between genomic organization, biases, and spatial correlation in Hi-C data."
+  home: https://bioconductor.org/packages/3.22/bioc/html/HiCPotts.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'HiCPotts: Hierarchical Modeling to Identify and Correct Genomic Biases
+    in Hi-C'
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-hicpotts
+  version: 1.0.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - bioconductor-biostrings >=2.78.0,<2.79.0
+  - bioconductor-bsgenome >=1.78.0,<1.79.0
+  - bioconductor-bsgenome.dmelanogaster.ucsc.dm6 >=1.4.0,<1.5.0
+  - bioconductor-genomicranges >=1.62.0,<1.63.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-rhdf5 >=2.54.0,<2.55.0
+  - bioconductor-rtracklayer >=1.70.0,<1.71.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - r-base
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+  - r-strawr
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
+  run:
+  - bioconductor-biostrings >=2.78.0,<2.79.0
+  - bioconductor-bsgenome >=1.78.0,<1.79.0
+  - bioconductor-bsgenome.dmelanogaster.ucsc.dm6 >=1.4.0,<1.5.0
+  - bioconductor-genomicranges >=1.62.0,<1.63.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-rhdf5 >=2.54.0,<2.55.0
+  - bioconductor-rtracklayer >=1.70.0,<1.71.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - r-base
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+  - r-strawr
+source:
+  md5: 7456c94b3d76cfd65b6a907d11d61c3d
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/HiCPotts_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/HiCPotts/HiCPotts_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HiCPotts_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hicpotts/bioconductor-hicpotts_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HiCPotts')"

@@ -1,0 +1,80 @@
+about:
+  description: This package provides helper functions for working with multiple Visium
+    capture areas that overlap each other. This package was developed along with the
+    companion example use case data available from https://github.com/LieberInstitute/visiumStitched_brain.
+    visiumStitched prepares SpaceRanger (10x Genomics) output files so you can stitch
+    the images from groups of capture areas together with Fiji. Then visiumStitched
+    builds a SpatialExperiment object with the stitched data and makes an artificial
+    hexagonal grid enabling the seamless use of spatial clustering methods that rely
+    on such grid to identify neighboring spots, such as PRECAST and BayesSpace. The
+    SpatialExperiment objects created by visiumStitched are compatible with spatialLIBD,
+    which can be used to build interactive websites for stitched SpatialExperiment
+    objects. visiumStitched also enables casting SpatialExperiment objects as Seurat
+    objects.
+  home: https://bioconductor.org/packages/3.22/bioc/html/visiumStitched.html
+  license: Artistic-2.0
+  summary: Enable downstream analysis of Visium capture areas stitched together with
+    Fiji
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-visiumstitched
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocbaseutils >=1.12.0,<1.13.0
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-dropletutils >=1.30.0,<1.31.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-spatiallibd >=1.22.0,<1.23.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-clue
+  - r-dplyr
+  - r-imager
+  - r-matrix
+  - r-pkgcond
+  - r-readr
+  - r-rjson
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-xml2
+  run:
+  - bioconductor-biocbaseutils >=1.12.0,<1.13.0
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-dropletutils >=1.30.0,<1.31.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-spatiallibd >=1.22.0,<1.23.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-clue
+  - r-dplyr
+  - r-imager
+  - r-matrix
+  - r-pkgcond
+  - r-readr
+  - r-rjson
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-xml2
+source:
+  md5: 0b98ebbc94306a20add0906f89796ae7
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/visiumStitched_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/visiumStitched/visiumStitched_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/visiumStitched_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-visiumstitched/bioconductor-visiumstitched_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('visiumStitched')"

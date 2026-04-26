@@ -1,0 +1,59 @@
+about:
+  description: The main function in the h5mread package is h5mread(), which allows
+    reading arbitrary data from an HDF5 dataset into R, similarly to what the h5read()
+    function from the rhdf5 package does. In the case of h5mread(), the implementation
+    has been optimized to make it as fast and memory-efficient as possible.
+  home: https://bioconductor.org/packages/3.22/bioc/html/h5mread.html
+  license: Artistic-2.0
+  summary: A fast HDF5 reader
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: bioconductor-h5mread
+  version: 1.2.1
+requirements:
+  build:
+  - null
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-rhdf5 >=2.54.0,<2.55.0
+  - bioconductor-rhdf5filters >=1.22.0,<1.23.0
+  - bioconductor-rhdf5lib >=1.32.0,<1.33.0
+  - bioconductor-s4arrays >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-sparsearray >=1.10.0,<1.11.0
+  - r-base
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
+  run:
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-iranges >=2.44.0,<2.45.0
+  - bioconductor-rhdf5 >=2.54.0,<2.55.0
+  - bioconductor-rhdf5filters >=1.22.0,<1.23.0
+  - bioconductor-rhdf5lib >=1.32.0,<1.33.0
+  - bioconductor-s4arrays >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-sparsearray >=1.10.0,<1.11.0
+  - r-base
+source:
+  md5: 86720227abade6529006673b161ab486
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/h5mread_1.2.1.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/h5mread/h5mread_1.2.1.tar.gz
+  - https://bioarchive.galaxyproject.org/h5mread_1.2.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-h5mread/bioconductor-h5mread_1.2.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('h5mread')"

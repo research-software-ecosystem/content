@@ -1,11 +1,13 @@
 about:
-  description: Differential expression analysis of RNA-seq expression profiles with
-    biological replication. Implements a range of statistical methodology based on
-    the negative binomial distributions, including empirical Bayes estimation, exact
-    tests, generalized linear models and quasi-likelihood tests. As well as RNA-seq,
-    it be applied to differential signal analysis of other types of genomic data that
-    produce read counts, including ChIP-seq, ATAC-seq, Bisulfite-seq, SAGE and CAGE.
-  home: https://bioconductor.org/packages/3.20/bioc/html/edgeR.html
+  description: Differential expression analysis of sequence count data. Implements
+    a range of statistical methodology based on the negative binomial distributions,
+    including empirical Bayes estimation, exact tests, generalized linear models,
+    quasi-likelihood, and gene set enrichment. Can perform differential analyses of
+    any type of omics data that produces read counts, including RNA-seq, ChIP-seq,
+    ATAC-seq, Bisulfite-seq, SAGE, CAGE, metabolomics, or proteomics spectral counts.
+    RNA-seq analyses can be conducted at the gene or isoform level, and tests can
+    be conducted for differential exon or transcript usage.
+  home: https://bioconductor.org/packages/3.22/bioc/html/edgeR.html
   license: GPL (>=2)
   license_file: /lib/R/share/licenses/GPL-3
   summary: Empirical Analysis of Digital Gene Expression Data in R
@@ -27,28 +29,30 @@ extra:
     version: 3.22.5
 package:
   name: bioconductor-edger
-  version: 4.4.0
+  version: 4.8.2
 requirements:
   build:
   - null
   - make
   host:
-  - bioconductor-limma >=3.62.0,<3.63.0
+  - bioconductor-limma >=3.66.0,<3.67.0
   - r-base
   - r-locfit
   - libblas
   - liblapack
+  - zlib
+  - liblzma-devel
   run:
-  - bioconductor-limma >=3.62.0,<3.63.0
+  - bioconductor-limma >=3.66.0,<3.67.0
   - r-base
   - r-locfit
 source:
-  md5: db45a60f88cb89ea135743c1eb39b99c
+  md5: 5fde3f422aba2f92441e604eefb6cc55
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/edgeR_4.4.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/edgeR/edgeR_4.4.0.tar.gz
-  - https://bioarchive.galaxyproject.org/edgeR_4.4.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-edger/bioconductor-edger_4.4.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/edgeR_4.8.2.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/edgeR/edgeR_4.8.2.tar.gz
+  - https://bioarchive.galaxyproject.org/edgeR_4.8.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-edger/bioconductor-edger_4.8.2_src_all.tar.gz
 test:
   commands:
   - $R -e "library('edgeR')"

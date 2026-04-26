@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/genpat-it/dist2mst
+  home: https://github.com/genpat-it/dist2mst
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: High-performance Minimum Spanning Tree construction from distance matrices
+    with Numba acceleration
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - andreaderuvo
+package:
+  name: dist2mst
+  version: 0.0.2
+requirements:
+  host:
+  - python >=3.7
+  - pip
+  - setuptools
+  run:
+  - python >=3.7
+  - numba >=0.56
+  - numpy >=1.23
+  - pandas >=1.5
+  - tqdm >=4.64
+source:
+  sha256: 82aabc9d4f8c88c05a52519ad060e0a4e93bd569ef25a0ce0202c3b2498bfd6f
+  url: https://github.com/genpat-it/dist2mst/archive/v0.0.2.tar.gz
+test:
+  commands:
+  - dist2mst --help || python -m dist2mst --help

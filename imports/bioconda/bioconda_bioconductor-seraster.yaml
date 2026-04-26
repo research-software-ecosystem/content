@@ -1,0 +1,53 @@
+about:
+  description: "SEraster is a rasterization preprocessing framework that aggregates\
+    \ cellular information into spatial pixels to reduce resource requirements for\
+    \ spatial omics data analysis. SEraster reduces the number of spatial points in\
+    \ spatial omics datasets for downstream analysis through a process of rasterization\
+    \ where single cells\u2019 gene expression or cell-type labels are aggregated\
+    \ into equally sized pixels based on a user-defined resolution. SEraster is built\
+    \ on an R/Bioconductor S4 class called SpatialExperiment. SEraster can be incorporated\
+    \ with other packages to conduct downstream analyses for spatial omics datasets,\
+    \ such as detecting spatially variable genes."
+  home: https://bioconductor.org/packages/3.22/bioc/html/SEraster.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Rasterization Preprocessing Framework for Scalable Spatial Omics Data Analysis
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-seraster
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-ggplot2
+  - r-matrix
+  - r-rearrr
+  - r-sf
+  run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-ggplot2
+  - r-matrix
+  - r-rearrr
+  - r-sf
+source:
+  md5: 83f9d8f731b370316c3597fbd9d6646d
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/SEraster_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/SEraster/SEraster_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SEraster_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seraster/bioconductor-seraster_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SEraster')"

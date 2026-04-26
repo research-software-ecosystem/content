@@ -1,0 +1,59 @@
+about:
+  description: The DNEA R package is the latest implementation of the Differential
+    Network Enrichment Analysis algorithm and is the successor to the Filigree Java-application
+    described in Iyer et al. (2020). The package is designed to take as input an m
+    x n expression matrix for some -omics modality (ie. metabolomics, lipidomics,
+    proteomics, etc.) and jointly estimate the biological network associations of
+    each condition using the DNEA algorithm described in Ma et al. (2019). This approach
+    provides a framework for data-driven enrichment analysis across two experimental
+    conditions that utilizes the underlying correlation structure of the data to determine
+    feature-feature interactions.
+  home: https://bioconductor.org/packages/3.22/bioc/html/DNEA.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Differential Network Enrichment Analysis for Biological Data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-dnea
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-dplyr
+  - r-gdata
+  - r-glasso
+  - r-igraph >=2.0.3
+  - r-janitor
+  - r-matrix
+  - r-netgsa
+  - r-stringr
+  run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-dplyr
+  - r-gdata
+  - r-glasso
+  - r-igraph >=2.0.3
+  - r-janitor
+  - r-matrix
+  - r-netgsa
+  - r-stringr
+source:
+  md5: 55a5050328ffbe1bc764aa0f7b78245c
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/DNEA_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/DNEA/DNEA_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DNEA_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dnea/bioconductor-dnea_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DNEA')"

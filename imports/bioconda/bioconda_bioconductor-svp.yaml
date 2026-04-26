@@ -1,0 +1,99 @@
+about:
+  description: SVP uses the distance between cells and cells, features and features,
+    cells and features in the space of MCA to build nearest neighbor graph, then uses
+    random walk with restart algorithm to calculate the activity score of gene sets
+    (such as cell marker genes, kegg pathway, go ontology, gene modules, transcription
+    factor or miRNA target sets, reactome pathway, ...), which is then further weighted
+    using the hypergeometric test results from the original expression matrix. To
+    detect the spatially or single cell variable gene sets or (other features) and
+    the spatial colocalization between the features accurately, SVP provides some
+    global and local spatial autocorrelation method to identify the spatial variable
+    features. SVP is developed based on SingleCellExperiment class, which can be interoperable
+    with the existing computing ecosystem.
+  home: https://bioconductor.org/packages/3.22/bioc/html/SVP.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Predicting cell states and their variability in single-cell or spatial
+    omics data
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-svp
+  version: 1.2.1
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-biocneighbors >=2.4.0,<2.5.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-delayedmatrixstats >=1.32.0,<1.33.0
+  - bioconductor-ggtree >=4.0.0,<4.1.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-cli
+  - r-deldir
+  - r-dplyr
+  - r-dqrng
+  - r-fastmatch
+  - r-ggfun
+  - r-ggplot2
+  - r-ggstar
+  - r-matrix
+  - r-pracma
+  - r-rcpp
+  - r-rcpparmadillo >=14.0
+  - r-rcppeigen
+  - r-rcppparallel
+  - r-rlang
+  - r-withr
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
+  run:
+  - bioconductor-biocgenerics >=0.56.0,<0.57.0
+  - bioconductor-biocneighbors >=2.4.0,<2.5.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-delayedmatrixstats >=1.32.0,<1.33.0
+  - bioconductor-ggtree >=4.0.0,<4.1.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-cli
+  - r-deldir
+  - r-dplyr
+  - r-dqrng
+  - r-fastmatch
+  - r-ggfun
+  - r-ggplot2
+  - r-ggstar
+  - r-matrix
+  - r-pracma
+  - r-rcpp
+  - r-rcpparmadillo >=14.0
+  - r-rcppeigen
+  - r-rcppparallel
+  - r-rlang
+  - r-withr
+source:
+  md5: 9897851c3c0223e2506cecec6612ccbb
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/SVP_1.2.1.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/SVP/SVP_1.2.1.tar.gz
+  - https://bioarchive.galaxyproject.org/SVP_1.2.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-svp/bioconductor-svp_1.2.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SVP')"

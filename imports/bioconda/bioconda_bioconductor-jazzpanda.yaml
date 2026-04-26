@@ -1,0 +1,58 @@
+about:
+  description: This package contains the function to find marker genes for image-based
+    spatial transcriptomics data. There are functions to create spatial vectors from
+    the cell and transcript coordiantes, which are passed as inputs to find marker
+    genes. Marker genes are detected for every cluster by two approaches. The first
+    approach is by permtuation testing, which is implmented in parallel for finding
+    marker genes for one sample study. The other approach is to build a linear model
+    for every gene. This approach can account for multiple samples and backgound noise.
+  home: https://bioconductor.org/packages/3.22/bioc/html/jazzPanda.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Finding spatially relevant marker genes in image based spatial transcriptomics
+    data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-jazzpanda
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-bumpymatrix >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - r-base
+  - r-caret
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-glmnet
+  - r-magrittr
+  - r-spatstat.geom
+  run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-bumpymatrix >=1.18.0,<1.19.0
+  - bioconductor-spatialexperiment >=1.20.0,<1.21.0
+  - r-base
+  - r-caret
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-glmnet
+  - r-magrittr
+  - r-spatstat.geom
+source:
+  md5: 072476d55dd7b0c3c30d4d2b94fe6ace
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/jazzPanda_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/jazzPanda/jazzPanda_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/jazzPanda_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-jazzpanda/bioconductor-jazzpanda_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('jazzPanda')"

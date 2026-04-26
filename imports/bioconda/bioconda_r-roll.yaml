@@ -1,0 +1,60 @@
+about:
+  home: https://github.com/jasonjfoster/roll
+  license: GPL-2.0-only
+  license_family: GPL2
+  license_file:
+  - /lib/R/share/licenses/GPL-2
+  summary: Fast and efficient computation of rolling and expanding statistics for
+    time-series data.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-roll
+  version: 1.2.1
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - null
+  - filesystem
+  - make
+  - sed
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rcppparallel
+  run:
+  - r-base
+  - r-rcpp
+  - r-rcpparmadillo
+  - r-rcppparallel
+source:
+  sha256: e982ab636e5198ae5451b2f43decb2d1ef95287edebc85dc538e1a311c308e50
+  url:
+  - /src/contrib/roll_1.2.1.tar.gz
+  - /src/contrib/Archive/roll/roll_1.2.1.tar.gz
+test:
+  commands:
+  - $R -e "library('roll')"
+  - '"%R%" -e "library(''roll'')"'

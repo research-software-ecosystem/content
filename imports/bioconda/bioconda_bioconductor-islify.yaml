@@ -1,0 +1,51 @@
+about:
+  description: This software is meant to be used for classification of images of cell-based
+    assays for neuronal surface autoantibody detection or similar techniques. It takes
+    imaging files as input and creates a composite score from these, that for example
+    can be used to classify samples as negative or positive for a certain antibody-specificity.
+    The reason for its name is that I during its creation have thought about the individual
+    picture as an archielago where we with different filters control the water level
+    as well as ground characteristica, thereby finding islands of interest.
+  home: https://bioconductor.org/packages/3.22/bioc/html/islify.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Automatic scoring and classification of cell-based assay images
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-islify
+  version: 1.2.0
+requirements:
+  host:
+  - bioconductor-rbioformats >=1.10.0,<1.11.0
+  - r-abind >=1.4.8
+  - r-autothresholdr >=1.4.2
+  - r-base
+  - r-dbscan >=1.1.12
+  - r-matrix >=1.6.1
+  - r-png >=0.1.8
+  - r-tiff >=0.1.12
+  run:
+  - bioconductor-rbioformats >=1.10.0,<1.11.0
+  - r-abind >=1.4.8
+  - r-autothresholdr >=1.4.2
+  - r-base
+  - r-dbscan >=1.1.12
+  - r-matrix >=1.6.1
+  - r-png >=0.1.8
+  - r-tiff >=0.1.12
+source:
+  md5: 4cd70e972329c4b14b3a6b78509373b2
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/islify_1.2.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/islify/islify_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/islify_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-islify/bioconductor-islify_1.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('islify')"

@@ -1,0 +1,62 @@
+about:
+  description: 'tecap classifies long-read alignments by where their 3'' end lands
+    relative
+
+    to the terminal exon, its UTR, and a polyA site atlas. It decomposes
+
+    capture failures into nine mechanism buckets and measures reference base
+
+    composition downstream of each cleavage site to distinguish classic
+
+    A-tract internal priming from moderate-A priming characteristic of
+
+    saturating in-solution oligo-dT. Designed for PacBio Iso-Seq / Kinnex
+
+    and Oxford Nanopore cDNA BAMs. Direct-RNA sequencing is unsupported.
+
+    '
+  dev_url: https://github.com/FullLengthFanatic/tecap
+  doc_url: https://github.com/FullLengthFanatic/tecap
+  home: https://github.com/FullLengthFanatic/tecap
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 3' terminal exon capture diagnostics for long-read scRNA-seq
+build:
+  entry_points:
+  - tecap = tecap.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.19762736
+  recipe-maintainers:
+  - FullLengthFanatic
+package:
+  name: tecap
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - hatchling >=1.18
+  run:
+  - python >=3.9
+  - pysam >=0.22
+  - intervaltree >=3.1
+  - matplotlib-base >=3.5
+  - numpy >=1.22
+source:
+  sha256: 1adf28f1a85e4be09e4badf36eda7ef18b060d566c27cac0341cb253aa8c42b1
+  url: https://github.com/FullLengthFanatic/tecap/archive/refs/tags/v0.2.0.tar.gz
+test:
+  commands:
+  - tecap --version
+  - tecap classify --help
+  - tecap basecomp --help
+  - tecap compare --help
+  imports:
+  - tecap

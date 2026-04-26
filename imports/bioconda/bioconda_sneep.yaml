@@ -1,17 +1,19 @@
 about:
   dev_url: https://github.com/SchulzLab/SNEEP
+  doc_url: https://sneep.readthedocs.io/en/latest/index.html
   home: https://github.com/SchulzLab/SNEEP
   license: MIT
   license_family: MIT
-  summary: Identify regulatory non-coding SNPs (rSNPs)
+  license_file: LICENSE
+  summary: Identify regulatory non-coding SNPs (rSNPs).
 build:
-  number: 3
+  number: 4
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: sneep
   version: '1.1'
@@ -19,10 +21,14 @@ requirements:
   build:
   - make
   - null
-  - llvm-openmp
+  - null
   host:
   - python
+  - llvm-openmp
+  - libgomp
   run:
+  - llvm-openmp
+  - libgomp
   - python
   - numpy >=1.19
   - scipy

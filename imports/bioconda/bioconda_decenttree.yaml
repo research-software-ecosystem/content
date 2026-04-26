@@ -8,15 +8,16 @@ about:
   home: https://github.com/iqtree/decenttree
   license: GPL-2.0-only
   license_family: GPL
-  license_file: LICENSE
+  license_file: source/LICENSE
   summary: Scalable Neighbour-Joining and related algorithms for phylogenetic inference
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
   skip: true
 extra:
-  recipe-maintainers: null
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: decenttree
   version: 1.0.0
@@ -26,9 +27,16 @@ requirements:
   - null
   - cmake
   - make
+  - unzip
+  run:
+  - llvm-openmp
 source:
+- folder: source
   sha256: d7d592e424b7969a8a361f2de74233659f52d76ad21b9aa2910bd312887addbb
   url: https://github.com/iqtree/decenttree/archive/refs/tags/v1.0.0.tar.gz
+- folder: mac
+  sha256: 3921d8185a63d876af8091799c7a082b9c80d6d6fed917c30ddef9191af39fe8
+  url: https://github.com/iqtree/decenttree/releases/download/v1.0.0/decenttree-1.0.0-MacOSX.zip
 test:
   commands:
   - decenttree

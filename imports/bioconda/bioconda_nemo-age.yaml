@@ -1,6 +1,8 @@
 about:
+  dev_url: https://bitbucket.org/ecoevo/nemo-age-release
+  doc_url: https://bitbucket.org/ecoevo/nemo-age-release/src/v0.32.0/README.md
   home: https://bitbucket.org/ecoevo/nemo-age-release
-  license: GPL-3
+  license: GPL-3.0-or-later
   license_family: GPL3
   license_file: readme.txt
   summary: In Nemo-age, it is possible to model genetic and phenotypic evolution in
@@ -8,24 +10,40 @@ about:
     age classes with stage-specific transition rates, fecundities, selection pressures,
     and dispersal rates, among other things.
 build:
-  number: 5
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1111/2041-210X.13460
 package:
   name: nemo-age
-  version: 0.30.0
+  version: 0.32.0
 requirements:
   build:
   - make
   - null
-  - sed
+  - null
   host:
+  - libgomp
+  - llvm-openmp
+  - mpich-mpicxx
+  - sed
   - gsl
   run:
+  - libgomp
+  - llvm-openmp
+  - mpich-mpicxx
   - gsl
 source:
   patches:
   - Makefile.patch
-  sha256: b4ce73a145c3a9b1e32aae6d6b54df02e26b6805ddc326f506fff4f8a772d54e
-  url: https://bitbucket.org/ecoevo/nemo-age-release/get/v0.30.0.tar.gz
+  - 0001-cstdint.patch
+  sha256: 81ff58a020d506a7c7da4e43e6fe62da023e947cfa641d6dd34ca72a43f7bbf4
+  url: https://bitbucket.org/ecoevo/nemo-age-release/get/36bf8d4779b0377e299d63f6dfae6a7a46bd17f6.tar.gz
 test:
   commands:
   - nemoage 2>&1 | grep "N E M O A G E"

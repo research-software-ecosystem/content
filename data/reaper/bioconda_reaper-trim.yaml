@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/micans/reaper
+  doc_url: https://gensoft.pasteur.fr/docs/reaper/15-065/reaper.html
+  home: https://github.com/micans/reaper
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Tool for demultiplexing, trimming and filtering sequencing data.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:reaper
+package:
+  name: reaper-trim
+  version: '17.257'
+requirements:
+  build:
+  - make
+  - null
+  - null
+  host:
+  - zlib
+source:
+  patches:
+  - 0001-makefile.patch
+  sha256: 2da61dd0602a4cf56f41f2ae8c142b038eabd172304f3d1adc6ed192a3d45ce6
+  url: https://github.com/micans/reaper/archive/refs/tags/17-257.tar.gz
+test:
+  commands:
+  - reaper -h 2>&1 | grep "five prime sequence insert"

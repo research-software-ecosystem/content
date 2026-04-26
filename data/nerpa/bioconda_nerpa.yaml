@@ -3,28 +3,31 @@ about:
     nonribosomal peptides (NRPs). BGCs are predicted in genome sequences (FASTA or
     GBK) with antiSMASH (Medema et al, 2011). Known NRPs are accepted in the SMILES
     format and processed with rBAN (Ricart et al, 2019).
-  dev_url: https://github.com/ablab/nerpa
-  doc_url: https://github.com/ablab/nerpa
-  home: https://cab.spbu.ru/software/nerpa
+  dev_url: https://github.com/gurevichlab/nerpa
+  doc_url: https://github.com/gurevichlab/nerpa/blob/nerpa_2.1.0/README.md
+  home: https://github.com/gurevichlab/nerpa
   license: Dual-licensed under GPLv3 or CC BY-NC-SA 4.0
   license_file: LICENSE.txt
   summary: A tool for discovering biosynthetic gene clusters of nonribosomal peptides.
 build:
-  number: 7
+  number: 0
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
   identifiers:
+  - doi:10.1101/2024.11.19.624380v3
+  - doi:10.3390/metabo11100693
   - biotools:nerpa
   recipe-maintainers:
   - alexeigurevich
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: nerpa
-  version: 1.0.0
+  version: 2.1.0
 requirements:
   build:
   - null
@@ -32,15 +35,36 @@ requirements:
   - ninja
   - pkg-config
   host:
-  - python
+  - wget
+  - libgomp
+  - llvm-openmp
   run:
+  - libgomp
+  - llvm-openmp
   - python
   - rdkit
   - networkx
   - openjdk
+  - biopython
+  - cairosvg
+  - pulp
+  - scikit-learn >=1.2.0
+  - pandas >=1.5
+  - polars >=0.19
+  - pyarrow
+  - more-itertools
+  - dacite
+  - pyyaml
+  - python-graphviz
+  - prettytable
+  - requests
+  - bs4
+  - parse
 source:
-  sha256: cbd506fe82370938255223bfd3c5c2631f3390e428a3ae0297a4db1bfc62c985
-  url: https://github.com/ablab/nerpa/releases/download/v1.0.0/nerpa-1.0.0.tar.gz
+  patches:
+  - 0001-algorithm.patch
+  sha256: c0f1fddd13d877a1ab0880be43fe044239a1430e5e01587842f28aeff00d79b3
+  url: https://github.com/gurevichlab/nerpa/releases/download/nerpa_2.1.0/nerpa-2.1.0.tar.gz
 test:
   commands:
-  - nerpa.py --help
+  - nerpa.py -h

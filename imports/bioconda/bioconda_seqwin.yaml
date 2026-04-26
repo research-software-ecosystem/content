@@ -10,7 +10,9 @@ build:
   number: 0
   run_exports:
   - null
-  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  script:
+  - export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
   skip: true
 extra:
   additional-platforms:
@@ -18,9 +20,10 @@ extra:
   - osx-arm64
 package:
   name: seqwin
-  version: 0.3.1
+  version: 0.3.2
 requirements:
   build:
+  - null
   - null
   - cmake >=3.18
   - ninja >=1.10
@@ -30,7 +33,6 @@ requirements:
   - pip
   - scikit-build-core >=0.12
   - pybind11 >=2.12
-  - zlib
   run:
   - python
   - numpy >=2
@@ -43,8 +45,8 @@ requirements:
   - blast
   - ncbi-datasets-cli
 source:
-  sha256: f8b7dd9761331937c63c79846bb902d911b148d5cfb8d673511edaf8b0cff85a
-  url: https://github.com/treangenlab/Seqwin/archive/refs/tags/v0.3.1.tar.gz
+  sha256: 2b716ec89172208d6115b3a994d6b11e1972372652f7eb47af7e47cfbc6526fc
+  url: https://github.com/treangenlab/Seqwin/archive/refs/tags/v0.3.2.tar.gz
 test:
   commands:
   - seqwin --help

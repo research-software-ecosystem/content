@@ -1,0 +1,54 @@
+about:
+  description: The packages provides position specific weight matrices (PWMs) for
+    303 human serine/threonine and 93 tyrosine kinases originally published in Johnson
+    et al. 2023 (doi:10.1038/s41586-022-05575-3) and Yaron-Barir et al. 2024 (doi:10.1038/s41586-024-07407-y).
+    The package includes basic functionality to score user provided phosphosites.
+    It also includes pre-computed PWM scores ("background scores") for a large collection
+    of curated human phosphosites which can be used to rank PWM scores relative to
+    the background scores ("percentile rank").
+  home: https://bioconductor.org/packages/3.22/data/experiment/html/JohnsonKinaseData.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Kinase PWMs based on data published by Johnson et al. 2023 and Yaron-Barir
+    et al. 2024
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-johnsonkinasedata
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - r-base
+  - r-checkmate
+  - r-dplyr
+  - r-purrr
+  - r-stringr
+  - r-tidyr
+  run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - r-base
+  - r-checkmate
+  - r-dplyr
+  - r-purrr
+  - r-stringr
+  - r-tidyr
+  - curl
+  - bioconductor-data-packages >=20260207
+source:
+  md5: 018a588542ba7725aea3050c47380ef9
+  url:
+  - https://bioconductor.org/packages/3.22/data/experiment/src/contrib/JohnsonKinaseData_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/JohnsonKinaseData/JohnsonKinaseData_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/JohnsonKinaseData_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-johnsonkinasedata/bioconductor-johnsonkinasedata_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('JohnsonKinaseData')"

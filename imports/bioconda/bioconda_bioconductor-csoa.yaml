@@ -1,0 +1,68 @@
+about:
+  description: Cell Set Overlap Analysis (CSOA) is a tool for calculating per-cell
+    gene signature scores in an scRNA-seq dataset. CSOA constructs a set for each
+    gene in the signature, consisting of the cells that highly express the gene. Next,
+    all overlaps of pairs of cell sets are computed, ranked, filtered and scored.
+    The CSOA per-cell score is calculated by summing up all products of the overlap
+    scores and the min-max-normalized expression of the two involved genes. CSOA can
+    run on a Seurat object, a SingleCellExperiment object, a matrix and a dgCMatrix.
+  home: https://bioconductor.org/packages/3.22/bioc/html/CSOA.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Calculate per-cell gene signature scores in scRNA-seq data using cell set
+    overlaps
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-csoa
+  version: 1.0.0
+requirements:
+  host:
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-bayesbio
+  - r-dplyr
+  - r-ggplot2
+  - r-henna
+  - r-kerntools
+  - r-qs
+  - r-reshape2
+  - r-rlang
+  - r-seurat
+  - r-seuratobject
+  - r-sgof
+  - r-spatstat.utils
+  - r-textshape
+  - r-wesanderson
+  run:
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-bayesbio
+  - r-dplyr
+  - r-ggplot2
+  - r-henna
+  - r-kerntools
+  - r-qs
+  - r-reshape2
+  - r-rlang
+  - r-seurat
+  - r-seuratobject
+  - r-sgof
+  - r-spatstat.utils
+  - r-textshape
+  - r-wesanderson
+source:
+  md5: 01981ff6f66b309ef3fd464259c82a9b
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/CSOA_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/CSOA/CSOA_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CSOA_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-csoa/bioconductor-csoa_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CSOA')"

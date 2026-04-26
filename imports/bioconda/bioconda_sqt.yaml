@@ -3,7 +3,9 @@ about:
   license: MIT
   summary: Command-line tools for the analysis of high-throughput sequencing data
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - null
   script: "# remove PKG-INFO to trigger cythonize\nrm PKG-INFO\n -m pip install .\
     \ --no-deps -vv\n"
   skip: true
@@ -13,21 +15,23 @@ package:
 requirements:
   build:
   - null
+  - null
   host:
   - cython
   - python
+  - setuptools
   - pip
   - cutadapt
   - xopen
   - pysam
-  - matplotlib
+  - matplotlib-base
   - seaborn
   run:
   - python
   - cutadapt
   - xopen
   - pysam
-  - matplotlib
+  - matplotlib-base
   - seaborn
 source:
   md5: 5a6400b6cb5a331589f831ba0b6020f0

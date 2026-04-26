@@ -1,0 +1,76 @@
+about:
+  home: https://www.genekitr.fun/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Provides features for searching, converting, analyzing, plotting, and exporting
+    data effortlessly by inputting feature IDs. Enables easy retrieval of feature
+    information, conversion of ID types, gene enrichment analysis, publication-level
+    figures, group interaction plotting, and result export in one Excel file for seamless
+    sharing and communication.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-genekitr
+  version: 1.2.8
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - bioconductor-clusterprofiler
+  - r-dplyr
+  - r-europepmc
+  - r-fst
+  - r-geneset
+  - r-ggplot2
+  - r-ggraph
+  - r-ggvenn
+  - r-igraph
+  - r-magrittr
+  - r-openxlsx
+  - r-rlang
+  - r-stringi
+  - r-stringr
+  - r-tidyr
+  run:
+  - r-base
+  - bioconductor-clusterprofiler
+  - r-dplyr
+  - r-europepmc
+  - r-fst
+  - r-geneset
+  - r-ggplot2
+  - r-ggraph
+  - r-ggvenn
+  - r-igraph
+  - r-magrittr
+  - r-openxlsx
+  - r-rlang
+  - r-stringi
+  - r-stringr
+  - r-tidyr
+source:
+  sha256: d07fb367051f91e2ee3ea10608f64893a6ded4f9ce868fc4866f7d499ef91212
+  url:
+  - /src/contrib/genekitr_1.2.8.tar.gz
+  - /src/contrib/Archive/genekitr/genekitr_1.2.8.tar.gz
+test:
+  commands:
+  - $R -e "library('genekitr')"
+  - '"%R%" -e "library(''genekitr'')"'

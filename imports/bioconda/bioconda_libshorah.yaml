@@ -5,7 +5,9 @@ about:
   license_file: LICENSE
   summary: libshorah - Short Reads Assembly into Haplotypes
 build:
-  number: 2
+  number: 3
+  run_exports:
+  - null
   script:
   - mkdir -p build
   - cd build
@@ -13,7 +15,6 @@ build:
     -D CMAKE_CXX_STANDARD=11 -D BUILD_SHARED_LIBS=ON -D CMAKE_BUILD_TYPE=Release ../
   - make -j4
   - make install
-  skip: true
 package:
   name: libshorah
   version: 1.99.4
@@ -23,6 +24,7 @@ requirements:
   - make
   - cmake
   - pkgconfig
+  - null
   - null
   host:
   - python

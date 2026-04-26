@@ -1,0 +1,86 @@
+about:
+  description: A package for inferring, comparing, and visualizing gene networks from
+    single-cell RNA sequencing data. It integrates multiple methods (GENIE3, GRNBoost2,
+    ZILGM, PCzinb, and JRF) for robust network inference, supports consensus building
+    across methods or datasets, and provides tools for evaluating regulatory structure
+    and community similarity. GRNBoost2 requires Python package 'arboreto' which can
+    be installed using init_py(install_missing = TRUE). This package includes adapted
+    functions from ZILGM (Park et al., 2021), JRF (Petralia et al., 2015), and learn2count
+    (Nguyen et al. 2023) packages with proper attribution under GPL-2 license.
+  home: https://bioconductor.org/packages/3.22/bioc/html/scGraphVerse.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: 'scGraphVerse: A Gene Network Analysis Package'
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-scgraphverse
+  version: 1.0.0
+requirements:
+  build:
+  - null
+  - make
+  host:
+  - bioconductor-biocbaseutils >=1.12.0,<1.13.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-genie3 >=1.32.0,<1.33.0
+  - bioconductor-graph >=1.88.0,<1.89.0
+  - bioconductor-multiassayexperiment >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-distributions3
+  - r-doparallel
+  - r-dorng
+  - r-dplyr
+  - r-glmnet
+  - r-httr
+  - r-igraph
+  - r-jsonlite
+  - r-mass
+  - r-matrix
+  - r-mpath
+  - r-reticulate
+  - r-tidyr
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
+  run:
+  - bioconductor-biocbaseutils >=1.12.0,<1.13.0
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-genie3 >=1.32.0,<1.33.0
+  - bioconductor-graph >=1.88.0,<1.89.0
+  - bioconductor-multiassayexperiment >=1.36.0,<1.37.0
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-distributions3
+  - r-doparallel
+  - r-dorng
+  - r-dplyr
+  - r-glmnet
+  - r-httr
+  - r-igraph
+  - r-jsonlite
+  - r-mass
+  - r-matrix
+  - r-mpath
+  - r-reticulate
+  - r-tidyr
+source:
+  md5: 73f44ba6d1999491da440daa6f0fb82c
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/scGraphVerse_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/scGraphVerse/scGraphVerse_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scGraphVerse_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scgraphverse/bioconductor-scgraphverse_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('scGraphVerse')"

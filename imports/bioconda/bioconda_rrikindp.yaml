@@ -18,14 +18,19 @@ about:
   doc_url: https://doi.org/10.1101/2023.07.28.548983
   home: https://github.com/mwaldl/RRIkinDP
   license: GPL-3.0-only
-  license_family: GPL
+  license_family: GPL3
   license_file: COPYING
   summary: Evaluation of thermodynamic and kinetic features of RNA-RNA interactions.
 build:
-  number: 2
+  number: 3
   run_exports:
   - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1101/2023.07.28.548983
   recipe-maintainers:
   - mwaldl
   - s-will
@@ -34,28 +39,33 @@ package:
   version: 0.0.2
 requirements:
   build:
-  - python
-  - pip
   - make
-  - pybind11
   - null
+  - null
+  - pkg-config
   host:
-  - pybind11
-  - python
   - boost-cpp
   - viennarna >=2.6.0
   - intarna
+  - python
+  - pip
+  - setuptools
+  - pybind11
+  - libgomp
   - llvm-openmp
   run:
   - boost-cpp
+  - libgomp
   - llvm-openmp
-  - python >=3.6
+  - python
   - intarna
   - viennarna >=2.6.0
   - matplotlib-base >=3.7.0
-  - seaborn >=0.12.0
+  - seaborn-base >=0.12.0
   - pandas >=2.0.0
 source:
+  patches:
+  - 0001-fix-type-mismatch.patch
   sha256: 3bdaa7657224b90945d864d0238010cf3337975f58c41106ab60427dd52bc93f
   url: https://github.com/mwaldl/RRIkinDP/archive/refs/tags/v0.0.2.tar.gz
 test:
