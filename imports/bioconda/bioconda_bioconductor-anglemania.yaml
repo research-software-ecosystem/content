@@ -1,0 +1,72 @@
+about:
+  description: anglemania extracts genes from multi-batch scRNA-seq experiments for
+    downstream dataset integration. It shows improvement over the conventional usage
+    of highly-variable genes for many integration tasks. We leverage gene-gene correlations
+    that are stable across batches to identify biologically informative genes which
+    are less affected by batch effects. Currently, its main use is for single-cell
+    RNA-seq dataset integration, but it can be applied for other multi-batch downstream
+    analyses such as NMF.
+  home: https://bioconductor.org/packages/3.22/bioc/html/anglemania.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Feature Extraction for scRNA-seq Dataset Integration
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-anglemania
+  version: 1.0.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-bigparallelr
+  - r-bigstatsr
+  - r-checkmate
+  - r-digest
+  - r-dplyr
+  - r-matrix
+  - r-pbapply
+  - r-rcpp
+  - r-rmio
+  - r-tidyr
+  - r-withr
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
+  run:
+  - bioconductor-s4vectors >=0.48.0,<0.49.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-summarizedexperiment >=1.40.0,<1.41.0
+  - r-base
+  - r-bigparallelr
+  - r-bigstatsr
+  - r-checkmate
+  - r-digest
+  - r-dplyr
+  - r-matrix
+  - r-pbapply
+  - r-rcpp
+  - r-rmio
+  - r-tidyr
+  - r-withr
+source:
+  md5: 9d2f6286b744063e9a9305854c054df3
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/anglemania_1.0.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/anglemania/anglemania_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/anglemania_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-anglemania/bioconductor-anglemania_1.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('anglemania')"

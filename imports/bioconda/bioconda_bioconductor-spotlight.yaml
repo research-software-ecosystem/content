@@ -1,5 +1,5 @@
 about:
-  description: '`SPOTlight`provides a method to deconvolute spatial transcriptomics
+  description: '`SPOTlight` provides a method to deconvolute spatial transcriptomics
     spots using a seeded NMF approach along with visualization tools to assess the
     results. Spatially resolved gene expression profiles are key to understand tissue
     organization and function. However, novel spatial transcriptomics (ST) profiling
@@ -11,12 +11,11 @@ about:
     a seeded non-negative matrix factorization (NMF) regression, initialized using
     cell-type marker genes and non-negative least squares (NNLS) to subsequently deconvolute
     ST capture locations (spots).'
-  home: https://bioconductor.org/packages/3.20/bioc/html/SPOTlight.html
+  home: https://bioconductor.org/packages/3.22/bioc/html/SPOTlight.html
   license: GPL-3
   license_file: /lib/R/share/licenses/GPL-3
   summary: '`SPOTlight`: Spatial Transcriptomics Deconvolution'
 build:
-  noarch: generic
   number: 0
   rpaths:
   - lib/R/lib/
@@ -24,33 +23,39 @@ build:
   run_exports: ''
 package:
   name: bioconductor-spotlight
-  version: 1.10.0
+  version: 1.14.0
 requirements:
+  build:
+  - null
+  - null
+  - make
   host:
-  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
-  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-sparsematrixstats >=1.22.0,<1.23.0
   - r-base
   - r-ggplot2
   - r-matrix
-  - r-matrixstats
-  - r-nmf
-  - r-nnls
+  - r-rcpp
+  - r-rcppeigen
+  - libblas
+  - liblapack
+  - zlib
+  - liblzma-devel
   run:
-  - bioconductor-singlecellexperiment >=1.28.0,<1.29.0
-  - bioconductor-sparsematrixstats >=1.18.0,<1.19.0
+  - bioconductor-singlecellexperiment >=1.32.0,<1.33.0
+  - bioconductor-sparsematrixstats >=1.22.0,<1.23.0
   - r-base
   - r-ggplot2
   - r-matrix
-  - r-matrixstats
-  - r-nmf
-  - r-nnls
+  - r-rcpp
+  - r-rcppeigen
 source:
-  md5: 638290a97f214a906f347c6bb5a8c5dd
+  md5: 164db14c5ac2b60011ca384c6864fcee
   url:
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/SPOTlight_1.10.0.tar.gz
-  - https://bioconductor.org/packages/3.20/bioc/src/contrib/Archive/SPOTlight/SPOTlight_1.10.0.tar.gz
-  - https://bioarchive.galaxyproject.org/SPOTlight_1.10.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-spotlight/bioconductor-spotlight_1.10.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/SPOTlight_1.14.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/SPOTlight/SPOTlight_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SPOTlight_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-spotlight/bioconductor-spotlight_1.14.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('SPOTlight')"

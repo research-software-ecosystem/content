@@ -1,0 +1,56 @@
+about:
+  home: https://journal.r-project.org/archive/2017/RJ-2017-063/index.html
+  license: GPL-2 | GPL-3
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-2
+  - /lib/R/share/licenses/GPL-3
+  summary: An implementation of DuMouchel's (1999) <doi:10.1080/00031305.1999.10474456>
+    Bayesian data mining method for the market basket problem. Calculates Empirical
+    Bayes Geometric Mean (EBGM) and posterior quantile scores using the Gamma-Poisson
+    Shrinker (GPS) model to find unusually large cell counts in large, sparse contingency
+    tables. Can be used to find unusually high reporting rates of adverse events associated
+    with products. In general, can be used to mine any database where the co-occurrence
+    of two variables or items is of interest. Also calculates relative and proportional
+    reporting ratios. Builds on the work of the 'PhViD' package, from which much of
+    the code is derived. Some of the added features include stratification to adjust
+    for confounding variables and data squashing to improve computational efficiency.
+    Includes an implementation of the EM algorithm for hyperparameter estimation loosely
+    derived from the 'mederrRank' package.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-openebgm
+  version: 0.9.1
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-data.table >=1.10.0
+  - r-ggplot2 >=2.2.1
+  run:
+  - r-base
+  - r-data.table >=1.10.0
+  - r-ggplot2 >=2.2.1
+source:
+  sha256: 728dc9a93f7c68ef451425e97c3233cbd1b6eb7cf77ea94d663524f636ed05a7
+  url:
+  - /src/contrib/openEBGM_0.9.1.tar.gz
+  - /src/contrib/Archive/openEBGM/openEBGM_0.9.1.tar.gz
+test:
+  commands:
+  - $R -e "library('openEBGM')"
+  - '"%R%" -e "library(''openEBGM'')"'

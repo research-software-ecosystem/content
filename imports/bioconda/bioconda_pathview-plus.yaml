@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/raw-lab/pathview-plus
+  doc_url: https://github.com/raw-lab/pathview-plus/blob/v2.0.2/README.md
+  home: https://github.com/raw-lab/pathview-plus
+  license: CC BY-NC 4.0
+  license_family: OTHER
+  license_file: LICENSE
+  summary: Full-featured Python implementation of R pathview + SBGNview with support
+    for KEGG, Reactome, MetaCyc, and more.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - decrevi
+  - raw-lab
+package:
+  name: pathview-plus
+  version: 2.0.2
+requirements:
+  host:
+  - pip
+  - python >=3.8
+  - setuptools
+  - wheel
+  run:
+  - python >=3.8
+  - polars >=0.19.0
+  - numpy >=1.24.0
+  - seaborn >=0.12.0
+  - pyarrow
+  - pillow >=10.0.0
+  - networkx >=3.1
+  - requests >=2.31.0
+source:
+  sha256: d0574affcd54bd8ed68f779b972211b5268884b3f8bb6a28d4bbcefcf36c2117
+  url: https://github.com/raw-lab/pathview-plus/archive/refs/tags/v2.0.2.tar.gz
+test:
+  commands:
+  - pathview-cli.py --help
+  imports:
+  - pathview

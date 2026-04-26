@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/rstudio/bsicons
+  license: MIT
+  license_family: MIT
+  license_file:
+  - /lib/R/share/licenses/MIT
+  - LICENSE
+  summary: Easily use 'Bootstrap' icons inside 'Shiny' apps and 'R Markdown' documents.
+    More generally, icons can be inserted in any 'htmltools' document through inline
+    'SVG'.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-bsicons
+  version: 0.1.2
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-cli
+  - r-htmltools
+  - r-rlang
+  run:
+  - r-base
+  - r-cli
+  - r-htmltools
+  - r-rlang
+source:
+  sha256: ea900e3ee9339a41db97e760b9feaf634c26dc50fc12912c11a896bab159ddc5
+  url:
+  - /src/contrib/bsicons_0.1.2.tar.gz
+  - /src/contrib/Archive/bsicons/bsicons_0.1.2.tar.gz
+test:
+  commands:
+  - $R -e "library('bsicons')"
+  - '"%R%" -e "library(''bsicons'')"'

@@ -1,0 +1,58 @@
+about:
+  home: https://github.com/ChenLaboratory/hexDensity
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Kernel density estimation with hexagonal grid for bivariate data. Hexagonal
+    grid has many beneficial properties like equidistant neighbours and less edge
+    bias, making it better for spatial analyses than the more commonly used rectangular
+    grid. Carr, D. B. et al. (1987) <doi:10.2307/2289444>. Diggle, P. J. (2010) <doi:10.1201/9781420072884>.
+    Hill, B. (2017) <https://blog.bruce-hill.com/meandering-triangles>. Jones, M.
+    C. (1993) <doi:10.1007/BF00147776>.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-hexdensity
+  version: 1.4.10
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - filesystem
+  - make
+  - sed
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-hexbin
+  - r-spatstat.geom
+  run:
+  - r-base
+  - r-hexbin
+  - r-spatstat.geom
+source:
+  sha256: 8ae92b0cdf745e70cdbacc4c85a99df5cbf869f7d11bedf5d3e4677040fd5f2b
+  url:
+  - /src/contrib/hexDensity_1.4.10.tar.gz
+  - /src/contrib/Archive/hexDensity/hexDensity_1.4.10.tar.gz
+test:
+  commands:
+  - $R -e "library('hexDensity')"
+  - '"%R%" -e "library(''hexDensity'')"'

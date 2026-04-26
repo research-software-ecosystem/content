@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/Bicyclecardcn/MobiVision-M
+  home: https://github.com/Bicyclecardcn/MobiVision-M
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: MobiVision-M is a linux based software design specifically for single-microbe
+    RNA sequencing analysis.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+  script:
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  - cp $SRC_DIR/mobivision-M $PREFIX/bin/mobivision-M
+  - chmod +x $PREFIX/bin/mobivision-M
+  - install -v -m 0755 bin/* $PREFIX/bin
+  - mkdir -p $PREFIX/share/mobivision-m
+  - cp -r config resources demo $PREFIX/share/mobivision-m
+extra:
+  recipe-maintainers:
+  - Bicyclecardcn
+package:
+  name: mobivision-m
+  version: 1.3.2
+requirements:
+  host:
+  - python >=3.8,<3.9
+  - setuptools >=45
+  - setuptools-scm >=6.2
+  - pip
+  run:
+  - python >=3.8,<3.9
+  - numpy
+  - pandas
+  - scanpy <=1.9.8
+  - rtoml
+  - structlog
+  - loguru
+  - mako
+  - matplotlib-base
+  - scikit-learn
+  - scipy
+  - leidenalg
+  - louvain
+  - star ==2.7.10b
+  - samtools ==1.12
+  - fastqc
+  - cutadapt ==3.5
+  - fastp
+source:
+  sha256: 847fdd044349f9c1aa59fcbef1dfb611d669519ed75161ea5c4d5e5eb22dc264
+  url: https://github.com/Bicyclecardcn/MobiVision-M/archive/refs/tags/v1.3.2.tar.gz
+test:
+  commands:
+  - mobivision-M --help

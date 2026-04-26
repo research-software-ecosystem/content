@@ -12,7 +12,9 @@ about:
 
     Regions of Genomes with Multi-Read Analysis of ChIP-Seq Data.
 
-    PLoS Comput Biol. 2011;7:e1002111.'
+    PLoS Comput Biol. 2011;7:e1002111.
+
+    '
   dev_url: https://github.com/descostesn/CSEM-copy
   home: http://deweylab.biostat.wisc.edu/csem/
   license: GPL-3.0-or-later
@@ -20,17 +22,21 @@ about:
   license_file: COPYING
   summary: ChIP-Seq multi-read allocation using Expectation-Maximization
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
   skip: true
   string: h47932c3_
+extra:
+  additional-platforms:
+  - linux-aarch64
+  skip-lints:
+  - compiler_needs_stdlib_c
 package:
   name: csem
   version: '2.4'
 requirements:
   build:
-  - null
   - null
   - null
   - make
@@ -39,11 +45,15 @@ requirements:
   - ncurses
   run:
   - perl
+  - perl-perldoc
 source:
   sha256: fb50f91df2a6ebd6b8cb03c15fad64b675502ea459a1a675060d419b25ce7986
   url: https://github.com/descostesn/CSEM-copy/archive/refs/tags/2.4.tar.gz
 test:
   commands:
-  - run-csem --help 2>&1 | grep -qi "csem"
   - test -f "${PREFIX}/bin/run-csem"
+  - test -f "${PREFIX}/bin/csem"
+  - test -f "${PREFIX}/bin/csem-bam2wig"
+  - test -f "${PREFIX}/bin/csem-bam-processor"
+  - test -f "${PREFIX}/bin/csem-generate-input"
   - test -f "${PREFIX}/bin/sam/samtools"

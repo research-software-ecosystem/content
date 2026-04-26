@@ -5,9 +5,10 @@ about:
   license_file: LICENSE
   summary: A package for fast operations on 1-dimensional genomic signal tracks
 build:
-  number: 6
+  number: 7
+  run_exports:
+  - null
   script: rm pyBedGraph/*.c;  -m pip install . --ignore-installed --no-deps -vv
-  skip: true
 extra:
   recipe-maintainers:
   - c0ver
@@ -18,10 +19,12 @@ requirements:
   build:
   - null
   - null
+  - null
   host:
   - pip
   - python
   - cython
+  - setuptools
   run:
   - numpy >=1.16.4
   - pybigwig >=0.3.16

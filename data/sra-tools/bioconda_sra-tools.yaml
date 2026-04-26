@@ -10,57 +10,53 @@ about:
   license: Public Domain
   summary: The SRA Toolkit and SDK from NCBI.
 build:
-  number: 1
+  number: 2
   run_exports:
   - null
+  skip: true
+  string: _
 extra:
   additional-platforms:
-  - linux-aarch64
   - osx-arm64
   identifiers:
   - biotools:sra-tools
-  notes: 'After installation, you should run the configuration tool: ./vdb-config
-    -i. This tool will setup your download/cache area for downloaded files and references.'
+  notes: " The tool requires glibc \u2265 2.28 at runtime. After installation, you\
+    \ should run the configuration tool: ./vdb-config -i This tool will setup your\
+    \ download/cache area for downloaded files and references."
+  recipe-maintainers:
+  - rajwanir2
+  skip-lints:
+  - should_be_noarch_generic
 package:
   name: sra-tools
   version: 3.4.1
 requirements:
-  build:
-  - null
-  - make
-  - cmake
-  - pkg-config
-  - bison
-  - flex
-  host:
-  - ncbi-vdb >=3.4.1
   run:
   - ca-certificates
   - curl
-  - ncbi-vdb >=3.4.1
   - ossuuid
   - perl
   - perl-xml-libxml
   - perl-uri
 source:
 - folder: sra-tools
-  sha256: 874dcbb28b7ebffb5554839254e777b1137b0f0430815bab175068decfe96e98
-  url: https://github.com/ncbi/sra-tools/archive/refs/tags/3.4.1.tar.gz
-- folder: ncbi-vdb
-  sha256: 2fa0919b2842641ead93eeeb45047e87ca480a543b6e4eda15f94d5187e91c85
-  url: https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.4.1.tar.gz
+  sha256: f4850a32975596ca0755d928b166ecb0095918284ea992fba10f1acb3fcff64d
+  url: https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.4.1/sratoolkit.3.4.1-alma_linux64.tar.gz
+- folder: sra-tools
+  sha256: 8e19acfc0be8544b982b5233ae3f9469df31a317e50d63e984de034587e77488
+  url: https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.4.1/sratoolkit.3.4.1-mac-x86_64.tar.gz
+- folder: sra-tools
+  sha256: b38ec90f9c99805533c90684310b0495288890559c5af194f1074b72f4e95255
+  url: https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.4.1/sratoolkit.3.4.1-mac-arm64.tar.gz
 test:
   commands:
-  - if ! grep "/LIBS/GUID" ~/.ncbi/user-settings.mkfg &> /dev/null; then mkdir -p
-    ~/.ncbi && printf '/LIBS/GUID = "%s"\n' `uuid` > ~/.ncbi/user-settings.mkfg; fi
-  - fastq-dump --help > /dev/null
-  - fasterq-dump --help > /dev/null
-  - prefetch --help > /dev/null
-  - sam-dump --help > /dev/null
-  - sra-pileup --help > /dev/null
-  - vdb-config --help > /dev/null
-  - vdb-decrypt --help > /dev/null
-  - fastq-dump SRR002702 && grep '@SRR002702.1 EX35NVW14INCVK' SRR002702.fastq &&
-    rm SRR002702.fastq
-  - prefetch SRR002702 -O ./ && test -d SRR002702 && rm -r SRR002702
-  - sam-dump SRR002702 | grep 'EX35NVW14ISYAK'
+  - test -x "${PREFIX}/bin/prefetch"
+  - test -x "${PREFIX}/bin/fastq-dump"
+  - test -x "${PREFIX}/bin/vdb-config"
+  - test -x "${PREFIX}/bin/fasterq-dump"
+  - prefetch --version
+  - fastq-dump --version
+  - vdb-config --version
+  - fasterq-dump --version
+  - prefetch SRR000001
+  - fasterq-dump SRR000001 --stdout --concatenate-reads | head -n 10

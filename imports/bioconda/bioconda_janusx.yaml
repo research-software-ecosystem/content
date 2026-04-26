@@ -1,0 +1,81 @@
+about:
+  description: 'JanusX is a high-performance toolkit for genome-wide association studies
+
+    (GWAS), genomic selection (GS), and post-analysis visualization.
+
+
+    This Bioconda recipe packages the Python+Rust core and provides the `jxpy`
+
+    command entrypoint. Launcher-specific features (`jx`, self-update/runtime
+
+    management, `fastq2vcf`, and `fastq2count`) are intentionally excluded
+
+    from this package scope.
+
+    '
+  dev_url: https://github.com/FJingxian/JanusX
+  doc_url: https://github.com/FJingxian/JanusX/tree/v1.0.20/doc
+  home: https://github.com/FJingxian/JanusX
+  license: AGPL-3.0-or-later
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: GWAS and genomic selection toolkit with Rust-accelerated kernels.
+build:
+  entry_points:
+  - jxpy = janusx.script.JanusX:main
+  - jx = janusx.script.JanusX:main
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.64898/2026.01.20.700366
+  recipe-maintainers:
+  - FJingxian
+package:
+  name: janusx
+  version: 1.0.20
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1.7,<2
+  - numpy >=1.23
+  - pybind11 >=2.13.0
+  run:
+  - python
+  - numpy
+  - scipy
+  - scikit-learn
+  - xgboost
+  - pandas <3.0
+  - matplotlib-base
+  - psutil
+  - statsmodels
+  - rich
+  - tqdm
+  - rich-argparse
+  - joblib >=1.5
+  - mkl
+  - pypardiso
+source:
+  sha256: bd539966ecd7a04d291cbca05082f34616e2c1c94b69a0de883fb19389c13a4c
+  url: https://github.com/FJingxian/JanusX/archive/v1.0.20.tar.gz
+test:
+  commands:
+  - jxpy -h
+  - jx --help
+  - python -c "import janusx.janusx"
+  - python -c "import janusx.script.JanusX as jx; assert callable(jx.main)"
+  requires:
+  - python

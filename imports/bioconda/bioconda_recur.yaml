@@ -8,35 +8,37 @@ about:
   summary: Detect recurrent amino-acid substitutions from multiple-sequence alignments.
 build:
   entry_points:
-  - recur = recur.run.__main__:main
+  - recur = recur.run.main:main
   noarch: python
   number: 0
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=1.0.0
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.1.0
 package:
   name: recur
-  version: 1.0.0
+  version: 1.1.0
 requirements:
   host:
-  - python >=3.9,<3.13
+  - python >=3.9,<3.14
   - pip
-  - setuptools >=64
-  - setuptools_scm >=8
+  - setuptools >=77
+  - setuptools-scm >=8
   run:
-  - python >=3.9,<3.13
+  - python >=3.9,<3.14
   - numpy
   - dendropy
   - pyyaml
   - types-pyyaml
   - psutil
   - rich
-  - iqtree >=2,<3
+  - statsmodels
+  - scipy
+  - iqtree
 source:
-  sha256: 565b8c36c4f1093800411d7bd9232797d4f6f9a3f0ddb8c579331f41f32092f6
-  url: https://github.com/OrthoFinder/RECUR/releases/download/v1.0.0/recur-1.0.0.tar.gz
+  sha256: 6e46dbb8f439530f3a365be2fde25ee95f819a1c643de28a68f09df436537479
+  url: https://github.com/OrthoFinder/RECUR/releases/download/v1.1.0/recur-1.1.0.tar.gz
 test:
   commands:
   - recur --help

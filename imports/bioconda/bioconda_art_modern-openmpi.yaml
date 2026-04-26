@@ -8,7 +8,7 @@ about:
   summary: Modernized ART simulator of diverse Next-Generation Sequencing reads with
     MPI support
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -22,6 +22,7 @@ package:
   version: 1.4.0
 requirements:
   build:
+  - null
   - cmake >=3.17
   - make
   - pkg-config
@@ -30,14 +31,14 @@ requirements:
   - null
   - python
   host:
-  - libboost-devel >=1.86,<1.87
+  - libboost-devel >=1.90.0,<2
   - zlib
   - openmpi
   - htslib
   - fmt
   run:
   - openmpi
-  - libboost >=1.86,<1.87
+  - libboost >=1.90.0,<2
 source:
   sha256: c62d54879ef4c6fd6bc639c95a58be25c88690c920173f71b66c8c091b90b92c
   url: https://github.com/YU-Zhejian/art_modern/archive/refs/tags/1.4.0.zip
@@ -46,4 +47,6 @@ test:
   - mpiexec --allow-run-as-root -x ART_NO_LOG_DIR=1 -n 2 art_modern-mpi --version
     2>&1 | grep -q "1.4.0"
   - mpiexec --allow-run-as-root -x ART_NO_LOG_DIR=1 -n 1 art_profile_builder-mpi --version
+    2>&1 | grep -q "1.4.0"
+  - mpiexec --allow-run-as-root -x ART_NO_LOG_DIR=1 -n 1 am_compress-mpi --version
     2>&1 | grep -q "1.4.0"

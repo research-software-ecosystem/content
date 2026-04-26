@@ -1,12 +1,12 @@
 about:
-  description: Map profile HMMs of transposon termini to genomic sequences for annotation
-    of cryptic transposon variants.
+  description: Annotation of cryptic transposon variants using Hidden Markov Models
+    to detect conserved terminal features.
   dev_url: https://github.com/Adamtaranto/TIRmite
   home: https://github.com/Adamtaranto/TIRmite
   license: GPL-3
   license_family: GPL-3
-  summary: Map profile HMMs of transposon termini to genomic sequences for annotation
-    of cryptic transposon variants.
+  summary: Annotation of cryptic transposon variants using Hidden Markov Models to
+    detect conserved terminal features.
 build:
   entry_points:
   - tirmite=tirmite.cli.cli:main
@@ -20,28 +20,32 @@ extra:
   - Adamtaranto
 package:
   name: tirmite
-  version: 1.3.0
+  version: 1.4.0
 requirements:
   host:
-  - python >=3.8
+  - python >=3.9
   - pip
   - hatchling
   - hatch-vcs
   run:
   - biopython >=1.70
+  - blast >=2.17.0
+  - mafft
   - pandas >=0.23.4
   - pyfaidx
   - pyhmmer
-  - python >=3.8
+  - python >=3.9
   - rich
 source:
-  sha256: 37fa0aaff11de3526cc3495a1782774e1fe533817c5baca22d18e7f54aebfa90
-  url: https://pypi.io/packages/source/t/tirmite/tirmite-1.3.0.tar.gz
+  sha256: 62b135fa8b42f8a45cd649018b941a68e7437663266d59ce62b263cb1b2c6ec9
+  url: https://pypi.io/packages/source/t/tirmite/tirmite-1.4.0.tar.gz
 test:
   commands:
   - tirmite --help
   - tirmite --version
   - tirmite seed --help
+  - tirmite search --help
   - tirmite pair --help
+  - tirmite validate --help
   imports:
   - tirmite

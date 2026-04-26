@@ -3,24 +3,35 @@ about:
     microbial association networks as well as dissimilarity-based networks for microbial
     compositional data. It also includes functionality for constructing differential
     association networks.
+  dev_url: https://github.com/stefpeschel/NetCoMi
+  doc_url: https://netcomi.de
   home: https://github.com/stefpeschel/NetCoMi
   license: GPL-3.0-only
+  license_family: GPL3
   license_file: LICENSE
-  summary: Network Construction and Comparison for Microbiome Data
+  summary: Network Construction and Comparison for Microbiome Data.
 build:
   noarch: generic
-  number: 2
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - null
+extra:
+  identifiers:
+  - doi:10.1093/bib/bbaa290
+  - doi:10.5281/zenodo.3775500
 package:
   name: r-netcomi
-  version: 1.1.0
+  version: 1.2.0
 requirements:
   host:
   - r-base
   - r-spieceasi >=1.0.6
   - bioconductor-biobase
+  - bioconductor-mia
+  - bioconductor-summarizedexperiment
   - r-dosnow
   - r-fdrtool
   - r-filematrix
@@ -45,6 +56,8 @@ requirements:
   - r-base
   - r-spieceasi >=1.0.6
   - bioconductor-biobase
+  - bioconductor-mia
+  - bioconductor-summarizedexperiment
   - r-dosnow
   - r-fdrtool
   - r-filematrix
@@ -66,9 +79,8 @@ requirements:
   - r-corrplot
   - r-mixedcca >=1.6.2
 source:
-  sha256: cfc225c234a20102e4e6d6ddbc287686b84596a07dbf3192db0184b731159c9f
-  url:
-  - https://github.com/stefpeschel/NetCoMi/archive/refs/tags/v1.1.0.zip
+  sha256: 554deef105882f7d80eee9b4e65452d84b4e15543a05226d28449b5a5920a068
+  url: https://github.com/stefpeschel/NetCoMi/archive/refs/tags/v1.2.0.zip
 test:
   commands:
   - $R -e "library('NetCoMi')"

@@ -1,0 +1,64 @@
+about:
+  home: https://wlandau.github.io/instantiate/, https://github.com/wlandau/instantiate
+  license: MIT
+  license_family: MIT
+  license_file:
+  - /lib/R/share/licenses/MIT
+  - LICENSE
+  summary: Similar to 'rstantools' for 'rstan', the 'instantiate' package builds pre-compiled
+    'CmdStan' models into CRAN-ready statistical modeling R packages. The models compile
+    once during installation, the executables live inside the file systems of their
+    respective packages, and users have the full power and convenience of 'cmdstanr'
+    without any additional compilation after package installation. This approach saves
+    time and helps R package developers migrate from 'rstan' to the more modern 'cmdstanr'.
+    Packages 'rstantools', 'cmdstanr', 'stannis', and 'stanapi' are similar Stan clients
+    with different objectives.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-instantiate
+  version: 0.2.3
+requirements:
+  build:
+  - null
+  - null
+  - filesystem
+  - sed
+  - grep
+  - autoconf
+  - automake
+  - automake-wrapper
+  - pkg-config
+  - make
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-callr
+  - r-fs
+  - r-rlang
+  run:
+  - r-base
+  - r-callr
+  - r-fs
+  - r-rlang
+source:
+  sha256: dff964c58ca82684cfe0f9fcbe3cee683294329cdc42e83a1ecdf0121b40cdd7
+  url:
+  - /src/contrib/instantiate_0.2.3.tar.gz
+  - /src/contrib/Archive/instantiate/instantiate_0.2.3.tar.gz
+test:
+  commands:
+  - $R -e "library('instantiate')"
+  - '"%R%" -e "library(''instantiate'')"'

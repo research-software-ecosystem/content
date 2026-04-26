@@ -1,0 +1,43 @@
+about:
+  description: '''OSTA.data'' is a companion package for the "Orchestrating Spatial
+    Transcriptomics Analysis" (OSTA) with Bioconductor online book. Throughout OSTA,
+    we rely on a set of publicly available datasets that cover different sequencing-
+    and imaging-based platforms, such as Visium, Visium HD, Xenium (10x Genomics)
+    and CosMx (NanoString). In addition, we rely on scRNA-seq (Chromium) data for
+    tasks, e.g., spot deconvolution and label transfer (i.e., supervised clustering).
+    These data been deposited in an Open Storage Framework (OSF) repository, and can
+    be queried and downloaded using functions from the ''osfr'' package. For convenience,
+    we have implemented ''OSTA.data'' to query and retrieve data from our OSF node,
+    and cache retrieved Zip archives using ''BiocFileCache''.'
+  home: https://bioconductor.org/packages/3.22/bioc/html/OSTA.data.html
+  license: Artistic-2.0
+  summary: OSTA book data
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-osta.data
+  version: 1.2.1
+requirements:
+  host:
+  - bioconductor-biocfilecache >=3.0.0,<3.1.0
+  - r-base
+  - r-osfr
+  run:
+  - bioconductor-biocfilecache >=3.0.0,<3.1.0
+  - r-base
+  - r-osfr
+source:
+  md5: 0e4df2f6601c8ab1427ccf7c7398adb8
+  url:
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/OSTA.data_1.2.1.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/OSTA.data/OSTA.data_1.2.1.tar.gz
+  - https://bioarchive.galaxyproject.org/OSTA.data_1.2.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-osta.data/bioconductor-osta.data_1.2.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('OSTA.data')"

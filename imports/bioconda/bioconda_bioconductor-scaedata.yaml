@@ -1,0 +1,39 @@
+about:
+  description: Contains default datasets used by the Bioconductor package SingleCellAlleleExperiment.
+    The raw FASTQ files were sourced from publicly accessible datasets provided by
+    10x Genomics. Subsequently, our scIGD snakemake workflow was employed to process
+    these FASTQ files. The resulting output from scIGD constitutes to the contents
+    of this data package.
+  home: https://bioconductor.org/packages/3.22/data/experiment/html/scaeData.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Data Package for SingleCellAlleleExperiment
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports: ''
+package:
+  name: bioconductor-scaedata
+  version: 1.6.0
+requirements:
+  host:
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - r-base
+  run:
+  - bioconductor-experimenthub >=3.0.0,<3.1.0
+  - r-base
+  - curl
+  - bioconductor-data-packages >=20260207
+source:
+  md5: c9a3e89acea35a1c48c15cb79cb3bb6f
+  url:
+  - https://bioconductor.org/packages/3.22/data/experiment/src/contrib/scaeData_1.6.0.tar.gz
+  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/scaeData/scaeData_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scaeData_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scaedata/bioconductor-scaedata_1.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('scaeData')"

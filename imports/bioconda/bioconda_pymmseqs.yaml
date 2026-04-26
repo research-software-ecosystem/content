@@ -1,0 +1,41 @@
+about:
+  doc_url: https://github.com/heispv/pymmseqs/wiki
+  home: https://github.com/heispv/pymmseqs
+  license: MIT
+  license_file: LICENSE
+  summary: Python wrapper for MMseqs2
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - prototaxites
+package:
+  name: pymmseqs
+  version: 1.0.7
+requirements:
+  host:
+  - python >=3.10
+  - poetry-core
+  - pip
+  run:
+  - python >=3.10
+  - pyyaml >=6.0.1,<7.0.0
+  - numpy >=1.22.4
+  - pandas >=2.2.2,<3.0.0
+  - ipython >=8.22.1,<9.0.0
+  - scikit-learn >=1.5.0
+source:
+  sha256: be527fc2477b2674d6450729dcb0817a1067a411668131787a078347d6a91929
+  url: https://pypi.org/packages/source/p/pymmseqs/pymmseqs-1.0.7.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - pymmseqs
+  requires:
+  - pip
+  - python

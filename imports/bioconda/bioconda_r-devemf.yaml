@@ -1,0 +1,54 @@
+about:
+  home: https://github.com/plfjohnson/devEMF
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Output graphics to EMF+/EMF.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-devemf
+  version: '4.51'
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - filesystem
+  - sed
+  - grep
+  - autoconf
+  - automake
+  - automake-wrapper
+  - pkg-config
+  - make
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - fontconfig
+  - zlib
+  run:
+  - r-base
+source:
+  sha256: cbb0f832dd59cea7c546ad0cdec100f49a7310694b3b32ef1c188bfa19dcf8e7
+  url:
+  - /src/contrib/devEMF_4.5-1.tar.gz
+  - /src/contrib/Archive/devEMF/devEMF_4.5-1.tar.gz
+test:
+  commands:
+  - $R -e "library('devEMF')"
+  - '"%R%" -e "library(''devEMF'')"'

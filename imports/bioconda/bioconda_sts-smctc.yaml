@@ -1,35 +1,44 @@
 about:
+  dev_url: https://github.com/matsengrp/smctc
+  doc_url: https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/johansen/smctc
   home: https://github.com/matsengrp/smctc
-  license: GPL-3.0
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: COPYING
   summary: A C++ template class library for the efficient and convenient implementation
     of very general Sequential Monte Carlo algorithms.
 build:
-  number: 13
+  number: 0
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   notes: This fork of smctc is maintained by the [Matsen research group at the Fred
     Hutchinson Cancer Research Centre](http://matsen.fredhutch.org/) for use in the
     [Sequential Tree Sampler online phylogenetics package](https://github.com/OnlinePhylo/sts)
 package:
   name: sts-smctc
-  version: '1.0'
+  version: '2.0'
 requirements:
   build:
+  - cmake
   - make
   - null
+  - null
   host:
+  - libgomp
+  - llvm-openmp
   - gsl
   - libcblas
   run:
   - gsl
+  - libgomp
+  - llvm-openmp
 source:
-  sha256: bca8ab2786ac1e3e438f6b5ddf54cbcbc4b7f156955b03b51e4695b5b4e1c2b3
-  url: https://github.com/matsengrp/smctc/archive/sts-0.1.tar.gz
+  sha256: 918ed06db97bea21fb35d81890a93eac230115992a9a446ec31b3fdd4a288f5a
+  url: https://github.com/matsengrp/smctc/archive/refs/tags/sts-0.2.tar.gz
 test:
   commands:
   - test -f "${PREFIX}/lib/libsmctc.a"

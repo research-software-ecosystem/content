@@ -1,0 +1,91 @@
+about:
+  home: https://github.com/mikehellstern/netgsa
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - /lib/R/share/licenses/GPL-3
+  summary: Carry out network-based gene set analysis by incorporating external information
+    about interactions among genes, as well as novel interactions learned from data.
+    Implements methods described in Shojaie A, Michailidis G (2010) <doi:10.1093/biomet/asq038>,
+    Shojaie A, Michailidis G (2009) <doi:10.1089/cmb.2008.0081>, and Ma J, Shojaie
+    A, Michailidis G (2016) <doi:10.1093/bioinformatics/btw410>.
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-netgsa
+  version: 4.0.7
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - filesystem
+  - make
+  - sed
+  - coreutils
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - bioconductor-annotationdbi
+  - r-matrix
+  - bioconductor-rcy3
+  - r-rcpp >=1.0.2
+  - r-rcppeigen
+  - r-corpcor
+  - r-data.table
+  - r-dplyr
+  - bioconductor-genefilter
+  - r-glassofast
+  - r-glmnet
+  - bioconductor-graph
+  - bioconductor-graphite
+  - r-httr
+  - r-igraph
+  - r-magrittr
+  - r-msigdbr
+  - r-quadprog
+  - r-reshape2
+  - r-rlang
+  run:
+  - r-base
+  - bioconductor-annotationdbi
+  - r-matrix
+  - bioconductor-rcy3
+  - r-rcpp >=1.0.2
+  - r-rcppeigen
+  - r-corpcor
+  - r-data.table
+  - r-dplyr
+  - bioconductor-genefilter
+  - r-glassofast
+  - r-glmnet
+  - bioconductor-graph
+  - bioconductor-graphite
+  - r-httr
+  - r-igraph
+  - r-magrittr
+  - r-msigdbr
+  - r-quadprog
+  - r-reshape2
+  - r-rlang
+source:
+  sha256: 9bfac15cb9ec017926a6c836fd56f6e7c23fd9a508ca601e8c151738c67b6828
+  url:
+  - /src/contrib/netgsa_4.0.7.tar.gz
+  - /src/contrib/Archive/netgsa/netgsa_4.0.7.tar.gz
+test:
+  commands:
+  - $R -e "library('netgsa')"
+  - '"%R%" -e "library(''netgsa'')"'

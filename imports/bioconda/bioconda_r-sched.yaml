@@ -1,0 +1,61 @@
+about:
+  home: https://gitlab.com/cnrgh/databases/r-sched
+  license: AGPL-3
+  license_family: AGPL
+  license_file:
+  - /lib/R/share/licenses/AGPL-3
+  summary: 'Offers classes and functions to contact web servers while enforcing scheduling
+    rules required by the sites. The URL class makes it easy to construct a URL by
+    providing parameters as a vector. The Request class allows to describes SOAP (Simple
+    Object Access Protocol) or standard requests: URL, method (POST or GET), header,
+    body. The Scheduler class controls the request frequency for each server address
+    by mean of rules (Rule class). The RequestResult class permits to get the request
+    status to handle error cases and the content.'
+build:
+  missing_dso_whitelist:
+  - '*/R.dll'
+  - '*/Rblas.dll'
+  - '*/Rlapack.dll'
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+  script: R CMD INSTALL --build .
+extra:
+  recipe-maintainers:
+  - conda-forge/r
+package:
+  name: r-sched
+  version: 1.0.3
+requirements:
+  build:
+  - zip
+  - cross-r-base
+  host:
+  - r-base
+  - r-r6
+  - r-rcurl
+  - r-chk
+  - r-fscache >=1.0.3
+  - r-lgr
+  - r-openssl
+  run:
+  - r-base
+  - r-r6
+  - r-rcurl
+  - r-chk
+  - r-fscache >=1.0.3
+  - r-lgr
+  - r-openssl
+source:
+  sha256: 237723fa266ac71b2fc6c6e8163e3be3a3fad1a21238486ff4c68fc6ca43d9d8
+  url:
+  - /src/contrib/sched_1.0.3.tar.gz
+  - /src/contrib/Archive/sched/sched_1.0.3.tar.gz
+test:
+  commands:
+  - $R -e "library('sched')"
+  - '"%R%" -e "library(''sched'')"'

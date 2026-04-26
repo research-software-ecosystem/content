@@ -1,43 +1,43 @@
 about:
-  description: 'MetaAMRplus is a command-line platform for the simultaneous identification
-
-    of antimicrobial resistance genes, metal and biocide resistance genes,
-
-    and their genomic colocalisation in bacterial genomes and plasmids.
-
-    The tool integrates AMRFinder and BacMet databases and is designed for
-
-    reproducible large-scale genomic analyses.
-
-    '
+  description: MetaAMRplus is a command-line tool for detecting antimicrobial resistance
+    genes, metal/biocide resistance genes, and their genomic colocalisation.
   home: https://github.com/migshaw03/MetaAMRplus
   license: MIT
-  license_file: LICENSE
-  summary: 'MetaAMRplus: unified detection of antimicrobial and metal resistance genes
-    with colocalisation analysis'
+  summary: 'MetaAMRplus: AMR + metal resistance + colocalisation analysis'
 build:
   noarch: generic
   number: 1
   run_exports:
   - null
+  script: "set -euo pipefail\n\nmkdir -p \"$PREFIX/bin\"\nmkdir -p \"$PREFIX/share/metaamrplus/db\"\
+    \n\ninstall -m 755 \"$SRC_DIR/bin/metaamrplus\" \"$PREFIX/bin/metaamrplus\"\n\
+    install -m 755 \"$SRC_DIR/bin/metaamrplus_batch\" \"$PREFIX/bin/metaamrplus_batch\"\
+    \n\nif [[ -f \"$SRC_DIR/bin/metaamrplus-download-db\" ]]; then\n  install -m 755\
+    \ \"$SRC_DIR/bin/metaamrplus-download-db\" \"$PREFIX/bin/metaamrplus-download-db\"\
+    \nfi\n\ninstall -m 755 \"$SRC_DIR/bin/annotate_metaamrplus.py\" \\\n  \"$PREFIX/bin/annotate_metaamrplus.py\"\
+    \n\nDB_DIR=\"$SRC_DIR/db\"\n\ncp \"$DB_DIR\"/MetaAMRplus_DB_v1.0.* \"$PREFIX/share/metaamrplus/db/\"\
+    \ || true\n\nif [[ -f \"$DB_DIR/MetaAMRplus_v1.0.idmap.tsv\" ]]; then\n  cp \"\
+    $DB_DIR/MetaAMRplus_v1.0.idmap.tsv\" \"$PREFIX/share/metaamrplus/db/\"\nfi\n"
 extra:
   recipe-maintainers:
   - migshaw03
 package:
   name: metaamrplus
-  version: 1.4.1
+  version: 1.5.1
 requirements:
+  build:
+  - coreutils
+  host:
+  - python >=3.8
   run:
   - python >=3.8
-  - pandas
-  - wget
-  - ncbi-amrfinderplus
-  - blast
+  - coreutils
+  - gawk
+  - blast >=2.14
   - prodigal
-  - awk
 source:
-  sha256: 47c54705eca30762bf2db36f118da96a9e06630c4507dab7d9f6b4b8c98e47e4
-  url: https://github.com/migshaw03/MetaAMRplus/archive/refs/tags/v1.4.1.tar.gz
+  sha256: 5ae9181e0eb5b64e929e4980bbef47c7aec7e2c81ae8bfda1d5a3e072b4f89ec
+  url: https://github.com/migshaw03/MetaAMRplus/archive/refs/tags/v1.5.1.tar.gz
 test:
   commands:
   - metaamrplus --help

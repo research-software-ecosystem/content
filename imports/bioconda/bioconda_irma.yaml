@@ -1,39 +1,36 @@
 about:
   home: https://wonder.cdc.gov/amd/flu/irma/
-  license: GNU General Public License v3 or later (GPLv3+)
+  license: Apache Software License, Apache-2.0
+  license_family: APACHE
   summary: 'IRMA: Iterative Refinement Meta-Assembler for the robust assembly, variant
     calling, and phasing of highly variable RNA viruses.'
 build:
+  binary_relocation: false
   noarch: generic
   number: 0
   run_exports:
   - null
-license_family: GPL3
 package:
   name: irma
-  version: 1.2.0
+  version: 1.3.1
 requirements:
   host:
   - perl
   run:
   - perl
   - r-base >=3.5.1
-  - parallel >=20181022
-  - pigz >=2.3.4
+  - parallel >=20200422
+  - pigz >=2.8
   - blat >=35
-  - samtools >=1.2
-  - fasttree >=2.1.3
-  - muscle >=3.8.1551
-  - minimap2 >=2.17
+  - samtools >=1.21
+  - minimap2 >=2.29
   - zip >=3.0
 source:
   patches:
-  - irma-fix-bin-cmds.patch
-  - label-fix-bin-cmds.patch
   - irma-check-dir-writable.patch
-  sha256: 8cc113289f3b441ef2bd8f7d793f6be71fbb77babbfff022e187ba2463fce9f8
-  url: https://wonder.cdc.gov/amd/flu/irma/flu-amd-202408.zip
+  sha256: 523cb657fbf7c7b1a037fa9cea62636f93647e46d1487a4ee3aa2d75614651dd
+  url: https://github.com/CDCgov/irma/releases/download/v1.3.1/irma-v1.3.1-universal.zip
 test:
-  files:
-  - test1.fa
-  - test2.fastq
+  commands:
+  - IRMA -h 2>&1  | grep -q "Usage"
+  - LABEL -h 2>&1 | grep -q "Usage"

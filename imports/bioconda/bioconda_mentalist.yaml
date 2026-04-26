@@ -1,33 +1,37 @@
 about:
+  dev_url: https://github.com/WGS-TB/MentaLiST
+  doc_url: https://github.com/WGS-TB/MentaLiST/blob/v0.2.5/README.md
   home: https://github.com/WGS-TB/MentaLiST
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: The MLST pipeline developed by the PathOGiST research group.
 build:
-  number: 8
+  number: 0
+  run_exports:
+  - null
   skip: true
-extra:
-  skip-lints:
-  - should_be_noarch_generic
 package:
   name: mentalist
-  version: 0.2.4
+  version: 0.2.5
 requirements:
   build:
   - null
+  - null
+  - make
   host:
-  - julia 0.5.2.*
-  - hdf5 1.10.1.*
-  - mpfr 3.1.5.*
+  - juliaup >=1.10
+  - hdf5
+  - mpfr
   run:
-  - julia 0.5.2.*
-  - hdf5 1.10.1.*
-  - mpfr 3.1.5.*
+  - juliaup >=1.10
+  - hdf5
+  - mpfr
   - libxml2
   - unzip
 source:
-  sha256: 408a1080bef46b88f21132d20c8b8d287f081f5aae47af25a379177a32e8abc5
-  url: https://github.com/WGS-TB/MentaLiST/archive/v0.2.4.tar.gz
+  sha256: 6cc0ff1f39e892b0a5c71e6d477404c6b72d368ab3436146248419d59863eb48
+  url: https://github.com/WGS-TB/MentaLiST/archive/v0.2.5.tar.gz
 test:
   commands:
-  - mentalist -h
+  - test -f "${PREFIX}/bin/mentalist"

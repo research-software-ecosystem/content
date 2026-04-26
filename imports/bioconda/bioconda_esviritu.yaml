@@ -2,6 +2,7 @@ about:
   dev_url: https://github.com/cmmr/EsViritu
   home: https://github.com/cmmr/EsViritu
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Read mapping pipeline for detection and measurement of human and animal
     virus pathogens from short read metagenomic environmental or clinical samples.
@@ -9,19 +10,21 @@ build:
   entry_points:
   - EsViritu = EsViritu:esviritu
   - summarize_esv_runs = EsViritu.summarize_esv_runs:summarize_esv_runs
+  - esv_create_taxonomy = EsViritu.esv_create_taxonomy:main
+  - esv_combine_tax = EsViritu.esv_combine_tax:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   identifiers:
-  - https://doi.org/10.1038/s41467-023-42064-1
+  - doi:10.1038/s41467-023-42064-1
   recipe-maintainers:
   - mtisza1
 package:
   name: esviritu
-  version: 1.2.0
+  version: 1.2.1
 requirements:
   host:
   - python >=3.11
@@ -45,13 +48,11 @@ requirements:
   - r-magrittr
   - r-remotes
 source:
-  sha256: c1b63df5256a601dd86872e09a5faad88deff3dde3b4b6526eec7ca8601f8a46
-  url: https://github.com/cmmr/EsViritu/archive/v1.2.0.tar.gz
+  sha256: 342b943737071688f72f8eb0581cbe3ed0720fe5005afcbdcd53bbe00e84155f
+  url: https://github.com/cmmr/EsViritu/archive/v1.2.1.tar.gz
 test:
   commands:
   - pip check
   - EsViritu --help
   imports:
   - EsViritu
-  requires:
-  - pip
