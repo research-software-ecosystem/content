@@ -1,206 +1,193 @@
 {
-    "accessibility": "Open access (with restrictions)",
-    "additionDate": "2025-11-07T18:15:49.962044Z",
-    "biotoolsCURIE": "biotools:prostate_zone_segmentation_tool",
-    "biotoolsID": "prostate_zone_segmentation_tool",
-    "collectionID": [
-        "EUCAIM"
-    ],
-    "confidence_flag": "tool",
-    "cost": "Free of charge (with restrictions)",
-    "credit": [
-        {
-            "email": "jose.almeida@research.fchampalimaud.org",
-            "name": "José Guilherme de Almeida",
-            "orcidid": "https://orcid.org/0000-0002-1887-0157",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer",
-                "Documentor",
-                "Maintainer",
-                "Primary contact"
-            ],
-            "url": "https://josegcpa.net"
-        },
-        {
-            "name": "Nickolas Papanikolaou",
-            "orcidid": "https://orcid.org/0000-0003-3298-2072",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Support"
-            ]
-        },
-        {
-            "name": "Nuno Rodrigues",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer"
-            ]
-        }
-    ],
-    "description": "This tool automatically segments the the prostate into two zones: the central and transition zones (TZ+CZ) and the peripheral zone (PZ). It takes as input a T2-weighted image and produces a segmentation in the same input format.\n\nThree datasets were used to train this model: ProstateX (n=152), Prostate158 (n=119) and ProstateNet (the ProCAncer-I dataset; n=532). We used the T2-weighted images available in each dataset and trained a standard three-class nnU-Net model with three classes: background, peripheral zone and the combination of the transition and central zones as annotated by radiologists. Using 149 cases from the three previously noted datasets, this model achieved DSC=0.81 (95% CI=[0.59, 0.92]) for PZ and 0.87 (95% CI=[0.60, 0.96]) for CZ+TZ. In a clinical validation using ProCAncer-I data, this model achieved, for PZ and TZ+CZ, DSC=0.65 and DSC=0.77, respectively, comparable to the observed between-radiologist DSC for a subset of cases (DSC=0.61 and DSC=0.73, respectively).",
-    "documentation": [
-        {
-            "note": "This is the repository containing all of the code together with a comprehensive README for deployment and examplar files.",
-            "type": [
-                "API documentation"
-            ],
-            "url": "https://github.com/josegcpa/nnunet_serve"
-        }
-    ],
-    "editPermission": {
-        "type": "private"
+  "accessibility": "Open access (with restrictions)",
+  "additionDate": "2025-11-07T18:15:49.962044Z",
+  "biotoolsCURIE": "biotools:prostate_zone_segmentation_tool",
+  "biotoolsID": "prostate_zone_segmentation_tool",
+  "collectionID": [
+    "EUCAIM"
+  ],
+  "confidence_flag": "tool",
+  "cost": "Free of charge (with restrictions)",
+  "credit": [
+    {
+      "email": "jose.almeida@research.fchampalimaud.org",
+      "name": "Jos\u00e9 Guilherme de Almeida",
+      "orcidid": "https://orcid.org/0000-0002-1887-0157",
+      "typeEntity": "Person",
+      "typeRole": [
+        "Primary contact",
+        "Developer",
+        "Documentor",
+        "Maintainer"
+      ],
+      "url": "https://josegcpa.net"
     },
-    "function": [
+    {
+      "name": "Nickolas Papanikolaou",
+      "orcidid": "https://orcid.org/0000-0003-3298-2072",
+      "typeEntity": "Person",
+      "typeRole": [
+        "Support"
+      ]
+    },
+    {
+      "name": "Nuno Rodrigues",
+      "typeEntity": "Person",
+      "typeRole": [
+        "Developer"
+      ]
+    }
+  ],
+  "description": "This tool automatically segments the the prostate into two zones: the central and transition zones (TZ+CZ) and the peripheral zone (PZ). It takes as input a T2-weighted image and produces a segmentation in the same input format.\n\nThree datasets were used to train this model: ProstateX (n=152), Prostate158 (n=119) and ProstateNet (the ProCAncer-I dataset; n=532). We used the T2-weighted images available in each dataset and trained a standard three-class nnU-Net model with three classes: background, peripheral zone and the combination of the transition and central zones as annotated by radiologists. Using 149 cases from the three previously noted datasets, this model achieved DSC=0.81 (95% CI=[0.59, 0.92]) for PZ and 0.87 (95% CI=[0.60, 0.96]) for CZ+TZ. In a clinical validation using ProCAncer-I data, this model achieved, for PZ and TZ+CZ, DSC=0.65 and DSC=0.77, respectively, comparable to the observed between-radiologist DSC for a subset of cases (DSC=0.61 and DSC=0.73, respectively).",
+  "documentation": [
+    {
+      "note": "This is the repository containing all of the code together with a comprehensive README for deployment and examplar files.",
+      "type": [
+        "API documentation"
+      ],
+      "url": "https://github.com/josegcpa/nnunet_serve"
+    }
+  ],
+  "editPermission": {
+    "type": "private"
+  },
+  "function": [
+    {
+      "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict --study_path /data/input --series_folders <series-folder> --output_dir /data/output",
+      "input": [
         {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict --study_path /data/input --series_folders <series-folder> --output_dir /data/output",
-            "input": [
-                {
-                    "data": {
-                        "term": "MRI image",
-                        "uri": "http://edamontology.org/data_3442"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ],
-            "note": "Image annotation for individual DICOM and Nifti images: Please note that it is easier to mount the input and output paths path and keep `--study_path` always as `/data/input` and `--output_dir` always as `/data/output`. This way only `--series_folders` requires any change. `--series_folders` can refer both to a Nifti file (if the input is Nifti) or the a DICOM series folder.\n\nIf the input is DICOM, `--is_dicom` should be used.",
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example_dataset:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict-batch {{--data_json /data/input/<dataset_json>.json|--data_dir /data/input --output_dir /data/output}}",
-            "input": [
-                {
-                    "data": {
-                        "term": "MRI image",
-                        "uri": "http://edamontology.org/data_3442"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ],
-            "note": "Batch image annotation for DICOM and Nifti images using dataset JSON and data directory supports two methods: using a dataset JSON and using a data directory. \n\nThe dataset JSON-based method relies on having a dataset JSON which has a list of dictionaries that follow this structure: `{\"study_path\": str, \"series_folders\": [[str]], \"output_dir\": str}`. These are analogous to the previous modes. Be mindful that paths should be specified accordingly for the Docker file-system. The dataset JSON should be specified using `--data_json`.\n\nThe data directory-based method relies on having a directory structured as patient/study/series, where each series follows an nnU-Net-like convention (i.e. `<series_id>_0000`, `<series_id>_0001`, etc.). In this case, it should be `<series-id>_0000`. The data directory should be specified using `--data_dir` and requires the specification of an `--output_dir`.\n\nIf the input is DICOM, `--is_dicom` should be specified.",
-            "operation": [
-                {
-                    "term": "Image annotation",
-                    "uri": "http://edamontology.org/operation_3553"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "MRI image",
-                        "uri": "http://edamontology.org/data_3442"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        },
-                        {
-                            "term": "nii",
-                            "uri": "http://edamontology.org/format_3549"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/champ-prostate-zone-segmentation",
-    "language": [
-        "Python"
-    ],
-    "lastUpdate": "2025-11-28T12:18:55.232382Z",
-    "license": "CC-BY-NC-4.0",
-    "link": [
-        {
-            "note": "The EUCAIM model card for this model, containing details on model training, data and libraries.",
-            "type": [
-                "Other"
-            ],
-            "url": "https://docs.google.com/spreadsheets/d/1bcdhs9Xg2MxAH0WDGz08SjEVMFr3e-TP/edit?usp=sharing&ouid=111102743696297094705&rtpof=true&sd=true"
-        },
-        {
-            "note": "This is the nnunet_serve repository, containing the generic nnU-Net building and serving functionalities used by the Computational Clinical Imaging Group at Champalimaud Foundation. This should also be used as documentation.",
-            "type": [
-                "Repository"
-            ],
-            "url": "https://github.com/josegcpa/nnunet_serve"
-        }
-    ],
-    "maturity": "Emerging",
-    "name": "Prostate zone segmentation tool",
-    "operatingSystem": [
-        "Linux"
-    ],
-    "owner": "josegcpa",
-    "publication": [
-        {
-            "doi": "10.1016/j.compbiomed.2024.108216",
-            "metadata": {
-                "citationCount": 9,
-                "date": "2024-03-01T00:00:00Z",
-                "journal": "Computers in Biology and Medicine",
-                "title": "Analysis of domain shift in whole prostate gland, zonal and lesions segmentation and detection, using multicentric retrospective data"
+          "data": {
+            "term": "MRI image",
+            "uri": "http://edamontology.org/data_3442"
+          },
+          "format": [
+            {
+              "term": "nii",
+              "uri": "http://edamontology.org/format_3549"
             },
-            "pmid": "38442555",
-            "type": [
-                "Primary"
-            ]
+            {
+              "term": "DICOM format",
+              "uri": "http://edamontology.org/format_3548"
+            }
+          ]
         }
-    ],
-    "relation": [
+      ],
+      "note": "Image annotation for individual DICOM and Nifti images: Please note that it is easier to mount the input and output paths path and keep `--study_path` always as `/data/input` and `--output_dir` always as `/data/output`. This way only `--series_folders` requires any change. `--series_folders` can refer both to a Nifti file (if the input is Nifti) or the a DICOM series folder.\n\nIf the input is DICOM, `--is_dicom` should be used.",
+      "operation": [
         {
-            "biotoolsID": "nnunet",
-            "type": "uses"
+          "term": "Image annotation",
+          "uri": "http://edamontology.org/operation_3553"
         }
-    ],
-    "toolType": [
-        "Command-line tool"
-    ],
-    "topic": [
+      ],
+      "output": [
         {
-            "term": "Medical informatics",
-            "uri": "http://edamontology.org/topic_3063"
+          "data": {
+            "term": "Image",
+            "uri": "http://edamontology.org/data_2968"
+          },
+          "format": [
+            {
+              "term": "nii",
+              "uri": "http://edamontology.org/format_3549"
+            },
+            {
+              "term": "DICOM format",
+              "uri": "http://edamontology.org/format_3548"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "cmd": "docker run --shm-size=1gb -v $(pwd)/example_dataset:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict-batch {{--data_json /data/input/<dataset_json>.json|--data_dir /data/input --output_dir /data/output}}",
+      "input": [
+        {
+          "data": {
+            "term": "MRI image",
+            "uri": "http://edamontology.org/data_3442"
+          },
+          "format": [
+            {
+              "term": "nii",
+              "uri": "http://edamontology.org/format_3549"
+            },
+            {
+              "term": "DICOM format",
+              "uri": "http://edamontology.org/format_3548"
+            }
+          ]
+        }
+      ],
+      "note": "Batch image annotation for DICOM and Nifti images using dataset JSON and data directory supports two methods: using a dataset JSON and using a data directory. \n\nThe dataset JSON-based method relies on having a dataset JSON which has a list of dictionaries that follow this structure: `{\"study_path\": str, \"series_folders\": [[str]], \"output_dir\": str}`. These are analogous to the previous modes. Be mindful that paths should be specified accordingly for the Docker file-system. The dataset JSON should be specified using `--data_json`.\n\nThe data directory-based method relies on having a directory structured as patient/study/series, where each series follows an nnU-Net-like convention (i.e. `<series_id>_0000`, `<series_id>_0001`, etc.). In this case, it should be `<series-id>_0000`. The data directory should be specified using `--data_dir` and requires the specification of an `--output_dir`.\n\nIf the input is DICOM, `--is_dicom` should be specified.",
+      "operation": [
+        {
+          "term": "Image annotation",
+          "uri": "http://edamontology.org/operation_3553"
+        }
+      ],
+      "output": [
+        {
+          "data": {
+            "term": "MRI image",
+            "uri": "http://edamontology.org/data_3442"
+          },
+          "format": [
+            {
+              "term": "nii",
+              "uri": "http://edamontology.org/format_3549"
+            },
+            {
+              "term": "DICOM format",
+              "uri": "http://edamontology.org/format_3548"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/champ-prostate-zone-segmentation",
+  "language": [
+    "Python"
+  ],
+  "lastUpdate": "2026-04-29T10:29:30.938886Z",
+  "license": "CC-BY-NC-4.0",
+  "link": [
+    {
+      "note": "This is the nnunet_serve repository, containing the generic nnU-Net building and serving functionalities used by the Computational Clinical Imaging Group at Champalimaud Foundation. This should also be used as documentation.",
+      "type": [
+        "Repository"
+      ],
+      "url": "https://github.com/josegcpa/nnunet_serve"
+    }
+  ],
+  "maturity": "Emerging",
+  "name": "Prostate zone segmentation tool",
+  "operatingSystem": [
+    "Linux"
+  ],
+  "owner": "josegcpa",
+  "publication": [
+    {
+      "doi": "10.1016/j.compbiomed.2024.108216",
+      "pmid": "38442555",
+      "type": [
+        "Primary"
+      ]
+    }
+  ],
+  "relation": [
+    {
+      "biotoolsID": "nnunet",
+      "type": "uses"
+    }
+  ],
+  "toolType": [
+    "Command-line tool"
+  ],
+  "topic": [
+    {
+      "term": "Medical informatics",
+      "uri": "http://edamontology.org/topic_3063"
+    }
+  ]
 }
