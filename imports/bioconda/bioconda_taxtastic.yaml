@@ -1,24 +1,32 @@
 about:
+  dev_url: https://github.com/fhcrc/taxtastic
+  doc_url: https://fhcrc.github.io/taxtastic/index.html
   home: https://github.com/fhcrc/taxtastic
-  license: GPL-3.0
-  license_family: GPL
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: Tools for taxonomic naming and annotation
+  summary: Tools for taxonomic naming and annotation.
 build:
+  entry_points:
+  - taxit = taxtastic.scripts.taxit:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script:
+  - export SETUPTOOLS_SCM_PRETEND_VERSION="${PKG_VERSION}"
+  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 package:
   name: taxtastic
-  version: 0.12.0
+  version: 1.0.1
 requirements:
   host:
-  - python >=3
+  - python >=3.8
   - setuptools
+  - setuptools-scm >=8
+  - pip
   run:
-  - python >=3
+  - python >=3.8
   - dendropy
   - pyyaml
   - decorator
@@ -28,9 +36,11 @@ requirements:
   - sqlalchemy >=2
   - sqlparse
 source:
-  sha256: cdb60dcc7d0a847ed881935038fd8ff44e1c130d2397863d9e9a3a2b7bd67faa
-  url: https://pypi.python.org/packages/source/t/taxtastic/taxtastic-0.12.0.tar.gz
+  sha256: 054e623875b522ad4305de0b22598c0c29f80321c6e985f852f3c0e7b19f3bd2
+  url: https://pypi.org/packages/source/t/taxtastic/taxtastic-1.0.1.tar.gz
 test:
+  commands:
+  - taxit --help
   imports:
   - taxtastic
   - taxtastic.scripts

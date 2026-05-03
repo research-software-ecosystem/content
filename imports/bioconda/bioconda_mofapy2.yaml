@@ -1,34 +1,37 @@
 about:
+  dev_url: https://github.com/bioFAM/mofapy2
+  doc_url: https:/biofam.github.io/MOFA2
   home: https://github.com/bioFAM/mofapy2
-  license: LGPL 3.0
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: LICENSE
-  summary: Multi-Omics Factor Analysis
+  summary: Multi-Omics Factor Analysis.
 build:
   noarch: python
   number: 0
   run_exports:
   - null
-  script: python -m pip install --no-deps --ignore-installed .
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 package:
   name: mofapy2
-  version: 0.7.3
+  version: 0.7.4
 requirements:
   host:
-  - python
+  - python >=3.8
   - pip
   - poetry-core
   run:
   - h5py
   - numpy
   - pandas
-  - python
+  - python >=3.8
   - scipy
   - scikit-learn
-  - anndata
+  run_constrained:
+  - anndata >0.8
 source:
-  sha256: ccf52a7c3813b86a9e744e2bc97cf80d8ef18a7920259d471249aedc7260f202
-  url: https://pypi.io/packages/source/m/mofapy2/mofapy2-0.7.3.tar.gz
+  sha256: 3a8801cff9b88b547ca9331d93ceb413822f10fd2f47d8f9a7d877cb7b500aca
+  url: https://pypi.org/packages/source/m/mofapy2/mofapy2-0.7.4.tar.gz
 test:
   imports:
   - mofapy2
