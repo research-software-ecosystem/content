@@ -1,44 +1,50 @@
 {
-    "Author": "Ali Mostafa Anwar [aut, cre] (ORCID: <https://orcid.org/0000-0002-5201-387X>), Leo Lahti [aut, ths] (ORCID: <https://orcid.org/0000-0001-5537-637X>), Akewak Jeba [aut, ctb] (ORCID: <https://orcid.org/0009-0007-1347-7552>), Eleanor Coffey [aut, ths] (ORCID: <https://orcid.org/0000-0002-9717-5610>)",
+    "Author": "Ali Mostafa Anwar [aut, cre] (ORCID: <https://orcid.org/0000-0002-5201-387X>), Leo Lahti [aut, ths] (ORCID: <https://orcid.org/0000-0001-5537-637X>), Akewak Jeba [aut, ctb] (ORCID: <https://orcid.org/0009-0007-1347-7552>), Eleanor Coffey [aut, ths] (ORCID: <https://orcid.org/0000-0002-9717-5610>), Rasmus Hindström [ctb] (ORCID: <https://orcid.org/0009-0004-5731-178X>)",
     "BugReports": "https://github.com/AliYoussef96/LimROTS/issues",
-    "Date/Publication": "2025-12-08",
+    "Date/Publication": "2026-04-28",
     "Depends": [
         "R (>= 4.5.0)",
         "SummarizedExperiment"
     ],
-    "Description": "Differential expression analysis is a prevalent method utilised in the examination of diverse biological data. The reproducibility-optimized test statistic (ROTS) modifies a t-statistic based on the data's intrinsic characteristics and ranks features according to their statistical significance for differential expression between two or more groups (f-statistic). Focussing on proteomics and metabolomics, the current ROTS implementation cannot account for technical or biological covariates such as MS batches or gender differences among the samples. Consequently, we developed LimROTS, which employs a reproducibility-optimized test statistic utilising the limma methodology to simulate complex experimental designs. LimROTS is a hybrid method integrating empirical bayes and reproducibility-optimized statistics for robust analysis of proteomics and metabolomics data.",
+    "Description": "Differential expression analysis is commonly used to study diverse biological datasets. The reproducibility-optimized test statistic (ROTS) (Elo et al., 2008, <doi:10.1109/tcbb.2007.1078>) uses a modified t-statistic to prioritise features that differ between two or more groups. However, the ROTS Bioconductor implementation (Suomi et al., 2017, <doi:10.1371/journal.pcbi.1005562>) did not accommodate technical or biological covariates. LimROTS (Anwar et al., 2025, <doi:10.1093/bioinformatics/btaf570>) addressed this limitation by combining a reproducibility-optimized test statistic with the limma empirical Bayes approach (Ritchie et al., 2015, <doi:10.1093/nar/gkv007>). This enables the analysis of more complex experimental designs and the incorporation of covariates.",
     "Imports": [
         "BiocParallel",
         "S4Vectors",
+        "cmprsk",
         "dplyr",
         "limma",
         "qvalue",
         "stats",
         "stringr",
-        "utils"
+        "survival",
+        "utils",
+        "variancePartition"
     ],
     "License": "GPL (>= 2)",
-    "MD5sum": "13b25ba7adcc43515845dcedba972d7a",
+    "MD5sum": "f77a65925d88009b98ef39b16cd0895e",
     "Maintainer": "Ali Mostafa Anwar <aliali.mostafa99@gmail.com>",
     "NeedsCompilation": "no",
     "Package": "LimROTS",
-    "Rank": 2186,
+    "Rank": 2161,
     "Rfiles": [
-        "vignettes/LimROTS/inst/doc/LimROTS.R"
+        "vignettes/LimROTS/inst/doc/LimROTS.R",
+        "vignettes/LimROTS/inst/doc/LimROTS_survival.R"
     ],
     "Suggests": [
         "BiocStyle",
         "ROTS",
+        "TreeSummarizedExperiment",
         "caret",
         "ggplot2",
         "knitr",
-        "magick",
+        "mia",
+        "miaTime",
         "rmarkdown",
         "testthat (>= 3.0.0)"
     ],
     "Title": "LimROTS: A Hybrid Method Integrating Empirical Bayes and Reproducibility-Optimized Statistics for Robust Differential Expression Analysis",
     "URL": "https://github.com/AliYoussef96/LimROTS, https://aliyoussef96.github.io/LimROTS/",
-    "Version": "1.2.8",
+    "Version": "1.4.0",
     "VignetteBuilder": "knitr",
     "biocViews": [
         "DifferentialExpression",
@@ -51,23 +57,25 @@
         "Software",
         "mRNAMicroarray"
     ],
-    "dependencyCount": "67",
-    "git_branch": "RELEASE_3_22",
-    "git_last_commit": "a28d957",
-    "git_last_commit_date": "2025-12-05",
+    "dependencyCount": "116",
+    "git_branch": "RELEASE_3_23",
+    "git_last_commit": "85ad0ed",
+    "git_last_commit_date": "2026-04-28",
     "git_url": "https://git.bioconductor.org/packages/LimROTS",
     "hasINSTALL": false,
     "hasLICENSE": false,
     "hasNEWS": true,
     "hasREADME": false,
-    "mac.binary.big-sur-arm64.ver": "bin/macosx/big-sur-arm64/contrib/4.5/LimROTS_1.2.8.tgz",
-    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.5/LimROTS_1.2.8.tgz",
-    "source.ver": "src/contrib/LimROTS_1.2.8.tar.gz",
+    "mac.binary.big-sur-x86_64.ver": "bin/macosx/big-sur-x86_64/contrib/4.6/LimROTS_1.3.25.tgz",
+    "mac.binary.sonoma-arm64.ver": "bin/macosx/sonoma-arm64/contrib/4.6/LimROTS_1.4.0.tgz",
+    "source.ver": "src/contrib/LimROTS_1.4.0.tar.gz",
     "vignetteTitles": [
-        "LimROTS"
+        "LimROTS: Overview and Differential Expression Analysis",
+        "LimROTS: Survival Analysis with Cox and Competing Risks Models"
     ],
     "vignettes": [
-        "vignettes/LimROTS/inst/doc/LimROTS.html"
+        "vignettes/LimROTS/inst/doc/LimROTS.html",
+        "vignettes/LimROTS/inst/doc/LimROTS_survival.html"
     ],
-    "win.binary.ver": "bin/windows/contrib/4.5/LimROTS_1.2.8.zip"
+    "win.binary.ver": "bin/windows/contrib/4.6/LimROTS_1.3.25.zip"
 }
