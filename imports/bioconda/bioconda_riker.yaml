@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/fulcrumgenomics/riker
-  doc_url: https://github.com/fulcrumgenomics/riker/blob/v0.1.0/README.md
+  doc_url: https://github.com/fulcrumgenomics/riker/blob/v0.2.0/README.md
   home: https://github.com/fulcrumgenomics/riker
   license: MIT
   license_family: MIT
@@ -9,9 +9,15 @@ about:
   - THIRDPARTY.yml
   summary: High-performance tools next generation sequencing QC.
 build:
+  binary_relocation: false
   number: 0
   run_exports:
   - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --locked cargo-multivers
+  - cargo multivers --profile dist --out-dir "${PREFIX}/bin"
+  - cargo install --no-track --locked --profile dist --root "${PREFIX}" --path .
 extra:
   additional-platforms:
   - linux-aarch64
@@ -19,18 +25,22 @@ extra:
   recipe-maintainers:
   - nh13
   - tfenne
-  skip-lints:
-  - compiler_needs_stdlib_c
 package:
   name: riker
-  version: 0.1.0
+  version: 0.2.0
 requirements:
   build:
   - null
+  - null
+  - null
+  - null
   - cargo-bundle-licenses
+  - clangdev <22
+  - cmake
+  - make
 source:
-  sha256: 0e140b02d723713c3648763e9fd3535a4fa6dca6c7371f8ef8ea9b5272801841
-  url: https://github.com/fulcrumgenomics/riker/archive/v0.1.0.tar.gz
+  sha256: e1270cbae29f63ad28ac475ced1710ca76c8c4cf6f62e2ac6cf0811a9fadb466
+  url: https://github.com/fulcrumgenomics/riker/archive/v0.2.0.tar.gz
 test:
   commands:
   - riker --help

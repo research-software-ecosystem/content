@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/scicrow/bioconda_uscophy
+  home: https://github.com/scicrow/bioconda_uscophy
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: A workflow to extract BUSCO genes from assembled genomes and use them for
+    a phylogenetic reconstruction
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - scicrow
+package:
+  name: uscophy
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.11
+  - snakemake-minimal >=8.0
+  - biopython
+  - busco >=5.0
+  - click
+  - diamond
+  - hmmer
+  - iqtree
+  - mafft
+  - pandas
+  - r-base
+  - r-ape
+  - r-dplyr
+  - r-ggplot2
+  - r-patchwork
+  - r-readr
+  - r-tidyr
+  - r-viridis
+  - bioconductor-ggtree
+  - spades
+  - trimal
+  - rich
+source:
+  sha256: cbe397f4d23ec6a65f9eb2ab4b3f6f80adf79910935a507a6fcc9ed449085f3d
+  url: https://github.com/scicrow/bioconda_uscophy/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - uscophy --help
+  - uscophy run --help
+  - uscophy assemble --help
+  imports:
+  - uscophy
