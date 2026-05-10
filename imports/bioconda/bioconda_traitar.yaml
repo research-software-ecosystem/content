@@ -10,8 +10,10 @@ about:
   summary: traitar - The microbial trait analyzer
 build:
   noarch: python
-  number: 0
-  script: ' -m pip install . --no-deps -vv'
+  number: 1
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
 package:
   name: traitar
   version: 3.0.1
@@ -19,12 +21,16 @@ requirements:
   host:
   - python >=3.7,<3.11
   - pip
+  - setuptools <78
   run:
   - python >=3.7,<3.11
   - hmmer
   - scipy
   - pandas >1.2,<2
+  - parallel
+  - prodigal
   - numpy
+  - setuptools <78
   - matplotlib-base
 source:
   sha256: 975b977931041c19cb1ee151bba328bdeb124a0874ab2383faff63ea5002af98
@@ -36,3 +42,5 @@ test:
   - traitar phenotype -h
   imports:
   - traitar
+  requires:
+  - setuptools

@@ -1,0 +1,42 @@
+about:
+  description: 'Ampliclip is a tool to softclip reads in bam files based on amplicon
+    primers.
+
+    It identifies primer locations using sequence alignment and correctly adjusts
+
+    the CIGAR strings of overlapping reads.
+
+    '
+  home: https://github.com/dnieuw/ampliclip
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Tool to softclip reads in bam files based on amplicon primers
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - lvzon
+package:
+  name: ampliclip
+  version: '1.2'
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  - setuptools
+  run:
+  - python >=3.7
+  - biopython >=1.80
+  - pysam >=0.20
+source:
+  sha256: 9bd1c53ebd570560a5ea590839a62de2784f43515ebea4864f9a2aa5171b42d3
+  url: https://github.com/dnieuw/ampliclip/archive/refs/tags/v1.2.tar.gz
+test:
+  commands:
+  - ampliclip --help
+  - ampliclip --version
