@@ -1,0 +1,78 @@
+about:
+  description: "EnteroScope is a complete, automated genomic analysis pipeline for\
+    \ Enterobacter cloacae complex,\nfeaturing parallel execution for rapid processing\
+    \ of bacterial genomes. The pipeline integrates\nmultiple analysis modules into\
+    \ a unified workflow:\n\n\u2022 Quality Control (FASTA QC) \u2013 Comprehensive\
+    \ sequence validation\n\u2022 Multi-Locus Sequence Typing (MLST) \u2013 Enterobacter\
+    \ cloacae specific scheme\n\u2022 Antimicrobial Resistance (AMR) \u2013 Resistance\
+    \ gene detection via AMRfinderPlus\n\u2022 Virulence & Plasmid Profiling (ABRicate)\
+    \ \u2013 Multi-database screening (CARD, ResFinder, VFDB, NCBI, MEGARes, BacMet,\
+    \ PlasmidFinder)\n\u2022 Critical Genes Flagging \u2013 Priority markers for infection\
+    \ control (carbapenemases, ESBLs, colistin, tigecycline)\n\u2022 Interactive HTML\
+    \ Reports \u2013 Gene-centric integrated analysis\n\u2022 Cross-genome pattern\
+    \ discovery\n\nKey Features:\n\U0001F680 Parallel Execution \u2013 QC and MLST\
+    \ run simultaneously for maximum speed\n\U0001F4CA Interactive Reports \u2013\
+    \ HTML summaries with search, sort, export, print\n\U0001F9EC Multi-Database Integration\
+    \ \u2013 AMRfinderPlus + ABRicate with 10+ databases\n\u26A1 Easy Deployment \u2013\
+    \ Single command analysis with automatic result aggregation\n\U0001F3AF Critical\
+    \ Gene Tracking \u2013 Carbapenemases (KPC, NDM, OXA-48), ESBLs, mcr, tet(X),\
+    \ biofilm, efflux pumps\n\nDesigned for clinical microbiology, outbreak investigation,\
+    \ and genomic surveillance,\nEnteroScope provides clinical labs and researchers\
+    \ with a complete solution for\nEnterobacter cloacae complex genomic characterization\
+    \ from raw sequencing data to publication-ready reports.\n"
+  dev_url: https://github.com/bbeckley-hub/enteroscope
+  doc_url: https://github.com/bbeckley-hub/enteroscope
+  home: https://github.com/bbeckley-hub/enteroscope
+  license: MIT
+  license_file: LICENSE
+  summary: 'EnteroScope: Comprehensive Enterobacter cloacae complex genomic typing
+    pipeline with parallel execution'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - bbeckley-hub
+package:
+  name: enteroscope
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools
+  run:
+  - python >=3.9
+  - pandas >=1.5.0
+  - biopython >=1.85
+  - psutil >=5.9.0
+  - requests >=2.28.0
+  - tqdm >=4.64.1
+  - click >=8.0.0
+  - beautifulsoup4 >=4.11.0
+  - lxml >=4.9.0
+  - matplotlib-base >=3.5.0
+  - seaborn >=0.12.0
+  - scipy >=1.10.1
+  - plotly >=5.10.0
+  - abricate >=1.2.0
+  - perl
+  - any2fasta
+  - blast >=2.13.0
+  - perl-moo
+  - perl-list-moreutils
+  - perl-json
+  - perl-lwp-protocol-https
+  - perl-path-tiny
+  - perl-data-dumper
+  - perl-getopt-long
+  - perl-file-which
+source:
+  sha256: 56aa47b44489d55254c78201c4a74def7350782c8963b6f94319c286796e1948
+  url: https://github.com/bbeckley-hub/enteroscope/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - enteroscope --help

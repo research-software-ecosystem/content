@@ -1,0 +1,69 @@
+about:
+  description: 'linezolid-amr combines NCBI AMRFinderPlus gene/mutation detection
+    on an
+
+    assembly with species-aware mapping of raw reads to 23S rRNA references to
+
+    detect heteroresistant linezolid-resistance mutations (e.g. G2576T, G2505A)
+
+    in Staphylococcus aureus, Enterococcus faecalis/faecium, Streptococcus
+
+    pneumoniae, and Mycobacterium tuberculosis. The same --organism flag drives
+
+    both AMRFinderPlus species mode and 23S reference selection. Mutations are
+
+    reported in E. coli K-12 23S numbering (the clinical-literature convention)
+
+    via a pairwise-alignment-derived position map computed at fetch time.
+
+    '
+  dev_url: https://github.com/iowa69/linezolid-amr
+  doc_url: https://github.com/iowa69/linezolid-amr#readme
+  home: https://github.com/iowa69/linezolid-amr
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Integrated AMR profiling (AMRFinderPlus) + 23S rRNA linezolid-resistance
+    frequency analysis
+build:
+  entry_points:
+  - linezolid-amr = linezolid_amr.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - iowa69
+package:
+  name: linezolid-amr
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.9
+  - click >=8.0
+  - pysam >=0.22
+  - biopython >=1.81
+  - ncbi-amrfinderplus >=4.0
+  - minimap2 >=2.24
+  - samtools >=1.18
+  - bcftools >=1.18
+source:
+  sha256: 38ed406269c00324cf98633bbee8c6e329b801edb25619e96e5a4ada832dba3a
+  url: https://github.com/iowa69/linezolid-amr/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - linezolid-amr --version
+  - linezolid-amr --help
+  - linezolid-amr list-organisms
+  imports:
+  - linezolid_amr
+  - linezolid_amr.cli
+  - linezolid_amr.amrfinder
+  - linezolid_amr.rrna23s
+  - linezolid_amr.references
