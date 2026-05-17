@@ -1,0 +1,44 @@
+about:
+  description: 'snakemk_util provides helpers for working with Snakemake pipelines,
+
+    including loading a Snakemake object outside of a snakemake run for
+
+    interactive debugging of rule scripts.
+
+    '
+  dev_url: https://github.com/Hoeze/snakemk_util
+  home: https://github.com/Hoeze/snakemk_util
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Utility functions for easier working with Snakemake.
+build:
+  entry_points:
+  - snakemk_util = snakemk_util.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - hoeze
+package:
+  name: snakemk_util
+  version: 3.0.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - snakemake >=9,<10
+source:
+  sha256: 8416b753e959b5e6cf0b2b59cd4b09834c9a2dc55c97f9b60fdc8909dc1ee4e8
+  url: https://pypi.org/packages/source/s/snakemk_util/snakemk_util-3.0.1.tar.gz
+test:
+  commands:
+  - snakemk_util --help
+  imports:
+  - snakemk_util

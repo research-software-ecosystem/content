@@ -8,7 +8,7 @@ about:
   summary: The RECON package performs de novo identification and classification of
     repeat sequence families from genomic sequences.
 build:
-  number: 9
+  number: 0
   run_exports:
   - null
 extra:
@@ -19,14 +19,16 @@ extra:
   - doi:10.1101/gr.88502
 package:
   name: recon
-  version: '1.08'
+  version: '1.1'
 requirements:
   build:
   - make
   - null
+  - null
 source:
-  sha256: 699765fa49d18dbfac9f7a82ecd054464b468cb7521abe9c2bd8caccf08ee7d8
-  url: https://www.repeatmasker.org/RECON-1.08.tar.gz
+  sha256: d40bcbe2b842b3bde31e6f460176ea8d1facece89920568f12a1f7abe6a9c42c
+  url: https://github.com/Dfam-consortium/RECON/archive/refs/tags/1.10.tar.gz
 test:
   commands:
-  - imagespread 2>&1 | grep 'usage'
+  - run_recon.sh 2>&1 | grep 'usage'
+  - eledef 2>&1 | grep 'usage'
