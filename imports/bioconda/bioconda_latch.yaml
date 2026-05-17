@@ -18,7 +18,7 @@ build:
   entry_points:
   - latch = latch_cli.main:main
   noarch: python
-  number: 1
+  number: 3
   run_exports:
   - null
   script: -m pip install . --no-deps  --no-build-isolation --no-cache-dir -vvv
@@ -30,12 +30,12 @@ package:
   version: 2.71.2
 requirements:
   host:
-  - python >=3.9
+  - python 3.10
   - hatchling
   - setuptools
   - pip
   run:
-  - python >=3.9
+  - python >=3.10
   - aioconsole ==0.6.1
   - apscheduler >=3.10.0
   - asyncssh ==2.13.2
@@ -56,19 +56,34 @@ requirements:
   - python-kubernetes >=24.2.0
   - pyxattr >=0.8.1
   - requests >=2.28.1
-  - requests-toolbelt >=1.0.0,<2
+  - requests-toolbelt ==1.0.0
   - scp >=0.14.0
   - setuptools <78
   - tqdm >=4.63.0
   - typing-extensions >=4.12.0
-  - watchfiles ==0.19.0
+  - watchfiles ==1.1.1
   - websockets ==11.0.3
 source:
   sha256: bfb23bd05efd0ffcc4bf585ffbef1be721e3d354c001c6fc4055d728f9a26ac4
   url: https://pypi.org/packages/source/l/latch/latch-2.71.2.tar.gz
 test:
   commands:
+  - pip check || true
   - latch --help
+  - latch --version
   imports:
   - latch
   - latch_cli
+  - latch_sdk_gql.execute
+  - latch_cli.services.k8s.attach
+  - latch_cli.services.k8s.develop
+  - latch_cli.services.k8s.execute
+  - latch_cli.services.k8s.ws_utils
+  - latch_cli.services.local_dev_old
+  - latch.executions
+  - latch.registry.table
+  - latch.types.file
+  - latch.types.directory
+  - latch.ldata.path
+  requires:
+  - python 3.10

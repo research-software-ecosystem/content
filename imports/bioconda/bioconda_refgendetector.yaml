@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/EGA-archive/refgenDetector
+  home: https://pypi.org/project/RefgenDetector/
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Detect and manage genomic reference genome builds.
+build:
+  entry_points:
+  - refgenDetector=refgenDetector.refgenDetector_main:main
+  - refgenDetector-manager=refgenDetector.ref_manager:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - khaled196
+package:
+  name: refgendetector
+  version: 3.0.5
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - pysam
+  - psutil
+  - rich
+  - pandas
+  - dnspython
+  - msgpack-python
+  - numpy
+source:
+  sha256: aa84adb034e0c6ed7fdcdd26feb4be0277538019b75dce125e5740f13247c42a
+  url: https://pypi.org/packages/source/R/RefgenDetector/refgendetector-3.0.5.tar.gz
+test:
+  commands:
+  - pip check
+  - refgenDetector --help
+  - refgenDetector-manager list
+  imports:
+  - refgenDetector
+  requires:
+  - python >=
+  - pip

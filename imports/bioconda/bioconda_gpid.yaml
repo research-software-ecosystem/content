@@ -1,0 +1,55 @@
+about:
+  description: 'GPID prepares BLAST reference databases, calibrates alignment and
+    gene
+
+    performance thresholds, validates confidence support, and identifies
+
+    samples from multiple single-sequence-per-gene FASTA files.
+
+    '
+  home: https://github.com/BenKuhnhaeuser/GPID/tags
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: GeneParliamentID pipeline for multi-gene species identification
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - BenKuhnhaeuser
+package:
+  name: gpid
+  version: 1.1.2
+requirements:
+  host:
+  - bash
+  run:
+  - bash >=4
+  - blast
+  - coreutils
+  - gawk
+  - grep
+  - sed
+  - r-base
+  - r-dplyr
+  - r-ggplot2
+  - r-ggpubr
+  - r-ggtext
+  - r-stringr
+  - r-svglite
+  - r-tidyr
+  - r-withr
+source:
+  sha256: 534cd0a7bd135eee34db1cd91282eabffda53e596186e8f05e4917dbfe66429f
+  url: https://github.com/BenKuhnhaeuser/GPID/archive/refs/tags/v1.1.2.tar.gz
+test:
+  commands:
+  - gpid help
+  - gpid reference -h
+  - test -f "${PREFIX}/share/gpid/VERSION"
+  - test -f "${PREFIX}/share/gpid/scripts/parliament.R"
+  - Rscript -e "packages <- c('dplyr', 'tidyr', 'ggplot2', 'ggpubr', 'ggtext', 'stringr',
+    'svglite', 'withr'); missing <- packages[!vapply(packages, requireNamespace, logical(1),
+    quietly = TRUE)]; stopifnot(length(missing) == 0)"
