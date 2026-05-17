@@ -14,6 +14,7 @@ build:
   - pipeline-config-generator = pipeline_config_generator.pipeline_config_generator:main
   - pipeline-result-uploader = pipeline_result_uploader.pipeline_result_uploader:main
   - result-file-uploader = result_file_uploader.result_file_uploader:main
+  - request-assembly-repo = request_assembly_repo.request_assembly_repo:main
   - rnaseq-manifest-generator = rnaseq_manifest_generator.rnaseq_manifest_generator:main
   - rnaseq-reads-downloader = rnaseq_reads_downloader.rnaseq_reads_downloader:main
   noarch: python
@@ -22,10 +23,10 @@ build:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=0.12.2
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.14.0
 package:
   name: atol-genome-launcher
-  version: 0.12.2
+  version: 0.14.0
 requirements:
   host:
   - pip
@@ -44,8 +45,8 @@ requirements:
   - snakedeploy >=0.11.0
   - wget
 source:
-  sha256: 96981f1caafd1bc3278199bfcde026cd82cd740dfe33220b3b7384c2a2f3fd68
-  url: https://github.com/TomHarrop/atol-genome-launcher/archive/refs/tags/0.12.2.tar.gz
+  sha256: f90ebf1fb06ae2689913852ca40630f78c90674fe5b00da41aea3bd6474a4d69
+  url: https://github.com/TomHarrop/atol-genome-launcher/archive/refs/tags/0.14.0.tar.gz
 test:
   commands:
   - 'assembly-data-downloader --help | grep ''usage: assembly-data-downloader'''
@@ -54,5 +55,6 @@ test:
   - 'pipeline-config-generator --help | grep ''usage: pipeline-config-generator'''
   - 'pipeline-result-uploader --help | grep ''usage: pipeline-result-uploader'''
   - 'result-file-uploader --help | grep ''usage: result-file-uploader'''
+  - 'request-assembly-repo --help | grep ''usage: request-assembly-repo'''
   - 'rnaseq-manifest-generator --help | grep ''usage: rnaseq-manifest-generator'''
   - 'rnaseq-reads-downloader --help | grep ''usage: rnaseq-reads-downloader'''

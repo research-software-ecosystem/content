@@ -1,31 +1,57 @@
 about:
+  description: 'Trim Galore v2 is a Rust rewrite of the original Perl Trim Galore.
+    Single
+
+    static binary, no Python/Perl/Cutadapt/Java/igzip/pigz dependencies. Drop-in
+
+    compatible with v0.6.x scripts and pipelines (same CLI, same output
+
+    filenames, same report format) with adapter auto-detection (Illumina,
+
+    Nextera, Small RNA, BGI/DNBSEQ), poly-G/poly-A trimming, paired-end
+
+    single-pass processing, RRBS support, and bundled FastQC integration via
+
+    fastqc-rust.
+
+    '
   dev_url: https://github.com/FelixKrueger/TrimGalore
-  home: https://github.com/FelixKrueger/TrimGalore
+  home: https://www.trimgalore.com/
   license: GPL-3.0-only
   license_family: GPL
   license_file: LICENSE
-  summary: Trim Galore! is a wrapper script to automate quality and adapter trimming
-    as well as quality control
+  summary: "Fast adapter and quality trimming for NGS data \u2014 Oxidized Edition\
+    \ (Rust)"
 build:
-  noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - null
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - usegalaxy-eu:trim_galore
+  recipe-maintainers:
+  - FelixKrueger
+  - ewels
 package:
   name: trim-galore
-  version: 0.6.11
+  version: 2.2.0
 requirements:
-  build: null
-  run:
-  - perl
-  - fastqc
-  - cutadapt ==5.2
+  build:
+  - null
+  - null
+  - null
+  - make
+  - pkg-config
+  host:
+  - zlib
 source:
-  sha256: f1a1275c0c2d42ae27fa02c59b0d02ff1053cfbfe29c9d28a026392dd17bed37
-  url: https://github.com/FelixKrueger/TrimGalore/archive/0.6.11.zip
+  sha256: 5bace0caf71abb2d35bbef9a5b3a1edb6e2b7062963c194768dfb0dfa6f4ffad
+  url: https://github.com/FelixKrueger/TrimGalore/archive/refs/tags/v2.2.0.tar.gz
 test:
   commands:
-  - trim_galore --help | grep trim_galore > /dev/null
+  - which trim_galore
+  - trim_galore --version

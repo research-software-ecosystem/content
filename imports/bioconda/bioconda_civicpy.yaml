@@ -10,7 +10,7 @@ build:
   entry_points:
   - civicpy = civicpy.cli:cli
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517
@@ -25,19 +25,22 @@ requirements:
   - setuptools
   run:
   - python >=3.10
-  - backports
-  - backports-datetime-fromisoformat
   - click
   - deprecation
+  - ga4gh.vrs
+  - ga4gh.cat_vrs
+  - ga4gh.va_spec >=0.4.1,<0.5
   - networkx
   - obonet
-  - pandas
+  - pandas <=2.3.3
   - pysam
   - requests
-  - vcfpy
+  - vcfpy >=0.13.8,<0.14
 source:
   sha256: 48991a1ddd7f0f6cc9246070a0b7f486bdc08f4b47dbd6738bdd9abfbce43fad
   url: https://pypi.io/packages/source/c/civicpy/civicpy-5.4.0.tar.gz
 test:
+  commands:
+  - civicpy --help
   imports:
   - civicpy

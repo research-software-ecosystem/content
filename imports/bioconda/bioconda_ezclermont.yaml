@@ -8,20 +8,22 @@ about:
   license_file: LICENSE
   summary: easily determine the Clermont 2013 E coli phylotype
 build:
-  entry_points:
-  - ezclermont = cpcr.run:main
   noarch: python
   number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
 extra:
   recipe-maintainers:
   - nickp60
 package:
   name: ezclermont
-  version: 0.7.0
+  version: 1.0.0
 requirements:
   host:
   - python >=3.5
   - setuptools
+  - pip
   - biopython
   - coverage
   run:
@@ -29,8 +31,8 @@ requirements:
   - biopython
   - coverage
 source:
-  sha256: 7f8e34cf658023deb6a0e77222e422789a075a4f754d803300e54fa5520ca21e
-  url: https://pypi.io/packages/source/e/ezclermont/ezclermont-0.7.0.tar.gz
+  sha256: e7497ef728dd2395ec3bb3f81413a047b54bbfd1fbd1f3347b7cf3dad4d703d6
+  url: https://pypi.io/packages/source/e/ezclermont/ezclermont-1.0.0.tar.gz
 test:
   commands:
   - ezclermont -h
