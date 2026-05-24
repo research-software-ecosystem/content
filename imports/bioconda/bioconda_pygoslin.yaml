@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/lifs-tools/pygoslin
+  license: MIT
+  license_file: LICENSE
+  summary: Python implementation for Goslin
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hechth
+package:
+  name: pygoslin
+  version: 2.2.3
+requirements:
+  host:
+  - python >=3.5
+  - setuptools >=42
+  - wheel
+  - cython
+  - pytest-runner
+  - pip
+  run:
+  - python >=3.5
+source:
+  sha256: 7c182d5a372f5217cbaa80cd8be5952c4ecd36e63d8ff3c465f851a53fd5928e
+  url: https://pypi.org/packages/source/p/pygoslin/pygoslin-2.2.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - pygoslin
+  requires:
+  - pip
+  - python
