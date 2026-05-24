@@ -1,0 +1,47 @@
+about:
+  home: https://pypi.org/project/fglatch/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: CLI and Python extensions for the LatchBio platform.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - msto
+package:
+  name: fglatch
+  version: 0.6.0
+requirements:
+  host:
+  - python 3.12
+  - hatchling
+  - pip
+  run:
+  - python >=3.12
+  - defopt >=6.4,<7.dev0
+  - latch >=2.67.2,<3
+  - pydantic >=2.11,<3.dev0
+  - pyrate-limiter >=4.1,<5.dev0
+  - requests >=2.31,<3.dev0
+  - requests-ratelimiter >=0.9,<1.dev0
+  - xattr >=1.1,<2.dev0
+source:
+  sha256: 0a9ee8d5f560a84629603d563b4fac1d9134556ee88519939845409da6dce897
+  url: https://pypi.org/packages/source/f/fglatch/fglatch-0.6.0.tar.gz
+test:
+  commands:
+  - pip check || true
+  - fglatch --help
+  imports:
+  - fglatch
+  - fglatch.registry
+  - fglatch.workflows
+  - fglatch.type_aliases
+  requires:
+  - python 3.12
+  - pip

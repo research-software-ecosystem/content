@@ -9,11 +9,12 @@ about:
 build:
   entry_points:
   - crypt4gh = crypt4gh.__main__:main
-  number: 0
+  number: 1
   run_exports:
   - null
   script:
-  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib $(pkg-config --libs libsodium)"
+  - sed -i.bak "s/^libraries=\[\]$/libraries=['sodium']/" setup.py
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
   - export CFLAGS="${CFLAGS} -O3 $(pkg-config --cflags libsodium)"
   - export SODIUM_INSTALL=system
   - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -47,6 +48,8 @@ source:
   url: https://github.com/EGA-archive/crypt4gh/archive/refs/tags/v1.8.6.tar.gz
 test:
   commands:
-  - crypt4gh -h > testfile-help.txt
+  - crypt4gh -h
   imports:
   - crypt4gh
+  - crypt4gh.header
+  - crypt4gh.sodium

@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/DP-Genome/MaSTRspy
+  license: MIT
+  license_file: LICENSE
+  summary: GUI-based pipeline for forensic STR profiling from nanopore and long-read
+    sequencing data
+build:
+  entry_points:
+  - mastrspy = main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - MalsLabs
+package:
+  name: mastrspy
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - hatchling
+  run:
+  - python >=3.9
+  - samtools >=1.19
+  - bedtools >=2.31
+  - minimap2 >=2.26
+  - r-base >=4.3
+  - r-ggplot2
+  - r-viridis
+  - r-png
+  - pyside6 >=6.5
+  - pysam >=0.21
+  - matplotlib-base >=3.7
+source:
+  sha256: 29209b208dcb09a937cf572e4bd6478bdf517176a5e219825479723899aba9b8
+  url: https://github.com/DP-Genome/MaSTRspy/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - mastrspy --help

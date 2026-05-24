@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/conchoecia/afp
+  doc_url: https://github.com/conchoecia/afp
+  home: https://github.com/conchoecia/afp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Tiny, dependency-free single-file FASTA/FASTQ reader/writer with transparent
+    gzip/bzip2/zip/zstd decompression.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  identifiers:
+  - pypi:run-afp
+  recipe-maintainers:
+  - conchoecia
+package:
+  name: afp
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=64
+  - wheel
+  run:
+  - python >=3.9
+source:
+  sha256: fe6eb05039716ee30caa9d65841321c53edeb0ad49d41759d6c62526ed8e48f8
+  url: https://files.pythonhosted.org/packages/c4/fb/1e5881e7c798c0f5312e9149e9847c88b4a19a81d2f7b13467a59bb08844/run_afp-0.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - afp
+  requires:
+  - pip

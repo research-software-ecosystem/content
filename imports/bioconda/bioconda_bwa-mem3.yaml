@@ -6,8 +6,6 @@ about:
   license_family: MIT
   license_file:
   - LICENSE
-  - ext/safestringlib/LICENSE
-  - ext/libsais/LICENSE
   - ext/sse2neon/LICENSE
   summary: Short-read aligner derived from bwa-mem2 with correctness fixes, performance
     improvements, and methylation alignment.
@@ -25,7 +23,7 @@ extra:
   - nh13
 package:
   name: bwa-mem3
-  version: 0.2.0
+  version: 0.2.1
 requirements:
   build:
   - make
@@ -36,16 +34,19 @@ requirements:
   - zlib
   - mimalloc >=3.3,<4
   - htslib >=1.21,<2
+  - libsais >=2.10.4,<3
+  - sse2neon ==1.9.1
   - llvm-openmp
   - libgomp
   run:
   - mimalloc >=3.3,<4
   - htslib >=1.21,<2
+  - libsais >=2.10.4,<3
   - llvm-openmp
   - libgomp
 source:
-  sha256: ed74c191d6dde30e5f943867a9c73f1a6717c31215e91490504da69f3726d7b3
-  url: https://github.com/fg-labs/bwa-mem3/releases/download/v0.2.0/Source_code_including_submodules.tar.gz
+  sha256: b6fc536a938faa32ddd3e814c5362f5481a3b580435665fe0d0ac0747aa332f3
+  url: https://github.com/fg-labs/bwa-mem3/releases/download/v0.2.1/Source_code_including_submodules.tar.gz
 test:
   commands:
   - bwa-mem3 version

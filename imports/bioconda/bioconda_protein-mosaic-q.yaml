@@ -1,0 +1,52 @@
+about:
+  description: "protein-mosaic-q calculates the Mosaic Q and Q_alt descriptors, which\n\
+    capture a proposed conserved structural trait in protein structure: aside from\
+    \ \nthe hydrophobic core, amino acids tend to cluster in 3D space according to\
+    \ their chemical\nfamily (polar, acidic, basic, special), forming groups of approximately\
+    \ 8 residues. \nThe evidence for this regularity comes from direct analysis of\
+    \ >160,000 X-ray determined \nentries in the PDB (Q descriptor), stochastic simulations,\
+    \ and visual inspection of hundreds\nof structures in collaboration with independent\
+    \ observers across recognized citizen science\nplatforms.\n\n\nResources:\n- Project\
+    \ website: https://proteins-mosaic-q.org\n- bio.tools: https://bio.tools/protein-mosaic-q\n\
+    - Updated manuscript: https://github.com/UPO-Sevilla-Fco-Javier-Lobo-Cabrera/clustering_trait_proteins/blob/main/Manuscript_and_Supplementary_Materials_v4.pdf\n\
+    - Preprint: https://www.biorxiv.org/content/10.1101/500025v1.full\n- FAIRsharing:\
+    \ https://fairsharing.org/8206\n- SciStarter: https://scistarter.org/proteins-mosaic-q-project\n\
+    - EU Citizen Science: https://citizenscience.eu/project/686\n- Observatorio Ciencia\
+    \ Ciudadana (Spain): https://ciencia-ciudadana.es/project/392\n- HuggingFace Space:\
+    \ https://huggingface.co/spaces/ProteinsMosaicQProject/proteins-mosaic-q\n- Dataset:\
+    \ https://huggingface.co/ProteinsMosaicQ/datasets\n- Collaborative repository:\
+    \ https://proteins-mosaic-q.org/repository/\n"
+  dev_url: https://github.com/UPO-Sevilla-Fco-Javier-Lobo-Cabrera/mosaicq
+  doc_url: https://proteins-mosaic-q.org
+  home: https://proteins-mosaic-q.org
+  license: MIT
+  license_family: MIT
+  summary: Calculate the Mosaic Q descriptor, an amino acid clustering trait in protein
+    structure
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -v
+extra:
+  recipe-maintainers:
+  - UPO-Sevilla-Fco-Javier-Lobo-Cabrera
+package:
+  name: protein-mosaic-q
+  version: 0.3.3
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=68
+  - wheel
+  run:
+  - python >=3.9
+  - biopython >=1.80
+source:
+  sha256: 2c98b6448e04d9d54d56584021ef8ca0e962e5bbe8d05e08cc42488ba9e3ba85
+  url: https://pypi.io/packages/source/p/protein-mosaic-q/protein_mosaic_q-0.3.3.tar.gz
+test:
+  imports:
+  - mosaicq

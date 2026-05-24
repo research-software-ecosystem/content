@@ -1,0 +1,57 @@
+about:
+  dev_url: https://github.com/conchoecia/egt
+  doc_url: https://github.com/conchoecia/egt
+  home: https://github.com/conchoecia/egt
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Evolutionary Genome Topology: chromosome-evolution analysis toolkit for
+    metazoan genomes using reciprocal-best-hits data.'
+build:
+  entry_points:
+  - egt = egt.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  identifiers:
+  - pypi:egt
+  recipe-maintainers:
+  - conchoecia
+package:
+  name: egt
+  version: 0.2.3
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=64
+  - wheel
+  run:
+  - python >=3.10
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib-base
+  - networkx
+  - pillow
+  - umap-learn
+  - datashader
+  - holoviews
+  - scikit-image
+  - colorcet
+  - bokeh
+  - ete4
+  - snakemake-minimal >=7,<9
+  - pyyaml
+source:
+  sha256: fd9f85888630bf875b7125822c09fc576d8253ae202f8cc16dc174449057fd15
+  url: https://files.pythonhosted.org/packages/00/fa/0b1688ed2e1eacdbd3990ee5c064eacb515647d349781dd8334286db811a/egt-0.2.3.tar.gz
+test:
+  commands:
+  - egt --help
+  imports:
+  - egt

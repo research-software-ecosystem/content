@@ -1,0 +1,41 @@
+about:
+  home: https://github.com/gussow/seeker
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Predict bacterial or phage sequence
+build:
+  entry_points:
+  - predict-metagenome=seeker.command_line:predict_metagenome
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jfy133
+package:
+  name: seeker
+  version: 1.0.3
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  - setuptools <78
+  run:
+  - python >=3.6
+  - numpy >=1.17.3
+  - tensorflow >=2.0.0
+  - setuptools <78
+source:
+  sha256: acdbd41e99321b1bbb8b92b6654928e97d4beaa8bf3318a21e3e6a98494485ac
+  url: https://pypi.org/packages/source/s/seeker/seeker-1.0.3.tar.gz
+test:
+  commands:
+  - pip check
+  - predict-metagenome | grep 'input fasta'
+  imports:
+  - seeker
+  requires:
+  - pip
+  - python
