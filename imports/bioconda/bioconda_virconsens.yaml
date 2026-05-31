@@ -1,0 +1,38 @@
+about:
+  description: "Virconsens is a tool to create a consensus sequence from Nanopore\
+    \ amplicon reads mapped to a reference in a mapping .bam file. It works by reading\
+    \ the mapping file position-by-position and counting the mutations, insertions\
+    \ and deletions. The mutation or deletion (or original nucleotide from the reference)\
+    \ with the highest count is considered the \u201Cconsensus\u201D at that position.\n"
+  home: https://github.com/dnieuw/virconsens
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Tool to create a consensus sequence from mapped virus Nanopore data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - lvzon
+package:
+  name: virconsens
+  version: '1.2'
+requirements:
+  host:
+  - pip
+  - python >=3.7
+  - setuptools
+  run:
+  - python >=3.7
+  - biopython >=1.70
+  - pysam >=0.20
+source:
+  sha256: 57ee2bad8c905e0cbb16a8065edbbb5e3b0eaa43532ab555b76e60e408cc72bb
+  url: https://github.com/dnieuw/virconsens/archive/refs/tags/v1.2.tar.gz
+test:
+  commands:
+  - virconsens --help
