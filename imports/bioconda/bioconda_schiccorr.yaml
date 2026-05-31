@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/srinzema/scHicCorr
+  license: MIT
+  license_file: LICENSE
+  summary: Correlate single-cell Hi-C data.
+build:
+  entry_points:
+  - schiccorr = schiccorr.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - srinzema
+package:
+  name: schiccorr
+  version: 0.0.3
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=61.0
+  run:
+  - python >=3.10
+  - loguru >=0.7
+  - cooler >=0.10
+  - numba >=0.62
+  - numpy >=2.0
+  - pandas >=2.0
+  - pyarrow >=21.0
+source:
+  sha256: c626dbadf44a58ab23e8c62331741f385a087b2d56bb04f6933ba0cf6be4fa7e
+  url: https://pypi.io/packages/source/s/scHicCorr/schiccorr-0.0.3.tar.gz
+test:
+  commands:
+  - schiccorr --help
+  imports:
+  - schiccorr
