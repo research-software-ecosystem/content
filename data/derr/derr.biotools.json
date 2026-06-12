@@ -1,111 +1,111 @@
 {
-  "additionDate": "2026-06-12T12:35:12.904681Z",
-  "biotoolsCURIE": "biotools:derr",
-  "biotoolsID": "derr",
-  "description": "DeRR (Detection Dual T-cell receptor in single cell sequencing) is a method for detection of TCR in single cell sequencing data and detection of dual-TCR in scRNA-Seq/scTCR-Seq.",
-  "editPermission": {
-    "type": "private"
-  },
-  "function": [
-    {
-      "cmd": "python SplitVDJbam.py [OPTIONS]",
-      "input": [
-        {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "BAM",
-              "uri": "http://edamontology.org/format_2572"
-            }
-          ]
-        }
-      ],
-      "note": "Demultiplex sequence data",
-      "operation": [
-        {
-          "term": "Splitting",
-          "uri": "http://edamontology.org/operation_3359"
-        },
-        {
-          "term": "Data filtering",
-          "uri": "http://edamontology.org/operation_3695"
-        }
-      ],
-      "output": [
-        {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "FASTQ",
-              "uri": "http://edamontology.org/format_1930"
-            }
-          ]
-        }
-      ]
+    "additionDate": "2026-06-12T12:35:12.904681Z",
+    "biotoolsCURIE": "biotools:derr",
+    "biotoolsID": "derr",
+    "description": "DeRR (Detection Dual T-cell receptor in single cell sequencing) is a method for detection of TCR in single cell sequencing data and detection of dual-TCR in scRNA-Seq/scTCR-Seq.",
+    "editPermission": {
+        "type": "private"
     },
-    {
-      "cmd": "python DeRR.py [OPTIONS]",
-      "input": [
+    "function": [
         {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "FASTQ",
-              "uri": "http://edamontology.org/format_1930"
-            }
-          ]
-        }
-      ],
-      "note": "AIRR compatible V-J gene calling",
-      "operation": [
-        {
-          "term": "Aggregation",
-          "uri": "http://edamontology.org/operation_3436"
+            "cmd": "python DeRR.py [OPTIONS]",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "AIRR compatible V-J gene calling",
+            "operation": [
+                {
+                    "term": "Aggregation",
+                    "uri": "http://edamontology.org/operation_3436"
+                },
+                {
+                    "term": "Data filtering",
+                    "uri": "http://edamontology.org/operation_3695"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Gene symbol",
+                        "uri": "http://edamontology.org/data_1026"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence property",
+                        "uri": "http://edamontology.org/data_1254"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "term": "Data filtering",
-          "uri": "http://edamontology.org/operation_3695"
+            "cmd": "python SplitVDJbam.py [OPTIONS]",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "BAM",
+                            "uri": "http://edamontology.org/format_2572"
+                        }
+                    ]
+                }
+            ],
+            "note": "Demultiplex sequence data",
+            "operation": [
+                {
+                    "term": "Data filtering",
+                    "uri": "http://edamontology.org/operation_3695"
+                },
+                {
+                    "term": "Splitting",
+                    "uri": "http://edamontology.org/operation_3359"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ]
         }
-      ],
-      "output": [
-        {
-          "data": {
-            "term": "Gene symbol",
-            "uri": "http://edamontology.org/data_1026"
-          },
-          "format": [
-            {
-              "term": "TSV",
-              "uri": "http://edamontology.org/format_3475"
-            }
-          ]
-        },
-        {
-          "data": {
-            "term": "Sequence property",
-            "uri": "http://edamontology.org/data_1254"
-          },
-          "format": [
-            {
-              "term": "TSV",
-              "uri": "http://edamontology.org/format_3475"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "homepage": "https://github.com/GuoBioinfoLab/DeRR",
-  "lastUpdate": "2026-06-12T13:07:34.868073Z",
-  "name": "DeRR",
-  "owner": "laupaard"
+    ],
+    "homepage": "https://github.com/GuoBioinfoLab/DeRR",
+    "lastUpdate": "2026-06-12T13:07:34.868073Z",
+    "name": "DeRR",
+    "owner": "laupaard"
 }
