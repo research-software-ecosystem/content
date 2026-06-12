@@ -1,157 +1,157 @@
 {
-  "accessibility": "Open access",
-  "additionDate": "2026-06-12T12:35:12.904681Z",
-  "biotoolsCURIE": "biotools:derr",
-  "biotoolsID": "derr",
-  "cost": "Free of charge (with restrictions)",
-  "credit": [
-    {
-      "email": "guoanyuan@wchscu.cn",
-      "name": "Anyuan guo",
-      "typeEntity": "Person"
-    }
-  ],
-  "description": "DeRR (Detection Dual T-cell receptor in single cell sequencing) is a method for detection of TCR in single cell sequencing data and detection of dual-TCR in scRNA-Seq/scTCR-Seq.",
-  "download": [
-    {
-      "type": "Source code",
-      "url": "https://github.com/GuoBioinfoLab/DeRR"
-    }
-  ],
-  "editPermission": {
-    "type": "public"
-  },
-  "function": [
-    {
-      "cmd": "python SplitVDJbam.py [OPTIONS]",
-      "input": [
+    "accessibility": "Open access",
+    "additionDate": "2026-06-12T12:35:12.904681Z",
+    "biotoolsCURIE": "biotools:derr",
+    "biotoolsID": "derr",
+    "cost": "Free of charge (with restrictions)",
+    "credit": [
         {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "BAM",
-              "uri": "http://edamontology.org/format_2572"
-            }
-          ]
+            "email": "guoanyuan@wchscu.cn",
+            "name": "Anyuan guo",
+            "typeEntity": "Person"
         }
-      ],
-      "note": "Demultiplex sequence data",
-      "operation": [
+    ],
+    "description": "DeRR (Detection Dual T-cell receptor in single cell sequencing) is a method for detection of TCR in single cell sequencing data and detection of dual-TCR in scRNA-Seq/scTCR-Seq.",
+    "download": [
         {
-          "term": "Splitting",
-          "uri": "http://edamontology.org/operation_3359"
-        },
-        {
-          "term": "Data filtering",
-          "uri": "http://edamontology.org/operation_3695"
+            "type": "Source code",
+            "url": "https://github.com/GuoBioinfoLab/DeRR"
         }
-      ],
-      "output": [
-        {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "FASTQ",
-              "uri": "http://edamontology.org/format_1930"
-            }
-          ]
-        }
-      ]
+    ],
+    "editPermission": {
+        "type": "public"
     },
-    {
-      "cmd": "python DeRR.py [OPTIONS]",
-      "input": [
+    "function": [
         {
-          "data": {
-            "term": "DNA sequence",
-            "uri": "http://edamontology.org/data_3494"
-          },
-          "format": [
-            {
-              "term": "FASTQ",
-              "uri": "http://edamontology.org/format_1930"
-            }
-          ]
-        }
-      ],
-      "note": "AIRR compatible V-J gene calling",
-      "operation": [
-        {
-          "term": "Aggregation",
-          "uri": "http://edamontology.org/operation_3436"
+            "cmd": "python DeRR.py [OPTIONS]",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ],
+            "note": "AIRR compatible V-J gene calling",
+            "operation": [
+                {
+                    "term": "Aggregation",
+                    "uri": "http://edamontology.org/operation_3436"
+                },
+                {
+                    "term": "Data filtering",
+                    "uri": "http://edamontology.org/operation_3695"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Gene symbol",
+                        "uri": "http://edamontology.org/data_1026"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence property",
+                        "uri": "http://edamontology.org/data_1254"
+                    },
+                    "format": [
+                        {
+                            "term": "TSV",
+                            "uri": "http://edamontology.org/format_3475"
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "term": "Data filtering",
-          "uri": "http://edamontology.org/operation_3695"
+            "cmd": "python SplitVDJbam.py [OPTIONS]",
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "BAM",
+                            "uri": "http://edamontology.org/format_2572"
+                        }
+                    ]
+                }
+            ],
+            "note": "Demultiplex sequence data",
+            "operation": [
+                {
+                    "term": "Data filtering",
+                    "uri": "http://edamontology.org/operation_3695"
+                },
+                {
+                    "term": "Splitting",
+                    "uri": "http://edamontology.org/operation_3359"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTQ",
+                            "uri": "http://edamontology.org/format_1930"
+                        }
+                    ]
+                }
+            ]
         }
-      ],
-      "output": [
+    ],
+    "homepage": "https://github.com/GuoBioinfoLab/DeRR",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2026-06-12T13:18:31.924638Z",
+    "link": [
         {
-          "data": {
-            "term": "Gene symbol",
-            "uri": "http://edamontology.org/data_1026"
-          },
-          "format": [
-            {
-              "term": "TSV",
-              "uri": "http://edamontology.org/format_3475"
-            }
-          ]
-        },
-        {
-          "data": {
-            "term": "Sequence property",
-            "uri": "http://edamontology.org/data_1254"
-          },
-          "format": [
-            {
-              "term": "TSV",
-              "uri": "http://edamontology.org/format_3475"
-            }
-          ]
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/GuoBioinfoLab/DeRR"
         }
-      ]
-    }
-  ],
-  "homepage": "https://github.com/GuoBioinfoLab/DeRR",
-  "language": [
-    "Python"
-  ],
-  "lastUpdate": "2026-06-12T13:18:31.924638Z",
-  "link": [
-    {
-      "type": [
-        "Repository"
-      ],
-      "url": "https://github.com/GuoBioinfoLab/DeRR"
-    }
-  ],
-  "maturity": "Mature",
-  "name": "DeRR",
-  "owner": "laupaard",
-  "publication": [
-    {
-      "doi": "10.1093/gpbjnl/qzaf090",
-      "pmid": "41051256",
-      "type": [
-        "Primary"
-      ]
-    }
-  ],
-  "toolType": [
-    "Command-line tool",
-    "Script"
-  ],
-  "topic": [
-    {
-      "term": "Immunogenetics",
-      "uri": "http://edamontology.org/topic_3930"
-    }
-  ]
+    ],
+    "maturity": "Mature",
+    "name": "DeRR",
+    "owner": "laupaard",
+    "publication": [
+        {
+            "doi": "10.1093/gpbjnl/qzaf090",
+            "pmid": "41051256",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Script"
+    ],
+    "topic": [
+        {
+            "term": "Immunogenetics",
+            "uri": "http://edamontology.org/topic_3930"
+        }
+    ]
 }
