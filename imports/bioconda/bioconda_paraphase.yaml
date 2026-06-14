@@ -1,38 +1,29 @@
 about:
   home: https://github.com/PacificBiosciences/paraphase
-  license: BSD-3-Clause-Clear
-  summary: HiFi-based caller for highly homologous genes
+  license: Pacific Biosciences Software License (https://github.com/PacificBiosciences/paraphase/blob/main/LICENSE.md)
+  summary: HiFi-based caller for highly similar paralogous genes
 build:
-  entry_points:
-  - paraphase = paraphase.__main__:main
-  noarch: python
+  noarch: false
   number: 0
   run_exports:
   - null
-  script: python -m pip install --no-deps -vv .
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - cp paraphase ${PREFIX}/bin/
+  - chmod +x ${PREFIX}/bin/paraphase
+  skip: true
 extra:
   recipe-maintainers:
   - xiao-chen-xc
+  skip-lints:
+  - should_be_noarch_generic
+  - should_use_compilers
 package:
   name: paraphase
-  version: 3.5.0
-requirements:
-  host:
-  - python >=3.8
-  - setuptools
-  - pip
-  - pytest-runner
-  run:
-  - python >=3.8
-  - numpy >=1.16
-  - scipy >=1.2
-  - pysam >=0.15.3
-  - networkx >=2.8.2
-  - matplotlib-base
-  - pyyaml
+  version: 4.0.0
 source:
-  sha256: 6fb1797c64b90820a141909fba0fdcfb58bd53c05c644da846bf9401b199e211
-  url: https://github.com/PacificBiosciences/paraphase/archive/refs/tags/v3.5.0.tar.gz
+- sha256: df68d18213d83ef4d6de3ea44aa5c7bcad20cfa47a934fc1b2ed290d2fd5eb24
+  url: https://github.com/PacificBiosciences/paraphase/releases/download/v4.0.0/paraphase-v4.0.0-x86_64-unknown-linux-gnu.tar.gz
 test:
   commands:
-  - paraphase -h
+  - paraphase --version

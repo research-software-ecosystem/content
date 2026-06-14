@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/mancusolab/sushie
+  doc_url: https://mancusolab.github.io/sushie/
+  home: https://github.com/mancusolab/sushie
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: Python package for multi-ancestry SNP fine-mapping on molecular data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export SETUPTOOLS_SCM_PRETEND_VERSION=0.19
+  - -m pip install --no-deps --no-build-isolation -vv .
+extra:
+  recipe-maintainers:
+  - jpfeuffer
+package:
+  name: sushie
+  version: '0.19'
+requirements:
+  host:
+  - python >=3.10,<3.12
+  - pip
+  - setuptools >=46.1.0
+  - setuptools_scm
+  run:
+  - python >=3.10,<3.12
+  - jax >=0.4.19
+  - jaxlib >=0.4.19
+  - pandas >=1.4.0
+  - pandas-plink >=2.2.0
+  - equinox >=0.10.0
+  - scipy >=1.10.0
+  - glimix-core >=3.1.0
+  - bgen-reader >=4.0.0
+  - cyvcf2 >=0.30.0
+source:
+  sha256: 7d1e1e77059912e04be1227ff7463b7c84b5dc5c1213b50e38c8a7382180417e
+  url: https://github.com/mancusolab/sushie/archive/refs/tags/v0.19.tar.gz
+test:
+  commands:
+  - sushie --help
+  imports:
+  - sushie

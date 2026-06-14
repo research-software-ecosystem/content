@@ -1,0 +1,58 @@
+about:
+  home: https://github.com/xujialupaoli/PanTax-DBG
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: 'PanTax-DBG: species- and strain-level metagenomic profiling with bundled
+    modified DBG backends'
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  identifiers:
+  - biotools:pantax-dbg
+package:
+  name: pantax-dbg
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cmake >=3.18
+  - ninja
+  - make
+  - cargo-bundle-licenses
+  host:
+  - python >=3.9,<3.13
+  - pip
+  - setuptools >=68
+  - wheel
+  - cxxopts >=2.2.0
+  - catch2 ==2.*
+  - zlib
+  - bzip2
+  - raptor ==3.*
+  run:
+  - python >=3.9,<3.13
+  - pandas >=1.2.0
+  - multitax >=1.3.1
+  - genome_updater >=0.6.4
+  - fastp
+source:
+  sha256: c30e62e52dc1173085f855b2d1951d3e9d0676834133b868ab6163ef0c9675b3
+  url: https://github.com/xujialupaoli/PanTax-DBG/releases/download/v0.1.0/PanTax-DBG-0.1.0.tar.gz
+test:
+  commands:
+  - pantax-dbg --help
+  - pantax-dbg profile --help
+  - test -x "$PREFIX/libexec/pantax-dbg/ganon"
+  - test -x "$PREFIX/libexec/pantax-dbg/ganon-build"
+  - test -x "$PREFIX/libexec/pantax-dbg/ganon-classify"
+  - test -x "$PREFIX/libexec/pantax-dbg/ganon-report"
+  - test -x "$PREFIX/libexec/pantax-dbg/dbg-ggcat"
+  imports:
+  - pantax_dbg
+  - pantax_dbg_scripts

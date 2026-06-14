@@ -1,0 +1,29 @@
+about:
+  home: https://github.com/PacificBiosciences/kivvi
+  license: Pacific Biosciences Software License (https://github.com/PacificBiosciences/kivvi/blob/main/LICENSE.md)
+  summary: HiFi-based genotyper for large-unit VNTRs including KIV2 and D4Z4
+build:
+  noarch: false
+  number: 0
+  run_exports:
+  - null
+  script:
+  - mkdir -p ${PREFIX}/bin
+  - cp kivvi ${PREFIX}/bin/
+  - chmod +x ${PREFIX}/bin/kivvi
+  skip: true
+extra:
+  recipe-maintainers:
+  - xiao-chen-xc
+  skip-lints:
+  - should_be_noarch_generic
+  - should_use_compilers
+package:
+  name: kivvi
+  version: 1.0.0
+source:
+- sha256: a4aaecb73241784fba6c4795b339672fc5f01750cc8185941151cd877963e2b0
+  url: https://github.com/PacificBiosciences/kivvi/releases/download/v1.0.0/kivvi-v1.0.0-x86_64-unknown-linux-gnu.tar.gz
+test:
+  commands:
+  - kivvi --version

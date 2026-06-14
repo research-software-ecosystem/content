@@ -1,7 +1,7 @@
 about:
   dev_url: https://github.com/metageni/Scaffold_builder
-  home: http://edwards.sdsu.edu/scaffold_builder
-  license: GPL-3.0
+  home: https://github.com/metageni/Scaffold_builder
+  license: GPL-3.0-only
   license_family: GPL
   license_file: COPYING
   summary: 'Scaffold_builder: Combining de novo and reference-guided assembly with
@@ -9,21 +9,25 @@ about:
 build:
   noarch: python
   number: 0
+  run_exports:
+  - null
+  script: -m pip install --no-deps -vv .
 package:
   name: scaffold_builder
-  version: '2.3'
+  version: 3.0.1
 requirements:
   host:
-  - python <3
+  - python >=3.8
   - pip
+  - setuptools >=61
+  - wheel
   run:
-  - python <3
+  - python >=3.8
+  - click >=8.0
   - mummer
 source:
-  patches:
-  - patch
-  sha256: 7e2ffaf5f2842a0df054f1fdd8cbcacd7779703d8d99274a32d75a8ac8a30bb0
-  url: https://github.com/metageni/Scaffold_builder/archive/v2.3.tar.gz
+  sha256: 51c237092169114e813e6ab43393f2fec630ee4289629d24da3878c43b140bd6
+  url: https://github.com/metageni/Scaffold_builder/archive/v3.0.1.tar.gz
 test:
   commands:
-  - scaffold_builder.py
+  - scaffold_builder --help

@@ -6,36 +6,27 @@ about:
   - /lib/R/share/licenses/GPL-3
   summary: Output graphics to EMF+/EMF.
 build:
-  missing_dso_whitelist:
-  - '*/R.dll'
-  - '*/Rblas.dll'
-  - '*/Rlapack.dll'
-  number: 1
+  number: 0
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - null
 extra:
   recipe-maintainers:
   - conda-forge/r
 package:
   name: r-devemf
-  version: '4.51'
+  version: '4.6'
 requirements:
   build:
   - null
   - null
   - null
-  - null
-  - filesystem
-  - sed
-  - grep
   - autoconf
   - automake
-  - automake-wrapper
   - pkg-config
   - make
-  - coreutils
-  - zip
   - cross-r-base
   host:
   - r-base
@@ -44,11 +35,10 @@ requirements:
   run:
   - r-base
 source:
-  sha256: cbb0f832dd59cea7c546ad0cdec100f49a7310694b3b32ef1c188bfa19dcf8e7
+  sha256: 91a4e8d651b29a78752415e1682de134ef7b1d00c341134581d752ed57f461d1
   url:
-  - /src/contrib/devEMF_4.5-1.tar.gz
-  - /src/contrib/Archive/devEMF/devEMF_4.5-1.tar.gz
+  - /src/contrib/devEMF_4.6.tar.gz
+  - /src/contrib/Archive/devEMF/devEMF_4.6.tar.gz
 test:
   commands:
   - $R -e "library('devEMF')"
-  - '"%R%" -e "library(''devEMF'')"'
