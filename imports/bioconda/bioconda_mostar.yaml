@@ -1,0 +1,53 @@
+about:
+  home: https://github.com/nermze/MOSTAR
+  license: MIT
+  license_file: LICENSE
+  summary: Modular ONT-Short-read Taxonomic Assembly and Resistome-Evolution pipeline
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - nermze
+package:
+  name: mostar
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.11
+  - flye
+  - medaka
+  - filtlong
+  - polypolish
+  - fastp
+  - bwa
+  - samtools
+  - bcftools
+  - minimap2
+  - circlator
+  - bakta
+  - ncbi-amrfinderplus
+  - blast
+  - kraken2
+  - macsyfinder
+  - genomad
+  - matplotlib-base
+  - numpy
+  - pandas
+  - biopython
+  - osfclient
+  - wget
+  - curl
+source:
+  sha256: 4c5d6f1fe51e90aec10b9df7f691246167334aa61455b4925f31a133dcc51380
+  url: https://pypi.io/packages/source/m/mostar/mostar-1.0.1.tar.gz
+test:
+  commands:
+  - mostar --help

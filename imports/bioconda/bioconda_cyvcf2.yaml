@@ -15,6 +15,8 @@ build:
   - null
   script:
   - export CFLAGS="${CFLAGS} -O3 -Wno-implicit-function-declaration -Wno-int-conversion"
+  - export DYLD_LIBRARY_PATH="${BUILD_PREFIX}/lib:${DYLD_LIBRARY_PATH}"
+  - export CYVCF2_HTSLIB_MODE=EXTERNAL
   - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
   skip: true
 extra:
@@ -26,25 +28,20 @@ extra:
   - biotools:cyvcf2
 package:
   name: cyvcf2
-  version: 0.32.1
+  version: 0.33.0
 requirements:
   build:
   - null
-  - autoconf
-  - automake
-  - libtool
-  - pkg-config
+  - null
+  - cmake >=3.20
   - make
+  - pkg-config
   host:
   - python
-  - cython
   - pip
-  - setuptools
-  - curl
-  - xz
-  - zlib
+  - scikit-build-core >=0.11
+  - cython
   - htslib >=1.10
-  - openssl
   - numpy >=2.0.0
   - numpy
   run:
@@ -53,10 +50,8 @@ requirements:
   - click
   - null
 source:
-  patches:
-  - patches/setup.py.patch
-  sha256: 34f3f4464f27794a4956413481e9c08a00dbf87d998b8cc72d33560de874f263
-  url: https://pypi.org/packages/source/c/cyvcf2/cyvcf2-0.32.1.tar.gz
+  sha256: 960d9b26468a88a5cc0842bf2b20bbf9881a4aaa90a0910102ee3c77f54f2652
+  url: https://pypi.org/packages/source/c/cyvcf2/cyvcf2-0.33.0.tar.gz
 test:
   commands:
   - cyvcf2 --help

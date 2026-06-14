@@ -4,30 +4,30 @@ about:
   license_file: LICENSE.md
   summary: FASTA/FASTQ analysis and manipulation toolkit.
 build:
-  entry_points:
-  - fastools = fastools.cli:main
-  - split_fasta = fastools.split_fasta:main
   noarch: python
   number: 0
+  run_exports:
+  - null
   script: -m pip install . -vv
 extra:
   recipe-maintainers:
   - acaprez
 package:
   name: fastools
-  version: 1.1.5
+  version: 1.1.7
 requirements:
   host:
   - python
   - pip
+  - hatchling
   run:
   - python
   - biopython >=1.72
   - python-levenshtein >=0.12.0
   - regex >=2020.10.11
 source:
-  sha256: 79b05fa2e64576d318ca97772138de2539d63a2adc5cd15d57acf731c287d0c2
-  url: https://pypi.io/packages/source/f/fastools/fastools-1.1.5.tar.gz
+  sha256: 71e41451f188b32758e51c0b3ac8225bf32f7930d160199ea933d63b02f75c20
+  url: https://pypi.io/packages/source/f/fastools/fastools-1.1.7.tar.gz
 test:
   commands:
   - pip check

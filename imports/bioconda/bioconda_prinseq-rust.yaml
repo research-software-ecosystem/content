@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/metageni/prinseq-rust
+  license: GPL-2.0-only
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Fast FASTQ/FASTA quality control and filtering tool (Rust port of PRINSEQ++)
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  recipe-maintainers:
+  - metageni
+package:
+  name: prinseq-rust
+  version: 1.1.1
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 78547cacb752a238dc4df4776a6cb5e13c6f8ec212dcafc1e3dc1c7f1f81b464
+  url: https://github.com/metageni/prinseq-rust/archive/v1.1.1.tar.gz
+test:
+  commands:
+  - prinseq-rust --version
+  - prinseq-rust --help

@@ -3,10 +3,9 @@ about:
   license: Artistic-2.0-only
   summary: An ultrafast memory-efficient short read aligner
 build:
-  number: 10
+  number: 11
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -22,9 +21,9 @@ requirements:
   - make
   - patch
   - null
+  - null
   - zlib
   host:
-  - python
   - tbb
   - tbb-devel
   - zlib
@@ -49,3 +48,11 @@ test:
   - bowtie-inspect --help
   - bowtie-inspect-l --help
   - bowtie-inspect-s --help
+  - printf ">ref\nACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT\n" > ref.fa
+  - bowtie-build ref.fa ref
+  - printf "@read1\nACGTACGTACGTACGTACGTACGTACGTACGT\n+\nIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\n"
+    > reads.fq
+  - bowtie -S ref reads.fq > out.sam
+  - grep -q "^read1" out.sam
+  - bowtie-inspect ref > inspected.fa
+  - grep -q "^>ref" inspected.fa

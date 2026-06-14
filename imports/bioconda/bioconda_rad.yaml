@@ -9,7 +9,7 @@ about:
 
     '
   dev_url: https://github.com/indianewok/rad
-  doc_url: https://github.com/indianewok/rad/blob/v0.6.0/README.md
+  doc_url: https://github.com/indianewok/rad/blob/v1.0.2/README.md
   home: https://github.com/indianewok/rad
   license: MIT
   license_family: MIT
@@ -23,26 +23,35 @@ extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  recipe-maintainers:
+  - indianewok
 package:
   name: rad
-  version: 0.6.0
+  version: 1.0.2
 requirements:
   build:
+  - null
   - null
   - cmake
   - make
   host:
   - boost-cpp
   - zlib
+  - bzip2
   - llvm-openmp
   - libgomp
   run:
   - boost-cpp
   - llvm-openmp
   - libgomp
+  - pigz
 source:
-  sha256: 9463ba13a15e3b496df2f9f8b2fc6f0a2cc03c23fb8e44e2a5a6b384c974aafd
-  url: https://github.com/indianewok/rad/archive/refs/tags/v0.6.0.tar.gz
+  sha256: 6f5253456adf9b84de66583501d946656297f79645ac76d5b401e83d2f482af9
+  url: https://github.com/indianewok/rad/archive/refs/tags/v1.0.2.tar.gz
 test:
   commands:
   - rad --help
+  - rad --version
+  - rad list
+  - test -f "${PREFIX}/share/rad/resources/read_layout/sctagger_sim_read_layout.csv"
+  - test -f "${PREFIX}/share/rad/resources/wl/3M-february-2018-3v3.txt_bitlist.csv.gz"

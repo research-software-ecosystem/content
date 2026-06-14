@@ -2,7 +2,8 @@ about:
   dev_url: https://github.com/galaxyproject/galaxy
   doc_url: https://docs.galaxyproject.org
   home: https://galaxyproject.org
-  license: AFL-3.0
+  license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Galaxy job execution runtime utilities.
 build:
@@ -10,7 +11,7 @@ build:
   - galaxy-set-metadata=galaxy.metadata.set_metadata:set_metadata
   - galaxy-container-monitor=galaxy.job_execution.container_monitor:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
@@ -21,9 +22,10 @@ extra:
   recipe-maintainers:
   - bernt-matthias
   - natefoo
+  - nsoranzo
 package:
   name: galaxy-job-execution
-  version: 25.1.2
+  version: 26.0.1
 requirements:
   host:
   - pip
@@ -31,18 +33,16 @@ requirements:
   - setuptools
   run:
   - python >=
-  - galaxy-data >=25.1
-  - galaxy-files >=25.1
-  - galaxy-objectstore >=25.1
-  - galaxy-tool-util >=25.1
-  - galaxy-util >=25.1
-  - ijson
+  - galaxy-data >=26.0
+  - galaxy-files >=26.0
+  - galaxy-objectstore >=26.0
+  - galaxy-tool-util >=26.0
+  - galaxy-util >=26.0
   - markupsafe
-  - pypng
   - sqlalchemy >=2.0,<2.1
 source:
-  sha256: 3aefbdb1c347e0e3aae6eab888f94f1eff3fe7c101a7bf452eef6cf9f1816359
-  url: https://pypi.io/packages/source/g/galaxy-job-execution/galaxy_job_execution-25.1.2.tar.gz
+  sha256: ec3a2dfa1144df6fc28cb602602e292bd0a8ca86f842e66ef5148aa635067ba2
+  url: https://pypi.io/packages/source/g/galaxy-job-execution/galaxy_job_execution-26.0.1.tar.gz
 test:
   imports:
   - galaxy
