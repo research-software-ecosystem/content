@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/erinyoung/pathofetch
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Download SNP matrices from NCBI Pathogen Detection
+build:
+  entry_points:
+  - pathofetch = pathofetch.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - erinyoung
+package:
+  name: pathofetch
+  version: 0.1.0
+requirements:
+  host:
+  - python
+  - setuptools >=65.0.0
+  - wheel
+  - pip
+  run:
+  - python
+  - tqdm
+source:
+  sha256: 826a6ad31897c207acfb89b8302dc8361476269de2ff710d93e4f85c993837a4
+  url: https://pypi.org/packages/source/p/pathofetch/pathofetch-0.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  - pathofetch --help
+  imports:
+  - pathofetch
+  requires:
+  - pip

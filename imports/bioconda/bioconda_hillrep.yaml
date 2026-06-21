@@ -1,0 +1,58 @@
+about:
+  description: 'hillrep brings the iNEXT estimation framework (Hill-number diversity
+    with
+
+    coverage-based rarefaction and extrapolation, continuous diversity profiles,
+
+    and bootstrap confidence intervals) to Python, with first-class AIRR-seq and
+
+    single-cell (AnnData) support and a comparison-reliability assessment. Every
+
+    estimator is validated against R iNEXT 3.0.2.
+
+    '
+  dev_url: https://github.com/KilianMaire/hillrep
+  doc_url: https://github.com/KilianMaire/hillrep#readme
+  home: https://github.com/KilianMaire/hillrep
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Coverage-based Hill-number diversity estimation for immune repertoires
+    (and any abundance data).
+build:
+  entry_points:
+  - hillrep = hillrep.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - KilianMaire
+package:
+  name: hillrep
+  version: 0.3.0
+requirements:
+  host:
+  - python >=3.10
+  - hatchling
+  - pip
+  run:
+  - python >=3.10
+  - numpy >=1.23
+  - pandas >=1.5
+  - scipy >=1.9
+source:
+  sha256: 64f45c01b68df8660ae7184894d8e91ae18466a70dc1ea82edecb844a2f4082f
+  url: https://pypi.org/packages/source/h/hillrep/hillrep-0.3.0.tar.gz
+test:
+  commands:
+  - pip check
+  - hillrep --help
+  imports:
+  - hillrep
+  - hillrep.airr
+  - hillrep.anndata
+  requires:
+  - pip

@@ -1,0 +1,51 @@
+about:
+  description: "EnzyWizard-Flexibility computes per-residue root mean square fluctuation\
+    \ (RMSF) values \nusing Anisotropic Network Model (ANM) or Gaussian Network Model\
+    \ (GNM) implemented in ProDy.\nIt takes a cleaned protein structure (PDB/CIF)\
+    \ and generates a detailed JSON flexibility report.\nUseful for structural bioinformatics\
+    \ and protein dynamics analysis.\n"
+  home: https://github.com/bioinfbrad/enzywizard-flexibility
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool for estimating protein flexibility (RMSF) from cleaned
+    protein structures using ANM/GNM elastic network models via ProDy, outputting
+    JSON report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-flexibility
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - biopython >=1.86
+  - prody >=2.6.1
+  - numpy >=1.23.5
+  - scipy >=1.15.2
+  - requests >=2.33.1
+  - packaging
+  - pyparsing
+source:
+  sha256: b0c82728d0ae0d95283b123af8ed138e0b6d7ffb58fe44c8488caffed5d4e44b
+  url: https://github.com/bioinfbrad/enzywizard-flexibility/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-flexibility --help
+  imports:
+  - enzywizard_flexibility
+  - enzywizard_flexibility.cli
+  - enzywizard_flexibility.services.flexibility_service
+  - enzywizard_flexibility.algorithms.flexibility_algorithms

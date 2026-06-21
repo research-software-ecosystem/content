@@ -1,0 +1,56 @@
+about:
+  description: 'EnzyWizard-Energy computes total potential energy and individual force
+    field terms
+
+    (bonds, angles, torsions, non-bonded, etc.) from cleaned protein structures (CIF/PDB)
+
+    using OpenMM. It optionally performs local energy minimization before evaluation.
+
+    Results are reported in a structured JSON file (kJ/mol units).
+
+    Useful for structural validation, conformational analysis, and molecular mechanics
+    workflows.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-energy
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to calculate molecular energy terms (total potential
+    + components) from a cleaned protein structure using OpenMM, with optional energy
+    minimization.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-energy
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - openmm
+  - biopython
+  - numpy
+  - packaging
+source:
+  sha256: d89cc8fae6825ec1010283eed690f8c1185f89b4f1714e572db3edc2e3ca6dfa
+  url: https://github.com/bioinfbrad/enzywizard-energy/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-energy --help
+  imports:
+  - enzywizard_energy
+  - enzywizard_energy.cli
+  - enzywizard_energy.services.energy_service
+  - enzywizard_energy.algorithms.energy_algorithms

@@ -10,12 +10,12 @@ about:
   summary: High-performance tools next generation sequencing QC.
 build:
   binary_relocation: false
-  number: 0
+  number: 1
   run_exports:
   - null
   script:
   - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-  - cargo install --locked cargo-multivers
+  - cargo install --locked --version '>=0.12.0' cargo-multivers
   - cargo multivers --profile dist --out-dir "${PREFIX}/bin"
   - cargo install --no-track --locked --profile dist --root "${PREFIX}" --path .
 extra:

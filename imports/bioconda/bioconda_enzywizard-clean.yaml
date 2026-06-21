@@ -1,0 +1,53 @@
+about:
+  description: "EnzyWizard-Clean processes raw or partially cleaned protein structures\
+    \ (CIF/PDB)\nusing PDBFixer and OpenMM. It removes heterogens/ligands/waters,\
+    \ repairs missing\nheavy atoms, replaces non-standard residues, optionally adds\
+    \ hydrogens at a\nspecified pH, and standardizes the chain (single chain A with\
+    \ continuous numbering).\nOutputs cleaned structures in CIF, PDB, and FASTA formats\
+    \ plus a comprehensive\nJSON report with residue mapping (original \u2192 cleaned)\
+    \ and cleaning statistics.\nEssential preprocessing step for structural bioinformatics\
+    \ pipelines.\n"
+  home: https://github.com/bioinfbrad/enzywizard-clean
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to clean protein structures using PDBFixer (remove heterogens,
+    repair atoms, add hydrogens via OpenMM), output cleaned CIF/PDB/FASTA files, and
+    generate a detailed traceable JSON cleaning report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-clean
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - pdbfixer
+  - openmm
+  - biopython
+  - numpy
+  - scipy
+  - packaging
+source:
+  sha256: 03fef24920844470b149c851710e913e05eb3166146fd902bb2b380cd082ee4d
+  url: https://github.com/bioinfbrad/enzywizard-clean/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-clean --help
+  imports:
+  - enzywizard_clean
+  - enzywizard_clean.cli
+  - enzywizard_clean.services.clean_service
+  - enzywizard_clean.algorithms.clean_algorithms

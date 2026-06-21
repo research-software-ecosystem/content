@@ -1,0 +1,61 @@
+about:
+  description: 'EnzyWizard-Dock performs molecular docking of substrates (from SDF
+    files) against
+
+    a cleaned protein structure using AutoDock Vina. It supports single or multi-substrate
+
+    docking, automatic pocket detection with PyVOL (or manual box specification),
+    and
+
+    outputs docked structures (SDF + CIF) plus a comprehensive JSON report with binding
+
+    affinities and docking parameters.
+
+    Designed to work with other EnzyWizard tools for complete enzyme-substrate analysis.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-dock
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to perform molecular docking of one or multiple substrates
+    against a cleaned protein structure using AutoDock Vina, with automatic pocket
+    detection via PyVOL, and generate a detailed JSON docking report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-dock
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - rdkit
+  - numpy
+  - biopython
+  - vina
+  - meeko
+  - bio-pyvol
+source:
+  sha256: 09dad09fdf37829916f5208e18af7f0b11b31542b64b068cea518f8f7579e5f1
+  url: https://github.com/bioinfbrad/enzywizard-dock/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-dock --help
+  - vina --help
+  imports:
+  - enzywizard_dock
+  - enzywizard_dock.cli
+  - enzywizard_dock.services.dock_service
+  - enzywizard_dock.algorithms.dock_algorithms

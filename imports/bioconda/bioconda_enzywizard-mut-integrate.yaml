@@ -1,0 +1,55 @@
+about:
+  description: 'EnzyWizard-Mut-Integrate merges data from wild-type and mutant EnzyWizard
+    reports
+
+    (using an `enzywizard_mut_clean` report as anchor) into matched integrated graphs.
+
+    It produces comprehensive JSON outputs containing substitution properties,
+
+    comparative statistics, and paired wild-type/mutant interaction graphs (nodes
+    + edges).
+
+    Designed for mutation impact studies, graph-based machine learning, and enzyme
+    engineering.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-mut-integrate
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to integrate wild-type and mutant EnzyWizard JSON reports
+    into paired protein/substrate graph representations for mutation effect analysis.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-mut-integrate
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - biopython
+  - numpy
+  - packaging
+source:
+  sha256: 28d6013a922c70d2981edb8db46aad8fd7ae9cd1caafdee1ef91b9271ff47040
+  url: https://github.com/bioinfbrad/enzywizard-mut-integrate/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-mut_integrate --help
+  imports:
+  - enzywizard_mut_integrate
+  - enzywizard_mut_integrate.cli
+  - enzywizard_mut_integrate.services.mut_integrate_service
+  - enzywizard_mut_integrate.algorithms.mut_integrate_algorithms

@@ -2,20 +2,22 @@ about:
   description: OxBreaker is a GTK4-based interface that collects parameters and launches
     a Nextflow pipeline. The package bundles the Nextflow project files and assets
     so they are available at runtime.
-  dev_url: https://gitlab.com/rc-reding/OxBreaker
   home: https://gitlab.com/rc-reding/OxBreaker
-  license: LGPL-2.1-only
-  license_family: LGPL
+  license: LGPL-2.1
   license_file: LICENSE
   summary: GTK4 GUI wrapper that launches a Nextflow pipeline
 build:
-  entry_points:
-  - oxbreaker = oxbreaker.gui:main
   noarch: python
   number: 0
   run_exports:
-  - null
-  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  - oxbreaker
+  script: -m pip install . -vv && mkdir -p "$PREFIX/share/oxbreaker" && cp "$RECIPE_DIR/oxbreaker.desktop"
+    "$PREFIX/share/oxbreaker/oxbreaker.desktop" && ( [ ! -f "$RECIPE_DIR/oxbreaker.png"
+    ] || cp "$RECIPE_DIR/oxbreaker.png" "$PREFIX/share/oxbreaker/oxbreaker.png" )
+    && mkdir -p "$PREFIX/bin" && cp "$RECIPE_DIR/oxbreaker-desktop-helper" "$PREFIX/bin/oxbreaker-desktop-helper"
+    && chmod +x "$PREFIX/bin/oxbreaker-desktop-helper"
+entry_points:
+- oxbreaker = oxbreaker.gui:main
 extra:
   identifiers:
   - doi:10.64898/2026.03.18.709804
@@ -23,12 +25,13 @@ extra:
   - rc-reding
 package:
   name: oxbreaker
-  version: 1.0.1
+  version: '1.1'
 requirements:
   host:
   - python >=3.9
   - pip
   - setuptools
+  - wheel
   run:
   - python >=3.9
   - pygobject
@@ -40,8 +43,8 @@ requirements:
   - glib
   - nextflow 25.*
 source:
-  sha256: c06967179ab9e5e06d550b5847d20e3583f00bd51d2bbf2600012eaf019323a3
-  url: https://gitlab.com/rc-reding/OxBreaker/-/archive/1.0.1/OxBreaker-1.0.1.tar.bz2
+  sha256: 0794a71efc4d67db35229c5f942ea837743952632bac5b1112a8d9dc832c0c38
+  url: https://gitlab.com/rc-reding/OxBreaker/-/archive/1.1/OxBreaker-1.1.tar.bz2
 test:
   commands:
   - oxbreaker --help

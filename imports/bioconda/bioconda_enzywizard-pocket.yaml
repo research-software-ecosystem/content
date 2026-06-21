@@ -1,0 +1,59 @@
+about:
+  description: 'EnzyWizard-Pocket identifies binding pockets in cleaned protein structures
+    (CIF/PDB)
+
+    using the PyVOL geometry-based pocket detection algorithm (via the bio-pyvol package).
+
+    It outputs a structured JSON report with pocket volumes, residues, centers, and
+    box sizes.
+
+    Ideal for structural bioinformatics, docking preparation, and enzyme active site
+    analysis.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-pocket
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to detect and characterize protein binding pockets from
+    cleaned structures using PyVOL (bio-pyvol), generating a detailed JSON report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-pocket
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - bio-pyvol
+  - biopython
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - trimesh
+  - packaging
+source:
+  sha256: 3422ec9fbcf5b55d771b6d971effb1d2716868495a20a8311b17934f45b7a946
+  url: https://github.com/bioinfbrad/enzywizard-pocket/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-pocket --help
+  - pyvol --help
+  imports:
+  - enzywizard_pocket
+  - enzywizard_pocket.cli
+  - enzywizard_pocket.services.pocket_service
+  - enzywizard_pocket.algorithms.pocket_algorithms

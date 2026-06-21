@@ -1,0 +1,58 @@
+about:
+  description: 'EnzyWizard-Interaction identifies six types of molecular interactions
+    in cleaned
+
+    protein structures (with optional docked substrates in SDF format) using
+
+    geometric criteria inspired by the RING4 method. It supports efficient
+
+    vectorized calculations and KD-tree neighbor searching. Outputs a comprehensive
+
+    JSON report with interaction records and statistics, suitable for graph-based
+
+    analysis and enzyme-substrate studies.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-interaction
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to detect molecular interactions (hydrogen bonds, ionic,
+    van der Waals, pi-stacking, pi-cation, disulfide) in protein and protein-substrate
+    systems and generate a detailed JSON report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-interaction
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - rdkit
+  - biopython
+  - numpy
+  - scipy
+  - openmm
+source:
+  sha256: 395008e554e146a0650782676d0dee2e283578df41db58fcb3f91897d8db15ef
+  url: https://github.com/bioinfbrad/enzywizard-interaction/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-interaction --help
+  imports:
+  - enzywizard_interaction
+  - enzywizard_interaction.cli
+  - enzywizard_interaction.services.interaction_service
+  - enzywizard_interaction.algorithms.interaction_algorithms

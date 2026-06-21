@@ -1,38 +1,43 @@
 about:
   description: Needle is a tool for approximately quantifiying many queries in large
     collections of nucleotide sequences.
-  home: https://github.com/seqan/needle
-  license: BSD-3-Clause License
+  dev_url: https://github.com/seqan/needle
+  doc_url: https://github.com/seqan/needle/blob/needle-v1.0.3/README.md
+  home: https://www.seqan.de/apps/needle
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.md
   summary: 'Needle: A fast and space-efficient pre-filter for the quantification of
     very large collections of nucleotide sequences'
 build:
-  number: 4
-  skip: true
+  number: 0
+  run_exports:
+  - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btac492
   recipe-maintainers:
   - mitradarja
-  skip-lints:
-  - uses_vcs_url
-  - missing_hash
+  - eseiler
 package:
   name: needle
-  version: 1.0.1
+  version: 1.0.3
 requirements:
   build:
-  - make
+  - ninja
   - null
-  - cmake >=3.9
+  - null
+  - cmake >=3.12
   host:
   - bzip2
   - zlib
-  run:
-  - bzip2
-  - zlib
+  - llvm-openmp
 source:
-  git_rev: needle-v1.0.1
-  git_url: https://github.com/seqan/needle
+  sha256: 4e0d468e5864ec6cd6f1a80a4741f6d0852eff3e1bf824b474ef5e2fc1f72ce4
+  url: https://github.com/seqan/needle/releases/download/needle-v1.0.3/needle-1.0.3-Source.tar.xz
 test:
   commands:
   - needle --version

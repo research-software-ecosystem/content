@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/marcorotanegroni/selexprep
+  home: https://github.com/marcorotanegroni/selexprep
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Accession-first preprocessing for public HT-SELEX with primer auto-inference
+build:
+  entry_points:
+  - selexprep = selexprep.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - marcorotanegroni
+package:
+  name: selexprep
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10
+  - hatchling >=1.26
+  - pip
+  run:
+  - python >=3.10
+  - typer >=0.12
+  - numpy >=1.24
+  - pandas >=2.0
+  - pyarrow >=14.0
+  - pyyaml >=6.0
+  - requests >=2.31
+  - matplotlib-base >=3.8
+  - pydantic >=2.0
+  - cutadapt >=4.0
+  - dnaio >=1.2
+source:
+  sha256: 66da56c90480e337d621a85c3558075bd43adef1cdc0934acf0cdec57a09d387
+  url: https://pypi.io/packages/source/s/selexprep/selexprep-0.1.1.tar.gz
+test:
+  commands:
+  - selexprep --help
+  imports:
+  - selexprep

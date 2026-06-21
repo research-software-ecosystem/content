@@ -8,39 +8,46 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-build-isolation -vv'
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
 extra:
+  notes: "Optional runtime dependencies:\n  - inmoose: required for `amalgkit finalize\
+    \ --batch_effect_alg combatseq`\n  - oarfish: required for `amalgkit quant --quant_backend\
+    \ oarfish`\n  - mmseqs2: required for `amalgkit getfastq --rrna_filter yes` or\
+    \ `--contam_filter yes`\n  - busco: required for `amalgkit busco --tool busco`\n\
+    \  - compleasm: required for `amalgkit busco --tool compleasm`, or selected `--tool\
+    \ auto`\n"
   recipe-maintainers:
   - kfuku52
 package:
   name: amalgkit
-  version: 0.14.0
+  version: 0.16.25
 requirements:
   host:
-  - python
+  - python 3.9
   - pip
   - setuptools
   - wheel
   run:
-  - python >=
+  - python >=3.9
   - biopython
+  - matplotlib-base
   - numpy
   - pandas
+  - scikit-learn
+  - scipy
+  - statsmodels
   - ete4
   - seqkit
-  - sra-tools
+  - sra-tools >=3
   - fastp
   - kallisto
-  - r-base
-  - bioconductor-edger
-  - r-ggplot2
-  - bioconductor-sva
-  - r-rtsne
 source:
-  sha256: dc180688258c6112dfca02cfca2cf66b11fc8db74f2ef112990a18a3357ac503
-  url: https://github.com/kfuku52/amalgkit/archive/refs/tags/v0.14.0.tar.gz
+  sha256: 3d6de6110673ce9dfe821ee42c530a38f02d4fa8b12ee360f9d98d02b8666a44
+  url: https://github.com/kfuku52/amalgkit/archive/refs/tags/v0.16.25.tar.gz
 test:
   commands:
   - amalgkit --help
+  - amalgkit help finalize
+  - amalgkit dataset --list
   imports:
   - amalgkit
