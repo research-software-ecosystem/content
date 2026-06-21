@@ -1,0 +1,48 @@
+about:
+  description: 'ssiamb counts ambiguous SNV sites from trimmed paired-end reads mapped
+    back
+
+    to their own supplied assembly. It is designed for workflows where read
+
+    trimming and assembly, for example with Shovill, are performed upstream.
+
+    '
+  dev_url: https://github.com/ssi-dk/ssiamb
+  home: https://github.com/ssi-dk/ssiamb
+  license: MIT
+  license_file: LICENSE
+  summary: Ambiguous-site counting for reads mapped back to their assembly
+build:
+  entry_points:
+  - ssiamb = ssiamb.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - PovilasMat
+package:
+  name: ssiamb
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.11,<3.15
+  - pip
+  - hatchling
+  run:
+  - python >=3.11,<3.15
+  - minimap2
+  - samtools
+  - bbmap
+  - openjdk
+source:
+  sha256: f053124ff9fb77aedee2918ef8b37759d630b056c95d2313318098d420285cd0
+  url: https://pypi.io/packages/source/s/ssiamb/ssiamb-1.0.0.tar.gz
+test:
+  commands:
+  - ssiamb --version
+  - ssiamb self --help
+  imports:
+  - ssiamb

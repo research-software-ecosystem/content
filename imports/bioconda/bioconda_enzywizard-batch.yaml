@@ -1,0 +1,73 @@
+about:
+  description: 'EnzyWizard-Batch executes a full end-to-end enzyme analysis workflow.
+
+    It takes a cleaned protein structure and a matched MSA, then runs:
+
+    residue properties, hydrophobic clustering, energy evaluation, flexibility (ANM/GNM),
+
+    disorder prediction, conservation (HMMER), ESM-2 embeddings, pocket detection
+    (PyVOL),
+
+    optional substrate preparation + AutoDock Vina docking, molecular interaction
+    detection,
+
+    and finally graph integration.
+
+    Outputs integrated graph JSON files (report, nodes, edges) ready for machine learning
+
+    or systems biology analysis. Supports both protein-only and enzyme-substrate modes.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-batch
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line meta-workflow tool that runs the complete EnzyWizard pipeline
+    (properties, clusters, energy, flexibility, disorder, conservation, embeddings,
+    pockets, docking, interactions) on a cleaned protein + MSA and produces an integrated
+    graph JSON dataset.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-batch
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - biopython
+  - numpy
+  - rdkit
+  - openmm
+  - prody
+  - fair-esm
+  - bio-pyvol
+  - meeko
+  - pdbfixer
+  - requests
+  - packaging
+  - hmmer
+  - dssp
+  - vina
+source:
+  sha256: cc4fe9107925e6b671be58b29fe0602f256258361c53ea087befa6133fb4b05e
+  url: https://github.com/bioinfbrad/enzywizard-batch/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-batch --help
+  - vina --help
+  - hmmbuild -h
+  imports:
+  - enzywizard_batch
+  - enzywizard_batch.cli

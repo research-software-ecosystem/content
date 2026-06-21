@@ -1,0 +1,59 @@
+about:
+  description: 'EnzyWizard-AAprops extracts detailed structural and physicochemical
+    properties for each
+
+    residue in a cleaned protein structure (CIF/PDB). It uses DSSP (via Biopython)
+    to obtain
+
+    secondary structure, relative solvent accessibility, and backbone torsion angles
+    (phi/psi).
+
+    Additional physicochemical properties are computed or retrieved. Outputs a comprehensive
+
+    JSON report with per-residue data and overall statistics.
+
+    Useful for structural bioinformatics, machine learning feature generation, and
+    protein analysis.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-aaprops
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to compute per-residue amino acid properties (secondary
+    structure via DSSP, solvent accessibility, torsion angles, physicochemical properties)
+    from a cleaned protein structure and output a detailed JSON report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-aaprops
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - dssp
+  - biopython
+  - numpy
+source:
+  sha256: 9062692932576cc2cd9022c66309c46ba4dc587da86d03ca427570d65d83f250
+  url: https://github.com/bioinfbrad/enzywizard-aaprops/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-aaprops --help
+  imports:
+  - enzywizard_aaprops
+  - enzywizard_aaprops.cli
+  - enzywizard_aaprops.services.aaprops_service
+  - enzywizard_aaprops.algorithms.aaprops_algorithms

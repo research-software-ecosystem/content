@@ -1,0 +1,56 @@
+about:
+  description: 'EnzyWizard-Integrate merges data from multiple EnzyWizard analysis
+    reports
+
+    (clean, aaprops, hydrocluster, energy, flexibility, disorder, conservation,
+
+    embedding, pocket, substrate, dock, interaction) into a single graph representation.
+
+    It uses the `enzywizard_clean` report as the structural anchor and produces
+
+    three output JSON files: the full integrated graph report, a nodes list, and
+
+    an edges list. Ideal for graph-based machine learning and systems-level enzyme
+    analysis.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-integrate
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to integrate multiple EnzyWizard JSON reports into a
+    unified protein/substrate interaction graph (nodes + edges) with comprehensive
+    statistics.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-integrate
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - biopython
+  - numpy
+source:
+  sha256: 2f9267ce342ab46c0fc4598325115f96c27e10b938730a80ef7a626f261feb5d
+  url: https://github.com/bioinfbrad/enzywizard-integrate/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-integrate --help
+  imports:
+  - enzywizard_integrate
+  - enzywizard_integrate.cli
+  - enzywizard_integrate.services.integrate_service
+  - enzywizard_integrate.algorithms.integrate_algorithms

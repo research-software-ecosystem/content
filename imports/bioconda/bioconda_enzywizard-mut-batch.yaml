@@ -1,0 +1,70 @@
+about:
+  description: 'EnzyWizard-Mut-Batch executes the full EnzyWizard pipeline on paired
+    wild-type
+
+    and mutant protein structures (with matched MSAs). It performs residue properties,
+
+    hydrophobic clustering, energy evaluation, flexibility (ANM/GNM), disorder prediction,
+
+    conservation (HMMER), ESM-2 embeddings, pocket detection (PyVOL), optional substrate
+
+    preparation + AutoDock Vina docking, molecular interaction detection, and mutation-aware
+
+    graph integration. Outputs paired integrated graph JSON files ready for mutation
+
+    effect analysis and machine learning.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-mut-batch
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line meta-workflow tool that runs paired EnzyWizard analysis on
+    a wild-type protein and its mutant (including properties, clusters, energy, flexibility,
+    disorder, conservation, embeddings, pockets, docking, interactions) and produces
+    a mutation-aware integrated graph JSON dataset.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-mut-batch
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - biopython
+  - numpy
+  - rdkit
+  - openmm
+  - prody
+  - fair-esm
+  - bio-pyvol
+  - meeko
+  - pdbfixer
+  - requests
+  - packaging
+  - hmmer
+  - dssp
+  - vina
+source:
+  sha256: 60a4ad77d148c87af9ae8c9db3c7649b08eae791c84cf5171f1171626df03ecf
+  url: https://github.com/bioinfbrad/enzywizard-mut-batch/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-mut-batch --help
+  - vina --help
+  - hmmbuild -h
+  imports:
+  - enzywizard_mut_batch
+  - enzywizard_mut_batch.cli

@@ -1,0 +1,62 @@
+about:
+  description: 'DeepTaxa is a hybrid CNN-BERT deep learning framework for multi-rank
+
+    taxonomic classification of 16S rRNA gene sequences across the seven
+
+    Linnean ranks (domain through species). It is distributed on PyPI and
+
+    Bioconda as "deeptaxa-rrna"; the import package and command-line tool
+
+    are both named "deeptaxa".
+
+    '
+  dev_url: https://github.com/systems-genomics-lab/deeptaxa
+  doc_url: https://systems-genomics-lab.github.io/deeptaxa/
+  home: https://github.com/systems-genomics-lab/deeptaxa
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Hybrid CNN-BERT deep learning framework for taxonomic classification of
+    16S rRNA gene sequences
+build:
+  entry_points:
+  - deeptaxa = deeptaxa.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export SETUPTOOLS_SCM_PRETEND_VERSION=1.0.1
+  - -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - ahmedmoustafa
+package:
+  name: deeptaxa-rrna
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  - setuptools-scm >=6.2
+  - wheel
+  run:
+  - python >=3.10
+  - pytorch
+  - numpy
+  - transformers
+  - pandas
+  - tqdm
+  - scikit-learn
+  - biopython
+  - h5py
+  - optuna
+source:
+  sha256: ef69f222733f7b0d322e06959f3d2f6b0c1ca11b304f1cf18baf46b4f09e2342
+  url: https://pypi.org/packages/source/d/deeptaxa-rrna/deeptaxa_rrna-1.0.1.tar.gz
+test:
+  commands:
+  - deeptaxa --version
+  imports:
+  - deeptaxa

@@ -1,0 +1,57 @@
+about:
+  description: 'EnzyWizard-Conservation calculates per-residue conservation scores
+    using a profile
+
+    Hidden Markov Model (HMM) built with HMMER from a user-provided multiple sequence
+
+    alignment (MSA). It supports Stockholm, aligned FASTA, and A3M formats.
+
+    Outputs include a cleaned Stockholm MSA, the HMM profile, and a detailed JSON
+
+    conservation report with raw scores, normalized emission probabilities, and
+
+    Shannon information content.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-conservation
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to compute residue-level sequence conservation from a
+    query sequence and MSA using HMMER profile HMMs, outputting cleaned MSA, HMM profile,
+    and JSON report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-conservation
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  run:
+  - python >=
+  - hmmer
+  - biopython
+  - numpy
+  - packaging
+source:
+  sha256: 5144f29e9051e31abd0fcfc7d37a0efdb1b8f3cfd17ac5d645dfd11602b9344f
+  url: https://github.com/bioinfbrad/enzywizard-conservation/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-conservation --help
+  - hmmbuild -h
+  imports:
+  - enzywizard_conservation
+  - enzywizard_conservation.cli
+  - enzywizard_conservation.services.conservation_service
+  - enzywizard_conservation.algorithms.conservation_algorithms

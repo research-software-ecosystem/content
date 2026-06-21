@@ -1,0 +1,59 @@
+about:
+  description: 'EnzyWizard-Mut-Clean processes a wild-type structure and its corresponding
+    mutant
+
+    structure using PDBFixer and OpenMM. It removes heterogens, repairs missing atoms,
+
+    optionally adds hydrogens, standardizes chains, and remaps the input mutation(s)
+
+    (e.g. S70G) to the new continuous residue numbering. Outputs cleaned structures
+
+    in CIF, PDB, and FASTA formats plus a comprehensive JSON report with residue
+
+    mappings and cleaning statistics for both WT and mutant.
+
+    Essential for consistent preprocessing of mutant protein pairs in structural bioinformatics.
+
+    '
+  home: https://github.com/bioinfbrad/enzywizard-mut-clean
+  license: MIT
+  license_file: LICENSE
+  summary: Command-line tool to clean wild-type and mutant protein structures, remap
+    amino acid substitutions to cleaned numbering, output multi-format files (CIF/PDB/FASTA),
+    and generate a detailed JSON cleaning + mutation report.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - khaled196
+  - Mingkai14
+package:
+  name: enzywizard-mut-clean
+  version: 1.0.2
+requirements:
+  host:
+  - python >=
+  - pip
+  - setuptools
+  - setuptools-git-versioning >=2.0,<3
+  run:
+  - python >=
+  - pdbfixer
+  - openmm
+  - biopython
+  - numpy
+source:
+  sha256: 5bd564963a13d1b3e83a2ef1c2db72d07e326c0b98f86609926f91f364413fe5
+  url: https://github.com/bioinfbrad/enzywizard-mut-clean/archive/refs/tags/1.0.2.tar.gz
+test:
+  commands:
+  - enzywizard-mut-clean --help
+  imports:
+  - enzywizard_mut_clean
+  - enzywizard_mut_clean.cli
+  - enzywizard_mut_clean.services.mut_clean_service
+  - enzywizard_mut_clean.algorithms.mut_clean_algorithms

@@ -8,11 +8,11 @@ about:
 
     '
   dev_url: https://github.com/dnncha/dotmatch
-  doc_url: https://github.com/dnncha/dotmatch#readme
+  doc_url: https://dotmatch.readthedocs.io/
   home: https://github.com/dnncha/dotmatch
   license: Apache-2.0
   license_file: LICENSE
-  summary: Fast exact short-DNA known-target assignment
+  summary: Deterministic short-DNA known-target assignment
 build:
   number: 0
   run_exports:
@@ -25,7 +25,7 @@ extra:
   - dnncha
 package:
   name: dotmatch
-  version: 0.1.7
+  version: 0.1.8
 requirements:
   build:
   - null
@@ -41,16 +41,17 @@ requirements:
   - python >=3.9
   - tomli
 source:
-  sha256: eb68691651dc1c408aa0f94b2aff58ed6f9cf7f58a3b5ea4def0e4cd6c6279ac
-  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.1.7.tar.gz
+  sha256: ec3819bc773431454910287559d0809aca6ec1d81959f29d3d522650edb74904
+  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.1.8.tar.gz
 test:
   commands:
   - python -c "import dotmatch; assert dotmatch.distance('ACGT', 'AGGT') == 1"
   - python -c "from dotmatch.native import find_native_cli; p=find_native_cli(); assert
     p.name == 'dotmatch-native' and p.exists()"
-  - dotmatch --version | grep '^dotmatch 0.1.7$'
+  - dotmatch --version | grep '^dotmatch 0.1.8$'
   - dotmatch dist ACGT AGGT | grep '^1$'
   - dotmatch leq 1 ACGT AGGT | grep '^true$'
+  - 'dotmatch citation | grep ''Citation metadata: CITATION.cff'''
   - dotmatch --help | grep 'Workflow namespaces'
   - dotmatch count --help | grep 'Hamming supports k=0..3'
   - dotmatch crispr-count --help | grep 'MAGeCK-ready'

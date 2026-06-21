@@ -8,45 +8,38 @@ about:
   summary: Semi-supervised learning for peptide identification from shotgun proteomics
     datasets.
 build:
-  number: 2
+  number: 0
   run_exports:
   - null
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
-  container:
-    extended-base: true
   identifiers:
   - biotools:Percolator
   - doi:10.1007/s13361-016-1460-7
   - usegalaxy-eu:percolator
 package:
   name: percolator
-  version: 3.7.1
+  version: '3.9'
 requirements:
   build:
   - make
+  - null
   - null
   - cmake
   host:
   - boost-cpp
   - sqlite
   - bzip2
-  - xerces-c
-  - xsd
   - zlib
   run:
   - boost-cpp
   - sqlite
-  - xerces-c
-  - xsd
   - zlib
 source:
-  patches:
-  - boost-dynamic.patch
-  sha256: f1c9833063cb4e99c51a632efc3f80c6b8f48a43fd440ea3eb0968af5c84b97a
-  url: https://github.com/percolator/percolator/archive/refs/tags/rel-3-07-01.tar.gz
+  sha256: 2caed6362638f401a1527b09dcb2888320dab10fe003f76f584cfd395ed30f73
+  url: https://github.com/percolator/percolator/archive/refs/tags/rel-3-09.tar.gz
 test:
   commands:
-  - percolator -X test.xml $PREFIX/testdata/percolatorTab
+  - percolator $PREFIX/testdata/percolatorTab > /dev/null

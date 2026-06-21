@@ -1,0 +1,50 @@
+about:
+  description: 'rneat is a Rust port and extension of NEAT that generates simulated
+
+    next-generation sequencing data in FASTQ and VCF formats matching the
+
+    statistical properties of real datasets, plus a golden BAM/VCF truth set.
+
+    It adds structural-variant simulation (CNV, BND, INV, INS) and an
+
+    end-to-end tumor/normal cancer workflow (gen-cancer-reads) that emits an
+
+    origin-tagged truth VCF for benchmarking somatic and SV callers.
+
+    '
+  dev_url: https://github.com/ncsa/rusty-neat
+  doc_url: https://github.com/ncsa/rusty-neat/blob/main/README.md
+  home: https://github.com/ncsa/rusty-neat
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file:
+  - LICENSE.md
+  - THIRDPARTY.yml
+  summary: Rust toolkit for simulating NGS read data (FASTQ/VCF), including tumor/normal
+    cancer sequencing
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - joshfactorial
+package:
+  name: rneat
+  version: 1.17.4
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - cmake
+  - make
+source:
+  sha256: 2dd8958533944d0cb21f2c73bdd521f10f18932eeeea2c771f30bb07127de99c
+  url: https://github.com/ncsa/rusty-neat/archive/refs/tags/v1.17.4.tar.gz
+test:
+  commands:
+  - rneat --help
+  - rneat gen-reads --help
