@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/mflamand/Bullseye
+  home: https://github.com/mflamand/Bullseye
+  license: MIT
+  license_family: MIT
+  summary: An Analysis pipeline for DART-seq, scDART-seq, TRIBE, STAMP and TRIBE-STAMP.
+    Bullseye contains a set of perl scripts for parsing BAM files and identifying
+    RNA editing sites.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+package:
+  name: bullseye
+  version: 1.0.0
+requirements:
+  host:
+  - perl
+  run:
+  - perl
+  - perl-bioperl
+  - htslib
+  - samtools
+  - bedtools
+  - perl-text-nsp
+  - perl-mce
+  - perl-array-intspan
+  - perl-bio-db-hts
+  - perl-math-cdf
+source:
+  sha256: 61e9fd0d13877a8ab7bb00299ca1a9ad037975b1327b1e8634099311827f5027
+  url: https://github.com/mflamand/Bullseye/archive/refs/tags/1.0.0.tar.gz
+test:
+  commands:
+  - parseBAM.pl --help
+  - Find_edit_sites.pl --help

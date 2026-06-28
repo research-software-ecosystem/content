@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/noHup-cc/fungtion
+  doc_url: https://github.com/noHup-cc/fungtion
+  home: https://github.com/noHup-cc/fungtion
+  license: MIT
+  license_file: LICENSE
+  summary: Predict fungal effector proteins from FASTA files using ESM-1b embeddings
+    and R SVM models
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - jinzhengren0408
+  - vagkaratzas
+package:
+  name: fungtion
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=68
+  - wheel
+  - pip
+  run:
+  - python >=3.10
+  - pytorch >=2.0.0
+  - fair-esm >=2.0.0
+  - pandas >=2.3.3
+  - biopython >=1.87
+  - scikit-learn >=1.7.2
+  - r-base
+  - r-e1071
+  - r-caret
+  - r-optparse
+source:
+  sha256: 4e8671ef3f0482e98342d356cdf6eee5ae50d05e2549c727b09e0e0072276602
+  url: https://pypi.org/packages/source/f/fungtion/fungtion-1.0.0.tar.gz
+test:
+  commands:
+  - fungtion --help
+  imports:
+  - fungtion
