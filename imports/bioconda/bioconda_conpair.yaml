@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/nygenome/Conpair
+  home: https://github.com/nygenome/Conpair
+  license: Custom
+  license_file: LICENSE.txt
+  summary: Concordance and contamination estimator for tumor-normal sequencing pairs
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - clintval
+package:
+  name: conpair
+  version: '0.2'
+requirements:
+  host:
+  - python >=3.7
+  run:
+  - python >=3.7
+  - numpy
+  - scipy
+  - gatk ==3.8
+source:
+  patches:
+  - 0001-py312-remove-imp.patch
+  - 0002-portable-shebang.patch
+  - 0003-self-contained-paths.patch
+  sha256: 6069fca15279d5d9a6452707b47efe43873208bcfc5268ef56e564e44093d486
+  url: https://github.com/nygenome/Conpair/archive/refs/tags/v0.2.tar.gz
+test:
+  commands:
+  - run_gatk_pileup_for_sample.py --help
+  - verify_concordance.py --help
+  - estimate_tumor_normal_contamination.py --help
+  - gatk3 -T Pileup --help 2>&1 | grep Pileup
+  - if [ -f data/example/pileup/NA12878_tumor80x.gatk.pileup.txt ]; then verify_concordance.py
+    -T data/example/pileup/NA12878_tumor80x.gatk.pileup.txt -N data/example/pileup/NA12878_normal40x.gatk.pileup.txt
+    | grep -F 7363/7387; fi
+  - if [ -f data/example/pileup/NA12878_tumor80x.gatk.pileup.txt ]; then estimate_tumor_normal_contamination.py
+    -T data/example/pileup/NA12878_tumor80x.gatk.pileup.txt -N data/example/pileup/NA12878_normal40x.gatk.pileup.txt
+    | grep -F 0.016%; fi
+  imports:
+  - ContaminationModel
+  - ContaminationMarker
+  - Genotypes
+  - MathOperations
+  source_files:
+  - data/example/pileup/NA12878_tumor80x.gatk.pileup.txt
+  - data/example/pileup/NA12878_normal40x.gatk.pileup.txt

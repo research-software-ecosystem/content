@@ -1,0 +1,45 @@
+about:
+  dev_url: https://gitlab.com/rahmannlab/panxpress
+  home: https://gitlab.com/rahmannlab/panxpress
+  license: MIT
+  license_file: LICENSE
+  summary: Gene expression quantification with a pan-transcriptomic gapped k-mer index
+build:
+  entry_points:
+  - panxpress = panxpress.panxpress.panxpress_main:main
+  - alignpairs = panxpress.alignpairs.alignpairs_main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - JZentgraf
+package:
+  name: panxpress
+  version: 0.2.2.2
+requirements:
+  host:
+  - python >=3.12
+  - setuptools >=69.0.3
+  - pip
+  run:
+  - python >=3.12
+  - numpy
+  - numba
+  - jsonargparse >=4.29.0
+  - pytest
+source:
+  sha256: 2816d5ddf99f3414e1a78a1adb14ffb4fb804aa64202d4cd1677f4e0d145780e
+  url: https://pypi.org/packages/source/p/panxpress/panxpress-0.2.2.2.tar.gz
+test:
+  commands:
+  - pip check
+  - panxpress --help
+  - alignpairs --help
+  imports:
+  - panxpress
+  requires:
+  - pip
+  - python

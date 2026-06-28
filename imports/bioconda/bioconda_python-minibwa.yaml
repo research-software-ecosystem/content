@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/fg-labs/minibwa-bindings
+  doc_url: https://github.com/fg-labs/minibwa-bindings/blob/main/README.md
+  home: https://github.com/fg-labs/minibwa-bindings
+  license: MIT AND Apache-2.0
+  license_file:
+  - LICENSE
+  - THIRD-PARTY.md
+  - minibwa-sys/vendor/minibwa/LICENSE.txt
+  - LICENSE.libsais-Apache-2.0.txt
+  - minibwa-py/THIRD-PARTY.yml
+  summary: Python bindings for minibwa (Heng Li's lightweight bwa-mem successor)
+build:
+  number: 1
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+package:
+  name: python-minibwa
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - clangdev
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1.5,<2
+  - zlib
+  run:
+  - python
+source:
+  sha256: 6d506c604b7f81ee05e4aae8c666b609f99868f437119fc0fad61bb216f5edf3
+  url: https://github.com/fg-labs/minibwa-bindings/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - python -c "import minibwa; minibwa.Opts()"
+  imports:
+  - minibwa

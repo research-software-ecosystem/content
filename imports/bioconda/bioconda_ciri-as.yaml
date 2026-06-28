@@ -1,0 +1,31 @@
+about:
+  dev_url: https://github.com/bioinfo-biols/CIRI-cookbook/blob/master/source/CIRI-AS.md
+  doc_url: https://ciri-cookbook.readthedocs.io/en/latest/CIRI-AS.html
+  home: https://github.com/bioinfo-biols/CIRI-cookbook
+  license: GPL-2.0-only
+  license_url: https://sourceforge.net/projects/ciri/files/CIRI-AS/LICENSE.txt/download
+  summary: CIRI-AS is a detection tool for circRNA internal components and alternative
+    splicing events.
+build:
+  noarch: generic
+  number: 1
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - razmia02
+package:
+  name: ciri-as
+  version: '1.2'
+requirements:
+  host:
+  - perl >=5.12
+  run:
+  - perl >=5.12
+  - bwa
+source:
+- sha256: c8d8ab3f436198ed7c74382d5a48a2317ac5dcdde0762cc96dcb06948f0cc15d
+  url: https://sourceforge.net/projects/ciri/files/CIRI-AS/CIRI_AS_v1.2.pl/download
+test:
+  commands:
+  - CIRI_AS.pl -H 2>&1 | grep -q "CIRI-AS"
