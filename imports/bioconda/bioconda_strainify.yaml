@@ -1,4 +1,20 @@
 about:
+  description: 'Strainify is an accurate strain-level abundance analysis tool for
+    short-read
+
+    metagenomics. It uses whole-genome alignments (Parsnp) to identify variant
+
+    sites, maps metagenomic reads to a reference, and estimates strain abundances
+
+    via a maximum likelihood model. It is designed to perform well on complex microbial
+
+    communities and at low sequencing depths, where strain-resolved signal is
+
+    sparse and closely related strains are easily confused.
+
+    '
+  dev_url: https://github.com/treangenlab/Strainify
+  doc_url: https://github.com/treangenlab/Strainify/blob/master/README.md
   home: https://github.com/treangenlab/Strainify
   license: MIT
   license_file: LICENSE
@@ -13,53 +29,51 @@ extra:
   - rossie-luo
 package:
   name: strainify
-  version: 1.2.0
+  version: 1.3.0
 requirements:
   run:
-  - python >=3.12
-  - snakemake >=9.3
-  - typer >=0.15
-  - pyyaml >=6.0
+  - bash
+  - nextflow >=26.04
+  - python >=3.10,<3.13
+  - biopython >=1.85
   - pandas >=2.2
   - numpy >=2.2
+  - pysam >=0.23
+  - scipy >=1.15
+  - scikit-learn >=1.6
+  - cvxpy >=1.6
+  - clarabel >=0.10
+  - ecos >=2.0
+  - osqp >=1.0
+  - scs >=3.2
+  - joblib >=1.5
   - psutil >=7.0
-  - biopython >=1.85
+  - threadpoolctl >=3.6
+  - tqdm >=4.67
   - pulp >=2.8
   - coincbc
-  - bcftools >=1.21
+  - pyyaml >=6.0
+  - bwa >=0.7.18
   - samtools >=1.21
   - htslib >=1.21
-  - bwa >=0.7.18
+  - bcftools >=1.21
+  - parsnp >=2.1.4
+  - harvesttools >=1.2
+  - wgatools >=1.1.0
   - fastani >=1.34
   - fasttree >=2.1.11
-  - harvesttools >=1.2
   - mash >=2.3
-  - parsnp >=2.1.4
   - phipack >=1.1
-  - pyspoa >=0.2.1
   - raxml >=8.2.13
-  - wgatools >=1.1.0
   - parallel
-  - configargparse >=1.7.1
-  - jinja2 >=3.1
-  - jsonschema >=4.23
-  - tabulate >=0.9
-  - tqdm >=4.67
-  - gitpython >=3.1
-  - clarabel >=0.10.0
-  - cvxpy >=1.6.5
-  - ecos >=2.0.14
-  - git-filter-repo >=2.47.0
-  - joblib >=1.5.0
-  - osqp >=1.0.4
-  - pysam >=0.23.0
-  - scikit-learn >=1.6.1
-  - scipy >=1.15.3
-  - scs >=3.2.7
-  - threadpoolctl >=3.6.0
+  - ete3 >=3.1.3
+  - minimap2
+  - ncbi-datasets-cli
 source:
-  sha256: df29c2645992a4add6f28bf66e65c6fb261a514825c26783a553522fe67341f2
-  url: https://github.com/treangenlab/Strainify/archive/refs/tags/V1.2.0.tar.gz
+  sha256: 1deb2b7c5e4df8060915db29ce851426c7876bed346514089fbe8cb0426e9f3f
+  url: https://github.com/treangenlab/Strainify/archive/refs/tags/V1.3.0.tar.gz
 test:
   commands:
-  - strainify --help || test $? -eq 1
+  - strainify --help
+  - test -f "$PREFIX/share/strainify/main.nf"
+  - test -f "$PREFIX/share/strainify/VERSION"

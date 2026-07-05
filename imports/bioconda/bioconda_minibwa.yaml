@@ -7,15 +7,16 @@ about:
   summary: Aligning short and accurate long reads to a reference genome, the successor
     of bwa-mem.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: minibwa
-  version: '0.2'
+  version: '0.3'
 requirements:
   build:
   - make
@@ -29,11 +30,11 @@ requirements:
 source:
   patches:
   - override-makefile.patch
-  sha256: aacb2dabe78874923b1eea6197919c0f75e12de87bdf906fa4adf58a6ab1b25a
-  url: https://github.com/lh3/minibwa/archive/v0.2.tar.gz
+  sha256: 85040b1b25caeee6304616c2bc081c313e0ff1a29006bb0295098b8ae51973de
+  url: https://github.com/lh3/minibwa/archive/v0.3.tar.gz
 test:
   commands:
-  - minibwa version | grep 0.2
+  - minibwa version | grep 0.3
   - minibwa 2>&1 | grep 'Usage'
   - test -e $PREFIX/lib/libminibwa.a
   - test -e $PREFIX/include/minibwa.h

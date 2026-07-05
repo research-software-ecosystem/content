@@ -1,36 +1,44 @@
 about:
-  dev_url: https://github.com/treangenlab/Somatem
-  doc_url: https://github.com/treangenlab/Somatem#readme
-  home: https://github.com/treangenlab/Somatem
+  dev_url: https://github.com/treangenlab/somatem
+  doc_url: https://github.com/treangenlab/somatem#readme
+  home: https://github.com/treangenlab/somatem
   license: GPL-3.0
   license_file: LICENSE
   summary: Best practices pipeline for long-read metagenomics analysis.
 build:
   noarch: generic
-  number: 1
+  number: 0
 extra:
+  notes: 'Somatem installs a wrapper command that launches bundled Nextflow workflows
+    from
+
+    $PREFIX/share/somatem-0.8.0. Use `somatem --help` to see supported
+
+    workflow shortcuts and common arguments.
+
+    '
   recipe-maintainers:
   - ppreshant
   - microbemarsh
   skip-lints:
   - missing_run_exports
+  watch:
+    enable: true
 package:
   name: somatem
-  version: 0.7.1
+  version: 0.8.0
 requirements:
   run:
   - bash
-  - nextflow >=25.10.2
+  - nextflow >=26.04.4
   - micromamba
   - coreutils
 source:
-  patches:
-  - include-launcher-commands.patch
-  sha256: 32a4efe92ea1fa6ec89bd873c533ee15b6898d7b7991b648c8b17507059fad20
-  url: https://github.com/treangenlab/Somatem/archive/refs/tags/0.7.1.tar.gz
+  sha256: 0d9f84f2c9691d6d33837fd1c6ca5bc729ea21ff0993b1b97584f2b8bc8142de
+  url: https://github.com/treangenlab/somatem/archive/refs/tags/v0.8.0.tar.gz
 test:
   commands:
   - somatem --help
-  - test -f "${PREFIX}/share/somatem-0.7.1/main.nf"
-  - test -f "${PREFIX}/share/somatem-0.7.1/nextflow.config"
+  - test -f "${PREFIX}/share/somatem-0.8.0/main.nf"
+  - test -f "${PREFIX}/share/somatem-0.8.0/nextflow.config"
   - test -f "${PREFIX}/bin/somatem"

@@ -1,0 +1,56 @@
+about:
+  description: 'kMate estimates per-founder mixture proportions (h) in a sequenced
+    pool from
+
+    canonical k-mer counts against a pangenome founder x k-mer matrix, then
+
+    projects to per-record allele frequencies for SNPs, indels and SVs in one
+
+    pass. Supports whole-chromosome (global) and per-window (window) estimation
+
+    and optional per-bubble k-mer weighting. `kmate selftest` verifies an install
+
+    on a bundled fixture.
+
+    '
+  dev_url: https://github.com/Tatianabellagio/kMate
+  home: https://github.com/Tatianabellagio/kMate
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: k-mer-based founder-mixture frequency estimation for pool-seq
+build:
+  entry_points:
+  - kmate = kmate.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - Tatianabellagio
+package:
+  name: kmate
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.8
+  - numpy
+  - scipy
+  - pysam
+  - jellyfish
+  - samtools
+source:
+  sha256: ac20fee8912f78c41f873408ef2a69c8239fbb50e914da9195b7d7f82662c045
+  url: https://pypi.io/packages/source/k/kmate/kmate-0.1.0.tar.gz
+test:
+  commands:
+  - kmate --help
+  - kmate --version
+  imports:
+  - kmate

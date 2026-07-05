@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/jiangyun-fun/sam-formatter
+  home: https://github.com/jiangyun-fun/sam-formatter
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Convert SAM/BAM alignments into uniform tabular output (CSV/TSV/PSV/Parquet).
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export CARGO_PROFILE_RELEASE_STRIP=symbols CARGO_PROFILE_RELEASE_LTO=fat
+  - cargo install --no-track --locked --bins --root $PREFIX --path .
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+extra:
+  recipe-maintainers:
+  - jiangyun-fun
+package:
+  name: sam-formatter
+  version: 1.2.0
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+- sha256: 7cabe173536d5ca8e341cd28aefa6160c654fc9a8b441bd8ba6ea6355d5c78cc
+  url: https://github.com/jiangyun-fun/sam-formatter/archive/refs/tags/v1.2.0.tar.gz
+- sha256: 39884f4e25598bd8658a209c84a58eef1a3ee933015b29ecce02d767089d3371
+  url: https://raw.githubusercontent.com/jiangyun-fun/sam-formatter/main/LICENSE
+test:
+  commands:
+  - sam-formatter --help
+  - sam-formatter --version
