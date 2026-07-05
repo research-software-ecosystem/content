@@ -1,0 +1,47 @@
+about:
+  description: 'BaMMmotif2 is a command-line tool for de novo discovery of enriched
+    motifs
+
+    modelled by higher-order Bayesian Markov models. This Bioconda recipe
+
+    packages the core C++ command-line tools only and does not add R plotting
+
+    dependencies.
+
+    '
+  home: https://github.com/soedinglab/BaMMmotif2
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: Bayesian Markov Model motif discovery tool version 2
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - ubercomrade
+package:
+  name: bammmotif2
+  version: 2.0.0
+requirements:
+  build:
+  - null
+  - null
+  - cmake
+  - make
+  host:
+  - boost-cpp
+  run:
+  - boost-cpp
+source:
+  sha256: a9c72631c37b2b142203a06530c3c251905a27d9a9aa1d7067c7b80062466b10
+  url: https://github.com/soedinglab/BaMMmotif2/archive/refs/tags/v2.0.tar.gz
+test:
+  commands:
+  - test -x "${PREFIX}/bin/BaMMmotif"
+  - test -x "${PREFIX}/bin/BaMMScan"
+  - test -x "${PREFIX}/bin/FDR"
+  - BaMMmotif --help > bammmotif.help 2>&1 || true
+  - test -s bammmotif.help
+  - grep -Eiq "SYNOPSIS:|BaMMmotif OUTDIR|OPTIONS:" bammmotif.help

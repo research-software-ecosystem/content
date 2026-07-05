@@ -1,0 +1,32 @@
+about:
+  description: 'FUNGAR is a Bash pipeline for detecting antifungal resistance mutations
+
+    directly from metagenomic short reads using DIAMOND and curated mutation databases.'
+  home: https://github.com/resgen-br/fungar
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'FUNGAR: antifungal resistance detection pipeline'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+package:
+  name: fungar
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.6
+  run:
+  - python >=3.6
+  - pandas
+  - diamond
+source:
+  sha256: bb041930f41c0a9d6c5de7557601193b3bb35bc92c3aa5ae9519e722f3ece93e
+  url: https://github.com/resgen-br/fungar/archive/refs/tags/v2.0.0.tar.gz
+test:
+  commands:
+  - fungar --help
+  - fungar_report.py --help
+  - fungar_benchmark.py --help

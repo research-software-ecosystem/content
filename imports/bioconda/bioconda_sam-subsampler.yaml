@@ -1,0 +1,58 @@
+about:
+  description: 'sam-subsampler subsamples reads from a BAM/CRAM/SAM file by per-reference
+
+    count and tags the selected reads in place (it does not filter). Unlike
+
+    samtools view -s, it samples unique qnames per reference and tags every
+
+    record of a selected read (mate, supplementary) with a custom BAM aux tag.
+
+    '
+  dev_url: https://github.com/jiangyun-fun/sam-subsampler
+  home: https://github.com/jiangyun-fun/sam-subsampler
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Two-pass BAM/CRAM subsampler that tags a randomly chosen subset of reads
+    in place.
+build:
+  ignore_run_exports:
+  - bzip2
+  - libdeflate
+  - liblzma
+  - libzlib
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - jiangyun-fun
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: sam-subsampler
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - clangdev
+  - cmake
+  - make
+  - pkg-config
+  - cargo-bundle-licenses
+  host:
+  - zlib
+  - bzip2
+  - xz
+  - libdeflate
+source:
+  sha256: 0a8b89136f9e6121785defc06dafe7717c10d84af25dbf6dc6c3ea12ed97546c
+  url: https://github.com/jiangyun-fun/sam-subsampler/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - sam-subsampler --help
+  - sam-subsampler --version
