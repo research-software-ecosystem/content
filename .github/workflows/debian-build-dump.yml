@@ -19,6 +19,11 @@ jobs:
           repository: research-software-ecosystem/utils
           path: utils
 
+      - uses: actions/checkout@v4
+        with:
+          repository: research-software-ecosystem/RSEc_SPARQL_endpoint
+          path: RSEc_SPARQL_endpoint
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -46,4 +51,21 @@ jobs:
               echo "successfully created new data"
           else
               echo "nothing new to add, exiting"            
+          fi
+
+      - name: commit new data to RSEc_SPARQL_endpoint
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd ${{ github.workspace }}/RSEc_SPARQL_endpoint/
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git add .
+          if git commit -m "update debian bioschemas dump on $(date)"; then
+              git pull --rebase || { git rebase --abort; echo "rebase failed, exiting"; exit 1; }
+              git push origin HEAD
+              echo "successfully created new data"
+          else
+              echo "nothing new to add, exiting"
           fi
