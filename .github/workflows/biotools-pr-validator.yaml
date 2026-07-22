@@ -38,6 +38,7 @@ jobs:
           git config user.email "support-bio-tools@sdu.dk"
           git add "${{ steps.vars.outputs.file }}"
           git commit -m "reformat json with jq" || echo "No changes to commit"
+          git pull --rebase || { git rebase --abort; echo "rebase failed, exiting"; exit 1; }
           git push origin HEAD:${{ github.head_ref }}
           echo "✅ Reformatted JSON and pushed changes"
 
