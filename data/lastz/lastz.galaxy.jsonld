@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,42 +36,94 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:lastz",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_0622"
-  },
-  "schema1:description": "Galaxy wrappers for the Lastz and Lastz_d",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:data_0863"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0292"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0182"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_3198"
+      "@id": "galaxytool:lastz",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "png",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_0622"
+      },
+      "schema1:codeRepository": "https://github.com/lastz/lastz",
+      "schema1:dateCreated": "2018-02-12",
+      "schema1:description": "Galaxy wrappers for the Lastz and Lastz_d",
+      "schema1:encodingFormat": [
+        "tabular",
+        "png",
+        "txt"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_0863"
+        },
+        {
+          "@id": "edam:operation_0292"
+        },
+        {
+          "@id": "edam:topic_0182"
+        },
+        {
+          "@id": "edam:operation_3198"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:lastz"
+        },
+        {
+          "@id": "bioconda:lastz"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1638?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0e492839192d26e0"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=23212ae74fc2d2b5"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=b808cd1c0090b068"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": "Next Gen Mappers",
+      "schema1:name": "lastz",
+      "schema1:softwareVersion": "1.04.52",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/lastz"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:lastz"
-    },
-    {
-      "@id": "bioconda:lastz"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1638?version=1",
-    "https://usegalaxy.eu/published/workflow?id=0e492839192d26e0",
-    "https://usegalaxy.org/published/workflow?id=23212ae74fc2d2b5",
-    "https://usegalaxy.org.au/published/workflow?id=b808cd1c0090b068"
-  ],
-  "schema1:keywords": "Next Gen Mappers",
-  "schema1:name": "lastz",
-  "schema1:softwareVersion": "1.04.52",
-  "schema1:url": "https://github.com/lastz/lastz"
+  ]
 }

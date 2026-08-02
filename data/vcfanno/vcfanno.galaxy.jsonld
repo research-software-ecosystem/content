@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,33 +36,67 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:vcfanno",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_0199"
-  },
-  "schema1:description": "Annotate VCF files",
-  "schema1:featureList": {
-    "@id": "edam:operation_3661"
-  },
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:vcfanno"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "bioconda:vcfanno"
+      "@id": "galaxytool:vcfanno",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "vcf",
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_0199"
+      },
+      "schema1:codeRepository": "https://github.com/brentp/vcfanno",
+      "schema1:dateCreated": "2021-01-17",
+      "schema1:description": "Annotate VCF files",
+      "schema1:encodingFormat": "vcf",
+      "schema1:featureList": {
+        "@id": "edam:operation_3661"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:vcfanno"
+        },
+        {
+          "@id": "bioconda:vcfanno"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:629?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:607?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=ce1712139b4a4273"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2424282f793f0f1b"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=1da86d74f8535f4e"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=5ed38d8114bcd6f7"
+        }
+      ],
+      "schema1:keywords": "Variant Analysis",
+      "schema1:name": "vcfanno",
+      "schema1:softwareVersion": "0.3.9",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/vcfanno"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:629?version=1",
-    "workflowhub:607?version=1",
-    "https://usegalaxy.eu/published/workflow?id=ce1712139b4a4273",
-    "https://usegalaxy.eu/published/workflow?id=2424282f793f0f1b",
-    "https://usegalaxy.eu/published/workflow?id=1da86d74f8535f4e",
-    "https://usegalaxy.eu/published/workflow?id=5ed38d8114bcd6f7"
-  ],
-  "schema1:keywords": "Variant Analysis",
-  "schema1:name": "vcfanno",
-  "schema1:softwareVersion": "0.3.9",
-  "schema1:url": "https://github.com/brentp/vcfanno"
+  ]
 }

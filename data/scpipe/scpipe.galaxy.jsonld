@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,57 +36,88 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:scpipe",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0203"
+      "@id": "galaxytool:scpipe",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "pdf",
+        "html",
+        "txt",
+        "rdata"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0203"
+        },
+        {
+          "@id": "edam:topic_3170"
+        },
+        {
+          "@id": "edam:topic_3168"
+        }
+      ],
+      "schema1:codeRepository": "http://bioconductor.org/packages/release/bioc/html/scPipe.html",
+      "schema1:dateCreated": "2018-08-12",
+      "schema1:description": "A flexible preprocessing pipeline for single-cell RNA-sequencing data",
+      "schema1:encodingFormat": [
+        "tabular",
+        "pdf",
+        "html",
+        "txt",
+        "rdata"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0362"
+        },
+        {
+          "@id": "edam:topic_0222"
+        },
+        {
+          "@id": "edam:operation_2428"
+        },
+        {
+          "@id": "edam:data_1916"
+        },
+        {
+          "@id": "edam:operation_2928"
+        },
+        {
+          "@id": "edam:topic_0083"
+        },
+        {
+          "@id": "edam:operation_0337"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:scpipe"
+        },
+        {
+          "@id": "bioconda:bioconductor-scpipe"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0a692a2e643b9e1a"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": [
+        "Transcriptomics",
+        "Single Cell"
+      ],
+      "schema1:name": "scpipe",
+      "schema1:softwareVersion": "1.0.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/scpipe"
     },
     {
-      "@id": "edam:topic_3170"
-    },
-    {
-      "@id": "edam:topic_3168"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "A flexible preprocessing pipeline for single-cell RNA-sequencing data",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0362"
-    },
-    {
-      "@id": "edam:topic_0222"
-    },
-    {
-      "@id": "edam:operation_2428"
-    },
-    {
-      "@id": "edam:data_1916"
-    },
-    {
-      "@id": "edam:operation_2928"
-    },
-    {
-      "@id": "edam:topic_0083"
-    },
-    {
-      "@id": "edam:operation_0337"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:scpipe"
-    },
-    {
-      "@id": "bioconda:bioconductor-scpipe"
-    }
-  ],
-  "schema1:isPartOf": "https://usegalaxy.eu/published/workflow?id=0a692a2e643b9e1a",
-  "schema1:keywords": [
-    "Transcriptomics",
-    "Single Cell"
-  ],
-  "schema1:name": "scpipe",
-  "schema1:softwareVersion": "1.0.0",
-  "schema1:url": "http://bioconductor.org/packages/release/bioc/html/scPipe.html"
+  ]
 }

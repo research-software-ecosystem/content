@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,27 +36,56 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:celltypist",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:description": "CellTypist – Automated cell type annotation for scRNA-seq datasets",
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:celltypist"
+      "@id": "galaxytool:celltypist",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "h5ad",
+        "png",
+        "pdf",
+        "svg"
+      ],
+      "schema1:codeRepository": "https://www.celltypist.org/",
+      "schema1:dateCreated": "2026-03-10",
+      "schema1:description": "CellTypist – Automated cell type annotation for scRNA-seq datasets",
+      "schema1:encodingFormat": [
+        "h5ad",
+        "png",
+        "pdf",
+        "svg"
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:celltypist"
+        },
+        {
+          "@id": "bioconda:celltypist"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=825ae7bc61667fb1"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2e77db54ec220cc2"
+        }
+      ],
+      "schema1:keywords": [
+        "Single Cell",
+        "Spatial Omics",
+        "Transcriptomics"
+      ],
+      "schema1:name": "celltypist",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/celltypist"
     },
     {
-      "@id": "bioconda:celltypist"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.eu/published/workflow?id=825ae7bc61667fb1",
-    "https://usegalaxy.eu/published/workflow?id=2e77db54ec220cc2"
-  ],
-  "schema1:keywords": [
-    "Single Cell",
-    "Spatial Omics",
-    "Transcriptomics"
-  ],
-  "schema1:name": "celltypist",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://www.celltypist.org/"
+  ]
 }

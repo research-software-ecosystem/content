@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,38 +36,57 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:msmetaenhancer",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3172"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3343"
+      "@id": "galaxytool:msmetaenhancer",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "txt",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3172"
+        },
+        {
+          "@id": "edam:topic_3343"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/RECETOX/MSMetaEnhancer",
+      "schema1:dateCreated": "2021-11-22",
+      "schema1:encodingFormat": "txt",
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_2018"
+        },
+        {
+          "@id": "edam:operation_0226"
+        },
+        {
+          "@id": "edam:operation_3435"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:msmetaenhancer"
+        },
+        {
+          "@id": "bioconda:msmetaenhancer"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:888?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        }
+      ],
+      "schema1:keywords": "Metabolomics",
+      "schema1:name": "msmetaenhancer",
+      "schema1:softwareVersion": "0.5.1",
+      "schema1:url": "https://github.com/RECETOX/galaxytools/tree/master/tools/msmetaenhancer"
     }
-  ],
-  "schema1:featureList": [
-    {
-      "@id": "edam:data_2018"
-    },
-    {
-      "@id": "edam:operation_0226"
-    },
-    {
-      "@id": "edam:operation_3435"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:msmetaenhancer"
-    },
-    {
-      "@id": "bioconda:msmetaenhancer"
-    }
-  ],
-  "schema1:isPartOf": "workflowhub:888?version=2",
-  "schema1:keywords": "Metabolomics",
-  "schema1:name": "msmetaenhancer",
-  "schema1:softwareVersion": "0.5.1",
-  "schema1:url": "https://github.com/RECETOX/MSMetaEnhancer"
+  ]
 }

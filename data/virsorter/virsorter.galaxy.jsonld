@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,34 +36,61 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:virsorter",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3174"
-  },
-  "schema1:description": "VirSorter2 applies a multi-classifier, expert-guided approach to detect diverse DNA and RNA virus genomes.",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:data_1872"
+      "@id": "galaxytool:virsorter",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "fasta",
+        "tabular",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3174"
+      },
+      "schema1:codeRepository": "https://github.com/jiarong/VirSorter2/",
+      "schema1:dateCreated": "2024-06-20",
+      "schema1:description": "VirSorter2 applies a multi-classifier, expert-guided approach to detect diverse DNA and RNA virus genomes.",
+      "schema1:encodingFormat": [
+        "fasta",
+        "tabular",
+        "txt"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_1872"
+        },
+        {
+          "@id": "edam:operation_3460"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:virsorter"
+        },
+        {
+          "@id": "bioconda:virsorter"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=62392daea25a3980"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=87231a6a7938cb95"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "virsorter",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/Helmholtz-UFZ/ufz-galaxy-tools/blob/main/tools/virsorter"
     },
     {
-      "@id": "edam:operation_3460"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:virsorter"
-    },
-    {
-      "@id": "bioconda:virsorter"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.eu/published/workflow?id=62392daea25a3980",
-    "https://usegalaxy.eu/published/workflow?id=87231a6a7938cb95"
-  ],
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "virsorter",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://github.com/jiarong/VirSorter2/"
+  ]
 }

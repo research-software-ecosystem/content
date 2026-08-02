@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,53 +36,117 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:maker",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0622"
+      "@id": "galaxytool:maker",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "gff3",
+        "gff",
+        "tabular"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:topic_0654"
+        },
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "schema1:codeRepository": "http://www.yandell-lab.org/software/maker.html",
+      "schema1:dateCreated": "2017-10-04",
+      "schema1:description": "MAKER is a portable and easily configurable genome annotation pipeline.Its purpose is to allow smaller eukaryotic and prokaryotic genome projects to independently annotate their genomes and to create genome databases.",
+      "schema1:encodingFormat": [
+        "gff3",
+        "gff",
+        "tabular"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0362"
+        },
+        {
+          "@id": "edam:topic_0222"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:maker"
+        },
+        {
+          "@id": "bioconda:maker"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1323?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1549?version=1"
+        },
+        {
+          "@id": "workflowhub:1504?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=26ad77bc07a7e512"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=6ca20e710f4f3ffb"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=dbe08700353dfc43"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=65b4051e722228b8"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=7a87dfe5bdd30040"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=7e40485d1ed45b7c"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "maker",
+      "schema1:softwareVersion": "2.31.11",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/maker"
     },
     {
-      "@id": "edam:topic_0654"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_2403"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0080"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "MAKER is a portable and easily configurable genome annotation pipeline.Its purpose is to allow smaller eukaryotic and prokaryotic genome projects to independently annotate their genomes and to create genome databases.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0362"
-    },
-    {
-      "@id": "edam:topic_0222"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:maker"
-    },
-    {
-      "@id": "bioconda:maker"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1323?version=1",
-    "workflowhub:1549?version=1",
-    "workflowhub:1504?version=1",
-    "https://usegalaxy.eu/published/workflow?id=26ad77bc07a7e512",
-    "https://usegalaxy.eu/published/workflow?id=6ca20e710f4f3ffb",
-    "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5",
-    "https://usegalaxy.org/published/workflow?id=dbe08700353dfc43",
-    "https://usegalaxy.org/published/workflow?id=65b4051e722228b8",
-    "https://usegalaxy.org.au/published/workflow?id=7a87dfe5bdd30040",
-    "https://usegalaxy.org.au/published/workflow?id=7e40485d1ed45b7c"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "maker",
-  "schema1:softwareVersion": "2.31.11",
-  "schema1:url": "http://www.yandell-lab.org/software/maker.html"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,37 +36,87 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:das_tool",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3174"
-  },
-  "schema1:description": "DAS Tool for genome resolved metagenomics",
-  "schema1:featureList": {
-    "@id": "edam:operation_3798"
-  },
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:dastool"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "bioconda:das_tool"
+      "@id": "galaxytool:das_tool",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "txt",
+        "fasta"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3174"
+      },
+      "schema1:codeRepository": "https://github.com/cmks/DAS_Tool",
+      "schema1:dateCreated": "2022-06-23",
+      "schema1:description": "DAS Tool for genome resolved metagenomics",
+      "schema1:encodingFormat": [
+        "tabular",
+        "txt",
+        "fasta"
+      ],
+      "schema1:featureList": {
+        "@id": "edam:operation_3798"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:dastool"
+        },
+        {
+          "@id": "bioconda:das_tool"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2100?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:2028?version=1"
+        },
+        {
+          "@id": "workflowhub:1352?version=4"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=00f15824c7a9b196"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=ce5c9287a67e6085"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=7ecd92cb382d8168"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=43098b8afe78b071"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=1e5f1d9a51032e44"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0563f58718be932d"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=97312d273b6e8bd9"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "das_tool",
+      "schema1:softwareVersion": "1.1.7",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/das_tool"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2100?version=2",
-    "workflowhub:2028?version=1",
-    "workflowhub:1352?version=4",
-    "https://usegalaxy.eu/published/workflow?id=00f15824c7a9b196",
-    "https://usegalaxy.eu/published/workflow?id=ce5c9287a67e6085",
-    "https://usegalaxy.eu/published/workflow?id=7ecd92cb382d8168",
-    "https://usegalaxy.eu/published/workflow?id=43098b8afe78b071",
-    "https://usegalaxy.eu/published/workflow?id=1e5f1d9a51032e44",
-    "https://usegalaxy.eu/published/workflow?id=0563f58718be932d",
-    "https://usegalaxy.eu/published/workflow?id=97312d273b6e8bd9"
-  ],
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "das_tool",
-  "schema1:softwareVersion": "1.1.7",
-  "schema1:url": "https://github.com/cmks/DAS_Tool"
+  ]
 }

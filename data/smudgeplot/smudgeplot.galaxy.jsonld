@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,55 +36,97 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:smudgeplot",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:data_0925"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0310"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:topic_0199"
-    },
-    {
-      "@id": "edam:topic_3315"
+      "@id": "galaxytool:smudgeplot",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "png",
+        "tabular",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:topic_0199"
+        },
+        {
+          "@id": "edam:topic_3315"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/KamilSJaron/smudgeplot",
+      "schema1:dateCreated": "2022-07-01",
+      "schema1:description": "Inference of ploidy and heterozygosity structure using whole genome sequencing",
+      "schema1:encodingFormat": [
+        "png",
+        "tabular",
+        "txt"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_3192"
+        },
+        {
+          "@id": "edam:operation_3196"
+        },
+        {
+          "@id": "edam:operation_3472"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:smudgeplots"
+        },
+        {
+          "@id": "bioconda:smudgeplot"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1104?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:603?version=2"
+        },
+        {
+          "@id": "workflowhub:1641?version=1"
+        },
+        {
+          "@id": "workflowhub:1103?version=3"
+        },
+        {
+          "@id": "workflowhub:698?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=bc32937d505135ab"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": "Assembly",
+      "schema1:name": "smudgeplot",
+      "schema1:softwareVersion": "0.2.5",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/smudgeplot"
     }
-  ],
-  "schema1:description": "Inference of ploidy and heterozygosity structure using whole genome sequencing",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_3192"
-    },
-    {
-      "@id": "edam:operation_3196"
-    },
-    {
-      "@id": "edam:operation_3472"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:smudgeplots"
-    },
-    {
-      "@id": "bioconda:smudgeplot"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1104?version=2",
-    "workflowhub:603?version=2",
-    "workflowhub:1641?version=1",
-    "workflowhub:1103?version=3",
-    "workflowhub:698?version=1",
-    "https://usegalaxy.eu/published/workflow?id=bc32937d505135ab"
-  ],
-  "schema1:keywords": "Assembly",
-  "schema1:name": "smudgeplot",
-  "schema1:softwareVersion": "0.2.5",
-  "schema1:url": "https://github.com/KamilSJaron/smudgeplot"
+  ]
 }

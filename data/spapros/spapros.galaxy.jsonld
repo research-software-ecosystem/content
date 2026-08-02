@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,32 +36,61 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:spapros",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:description": "Select and evaluate probe sets for targeted spatial transcriptomics.",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:operation_2419"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0337"
+      "@id": "galaxytool:spapros",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "png",
+        "pdf",
+        "svg",
+        "tabular"
+      ],
+      "schema1:codeRepository": "https://github.com/theislab/spapros",
+      "schema1:dateCreated": "2024-08-25",
+      "schema1:description": "Select and evaluate probe sets for targeted spatial transcriptomics.",
+      "schema1:encodingFormat": [
+        "png",
+        "pdf",
+        "svg",
+        "tabular"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2419"
+        },
+        {
+          "@id": "edam:operation_0337"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:spapros"
+        },
+        {
+          "@id": "bioconda:spapros"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=9adf0402b641042c"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": [
+        "Single Cell",
+        "Transcriptomics",
+        "Sequence Analysis"
+      ],
+      "schema1:name": "spapros",
+      "schema1:softwareVersion": "0.1.5",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/spapros"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:spapros"
-    },
-    {
-      "@id": "bioconda:spapros"
-    }
-  ],
-  "schema1:isPartOf": "https://usegalaxy.eu/published/workflow?id=9adf0402b641042c",
-  "schema1:keywords": [
-    "Single Cell",
-    "Transcriptomics",
-    "Sequence Analysis"
-  ],
-  "schema1:name": "spapros",
-  "schema1:softwareVersion": "0.1.5",
-  "schema1:url": "https://github.com/theislab/spapros"
+  ]
 }

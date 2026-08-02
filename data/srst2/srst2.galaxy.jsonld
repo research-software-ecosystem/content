@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,34 +36,59 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:srst2",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3673"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3305"
-    },
-    {
-      "@id": "edam:topic_0797"
+      "@id": "galaxytool:srst2",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "fasta"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3673"
+        },
+        {
+          "@id": "edam:topic_3305"
+        },
+        {
+          "@id": "edam:topic_0797"
+        }
+      ],
+      "schema1:codeRepository": "http://katholt.github.io/srst2/",
+      "schema1:dateCreated": "2022-08-22",
+      "schema1:description": "SRST2 Short Read Sequence Typing for Bacterial Pathogens",
+      "schema1:encodingFormat": [
+        "tabular",
+        "fasta"
+      ],
+      "schema1:featureList": {
+        "@id": "edam:operation_3840"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:srst2"
+        },
+        {
+          "@id": "bioconda:samtools"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:407?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "srst2",
+      "schema1:softwareVersion": "0.2.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/srst2"
     }
-  ],
-  "schema1:description": "SRST2 Short Read Sequence Typing for Bacterial Pathogens",
-  "schema1:featureList": {
-    "@id": "edam:operation_3840"
-  },
-  "schema1:identifier": [
-    {
-      "@id": "biotools:srst2"
-    },
-    {
-      "@id": "bioconda:samtools"
-    }
-  ],
-  "schema1:isPartOf": "workflowhub:407?version=1",
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "srst2",
-  "schema1:softwareVersion": "0.2.0",
-  "schema1:url": "http://katholt.github.io/srst2/"
+  ]
 }

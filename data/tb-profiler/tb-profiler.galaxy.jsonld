@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,38 +36,118 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:tb-profiler",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:description": "Processes M. tuberculosis sequence data to infer strain type and identify known drug resistance markers.",
-  "schema1:featureList": {
-    "@id": "edam:operation_3482"
-  },
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:tb-profiler"
+      "@id": "galaxytool:tb-profiler",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "csv",
+        "txt",
+        "json",
+        "vcf",
+        "bam",
+        "pdf"
+      ],
+      "schema1:codeRepository": "https://github.com/jodyphelan/TBProfiler",
+      "schema1:dateCreated": "2019-04-02",
+      "schema1:description": "Processes M. tuberculosis sequence data to infer strain type and identify known drug resistance markers.",
+      "schema1:encodingFormat": [
+        "tabular",
+        "csv",
+        "txt",
+        "json",
+        "vcf",
+        "bam",
+        "pdf"
+      ],
+      "schema1:featureList": {
+        "@id": "edam:operation_3482"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:tb-profiler"
+        },
+        {
+          "@id": "bioconda:tb-profiler"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2049?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1647?version=2"
+        },
+        {
+          "@id": "workflowhub:1564?version=1"
+        },
+        {
+          "@id": "workflowhub:1035?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=461d71caea871db8"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2b25eaebd3987612"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=c38e3ac59d8b86d6"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2c79eee5ca5a3b09"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d0d6dae0d1eecc21"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=3ff4dbcc7a602e6b"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=89ed570bc0703472"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=e7ce46762faccaac"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=a61d4bda54de7cd1"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=5693811cd933d2a2"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "tb-profiler",
+      "schema1:softwareVersion": "6.6.5",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/tb-profiler"
     },
     {
-      "@id": "bioconda:tb-profiler"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2049?version=1",
-    "workflowhub:1647?version=2",
-    "workflowhub:1564?version=1",
-    "workflowhub:1035?version=1",
-    "https://usegalaxy.eu/published/workflow?id=461d71caea871db8",
-    "https://usegalaxy.eu/published/workflow?id=2b25eaebd3987612",
-    "https://usegalaxy.eu/published/workflow?id=c38e3ac59d8b86d6",
-    "https://usegalaxy.eu/published/workflow?id=2c79eee5ca5a3b09",
-    "https://usegalaxy.eu/published/workflow?id=d0d6dae0d1eecc21",
-    "https://usegalaxy.eu/published/workflow?id=3ff4dbcc7a602e6b",
-    "https://usegalaxy.eu/published/workflow?id=89ed570bc0703472",
-    "https://usegalaxy.org/published/workflow?id=e7ce46762faccaac",
-    "https://usegalaxy.org.au/published/workflow?id=a61d4bda54de7cd1",
-    "https://usegalaxy.org.au/published/workflow?id=5693811cd933d2a2"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "tb-profiler",
-  "schema1:softwareVersion": "6.6.5",
-  "schema1:url": "https://github.com/jodyphelan/TBProfiler"
+  ]
 }

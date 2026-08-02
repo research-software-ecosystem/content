@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,35 +36,79 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:riassigner",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3172"
+      "@id": "https://usegalaxy.cz",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3343"
-    }
-  ],
-  "schema1:featureList": {
-    "@id": "edam:operation_3435"
-  },
-  "schema1:identifier": [
-    {
-      "@id": "biotools:riassigner"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "bioconda:riassigner"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.fr",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "galaxytool:riassigner",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tsv",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3172"
+        },
+        {
+          "@id": "edam:topic_3343"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/RECETOX/RIAssigner",
+      "schema1:dateCreated": "2021-08-19",
+      "schema1:encodingFormat": "tsv",
+      "schema1:featureList": {
+        "@id": "edam:operation_3435"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:riassigner"
+        },
+        {
+          "@id": "bioconda:riassigner"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1582?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.fr/published/workflow?id=1407c1703f360f07"
+        },
+        {
+          "@id": "https://usegalaxy.fr"
+        },
+        {
+          "@id": "https://usegalaxy.cz/published/workflow?id=bc8f2b3ecdad343e"
+        },
+        {
+          "@id": "https://usegalaxy.cz"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=3086366b744e8da9"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": "Metabolomics",
+      "schema1:name": "riassigner",
+      "schema1:softwareVersion": "0.6.1",
+      "schema1:url": "https://github.com/RECETOX/galaxytools/tree/master/tools/riassigner"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1582?version=1",
-    "https://usegalaxy.fr/published/workflow?id=1407c1703f360f07",
-    "https://usegalaxy.cz/published/workflow?id=bc8f2b3ecdad343e",
-    "https://usegalaxy.eu/published/workflow?id=3086366b744e8da9"
-  ],
-  "schema1:keywords": "Metabolomics",
-  "schema1:name": "riassigner",
-  "schema1:softwareVersion": "0.6.1",
-  "schema1:url": "https://github.com/RECETOX/RIAssigner"
+  ]
 }

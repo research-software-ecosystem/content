@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,65 +36,127 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:metanovo",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0121"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3697"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3174"
+      "@id": "galaxytool:metanovo",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "fasta",
+        "csv"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0121"
+        },
+        {
+          "@id": "edam:topic_3697"
+        },
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_3520"
+        },
+        {
+          "@id": "edam:topic_0154"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/uct-cbio/proteomics-pipelines",
+      "schema1:dateCreated": "2022-03-29",
+      "schema1:description": "Produce targeted databases for mass spectrometry analysis.",
+      "schema1:encodingFormat": [
+        "fasta",
+        "csv"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_3649"
+        },
+        {
+          "@id": "edam:operation_3644"
+        },
+        {
+          "@id": "edam:operation_3643"
+        },
+        {
+          "@id": "edam:operation_3767"
+        },
+        {
+          "@id": "edam:operation_2495"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:metanovo"
+        },
+        {
+          "@id": "bioconda:metanovo"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1474?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1461?version=1"
+        },
+        {
+          "@id": "workflowhub:1216?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d7c7a4d6c8072167"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=7cfbf4b7bd3f30d3"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2f7e13eb26c8cd18"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=c6aecbdbeb27585f"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=f2b45a7ff4f449e6"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=2be8ecd5922d23d1"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=351f3fab960c013b"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": "Proteomics",
+      "schema1:name": "metanovo",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproteomics/tools-galaxyp/tree/master/tools/metanovo"
     },
     {
-      "@id": "edam:topic_3520"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0154"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Produce targeted databases for mass spectrometry analysis.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_3649"
-    },
-    {
-      "@id": "edam:operation_3644"
-    },
-    {
-      "@id": "edam:operation_3643"
-    },
-    {
-      "@id": "edam:operation_3767"
-    },
-    {
-      "@id": "edam:operation_2495"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:metanovo"
-    },
-    {
-      "@id": "bioconda:metanovo"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1474?version=1",
-    "workflowhub:1461?version=1",
-    "workflowhub:1216?version=1",
-    "https://usegalaxy.eu/published/workflow?id=d7c7a4d6c8072167",
-    "https://usegalaxy.eu/published/workflow?id=7cfbf4b7bd3f30d3",
-    "https://usegalaxy.eu/published/workflow?id=2f7e13eb26c8cd18",
-    "https://usegalaxy.eu/published/workflow?id=c6aecbdbeb27585f",
-    "https://usegalaxy.eu/published/workflow?id=f2b45a7ff4f449e6",
-    "https://usegalaxy.org/published/workflow?id=2be8ecd5922d23d1",
-    "https://usegalaxy.org.au/published/workflow?id=351f3fab960c013b"
-  ],
-  "schema1:keywords": "Proteomics",
-  "schema1:name": "metanovo",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://github.com/uct-cbio/proteomics-pipelines"
+  ]
 }

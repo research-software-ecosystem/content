@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,52 +36,90 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:braker3",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3170"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0622"
+      "@id": "galaxytool:braker3",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "gtf",
+        "gff3"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3170"
+        },
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:operation_0271"
+        },
+        {
+          "@id": "edam:topic_0082"
+        },
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/Gaius-Augustus/BRAKER",
+      "schema1:dateCreated": "2023-06-13",
+      "schema1:description": "BRAKER3 is a pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes .",
+      "schema1:encodingFormat": [
+        "gtf",
+        "gff3"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0362"
+        },
+        {
+          "@id": "edam:topic_0222"
+        },
+        {
+          "@id": "edam:operation_2454"
+        }
+      ],
+      "schema1:identifier": {
+        "@id": "biotools:braker3"
+      },
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2029?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1746?version=1"
+        },
+        {
+          "@id": "workflowhub:1509?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=84b447be2f1c5870"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5"
+        }
+      ],
+      "schema1:keywords": "Genome annotation",
+      "schema1:name": "braker3",
+      "schema1:softwareVersion": "3.0.8",
+      "schema1:url": "https://github.com/genouest/galaxy-tools/tree/master/tools/braker"
     },
     {
-      "@id": "edam:operation_0271"
-    },
-    {
-      "@id": "edam:topic_0082"
-    },
-    {
-      "@id": "edam:operation_2403"
-    },
-    {
-      "@id": "edam:topic_0080"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "BRAKER3 is a pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes .",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0362"
-    },
-    {
-      "@id": "edam:topic_0222"
-    },
-    {
-      "@id": "edam:operation_2454"
-    }
-  ],
-  "schema1:identifier": {
-    "@id": "biotools:braker3"
-  },
-  "schema1:isPartOf": [
-    "workflowhub:2029?version=1",
-    "workflowhub:1746?version=1",
-    "workflowhub:1509?version=1",
-    "https://usegalaxy.org/published/workflow?id=84b447be2f1c5870",
-    "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5"
-  ],
-  "schema1:keywords": "Genome annotation",
-  "schema1:name": "braker3",
-  "schema1:softwareVersion": "3.0.8",
-  "schema1:url": "https://github.com/Gaius-Augustus/BRAKER"
+  ]
 }

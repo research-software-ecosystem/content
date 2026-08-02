@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,49 +36,89 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:kraken",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:data_3028"
+      "@id": "galaxytool:kraken",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tabular",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:data_3028"
+        },
+        {
+          "@id": "edam:topic_0637"
+        },
+        {
+          "@id": "edam:topic_3174"
+        }
+      ],
+      "schema1:codeRepository": "http://ccb.jhu.edu/software/kraken/",
+      "schema1:dateCreated": "2017-01-24",
+      "schema1:description": "Kraken is a system for assigning taxonomic labels to short DNAsequences, usually obtained through metagenomic studies. Previous attempts by otherbioinformatics software to accomplish this task have often used sequence alignmentor machine learning techniques that were quite slow, leading to the developmentof less sensitive but much faster abundance estimation programs. Kraken aims toachieve high sensitivity and high speed by utilizing exact alignments of k-mersand a novel classification algorithm.",
+      "schema1:encodingFormat": "tabular",
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_1872"
+        },
+        {
+          "@id": "edam:operation_3460"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:kraken"
+        },
+        {
+          "@id": "bioconda:kraken"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=074a0b1bc8273c16"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=fb01e1a49793c8be"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=87b3305ea433b4e2"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=33d90e718ce500ef"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=e0c33057ac2670ba"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=7321c6ad5425d347"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=a89e1018a00b883c"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=2ec3e326c51d3147"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=b6bad1f167257248"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "kraken",
+      "schema1:softwareVersion": "1.3.1",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tool_collections/kraken"
     },
     {
-      "@id": "edam:topic_0637"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3174"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Kraken is a system for assigning taxonomic labels to short DNAsequences, usually obtained through metagenomic studies. Previous attempts by otherbioinformatics software to accomplish this task have often used sequence alignmentor machine learning techniques that were quite slow, leading to the developmentof less sensitive but much faster abundance estimation programs. Kraken aims toachieve high sensitivity and high speed by utilizing exact alignments of k-mersand a novel classification algorithm.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:data_1872"
-    },
-    {
-      "@id": "edam:operation_3460"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:kraken"
-    },
-    {
-      "@id": "bioconda:kraken"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.org/published/workflow?id=074a0b1bc8273c16",
-    "https://usegalaxy.org/published/workflow?id=fb01e1a49793c8be",
-    "https://usegalaxy.org/published/workflow?id=87b3305ea433b4e2",
-    "https://usegalaxy.org/published/workflow?id=33d90e718ce500ef",
-    "https://usegalaxy.org/published/workflow?id=e0c33057ac2670ba",
-    "https://usegalaxy.org/published/workflow?id=7321c6ad5425d347",
-    "https://usegalaxy.org/published/workflow?id=a89e1018a00b883c",
-    "https://usegalaxy.org/published/workflow?id=2ec3e326c51d3147",
-    "https://usegalaxy.org.au/published/workflow?id=b6bad1f167257248"
-  ],
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "kraken",
-  "schema1:softwareVersion": "1.3.1",
-  "schema1:url": "http://ccb.jhu.edu/software/kraken/"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,45 +36,89 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:stacks",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:operation_2429"
+      "@id": "galaxytool:stacks",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "fasta",
+        "fastqsanger.gz",
+        "txt",
+        "html",
+        "tabular"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:operation_2429"
+        },
+        {
+          "@id": "edam:topic_0102"
+        },
+        {
+          "@id": "edam:topic_3056"
+        }
+      ],
+      "schema1:codeRepository": "http://catchenlab.life.illinois.edu/stacks/",
+      "schema1:dateCreated": "2016-03-07",
+      "schema1:description": "Stacks is a software pipeline for building loci from short-read sequences, such as RAD-seq",
+      "schema1:encodingFormat": [
+        "fasta",
+        "fastqsanger.gz",
+        "txt",
+        "html",
+        "tabular"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2409"
+        },
+        {
+          "@id": "edam:operation_2427"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:stacks"
+        },
+        {
+          "@id": "bioconda:stacks"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1683?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1665?version=1"
+        },
+        {
+          "@id": "workflowhub:1666?version=1"
+        },
+        {
+          "@id": "workflowhub:1662?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d257b9294afbd85d"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "stacks",
+      "schema1:softwareVersion": "1.46.1",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/stacks"
     },
     {
-      "@id": "edam:topic_0102"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3056"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Stacks is a software pipeline for building loci from short-read sequences, such as RAD-seq",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2409"
-    },
-    {
-      "@id": "edam:operation_2427"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:stacks"
-    },
-    {
-      "@id": "bioconda:stacks"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1683?version=1",
-    "workflowhub:1665?version=1",
-    "workflowhub:1666?version=1",
-    "workflowhub:1662?version=1",
-    "https://usegalaxy.eu/published/workflow?id=d257b9294afbd85d"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "stacks",
-  "schema1:softwareVersion": "1.46.1",
-  "schema1:url": "http://catchenlab.life.illinois.edu/stacks/"
+  ]
 }

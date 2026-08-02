@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,53 +36,118 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:roary",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0654"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0622"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_2429"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0102"
+      "@id": "galaxytool:roary",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "fasta",
+        "csv",
+        "nhx",
+        "dot",
+        "embl",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0654"
+        },
+        {
+          "@id": "edam:topic_0622"
+        },
+        {
+          "@id": "edam:operation_2429"
+        },
+        {
+          "@id": "edam:topic_0102"
+        }
+      ],
+      "schema1:codeRepository": "https://sanger-pathogens.github.io/Roary/",
+      "schema1:dateCreated": "2017-06-21",
+      "schema1:description": "Roary the pangenome pipeline",
+      "schema1:encodingFormat": [
+        "tabular",
+        "fasta",
+        "csv",
+        "nhx",
+        "dot",
+        "embl",
+        "txt"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0525"
+        },
+        {
+          "@id": "edam:operation_3440"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:roary"
+        },
+        {
+          "@id": "bioconda:roary"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=46ef864fe9468894"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=b1a799497c366eef"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=e16e524c557d7928"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=94c3d329c31c712f"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=628062a8cf93261f"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=23a87246c646eb8a"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=80565301ada0d3eb"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=78d8b738f5715a8a"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=05f3abecd4ddd4a1"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=3fd2195b6928d5e0"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "roary",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/roary"
     }
-  ],
-  "schema1:description": "Roary the pangenome pipeline",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0525"
-    },
-    {
-      "@id": "edam:operation_3440"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:roary"
-    },
-    {
-      "@id": "bioconda:roary"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.eu/published/workflow?id=46ef864fe9468894",
-    "https://usegalaxy.eu/published/workflow?id=b1a799497c366eef",
-    "https://usegalaxy.eu/published/workflow?id=e16e524c557d7928",
-    "https://usegalaxy.eu/published/workflow?id=94c3d329c31c712f",
-    "https://usegalaxy.eu/published/workflow?id=628062a8cf93261f",
-    "https://usegalaxy.org/published/workflow?id=23a87246c646eb8a",
-    "https://usegalaxy.org/published/workflow?id=80565301ada0d3eb",
-    "https://usegalaxy.org/published/workflow?id=78d8b738f5715a8a",
-    "https://usegalaxy.org.au/published/workflow?id=05f3abecd4ddd4a1",
-    "https://usegalaxy.org.au/published/workflow?id=3fd2195b6928d5e0"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "roary",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://sanger-pathogens.github.io/Roary/"
+  ]
 }

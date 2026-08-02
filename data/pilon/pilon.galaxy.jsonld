@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,47 +36,115 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:pilon",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:operation_3433"
-  },
-  "schema1:description": "pilon is a tool for assembly improvement and variant analysis in bacteria",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:data_0925"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0310"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0196"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "galaxytool:pilon",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "vcf",
+        "txt",
+        "fasta"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:operation_3433"
+      },
+      "schema1:codeRepository": "https://github.com/broadinstitute/pilon/wiki",
+      "schema1:dateCreated": "2016-08-11",
+      "schema1:description": "pilon is a tool for assembly improvement and variant analysis in bacteria",
+      "schema1:encodingFormat": [
+        "vcf",
+        "txt",
+        "fasta"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:pilon"
+        },
+        {
+          "@id": "bioconda:pilon"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2011?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1617?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=f15643eaf62f76a8"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=007ce6405d196df3"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=3588c40cab9b4e1d"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=bff206b4625375bc"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=8a40059343cf4b87"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=02c74095a7128c9d"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=7c343e5b55474d19"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=b5403e4fff2961f9"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=22bd45f60c60a338"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=2cb16d321a804b1a"
+        }
+      ],
+      "schema1:keywords": "Variant Analysis",
+      "schema1:name": "pilon",
+      "schema1:softwareVersion": "1.20.1",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/pilon"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:pilon"
-    },
-    {
-      "@id": "bioconda:pilon"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2011?version=1",
-    "workflowhub:1617?version=1",
-    "https://usegalaxy.eu/published/workflow?id=f15643eaf62f76a8",
-    "https://usegalaxy.eu/published/workflow?id=007ce6405d196df3",
-    "https://usegalaxy.eu/published/workflow?id=3588c40cab9b4e1d",
-    "https://usegalaxy.org/published/workflow?id=bff206b4625375bc",
-    "https://usegalaxy.org.au/published/workflow?id=8a40059343cf4b87",
-    "https://usegalaxy.org.au/published/workflow?id=02c74095a7128c9d",
-    "https://usegalaxy.org.au/published/workflow?id=7c343e5b55474d19",
-    "https://usegalaxy.org.au/published/workflow?id=b5403e4fff2961f9",
-    "https://usegalaxy.org.au/published/workflow?id=22bd45f60c60a338",
-    "https://usegalaxy.org.au/published/workflow?id=2cb16d321a804b1a"
-  ],
-  "schema1:keywords": "Variant Analysis",
-  "schema1:name": "pilon",
-  "schema1:softwareVersion": "1.20.1",
-  "schema1:url": "https://github.com/broadinstitute/pilon/wiki"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,36 +36,67 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:dexseq",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3170"
-  },
-  "schema1:description": "Inference of differential exon usage in RNA-Seq",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:operation_3501"
+      "@id": "galaxytool:dexseq",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "html",
+        "rds",
+        "gtf",
+        "pdf"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3170"
+      },
+      "schema1:codeRepository": "https://www.bioconductor.org/packages/release/bioc/html/DEXSeq.html",
+      "schema1:dateCreated": "2015-09-25",
+      "schema1:description": "Inference of differential exon usage in RNA-Seq",
+      "schema1:encodingFormat": [
+        "tabular",
+        "html",
+        "rds",
+        "gtf",
+        "pdf"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_3501"
+        },
+        {
+          "@id": "edam:operation_0446"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:dexseq"
+        },
+        {
+          "@id": "bioconda:bioconductor-dexseq"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=82681bd5f059e39a"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        }
+      ],
+      "schema1:keywords": [
+        "Transcriptomics",
+        "RNA",
+        "Statistics",
+        "Single Cell"
+      ],
+      "schema1:name": "dexseq",
+      "schema1:softwareVersion": "1.48.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/dexseq"
     },
     {
-      "@id": "edam:operation_0446"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:dexseq"
-    },
-    {
-      "@id": "bioconda:bioconductor-dexseq"
-    }
-  ],
-  "schema1:isPartOf": "https://usegalaxy.org/published/workflow?id=82681bd5f059e39a",
-  "schema1:keywords": [
-    "Transcriptomics",
-    "RNA",
-    "Statistics",
-    "Single Cell"
-  ],
-  "schema1:name": "dexseq",
-  "schema1:softwareVersion": "1.48.0",
-  "schema1:url": "https://www.bioconductor.org/packages/release/bioc/html/DEXSeq.html"
+  ]
 }

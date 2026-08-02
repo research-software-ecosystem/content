@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,47 +36,77 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:hamronization",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3305"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3301"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0091"
+      "@id": "galaxytool:hamronization",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tabular",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3305"
+        },
+        {
+          "@id": "edam:topic_3301"
+        },
+        {
+          "@id": "edam:topic_0091"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/pha4ge/hAMRonization",
+      "schema1:dateCreated": "2021-02-02",
+      "schema1:description": "Convert AMR gene detection tool output to hAMRonization specification format.",
+      "schema1:encodingFormat": "tabular",
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2409"
+        },
+        {
+          "@id": "edam:operation_2427"
+        },
+        {
+          "@id": "edam:operation_3482"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:hamronization"
+        },
+        {
+          "@id": "bioconda:hamronization"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1189?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:407?version=1"
+        },
+        {
+          "@id": "workflowhub:470?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=eb5ab8bc82569eee"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "hamronization",
+      "schema1:softwareVersion": "1.1.4",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/hamronization"
     }
-  ],
-  "schema1:description": "Convert AMR gene detection tool output to hAMRonization specification format.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2409"
-    },
-    {
-      "@id": "edam:operation_2427"
-    },
-    {
-      "@id": "edam:operation_3482"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:hamronization"
-    },
-    {
-      "@id": "bioconda:hamronization"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1189?version=2",
-    "workflowhub:407?version=1",
-    "workflowhub:470?version=1",
-    "https://usegalaxy.eu/published/workflow?id=eb5ab8bc82569eee"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "hamronization",
-  "schema1:softwareVersion": "1.1.4",
-  "schema1:url": "https://github.com/pha4ge/hAMRonization"
+  ]
 }

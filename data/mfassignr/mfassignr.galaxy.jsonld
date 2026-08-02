@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,51 +36,78 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:MFAssignR",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3520"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0769"
-    },
-    {
-      "@id": "edam:topic_3172"
+      "@id": "galaxytool:MFAssignR",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "txt",
+        "png"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3520"
+        },
+        {
+          "@id": "edam:topic_0769"
+        },
+        {
+          "@id": "edam:topic_3172"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/RECETOX/MFAssignR",
+      "schema1:dateCreated": "2024-08-02",
+      "schema1:description": "The MFAssignR package was designed for multi-element molecular formula (MF) assignment of ultrahigh resolution mass spectrometry measurements",
+      "schema1:encodingFormat": [
+        "tabular",
+        "txt",
+        "png"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0337"
+        },
+        {
+          "@id": "edam:operation_3627"
+        },
+        {
+          "@id": "edam:operation_3629"
+        },
+        {
+          "@id": "edam:data_2018"
+        },
+        {
+          "@id": "edam:operation_0226"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:mfassignr"
+        },
+        {
+          "@id": "bioconda:r-mfassignr"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1591?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1351?version=1"
+        }
+      ],
+      "schema1:keywords": "Metabolomics",
+      "schema1:name": "MFAssignR",
+      "schema1:softwareVersion": "1.1.2",
+      "schema1:url": "https://github.com/RECETOX/galaxytools/tree/master/tools/mfassignr"
     }
-  ],
-  "schema1:description": "The MFAssignR package was designed for multi-element molecular formula (MF) assignment of ultrahigh resolution mass spectrometry measurements",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0337"
-    },
-    {
-      "@id": "edam:operation_3627"
-    },
-    {
-      "@id": "edam:operation_3629"
-    },
-    {
-      "@id": "edam:data_2018"
-    },
-    {
-      "@id": "edam:operation_0226"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:mfassignr"
-    },
-    {
-      "@id": "bioconda:r-mfassignr"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1591?version=1",
-    "workflowhub:1351?version=1"
-  ],
-  "schema1:keywords": "Metabolomics",
-  "schema1:name": "MFAssignR",
-  "schema1:softwareVersion": "1.1.2",
-  "schema1:url": "https://github.com/RECETOX/MFAssignR"
+  ]
 }

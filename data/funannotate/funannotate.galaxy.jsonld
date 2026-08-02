@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,39 +36,122 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:funannotate",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_0622"
-  },
-  "schema1:description": "Funannotate is a genome prediction, annotation, and comparison software package.",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:operation_0362"
+      "@id": "https://usegalaxy.cz",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0222"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "galaxytool:funannotate",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "genbank",
+        "tabular",
+        "fasta",
+        "txt",
+        "gff3",
+        "json",
+        "html"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_0622"
+      },
+      "schema1:codeRepository": "https://funannotate.readthedocs.io",
+      "schema1:dateCreated": "2021-08-26",
+      "schema1:description": "Funannotate is a genome prediction, annotation, and comparison software package.",
+      "schema1:encodingFormat": [
+        "genbank",
+        "tabular",
+        "fasta",
+        "txt",
+        "gff3",
+        "json",
+        "html"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0362"
+        },
+        {
+          "@id": "edam:topic_0222"
+        }
+      ],
+      "schema1:identifier": {
+        "@id": "biotools:funannotate"
+      },
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1525?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1656?version=1"
+        },
+        {
+          "@id": "workflowhub:754?version=1"
+        },
+        {
+          "@id": "workflowhub:358?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.cz/published/workflow?id=932f4901960a595a"
+        },
+        {
+          "@id": "https://usegalaxy.cz"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=07c92110c3fffcf8"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=e5becc6d66b2568c"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=7251c6e0dad8f927"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=4e161a8f5098cc49"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=a9068ea858222e2b"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=52065a4100b11184"
+        }
+      ],
+      "schema1:keywords": "Genome annotation",
+      "schema1:name": "funannotate",
+      "schema1:softwareVersion": "1.8.17",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/funannotate"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:identifier": {
-    "@id": "biotools:funannotate"
-  },
-  "schema1:isPartOf": [
-    "workflowhub:1525?version=1",
-    "workflowhub:1656?version=1",
-    "workflowhub:754?version=1",
-    "workflowhub:358?version=1",
-    "https://usegalaxy.cz/published/workflow?id=932f4901960a595a",
-    "https://usegalaxy.eu/published/workflow?id=07c92110c3fffcf8",
-    "https://usegalaxy.eu/published/workflow?id=e5becc6d66b2568c",
-    "https://usegalaxy.org/published/workflow?id=c42c66d1b627c5a5",
-    "https://usegalaxy.org/published/workflow?id=7251c6e0dad8f927",
-    "https://usegalaxy.org.au/published/workflow?id=4e161a8f5098cc49",
-    "https://usegalaxy.org.au/published/workflow?id=a9068ea858222e2b",
-    "https://usegalaxy.org.au/published/workflow?id=52065a4100b11184"
-  ],
-  "schema1:keywords": "Genome annotation",
-  "schema1:name": "funannotate",
-  "schema1:softwareVersion": "1.8.17",
-  "schema1:url": "https://funannotate.readthedocs.io"
+  ]
 }

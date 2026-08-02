@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,69 +36,94 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:syri",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_2885"
+      "@id": "https://usegalaxy.fr",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:data_0925"
-    },
-    {
-      "@id": "edam:operation_0310"
-    },
-    {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:operation_2429"
-    },
-    {
-      "@id": "edam:topic_0102"
-    },
-    {
-      "@id": "edam:topic_3168"
+      "@id": "galaxytool:syri",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "vcf"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_2885"
+        },
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:operation_2429"
+        },
+        {
+          "@id": "edam:topic_0102"
+        },
+        {
+          "@id": "edam:topic_3168"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/schneebergerlab/syri",
+      "schema1:dateCreated": "2025-04-16",
+      "schema1:description": "Synteny and Rearrangement Identifier",
+      "schema1:encodingFormat": [
+        "tabular",
+        "vcf"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0487"
+        },
+        {
+          "@id": "edam:operation_3227"
+        },
+        {
+          "@id": "edam:operation_3196"
+        },
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:operation_3198"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:SyRI"
+        },
+        {
+          "@id": "bioconda:syri"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.fr/published/workflow?id=356dced9687596b7"
+        },
+        {
+          "@id": "https://usegalaxy.fr"
+        },
+        {
+          "@id": "https://usegalaxy.fr/published/workflow?id=ce4acd38084ee9ef"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "syri",
+      "schema1:softwareVersion": "1.7.1",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/syri"
     }
-  ],
-  "schema1:description": "Synteny and Rearrangement Identifier",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0487"
-    },
-    {
-      "@id": "edam:operation_3227"
-    },
-    {
-      "@id": "edam:operation_3196"
-    },
-    {
-      "@id": "edam:data_0925"
-    },
-    {
-      "@id": "edam:operation_0310"
-    },
-    {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:operation_3198"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:SyRI"
-    },
-    {
-      "@id": "bioconda:syri"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.fr/published/workflow?id=356dced9687596b7",
-    "https://usegalaxy.fr/published/workflow?id=ce4acd38084ee9ef"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "syri",
-  "schema1:softwareVersion": "1.7.1",
-  "schema1:url": "https://github.com/schneebergerlab/syri"
+  ]
 }

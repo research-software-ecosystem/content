@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,41 +36,89 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:pear",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:data_0925"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0310"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0196"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "galaxytool:pear",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "auto",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        }
+      ],
+      "schema1:codeRepository": "https://cme.h-its.org/exelixis/web/software/pear/",
+      "schema1:dateCreated": "2015-02-11",
+      "schema1:description": "PEAR evaluates all possible paired-end read overlaps",
+      "schema1:encodingFormat": "auto",
+      "schema1:featureList": {
+        "@id": "edam:operation_0232"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:pear"
+        },
+        {
+          "@id": "bioconda:pear"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2038?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:2036?version=1"
+        },
+        {
+          "@id": "workflowhub:232?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=8f415b0c409f56f7"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=9a1fb6ecff886358"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=14e80b7f9f68ec2a"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": "Fastq Manipulation",
+      "schema1:name": "pear",
+      "schema1:softwareVersion": "@TOOL_VERSION@.@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/pear"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "PEAR evaluates all possible paired-end read overlaps",
-  "schema1:featureList": {
-    "@id": "edam:operation_0232"
-  },
-  "schema1:identifier": [
-    {
-      "@id": "biotools:pear"
-    },
-    {
-      "@id": "bioconda:pear"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2038?version=1",
-    "workflowhub:2036?version=1",
-    "workflowhub:232?version=1",
-    "https://usegalaxy.eu/published/workflow?id=8f415b0c409f56f7",
-    "https://usegalaxy.org/published/workflow?id=9a1fb6ecff886358",
-    "https://usegalaxy.org.au/published/workflow?id=14e80b7f9f68ec2a"
-  ],
-  "schema1:keywords": "Fastq Manipulation",
-  "schema1:name": "pear",
-  "schema1:softwareVersion": "@TOOL_VERSION@.@VERSION_SUFFIX@",
-  "schema1:url": "https://cme.h-its.org/exelixis/web/software/pear/"
+  ]
 }

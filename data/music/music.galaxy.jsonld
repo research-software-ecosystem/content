@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,36 +36,92 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:music",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:description": "Multi-subject Single Cell deconvolution (MuSiC)",
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:music_deconvolution"
+      "@id": "galaxytool:music",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "txt",
+        "@RDATATYPE@",
+        "tabular",
+        "pdf"
+      ],
+      "schema1:codeRepository": "https://github.com/xuranw/MuSiC",
+      "schema1:dateCreated": "2021-09-12",
+      "schema1:description": "Multi-subject Single Cell deconvolution (MuSiC)",
+      "schema1:encodingFormat": [
+        "txt",
+        "@RDATATYPE@",
+        "tabular",
+        "pdf"
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:music_deconvolution"
+        },
+        {
+          "@id": "bioconda:music-deconvolution"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1575?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1557?version=1"
+        },
+        {
+          "@id": "workflowhub:1553?version=1"
+        },
+        {
+          "@id": "workflowhub:1548?version=1"
+        },
+        {
+          "@id": "workflowhub:1542?version=1"
+        },
+        {
+          "@id": "workflowhub:1498?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0fe04921b0cc53bb"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=cb978151b1686b71"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d1ab8eabcbe0a004"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2ae4a83327615155"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=030e978022e19375"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=39dd6365ff076dc4"
+        }
+      ],
+      "schema1:keywords": [
+        "Transcriptomics",
+        "Single Cell"
+      ],
+      "schema1:name": "music",
+      "schema1:softwareVersion": "0.1.1",
+      "schema1:url": "https://github.com/bgruening/galaxytools/tree/master/tools/music_deconvolution"
     },
     {
-      "@id": "bioconda:music-deconvolution"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1575?version=1",
-    "workflowhub:1557?version=1",
-    "workflowhub:1553?version=1",
-    "workflowhub:1548?version=1",
-    "workflowhub:1542?version=1",
-    "workflowhub:1498?version=1",
-    "https://usegalaxy.eu/published/workflow?id=0fe04921b0cc53bb",
-    "https://usegalaxy.eu/published/workflow?id=cb978151b1686b71",
-    "https://usegalaxy.eu/published/workflow?id=d1ab8eabcbe0a004",
-    "https://usegalaxy.eu/published/workflow?id=2ae4a83327615155",
-    "https://usegalaxy.eu/published/workflow?id=030e978022e19375",
-    "https://usegalaxy.eu/published/workflow?id=39dd6365ff076dc4"
-  ],
-  "schema1:keywords": [
-    "Transcriptomics",
-    "Single Cell"
-  ],
-  "schema1:name": "music",
-  "schema1:softwareVersion": "0.1.1",
-  "schema1:url": "https://github.com/xuranw/MuSiC"
+  ]
 }

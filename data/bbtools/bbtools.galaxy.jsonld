@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,71 +36,124 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:bbtools",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3168"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3320"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3673"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3293"
-    },
-    {
-      "@id": "edam:topic_3174"
-    },
-    {
-      "@id": "edam:topic_3170"
+      "@id": "galaxytool:bbtools",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "fastqsanger",
+        "tabular",
+        "fasta",
+        "txt",
+        "bam",
+        "fastq",
+        "vcf"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3168"
+        },
+        {
+          "@id": "edam:topic_3320"
+        },
+        {
+          "@id": "edam:topic_3673"
+        },
+        {
+          "@id": "edam:topic_3293"
+        },
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_3170"
+        }
+      ],
+      "schema1:codeRepository": "https://jgi.doe.gov/data-and-tools/bbtools/",
+      "schema1:dateCreated": "2021-10-04",
+      "schema1:description": "BBTools is a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data.BBTools can handle common sequencing file formats such as fastq, fasta, sam, scarf, fasta+qual, compressed or raw,with autodetection of quality encoding and interleaving. It is written in Java and works on any platform supportingJava, including Linux, MacOS, and Microsoft Windows and Linux; there are no dependencies other than Java (version7 or higher). Program descriptions and options are shown when running the shell scripts with no parameters.",
+      "schema1:encodingFormat": [
+        "fastqsanger",
+        "tabular",
+        "fasta",
+        "txt",
+        "bam",
+        "fastq",
+        "vcf"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_3680"
+        },
+        {
+          "@id": "edam:operation_3192"
+        },
+        {
+          "@id": "edam:operation_3198"
+        },
+        {
+          "@id": "edam:operation_3187"
+        },
+        {
+          "@id": "edam:operation_3798"
+        },
+        {
+          "@id": "edam:data_0863"
+        },
+        {
+          "@id": "edam:operation_0292"
+        },
+        {
+          "@id": "edam:topic_0182"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:bbmap"
+        },
+        {
+          "@id": "bioconda:bbmap"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:407?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:519?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d967194ca51ff11e"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=25f65a29ce3c3ee0"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "bbtools",
+      "schema1:softwareVersion": "39.08",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/bbtools"
     }
-  ],
-  "schema1:description": "BBTools is a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data.BBTools can handle common sequencing file formats such as fastq, fasta, sam, scarf, fasta+qual, compressed or raw,with autodetection of quality encoding and interleaving. It is written in Java and works on any platform supportingJava, including Linux, MacOS, and Microsoft Windows and Linux; there are no dependencies other than Java (version7 or higher). Program descriptions and options are shown when running the shell scripts with no parameters.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_3680"
-    },
-    {
-      "@id": "edam:operation_3192"
-    },
-    {
-      "@id": "edam:operation_3198"
-    },
-    {
-      "@id": "edam:operation_3187"
-    },
-    {
-      "@id": "edam:operation_3798"
-    },
-    {
-      "@id": "edam:data_0863"
-    },
-    {
-      "@id": "edam:operation_0292"
-    },
-    {
-      "@id": "edam:topic_0182"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:bbmap"
-    },
-    {
-      "@id": "bioconda:bbmap"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:407?version=1",
-    "workflowhub:519?version=1",
-    "https://usegalaxy.eu/published/workflow?id=d967194ca51ff11e",
-    "https://usegalaxy.org.au/published/workflow?id=25f65a29ce3c3ee0"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "bbtools",
-  "schema1:softwareVersion": "39.08",
-  "schema1:url": "https://jgi.doe.gov/data-and-tools/bbtools/"
+  ]
 }

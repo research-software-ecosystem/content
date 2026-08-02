@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,65 +36,94 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:checkv",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3174"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:data_0925"
-    },
-    {
-      "@id": "edam:operation_0310"
-    },
-    {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:topic_3837"
-    },
-    {
-      "@id": "edam:operation_2429"
-    },
-    {
-      "@id": "edam:topic_0102"
+      "@id": "galaxytool:checkv",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "fasta"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:topic_3837"
+        },
+        {
+          "@id": "edam:operation_2429"
+        },
+        {
+          "@id": "edam:topic_0102"
+        }
+      ],
+      "schema1:codeRepository": "https://bitbucket.org/berkeleylab/checkv/",
+      "schema1:dateCreated": "2024-09-13",
+      "schema1:description": "Assess quality of single-contig viral genomes",
+      "schema1:encodingFormat": [
+        "tabular",
+        "fasta"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:operation_2428"
+        },
+        {
+          "@id": "edam:operation_3198"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:checkv"
+        },
+        {
+          "@id": "bioconda:checkv"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=c62d65832377e376"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=62392daea25a3980"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=87231a6a7938cb95"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=36de05d50c703164"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "checkv",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/Helmholtz-UFZ/ufz-galaxy-tools/blob/main/tools/checkv/"
     }
-  ],
-  "schema1:description": "Assess quality of single-contig viral genomes",
-  "schema1:featureList": [
-    {
-      "@id": "edam:data_0925"
-    },
-    {
-      "@id": "edam:operation_0310"
-    },
-    {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:operation_2428"
-    },
-    {
-      "@id": "edam:operation_3198"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:checkv"
-    },
-    {
-      "@id": "bioconda:checkv"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.eu/published/workflow?id=c62d65832377e376",
-    "https://usegalaxy.eu/published/workflow?id=62392daea25a3980",
-    "https://usegalaxy.eu/published/workflow?id=87231a6a7938cb95",
-    "https://usegalaxy.eu/published/workflow?id=36de05d50c703164"
-  ],
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "checkv",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://bitbucket.org/berkeleylab/checkv/"
+  ]
 }

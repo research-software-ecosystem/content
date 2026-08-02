@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,35 +36,63 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:sylph",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3174"
-  },
-  "schema1:description": "sylph - fast and precise species-level metagenomic profiling with ANIs",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:data_1872"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_3460"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:sylph"
+      "@id": "galaxytool:sylph",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tabular",
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3174"
+      },
+      "schema1:codeRepository": "https://github.com/bluenote-1577/sylph",
+      "schema1:dateCreated": "2024-10-08",
+      "schema1:description": "sylph - fast and precise species-level metagenomic profiling with ANIs",
+      "schema1:encodingFormat": "tabular",
+      "schema1:featureList": [
+        {
+          "@id": "edam:data_1872"
+        },
+        {
+          "@id": "edam:operation_3460"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:sylph"
+        },
+        {
+          "@id": "bioconda:sylph"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2068?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=7491883694fff308"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=cb2df493f5e334f7"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "sylph",
+      "schema1:softwareVersion": "0.8.1",
+      "schema1:url": "https://github.com/bgruening/galaxytools/main/tools/sylph"
     },
     {
-      "@id": "bioconda:sylph"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2068?version=2",
-    "https://usegalaxy.eu/published/workflow?id=7491883694fff308",
-    "https://usegalaxy.eu/published/workflow?id=cb2df493f5e334f7"
-  ],
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "sylph",
-  "schema1:softwareVersion": "0.8.1",
-  "schema1:url": "https://github.com/bluenote-1577/sylph"
+  ]
 }

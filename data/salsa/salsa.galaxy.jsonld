@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,58 +36,92 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:salsa",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:data_0925"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0310"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:topic_3125"
-    },
-    {
-      "@id": "edam:operation_2429"
-    },
-    {
-      "@id": "edam:topic_0102"
+      "@id": "galaxytool:salsa",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "fasta",
+        "agp"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:topic_3125"
+        },
+        {
+          "@id": "edam:operation_2429"
+        },
+        {
+          "@id": "edam:topic_0102"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/marbl/SALSA",
+      "schema1:dateCreated": "2021-01-14",
+      "schema1:description": "A tool to scaffold long read assemblies with Hi-C",
+      "schema1:encodingFormat": [
+        "fasta",
+        "agp"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0525"
+        },
+        {
+          "@id": "edam:operation_3440"
+        },
+        {
+          "@id": "edam:operation_0524"
+        },
+        {
+          "@id": "edam:operation_3216"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:SALSA"
+        },
+        {
+          "@id": "bioconda:salsa2"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1607?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=e07866576cc2f467"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=434127690544d0e9"
+        }
+      ],
+      "schema1:keywords": "Assembly",
+      "schema1:name": "salsa",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/salsa2"
     }
-  ],
-  "schema1:description": "A tool to scaffold long read assemblies with Hi-C",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0525"
-    },
-    {
-      "@id": "edam:operation_3440"
-    },
-    {
-      "@id": "edam:operation_0524"
-    },
-    {
-      "@id": "edam:operation_3216"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:SALSA"
-    },
-    {
-      "@id": "bioconda:salsa2"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1607?version=1",
-    "https://usegalaxy.org.au/published/workflow?id=e07866576cc2f467",
-    "https://usegalaxy.org.au/published/workflow?id=434127690544d0e9"
-  ],
-  "schema1:keywords": "Assembly",
-  "schema1:name": "salsa",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://github.com/marbl/SALSA"
+  ]
 }

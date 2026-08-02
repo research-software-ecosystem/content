@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,49 +36,99 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:coverm",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3174"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_2403"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0080"
+      "@id": "galaxytool:coverm",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tabular",
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/wwood/CoverM",
+      "schema1:dateCreated": "2022-04-26",
+      "schema1:description": "CoverM genome and contig wrappers",
+      "schema1:encodingFormat": "tabular",
+      "schema1:featureList": {
+        "@id": "edam:operation_0495"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:coverm"
+        },
+        {
+          "@id": "bioconda:coverm"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:2024?version=4"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1390?version=2"
+        },
+        {
+          "@id": "workflowhub:1352?version=4"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=62392daea25a3980"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=8c91345ed468e22d"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2ee0eb74e839b476"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=7ecd92cb382d8168"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=1e5f1d9a51032e44"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=667bac8d7453e5f1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0563f58718be932d"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=97312d273b6e8bd9"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=8deb08d4f228e198"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d57d41e306241396"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=6158c3b5fc12044e"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "coverm",
+      "schema1:softwareVersion": "0.7.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/coverm"
     }
-  ],
-  "schema1:description": "CoverM genome and contig wrappers",
-  "schema1:featureList": {
-    "@id": "edam:operation_0495"
-  },
-  "schema1:identifier": [
-    {
-      "@id": "biotools:coverm"
-    },
-    {
-      "@id": "bioconda:coverm"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:2024?version=4",
-    "workflowhub:1390?version=2",
-    "workflowhub:1352?version=4",
-    "https://usegalaxy.eu/published/workflow?id=62392daea25a3980",
-    "https://usegalaxy.eu/published/workflow?id=8c91345ed468e22d",
-    "https://usegalaxy.eu/published/workflow?id=2ee0eb74e839b476",
-    "https://usegalaxy.eu/published/workflow?id=7ecd92cb382d8168",
-    "https://usegalaxy.eu/published/workflow?id=1e5f1d9a51032e44",
-    "https://usegalaxy.eu/published/workflow?id=667bac8d7453e5f1",
-    "https://usegalaxy.eu/published/workflow?id=0563f58718be932d",
-    "https://usegalaxy.eu/published/workflow?id=97312d273b6e8bd9",
-    "https://usegalaxy.eu/published/workflow?id=8deb08d4f228e198",
-    "https://usegalaxy.eu/published/workflow?id=d57d41e306241396",
-    "https://usegalaxy.eu/published/workflow?id=6158c3b5fc12044e"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "coverm",
-  "schema1:softwareVersion": "0.7.0",
-  "schema1:url": "https://github.com/wwood/CoverM"
+  ]
 }

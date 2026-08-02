@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,44 +36,86 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:gemini",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:operation_2403"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0080"
+      "@id": "galaxytool:gemini",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "data",
+        "fasta",
+        "gff",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "schema1:codeRepository": "https://ccb.jhu.edu/software/glimmer/",
+      "schema1:dateCreated": "2017-11-28",
+      "schema1:description": "Glimmer makes gene predictions.",
+      "schema1:encodingFormat": [
+        "tabular",
+        "data",
+        "fasta",
+        "gff",
+        "txt"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        },
+        {
+          "@id": "edam:operation_3197"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:gemini"
+        },
+        {
+          "@id": "bioconda:glimmer"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1656?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:358?version=1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=3dcf09e75d707573"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=a644e6b450dabca8"
+        }
+      ],
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "gemini",
+      "schema1:softwareVersion": "3.02",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/glimmer"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Glimmer makes gene predictions.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2403"
-    },
-    {
-      "@id": "edam:topic_0080"
-    },
-    {
-      "@id": "edam:operation_3197"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:gemini"
-    },
-    {
-      "@id": "bioconda:glimmer"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1656?version=1",
-    "workflowhub:358?version=1",
-    "https://usegalaxy.eu/published/workflow?id=3dcf09e75d707573",
-    "https://usegalaxy.eu/published/workflow?id=a644e6b450dabca8"
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "gemini",
-  "schema1:softwareVersion": "3.02",
-  "schema1:url": "https://ccb.jhu.edu/software/glimmer/"
+  ]
 }

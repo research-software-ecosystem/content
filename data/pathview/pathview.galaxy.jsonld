@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,48 +36,91 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:pathview",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0602"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_2259"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0092"
+      "@id": "galaxytool:pathview",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "png",
+        "pdf"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0602"
+        },
+        {
+          "@id": "edam:topic_2259"
+        },
+        {
+          "@id": "edam:topic_0092"
+        }
+      ],
+      "schema1:codeRepository": "https://bioconductor.org/packages/release/bioc/html/pathview.html",
+      "schema1:dateCreated": "2019-08-26",
+      "schema1:description": "Pathview is a tool set for pathway based data integration and visualization.",
+      "schema1:encodingFormat": [
+        "png",
+        "pdf"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2497"
+        },
+        {
+          "@id": "edam:operation_3083"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:pathview"
+        },
+        {
+          "@id": "bioconda:bioconductor-pathview"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1713?version=2"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=3dd83e9ceaa9b749"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=053f09b017c85ace"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=5490661d0153962b"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": [
+        "Statistics",
+        "RNA",
+        "Micro-array Analysis"
+      ],
+      "schema1:name": "pathview",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/pathview"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Pathview is a tool set for pathway based data integration and visualization.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2497"
-    },
-    {
-      "@id": "edam:operation_3083"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:pathview"
-    },
-    {
-      "@id": "bioconda:bioconductor-pathview"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1713?version=2",
-    "https://usegalaxy.org/published/workflow?id=3dd83e9ceaa9b749",
-    "https://usegalaxy.org/published/workflow?id=053f09b017c85ace",
-    "https://usegalaxy.org.au/published/workflow?id=5490661d0153962b"
-  ],
-  "schema1:keywords": [
-    "Statistics",
-    "RNA",
-    "Micro-array Analysis"
-  ],
-  "schema1:name": "pathview",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://bioconductor.org/packages/release/bioc/html/pathview.html"
+  ]
 }

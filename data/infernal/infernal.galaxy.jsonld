@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,49 +36,116 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:infernal",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_0160"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_0122"
-    }
-  ],
-  "schema1:description": "Infernal (\"INFERence of RNA ALignment\") is for searching DNA sequence databases for RNA structure and sequence similarities.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0415"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3073"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:infernal"
+      "@id": "galaxytool:infernal",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "text",
+        "txt",
+        "cm",
+        "stockholm",
+        "tar",
+        "tabular"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_0160"
+        },
+        {
+          "@id": "edam:topic_0122"
+        }
+      ],
+      "schema1:codeRepository": "http://infernal.janelia.org/",
+      "schema1:dateCreated": "2015-02-28",
+      "schema1:description": "Infernal (\"INFERence of RNA ALignment\") is for searching DNA sequence databases for RNA structure and sequence similarities.",
+      "schema1:encodingFormat": [
+        "text",
+        "txt",
+        "cm",
+        "stockholm",
+        "tar",
+        "tabular"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0415"
+        },
+        {
+          "@id": "edam:topic_3073"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:infernal"
+        },
+        {
+          "@id": "bioconda:infernal"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1842?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1270?version=2"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=5ec0d6d108e02e1a"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=437704898229dfb6"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=e51f857dd851e7d7"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=bc4155d947ea0808"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=9b1b135109072e71"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=8f2d958cee428ca1"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=5cd167ed9e159e73"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=7d343d982f1105bf"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=2e1feecca56bb0b8"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=84b447be2f1c5870"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        }
+      ],
+      "schema1:keywords": "RNA",
+      "schema1:name": "infernal",
+      "schema1:softwareVersion": "1.1.5",
+      "schema1:url": "https://github.com/bgruening/galaxytools/tree/master/tools/infernal"
     },
     {
-      "@id": "bioconda:infernal"
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1842?version=1",
-    "workflowhub:1270?version=2",
-    "https://usegalaxy.eu/published/workflow?id=5ec0d6d108e02e1a",
-    "https://usegalaxy.eu/published/workflow?id=437704898229dfb6",
-    "https://usegalaxy.eu/published/workflow?id=e51f857dd851e7d7",
-    "https://usegalaxy.eu/published/workflow?id=bc4155d947ea0808",
-    "https://usegalaxy.eu/published/workflow?id=9b1b135109072e71",
-    "https://usegalaxy.eu/published/workflow?id=8f2d958cee428ca1",
-    "https://usegalaxy.eu/published/workflow?id=5cd167ed9e159e73",
-    "https://usegalaxy.eu/published/workflow?id=7d343d982f1105bf",
-    "https://usegalaxy.eu/published/workflow?id=2e1feecca56bb0b8",
-    "https://usegalaxy.org/published/workflow?id=84b447be2f1c5870"
-  ],
-  "schema1:keywords": "RNA",
-  "schema1:name": "infernal",
-  "schema1:softwareVersion": "1.1.5",
-  "schema1:url": "http://infernal.janelia.org/"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,54 +36,107 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:isoformswitchanalyzer",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3307"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3512"
+      "@id": "galaxytool:isoformswitchanalyzer",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "tabular",
+        "rdata",
+        "fasta",
+        "pdf"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3307"
+        },
+        {
+          "@id": "edam:topic_3512"
+        }
+      ],
+      "schema1:codeRepository": "https://bioconductor.org/packages/devel/bioc/html/IsoformSwitchAnalyzeR.html",
+      "schema1:dateCreated": "2022-12-17",
+      "schema1:description": "Statistical identification of isoform switching from RNA-seq derived quantification of novel and/or annotated full-length isoforms.",
+      "schema1:encodingFormat": [
+        "tabular",
+        "rdata",
+        "fasta",
+        "pdf"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2451"
+        },
+        {
+          "@id": "edam:topic_0159"
+        },
+        {
+          "@id": "edam:operation_2403"
+        },
+        {
+          "@id": "edam:topic_0080"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:IsoformSwitchAnalyzeR"
+        },
+        {
+          "@id": "bioconda:bioconductor-isoformswitchanalyzer"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1688?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=b7a3cbcd32734e8b"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=47a0407867a90f95"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=9b025479fade745d"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=1f9a9a7998ef5ab3"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=11eba1b28ec87963"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=6e1e24f9e0326930"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        }
+      ],
+      "schema1:keywords": [
+        "Transcriptomics",
+        "RNA",
+        "Statistics"
+      ],
+      "schema1:name": "isoformswitchanalyzer",
+      "schema1:softwareVersion": "1.20.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/isoformswitchanalyzer"
+    },
+    {
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Statistical identification of isoform switching from RNA-seq derived quantification of novel and/or annotated full-length isoforms.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2451"
-    },
-    {
-      "@id": "edam:topic_0159"
-    },
-    {
-      "@id": "edam:operation_2403"
-    },
-    {
-      "@id": "edam:topic_0080"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:IsoformSwitchAnalyzeR"
-    },
-    {
-      "@id": "bioconda:bioconductor-isoformswitchanalyzer"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1688?version=1",
-    "https://usegalaxy.eu/published/workflow?id=b7a3cbcd32734e8b",
-    "https://usegalaxy.eu/published/workflow?id=47a0407867a90f95",
-    "https://usegalaxy.eu/published/workflow?id=9b025479fade745d",
-    "https://usegalaxy.eu/published/workflow?id=1f9a9a7998ef5ab3",
-    "https://usegalaxy.eu/published/workflow?id=11eba1b28ec87963",
-    "https://usegalaxy.org.au/published/workflow?id=6e1e24f9e0326930"
-  ],
-  "schema1:keywords": [
-    "Transcriptomics",
-    "RNA",
-    "Statistics"
-  ],
-  "schema1:name": "isoformswitchanalyzer",
-  "schema1:softwareVersion": "1.20.0",
-  "schema1:url": "https://bioconductor.org/packages/devel/bioc/html/IsoformSwitchAnalyzeR.html"
+  ]
 }

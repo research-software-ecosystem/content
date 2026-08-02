@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,60 +36,87 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:pharokka",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3174"
+      "@id": "galaxytool:pharokka",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "genbank",
+        "gff",
+        "zip"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_0160"
+        },
+        {
+          "@id": "edam:topic_0769"
+        },
+        {
+          "@id": "edam:topic_0659"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/gbouras13/pharokka",
+      "schema1:dateCreated": "2023-02-14",
+      "schema1:description": "rapid standardised annotation tool for bacteriophage genomes and metagenomes",
+      "schema1:encodingFormat": [
+        "genbank",
+        "gff",
+        "zip"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0362"
+        },
+        {
+          "@id": "edam:topic_0222"
+        },
+        {
+          "@id": "edam:operation_3482"
+        },
+        {
+          "@id": "edam:operation_0464"
+        },
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:pharokka"
+        },
+        {
+          "@id": "bioconda:pharokka"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=46ef864fe9468894"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=62392daea25a3980"
+        }
+      ],
+      "schema1:keywords": "Genome annotation",
+      "schema1:name": "pharokka",
+      "schema1:softwareVersion": "1.3.2",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/pharokka"
     },
     {
-      "@id": "edam:topic_0160"
-    },
-    {
-      "@id": "edam:topic_0769"
-    },
-    {
-      "@id": "edam:topic_0659"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "rapid standardised annotation tool for bacteriophage genomes and metagenomes",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0362"
-    },
-    {
-      "@id": "edam:topic_0222"
-    },
-    {
-      "@id": "edam:operation_3482"
-    },
-    {
-      "@id": "edam:operation_0464"
-    },
-    {
-      "@id": "edam:data_0925"
-    },
-    {
-      "@id": "edam:operation_0310"
-    },
-    {
-      "@id": "edam:topic_0196"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:pharokka"
-    },
-    {
-      "@id": "bioconda:pharokka"
-    }
-  ],
-  "schema1:isPartOf": [
-    "https://usegalaxy.eu/published/workflow?id=46ef864fe9468894",
-    "https://usegalaxy.eu/published/workflow?id=62392daea25a3980"
-  ],
-  "schema1:keywords": "Genome annotation",
-  "schema1:name": "pharokka",
-  "schema1:softwareVersion": "1.3.2",
-  "schema1:url": "https://github.com/gbouras13/pharokka"
+  ]
 }

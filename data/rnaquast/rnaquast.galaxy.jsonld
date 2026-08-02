@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,56 +36,96 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:rnaquast",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:data_0925"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:operation_0310"
+      "@id": "galaxytool:rnaquast",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "txt",
+        "tgz",
+        "pdf",
+        "tabular"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:data_0925"
+        },
+        {
+          "@id": "edam:operation_0310"
+        },
+        {
+          "@id": "edam:topic_0196"
+        },
+        {
+          "@id": "edam:topic_3308"
+        },
+        {
+          "@id": "edam:topic_3170"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/ablab/rnaquast",
+      "schema1:dateCreated": "2020-10-05",
+      "schema1:description": "rnaQuast (RNA Quality Assessment Tool) evaluates genome assemblies.",
+      "schema1:encodingFormat": [
+        "txt",
+        "tgz",
+        "pdf",
+        "tabular"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_0524"
+        },
+        {
+          "@id": "edam:operation_3258"
+        },
+        {
+          "@id": "edam:operation_3180"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:rnaQUAST"
+        },
+        {
+          "@id": "bioconda:rnaquast"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1688?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=b7a3cbcd32734e8b"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=47a0407867a90f95"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=9b025479fade745d"
+        }
+      ],
+      "schema1:keywords": [
+        "Assembly",
+        "RNA"
+      ],
+      "schema1:name": "rnaquast",
+      "schema1:softwareVersion": "2.3.2",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/rnaquast"
     },
     {
-      "@id": "edam:topic_0196"
-    },
-    {
-      "@id": "edam:topic_3308"
-    },
-    {
-      "@id": "edam:topic_3170"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "rnaQuast (RNA Quality Assessment Tool) evaluates genome assemblies.",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_0524"
-    },
-    {
-      "@id": "edam:operation_3258"
-    },
-    {
-      "@id": "edam:operation_3180"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:rnaQUAST"
-    },
-    {
-      "@id": "bioconda:rnaquast"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1688?version=1",
-    "https://usegalaxy.eu/published/workflow?id=b7a3cbcd32734e8b",
-    "https://usegalaxy.eu/published/workflow?id=47a0407867a90f95",
-    "https://usegalaxy.eu/published/workflow?id=9b025479fade745d"
-  ],
-  "schema1:keywords": [
-    "Assembly",
-    "RNA"
-  ],
-  "schema1:name": "rnaquast",
-  "schema1:softwareVersion": "2.3.2",
-  "schema1:url": "https://github.com/ablab/rnaquast"
+  ]
 }

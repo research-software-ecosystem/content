@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,39 +36,66 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:decontam",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3174"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3697"
-    },
-    {
-      "@id": "edam:topic_3168"
+      "@id": "galaxytool:decontam",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "png",
+        "tabular",
+        "phyloseq"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3174"
+        },
+        {
+          "@id": "edam:topic_3697"
+        },
+        {
+          "@id": "edam:topic_3168"
+        }
+      ],
+      "schema1:codeRepository": "https://github.com/benjjneb/decontam",
+      "schema1:dateCreated": "2024-09-13",
+      "schema1:description": "Removes decontamination features (ASVs/OTUs) using control samples",
+      "schema1:encodingFormat": [
+        "png",
+        "tabular",
+        "phyloseq"
+      ],
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_2990"
+        },
+        {
+          "@id": "edam:topic_2230"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:decontam"
+        },
+        {
+          "@id": "bioconda:bioconductor-decontam"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=466bdd8ba7b67264"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        }
+      ],
+      "schema1:keywords": "Metagenomics",
+      "schema1:name": "decontam",
+      "schema1:softwareVersion": "1.22.0",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/decontam"
     }
-  ],
-  "schema1:description": "Removes decontamination features (ASVs/OTUs) using control samples",
-  "schema1:featureList": [
-    {
-      "@id": "edam:operation_2990"
-    },
-    {
-      "@id": "edam:topic_2230"
-    }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:decontam"
-    },
-    {
-      "@id": "bioconda:bioconductor-decontam"
-    }
-  ],
-  "schema1:isPartOf": "https://usegalaxy.eu/published/workflow?id=466bdd8ba7b67264",
-  "schema1:keywords": "Metagenomics",
-  "schema1:name": "decontam",
-  "schema1:softwareVersion": "1.22.0",
-  "schema1:url": "https://github.com/benjjneb/decontam"
+  ]
 }

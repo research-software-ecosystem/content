@@ -1,6 +1,7 @@
 {
   "@context": {
-    "bioconda": "https://bioconda.github.io/recipes/",
+    "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
+    "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -13,7 +14,6 @@
     "edam": "http://edamontology.org/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "galaxytool": "https://github.com/galaxyproject/tools-iuc/tree/master/tools/",
-    "galaxywf": "https://usegalaxy.eu/published/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
@@ -36,59 +36,139 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:edger",
-  "@type": "schema1:SoftwareApplication",
-  "schema1:applicationSubCategory": [
+  "@graph": [
     {
-      "@id": "edam:topic_3053"
+      "@id": "https://usegalaxy.org.au",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3170"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     },
     {
-      "@id": "edam:topic_3169"
+      "@id": "https://workflowhub.eu",
+      "@type": "schema1:WebSite"
+    },
+    {
+      "@id": "galaxytool:edger",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "html",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": [
+        {
+          "@id": "edam:topic_3053"
+        },
+        {
+          "@id": "edam:topic_3170"
+        },
+        {
+          "@id": "edam:topic_3169"
+        }
+      ],
+      "schema1:codeRepository": "http://bioconductor.org/packages/release/bioc/html/edgeR.html",
+      "schema1:dateCreated": "2017-09-11",
+      "schema1:description": "Perform RNA-Seq differential expression analysis using edgeR pipeline",
+      "schema1:encodingFormat": [
+        "html",
+        "txt"
+      ],
+      "schema1:featureList": {
+        "@id": "edam:operation_3742"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:edger"
+        },
+        {
+          "@id": "bioconda:bioconductor-edger"
+        }
+      ],
+      "schema1:isPartOf": [
+        {
+          "@id": "workflowhub:1556?version=1"
+        },
+        {
+          "@id": "https://workflowhub.eu"
+        },
+        {
+          "@id": "workflowhub:1207?version=2"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=36bb8bb4d95ca2ed"
+        },
+        {
+          "@id": "https://usegalaxy.eu"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=f2042ad9c10cea31"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=9a607de285b51401"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=d1b3b62e7f91e217"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=04df470a38b10e94"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=c7b9fb6872444809"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=c3a11e1ac1aa8383"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=e04be1ab5a16eb9f"
+        },
+        {
+          "@id": "https://usegalaxy.eu/published/workflow?id=0229f3f3835c2d53"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=13a3954b8894e1b1"
+        },
+        {
+          "@id": "https://usegalaxy.org"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=03258e0321162584"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=d761637d43ee0324"
+        },
+        {
+          "@id": "https://usegalaxy.org/published/workflow?id=ce232859a466c75c"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=5fe66b29dcfb22ab"
+        },
+        {
+          "@id": "https://usegalaxy.org.au"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=0cfc1408fd9ea4e7"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=863eee1b041b6c58"
+        },
+        {
+          "@id": "https://usegalaxy.org.au/published/workflow?id=0fc7c14c4d1ac8f5"
+        }
+      ],
+      "schema1:keywords": [
+        "Transcriptomics",
+        "RNA",
+        "Statistics",
+        "Single Cell"
+      ],
+      "schema1:name": "edger",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/edger"
+    },
+    {
+      "@id": "https://usegalaxy.org",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:description": "Perform RNA-Seq differential expression analysis using edgeR pipeline",
-  "schema1:featureList": {
-    "@id": "edam:operation_3742"
-  },
-  "schema1:identifier": [
-    {
-      "@id": "biotools:edger"
-    },
-    {
-      "@id": "bioconda:bioconductor-edger"
-    }
-  ],
-  "schema1:isPartOf": [
-    "workflowhub:1556?version=1",
-    "workflowhub:1207?version=2",
-    "https://usegalaxy.eu/published/workflow?id=36bb8bb4d95ca2ed",
-    "https://usegalaxy.eu/published/workflow?id=f2042ad9c10cea31",
-    "https://usegalaxy.eu/published/workflow?id=9a607de285b51401",
-    "https://usegalaxy.eu/published/workflow?id=d1b3b62e7f91e217",
-    "https://usegalaxy.eu/published/workflow?id=04df470a38b10e94",
-    "https://usegalaxy.eu/published/workflow?id=c7b9fb6872444809",
-    "https://usegalaxy.eu/published/workflow?id=c3a11e1ac1aa8383",
-    "https://usegalaxy.eu/published/workflow?id=e04be1ab5a16eb9f",
-    "https://usegalaxy.eu/published/workflow?id=0229f3f3835c2d53",
-    "https://usegalaxy.org/published/workflow?id=13a3954b8894e1b1",
-    "https://usegalaxy.org/published/workflow?id=03258e0321162584",
-    "https://usegalaxy.org/published/workflow?id=d761637d43ee0324",
-    "https://usegalaxy.org/published/workflow?id=ce232859a466c75c",
-    "https://usegalaxy.org.au/published/workflow?id=5fe66b29dcfb22ab",
-    "https://usegalaxy.org.au/published/workflow?id=0cfc1408fd9ea4e7",
-    "https://usegalaxy.org.au/published/workflow?id=863eee1b041b6c58",
-    "https://usegalaxy.org.au/published/workflow?id=0fc7c14c4d1ac8f5"
-  ],
-  "schema1:keywords": [
-    "Transcriptomics",
-    "RNA",
-    "Statistics",
-    "Single Cell"
-  ],
-  "schema1:name": "edger",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "http://bioconductor.org/packages/release/bioc/html/edgeR.html"
+  ]
 }
