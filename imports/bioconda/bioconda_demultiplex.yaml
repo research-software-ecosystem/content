@@ -1,31 +1,33 @@
 about:
+  dev_url: https://github.com/jfjlaros/demultiplex
   doc_url: https://demultiplex.readthedocs.io/en/latest/index.html
   home: https://github.com/jfjlaros/demultiplex
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Demultiplex any number of FASTA or a FASTQ files based on a list of barcodes
+  summary: Demultiplex any number of FASTA or a FASTQ files based on a list of barcodes.
 build:
-  entry_points:
-  - demultiplex = demultiplex.cli:main
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - null
-  script: -m pip install . -vv
+  script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
   recipe-maintainers:
   - acaprez
 package:
   name: demultiplex
-  version: 1.2.2
+  version: 1.2.3
 requirements:
   host:
   - python >=3.6
   - pip
   - poetry
+  - hatchling
+  - setuptools <82
   run:
   - python >=3.6
+  - setuptools <82
   - biopython >=1.72
   - dict-trie >=1.0.1
   - fastools >=1.1.0
@@ -33,13 +35,10 @@ requirements:
   - tssv >=1.1.0
   - poetry
 source:
-  sha256: 27ebc30e52e36048486286348b44806deabb24197e05eb88bbed413676e99181
-  url: https://pypi.io/packages/source/d/demultiplex/demultiplex-1.2.2.tar.gz
+  sha256: 905e70a3674aab01c63f6e130ce8b4c9dca54cc0868b932587d4a1045d945990
+  url: https://pypi.io/packages/source/d/demultiplex/demultiplex-1.2.3.tar.gz
 test:
   commands:
-  - pip check
   - demultiplex --help
   imports:
   - demultiplex
-  requires:
-  - pip

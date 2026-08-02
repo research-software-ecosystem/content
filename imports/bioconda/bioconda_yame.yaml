@@ -16,19 +16,21 @@ extra:
   - osx-arm64
   recipe-maintainers:
   - Hongxiang2023
+  - zwdzwd
 package:
   name: yame
-  version: '1.8'
+  version: '1.35'
 requirements:
   build:
+  - null
   - null
   - make
   host:
   - zlib
-  - ncurses
+  - libcurl
 source:
-  sha256: f762425ef8fcf4fc8967da7889272f27804af232117931ce524687d7af715136
-  url: https://github.com/zhou-lab/YAME/archive/refs/tags/v1.8.tar.gz
+  sha256: 1ddf0db21ce24ebba208824d6011e713a8e4bff626724e908b84dc3d0424383c
+  url: https://github.com/zhou-lab/YAME/archive/refs/tags/v1.35.tar.gz
 test:
   commands:
-  - yame || true
+  - yame fetch -l | grep -q InfiniumAnnotation

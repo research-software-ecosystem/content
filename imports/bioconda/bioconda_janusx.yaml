@@ -1,31 +1,30 @@
 about:
-  description: 'JanusX is a high-performance toolkit for genome-wide association studies
+  description: 'JanusX is a Python+Rust toolkit for genome-wide association studies,
 
-    (GWAS), genomic selection (GS), and post-analysis visualization.
+    genomic selection, GRM/PCA construction, and downstream visualization.
+
+    This package installs the `jx` and `jxpy` command-line entry points.
 
 
-    This Bioconda recipe packages the Python+Rust core and provides the `jxpy`
+    Core runtime dependencies are included. Heavier optional extras remain
 
-    command entrypoint. Launcher-specific features (`jx`, self-update/runtime
+    user-managed; `scikit-learn`, `xgboost`, `statsmodels`, `toytree`, and
 
-    management, `fastq2vcf`, and `fastq2count`) are intentionally excluded
-
-    from this package scope.
+    `toyplot` can be installed from conda-forge as needed.
 
     '
   dev_url: https://github.com/FJingxian/JanusX
-  doc_url: https://github.com/FJingxian/JanusX/tree/v1.0.21/doc
+  doc_url: https://github.com/FJingxian/JanusX/tree/v1.0.26/doc
   home: https://github.com/FJingxian/JanusX
   license: AGPL-3.0-or-later
   license_file:
   - LICENSE
   - THIRDPARTY.yml
-  summary: GWAS and genomic selection toolkit with Rust-accelerated kernels.
+  summary: Rust-accelerated toolkit for GWAS, genomic selection, GRM/PCA, and post-analysis
+    plotting
 build:
-  entry_points:
-  - jxpy = janusx.script.JanusX:main
-  - jx = janusx.script.JanusX:main
   number: 0
+  python_version_independent: true
   run_exports:
   - null
   skip: true
@@ -39,43 +38,45 @@ extra:
   - FJingxian
 package:
   name: janusx
-  version: 1.0.21
+  version: 1.0.26
 requirements:
   build:
   - null
   - null
   - null
+  - null
   - cargo-bundle-licenses
   host:
-  - python
+  - python 3.10.*
+  - python-abi3
   - pip
-  - maturin >=1.7,<2
+  - maturin >=1.9.4,<2
   - numpy >=1.23
-  - pybind11 >=2.13.0
+  - zlib
+  - openblas
   run:
-  - python
-  - numpy
+  - python >=3.10
+  - null
+  - libopenblas
   - scipy
-  - scikit-learn
-  - xgboost
-  - pandas <3.0
+  - pandas >=1.5
   - matplotlib-base
   - psutil
-  - statsmodels
   - rich
-  - tqdm
   - rich-argparse
+  - tqdm
   - joblib >=1.5
-  - mkl
-  - pypardiso
+  - threadpoolctl
 source:
-  sha256: 0548dd146244f50f0f0fb6712c47de44616a5ec11dcbbfcfae6b7b47f2d58234
-  url: https://github.com/FJingxian/JanusX/archive/v1.0.21.tar.gz
+  sha256: beda101f468a18336b50a17f338bae5b20f98cc7ad107f245fd7f179de28b344
+  url: https://files.pythonhosted.org/packages/source/j/janusx/janusx-1.0.26.tar.gz
 test:
   commands:
+  - jx -h
   - jxpy -h
-  - jx --help
   - python -c "import janusx.janusx"
+  - python -c "import janusx.janusx as _jx; assert str(_jx.rust_sgemm_backend()) ==
+    'openblas'"
   - python -c "import janusx.script.JanusX as jx; assert callable(jx.main)"
   requires:
   - python

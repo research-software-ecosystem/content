@@ -1,0 +1,94 @@
+about:
+  description: 'pVACtools is a cancer immunotherapy suite consisting of tools that
+    identify
+
+    and prioritize neoantigens from a variety of input sources: pVACseq (somatic
+
+    variants), pVACbind (peptide FASTAs), pVACfuse (gene fusions), pVACsplice
+
+    (splice site variants), pVACvector (DNA vector design) and pVACview
+
+    (interactive review of results).
+
+    '
+  dev_url: https://github.com/griffithlab/pVACtools
+  doc_url: https://pvactools.readthedocs.io
+  home: https://github.com/griffithlab/pVACtools
+  license: BSD-3-Clause-Clear
+  license_family: BSD
+  license_file: LICENSE
+  summary: A cancer immunotherapy tools suite
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script:
+  - rm -rf tests docs api_status_tests predictor_tests
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.1158/2326-6066.CIR-19-0401
+  - biotools:pvactools
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: pvactools
+  version: 7.1.1
+requirements:
+  host:
+  - python >=3.9,<3.12
+  - pip
+  - setuptools
+  run:
+  - python >=3.9,<3.12
+  - vcfpy ==0.13.8
+  - requests
+  - pyyaml >=5.1
+  - biopython >=1.77
+  - networkx
+  - simanneal
+  - numpy ==1.26.4
+  - pandas <2.1.0
+  - python-wget
+  - pysam
+  - pillow
+  - pymp-pypi
+  - mock
+  - vaxrank >=1.1.0
+  - varcode >=1.1.0
+  - mhcnuggets ==2.4.1
+  - mhcflurry ==2.0.6
+  - testfixtures
+  - gtfparse ==2.0.1
+  - pyfaidx >=0.7.1
+  - fsspec <=2025.3.0
+  - packaging
+  - pyarrow
+  - polars ==0.16.18
+  - xlsxwriter
+  - openpyxl
+  - deepdiff
+  - scikit-learn >=1.6.0,<1.8.0
+  - imbalanced-learn
+  - xorg-libx11
+  run_constrained:
+  - pvacseq <0a0
+source:
+  patches:
+  - relax-unavailable-pins.patch
+  sha256: 681e3a795f6962d4707508eb6b2db23fce6636e576c3284a0d69c411d819ebaa
+  url: https://github.com/griffithlab/pVACtools/archive/refs/tags/v7.1.1.tar.gz
+test:
+  commands:
+  - pvactools --version
+  - pvacseq --help
+  - pvacbind --help
+  - pvacfuse --help
+  - pvacvector --help
+  - pvacsplice --help
+  - pvacview --help
+  imports:
+  - pvactools
+  - pvactools.lib
+  - pvactools.tools

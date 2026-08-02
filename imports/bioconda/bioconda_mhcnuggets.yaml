@@ -50,8 +50,10 @@ about:
     II'
 build:
   noarch: python
-  number: 0
-  script: ' -m pip install . -vv'
+  number: 1
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - jonasscheid
@@ -62,14 +64,15 @@ requirements:
   host:
   - pip
   - python
+  - setuptools
   run:
-  - keras
+  - keras >=2.6,<3
   - numpy
   - pandas
-  - python =3.6
+  - python
   - scikit-learn
   - scipy
-  - tensorflow
+  - tensorflow >=2.6,<2.16
   - varcode
 source:
   sha256: c0c853031b8cc0b8d7e08674500d4d5929c0720e4e0a2e421272437022f30406

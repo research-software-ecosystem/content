@@ -1,0 +1,51 @@
+about:
+  description: 'Shredtools is a toolkit for querying a pangenome using multi-MUMs
+    computed by Mumemto.
+
+    It builds indexes on .bumbl files and enables extracting syntenic regions, shreds,
+
+    and refining alignments.
+
+    '
+  dev_url: https://github.com/vikshiv/shredtools
+  doc_url: https://github.com/vikshiv/shredtools
+  home: https://github.com/vikshiv/shredtools
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Utilities for manipulating the pangenome coordinate system with multi-MUMs
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - vikshiv
+package:
+  name: shredtools
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.9
+  - mumemto >=1.4.0
+  - numpy
+  - pysam
+  - tqdm
+  - matplotlib-base
+source:
+  sha256: 8f804b78596747ca6c7ba59a0dbb92c3bbb96a9734bc4143f3b2c875f741a036
+  url: https://github.com/vikshiv/shredtools/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - shredtools --version
+  - shredtools -h
+  - shredtools index -h
+  - shredtools extract -h
+  imports:
+  - shredtools

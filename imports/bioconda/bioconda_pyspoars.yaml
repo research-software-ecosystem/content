@@ -1,0 +1,59 @@
+about:
+  description: 'Python bindings for spoars, a memory-safe, SIMD-accelerated native-Rust
+
+    reimplementation of the C++ spoa partial order alignment library. Provides
+
+    consensus, multiple sequence alignment, and GFA/DOT graph output from a
+
+    simple `poa()` convenience call or an incremental `Poa` builder.
+
+    '
+  dev_url: https://github.com/fg-labs/spoars
+  doc_url: https://github.com/fg-labs/spoars/blob/v0.1.3/spoars-py/README.md
+  home: https://github.com/fg-labs/spoars
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRD-PARTY.md
+  - spoars-py/THIRDPARTY.yml
+  summary: "Python bindings for spoars \u2014 partial order alignment consensus and\
+    \ MSA"
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+package:
+  name: pyspoars
+  version: 0.1.3
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1.5,<2
+  run:
+  - python
+source:
+  sha256: c720b2c23897872812c3b0196698edfb48bf02c1d950ad05ecd30eff92c86978
+  url: https://github.com/fg-labs/spoars/archive/refs/tags/v0.1.3.tar.gz
+test:
+  commands:
+  - pip check
+  - python -c "import spoars; g = spoars.poa(['ACGTACGT', 'ACGTTCGT', 'ACGTACGT']);
+    assert g.consensus() == 'ACGTACGT'"
+  imports:
+  - spoars
+  requires:
+  - pip

@@ -1,0 +1,56 @@
+about:
+  home: https://github.com/erinyoung/roundabout/
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: A pipeline for plasmid outbreak clustering and visualization.
+build:
+  entry_points:
+  - roundabout = roundabout.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - erinyoung
+package:
+  name: roundabout
+  version: 0.7.26160
+requirements:
+  host:
+  - python >=3.10
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.10
+  - pandas >=2.0.0
+  - scipy >=1.10.0
+  - pygenomeviz >=1.0.0
+  - bakta >=1.9.0
+  - heatcluster
+  - minkemap
+  - daisyblast
+  - refseq-plasmid-dl
+  - ncbi-amrfinderplus
+  - blast
+  - skani
+  - minimap2
+  - mummer
+  - mmseqs2
+  - kma
+  - progressivemauve
+  - plasmidfinder
+source:
+  sha256: 48e7884a7ee354912a0aef8fd8e4610fcea422dd1caa5a6bcffe27e56717aa98
+  url: https://pypi.org/packages/source/r/roundabout/roundabout-0.7.26160.tar.gz
+test:
+  commands:
+  - pip check
+  - roundabout --help
+  imports:
+  - roundabout
+  requires:
+  - pip
+  - python

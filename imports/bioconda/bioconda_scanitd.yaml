@@ -1,0 +1,44 @@
+about:
+  doc_url: https://scanitd.readthedocs.io
+  home: https://github.com/ylab-hi/ScanITD
+  license: MIT
+  license_file: LICENSE
+  summary: Detecting internal tandem duplication with robust variant allele frequency
+    estimation
+build:
+  entry_points:
+  - scanitd = scanitd.cli.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1093/gigascience/giaa089
+  recipe-maintainers:
+  - dolittle007
+package:
+  name: scanitd
+  version: 0.9.2
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - hatchling
+  run:
+  - python >=3.9
+  - numpy >=2.0.0
+  - pysam >=0.22.0
+  - pyfaidx >=0.7.2
+  - psutil >=5.9.5
+  - ssw-py >=1.0.1
+  - loguru >=0.7.0
+  - typer >=0.12.5
+  - rich >=13.7.0
+source:
+  sha256: 554efdf1c206a332fca1933a2ffb765d26127e22aaacadf86d170d21cbe288a6
+  url: https://pypi.io/packages/source/s/scanitd/scanitd-0.9.2.tar.gz
+test:
+  commands:
+  - scanitd --help

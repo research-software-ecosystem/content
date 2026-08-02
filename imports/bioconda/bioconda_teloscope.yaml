@@ -1,13 +1,13 @@
 about:
   dev_url: https://github.com/vgl-hub/teloscope
-  doc_url: https://github.com/vgl-hub/teloscope/blob/v0.1.3/README.md
+  doc_url: https://github.com/vgl-hub/teloscope/blob/v0.1.5/README.md
   home: https://github.com/vgl-hub/teloscope
   license: MIT
-  license_familiy: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: A telomere annotation tools for genome assemblies.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -20,17 +20,25 @@ extra:
   - doi:10.1093/bioinformatics/btac460
 package:
   name: teloscope
-  version: 0.1.3
+  version: 0.1.5
 requirements:
   build:
   - make
   - null
+  - null
   host:
   - zlib
   - openssl
+  run:
+  - python
+  - numpy
+  - pandas
+  - matplotlib-base
 source:
-  sha256: 6c28d19f6bd5315689a239d0a8832e128755715f1608e0e74b5e38901e639bfa
-  url: https://github.com/vgl-hub/teloscope/releases/download/v0.1.3/teloscope.v0.1.3-with_submodules.zip
+  sha256: a644271c88a6648d6f27c7db4e92efce6cab97e534de30aef5a4cc21cbf5261c
+  url: https://github.com/vgl-hub/teloscope/releases/download/v0.1.5/teloscope.v0.1.5-with_submodules.zip
 test:
   commands:
   - teloscope -h | grep "teloscope"
+  - test -f $PREFIX/bin/scripts/teloscope_report.py
+  - python3 $PREFIX/bin/scripts/teloscope_report.py --help

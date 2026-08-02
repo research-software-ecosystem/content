@@ -2,11 +2,13 @@ about:
   dev_url: https://github.com/fg-labs/bwa-mem3
   doc_url: https://bwa-mem3.readthedocs.io
   home: https://github.com/fg-labs/bwa-mem3
-  license: MIT AND Apache-2.0
+  license: MIT AND Apache-2.0 AND Zlib
   license_family: MIT
   license_file:
   - LICENSE
   - ext/sse2neon/LICENSE
+  - ext/mimalloc/LICENSE
+  - ext/zlib-ng/LICENSE.md
   summary: Short-read aligner derived from bwa-mem2 with correctness fixes, performance
     improvements, and methylation alignment.
 build:
@@ -23,7 +25,7 @@ extra:
   - nh13
 package:
   name: bwa-mem3
-  version: 0.5.0
+  version: 0.7.0
 requirements:
   build:
   - make
@@ -38,16 +40,16 @@ requirements:
   - libsais >=2.10.4,<3
   - sse2neon ==1.9.1
   - llvm-openmp
-  - libgomp
   run:
   - mimalloc >=3.3,<4
   - htslib >=1.21,<2
   - libsais >=2.10.4,<3
   - llvm-openmp
-  - libgomp
 source:
-  sha256: 5e8bf61d13976a24508201374694f07efec789b6f3154ba8945ec8258bff07b1
-  url: https://github.com/fg-labs/bwa-mem3/releases/download/v0.5.0/Source_code_including_submodules.tar.gz
+  sha256: 0fb1eefc51dfc6e0c8891fd90e82a5f48f3b16d58c4169595978fb0ee716ba15
+  url: https://github.com/fg-labs/bwa-mem3/releases/download/v0.7.0/Source_code_including_submodules.tar.gz
 test:
   commands:
   - bwa-mem3 version
+  - if ldd "${PREFIX}/bin/bwa-mem3" | grep -q libmimalloc; then echo "FAIL - bwa-mem3
+    dynamically links libmimalloc (malloc override inert)"; exit 1; fi

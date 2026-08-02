@@ -7,7 +7,7 @@ about:
   summary: RepeatModeler is a de-novo repeat family identification and modeling package.
 build:
   noarch: generic
-  number: 1
+  number: 0
   run_exports:
   - null
 extra:
@@ -16,25 +16,17 @@ extra:
   - usegalaxy-eu:repeatmodeler
 package:
   name: repeatmodeler
-  version: 2.0.8
+  version: 2.0.9
 requirements:
   host:
-  - perl
+  - perl >=5.32.1,<6.0a0
   - perl-devel-size
   - perl-file-which
   - perl-libwww-perl
   - perl-lwp-protocol-https
   - perl-uri
-  - rmblast >=2.14.1
-  run:
-  - perl
-  - perl-devel-size
-  - perl-file-which
-  - perl-libwww-perl
-  - perl-lwp-protocol-https
-  - perl-uri
-  - rmblast >=2.14.1
-  - repeatmasker >=4.1.5
+  - rmblast >=2.17.0
+  - repeatmasker >=4.2.4
   - trf >=4.09
   - repeatscout >=1.0.6
   - recon =1.10
@@ -47,11 +39,32 @@ requirements:
   - ucsc-twobitinfo
   - ucsc-twobittofa
   - ucsc-fatotwobit
+  - famdb
+  run:
+  - perl >=5.32.1,<6.0a0
+  - perl-devel-size
+  - perl-file-which
+  - perl-libwww-perl
+  - perl-lwp-protocol-https
+  - perl-uri
+  - rmblast >=2.17.0
+  - repeatmasker >=4.2.4
+  - trf >=4.09
+  - repeatscout >=1.0.6
+  - recon =1.10
+  - repeatafterme
+  - cd-hit >=4.8.1
+  - ltr_retriever >=2.9
+  - mafft >=7.471
+  - genometools-genometools >=1.6
+  - ninja-nj
+  - ucsc-twobitinfo
+  - ucsc-twobittofa
+  - ucsc-fatotwobit
+  - famdb
 source:
-  patches:
-  - patch
-  sha256: 4a0caa83e989dc132fcae4a8ab7a5a0f592224a1cdbc93d78eed56a52dc7a767
-  url: https://github.com/Dfam-consortium/RepeatModeler/archive/refs/tags/2.0.8.tar.gz
+  sha256: da7d16c97458059fd12e4d7054ee7695ea3855b8660c450452875685086c5e2f
+  url: https://github.com/Dfam-consortium/RepeatModeler/archive/refs/tags/2.0.9.tar.gz
 test:
   commands:
   - RepeatModeler -h | grep "SYNOPSIS"

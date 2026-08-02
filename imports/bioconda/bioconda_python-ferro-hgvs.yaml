@@ -1,0 +1,55 @@
+about:
+  description: 'Python bindings for ferro-hgvs, a fast HGVS (Human Genome Variation
+    Society)
+
+    sequence-variant parser and normalizer written in Rust. The standalone
+
+    command-line tool is available on bioconda as `ferro-hgvs`.
+
+    '
+  dev_url: https://github.com/fulcrumgenomics/ferro-hgvs
+  doc_url: https://github.com/fulcrumgenomics/ferro-hgvs/blob/v0.11.0/README.md
+  home: https://github.com/fulcrumgenomics/ferro-hgvs
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: "Python bindings for ferro-hgvs \u2014 an HGVS variant parser and normalizer"
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+  - tfenne
+package:
+  name: python-ferro-hgvs
+  version: 0.11.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python
+  - pip
+  - maturin >=1.5,<2
+  run:
+  - python
+source:
+  sha256: b6baea7f53ce0c9a71014386baf1f3da717ec38fd00bf6bbec2c308dc6d954ad
+  url: https://pypi.org/packages/source/f/ferro-hgvs/ferro_hgvs-0.11.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - ferro_hgvs
+  requires:
+  - pip
