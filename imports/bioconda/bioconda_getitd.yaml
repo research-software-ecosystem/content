@@ -1,0 +1,53 @@
+about:
+  description: 'getITD detects and characterises FLT3 internal tandem duplications
+    (ITDs) from
+
+    high-throughput amplicon sequencing data, supporting minimal residual disease
+
+    monitoring in acute myeloid leukemia. It aligns reads to a wild-type amplicon
+
+    reference, identifies and merges insertions, and reports ITDs with variant allele
+
+    frequencies and genomic/protein annotation.
+
+    '
+  dev_url: https://github.com/tjblaette/getitd
+  doc_url: https://github.com/tjblaette/getitd/blob/master/README.md
+  home: https://github.com/tjblaette/getitd
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Detection of FLT3-ITDs (internal tandem duplications) from amplicon NGS
+    data
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  identifiers:
+  - doi:10.1038/s41375-019-0483-z
+  recipe-maintainers:
+  - joachimwolffs
+package:
+  name: getitd
+  version: 1.5.16
+requirements:
+  run:
+  - python >=3
+  - pandas
+  - numpy
+  - biopython
+  - matplotlib-base
+source:
+  patches:
+  - is_similar_to-empty-seq.patch
+  sha256: 02b66853d0115ffe21c9db4e47da679055c0112b1a3198c91c93458c7b996819
+  url: https://github.com/tjblaette/getitd/archive/refs/tags/v1.5.16.tar.gz
+test:
+  commands:
+  - getitd --help
+  - test -f "$PREFIX/bin/getitd_from_config_wrapper"
+  - test -f "$PREFIX/bin/make_getitd_config"
+  - test -f "$PREFIX/share/getitd-1.5.16/anno/amplicon.txt"
+  - test -f "$PREFIX/share/getitd-1.5.16/anno/amplicon_kayser.tsv"

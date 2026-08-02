@@ -1,0 +1,56 @@
+about:
+  description: 'ScanExitron detects exitron splicing events from RNA-Seq BAM/CRAM
+    alignment
+
+    files. It uses regtools to call and annotate junctions, bedtools to intersect
+
+    them with CDS annotations, and computes per-exitron PSO/PSI statistics.
+
+    '
+  dev_url: https://github.com/ylab-hi/ScanExitron
+  doc_url: https://github.com/ylab-hi/ScanExitron
+  home: https://github.com/ylab-hi/ScanExitron
+  license: MIT
+  license_file: LICENSE
+  summary: A computational workflow for exitron splicing identification from RNA-Seq
+    data
+build:
+  entry_points:
+  - scanexitron = scanexitron.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - dolittle007
+package:
+  name: scanexitron
+  version: 1.4.0
+requirements:
+  host:
+  - python >=3.10,<3.13
+  - hatchling
+  - pip
+  run:
+  - python >=3.10,<3.13
+  - pyfaidx >=0.7
+  - numpy >=1.21
+  - htseq >=2.0
+  - typer >=0.12
+  - samtools
+  - bedtools
+  - regtools =0.5.0
+source:
+  sha256: 3c8f43ce3ab0bb7170c03d58ade9408e77f7ac744cffd54666ea977bb6b8ac85
+  url: https://pypi.io/packages/source/s/scanexitron/scanexitron-1.4.0.tar.gz
+test:
+  commands:
+  - scanexitron --version
+  - scanexitron convert --help
+  imports:
+  - scanexitron
+  - scanexitron.core
+  - scanexitron.vcf
+  - scanexitron.cli

@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/sztup/scarHRD
+  home: https://github.com/sztup/scarHRD
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Estimating genomic scar signatures (LST, TAI, LOH) and homologous recombination
+    deficiency from WXS or WGS data.
+build:
+  noarch: generic
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+extra:
+  identifiers:
+  - doi:10.1038/s41523-018-0066-6
+  recipe-maintainers:
+  - pinin4fjords
+package:
+  name: r-scarhrd
+  version: 0.1.1
+requirements:
+  build:
+  - r-base
+  host:
+  - r-base
+  - r-data.table >=1.10
+  - r-sequenza >=2.1.2
+  run:
+  - r-base
+  - r-data.table >=1.10
+  - r-sequenza >=2.1.2
+source:
+  sha256: 608b984eef261c07db61ce75c40c40587bf49e91009e7388426f67b65c00c7ee
+  url: https://github.com/sztup/scarHRD/archive/c98f8bc42ed0810393a98677d415114360616725.tar.gz
+test:
+  commands:
+  - $R -e "library('scarHRD')"

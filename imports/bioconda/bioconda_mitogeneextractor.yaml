@@ -1,0 +1,49 @@
+about:
+  description: 'MitoGeneExtractor conveniently extracts mitochondrial protein-coding
+    genes
+
+    from next-generation sequencing libraries. It aligns nucleotide reads,
+
+    assemblies or genomes against one or more amino-acid reference sequences
+
+    using Exonerate and builds a consensus for each reference. Typical uses
+
+    include recovering barcode/COI and other mitochondrial or plastid
+
+    protein-coding genes and screening libraries for contamination.
+
+    '
+  dev_url: https://github.com/cmayer/MitoGeneExtractor
+  doc_url: https://github.com/cmayer/MitoGeneExtractor/blob/main/README.md
+  home: https://github.com/cmayer/MitoGeneExtractor
+  license: AGPL-3.0-only
+  license_family: AGPL
+  license_file: LICENSE.txt
+  summary: Extract mitochondrial (and other) protein-coding genes from NGS libraries
+    via Exonerate alignments.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - SchistoDan
+package:
+  name: mitogeneextractor
+  version: 1.9.6
+requirements:
+  build:
+  - null
+  - null
+  - make
+  run:
+  - exonerate 2.4.0
+source:
+  sha256: b0941436c68f049afad7b0a6f8857ce0dc128d22dca886910261b2e41d116569
+  url: https://github.com/cmayer/MitoGeneExtractor/archive/refs/tags/v1.9.6.tar.gz
+test:
+  commands:
+  - MitoGeneExtractor --help
+  - MitoGeneExtractor-v1.9.6 --help
+  - command -v exonerate

@@ -1,0 +1,58 @@
+about:
+  home: https://github.com/MOMA-AUH/abacus
+  license: MIT
+  license_file: LICENSE
+  summary: A tool for analyzing Short Tandem Repeats (STRs) from Long-Read Sequencing
+    data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+extra:
+  recipe-maintainers:
+  - simondrue
+package:
+  name: abacus-str
+  version: 2.0.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - setuptools >=68
+  run:
+  - python >=3.11
+  - networkx >=3.0
+  - numpy >=1.26.4
+  - pandas >=2.2.3
+  - pyfaidx
+  - levenshtein >=0.26.1
+  - pysam >=0.22.1
+  - rich >=13.7.1
+  - scikit-learn >=1.2.2
+  - scipy >=1.15.2
+  - typer >=0.12.4
+  - pyspoa >=0.2.1
+  - r-base
+  - r-dplyr
+  - r-ggplot2
+  - r-readr
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  - r-rcolorbrewer
+  - r-knitr
+  - r-kableextra
+  - r-rmarkdown
+  - pandoc
+source:
+  sha256: 7ae1c0ac927e6de4afd873ad468624c304b082861ee5228dc27f5a7d6090c8d0
+  url: https://github.com/MOMA-AUH/abacus/archive/refs/tags/v2.0.0.tar.gz
+test:
+  commands:
+  - abacus --help
+  - python -c "import json, subprocess; json.loads(subprocess.check_output(['abacus','--show-catalog']));
+    print('ok')"
+  imports:
+  - abacus

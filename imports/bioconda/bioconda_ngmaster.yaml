@@ -9,7 +9,7 @@ about:
     NG-STAR).
 build:
   entry_points:
-  - ngmaster=ngmaster.run_ngmaster:main
+  - ngmaster = ngmaster.run_ngmaster:main
   noarch: python
   number: 0
   run_exports:
@@ -21,25 +21,29 @@ extra:
   - kristyhoran
 package:
   name: ngmaster
-  version: 2.0.0
+  version: 2.1.0
 requirements:
   host:
-  - python >=3.12
+  - python >=3.10
   - pip
   - setuptools
   run:
-  - python >=3.12
+  - python >=3.10
   - biopython
   - mlst
+  - mlstdb >=1.2.0
   - requests
   - bs4
-  - mlstdb ==1.0.0
+  - certifi >=2023.7.22
+  - idna >=3.15
+  - requests >=2.33.0
+  - urllib3 >=2.7.0
 source:
-  sha256: 1215140b5ea060b6274d40b87ae3e38cbf608174067c762a3bfba383f1687487
-  url: https://github.com/MDU-PHL/ngmaster/archive/refs/tags/v2.0.0.tar.gz
+  sha256: a7435e91bcb02a051117cb3d4d9871cdb4317ec49d2bfdcd3c1f0ad139bcdad9
+  url: https://github.com/MDU-PHL/ngmaster/archive/refs/tags/v2.1.0.tar.gz
 test:
   commands:
-  - ngmaster --help
-  - ngmaster --test
+  - PYTHON_GIL=1 ngmaster --help
+  - PYTHON_GIL=1 ngmaster --test
   imports:
   - ngmaster

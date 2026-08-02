@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/LucoDevro/csuite
+  doc_url: https://csuite-miner.readthedocs.io/
+  home: https://github.com/LucoDevro/CAGEcleaner
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Streamlined workflows for query-based gene cluster mining
+build:
+  entry_points:
+  - csuite = csuite.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vvv --no-build-isolation --no-cache-dir'
+extra:
+  recipe-maintainers:
+  - LucoDevro
+package:
+  name: csuite
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - setuptools
+  run:
+  - python >=3.12
+  - cblaster >=1.4.0
+  - cagecleaner >=1.5.2
+  - cfoldseeker >=0.2.0
+source:
+  sha256: 3f80fcffacb57b55c4f6c228790eabb77d27078444a5c06bbfc8c7407d8c3e33
+  url: https://pypi.org/packages/source/c/csuite/csuite-0.1.0.tar.gz
+test:
+  commands:
+  - csuite -h

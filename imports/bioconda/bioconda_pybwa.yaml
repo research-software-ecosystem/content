@@ -11,9 +11,8 @@ build:
   number: 0
   run_exports:
   - null
-  script: -m pip install . -vvv --no-deps
-  script_env:
-  - M4=$BUILD_PREFIX/bin/m4
+  script:
+  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   skip: true
 extra:
   additional-platforms:
@@ -25,18 +24,21 @@ extra:
   - nh13
 package:
   name: pybwa
-  version: 2.2.0
+  version: 2.3.2
 requirements:
   build:
+  - null
   - null
   - make
   - autoconf
   - automake
   - libtool
+  - pkg-config
   host:
   - cython
   - pip
   - python
+  - setuptools
   - poetry-core
   - zlib
   - xz
@@ -51,8 +53,8 @@ requirements:
   - pysam >=0.22.1
   - typing-extensions >=3.7.4
 source:
-  sha256: cb4b2659540427087249e991dc1fe5e910a2a192d537833c5920c6926f2dd25d
-  url: https://github.com/fulcrumgenomics/pybwa/releases/download/2.2.0/pybwa-2.2.0.tar.gz
+  sha256: b2a25b358f1f8fa069cd8a4d15ab730497b90095645a59d6f9a03b56261afae9
+  url: https://github.com/fulcrumgenomics/pybwa/releases/download/2.3.2/pybwa-2.3.2.tar.gz
 test:
   imports:
   - pybwa

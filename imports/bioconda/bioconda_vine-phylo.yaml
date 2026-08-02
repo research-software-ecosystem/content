@@ -5,42 +5,52 @@ about:
   dev_url: https://github.com/CshlSiepelLab/vine
   home: https://github.com/CshlSiepelLab/vine
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  summary: 'VINE (phylogenetics): Variational Inference with Node Embeddings'
+  summary: 'VINE (phylogenetics): Variational Inference with Node Embeddings.'
 build:
   number: 0
   run_exports:
   - null
   script:
+  - test -f ${PREFIX}/lib/libopenblas.so || ln -sf libopenblas.so.0 ${PREFIX}/lib/libopenblas.so
   - export VINE_BLAS_ARGS=""
-  - export VINE_BLAS_ARGS="-DBLAS_LIBRARIES=${PREFIX}/lib/libopenblas.so.0 -DLAPACK_LIBRARIES=${PREFIX}/lib/libopenblas.so.0"
+  - export VINE_BLAS_ARGS="-DVINE_ENABLE_OPENBLAS_THREADS=ON -DBLAS_LIBRARIES=${PREFIX}/lib/libopenblas.so.0
+    -DLAPACK_LIBRARIES=${PREFIX}/lib/libopenblas.so.0"
   - export VINE_CODESIGN=OFF
   - cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX}
-    -DPHAST_ROOT=${PREFIX} ${VINE_BLAS_ARGS}
+    -DPHAST_ROOT=${PREFIX} -DCMAKE_C_COMPILER=${CC} ${VINE_BLAS_ARGS}
   - cmake --build build --parallel ${CPU_COUNT}
   - cmake --install build
+  - rm -f ${PREFIX}/lib/libopenblas.so
   skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - asiepel
 package:
   name: vine-phylo
-  version: 0.3.4
+  version: 0.3.5
 requirements:
   build:
   - null
+  - null
   - cmake
   - make
+  - pkg-config
   host:
   - phast
   - pcre
-  - blas
-  - lapack
+  - libopenblas
+  - libblas
+  - liblapack
   run:
   - phast
 source:
-  sha256: b1992ac7c9bd5515b2ae7857bbb559c830b5e35c6e82fb73e3dcf29cca9329e9
-  url: https://github.com/CshlSiepelLab/vine/archive/refs/tags/v0.3.4.tar.gz
+  sha256: 9ec46b057c1cd36fc2dda36f9b93e51a1acdb922caa86bfaba29af99c5c33253
+  url: https://github.com/CshlSiepelLab/vine/archive/refs/tags/v0.3.5.tar.gz
 test:
   commands:
   - vine --help

@@ -1,0 +1,49 @@
+about:
+  home: https://github.com/steineggerlab/riboseek
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Riboseek: fast and sensitive RNA homology search'
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - pskvins
+  - milot-mirdita
+  - martin-steinegger
+package:
+  name: riboseek
+  version: 1.0.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cmake
+  - make
+  - llvm-openmp
+  - libgomp
+  - cuda-nvcc
+  - cuda-cudart-dev
+  - cuda-version >=12.9,<13
+  - perl
+  host:
+  - zlib
+  - bzip2
+  run:
+  - aria2
+  - gawk
+  - zlib
+  - bzip2
+source:
+  sha256: c953c2d6711a83671afeaf7ed0109603e9b75bdbe8e009a977b535b20f4107ca
+  url: https://github.com/steineggerlab/riboseek/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - riboseek > /dev/null

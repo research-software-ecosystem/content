@@ -1,0 +1,57 @@
+about:
+  description: 'Isovar assembles RNA reads which support a variant to determine the
+    mutant
+
+    protein sequence(s) that a tumour actually expresses, rather than relying
+
+    on a reference transcript annotation alone.
+
+    '
+  dev_url: https://github.com/openvax/isovar
+  home: https://github.com/openvax/isovar
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Determine mutant protein sequences from RNA using assembly around variants
+build:
+  entry_points:
+  - isovar = isovar.cli.isovar_main:run
+  - isovar-protein-sequences = isovar.cli.isovar_protein_sequences:run
+  - isovar-translations = isovar.cli.isovar_translations:run
+  - isovar-reference-contexts = isovar.cli.isovar_reference_contexts:run
+  - isovar-allele-reads = isovar.cli.isovar_allele_reads:run
+  - isovar-allele-counts = isovar.cli.isovar_allele_counts:run
+  - isovar-variant-reads = isovar.cli.isovar_variant_reads:run
+  - isovar-variant-sequences = isovar.cli.isovar_variant_sequences:run
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: isovar
+  version: 1.7.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools >=64
+  run:
+  - python
+  - pyensembl >=1.5.0
+  - varcode >=0.9.0
+  - pandas >=0.23.0
+  - pysam >=0.15.2
+  - psutil
+source:
+  sha256: 55c957b196319a115cb37f8541cfbe88a9a066f99b2872985db7b0ff43355187
+  url: https://pypi.org/packages/source/i/isovar/isovar-1.7.1.tar.gz
+test:
+  commands:
+  - isovar --help
+  imports:
+  - isovar
+  - isovar.cli

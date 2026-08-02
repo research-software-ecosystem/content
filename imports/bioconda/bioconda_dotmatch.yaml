@@ -1,6 +1,8 @@
 about:
-  description: 'DotMatch is a deterministic known-target short-DNA assignment engine
-    for
+  description: 'The distribution installs AssayCode, the assay-level platform identity,
+    and
+
+    DotMatch, its deterministic known-target short-DNA assignment engine for
 
     CRISPR guides, barcodes, primers, panels, and whitelist-style target sets.
 
@@ -25,7 +27,7 @@ extra:
   - dnncha
 package:
   name: dotmatch
-  version: 0.1.8
+  version: 0.2.2
 requirements:
   build:
   - null
@@ -41,14 +43,17 @@ requirements:
   - python >=3.9
   - tomli
 source:
-  sha256: ec3819bc773431454910287559d0809aca6ec1d81959f29d3d522650edb74904
-  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.1.8.tar.gz
+  sha256: 52536b70e379f1aa09d891b3e44c7f67b02875086826f55fabe25f3bcfab89b9
+  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.2.2.tar.gz
 test:
   commands:
-  - python -c "import dotmatch; assert dotmatch.distance('ACGT', 'AGGT') == 1"
+  - python -c "import assaycode, dotmatch; assert assaycode.engine is dotmatch; assert
+    dotmatch.distance('ACGT', 'AGGT') == 1"
   - python -c "from dotmatch.native import find_native_cli; p=find_native_cli(); assert
     p.name == 'dotmatch-native' and p.exists()"
-  - dotmatch --version | grep '^dotmatch 0.1.8$'
+  - assaycode --version | grep '^assaycode 0.2.2 (DotMatch engine 0.2.2)$'
+  - assaycode --help | grep 'additive assay-level identity'
+  - dotmatch --version | grep '^dotmatch 0.2.2$'
   - dotmatch dist ACGT AGGT | grep '^1$'
   - dotmatch leq 1 ACGT AGGT | grep '^true$'
   - 'dotmatch citation | grep ''Citation metadata: CITATION.cff'''

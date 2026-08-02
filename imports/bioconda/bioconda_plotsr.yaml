@@ -7,25 +7,29 @@ about:
 build:
   noarch: python
   number: 0
+  run_exports:
+  - null
   script: ' -m pip install . --no-deps --ignore-installed -vvv'
 extra:
   recipe-maintainers:
-  - Manish Goel <goel@mpipz.mpg.de>
+  - mnshgl0110
 package:
   name: plotsr
-  version: 1.1.1
+  version: 1.2.0
 requirements:
   host:
   - python
   - pip
+  - setuptools
+  - numpy
   run:
   - python
   - numpy >=1.21
   - matplotlib-base >=3.3
   - pandas >=1.2.4
 source:
-  sha256: db24f0b6f400ffcf5c1d3ebdd2e534857e121b0dd513bd9ead1b241cd82185de
-  url: https://github.com/schneebergerlab/plotsr/archive/v1.1.1.tar.gz
+  sha256: e0937de4dcbd76caab08ec15fd25fc8794714e85b984b71d55af6144db978295
+  url: https://github.com/schneebergerlab/plotsr/archive/v1.2.0.tar.gz
 test:
   commands:
   - plotsr --version

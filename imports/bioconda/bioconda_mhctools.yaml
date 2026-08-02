@@ -1,0 +1,51 @@
+about:
+  description: 'mhctools provides a uniform Python interface to a variety of MHC binding
+
+    prediction tools, including NetMHC, NetMHCpan, NetMHCIIpan, MHCflurry and
+
+    the IEDB web servers.
+
+    '
+  dev_url: https://github.com/openvax/mhctools
+  home: https://github.com/openvax/mhctools
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Python interface to running command-line and web-based MHC binding predictors
+build:
+  entry_points:
+  - mhctools = mhctools.cli.script:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - jonasscheid
+package:
+  name: mhctools
+  version: 3.31.5
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - numpy >=1.7
+  - pandas >=0.13.1
+  - varcode >=0.5.9
+  - pyensembl >=1.0.3
+  - sercol >=0.0.2
+  - mhcflurry >=2.0.0
+  - mhcnames >=0.3.2
+source:
+  sha256: 4271d3372e9ef06fce833683bf5aed84a421639d9034d87918dde740758a1d02
+  url: https://pypi.org/packages/source/m/mhctools/mhctools-3.31.5.tar.gz
+test:
+  commands:
+  - mhctools --help
+  imports:
+  - mhctools
+  - mhctools.cli

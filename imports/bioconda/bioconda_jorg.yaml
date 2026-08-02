@@ -1,0 +1,44 @@
+about:
+  description: 'JORG is a shell-based workflow for iterative metagenome-assembled
+    genome
+
+    circularization and bin improvement using mirabait, MIRA, and seqtk.
+
+    '
+  dev_url: https://github.com/lmlui/Jorg
+  doc_url: https://github.com/lmlui/Jorg
+  home: https://github.com/lmlui/Jorg
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: MAG circularization and iterative bin improvement workflow using MIRA
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: jorg
+  version: 1.0.2
+requirements:
+  build:
+  - bash
+  - sed
+  run:
+  - bash
+  - coreutils
+  - grep
+  - sed
+  - gawk
+  - mira
+  - seqtk
+source:
+  sha256: fe883708a6df4c4875c74cc0783b6ede77cda44b3c37318f311fdd4d5b81c49c
+  url: https://github.com/lmlui/Jorg/archive/refs/tags/v1.0.2.tar.gz
+test:
+  commands:
+  - test -x "${PREFIX}/bin/jorg"
+  - test -f "${PREFIX}/share/jorg/manifest_template.conf"
+  - jorg --help

@@ -7,7 +7,7 @@ about:
   summary: Aligning short and accurate long reads to a reference genome, the successor
     of bwa-mem.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
 extra:
@@ -16,25 +16,27 @@ extra:
   - osx-arm64
 package:
   name: minibwa
-  version: '0.3'
+  version: '0.6'
 requirements:
   build:
   - make
+  - cmake
+  - ninja
   - null
   - null
   host:
-  - zlib
   - llvm-openmp
   run:
   - llvm-openmp
 source:
-  patches:
-  - override-makefile.patch
-  sha256: 85040b1b25caeee6304616c2bc081c313e0ff1a29006bb0295098b8ae51973de
-  url: https://github.com/lh3/minibwa/archive/v0.3.tar.gz
+- sha256: 5a5123b85c21220492518802dc8527585a006689de2440ac4a9f4063e41fd0d2
+  url: https://github.com/lh3/minibwa/archive/v0.6.tar.gz
+- folder: _zlib_ng
+  sha256: f9c65aa9c852eb8255b636fd9f07ce1c406f061ec19a2e7d508b318ca0c907d1
+  url: https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.3.3.tar.gz
 test:
   commands:
-  - minibwa version | grep 0.3
+  - minibwa version | grep 0.6
   - minibwa 2>&1 | grep 'Usage'
   - test -e $PREFIX/lib/libminibwa.a
   - test -e $PREFIX/include/minibwa.h
