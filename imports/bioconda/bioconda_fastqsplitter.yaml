@@ -1,16 +1,18 @@
 about:
+  dev_url: https://github.com/LUMC/fastqsplitter
   doc_url: https://fastqsplitter.readthedocs.io
   home: https://github.com/LUMC/fastqsplitter
   license: MIT
   license_family: MIT
+  license_file: LICENSE
   summary: Splits FASTQ files evenly.
 build:
   entry_points:
-  - fastqsplitter=fastqsplitter:main
-  number: 8
+  - fastqsplitter = fastqsplitter:main
+  number: 9
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   additional-platforms:
   - linux-aarch64
@@ -22,7 +24,8 @@ package:
   version: 1.2.0
 requirements:
   build:
-  - ''
+  - null
+  - null
   host:
   - pip
   - setuptools
@@ -35,7 +38,7 @@ requirements:
   - xopen >=0.8.1
 source:
   sha256: 14cfb45eabe00de29886dbf2ad8dedd1b9990cb82ee194b5c41291533f3b879d
-  url: https://pypi.io/packages/source/f/fastqsplitter/fastqsplitter-1.2.0.tar.gz
+  url: https://pypi.org/packages/source/f/fastqsplitter/fastqsplitter-1.2.0.tar.gz
 test:
   commands:
   - fastqsplitter --help

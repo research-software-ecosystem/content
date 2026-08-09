@@ -1,0 +1,59 @@
+about:
+  description: 'DoubletFinder identifies doublets by generating artificial doublets
+    from an
+
+    existing scRNA-seq dataset and finding the real cells that preferentially
+
+    co-localize with them in gene expression space. The package also provides
+
+    the pN-pK parameter sweep used to select pK, and a homotypic doublet
+
+    proportion estimate from cell annotation frequencies.
+
+    '
+  dev_url: https://github.com/chris-mcginnis-ucsf/DoubletFinder
+  doc_url: https://github.com/chris-mcginnis-ucsf/DoubletFinder/blob/master/README.md
+  home: https://github.com/chris-mcginnis-ucsf/DoubletFinder
+  license: CC0-1.0
+  license_family: PUBLIC-DOMAIN
+  summary: Doublet detection in single-cell RNA sequencing data using artificial nearest
+    neighbors.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+  script:
+  - export LC_ALL="en_US.UTF-8"
+  - export DISABLE_AUTOBREW=1
+  - $R CMD INSTALL --build . "${R_ARGS}"
+extra:
+  identifiers:
+  - doi:10.1016/j.cels.2019.03.003
+package:
+  name: r-doubletfinder
+  version: 2.0.6
+requirements:
+  host:
+  - r-base >=4.0
+  - r-fields
+  - r-kernsmooth
+  - r-rocr
+  - r-seurat >=5.0.0
+  - r-seuratobject >=5.0.0
+  run:
+  - r-base >=4.0
+  - r-fields
+  - r-kernsmooth
+  - r-rocr
+  - r-seurat >=5.0.0
+  - r-seuratobject >=5.0.0
+source:
+  sha256: 64a46212e8e1b45d754694b0f08ddc2b5ffba623695527da66ab479cd344de82
+  url: https://github.com/chris-mcginnis-ucsf/DoubletFinder/archive/1b244d8f0d54b4b1cb4365639931bbb16f01e1cd.tar.gz
+test:
+  commands:
+  - $R -e "library('DoubletFinder')"

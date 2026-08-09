@@ -1,23 +1,30 @@
 about:
   dev_url: https://github.com/amkram/panmap
   home: https://github.com/amkram/panmap
-  license: MIT
-  license_family: MIT
-  license_file: panmap/LICENSE
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - panmap/LICENSE
+  - panman/LICENSE
+  - panmap/src/3rdparty/bwa/COPYING
+  - panmap/src/3rdparty/bwa/NOTICE-bwt_gen
+  - panmap/src/3rdparty/minimap2/LICENSE
+  - panmap/src/3rdparty/bcftools/LICENSE
   summary: Pangenome-based sequence placement, alignment, and genotyping
 build:
   number: 0
   run_exports:
   - null
   skip: true
-  string: '0'
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  recipe-maintainers:
+  - amkram
 package:
   name: panmap
-  version: 0.1.2
+  version: 0.2.0
 requirements:
   build:
   - null
@@ -28,6 +35,7 @@ requirements:
   host:
   - zlib
   - htslib
+  - libdeflate
   - libboost-devel
   - libprotobuf
   - tbb-devel
@@ -38,14 +46,10 @@ requirements:
   - libabseil
   - zstd
   - eigen
-  run:
-  - spdlog >=1.16,<1.17
-  - fmt >=12.0,<13
-  - libabseil >=20250512
 source:
 - folder: panmap
-  sha256: 6375f20ca5d3a96bf436fbea12913c1b38c0ebf3fbe951c562c3955f823ef206
-  url: https://github.com/amkram/panmap/archive/v0.1.2.tar.gz
+  sha256: c5e5bb6164109c181ef8cd97401b62e7f048bddac624f3e59b831c987481aa7f
+  url: https://github.com/amkram/panmap/archive/v0.2.0.tar.gz
 - folder: panman
   sha256: 6e987799cd4f713f88b6e3ddafa9b59798a210c8ff1d8b59381bbc5fd2661c72
   url: https://github.com/TurakhiaLab/panman/archive/refs/tags/v0.1.4.tar.gz

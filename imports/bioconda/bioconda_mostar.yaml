@@ -10,11 +10,15 @@ build:
   - null
   script: -m pip install . --no-deps --no-build-isolation -vv
 extra:
+  notes: "Post-install setup required before first use (databases are not bundled):\n\
+    \  amrfinder -u\n  msf_data install --target <path> CONJScan\n  (plus separate\
+    \ Kraken2, Bakta, and geNomad database downloads \u2014\n   see project README\
+    \ for details)\n"
   recipe-maintainers:
   - nermze
 package:
   name: mostar
-  version: 1.0.2
+  version: 1.0.4
 requirements:
   host:
   - python >=3.11
@@ -32,7 +36,10 @@ requirements:
   - bcftools
   - minimap2
   - circlator
-  - bakta
+  - bakta =1.11.4
+  - pyhmmer <0.11
+  - hmmer =3.4
+  - alive-progress =3.0.1
   - ncbi-amrfinderplus
   - blast
   - kraken2
@@ -46,8 +53,8 @@ requirements:
   - wget
   - curl
 source:
-  sha256: 4dd50c62bfe4061c91bf7156e9fc4472206e767246000e3335b4e69919318172
-  url: https://pypi.io/packages/source/m/mostar/mostar-1.0.2.tar.gz
+  sha256: 2c6b07b9f91f2395366597caea94956ce430673f3252b1830ee5b46eb0e07e8a
+  url: https://pypi.io/packages/source/m/mostar/mostar-1.0.4.tar.gz
 test:
   commands:
   - mostar --help

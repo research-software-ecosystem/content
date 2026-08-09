@@ -1,23 +1,30 @@
 about:
-  home: http://alakazam.readthedocs.org
-  license: AGPL-3
+  dev_url: https://github.com/immcantation/alakazam
+  doc_url: https://alakazam.readthedocs.io/en/stable
+  home: https://github.com/immcantation/alakazam
+  license: AGPL-3.0-or-later
   license_family: AGPL
   license_file:
   - /lib/R/share/licenses/AGPL-3
-  summary: 'Provides methods for high-throughput adaptive immune  receptor repertoire
-    sequencing (AIRR-Seq; Rep-Seq) analysis. In  particular, immunoglobulin (Ig) sequence
-    lineage reconstruction,  lineage topology analysis, diversity profiling, amino
-    acid property  analysis and gene usage. Citations:  Gupta and Vander Heiden, et
-    al (2017) <doi:10.1093/bioinformatics/btv359>, Stern, Yaari and Vander Heiden,
-    et al (2014) <doi:10.1126/scitranslmed.3008879>.'
+  summary: Provides methods for high-throughput adaptive immune receptor repertoire
+    sequencing (AIRR-Seq; Rep-Seq) analysis. In particular, immunoglobulin (Ig) sequence
+    lineage reconstruction, lineage topology analysis, diversity profiling, amino
+    acid property analysis and gene usage.
 build:
-  number: 4
+  number: 5
   rpaths:
   - lib/R/lib/
   - lib/
   run_exports:
   - null
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btv359
+  - doi:10.1126/scitranslmed.3008879
   recipe-maintainers:
   - ggabernet
   skip-lints:
@@ -27,6 +34,7 @@ package:
   version: 1.2.1
 requirements:
   build:
+  - null
   - null
   - null
   - make
@@ -55,7 +63,6 @@ requirements:
   - bioconductor-biostrings >=2.56.0
   - bioconductor-genomicalignments >=1.24.0
   - bioconductor-iranges >=2.22.2
-  - gcc-libs
   - r-matrix
   - r-rcpp >=0.12.12
   - r-airr >=1.3

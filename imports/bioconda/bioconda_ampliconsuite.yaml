@@ -1,10 +1,10 @@
 about:
   home: https://github.com/AmpliconSuite
-  license: BSD 2-Clause License (AmpliconSuite-pipeline and AmpliconClassifier) &
-    University of California Software License (AmpliconArchitect). Please see https://github.com/AmpliconSuite/AmpliconSuite-pipeline
+  license: BSD 2-Clause License (AmpliconSuite-pipeline and AmpliconClassifier), BSD
+    3-Clause License (BFBArchitect), and University of California Software License
+    (AmpliconArchitect). Please see https://github.com/AmpliconSuite/AmpliconSuite-pipeline
     for more details on licenses.
-  summary: An end-to-end wrapper for focal amplification analysis from whole-genome
-    sequencing using AmpliconArchitect and associated tools.
+  summary: An end-to-end workflow for focal amplification analysis with AmpliconArchitect.
 build:
   noarch: python
   number: 0
@@ -12,36 +12,51 @@ build:
   - null
 package:
   name: ampliconsuite
-  version: 1.5.3
+  version: 1.6.0
 requirements:
   build:
-  - python >=3
-  - setuptools
+  - python >=3.9
+  - pip
+  - setuptools >=77
+  - wheel
   host:
-  - python >=3
-  - setuptools
+  - python >=3.9
+  - pip
+  - setuptools >=77
+  - wheel
   run:
-  - python >=3
+  - python >=3.9
   - bwa
+  - clarabel >=0.11.1,<0.12
   - cnvkit >=0.9.10
+  - coin-or-cbc
+  - curl
   - Flask
   - future
   - intervaltree
   - matplotlib-base
   - mscorefonts
   - numpy
+  - pandas
+  - pulp >=2.8
   - pysam
   - samtools
   - scipy
   - bedtools
 source:
-- sha256: 7db92d6cc2a1f3074877079e868dd8b16163858d6ef2d0fdc6d5a8e1b4588dbb
-  url: https://github.com/AmpliconSuite/AmpliconSuite-pipeline/archive/v1.5.3.tar.gz
+- sha256: 948edfc61328e13844fda996d0ad4dae88e43514a2f581ea9b0263e98900c9ca
+  url: https://github.com/AmpliconSuite/AmpliconSuite-pipeline/archive/v1.6.0.tar.gz
 - folder: ampliconarchitectlib
-  sha256: 4149f9db0cc8c8479f61f8189bb8ec40ea387eff51b5d55d874d632b9f219b69
-  url: https://github.com/AmpliconSuite/AmpliconArchitect/archive/v1.5.r7.tar.gz
-- sha256: d12094407bf43dc102b3f3979d1ef154cf729146d59c699dfe31ce50df1e8f17
-  url: https://github.com/AmpliconSuite/AmpliconClassifier/archive/v1.5.2.tar.gz
+  sha256: 42222bd8bd31ae58c2bbcb0047b12544626f5f921a3188e77ee2f83efea26ec9
+  url: https://github.com/AmpliconSuite/AmpliconArchitect/archive/v1.6.r0.tar.gz
+- folder: ampliconclassifierlib
+  sha256: 451049912bf65fa65081da0fda8fa8bad4c834105ff6f0a8d0735b2153a046cf
+  url: https://github.com/AmpliconSuite/AmpliconClassifier/archive/v2.0.0.tar.gz
+- folder: bfbarchitectlib
+  patches:
+  - bfba-conda-solvers.patch
+  sha256: 704ddd69756d9bb1414191dcce19bc2114d2b146660d17ff3bd8deb8f6fab94f
+  url: https://github.com/AmpliconSuite/BFBArchitect/archive/v1.0.1.tar.gz
 test:
   commands:
   - python3 $(which AmpliconSuite-pipeline.py) -v
@@ -49,7 +64,18 @@ test:
   - python3 $(which amplicon_classifier.py) -v
   - python3 $(which feature_similarity.py) -h
   - python3 $(which make_results_table.py) -h
+  - BFBArchitect.py --version
+  - python3 -c "import bfbarchitect; assert bfbarchitect.__version__ == '1.0.1'"
+  - python3 -c "from importlib.metadata import requires; assert any(r.lower().startswith('gurobipy')
+    for r in requires('BFBArchitect'))"
+  - python3 -c "from importlib.metadata import version; assert version('AmpliconClassifier')
+    == '2.0.0'"
+  - python3 -c "from pulp import COIN_CMD; assert COIN_CMD().available()"
+  - python3 -c "from bfbarchitect.BFBSolver import reconstruct_BFB_cbc; sequence,
+    objective = reconstruct_BFB_cbc([2], [0], [0], 1, max_time=30, max_threads=1);
+    assert sequence and objective is not None"
   imports:
   - paalib
   - ampliconarchitectlib
   - ampclasslib
+  - bfbarchitect

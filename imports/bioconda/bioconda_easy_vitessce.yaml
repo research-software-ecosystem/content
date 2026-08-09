@@ -1,51 +1,49 @@
 about:
-  home: https://github.com/vitessce/easy_vitessce/
+  dev_url: https://github.com/vitessce/easy_vitessce
+  home: https://github.com/vitessce/easy_vitessce
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: A package to easily use Vitessce to create interactive plots for single-cell
-    data
+    data.
 build:
   noarch: python
   number: 0
   run_exports:
   - null
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - pavanvidem
 package:
   name: easy_vitessce
-  version: 0.0.10
+  version: 0.0.12
 requirements:
   host:
-  - python >=3.9
+  - python >=3.12
   - hatchling >=1.26
   - pip
   run:
-  - python >=3.9
+  - python >=3.12
   - scipy >=1.2.1
   - pandas >=1.1.2
   - black >=21.11b1
   - numpy >=1.21.2
-  - zarr >=2.5.0,<3
-  - numcodecs >=0.5.7,<0.16.0
-  - vitessce-python >=3.7.9
+  - zarr >=3
+  - vitessce-python >=3.9.2
   - scanpy >=1.11.3
-  - anndata >=0.11.4
-  - spatialdata >=0.3.0
-  - xarray >=2024.10.0,<=2025.3.0
-  - spatialdata-plot >=0.2.7
-  - dask-core ==2024.11.1
-  - distributed <=2024.11.2
+  - anndata >=0.12.10
+  - spatialdata >=0.7.3
+  - spatialdata-plot >=0.4.0
+  - xarray >=2024.10.0
+  - dask-core
+  - distributed
   - donfig >=0.3.1
 source:
-  sha256: 65791f0076764bcbd79868837f8ef6139573758924e799fe3e5927a435d906b5
-  url: https://pypi.org/packages/source/e/easy_vitessce/easy_vitessce-0.0.10.tar.gz
+  sha256: e58dddce848f209bb392415610b90793dc9ea9c4ac45139229a4b4049c5316fc
+  url: https://pypi.org/packages/source/e/easy_vitessce/easy_vitessce-0.0.12.tar.gz
 test:
   commands:
   - pip check
   imports:
   - easy_vitessce
-  requires:
-  - python >=3.9
-  - pip

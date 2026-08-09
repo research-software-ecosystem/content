@@ -1,7 +1,6 @@
 about:
-  dev_url: https://github.com/sebgra/hicberg
-  doc_url: null
-  home: https://github.com/sebgra/hicberg
+  dev_url: https://github.com/koszullab/hicberg
+  home: https://github.com/koszullab/hicberg
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -10,37 +9,28 @@ about:
 build:
   entry_points:
   - hicberg=hicberg.__main__:cli
-  noarch: generic
+  noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+  script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
   recipe-maintainers:
-  - sebgra
+  - axelcournac
 package:
   name: hicberg
-  version: 1.0.1
+  version: 1.0.2
 requirements:
   host:
-  - bioframe
-  - biopython
-  - click
-  - cooler
-  - funcy
-  - hicstuff
-  - matplotlib-base
-  - numpy
-  - pandas
+  - python >=3.10
   - pip
-  - pysam
-  - python
-  - scikit-learn
-  - scipy
-  - statsmodels
+  - setuptools
+  - wheel
   run:
+  - python >=3.10
   - bioframe
   - biopython
+  - bowtie2
   - click
   - cooler
   - funcy
@@ -49,16 +39,15 @@ requirements:
   - numpy
   - pandas
   - pysam
-  - python
+  - samtools
   - scikit-learn
   - scipy
   - statsmodels
 source:
-  sha256: e6e22104bc1b1ebf72bd72c7c8cefe64557446b9caee1ccad0078ed15941d94a
-  url: https://pypi.io/packages/source/h/hicberg/hicberg-1.0.1.tar.gz
+  sha256: 0bde749bd9841edd7c4a8984581e9fd78da29a27a014edbdbf098de4e5a97cd3
+  url: https://github.com/koszullab/hicberg/archive/refs/tags/v1.0.2.tar.gz
 test:
   commands:
   - hicberg --help
   imports:
   - hicberg
-  - tests

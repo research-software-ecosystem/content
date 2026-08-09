@@ -1,0 +1,73 @@
+about:
+  description: 'ADToolbox turns metagenomics evidence into model-ready anaerobic digestion
+
+    simulations. It maps 16S amplicon data through GTDB and a curated
+
+    enzyme-to-reaction database, or profiles shotgun reads directly, to produce
+
+    the microbial COD allocation an extended ADM (e-ADM) model needs -- then
+
+    simulates, visualizes, and calibrates the model against experimental data.
+
+    '
+  dev_url: https://github.com/chan-csu/ADToolbox
+  doc_url: https://chan-csu.github.io/ADToolbox/
+  home: https://github.com/chan-csu/ADToolbox
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Modeling and optimization of anaerobic digestion, from sequencing reads
+    to ADM1/e-ADM simulation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - ParsaGhadermazi
+package:
+  name: adtoolbox
+  version: 1.1.16
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - poetry-core >=1.0.0
+  run:
+  - python >=3.11
+  - numpy >=1.22.4
+  - scipy >=1.8.1
+  - polars >=0.20.27
+  - plotly >=5.8.0
+  - nbformat >=4.2.0
+  - requests >=2.27.1
+  - rich >=12.4.4
+  - click >=8.1.7
+  - fastp
+  - cutadapt
+  - bioconductor-dada2
+  - vsearch
+  - mmseqs2
+  - sra-tools
+  - ncbi-datasets-cli
+source:
+  sha256: 91c17207b4d7ba9dab0af2a077d0b72503e5d8a241ba1dd00a0f908c73e9fecb
+  url: https://pypi.org/packages/source/a/adtoolbox/adtoolbox-1.1.16.tar.gz
+test:
+  commands:
+  - adtoolbox --help
+  - adtoolbox --version
+  - adtoolbox metagenomics process --help
+  - adtoolbox adm e-adm --help
+  - fastp --version
+  - cutadapt --version
+  - vsearch --version
+  - mmseqs version
+  imports:
+  - adtoolbox
+  - adtoolbox.core
+  - adtoolbox.adm
+  - adtoolbox.configs
+  - adtoolbox.optimize

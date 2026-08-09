@@ -8,12 +8,11 @@ about:
   summary: xpore is a python package for Nanopore data analysis of differential RNA
     modifications.
 build:
-  entry_points:
-  - xpore-dataprep=xpore.scripts.dataprep:main
-  - xpore-diffmod=xpore.scripts.diffmod:main
   noarch: python
   number: 0
-  script: ' -m pip install . -vv'
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
 extra:
   identifiers:
   - doi:10.1101/2020.06.18.160010
@@ -22,11 +21,12 @@ extra:
   - artbio
 package:
   name: xpore
-  version: '2.1'
+  version: '2.2'
 requirements:
   host:
   - pip
   - python
+  - setuptools >=61.0
   run:
   - h5py >=2.10.0
   - numpy >=1.18.0
@@ -37,8 +37,8 @@ requirements:
   - scipy >=1.4.1
   - ujson >=4.0.1
 source:
-  sha256: 768f10720b717eaa11496fdfb692beda710118274a27b17eed8486842cea57eb
-  url: https://pypi.io/packages/source/x/xpore/xpore-2.1.tar.gz
+  sha256: 8a068adcc91f0fd9eb8588ba0e73b183792278e67175db3c5b3dd9dcf58c13c8
+  url: https://pypi.io/packages/source/x/xpore/xpore-2.2.tar.gz
 test:
   commands:
   - xpore --help

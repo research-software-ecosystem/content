@@ -21,50 +21,59 @@ about:
     across partition elements.
 
     '
-  dev_url: https://github.com/stephaneguindon/phyml/
-  doc_url: https://github.com/stephaneguindon/phyml/blob/master/doc/phyml-manual.pdf
-  home: http://www.atgc-montpellier.fr/phyml/
+  dev_url: https://github.com/stephaneguindon/phyml
+  doc_url: https://github.com/stephaneguindon/phyml/blob/v3.3.20260528/doc/phyml-manual.pdf
+  home: http://www.atgc-montpellier.fr/phyml
   license: GPL-3.0-only
-  license_family: GPL
+  license_family: GPL3
   license_file: COPYING
-  summary: Phylogenetic estimation using (Maximum) Likelihood
+  summary: Phylogenetic estimation using (Maximum) Likelihood.
 build:
-  number: 3
+  number: 0
   run_exports:
   - null
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:phyml
+  - usegalaxy-eu:phyml
   - doi:10.1093/sysbio/syq010
-  maintainers:
+  - doi:10.1016/j.tpb.2016.05.002
+  - doi:10.1093/sysbio/syy003
+  recipe-maintainers:
   - epruesse
 package:
   name: phyml
-  version: 3.3.20220408
+  version: 3.3.20260528
 requirements:
   build:
+  - null
   - null
   - make
   - autoconf
   - automake
   - libtool
-  host:
-  - openmpi
   - pkg-config
+  - gnuconfig
+  host:
+  - libgomp
+  - llvm-openmp
+  - openmpi
   run:
+  - libgomp
+  - llvm-openmp
   - openmpi
 source:
   patches:
-  - phytime.patch
-  - Makefile.patch
-  - phyml-aarch64.patch
-  sha256: 9cef375c0186e8a8d4db72ac02148707624c97174ffac244167a138ceb9f65bd
-  url: https://github.com/stephaneguindon/phyml/archive/v3.3.20220408.tar.gz
+  - 0001-Makefile.patch
+  - phyrex-guard-mcmc-root-time.patch
+  - 0003-configure.ac.patch
+  sha256: 42451c46de7cd01f8ca67d657766acf5b02f61027127bdda87efe3cdb422b297
+  url: https://github.com/stephaneguindon/phyml/archive/v3.3.20260528.tar.gz
 test:
   commands:
-  - phyml --help | grep "PhyML 3.3.20220408"
+  - phyml --help | grep "PhyML 3.3.20260528"
   - mpirun -mca orte_rsh_agent true --allow-run-as-root phyml-mpi --help | grep "PhyML
-    3.3.20220408"
-  - phytime --help | grep "PhyTime 3.3.20220408"
+    3.3.20260528"
