@@ -6,7 +6,7 @@ about:
   license_file: LICENSE
   summary: Biosequence analysis using profile hidden Markov models.
 build:
-  number: 4
+  number: 5
   run_exports:
   - null
 extra:
@@ -28,6 +28,7 @@ requirements:
   build:
   - make
   - null
+  - null
   - autoconf
   - automake
   - libtool
@@ -35,6 +36,7 @@ requirements:
   - gnuconfig
   host:
   - gsl
+  - libblas * *_netlib
   - openmpi
   run:
   - openmpi
@@ -54,8 +56,14 @@ test:
   - hmmsim -h 2>&1 | grep "HMMER 3\." > /dev/null
   - hmmstat -h 2>&1 | grep "HMMER 3\." > /dev/null
   - jackhmmer -h 2>&1 | grep "HMMER 3\." > /dev/null
+  - printf ">query_protein\nMKTIIALSYIFCLVFADYKDDDDK\n" > query.fa
+  - printf ">matching_target\nMKTIIALSYIFCLVFADYKDDDDK\n>unrelated_target\nGAVLKVLTTGLPALISWIKRKRQQ\n"
+    > targets.fa
+  - jackhmmer --noali -N 1 query.fa targets.fa 2>&1 | grep "matching_target" > /dev/null
   - phmmer -h 2>&1 | grep "HMMER 3\." > /dev/null
   - nhmmer -h 2>&1 | grep "HMMER 3\." > /dev/null
   - nhmmscan -h 2>&1 | grep "HMMER 3\." > /dev/null
   - hmmpgmd -h 2>&1 | grep "HMMER 3\." > /dev/null
   - esl-reformat -h 2>&1 | grep "Easel" > /dev/null
+  requires:
+  - libblas * *_netlib

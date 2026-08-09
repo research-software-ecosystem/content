@@ -8,7 +8,11 @@ about:
   summary: HTSeq is a Python library to facilitate processing and analysis of data
     from high-throughput sequencing (HTS) experiments.
 build:
-  number: 2
+  entry_points:
+  - htseq-qa = HTSeq.scripts.qa:main
+  - htseq-count = HTSeq.scripts.count:main
+  - htseq-count-barcodes = HTSeq.scripts.count_with_barcodes:main
+  number: 3
   run_exports:
   - null
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
@@ -21,13 +25,12 @@ extra:
   - usegalaxy-eu:htseq_count
   - doi:10.1093/bioinformatics/btu638
   - doi:10.1093/bioinformatics/btac166
-  skip-lints:
-  - compiler_needs_stdlib_c
 package:
   name: htseq
   version: 2.1.2
 requirements:
   build:
+  - null
   - null
   host:
   - python
@@ -42,6 +45,7 @@ requirements:
   - matplotlib-base
   - numpy
   - pysam
+  - pandas
   - scipy
   - anndata
   - loompy

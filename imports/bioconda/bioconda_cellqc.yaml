@@ -1,54 +1,75 @@
 about:
+  description: "A Snakemake pipeline for quality control of single-cell RNA-Seq data.\
+    \ From\nCell Ranger output it runs ambient RNA correction (SoupX or DecontX),\n\
+    filtering on UMI count, detected genes and mitochondrial percentage,\ndoublet\
+    \ detection (DoubletFinder and/or scDblFinder), and a nuclear-fraction\nstatistic\
+    \ from the Cell Ranger BAM. Per sample it writes a cleaned .h5ad\nwith its .obs\
+    \ and .var as TSVs, plus a cohort metrics.csv, an HTML report\nand a PDF slide\
+    \ deck.\n\nDoubletFinder is GitHub-only and cannot be a conda dependency. Either\n\
+    install it after this package:\n\n    Rscript -e \"remotes::install_github('chris-mcginnis-ucsf/DoubletFinder',\
+    \ upgrade=FALSE)\"\n\nor set doublet.run: [scdblfinder] and doublet.decider: scdblfinder\
+    \ in the\nconfig, which needs nothing beyond this package.\n"
   home: https://github.com/lijinbio/cellqc
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Cellqc standardizes the qualiy control of single-cell RNA-Seq (scRNA) data
-    to render clean feature count matrices.
+  summary: Cellqc standardizes the quality control of single-cell RNA-Seq (scRNA)
+    data to render clean feature count matrices.
 build:
-  entry_points:
-  - cellqc=cellqc.cellqc:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . -vv'
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
 extra:
   recipe-maintainers:
   - lijinbio
 package:
   name: cellqc
-  version: 0.1.0
+  version: 0.3.1
 requirements:
   host:
-  - click
   - pip
-  - pygraphviz
   - python
-  - snakemake
+  - setuptools >=77
   run:
-  - click
-  - pygraphviz
   - python >=
-  - snakemake
-  - bioconductor-dropletutils
-  - r-seurat
-  - r-seuratobject
-  - r-dplyr
-  - r-ggplot2
-  - r-soupx >=1.6.2
-  - r-harmony
-  - r-remotes
-  - r-scpred
-  - scanpy >=1.9.1
+  - click
+  - snakemake-minimal >=8
+  - jinja2
+  - pandas
+  - pyyaml
   - numpy
-  - anndata =0.7.8
-  - graphviz
+  - scipy
+  - h5py
+  - matplotlib-base
+  - scanpy
+  - anndata
+  - pysam
+  - tectonic
+  - r-base >=4.4
+  - r-seurat >=5
+  - r-seuratobject >=5
+  - r-matrix
+  - r-soupx >=1.6.2
+  - r-ggplot2
+  - bioconductor-dropletutils
+  - bioconductor-singlecellexperiment
+  - bioconductor-summarizedexperiment
+  - bioconductor-zellkonverter
+  - bioconductor-scdblfinder
+  - bioconductor-celda
+  - r-remotes
+  - r-rocr
+  - r-fields
+  - r-kernsmooth
 source:
-  sha256: 15249e5a94971ab0850763b97530edaa30146e279bb4e0b627653dcd29d648c8
-  url: https://pypi.io/packages/source/c/cellqc/cellqc-0.1.0.tar.gz
+  sha256: 2c0a524872c2c3a14b7b99a7db7a4acd8a38330866cb6fa7755607ce116b8388
+  url: https://pypi.io/packages/source/c/cellqc/cellqc-0.3.1.tar.gz
 test:
   commands:
   - cellqc --help
   imports:
   - cellqc
+  - cellqc.qcutil
+  - cellqc.reportdata

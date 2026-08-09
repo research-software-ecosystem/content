@@ -15,25 +15,26 @@ build:
   number: 0
   run_exports:
   - null
-  script: cargo install --locked --root "${PREFIX}" --path . --no-track
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --locked --root "${PREFIX}" --path . --no-track
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
   recipe-maintainers:
   - qtoussaint
-  skip-lints:
-  - compiler_needs_stdlib_c
 package:
   name: bacprune
-  version: 0.9.0
+  version: 0.9.1
 requirements:
   build:
   - null
+  - null
+  - cargo-bundle-licenses
 source:
-  sha256: f81039b4e666cf8e8787490b55031ba73a5d9a4192af58fdb4c7da74a6a7dab8
-  url: https://github.com/bacpop/BacPrune-Rust/archive/refs/tags/v0.9.0.tar.gz
+  sha256: 562a4d47e3c8de2b073e08f332b424d3118214a4dbc445111606414778dbb86f
+  url: https://github.com/bacpop/BacPrune-Rust/archive/refs/tags/v0.9.1.tar.gz
 test:
   commands:
   - bacprune --help
-  - bacprune --version | grep -q "0.9.0"

@@ -23,7 +23,7 @@ about:
   summary: SPAdes (St. Petersburg genome assembler) is intended for both standard
     isolates and single-cell MDA bacteria assemblies.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -64,6 +64,7 @@ requirements:
   - llvm-openmp
   - libgomp
   - openmpi
+  - pigz
   - python >=3.8
 source:
   patches:
@@ -72,6 +73,7 @@ source:
   url: https://github.com/ablab/spades/releases/download/v4.3.0/SPAdes-4.3.0.tar.gz
 test:
   commands:
+  - pigz --version
   - spades.py --version 2>&1 | grep 4.3.0
   - rnaspades.py --version 2>&1 | grep 4.3.0
   - metaspades.py --version 2>&1 | grep 4.3.0

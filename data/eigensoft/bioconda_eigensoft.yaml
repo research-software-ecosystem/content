@@ -1,13 +1,16 @@
 about:
+  dev_url: https://github.com/DReichLab/EIG
+  doc_url: https://github.com/DReichLab/EIG/blob/v9.0.0/README
   home: https://github.com/DReichLab/EIG
   license: Custom OSS
   license_file: LICENSE.txt
-  summary: The EIGENSOFT package implements methods for analzing population structure
-    and performing stratification correction
+  summary: The EIGENSOFT package implements methods for analyzing population structure
+    and performing stratification correction.
 build:
-  number: 6
+  number: 0
   run_exports:
   - null
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -17,25 +20,29 @@ extra:
   - doi:10.1371/journal.pgen.0020190
 package:
   name: eigensoft
-  version: 8.0.0
+  version: 9.0.0
 requirements:
   build:
   - make
   - null
+  - null
   host:
   - gsl
   - openblas
+  - liblapack
+  - argp-standalone
   run:
   - gsl
   - openblas
+  - argp-standalone
   - perl
 source:
   patches:
   - 0001-Add-gfortran-to-LDLIBS.patch
-  - 0002-replace-finite.patch
-  - 0003-remove-wrong-cflag.patch
-  sha256: e3459e8ac0134da369910454854eae5c7b261e8816318ccbd2d371b4c6c35741
-  url: https://github.com/DReichLab/EIG/archive/v8.0.0.tar.gz
+  - 0002-remove-wrong-cflag.patch
+  - 0003-macos.patch
+  sha256: 6b9535115f3f37045a721a9ec630b39eec4d4e84fba8b4a753731a284ff05587
+  url: https://github.com/DReichLab/EIG/archive/v9.0.0.tar.gz
 test:
   commands:
   - smartpca

@@ -1,32 +1,46 @@
 about:
+  dev_url: https://github.com/ngless-toolkit/ngless
+  doc_url: https://ngless.embl.de
   home: https://ngless.embl.de
   license: MIT
+  license_family: MIT
+  license_file:
+  - COPYING
+  - THIRDPARTY.yml
   summary: A tool for short-read processing with a focus on metagenomics
 build:
   number: 0
+  run_exports:
+  - null
 extra:
   identifiers:
   - doi:10.1186/s40168-019-0684-8
   recipe-maintainers:
   - luispedro
-  skip-lints:
-  - should_be_noarch_generic
 package:
   name: ngless
-  version: 1.5.0
+  version: 1.6.0
 requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
   run:
-  - bwa
-  - prodigal
-  - megahit
-  - samtools
-  - minimap2
+  - bwa >=0.7.19
+  - prodigal >=2.6.3
+  - megahit >=1.2.9
+  - samtools >=1.23.1
+  - minimap2 >=2.31
 source:
-- sha256: 327295c9a4e4fe8d5b41af403caaf43e414eaa4c9d11dcb312f660f44a24e143
-  url: https://github.com/ngless-toolkit/ngless/releases/download/v1.5.0/NGLess-v1.5.0-Linux-static-no-deps
-- sha256: fe2d43e4964da31ce18b95a447596f43eebaec9c5ae13788f812960fb9bb94e4
-  url: https://github.com/ngless-toolkit/ngless/releases/download/v1.5.0/NGLess-v1.5.0-MacOSX.zip
+  sha256: 1f51937d20170273f525253ecced107a084ade4472bffda9d91982a9d10a7c89
+  url: https://github.com/ngless-toolkit/ngless/archive/refs/tags/v1.6.0.tar.gz
 test:
   commands:
   - ngless --version
   - ngless --check-install --verbose
+  - ngless --print-path bwa
+  - ngless --print-path prodigal
+  - ngless --print-path megahit
+  - ngless --print-path samtools
+  - ngless --print-path minimap2

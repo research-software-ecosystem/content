@@ -1,0 +1,46 @@
+about:
+  description: "ScriptManager was built to be a lightweight and easy to use genomics\
+    \ \nanalysis tool for novice bioinformaticians. It includes both a \ngraphical\
+    \ interface for easy navigation of inputs and options while \nalso supporting\
+    \ a command line interface for automation and integration \nwith workflow managers\
+    \ like Galaxy. We describe here how a user \nunfamiliar with the command line\
+    \ can leverage national supercomputing \nresources using a graphical desktop interface\
+    \ like Open OnDemand to \nperform their analyses and generate publication quality\
+    \ figures for \ntheir research. Widespread adoption of this tool in the genomics\
+    \ \ncommunity would lower technical barriers to accessing supercomputing \nresources\
+    \ and allow biochemists to prototype their own workflows that \ncan be integrated\
+    \ into large scale production pipelines. Source code \nand precompiled binaries\
+    \ available at \nhttps://github.com/CEGRcode/scriptmanager.\n"
+  dev_url: https://github.com/CEGRcode/scriptmanager
+  doc_source_url: https://github.com/CEGRcode/scriptmanager-docs
+  doc_url: https://cegrcode.github.io/scriptmanager-docs
+  home: https://github.com/CEGRcode/scriptmanager
+  license: MIT
+  license_family: MIT
+  license_url: https://github.com/CEGRcode/scriptmanager/blob/master/LICENSE
+  summary: genomics toolbox that supports both graphical and command-line execution
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  identifiers:
+  - doi:10.1145/3491418.3535161
+  - RRID:SCR_021797
+  recipe-maintainers:
+  - owlang
+package:
+  name: scriptmanager
+  version: '0.15'
+requirements:
+  host: []
+  run:
+  - openjdk >=17
+source:
+  sha256: 7a980a4c009f9ff8a7263abe86af0166a8f4d0c596aca7236d8063ac7eee9c0c
+  url: https://github.com/CEGRcode/scriptmanager/releases/download/v0.15/scriptmanager-v0.15.jar
+test:
+  commands:
+  - scriptmanager --help || scriptmanager --version
+  - test -f ${PREFIX}/share/scriptmanager-0.15/scriptmanager-v0.15.jar

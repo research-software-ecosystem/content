@@ -1,0 +1,39 @@
+about:
+  dev_url: https://github.com/tomdstanton/rammappy
+  doc_url: https://tomdstanton.github.io/rammappy
+  home: https://tomdstanton.github.io/rammappy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A Python interface to rammap, the Rust implementation of minimap2.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: rammappy
+  version: 0.1.3
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python
+  - maturin >=1.5,<2.0
+  - pip
+  run:
+  - python
+source:
+  sha256: 96a9bb503f1fc839b376264d6246980386853f12338b9da610e46d3964c37c35
+  url: https://pypi.org/packages/source/r/rammappy/rammappy-0.1.3.tar.gz
+test:
+  imports:
+  - rammappy
