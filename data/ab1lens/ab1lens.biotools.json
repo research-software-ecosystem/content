@@ -1,178 +1,228 @@
 {
-    "accessibility": "Open access",
-    "additionDate": "2026-06-26T00:29:30.740942Z",
-    "biotoolsCURIE": "biotools:ab1lens",
-    "biotoolsID": "ab1lens",
-    "cost": "Free of charge",
-    "credit": [
+  "accessibility": "Open access",
+  "additionDate": "2026-06-26T00:29:30.740942Z",
+  "biotoolsCURIE": "biotools:ab1lens",
+  "biotoolsID": "ab1lens",
+  "collectionID": [
+    "fishka.bio"
+  ],
+  "cost": "Free of charge",
+  "credit": [
+    {
+      "email": "swim@fishka.bio",
+      "name": "Fishka Bio",
+      "typeEntity": "Project",
+      "typeRole": [
+        "Primary contact",
+        "Developer",
+        "Maintainer"
+      ],
+      "url": "https://fishka.bio"
+    }
+  ],
+  "description": "Browser-based viewer for Sanger sequencing chromatograms in AB1/ABIF and SCF format, and for the .srd raw files of the Nanofor-05 capillary sequencer, converted to ABIF as they open. Shows raw and analysed traces, base calls (called or edited), per-base quality and the full ABIF directory, and puts two reads side by side with their tag tables aligned. A read aligns against a pasted or loaded reference, which reports identity, mismatches, indels and the ends that did not align, and flips the strand when the read is on the other one. End trimming (modified Mott or sliding window) has draggable handles, motif search is IUPAC-aware and finds primers, and QC metrics copy out as CSV. Drag on a trace to select a base range, then copy it as FASTA, zoom to it or export just that region. Exports the read as FASTA, FASTQ, .qual or ABIF and the chromatogram as a high-resolution PNG. Open files are kept as local sessions. Runs entirely in the browser \u2014 files are never uploaded.",
+  "documentation": [
+    {
+      "note": "Showcase gallery \u2014 an annotated screenshot per task, from quality control to aligning a read against a reference",
+      "type": [
+        "Training material"
+      ],
+      "url": "https://fishka.bio/ab1lens/showcase"
+    }
+  ],
+  "download": [
+    {
+      "note": "Offline build \u2014 the same application as a self-contained archive, runs from local files with no server",
+      "type": "Downloads page",
+      "url": "https://fishka.bio/download"
+    }
+  ],
+  "editPermission": {
+    "type": "private"
+  },
+  "function": [
+    {
+      "input": [
         {
-            "email": "swim@fishka.bio",
-            "name": "Fishka Bio",
-            "typeEntity": "Project",
-            "typeRole": [
-                "Developer",
-                "Maintainer",
-                "Primary contact"
-            ],
-            "url": "https://fishka.bio"
+          "data": {
+            "term": "Sequence trace",
+            "uri": "http://edamontology.org/data_0924"
+          },
+          "format": [
+            {
+              "term": "AB1",
+              "uri": "http://edamontology.org/format_3000"
+            },
+            {
+              "term": "SCF",
+              "uri": "http://edamontology.org/format_1632"
+            }
+          ]
         }
-    ],
-    "description": "Browser-based viewer for Sanger sequencing chromatograms in AB1/ABIF and SCF format. Opens .ab1/.abi/.fsa files, shows raw and analysed traces, basecalls, quality values and the ABIF directory, and puts two reads side by side for comparison. Aligns a read against a reference sequence to highlight mismatches. Exports the read as FASTA, FASTQ or ABIF and the chromatogram as a high-resolution image. Runs entirely in the browser — files are never uploaded.",
-    "download": [
+      ],
+      "operation": [
         {
-            "note": "Offline build — the same application as a self-contained archive, runs from local files with no server",
-            "type": "Downloads page",
-            "url": "https://fishka.bio/download"
+          "term": "Chromatogram visualisation",
+          "uri": "http://edamontology.org/operation_3203"
+        },
+        {
+          "term": "Reverse complement",
+          "uri": "http://edamontology.org/operation_0363"
+        },
+        {
+          "term": "Sequence motif recognition",
+          "uri": "http://edamontology.org/operation_0239"
+        },
+        {
+          "term": "Sequence trimming",
+          "uri": "http://edamontology.org/operation_3192"
+        },
+        {
+          "term": "Sequence conversion",
+          "uri": "http://edamontology.org/operation_0233"
+        },
+        {
+          "term": "Sequencing quality control",
+          "uri": "http://edamontology.org/operation_3218"
         }
-    ],
-    "editPermission": {
-        "type": "private"
+      ],
+      "output": [
+        {
+          "data": {
+            "term": "Sequence trace image",
+            "uri": "http://edamontology.org/data_2168"
+          },
+          "format": [
+            {
+              "term": "PNG",
+              "uri": "http://edamontology.org/format_3603"
+            }
+          ]
+        },
+        {
+          "data": {
+            "term": "Sequence record",
+            "uri": "http://edamontology.org/data_0849"
+          },
+          "format": [
+            {
+              "term": "qual",
+              "uri": "http://edamontology.org/format_3607"
+            },
+            {
+              "term": "AB1",
+              "uri": "http://edamontology.org/format_3000"
+            },
+            {
+              "term": "FASTA",
+              "uri": "http://edamontology.org/format_1929"
+            },
+            {
+              "term": "FASTQ",
+              "uri": "http://edamontology.org/format_1930"
+            }
+          ]
+        }
+      ]
     },
-    "function": [
+    {
+      "input": [
         {
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence record",
-                        "uri": "http://edamontology.org/data_0849"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Sequence trace",
-                        "uri": "http://edamontology.org/data_0924"
-                    },
-                    "format": [
-                        {
-                            "term": "AB1",
-                            "uri": "http://edamontology.org/format_3000"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Pairwise sequence alignment",
-                    "uri": "http://edamontology.org/operation_0491"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence alignment",
-                        "uri": "http://edamontology.org/data_0863"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        }
-                    ]
-                }
-            ]
+          "data": {
+            "term": "Sequence trace",
+            "uri": "http://edamontology.org/data_0924"
+          },
+          "format": [
+            {
+              "term": "AB1",
+              "uri": "http://edamontology.org/format_3000"
+            }
+          ]
         },
         {
-            "input": [
-                {
-                    "data": {
-                        "term": "Sequence trace",
-                        "uri": "http://edamontology.org/data_0924"
-                    },
-                    "format": [
-                        {
-                            "term": "AB1",
-                            "uri": "http://edamontology.org/format_3000"
-                        },
-                        {
-                            "term": "SCF",
-                            "uri": "http://edamontology.org/format_1632"
-                        }
-                    ]
-                }
-            ],
-            "operation": [
-                {
-                    "term": "Chromatogram visualisation",
-                    "uri": "http://edamontology.org/operation_3203"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Sequence record",
-                        "uri": "http://edamontology.org/data_0849"
-                    },
-                    "format": [
-                        {
-                            "term": "FASTA",
-                            "uri": "http://edamontology.org/format_1929"
-                        },
-                        {
-                            "term": "FASTQ",
-                            "uri": "http://edamontology.org/format_1930"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Sequence trace image",
-                        "uri": "http://edamontology.org/data_2168"
-                    },
-                    "format": [
-                        {
-                            "term": "PNG",
-                            "uri": "http://edamontology.org/format_3603"
-                        }
-                    ]
-                }
-            ]
+          "data": {
+            "term": "Sequence record",
+            "uri": "http://edamontology.org/data_0849"
+          },
+          "format": [
+            {
+              "term": "FASTA",
+              "uri": "http://edamontology.org/format_1929"
+            }
+          ]
         }
-    ],
-    "homepage": "https://fishka.bio/ab1lens",
-    "language": [
-        "TypeScript"
-    ],
-    "lastUpdate": "2026-07-19T01:30:38.291914Z",
-    "license": "Freeware",
-    "link": [
+      ],
+      "operation": [
         {
-            "note": "fishka.bio — the tool collection ab1lens belongs to",
-            "type": [
-                "Software catalogue"
-            ],
-            "url": "https://fishka.bio"
+          "term": "Pairwise sequence alignment",
+          "uri": "http://edamontology.org/operation_0491"
         }
-    ],
-    "maturity": "Mature",
-    "name": "ab1lens",
-    "operatingSystem": [
-        "Linux",
-        "Mac",
-        "Windows"
-    ],
-    "owner": "fishka",
-    "toolType": [
-        "Desktop application",
-        "Web application"
-    ],
-    "topic": [
+      ],
+      "output": [
         {
-            "term": "Data visualisation",
-            "uri": "http://edamontology.org/topic_0092"
-        },
-        {
-            "term": "Sequence analysis",
-            "uri": "http://edamontology.org/topic_0080"
-        },
-        {
-            "term": "Sequencing",
-            "uri": "http://edamontology.org/topic_3168"
+          "data": {
+            "term": "Sequence alignment",
+            "uri": "http://edamontology.org/data_0863"
+          },
+          "format": [
+            {
+              "term": "FASTA",
+              "uri": "http://edamontology.org/format_1929"
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ],
+  "homepage": "https://fishka.bio/ab1lens",
+  "language": [
+    "TypeScript"
+  ],
+  "lastUpdate": "2026-08-21T03:03:37.161093Z",
+  "license": "Freeware",
+  "link": [
+    {
+      "note": "fishka.bio \u2014 the tool collection ab1lens belongs to",
+      "type": [
+        "Software catalogue"
+      ],
+      "url": "https://fishka.bio"
+    }
+  ],
+  "maturity": "Mature",
+  "name": "ab1lens",
+  "operatingSystem": [
+    "Windows",
+    "Linux",
+    "Mac"
+  ],
+  "owner": "fishka",
+  "publication": [
+    {
+      "doi": "10.5281/zenodo.21444547",
+      "note": "Software deposit (concept DOI \u2014 resolves to the latest version) covering the fishka.bio tools, including ab1lens.",
+      "type": [
+        "Other"
+      ],
+      "version": "2026.07.19"
+    }
+  ],
+  "toolType": [
+    "Desktop application",
+    "Web application"
+  ],
+  "topic": [
+    {
+      "term": "Sequencing",
+      "uri": "http://edamontology.org/topic_3168"
+    },
+    {
+      "term": "Sequence analysis",
+      "uri": "http://edamontology.org/topic_0080"
+    },
+    {
+      "term": "Data visualisation",
+      "uri": "http://edamontology.org/topic_0092"
+    }
+  ]
 }
