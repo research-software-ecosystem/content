@@ -1,5 +1,6 @@
 {
   "@context": {
+    "biii": "https://biii.eu/",
     "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
     "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
@@ -36,37 +37,52 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:recount3",
-  "@type": "schema1:SoftwareApplication",
-  "bioschemas:output": "tabular",
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3168"
-  },
-  "schema1:codeRepository": "https://github.com/LieberInstitute/recount3",
-  "schema1:dateCreated": "2026-06-05",
-  "schema1:description": "Retrieve harmonized RNA-seq gene expression data from recount3",
-  "schema1:encodingFormat": "tabular",
-  "schema1:featureList": [
+  "@graph": [
     {
-      "@id": "edam:operation_3800"
+      "@id": "galaxytool:recount3",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "tabular",
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3168"
+      },
+      "schema1:codeRepository": {
+        "@id": "https://github.com/LieberInstitute/recount3"
+      },
+      "schema1:dateCreated": "2026-06-05",
+      "schema1:description": "Retrieve harmonized RNA-seq gene expression data from recount3",
+      "schema1:encodingFormat": "tabular",
+      "schema1:featureList": [
+        {
+          "@id": "edam:operation_3800"
+        },
+        {
+          "@id": "edam:operation_2238"
+        }
+      ],
+      "schema1:identifier": [
+        {
+          "@id": "biotools:recount"
+        },
+        {
+          "@id": "bioconda:bioconductor-recount3"
+        }
+      ],
+      "schema1:isPartOf": {
+        "@id": "https://usegalaxy.eu"
+      },
+      "schema1:keywords": [
+        "Data Source",
+        "Transcriptomics"
+      ],
+      "schema1:name": "recount3",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": {
+        "@id": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/recount3"
+      }
     },
     {
-      "@id": "edam:operation_2238"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:identifier": [
-    {
-      "@id": "biotools:recount"
-    },
-    {
-      "@id": "bioconda:bioconductor-recount3"
-    }
-  ],
-  "schema1:keywords": [
-    "Data Source",
-    "Transcriptomics"
-  ],
-  "schema1:name": "recount3",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/recount3"
+  ]
 }

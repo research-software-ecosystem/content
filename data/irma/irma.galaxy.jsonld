@@ -1,5 +1,6 @@
 {
   "@context": {
+    "biii": "https://biii.eu/",
     "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
     "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
@@ -36,26 +37,41 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:irma",
-  "@type": "schema1:SoftwareApplication",
-  "bioschemas:output": "txt",
-  "schema1:codeRepository": "https://wonder.cdc.gov/amd/flu/irma/irma.html",
-  "schema1:dateCreated": "2024-11-09",
-  "schema1:description": "Iterative Refinement Meta-Assembler (IRMA) is a tool to construct assembly of highly variable RNA viruses.",
-  "schema1:encodingFormat": "txt",
-  "schema1:featureList": {
-    "@id": "edam:operation_0523"
-  },
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:irma-virus"
+      "@id": "galaxytool:irma",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": "txt",
+      "schema1:codeRepository": {
+        "@id": "https://wonder.cdc.gov/amd/flu/irma/irma.html"
+      },
+      "schema1:dateCreated": "2024-11-09",
+      "schema1:description": "Iterative Refinement Meta-Assembler (IRMA) is a tool to construct assembly of highly variable RNA viruses.",
+      "schema1:encodingFormat": "txt",
+      "schema1:featureList": {
+        "@id": "edam:operation_0523"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:irma-virus"
+        },
+        {
+          "@id": "bioconda:irma"
+        }
+      ],
+      "schema1:isPartOf": {
+        "@id": "https://usegalaxy.eu"
+      },
+      "schema1:keywords": "Sequence Analysis",
+      "schema1:name": "irma",
+      "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+      "schema1:url": {
+        "@id": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/irma"
+      }
     },
     {
-      "@id": "bioconda:irma"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:keywords": "Sequence Analysis",
-  "schema1:name": "irma",
-  "schema1:softwareVersion": "@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
-  "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/irma"
+  ]
 }

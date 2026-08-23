@@ -1,5 +1,6 @@
 {
   "@context": {
+    "biii": "https://biii.eu/",
     "bioconda": "https://github.com/bioconda/bioconda-recipes/tree/master/recipes/",
     "bioschemas": "http://bioschemas.org/",
     "biotools": "https://bio.tools/",
@@ -36,41 +37,56 @@
     "workflowhub": "https://workflowhub.eu/workflows/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "galaxytool:eastr",
-  "@type": "schema1:SoftwareApplication",
-  "bioschemas:output": [
-    "bed",
-    "bam",
-    "txt"
-  ],
-  "schema1:applicationSubCategory": {
-    "@id": "edam:topic_3320"
-  },
-  "schema1:codeRepository": "https://github.com/ishinder/eastr-cpp",
-  "schema1:dateCreated": "2026-06-24",
-  "schema1:description": "EASTR detects and removes spuriously spliced alignments from RNA-seq data",
-  "schema1:encodingFormat": [
-    "bed",
-    "bam",
-    "txt"
-  ],
-  "schema1:featureList": {
-    "@id": "edam:operation_0447"
-  },
-  "schema1:identifier": [
+  "@graph": [
     {
-      "@id": "biotools:eastr"
+      "@id": "galaxytool:eastr",
+      "@type": "schema1:SoftwareApplication",
+      "bioschemas:output": [
+        "bed",
+        "bam",
+        "txt"
+      ],
+      "schema1:applicationSubCategory": {
+        "@id": "edam:topic_3320"
+      },
+      "schema1:codeRepository": {
+        "@id": "https://github.com/ishinder/eastr-cpp"
+      },
+      "schema1:dateCreated": "2026-06-24",
+      "schema1:description": "EASTR detects and removes spuriously spliced alignments from RNA-seq data",
+      "schema1:encodingFormat": [
+        "bed",
+        "bam",
+        "txt"
+      ],
+      "schema1:featureList": {
+        "@id": "edam:operation_0447"
+      },
+      "schema1:identifier": [
+        {
+          "@id": "biotools:eastr"
+        },
+        {
+          "@id": "bioconda:eastr-cpp"
+        }
+      ],
+      "schema1:isPartOf": {
+        "@id": "https://usegalaxy.eu"
+      },
+      "schema1:keywords": [
+        "RNA",
+        "Transcriptomics",
+        "Sequence Analysis"
+      ],
+      "schema1:name": "eastr",
+      "schema1:softwareVersion": "2.1.1",
+      "schema1:url": {
+        "@id": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/eastr"
+      }
     },
     {
-      "@id": "bioconda:eastr-cpp"
+      "@id": "https://usegalaxy.eu",
+      "@type": "schema1:WebSite"
     }
-  ],
-  "schema1:keywords": [
-    "RNA",
-    "Transcriptomics",
-    "Sequence Analysis"
-  ],
-  "schema1:name": "eastr",
-  "schema1:softwareVersion": "2.1.1",
-  "schema1:url": "https://github.com/galaxyproject/tools-iuc/tree/main/tools/eastr"
+  ]
 }
