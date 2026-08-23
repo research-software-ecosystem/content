@@ -20,7 +20,7 @@
             "url": "https://fishka.bio"
         }
     ],
-    "description": "Browser-based viewer for Sanger sequencing chromatograms in AB1/ABIF and SCF format. Opens .ab1/.abi/.fsa files, shows raw and analysed traces, basecalls, quality values and the ABIF directory, and puts two reads side by side for comparison. Aligns a read against a reference sequence to highlight mismatches. Drag on a trace to select a base range, then copy it as FASTA, zoom to it or export just that region. Exports the read as FASTA, FASTQ or ABIF and the chromatogram as a high-resolution image. Open files are kept as local sessions, so a closed tab can be picked up where it was left. Runs entirely in the browser — files are never uploaded.",
+    "description": "Browser-based viewer for Sanger sequencing chromatograms in AB1/ABIF and SCF format, and for the .srd raw files of the Nanofor-05 capillary sequencer, converted to ABIF as they open. Shows raw and analysed traces, base calls (called or edited), per-base quality and the full ABIF directory, and puts two reads side by side with their tag tables aligned. A read aligns against a pasted or loaded reference, which reports identity, mismatches, indels and the ends that did not align, and flips the strand when the read is on the other one. End trimming (modified Mott or sliding window) has draggable handles, motif search is IUPAC-aware and finds primers, and QC metrics copy out as CSV. Drag on a trace to select a base range, then copy it as FASTA, zoom to it or export just that region. Exports the read as FASTA, FASTQ, .qual or ABIF and the chromatogram as a high-resolution PNG. Open files are kept as local sessions. Runs entirely in the browser — files are never uploaded.",
     "documentation": [
         {
             "note": "Showcase gallery — an annotated screenshot per task, from quality control to aligning a read against a reference",
@@ -112,6 +112,26 @@
                 {
                     "term": "Chromatogram visualisation",
                     "uri": "http://edamontology.org/operation_3203"
+                },
+                {
+                    "term": "Reverse complement",
+                    "uri": "http://edamontology.org/operation_0363"
+                },
+                {
+                    "term": "Sequence conversion",
+                    "uri": "http://edamontology.org/operation_0233"
+                },
+                {
+                    "term": "Sequence motif recognition",
+                    "uri": "http://edamontology.org/operation_0239"
+                },
+                {
+                    "term": "Sequence trimming",
+                    "uri": "http://edamontology.org/operation_3192"
+                },
+                {
+                    "term": "Sequencing quality control",
+                    "uri": "http://edamontology.org/operation_3218"
                 }
             ],
             "output": [
@@ -122,12 +142,20 @@
                     },
                     "format": [
                         {
+                            "term": "AB1",
+                            "uri": "http://edamontology.org/format_3000"
+                        },
+                        {
                             "term": "FASTA",
                             "uri": "http://edamontology.org/format_1929"
                         },
                         {
                             "term": "FASTQ",
                             "uri": "http://edamontology.org/format_1930"
+                        },
+                        {
+                            "term": "qual",
+                            "uri": "http://edamontology.org/format_3607"
                         }
                     ]
                 },
@@ -150,7 +178,7 @@
     "language": [
         "TypeScript"
     ],
-    "lastUpdate": "2026-08-04T00:11:15.731508Z",
+    "lastUpdate": "2026-08-21T03:03:37.161093Z",
     "license": "Freeware",
     "link": [
         {

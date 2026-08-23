@@ -1,0 +1,221 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2026-08-20T18:05:41.024320Z",
+    "biotoolsCURIE": "biotools:cognitionbiochem",
+    "biotoolsID": "cognitionbiochem",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "seung.jung@gmail.com",
+            "name": "Seung Ho Jung",
+            "orcidid": "https://orcid.org/0000-0001-7914-5306",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer"
+            ]
+        }
+    ],
+    "description": "A structural pharmacology workbench for cognition-related CNS targets, built so that a displayed number must trace to a computation. Runs Boltz-2 locally for structure prediction, validates chemistry with RDKit, enforces a provenance record on every value, and reports eight studies pre-registered under content hashes before any data was seen. Its headline result is negative: designed peptides did not separate from composition-matched shuffles of their own amino acids.",
+    "documentation": [
+        {
+            "note": "The `license` field above is Apache-2.0, which covers this project's code, but the repository is not single-licensed. It redistributes third-party scientific data that keeps its own terms: CC BY 4.0 (UniProt, AlphaFold DB), CC BY-SA 3.0 (ChEMBL-derived files -- SHARE-ALIKE, so reuse carries an obligation onward), CC0 1.0 (RCSB depositions) and MIT (Boltz-2 model outputs). NOTICE lists which files fall under which.",
+            "type": [
+                "Terms of use"
+            ],
+            "url": "https://github.com/hopejsh/CognitionBioChem/blob/main/NOTICE"
+        },
+        {
+            "type": [
+                "Citation instructions"
+            ],
+            "url": "https://github.com/hopejsh/CognitionBioChem/blob/main/docs/REGISTRATION.md"
+        },
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://github.com/hopejsh/CognitionBioChem#readme"
+        }
+    ],
+    "download": [
+        {
+            "type": "Source code",
+            "url": "https://github.com/hopejsh/CognitionBioChem/archive/refs/tags/v1.0.0.tar.gz",
+            "version": "1.0.0"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Boltz-2 v2.2.1 runs locally; every predicted structure is retained under content-addressed custody with its confidence files.",
+            "operation": [
+                {
+                    "term": "Protein structure prediction",
+                    "uri": "http://edamontology.org/operation_0474"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    },
+                    "format": [
+                        {
+                            "term": "mmCIF",
+                            "uri": "http://edamontology.org/format_1477"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    },
+                    "format": [
+                        {
+                            "term": "mmCIF",
+                            "uri": "http://edamontology.org/format_1477"
+                        }
+                    ]
+                }
+            ],
+            "note": "Backbone geometry, per-residue pLDDT and interface PAE are read from the model's own file; a value that was never computed renders as a label.",
+            "operation": [
+                {
+                    "term": "Validation",
+                    "uri": "http://edamontology.org/operation_2428"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "SMILES string",
+                        "uri": "http://edamontology.org/data_2301"
+                    },
+                    "format": [
+                        {
+                            "term": "SMILES",
+                            "uri": "http://edamontology.org/format_1196"
+                        }
+                    ]
+                }
+            ],
+            "note": "RDKit validation: parsing, molecular formula, InChIKey and stereochemistry completeness. A SMILES that fails to parse is shown as unverified.",
+            "operation": [
+                {
+                    "term": "Structure analysis",
+                    "uri": "http://edamontology.org/operation_2480"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Small molecule structure",
+                        "uri": "http://edamontology.org/data_1463"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/hopejsh/CognitionBioChem",
+    "language": [
+        "JavaScript",
+        "Python"
+    ],
+    "lastUpdate": "2026-08-20T18:06:12.321947Z",
+    "license": "Apache-2.0",
+    "link": [
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/hopejsh/CognitionBioChem/issues"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/hopejsh/CognitionBioChem"
+        }
+    ],
+    "maturity": "Mature",
+    "name": "CognitionBioChem",
+    "operatingSystem": [
+        "Linux",
+        "Mac"
+    ],
+    "otherID": [
+        {
+            "type": "rrid",
+            "value": "RRID:SCR_028851"
+        },
+        {
+            "type": "doi",
+            "value": "doi:10.5281/zenodo.22032684",
+            "version": "concept DOI, resolves to the latest release"
+        },
+        {
+            "type": "doi",
+            "value": "doi:10.5281/zenodo.22032685",
+            "version": "1.0.0"
+        }
+    ],
+    "owner": "seung",
+    "toolType": [
+        "Command-line tool",
+        "Web application"
+    ],
+    "topic": [
+        {
+            "term": "Drug discovery",
+            "uri": "http://edamontology.org/topic_3336"
+        },
+        {
+            "term": "Molecular modelling",
+            "uri": "http://edamontology.org/topic_2275"
+        },
+        {
+            "term": "Protein structure analysis",
+            "uri": "http://edamontology.org/topic_2814"
+        },
+        {
+            "term": "Structure prediction",
+            "uri": "http://edamontology.org/topic_0082"
+        }
+    ],
+    "version": [
+        "1.0.0"
+    ]
+}
