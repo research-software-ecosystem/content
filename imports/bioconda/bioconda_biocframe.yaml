@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/BiocPy/biocframe
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Flexible dataframe representation to support nested structures.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - acidgenomics
+  - mjsteinbaugh
+package:
+  name: biocframe
+  version: 0.7.3
+requirements:
+  host:
+  - python
+  - setuptools >=46.1.0
+  - setuptools-scm >=5
+  - pip
+  run:
+  - python
+  - numpy
+  - biocutils >=0.3.3
+source:
+  sha256: f118a764e256748bd2bce50cc0161ba30ea3b9bad4c537b29cff83af2132da53
+  url: https://pypi.org/packages/source/b/biocframe/biocframe-0.7.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - biocframe
+  requires:
+  - pip

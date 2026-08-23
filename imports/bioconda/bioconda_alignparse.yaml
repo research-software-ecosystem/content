@@ -1,0 +1,51 @@
+about:
+  doc_url: https://jbloomlab.github.io/alignparse
+  home: https://github.com/jbloomlab/alignparse
+  license: GPL-3.0-or-later
+  license_file: LICENSE.txt
+  summary: Align sequences and then parse features from the alignments
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - dolittle007
+package:
+  name: alignparse
+  version: 0.8.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - biopython >=1.73
+  - dna_features_viewer >=1.0.0
+  - matplotlib-base >=3.0.0
+  - minimap2 >=2.17
+  - numpy >=1.17
+  - packaging
+  - pandas >=0.25.1
+  - pathos >=0.2.4
+  - plotnine >=0.6
+  - pysam !=0.22.1
+  - pyyaml >=5.1.1
+  - regex >=2.5.33
+  - scipy >=1.2
+source:
+  sha256: 79e825180922d123b1bfbb0f6423673685287493fd513cdceff6c088402c5c75
+  url: https://pypi.io/packages/source/a/alignparse/alignparse-0.8.0.tar.gz
+test:
+  imports:
+  - alignparse
+  - alignparse.ccs
+  - alignparse.consensus
+  - alignparse.constants
+  - alignparse.cs_tag
+  - alignparse.minimap2
+  - alignparse.targets
+  - alignparse.utils

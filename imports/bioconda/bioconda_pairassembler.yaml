@@ -1,0 +1,52 @@
+about:
+  description: 'pairassembler is a fast and resource-frugal paired-end sequencing
+    read merger, which
+
+    installs under the abbreviated executable name "pairasm". pairassembler offers
+
+    SIMD-accelerated pair overlap discovery, optional overlap validation, pair consensus
+
+    calling, and pair error correction.
+
+    '
+  dev_url: https://github.com/nrminor/pairassembler
+  doc_url: https://github.com/nrminor/pairassembler/blob/v0.1.4/README.md
+  home: https://github.com/nrminor/pairassembler
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Fast and resource-frugal paired-end sequencing read merger.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - rm -f .cargo/config.toml
+  - export CARGO_INCREMENTAL=0
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path pairassembler --bin
+    pairasm
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nrminor
+package:
+  name: pairassembler
+  version: 0.1.4
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 55dd0b80ee00e1655a47df060036029cbd44af64a033da004453eac85ee1f7b9
+  url: https://github.com/nrminor/pairassembler/archive/refs/tags/v0.1.4.tar.gz
+test:
+  commands:
+  - pairasm --version
+  - pairasm --help

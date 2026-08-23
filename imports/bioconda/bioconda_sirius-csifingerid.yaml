@@ -4,10 +4,10 @@ about:
     a collection of our tools, including CSI:FingerID (with COSMIC), ZODIAC and CANOPUS.  In
     particular, both the graphical user interface and the command line version of
     SIRIUS seamlessly integrate the CSI:FingerID and CANOPUS web services.
-  dev_url: https://github.com/boecker-lab/sirius
-  doc_url: https://boecker-lab.github.io/docs.sirius.github.io/
-  home: https://bio.informatik.uni-jena.de/software/sirius/
-  license: AGPL-3.0-only AND OTHER
+  dev_url: https://github.com/sirius-ms/sirius
+  doc_url: https://v6.docs.sirius-ms.io/
+  home: https://v6.docs.sirius-ms.io/
+  license: AGPL-3.0-or-later AND OTHER
   license_file:
   - sirius_dist/sirius_gui_dist/build/install/sirius_gui_dist-sirius/COPYING.txt
   - sirius_dist/sirius_gui_dist/build/install/sirius_gui_dist-sirius/LICENSE.txt
@@ -22,21 +22,32 @@ build:
   - siriusDistName=sirius_gui_dist-sirius
   - siriusDistDir=sirius_gui_dist
 extra:
+  identifiers:
+  - doi:10.1038/s41592-019-0344-8
+  recipe-maintainers:
+  - RJMW
+  - neil-butcher
   skip-lints:
   - should_not_be_noarch_source
   - should_be_noarch_generic
 package:
   name: sirius-csifingerid
-  version: 5.8.6
+  version: 6.3.12
 requirements:
   build:
-  - openjdk 17.*
+  - openjdk 25.*
   run:
-  - openjdk 17.*
+  - openjdk 25.*
   - coin-or-cbc
 source:
-- sha256: f769a474140d6e28168d6d1526afc9e923e66eaeb0ace400e6c2ae77aa7f9202
-  url: https://github.com/boecker-lab/sirius/archive/refs/tags/v5.8.6.zip
+- sha256: 80f7ce3dc95fcc10477e97c4f1b58f5f707b57aea61527885547679beb03e6b3
+  url: https://github.com/sirius-ms/sirius/archive/refs/tags/v6.3.12.tar.gz
 test:
-  requires:
-  - wget
+  commands:
+  - java -version
+  - sirius --version | grep -F "${PKG_VERSION}"
+  - 'sirius --help | grep -q "Usage: sirius"'
+  - sirius formulas --help | grep -q "formulas"
+  - sirius write-summaries --help | grep -q "summaries"
+  - sirius login --help | grep -qF -- "--user-env"
+  - sirius login --help | grep -qF -- "--password-env"

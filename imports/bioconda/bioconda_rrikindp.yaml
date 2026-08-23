@@ -1,17 +1,23 @@
 about:
-  description: 'RRIkinDP evaluated thermodynamic and kinetic features of RNA-RNA interactions.
-    As input, two RNA
+  description: 'RRIkinDP computes thermodynamic and kinetic features of RNA-RNA interactions
+    based on a direct paths
 
-    sequences as well as their interaction structure is provided. The tool generates
-    the state space of
+    interaction formation model. As input, two RNA sequences as well as their interaction
+    structure are
 
-    all intermediate interactions from single base pair interactions to the full input
-    interaction.
+    provided. The tool generates the state space of all intermediate interactions
+    from single base pair
 
-    On top of this state space it computes the barrier energy for the best direct
-    path from a given
+    or seed interaction to the full input interaction. On top of this state space
+    it computes the barrier
 
-    start interaction to the full input interaction.
+    energy for the best direct path from a given start interaction to the full input
+    interaction. In
+
+    addition, the included python library enables modeling of the interaction formation
+    as a markov
+
+    process on this state space.
 
     '
   dev_url: https://github.com/mwaldl/RRIkinDP
@@ -20,9 +26,9 @@ about:
   license: GPL-3.0-only
   license_family: GPL3
   license_file: COPYING
-  summary: Evaluation of thermodynamic and kinetic features of RNA-RNA interactions.
+  summary: "Targeted RNA\u2013RNA interaction kinetics."
 build:
-  number: 3
+  number: 0
   run_exports:
   - null
 extra:
@@ -36,7 +42,7 @@ extra:
   - s-will
 package:
   name: rrikindp
-  version: 0.0.2
+  version: 0.0.3
 requirements:
   build:
   - make
@@ -49,8 +55,8 @@ requirements:
   - intarna
   - python
   - pip
-  - setuptools
-  - pybind11
+  - setuptools >=77
+  - pybind11 >=2.10
   - libgomp
   - llvm-openmp
   run:
@@ -63,11 +69,10 @@ requirements:
   - matplotlib-base >=3.7.0
   - seaborn-base >=0.12.0
   - pandas >=2.0.0
+  - treekin >=0.5.1
 source:
-  patches:
-  - 0001-fix-type-mismatch.patch
-  sha256: 3bdaa7657224b90945d864d0238010cf3337975f58c41106ab60427dd52bc93f
-  url: https://github.com/mwaldl/RRIkinDP/archive/refs/tags/v0.0.2.tar.gz
+  sha256: 0a2a57b4510ba1230b291d72e0d91d1407e1053a66f5fae90968d8bc3bf625ee
+  url: https://github.com/mwaldl/RRIkinDP/archive/refs/tags/v0.0.3.tar.gz
 test:
   commands:
   - RRIkinDP --version

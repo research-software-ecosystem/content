@@ -1,0 +1,75 @@
+about:
+  description: "polars-bio is a Python library for genomics built on top of Polars,\n\
+    Apache Arrow and Apache DataFusion. It provides a DataFrame API for\ngenomics\
+    \ data and is designed to be fast, memory efficient and easy\nto use.\n\nKey features:\n\
+    \  - Popular genomic interval operations with a DataFrame API\n  - SQL-powered\
+    \ querying of bioinformatics data\n  - Native parallel engine powered by Apache\
+    \ DataFusion\n  - Out-of-core / streaming processing\n  - Reading from cloud storage\n\
+    \  - Zero-copy data exchange with Apache Arrow\n  - Support for VCF, BAM, CRAM,\
+    \ SAM, FASTQ, FASTA, BED, GFF, GTF and\n    BigWig/BigBed\n"
+  dev_url: https://github.com/biodatageeks/polars-bio
+  doc_url: https://biodatageeks.org/polars-bio/
+  home: https://github.com/biodatageeks/polars-bio
+  license: Apache-2.0
+  license_family: Apache
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Blazing fast genomic operations on large Python dataframes
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btaf640
+  recipe-maintainers:
+  - mwiewior
+package:
+  name: polars-bio
+  version: 0.34.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - cmake
+  - make
+  - pkg-config
+  - git
+  - cross-python_
+  host:
+  - python
+  - pip
+  - maturin >=1.0,<2.0
+  run:
+  - python
+  - polars >=1.37.1
+  - pyarrow >=23.0.1,<25
+  - datafusion >=53.0.0,<54
+  - tqdm >=4.67.0,<5
+  - polars-config-meta >=0.3.0,<1
+source:
+  sha256: ddf864e95a3867f308c5c6e750f04f4535b8afe840c479dfb23a283167c4f82e
+  url: https://pypi.org/packages/source/p/polars-bio/polars_bio-0.34.0.tar.gz
+test:
+  commands:
+  - pip check
+  - python -c "import polars_bio as pb; print(pb.__version__)"
+  - python -c "import polars as pl, polars_bio as pb; d1 = pl.DataFrame((pl.Series('chrom',
+    ('chr1','chr1','chr2')), pl.Series('start', (100,500,100)), pl.Series('end', (200,600,200))));
+    d2 = pl.DataFrame((pl.Series('chrom', ('chr1','chr2')), pl.Series('start', (150,900)),
+    pl.Series('end', (250,1000)))); d1.config_meta.set(coordinate_system_zero_based=False);
+    d2.config_meta.set(coordinate_system_zero_based=False); r = pb.overlap(d1, d2,
+    output_type='polars.DataFrame'); assert r.height == 1, r; assert r.get_column('chrom_1').item()
+    == 'chr1', r; assert r.get_column('start_1').item() == 100, r; assert r.get_column('start_2').item()
+    == 150, r; print('overlap smoke test passed')"
+  imports:
+  - polars_bio
+  requires:
+  - pip

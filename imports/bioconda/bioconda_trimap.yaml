@@ -6,22 +6,27 @@ about:
 build:
   noarch: python
   number: 0
+  run_exports:
+  - null
   script: -m pip install . -vv --no-deps
 package:
   name: trimap
-  version: 1.0.15
+  version: 1.2.0
 requirements:
   host:
   - pip
   - python
+  - setuptools
   run:
-  - python-annoy >=1.11
-  - numba >=0.34
+  - python-annoy >=1.17.3
+  - numpy >=1.23
+  - numba >=0.57
   - python
-  - scikit-learn >=0.16
+  - scikit-learn >=1.2
+  - pytorch >=2.1
 source:
-  sha256: 8a87c24c9984dc1c80b6d0aab9f6099980725fc8d4419d7667b4b0e99024e0c3
-  url: https://pypi.io/packages/source/t/trimap/trimap-1.0.15.tar.gz
+  sha256: 909b9652a5bee76c7fbf6b65d6c9c32b3041207f89e1280a6793ad84938002c9
+  url: https://pypi.io/packages/source/t/trimap/trimap-1.2.0.tar.gz
 test:
   imports:
   - trimap

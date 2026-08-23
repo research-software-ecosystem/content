@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/BioPP/bppsuite
+  home: https://github.com/BioPP/bppsuite
+  license: CECILL-2.1
+  license_file: LICENSES/CECILL-2.1.txt
+  summary: BppSuite is a suite of ready-to-use programs for phylogenetic and sequence
+    analysis.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  skip-lints:
+  - compiler_needs_stdlib_c
+package:
+  name: bppsuite
+  version: 3.0.0
+requirements:
+  build:
+  - make
+  - null
+  - cmake
+  - pkg-config
+  host:
+  - bpp-phyl
+  - bpp-popgen
+  - eigen
+  run:
+  - bpp-phyl
+  - bpp-popgen
+source:
+  sha256: ff8c81eb648dbc86f451b88a7ae7743cccaab85ab5568f1190d7237157b7f64f
+  url: https://github.com/BioPP/bppsuite/archive/v3.0.0.tar.gz
+test:
+  commands:
+  - test -x ${PREFIX}/bin/bppml
+  - test -x ${PREFIX}/bin/bppancestor
+  - test -x ${PREFIX}/bin/bppseqgen
+  - test -x ${PREFIX}/bin/bppdist
+  - test -x ${PREFIX}/bin/bppconsense

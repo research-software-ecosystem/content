@@ -11,10 +11,12 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE.txt
-  summary: An open-source Python package to unify raw MS data access and storage
+  summary: An open-source Python package to unify raw MS data access and storage.
 build:
+  entry_points:
+  - alpharaw = alpharaw.cli:run
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -31,6 +33,7 @@ requirements:
   - pip
   run:
   - python >=3.8
+  - click
   - pythonnet
   - h5py
   - numba
@@ -40,15 +43,11 @@ requirements:
   - lxml
   - owlready2
   - alphabase >=1.5.0
-  - alphatims
 source:
   sha256: cf116165eb845cff014da6122e2effd7a0cbab4cc59dde3031ca38f021b8a097
   url: https://github.com/MannLabs/alpharaw/archive/refs/tags/v0.6.1.tar.gz
 test:
   commands:
-  - pip check
   - alpharaw --help
   imports:
   - alpharaw
-  requires:
-  - pip

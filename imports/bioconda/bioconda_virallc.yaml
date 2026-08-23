@@ -1,0 +1,51 @@
+about:
+  doc_url: https://github.com/ChrispinChaguza/virallc/
+  home: https://github.com/ChrispinChaguza/virallc/
+  license: MIT
+  license_file: LICENSE
+  summary: 'ViralLC: A utility for defining and assigning viral lineages consistently'
+build:
+  entry_points:
+  - virallc = virallc.__main__:main
+  - alnPairDist = virallc.scripts.alnPairDist:main
+  - alnSeqCov = virallc.scripts.alnSeqCov:main
+  - virallcClusters = virallc.scripts.virallcClusters:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - chrispinchaguza
+package:
+  name: virallc
+  version: 1.1.5
+requirements:
+  host:
+  - python >=3.8
+  - setuptools
+  - pip
+  run:
+  - python >=3.8
+  - biopython
+  - networkx
+  - python-build
+  - pandas
+  - mafft
+  - nextclade
+  - blast
+source:
+  sha256: ae3c1a8d21e47864770f57aae4458ac5f5d565459081381fe911927957090084
+  url: https://pypi.org/packages/source/v/virallc/virallc-1.1.5.tar.gz
+test:
+  commands:
+  - virallc --help
+  - alnPairDist --help
+  - alnSeqCov --help
+  - virallcClusters --help
+  imports:
+  - virallc
+  requires:
+  - pip
+  - python

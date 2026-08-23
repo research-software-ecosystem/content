@@ -10,10 +10,12 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE.txt
-  summary: A Python package for indexing Bruker timsTOF raw data
+  summary: A Python package for indexing Bruker timsTOF raw data.
 build:
+  entry_points:
+  - alphatims = alphatims.cli:run
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -38,7 +40,6 @@ requirements:
   - pyzstd
   - tqdm
   - alpharaw
-  - alphabase
 source:
   sha256: 6acd6f6057491994797c8cd03fb77dbe6e3c94f5ac7e5fa6bcf07fc1b6f0205a
   url: https://github.com/MannLabs/alphatims/archive/refs/tags/v1.1.1.tar.gz

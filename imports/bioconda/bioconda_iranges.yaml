@@ -1,0 +1,53 @@
+about:
+  home: https://github.com/biocpy/iranges
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Python implementation of the IRanges Bioconductor package.
+build:
+  number: 0
+  run_exports:
+  - null
+  script: env MORE_CMAKE_OPTIONS="-DFETCHCONTENT_SOURCE_DIR_NCLIST=$SRC_DIR/nclist-cpp-src
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON"  -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - acidgenomics
+  - mjsteinbaugh
+package:
+  name: iranges
+  version: 0.7.2
+requirements:
+  build:
+  - cmake
+  - make
+  - null
+  - null
+  host:
+  - python
+  - setuptools >=46.1.0
+  - setuptools-scm >=5
+  - pybind11
+  - numpy
+  - pip
+  run:
+  - python
+  - numpy
+  - biocutils >=0.3.3
+  - biocframe >=0.7.2
+  - compressed-lists >=0.4.3
+source:
+- sha256: 25c2f6049698fd4aafa8ae31a738f53f3c33b5bd5a1c32e108c1ac6583debbe3
+  url: https://pypi.org/packages/source/i/iranges/iranges-0.7.2.tar.gz
+- folder: nclist-cpp-src
+  sha256: 825b95bcb799a9ff0c8df36dae3a0b8ff3a74bce033ae4e82870bd2c79762219
+  url: https://github.com/LTLA/nclist-cpp/archive/v0.3.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - iranges
+  requires:
+  - pip

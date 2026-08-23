@@ -18,15 +18,18 @@ about:
     For more information, visit https://blast.ncbi.nlm.nih.gov
 
     '
-  home: https://blast.ncbi.nlm.nih.gov/doc/blast-help/
+  doc_url: https://blast.ncbi.nlm.nih.gov/doc/blast-help
+  home: https://blast.ncbi.nlm.nih.gov/doc/blast-help
   license: NCBI-PD
   license_file: c++/scripts/projects/blast/LICENSE
   summary: BLAST+ is a new suite of BLAST tools that utilizes the NCBI C++ Toolkit.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
+  additional-platforms:
+  - osx-arm64
   identifiers:
   - biotools:blast
   - doi:10.1016/S0022-2836(05)80360-2
@@ -42,7 +45,10 @@ requirements:
   - make
   - null
   - null
+  - null
   host:
+  - llvm-openmp
+  - libgomp
   - zlib
   - bzip2
   - entrez-direct
@@ -50,8 +56,6 @@ requirements:
   - curl
   - sqlite =3
   run:
-  - zlib
-  - bzip2
   - perl
   - perl-list-moreutils
   - perl-archive-tar
@@ -59,8 +63,10 @@ requirements:
   - entrez-direct
   - ncbi-vdb
   - curl
+  - llvm-openmp
+  - libgomp
 source:
-- patches:
+  patches:
   - configurellvm.patch
   - get_species_taxids.patch
   - phonehome.patch

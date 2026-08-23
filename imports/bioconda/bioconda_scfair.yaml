@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/leelieber2025/scFair
+  doc_url: https://scfair.readthedocs.io
+  home: https://github.com/leelieber2025/scFair
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Fair highly variable gene selection for single-cell RNA-seq
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script:
+  - -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - leelieber2025
+package:
+  name: scfair
+  version: 0.10.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.10
+  - anndata >=0.10
+  - numpy >=1.24
+  - pandas >=2.0
+  - scanpy >=1.10
+  - scipy >=1.10
+  - scikit-learn >=1.2
+  - python-igraph >=0.10
+  - scikit-misc >=0.3
+source:
+  sha256: b106624733d094343af07e672b69c54dffea77af2ed12e9aec3e0ea3e26214ba
+  url: https://pypi.io/packages/source/s/scfair/scfair-0.10.0.tar.gz
+test:
+  imports:
+  - scfair
+  - scfair.pp

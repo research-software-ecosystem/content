@@ -1,0 +1,60 @@
+about:
+  description: "bioflow is a bioinformatics SDK + cookbook for one-line\ncomparative-genomics\
+    \ analyses on a single workstation.  Each tool\nruns in its own Docker BioContainer\
+    \ (no native installs), each\nrecipe is one CLI call, and an optional privacy-first\
+    \ LLM companion\nis available.\n\nRequires a reachable Docker daemon at run time\
+    \ \u2014 bioflow launches\neach pipeline stage as a sibling container via the\
+    \ host Docker\nsocket.  Run `bioflow doctor` after install to verify the host.\n\
+    \nThe PyPI/conda distribution name is `bioflowkit`; the Python import\nname and\
+    \ CLI command are both `bioflow`.\n"
+  dev_url: https://github.com/hope9901/bioflow
+  doc_url: https://hope9901.github.io/bioflow/
+  home: https://github.com/hope9901/bioflow
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: One-line comparative-genomics recipes + Tier-A SDK over per-tool Docker
+    BioContainers
+build:
+  entry_points:
+  - bioflow = bioflow.cli:app
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hope9901
+package:
+  name: bioflowkit
+  version: 0.3.1
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - hatchling
+  run:
+  - python >=3.9
+  - typer >=0.12
+  - rich >=13.7
+  - pydantic >=2.7
+  - pyyaml >=6.0
+  - jsonschema >=4.22
+  - docker-py >=7.1
+  - psutil >=5.9
+  - questionary >=2.0
+  - pandas >=1.5
+  - matplotlib-base >=3.6
+  - pynvml >=11.5
+source:
+  sha256: 8a734662fa769168a0d2e5c6f36e4444d8e5c9cd20ed0c5f344ac1126ab32ee6
+  url: https://pypi.org/packages/source/b/bioflowkit/bioflowkit-0.3.1.tar.gz
+test:
+  commands:
+  - bioflow --help
+  - bioflow doctor --json || true
+  imports:
+  - bioflow
+  - bioflow.sdk
+  - bioflow.cli

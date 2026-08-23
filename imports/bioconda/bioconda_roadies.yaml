@@ -3,7 +3,9 @@ about:
     of the species directly from their raw genomic assemblies. ROADIES offers a fully
     automated, easy-to-use, scalable solution, eliminating any error-prone manual
     steps and providing unique flexibility in adjusting the tradeoff between accuracy
-    and runtime.
+    and runtime. ROADIES_XP extends this with GPU-accelerated alignment/tree-building
+    and a placement mode for growing or updating an existing species tree with new
+    genomes.
 
     '
   dev_url: https://github.com/TurakhiaLab/ROADIES
@@ -12,12 +14,13 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Reference-free Orthology-free Alignment-free DIscordance aware Estimation
-    of Species tree (ROADIES).
+  summary: Reference-free, orthology-free, discordance-aware species tree estimation
+    from raw genome assemblies.
 build:
   number: 0
   run_exports:
   - null
+  skip: true
 extra:
   identifiers:
   - doi:10.1101/2024.05.27.596098
@@ -25,15 +28,26 @@ extra:
   - ang037
 package:
   name: roadies
-  version: 0.1.10
+  version: 0.2.0
 requirements:
   build:
   - null
   - null
+  - null
+  - cuda-nvcc
+  - cuda-cudart-dev
+  - cuda-version >=12.2,<13
   - cmake
   - make
+  - autoconf
+  - automake
+  - libtool
+  - pkg-config
+  - flex
+  - bison
+  - git
   host:
-  - python ==3.9
+  - python ==3.11
   - pip
   - boost-cpp
   - zlib
@@ -43,8 +57,11 @@ requirements:
   - perl >=5.22
   - perl-bioperl >=1.7.2
   - perl-module-build
+  - liblapack
+  - libblas
+  - tbb-devel
   run:
-  - python ==3.9
+  - python ==3.11
   - biopython
   - numpy
   - boost-cpp
@@ -65,10 +82,19 @@ requirements:
   - mashtree ==1.4.6
   - lastz >=1.04.52
   - aster >=1.19
+  - epa-ng
+  - gappa
+  - tbb
+  - cuda-cudart >=12.2,<13
 source:
-  sha256: ecd12072bb1024dbcd0b2fc1bec54c737849fef87a0973111155a955c77d9e9a
-  url: https://github.com/TurakhiaLab/ROADIES/archive/v0.1.10.tar.gz
+- sha256: 0dd739a609e6225e27bab11f2458b4522d17d2ab5b9ee3fa7ae5d72011167d99
+  url: https://github.com/TurakhiaLab/ROADIES/archive/v0.2.0.tar.gz
+- folder: libpll-src
+  sha256: 45107d59d87be921c522478bb3688beee60dc79154e0b4a183af01122c597132
+  url: https://github.com/xflouris/libpll/archive/0.3.2.tar.gz
 test:
   commands:
   - python $PREFIX/ROADIES/run_roadies.py --help
   - mashtree --help
+  - test -x $PREFIX/ROADIES/TWILIGHT/bin/twilight
+  - test -x $PREFIX/ROADIES/MLIPPER/MLIPPER

@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/acidgenomics/py-acidplyr
+  home: https://python.acidgenomics.com/acidplyr/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: A pandas-based grammar for data frame manipulation.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - acidgenomics
+  - mjsteinbaugh
+package:
+  name: acidplyr
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - uv-build >=0.11,<1
+  run:
+  - python >=3.12
+  - numpy
+  - pandas
+source:
+  sha256: 74da666e294702fbfd0bd94940342dc5d04e80173095a3ec93fec44b35bb514f
+  url: https://github.com/acidgenomics/py-acidplyr/archive/v0.1.0.tar.gz
+test:
+  imports:
+  - acidplyr

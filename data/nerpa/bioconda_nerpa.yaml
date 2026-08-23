@@ -10,7 +10,7 @@ about:
   license_file: LICENSE.txt
   summary: A tool for discovering biosynthetic gene clusters of nonribosomal peptides.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -48,7 +48,7 @@ requirements:
   - biopython
   - cairosvg
   - pulp
-  - scikit-learn >=1.2.0
+  - scikit-learn ==1.2.0
   - pandas >=1.5
   - polars >=0.19
   - pyarrow
@@ -61,10 +61,13 @@ requirements:
   - bs4
   - parse
 source:
-  patches:
+- patches:
   - 0001-algorithm.patch
   sha256: c0f1fddd13d877a1ab0880be43fe044239a1430e5e01587842f28aeff00d79b3
   url: https://github.com/gurevichlab/nerpa/releases/download/nerpa_2.1.0/nerpa-2.1.0.tar.gz
+- folder: paras_model
+  sha256: 839b84d0f05766b2ab22aea5ab4a9de8e5dd7e29e94ed689ada172a8e8d8f387
+  url: https://zenodo.org/records/13165500/files/model.paras
 test:
   commands:
   - nerpa.py -h

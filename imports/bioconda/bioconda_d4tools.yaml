@@ -1,13 +1,13 @@
 about:
   dev_url: https://github.com/38/d4-format
-  doc_url: https://github.com/38/d4-format/blob/v0.3.11/README.md
+  doc_url: https://github.com/38/d4-format/blob/6f4031309958a7a1e471c9081369f2012d82705e/README.md
   home: https://github.com/38/d4-format
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: The D4 command line utility program.
 build:
-  number: 3
+  number: 0
   run_exports:
   - null
 extra:
@@ -20,9 +20,10 @@ extra:
   - haohou
 package:
   name: d4tools
-  version: 0.3.11
+  version: 0.3.11.post0
 requirements:
   build:
+  - null
   - null
   - null
   - null
@@ -35,11 +36,29 @@ requirements:
   host:
   - curl
   - tar
+  - htslib
+  - zlib
+  - xz
+  - bzip2
   run:
   - starcode
+  - htslib
 source:
-  sha256: 376e61c93cfe2efc15f5e74b75214e065e278146555e67b8769818bf49594726
-  url: https://github.com/38/d4-format/archive/refs/tags/v0.3.11.tar.gz
+  patches:
+  - fix-system-htslib-include-path.patch
+  sha256: 3e6af3d73f86730504224ac834989e7ba10baa9e4f0fffd898975300a3df0015
+  url: https://github.com/38/d4-format/archive/6f4031309958a7a1e471c9081369f2012d82705e.tar.gz
 test:
   commands:
-  - 'true'
+  - d4tools --help
+  - ldd $(command -v d4tools) | grep -q libhts.so
+  - otool -L $(command -v d4tools) | grep -q libhts
+  - if [ -f test-data/test.cram ]; then d4tools create -r test-data/ref.fa.fai test-data/test.cram
+    test-output.d4 && d4tools view test-output.d4 | diff - test-data/expected_output.txt;
+    fi
+  files:
+  - test-data/test.cram
+  - test-data/test.cram.crai
+  - test-data/ref.fa
+  - test-data/ref.fa.fai
+  - test-data/expected_output.txt

@@ -1,14 +1,22 @@
 about:
+  dev_url: https://github.com/bacpop/cgt
+  doc_url: https://github.com/bacpop/cgt/blob/v0.1.1/README.md
   home: https://github.com/bacpop/cgt
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE.txt
-  summary: Calculate a core genome threshold (cgt) from metagenome data
+  summary: Calculate a core genome threshold (cgt) from metagenome data.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
-  script: cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: cgt
   version: 0.1.1
