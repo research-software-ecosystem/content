@@ -6,14 +6,14 @@ about:
   summary: Genome Analysis Toolkit (GATK4)
 build:
   noarch: generic
-  number: 1
+  number: 0
   run_exports:
   - null
 outputs:
-- name: gatk4
+- name: gatk4-main
   requirements:
     run:
-    - openjdk >=17
+    - openjdk =17
     - python
   script: build_main.sh
   test:
@@ -22,12 +22,10 @@ outputs:
     - gatk --list
     - gatk HaplotypeCaller --help
     - gatk DetermineGermlineContigPloidy --help
-- build:
-    noarch: generic
-  name: gatk4-spark
+- name: gatk4-spark
   requirements:
     run:
-    - openjdk >=17
+    - openjdk =17
     - python
     - null
   script: build_spark.sh
@@ -39,7 +37,7 @@ outputs:
     - gatk DetermineGermlineContigPloidy --help
 package:
   name: gatk4
-  version: 4.6.2.0
+  version: 4.7.0.0
 requirements:
   host:
   - r-base =4.3.1
@@ -49,7 +47,7 @@ requirements:
   - r-reshape
   - gcnvkernel =0.9
   run:
-  - openjdk >=17
+  - openjdk =17
   - python
   - r-base =4.3.1
   - r-gplots
@@ -58,8 +56,8 @@ requirements:
   - r-reshape
   - gcnvkernel =0.9
 source:
-  sha256: 32d2f90bf13fcb3a8ac765bb2cb8ec1fc9a6cc447055d0156bd1db2092d4e3e8
-  url: https://github.com/broadinstitute/gatk/releases/download/4.6.2.0/gatk-4.6.2.0.zip
+  sha256: d093d2693b1626361a413ca59d6d4a0bf968717f280a8fd9ce060b25eb2ed1db
+  url: https://github.com/broadinstitute/gatk/releases/download/4.7.0.0/gatk-4.7.0.0.zip
 test:
   commands:
   - gatk -h

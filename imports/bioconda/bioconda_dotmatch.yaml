@@ -1,28 +1,32 @@
 about:
-  description: 'The distribution installs AssayCode, the assay-level platform identity,
-    and
+  description: 'DotMatch assigns fixed FASTQ read windows to known CRISPR guides,
+    barcodes,
 
-    DotMatch, its deterministic known-target short-DNA assignment engine for
+    feature tags, primers, panels, and other finite target lists. It reports
 
-    CRISPR guides, barcodes, primers, panels, and whitelist-style target sets.
+    unique, ambiguous, unmatched, and invalid reads and writes ordinary TSV,
 
-    It is not a genome aligner and does not emit SAM/BAM or CIGAR output.
+    JSON, FASTQ, and HTML outputs. It is not a genome aligner and does not emit
+
+    SAM/BAM or CIGAR output.
 
     '
   dev_url: https://github.com/dnncha/dotmatch
-  doc_url: https://dotmatch.readthedocs.io/
-  home: https://github.com/dnncha/dotmatch
+  doc_url: https://dotmatch.readthedocs.io/en/latest
+  home: https://dnncha.github.io/dotmatch
   license: Apache-2.0
+  license_family: APACHE
   license_file: LICENSE
-  summary: Deterministic short-DNA known-target assignment
+  summary: Known-target short-DNA assignment from FASTQ.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
   skip: true
 extra:
   additional-platforms:
   - osx-arm64
+  - linux-aarch64
   recipe-maintainers:
   - dnncha
 package:
@@ -34,13 +38,12 @@ requirements:
   - null
   - make
   host:
-  - python >=3.9
+  - python
   - pip
   - setuptools >=77
-  - wheel
   - zlib
   run:
-  - python >=3.9
+  - python
   - tomli
 source:
   sha256: 52536b70e379f1aa09d891b3e44c7f67b02875086826f55fabe25f3bcfab89b9

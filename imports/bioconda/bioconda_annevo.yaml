@@ -1,0 +1,44 @@
+about:
+  description: 'ANNEVO is a deep learning-based ab initio gene annotation method for
+
+    understanding genome function. It models distal sequence information
+
+    and joint evolutionary relationships across diverse species directly
+
+    from genomes to predict gene structures without relying on extrinsic
+
+    evidence (e.g. RNA-seq, protein homology).
+
+    '
+  dev_url: https://github.com/xjtu-omics/ANNEVO
+  home: https://github.com/xjtu-omics/ANNEVO
+  license: ANNEVO Non-Commercial License
+  license_family: OTHER
+  license_file: LICENSE
+  summary: Deep learning-based ab initio gene annotation from genome sequence.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+package:
+  name: annevo
+  version: 2.3.2
+requirements:
+  run:
+  - python =3.10
+  - pytorch
+  - numpy
+  - pandas
+  - h5py
+  - biopython
+  - numba
+  - tqdm
+source:
+  sha256: e0f51e23f191c292069e923b211337fc666f6261369930128601f7886a7cff70
+  url: https://github.com/xjtu-omics/ANNEVO/archive/refs/tags/v2.3.2.tar.gz
+test:
+  commands:
+  - annotation.py --help
+  - prediction.py --help
+  - decoding.py --help

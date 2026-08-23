@@ -8,24 +8,25 @@ build:
   number: 0
   run_exports:
   - null
-  script: -m pip install . --no-deps -vv
+  script: -m pip install . --no-deps --no-build-isolation -vv
 extra:
   recipe-maintainers:
   - primasanjaya
 package:
   name: muat
-  version: 0.1.20
+  version: 0.1.26
 requirements:
   host:
   - python
   - pip
   - setuptools
+  - wheel
   run:
   - python
-  - setuptools
   - numpy
   - pandas
   - requests
+  - importlib_resources
   - bedtools
   - htslib
   - natsort
@@ -39,8 +40,8 @@ requirements:
   - bedops
   - swalign
 source:
-  sha256: af7150defd8a5aacbe1a72f6e2be9eedd965b0ed4e2c0605901d200f876f2a1b
-  url: https://github.com/primasanjaya/muat/archive/refs/tags/v0.1.20.tar.gz
+  sha256: 06ebfb879df715e3d0e96051da373b160b5ec4fc701e56e302ccf0680a23a35a
+  url: https://github.com/primasanjaya/muat/archive/refs/tags/v0.1.26.tar.gz
 test:
   imports:
   - muat

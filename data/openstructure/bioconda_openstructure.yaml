@@ -13,7 +13,7 @@ about:
   license_file: LICENSE.txt
   summary: Open-Source Computational Structural Biology Framework.
 build:
-  number: 3
+  number: 0
   run_exports:
   - null
   skip: true
@@ -26,7 +26,7 @@ extra:
   - doi:10.1107/S0907444913007051
 package:
   name: openstructure
-  version: 2.11.1
+  version: 2.12.0
 requirements:
   build:
   - null
@@ -38,30 +38,23 @@ requirements:
   - wget
   host:
   - python
-  - libboost-devel >=1.86,<1.87
-  - libboost-python-devel >=1.86,<1.87
+  - libboost-devel
+  - libboost-python-devel
   - eigen
   - fftw
   - libpng
   - libtiff
   - parasail
   - numpy
-  - pandas >=1
-  - scipy >=1,<1.14
+  - scipy >=1
   - networkx >=2
   - sqlite >=3,<4
   - openmm >=7
+  - zlib
   - qt >=5,<6
   - pyqt >=5,<6
   - pyqt5-sip
-  - voronota
-  - zlib
-  - khronos-opencl-icd-loader
-  - ocl-icd
-  - opencl-headers
-  - glew
-  - glfw
-  - glm
+  - libglu
   - libglvnd-devel
   - libopengl-devel
   - libgl-devel
@@ -76,12 +69,16 @@ requirements:
   - null
   - null
   - null
-  - null
+  - voronota
   - ocl-icd-system
   - ocl_icd_wrapper_apple
 source:
-  sha256: 9ac12e1ce8ec879ec900b69bdbcc71632ed05d8cf8c09d3e847a57814d8a7e7b
-  url: https://git.scicore.unibas.ch/schwede/openstructure/-/archive/2.11.1/openstructure-2.11.1.tar.gz
+  patches:
+  - 0001-link-python-as-module.patch
+  - 0002-std-abs-floating.patch
+  - 0003-fft-c2c-odd-tolerance.patch
+  sha256: 5a9ebd3ae053f1f9002bb086d2f11a18e83d777069f22f5492d50a85e356b694
+  url: https://git.scicore.unibas.ch/schwede/openstructure/-/archive/2.12.0/openstructure-2.12.0.tar.gz
 test:
   commands:
   - ost -h 2>&1 | grep -q Usage

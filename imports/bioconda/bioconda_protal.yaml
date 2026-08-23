@@ -1,11 +1,17 @@
 about:
-  description: "Protal is a computational tool for taxonomic profiling and strain-resolved\
-    \ analyses of bacterial communities from \nmetagenomic shotgun sequencing data\
-    \ (short-reads). Following a reference-based approach, protal uses the same\n\
-    120 universal marker genes GTDB uses to build their phylogeny (TIGRFAM, PFAM)\
-    \ and thus integrates well with other\n120 universal marker genes GTDB uses to\
-    \ build their phylogeny (TIGRFAM, PFAM) and thus integrates well with other\n\
-    tools working in the GTDB taxonomy space."
+  description: 'Protal is a computational tool for taxonomic profiling and strain-resolved
+    analyses of bacterial communities from
+
+    metagenomic shotgun sequencing data (short-reads). Following a reference-based
+    approach, protal uses the same
+
+    120 universal marker genes GTDB uses to build their phylogeny (TIGRFAM, PFAM)
+    and thus integrates well with other
+
+    120 universal marker genes GTDB uses to build their phylogeny (TIGRFAM, PFAM)
+    and thus integrates well with other
+
+    tools working in the GTDB taxonomy space.'
   dev_url: https://github.com/4less/protal
   home: https://github.com/4less/protal
   license: MIT
@@ -21,11 +27,12 @@ build:
   skip: true
 package:
   name: protal
-  version: 0.5.1a
+  version: 0.6.0a
 requirements:
   build:
   - cmake >=3.22
   - ninja
+  - null
   - null
   - null
   - pkg-config
@@ -38,16 +45,22 @@ requirements:
   run:
   - python >=3
   - pigz
+  - art
   - libgomp
   - llvm-openmp
-  - joblib
   - matplotlib-base
-  - numpy
-  - pandas
-  - scikit-learn
 source:
-  sha256: 4e8229793b65f32e6b8cb5149296c72d45156051c9dde0ca39a13370b0b35033
-  url: https://github.com/4less/protal/archive/refs/tags/0.5.1a.tar.gz
+  patches:
+  - cassert-includes.patch
+  - protal_launcher.patch
+  sha256: f98800bdf86ce8398c44e9ef6877d14ba212ca0c37e3220bc822a0f5efe50f7e
+  url: https://github.com/4less/protal/archive/refs/tags/0.6.0a.tar.gz
 test:
   commands:
   - protal --help
+  - protal_plain --help
+  - simulate_metagenomes --help
+  - qcmsa --help
+  - protal_map_utils --help
+  - protal_profile_utils --help
+  - test -x "${PREFIX}/bin/protal_avx2"

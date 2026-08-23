@@ -1,0 +1,55 @@
+about:
+  description: "unum is a pure-Rust HLA/KIR genotyper \u2014 a port of T1K that rebuilds\
+    \ its\nk-mer-based genotyping pipeline (k-mer filtering, banded alignment, and\
+    \ EM\ngenotyping) in Rust with no C++ dependency. It provides subcommands to build\n\
+    reference FASTAs from an IPD-IMGT/HLA or IPD-KIR database, extract candidate\n\
+    reads from FASTQ or BAM/CRAM input, and call genotypes. Installs as the\n`unum`\
+    \ command (the conda package is named `unum-bio` to avoid a name\ncollision with\
+    \ the unrelated `unum` package on conda-forge).\n"
+  dev_url: https://github.com/fg-labs/unum
+  doc_url: https://github.com/fg-labs/unum/blob/v0.1.1/README.md
+  home: https://github.com/fg-labs/unum
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: 'e pluribus unum: a pure-Rust HLA/KIR genotyper (a port of T1K).'
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+package:
+  name: unum-bio
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - pkg-config
+  - make
+  - cmake
+  - clangdev <22
+  host:
+  - zlib
+  - bzip2
+  - xz
+  - openssl
+  - libcurl
+  run:
+  - openssl
+source:
+  sha256: f926a183987307195801fb26ca2b0bf3db2e9916b8df8156181ee82b53374471
+  url: https://github.com/fg-labs/unum/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - unum --version | grep 0.1.1
+  - unum --help

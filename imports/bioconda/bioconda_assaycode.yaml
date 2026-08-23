@@ -1,18 +1,17 @@
 about:
-  description: 'AssayCode is the assay-level entry point for specifying, validating,
+  description: 'This metapackage installs the matching DotMatch release, which provides
+    the
 
-    simulating, decoding, and diagnosing known-target sequencing assays. This
+    assaycode compatibility command for compiling and inspecting assay
 
-    compatibility metapackage installs the matching DotMatch release, which
-
-    currently provides both the assaycode and dotmatch command surfaces.
+    specifications alongside the main dotmatch command.
 
     '
   dev_url: https://github.com/dnncha/dotmatch
   doc_url: https://dotmatch.readthedocs.io/en/latest/assaycode.html
-  home: https://github.com/dnncha/dotmatch
+  home: https://dnncha.github.io/dotmatch
   license: Apache-2.0
-  summary: AssayCode platform powered by the DotMatch known-target assignment engine
+  summary: Compatibility metapackage for the assaycode command included with DotMatch.
 build:
   noarch: generic
   number: 0
@@ -23,13 +22,13 @@ extra:
   - dnncha
 package:
   name: assaycode
-  version: 0.2.0
+  version: 0.2.2
 requirements:
   run:
-  - dotmatch ==0.2.0
+  - dotmatch ==0.2.2
 test:
   commands:
-  - assaycode --version | grep '^assaycode 0.2.0 (DotMatch engine 0.2.0)$'
+  - assaycode --version | grep '^assaycode 0.2.2 (DotMatch engine 0.2.2)$'
   - assaycode --help | grep 'additive assay-level identity'
-  - dotmatch --version | grep '^dotmatch 0.2.0$'
+  - dotmatch --version | grep '^dotmatch 0.2.2$'
   - python -c "import assaycode, dotmatch; assert assaycode.engine is dotmatch"

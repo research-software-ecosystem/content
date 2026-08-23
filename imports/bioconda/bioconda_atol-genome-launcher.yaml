@@ -17,16 +17,17 @@ build:
   - request-assembly-repo = request_assembly_repo.request_assembly_repo:main
   - rnaseq-manifest-generator = rnaseq_manifest_generator.rnaseq_manifest_generator:main
   - rnaseq-reads-downloader = rnaseq_reads_downloader.rnaseq_reads_downloader:main
+  - submit-run-to-ena = submit_run_to_ena.submit_run_to_ena:main
   noarch: python
   number: 0
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=0.15.5
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.16.1
 package:
   name: atol-genome-launcher
-  version: 0.15.5
+  version: 0.16.1
 requirements:
   host:
   - pip
@@ -34,6 +35,7 @@ requirements:
   - setuptools-scm
   run:
   - aria2
+  - atol-data-broker >=0.1.2
   - ca-certificates
   - git
   - pandas >=2.3.3,<3
@@ -45,8 +47,8 @@ requirements:
   - snakedeploy >=0.11.0
   - wget
 source:
-  sha256: bb51d4f521a80ca9c41ae3a89173a4ed64a226344a0b307fab2411f3faeb3213
-  url: https://github.com/TomHarrop/atol-genome-launcher/archive/refs/tags/0.15.5.tar.gz
+  sha256: 026cdaaabf6005e691930b15d93391ba1b72ce289fd2a4136ace660127f277d1
+  url: https://github.com/TomHarrop/atol-genome-launcher/archive/refs/tags/0.16.1.tar.gz
 test:
   commands:
   - 'assembly-data-downloader --help | grep ''usage: assembly-data-downloader'''
@@ -58,3 +60,4 @@ test:
   - 'request-assembly-repo --help | grep ''usage: request-assembly-repo'''
   - 'rnaseq-manifest-generator --help | grep ''usage: rnaseq-manifest-generator'''
   - 'rnaseq-reads-downloader --help | grep ''usage: rnaseq-reads-downloader'''
+  - 'submit-run-to-ena --help | grep ''usage: submit-run-to-ena'''

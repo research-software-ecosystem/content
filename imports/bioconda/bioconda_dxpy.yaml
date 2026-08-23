@@ -1,10 +1,11 @@
 about:
   dev_url: https://github.com/dnanexus/dx-toolkit
-  doc_url: http://autodoc.dnanexus.com/bindings/python/current
+  doc_url: https://documentation.dnanexus.com
   home: https://github.com/dnanexus/dx-toolkit
   license: Apache-2.0
-  license_family: Apache
-  summary: DNAnexus Platform API bindings for Python."
+  license_family: APACHE
+  license_file: copyright
+  summary: DNAnexus Platform API bindings for Python.
 build:
   entry_points:
   - dx-build-applet = dxpy.scripts.dx_build_applet:main
@@ -15,7 +16,7 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - notestaff
@@ -29,17 +30,18 @@ requirements:
   - setuptools
   run:
   - python >=3.8
+  - argcomplete >=3.5.2
   - argcomplete >=2.0.0
   - argcomplete >=1.9.4,<2.0.0
-  - websocket-client >=1.6.0,<1.8.0
+  - websocket-client >=1.6.0,<=1.9.0
   - python-dateutil >=2.5
   - psutil >=5.9.3
-  - certifi
-  - urllib3 >=1.25,<2.2
-  - pyreadline3 ==3.4.1
+  - certifi >=2024.7.4
+  - urllib3 >=1.25,<2.8.0
+  - pyreadline3 ==3.5.6
   - colorama >=0.4.4,<=0.4.6
   - crc32c >=2.7.1
-  - awscrt
+  - awscrt >=0.23.4
 source:
   sha256: 1d02bcc2b8090f4d38678818aa9e5efcc8d8b0933aee54deb67915326ba9c431
   url: https://pypi.org/packages/source/d/dxpy/dxpy-0.412.0.tar.gz

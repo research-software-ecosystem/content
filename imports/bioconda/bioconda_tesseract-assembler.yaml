@@ -1,0 +1,82 @@
+about:
+  description: 'TesserACT assembles bacterial isolates from paired-end Illumina reads.
+    It builds a de
+
+    Bruijn graph over a ladder of k-mer sizes, simplifies it, resolves repeats with
+
+    paired-end information, closes gaps and polishes the result, in C++17 with no
+
+    dependencies beyond a compiler, zlib and pthreads.
+
+
+    Where a repeat is longer than a sequencing fragment there is no paired evidence
+    to
+
+    settle it, and TesserACT stops rather than guessing. Supplying a genus model built
+    from
+
+    closed genomes of the same organism lets it settle those junctions from independent
+
+    evidence instead. Measured on 666 Klebsiella pneumoniae isolates that each have
+    a closed
+
+    reference genome, with leave-cluster-out models so no test genome is in its own
+    panel:
+
+    higher genome fraction and fewer mismatches per 100 kb than SPAdes, longer NGA50,
+    at the
+
+    cost of slightly more redundant sequence and slightly more misassemblies.
+
+
+    With a model carrying a plasmid panel it also labels every contig chromosomal,
+    plasmid
+
+    or unknown, groups the contigs of one plasmid, and marks contigs whose two ends
+    join as
+
+    complete replicons. Pre-built Klebsiella models are attached to the GitHub releases.
+
+    '
+  dev_url: https://github.com/iowa69/TesserACT
+  doc_url: https://github.com/iowa69/TesserACT#readme
+  home: https://github.com/iowa69/TesserACT
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: De novo short-read assembler for bacterial isolates, with optional genus
+    models.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - iowa69
+package:
+  name: tesseract-assembler
+  version: 1.2.4
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - zlib
+  run_constrained:
+  - bowtie2
+  - bwa
+source:
+  sha256: a7a2dfb86915cc94e00036c88aa28f22c0dc25c50fa5e4d8af9553d1bfc15efa
+  url: https://github.com/iowa69/TesserACT/archive/refs/tags/v1.2.4.tar.gz
+test:
+  commands:
+  - tesseract-asm --version
+  - tesseract-asm --help
+  - tesseract-model --help
+  - tesseract-klebsiella --help
+  requires:
+  - python

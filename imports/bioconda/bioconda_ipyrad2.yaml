@@ -1,0 +1,56 @@
+about:
+  dev_url: https://github.com/eaton-lab/ipyrad2
+  doc_url: https://eaton-lab.org/ipyrad2
+  home: https://github.com/eaton-lab/ipyrad2
+  license: GPL-3.0-only
+  license_file: LICENSE.txt
+  summary: Interactive assembly and analysis of RAD-seq data sets
+build:
+  entry_points:
+  - ipyrad2 = ipyrad2.cli:main
+  - ipyrad2-classic = ipyrad2.classic:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION=0.1.12
+extra:
+  recipe-maintainers:
+  - isaacovercast
+package:
+  name: ipyrad2
+  version: 0.1.12
+requirements:
+  host:
+  - python
+  - setuptools >=69
+  - setuptools-scm >=8
+  - wheel
+  - pip
+  run:
+  - python >=
+  - loguru
+  - numpy
+  - pandas
+  - h5py
+  - tomlkit
+  - fastp
+  - vsearch
+  - mafft
+  - bwa-mem2
+  - samtools
+  - bedtools
+  - bcftools
+source:
+  sha256: ec3aa40441de4623b40018fae87f1bb28903cbd58c3d4cbec15c08636fd7ec9c
+  url: https://github.com/eaton-lab/ipyrad2/archive/v0.1.12.tar.gz
+test:
+  commands:
+  - ipyrad2 --help
+  - ipyrad2-classic --help
+  imports:
+  - ipyrad2
+  requires:
+  - python

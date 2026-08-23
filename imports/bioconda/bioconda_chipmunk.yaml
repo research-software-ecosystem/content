@@ -1,0 +1,40 @@
+about:
+  description: 'ChIPMunk is a DNA/RNA motif discovery tool distributed as a compiled
+    Java JAR.
+
+    This package installs command-line wrappers for ChIPMunk, diChIPMunk, and ChIPHorde.
+
+    '
+  home: https://autosome.org/ChIPMunk/
+  license: WTFPL AND Apache-2.0 AND LGPL
+  license_file: LICENSE
+  summary: Fast Java motif discovery tool for ChIP-Seq, HT-SELEX, DNase footprints,
+    and related sequence data.
+build:
+  noarch: generic
+  number: 0
+extra:
+  identifiers:
+  - biotools:chipmunk
+  - doi:10.1093/bioinformatics/btq488
+  - doi:10.1142/S0219720013400040
+  recipe-maintainers:
+  - ubercomrade
+  skip-lints:
+  - missing_run_exports
+package:
+  name: chipmunk
+  version: '8'
+requirements:
+  run:
+  - openjdk >=8
+source:
+  sha256: 1dc81253be3dd016eff39a58d8ae142d9b6cccf1317a402596ae84715fd00b57
+  url: https://autosome.org/ChIPMunk/chipmunk_v8.jar
+test:
+  commands:
+  - java -version
+  - chipmunk --help
+  - dichipmunk --help
+  - chiphorde --help
+  - test -s "${PREFIX}/share/chipmunk-8-0/chipmunk.jar"

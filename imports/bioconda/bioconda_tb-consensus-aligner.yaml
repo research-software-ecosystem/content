@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/scg40/TBConsensusAligner
+  license: MIT
+  license_file: LICENSE
+  summary: Building consensus fasta files and variable multi-sequence alignments for
+    mycobacterial genomes.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - scg40
+package:
+  name: tb-consensus-aligner
+  version: 1.0.2
+requirements:
+  host:
+  - python >=3.8
+  - setuptools >=61.0.0
+  - wheel
+  - pip
+  run:
+  - python >=3.8
+  - biopython >=1.80
+source:
+  sha256: 7549b51aa66fa3827e5ebafc0c0a697b98a55f750680f59552201f5b975884b5
+  url: https://pypi.org/packages/source/t/tb-consensus-aligner/tb_consensus_aligner-1.0.2.tar.gz
+test:
+  commands:
+  - pip check
+  - tb-consensus-aligner --help
+  imports:
+  - tb_consensus_aligner
+  requires:
+  - pip
+  - python

@@ -1,0 +1,46 @@
+about:
+  description: 'taxutils-rs provides the tu command-line program and a Rust library
+    for
+
+    working with NCBI taxonomy data, accession-to-taxid mappings, corrected
+
+    taxonomic ranks, target taxa, and FASTA files.
+
+    '
+  dev_url: https://github.com/SwabSeq/taxutils-rs
+  doc_url: https://docs.rs/taxutils
+  home: https://github.com/SwabSeq/taxutils-rs
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Rust utilities for working with NCBI taxonomic data and FASTA files.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root "${PREFIX}" --path .
+extra:
+  authors:
+  - William O'Brien
+  recipe-maintainers:
+  - wgobrien
+package:
+  name: taxutils-rs
+  version: 1.0.5
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 52955e277b53d83b0fd8141991718b8a32aaa0061417a2f4922d9432e5a98426
+  url: https://github.com/SwabSeq/taxutils-rs/archive/refs/tags/v1.0.5.tar.gz
+test:
+  commands:
+  - tu --help
+  - tu --version

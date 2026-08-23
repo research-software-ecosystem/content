@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/ComparativeGenomicsToolkit/cactus
-  doc_url: https://github.com/ComparativeGenomicsToolkit/cactus/blob/v3.1.4/README.md
+  doc_url: https://github.com/ComparativeGenomicsToolkit/cactus/blob/v3.3.0/README.md
   home: https://github.com/ComparativeGenomicsToolkit/cactus
   license: MIT
   license_family: MIT
@@ -27,10 +27,14 @@ build:
   - cactus-hal2chains = cactus.maf.cactus_hal2chains:main
   - cactus-maf2bigmaf = cactus.maf.cactus_maf2bigmaf:main
   - cactus-pangenome = cactus.refmap.cactus_pangenome:main
-  number: 1
+  number: 0
   run_exports:
   - null
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:cactus
   - usegalaxy-eu:cactus_cactus
@@ -40,7 +44,7 @@ extra:
   - doi:10.1089/cmb.2010.0252
 package:
   name: cactus
-  version: 3.1.4
+  version: 3.3.0
 requirements:
   build:
   - null
@@ -53,9 +57,11 @@ requirements:
   - pkg-config
   - llvm-openmp
   - libgomp
+  - sed
   host:
   - python
   - pip
+  - setuptools <82
   - libxml2
   - hdf5
   - libdeflate
@@ -69,10 +75,12 @@ requirements:
   - jemalloc
   - toil
   - backports.zoneinfo
+  - lz4
   run:
   - llvm-openmp
   - libgomp
   - python
+  - setuptools <82
   - libxml2
   - decorator
   - networkx >=2,<2.8.1
@@ -97,8 +105,8 @@ source:
   patches:
   - include.mk.patch
   - makefile.patch
-  sha256: 11b33e9754f2bdc420f0f6ca76520246f209933636720099864c4b2b894da08c
-  url: https://github.com/ComparativeGenomicsToolkit/cactus/releases/download/v3.1.4/cactus-v3.1.4.tar.gz
+  sha256: b3253a324ee96721f287262070454a8ef0d23444d7a1403aece98141eea014d1
+  url: https://github.com/ComparativeGenomicsToolkit/cactus/releases/download/v3.3.0/cactus-v3.3.0.tar.gz
 test:
   commands:
   - cactus -h

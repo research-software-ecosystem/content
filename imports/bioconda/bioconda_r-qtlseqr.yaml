@@ -1,13 +1,24 @@
 about:
+  dev_url: https://github.com/bmansfeld/QTLseqr
   home: https://github.com/bmansfeld/QTLseqr
-  license: GPL (>= 3)
+  license: GPL-3.0-or-later
+  license_family: GPL3
   summary: QTLseqr is an R package for QTL mapping using NGS Bulk Segregant Analysis.
 build:
-  number: 7
+  number: 8
   rpaths:
   - lib/R/lib/
   - lib/
+  run_exports:
+  - null
+  script:
+  - export DISABLE_AUTOBREW=1
+  - ${R} CMD INSTALL --build . ${R_ARGS}
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - Zhougeng Xu
   skip-lints:
@@ -17,6 +28,7 @@ package:
   version: 0.7.5.2
 requirements:
   build:
+  - null
   - null
   host:
   - r-base

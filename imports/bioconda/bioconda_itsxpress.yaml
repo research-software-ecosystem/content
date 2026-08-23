@@ -1,23 +1,26 @@
 about:
-  dev_url: http://github.com/usda-ars-gbru/itsxpress
-  home: http://github.com/usda-ars-gbru/itsxpress
+  dev_url: https://github.com/usda-ars-gbru/itsxpress
+  doc_url: https://itsxpress.readthedocs.io/en/latest
+  home: https://github.com/usda-ars-gbru/itsxpress
   license: CC0-1.0
   license_family: PUBLIC-DOMAIN
+  license_file: LICENSE.txt
   summary: 'ITSxpress: Software to rapidly trim the Internally Transcribed Spacer
     (ITS) region from FASTQ files.'
 build:
   entry_points:
-  - itsxpress=itsxpress.main:main
+  - itsxpress = itsxpress.main:main
   noarch: python
   number: 0
   run_exports:
   - null
   script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=2.1.4
+  - SETUPTOOLS_SCM_PRETEND_VERSION=2.2.0
 extra:
   identifiers:
   - biotools:ITSxpress
+  - doi:10.1128/spectrum.00601-24
   - doi:10.5281/zenodo.1304349
   - doi:10.12688/f1000research.15704.1
   recipe-maintainers:
@@ -25,23 +28,22 @@ extra:
   - seina001
 package:
   name: itsxpress
-  version: 2.1.4
+  version: 2.2.0
 requirements:
   host:
   - pip
-  - python >=3.7
+  - python >=3.8
   - setuptools
   - setuptools-scm >=8
   run:
-  - python >=3.7
+  - python >=3.8
   - biopython >=1.79
   - hmmer >=3.1b2
-  - vsearch
+  - vsearch >=2.21.1
   - pyzstd
-  - pandas
 source:
-  sha256: c4a289e9eff17f9e728156af4c5964305d4fc56c6ebac2d428d06993d57e9d35
-  url: https://github.com/USDA-ARS-GBRU/itsxpress/archive/v2.1.4.tar.gz
+  sha256: cab733df4b0913644e5a62dd1380ee117fe5bac3418c7f6c813d76325f810e26
+  url: https://github.com/USDA-ARS-GBRU/itsxpress/archive/v2.2.0.tar.gz
 test:
   commands:
   - itsxpress --help

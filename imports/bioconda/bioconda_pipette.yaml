@@ -1,0 +1,34 @@
+about:
+  dev_url: https://github.com/acidgenomics/py-pipette
+  home: https://python.acidgenomics.com/pipette/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Unified import and export of data in Python.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - acidgenomics
+  - mjsteinbaugh
+package:
+  name: pipette
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - uv-build >=0.11,<1
+  run:
+  - python >=3.12
+  - numpy
+  - pandas
+source:
+  sha256: 58ae9902ddec50f83c0ceda8114e7bcc13a352894046b2e1b1a7387fe8fdb919
+  url: https://github.com/acidgenomics/py-pipette/archive/v0.2.0.tar.gz
+test:
+  imports:
+  - pipette

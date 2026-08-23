@@ -1,0 +1,57 @@
+about:
+  description: 'pam_scanning designs CRISPR guides and cloning primers for ORF-wide
+    chimera
+
+    (PAM) scanning. Given an open reading frame and its flanking sequence, it
+
+    locates PAM sites, silences them where required, evaluates guide specificity
+
+    by BLAST against a reference genome, selects optimal guides per insertion
+
+    site, and emits primer orders, plate layouts, and QC reports. A graphical
+
+    interface and a UniProt-to-CDS fetcher are included.
+
+    '
+  dev_url: https://github.com/isomlab/pam_scanning
+  doc_url: https://github.com/isomlab/pam_scanning/blob/main/docs/pipeline.md
+  home: https://github.com/isomlab/pam_scanning
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Design CRISPR guides and primers for ORF-wide chimera (PAM) scanning.
+build:
+  entry_points:
+  - pam-scan = pam_scanning.cli:main
+  - pam-scan-gui = pam_scanning.gui:main
+  - pam-scan-fetch-cds = pam_scanning.fetch_cds:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - dangerisom
+package:
+  name: pam_scanning
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.8
+  - openpyxl
+  - matplotlib-base >=3.4
+  - blast
+source:
+  sha256: 85d9bbc8c84ae266027946566c55a5275f88f53e0d74800a0593e4ecaefa44f6
+  url: https://github.com/isomlab/pam_scanning/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - pam-scan --help
+  - pam-scan-fetch-cds --help
+  imports:
+  - pam_scanning

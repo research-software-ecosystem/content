@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/acidgenomics/py-acidbase
+  home: https://python.acidgenomics.com/acidbase/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Base functions for Acid Genomics packages.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - acidgenomics
+  - mjsteinbaugh
+package:
+  name: acidbase
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - uv-build >=0.11,<1
+  run:
+  - python >=3.12
+  - numpy
+  - packaging
+  - pandas
+  - psutil
+  - scipy
+source:
+  sha256: d6ed4de62c242dbb0d100b8d24c873406c8ed7795fd177eaaeef86a1648b73c9
+  url: https://github.com/acidgenomics/py-acidbase/archive/v0.1.0.tar.gz
+test:
+  imports:
+  - acidbase

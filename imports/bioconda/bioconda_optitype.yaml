@@ -4,7 +4,7 @@ about:
   summary: Precision HLA typing from next-generation sequencing data
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
@@ -27,10 +27,13 @@ requirements:
   - matplotlib-base >=3.5
   - hdf5
   - glpk
+  - coincbc
   - razers3
+  - yara
 source:
   sha256: a59e917db1f57721fc65baad703e04e76cbe293c4fe2936d4d5dae720db31da8
   url: https://github.com/FRED-2/OptiType/archive/v1.5.0.tar.gz
 test:
   commands:
   - optitype --help
+  - optitype check-deps

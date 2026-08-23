@@ -1,0 +1,45 @@
+about:
+  home: https://pypi.org/project/hyphlow/
+  license: MIT
+  license_file: LICENSE
+  summary: Bioinformatics selection analysis pipeline and GUI
+build:
+  entry_points:
+  - hyphlow = hyphlow.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - hellojung0810
+package:
+  name: hyphlow
+  version: 1.0.3
+requirements:
+  host:
+  - python >=3.8,<3.13
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.8,<3.13
+  - hyphy
+  - pyqt
+  - qtawesome
+  - pandas
+  - ete3
+  - rapidfuzz
+  - taxopy
+  - xlsxwriter
+source:
+  sha256: 715f7b54199072312f730d564a510abae2503a454678494eb70a145943ee6731
+  url: https://pypi.org/packages/source/h/hyphlow/hyphlow-1.0.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - hyphlow
+  requires:
+  - pip
+  - python
