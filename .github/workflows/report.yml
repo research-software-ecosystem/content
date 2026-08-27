@@ -1,7 +1,18 @@
 name: generate Tools Platform Ecosystem contents report
 
-on: 
+on:
+  # Weekly, six hours after the Sunday 00:00 UTC source imports in import.yaml,
+  # so the report describes the metadata those imports have just landed.
+  schedule:
+    - cron: "0 6 * * 0"
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: contents-report
+  cancel-in-progress: false
 
 jobs:
   generate-stats:
@@ -12,24 +23,21 @@ jobs:
         path: content
     - uses: actions/checkout@v4
       with:
-        repository: bio-tools/content-ecosystem-utils
-        path: content-ecosystem-utils
+        repository: research-software-ecosystem/utils
+        path: utils
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.11"
     - name: Install dependencies
       run:
-        pip install -r ${{ github.workspace }}/content-ecosystem-utils/scripts/stats/requirements.txt
+        pip install -r ${{ github.workspace }}/utils/scripts/stats/requirements.txt
     - name: generate report
       run: |
-        cd ${{ github.workspace }}/content-ecosystem-utils/scripts/stats
+        cd ${{ github.workspace }}/utils/scripts/stats
         python ecosystem.py ${{ github.workspace }}/content
     - name: commit new report
-      env:
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |  
+      run: |
         cd ${{ github.workspace }}/content
         git config --local user.email "tpe-bot@github.com"
         git config --local user.name "Tools Platform Ecosystem bot"
