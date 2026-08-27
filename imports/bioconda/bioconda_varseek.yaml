@@ -1,0 +1,69 @@
+about:
+  description: 'varseek screens RNA-seq and DNA-seq data for known variants by building
+    a
+
+    variant-aware k-mer reference and pseudoaligning reads against it, avoiding
+
+    a full alignment to the genome. It provides the vk build, ref, fastqpp,
+
+    count, clean, denovo and summarize subcommands.
+
+    '
+  dev_url: https://github.com/pachterlab/varseek
+  home: https://github.com/pachterlab/varseek
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Efficient k-mer-based variant screening of RNA-seq and DNA-seq data.
+build:
+  entry_points:
+  - vk = varseek.main:main
+  - varseek = varseek.main:main
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - josephrich98
+package:
+  name: varseek
+  version: 0.2.1
+requirements:
+  build:
+  - null
+  - null
+  host:
+  - python
+  - pip
+  - setuptools >=64
+  - wheel
+  - htslib
+  - zlib
+  run:
+  - python
+  - numpy >=1.26.4,<2.0.0
+  - pandas >=1.5.3,<3
+  - matplotlib-base >=3.9.0
+  - tqdm >=4.66.4
+  - anndata >=0.8.0
+  - kb-python >=0.29.3
+  - gget >=0.30.0
+  - scipy >=1.13.1
+  - pyfastx >=2.1.0
+  - pysam >=0.22.1
+  - pyarrow >=19.0.1
+  - pydantic >=2.0.0
+source:
+  sha256: a3bfd8935c5b932f2047f883bf266a34ed50e68d862019540e6efa4c2c52e153
+  url: https://pypi.org/packages/source/v/varseek/varseek-0.2.1.tar.gz
+test:
+  commands:
+  - vk --help
+  - varseek --help
+  - vk --version
+  - bam2vcf --help
+  - python -c "from varseek.utils.native import native_available; assert native_available('bam2vcf')"
+  imports:
+  - varseek
+  - varseek.utils

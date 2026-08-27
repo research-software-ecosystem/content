@@ -1,0 +1,45 @@
+about:
+  description: 'Annostat is a command-line toolkit for inspecting, validating, analyzing,
+
+    and comparing bacterial genome annotations. It produces reproducible
+
+    statistics, quality-control results, reports, tables, and scientific
+
+    visualizations from GFF3 and FASTA inputs.
+
+    '
+  dev_url: https://github.com/Karudhoru/annostat
+  home: https://github.com/Karudhoru/annostat
+  license: MIT
+  license_file: LICENSE
+  summary: Analyze and validate bacterial genome annotations from GFF3 and FASTA files
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - Karudhoru
+package:
+  name: annostat
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=68
+  run:
+  - python >=3.10
+source:
+  sha256: 5dc6845050b2afee3178762dab5085a039b16af807a85f1831f416593047dafa
+  url: https://pypi.io/packages/source/a/annostat/annostat-1.0.0.tar.gz
+test:
+  commands:
+  - annostat --version
+  - annostat --help
+  - annostat validate --help
+  - annostat inspect --help
+  imports:
+  - annostat

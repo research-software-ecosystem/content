@@ -1,0 +1,32 @@
+about:
+  home: https://github.com/sosyphe/glyco-csdb2snfg
+  license: MIT
+  license_file: LICENSE
+  summary: A Python parser for converting Glyco CSDB format to SNFG drawings
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps -vv'
+package:
+  name: glyco-csdb2snfg
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  run:
+  - python >=3.8
+  - numpy >=1.21
+  - matplotlib-base >=3.5
+  - python-pptx >=0.6.21
+source:
+  sha256: 966f476760db502110b23b172220fa794c42f7aabe9b4b6a61c1e332e546ad47
+  url: https://pypi.io/packages/source/g/glyco-csdb2snfg/glyco_csdb2snfg-0.1.0.tar.gz
+test:
+  commands:
+  - csdb2snfg --help
+  imports:
+  - csdb2snfg

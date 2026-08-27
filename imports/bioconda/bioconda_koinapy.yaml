@@ -1,0 +1,37 @@
+about:
+  dev_url: https://github.com/wilhelm-lab/koina
+  home: https://koina.wilhelmlab.org/
+  license: Apache-2.0
+  summary: Python client for communicating with Koina, a proteomics prediction server.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - BioGeek
+  - jesseangelis
+package:
+  name: koinapy
+  version: 0.0.11
+requirements:
+  host:
+  - pip
+  - poetry-core
+  - python >=3.10
+  run:
+  - grpcio >=1.63
+  - packaging >=14.1
+  - pandas
+  - protobuf >=6.30,<7.0
+  - python >=3.10
+  - tqdm
+  - tritonclient >=2.68
+source:
+  sha256: d8ff3530422f673d070a5205ca1afaa794d102e0ba0fa526e80113d48bf71682
+  url: https://pypi.org/packages/source/k/koinapy/koinapy-0.0.11.tar.gz
+test:
+  imports:
+  - koinapy

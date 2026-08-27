@@ -1,0 +1,63 @@
+about:
+  description: 'ACVirus classifies viral contigs, places them within ICTV taxonomic
+
+    hierarchies, builds sequence-similarity networks, identifies candidate
+
+    novel viruses, and supports phylogenetic and genome-comparison analyses.
+
+    '
+  dev_url: https://github.com/xiahaolong/ACVirus
+  home: https://github.com/xiahaolong/ACVirus
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Genomic sequence-based annotation of viral contigs within ICTV taxonomies
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - xiahaolong
+package:
+  name: acvirus
+  version: '1.4'
+requirements:
+  build:
+  - bash
+  run:
+  - python >=3.10
+  - biopython >=1.85
+  - diamond >=2.1
+  - distinctipy >=1.3
+  - graph-tool
+  - iqtree >=3
+  - leidenalg
+  - mafft
+  - matplotlib-base
+  - networkx
+  - numpy
+  - openpyxl
+  - pandas
+  - prodigal
+  - python-igraph
+  - scipy
+  - seaborn
+  - seqkit
+  - trimal
+source:
+  sha256: 02eec388bc57e343beaee5db4bd0c68f98676d243f95eb3e9ce071586da06aae
+  url: https://github.com/xiahaolong/ACVirus/archive/refs/tags/v1.4.tar.gz
+test:
+  commands:
+  - ACVirus --version
+  - acvirus --version
+  imports:
+  - Bio
+  - graph_tool.all
+  - igraph
+  - leidenalg
+  - numpy
+  - openpyxl
+  - pandas
