@@ -1,0 +1,47 @@
+about:
+  home: https://pypi.org/project/chemap/
+  license: MIT
+  license_file: LICENSE
+  summary: 'Library for computing molecular fingerprint based similarities as well
+    as dimensionality reduction based chemical space visualizations. '
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - mbodova
+package:
+  name: chemap
+  version: 0.3.7
+requirements:
+  host:
+  - python >=3.11,<3.15
+  - poetry-core
+  - pip
+  run:
+  - python >=3.11,<3.15
+  - map4 >=1.1.3
+  - numba >=0.61.2
+  - numpy >=2.1.0
+  - pandas >=2.2.1
+  - scipy >=1.14.2
+  - matplotlib-base >=3.10.1
+  - rdkit >=2024.9.6
+  - scikit-fingerprints >=2.0.0
+  - tqdm >=4.67.1
+  - pooch >=1.8.2
+  - joblib >=1.3.2
+source:
+  sha256: 0e76aaf85c54a9c7dd52f0bc128fd1aaca3fc13f9cd0a81539bb8172bd2197d6
+  url: https://pypi.org/packages/source/c/chemap/chemap-0.3.7.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - chemap
+  requires:
+  - pip
+  - python

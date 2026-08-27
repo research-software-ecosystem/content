@@ -8,7 +8,7 @@ about:
   summary: 'FLAMES: Full Length Analysis of Mutations and Splicing in long read RNA-seq
     data'
 build:
-  number: 0
+  number: 1
   rpaths:
   - lib/R/lib/
   - lib/
@@ -20,10 +20,13 @@ requirements:
   build:
   - null
   - null
+  - null
+  - null
   - automake
   - make
   host:
   - bioconductor-bambu >=3.12.0,<3.13.0
+  - r-xgboost >=3.1.2,<3.5
   - bioconductor-basilisk >=1.22.0,<1.23.0
   - bioconductor-biocgenerics >=0.56.0,<0.57.0
   - bioconductor-biocparallel >=1.44.0,<1.45.0
@@ -78,6 +81,12 @@ requirements:
   - liblapack
   - zlib
   - liblzma-devel
+  - glpk
+  - libcurl
+  - libxml2-devel >=2.14.5
+  - imagemagick
+  - bzip2
+  - ncurses
   run:
   - bioconductor-bambu >=3.12.0,<3.13.0
   - bioconductor-basilisk >=1.22.0,<1.23.0
@@ -129,9 +138,19 @@ requirements:
   - r-tibble
   - r-tidyr
   - r-tidyselect
-  - r-withr
+  - samtools >=1.14
+  - oarfish >=0.8,<0.9
+  - minimap2 >=2.29
+  - libuv
+  - git
+  - pkg-config
+  - python ==3.11.9
+  - pip
 source:
   md5: 3b93f97d6adb9864db8a1f4d40d168e0
+  patches:
+  - 0001-do-not-vendor-minimap2-oarfish.patch
+  - 0002-fix-basilisk-flames-env-package-versions.patch
   url:
   - https://bioconductor.org/packages/3.22/bioc/src/contrib/FLAMES_2.4.2.tar.gz
   - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/FLAMES/FLAMES_2.4.2.tar.gz

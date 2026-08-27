@@ -1,0 +1,46 @@
+about:
+  home: https://pypi.org/project/scikit-fingerprints/
+  license: MIT
+  license_file: LICENSE.md
+  summary: Library for effective molecular fingerprints calculation
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - mbodova
+package:
+  name: scikit-fingerprints
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.10,<3.14
+  - uv-build
+  - pip
+  run:
+  - python >=3.10,<3.14
+  - descriptastorus >=2.0.0,<3
+  - e3fp >=1.2.6,<2
+  - huggingface_hub >=0.20.0,<2
+  - joblib >=1.0.0,<2
+  - mordredcommunity >=2.0.0,<3
+  - numpy >=1.26.4,<3
+  - pandas >=1.5.3,<4
+  - rdkit >=2023.9.6,<=2025.9.3
+  - scikit-learn >=1.6.0,<2
+  - scipy >=1.12.0,<2
+  - tqdm >=4.0.0,<5
+source:
+  sha256: 66056963c7cd41d3ccbc38cffb1f8d4fccd02a195726f08898087b9f4c0d5bb4
+  url: https://pypi.org/packages/source/s/scikit-fingerprints/scikit_fingerprints-2.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - skfp
+  requires:
+  - pip
+  - python

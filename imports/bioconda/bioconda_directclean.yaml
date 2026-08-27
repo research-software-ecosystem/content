@@ -1,0 +1,47 @@
+about:
+  home: https://github.com/ylab-hi/DirectClean
+  license: MIT
+  license_file: LICENSE
+  summary: Strand orientation, artifact removal, and chimeric read rescue for ONT
+    direct-cDNA sequencing
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - qingxiangguo
+package:
+  name: directclean
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3.10,<4.0
+  - poetry-core
+  - pip
+  run:
+  - python >=3.10,<4.0
+  - pysam >=0.21.0
+  - biopython >=1.81
+  - typer >=0.9.0
+  - rich >=13.0.0
+  - edlib >=1.3.9
+  - minimap2
+  - samtools
+  - breakinator 1.1.1 *_2
+  - restrander 1.1.3 *_1
+source:
+  sha256: e1c3a0adb63876f6a02d306a23880b78b1dc28159e79ebd5c8d984d4feb79d21
+  url: https://pypi.org/packages/source/d/directclean/directclean-1.1.2.tar.gz
+test:
+  commands:
+  - pip check
+  - directclean --help
+  - python -c "from directclean.external.dependencies import check_all_dependencies;
+    check_all_dependencies()"
+  imports:
+  - directclean
+  requires:
+  - pip
