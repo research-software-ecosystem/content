@@ -1,0 +1,68 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-01-28",
+    "creators": [
+        "Riccardo Massei",
+        "Riccardo Massei"
+    ],
+    "description": "Workflow to perform nuclei cell counting on High Content Screening (HCS) Data and upload result into OMERO\r\n\r\nIn this workflow, cell images are first uploaded to both Galaxy and OMERO using the  \u201cOMERO Image Import\u201d tool. \r\nConcurrently, image processing is performed. After thresholding and binarization, key features of nuclei, such as area, label number, and perimeter, are computed from the processed images and saved as a CSV file. \r\nThe result file is then attached to each image stored in OMERO using the \u201cOMERO Metadata Import\u201d tool. \r\nThe \u201cLabel Extraction\u201d tool generates ROI coordinates from the binary image, which are subsequently uploaded into OMERO using the \u201cOMERO ROI Import\u201d tool. \r\n\r\nA dataset for testing can be found at: https://zenodo.org/records/14205500\r\n\r\n**Important Security Note:** It is crucial to be aware that storing credentials as variables can pose security risks, particularly if accessed by administrators. Therefore, it is essential to handle user credentials securely and in accordance with best practices.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1259.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioimaging",
+        "Imaging"
+    ],
+    "id": "1259",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1259?version=1",
+    "mapped_tools": [
+        "galaxy",
+        "galaxy_image_analysis",
+        "imagej",
+        "scikit-image"
+    ],
+    "name": "OMERO Nuclei Cell Counting, Image Import, Annotation and Region of Interests (ROIs) Workflow",
+    "number_of_steps": 20,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "fair",
+        "fair workflows",
+        "omero",
+        "rdm",
+        "workflows",
+        "bioimaging",
+        "imaging"
+    ],
+    "tools": [
+        "collection_element_identifiers",
+        "convert characters1",
+        "galaxy",
+        "galaxy image analysis",
+        "galaxy_image_analysis",
+        "imagej",
+        "imagej2",
+        "imagej2_analyze_particles_binary",
+        "ip_2d_feature_extraction",
+        "ip_binary_to_labelimage",
+        "ip_convertimage",
+        "ip_filter_standard",
+        "ip_histogram_equalization",
+        "ip_threshold",
+        "omero_filter",
+        "omero_import",
+        "omero_metadata_import",
+        "omero_roi_import",
+        "param_value_from_file",
+        "scikit-image",
+        "split_file_to_collection",
+        "tp_awk_tool",
+        "tp_find_and_replace",
+        "tp_replace_in_column"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

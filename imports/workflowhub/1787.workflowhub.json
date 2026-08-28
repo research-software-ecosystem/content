@@ -1,0 +1,71 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-01-21",
+    "creators": [
+        "Alem Gusinac",
+        "Thomas Ederveen",
+        "Jos Boekhorst",
+        "Annemarie Boleij"
+    ],
+    "description": "[![CI-stub-run](https://github.com/CMG-GUTS/metabiomx/actions/workflows/nf-build-stub.yaml/badge.svg)](https://github.com/CMG-GUTS/metabiomx/actions/workflows/nf-build-stub.yaml)\r\n[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A524.10.0-23aa62.svg?labelColor=000000)](https://www.nextflow.io/)\r\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\r\n[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)\r\n[![nf-test](https://img.shields.io/badge/tested_with-nf--test-337ab7.svg)](https://code.askimed.com/nf-test)\r\n\r\n## Introduction: **metaBIOMx**\r\n\r\nThe metagenomics microbiomics pipeline is a best-practice suite for the decontamination and annotation of sequencing data obtained via short-read shotgun sequencing. The pipeline contains [NF-core modules](https://github.com/nf-core/modules) and other local modules that are in the similar format. It can be runned via both docker and singularity containers.\r\n\r\n## Pipeline summary\r\nThe pipeline is able to perform different taxonomic annotation on either (single/paired) reads or contigs. The different subworkflows can be defined via `--bypass_<method>` flags, a full overview is shown by running `--help`. By default the pipeline will check if the right databases are present in the right formats, when the path is provided. If this is not the case, compatible databases will be automatically downloaded.\r\n\r\nFor both subworkflows the pipeline will perform read trimming via [Trimmomatic](https://github.com/timflutre/trimmomatic) and/or [AdapterRemoval](https://github.com/MikkelSchubert/adapterremoval), followed by human removal via [Kneaddata](https://huttenhower.sph.harvard.edu/kneaddata/). Before and after each step the quality control will be assessed via [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and a [multiqc](https://github.com/MultiQC/MultiQC) report is created as output. Then taxonomy annotation is done as follows:\r\n\r\n**Read annotation**\r\n- paired reads are interleaved using [BBTools](https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/).\r\n- [MetaPhlAn3](https://huttenhower.sph.harvard.edu/metaphlan/) and [HUMAnN3](https://huttenhower.sph.harvard.edu/humann/) are used for taxonomy and functional profiling.\r\n- taxonomy profiles are merged into a single BIOM file using [biom-format](https://github.com/biocore/biom-format).\r\n\r\n**Contig annotation**\r\n- read assembly is performed via [SPAdes](http://cab.spbu.ru/software/spades/).\r\n- Quality assesment of contigs is done via [Busco](https://busco.ezlab.org/).\r\n- taxonomy profiles are created using [CAT](https://github.com/dutilh/CAT).\r\n- Read abundance estimation is performed on the contigs using [Bowtie2]() and [BCFtools](http://samtools.github.io/bcftools/bcftools.html).\r\n- Contigs are selected if a read can be aligned against a contig and a BIOM file is generated using [biom-format](https://github.com/biocore/biom-format).\r\n\r\n## Installation\r\n> [!NOTE]\r\n> Make sure you have installed the latest [nextflow](https://www.nextflow.io/docs/latest/install.html#install-nextflow) version! \r\n\r\nClone the repository in a directory of your choice:\r\n```bash\r\ngit clone https://github.com/CMG-GUTS/metabiomx.git\r\n```\r\n\r\nThe pipeline is containerised, meaning it can be runned via docker or singularity images. No further actions need to be performed when using the docker profile, except a docker registery needs to be set on your local system, see [docker](https://docs.docker.com/engine/install/). In case singularity is used, images are automatically cached within the project directory.\r\n\r\n## Usage\r\nSince the latest version, metaBIOMx works with both a samplesheet (CSV) format or a path to the input files. Preferably, samplesheets should be provided.\r\n```bash\r\nnextflow run main.nf --input <samplesheet.csv> -work-dir work -profile singularity\r\nnextflow run main.nf --input <'*_{1,R1,2,R2}.{fq,fq.gz,fastq,fastq.gz}'> -work-dir work -profile singularity\r\n```\r\nYou can also try to run the test data set in `tests/data` folder, these are also available via the `-profile test` but then the databases will be by default downloaded in the `tests/db` folder and you might want to specify a folder of your own choice.\r\n\r\n> [!NOTE]\r\n> Tests data should be runned with the flags `--bypass_trim` and `--bypass_decon`, which is default on `true` in the `conf/test.config`\r\n\r\n### \ud83d\udccb Sample Metadata File Specification\r\n\r\nmetaBIOMx expects your sample input data to follow a **simple, but strict** structure to ensure compatibility and allow upfront validation. The input should be provided as a **CSV** file where **each entry = one sample** with specified sequencing file paths. Additional properties not mentioned here will be ignored by the validation step.\r\n\r\n### **Properties and Validation Rules**\r\n\r\n#### \ud83d\udd39 Required properties\r\n\r\n| Property     | Type   | Rules / Description                                                                                   |\r\n|--------------|--------|----------------------------------------------------------------------------------------------------|\r\n| `sample_id`     | string | Unique sample ID with no spaces (`^\\S+$`). Serves as an identifier.                                  |\r\n| `forward_read` | string | File path to forward sequencing read. Must be non-empty string matching FASTQ gzipped pattern. File must exist. |\r\n\r\n#### \ud83d\udd39 Optional property\r\n\r\n| Property       | Type   | Rules / Description                                                                                   |\r\n|----------------|--------|----------------------------------------------------------------------------------------------------|\r\n| `reverse_read` | string | File path to reverse sequencing read. Same constraints as `forward_read`. Required if specified.   |\r\n\r\n#### \ud83d\udd39 Pattern\u2011based columns \r\nYou can define extra variables using special prefixes:\r\n- **`CONTRAST_...`** \u2192 grouping/category labels used in differential comparisons  \r\n  Example: `CONTRAST_Treatment` with values `Drug` / `Placebo`\r\nThese prefixes are used to generate an automated `OmicFlow` report with alpha, beta diversity and compositional plots. For more information see [OmicFlow](https://github.com/agusinac/OmicFlow).\r\n\r\n### Example cases\r\n#### \ud83d\udd39 Read annotation\r\n```bash\r\nnextflow run main.nf \\\r\n    --input <samplesheet.csv> \\\r\n    # (optional) --bypass_trim \\\r\n    # (optional) --bypass_decon \\\r\n    --bypass_contig_annotation \\\r\n    -work-dir work \\\r\n    -profile singularity\r\n```\r\n\r\n#### \ud83d\udd39 Contig annotation\r\n```bash\r\nnextflow run main.nf \\\r\n    --input <samplesheet.csv> \\\r\n    # (optional) --bypass_trim \\\r\n    # (optional) --bypass_decon \\\r\n    --bypass_read_annotation \\\r\n    -work-dir work \\\r\n    -profile singularity\r\n```\r\n\r\nIn case you only have assemblies and wish to perform contig annotation:\r\n```bash\r\nnextflow run main.nf \\\r\n    --input <samplesheet.csv> \\\r\n    --bypass_assembly \\\r\n    --bypass_read_annotation \\\r\n    -work-dir work \\\r\n    -profile singularity\r\n```\r\n\r\n## Automatic database setup\r\nThe pipeline requires a set of databases which are used by the different tools within this workflow. The user is required to specify the location in where the databases will be downloaded. It is also possible to download the databases manually. The `configure` subworkflow will evaluate the database format and presence of the compatible files automatically.\r\n```bash\r\nnextflow run main.nf \\\r\n    --bowtie_db path/to/db/bowtie2 \\\r\n    --metaphlan_db path/to/db/metaphlan \\\r\n    --humann_db path/to/db/humann \\\r\n    --catpack_db path/to/db/catpack \\\r\n    --busco_db path/to/db/busco_downloads \\\r\n    -work-dir <work/dir> \\\r\n    -profile <singularity,docker>\r\n```\r\n\r\n## Support\r\n\r\nIf you are having issues, please [create an issue](https://github.com/CMG-GUTS/metabiomx/issues)\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1787.8",
+    "edam_operation": [
+        "Gene functional annotation",
+        "Taxonomic classification"
+    ],
+    "edam_topic": [
+        "Metagenomic sequencing",
+        "Metagenomics",
+        "Microbial ecology",
+        "Microbiology"
+    ],
+    "id": "1787",
+    "latest_version": "8",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1787?version=8",
+    "mapped_tools": [
+        "adapterremoval",
+        "bbtools",
+        "bcftools",
+        "bowtie2",
+        "busco",
+        "cat_bins",
+        "fastqc",
+        "humann",
+        "metaphlan",
+        "multiqc",
+        "omicflow",
+        "spades",
+        "trimmomatic"
+    ],
+    "name": "metaBIOMx: Metagenomics pipeline for Microbial shot-gun sequencing data",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "metagenomics",
+        "nextflow"
+    ],
+    "tools": [
+        "adapterremoval",
+        "bbtools",
+        "bcftools",
+        "bowtie 2",
+        "bowtie2",
+        "busco",
+        "cat and bat",
+        "cat_bins",
+        "fastqc",
+        "humann",
+        "metaphlan",
+        "multiqc",
+        "omicflow",
+        "spades",
+        "trimmomatic"
+    ],
+    "update_time": "2026-01-21",
+    "versions": "5",
+    "workflow_class": "Nextflow"
+}

@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-06-28",
+    "creators": [
+        "Alise Ponsero"
+    ],
+    "description": "# Phorager\r\n  ### Prophage Analysis Pipeline\r\n\r\n  A comprehensive pipeline for bacterial genome quality control, prophage detection, and prophage characterization\r\n\r\n**Authors:**  \r\n\r\n- Xena Dyball\r\n- James Docherty\r\n- [Alise Ponsero](https://github.com/aponsero)\r\n- Ryan Cook\r\n\r\n**Citation:**\r\n[Paper Citation or Preprint Link]\r\n\r\n## Overview\r\n\r\nPhorager provides an integrated workflow for:\r\n\r\n- **Bacterial genome quality control** - CheckM2 assessment, filtering, and dRep dereplication\r\n- **Prophage detection** - GenoMAD and VIBRANT-based identification of integrated prophages\r\n- **Phage annotation** - CheckV quality assessment, Pharokka annotation, and Phold function prediction\r\n- **Summary tables** - Structured TSV summaries of QC metrics and prophage characteristics across your dataset\r\n\r\n> **Note**: Phorager is currently in beta release. We welcome feedback, bug reports, and feature requests through our [issue tracker](../../issues).\r\n\r\n## Quick Start\r\n\r\n### 1. Configure\r\nSet your preferred installation backend and locations:\r\n\r\n```bash\r\nphorager config set --backend conda --db-location /data/phorager\r\n```\r\n\r\n### 2. Install\r\nInstall required tools and databases:\r\n\r\n```bash\r\n# Install tools for bacterial genome analysis\r\nphorager install --tools genome --databases checkm2\r\n\r\n# Install prophage detection tools\r\nphorager install --tools prophage --databases genomad,vibrant\r\n```\r\n\r\n### 3. Run Analysis\r\nExecute workflows on your data:\r\n\r\n```bash\r\n# Bacterial genome quality control\r\nphorager bacterial --genome /path/to/genomes --outdir results/\r\n\r\n# Prophage detection\r\nphorager prophage --genome /path/to/genomes --outdir results/\r\n\r\n# Prophage annotation and clustering\r\nphorager annotation --prophage results/ --outdir results/\r\n```\r\n\r\n### 4. Generate Summaries\r\nCreate structured summary tables from your completed results:\r\n\r\n```bash\r\n# Bacterial genome QC metrics with prophage counts\r\nphorager summarize --type bacterial_genome --outdir results/\r\n\r\n# Per-prophage table with host, cluster, quality, and annotation\r\nphorager summarize --type prophage_table --outdir results/\r\n```\r\n\r\nOutput is written to `results/4.Summaries/`. Use `phorager summarize --list` to see all available summary types.\r\n\r\n## Prerequisites\r\n\r\n- [Nextflow](https://www.nextflow.io/) (\u2265 21.04.0)\r\n- Either [Conda/Mamba](https://docs.conda.io/en/latest/) or [Singularity](https://sylabs.io/singularity/)\r\n\r\n## Documentation\r\n\r\n**For detailed documentation, see the [Wiki](../../wiki):**\r\n\r\n- [Configuration](../../wiki/Configuration) - Backend setup and locations\r\n- [Installation](../../wiki/Installation) - Tools and database installation\r\n- [Bacterial Workflow](../../wiki/Bacterial-Workflow) - Genome quality control and dereplication\r\n- [Prophage Workflow](../../wiki/Prophage-Workflow) - Integrated prophage detection\r\n- [Annotation Workflow](../../wiki/Annotation-Workflow) - Prophage annotation and clustering\r\n- [Summary Workflow](../../wiki/Summary-Workflow) - Generating summary tables from pipeline outputs\r\n\r\n## Getting Help\r\n\r\n- Check command-specific help: `phorager [command] --help`\r\n- View available tools and databases: `phorager install --list-available`\r\n- Preview commands before running: `phorager [command] --dry-run`\r\n- See current configuration: `phorager config show`\r\n- List available summary types: `phorager summarize --list`\r\n\r\n## Reporting Issues and Feedback\r\n\r\nPhorager is actively being developed and improved. We encourage users to:\r\n\r\n- **Report bugs** - Found an issue? [Open a bug report](../../issues/new)\r\n- **Request features** - Have an idea for improvement? [Submit a feature request](../../issues/new)\r\n- **Ask questions** - Need help? [Start a discussion](../../issues/new)\r\n- **Share feedback** - Let us know about your experience using Phorager\r\n\r\nWhen reporting issues, please include:\r\n- Command used\r\n- Error messages or unexpected behavior\r\n- Phorager version and backend (conda/singularity)\r\n- System information (OS, available resources)\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2211.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2211",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2211?version=1",
+    "mapped_tools": [],
+    "name": "PHORAGER v0.5.0",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-06-28",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

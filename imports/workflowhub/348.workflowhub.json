@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-05-31",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "# workflow-denovo-stacks\r\n\r\nThese workflows are part of a set designed to work for RAD-seq data on the Galaxy platform, using the tools from the Stacks program. \r\n\r\nGalaxy Australia: https://usegalaxy.org.au/\r\n\r\nStacks: http://catchenlab.life.illinois.edu/stacks/\r\n\r\n## Inputs\r\n* demultiplexed reads in fastq format, may be output from the QC workflow. Files are in a collection. \r\n* population map in text format\r\n\r\n\r\n## Steps and outputs\r\n\r\nustacks:\r\n* input reads go to ustacks. \r\n* ustacks assembles the reads into matching stacks (hypothetical alleles). \r\n* The outputs are in a collection called something like: Stacks2: ustacks  on data 21, data 20, and others Loci and polymorphism. Click on this to see the files:\r\n* for each sample, assembled loci (tsv format), named e.g. sample_CAAC.tags\r\n* for each sample, model calls from each locus (tsv format), named e.g. sample_CAAC.snps\r\n* for each sample, haplotypes/alleles recorded from each locus (tsv format), named e.g. sample_CAAC.alleles\r\n* Please see sections 6.1 to 6.4 in https://catchenlab.life.illinois.edu/stacks/manual/#ufiles for a full description. \r\n\r\ncstacks:\r\n* cstacks will merge stacks into a catalog of consensus loci. \r\n* The outputs are in a collection called something like Stacks2: cstacks  on data 3, data 71, and others Catalog of loci. Click on this to see the three files, each in tsv format:\r\ncatalog.tags\r\ncatalog.snps\r\ncatalog.alleles\r\n\r\n\r\nsstacks:\r\n* sstacks will compare each sample to the loci in the catalog. \r\n* The outputs are in a collection called something like Stacks2: sstacks  on data 3, data 76, and others Matches to the catalog.Click on this to see the files:\r\nThere is one file for each sample, named e.g. sample_CAAC.matches, in tsv format. \r\n\r\ntsv2bam:\r\n* Conversion to BAM format\r\n* Reads from each sample are now aligned to each locus, and the tsv2bam tool will convert this into a bam file for each sample. \r\n* The outputs are in a collection called something like Stacks2: tsv2bam  on data 3, data 94, and others Matches to the catalog.Click on this to see the files:\r\nThere is one file for each sample, named e.g sample_CAAC.matches, in BAM format. \r\n\r\ngstacks:\r\n* Catalog of loci in fasta format\r\n* Variant calls in VCF format\r\n\r\npopulations:\r\n* Locus consensus sequences in fasta format\r\n* Snp calls, in VCF format\r\n* Haplotypes, in VCF format\r\n* Summary statistics\r\n\r\n![denovo](wf-denovo.png)\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Sequence clustering"
+    ],
+    "edam_topic": [
+        "Population genomics"
+    ],
+    "id": "348",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/348?version=1",
+    "mapped_tools": [
+        "stacks"
+    ],
+    "name": "Stacks RAD-seq de novo workflow",
+    "number_of_steps": 6,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "stacks",
+        "stacks2_cstacks",
+        "stacks2_gstacks",
+        "stacks2_populations",
+        "stacks2_sstacks",
+        "stacks2_tsv2bam",
+        "stacks2_ustacks"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

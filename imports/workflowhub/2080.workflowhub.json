@@ -1,0 +1,47 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-02-05",
+    "creators": [
+        "Sumeet Tiwari",
+        "Sam Haynes"
+    ],
+    "description": "# ARG-Sniper\r\n\r\nA Nextflow pipeline for antibiotic resistance gene detection from paired-end sequencing reads.\r\n\r\n## Introduction\r\n\r\nARG-Sniper is a Nextflow DSL-2 pipeline designed for metagenomic analysis that processes paired-end FASTQ files to detect antibiotic resistance genes using multiple bioinformatics tools. The pipeline runs five different analysis tools in parallel: GROOT, ARIBA, KMA (adopted from ARGprofiler), KARGA, and SRST2, each requiring their respective databases.\r\nUsers can selectively skip any of the five tools using command-line flags (--skip_groot, --skip_ariba, etc.), allowing for customized analysis workflows. The pipeline takes FASTQ and processes them through the selected tools.\r\nAfter individual tool execution, the pipeline collects all results and generates a summary report that consolidates findings from each analysis. The workflow outputs separate directories for each tool's results along with a final summary directory containing the integrated analysis.\r\n\r\nNote: This pipeline focuses on detecting antibiotic resistance genes and does not report SNP-based resistance mechanisms.\r\n\r\n\r\n## How-2-Run\r\nBefore running the pipeline make sure all the required databases and tool-dependencies were met.\r\n\r\n### Software Requirements\r\n- **Nextflow** (\u226522.04.0) with DSL-2 support\r\n- **Singularity** container runtime\r\n\r\n### Bioinformatics Tools (via Singularity containers)\r\n- **SRST2** v2.0.0 - Short Read Sequence Typing\r\n- **GROOT** v1.1.2 - Graph-based resistance gene detection  \r\n- **ARIBA** v2.14.6 - Antimicrobial Resistance Identification\r\n- **KARGA** v1.02 - K-mer based resistance gene analysis\r\n- **KMA** v1.4.9 - K-mer alignment tool (used by ARGprofiler)\r\n\r\n### Required Databases\r\nAll tools require pre-built databases from the panARG v2 collection:\r\n- grootdb (indexed database)\r\n- aribadb (prepared database)\r\n- srst2db (FASTA sequences)\r\n- kargadb (FASTA sequences) \r\n- argprofilerdb (KMA indexed database)\r\n- panARG annotations (TSV metadata file)\r\n\r\n### System Requirements\r\n- **CPU:** 8 cores (default)\r\n- **Memory:** 16 GB RAM (default)\r\n- **Scheduler:** SLURM (for HPC execution)\r\n\r\n### Usage\r\n\r\nRun `--help` to see available options:\r\n\r\n```bash\r\nnextflow run ARG-sniper/main.nf --help\r\n```\r\n\r\n```\r\nUsage:\r\n    nextflow run ARG-Sniper-pipeline.nf --offline -with-report <ARGUMENTS>\r\n\r\nRequired Arguments:\r\n    Input:\r\n        --reads           Folder containing reads with file name *_R{1,2}.fastq.gz\r\n        --gootdb          Path of indexed GROOT database\r\n        --aribadb         Path to ARIBA database\r\n        --kargadb         Path to KARG database\r\n        --srst2db         Path to SRST2 database\r\n        --argprofilerdb   Path to ARGprofiler database\r\n        --output          Folder for output files\r\n\r\n# By default, the pipeline will run all supported tools.\r\nOptional Arguments:\r\n    Skipping specific tools:\r\n        --skip_groot      Skip running GROOT\r\n        --skip_kma        Skip running KMA\r\n        --skip_ariba      Skip running ARIBA\r\n        --skip_karga      Skip running KARGA\r\n        --skip_srst2      Skip running SRST2\r\n```\r\n## Expected Output\r\n\r\nUpon successful execution with all tools, ARG-Sniper generates the following directory structure with results for each sample:\r\n\r\n```\r\nresults/\r\n\u251c\u2500\u2500 argprofiler_results/\r\n\u2502   \u2514\u2500\u2500 ARGprofiler_report_{sample}.txt\r\n\u251c\u2500\u2500 ariba_results/\r\n\u2502   \u251c\u2500\u2500 ariba_report_{sample}.tsv\r\n\u2502   \u2514\u2500\u2500 ariba_summary_{sample}.csv\r\n\u251c\u2500\u2500 groot_results/\r\n\u2502   \u2514\u2500\u2500 groot_report_{sample}.tsv\r\n\u251c\u2500\u2500 karga_results/\r\n\u2502   \u2514\u2500\u2500 karga_report_{sample}.csv\r\n\u251c\u2500\u2500 srst2_results/\r\n\u2502   \u2514\u2500\u2500 srst2_report_{sample}_fullgenes_sequence_results.txt\r\n\u2514\u2500\u2500 summary/\r\n    \u2514\u2500\u2500 summary_{sample}.tsv\r\n```\r\n\r\n**Example output for multiple samples:**\r\n```\r\nresults/\r\n\u251c\u2500\u2500 argprofiler_results/\r\n\u2502   \u251c\u2500\u2500 ARGprofiler_report_dataset-100x-depth.txt\r\n\u2502   \u251c\u2500\u2500 ARGprofiler_report_dataset-90x-depth.txt\r\n\u2502   \u2514\u2500\u2500 ARGprofiler_report_dataset-95x-depth.txt\r\n\u251c\u2500\u2500 ariba_results/\r\n\u2502   \u251c\u2500\u2500 ariba_report_dataset-100x-depth.tsv\r\n\u2502   \u251c\u2500\u2500 ariba_report_dataset-90x-depth.tsv\r\n\u2502   \u251c\u2500\u2500 ariba_report_dataset-95x-depth.tsv\r\n\u2502   \u251c\u2500\u2500 ariba_summary_dataset-100x-depth.csv\r\n\u2502   \u251c\u2500\u2500 ariba_summary_dataset-90x-depth.csv\r\n\u2502   \u2514\u2500\u2500 ariba_summary_dataset-95x-depth.csv\r\n\u251c\u2500\u2500 groot_results/\r\n\u2502   \u251c\u2500\u2500 groot_report_dataset-100x-depth.tsv\r\n\u2502   \u251c\u2500\u2500 groot_report_dataset-90x-depth.tsv\r\n\u2502   \u2514\u2500\u2500 groot_report_dataset-95x-depth.tsv\r\n\u251c\u2500\u2500 karga_results/\r\n\u2502   \u251c\u2500\u2500 karga_report_dataset-100x-depth.csv\r\n\u2502   \u251c\u2500\u2500 karga_report_dataset-90x-depth.csv\r\n\u2502   \u2514\u2500\u2500 karga_report_dataset-95x-depth.csv\r\n\u251c\u2500\u2500 srst2_results/\r\n\u2502   \u251c\u2500\u2500 srst2_report_dataset-100x-depth_fullgenes_sequence_results.txt\r\n\u2502   \u251c\u2500\u2500 srst2_report_dataset-90x-depth_fullgenes_sequence_results.txt\r\n\u2502   \u2514\u2500\u2500 srst2_report_dataset-95x-depth_fullgenes_sequence_results.txt\r\n\u2514\u2500\u2500 summary/\r\n    \u251c\u2500\u2500 summary_dataset-100x-depth.tsv\r\n    \u251c\u2500\u2500 summary_dataset-90x-depth.tsv\r\n    \u2514\u2500\u2500 summary_dataset-95x-depth.tsv\r\n```\r\n\r\nThe `summary/` directory contains consolidated results from all tools for each sample.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2080.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2080",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/2080?version=1",
+    "mapped_tools": [
+        "argprofiler",
+        "groot",
+        "karga",
+        "kma",
+        "srst2"
+    ],
+    "name": "ARG-Sniper: A Nextflow pipeline for antibiotic resistance gene detection from paired-end sequencing reads.",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "metagenomics",
+        "nextflow",
+        "python",
+        "r",
+        "antimicrobial-resistance-genes",
+        "shotgun"
+    ],
+    "tools": [
+        "argprofiler",
+        "groot",
+        "karga",
+        "kma",
+        "srst2"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

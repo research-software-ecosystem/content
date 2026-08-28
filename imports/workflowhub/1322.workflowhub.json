@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-03-19",
+    "creators": [
+        "zhantian xu"
+    ],
+    "description": "# PISAD - Phsaed Intraspecies Sample Anomalies Detection tool\r\n\r\n## Summary\r\n\r\nWe developed PISAD, a tool designed to detect anomalies in cohort samples without requiring reference information. It is primarily divided into two stages. Stage 1: We select low-error data from the cohort and conduct reference-free SNP calling to construct a variant sketch. Stage 2: By comparing the k-mer counts of other cohort data to the variant sketch, we infer the relationships between the sample and other samples to detect the sample swap.\r\n\r\n## Dependencies\r\n\r\nrecommend use conda to install\r\n\r\n- GCC (Tested on 8.5.0)\r\n- gperftools(2.10)\r\n- hdf5(1.14.3)\r\n- boost(1.85.0)\r\n\r\n## Installation\r\n\r\ncloning the PISAD repository to your machine and enter its directory.\r\n\r\n```bash\r\n git clone https://github.com/ZhantianXu/PISAD.git\r\n cd pisad/\r\n```\r\n\r\nCompiling should be as easy as:\r\n\r\n```bash\r\n./configure && make\r\n```\r\n\r\nTo install in a specified directory:\r\n\r\n```bash\r\n./configure --prefix=/PATH && make install\r\n```\r\n\r\n## Usage\r\n\r\n##### Stage1: SNP callng :\r\n\r\nFirst, we select a low-error-rate sequencing dataset as the target sample for rapid SNP calling. It supports multi-threaded processing.\r\n\r\nExample:\r\n\r\n```bash\r\n./run.sh -i /data/hg002.fastq.gz -m 0\r\n```\r\n\r\n```bash\r\n    Required parameters:\r\n      -i:        Input files ( *.fastq or *.fastq.gz files)\r\n      -m:        Heterozygosity parameter (0 for <1.2%, 1 otherwise)\r\n    Optional parameters:\r\n      -k:        kmer-size (default: 21)\r\n      -t:        thread (default: 8)\"\r\n      -o:        Output prefix (defaults: first input file's prefix)\r\n      -d1:       Directory for dsk files (default: current directory)\r\n      -d2:       Directory for output plot (default: current directory)\r\n      -d3:       Directory for SNP output (default: current directory)\r\n      -h:        Show this help message\r\n    Advanced optional parameters:\r\n      -est:      est_kmercov (default: Estimated by algorithm)\r\n      -cutoff:   cutoff threshold (defaults: 0.95)\r\n      -het:      Initial heterozygosity (defaults: 0/0.12)\r\n      -rho:      Initial rho value (defaults: 0.2)\r\n      -setleft:  Left boundary of the heterozygous region (defaults: Estimated by algorithm)\r\n      -setright: Right boundary of the heterozygous region (defaults: Estimated by algorithm)\r\n```\r\n\r\n##### Stage1: construct variant sketch:\r\n\r\nNext, we convert the called SNPs into a variant sketch.\r\n\r\n```bash\r\n./create -i /snp/hg002_21_2_4_pairex.snp\r\n```\r\n\r\n```bash\r\n    Required parameters:\r\n      -i:        Input files ( .snp file)\r\n    Optional parameters:\r\n      -k:        kmer-size (default: 21)\r\n      -l:        Filtering threshold (default: 21)\r\n      -o:        Output prefix (defaults: current directory)\r\n```\r\n\r\n##### Stage2: count the k-mers:\r\n\r\nwe compare the k-mer counts of other cohort samples to the variant sketch to infer relationships between them. Files may be gzipped and multiple threads can be used.\r\n\r\n```bash\r\n./pisadCount -s /fa/hg002.fa /data/hg003.fastq.gz\r\n```\r\n\r\n```bash\r\n    Usage: ./pisadCount -s [FASTA] [OPTION]... [FILES...]\r\n    Required options:\r\n        -s:         variant sketch (one or more)\r\n    Optional options:\r\n        -t:      Number of threads to run (default: 1)\r\n        -m:      k-mer coverage threshold for early termination (default: inf)\r\n        -i:      extra debug information\r\n        -k:      k-mer size used (default: 21)\r\n        -o:      Evaluation file path (defaults: current directory)\r\n        -h:      Display this dialog\r\n\r\n```\r\n\r\nHere, the -s option allows inputting multiple FA files for variant sketching, separated by commas, such as `-s /fa/hg002.fa,/fa/hg001.fa`.\r\nIf your input file has a high coverage, you can also add the `-m` parameter to control the reading process and save time, such as `-m 10`.\r\n\r\n##### Stage2:Evaluate the samples:\r\n\r\nInput the statistics of samples to calculate their relationship and detect sample swaps.\r\n\r\n```bash\r\n./pisadEval /homeb/xuzt/coverage/eval/hg002_hg003.txt > summary.tsv\r\n```\r\n\r\n```bash\r\n    Usage: ./pisadEval [OPTION]... [FILES...]\r\n    Optional options:\r\n        -t:      Number of threads to run(default: 1)\r\n        -h:      Display this dialog\r\n\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1322.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1322",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1322?version=1",
+    "mapped_tools": [],
+    "name": "PISAD - Phsaed Intraspecies Sample Anomalies Detection tool",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2025-03-19",
+    "versions": "1",
+    "workflow_class": "Argo Workflow"
+}

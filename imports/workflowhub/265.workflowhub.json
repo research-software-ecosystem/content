@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-01-27",
+    "creators": [
+        "Luca Pireddu"
+    ],
+    "description": "# Snakemake workflow: FAIR CRCC - send data\r\n\r\n[![Snakemake](https://img.shields.io/badge/snakemake-\u22656.3.0-brightgreen.svg)](https://snakemake.github.io)\r\n[![GitHub actions status](https://github.com/crs4/fair-crcc-send-data/workflows/Tests/badge.svg?branch=main)](https://github.com/crs4/fair-crcc-send-data/actions?query=branch%3Amain+workflow%3ATests)\r\n\r\n\r\nA Snakemake workflow for securely sharing Crypt4GH-encrypted sensitive data from\r\nthe [CRC\r\nCohort](https://www.bbmri-eric.eu/scientific-collaboration/colorectal-cancer-cohort/)\r\nto a destination approved through a successful [access\r\nrequest](https://www.bbmri-eric.eu/services/access-policies/).\r\n\r\nThe recommendation is to create a directory for the request that has been\r\napproved;  it will be used as the working directory for the run.  Copy there the\r\nrecipient's crypt4gh key and prepare the run configuration.  The configuration\r\nwill specify the repository, the destination of the data, and the list of\r\nfiles/directories to transfer.\r\n\r\n\r\n## What's the CRC Cohort?\r\n\r\nThe CRC Cohort is a collection of clinical data and digital high-resolution\r\ndigital pathology images pertaining to tumor cases.  The collection has been\r\nassembled from a number of participating biobanks and other partners through the\r\n[ADOPT BBMRI-ERIC](https://www.bbmri-eric.eu/scientific-collaboration/adopt-bbmri-eric/) project.\r\n\r\nResearchers interested in using the data for science can file an application for\r\naccess.  If approved, the part of the dataset required for the planned and\r\napproved work can be copied to the requester's selected secure storage location\r\n(using this workflow).\r\n\r\n\r\n## Usage\r\n\r\n### Example\r\n\r\n    mkdir request_1234 && cd request_1234\r\n    # Now write the configuration, specifying crypt4gh keys, destination and files to send.\r\n    # Finally, execute workflow.\r\n    snakemake --snakefile ../fair-crcc-send-data/workflow/Snakefile --profile ../profile/ --configfile config.yml --use-singularity --cores\r\n\r\n\r\n#### Run configuration example\r\n\r\n```\r\nrecipient_key: ./recipient_key\r\nrepository:\r\n  path: \"/mnt/rbd/data/sftp/fair-crcc/\"\r\n  private_key: bbmri-key\r\n  public_key: bbmri-key.pub\r\nsources:\r\n  glob_extension: \".tiff.c4gh\"\r\n  items:\r\n  - some/directory/to/glob\r\n  - another/individual/file.tiff.c4gh\r\ndestination:\r\n  type: \"S3\"\r\n  root_path: \"my-bucket/prefix/\"\r\n  connection:  # all elements will be passed to the selected snakemake remote provider\r\n    access_key_id: \"MYACCESSKEY\"\r\n    secret_access_key: \"MYSECRET\"\r\n    host: http://localhost:9000\r\n    verify: false # don't verify ssl certificates\r\n```\r\n\r\n\r\nTODO\r\n\r\nThe usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=crs4%2Ffair-crcc-send-data).\r\n\r\nIf you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this (original) fair-crcc-send-datasitory and its DOI (see above).\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "265",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/265?version=1",
+    "mapped_tools": [],
+    "name": "FAIR CRCC - send data",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-14",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

@@ -1,0 +1,27 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-06-11",
+    "creators": [
+        "Natasha Clarke",
+        "Lune Bellec"
+    ],
+    "description": "# Code for the high risk autism phenotype paper\r\n[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)\r\n\r\nThis repository implements a **fully reproducible pipeline** for the autism signature project. It uses `invoke` tasks and a Docker container for **consistent, cross-platform execution.**\r\n\r\nThe entire workflow\u2014data fetching, processing, and figure generation\u2014can be **reproduced in a few commands.**\r\nMuch of the code in this repo originated from [ASD High Risk Endophenotype Code Supplement](https://github.com/surchs/ASD_high_risk_endophenotype_code_supplement) and was written by Sebastian Urchs and Hien Nguyen.\r\nAll data to reproduce the analysis can be downloaded from [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15517157.svg)](https://doi.org/10.5281/zenodo.15517157)  \r\n\r\n- The study uses data from ABIDE 1 and 2 datasets. Participants were matched using propensity score matching as part of another project, matching scripts can be found here [ASD Subtype Code Supplement](https://github.com/surchs/ASD_subtype_code_supplement/tree/master/scripts/pheno).\r\n- Resting state functional connectivity data was preprocessed using NIAK, described in the paper. This study uses the seed maps.\r\n- Using the following scripts the full analysis can be reproduced. Alternatively, to skip the data analysis part and recreate the figures, download only the results and atlas data from Zenodo.\r\n\r\n\r\n## \ud83d\ude80 Quick Start\r\n\r\n### 1\u20e3 Install invoke\r\n\r\nFirst, install `invoke`:\r\n\r\n```bash\r\npip install invoke\r\n```\r\n\r\nYou must also have either Docker or Apptainer installed to use container-based execution.\r\n\r\n### 4\u20e3 Clean Everything\r\n\r\nTo remove all generated data:\r\n\r\n```bash\r\ninvoke clean-all\r\n```\r\n\r\n## \ud83d\udcc1 Folder Structure\r\n\r\n| Folder                        | Description                                              |\r\n| ----------------------------- | -------------------------------------------------------- |\r\n| `source_data/`                | Raw data: Atlases & fMRI data.                           |\r\n| `output_data/`                | All generated outputs: Discovery results, figures, etc.  |\r\n| `code/figures/`               | Jupyter notebooks used to generate all figures.          |\r\n| `output_data/Figures/`        | Output folders for each figure notebook.                 |\r\n| `tasks.py` / `tasks_utils.py` | The heart of the pipeline: all `invoke` tasks live here. |\r\n\r\n## Building the environment\r\n\r\n### Installing dependencies\r\nTo set up everything, ensure functional Python and R environments and run:\r\n\r\n```bash\r\ninvoke setup-all\r\n```\r\n\r\nThis:\r\n\r\n* sets up Python & R environments (if running locally);\r\n* prepares the folder structure.\r\n\r\n**Note:**\r\nThis task assumes an Ubuntu-like OS. You still need to install R, Python, etc. See the Dockerfile for complete setup info.\r\n\r\n**Note 2:**\r\nYou can skip this if using the Docker container and running `docker-run` directly.\r\n\r\n### Create a Docker image\r\nTo build a Docker image:\r\n\r\n```bash\r\ninvoke docker-build\r\n```\r\n\r\nTo generate a compressed archive:\r\n\r\n```bash\r\ninvoke docker-archive\r\n```\r\n\r\n### Create an Apptainer image\r\nAfter building the Docker image, run:\r\n\r\n```bash\r\ninvoke apptainer-archive\r\n```\r\n\r\nThis builds the `.sif` image from the Docker daemon.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1336.3",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1336",
+    "latest_version": "3",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1336?version=3",
+    "mapped_tools": [],
+    "name": "High-precision machine learning identifies a reproducible functional connectivity signature of autism spectrum diagnosis in a subset of individuals",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2025-06-17",
+    "versions": "3",
+    "workflow_class": "R markdown"
+}

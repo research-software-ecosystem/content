@@ -1,0 +1,50 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-03-02",
+    "creators": [
+        "Tristan Reynolds",
+        "Amy Loughman"
+    ],
+    "description": "# Taxonomy Assignment with QIIME2 \r\n\r\nThis workflow performs taxonomic assignment for an input OTU/ASV (Operating Taxonomic Unit/Amplicon Sequence Variant) Feature Table and set of amplicon Representative Sequences using QIIME2. The workflow creates and trains a QIIME2 classifier for an input reference taxonomic database (e.g. [HOMD](https://www.homd.org), [SILVA](https://www.arb-silva.de), [PR2](https://pr2-database.org), [UNITE](https://unite.ut.ee)) and uses the trained classifier to assign taxonomy to OTUs/ASVs in the input Feature Table.\r\n\r\n## Inputs\r\n  - Feature Table [`biom2`]: OTU table with ASVs in rows and samples in columns containing ASV counts per sample (can be the output from previous QIIME2 or DADA2 processing)\r\n  - Representative Sequences [`fasta`]: File containing sequences for all ASVs detected in the samples (can be the output from previous QIIME2 or DADA2 processing)\r\n  - Reference sequences [`fasta`]: File containing sequences for the chosen reference taxonomy database\r\n  - Reference taxonomy [`tabular`]: File containing taxonomy assigned to sequences in the reference taxonomy database\r\n  - Forward Primer Sequence [`text`]: Forward primer sequence (5' -> 3'). Required for **qiime2 feature-classifier extract-reads** (input parameter: `f_primer`). Default value is the primer for the 16S rRNA V3-V4 region: `CCTAYGGGRBGCASCAG`.\r\n  - Reverse Primer Sequence [`text`]: Reverse primer sequence (5' -> 3'). Required for **qiime2 feature-classifier extract-reads** (input parameter: `r_primer`). Default value is the primer for the 16S rRNA V3-V4 region: `GGACTACNNGGGTATCTAAT`.\r\n\r\n## Outputs\r\n  - OTU/ASV table [`csv`]: Modified version of input Feature Table with additional column with the assigned taxonomy and assignment confidence for each ASV as additional columns.\r\n  - Feature Table Summary [`html`]: QIIME2 visualisation of the input OTU/ASV Feature Table `biom2` dataset\r\n  - Representative Sequences Summary [`html`]: QIIME2 visualisation of the input Representative Sequences `fasta` dataset\r\n  - Taxonomy Bar Plot [`qzv`]: Interactive bar plot for OTU/ASV table with assigned taxonomy (**this dataset cannot be viewed in Galaxy**; to view this dataset, export it from Galaxy and use a dedicated QIIME2 viewer, e.g. [https://view.qiime2.org/](https://view.qiime2.org/)).\r\n\r\n## Processing Steps\r\n  1. Convert all input datasets to QIIME2 artefacts using **qiime2 tools import**.\r\n  2. Summarise the Feature Table and Representative Sequences datasets using **qiime2 feature-table summarize** and **qiime2 feature-table tabulate-seqs**, respectively, and extract `html` visualisations that can be viewed in Galaxy using **QIIME vizualisation extractor**.\r\n  3. Extract reference sequences (for the input reference taxonomy database) for training the feature classifier using **qiime2 feature-classifier extract-reads**.\r\n  4. Train the QIIME2 Naive Bayes feature classifier on the reference database (extracted sequences and taxonomy) using **qiime2 feature-classifier fit-classifier-naive-bayes**.\r\n  5. Run the classifier on the amplicon Representative Sequences to assign taxonomy to the sample ASVs using **qiime2 feature-classifier classify-sklearn**.\r\n  6. Create a summary visualisation of the taxonomy assigned to the sample dataset using **qiime2 taxa barplot**.\r\n  7. Export the assigned taxonomy table from a QIIME2 artefact to `tsv` using **qiime2 tools export**.\r\n  8. Convert the output `tsv` table to `tabular` format using **Convert tabular to CSV** and **Convert CSV to tabular** (requires intermediate conversion to `csv`).\r\n  9. Convert the `biom2` Feature Table to `tabular` using **Convert between BIOM table formats**.\r\n  10. Combine the ASV taxonomy assignment and Feature Table `tabular` datasets using **Remove beginning** and **Join**. \r\n  11. Convert the combined OTU/ASV table from `tabular` to `csv` format using **Convert tabular to CSV**.\r\n\r\n## Sample Data\r\n\r\nSample input datasets for this workflow are available on Zenodo: https://doi.org/10.5281/zenodo.18263330\r\n\r\n## Contribution\r\n\r\nWorkflow created by Tristan Reynolds (provided Galaxy and bioinformatics expertise) and Amy Loughman (provided scientific requirements and expertise).",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2098.1",
+    "edam_operation": [
+        "Taxonomic classification"
+    ],
+    "edam_topic": [
+        "Taxonomy"
+    ],
+    "id": "2098",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/2098?version=1",
+    "mapped_tools": [],
+    "name": "Taxonomy Assignment with QIIME2",
+    "number_of_steps": 19,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "amplicon",
+        "microbiome",
+        "taxonomic-classification"
+    ],
+    "tools": [
+        "biom_convert",
+        "csv_to_tabular",
+        "qiime2__feature_classifier__classify_sklearn",
+        "qiime2__feature_classifier__extract_reads",
+        "qiime2__feature_classifier__fit_classifier_naive_bayes",
+        "qiime2__feature_table__summarize",
+        "qiime2__feature_table__tabulate_seqs",
+        "qiime2__taxa__barplot",
+        "qiime2_core__tools__export",
+        "qiime2_core__tools__import",
+        "qiime_extract_viz",
+        "remove beginning1",
+        "tabular_to_csv",
+        "tp_easyjoin_tool"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

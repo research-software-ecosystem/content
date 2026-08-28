@@ -1,0 +1,70 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-08-05",
+    "creators": [
+        "Damon-Lee Pointon",
+        "William Eagles",
+        "Ying Sims"
+    ],
+    "description": "# sanger-tol/treeval\r\n\r\n[![GitHub Actions CI Status](https://github.com/sanger-tol/treeval/actions/workflows/nf-test.yml/badge.svg)](https://github.com/sanger-tol/treeval/actions/workflows/nf-test.yml)\r\n[![GitHub Actions Linting Status](https://github.com/sanger-tol/treeval/actions/workflows/linting.yml/badge.svg)](https://github.com/sanger-tol/treeval/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)\r\n[![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)\r\n\r\n[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.04.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)\r\n[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.1-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.1)\r\n[![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)\r\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\r\n[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)\r\n[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/sanger-tol/treeval)\r\n\r\n## Introduction\r\n\r\n**sanger-tol/treeval [1.4.7 - Ancient Hippaforalkus-]** is a bioinformatics best-practice analysis pipeline for the generation of data supplemental to the curation of reference quality genomes. This pipeline has been written to generate flat files compatible with [JBrowse2](https://jbrowse.org/jb2/) as well as HiC maps for use in Juicebox, PretextView and HiGlass.\r\n\r\nThe pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!\r\n\r\nYou can also set up and attempt to run the pipeline here: https://gitpod.io/#https://github.com/BGAcademy23/treeval-curation\r\nThis is a gitpod set up for BGA23 with a version of TreeVal, although for now gitpod will not run a nextflow pipeline die to issues with using singularity. We will be replacing this with an AWS instance soon.\r\n\r\nThe treeval pipeline has a sister pipeline currently named [curationpretext](https://github.com/sanger-tol/curationpretext) which acts to regenerate the pretext maps and accessory files during genomic curation in order to confirm interventions. This pipeline is sufficiently different to the treeval implementation that it is written as it's own pipeline.\r\n\r\n1. Parse input yaml ( YAML_INPUT )\r\n2. Generate my.genome file ( GENERATE_GENOME )\r\n3. Generate insilico digests of the input assembly ( INSILICO_DIGEST )\r\n4. Generate gene alignments with high quality data against the input assembly ( GENE_ALIGNMENT )\r\n5. Generate a repeat density graph ( REPEAT_DENSITY )\r\n6. Generate a gap track ( GAP_FINDER )\r\n7. Generate a map of self complementary sequence ( SELFCOMP )\r\n8. Generate syntenic alignments with a closely related high quality assembly ( SYNTENY )\r\n9. Generate a coverage track using PacBio data ( LONGREAD_COVERAGE )\r\n10. Generate HiC maps, pretext and higlass using HiC cram files ( HIC_MAPPING )\r\n11. Generate a telomere track based on input motif ( TELO_FINDER )\r\n12. Run Busco and convert results into bed format ( BUSCO_ANNOTATION )\r\n13. Ancestral Busco linkage if available for clade ( BUSCO_ANNOTATION:ANCESTRAL_GENE )\r\n14. Count KMERs with FastK and plot the spectra using MerquryFK ( KMER )\r\n15. Generate a coverge track using KMER data ( KMER_READ_COVERAGE )\r\n\r\n## Usage\r\n\r\n> [!NOTE]\r\n> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.\r\n\r\nCurrently, it is advised to run the pipeline with docker or singularity as a small number of major modules do not currently have a conda env associated with them.\r\n\r\nNow, you can run the pipeline using:\r\n\r\n```bash\r\n# For the FULL pipeline\r\nnextflow run main.nf -profile singularity --input treeval.yaml --outdir {OUTDIR}\r\n\r\n# For the RAPID subset\r\nnextflow run main.nf -profile singularity --input treeval.yaml -entry RAPID --outdir {OUTDIR}\r\n```\r\n\r\nAn example treeval.yaml can be found [here](assets/local_testing/nxOscDF5033.yaml).\r\n\r\nFurther documentation about the pipeline can be found in the following files: [usage](https://pipelines.tol.sanger.ac.uk/treeval/dev/usage), [parameters](https://pipelines.tol.sanger.ac.uk/treeval/dev/parameters) and [output](https://pipelines.tol.sanger.ac.uk/treeval/dev/output).\r\n\r\n> **Warning:**\r\n> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those\r\n> provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_;\r\n> see [docs](https://nf-co.re/usage/configuration#custom-configuration-files).\r\n\r\n## Credits\r\n\r\nsanger-tol/treeval has been written by Damon-Lee Pointon (@DLBPointon), Yumi Sims (@yumisims) and William Eagles (@weaglesBio).\r\n\r\nWe thank the following people for their extensive assistance in the development of this pipeline:\r\n\r\n<ul>\r\n  <li>@gq1 - For building the infrastructure around TreeVal and helping with code review</li>\r\n  <li>@ksenia-krasheninnikova - For help with C code implementation and YAML parsing</li>\r\n  <li>@mcshane - For guidance on algorithms </li>\r\n  <li>@muffato - For code reviews and code support</li>\r\n  <li>@priyanka-surana - For help with the majority of code reviews and code support</li>\r\n</ul>\r\n\r\n## Contributions and Support\r\n\r\nIf you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).\r\n\r\n## Citations\r\n\r\nIf you use sanger-tol/treeval for your analysis, please cite it using the following doi: [10.5281/zenodo.10047653](https://doi.org/10.5281/zenodo.10047653).\r\n\r\n### Tools\r\n\r\nAn extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.\r\n\r\nYou can cite the `nf-core` publication as follows:\r\nThis pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/main/LICENSE).\r\n\r\n> **The nf-core framework for community-curated bioinformatics pipelines.**\r\n>\r\n> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.\r\n>\r\n> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Genome alignment",
+        "Genome assembly",
+        "Sequence assembly visualisation"
+    ],
+    "edam_topic": [
+        "Genomics"
+    ],
+    "id": "813",
+    "latest_version": "2",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/813?version=2",
+    "mapped_tools": [
+        "bedtools",
+        "busco",
+        "jbrowse_2",
+        "merqury",
+        "minimap2",
+        "miniprot",
+        "mummer",
+        "nextflow",
+        "pretextview",
+        "pyfastaq",
+        "samtools",
+        "seqtk",
+        "tabix",
+        "ucsc_genome_browser_utilities"
+    ],
+    "name": "sanger-tol/treeval",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "genomics",
+        "genome_assembly"
+    ],
+    "tools": [
+        "bedtools",
+        "busco",
+        "jbrowse 2",
+        "jbrowse_2",
+        "merqury",
+        "minimap2",
+        "miniprot",
+        "mummer",
+        "nextflow",
+        "pretextview",
+        "pyfastaq",
+        "samtools",
+        "seqtk",
+        "tabix",
+        "ucsc genome browser utilities",
+        "ucsc_genome_browser_utilities"
+    ],
+    "update_time": "2026-08-14",
+    "versions": "2",
+    "workflow_class": "Nextflow"
+}

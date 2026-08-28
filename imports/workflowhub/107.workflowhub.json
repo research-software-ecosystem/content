@@ -1,0 +1,30 @@
+{
+    "content_blobs": [],
+    "create_time": "2021-02-18",
+    "creators": [
+        "Jos\u00e9 M\u00aa Fern\u00e1ndez",
+        "Laura Rodriguez-Navas"
+    ],
+    "description": "Rare disease researchers workflow is that they submit their raw data (fastq), run the mapping and variant calling RD-Connect pipeline and obtain unannotated gvcf files to further submit to the RD-Connect GPAP or analyse on their own.\r\n\r\nThis demonstrator focuses on the variant calling pipeline. The raw genomic data is processed using the RD-Connect pipeline ([Laurie et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/27604516)) running on the standards (GA4GH) compliant, interoperable container orchestration platform.\r\n\r\nThis demonstrator will be aligned with the current implementation study on [Development of Architecture for Software Containers at ELIXIR and its use by EXCELERATE use-case communities](docs/Appendix%201%20-%20Project%20Plan%202018-biocontainers%2020171117.pdf) \r\n\r\nFor this implementation, different steps are required:\r\n\r\n1. Adapt the pipeline to CWL and dockerise elements \r\n2. Align with IS efforts on software containers to package the different components (Nextflow) \r\n3. Submit trio of Illumina NA12878 Platinum Genome or Exome to the GA4GH platform cloud (by Aspera or ftp server)\r\n4. Run the RD-Connect pipeline on the container platform\r\n5. Return corresponding gvcf files\r\n6. OPTIONAL: annotate and update to RD-Connect playground instance\r\n\r\nN.B: The demonstrator might have some manual steps, which will not be in production. \r\n\r\n## RD-Connect pipeline\r\n\r\nDetailed information about the RD-Connect pipeline can be found in [Laurie et al., 2016](https://www.ncbi.nlm.nih.gov/pubmed/?term=27604516)\r\n\r\n![alt text](https://raw.githubusercontent.com/inab/Wetlab2Variations/eosc-life/docs/RD-Connect_pipeline.jpg)\r\n\r\n## The applications\r\n\r\n**1\\. Name of the application: Adaptor removal**\r\nFunction: remove sequencing adaptors   \r\nContainer (readiness status, location, version): [cutadapt (v.1.18)](https://hub.docker.com/r/cnag/cutadapt)  \r\nRequired resources in cores and RAM: current container size 169MB  \r\nInput data (amount, format, directory..): raw fastq  \r\nOutput data: paired fastq without adaptors  \r\n\r\n**2\\. Name of the application: Mapping and bam sorting**  \r\nFunction: align data to reference genome  \r\nContainer : [bwa-mem (v.0.7.17)](https://hub.docker.com/r/cnag/bwa) / [Sambamba (v. 0.6.8 )](https://hub.docker.com/r/cnag/sambamba)(or samtools)  \r\nResources :current container size 111MB / 32MB  \r\nInput data: paired fastq without adaptors  \r\nOutput data: sorted bam  \r\n\r\n**3\\. Name of the application: MarkDuplicates**  \r\nFunction: Mark (and remove) duplicates  \r\nContainer: [Picard (v.2.18.25)](https://hub.docker.com/r/cnag/picard)\r\nResources: current container size 261MB  \r\nInput data:sorted bam  \r\nOutput data: Sorted bam with marked (or removed) duplicates  \r\n\r\n**4\\. Name of the application: Base quality recalibration (BQSR)**  \r\nFunction: Base quality recalibration  \r\nContainer: [GATK (v.3.6-0)](https://hub.docker.com/r/cnag/gatk)\r\nResources: current container size 270MB  \r\nInput data: Sorted bam with marked (or removed) duplicates  \r\nOutput data: Sorted bam with marked duplicates & base quality recalculated  \r\n\r\n**5\\. Name of the application: Variant calling**  \r\nFunction: variant calling  \r\nContainer: [GATK (v.3.6-0)](https://hub.docker.com/r/cnag/gatk)\r\nResources: current container size 270MB  \r\nInput data:Sorted bam with marked duplicates & base quality recalculated  \r\nOutput data: unannotated gvcf per sample  \r\n\r\n**6\\. (OPTIONAL)Name of the application: Quality of the fastq**  \r\nFunction: report on the sequencing quality  \r\nContainer: [fastqc 0.11.8](https://hub.docker.com/r/cnag/fastqc)\r\nResources: current container size 173MB  \r\nInput data: raw fastq  \r\nOutput data: QC report \r\n\r\n## Licensing\r\n\r\nGATK declares that archived packages are made available for free to academic researchers under a limited license for non-commercial use. If you need to use one of these packages for commercial use. https://software.broadinstitute.org/gatk/download/archive ",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.107.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "107",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/107?version=1",
+    "mapped_tools": [],
+    "name": "VariantCaller_GATK3.6",
+    "number_of_steps": 15,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "cwl",
+        "variant_calling"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

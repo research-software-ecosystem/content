@@ -1,0 +1,38 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-02-15",
+    "creators": [
+        "Diego Garrido-Mart\u00edn",
+        "Roderic Guig\u00f3"
+    ],
+    "description": "# mvgwas-nf\r\n\r\n[![nextflow](https://img.shields.io/badge/nextflow-%E2%89%A520.04.1-blue.svg)](http://nextflow.io)\r\n[![CI-checks](https://github.com/guigolab/sqtlseeker2-nf/actions/workflows/ci.yaml/badge.svg)](https://github.com/guigolab/sqtlseeker2-nf/actions/workflows/ci.yaml)\r\n\r\nA pipeline for multi-trait genome-wide association studies (GWAS) using [MANTA](https://github.com/dgarrimar/manta).\r\n\r\nThe pipeline performs the following analysis steps:\r\n\r\n* Split genotype file \r\n* Preprocess phenotype and covariate data\r\n* Test for association between phenotypes and genetic variants\r\n* Collect summary statistics\r\n\r\nThe pipeline uses [Nextflow](http://www.nextflow.io) as the execution backend. Please check [Nextflow documentation](http://www.nextflow.io/docs/latest/index.html) for more information.\r\n\r\n## Requirements\r\n\r\n- Unix-like operating system (Linux, MacOS, etc.)\r\n- Java 8 or later \r\n- [Docker](https://www.docker.com/) (v1.10.0 or later) or [Singularity](http://singularity.lbl.gov) (v2.5.0 or later)\r\n\r\n## Quickstart (~2 min)\r\n\r\n1. Install Nextflow:\r\n    ```\r\n    curl -fsSL get.nextflow.io | bash\r\n    ```\r\n\r\n2. Make a test run:\r\n    ```\r\n    nextflow run dgarrimar/mvgwas-nf -with-docker\r\n    ```\r\n\r\n**Notes**: move the `nextflow` executable to a directory in your `$PATH`. Set `-with-singularity` to use Singularity instead of Docker. \r\n\r\n(*) Alternatively you can clone this repository:\r\n```\r\ngit clone https://github.com/dgarrimar/mvgwas-nf\r\ncd mvgwas-nf\r\nnextflow run mvgwas.nf -with-docker\r\n```\r\n\r\n## Pipeline usage\r\n\r\nLaunching the pipeline with the `--help` parameter shows the help message:\r\n\r\n```\r\nnextflow run mvgwas.nf --help\r\n```\r\n\r\n```\r\nN E X T F L O W  ~  version 20.04.1\r\nLaunching `mvgwas.nf` [amazing_roentgen] - revision: 56125073b7\r\n\r\nmvgwas-nf: A pipeline for multivariate Genome-Wide Association Studies\r\n==============================================================================================\r\nPerforms multi-trait GWAS using using MANTA (https://github.com/dgarrimar/manta)\r\n\r\nUsage:\r\nnextflow run mvgwas.nf [options]\r\n\r\nParameters:\r\n--pheno PHENOTYPES          phenotype file\r\n--geno GENOTYPES            indexed genotype VCF file\r\n--cov COVARIATES            covariate file\r\n--l VARIANTS/CHUNK          variants tested per chunk (default: 10000)\r\n--t TRANSFOMATION           phenotype transformation: none, sqrt, log (default: none)\r\n--i INTERACTION             test for interaction with a covariate: none, <covariate> (default: none)\r\n--ng INDIVIDUALS/GENOTYPE   minimum number of individuals per genotype group (default: 10)\r\n--dir DIRECTORY             output directory (default: result)\r\n--out OUTPUT                output file (default: mvgwas.tsv)\r\n```\r\n\r\n## Input files and format\r\n\r\n`mvgwas-nf` requires the following input files:\r\n\r\n* **Genotypes.** \r\n[bgzip](http://www.htslib.org/doc/bgzip.html)-compressed and indexed [VCF](https://samtools.github.io/hts-specs/VCFv4.3.pdf) genotype file.\r\n\r\n* **Phenotypes.**\r\nTab-separated file with phenotype measurements (quantitative) for each sample (i.e. *n* samples x *q* phenotypes).\r\nThe first column should contain sample IDs. Columns should be named.\r\n\r\n* **Covariates.**\r\nTab-separated file with covariate measurements (quantitative or categorical) for each sample (i.e. *n* samples x *k* covariates). \r\nThe first column should contain sample IDs. Columns should be named. \r\n\r\nExample [data](data) is available for the test run.\r\n\r\n## Pipeline results\r\n\r\nAn output text file containing the multi-trait GWAS summary statistics (default: `./result/mvgwas.tsv`), with the following information:\r\n\r\n* `CHR`: chromosome\r\n* `POS`: position\r\n* `ID`: variant ID\r\n* `REF`: reference allele\r\n* `ALT`: alternative allele\r\n* `F`: pseudo-F statistic\r\n* `R2`: fraction of variance explained by the variant\r\n* `P`: P-value\r\n\r\nThe output folder and file names can be modified with the `--dir` and `--out` parameters, respectively.\r\n\r\n## Cite mvgwas-nf\r\n\r\nIf you find `mvgwas-nf` useful in your research please cite the related publication:\r\n\r\nGarrido-Mart\u00edn, D., Calvo, M., Reverter, F., Guig\u00f3, R. A fast non-parametric test of association for multiple traits. *bioRxiv* (2022). [https://doi.org/10.1101/2022.06.06.493041](https://doi.org/10.1101/2022.06.06.493041)\r\n",
+    "discussion_links": [
+        {
+            "id": "518",
+            "label": "",
+            "url": "https://github.com/dgarrimar/mvgwas-nf/issues"
+        }
+    ],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "436",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/436?version=1",
+    "mapped_tools": [],
+    "name": "mvgwas-nf",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "gwas",
+        "multivariate",
+        "nextflow",
+        "non-parametric"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

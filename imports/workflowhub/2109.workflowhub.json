@@ -1,0 +1,42 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-03-10",
+    "creators": [
+        "Jorge Ejarque",
+        "Gerard Guillamet",
+        "Riccardo Cecco",
+        "Aravind Sasikumar",
+        "Said Abdel-Monsef",
+        "Albert Turon",
+        "Rosa M Badia"
+    ],
+    "description": "## Sensitivity Analysis to identify the material properties governing the structural failure of an open-hole test \r\n \r\n### Introduction\r\n\r\nThe certification of composite structures in the aeronautical sector follows a building-block pyramid approach, in which structural complexity, material uncertainties, and computational cost increase progressively across scales. To reduce reliance on extensive experimental campaigns, high-fidelity finite element simulations are increasingly employed for virtual testing. However, the propagation and management of material uncertainties in such simulations remain computationally demanding, particularly when large parametric studies are required.\r\n  \r\n### Workflow and Use-Case\r\n\r\nThis example employs the `SENSITIVITY_ANALYSIS` workflow available in the [CAELESTIS Workflows repository](https://github.com/CAELESTIS-Project-EU/Workflows). The workflow performs a Global Sensitivity Analysis (GSA) using the Morris screening method on high-fidelity finite element models to identify the material parameters governing structural failure. The use-case considered in this workflow consists of an Open-Hole Tension (OHT) test with laminate stacking sequence [45/90/-45/0]_3S, comprising 24 plies of 0.131 mm per ply. The model dimensions are 12 mm (width), 24 mm (length), and 2 mm (thickness). The modelling strategy and methodology are taken from [Sasikumar et al. 2023](https://journals.sagepub.com/doi/10.1177/00219983231163272). The Morris hyperparameters are `p=16` and `r=20`, considering variability in `N=21` material properties. In this case, the workflow operates in a fully parallel environment, using PyCOMPSs as a task-based orchestration framework and Alya Multiphysics as a parallel finite element solver. This combination enables large-scale uncertainty quantification through High-Performance Computing (HPC), allowing extensive parametric exploration while maintaining computational efficiency.\r\n\r\n### Results and Conclusions\r\n\r\nThe proposed framework is used to identify the critical material parameters influencing the failure load of an open-hole tensile specimen. Integrating Global Sensitivity Analysis with high-fidelity damage modeling and HPC-based orchestration provides an effective strategy for uncertainty management in composite structures. This approach contributes to reducing experimental effort while preserving predictive capability. Furthermore, the fully parallel workflow enables efficient distribution of simulations across computational resources, significantly reducing time-to-solution while ensuring numerical robustness and scalability. The proposed workflow can be used for other geometries and use-cases.\r\n\r\n### Reproducibility\r\n\r\nIn order to reproduce this execution, you need to have access to the MareNostrum 5 supercomputer and follow these steps:\r\n1. Download this package and copy it into a new folder on the supercomputer.\r\n2. In the new folder: `cd application_sources/`\r\n3. Edit `run_from_crate.sh` to update `PROJECT_NAME` and `QOS` variables with your corresponding values.\r\n4. Submit the job using `bash run_from_crate.sh`. WARNING: the run may require approximately 50GB of disk space.\r\n5. Once the job has finished, visualize the results with `python plot_Baseline_21mat.py` or `python plot_Baseline_21mat_mustar.py`.\r\n\r\nBy default, the job uses 28 nodes from MareNostrum 5 (3136 CPUs) and requires approximately 30 minutes to complete the 440 simulations.\r\n\r\n### Acknowledgements\r\n\r\nThis work has been developed within the CAELESTIS project. The project has received funding from the European Union's Horizon research and innovation program under Grant Agreement No. 101056886.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2109.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2109",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/2109?version=1",
+    "mapped_tools": [],
+    "name": "General Sensitivity Analysis (GSA) using CAELESTIS HPC-based workflows",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "alya",
+        "compss",
+        "compss use cases",
+        "marenostrum v",
+        "pycompss",
+        "reproducibility of results",
+        "supercomputer",
+        "data_persistence",
+        "ro-crate"
+    ],
+    "tools": [],
+    "update_time": "2026-03-10",
+    "versions": "1",
+    "workflow_class": "COMP Superscalar"
+}

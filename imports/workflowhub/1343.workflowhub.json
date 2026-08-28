@@ -1,0 +1,52 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-04-18",
+    "creators": [
+        "Ryo Nozu",
+        "Sora Yonezawa"
+    ],
+    "description": "[![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)\r\n![GitHub last commit (branch)](https://img.shields.io/github/last-commit/RyoNozu/CWL4IncorporateTSSintoGXF/main)\r\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\r\n[![Lab Website](https://img.shields.io/badge/Lab%20Website-bonohulab-informational?style=flat-square)](https://bonohu.hiroshima-u.ac.jp/)\r\n\r\n&nbsp;\r\n\r\n# CWL4IncorporateTSSintoGXF\r\n\r\nThis workflow determines TSS based on the analysis of CAGE-seq data and incorporates TSS information and 5'UTR information calculated based on TSS information into the gene annotation file (gff/gtf). The R package, [TSSr](https://github.com/Linlab-slu/TSSr), is used to determine TSS.  \r\n\r\n## Requirements\r\n\r\n- [cwltool](https://github.com/common-workflow-language/cwltool)  \r\n\r\n    Install using pip  \r\n    ```\r\n    pip  install cwltool  \r\n    ```\r\n\r\n    Install using conda  \r\n    ```\r\n    conda create -n cwltool  \r\n    conda activate cwltool  \r\n    conda install -c conda-forge cwltool \r\n    ``` \r\n\r\n- [docker](https://www.docker.com/)  \r\n\r\n    \u2020 and Docker Desktop must be running  \r\n\r\n## Simple usage  \r\n\r\n- Clone this repository  \r\n\r\n    ```\r\n    git clone https://github.com/RyoNozu/CWL4IncorporateTSSintoGXF.git\r\n    cd CWL4IncorporateTSSintoGXF\r\n    ```\r\n\r\n- Run workflow  \r\n\r\n    ```\r\n    # for paired-end reads case\r\n    cwltool --debug --cachedir ./cwl_cache/ --outdir ./test/ ./workflow/cageseq_gtf_update_pe.cwl ./config/Workflow_config/cageseq_gtf_update_pe.yml\r\n    ```\r\n    - Prep your case yml file referring to the [template](https://github.com/RyoNozu/CWL4IncorporateTSSintoGXF/blob/main/config/workflow_template.yml)  \r\n        \u2022 Refer to the [Link](https://view.commonwl.org/workflows/github.com/RyoNozu/CWL4IncorporateTSSintoGXF/blob/main/workflow/cageseq_gtf_update_pe.cwl) for details on each parameter that needs to be specified  \r\n    - A single-ended version (cageseq_gtf_update_se.cwl) is in prep as of 20240417  \r\n\r\n## Input files  \r\n\r\n- CAGE-seq Read (fastq, paried/single-end)  \r\n- reference genome (fasta)  \r\n- gene annotation file (gff/gtf)  \r\n- (BSgenome_data_package_seed_file (.txt))  \r\n        > refere to forgeBSgenomeDataPkg function in [BSgenomeForge](https://bioconductor.org/packages/release/bioc/html/BSgenomeForge.html) package  \r\n\r\n## Output files  \r\n\r\n- updated gxf file (.gff/gtf)  \r\n\r\n## FYI: Running time\r\n\r\n***\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Genome annotation"
+    ],
+    "edam_topic": [
+        "Functional genomics",
+        "Transcriptomics"
+    ],
+    "id": "1343",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1343?version=1",
+    "mapped_tools": [
+        "biocontainers",
+        "fastp",
+        "seqkit",
+        "star",
+        "tssr"
+    ],
+    "name": "CWL4IncorporateTSSintoGXF (paired-end file)",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "gtf",
+        "transcription start sites",
+        "cage",
+        "cage-seq",
+        "cageseq-data",
+        "genome-annotation"
+    ],
+    "tools": [
+        "biocontainers",
+        "fastp",
+        "seqkit",
+        "star",
+        "tssr"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

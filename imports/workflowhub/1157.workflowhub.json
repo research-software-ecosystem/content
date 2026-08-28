@@ -1,0 +1,27 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-09-09",
+    "creators": [
+        "Aldar Cabrelles",
+        "Based on FHIR Resources made by NazrulWorld on GitHub (https://github.com/nazrulworld/)"
+    ],
+    "description": "# EuCanImage FHIR ETL Implementation\r\n\r\nThis repository contains the ETL implementation for EuCanImage, encouraging semantic interoperability of the clinical data obtained in the studies by transforming it into a machine-readable format following FHIR standards. This parser uses [FHIR Resources](https://github.com/nazrulworld/fhir.resources) in order to create the dictionaries following a FHIR compliant structure.\r\n- Code Language is written in [Python 3.11](https://www.python.org/downloads/release/python-3110/).\r\n- The outputs are JSON files compliant with [FHIR 4.3](https://hl7.org/fhir/R4B/) schemas.\r\n- This script is specifically created for the Extract, Transform and Load implementation for EuCanImage, and will follow the structures obtained from the REDCap databases within the study. To create your own implementation in a different study, you may use the previously mentioned [FHIR Resources](https://github.com/nazrulworld/fhir.resources).\r\n\r\n#### Data conversion process:\r\nThis code followed the structure to go through the following steps:\r\n- Importing and transforming CSV with patient data\r\n- Defining dictionaries for ontologies and functions to populate FHIR dictionaries\r\n- Transforming dictionaries into FHIR resources\r\n- Grouping FHIR resources into a defined bundle/envelope of resources\r\n- Exporting as json file\r\n\r\n#### Input & Output\r\n- CSV file for each use case (CSV folder)\r\n- JSON file following FHIR standards (OUTPUT folder)\r\n\r\n## Installation and Guide\r\nThe first step is to clone or download the repository to your computer\r\n```bash\r\ngit clone https://github.com/EGA-archive/EuCanImage-FHIR.git\r\n```\r\n#### Requirements\r\n- Python 3.11.2\r\n- [FHIR Resources](https://github.com/nazrulworld/fhir.resources) 6.5.0\r\n- pandas 2.1.3\r\n- numpy 1.26.2\r\n\r\nIn order to use these scripts, you will need to have access to [Python 3.11](https://www.python.org/downloads/release/python-3110/) in your systems.\r\n\r\nTo install the libraries used for this study, it can easily be done with `pip install`. The latest versions of each library should not cause any incompatibility.\r\n```bash\r\npip install fhir.resources\r\npip install pandas\r\npip install numpy\r\n```\r\n### Instructions\r\nThe steps are the same on each Use Case, so we will be using Use Case 4 & 5 as an example for the steps to follow.\r\n\r\nFirst of all, you will need to provide with a [CSV file](https://github.com/EGA-archive/EuCanImage-FHIR/tree/main/UC4%265_Rectal_Cancer/CSV/UseCase45_testdata.csv) that follows the structure of the eCRF of the study. Each use case will have its own eCRF. Save the CSV file in the [CSV folder](https://github.com/EGA-archive/EuCanImage-FHIR/tree/main/UC4%265_Rectal_Cancer/CSV) of the specific use case you will be using.\r\n\r\nNext, in the beginning of each python file (For example, for Use Case 4 & 5 it would be [UC45-ETL.py](https://github.com/EGA-archive/EuCanImage-FHIR/blob/main/UC4%265_Rectal_Cancer/UC45-ETL.py), you will need to change the variable `relative_path_csv` to change the name of the file matching the one of the input.\r\n```bash\r\nrelative_path_csv = \"/UC4&5_Rectal_Cancer/CSV/UseCase45_testdata.csv\"\r\n```\r\nThen, you can run the parser in the terminal, changing `PATH-TO-FOLDER` to the specific folder the parser is in, unless the terminal is run in the folder itself.\r\n```bash\r\npython PATH-TO-FOLDER/UC45-ETL.py\r\n```\r\nOnce it is finished, you will have all of the parsed JSON files in the [OUTPUT](https://github.com/EGA-archive/EuCanImage-FHIR/tree/main/UC4%265_Rectal_Cancer/OUTPUT) folder\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1157.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1157",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1157?version=1",
+    "mapped_tools": [],
+    "name": "EuCanImage FHIR ETL Implementation IV & V: Rectal Cancer",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

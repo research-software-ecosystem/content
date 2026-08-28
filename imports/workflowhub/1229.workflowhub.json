@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-12-13",
+    "creators": [
+        "Kieran Atkins"
+    ],
+    "description": "# gimp-image-annotator\r\n*gimp-image-annotator or GI\u00c0, a lightweight GIMP plug-in to alllow for computer vision-assisted image annotation using the powerful GIMP selection toolbox.*\r\n\r\n**Installation**\r\n\r\nFollow the guide here: https://en.wikibooks.org/wiki/GIMP/Installing_Plugins to find how to install GIMP plug-ins on your system, save the file `image-annotator.py` in GIMP's plug-in folder. \r\n\r\nIn GIMP v2.x, the plug-in system relies on deprecated python2. On Windows, a version of python2 is included in the installation of GIMP, so you only need to follow the plug-in installation. On Linux, we recommend using the Flatpak version of GIMP, as it comes with the correct python2 binaries inlcluded. On Linux, the plug-in may need to be made executable with the command `chmod a+x /path/to/image-annotator.py` in order to be seen by GIMP.\r\n\r\n**Using the software**\r\nOnce installed, navigate to *Toolbox* then *Image Annotator*, add the labels you want, select one, use GIMP's selection tools (e.g. The Fuzzy Select tool - a guide can be found here: https://docs.gimp.org/en/gimp-tools-selection.html) to select an area (use Quick Mask or Shift+Q to quickly see the mask you have created). **Make sure antialisaing and feathering is off, you cannot turn it off for rectangle select however it isn't used**. Once you have your desired selected area, press *Save selected mask*. Repeat until all objects are annotated.\r\n\r\n**How do I use the data?**\r\n\r\n*gimp-image-annotator* saves a binary mask of each annotation, with class of mask stored in the `_annotations.json` file. The `_annotations.json` file is structured as followed\r\n\r\n\r\n`\r\n[{\r\n\"label\": \"label\",\r\n\"id\": \"0\",\r\n\"filename\": \"image.png\"\r\n}]\r\n`\r\n\r\nThe masks can be inputted using most image processing software. For example in `opencv-python` it would be:\r\n\r\n\r\n`\r\nimport cv2;\r\nmask = cv2.imread(PATH, cv2.IMREAD_GRAYSCALE)\r\n`\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1229.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1229",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/1229?version=1",
+    "mapped_tools": [],
+    "name": "GIMP Image Annotator",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Plug-in"
+}

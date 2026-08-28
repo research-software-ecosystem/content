@@ -1,0 +1,45 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-05-31",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "# workflow-ref-guided-stacks\r\n\r\nThese workflows are part of a set designed to work for RAD-seq data on the Galaxy platform, using the tools from the Stacks program. \r\n\r\nGalaxy Australia: https://usegalaxy.org.au/\r\n\r\nStacks: http://catchenlab.life.illinois.edu/stacks/\r\n\r\n## Inputs\r\n* demultiplexed reads in fastq format, may be output from the QC workflow. Files are in a collection. \r\n* population map in text format\r\n* reference genome in fasta format\r\n\r\n## Steps and outputs\r\n\r\nBWA MEM 2:\r\n* The reads are mapped to the reference genome; output in BAM format\r\n* The collection of bam files is named something like Map with BWA-MEM on collection 5 (mapped reads in BAM format)\r\n* Each of the bam files in the collection is named something like sample_CAAC\r\n\r\nSamtools stats before filtering:\r\n* These bam files are sent to Samtools stats to get statistics; these are then sent to MultiQC to provide a nice output. This is tagged as \"bam stats before filtering\" in the Galaxy history. \r\n* The \"General Statistics\" show how many reads were mapped - if there is a low mapping rate, it may be worth re-checking or repeating QC on the raw reads, or considering a different reference genome, or using a de novo approach. To see if many reads have been soft-clipped by Bwa mem (which may affect how well gstacks can work), look at the \"Alignment Metrics\" section, and the row with \"Mapped bases (Cigar)\". Hover over the dots to see sample names especially towards the left of the row - these have the least mapped reads.\r\n\r\nSamtools view:\r\n* This step filters out certain reads from the bam files. The default settings are to exclude reads if they are unmapped, if the alignment is not primary or is supplementary, if the read fails platform/vendor quality checks, and if the read is a PCR or optical duplicate. \r\n* The output bams are tagged with \"filtered bams\" in the Galaxy history.\r\n\r\nSamtools stats after filtering:\r\n* Filtered bams are sent again to samtools stats, and statistics to MultiQC, with the report tagged as \"bam stats after filtering\" in the Galaxy history. \r\n\r\ngstacks:\r\n* Filtered bams and a population map are sent to gstacks. The outputs are:\r\n* Catalog of loci in fasta format\r\n* Variant calls in VCF format\r\n* Note: some bam files cause errors here with gstacks. For example, the log file may say \"Error, all records discard with file SampleXYZ.FASTQ.bam, Aborted\". If this occurs, check the bam stats (as described above). Some of the options are to re-do QC on the raw reads, change settings for mapping reads in BWA MEM, and/or delete this sample/s from the population map and proceed to gstacks. \r\nThe sample can still remain in the list of bam files but gstacks will only consider what is listed in the pop map. \r\n\r\npopulations:\r\n* gstacks outputs and a population map are snet to the \"populations\" module. The outputs are:\r\n* Locus consensus sequences in fasta format\r\n* Snp calls, in VCF format\r\n* Haplotypes, in VCF format\r\n* Summary statistics\r\n\r\n![qc-wf](wf-ref-guided.png)\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Sequence clustering"
+    ],
+    "edam_topic": [
+        "Population genomics"
+    ],
+    "id": "347",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/347?version=1",
+    "mapped_tools": [
+        "bwa-mem2",
+        "multiqc",
+        "samtools",
+        "stacks"
+    ],
+    "name": "Stacks RAD-seq reference-guided workflow",
+    "number_of_steps": 8,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "bwa-mem2",
+        "bwa_mem2",
+        "multiqc",
+        "samtools",
+        "samtools_stats",
+        "samtools_view",
+        "stacks",
+        "stacks2_gstacks",
+        "stacks2_populations"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

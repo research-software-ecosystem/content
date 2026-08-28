@@ -1,0 +1,53 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-07-09",
+    "creators": [
+        "Stevie Pederson"
+    ],
+    "description": "# prepareChIPs\r\n\r\nThis is a simple `snakemake` workflow template for preparing **single-end** ChIP-Seq data.\r\nThe steps implemented are:\r\n\r\n1. Download raw fastq files from SRA\r\n2. Trim and Filter raw fastq files using `AdapterRemoval`\r\n3. Align to the supplied genome using `bowtie2`\r\n4. Deduplicate Alignments using `Picard MarkDuplicates`\r\n5. Call Macs2 Peaks using `macs2`\r\n\r\nA pdf of the rulegraph is available [here](workflow/rules/rulegraph.pdf)\r\n\r\nFull details for each step are given below.\r\nAny additional parameters for tools can be specified using `config/config.yml`, along with many of the requisite paths\r\n\r\nTo run the workflow with default settings, simply run as follows (after editing `config/samples.tsv`)\r\n\r\n```bash\r\nsnakemake --use-conda --cores 16\r\n```\r\n\r\nIf running on an HPC cluster, a snakemake profile will required for submission to the queueing system and appropriate resource allocation.\r\nPlease discuss this will your HPC support team.\r\nNodes may also have restricted internet access and rules which download files may not work on many HPCs.\r\nPlease see below or discuss this with your support team\r\n\r\nWhilst no snakemake wrappers are explicitly used in this workflow, the underlying scripts are utilised where possible to minimise any issues with HPC clusters with restrictions on internet access.\r\nThese scripts are based on `v1.31.1` of the snakemake wrappers\r\n\r\n### Important Note Regarding OSX Systems\r\n\r\nIt should be noted that this workflow is **currently incompatible with OSX-based systems**. \r\nThere are two unsolved issues\r\n\r\n1. `fasterq-dump` has a bug which is specific to conda environments. This has been updated in v3.0.3 but this patch has not yet been made available to conda environments for OSX. Please check [here](https://anaconda.org/bioconda/sra-tools) to see if this has been updated.\r\n2. The following  error appears in some OSX-based R sessions, in a system-dependent manner:\r\n```\r\nError in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : \r\n  polygon edge not found\r\n```\r\n\r\nThe fix for this bug is currently unknown\r\n\r\n## Download Raw Data\r\n\r\n### Outline\r\n\r\nThe file `samples.tsv` is used to specify all steps for this workflow.\r\nThis file must contain the columns: `accession`, `target`, `treatment` and `input`\r\n\r\n1. `accession` must be an SRA accession. Only single-end data is currently supported by this workflow\r\n2. `target` defines the ChIP target. All files common to a target and treatment will be used to generate summarised coverage in bigWig Files\r\n3. `treatment` defines the treatment group each file belongs to. If only one treatment exists, simply use the value 'control' or similar for every file\r\n4. `input` should contain the accession for the relevant input sample. These will only be downloaded once. Valid input samples are *required* for this workflow\r\n\r\nAs some HPCs restrict internet access for submitted jobs, *it may be prudent to run the initial rules in an interactive session* if at all possible.\r\nThis can be performed using the following (with 2 cores provided as an example)\r\n\r\n```bash\r\nsnakemake --use-conda --until get_fastq --cores 2\r\n```\r\n\r\n### Outputs\r\n\r\n- Downloaded files will be gzipped and written to `data/fastq/raw`.\r\n- `FastQC` and `MultiQC` will also be run, with output in `docs/qc/raw`\r\n\r\nBoth of these directories are able to be specified as relative paths in `config.yml`\r\n\r\n## Read Filtering\r\n\r\n### Outline\r\n\r\nRead trimming is performed using [AdapterRemoval](https://adapterremoval.readthedocs.io/en/stable/).\r\nDefault settings are customisable using config.yml, with the defaults set to discard reads shorter than 50nt, and to trim using quality scores with a threshold of Q30.\r\n\r\n### Outputs\r\n\r\n- Trimmed fastq.gz files will be written to `data/fastq/trimmed`\r\n- `FastQC` and `MultiQC` will also be run, with output in `docs/qc/trimmed`\r\n- AdapterRemoval 'settings' files will be written to `output/adapterremoval`\r\n\r\n## Alignments\r\n\r\n### Outline\r\n\r\nAlignment is performed using [`bowtie2`](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml) and it is assumed that this index is available before running this workflow.\r\nThe path and prefix must be provided using config.yml\r\n\r\nThis index will also be used to produce the file `chrom.sizes` which is essential for conversion of bedGraph files to the more efficient bigWig files.\r\n\r\n### Outputs\r\n\r\n- Alignments will be written to `data/aligned`\r\n- `bowtie2` log files will be written to `output/bowtie2` (not the conenvtional log directory)\r\n- The file `chrom.sizes` will be written to `output/annotations`\r\n\r\nBoth sorted and the original unsorted alignments will be returned.\r\nHowever, the unsorted alignments are marked with `temp()` and can be deleted using \r\n\r\n```bash\r\nsnakemake --delete-temp-output --cores 1\r\n```\r\n\r\n## Deduplication\r\n\r\n### Outline\r\n\r\nDeduplication is performed using [MarkDuplicates](https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-) from the Picard set of tools.\r\nBy default, deduplication will remove the duplicates from the set of alignments.\r\nAll resultant bam files will be sorted and indexed.\r\n\r\n### Outputs\r\n\r\n- Deduplicated alignments are written to `data/deduplicated` and are indexed\r\n- DuplicationMetrics files are written to `output/markDuplicates`\r\n\r\n## Peak Calling\r\n\r\n### Outline\r\n\r\nThis is performed using [`macs2 callpeak`](https://pypi.org/project/MACS2/).\r\n\r\n- Peak calling will be performed on:\r\n    a. each sample individually, and \r\n    b. merged samples for those sharing a common ChIP target and treatment group.\r\n- Coverage bigWig files for each individual sample are produced using CPM values (i.e. Signal Per Million Reads, SPMR)\r\n- For all combinations of target and treatment coverage bigWig files are also produced, along with fold-enrichment bigWig files\r\n\r\n### Outputs\r\n\r\n- Individual outputs are written to `output/macs2/{accession}`\r\n\t+ Peaks are written in `narrowPeak` format along with `summits.bed`\r\n\t+ bedGraph files are automatically converted to bigWig files, and the originals are marked with `temp()` for subsequent deletion\r\n\t+ callpeak log files are also added to this directory\r\n- Merged outputs are written to `output/macs2/{target}/`\r\n\t+ bedGraph Files are also converted to bigWig and marked with `temp()`\r\n\t+ Fold-Enrichment bigWig files are also created with the original bedGraph files marked with `temp()`\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.528.1",
+    "edam_operation": [
+        "Transcription factor binding site prediction"
+    ],
+    "edam_topic": [
+        "ChIP-seq"
+    ],
+    "id": "528",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/528?version=1",
+    "mapped_tools": [
+        "adapterremoval",
+        "bioconductor",
+        "bowtie2",
+        "fastqc",
+        "macs",
+        "multiqc",
+        "ngsreports",
+        "r"
+    ],
+    "name": "prepareChIPs:",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "genomics",
+        "transcriptomics"
+    ],
+    "tools": [
+        "adapterremoval",
+        "bioconductor",
+        "bowtie 2",
+        "bowtie2",
+        "fastqc",
+        "macs",
+        "multiqc",
+        "ngsreports",
+        "r"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

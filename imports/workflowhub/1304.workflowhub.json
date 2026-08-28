@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-02-12",
+    "creators": [
+        "Albert Puiggros"
+    ],
+    "description": "This workflow demonstrates the integration of FAIR principles into the workflow management ecosystem through provenance integration in Autosubmit, a workflow manager developed at the Barcelona Supercomputing Center (BSC), and SUNSET (SUbseasoNal to decadal climate forecast post-processing and aSSEssmenT suite), an R-based verification workflow also developed at BSC.\r\n\r\nAutosubmit supports the generation of data provenance information based on RO-Crate, facilitating the creation of machine-actionable digital objects that encapsulate detailed metadata about its executions. However, the provenance metadata provided by Autosubmit focuses on the workflow process and does not encapsulate the details of the data transformation processes. This is where SUNSET plays a complementary role. SUNSET\u2019s approach to provenance information is based on the METACLIP (METAdata for CLImate Products) ontologies. METACLIP offers a semantic approach to describing climate products and their provenance. This framework enables SUNSET to provide specific, high-resolution provenance metadata for its operations, improving transparency and compliance with FAIR principles. The generated files provide detailed information about each transformation the data has undergone, as well as additional details about the data's state, location, structure, and associated source code, all represented in a tree-like structure.\r\n\r\nThe workflow uses a SUNSET configuration file, referred to as a \"recipe,\" to generate a set of JSON files containing the provenance information of the workflow execution based on the METACLIP ontologies. For this, we compute some skill metrics and scorecard plots with SUNSET, using Autosubmit to dispatch jobs in parallel. In the recipe, we request three start dates for January, February, and March (0101, 0201, 0301). SUNSET will split the recipe into three atomic recipes, and Autosubmit will run three jobs, processing the verification for each recipe in parallel. When all the scorecards are generated, the \"transfer_provenance\" job will be triggered, transferring the SUNSET-generated provenance files to the Autosubmit experiment folder. Finally, an RO-Crate object will be created, encapsulating the entire process description.\r\n\r\nCurrently, this workflow can only be executed within the BSC infrastructure. Here is the complete use case: [Use Case Documentation](https://earth.bsc.es/gitlab/es/sunset/-/blob/Dev-Provenance/use_cases/ex1_4_provenance_autosubmit/ex1_4-handson.md)\r\n\r\nThe METACLIP-based JSON files can be interactively visualized using the [METACLIP Interpreter.](http://metaclip.org)",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1304",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1304?version=1",
+    "mapped_tools": [],
+    "name": "Provenance generation when running SUNSET with Autosubmit",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Autosubmit"
+}

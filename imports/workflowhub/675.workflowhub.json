@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-11-21",
+    "creators": [
+        "Zafran Hussain Shah"
+    ],
+    "description": "# Evaluation of Swin Transformer and knowledge transfer for denoising of super-resolution structured illumination microscopy data\r\n\r\nIn recent years, convolutional neural network (CNN)-based methods have shown remarkable performance in the denoising and reconstruction of super-resolved structured illumination microscopy (SR-SIM) data. Therefore, CNN-based architectures have been the main focus of existing studies. Recently, however, an alternative and highly\r\ncompetitive deep learning architecture, Swin Transformer, has been proposed for image restoration tasks. In this work, we present SwinT-fairSIM, a novel method for restoring SR-SIM images with low signal-to-noise ratio (SNR) based on Swin Transformer. The experimental results show that SwinT-fairSIM outperforms previous CNN-based denoising methods. Furthermore, the generalization capabilities of deep learning methods for image restoration tasks on real fluorescence microscopy data have not been fully explored yet, i.e., the extent to which trained artificial neural networks are limited to specific types of cell structures and noise. Therefore, as a second contribution, we benchmark two types of transfer learning, i.e., direct transfer and fine-tuning, in combination with SwinT-fairSIM and two CNN-based methods for denoising SR-SIM data. Direct transfer does not prove to be a viable strategy, but fine-tuning achieves results comparable to conventional training from scratch while saving computational time and potentially reducing the amount of required training data. As a third contribution, we published four datasets of raw SIM images and already reconstructed SR-SIM images. These datasets cover two types of cell structures, tubulin filaments and vesicle structures. Different noise levels are available for the tubulin filaments. These datasets are structured in such a way that they can be easily used by the research community for research on denoising, super-resolution, and transfer learning strategies.\r\n\r\nThe SIM microscopy datasets that were used during this work can be downloaded through this link: http://dx.doi.org/10.5524/102461\r\n\r\n\r\n## Installation:\r\n\r\nThis implementation requires the Tensorflow-GPU2.5 version. To avoid package conflicts, we recommend you create a new environment by using our provided environment.yml file. To create a new environment please run the following script:\r\n\r\n>  conda env create -f environment.yml\r\n\r\n## How to use this code:\r\n\r\nThis code can be used to train a denoising model from scratch or to fine-tune a pretrained model. After the installation of the Python environment from the yml file, the next step is to set the input parameters in the JSON parameter file (i.e., ParameterFile.json). Most of the input parameters are self-explanatory but below we will discuss some of the important input parameters from the JSON file:\r\n\r\n- TrainNetworkfromScratch: This input parameter will train the model from scratch If set to True, otherwise, for fine-tuning, It should be False.\r\n- ActivateTrainandTestModel: This parameter will be set to False If you want to use this code for evaluation of the trained model or the reproducibility of the results by using pretrained models.\r\n- PretrainedmodelPath: This parameter is mandatory in case of fine-tuning or evaluation of a pretrained model.\r\n- FineTuneStartingpoint and FineTuneEndingpoint: These two input parameters are essential in the fine-tuning of a pretrained model. All the layers between the starting and ending points will be frozen during the fine-tuning of the pretrained model.\r\n\r\nAfter the assignment of the input parameters. You can run the following script from the command line to start training the model:\r\n\r\n> python MainModule.py 'ParameterFile.json'\r\n\r\n## Reproducibility and evaluation:\r\n\r\nTo reproduce the results of the paper all the trained models used in this work are available in the 'Models' directory at [zenodo](https://doi.org/10.5281/zenodo.7626173). This code is capable of performing all the necessary steps for the training and test phases. It will automatically evaluate the model and generate a result directory to write all the results. Similarly, during the training process, It will also create a model directory and save the trained model along with the best checkpoints in the model directory.   \r\n\r\n## Important Note:\r\n\r\nThis code will work with at least one GPU.\r\n\r\n## Reference:\r\n\r\nPlease cite our paper in case you use this code for any scientific publication. We will soon upload the citation index!\r\n\r\n\r\n\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.675.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Biomedical science"
+    ],
+    "id": "675",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/675?version=1",
+    "mapped_tools": [],
+    "name": "Evaluation of Swin Transformer and knowledge transfer for denoising of super-resolution structured illumination microscopy data",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "deep learning",
+        "machine learning",
+        "python",
+        "sim",
+        "image processing",
+        "microscopy"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

@@ -1,0 +1,37 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-07-05",
+    "creators": [
+        "Konstantinos Kyritsis",
+        "Nikolaos Pechlivanis",
+        "Fotis Psomopoulos"
+    ],
+    "description": "A CWL-based pipeline for processing RNA-Seq data (FASTQ format) and performing differential gene/transcript expression analysis. \r\n\r\nOn the respective GitHub folder are available:\r\n\r\n- The CWL wrappers for the workflow\r\n- A pre-configured YAML template, based on validation analysis of publicly available HTS data\r\n- A table of metadata (``mrna_cll_subsets_phenotypes.csv``), based on the same validation analysis, to serve as an input example for the design of comparisons during differential expression analysis\r\n\r\nBriefly, the workflow performs the following steps:\r\n\r\n1. Quality control of Illumina reads (FastQC)\r\n2. Trimming of the reads (e.g., removal of adapter and/or low quality sequences) (Trim galore)\r\n3. (Optional)  custom processing of the reads using FASTA/Q Trimmer (part of the FASTX-toolkit) \r\n4. Mapping to reference genome (HISAT2)\r\n5. Convertion of mapped reads from SAM (Sequence Alignment Map) to BAM (Binary Alignment Map) format (samtools)\r\n6. Sorting mapped reads based on chromosomal coordinates (samtools)\r\n\r\nSubsequently, two independent workflows are implemented for differential expression analysis at the transcript and gene level. \r\n\r\n**First**, following the [reference protocol](https://doi.org/10.1038/nprot.2016.095) for HISAT, StringTie and Ballgown transcript expression analysis, StringTie along with a reference transcript annotation GTF (Gene Transfer Format) file (if one is available) is used to:\r\n\r\n- Assemble transcripts for each RNA-Seq sample using the previous read alignments (BAM files)\r\n- Generate a global, non-redundant set of transcripts observed in any of the RNA-Seq samples\r\n- Estimate transcript abundances and generate read coverage tables for each RNA-Seq sample, based on the global, merged set of transcripts (rather than the reference) which is observed across all samples\r\n\r\nBallgown program is then used to load the coverage tables generated in the previous step and perform statistical analyses for differential expression at the transcript level. Notably, the StringTie - Ballgown protocol applied here was selected to include potentially novel transcripts in the analysis. \r\n\r\n**Second**, featureCounts is used to count reads that are mapped to selected genomic features, in this case genes by default, and generate a table of read counts per gene and sample. This table is passed as input to DESeq2 to perform differential expression analysis at the gene level. Both Ballgown and DESeq2 R scripts, along with their respective CWL wrappers, were designed to receive as input various parameters, such as experimental design, contrasts of interest, numeric thresholds, and hidden batch effects.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.524.1",
+    "edam_operation": [
+        "RNA-Seq analysis"
+    ],
+    "edam_topic": [
+        "Bioinformatics"
+    ],
+    "id": "524",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/524?version=1",
+    "mapped_tools": [],
+    "name": "CWL-based RNA-Seq workflow",
+    "number_of_steps": 27,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "cwl",
+        "rnaseq",
+        "transcriptomics",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

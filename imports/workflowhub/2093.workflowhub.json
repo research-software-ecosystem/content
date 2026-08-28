@@ -1,0 +1,48 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-02-25",
+    "creators": [
+        "Evan P. Troendle",
+        "BioFAIR Fellowship Programme"
+    ],
+    "description": "The Human\u2013AI Ledger (HAIL) defines a structured, repeatable workflow for\r\nhuman\u2013AI collaboration. Through standardized checkpoints and a session ledger,\r\nHAIL documents ethical, creative, and procedural context across both human\r\nand AI contributions. While AI-generated outputs are inherently non-deterministic,\r\nHAIL supports process reproducibility by providing a consistent framework for\r\nrecording collaboration, facilitating auditability, transparency, and ethical\r\naccountability in co-creative AI sessions.\r\n\r\nThe workflow comprises three normative phases:\r\n  1. Sign-On              \u2014 Seed Block + Goal Statement initialization\r\n  2. Iterative Collaboration \u2014 standardized Checkpoint Prompts and summaries\r\n  3. Sign-Off & Validation  \u2014 Final Reflection, Session Ledger compilation, validation\r\n\r\nSource:  https://doi.org/10.5281/zenodo.17597705\r\nLicense: CC BY 4.0\r\nAuthor:  Evan P. Troendle (ORCID: 0000-0003-4825-4088), Queen's University Belfast\r\nSchema:  HAIL_Schema_v1.0.yaml\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Data handling"
+    ],
+    "edam_topic": [
+        "Data management",
+        "Workflows"
+    ],
+    "id": "2093",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/2093?version=1",
+    "mapped_tools": [],
+    "name": "Human\u2013AI Ledger (HAIL): A Structured Workflow for Traceable, Reproducible Human\u2013AI Collaboration",
+    "number_of_steps": 3,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "ai governance",
+        "ai transparency",
+        "artificial intelligence",
+        "ethics",
+        "explainable ai",
+        "fair data",
+        "human-ai collaboration",
+        "human-in-the-loop",
+        "provenance",
+        "reproducibility of results",
+        "workflow"
+    ],
+    "tools": [
+        "human\u2013ai collaborative work (writing, coding, analysis, etc.) is conducted\niteratively. at defined intervals or natural decision points, the ai issues\na standardized checkpoint prompt. the human responds; the ai generates a\ncheckpoint summary capturing:\n\n  [checkpoint:<n>]\n  checkpoint_id: <n>\n  checkpoint_timestamp: <iso-8601>\n  ai_contribution: <summary of ai outputs at this checkpoint>\n  human_contribution: <summary of human inputs>\n  reflections: <ethical considerations, goal refinements, decisions>\n  notes: <optional free-text | null>\n  user_id: <hashed identifier | null>  # multi-user sessions only\n  end_checkpoint\n\nrules:\n  - summarize prompts; do not duplicate full prompt text.\n  - use null explicitly for unused optional fields.\n  - maintain gdpr-safe identifiers consistently.\n  - this step repeats an arbitrary number of times until the human\n    decides to proceed to sign-off.\n\ncheckpoint prompt template [checkpoint_prompt_v1.0:<n>]:\n  \"summarize current outputs, note ethical considerations, and reflect on\n  any decisions or goal changes. include ai and human contributions separately.\"",
+        "initializes the hail session. the human prepares the seed block capturing\nidentity (hashed if gdpr_safe_mode: true), core values, cognitive style,\ncommunication style, ethical orientation, creative orientation, and\nsession-aligned purpose. the human also writes the goal statement (goal +\nconstraints). the ai acknowledges both, logs sign-on metadata (iso-8601\ntimestamp, model version, parameters, user_id, gdpr_safe_mode), and produces\na structured session header.\n\nthe ai must not alter core values, cognitive style, communication style,\nethical orientation, creative orientation, or purpose. the ai may assist\nin formatting the seed block but must confirm user satisfaction before\nproceeding.\n\nexpected ai acknowledgement:\n  seed block received.\n  goal statement acknowledged.\n  session initialized.\n  gdpr_safe_mode: <true|false>\n  end_sign_on\n\nfollowed by:\n  [session_metadata]\n  sign_on_timestamp: <iso-8601>\n  model_version: <version>\n  parameters: <temperature, max_tokens, etc.>\n  user_id: <hashed or raw>\n  gdpr_safe_mode: <true|false>\n  end_metadata",
+        "the human writes a final reflection summarizing ai vs. human contributions,\nethical and creative context, and lessons learned.\n\nthe ai then compiles the complete session ledger in yaml (per\nhail_schema_v1.0.yaml), assembling all fields from the session:\n\n  [session_ledger]\n  sign_on_metadata: <session_metadata>\n  seed_block: <as recorded at sign-on>\n  goal_statement: <as recorded at sign-on>\n  checkpoints:\n    - checkpoint_id: 1\n      checkpoint_timestamp: <iso-8601>\n      ai_contribution: <summary>\n      human_contribution: <summary>\n      reflections: <summary>\n      notes: <notes | null>\n    - ...\n  full_prompt_summary: <high-level aggregate of checkpoint objectives and\n    key insights \u2014 not verbatim prompt text>\n  final_reflection: <human-provided>\n  sign_off_metadata:\n    timestamp: <iso-8601>\n    user_confirmation: <true|false>\n  end_session_ledger\n\nthe user must confirm accuracy and completeness before finalization.\n\nvalidation checks (all must pass before user_confirmation: true):\n  \u2713 all planned checkpoints are logged and summarized\n  \u2713 session ledger is complete and correctly structured\n  \u2713 ethical and creative context from the seed block is preserved\n  \u2713 checkpoint prompts were issued per standardized templates\n  \u2713 seed block influence (identity, cognitive style, values) is consistently reflected\n  \u2713 schema validation passes (if hail_schema_v1.0.yaml is supplied)"
+    ],
+    "update_time": "2026-02-25",
+    "versions": "1",
+    "workflow_class": "Unrecognized workflow type"
+}

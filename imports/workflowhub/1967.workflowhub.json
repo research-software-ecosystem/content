@@ -1,0 +1,45 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-03",
+    "creators": [
+        "Alexander Hambley",
+        "Oliver Woolland",
+        "Eli Chadwick",
+        "Volodymyr Savchenko",
+        "Jos\u00e9 M\u00aa Fern\u00e1ndez",
+        "Stian Soiland-Reyes"
+    ],
+    "description": "# WorkflowHub Knowledge Graph\r\n\r\nA tool to generate a knowledge graph from a source of RO Crates. By default, this tool sources and generates an RDF graph of crates from [WorkflowHub](https://workflowhub.eu/). \r\n\r\n[![Docker build and push](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/push-docker.yaml/badge.svg)](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/push-docker.yaml)\r\n[![Python linting and tests](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/lint-and-test.yaml/badge.svg)](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/lint-and-test.yaml)\r\n[![Build and publish knowledge graph](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/publish-kg.yaml/badge.svg)](https://github.com/workflowhub-eu/workflowhub-graph/actions/workflows/publish-kg.yaml)\r\n\r\n## v1.0.0\r\nThis version of the workflow was used to generate version 2025-08-29 of the WorkflowHub Knowledge Graph (https://doi.org/10.5281/zenodo.16995374).\r\n\r\nIt is documented by the report \"EuroScienceGateway MS6: Integrated EuroScienceGateway knowledge graph\" https://doi.org/10.5281/zenodo.16992674.\r\n\r\n## Getting Started\r\n\r\nThis tool is run as a Snakemake workflow. We recommend building a Docker container to run the workflow:\r\n\r\n```bash \r\ndocker build -t knowledgegraph .\r\n```\r\n\r\nThen, you can run the workflow using the following command:\r\n\r\n```bash\r\ndocker run --rm -v ./workflow-output:/app/output --user $(id -u):$(id -g) knowledgegraph\r\n```\r\n\r\nWhere `./workflow-output` is the directory where the output will be stored (already created for you in this repo) and the `--user` flag ensures that the output files are created with the correct permissions.\r\n\r\n## Structure\r\n\r\n![workflow dag](docs/images/dag.svg)\r\n\r\n- **`source_ro_crates`**: This rule sources RO crates from the WorkflowHub API (`source_crates.py`) \r\n- **`create_graph`**: This rule merges the individual RO crates into a single RDF graph\r\n- **`enrich_graph`**: This rule processes the base graph and adds additional metadata from external sources e.g. WikiData, Orcid\r\n- **`merge_graphs`**: This rule merges the base graph and enrichment graphs\r\n- **`consolidate`**: This rule collapses duplicate entries around canonical objects to make the graph easier to navigate\r\n\r\n[!TIP]\r\n\r\nThis diagram is generated with:\r\n\r\n`docker run --entrypoint '' knowledgegraph snakemake --dag | dot -Tsvg > docs/images/dag.svg`\r\n\r\n## Visualisation / exploration \r\n\r\nBundled in this repo is a stack which allows the knowledge graph to be explored visually and interactively.\r\n\r\nThe containers in the stack provide:\r\n- A triplestore to make SPARQL queries against\r\n- A visualisation tool\r\n- A one-shot tool to configure the visualisation tool\r\n\r\nTo view the visualisation run:\r\n\r\n```bash\r\n# run the workflow as above\r\ncd vis\r\ndocker compose down -v # clears configuration, skip if first run, refine if confident with Docker\r\ndocker compose up\r\n# View visualisation on localhost:4200\r\n```\r\n\r\n## Contributing\r\n\r\n### Coding Style\r\n\r\n- **Code Formatting**: We use [Python Black](https://black.readthedocs.io/en/stable/) for code formatting. Please format your code using Black before submitting a pull request (PR)\r\n- **Type Hinting**: Please use type hints ([PEP 484](https://www.python.org/dev/peps/pep-0484/)), and docstrings ([PEP 257](https://www.python.org/dev/peps/pep-0257/)) in methods and classes.\r\n\r\n### Branching Strategy\r\n\r\n- **Branch Naming**: When working on a new feature or bug fix, create a branch from `develop`. e.g. `feature/description` or `bugfix/description`.\r\n- **Development Branch**: The `develop` branch is currently our main integration branch. Features and fixes should target `develop` through PRs.\r\n- **Feature Branches**: These feature branches should be short-lived and focused. Once done, please create a pull request to merge it into `develop`.\r\n\r\n## License\r\n\r\n[BSD 2-Clause License](https://opensource.org/license/bsd-2-clause)\r\n",
+    "discussion_links": [
+        {
+            "id": "2268",
+            "label": "",
+            "url": "https://github.com/workflowhub-eu/workflowhub-graph/issues"
+        }
+    ],
+    "doi": "10.48546/workflowhub.workflow.1967.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Workflows"
+    ],
+    "id": "1967",
+    "latest_version": "1",
+    "license": "BSD-2-Clause",
+    "link": "https://workflowhub.eu/workflows/1967?version=1",
+    "mapped_tools": [],
+    "name": "Build WorkflowHub Knowledge Graph",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "rdf",
+        "workflow ro-crate",
+        "workflowhub",
+        "workflows",
+        "ro-crate"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

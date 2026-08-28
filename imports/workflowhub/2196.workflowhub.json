@@ -1,0 +1,43 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-06-18",
+    "creators": [
+        "Tristan Reynolds",
+        "Ammar Aziz"
+    ],
+    "description": "# MPXV (Mpox) Phylogenetic Analysis with Squirrel\r\n\r\n# Description\r\n\r\nGalaxy workflow to perform MPXV phylogenetic reconstruction using the Squirrel [(Some QUIck Reconstruction to Resolve Evolutionary Links)](https://github.com/aineniamh/squirrel) Galaxy tools, `Squirrel QC` and `Squirrel Phylo`. The workflow also performs masking (using the squirrel tool) of SNPs. \r\n\r\nGalaxy Squirrel tools:\r\n- `Squirrel QC`: The quality control (QC) mode of Squirrel that can run QC on the alignment and flag certain sites to the user that may need to be masked. Squirrel can flag potential issues in the MPXV sequences that have been provided for alignment (e.g. SNPS near tracts of N, clusters of unique SNPs, reversions to reference alleles and convergent mutations) and outputs these in a mask file for investigation.\r\n- `Squirrel Phylo`: The Squirrel mode that performs alignment and creation of maximum-likelihood phylogenetic trees. Squirrel allows for rapidly producing reliable alignments for MPXV and also enable maximum-likelihood phylogenetics pipeline tree estimation. Squirrel maps each query genome in the input file against a reference genome specific to each clade using `minimap2`. Using `gofasta`, the mapping file is then converted into a multiple sequence alignment. Squirrel can also run an APOBEC3-reconstruction and map these mutations onto the phylogeny.\r\n\r\n\r\n# Inputs\r\n\r\n- **Consensus Sequences**: Input consensus sequences for phylogenetic reconstruction. Must be a single clade (Clade I or Clade II) as clades cannot be mixed. [`fasta`]\r\n- **MPXV Clade**: MPXV Clade selected from `cladei`,`cladeia`,`cladeib`,`cladeii`,`cladeiib`. [`text`]\r\n- **Run APOBEC Analysis**: Optionally perform APOBEC3-reconstruction and map mutations onto the phylogeny. [`boolean`]\r\n- **Plot Height**: Optional input to set the height of the phylogenetic tree plots in inches. [`integer`]\r\n- **Plot Width**: Optional input to set the width of the phylogenetic tree plots in inches. [`integer`]\r\n\r\n# Outputs\r\n\r\n- **Tree (Newick)**: The output maximum likelihood tree file from `iqtree2` with Node labels that correspond to the reconstruction Node labels. This tree can be viewed in various tree viewers, for example FigTree. [`newick`] \r\n- **MSA**: The alignment file, with alignment scaffolded against a clade-specific reference. By default one of the ITR regions and a curated set of problematic regions is masked as Ns. [`fasta`]\r\n- **Tree (PNG)**: Visualisation of reconstructed tree showing whether mutations are consistent with APOBEC3 editing or not. [`png`]\r\n- **Tree (SVG)**: Visualisation of reconstructed tree showing whether mutations are consistent with APOBEC3 editing or not. [`svg`]\r\n- **Branch AA Reconstruction**: A report of each mutation that occurs across the phylogeny, their location, dinucleotide context, APOBEC3 status, which gene they're present in, codon position, amino acid change and a prediction of how extreme that amino acid change is with Grantham score. [`csv`]\r\n- **Branch SNPS Reconstruction**: A report of individual site changes mapped to specific branches and their dinucleotide context. [`csv`]\r\n\r\n# Workflow Steps\r\n\r\n1. Run `Squirrel QC` to perform QC on the alignment and flag sites that may need to be masked. `Squirrel QC` produces an output `csv` file of flagged sites that is used to mask these sites by `Squirrel Phylo`.\r\n2. Run `Squirrel Phylo` to perform the following steps for phylogenetic analysis.\r\n   - Alignment of consensus sequences to clade specific reference genome using `minimap2`.\r\n   - Masking (replacement with N) of low-complexity or repetitive regions that have been characterised for Clade I and II and sites flagged by `Squirrel QC`.\r\n   - Generate a maximum liklihood phylogenetic tree using `iqtree2`.\r\n   - Optionally, run APOBEC3 ancestral state reconstruction and map these mutations onto the phylogeny using `iqtree2`.\r\n3. Convert the `nexus` format phylogenetic tree output by `Squirrel Phylo` to `newick` format using `Regex Find And Replace`.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2196.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Biomedical science",
+        "Genomics",
+        "Virology"
+    ],
+    "id": "2196",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2196?version=1",
+    "mapped_tools": [],
+    "name": "MPXV (Mpox) Phylogenetic Analysis with Squirrel",
+    "number_of_steps": 3,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "amplicon",
+        "mpox",
+        "ont",
+        "virus",
+        "mpxv",
+        "phylogeny"
+    ],
+    "tools": [
+        "regex1",
+        "squirrel_phylo",
+        "squirrel_qc"
+    ],
+    "update_time": "2026-06-25",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

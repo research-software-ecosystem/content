@@ -1,0 +1,39 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-10-22",
+    "creators": [
+        "Yasmmin Martins"
+    ],
+    "description": "## Summary\r\n\r\nThe PPI information aggregation pipeline starts getting all the datasets in [GEO](https://www.ncbi.nlm.nih.gov/geo/) database whose material was generated using expression profiling by high throughput sequencing. From each database identifiers, it extracts the supplementary files that had the counts table. Once finishing the download step, it identifies those that were normalized or had the raw counts to normalize.  It also identify and map the gene ids to uniprot (the ids found usually were from HGNC and Ensembl). For each normalized counts table belonging to some experiment, il filters those which have the proteins (already mapped from HGNC to Uniprot identifiers) in the pairs in evaluation. Then, it calculates the correlation matrix based on Pearson method in the tables and saves the respective pairs correlation value for each table. Finally, a repor is made for each pair in descending order of correlation value with the experiment identifiers.\r\n\r\n## Requirements:\r\n* Python packages needed:\r\n\t- os\r\n\t- scipy\r\n\t- pandas\r\n\t- sklearn\r\n\t- Bio python\r\n\t- numpy\r\n\r\n## Usage Instructions\r\n* Preparation:\r\n\t1. ````git clone https://github.com/YasCoMa/PipeAggregationInfo.git````\r\n\t2. ````cd PipeAggregationInfo````\r\n\t3. ````pip3 install -r requirements.txt````\r\n\r\n### Preprocessing pipeline\r\n* Go to the ncbi [GDS database webpage](https://www.ncbi.nlm.nih.gov/gds), use the key words to filter your gds datasets of interest and save the results as file (\"Send to\" option), and choose \"Summary (text)\"\r\n* Alternatively, we already saved the results concerning protein interactions, you may use them to run preprocessing in order to obtain the necessary files for the main pipeline\r\n* Running preprocessing:\r\n    - ````cd preprocessing````\r\n    - ````python3 data_preprocessing.py ./workdir_preprocessing filter_files````\r\n    - ````cd ../````\r\n    - Copy the generated output folder \"data_matrices_count\" into the workflow folder: ````cp -R preprocessing/workdir_preprocessing/data_matrices_count .````\r\n\r\n### Main pipeline\r\n\r\n* Pipeline parameters:\r\n\t- __-rt__ or __--running_type__ <br>\r\n\t\tUse to indicate the step you want to execute (it is desirable following the order): <br>\r\n\t\t1 - Make the process of finding the experiments and ranking them by correlation <br>\r\n\t\t2 - Select pairs that were already processed and ranked making a separated folder of interest\r\n\r\n\t- __-fo__ or __--folder__ <br>\r\n\t\tFolder to store the files (use the folder where the other required file can be found)\r\n\t\r\n\t- __-if__ or __--interactome_file__ <br>\r\n\t\tFile with the pairs (two columns with uniprot identifiers in tsv format)<br>\r\n\t\t\r\n\t\tExample of this file: running_example/all_pairs.tsv\r\n\r\n\t- __-spf__ or __--selected_pairs_file__ <br>\r\n\t\tFile with PPIs of interest (two columns with uniprot identifiers in tsv format)<br>\r\n\t\t\r\n\t\tExample of this file: running_example/selected_pairs.tsv\r\n\r\n* Running modes examples:\r\n\t1. Run step 1: <br>\r\n\t````python3 pipeline_expression_pattern.py -rt 1 -fo running_example/ -if all_pairs.tsv ````\r\n\r\n\t2. Run step 2: <br>\r\n\t````python3 pipeline_expression_pattern.py -rt 2 -fo running_example/ -spf selected_pairs.tsv ````\r\n\r\n## Bug Report\r\nPlease, use the [Issue](https://github.com/YasCoMa/PipeAggregationInfo/issues) tab to report any bug.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Data retrieval",
+        "Expression correlation analysis",
+        "Protein interaction network analysis"
+    ],
+    "edam_topic": [
+        "Bioinformatics",
+        "Gene expression",
+        "Protein interactions"
+    ],
+    "id": "619",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/619?version=1",
+    "mapped_tools": [],
+    "name": "PipePatExp - Pipeline to aggregate gene expression correlation information for PPI",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "gene expression correlation",
+        "gene expression data wrangling",
+        "geo database mining"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

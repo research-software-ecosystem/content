@@ -1,0 +1,33 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-04-12",
+    "creators": [
+        "Andrey Prjibelski",
+        "Varsha Kale",
+        "Anton Korobeynikov"
+    ],
+    "description": "**Assembly and quantification metatranscriptome using metagenome data**.\r\n\r\nVersion: see VERSION\r\n\r\n## Introduction\r\n\r\n**MetaGT** is a bioinformatics analysis pipeline used for improving and quantification \r\nmetatranscriptome assembly using metagenome data. The pipeline supports Illumina sequencing \r\ndata and complete metagenome and metatranscriptome assemblies. The pipeline involves the \r\nalignment of metatranscriprome assembly to the metagenome assembly with further extracting CDSs,\r\nwhich are covered by transcripts.\r\n\r\nThe pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It comes with docker containers making installation trivial and results highly reproducible. The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.\r\n\r\n[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A520.04.0-brightgreen.svg)](https://www.nextflow.io/)\r\n\r\n[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](https://bioconda.github.io/)\r\n\r\n## Quick Start\r\n\r\n1. Install [`nextflow`](https://nf-co.re/usage/installation)\r\n\r\n2. Install any of [`Conda`](https://conda.io/miniconda.html) for full pipeline reproducibility \r\n\r\n3. Download the pipeline, e.g. by cloning metaGT GitHub repository:\r\n\r\n    ```bash\r\n    git clone git@github.com:ablab/metaGT.git\r\n    ```\r\n   \r\n4. Test it on a minimal dataset by running:\r\n\r\n    ```bash\r\n    nextflow run metaGT -profile test,conda\r\n    ```\r\n   \r\n5. Start running your own analysis!\r\n    > Typical command for analysis using reads:\r\n\r\n    ```bash\r\n    nextflow run metaGT -profile <conda> --dna_reads '*_R{1,2}.fastq.gz' --rna_reads '*_R{1,2}.fastq.gz'\r\n    ```\r\n    > Typical command for analysis using multiple files with reads:\r\n\r\n    ```bash\r\n    nextflow run metaGT -profile <conda> --dna_reads '*.yaml' --rna_reads '*.yaml' --yaml\r\n    ```\r\n    > Typical command for analysis using assemblies:\r\n\r\n    ```bash\r\n    nextflow run metaGT -profile <conda> --genome '*.fasta' --transcriptome '*.fasta'\r\n    ```\r\n## Pipeline Summary\r\nOptionally, if raw reades are used:\r\n\r\n<!-- TODO nf-core: Fill in short bullet-pointed list of default steps of pipeline -->\r\n\r\n* Sequencing quality control (`FastQC`)\r\n* Assembly metagenome or metatranscriptome (`metaSPAdes, rnaSPAdes `)\r\n\r\nBy default, the pipeline currently performs the following:\r\n\r\n* Annotation metagenome (`Prokka`)\r\n* Aligning metatranscriptome on metagenome (`minimap2`)\r\n* Annotation unaligned transcripts (`TransDecoder`)\r\n* Clustering covered CDS and CDS from unaligned transcripts (`MMseqs2`)\r\n* Quantifying abundances of transcripts (`kallisto`)\r\n\r\n## Citation\r\n\r\nMetaGT was developed by Daria Shafranskaya and Andrey Prjibelski.\r\nIf you use it in your research please cite:\r\n\r\n[MetaGT: A pipeline for de novo assembly of metatranscriptomes with the aid of metagenomic data](https://doi.org/10.3389/fmicb.2022.981458)\r\n\r\n## Feedback and bug report\r\n\r\nIf you have any questions, please leave an issue at out [GitHub page](https://github.com/ablab/metaGT/issues).\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "454",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/454?version=1",
+    "mapped_tools": [],
+    "name": "MetaGT: A pipeline for de novo assembly of metatranscriptomes with the aid of metagenomic data",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "metagenomics",
+        "multi-omics",
+        "expression",
+        "metatranscriptomics"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

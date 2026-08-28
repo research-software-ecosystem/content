@@ -1,0 +1,57 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-06-20",
+    "creators": [
+        "Hrishikesh Dhondge",
+        "Isaure Chauvot de Beauch\u00eane",
+        "Marie-Dominique Devignes"
+    ],
+    "description": "# CroMaSt: A workflow for assessing protein domain classification by cross-mapping of structural instances between domain databases and structural alignment\r\n\r\nCroMaSt (<span style=\"color:red\">**Cro**</span>ss <span style=\"color:red\">**Ma**</span>pper of domain <span style=\"color:red\">**St**</span>ructural instances) is an automated iterative workflow to clarify  the assignment of protein domains to a given domain type of interest, based on their 3D structure and by cross-mapping of domain structural instances between domain databases. CroMaSt (for Cross-Mapper of domain Structural instances) will classify all structural instances of a given domain type into 4 different categories (**Core**, **True**, **Domain-like**, and **Failed**). \r\n\r\n\r\n## Requirements\r\n1. [Conda](https://docs.conda.io/projects/conda/en/latest/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)\r\n2. [Kpax](http://kpax.loria.fr/download.php)  \r\nDownload and install conda (or Miniconda) and Kpax by following the instructions from their official site.\r\n\r\n\r\n## Get it running \r\n(Considering the requirements are already met)\r\n\r\n1. Clone the repository and change the directory\r\n\r\n```\r\ngit clone https://gitlab.inria.fr/capsid.public_codes/CroMaSt.git\r\ncd CroMaSt\r\n```\r\n\r\n2. Create the conda environment for the workflow\r\n```\r\nconda env create --file yml/environment.yml\r\nconda activate CroMaSt\r\n```\r\n\r\n3. Change the path of variables in paramter file\r\n```\r\nsed -i 's/\\/home\\/hdhondge\\/CroMaSt\\//\\/YOUR\\/PATH\\/TO_CroMaSt\\//g' yml/CroMaSt_input.yml \r\n```\r\n\r\n4. Create the directory to store files from PDB and SIFTS (if not already)\r\n```\r\nmkdir PDB_files SIFTS\r\n```\r\n\r\n5. Download the source input data\r\n```\r\ncwl-runner Tools/download_data.cwl yml/download_data.yml\r\n```\r\n\r\n## Basic example\r\n\r\n### 1. First, we will run the workflow for the KH domain with family identifiers `RRM_1` and `RRM` in Pfam and CATH, respectively.\r\nRun the workflow -\r\n\r\n```\r\ncwl-runner --parallel  --outdir=Results/  CroMaSt.cwl yml/CroMaSt_input.yml\r\n```\r\n\r\n### 2.  Once the iteration is complete, check the `new_param.yml` file from the `outputdir` (Results), if there is any family identifier in either `pfam` or `cath`; run the next iteration using following command (Until there is no new families explored by workflow) -\r\n\r\n```\r\ncwl-runner --parallel  --outdir=Results/  CroMaSt.cwl Results/new_param.yml\r\n```\r\n  \r\n### **Extra:** Start the workflow with multiple families from one or both databases  \r\nIf you would like to start the workflow with multiple families from one or both databases, then simply add a comma in between two family identifiers. \r\n```\r\npfam: ['PF00076', 'PF08777']\r\ncath: ['3.30.70.330']\r\n```\r\n\r\n- **Pro Tip**: Don't forget to give different path to `--outdir` option while running the workflow multiple times or at least move the results to some other location after first run.\r\n\r\n## Run the workflow for protein domain of your choice  \r\n### 1. You can run the workflow for the domain of your choice by simply changing the family identifers in `yml/CroMaSt_input.yml` file.\r\n\r\nSimply replace the following values of family identifiers (for pfam and cath) with the family identifiers of your choice in `yml/CroMaSt_input.yml` file. \r\n```\r\npfam: ['PF00076']\r\ncath: ['3.30.70.330']\r\n```\r\n\r\n\r\n\r\n## Data files used in current version are as follows:\r\n**Files in Data directory can be downloaded as follows**:\r\n\r\n1. File used from Pfam database: [pdbmap.gz](http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam35.0/pdbmap.gz)\r\n\r\n2. File used from CATH database: [cath-domain-description-file.txt](ftp://orengoftp.biochem.ucl.ac.uk:21/cath/releases/latest-release/cath-classification-data/cath-domain-description-file.txt)  \r\n\r\n3. Obsolete entries from RCSB PDB\r\n[obsolete_PDB_entry_ids.txt](https://data.rcsb.org/rest/v1/holdings/removed/entry_ids)  \r\n\r\n\r\nCATH Version - 4.3.0 (Ver_Date - 11-Sep-2019) [FTP site](ftp://orengoftp.biochem.ucl.ac.uk/cath/releases/latest-release/cath-classification-data/)\r\nPfam Version - 35.0 (Ver_Date - November-2021) [FTP site](http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam35.0/)\r\n\r\n## Reference\r\n```\r\nPoster - \r\n1. Hrishikesh Dhondge, Isaure Chauvot de Beauch\u00eane, Marie-Dominique Devignes. CroMaSt: A workflow for domain family curation through cross-mapping of structural instances between protein domain databases. 21st European Conference on Computational Biology, Sep 2022, Sitges, Spain. \u27e8hal-03789541\u27e9\r\n\r\n```\r\n\r\n## Acknowledgements\r\nThis  project  has  received  funding  from  the  Marie  Sk\u0142odowska-Curie Innovative Training Network (MSCA-ITN) RNAct supported by European Union\u2019s Horizon 2020 research and innovation programme under granta greement No 813239.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.390.2",
+    "edam_operation": [
+        "ID mapping"
+    ],
+    "edam_topic": [
+        "Data integration and warehousing",
+        "Data management",
+        "Protein folds and structural domains"
+    ],
+    "id": "390",
+    "latest_version": "2",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/390?version=2",
+    "mapped_tools": [],
+    "name": "CroMaSt: A workflow for assessing protein domain classification by cross-mapping of structural instances between domain databases and structural alignment",
+    "number_of_steps": 18,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "cath",
+        "pfam",
+        "protein domains",
+        "data integration"
+    ],
+    "tools": [
+        "add crossmapped domain instances from last iteration to current list of residue mapped domain instances.",
+        "align crossmapped averaged structures against core average domain structure pairwise using kpax\noutputs a csv file with all the scores from pairwise alignments",
+        "checks the alignment score for each aligned structure based on the given threshold\noutputs the structural instances passing and failing the threshold in separate files",
+        "collects all domain instances failed to pass the criteria from both pfam and cath\noutputs the list with all failed domain instances together.",
+        "collects all domain-like structural instances from pfam and cath\noutputs the list with all domain-like structural instances together.",
+        "compute average structure for all averaged structures corresponding to core uniprot domain instances.\nfirst computes average per uniprot domain instance and then average all averaged structures.",
+        "compute average structure for all averaged structures corresponding to uniprot domain instances cross-mapped \nfrom cath to a pfam family.\nfirst computes average per uniprot domain instance and then average all averaged structures per pfam family.",
+        "compute average structure for all averaged structures corresponding to uniprot domain instances cross-mapped \nfrom pfam to a cath superfamily.\nfirst computes average per uniprot domain instance and then average all averaged structures per cath superfamily.",
+        "create parameter file for next iteration from previous parameter file\nfilter the pairwise alignments to retrieve family ids passing the threshold for a given kpax score type",
+        "find the intersection between residue-mapped domain stis of pfam and cath lists. \nallows variable domain boundaries in a certain range +/- 30aa. produces three files: common domain instances, \nand unique domain instances to each pfam and cath.",
+        "first computes average per uniprot domain instance and then aligns all the average structures against core average structure.\noutputs the alignment results along with the structures passing and failing the threshold for given kpax score.",
+        "fornat core domain instances list from the common instances list identified at first iteration; \npreparing input for average structure computation",
+        "get domain family ids from cath and pfam databases from parameter file provided by user",
+        "maps the unique domain stis from cath to the whole pfam database \n(using residue numbering from uniprot allowing variable domain boundaries +/-30aa)",
+        "maps the unique domain stis from pfam to the whole cath database \n(using residue numbering from pdb allowing variable domain boundaries +/-30aa)",
+        "retrieve and process the pdb structures corresponding to the cath superfamily ids resulting in a list of residue-mapped\nstructural domain instances along with lost structural instances\n(requires data/cath_domain_description_file.txt downloaded from cath and uses sifts resource for pdb to uniprot residue mapping)",
+        "retrieve and process the pdb structures corresponding to the pfam family ids resulting in a list of residue-mapped\nstructural domain instances along with lost structural instances\n(requires data/pdbmap downloaded from pfam and uses sifts resource for uniprot to pdb residue mapping)"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Common Workflow Language"
+}

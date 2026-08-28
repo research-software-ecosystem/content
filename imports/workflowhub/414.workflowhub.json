@@ -1,0 +1,33 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-01-03",
+    "creators": [
+        "Max Schubach"
+    ],
+    "description": "The Regulatory Mendelian Mutation (ReMM) score was created for relevance prediction of non-coding variations (SNVs and small InDels) in the human genome (GRCh37) in terms of Mendelian diseases. This project updates the ReMM score for the genome build GRCh38 and combines GRCh37 and GRCh38 into one workflow.\r\n\r\n## Pre-requirements\r\n\r\n### Conda\r\nWe use Conda as software and dependency management tool. Conda installation guidelines can be found here:\r\n\r\nhttps://conda.io/projects/conda/en/latest/user-guide/install/index.html\r\n\r\n### Additional programs\r\nThese programs are used during the workflow. They usually need to be compiled, however, the repository already contains the executables or generated files.\r\n\r\n- [AttributeDB](https://github.com/visze/attributedb)\r\n- [Jannovar](https://github.com/charite/jannovar) \r\n- [parSMURF](https://github.com/AnacletoLAB/parSMURF)\r\n\r\n### Snakemake\r\n\r\nThe workflow is managed by Snakemake - a workflow management system used to create reproducible and scalable data analyses. To install Snakemake as well as all other required packages, you need to create a working environment according to the description in the file env/ReMM.yaml. For that, first\r\n\r\nClone the repository\r\n```\r\ngit clone https://github.com/kircherlab/ReMM\r\ncd ReMM\r\n```\r\n\r\nCreate a working environment and activate it\r\n\r\n```\r\nconda env create -n ReMM --file workflow/envs/ReMM.yaml\r\nconda activate ReMM\r\n```\r\n\r\nAll paths are relative to the Snakemake file so you do not need to change any path variables. Additionally, Snakemake creates all missing directories, so no need to create any aditional folders either.\r\n\r\n## Workflow\r\n\r\nThe workflow consists of four main parts:\r\n\r\n- Download of feature data\r\n- Data processing and cleaning\r\n- Model training and validation\r\n- Calculation of ReMM for the whole genome\r\n\r\nThe `workflow` folder contains a graph of the workflow and more detailed information on the most important steps.\r\n\r\nTo launch a snakemake workflow, you need to tell snakemake which file you want to generate. We defined all rules for multiple steps. They can be found here: `workflow/Snakefile`. For example, you want to generate all feature sets defined in a config file you can run:\r\n\r\n```\r\nsnakemake -c1 all_feature_sets\r\n```\r\n\r\nTo execute any step separately (see `README.md` in the `workflow` folder for details on workflow steps), you need to look up the name of the desired output file in the scripts and call Snakemake with the exact name. Using a flag `-n`, you can initiate a 'dry run': Snakemake will check the consistency of all rules and files and show the number of steps. However, a clean dry run does not necessarily mean that no errors will occur during a normal run. ReMM score is not allele-specific so that you get only one score independent of the variant itself. The workflow from the download of data up to computing the scores may take several days or weeks depending on the computing power and internet connection.\r\n\r\n\r\n### The config files\r\n\r\nThe main config file can be found in `config/config.yaml`. This config file was used to generate the ReMM score. Here most of the configuration magic happens. There is a second config file `config/features.yaml` where all features are listed (with additional description). Config files are controled via [json-schema](http://json-schema.org). \r\n\r\nWe also provide a slurm config file for runtimes, memory and number of threads per rule: `config/slurm.yaml`.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.414.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "414",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/414?version=1",
+    "mapped_tools": [],
+    "name": "ReMM score",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "remm",
+        "regulatory mendelian mutation score",
+        "snakemake",
+        "non-coding",
+        "pathogenicity score",
+        "variant pathogenicity prediction"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

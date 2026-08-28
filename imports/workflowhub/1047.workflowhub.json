@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-06-18",
+    "creators": [
+        "Ra\u00fcl Sirvent"
+    ],
+    "description": "**Name:** SparseLU \r\n**Contact Person:** support-compss@bsc.es \r\n**Access Level:** public \r\n**License Agreement:** Apache2 \r\n**Platform:** COMPSs \r\n\r\n# Description\r\nThe Sparse LU application computes an LU matrix factorization on a sparse blocked matrix. The matrix size (number of blocks) and the block size are parameters of the application. \r\n\r\nAs the algorithm progresses, the area of the matrix that is accessed is smaller; concretely, at each iteration, the 0th row and column of the current matrix are discarded. On the other hand, due to the sparseness of the matrix, some of its blocks might not be allocated and, therefore, no work is generated for them.\r\n\r\nWhen executed with COMPSs, Sparse LU produces several types of task with different granularity and numerous dependencies between them.\r\n\r\n# Versions\r\nThere are three versions of Sparse LU, depending on the data types used to store the blocks.\r\n## Version 1\r\n''files'', where the matrix blocks are stored in files.\r\n## Version 2\r\n''objects'', where the matrix blocks are represented by objects.\r\n## Version 3\r\n''arrays'', where the matrix blocks are stored in arrays.\r\n\r\n\r\n# Execution instructions\r\nUsage:\r\n```\r\nruncompss sparseLU.files.SparseLU numberOfBlocks blockSize\r\nruncompss sparseLU.objects.SparseLU numberOfBlocks blockSize\r\nruncompss sparseLU.arrays.SparseLU numberOfBlocks blockSize\r\n```\r\n\r\nwhere:\r\n  * numberOfBlocks: Number of blocks inside each matrix\r\n  * blockSize: Size of each block\r\n\r\n\r\n# Execution Example\r\n```\r\nruncompss sparseLU.objects.SparseLU 16 4 \r\nruncompss sparseLU.files.SparseLU 16 4\r\nruncompss sparseLU.arrays.SparseLU 16 4 \r\n```\r\n\r\n\r\n# Build\r\n## Option 1: Native java\r\n```\r\ncd application_sources/; javac src/main/java/sparseLU/*/*.java\r\ncd src/main/java/; jar cf sparseLU.jar sparseLU/\r\ncd ../../../; mv src/main/java/sparseLU.jar jar/\r\n```\r\n\r\n## Option 2: Maven\r\n```\r\ncd application_sources/\r\nmvn clean package\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1047.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1047",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1047?version=1",
+    "mapped_tools": [],
+    "name": "Java COMPSs LU Factorization for Sparse Matrices, MareNostrum V, 3 nodes, no data persistence",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "COMP Superscalar"
+}

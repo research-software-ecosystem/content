@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2021-08-17",
+    "creators": [],
+    "description": "# Local Cromwell implementation of GATK4 germline variant calling pipeline\r\nSee the [GATK](https://gatk.broadinstitute.org/hc/en-us) website for more information on this toolset \r\n## Assumptions\r\n- Using hg38 human reference genome build\r\n- Running 'locally' i.e. not using HPC/SLURM scheduling, or containers. This repo was specifically tested on Pawsey Nimbus 16 CPU, 64GB RAM virtual machine, primarily running in the `/data` volume storage partition. \r\n- Starting from short-read Illumina paired-end fastq files as input\r\n\r\n### Dependencies\r\nThe following versions have been tested and work, but GATK and Cromwell are regularly updated and so one must consider whether they would like to use newer versions of these tools. \r\n- BWA/0.7.15\r\n- GATK v4.0.6.0\r\n- SAMtools/1.5\r\n- picard/2.9\r\n- Python/2.7\r\n- Cromwell v61\r\n\r\n## Quick start guide\r\n### Installing and preparing environment for GATK4 with Cromwell\r\n\r\n1. Clone repository\r\n```\r\ngit clone https://github.com/SarahBeecroft/cromwellGATK4.git\r\ncd cromwellGATK4\r\nchmod 777 *.sh\r\n```\r\n\r\n2. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) if you haven\u2019t already. Create Conda environment using the supplied conda environment file\r\n\r\n```\r\nconda env create --file gatk4_pipeline.yml\r\n```\r\n\r\n3. Download the necessary .jar files\r\n    - The Cromwell workfow orchestration engine can be downloaded from https://github.com/broadinstitute/cromwell/releases/ \r\n    - GATK can be downloaded from https://github.com/broadinstitute/gatk/releases. Unzip the file with `unzip` \r\n    - Picard can be downloaded from https://github.com/broadinstitute/picard/releases/\r\n\r\n\r\n4. Upload the resource bundle file from IRDS using rclone or filezilla and unpack it with `tar xzvf resource.tar.gz`. Note that the `hg38_wgs_scattered_calling_intervals.txt` will need to be to generated using the following:\r\n\r\n```\r\ncd <your_resource_dir>\r\nfind `pwd` -name \"scattered.interval_list\" -print | sort > hg38_wgs_scattered_calling_intervals.txt\r\n```\r\n\r\n5. Set up the config files. Files that you need to edit with the correct paths to your data/jar files or other specific configurations are:\r\n    - `Multisample_Fastq_to_Gvcf_GATK4_inputs_hg38.json`\r\n    - `Multisample_jointgt_GATK4_inputs_hg38.json`\r\n        - both json files will need the correct paths to your reference file locations, and the file specifying your inputs i.e. `samples.txt` or `gvcfs.txt`\r\n    - `samples.txt`\r\n    - `gvcfs.txt`\r\n        - These are the sample input files (tab seperated)\r\n        - The format for samples.txt is sampleID, sampleID_readgroup, path_to_fastq_R1_file, path_to_fastq_R2_file,\r\n        - The format for gvcfs.txt is sample ID, gvcf, gvcf .tbi index file\r\n        - Examples are included in this repo\r\n        - NOTE: Having tabs, not spaces, is vital for parsing the file. Visual studio code tends to introduce spaces, so if you are having issues, check the file with another text editor such as sublime. \r\n    - `launch_cromwell.sh`\r\n    - `launch_jointgt.sh`\r\n        - These are the scripts which launch the pipeline. \r\n        - `launch_cromwell.sh` launches the fastq to gvcf stage\r\n        - `launch_jointgt.sh` launched the gvcf joint genotyping to cohort vcf step. This is perfomed when you have run all samples through the fastq to gvcf stage.\r\n        - Check the paths and parameters make sense for your machine\r\n    - `local.conf`\r\n        - the main tuneable parameters here are:\r\n        \t- `concurrent-job-limit = 5` this is the max number of concurrent jobs that can be spawned by cromwell. This depends on the computational resources available to you. 5 was determined to work reasonably well on a 16 CPU, 64GB RAM Nimbus VM (Pawsey). \r\n        \t- `call-caching enabled = true`. Setting this parameter to `false` will disable call caching (i.e. being able to resume if the job fails before completion). By default, call caching is enabled. \r\n    - `cromwell.options`\r\n        - `cromwell.options` requires editing to provide the directory where you would like the final workflow outputs to be written\r\n    - `Multisample_Fastq_to_Gvcf_GATK4.wdl`\r\n    - `ruddle_fastq_to_gvcf_single_sample_gatk4.wdl`\r\n        - The paths to your jar files will need to be updated\r\n        - The path to your conda `activate` binary will need to be updated (e.g. `/data/miniconda/bin/activate`)\r\n\r\n6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`. Ensure you pipe the stdout and stderr to a log file using (for example) `./launch_cromwell.sh &> cromwell.log`\r\n\r\n### Overview of the steps in `Multisample_Fastq_to_Gvcf_GATK4.wdl`\r\nThis part of the pipeline takes short-read, Illumina paired-end fastq files as the input. The outputs generated are sorted, duplicate marked bam files and their indices, duplicate metric information, and a GVCF file for each sample. The GVCF files are used as input for the second part of the pipeline (joint genotyping).\r\n\r\n```\r\nFastqToUbam\r\nGetBwaVersion\r\nSamToFastqAndBwaMem\r\nMergeBamAlignment\r\nSortAndFixTags\r\nMarkDuplicates\r\nCreateSequenceGroupingTSV\r\nBaseRecalibrator\r\nGatherBqsrReports\r\nApplyBQSR\r\nGatherBamFiles\r\nHaplotypeCaller\r\nMergeGVCFs\r\n```\r\n\r\n### Overview of the steps in `Multisample_jointgt_GATK4.wdl`\r\nThis part of the pipeline takes GVCF files (one per sample), and performs joint genotyping across all of the provided samples. This means that old previously generated GVCFs can be joint-called with new GVCFs whenever you need to add new samples. The key output from this is a joint-genotyped, cohort-wide VCF file. This file can be used for a GEMINI database after normalisation with VT and annotation with a tool such as VEP or SNPEFF. \r\n\r\nThe file `hg38.custom_100Mb.intervals` is required for this step of the pipeline to run. This is included in the git repo for convenience, but should be moved to your resource directory with all the other resource files. \r\n\r\n```\r\nGetNumberOfSamples\r\nImportGVCFs\r\nGenotypeGVCFs\r\nHardFilterAndMakeSitesOnlyVcf\r\nIndelsVariantRecalibrator\r\nSNPsVariantRecalibratorCreateModel\r\nSNPsVariantRecalibrator\r\nGatherTranches\r\nApplyRecalibration\r\nGatherVcfs\r\nCollectVariantCallingMetrics\r\nGatherMetrics\r\nDynamicallyCombineIntervals\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Sequence alignment",
+        "Variant calling",
+        "Variant filtering"
+    ],
+    "edam_topic": [
+        "Exome sequencing",
+        "Genetic variation",
+        "Whole genome sequencing"
+    ],
+    "id": "147",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/147?version=1",
+    "mapped_tools": [],
+    "name": "GATK4 Fastq to joint-called cohort VCF with Cromwell on local cluster (no job scheduler)",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "alignment",
+        "gatk4",
+        "genomics",
+        "indels",
+        "snps",
+        "variant_calling",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Workflow Description Language"
+}

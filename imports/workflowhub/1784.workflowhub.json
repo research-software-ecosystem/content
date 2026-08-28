@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-07-01",
+    "creators": [],
+    "description": "# Domestication of new parts before cloning simulation\r\nAdd new parts to your sequences before the cloning simulation and interact with the database.\r\n## steps:\r\n_input: csv file (without header)_ : The CSV file should contain the constraints line by line in the first column, along with their associated fragments on each line. This data will be passed to the seq_from_DB tool.\r\n> seq_from_DB\r\n1. Extract the fragments associated with each constraint from the CSV file.\r\n2. Check if all fragments are present in the database. If any fragment is missing, an error will be raised --> [workflow-0](https://workflowhub.eu/workflows/1768))\r\n3. If all fragments are present in the database, GenBank files for each fragment will be generated and passed to the _sculpt_sequences_ tool.\r\n> sculpt_sequences\r\n1. Set the constraints for the sculpt.\r\n2. Generate sculpted and unsculpted sequences and pass all GenBank files to _domestication_of_new_parts_ tool.\r\n> domestication_of_new_parts\r\n1. Import new parts from a CSV file.\r\n2. Perform domestication of the new parts in the sequences, generate reports, and create domesticated GenBank files and pass them to _seq_to_db_ tool.\r\n> seq_to_db\r\n1. Domesticated GenBank files can be saved to the database, depending on the user's choice.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [
+        "Biomolecular simulation",
+        "Microbiology",
+        "Sequence assembly",
+        "Synthetic biology"
+    ],
+    "id": "1784",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/1784?version=1",
+    "mapped_tools": [],
+    "name": "workflow-2",
+    "number_of_steps": 5,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "cloning_simulation",
+        "domestication_of_new_parts",
+        "sculpt_sequences",
+        "seq_form_db",
+        "seq_to_db"
+    ],
+    "update_time": "2025-07-01",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

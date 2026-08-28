@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-03-21",
+    "creators": [],
+    "description": "# SNP-Calling\r\nGATK Variant calling pipeline for genomic data using Nextflow\r\n\r\n[![nextflow](https://img.shields.io/badge/nextflow-%E2%89%A522.04.5-brightgreen.svg)](http://nextflow.io)\r\n\r\n## Quickstart\r\n\r\nInstall Nextflow using the following command: \r\n\r\n    curl -s https://get.nextflow.io | bash\r\n  \r\nIndex reference genome:\r\n\r\n  `$ bwa index /path/to/reference/genome.fa`\r\n \r\n  `$ samtools faidx /path/to/reference/genome.fa`\r\n  \r\n  `$ gatk CreateSequenceDictionary -R /path/to/genome.fa -O genome.dict`\r\n\r\nLaunch the pipeline execution with the following command:\r\n\r\n    nextflow run jdetras/snp-calling -r main -profile docker\r\n  \r\n## Pipeline Description\r\n\r\nThe variant calling pipeline follows the recommended practices from GATK. The input genomic data are aligned to a reference genome using BWA. The alignemnt files are processed using Picard Tools. Variant calling is done using samtools and GATK. \r\n\r\n## Input files\r\n\r\nThe input files required to run the pipeline:\r\n* Genomic sequence paired reads, `*_{1,2}.fq.gz`\r\n* Reference genome, `*.fa`\r\n\r\n## Pipeline parameters\r\n\r\n### Usage\r\nUsage: `nextflow run jdetras/snp-calling -profile docker [options]`\r\n\r\nOptions:\r\n\r\n* `--reads` \r\n* `--genome`\r\n* `--output`\r\n\r\nExample: \r\n  `$ nextflow run jdetras/snp-calling -profile docker --reads '/path/to/reads/*_{1,2}.fq.gz' --genome '/path/to/reference/genome.fa' --output '/path/to/output'`\r\n\r\n#### `--reads`\r\n\r\n* The path to the FASTQ read files.\r\n* Wildcards (*, ?) can be used to declare multiple reads. Use single quotes when wildcards are used. \r\n* Default parameter: `$projectDir/data/reads/*_{1,2}.fq.gz`\r\n\r\nExample: \r\n  `$ nextflow run jdetras/snp-calling -profile docker --reads '/path/to/reads/*_{1,2}.fq.gz'`\r\n  \r\n#### `--genome`\r\n\r\n* The path to the genome file in fasta format.\r\n* The extension is `.fa`.\r\n* Default parameter: `$projectDir/data/reference/genome.fa`\r\n\r\nExample:\r\n  `$ nextflow run jdetras/snp-calling -profile docker --genome /path/to/reference/genome.fa`\r\n    \r\n#### `--output`\r\n\r\n* The path to the directory for the output files.\r\n* Default parameter: `$projectDir/output`\r\n\r\n## Software\r\n\r\n* [BWA 0.7.17](http://bio-bwa.sourceforge.net/)\r\n* [Samtools 1.3.1](http://www.htslib.org/)\r\n* [GATK 4.2.6.1](https://gatk.broadinstitute.org/) \r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "442",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/442?version=1",
+    "mapped_tools": [
+        "bwa",
+        "gatk"
+    ],
+    "name": "SNP-Calling Workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bwa-mem",
+        "gatk4",
+        "rice",
+        "variant calling"
+    ],
+    "tools": [
+        "bwa",
+        "gatk"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

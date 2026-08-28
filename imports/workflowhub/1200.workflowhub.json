@@ -1,0 +1,33 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-11-14",
+    "creators": [
+        "Benjamin Istace",
+        "Jean-Marc Aury",
+        "Caroline Belser"
+    ],
+    "description": "# GALOP - Genome Assembly using Long reads Pipeline\r\n\r\nThis repository contains an exact copy of the standard Genoscope long reads assembly pipeline.\r\n\r\nAt the moment, this is not intended for users to download as it uses grid submission commands that will only work at Genoscope. As time goes on, we intend to make this pipeline available to a broader audience. However, genome assembly and polishing commands are accessible in the `lib/assembly.py` and `lib/polishing.py` files.\r\n\r\n```\r\ngalop.py -h\r\nMandatory arguments:\r\n  --step {assembly,polishing}\r\n                        Defines if the program will launch assembly or polishing scripts (default: None)\r\n\r\nAssembly step arguments:\r\n  --proj PROJECT_CODE, -p PROJECT_CODE\r\n                        Project and material codes, can be given multiple times (eg. -p BCM,A,B -p BWW,AB)\r\n                        (default: None)\r\n  -i INPUT_FILE         Nanopore reads fastq file (default: )\r\n  --size GENOME_SIZE, -s GENOME_SIZE\r\n                        Estimated size of the genome in Mb (default: None)\r\n  --cov READSET_COVERAGE, -c READSET_COVERAGE\r\n                        Coverage to use for longest and filtlong subsets (default: 30)\r\n  --assemblers ASSEMBLER_LIST\r\n                        Comma-separated list of assemblers to use (e.g. '--assemblers\r\n                        Smartdenovo,Raven,Wtdbg2'will not launch flye nor Necat. Choices: Flye, Hifiasm, Necat,\r\n                        Nextdenovo, Raven, Shasta,Smartdenovo, Wtdbg2 (default:\r\n                        Smartdenovo,Wtdbg2,Flye,Necat,Nextdenovo)\r\n  --readsets READSET_LIST\r\n                        Comma-separated list of readsets to use (e.g. '--readsets Filtlong,Longest' will not\r\n                        launch assemblies with all reads (default: Full,Filtlong,Longest)\r\n  --no-readset          Disables readset creation (default: False)\r\n  --all-readsets        Disables the use of lsRunProj to check for readset validity and instead use all available\r\n                        readsets (default: False)\r\n  --force               Skips directory creation (default: False)\r\n  --nano-raw            Use --nano-raw instead of --nano-hq in Flye (default: False)\r\n  --pacbio              Look for PacBio runs when building readsets. (default: False)\r\n\r\nPolishing step arguments:\r\n  --model MEDAKA_MODEL, -m MEDAKA_MODEL\r\n                        Model to use for medaka polishing (default: r941_prom_sup_g507)\r\n  --pe1 PE1_PATH        Path to the Illumina R1 file (.gz or .fastq) (default: None)\r\n  --pe2 PE2_PATH        Path to the Illumina R2 file (.gz or .fastq) (default: None)\r\n  --assembly ASSEMBLY, -a ASSEMBLY\r\n                        FULL PATH to the assembly to polish (default: )\r\n  --assembly_dir ASSEMBLY_DIR\r\n                        FULL PATH to the directory ouput of the 'nanopore_assembly_pipeline --step assembly'\r\n                        (default: )\r\n  --racon               Enables the racon step (default: False)\r\n  --no_medaka           Skip the medaka step (default: False)\r\n\r\nOptional arguments:\r\n  --dir OUTPUT_DIRECTORY, -d OUTPUT_DIRECTORY\r\n                        Output directory (default: None)\r\n  --help, -h            Show this help message and exit\r\n\r\nSubmission arguments:\r\n  --submode {msub,local}\r\n                        Either submit using ccc_msub or run in local mode (default: msub)\r\n  --nolaunch            Creates submission scripts but does not launch them (default: False)\r\n  --account ACCOUNT     Account to use for submission (default: bistace)\r\n  --qos {long,week,nolimit,xlarge,xxlarge}\r\n                        QoS to use for submission (default: )\r\n  --assembly_queue {normal,xlarge,small,broadwell,xxlarge}\r\n                        Cluster queue to use for the assembly step (default: normal)\r\n  --assembly_core ASSEMBLY_CORE_NUMBER\r\n                        Number of cores to use for the assembly step (default: 36)\r\n  --polishing_queue {normal,xlarge,small,broadwell,xxlarge}\r\n                        Cluster queue to use for the polishing step (default: normal)\r\n  --polishing_core POLISHING_CORE_NUMBER\r\n                        Number of cores to use for the polishing step (default: 36)\r\n  --wait                Wait for all jobs to finish before exiting (default: False)\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1200.2",
+    "edam_operation": [],
+    "edam_topic": [
+        "Sequence assembly"
+    ],
+    "id": "1200",
+    "latest_version": "2",
+    "license": "CECILL-2.1",
+    "link": "https://workflowhub.eu/workflows/1200?version=2",
+    "mapped_tools": [],
+    "name": "GALOP - Genome Assembly using Long reads Pipeline",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "genome assembly"
+    ],
+    "tools": [],
+    "update_time": "2026-07-15",
+    "versions": "2",
+    "workflow_class": "Python"
+}

@@ -1,0 +1,41 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-14",
+    "creators": [
+        "Maren B\u00f6se",
+        "Savas Ceylan",
+        "Johannes Kemper"
+    ],
+    "description": "## Overview\r\nThis workflow generates **evolutionary ShakeMaps** by combining multiple parametric data sources:  \r\nevent alerts, automatic and manual peak motions, and crowdsourced felt reports.\r\n\r\nIt integrates **pyFinDer**, **FinDer**, **ShakeMap**, **RRSM**, and **EMSC** to continuously update ground motion maps as new information arrives.\r\n\r\nIn its full configuration, WF7602 is also capable of:\r\n- Sending **event alerts** for each ShakeMap update.\r\n\r\n**Note:** In this distribution, the alerting feature is **disabled**.\r\n\r\nThe main CWL definition is provided in `WF7602.cwl`.  \r\nWorkflow metadata follows the [workflow-ro-crate-1.0](https://w3id.org/workflowhub/workflow-ro-crate/1.0) profile.\r\n\r\n## Workflow Structure\r\nThe workflow consists of the following datasets (DT) and software services (SS):\r\n\r\n1. **Data Ingestion**\r\n   - **DT7602:** Event alerts from seismic services.\r\n   - **DT7603:** Automated peak motions from RRSM.\r\n   - **DT7604:** Not Implemented: Felt reports from EMSC.\r\n   - **DT7605:** Manual peak motions from ESM.\r\n\r\n2. **Processing & ShakeMap Generation**\r\n   - **SS7602:** Parametric web services and Python wrapper for FinDer (SS7603) \r\n   - **SS7603:** FinDer \u2013 finite fault estimation.\r\n   - **SS7601:** Swiss, Italian and European ShakeMap \u2013 produces ground motion maps.\r\n\r\n3. **Output Storage**\r\n   - **DT7606:** Evolutionary shake maps calculated at every update.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1998",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1998?version=1",
+    "mapped_tools": [],
+    "name": "[DTC-E6] WF7602: ShakeMaps from Parametric Data",
+    "number_of_steps": 8,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "dt-geo",
+        "digital twin",
+        "geophyics"
+    ],
+    "tools": [
+        "automated peak motions from rrsm.",
+        "collect event alerts.",
+        "emsc felt reports - planned but not implemented",
+        "finite-source characterization using template matching (finder).",
+        "generate ground motion and shaking intensity maps.",
+        "integrate manual peak motions into the workflow.",
+        "ml-based algorithm to estimate peak motions at stations.",
+        "prepare evolutionary shake maps for output using finite fault characterization."
+    ],
+    "update_time": "2025-10-14",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

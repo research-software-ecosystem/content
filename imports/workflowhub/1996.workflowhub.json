@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-14",
+    "creators": [
+        "Mathilde Marchandon",
+        "Alice-Agnes Gabriel",
+        "Iris Christadler"
+    ],
+    "description": "## Overview\r\nThis repository contains the **Common Workflow Language (CWL)** and **RO-Crate metadata** definition for **WF7403**, the **Rupture Forecast** workflow of **DTC-E4**, developed under the [DT-GEO project](https://dtgeo.eu).  \r\n\r\nThe **WF7403** workflow performs **physics-based dynamic rupture simulations** to generate a catalog of rupture scenarios for a given fault system. For each scenario, the workflow computes synthetic data such as ground motions, static displacements, and moment-rate release, along with corresponding shakemaps.  \r\n\r\nIn the event of a moderate to large earthquake, WF7403 supports a **rapid-response mode** that automatically compares real-time seismic and geodetic observations with the precomputed scenario catalog to identify the best-fitting rupture model within minutes to hours after the event.\r\n\r\n## Workflow Structure\r\n\r\nThe workflow is organized into two interconnected sub-workflows:\r\n\r\n1. **A. Catalog Creation Workflow**\r\n   - Generates a large ensemble of forward dynamic rupture simulations using **SeisSol** or **SPECFEM3D**, producing synthetic observables and storing them in the **Simulation Data Lake (SDL)**.  \r\n   - This process typically requires high-performance computing (Tier-0/Tier-1 resources) for up to **100 SeisSol runs**, equivalent to ~500,000 core hours.  \r\n\r\n2. **B. Rapid Response Workflow**\r\n   - Continuously monitors real-time earthquake catalogs.\r\n   - When an event is detected, it downloads waveform data and performs a **scenario-matching analysis** against the precomputed catalog in the SDL.\r\n   - Outputs the best-matching dynamic rupture scenario for rapid situational awareness.\r\n\r\n### Workflow Inputs\r\n- **DT7406 \u2013 Input files for dynamic rupture simulation**: Mesh, velocity model, frictional and medium parameters, and initial stress conditions.  \r\n- **DT7408 \u2013 Seismic and geodetic data**: Real-time data streamed from EPOS infrastructures.  \r\n\r\n### Workflow Outputs\r\n- **DT7409 \u2013 Single Dynamic Rupture Scenario**: The best-fitting scenario output from the catalog, including ground-motion and displacement fields.\r\n\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1996",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1996?version=1",
+    "mapped_tools": [],
+    "name": "[DTC-E4] WF7403: Rupture Forecast Workflow",
+    "number_of_steps": 2,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "dt-geo",
+        "digital twin",
+        "geophysics"
+    ],
+    "tools": [
+        "catalog creation workflow.",
+        "rapid response workflow."
+    ],
+    "update_time": "2025-10-14",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

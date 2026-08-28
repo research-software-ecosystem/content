@@ -1,0 +1,34 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-04-24",
+    "creators": [
+        "Rutger Vos",
+        "Fabian Deister",
+        "Ben Price",
+        "Special thanks to Sujeevan Ratnasingham and the team at CBG for the creation of the BCDM data exchange format that this pipeline operates on"
+    ],
+    "description": "![Perl CI](https://github.com/FabianDeister/Library_curation_BOLD/actions/workflows/ci.yml/badge.svg)\r\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10975576.svg)](https://doi.org/10.5281/zenodo.10975576)\r\n\r\n# Library curation BOLD\r\n\r\n![alt text](https://github.com/FabianDeister/Library_curation_BOLD/blob/main/doc/IBOL_LOGO_TRANSPARENT.png?raw=true)\r\n\r\nThis repository contains scripts and synonymy data for pipelining the \r\nautomated curation of [BOLD](https://boldsystems.org) data dumps in \r\nBCDM TSV format. The goal is to implement the classification of barcode \r\nreference sequences as is being developed by the \r\n[BGE](https://biodiversitygenomics.eu) consortium. A living document\r\nin which these criteria are being developed is located\r\n[here](https://docs.google.com/document/d/18m-7UnoJTG49TbvTsq_VncKMYZbYVbau98LE_q4rQvA/edit).\r\n\r\nA further goal of this project is to develop the code in this repository\r\naccording to the standards developed by the community in terms of automation,\r\nreproducibility, and provenance. In practice, this means including the\r\nscripts in a pipeline system such as [snakemake](https://snakemake.readthedocs.io/),\r\nadopting an environment configuration system such as\r\n[conda](https://docs.conda.io/), and organizing the folder structure\r\nin compliance with the requirements of\r\n[WorkFlowHub](https://workflowhub.eu/). The latter will provide it with \r\na DOI and will help generate [RO-crate](https://www.researchobject.org/ro-crate/)\r\ndocuments, which means the entire tool chain is FAIR compliant according\r\nto the current state of the art.\r\n\r\n## Install\r\nClone the repo:\r\n```{shell}\r\ngit clone https://github.com/FabianDeister/Library_curation_BOLD.git\r\n```\r\nChange directory: \r\n```{shell}\r\ncd Library_curation_BOLD\r\n```\r\nThe code in this repo depends on various tools. These are managed using\r\nthe `mamba` program (a drop-in replacement of `conda`). The following\r\nsets up an environment in which all needed tools are installed:\r\n\r\n```{shell}\r\nmamba env create -f environment.yml\r\n```\r\n\r\nOnce set up, this is activated like so:\r\n\r\n```{shell}\r\nmamba activate bold-curation\r\n```\r\n\r\n## How to run\r\n### Bash\r\nAlthough the aim of this project is to integrate all steps of the process\r\nin a simple snakemake pipeline, at present this is not implemented. Instead,\r\nthe steps are executed individually on the command line as perl scripts\r\nwithin the conda/mamba environment. Because the current project has its own\r\nperl modules in the `lib` folder, every script needs to be run with the \r\nadditional include flag to add the module folder to the search path. Hence,\r\nthe invocation looks like the following inside the scripts folder:\r\n\r\n```{shell}\r\nperl -I../../lib scriptname.pl -arg1 val1 -arg2 val2\r\n```\r\n### snakemake\r\n\r\nFollow the installation instructions above.\r\n\r\nUpdate config/config.yml to define your input data.\r\n\r\nNavigate to the directory \"workflow\" and type:\r\n```{shell}\r\nsnakemake -p -c {number of cores} target\r\n```\r\n\r\nIf running on an HPC cluster with a SLURM scheduler you could use a bash script like this one:\r\n```{shell}\r\n#!/bin/bash\r\n#SBATCH --partition=hour\r\n#SBATCH --output=job_curate_bold_%j.out\r\n#SBATCH --error=job_curate_bold_%j.err\r\n#SBATCH --mem=24G\r\n#SBATCH --cpus-per-task=2\r\n\r\nsource activate bold-curation\r\n\r\nsnakemake -p -c 2 target\r\n\r\necho Complete!\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.833.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Data mining"
+    ],
+    "id": "833",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/833?version=1",
+    "mapped_tools": [],
+    "name": "Library curation BOLD",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "dna barcoding"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

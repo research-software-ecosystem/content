@@ -1,0 +1,80 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-09-19",
+    "creators": [
+        "Caner Bagci"
+    ],
+    "description": "# Soil Metagenome Pipeline\r\n\r\nSoil Metagenome Pipeline is a modular, Nextflow DSL2 workflow for assembling, polishing, binning, annotating, and functionally characterizing complex soil metagenomes. It orchestrates state-of-the-art tools for long- and short-read metagenomics, generates high-quality MAGs, assigns taxonomy, and screens for biosynthetic gene clusters (BGCs).\r\n\r\n## What it does\r\n- Assembles long-read metagenomes (e.g., ONT) with Flye and optionally polishes with Medaka and/or NextPolish using short reads.\r\n- Maps short/long reads to assemblies to compute coverage/depth for downstream binning and QC.\r\n- Bins contigs with multiple strategies (SemiBin2, VAMB, MetaCoAG, ComeBIN) and can integrate results.\r\n- Evaluates MAG quality with CheckM2 and assigns taxonomy with GTDB-Tk.\r\n- Annotates bins and/or assemblies (Bakta, eggNOG) and detects BGCs (antiSMASH) with network-based clustering (BiG-SCAPE).\r\n- Produces organized outputs suitable for downstream comparative genomics.\r\n\r\n## Key features\r\n- Modular DSL2 design: swap/extend modules under `modules/` and `submodules/`.\r\n- Reproducible runtime via Conda/containers (profiles in `conf/`).\r\n- Sensible defaults with overridable parameters via `nextflow.config` or CLI.\r\n- Caching and resumability: supports `-resume` for efficient re-runs.\r\n\r\n## Modules at a glance (non-exhaustive)\r\n- Assembly and polishing: Flye, Medaka, NextPolish\r\n- Coverage mapping: minimap2/samtools, coverm, strobealign\r\n- Binning: SemiBin2, VAMB, MetaCoAG, ComeBIN, plus bin collection utilities\r\n- QC and taxonomy: CheckM2, GTDB-Tk\r\n- Annotation and function: Bakta (assemblies/bins), eggNOG\r\n- BGC discovery: antiSMASH (assemblies/bins), BiG-SCAPE networks\r\n- Taxonomic profiling: MMseqs2/MetaBuli helpers\r\n\r\n## Inputs\r\n- Reads: long reads (ONT/PacBio), optional short reads (Illumina).\r\n- Sample sheet: a tab-separated file like `data/samples.tsv` describing sample IDs and file paths.\r\n- Reference databases: external DBs required by some tools (e.g., GTDB-Tk, antiSMASH, BiG-SCAPE) are not bundled. Configure their locations via params or environment as appropriate.\r\n\r\n## Quick start\r\n- Dry run / graph preview:\r\n  nextflow run . -dsl2 -preview\r\n\r\n- Example execution (adjust paths and profile to your environment):\r\n  nextflow run . -profile conda -resume \\\r\n    --reads '/path/to/*_{R1,R2}.fastq.gz' \\\r\n    --longreads '/path/to/*.fastq.gz' \\\r\n    --samples 'data/samples.tsv' \\\r\n    --outdir 'results'\r\n\r\nSee `conf/` for example profiles (conda, docker, singularity, slurm). Tune resources via `nextflow.config` using `withName:` blocks for process-specific CPU, memory, and time.\r\n\r\n## Citation\r\nIf you use Soil Metagenome Pipeline in your research, please cite the corresponding preprint:\r\n\r\n- bioRxiv abstract: https://www.biorxiv.org/content/10.1101/2025.05.28.656579v1.abstract\r\n- DOI: https://doi.org/10.1101/2025.05.28.656579\r\n\r\nA machine-readable citation file (CITATION.cff) is included in the repository root. GitHub will display a \"Cite this repository\" button.\r\n\r\n## License\r\nThis project is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later). See the LICENSE file for the full text.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1960.1",
+    "edam_operation": [
+        "Genome annotation",
+        "Sequence assembly",
+        "Taxonomic classification"
+    ],
+    "edam_topic": [
+        "Bioinformatics",
+        "Metagenomics",
+        "Sequence assembly"
+    ],
+    "id": "1960",
+    "latest_version": "1",
+    "license": "GPL-3.0-or-later",
+    "link": "https://workflowhub.eu/workflows/1960?version=1",
+    "mapped_tools": [
+        "antismash",
+        "bakta",
+        "checkm",
+        "checkm2",
+        "coverm",
+        "eggnog-mapper-v2",
+        "flye",
+        "gtdb",
+        "medaka",
+        "metabuli",
+        "metacoag",
+        "minimap2",
+        "mmseqs2",
+        "nextpolish",
+        "samtools",
+        "semibin",
+        "strobealign",
+        "vamb"
+    ],
+    "name": "Soil Metagenome Pipeline",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "annotation",
+        "assembly",
+        "bioinformatics",
+        "genomics",
+        "metagenomics",
+        "biosynthetic-gene-clusters"
+    ],
+    "tools": [
+        "antismash",
+        "bakta",
+        "checkm",
+        "checkm2",
+        "coverm",
+        "eggnog-mapper v2",
+        "eggnog-mapper-v2",
+        "flye",
+        "gtdb",
+        "medaka",
+        "metabuli",
+        "metacoag",
+        "minimap2",
+        "mmseqs2",
+        "nextpolish",
+        "samtools",
+        "semibin",
+        "strobealign",
+        "vamb"
+    ],
+    "update_time": "2025-09-19",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-07-31",
+    "creators": [
+        "Guillaume Lemaire"
+    ],
+    "description": "# SIGMA : Single-cell Identifier using Gaussian Mixture Approach\r\n\r\nSIGMA is a bioinformatics pipeline for automated identification of targeted cell types from multiple heterogeneous single-cell transcriptomic datasets (formats supported: `.h5ad`). It is designed to simplify and accelerate integrative large-scale single-cell analyses.\r\n\r\n## Features\r\n\r\n- Quality control, filtering, and doublet removal\r\n- Extraction of target cell types based on user-defined gene markers\r\n- Harmonization and merging of multiple studies\r\n- Fully configurable via a single config file\r\n\r\n## Installation\r\n\r\nClone the repository:\r\n\r\n```bash\r\ngit clone git@github.com:Guitout31415/SIGMA.git\r\ncd SIGMA\r\nconda env create -f environment.yml\r\nconda activate SIGMA\r\npip install snakemake\r\n```\r\n\r\n## Configuration\r\n\r\nEdit `config_template.conf` to specify:\r\n\r\n- **[Metadata]**: Metadata fields to extract/conserve\r\n- **[Candidate]**: Candidate genes for initial filtering\r\n- **[Target]**: Positive marker genes for target cell identification\r\n- **[Exclude1]**: Negative or exclusion marker genes used to exclude cell types 1\r\n- **[Exclude2]**: Negative or exclusion marker genes used to exclude cell types 2\r\n- **[Thresholds]**: Filtering and assignment thresholds\r\n- **[Folder]**: Input/output folder paths\r\n- **[Options]**: Species, QC parameters, plotting options\r\n\r\nThe number of components for the Gaussian Mixture Models (`n_components_target` and\r\n`n_components_exclu` in **[Thresholds]**) must be set explicitly to `kde` (KDE peak\r\ndetection), `bic` (reproducible selection at the elbow of the BIC-vs-n_components\r\ncurve), or a fixed integer. Both `kde` and `bic` are deterministic. With `bic`, a\r\ndiagnostic BIC curve is saved to the plots folder.\r\n\r\n## Usage\r\n\r\nRun the pipeline with Snakemake:\r\n\r\n```bash\r\nsnakemake \\\r\n  --config file=ConfigFile.conf \\\r\n  --cores 10 \\\r\n  --jobs 5 \\\r\n  --resources mem_mb=100000\r\n```\r\n\r\n- Adjust `--cores` and `--jobs` as needed.\r\n- The main workflow is defined in `Snakefile`.\r\n\r\n### Main Steps\r\n\r\n1. **Quality control**: Filtering, outlier removal, doublet detection (`scripts/quality_control.py`)\r\n2. **Target extraction**: Select cells expressing candidate/marker genes (`scripts/extract_target.py`)\r\n3. **Harmonization**: Standardize metadata interface (`scripts/harmonize_metadata.py`)\r\n4. **Merging**: Combine all studies into a single `.h5ad` (`scripts/merge_h5ad.py`)\r\n\r\n## Output\r\n\r\n- Filtered and processed `.h5ad` files per study: `output_folder/qc/`, `output_folder/find/`, `output_folder/harmonized/`\r\n- Merged dataset: `output_folder/merge.h5ad`\r\n- Logs: `output_folder/logs/`\r\n- Plots: `output_folder/plots/`\r\n\r\n## Troubleshooting\r\n\r\n- Check log files in `output_folder/logs/` for errors.\r\n- Ensure all dependencies are installed and input files are correctly formatted.\r\n\r\n## License\r\n\r\nGPL-3.0 License. See [LICENSE](LICENSE).\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2238.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2238",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/2238?version=1",
+    "mapped_tools": [],
+    "name": "SIGMA : Single-cell Identifier using Gaussian Mixture Approach",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-07-31",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

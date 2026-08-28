@@ -1,0 +1,42 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-05-08",
+    "creators": [
+        "Luke Silver",
+        "Anna Syme"
+    ],
+    "description": "This is part of a series of workflows to annotate a genome, tagged with `TSI-annotation`. \r\nThese workflows are based on command-line code by Luke Silver, converted into Galaxy Australia workflows. \r\n\r\nThe workflows can be run in this order: \r\n* Repeat masking\r\n* RNAseq QC and read trimming\r\n* Find transcripts\r\n* Combine transcripts\r\n* Extract transcripts\r\n* Convert formats\r\n* Fgenesh annotation\r\n\r\n****\r\n\r\nAbout this workflow:\r\n\r\n* Repeat this workflow separately for datasets from different tissues. \r\n* Inputs = collections of R1 files, and R2 files (all from a single tissue type). \r\n* Runs FastQC with default settings, separately for raw reads R1 and R2 collections; all output to MultiQC. \r\n* Runs Trimmomatic with initial ILLUMINACLIP step (using standard adapter sequence for TruSeq3 paired-ended), uses settings SLIDINGWINDOW:4:5 LEADING:5 TRAILING:5 MINLEN:25, retain paired (not unpaired) outputs. User can modify at runtime. \r\n* Runs FastQC with default settings, separately for trimmed R1 and R2 collections; all output to MultiQC. \r\n* From Trimmomatic output: concatenate all R1 reads; concatenate all R2 reads. \r\n* Outputs = trimmed merged R1 file, trimmed merged R2 file. \r\n* Log files from Trimmomatic to MultiQC, to summarise trimming results. \r\n* Note: a known bug with MultiQC html output is that plot is labelled as \"R1\" reads, when it actually contains information from both R1 and R2 read sets - this is under investigation (and is due to a Trimmomatic output file labelling issue). \r\n* MultiQC results table formatted to show % of reads retained after trimming, table included in workflow report. \r\n* Note: a known bug is that sometimes the workflow report text resets to default text. To restore, look for an earlier workflow version with correct workflow report text, and copy and paste report text into current version. ",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.876.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "876",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/876?version=1",
+    "mapped_tools": [
+        "fastqc",
+        "multiqc",
+        "trimmomatic"
+    ],
+    "name": "QC and trimming of RNAseq reads - TSI",
+    "number_of_steps": 14,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "tsi-annotation"
+    ],
+    "tools": [
+        "__extract_dataset__",
+        "cut1",
+        "fastqc",
+        "multiqc",
+        "remove beginning1",
+        "tp_cat",
+        "tp_replace_in_column",
+        "trimmomatic"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

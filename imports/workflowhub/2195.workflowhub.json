@@ -1,0 +1,51 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-06-18",
+    "creators": [
+        "Tristan Reynolds",
+        "Ammar Aziz"
+    ],
+    "description": "# Viral Amplicon Analysis Pipeline for ONT Data\r\n\r\n# Description\r\n\r\nGalaxy workflow for processing viral amplicon datasets, such as MPXV (Mpox), sequenced using the Oxford Nanopore Technologies (ONT) platform. The workflow uses the latest Fieldbioinformatics Artic Minion pipeline that uses the [clair3 variant caller](https://www.nature.com/articles/s43588-022-00387-x). \r\n\r\nThe ARTIC minion is a pipeline for working with viral nanopore sequencing data, generated from tiling amplicon schemes. It is designed to help run the artic bioinformatics protocols; for example the [MPXV protocol](https://artic.network/viruses/mpxv/mpxv-ont-epi2me-sop.html). The ARTIC minion pipeline performs genome mapping, variant calling and consensus assembly.\r\n\r\n# Inputs\r\n\r\n- **ONT Reads**: Oxford Nanopore Technologies (ONT) sequenced reads from ARTIC assay with fastqsanger encoding. [`fastqsanger`, `fastqsanger.gz`]\r\n- **Claire3 Model**: Basecalling model to be used for processing ONT data. The basecalling model must be uploaded to your Galaxy History. Available models can be downloaded from the Rerio repository: [https://github.com/nanoporetech/rerio](https://github.com/nanoporetech/rerio). Please note: By using these models, you agree to the [Oxford Nanopore Technologies, Ltd. Public License agreement](https://raw.githubusercontent.com/nanoporetech/rerio/refs/heads/master/LICENCE.txt) [`tar.gz`]\r\n- **Normalise Reads**: Sample at most this number of reads per amplicon and strand. This parameter sets the value for the ARTIC minion input `Coverage normalisation depth` (Default value `400`).  [`integer`]\r\n- **Oxford Nanopore Technologies, Ltd. Public License agreement**: Users must agree to the [Oxford Nanopore Technologies, Ltd. Public License agreement](https://raw.githubusercontent.com/nanoporetech/rerio/refs/heads/master/LICENCE.txt) in order to run this workflow. [`boolean`]\r\n- **Maximum Read Length**: Optional input specifying the maximum permitted read length. Reads longer than this value will be discarded during filtering (Default value `2600`). [`integer`]\r\n- **Minimum Read Length**: Optional input specifying the minimum permitted read length. Reads shorter than this value will be discarded during filtering (Default value `200`). [`integer`]\r\n- **Amplicon scheme name**: Name of the amplicon scheme on labs.primalscheme.com to fetch primer BED and reference (Default value `artic-inrb-mpox`).\r\n- **Amplicon scheme version**: Version of the amplicon scheme on labs.primalscheme.com in format `vX.X.X` (Default value `v1.0.0`).\r\n- **Amplicon scheme amplicon length**: Length of the amplicons in the scheme. Only required if the scheme named has multiple lengths (Default value `2500`).\r\n\r\n**NOTE:** Alternatively, the primer `bed` file (`primer.bed`) and reference genome `fasta` file (`reference.fasta`) can be provided from the user's History if previously imported into Galaxy from [labs.primalscheme.com](labs.primalscheme.com).\r\n\r\n# Outputs\r\n\r\n- **Collated QC Results**: `MultiQC` combined QC reports output by `Fastplong`. [`html`,`tabular`]\r\n- **Collated BAM Files**: Collection of the `bam` files output by `Artic minion`. [`bam`]\r\n- **Collated Alignment Reports**: Collection of the alignment reports output by `Artic minion`. [`tabular`]\r\n- **Collated VCF Outputs**: Collection of `vcf` files output by `Artic minion`. [`vcf`]\r\n- **Combined FASTA Outputs**: Single `fasta` file of all consensus sequences output by `Artic minion`. [`fasta`]\r\n- **Plot Depth**: Plot of the mapped read depth calculated by `Mosdepth`. [`pdf`]\r\n\r\n# Workflow Steps\r\n\r\n1. Filter ONT reads by length using `Fastplong`.\r\n2. Run the `ARTIC minion` pipeline tool to perform the following processing steps.\r\n   - Align reads to reference genome using `minimap2`\r\n   - Trim primers\r\n   - Call variants (mutations)\r\n   - Create consensus genome sequence\r\n3. Calculate the mapped read depth using `Mosdepth` and convert `bedgraph` output to `tabular` using `Convert bedgraph to tsv`.\r\n4. Rename consensus sequence headers produced by `Artic minion` from extended path/file names to the sample barcode (e.g. `>barcode09/KJ642613.1_masked/ARTIC/clair3 KJ642613.1_masked` -> `>barcode09`) using `rename header` and `clean header`.\r\n5. Combine `Fastplong` QC reports using `MultiQC`.\r\n6. Plot mapped read depth using `Plotting tool`.\r\n7. Create a collection of the `Artic minion` output `bam` files using `Build list`.\r\n8. Create a collection of the `Artic minion` output alignment reports using `Build list`.\r\n9. Create a collection of the `Artic minion` output `vcf` files using `Build list`.\r\n10. Merge all `Artic minion` output consensus sequences into a single `fasta` file using `Concatenate datasets`.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2195.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Biomedical science",
+        "Genomics",
+        "Virology"
+    ],
+    "id": "2195",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2195?version=1",
+    "mapped_tools": [
+        "multiqc"
+    ],
+    "name": "Viral Amplicon Analysis Pipeline for ONT Data",
+    "number_of_steps": 12,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "amplicon",
+        "mpox",
+        "ont",
+        "virus",
+        "mpxv",
+        "phylogeny"
+    ],
+    "tools": [
+        "__build_list__",
+        "artic_minion",
+        "bedtools_makewindowsbed",
+        "fastplong",
+        "mosdepth",
+        "multiqc",
+        "regex1",
+        "tp_cat",
+        "xy_plot_1"
+    ],
+    "update_time": "2026-06-25",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}
