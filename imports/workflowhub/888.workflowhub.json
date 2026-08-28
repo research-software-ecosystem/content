@@ -1,0 +1,63 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-06-06",
+    "creators": [
+        "Zargham Ahmad",
+        "Helge Hecht",
+        "Elliott J. Price",
+        "Research Infrastructure RECETOX RI (No LM2018121) financed by the Ministry of Education, Youth and Sports, and Operational Programme Research, Development and Innovation - project CETOCOEN EXCELLENCE (No CZ.02.1.01/0.0/0.0/17_043/0009632)."
+    ],
+    "description": "# Galaxy Workflow Documentation: MS Finder Pipeline\r\n\r\nThis document outlines a MSFinder Galaxy workflow designed for peak annotation. The workflow consists of several steps aimed at preprocessing MS data, filtering, enhancing, and running MSFinder.\r\n\r\n## Step 1: Data Collection and Preprocessing\r\nCollect if the inchi and smiles are missing from the dataset, and subsequently filter out the spectra which are missing inchi and smiles.\r\n\r\n### 1.1 MSMetaEnhancer: Collect InChi, Isomeric_smiles, and Nominal_mass\r\n- Utilizes MSMetaEnhancer to collect InChi and Isomeric_smiles using PubChem and IDSM databases.\r\n- Utilizes MSMetaEnhancer to collect MW using RDkit (For GOLM).\r\n\r\n### 1.2 replace key\r\n- replace isomeric_smiles key to smiles using replace text tool\r\n- replace MW key to parent_mass using replace text tool (For GOLM)\r\n\r\n### 1.3 Matchms Filtering\r\n- Filters out invalid SMILES and InChi from the dataset using Matchms filtering.\r\n\r\n## Step 2: Complex Removal and Subsetting Dataset\r\nRemoves coordination complexes from the dataset.\r\n\r\n### 2.1 Remove Complexes and Subset Data\r\n- Removes complexes from the dataset.\r\n- Exports metadata using Matchms metadata export, cuts the SMILES column, removes complexes using Rem_Complex tool, and updates the dataset using Matchms subsetting.\r\n\r\n## Step 3: Data Key Manipulation\r\nAdd missing metadata required by the MSFinder for annotation.\r\n\r\n### 3.1 Matchms Remove Key\r\n- Removes existing keys such as adduct, charge, and ionmode from the dataset.\r\n\r\n### 3.2 Matchms Add Key\r\n- Adds necessary keys like charge, ionmode, and adduct to the dataset.\r\n\r\n### 3.3 Matchms Filtering\r\n- Derives precursor m/z using parent mass and adduct information using matchms filtering.\r\n\r\n### 3.4 Matchms Convert\r\n- Converts the dataset to Riken format for compatibility with MSFinder using matchms convert.\r\n\r\n## Step 4: Peak Annotation\r\n### 4.1 Recetox-MSFinder\r\n- Executes MSFinder with a 0.5 Da tolerance for both MS1 and MS2, including all element checks and an extended range for peak annotation.\r\n\r\n## Step 5: Error Handling and Refinement\r\nCheck the MSFinder output to see if the output is the results or the log file. If the output is log file remove the smile from the dataset using matchms subsetting tool and rerun MSFinder.\r\n\r\n### 5.1 Error Handling\r\n- Handles errors in peak annotation by removing SMILES that are not accepted by MSFinder.\r\n- Reruns MSFinder after error correction or with different parameter (if applicable).\r\n\r\n## Step 6: High-res Annotation\r\n### 6.1 High-Res Peak Overwriting\r\n- Utilizes the Use_Theoretical_mz_Annotations tool to Overwrite experimentally measured mz values for peaks with theoretical values from peak comments.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.888.2",
+    "edam_operation": [
+        "Annotation",
+        "Data filtering",
+        "Information retrieval"
+    ],
+    "edam_topic": [
+        "Compound libraries and screening",
+        "Computational chemistry",
+        "Data mining",
+        "Small molecules"
+    ],
+    "id": "888",
+    "latest_version": "2",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/888?version=2",
+    "mapped_tools": [
+        "matchms",
+        "msmetaenhancer",
+        "recetox-msfinder"
+    ],
+    "name": "Theoretical fragment substructure generation and in silico mass spectral library high-resolution upcycling workflow",
+    "number_of_steps": 22,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "cheminformatics",
+        "metabolomics"
+    ],
+    "tools": [
+        "column_remove_by_header",
+        "csv_to_tabular",
+        "matchms",
+        "matchms_add_key",
+        "matchms_convert",
+        "matchms_filtering",
+        "matchms_metadata_export",
+        "matchms_remove_key",
+        "matchms_subsetting",
+        "msmetaenhancer",
+        "recetox-msfinder",
+        "recetox_msfinder",
+        "rem_complex",
+        "tabular_to_csv",
+        "tp_find_and_replace",
+        "use_theoretical_mz_annotations"
+    ],
+    "update_time": "2026-06-25",
+    "versions": "2",
+    "workflow_class": "Galaxy"
+}

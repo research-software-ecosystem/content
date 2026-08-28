@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-05-05",
+    "creators": [
+        "Luke Silver"
+    ],
+    "description": "# Fgenesh Annotation - TSI Workflow Description\r\n\r\n## Overview\r\nOne of a series of workflows to annotate a genome, tagged `TSI-annotation`. Based on command-line code by Luke Silver, converted into Galaxy Australia workflows.\r\n\r\n## Workflow Sequence\r\nRun in this order:\r\n- Repeat masking\r\n- RNAseq QC and read trimming\r\n- Find transcripts\r\n- Combine transcripts\r\n- Extract transcripts\r\n- **Fgenesh annotation** (this workflow)\r\n\r\n## Inputs Required\r\n\r\n**Files uploaded by the user:**\r\n- `assembled_genome.fasta` \u2014 the assembled genome\r\n- `hard_masked_genome.fasta` \u2014 hard repeat-masked genome\r\n- `mRNA_sequences.fasta` \u2014 TransDecoder CDS output from the upstream \"Extract transcripts\" workflow (use the \"Results (CDS/FASTA)\" output)\r\n\r\n**Selected at runtime (dropdowns / tick-boxes, not uploads):**\r\n- Closely-related species (Fgenesh species matrix, from those installed on Galaxy Australia)\r\n- Mammal or non-mammal\r\n- NR database (for Fgenesh get proteins)\r\n- BUSCO lineage\r\n- Licence agreement (tick to accept Fgenesh terms)\r\n\r\n## Running without mRNA\r\nIf no known mRNA sequences are available, edit the Fgenesh-annotate step's mRNA option to \"no\" and disconnect the mRNA input.\r\n\r\n## Processing Steps\r\nSplits the input genomes into single sequences (to reduce runtime), annotates each with Fgenesh++, and merges the outputs. TransDecoder CDS sequences are automatically filtered and reformatted for Fgenesh before annotation.\r\n\r\n## Outputs\r\n- Genome annotation (GFF3)\r\n- Annotation stats\r\n- FASTA files of mRNAs, cDNAs and proteins\r\n- BUSCO report of proteins\r\n\r\n## Key Note\r\nThe sequences passed to the mRNA/cDNA extraction tools are the unmasked assembly; there may be situations where the masked version is preferable.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.881.8",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "881",
+    "latest_version": "8",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/881?version=8",
+    "mapped_tools": [
+        "busco",
+        "fgenesh"
+    ],
+    "name": "Fgenesh annotation -TSI",
+    "number_of_steps": 10,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "tsi-annotation"
+    ],
+    "tools": [
+        "busco",
+        "fgenesh",
+        "fgenesh_annotate",
+        "fgenesh_get_mrnas_gc",
+        "fgenesh_get_proteins",
+        "fgenesh_merge",
+        "fgenesh_split",
+        "jcvi_gff_stats"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "8",
+    "workflow_class": "Galaxy"
+}

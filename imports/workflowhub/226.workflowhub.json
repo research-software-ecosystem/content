@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-04-19",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "Assembly polishing; can run alone or as part of a combined workflow for large genome assembly. \r\n\r\n* What it does: Polishes (corrects) an assembly, using long reads (with the tools Racon and Medaka) and short reads (with the tool Racon). (Note: medaka is only for nanopore reads, not PacBio reads). \r\n* Inputs:  assembly to be polished:  assembly.fasta; long reads - the same set used in the assembly (e.g. may be raw or filtered) fastq.gz format; short reads, R1 only, in fastq.gz format\r\n* Outputs: Racon+Medaka+Racon polished_assembly. fasta; Fasta statistics after each polishing tool\r\n* Tools used: Minimap2, Racon, Fasta statistics, Medaka\r\n* Input parameters:  None required. The Medaka model is set to r941_min_hac_g507 (R9.4.1 pore, MinION, Guppy 5 High Accuracy Calling). To use a different model, edit the workflow before importing. \r\n\r\nWorkflow steps:\r\n\r\n-1-  Polish with long reads: using Racon\r\n* Long reads and assembly contigs => Racon polishing (subworkflow): \r\n* minimap2 : long reads are mapped to assembly => overlaps.paf. \r\n* overaps, long reads, assembly => Racon => polished assembly 1\r\n* using polished assembly 1 as input; repeat minimap2 + racon => polished assembly 2\r\n* using polished assembly 2 as input, repeat minimap2 + racon => polished assembly 3\r\n* using polished assembly 3 as input, repeat minimap2 + racon => polished assembly 4\r\n* Racon long-read polished assembly => Fasta statistics\r\n* Note: The Racon tool panel can be a bit confusing and is under review for improvement. Presently it requires sequences (= long reads), overlaps (= the paf file created by minimap2), and target sequences (= the contigs to be polished) as per \"usage\" described here https://github.com/isovic/racon/blob/master/README.md\r\n* Note: Racon: the default setting for \"output unpolished target sequences?\" is No. This has been changed to Yes for all Racon steps in these polishing workflows.  This means that even if no polishes are made in some contigs, they will be part of the output fasta file. \r\n* Note: the contigs output by Racon have new tags in their headers. For more on this see https://github.com/isovic/racon/issues/85.\r\n\r\n-2-  Polish with long reads: using Medaka\r\n* Racon polished assembly + long reads => medaka polishing X1 => medaka polished assembly\r\n* Medaka polished assembly => Fasta statistics\r\n\r\n-3-  Polish with short reads: using Racon\r\n* Short reads and Medaka polished assembly =>Racon polish (subworkflow):\r\n* minimap2: short reads (R1 only) are mapped to the assembly => overlaps.paf. Minimap2 setting is for short reads.\r\n* overlaps + short reads + assembly => Racon => polished assembly 1\r\n* using polished assembly 1 as input; repeat minimap2 + racon => polished assembly 2\r\n* Racon short-read polished assembly => Fasta statistics\r\n\r\nOptions\r\n* Change settings for Racon long read polishing if using PacBio reads:  The default profile setting for Racon long read polishing: minimap2 read mapping is \"Oxford Nanopore read to reference mapping\", which is specified as an input parameter to the whole Assembly polishing workflow, as text: map-ont. If you are not using nanopore reads and/or need a different setting, change this input. To see the other available settings, open the minimap2 tool, find \"Select a profile of preset options\", and click on the drop down menu. For each described option, there is a short text in brackets at the end (e.g. map-pb). This is the text to enter into the assembly polishing workflow at runtime instead of the default (map-ont).\r\n* Other options: change the number of polishes (in Racon and/or Medaka). There are ways to assess how much improvement in assembly quality has occurred per polishing round (for example, the number of corrections made; the change in Busco score - see section Genome quality assessment for more on Busco).\r\n* Option: change polishing settings for any of these tools. Note: for Racon - these will have to be changed within those subworkflows first. Then, in the main workflow, update the subworkflows, and re-save. \r\n\r\nInfrastructure_deployment_metadata: Galaxy Australia (Galaxy)",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.226.2",
+    "edam_operation": [
+        "Sequence assembly"
+    ],
+    "edam_topic": [
+        "Sequence assembly"
+    ],
+    "id": "226",
+    "latest_version": "2",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/226?version=2",
+    "mapped_tools": [
+        "medaka"
+    ],
+    "name": "Assembly polishing",
+    "number_of_steps": 6,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "large-genome-assembly"
+    ],
+    "tools": [
+        "01041e6e0464607c",
+        "d5a2cb013d9747c0",
+        "fasta-stats",
+        "medaka",
+        "medaka_consensus_pipeline"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Galaxy"
+}

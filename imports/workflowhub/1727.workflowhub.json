@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-06-10",
+    "creators": [
+        "Cyril Noel",
+        "Antoine Veron",
+        "Fran\u00e7oise Vincent-Hubert",
+        "Julien Schaeffer",
+        "Marion Desdouits",
+        "Soizick Le Guyader"
+    ],
+    "description": "## Introduction\r\n\r\n**samba-norovirus** is an adaptation of the [**samba workflow**](https://gitlab.ifremer.fr/bioinfo/workflows/samba) for the specific needs in metabarcoding analyses of norovirus. It is a FAIR scalable workflow integrating, into a unique tool, state-of-the-art bioinformatics and statistical methods to conduct reproducible metabarcoding and eDNA analyses using [Nextflow](https://www.nextflow.io) (Di Tommaso *et al.*, 2017). SAMBA performs complete metabarcoding analysis by:\r\n- processing data using commonly used procedure with [QIIME 2](https://qiime2.org/) (version 2024.2 ; Bolyen *et al.*, 2019):\r\n    - remove primers from raw reads and remove reads without detected primer using the QIIME 2 plugin of [cutadapt](http://dx.doi.org/10.14806/ej.17.1.200): `q2-cutadapt`\r\n    - denoise reads and infering ASV using the QIIME 2 plugin of [DADA2](Callahan *et al.*, 2016): `q2-dada2`\r\n    - cluster ASV by small local linking threshold using [swarm](https://github.com/torognes/swarm) (Mah\u00e9 *et al.*, 2022)\r\n    - detect and remove chimeras using [UCHIME](https://doi.org/10.1093/bioinformatics/btr381) (Edgar *et al.*, 2011)\r\n    - assign the ASV taxonomy using the Naive Bayesian classification from the QIIME 2 plugin `q2-feature-classifier`\r\n- post-process ASV table with different opitonal processes:\r\n    - remove contaminant from biological samples using positive and/or negative control samples with the R package: [microDecon](https://github.com/donaldtmcknight/microDecon) (McKnight *et al.*, 2019)\r\n    - removal of ASVs belonging to undesired taxa using the QIIME 2 plugin `q2-taxa` (filter-table & filter-seqs)\r\n    - removal of ASVs based on their frequency, contingency and heir length using the QIIME 2 plugin `q2-feature-table` (filter-table, filter-seqs & filter-features)\r\n- conducting extended statistical and ecological analyses using homemade Rscript\r\n\r\nThe **samba-norovirus** pipeline can run tasks across multiple compute infrastructures in a very portable manner. It comes with singularity containers making installation trivial and results highly reproducible.\r\n\r\n## Requirements\r\n\r\ni. You must have [`Nextflow (\u2265 v24.04.4)`](https://www.nextflow.io/docs/latest/getstarted.html#installation) installed on your computing machine to run the workflow.\r\n\r\nii. You must have [`Singularity (\u2265 v3.6.4)`](https://www.sylabs.io/guides/3.0/user-guide/) installed on your computing machine for full pipeline reproducibility. \r\n\r\niii. If your HPC nodes don't have any internet access. Please download before any workflow run the singularity images available on the [samba-norovirus singularity image repository](https://data-dataref.ifremer.fr/bioinfo/ifremer/sebimer/tools/samba-norovirus/1.0.0/). Then set the `$NXF_SINGULARITY_CACHEDIR` environment variable to the path where you just downloaded the images.\r\n\r\niv. You must download the norovirus database and sequences formatted for the workflow in order to perform the taxonomic assignment of your ASVs and the chimeras detection. You can download all files on the [samba-norovirus database repository](https://data-dataref.ifremer.fr/bioinfo/ifremer/sebimer/sequence-set/samba-norovirus/1.0.0). Then set the `database` and `uchime_ref` parameters in the base.config file with the path where you placed the downloaded files.\r\n\r\n\r\n## Quick Start\r\n\r\ni. Download the pipeline\r\n\r\n```bash\r\ngit clone https://gitlab.ifremer.fr/bioinfo/workflows/samba-norovirus\r\n```\r\n\r\n> To use SAMBA-norovirus on a computing cluster, it is necessary to provide a configuration file for your system. For some institutes, this one already exists and is referenced on [nf-core/configs](https://github.com/nf-core/configs#documentation). If so, you can simply download your institute custom config file and simply use `-c <institute_config_file>` in your command. This will set the appropriate execution settings for your local compute environment.\r\n\r\nii. Start running your own analysis!\r\n\r\nBefore you start analyzing your data, please read the [SAMBA workflow documentation](./docs/usage.md)\r\n\r\n```bash\r\nnextflow run main.nf -profile norovirus,singularity [-c <institute_config_file>]\r\n```\r\n\r\n## Credits\r\n\r\nsamba-norovirus is written by [Cyril No\u00ebl](https://github.com/cnoel-sebimer) from the [SeBiMER](https://sebimer.ifremer.fr/), the Bioinformatics Core Facility of [IFREMER](https://wwz.ifremer.fr/en/). This workflow was developed in close collaboration with members of the Ifremer LSEM lab.\r\n\r\n## Contributions\r\n\r\nWe welcome contributions to the pipeline. If such case you can do one of the following:\r\n* Use issues to submit your questions \r\n* Fork the project, do your developments and submit a pull request\r\n* Contact us (see email below) \r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1727.1",
+    "edam_operation": [
+        "Taxonomic classification"
+    ],
+    "edam_topic": [
+        "Metabarcoding",
+        "Workflows"
+    ],
+    "id": "1727",
+    "latest_version": "1",
+    "license": "AGPL-3.0",
+    "link": "https://workflowhub.eu/workflows/1727?version=1",
+    "mapped_tools": [],
+    "name": "SAMBA-norovirus",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "metabarcoding",
+        "workflows",
+        "taxonomic-classification"
+    ],
+    "tools": [],
+    "update_time": "2025-06-10",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

@@ -1,0 +1,34 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-03-21",
+    "creators": [
+        "Stevie Pederson"
+    ],
+    "description": "# GRAVI: Gene Regulatory Analysis using Variable Inputs\r\n\r\nThis is a `snakemake` workflow for:\r\n\r\n1. Performing sample QC\r\n2. Calling ChIP peaks\r\n3. Performing Differential Binding Analysis\r\n4. Comparing results across ChIP targets\r\n\r\nThe minimum required input is one ChIP target with two conditions.\r\n\r\nFull documentation can be found [here](https://steveped.github.io/GRAVI/)\r\n\r\n\r\n## Snakemake Implementation\r\n\r\nThe basic workflow is written `snakemake`, requiring at least v7.7, and can be called using the following steps.\r\n\r\nFirstly, setup the required conda environments\r\n\r\n```\r\nsnakemake \\\r\n\t--use-conda \\\r\n\t--conda-prefix '/home/steveped/mambaforge/envs/' \\\r\n\t--conda-create-envs-only \\\r\n\t--cores 1\r\n```\r\n\r\nSecondly, create and inspect the rulegraph\r\n\r\n```\r\nsnakemake --rulegraph > workflow/rules/rulegraph.dot\r\ndot -Tpdf workflow/rules/rulegraph.dot > workflow/rules/rulegraph.pdf\r\n```\r\n\r\nFinally, the workflow itself can be run using:\r\n\r\n```\r\nsnakemake \\\r\n\t-p \\\r\n\t--use-conda \\\r\n\t--conda-prefix '/home/steveped/mambaforge/envs/' \\\r\n\t--notemp \\\r\n\t--rerun-triggers mtime \\\r\n\t--keep-going \\\r\n\t--cores 16\r\n```\r\n\r\nNote that this creates common environments able to be called by other workflows and is dependent on the user.\r\nFor me, my global conda environments are stored in `/home/steveped/mambaforge/envs/`.\r\nFor other users, this path will need to be modified.\r\n\r\nIf wishing to tidy the directory after a successful run, you can check which non-essential files can be deleted using `snakemake -n --delete-temp-output --cores 1`.\r\nIf the files earmarked for deletion are considered to be non-essential, they can be deleted by removing the `-n` flag from the above code: `snakemake --delete-temp-output --cores 1`.\r\nAs the bedgraph files produced by `macs2 callpeak` are typically very large, hence their conversion to bigwig files during the workflow, this step can free a considerable amount of disk space.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.443.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "443",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/443?version=1",
+    "mapped_tools": [
+        "macs"
+    ],
+    "name": "GRAVI: Gene Regulatory Analysis using Variable Inputs",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bam",
+        "bioinformatics",
+        "chip-seq"
+    ],
+    "tools": [
+        "macs"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

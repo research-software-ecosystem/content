@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-05-31",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "# workflow-qc-of-radseq-reads\r\n\r\nThese workflows are part of a set designed to work for RAD-seq data on the Galaxy platform, using the tools from the Stacks program. \r\n\r\nGalaxy Australia: https://usegalaxy.org.au/\r\n\r\nStacks: http://catchenlab.life.illinois.edu/stacks/\r\n\r\n## Inputs\r\n* demultiplexed reads in fastq format, in a collection\r\n* two adapter sequences in fasta format, for input into cutadapt\r\n\r\n## Steps and outputs\r\n\r\nThe workflow can be modified to suit your own parameters. \r\n\r\nThe workflow steps are:\r\n* Run FastQC to get statistics on the raw reads, send to MultiQC to create a nice output. This is tagged as \"Report 1\" in the Galaxy history. \r\n* Run Cutadapt on the reads to cut adapters - enter two files with adapter sequence at the workflow option for \"Choose file containing 3' adapters\". The default settings are on except that the \"Maximum error rate\" for the adapters is set to 0.2 instead of 0.1. Send output statistics to MulitQC, this is \"Report 2\" in the Galaxy history. Note that you may have different requirements here in terms of how many adapter sequences you want to enter. We recommend copying the workflow and modifying as needed. \r\n* Send these reads to fastp for additional filtering or trimming. Default settings are on but can be modified as needed. Send output statistics to MultiQC, this is \"Report 3\" in the Galaxy history. \r\n* The filtered and trimmed reads are then ready for the stacks workflows. \r\n\r\n![qc-wf](wf-image-qc.png)\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Sequencing quality control"
+    ],
+    "edam_topic": [
+        "Population genomics"
+    ],
+    "id": "346",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/346?version=1",
+    "mapped_tools": [
+        "cutadapt",
+        "fastp",
+        "fastqc",
+        "multiqc"
+    ],
+    "name": "QC of RADseq reads",
+    "number_of_steps": 6,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "cutadapt",
+        "fastp",
+        "fastqc",
+        "multiqc"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

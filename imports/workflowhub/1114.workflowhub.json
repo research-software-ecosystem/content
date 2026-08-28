@@ -1,0 +1,45 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-09-03",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "**Genome assembly workflow for nanopore reads, for TSI**\r\n\r\nInput: \r\n* Nanopore reads (can be in format: fastq, fastq.gz, fastqsanger, or fastqsanger.gz) \r\n\r\nOptional settings to specify when the workflow is run:\r\n* [1] how many input files to split the original input into (to speed up the workflow). default = 0. example: set to 2000 to split a 60 GB read file into 2000 files of ~ 30 MB. \r\n* [2] filtering: min average read quality score. default = 10\r\n* [3] filtering: min read length. default = 200\r\n* [4] trimming: trim this many nucleotides from start of read. default = 50\r\n* [5] note: these are suggestions and will depend on the characteristics of your raw reads and downstream aims. If filtering and trimming settings are too stringent, there may be no reads remaining and workflow will fail. \r\n\r\nWorkflow steps:\r\n* [1] runs FastQC on raw reads\r\n* [2] splits input reads file into separate files to speed up the next step of Porechop\r\n* [3] trims nanopore adapters using Porechop\r\n* [4] trims and filters nanopore reads by quality and length using Nanofilt\r\n* [5] collapses back into a single read file, fastqsanger format\r\n* [6] runs FastqQC on trimmed/filtered reads\r\n* [7] assembles genome with Flye\r\n* [8] calculates statistics on genome assembly contigs with Fasta Statistics\r\n* [9] draws genome assembly graph with Bandage \r\n\r\nMain outputs:\r\n* [1] FastQC report on raw reads, html\r\n* [2] Adpater-chopped, trimmed, filtered reads in fastqsanger format\r\n* [3] FastQC report on filtered reads, html\r\n* [4] genome assembly contigs in fasta format (primary assembly)\r\n* [5] genome assembly statistics\r\n* [6] genome assembly graph in Bandage format \r\n\r\nNote: You may wish to plot raw reads first (e.g. using the tool NanoPlot), to get a better of idea of read lengths and quality, to decide on filtering/trimming settings.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1114.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1114",
+    "latest_version": "1",
+    "license": "GPL-3.0-or-later",
+    "link": "https://workflowhub.eu/workflows/1114?version=1",
+    "mapped_tools": [
+        "bandage",
+        "fastqc",
+        "flye"
+    ],
+    "name": "Genome assembly workflow for nanopore reads, for TSI",
+    "number_of_steps": 10,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "tsi",
+        "genome_assembly",
+        "nanopore"
+    ],
+    "tools": [
+        "bandage",
+        "bandage_image",
+        "bandage_info",
+        "collapse_dataset",
+        "fasta-stats",
+        "fastqc",
+        "flye",
+        "nanofilt",
+        "porechop",
+        "split_file_to_collection"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

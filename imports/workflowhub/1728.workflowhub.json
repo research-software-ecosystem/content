@@ -1,0 +1,29 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-06-12",
+    "creators": [],
+    "description": "Active volcanoes often host settlements in their vicinity, exposing populations to geohazards related to their activity, in particular during unrest phases, when the potential for eruption is higher. Mount Etna is one of the most active volcanoes\r\nworldwide, closely monitored by a sophisticated network, and surrounded by several villages and the city of Catania. While the frequent summit activity, characterized by lava fountains and ash-rich plumes, poses a significant hazard to civil aviation, the real threat to the population lies in lava flows, fed by the opening of lateral vents at low altitudes (Del Negro et al., 2020). These vents are fed by volcanic dikes intruding the volcano edifice and reaching the surface, sometimes on time scales of a few days only, as observed during the July-August 2001 event (Harris et al., 2011). Therefore, the development of reliable systems for early identification and monitoring of dike intrusion events is a crucial scientific challenge for supporting the hazard assessment of lava flow inundation (Yang et al., 2019). Massive data streams from in-situ monitoring networks and satellite observations now provide high-resolution spatial and temporal information on Earth system processes (Yang et al., 2010), including geodetic data, which is crucial for volcano monitoring. Additionally, the availability of HPC resources (Reed et al., 2015; Hinton et al., 2006) enables the efficient processing and analysis of that data and the execution of computationally intensive simulations. Moreover, advancements in machine learning (ML) methods, such as the deep learning architectures (Hinton et al., 2006; Liu et al., 2022), handling the high dimensionality and nonlinearity of complex natural phenomena, are driving the development of innovative applications for volcano monitoring. At the forefront of ML technologies is the concept of Digital Twins (DTs). A DT is a digital replica of the state and evolution of a physical entity, envisioned as datainformed systems for early warning, forecasting, and hazard assessments. A DT continuously updates its physics-based model through available observations of the target process (De Felipe et al., 2022; Li et al., 2023; Wright et al., 2020). Therefore, DTs are most effective when the object changes significantly over time, data is collected at a sufficiently high sampling rate to capture these changes, and modeling can be performed within the required timeframe for the DT updates (DT-GEO, https://dtgeo.eu/). \r\nThe DT prototype, presented here for Mount Etna, is designed to replicate volcanic unrest induced by dike intrusions (Figure 1). The goal is to generate near-real-time scenarios of potential magmatic sources by analyzing the evolution of ground deformation patterns. The workflow developed for such a purpose exploits both physics-based HPC and ML algorithms. A training component makes use of an order 10 million numerical simulations of deformation patterns due to dyke intrusion at Mount Etna, to train an AI to invert from the observed deformation to the endogenous forces that generated the deformation. An operational component is activated by another AI, which scans the stream of multiparametric data from the Mount Etna control room of INGV and recognises the occurrence of unrest. When that happens, the previous AI is activated. The output consists of the spatial probability distribution of forces representing the source body that produced the displacement recorded by the effective GNSS stations operating on the volcano. The overall workflow includes both the training and operational components, to allow both direct applications to Mount Etna and new training and application stages on the same or other volcanoes. Figure 1 illustrates the DT workflow, showing how each component is connected to the others. The data access layer (#1) provides near real-time updates to the time series analyzed by the ML-based unrest detection system (#8). This system is trained on background behavior during phases of inactivity (#7), and declares the state of unrest when anomalous trends occur, providing the displacement dataset (#2) based on which the AI-based inversion (#6) operates. An archive of simulations for dike sources, produced using GALES (#3), is used to train the AI (#4) to reconstruct the dike scenario based on the available data. By quickly processing the data feeding the Mount Etna control room, the whole workflow provides a near-real-time (2 to 4 evaluations per hour) picture of dike propagation, allowing a quick and robust interpretation of ground deformation data and assisting in early warning and volcanic crisis management. All of the software and procedures will be available open source at the end of the project, for direct use as well as for replicating the approach at other volcanoes. In the following sections, we discuss each component, initial results and potential advancements for enhancing volcano observatory surveillance capabilities.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1728",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1728?version=1",
+    "mapped_tools": [],
+    "name": "[DTC-V1] WF5101: Volcanic unrest",
+    "number_of_steps": 8,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "dt-geo",
+        "digital twin",
+        "geophysics",
+        "geology"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

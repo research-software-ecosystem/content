@@ -1,0 +1,60 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-11-14",
+    "creators": [
+        "Helena Rasche",
+        "Dennis Doll\u00e9e",
+        "Birgit Rijvers"
+    ],
+    "description": "This is an aggregation of the work done in [Seq4AMR](https://workflowhub.eu/projects/110) consisting of the following workflows:\r\n\r\n- [WF1: AbritAMR / AMRFinderPlus](https://workflowhub.eu/workflows/634)\r\n- [WF2: Sciensano](https://workflowhub.eu/workflows/644) (**not currently included**)\r\n- [WF3: SRST2](https://workflowhub.eu/workflows/407) \r\n- [WF4: StarAMR](https://workflowhub.eu/workflows/470)\r\n\r\n## Installation\r\n\r\n- You will need to:\r\n    - run the [RGI Database Builder](https://my.galaxy.training/?path=?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fcard%2Frgi%2Frgi_database_builder%2F1.2.0) as a Galaxy admin (if this hasn't been done already)\r\n    - [Have the en_US.UTF-8 locale installed](https://github.com/galaxyproject/tools-iuc/issues/6467) on the compute nodes executing cast/melt jobs.\r\n    - Install the requisite tools with e.g. [`shed-tools`](https://ephemeris.readthedocs.io/en/latest/commands/shed-tools.html) command from the [`ephemeris`](https://ephemeris.readthedocs.io/en/latest/) suite: `shed-tools install -g https://galaxy.example.com -a API_KEY -t tools.yaml` (tools.yaml is provided in this repository.)\r\n- Then you can import this workflow\r\n    - Navigate to `/workflows/import` of your Galaxy server\r\n    - Select \"GA4GH servers\"\r\n    - Enter `name:\"AMR-Pathfinder\"`\r\n- And run it\r\n    - You must provide a Sequencing collection (list:paired of fastq files)\r\n    - And a Genomes collection (list of fasta files) \r\n    - Both of these should use **identical** collection element identifiers\r\n\r\n## Outputs\r\n\r\nThis will produce two important tables: \"Binary Comparison\" and a \"% Identity Scored Outputs\". \r\n\r\n### Binary comparison\r\n\r\nThis file reports the discovery or absence of specific AMR genes across all tested AMR Analysis tools. You will mostly see 1s (presence) or 0s (absence) but you may occasionally see higher numbers when an AMR tool reports multiple hits for a specific gene.\r\n\r\n### % Identity Scored Outputs\r\n\r\nThis is similar to binary comparison, but using the % identity reported by each AMR tool. For cases where multiple hits were detected, we take the highest.\r\n\r\n## Known Issues\r\n\r\nThe names for identified AMR genes is highly inconsistent across AMR analysis tools. We urge the AMR community to rectify this by standardising gene names used in their tooling.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Antimicrobial resistance prediction"
+    ],
+    "edam_topic": [],
+    "id": "1189",
+    "latest_version": "2",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1189?version=2",
+    "mapped_tools": [
+        "abricate",
+        "hamronization",
+        "shovill",
+        "staramr"
+    ],
+    "name": "AMR-Pathfinder",
+    "number_of_steps": 36,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "amr",
+        "amr-detection",
+        "benchamrking"
+    ],
+    "tools": [
+        "__apply_rules__",
+        "__merge_collection__",
+        "abricate",
+        "addvalue",
+        "cast",
+        "cat1",
+        "cat_multi_datasets",
+        "collapse_dataset",
+        "cut1",
+        "datamash_ops",
+        "grep1",
+        "hamronization",
+        "hamronize_summarize",
+        "hamronize_tool",
+        "shovill",
+        "staramr",
+        "staramr_search",
+        "tp_find_and_replace",
+        "tp_split_on_column",
+        "tp_text_file_with_recurring_lines"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Galaxy"
+}

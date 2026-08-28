@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-07-05",
+    "creators": [
+        "Konstantinos Kyritsis",
+        "Nikolaos Pechlivanis",
+        "Fotis Psomopoulos"
+    ],
+    "description": "A CWL-based pipeline for processing ChIP-Seq data (FASTQ format) and performing: \r\n\r\n- Peak calling\r\n- Consensus peak count table generation\r\n- Detection of super-enhancer regions\r\n- Differential binding analysis\r\n\r\nOn the respective GitHub folder are available:\r\n\r\n- The CWL wrappers for the workflow\r\n- A pre-configured YAML template, based on validation analysis of publicly available HTS data\r\n- Tables of metadata (``EZH2_metadata_CLL.csv`` and ``H3K27me3_metadata_CLL.csv``), based on the same validation analysis, to serve as input examples for the design of comparisons during differential binding analysis\r\n- A list of ChIP-Seq blacklisted regions (human genome version 38; hg38) from the ENCODE project, which is can be used as input for the workflow, is provided in BED format (``hg38-blacklist.v2.bed``)\r\n\r\nBriefly, the workflow performs the following steps:\r\n\r\n1. Quality control of short reads (FastQC)\r\n2. Trimming of the reads (e.g., removal of adapter and/or low quality sequences) (Trimmomatic)\r\n3. Mapping to reference genome (HISAT2)\r\n5. Convertion of mapped reads from SAM (Sequence Alignment Map) to BAM (Binary Alignment Map) format (samtools)\r\n6. Sorting mapped reads based on chromosomal coordinates (samtools)\r\n7. Adding information regarding paired end reads (e.g., CIGAR field information) (samtools)\r\n8. Re-sorting based on chromosomal coordinates (samtools)\r\n9. Removal of duplicate reads (samtools)\r\n10. Index creation for coordinate-sorted BAM files to enable fast random access (samtools)\r\n11. Production of quality metrics and files for the inspection of the mapped ChIP-Seq reads, taking into consideration the experimental design (deeptools2):\r\n - Read coverages for genomic regions of two or more BAM files are computed (multiBamSummary). The results are produced in compressed numpy array (NPZ) format and are used to calculate and visualize pairwise correlation values between the read coverages (plotCorrelation). \r\n - Estimation of sequencing depth, through genomic position (base pair) sampling, and visualization is performed for multiple BAM files (plotCoverage).\r\n - Cumulative read coverages for each indexed BAM file are plotted by counting and sorting all reads overlapping a \u201cwindow\u201d of specified length (plotFingerprint).\r\n - Production of coverage track files (bigWig), with the coverage calculated as the number of reads per consecutive windows of predefined size (bamCoverage), and normalized through various available methods (e.g., Reads Per Kilobase per Million mapped reads; RPKM). The coverage track files are used to calculate scores per selected genomic regions (computeMatrix), typically genes, and a heatmap, based on the scores associated with these genomic regions, is produced (plotHeatmap).\r\n12. Calling potential binding positions (peaks) to the genome (peak calling) (MACS2)\r\n13. Generation of consensus peak count table for the application of custom analyses on MACS2 peak calling results (bedtools)\r\n14. Detection of super-enhancer regions (Rank Ordering of Super-Enhancers; ROSE)\r\n15. Differential binding analyses (DiffBind) for:\r\n - MACS2 peak calling results\r\n - ROSE-detected super-enhancer regions \r\n ",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.525.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics"
+    ],
+    "id": "525",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/525?version=1",
+    "mapped_tools": [],
+    "name": "CWL-based ChIP-Seq workflow",
+    "number_of_steps": 53,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "cwl",
+        "chip-seq",
+        "epigenomics",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

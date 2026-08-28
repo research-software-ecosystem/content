@@ -1,0 +1,27 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-09-16",
+    "creators": [
+        "Michael Lynch",
+        "Leverages scripts developed by Weber et al (2021) DOI: https://doi.org/10.1093/gigascience/giab062"
+    ],
+    "description": "# demux_doublet_sim\r\n\r\nRepository for Nextflow pipeline used in demuxSNP demultipelxing paper\r\n\r\n## Overall workflow\r\n\r\n1. Simulate doublets\r\n- Add per-sample suffix to barcodes in BAM\r\n- Merge per-sample BAMs\r\n- Generate lookup of barcodes to rename to reach a set % doublets\r\n-  Rename barcodes in BAM as per lookup\r\n2. Benchmark methods\r\n- Experiments 1: Vary doublet rate\r\n- Experiment 2: Vary SNP subsetting\r\n\r\n## Inputs\r\n\r\nMost inputs are specified in nextflow.config:\r\n    container__souporcell: path to souporcell apptainer image, ideally at top level of project.  \r\n    bam_path: Path to demultiplexed bam files.  \r\n    barcodes_path: Path to demultiplexed barcodes.  \r\n    tenx: Path to barcodes.tsv, features.tsv and matrix.mtx files from multiplexed 10X output.  \r\n    common_variants: common variants e.g. from 1K genome project.  \r\n    ref: path to reference genome, ideally in data/input directory.  \r\n\r\nDoublet simulation parameters are specified in params_ccrcc.csv\r\nThe workflow caters for subsampling (also specified in params_ccrcc.csv) although this was not explored in the paper.\r\n\r\n## Outputs\r\n\r\nFolder for each simulated scenario (e.g. seed, % doublets, number of genes used to subset)\r\nSingleCellExperiment object in each demuxSNP folder.\r\n\r\n## Known issues\r\n\r\nInput files used by souporcell/apptainer need to be stored below the image.\r\nApptainer must be bound to the project directory (variable in nextflow.config).",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1160.2",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1160",
+    "latest_version": "2",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/1160?version=2",
+    "mapped_tools": [],
+    "name": "Demultiplexing Doublet Benchmark",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Nextflow"
+}

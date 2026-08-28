@@ -1,0 +1,52 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-09-12",
+    "creators": [
+        "Sagane Joye-Dind"
+    ],
+    "description": "# ERGA Protein-coding gene annotation workflow.\r\nAdapted from the work of Sagane Joye:\r\n\r\nhttps://github.com/sdind/genome_annotation_workflow\r\n\r\n## Prerequisites\r\n\r\nThe following programs are required to run the workflow and the listed version were tested. It should be noted that older versions of snakemake are not compatible with newer versions of singularity as is noted here: [https://github.com/nextflow-io/nextflow/issues/1659](https://github.com/nextflow-io/nextflow/issues/1659).\r\n\r\n`conda v 23.7.3`\r\n\r\n`singularity v 3.7.3`\r\n\r\n`snakemake v 7.32.3` \r\n\r\nYou will also need to acquire a licence key for Genemark and place this in your home directory with name `~/.gm_key` The key file can be obtained from the following location, where the licence should be read and agreed to: http://topaz.gatech.edu/GeneMark/license_download.cgi\r\n\r\n## Workflow\r\n\r\nThe pipeline is based on braker3 and was tested on the following dataset from Drosophila melanogaster: [https://doi.org/10.5281/zenodo.8013373](https://doi.org/10.5281/zenodo.8013373)\r\n\r\n### Input data\r\n\r\n- Reference genome in fasta format\r\n\r\n- RNAseq data in paired-end zipped fastq format\r\n\r\n- uniprot fasta sequences in zipped fasta format\r\n\r\n### Pipeline steps\r\n\r\n- **Repeat Model and Mask** Run RepeatModeler using the genome as input, filter any repeats also annotated as protein sequences in the uniprot database and use this filtered libray to mask the genome with RepeatMasker\r\n\r\n- **Map RNAseq data** Trim any remaining adapter sequences and map the trimmed reads to the input genome\r\n\r\n- **Run gene prediction software** Use the mapped RNAseq reads and the uniprot sequences to create hints for gene prediction using Braker3 on the masked genome\r\n\r\n- **Evaluate annotation** Run BUSCO to evaluate the completeness of the annotation produced\r\n\r\n### Output data\r\n\r\n- FastQC reports for input RNAseq data before and after adapter trimming\r\n\r\n- RepeatMasker report containing quantity of masked sequence and distribution among TE families\r\n\r\n- Protein-coding gene annotation file in gff3 format\r\n\r\n- BUSCO summary of annotated sequences\r\n\r\n## Setup\r\n\r\nYour data should be placed in the `data` folder, with the reference genome in the folder `data/ref` and the transcript data in the foler `data/rnaseq`.\r\n\r\nThe config file requires the following to be given:\r\n\r\n```\r\nasm: 'absolute path to reference fasta'\r\nsnakemake_dir_path: 'path to snakemake working directory'\r\nname: 'name for project, e.g. mHomSap1'\r\nRNA_dir: 'absolute path to rnaseq directory'\r\nbusco_phylum: 'busco database to use for evaluation e.g. mammalia_odb10'\r\n```\r\n",
+    "discussion_links": [
+        {
+            "id": "652",
+            "label": "ERGA-consortium Pipelines Discussions Board",
+            "url": "https://github.com/ERGA-consortium/pipelines/discussions"
+        }
+    ],
+    "doi": "10.48546/workflowhub.workflow.569.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Gene structure",
+        "Gene transcripts",
+        "Genomics"
+    ],
+    "id": "569",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/569?version=1",
+    "mapped_tools": [
+        "braker1",
+        "hisat2",
+        "repeatmasker",
+        "repeatmodeler2"
+    ],
+    "name": "ERGA Protein-coding gene annotation workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "annotation",
+        "biodiversity",
+        "genomics",
+        "transcriptomics"
+    ],
+    "tools": [
+        "braker1",
+        "hisat2",
+        "repeatmasker",
+        "repeatmodeler",
+        "repeatmodeler2"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

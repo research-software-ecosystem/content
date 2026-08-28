@@ -1,0 +1,32 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-08-03",
+    "creators": [
+        "Lorenz Gruber"
+    ],
+    "description": "# Settlement Delineation and Analysis (SDA)\r\nDelineate urban clusters using a settlement graph and [edge contraction](https://en.wikipedia.org/wiki/Edge_contraction) and then analyze the centrality of the aggregated settlement clusters. It is based on the [Fishnet](https://gitlab2.informatik.uni-wuerzburg.de/descartes/sos/fishnet) framework.\r\n\r\n![](doc/images/SDA_Workflow.png).\r\n### Deployment\r\nTo run the **Settlement Delineation and Analysis** workflow, the easiest way is to use [SettlementDelineationAnalysis.py](SettlementDelineationAnalysis.py), which wraps the command line interface of the [main binary](src/0_workflow/SettlementDelineation.cpp) and executes it in a container using [docker](prod/docker/Dockerfile.db) (which has to be installed in the deployment environment). \r\n```\r\npython3 SettlementDelineationAnalysis.py -i <input> -c <config>.json -o <output>.shp\r\n``` \r\n- **input**: Input GIS file (*GeoTIFF* | *Shapefile*) on settlement location (e.g. [WSF](https://geoservice.dlr.de/web/maps/eoc:wsf2019))\r\n- **config**: JSON file containing the config for the workflow run (e.g. [Example Config](prod/docker/sda-docker.json) )\r\n- **output**: Path of output shapefile  \r\n### Development\r\nAlternatively the **SDA** workflow can be installed on the system using the [install](install.sh) script. Make sure that the install prefix location is referenced in *PATH* (e.g. *usr/local/bin*). \r\n```shell\r\n./install.sh\r\n```\r\nAdditionally, a cwl runner must be installed to execute the individual stages of the workflow. The reference executor [cwltool](https://cwltool.readthedocs.io/en/latest/cli.html#cwltool) is recommended and can be installed as follows:\r\n```shell\r\nsudo apt-get install cwltool\r\n```\r\nFurthermore, a running instance of the **Memgraph** database joined with the **Memgraph Lab** web interface can be obtained using docker compose:\r\n```shell\r\ncd prod/local\r\ndocker compose up -d\r\n```\r\nThe workflow can then be executed as follows:\r\n```shell\r\nSettlementDelineation -i <path-to-input> -c <path-to-cfg> -o <path-to-output.shp>\r\n```\r\n\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1308.3",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1308",
+    "latest_version": "3",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1308?version=3",
+    "mapped_tools": [],
+    "name": "Settlement Delineation and Analysis",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "c++",
+        "cwl",
+        "docker",
+        "earth observation",
+        "graph"
+    ],
+    "tools": [],
+    "update_time": "2026-08-03",
+    "versions": "3",
+    "workflow_class": "Docker"
+}

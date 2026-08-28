@@ -1,0 +1,36 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-10-12",
+    "creators": [
+        "Georgina Samaha"
+    ],
+    "description": "# IndexReferenceFasta-nf\r\n===========\r\n\r\n  - [Description](#description)\r\n  - [Diagram](#diagram)\r\n  - [User guide](#user-guide)\r\n  - [Benchmarking](#benchmarking)\r\n  - [Workflow summaries](#workflow-summaries)\r\n      - [Metadata](#metadata)\r\n      - [Component tools](#component-tools)\r\n      - [Required (minimum)\r\n        inputs/parameters](#required-minimum-inputsparameters)\r\n  - [Additional notes](#additional-notes)\r\n  - [Help/FAQ/Troubleshooting](#helpfaqtroubleshooting)\r\n  - [Acknowledgements/citations/credits](#acknowledgementscitationscredits)\r\n\r\n---\r\n\r\n## Description\r\nThis is a flexible pipeline for generating common reference genome index files for WGS data analysis. IndexReferenceFasta-nf is a Nextflow (DSL2) pipeline that runs the following tools using Singularity containers:\r\n* Samtools faidx\r\n* BWA index\r\n* GATK CreateSequenceDictionary \r\n\r\n## Diagram\r\n<p align=\"center\"> \r\n<img src=\"https://user-images.githubusercontent.com/73086054/189310509-375fea4f-11fb-41ca-ba52-90760e9a5aa3.png\" width=\"80%\">\r\n</p> \r\n\r\n## User guide\r\n**1. Set up**\r\n\r\nClone this repository by running:\r\n```\r\ngit clone https://github.com/Sydney-Informatics-Hub/IndexReferenceFasta-nf.git\r\ncd IndexReferenceFasta-nf\r\n``` \r\n\r\n**2. Generate indexes**  \r\n\r\nUsers can specify which index files to create by using the `--samtools`, `--bwa`, and/or `--gatk` flags. All are optional. Run the pipeline with:\r\n\r\n```\r\nnextflow run main.nf /path/to/ref.fasta --bwa --samtools --gatk \r\n```\r\n\r\n## Benchmarking\r\n\r\n### Human hg38 reference assembly @ Pawsey's Nimbus (NCPU/task = 1)\r\n|task_id|hash     |native_id|name          |status   |exit|submit |duration  |realtime  |%cpu   |peak_rss|peak_vmem|rchar  |wchar  |\r\n|-------|---------|---------|--------------|---------|----|-------|----------|----------|-------|--------|---------|-------|-------|\r\n|3      |27/33fffc|131621   |samtools_index|COMPLETED|0   |55:44.9|12.2s     |12s       |99.20% |6.3 MB  |11.8 MB  |3 GB   |19.1 KB|\r\n|1      |80/f03e46|131999   |gatk_index    |COMPLETED|0   |55:46.7|22.6s     |22.3s     |231.90%|3.8 GB  |37.1 GB  |3.1 GB |726 KB |\r\n|2      |ea/e29535|131594   |bwa_index     |COMPLETED|0   |55:44.9|1h 50m 16s|1h 50m 15s|99.50% |4.5 GB  |4.5 GB   |12.1 GB|8.2 GB |\r\n\r\n## Workflow summaries\r\n\r\n### Metadata\r\n|metadata field     | workflow_name / workflow_version  |\r\n|-------------------|:---------------------------------:|\r\n|Version            | workflow_version                  |\r\n|Maturity           | under development                 |\r\n|Creators           | Georgie Samaha                    |\r\n|Source             | NA                                |\r\n|License            | GPL-3.0 license                   |\r\n|Workflow manager   | NextFlow                          |\r\n|Container          | None                              |\r\n|Install method     | Manual                            |\r\n|GitHub             | Sydney-Informatics-Hub/IndexReferenceFasta-nf                                |\r\n|bio.tools          | NA                                |\r\n|BioContainers      | NA                                | \r\n|bioconda           | NA                                |\r\n\r\n### Component tools\r\n\r\n* samtools/1.15.1\r\n* gatk/4.2.6.1 \r\n* bwa/0.7.17\r\n\r\n### Required (minimum) inputs/parameters\r\n\r\n* A reference genome file in fasta format.\r\n\r\n## Additional notes\r\n\r\n### Help/FAQ/Troubleshooting\r\n\r\n## Acknowledgements/citations/credits\r\n### Authors \r\n- Georgie Samaha (Sydney Informatics Hub, University of Sydney)   \r\n\r\n### Acknowledgements \r\n\r\n- This pipeline was built using the [Nextflow DSL2 template](https://github.com/Sydney-Informatics-Hub/Nextflow_DSL2_template).  \r\n- Documentation was created following the [Australian BioCommons documentation guidelines](https://github.com/AustralianBioCommons/doc_guidelines).  \r\n\r\n### Cite us to support us! \r\nAcknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities. We suggest including the following acknowledgement in any publications that follow from this work:  \r\n\r\nThe authors acknowledge the technical assistance provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney and the Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia. \r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.393.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "393",
+    "latest_version": "1",
+    "license": "LGPL-3.0",
+    "link": "https://workflowhub.eu/workflows/393?version=1",
+    "mapped_tools": [],
+    "name": "IndexReferenceFasta-nf",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bwa",
+        "bioinformatics",
+        "gatk",
+        "genomics",
+        "nextflow",
+        "samtools",
+        "wgs",
+        "index",
+        "referencegenome"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

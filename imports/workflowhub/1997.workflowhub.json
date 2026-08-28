@@ -1,0 +1,39 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-14",
+    "creators": [
+        "Maren B\u00f6se",
+        "Savas Ceylan",
+        "Johannes Kemper"
+    ],
+    "description": "## Overview\r\nThis workflow produces **synthetic shaking simulations** for historical earthquake events.  \r\nIt integrates **SeisComP**, **FinDer**, and the **Swiss, Italian, and European ShakeMap** implementation to process continuous seismic data, estimate rupture parameters, and generate **evolutionary shake maps**.\r\n\r\nIn its full configuration, WF7601 is also capable of:\r\n- Sending **event alerts** when specific trigger conditions are met.\r\n- Pushing generated ShakeMaps to an external **web portal** for dissemination.\r\n\r\n**Note:** In this distribution, both the alerting and ShakeMap publishing features are **disabled**.\r\n\r\nThe main CWL definition is provided in `WF7601.cwl`.  \r\nWorkflow metadata follows the [workflow-ro-crate-1.0](https://w3id.org/workflowhub/workflow-ro-crate/1.0) profile.\r\n\r\n## Workflow Structure\r\nThe workflow consists of the following datasets (DT) and software services (SS):\r\n\r\n1. **Data Ingestion & Preprocessing**\r\n   - **DT7601:** Continuous seismic data (waveforms) from seismic stations. Replaced by a *playback* module to mimic data stream using past earthquakes.\r\n   - **SS7602:** SeisComP \u2013 for seismic data acquisition and processing.\r\n\r\n2. **Finite Fault Estimation**\r\n   - **SS7603:** FinDer \u2013 finite fault earthquake early warning algorithm.\r\n\r\n3. **ShakeMap Generation**\r\n   - **SS7601:** Swiss, Italian and European ShakeMap \u2013 generates synthetic ground motion maps.\r\n\r\n4. **Output Storage**\r\n   - **DT7606:** Evolutionary shake maps calculated at multiple update intervals between 0-60 s.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1997",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1997?version=1",
+    "mapped_tools": [],
+    "name": "[DTC-E6] WF7601: Synthetic Shaking Workflow",
+    "number_of_steps": 6,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "dt-geo",
+        "digital twin",
+        "geophysics"
+    ],
+    "tools": [
+        "finite-source characterization using template matching (finder).",
+        "generate ground motion and shaking intensity maps.",
+        "ml-based algorithm to estimate peak motions at stations.",
+        "prepare evolutionary shake maps for output using finite fault characterization.",
+        "receive continuous seismic waveform data.",
+        "seedlink streaming to processing infrastructure."
+    ],
+    "update_time": "2025-10-14",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

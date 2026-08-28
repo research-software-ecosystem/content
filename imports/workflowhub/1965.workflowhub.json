@@ -1,0 +1,59 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-17",
+    "creators": [
+        "daniel rickert"
+    ],
+    "description": "# pb_variants \r\nA snakemake 9 based Pipeline for hifi snp, sv, cnv calling, phasing and more\r\n\r\nOnly PacBio data for now\r\n\r\n__!!THIS PIPLINE IS IN-DEVELOPMENT AND EXPERIMENTAL, USE AT YOUR OWN RISK!!__\r\n\r\n## what this tool aims to deliver:\r\n    - newest and best tools suited for HiFi data (only for now)\r\n    - singletons and trio analysis (trio is coming sometime...)\r\n    - human-first (hg38 for now), others should be possible (untested...)\r\n\r\n## included tools:\r\n- deepvariant or bcftools for snp calling\r\n- snps get used for phasing with whatshap and longphase\r\n- paraphase \r\n- trgt\r\n- hificnv \r\n- pb-cpg-tools (uses whatshap phased .bam file)\r\n- mitorsaw (just hg38)\r\n- sniffles for sv calls that get phased with longphase\r\n- sawfish for svs and cnvs (results phased by sawfish)\r\n- mosdepth, multiqc\r\n- pbmm2 for mapping\r\n- kraken2 for contamination detection (downsamples massively, needs kraken2 database)\r\n- demultiplexing of input as option, will not split the files per barcode.\r\n- for now one .bam per sample\r\n- NanoCaller for phased snp/indel calls\r\n- Variants get annotated if configured through config.yaml:\r\n    - SVs with sansa and AnnotSV\r\n    - SNPs with vep and snpsift\r\n    - both only tested with hg38 for now\r\n- if enabled, SNPs and SVs get overlaped (compared)\r\n    - svs: truvari overlaps sniffles as the \"truth\" to sawfish data for each sample\r\n    - snps: rtg-tools overlaps deepvariant or bcftools snps as the \"truth\" to nanocaller snps for each sample\r\n- if enabled, paraphase results get visualized with paraviewer\r\n\r\n## how to run\r\n- make sure you have a conda environment active with snakemake9+ (called smk9 in the runPipeline_local.sh)\r\n    - this can also be achieved by running the included setupPipeline_hpc.sh\r\n        - that script uses conda to create the env smk9 - with snakemake 9 installed already (check file smk9.yaml)\r\n- cp/mv/ln your unmapped .bam file into the root folder of this directory (pb_variants/your_bam_file_here.bam)\r\n- edit samplesheet.csv with your filename \r\n    - one sample per line, do not delete the header line (add to line2: your_bam_file_here.bam)\r\n- edit config.yaml to your liking/ folder structure (enable only things you want / need. keep in mind some analysis are hg38 only)\r\n- make sure you are in an interactive terminal session inside a screen / tmux or similar\r\n- bash runPipeline_local.sh for local installment on single-server setups, \r\n- bash runPipeline.sh on HPC \r\n- non-hpc users need to edit the config.yaml and enable deepvariant and disable deepvariant_hpc in the config.yaml:\r\nuse_deepvariant_hpc: True <- only set this to True on HPC HILBERT\r\n\r\n\r\n\r\n# DAG\r\nBefore each start, a DAG is created visualising the planned tasks for each sample.\r\nAn example:\r\n\r\n![alt text](dag.png)\r\n\r\nAll options enabled:\r\n\r\n![alt text](full.png)\r\n\r\nMinimalistic execution (and bcftools instead of Deepvariant) with only mandatory tasks:\r\n\r\n![alt text](minimalistic.png)\r\n\r\n\r\n## output files\r\n- the first step of the pipeline is to strip the kinetics data out of the .bam input file, but keep the methylation data. This makes all following processes much faster without any real data loss. \r\n- for each input sample:\r\n    - mosdepth and kraken (optional) report that get summarized with multiqc\r\n    - mapped .bam file haplotaged with whatshap and longphase\r\n    - the with whatshap phased bam is used for methylation track generation with cpg_tools\r\n    - bed/bw file for methylation tracks for IGV, should be used together with the whatshap phased output .bam file\r\n    - .vcf(.gz) file for:\r\n        - snps / indels from deepvariant or bcftools, phased with whatshap and longphase\r\n        - trgt\r\n        - paraphase\r\n        - mitorsaw\r\n        - hificnv\r\n        - sawfish sv / cnv \r\n        - svs from sniffles phased with longphase\r\n        - snps / indels from nanocaller\r\n    - phased snps and svs get annotated with snpsift and sansa and annotsv and vep   \r\n- snakemake report, rulegraph, copy of samplesheet and config.yaml with timestamp\r\n\r\n\r\n# general workflow in short:\r\n\r\n## prep the files:\r\n\r\n1. - move all .bam files into the folder pb_variants. (up to 100 at once makes sense, more overloads the hpc for sure)\r\n\t- with methylation, no kinetics needed\r\n\r\n2. - edit the config.yaml according to your needs. Mostly True/False. If unsure, keep as is but CHANGE THE OUTPUT DIRECTORY\r\n\r\n3. - edit the samplesheet.csv: keep the first line and then list all .bam files that you want to analyze in the run. all files listed in that file NEED TO BE IN THE FOLDER \r\n\r\n## now the actual pipeline execution:\r\n\r\n1. - start a screen session on the hpc\r\n\r\n2. - start an interactive job inside the screen session with at least 2 days runtime\r\n\r\n3. - cd into the folder pb_variants\r\n\r\n4. - activate the correct conda env with: \"conda activate smk9\"\r\n\r\n5. - run the pipeline with:\"bash runPipeline.sh\"\r\n\r\n\r\n## supervising the run:\r\n\r\n- check the screen regulary if you want -red colour is bad\r\n\r\n- qstat -u your_hpc_username if you want\r\n\r\n- check outputfolder if files are appearing\r\n\r\n- check clusterlogs_your_hpc_username for errors\r\n\r\n- check outputfolder/logs for errors that occured\r\n\r\n- if a multiqc_report.html is in the outputfolder then the pipeline is done\r\n\r\n- if the interactive job is done, but the pipeline is not done yet, retry\r\n\r\n- if you want to understand more, email me\r\n\r\n\r\n## transfering results:\r\n\r\n- you can transfer the complete outputfolder if you want. all results are stored in subfolders that should explain themselves.\r\n\r\n\r\n## roadmap:\r\n  trio calling : deeptrio, glnexus  -> only if there are requests for this. \r\n  assembly : hifiasm or similar -> only if there are requests for this. \r\n  str profiling: strkit, currently testing\r\n\r\n## why this work is being done:\r\n- nf-core/pacvar: https://nf-co.re/pacvar/1.0.1/\r\n    - does not run without sudo for us\r\n    - seems not mature enough (imho)\r\n    - not newest tools included\r\n    - not all wanted tools included\r\n\r\n- pacbios wdl-based workflow: https://github.com/PacificBiosciences/HiFi-somatic-WDL\r\n    - doesnt run on our hardware\r\n\r\n- other, locally developed snakemake-based workflows: (eg: https://github.com/core-unit-bioinformatics/workflow-smk-longread-variant-calling)\r\n    - not all wanted tools included\r\n\r\n- Radboud's Valentine workflow:\r\n    - not available to us\r\n    - not all wanted tools included\r\n\r\n- smrtlinks internal pipeline:\r\n    - singularity not working, limited tool options\r\n    - not all wanted tools included\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1965.2",
+    "edam_operation": [],
+    "edam_topic": [
+        "Genomics",
+        "Human genetics"
+    ],
+    "id": "1965",
+    "latest_version": "2",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/1965?version=2",
+    "mapped_tools": [
+        "annotsv",
+        "bcftools",
+        "deepvariant",
+        "fastqc",
+        "pbmm2",
+        "samtools",
+        "snakemake",
+        "sniffles",
+        "snpsift",
+        "vep"
+    ],
+    "name": "Snakemake workflow for PacBio WGS short and long variant calling, phasing and much more",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "genomics",
+        "snps",
+        "snakemake",
+        "dna-methylation",
+        "structural variants"
+    ],
+    "tools": [
+        "annotsv",
+        "bcftools",
+        "deepvariant",
+        "fastqc",
+        "pbmm2",
+        "samtools",
+        "snakemake",
+        "sniffles",
+        "snpsift",
+        "variant effect predictor (vep)",
+        "vep"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Snakemake"
+}

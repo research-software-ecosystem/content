@@ -1,0 +1,29 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-02-02",
+    "creators": [
+        "Felicita Gernhardt"
+    ],
+    "description": "# Snakemake workflow: Reconstructing raw tomography data\r\n\r\nA Snakemake worfklow for tomographically reconstructing raw data using [tomopy](https://tomopy.readthedocs.io/en/stable/).\r\n\r\n## Installation\r\n\r\nFirst download this repo and navigate to it\r\n```bash\r\ngit clone https://codebase.helmholtz.cloud/gernha62/reconstructing-raw-tomography-data.git\r\n```\r\n```bash\r\ncd /path/to/repo\r\n```\r\n(Optional) Download the example folder with:\r\n```bash\r\nwget -m -np https://doi2.psi.ch/datasets/das/work/p15/p15869/compression/MI04_02/tif\r\n```\r\nCreate a virtual environment and install all necessary packages (requires conda): \r\n```bash\r\nconda env create --name reconstr_env --file workflow/envs/reconstr.yml\r\n```\r\nActivate the new virtual environment: \r\n```bash\r\nconda activate reconstr_env\r\n```\r\n\r\n## Configuration\r\n\r\nTo configure the workflow, adapt the config file found at `config/config.yaml` . The config looks as follows:\r\n```yaml\r\nnumber_of_darks: 50\r\nnumber_of_flats: 100\r\nnumber_of_projections: 501\r\nrotation_center: 508.77\r\nraw_data:\r\n  MI04_02: doi2.psi.ch/datasets/das/work/p15/p15869/compression/MI04_02/tif\r\n```\r\n In the config, adjust `number_of_darks`, `number_of_flats`, `number_of_projections` and `rotation_center` to the number of darks, flats, projections and the rotation center of your dataset. The necessary information can usually be found in the .log file of the folder that contains the raw data. \r\n\r\n`MI04_02: doi2.psi.ch/datasets/das/work/p15/p15869/compression/MI04_02/tif` denotes the path to the example folder used for reconstruction and the keyword `MI04_02` will be used to name the output (e.g. in this case the output folder will be named `recon_dir_MI04_02`). Replace the examle path with the path to the dataset you want to reconstruct. Additionally, if you want the name of the output folder to have a different suffix, replace the keyword `MI04_02` with a name you prefer.\r\n\r\n## Run the workflow\r\n\r\nIf the .tif files contain a numerical prefix that is not separated from the actual image index, it is best to first rename the files. The files will be renamed to `00001.tif`, `00002.tif` and so on. If the renaming is needed, run:\r\n\r\n```bash\r\nsnakemake --cores 1 'logs/renamefile_MI04_02.log'\r\n```\r\nIf you replaced the keyword `MI04_02` in the config file then adjust the command accordingly (e.g. if you replaced the keyword with `Tomo_dataset` then the command should be `snakemake --cores 1 'logs/renamefile_Tomo_dataset.log'`).\r\n\r\nBefore trying to compute the reconstructions, make sure you have enough memory available (ideally more than 60 GB).\r\nTo compute the reconstructions using one core, use the command:\r\n```bash\r\nsnakemake --cores 1\r\n```\r\nIf you want to use all available cores instead, use:\r\n```bash\r\nsnakemake --cores all\r\n```\r\nThis creates a folder in `results` with the reconstructed data.\r\n\r\n## Credit\r\nThe example dataset used in this project (MI04_02 evolving magma, Mattia Pistone, University of Georgia) was taken from: https://doi.psi.ch/detail/10.16907/05a50450-767f-421d-9832-342b57c201af\r\n\r\nThe script used for reconstruction (`scripts/reconstructs_tomo_datasets.py`) was provided by Alain Studer, PSI.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.432.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "432",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/432?version=1",
+    "mapped_tools": [],
+    "name": "Reconstructing raw tomography data",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "reconstruction",
+        "tomography"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

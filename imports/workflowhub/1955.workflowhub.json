@@ -1,0 +1,48 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-10-02",
+    "creators": [
+        "Ryo Mameda",
+        "Sora Yonezawa"
+    ],
+    "description": "\r\n![GitHub last commit (branch)](https://img.shields.io/github/last-commit/RyoMameda/workflow_cwl/main)\r\n![Status](https://img.shields.io/badge/status-development-yellow)\r\n[![cwltool](https://img.shields.io/badge/cwltool-3.1.20250110105449-success)](https://github.com/common-workflow-language/cwltool/releases/tag/3.1.20250110105449)\r\n[![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)\r\n![Version](https://img.shields.io/badge/version-1.0-brightgreen)\r\n[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=python3.11&color=blue&logo=docker)](https://github.com/yonesora56/plant2human/tree/main/.devcontainer)\r\n\r\n# Gene Expression Analysis Workflow in Complex Microbiomes\r\n\r\n&nbsp;\r\n\r\n## Workflow Schema \r\n- more details: [Optimization of Mapping Tools and Investigation of Ribosomal RNA Influence for Data-Driven Gene Expression Analysis in Complex Microbiomes](https://doi.org/10.3390/microorganisms13050995)\r\n\r\n![image](./image/microorganisms-13-00995-g001.png)\r\n\r\n&nbsp;\r\n\r\n### 1. Overview of the Workflow\r\n\r\nThis analysis focuses on transcriptional profiling of complex microbiomes. It requires both metagenomic and metatranscriptomic NGS short-read data, along with annotation reference information (e.g., ribosomal RNA sequences and referenced protein databases, listed below). The metagenomic and metatranscriptomic reads should be derived from the same microbiome samples. Assembled metagenomic contigs are then used as reference sequences to map both types of reads, enabling gene-level quantification.\r\n\r\n&nbsp;\r\n\r\n### 2. Minimum Requirements\r\n\r\n- `Docker`\r\n- `cwltool`\r\n\r\n&nbsp;\r\n\r\n### 3. Workflow Component\r\n\r\nThis analysis workflow is composed of three sub-workflows; metagenomic contig assembling, reads mapping and annotation. \r\n\r\n&nbsp;\r\n\r\n#### Metagenomic contig assembling\r\n\r\nIn this process, the following steps are performed:\r\n\r\n\r\n1. Assembly process using `Megahit`. \r\n2. Prediction Protein sequences using `Prodigal`.\r\n3. Statical analysis of contigs useing `SeqKit`.\r\n\r\n&nbsp;\r\n\r\n#### Reads mapping\r\n\r\nIn this process, the following steps are performed:\r\n\r\n1. Mapping process using `BWA MEM`.\r\n2. Statical analysis of mapping results using `SAMtools`\r\n\r\n&nbsp;\r\n\r\n#### Annotation\r\n\r\nIn this process, the following steps are performed:\r\n\r\n1. Searching contaminated ribosomal RNA sequences using `BLAST`.\r\n2. Searching referenced proteins using `DIAMOND`.\r\n3. Creation GTF formated file contained annotation informations.\r\n\r\n&nbsp;\r\n\r\n### 4. Test Dataset and Your Own Dataset\r\n\r\n- If you are testing with the following files, please place them in the `Data` directory!\r\n- You can also obtain metagenomic and metatranscriptomic FASTQ files either by downloading them from public databases or by using your own samples, and then place them in your `Data` directory.\r\n\r\n#### Metagenome data\r\n\r\n- [SRR27548858](https://www.ncbi.nlm.nih.gov/sra/?term=SRR27548858)\r\n\r\n#### Metatranscriptome data\r\n\r\n- [SRR27548863](https://www.ncbi.nlm.nih.gov/sra/?term=SRR27548863)\r\n- [SRR27548864](https://www.ncbi.nlm.nih.gov/sra/?term=SRR27548864)\r\n- [SRR27548865](https://www.ncbi.nlm.nih.gov/sra/?term=SRR27548865)\r\n\r\n&nbsp;\r\n\r\n### 5. Annotation References\r\n\r\nThese reference files are used in the BLAST and DIAMOND processes. The downloaded files are available in the `Data` directory (accessed on September 17, 2025). If you wish to use the latest versions of the references, please download them using the following scripts.\r\n\r\n```bash\r\n# rRNA data from SILVA website (release138.1; accessed on 17,September,2025)\r\ncurl -O https://ftp.arb-silva.de/release_138.1/Exports/SILVA_138.1_LSUParc_tax_silva.fasta.gz\r\ncurl -O https://ftp.arb-silva.de/release_138.1/Exports/SILVA_138.1_SSUParc_tax_silva.fasta.gz\r\n\r\n# Swiss-Prot data from UniProt for diamond makedb process (accessed on 17,September,2025)\r\ncurl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz\r\n\r\n# Pfam data from InterPro (accessed on 17,September,2025)) for hmmscan proess. Appling HMMER process in this workflow is on going, however this process takes time. This step will be optional.\r\n# curl -O https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz\r\n```\r\n\r\n&nbsp;\r\n\r\n### 6. Command Execution\r\n\r\nWe recommend creating a `cache` directory to store cache and intermediate files. Since metagenomic and metatranscriptomic reads are mapped to contigs, the assembled results can be reused to reduce analytical costs. The `cwltool` properly recognizes caches when the `--cachedir` option is specified.\r\n\r\n```bash\r\n# main workflow\r\n\r\ncwltool --debug --cachedir <cache directory> --outdir <output directory> ./Worlkflow/main_w.cwl ./config/main_w.yml\r\n\r\n```\r\n\r\n&nbsp;\r\n\r\n### 7. based shell script & python script\r\n\r\nGitHub: https://github.com/RyoMameda/workflow\r\n\r\nThis workflow is developed at [DBCLS BioHackathon 2025](https://github.com/dbcls/bh25/), and the preprint of developing project is https://doi.org/10.37044/osf.io/qd5sz_v1.\r\n",
+    "discussion_links": [
+        {
+            "id": "2253",
+            "label": "GitHub issues",
+            "url": "https://github.com/RyoMameda/workflow_cwl/issues"
+        }
+    ],
+    "doi": "10.48546/workflowhub.workflow.1955.2",
+    "edam_operation": [
+        "Gene expression profiling",
+        "Genome annotation",
+        "Sequence annotation",
+        "Sequence assembly",
+        "Sequence trimming"
+    ],
+    "edam_topic": [
+        "Bioinformatics",
+        "Microbiology",
+        "Sequence analysis",
+        "Sequence assembly"
+    ],
+    "id": "1955",
+    "latest_version": "2",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1955?version=2",
+    "mapped_tools": [],
+    "name": "Gene Expression Analysis Workflow in Complex Microbiomes",
+    "number_of_steps": 3,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "annotation",
+        "metagenomics",
+        "metatranscriptomics"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "2",
+    "workflow_class": "Common Workflow Language"
+}

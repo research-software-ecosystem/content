@@ -1,0 +1,37 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-09-05",
+    "creators": [
+        "Pavel Akhtyamov"
+    ],
+    "description": "# Article-GADES\r\n\r\nThis repository represents generating and benchmarking the results of the [GADES](https://github.com/lab-medvedeva/GADES-main) package for Distance Matrix Calculation\r\n\r\n## Installation\r\n\r\n```shell\r\ngit lfs install\r\ngit clone https://github.com/lab-medvedeva/Article-GADES.git\r\ncd Article-GADES\r\n```\r\n\r\nPut the Real datasets in the MEX format to the folder `Datasets/Real`.\r\n\r\n### Running benchmark using Docker Deployment\r\n```shell\r\ndocker run --gpus all \\\r\n    -v $PWD/Datasets:/workspace/Article-GADES/Datasets \\\r\n    -v $PWD/results:/workspace/Article-GADES/results \\\r\n    akhtyamovpavel/article-gades \r\n```\r\n\r\n## Step 01. Generation of the datasets\r\n\r\n### Step 01.1. Generated Dense Datasets\r\n\r\n```shell\r\ncd ./scripts/MatricesGeneration\r\n./generate_dense.sh ../../Datasets/\r\n```\r\n\r\n### Step 01.2. Generated Sparse Datasets\r\n\r\n```shell\r\ncd ./scripts/MatricesGeneration\r\n./generate_sparse.sh ../../Datasets/\r\n```\r\n\r\n## Step 02. Benchmarking\r\n\r\n### Step 02.1. Generated Dense Datasets\r\n```shell\r\ncd ./scripts/Benchmarking\r\n\r\n./run_benchmark_generated_dense.sh ../../\r\n\r\n./run_benchmark_python_dense.sh ../../\r\n```\r\n\r\n### Step 02.2. Generated Sparse Datasets\r\n\r\n```shell\r\n\r\ncd ./scripts/Benchmarking/\r\n\r\n./run_benchmark_generated_sparse.sh ../../\r\n```\r\n\r\n### Step 02.3 Real Datasets\r\n```shell\r\n\r\ncd ./Scripts/Benchmarking/\r\n./run_benchmark_real_python.sh <path to dataset> ../../results/RealDatasets/<name of the real dataset>/\r\n./run_benchmark_real_R.sh <path to dataset> ../../results/RealDatasets/<name of the dataset>/\r\n```\r\n\r\nExample:\r\n```shell\r\n./run_benchmark.sh ../../Datasets/Real/HLCA_marrow.mtx ../results/RealDatasets/HLCA_marrow/\r\n```\r\n\r\n\r\n### Step 02.4. Ablation Study for the Batch Size Usage\r\n\r\n### Step 02.5. Ablation Study for the Memory Usage\r\n```\r\ncd ./Scripts/Benchmarking\r\n./run_benchmark_real_python_memory_usage.sh <path to dataset> ../../results/RealDatasetsBatchSizeFixedMemory/<name of the real dataset>/500/\r\n```\r\n\r\nExample:\r\n```\r\n./run_benchmark_real_python_memory_usage.sh ../../Datasets/CellLines.mtx ../../results/RealDatasetsBatchSizeFixedMemory/CellLines/500/\r\n```\r\n\r\n## Step 03. Drawing charts\r\n\r\nWe split reproducibility notebooks into two parts:\r\n* Aggregation over datasets\r\n* Plotting charts\r\n\r\n### Aggregation\r\n\r\n1. For Generated Dense datasets you could use the [GeneratedDatasetsCollector](/reproducibility/00-GeneratedDatasetsCollector.ipynb) notebook.\r\n2. For Generated Sparse datasets you could use the [GeneratedSparseCollector](/reproducibility/00-GeneratedSparseCollector.ipynb) notebook.\r\n\r\n### Analyzing datasets\r\n\r\n1. Generated datasets analyzed in the [GeneratedDatasetAnalysis](/reproducibility/GeneratedDatasetAnalysis.ipynb) notebook.\r\n2. Real datasets analyzed in the [RealDatasetAnalysis](/reproducibility/RealDatasetsAnalysis.ipynb) notebook.\r\n3. Analysis of ablation study could be found in the [reproducibility](/reproducibility/03-AblationStudy.ipynb) notebook.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1125.1",
+    "edam_operation": [
+        "Correlation",
+        "Sequence distance matrix generation"
+    ],
+    "edam_topic": [
+        "Bioinformatics"
+    ],
+    "id": "1125",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/1125?version=1",
+    "mapped_tools": [
+        "gades"
+    ],
+    "name": "GADES reproducibility workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics"
+    ],
+    "tools": [
+        "gades"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Docker"
+}

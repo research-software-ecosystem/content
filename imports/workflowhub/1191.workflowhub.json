@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-11-05",
+    "creators": [
+        "Fabian Hausmann"
+    ],
+    "description": "This repository contains the analytical pipeline for the MAXOMOD project, which focuses on the multi-omic analysis of axono-synaptic degeneration in the motor neuron disease amyotrophic lateral sclerosis (ALS). The project explores sex differences and molecular subclusters in ALS and investigates the MAPK pathway as a potential therapeutic target.\r\n\r\nFor a detailed understanding of the scientific background and the findings, refer to our paper published on [Nature Communications](https://www.nature.com/articles/s41467-024-49196-y).\r\n\r\n## Table of Contents\r\n\r\n- [Getting Started](#getting-started)\r\n  - [Prerequisites](#prerequisites)\r\n  - [Data Preparation](#data-preparation)\r\n  - [Organize Data](#organize-data)\r\n- [Reproducing Results](#reproducing-results)\r\n- [Contributing](#contributing)\r\n- [Collaboration](#collaboration)\r\n\r\n\r\n## Getting Started\r\n### Prerequisites\r\n- Git\r\n- [DVC](https://dvc.org/)\r\n- [Nextflow](https://www.nextflow.io/)\r\n- Container execution engine (e.g. [Docker](https://www.docker.com/) or [Podman](https://podman.io/))\r\n\r\nClone the git repository:\r\n\r\n```\r\ngit clone https://github.com/imsb-uke/MAXOMOD_Pipeline.git ./maxomod\r\n```\r\n\r\nEnter the cloned directory:\r\n\r\n   ``` cd maxomod ```\r\n\r\n### Data Preparation\r\n\r\nHuman sequencing data: [EGAS00001007318](https://ega-archive.org/datasets/) [due to patient data, access is restricted]\r\n\r\nMouse sequencing data: [GSE234246](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234246)\r\n\r\nProteomics data: [PXD043300](https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD043300)\r\n\r\nPhosphoproteomics data: [PXD043297](https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD043297)\r\n\r\n### Organize Data\r\n\r\nAll data should be organized in datasets using the following structures\r\n\r\n```\r\ndatasets/\r\n    consortium/\r\n        <model>/\r\n            01_received_data/\r\n                <omic>/\r\n                cohort/\r\n```\r\n\r\nThe pipeline expects `fastq.gz` files for the sequencing data, `txt` files for the proteomics data and `csv` files for the phosphoproteomics data.\r\n\r\nPlease, use DVC to see, which exact file names are required:\r\n\r\n```bash\r\ndvc status srna_organize_samples proteomics_organize_samples phosphoproteomics_organize_samples rnaseq_nextflow\r\n```\r\n\r\n#### Automatic download (optional)\r\n\r\nTo automatically download the RNAseq & miRNAseq data we provide a download script, which can be executed using the following commands:\r\n\r\n```bash\r\ndvc unfreeze sra_prefetch sra_fastq_dump sra_organize\r\ndvc repro\r\n```\r\n\r\n\r\n## Reproducing Results\r\n\r\nTo reproduce the analysis results, execute the following command:\r\n\r\n```bash\r\ndvc repro\r\n```\r\n\r\nThis command will run the predefined pipelines to process and analyze the data according to the methodology described in the associated publication.\r\nAll steps will be executed in a docker container automatically using the `docker_wrapper.sh` script. All docker images will be automatically downloaded and are available in the [Packages section](https://github.com/orgs/imsb-uke/packages?repo_name=MAXOMOD_Pipeline) on GitHub.\r\n\r\n## Contributing\r\nWe welcome contributions to enhance the reproducibility and scope of the analysis.\r\n\r\n## Collaboration\r\n\r\nFor questions or collaboration offers, please contact the project's principal investigators via email provided on the MAXOMOD project page: [MAXOMOD Contact Information](https://www.gesundheitsforschung-bmbf.de/de/maxomod-multi-omische-analyse-axono-synaptischer-degeneration-bei-motoneuronerkrankungen-9409.php).\r\n\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1191.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1191",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1191?version=1",
+    "mapped_tools": [],
+    "name": "Multiomic ALS signatures highlight sex differences and molecular subclusters and identify the MAPK pathway as therapeutic target",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "DVC"
+}

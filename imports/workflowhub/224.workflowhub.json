@@ -1,0 +1,36 @@
+{
+    "content_blobs": [],
+    "create_time": "2021-11-08",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "Trim and filter reads; can run alone or as part of a combined workflow for large genome assembly. \r\n\r\n* What it does: Trims and filters raw sequence reads according to specified settings. \r\n* Inputs: Long reads (format fastq); Short reads R1 and R2 (format fastq) \r\n* Outputs: Trimmed and filtered reads: fastp_filtered_long_reads.fastq.gz (But note: no trimming or filtering is on by default), fastp_filtered_R1.fastq.gz, fastp_filtered_R2.fastq.gz\r\n* Reports: fastp report on long reads, html; fastp report on short reads, html\r\n* Tools used: fastp (Note. The latest version (0.20.1) of fastp has an issue displaying plot results. Using version 0.19.5 here instead until this is rectified). \r\n* Input parameters: None required, but recommend removing the long reads from the workflow if not using any trimming/filtering settings. \r\n\r\nWorkflow steps:\r\n\r\nLong reads: fastp settings: \r\n* These settings have been changed from the defaults (so that all filtering and trimming settings are now disabled). \r\n* Adapter trimming options: Disable adapter trimming: yes\r\n* Filter options: Quality filtering options: Disable quality filtering: yes\r\n* Filter options: Length filtering options: Disable length filtering: yes\r\n* Read modification options: PolyG tail trimming: Disable\r\n* Output options: output JSON report: yes\r\n\r\nShort reads: fastp settings:\r\n* adapter trimming (default setting: adapters are auto-detected)\r\n* quality filtering (default: phred quality 15), unqualified bases limit (default = 40%), number of Ns allowed in a read (default = 5)\r\n* length filtering (default length = min 15)\r\n* polyG tail trimming (default = on for NextSeq/NovaSeq data which is auto detected)\r\n* Output options: output JSON report: yes\r\n\r\nOptions:\r\n* Change any settings in fastp for any of the input reads. \r\n* Adapter trimming: input the actual adapter sequences. (Alternative tool for long read adapter trimming: Porechop.) \r\n* Trimming n bases from ends of reads if quality less than value x  (Alternative tool for trimming long reads: NanoFilt.)\r\n* Discard post-trimmed reads if length is < x (e.g. for long reads, 1000 bp)\r\n* Example filtering/trimming that you might do on long reads: remove adapters (can also be done with Porechop), trim bases from ends of the reads with low quality (can also be done with NanoFilt), after this can keep only reads of length x (e.g. 1000 bp) \r\n\r\n\r\nInfrastructure_deployment_metadata: Galaxy Australia (Galaxy)",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.224.1",
+    "edam_operation": [
+        "Sequencing quality control"
+    ],
+    "edam_topic": [
+        "Sequence assembly"
+    ],
+    "id": "224",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/224?version=1",
+    "mapped_tools": [
+        "fastp"
+    ],
+    "name": "Trim and filter reads - fastp",
+    "number_of_steps": 2,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "large-genome-assembly"
+    ],
+    "tools": [
+        "fastp"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

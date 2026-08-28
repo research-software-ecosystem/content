@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-02-07",
+    "creators": [
+        "W. Daniel Kissling",
+        "Wessel Mulder",
+        "Jinhu Wang",
+        "Yifang Shi"
+    ],
+    "description": "Laserfarm (https://doi.org/10.1016/j.ecoinf.2022.101836) is a high-throughput workflow for generating geospatial data products of ecosystem structure using LiDAR point clouds from national or regional airborne laser scanning (ALS) surveys. The workflow example here shows the application of the Laserfarm workflow to the 7.5 km2 large Reserve Naturelle Nationale du Bagnas ('Bagnas') in France (3.514360 E, 43.314332 N). The work has been performed in the context of the EU project MAMBO (Modern Approaches to the Monitoring of Bi\u043ediversity, https://doi.org/10.3897/rio.9.e116951), in which the automated execution of workflows for habitat condition metrics from LiDAR is tested for EU habitat monitoring. In this context, the Laserfarm workflow has been applied to a number of MAMBO demonstration sites from different European countries (Denmark, France, Netherlands, United Kingdom, Malta). For each demonstration site, the Jupyter Notebooks for the Laserfarm workflow, the derived data products (GeoTIFF files) and their visualization (maps in PDF format), and the study site boundaries (shapefiles) are stored in a Zenodo repository (https://doi.org/10.5281/zenodo.14745309). The Zenodo repository also provides a detailed methodology description. The raw (input) data is stored on a public data repository (https://doi.org/10.48546/workflowhub.datafile.5.1). The data of vegetation structure metrics from each demonstration site have been described in an accompanying data paper (https://doi.org/10.1016/j.dib.2025.111548).\r\n\r\nHere on WorkflowHub, the following Jupyter Notebooks are provided to show how the Laserfarm workflow has been implemented for the Reserve Naturelle Nationale du Bagnas:\r\n\r\n1_Retiling.ipynb: \r\nRe-tiles the raw LiDAR point clouds into smaller chunks for further efficient, scalable and distributed processing. The raw LiDAR point clouds were accessed from a national LiDAR repository and subsequently clipped to the boundaries of the study area (here Reserve Naturelle Nationale du Bagnas). The Jupyter Notebook requires to define a regular grid for re-tiling and a spatial resolution (tile mesh size) for the final output of the workflow (GeoTIFF files). The regular grid is specified with the minimum and maximum of the X and Y coordinates (min_x, max_x, min_y, max_y) of the bounding box around the region of interest and the number of tiles (n_tiles_side) along the side of the bounding box. The specifications of the re-tiling grid are accessed through a text file in the Jupyter Notebook (\u2018grids.txt\u2019). \r\n\r\n2_Normalization.ipynb: \r\nNormalizes the point cloud heights (z-values) relative to the terrain surface by calculating the normalized height for each individual point as the height relative to the lowest point within a grid cell. Requires defining a spatial resolution of the grid cell size for normalization (here 1 m). \r\n\r\n3_Feature_extraction_veg.ipynb: \r\nCalculates LiDAR metrics (\u2018features\u2019) with vegetation points, e.g. related to vegetation height, density, and vertical variability. Requires defining the spatial resolution (tile mesh size) for the metric calculation (here 10 m), the list of features, and the ASPRS standard point classes which are considered to be vegetation points.\r\n\r\n4_Feature_extraction_all.ipynb: \r\nCalculates LiDAR metrics (\u2018features\u2019) of openness which use all points (not only vegetation points), namely the pulse penetration ratio (i.e. the ratio of the number of ground points to the total number of points within a grid cell). Requires defining the spatial resolution (tile mesh size) for the metric calculation (here 10 m) and the list of features (here only the pulse penetration ratio).\r\n\r\n5_Geotiff_export_veg.ipynb: \r\nRasterizes the extracted features of vegetation (e.g. related to vegetation height, density, and vertical variability) and exports them as raster layers (here GeoTIFF format). Requires defining a country-specific code of the coordinate reference system (EPSG code) which is loaded with a text file (\u2018epsgs.txt\u2019).\r\n\r\n6_Geotiff_export_all.ipynb: \r\nRasterizes the extracted features of openness (here pulse penetration ratio) and exports them as raster layers (here GeoTIFF format). Requires defining a country-specific code of the coordinate reference system (EPSG code) which is loaded with a text file (\u2018epsgs.txt\u2019).\r\n\r\nMore general information about the Laserfarm workflow can be found in the user manual (https://laserfarm.readthedocs.io/en/latest/) and on GitHub (https://github.com/eEcoLiDAR/Laserfarm). The current version of Laserfarm is available from PyPI (https://pypi.org/project/laserfarm/) or Zenodo (https://doi.org/10.5281/zenodo.3842780). An example of a country-wide dataset that has been produced with the Laserfarm workflow has been published in a data paper (https://doi.org/10.1016/j.dib.2022.108798). Additional information on the Jupyter Notebooks provided here is available from a Zenodo repository (https://doi.org/10.5281/zenodo.14745309).\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1297.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1297",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/1297?version=1",
+    "mapped_tools": [],
+    "name": "Laserfarm Jupyter Notebooks for Reserve Naturelle Nationale du Bagnas",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "biodiversity",
+        "ecology",
+        "python",
+        "workflows",
+        "jupyter"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Jupyter"
+}

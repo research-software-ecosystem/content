@@ -1,0 +1,38 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-12-18",
+    "creators": [
+        "Marie-Emilie  Gauthier",
+        "Craig Windell",
+        "Magdalena Antczak",
+        "Roberto Barrero"
+    ],
+    "description": "# ONTViSc (ONT-based Viral Screening for Biosecurity)\r\n\r\n## Introduction\r\neresearchqut/ontvisc is a Nextflow-based bioinformatics pipeline designed to help diagnostics of viruses and viroid pathogens for biosecurity. It takes fastq files generated from either amplicon or whole-genome sequencing using Oxford Nanopore Technologies as input.\r\n\r\nThe pipeline can either: 1) perform a direct search on the sequenced reads, 2) generate clusters, 3) assemble the reads to generate longer contigs or 4) directly map reads to a known reference. \r\n\r\nThe reads can optionally be filtered from a plant host before performing downstream analysis.\r\n\r\n## Pipeline overview\r\n- Data quality check (QC) and preprocessing\r\n  - Merge fastq files (Fascat, optional)\r\n  - Raw fastq file QC (Nanoplot)\r\n  - Trim adaptors (PoreChop ABI - optional)\r\n  - Filter reads based on length and/or quality (Chopper - optional)\r\n  - Reformat fastq files so read names are trimmed after the first whitespace (bbmap)\r\n  - Processed fastq file QC (if PoreChop and/or Chopper is run) (Nanoplot)\r\n- Host read filtering\r\n  - Align reads to host reference provided (Minimap2)\r\n  - Extract reads that do not align for downstream analysis (seqtk)\r\n- QC report\r\n  - Derive read counts recovered pre and post data processing and post host filtering\r\n- Read classification analysis mode\r\n- Clustering mode\r\n  - Read clustering (Rattle)\r\n  - Convert fastq to fasta format (seqtk)\r\n  - Cluster scaffolding (Cap3)\r\n  - Megablast homology search against ncbi or custom database (blast)\r\n  - Derive top candidate viral hits\r\n  - Align reads back to top reference and derive coverage statistics (mosdepth and coverM)\r\n- De novo assembly mode\r\n  - De novo assembly (Canu or Flye)\r\n  - Megablast homology search against ncbi or custom database or reference (blast)\r\n  - Derive top candidate viral hits\r\n  - Align reads back to top reference and derive coverage statistics (mosdepth and coverM)\r\n- Read classification mode\r\n  - Option 1 Nucleotide-based taxonomic classification of reads (Kraken2, Braken)\r\n  - Option 2 Protein-based taxonomic classification of reads (Kaiju, Krona)\r\n  - Option 3 Convert fastq to fasta format (seqtk) and perform direct homology search using megablast (blast)\r\n- Map to reference mode\r\n  - Align reads to reference fasta file (Minimap2) and derive bam file and alignment statistics (Samtools)\r\n\r\nCode and detailed instructions can be found [here](https://github.com/eresearchqut/ontvisc). A comprehensive, step-by-step guide on setting up and executing the ONTViSc pipeline across three high-performance computing systems hosted by Australian research and computing facilities - Lyra (Queensland University of Technology), Gadi (National Computational Infrastructure), and Setonix (Pawsey) - utilising the Australian Nextflow Seqera Service, can be found [here](https://mantczakaus.github.io/ontvisc_hpc_seqera_service_guide/).\r\n\r\n## Authors\r\nMarie-Emilie Gauthier <gauthiem@qut.edu.au>  \r\nCraig Windell <c.windell@qut.edu.au>  \r\nMagdalena Antczak <magdalena.antczak@qcif.edu.au>  \r\nRoberto Barrero <roberto.barrero@qut.edu.au>  \r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.683.3",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "683",
+    "latest_version": "3",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/683?version=3",
+    "mapped_tools": [],
+    "name": "ONTViSc (ONT-based Viral Screening for Biosecurity)",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "assembly",
+        "bioinformatics",
+        "nextflow",
+        "ont",
+        "virology",
+        "virus",
+        "blast",
+        "singularity"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "3",
+    "workflow_class": "Nextflow"
+}

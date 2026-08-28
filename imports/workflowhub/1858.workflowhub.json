@@ -1,0 +1,26 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-08-12",
+    "creators": [
+        "Zhixing Feng"
+    ],
+    "description": "# NanoFreeLunch\r\n\r\nDetecting DNA modifications quantitatively from Nanopore data without using raw signals.\r\n\r\n# Installation\r\n\r\n1. Install Julia from https://julialang.org/. Do Not use Julia in containers like docker or singularity. \r\n2. Enter the folder of NanoFreeLunch and type `julia setup.jl`.\r\n3. The executable can be found in build/bin/, add the folder to PATH or add softlink of the executable to the folder in your PATH.\r\n\r\n**Warning**: you might experience slow package downloading or get error like `Exception: RequestError: HTTP/1.1 200 Connection established ` if Julia server connection is unstable in your region. You could change your Julia server by typing `export JULIA_PKG_SERVER=https://mirrors.pku.edu.cn/julia` and try again. Here is a list of alternative Julia package servers: \r\n```\r\nhttps://mirrors.pku.edu.cn/julia\r\nhttps://mirrors.sjtug.sjtu.edu.cn/julia\r\nhttps://mirrors.nju.edu.cn/julia\r\nhttps://releases.tongyuan.cc/juliapkg/original\r\n```\r\n\r\n# Demo \r\nA quick demo is available at https://gitee.com/zhixingfeng/nfl-demo/tree/main/demo.\r\n\r\n# Supporting data and code\r\nThe supporting data and code to reproduce the results are available at https://gitee.com/zhixingfeng/nfl-demo. \r\n\r\n# Usage \r\n## Extracting features from aligned reads\r\n\r\n### `prepdata [options] [flags] bamfile reffile locifile outdir`\r\n\r\n### Args\r\n\r\n- `<modelfile>`  \r\n  The model file, which is the output file of `nfl train`.\r\n\r\n- `<Xdata_dir>`  \r\n  The `Xdata` folder in the output directory of `nfl prepdata`.\r\n\r\n- `<outfile>`  \r\n  The output file (predicted modification level for qualitative detection or probability for qualitative detection).\r\n\r\n### Options\r\n\r\n- `-e`, `--esp <0.001>`  \r\n  Precision threshold. Modification level <= `esp` will be set to 0, and modification level >= `1-esp` will be set to 1.\r\n\r\n- `-s`, `--subset <\"\">`  \r\n  Use a subset of features (default: using all the features).\r\n\r\n- `--objective <reg:squarederror>`  \r\n  Default is `reg:squarederror`. Use `reg:logistic` for direct regression instead of logit transformation.\r\n\r\n### Flags\r\n\r\n- `-h`, `--help`  \r\n  Print this help message.\r\n\r\n\r\n# License\r\nThe software is under GPL3 and the data in `test/data` and `test/results` are under the CC0 public domain waiver. \r\n\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1858.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1858",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/1858?version=1",
+    "mapped_tools": [],
+    "name": "NanoFreeLunch",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2025-08-20",
+    "versions": "1",
+    "workflow_class": "Unrecognized workflow type"
+}

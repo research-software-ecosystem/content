@@ -1,0 +1,60 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-06-02",
+    "creators": [],
+    "description": "version 1.0, 160318, published at https://github.com/Stortebecker/secretome_prediction\n\n## Associated Tutorial\n\nThis workflows is part of the tutorial [Secretome Prediction](https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/secretome-prediction/tutorial.html), available in the [GTN](https://training.galaxyproject.org)\n\n\n\n\n\n## Thanks to...\n\n**Tutorial Author(s)**: [Florian Christoph Sigloch](https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/), [Bj\u00f6rn Gr\u00fcning](https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/)\n\n**Tutorial Contributor(s)**: [Nicola Soranzo](https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/), [Saskia Hiltemann](https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/), [Bj\u00f6rn Gr\u00fcning](https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/), [Melanie F\u00f6ll](https://training.galaxyproject.org/training-material/hall-of-fame/foellmelanie/), [B\u00e9r\u00e9nice Batut](https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/), [William Durand](https://training.galaxyproject.org/training-material/hall-of-fame/willdurand/), [Clemens Blank](https://training.galaxyproject.org/training-material/hall-of-fame/blankclemens/), [Florian Christoph Sigloch](https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/), [Niall Beard](https://training.galaxyproject.org/training-material/hall-of-fame/njall/), [Helena Rasche](https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/), [Martin \u010cech](https://training.galaxyproject.org/training-material/hall-of-fame/martenson/), [Armin Dadras](https://training.galaxyproject.org/training-material/hall-of-fame/dadrasarmin/)\n\n**Funder(s)**: [ELIXIR Europe](https://training.galaxyproject.org/training-material/hall-of-fame/elixir-europe/), [de.NBI](https://training.galaxyproject.org/training-material/hall-of-fame/deNBI/), [University of Freiburg](https://training.galaxyproject.org/training-material/hall-of-fame/uni-freiburg/)\n\n[![gtn star logo followed by the word workflows](https://training.galaxyproject.org/training-material/assets/branding/gtn-workflows.png)](https://training.galaxyproject.org/training-material/)",
+    "discussion_links": [
+        {
+            "id": "1709",
+            "label": "GTN Matrix",
+            "url": "https://matrix.to/#/%23galaxyproject_admin:gitter.im"
+        }
+    ],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1417",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/1417?version=1",
+    "mapped_tools": [
+        "uniprot",
+        "wolf_psort"
+    ],
+    "name": "Secreted Proteins Via GO Annotation And WoLF PSORT For shCTSB Paper",
+    "number_of_steps": 28,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "gtn",
+        "galaxy",
+        "proteomics"
+    ],
+    "tools": [
+        "bg_uniq",
+        "extracts uniprot accessions from all proteins in the input list that are predicted by wolfpsort to be lysosomal and/or extracellular.\nconvert characters1",
+        "filters all proteins that are predicted to reside extracellularly.\nfilter1",
+        "filters all proteins that are predicted to reside in lysosomes.\nfilter1",
+        "filters out all proteins in the input protein list of interest that are annotated as \"extracellular region\" and \"lysosome\" and \"plasma membrane\" excluding \"extracellular organelle\" and \"cytoplasmic side of plasma membrane\"\ncomp1",
+        "go:0005576 \"extracellular region\"\nget_subontology_from",
+        "go:0005576 \"extracellular region\"\nterm_id_vs_term_name",
+        "go:0005764 \"lysosome\"\nget_subontology_from",
+        "go:0005764 \"lysosome\"\nterm_id_vs_term_name",
+        "go:0005887 \"integral component of plasma membrane\"\nget_subontology_from",
+        "go:0005887 \"integral component of plasma membrane\"\nterm_id_vs_term_name",
+        "go:0009986 \"cell surface\"\nget_subontology_from",
+        "go:0009986 \"cell surface\"\nterm_id_vs_term_name",
+        "go:0043230 \"extracellular organelle\"\nget_subontology_from",
+        "go:0043230 \"extracellular organelle\"\nterm_id_vs_term_name",
+        "removes comment lines at the head of the uniprot go database file.\ngrep1",
+        "tp_cut_tool",
+        "tp_easyjoin_tool",
+        "tp_sorted_uniq",
+        "uniprot",
+        "wolf psort",
+        "wolf_psort"
+    ],
+    "update_time": "2025-06-02",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

@@ -1,0 +1,44 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-06-05",
+    "creators": [
+        "Bundit Boonyarit",
+        "Matin Kositchutima",
+        "Tisorn Na Phattalung",
+        "Nattawin Yamprasert",
+        "Chanitra Thuwajit",
+        "Thanyada Rungrotmongkol",
+        "Sarana Nutanong"
+    ],
+    "description": "# SynProtX\r\n\r\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13285494.svg)](https://doi.org/10.5281/zenodo.13285494)\r\n\r\nAn official implementation of our research paper **\"SynProtX: A Large-Scale Proteomics-Based Deep Learning Model for Predicting Synergistic Anticancer Drug Combinations\"**.\r\n\r\nSynProtX is a deep learning model that integrates large-scale proteomics data, molecular graphs, and chemical fingerprints to predict synergistic effects of anticancer drug combinations. It provides robust performance across tissue-specific and study-specific datasets, enhancing reproducibility and biological relevance in drug synergy prediction.\r\n\r\n## Setting up environment\r\n\r\nWe use [Miniconda](https://docs.anaconda.com/miniconda/) to manage Python dependencies in this project. To reproduce our environment, please run the following script in the terminal:\r\n\r\n```sh\r\nconda env create -f env.yml\r\nconda activate SynProtX\r\n```\r\n\r\n## Downloading raw data\r\n\r\nDatasets, hyperparameters, and model checkpoints can be downloaded through [Zenodo](https://doi.org/10.5281/zenodo.13285494).\r\n\r\n## Generating dataset\r\n\r\nA tarball will be obtained after download. After file extraction, move all nested folders to the root of this project directory. You might need to move all files in `data/export` up to `data` folder. Otherwise, you will run the Jupyter Notebook files to generate mandatory data. Let\u2019s take a look at `ipynb` folder. Run the following files in order if you want to replicate our exported data.\r\n\r\n- `01_drugcomb_clean.ipynb` \u2192 `cleandata_cancer.csv`\r\n- `02_CCLE_gene_expression` \u2192 `CCLE_expression_cleaned.csv`\r\n- `03_omics_preprocess` \u2192 `protein_omics_data_cleaned.csv`\r\n- `04_drugcomb_gene_prot_clean` \u2192 `data_preprocessing_gene.pkl`, `data_drugcomb.pkl`, `data_preprocessing_protein.pkl`\r\n- `05_graph_generate.ipynb` \u2192 `nps_intersected` folder\r\n- `06_smiles_feat_generate.ipynb` \u2192 `smiles_graph_data.pkl`\r\n- `07_to_ecfp6_deepsyn.ipynb` \u2192 `deepsyn_drug_row.npy`, `deepsyn_drug_col.npy`\r\n\r\n> If the console shows an error indicating that SMILES not found, you MUST run the file `06_smiles_feat_generate.ipynb` again to regenerate data.\r\n\r\n## Training and testing\r\n\r\nTo execute a training and testing task for our model, run the following script\r\n\r\n```sh\r\npython synprotx/<model>.py -d <database> -m <mode>\r\n```\r\n\r\nPossible options are listed below.\r\n\r\n- `model` represents the name of the model to run. Must be one of `gat`, `gcn`, `attentivefp` and `gatfp`.\r\n- `--database`/`-d` specifies data source to train the model on. Must be one of `almanac-breast`, `almanac-lung`, `almanac-ovary`, `almanac-skin`, `friedman`, `oneil`.\r\n- `--mode`/`-m` input must be either `clas`, for classification task, or `regr`, for regression task. Default to `clas`\r\n- Flags `--no-feamol`, `--no-feagene`, `--no-feaprot` disable the molecule branch, gene expression branch, and protein expression branch, respectively, when propagate through the model.\r\n\r\n**Note:** There are more options to configure. Execute `python  synprotx/<model>.py -h` for a more detailed description.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1726.3",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Biomedical science",
+        "Computational biology",
+        "Drug discovery",
+        "Machine learning",
+        "Translational medicine"
+    ],
+    "id": "1726",
+    "latest_version": "3",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1726?version=3",
+    "mapped_tools": [],
+    "name": "SynProtX",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "cheminformatics",
+        "machine learning",
+        "proteomics"
+    ],
+    "tools": [],
+    "update_time": "2025-06-05",
+    "versions": "2",
+    "workflow_class": "Python"
+}

@@ -1,0 +1,62 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-06-10",
+    "creators": [
+        "Ivan Topolsky",
+        "Kim Philipp Jablonski"
+    ],
+    "description": "<!-- markdownlint-disable MD013 MD041 -->\r\n\r\n![Logo](https://cbg-ethz.github.io/V-pipe/img/logo.svg)\r\n\r\n[![bio.tools](https://img.shields.io/badge/bio-tools-blue.svg)](https://bio.tools/V-Pipe)\r\n[![Snakemake](https://img.shields.io/badge/snakemake-\u22657.11.0-blue.svg)](https://snakemake.github.io/snakemake-workflow-catalog/?usage=cbg-ethz/V-pipe)\r\n[![Deploy Docker image](https://github.com/cbg-ethz/V-pipe/actions/workflows/deploy-docker.yaml/badge.svg)](https://github.com/cbg-ethz/V-pipe/pkgs/container/v-pipe)\r\n[![Tests](https://github.com/cbg-ethz/V-pipe/actions/workflows/run_regression_tests.yaml/badge.svg)](https://github.com/cbg-ethz/V-pipe/actions/workflows/run_regression_tests.yaml)\r\n[![Mega-Linter](https://github.com/cbg-ethz/V-pipe/actions/workflows/mega-linter.yml/badge.svg)](https://github.com/cbg-ethz/V-pipe/actions/workflows/mega-linter.yml)\r\n[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\r\n\r\nV-pipe is a workflow designed for the analysis of next generation sequencing (NGS) data from viral pathogens. It produces a number of results in a curated format (e.g., consensus sequences, SNV calls, local/global haplotypes).\r\nV-pipe is written using the Snakemake workflow management system.\r\n\r\n## Usage\r\n\r\nDifferent ways of initializing V-pipe are presented below. We strongly encourage you to deploy it [using the quick install script](#using-quick-install-script), as this is our preferred method.\r\n\r\nTo configure V-pipe refer to the documentation present in [config/README.md](config/README.md).\r\n\r\nV-pipe expects the input samples to be organized in a [two-level](config/README.md#samples) directory hierarchy,\r\nand the sequencing reads must be provided in a sub-folder named `raw_data`. Further details can be found on the [website](https://cbg-ethz.github.io/V-pipe/usage/).\r\nCheck the utils subdirectory for [mass-importers tools](utils/README.md#samples-mass-importers) that can assist you in generating this hierarchy.\r\n\r\nWe provide [virus-specific base configuration files](config/README.md#virus-base-config) which contain handy defaults for, e.g., HIV and SARS-CoV-2. Set the virus in the general section of the configuration file:\r\n\r\n```yaml\r\ngeneral:\r\n  virus_base_config: hiv\r\n```\r\n\r\nAlso see [snakemake's documentation](https://snakemake.readthedocs.io/en/stable/executing/cli.html) to learn more about the command-line options available when executing the workflow.\r\n\r\n\r\n### Tutorials\r\n\r\nTutorials for your first steps with V-pipe for different scenarios are available in the [docs/](docs/README.md) subdirectory.\r\n\r\n\r\n### Using quick install script\r\n\r\nTo deploy V-pipe, use the [installation script](utils/README.md#quick-installer) with the following parameters:\r\n\r\n```bash\r\ncurl -O 'https://raw.githubusercontent.com/cbg-ethz/V-pipe/master/utils/quick_install.sh'\r\n./quick_install.sh -w work\r\n```\r\n\r\nThis script will download and install miniconda, checkout the V-pipe git repository (use `-b` to specify which branch/tag) and setup a work directory (specified with `-w`) with an executable script that will execute the workflow:\r\n\r\n```bash\r\ncd work\r\n# edit config.yaml and provide samples/ directory\r\n./vpipe --jobs 4 --printshellcmds --dry-run\r\n```\r\n\r\nTest data to test your installation is available with the tutorials provided in the [docs/](docs/README.md) subdirectory.\r\n\r\n### Using Docker\r\n\r\nNote: the [docker image](https://github.com/cbg-ethz/V-pipe/pkgs/container/v-pipe) is only setup with components to run the workflow for HIV and SARS-CoV-2 virus base configurations.\r\nUsing V-pipe with other viruses or configurations might require internet connectivity for additional software components.\r\n\r\nCreate `config.yaml` or `vpipe.config` and then populate the `samples/` directory.\r\nFor example, the following config file could be used:\r\n\r\n```yaml\r\ngeneral:\r\n  virus_base_config: hiv\r\n\r\noutput:\r\n  snv: true\r\n  local: true\r\n  global: false\r\n  visualization: true\r\n  QA: true\r\n```\r\n\r\nThen execute:\r\n\r\n```bash\r\ndocker run --rm -it -v $PWD:/work ghcr.io/cbg-ethz/v-pipe:master --jobs 4 --printshellcmds --dry-run\r\n```\r\n\r\n### Using Snakedeploy\r\n\r\nFirst install [mamba](https://github.com/conda-forge/miniforge#mambaforge), then create and activate an environment with Snakemake and Snakedeploy:\r\n\r\n```bash\r\nmamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy\r\nconda activate snakemake\r\n```\r\n\r\nSnakemake's [official workflow installer Snakedeploy](https://snakemake.github.io/snakemake-workflow-catalog/?usage=cbg-ethz/V-pipe) can now be used:\r\n\r\n```bash\r\nsnakedeploy deploy-workflow https://github.com/cbg-ethz/V-pipe --tag master .\r\n# edit config/config.yaml and provide samples/ directory\r\nsnakemake --use-conda --jobs 4 --printshellcmds --dry-run\r\n```\r\n\r\n## Dependencies\r\n\r\n- **[Conda](https://conda.io/docs/index.html)**\r\n\r\n  Conda is a cross-platform package management system and an environment manager application. Snakemake uses mamba as a package manager.\r\n\r\n- **[Snakemake](https://snakemake.readthedocs.io/)**\r\n\r\n  Snakemake is the central workflow and dependency manager of V-pipe. It determines the order in which individual tools are invoked and checks that programs do not exit unexpectedly.\r\n\r\n- **[VICUNA](https://www.broadinstitute.org/viral-genomics/vicuna)**\r\n\r\n  VICUNA is a _de novo_ assembly software designed for populations with high mutation rates. It is used to build an initial reference for mapping reads with ngshmmalign aligner when a `references/cohort_consensus.fasta` file is not provided. Further details can be found in the [wiki](https://github.com/cbg-ethz/V-pipe/wiki/getting-started#input-files) pages.\r\n\r\n### Computational tools\r\n\r\nOther dependencies are managed by using isolated conda environments per rule, and below we list some of the computational tools integrated in V-pipe:\r\n\r\n- **[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)**\r\n\r\n  FastQC gives an overview of the raw sequencing data. Flowcells that have been overloaded or otherwise fail during sequencing can easily be determined with FastQC.\r\n\r\n- **[PRINSEQ](http://prinseq.sourceforge.net/)**\r\n\r\n  Trimming and clipping of reads is performed by PRINSEQ. It is currently the most versatile raw read processor with many customization options.\r\n\r\n- **[ngshmmalign](https://github.com/cbg-ethz/ngshmmalign)**\r\n\r\n  We perform the alignment of the curated NGS data using our custom ngshmmalign that takes structural variants into account. It produces multiple consensus sequences that include either majority bases or ambiguous bases.\r\n\r\n- **[bwa](https://github.com/lh3/bwa)**\r\n\r\n  In order to detect specific cross-contaminations with other probes, the Burrows-Wheeler aligner is used. It quickly yields estimates for foreign genomic material in an experiment.\r\n  Additionally, It can be used as an alternative aligner to ngshmmalign.\r\n\r\n- **[MAFFT](http://mafft.cbrc.jp/alignment/software/)**\r\n\r\n  To standardise multiple samples to the same reference genome (say HXB2 for HIV-1), the multiple sequence aligner MAFFT is employed. The multiple sequence alignment helps in determining regions of low conservation and thus makes standardisation of alignments more robust.\r\n\r\n- **[Samtools and bcftools](https://www.htslib.org/)**\r\n\r\n  The Swiss Army knife of alignment postprocessing and diagnostics. bcftools is also used to generate consensus sequence with indels.\r\n\r\n- **[SmallGenomeUtilities](https://github.com/cbg-ethz/smallgenomeutilities)**\r\n\r\n  We perform genomic liftovers to standardised reference genomes using our in-house developed python library of utilities for rewriting alignments.\r\n\r\n- **[ShoRAH](https://github.com/cbg-ethz/shorah)**\r\n\r\n  ShoRAh performs SNV calling and local haplotype reconstruction by using bayesian clustering.\r\n\r\n- **[LoFreq](https://csb5.github.io/lofreq/)**\r\n\r\n  LoFreq (version 2) is SNVs and indels caller from next-generation sequencing data, and can be used as an alternative engine for SNV calling.\r\n\r\n- **[SAVAGE](https://bitbucket.org/jbaaijens/savage) and [Haploclique](https://github.com/cbg-ethz/haploclique)**\r\n\r\n  We use HaploClique or SAVAGE to perform global haplotype reconstruction for heterogeneous viral populations by using an overlap graph.\r\n\r\n## Citation\r\n\r\nIf you use this software in your research, please cite:\r\n\r\nFuhrmann, L., Jablonski, K. P., Topolsky, I., Batavia, A. A., Borgsmueller, N., Icer Baykal, P., Carrara, M. ... & Beerenwinkel, (2023).\r\n\"V-Pipe 3.0: A Sustainable Pipeline for Within-Sample Viral Genetic Diversity Estimation.\"\r\n_bioRxiv_, doi:[10.1101/2023.10.16.562462](https://doi.org/10.1101/2023.10.16.562462).\r\n\r\n## Contributions\r\n\r\n- [Ivan Topolsky\\* ![orcid]](https://orcid.org/0000-0002-7561-0810), [![github]](https://github.com/dryak)\r\n- [Pelin Icer Baykal ![orcid]](https://orcid.org/0000-0002-9542-5292), [![github]](https://github.com/picerbaykal)\r\n- [Kim Philipp Jablonski ![orcid]](https://orcid.org/0000-0002-4166-4343), [![github]](https://github.com/kpj)\r\n- [Lara Fuhrmann ![orcid]](https://orcid.org/0000-0001-6405-0654), [![github]](https://github.com/LaraFuhrmann)\r\n- [Uwe Schmitt ![orcid]](https://orcid.org/0000-0002-4658-0616), [![github]](https://github.com/uweschmitt)\r\n- [Michal Okoniewski ![orcid]](https://orcid.org/0000-0003-4722-4506), [![github]](https://github.com/michalogit)\r\n- [Monica Dragan ![orcid]](https://orcid.org/0000-0002-7719-5892), [![github]](https://github.com/monicadragan)\r\n- [Susana Posada C\u00e9spedes ![orcid]](https://orcid.org/0000-0002-7459-8186), [![github]](https://github.com/sposadac)\r\n- [David Seifert ![orcid]](https://orcid.org/0000-0003-4739-5110), [![github]](https://github.com/SoapZA)\r\n- Tobias Marschall\r\n- [Niko Beerenwinkel\\*\\* ![orcid]](https://orcid.org/0000-0002-0573-6119)\r\n\r\n\\* software maintainer ;\r\n\\** group leader\r\n\r\n[github]: https://cbg-ethz.github.io/V-pipe/img/mark-github.svg\r\n[orcid]: https://cbg-ethz.github.io/V-pipe/img/ORCIDiD_iconvector.svg\r\n\r\n## Contact\r\n\r\nWe encourage users to use the [issue tracker](https://github.com/cbg-ethz/V-pipe/issues). For further enquiries, you can also contact the V-pipe Dev Team <v-pipe@bsse.ethz.ch>.\r\n",
+    "discussion_links": [
+        {
+            "id": "367",
+            "label": "issue tracker",
+            "url": "https://github.com/cbg-ethz/V-pipe/issues"
+        },
+        {
+            "id": "368",
+            "label": "mailing list",
+            "url": "https://sympa.ethz.ch/sympa/info/v-pipe-users"
+        },
+        {
+            "id": "369",
+            "label": "gitter chat",
+            "url": "https://gitter.im/V-pipe/community"
+        }
+    ],
+    "doi": "10.48546/workflowhub.workflow.301.5",
+    "edam_operation": [
+        "Haplotype mapping",
+        "Sequence alignment",
+        "Sequence trimming",
+        "Sequencing quality control",
+        "Variant calling"
+    ],
+    "edam_topic": [
+        "Sequencing",
+        "Virology"
+    ],
+    "id": "301",
+    "latest_version": "5",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/301?version=5",
+    "mapped_tools": [],
+    "name": "V-pipe (main multi-virus version)",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "alignment",
+        "assembly",
+        "genomics",
+        "indels",
+        "snps",
+        "covid-19",
+        "rna",
+        "variant_calling",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "5",
+    "workflow_class": "Snakemake"
+}

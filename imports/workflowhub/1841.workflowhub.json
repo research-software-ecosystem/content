@@ -1,0 +1,32 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-07-29",
+    "creators": [
+        "Tong LI"
+    ],
+    "description": "PaSTa is a nextflow-based end-to-end image analysis pipeline for decoding image-based spatial transcriptomics data. It performs imaging cycle registration, cell segmentation and transcripts peak decoding. It is currently supports analysis of three types of ST technology:\r\n\r\n- in-situ sequencing-like encoding\r\n- MERFISH-like encoding\r\n- RNAScope-like labelling\r\n\r\nPrerequisites:\r\n1. Nextflow. Installation guide: https://www.nextflow.io/docs/latest/getstarted.html\r\n2. Docker or Singularity. Installation guide: https://docs.docker.com/get-docker/ or https://sylabs.io/guides/3.7/user-guide/quick_start.html\r\n\r\nDemo run with GitPod\r\n1. Clone the repository\r\n```\r\ngit clone https://github.com/cellgeni/Image-ST.git\r\n```\r\n2. Prepare the run.config file *\r\n```\r\nprocess {\r\n        withName: CELLPOSE {\r\n                ext.args = \"--channels [0,0]\"\r\n                storeDir = \"./output/naive_cellpose_segmentation/\"\r\n        }\r\n\r\n        withName: POSTCODE {\r\n                memory = {20.Gb * task.attempt}\r\n                storeDir = \"./output/PoSTcode_decoding_output\"\r\n        }\r\n\r\n        withName: TO_SPATIALDATA {\r\n                memory = {20.Gb * task.attempt}\r\n                ext.args = \"--feature_col 'Name' --expansion_in_pixels 30 --save_label_img False\"\r\n        }\r\n\r\n        withName: MERGE_OUTLINES {\r\n                storeDir = \"./output/merged_cellpose_segmentation/\"\r\n        }\r\n\r\n        withName: BIOINFOTONGLI_MICROALIGNER {\r\n                memory = {50.Gb * task.attempt}\r\n                storeDir = \"./output/registered_stacks\"\r\n        }\r\n\r\n        withName: BIOINFOTONGLI_TILEDSPOTIFLOW {\r\n                memory = {30.Gb * task.attempt}\r\n                storeDir = \"./output/spotiflow_peaks/\"\r\n        }\r\n\r\n        withName: BIOINFOTONGLI_MERGEPEAKS {\r\n                memory = {50.Gb * task.attempt}\r\n                storeDir = \"./output/spotiflow_peaks/\"\r\n        }\r\n\r\n        withName: BIOINFOTONGLI_CONCATENATEWKTS {\r\n                memory = {50.Gb * task.attempt}\r\n                storeDir = \"./output/spotiflow_peaks/\"\r\n        }\r\n\r\n        withName: EXTRACT_PEAK_PROFILE {\r\n                memory = {50.Gb * task.attempt}\r\n                storeDir = \"./output/peak_profiles/\"\r\n        }\r\n}\r\n```\r\n3. Prepare the parameters file (e.g. iss.yaml)\r\n```\r\nimages:\r\n   - ['id': \"test\",\r\n       [\r\n         \"cycle1.ome.tiff\",\r\n         \"cycle2.ome.tiff\",\r\n         \"cycle3.ome.tiff\",\r\n         \"cycle4.ome.tiff\",\r\n         \"cycle5.ome.tiff\",\r\n         \"cycle6.ome.tiff\",\r\n       ]\r\n     ]\r\ncell_diameters: [30]\r\nchs_to_call_peaks: [1,2] // channels to call peaks, can be multiple\r\ncodebook:\r\n  - ['id': \"test\", \"./codebook.csv\", \"./dummy.txt\"] // has to match the meta in `images` variable\r\nsegmentation_method: \"CELLPOSE\" // or DEEPCELL or STARDIST or INSTANSEG\r\n\r\nout_dir: \"./output\"\r\n```\r\n4. Run the pipeline\r\n```\r\nnextflow run ./Image-ST/main.nf -profile lsf,singularity -c run.config -params-file iss.yaml -entry RUN_DECODING -resume\r\n```\r\n5. Check the output in the specified storeDir.\r\n\r\nSpin up Napari with napari-spatialdata plugin installed (https://spatialdata.scverse.org/projects/napari/en/latest/notebooks/spatialdata.html)\r\n\r\nThen use the following command to visualize the output\r\n```\r\nfrom napari_spatialdata import Interactive\r\nimport spatialdata as spd\r\n\r\ndata = spd.read_zarr([path-to-.sdata-folder])\r\nInteractive(data)\r\n```\r\n\r\n*: You may leave the process block empty if you want to use the default parameters.\r\n\r\nFAQ\r\n---\r\n\r\n1. My HOME dir is full when running Singularity image conversion on HPC.\r\n\r\nA quick solution is to manually specify singularity dir by setting:\r\n\r\n\r\n```\r\nsingularity cache clean\r\nexport SINGULARITY_CACHEDIR=./singularity_image_dir\r\nexport NXF_SINGULARITY_CACHEDIR=./singularity_image_dir\r\n```\r\n\r\n2. How do I modify parameters to specific process/step?\r\n\r\nBy following nf-core standard, it is possible to add any parameters to the main script using ext.args=\u201d--[key] [value]\u201d in the run.config file.\r\n\r\nAn example is\r\n\r\nwithName: POSTCODE {\r\n    ext.args = \"--codebook_targer_col L-probe --codebook_code_col code \"\r\n}\r\n\r\n3. Cannot download pretrained model for the deep-learning tools (Spotiflow/CellPose)\r\n\r\n> Exception: URL fetch failure on https://drive.switch.ch/index.php/s/6AoTEgpIAeQMRvX/download: None -- [Errno -3] Temporary failure in name resolution\r\nOr CellPose\r\nurllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>\r\n\r\nMostly likely you've reached max download (?), wait a bit and try later OR manually download those models and update the configuration file.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "1841",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1841?version=1",
+    "mapped_tools": [],
+    "name": "A nextflow pipeline to run the end-to-end image-based in-situ sequencing decoding and RNAScope-like analysis",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "decoding",
+        "image-analysis",
+        "spatial",
+        "spatial transcriptomics"
+    ],
+    "tools": [],
+    "update_time": "2025-07-29",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

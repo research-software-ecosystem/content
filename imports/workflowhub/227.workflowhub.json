@@ -1,0 +1,38 @@
+{
+    "content_blobs": [],
+    "create_time": "2021-11-08",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "Assembly polishing subworkflow: Racon polishing with long reads\r\n\r\nInputs: long reads and assembly contigs\r\n\r\nWorkflow steps:\r\n* minimap2 : long reads are mapped to assembly => overlaps.paf. \r\n* overaps, long reads, assembly => Racon => polished assembly 1\r\n* using polished assembly 1 as input; repeat minimap2 + racon => polished assembly 2\r\n* using polished assembly 2 as input, repeat minimap2 + racon => polished assembly 3\r\n* using polished assembly 3 as input, repeat minimap2 + racon => polished assembly 4\r\n* Racon long-read polished assembly => Fasta statistics\r\n* Note: The Racon tool panel can be a bit confusing and is under review for improvement. Presently it requires sequences (= long reads), overlaps (= the paf file created by minimap2), and target sequences (= the contigs to be polished) as per \"usage\" described here https://github.com/isovic/racon/blob/master/README.md\r\n* Note: Racon: the default setting for \"output unpolished target sequences?\" is No. This has been changed to Yes for all Racon steps in these polishing workflows.  This means that even if no polishes are made in some contigs, they will be part of the output fasta file. \r\n* Note: the contigs output by Racon have new tags in their headers. For more on this see https://github.com/isovic/racon/issues/85.\r\n\r\n\r\nInfrastructure_deployment_metadata: Galaxy Australia (Galaxy)",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.227.1",
+    "edam_operation": [
+        "Sequence assembly validation"
+    ],
+    "edam_topic": [
+        "Sequence assembly"
+    ],
+    "id": "227",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/227?version=1",
+    "mapped_tools": [
+        "minimap2",
+        "racon"
+    ],
+    "name": "Racon polish with long reads, x4",
+    "number_of_steps": 8,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "large-genome-assembly"
+    ],
+    "tools": [
+        "minimap2",
+        "racon"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

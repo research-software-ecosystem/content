@@ -1,0 +1,28 @@
+{
+    "content_blobs": [],
+    "create_time": "2022-12-06",
+    "creators": [
+        "Lucas Cruz",
+        "Luiz Gadelha",
+        "Kary Oca\u00f1a"
+    ],
+    "description": "# RNA-seq Scientific Workflow\r\nWorkflow for RNA sequencing using the Parallel Scripting Library - Parsl.\r\n\r\n**Reference:** Cruz, L., Coelho, M., Terra, R., Carvalho, D., Gadelha, L., Osthoff, C., & Oca\u00f1a, K. (2021). *Workflows* Cient\u00edficos de RNA-Seq em Ambientes Distribu\u00eddos de Alto Desempenho: Otimiza\u00e7\u00e3o de Desempenho e An\u00e1lises de Dados de Express\u00e3o Diferencial de Genes. In *Anais do XV Brazilian e-Science Workshop*, p. 57-64. Porto Alegre: SBC. DOI: https://doi.org/10.5753/bresci.2021.15789\r\n\r\n## Requirements\r\n\r\nIn order to use RNA-seq Workflow the following tools must be available:\r\n\r\n- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)\r\n\r\nYou can install Bowtie2 by running:\r\n\r\n> bowtie2-2.3.5.1-linux-x86_64.zip\r\n\r\nOr\r\n\r\n> sudo yum install bowtie2-2.3.5-linux-x86_64\r\n\r\n- [Samtools](http://www.htslib.org/)\r\n\r\nSamtools is a suite of programs for interacting with high-throughput sequencing data.\r\n\r\n- [Picard](https://github.com/broadinstitute/picard)\r\n\r\nPicard is a set of Java command line tools for manipulating high-throughput sequencing (HTS) data and formats.\r\n\r\n- [HTSeq](https://htseq.readthedocs.io/en/master/)\r\n\r\nHTSeq is a native Python library that folows conventions of many Python packages. You can install it by running:\r\n\r\n> pip install HTSeq\r\n\r\nHTSeq uses [NumPy](https://numpy.org/), [Pysam](https://github.com/pysam-developers/pysam) and [matplotlib](https://matplotlib.org/). Be sure this tools are installed.\r\n\r\n- [R](https://www.r-project.org/)\r\n\r\nTo use [DESEq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) script make sure R language is also installed. You can install it by running:\r\n\r\n\r\n> sudo apt install r-base\r\n\r\n- [Parsl - Parallel Scripting Library](https://parsl.readthedocs.io/en/stable/index.html)\r\n\r\nThe recommended way to install Parsl is the suggest approach from Parsl's documentation:\r\n\r\n\r\n> python3 -m pip install parsl\r\n\r\n- [Python (version >= 3.5)](https://www.python.org/)\r\n\r\nTo use Parsl, you need Python 3.5 or above. You also need Python to use HTSeq, so you should load only one Python version.\r\n\r\n## Workflow invocation\r\n\r\nFirst of all, make a Comma Separated Values (CSV) file. So, onto the first line type: ``sampleName,fileName,condition``. **Remember, there must be no spaces between items**. You can use the file *\"table.csv\"* in this repository as an example. Your CSV file will be like this:\r\n\r\n   |    sampleName    |     fileName     |condition|\r\n   |------------------|------------------|---------|\r\n   | tissue control 1 | SRR5445794.merge.count | control |\r\n   | tissue control 2 | SRR5445795.merge.count | control |\r\n   | tissue control 3 | SRR5445796.merge.count | control |\r\n   | tissue wntup 1   | SRR5445797.merge.count | wntup   |\r\n   | tissue wntup 2   | SRR5445798.merge.count | wntup   |\r\n   | tissue wntup 3   | SRR5445799.merge.count | wntup   |\r\n\r\nThe list of command line arguments passed to Python script, beyond the script's name, must be: \r\n\r\n 1. The indexed genome; \r\n 2. The number of threads for bowtie task, sort task, number of splitted files for split_picard task and number of CPU running in htseq task; \r\n 3. Path to read fastaq file, which is the path of the input files; \r\n 4. Directory's name where the output files must be placed;  \r\n 5. GTF file;\r\n 7. and, lastly the DESeq script. \r\n \r\nMake sure all the files necessary to run the workflow are in the same directory and the fastaq files in a dedicated folder, as a input directory. The command line will be like this:\r\n\r\n> python3 rna-seq.py ../mm9/mm9 24 ../inputs/ ../outputs ../Mus_musculus.NCBIM37.67.gtf ../DESeq.R\r\n\r\n**Remember to adjust the parameter multithreaded and multicore according with your computational environment.** \r\nExample: If your machine has 8 cores, you should set the parameter on 8.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.411.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "411",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/411?version=1",
+    "mapped_tools": [],
+    "name": "ParslRNA-seq Scientific Workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Unrecognized workflow type"
+}

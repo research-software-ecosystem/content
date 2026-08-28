@@ -1,0 +1,50 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-07-08",
+    "creators": [
+        "Mohsen  Ahmadi ",
+        "Robert  Wagner ",
+        "Sander  Bekeschus ",
+        "Markus M.  Becker "
+    ],
+    "description": "<p align=\"right\">\r\n   <img width=\"176\" height=\"60\" alt=\"INP logo\" src=\"media/inplogo.jpg\" />\r\n   <img width=\"176\" height=\"60\" alt=\"NFDI4BIOIMAGE logo\" src=\"media/nfdi4bioimagelogo.png\">\r\n</p>\r\n\r\n<!--\r\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.1234567)\r\n-->\r\n\r\n# Bioimaging Data Management Workflow for Plasma Medicine\r\nThis repository contains the Jupyter notebook implementation of a bioimaging data management workflow for plasma medicine (see [Sci Data paper](https://doi.org/10.1038/s41597-026-07982-x ) and [poster](https://doi.org/10.5281/zenodo.16412003)). The workflow is implemented as a structured pipeline integrating open-source tools, including  [OMERO](https://www.openmicroscopy.org/omero/) for image data management, [eLabFTW](https://www.elabftw.net/) as an electronic laboratory notebook, [Adamant](https://github.com/plasma-mds/adamant) for schema-driven metadata collection, and [Micro-Meta App](https://wu-bimac.github.io/MicroMetaApp.github.io/) for standardized documentation of microscopy acquisition settings that are connected via programming interfaces to enable persistent linkage of metadata to image datasets using standardized annotations.\r\n\r\n<!--\r\n## Changelog\r\n### [x.x.x] January 26, 2026\r\n* Initial release of the GitHub repository\r\n-->\r\n\r\n## Set up\r\nA [JupyterLab](https://jupyter.org) environment is required to run the provided [notebook](workflow.ipynb).\r\nThe workflow was designed and tested on Python 3.12.5.\r\nFollow the [installation guideline](https://jupyter.org/install) for support.\r\n\r\n## Dependencies \r\nThe following list summarizes the key dependencies:\r\n* [**Elabapi**](https://pypi.org/project/elabapi-python/)\r\n* [**OMERO-py**](https://pypi.org/project/omero-py/)\r\n* [**Openpyxl**](https://pypi.org/project/openpyxl/)\r\n* [**Pandas**](https://pypi.org/project/pandas/)\r\n\r\n## Usage\r\nTo use the provided Jupyter notebook, download [workflow.ipynb](workflow.ipynb) and the two Python scripts [omerohandler.py](scripts/omerohandler.py) and [elabftwapihandler.py](scripts/elabftwapihandler.py).\r\nThese files must be located in the same working directory.\r\nTo access the respective OMERO and eLabFTW instances, the host addresses must be adjusted in the respective handler scripts (see description below).\r\n\r\n### eLabFTW\r\nThe codeline (l. 43) in elabftwapihandler.py has to be changed:\r\n```\r\nconfiguration.host = 'hostAdress'\r\n```\r\nthe 'hostAdress' variable has to be replaced by the actual host url adress of your eLabFTW instance.\r\n\r\n### OMERO\r\nThe codeline (l. 21) in omerohandler.py has to be changed:\r\n```\r\nconn = BlitzGateway(usrname, passwrd, host= hostAdress, port= hostPort, secure=True)\r\n```\r\nthe 'hostAdress' variable has to be replaced by the actual host url adress of your OMERO instance.\r\n\r\nThe adjusted notebook can be accessed by opening the .ipynb file in a JupyterLab environment; in some local JupyterLab installations, double-clicking the downloaded, modified .ipynb file may be sufficient.\r\n\r\n## Support\r\nIf you find a bug or need help, please open an issue. When reporting a bug, include the version, OS, steps to reproduce, expected vs actual behavior, and any logs or screenshots.\r\n\r\n## How to cite\r\nAhmadi, M., Wagner, R., Bekeschus, S. et al. Data Management Workflow for FAIR Sharing of Bioimaging Datasets in Plasma Medicine. Sci Data 13, 1124 (2026). https://doi.org/10.1038/s41597-026-07982-x \r\n\r\n## Grant information\r\nThe work is funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under the National Research Data Infrastructure \u2013 NFDI 46/1 \u2013 501864659.\r\n\r\n<img width=\"400\" alt=\"image\" src=\"media/dfglogoschriftzugblaufoerderungen.gif\" />\r\n\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2218.1",
+    "edam_operation": [
+        "Data handling"
+    ],
+    "edam_topic": [
+        "Data management",
+        "FAIR data"
+    ],
+    "id": "2218",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2218?version=1",
+    "mapped_tools": [
+        "adamant",
+        "micro-meta_app",
+        "omero"
+    ],
+    "name": "Bioimaging Data Management Workflow for Plasma Medicine",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "fair workflows",
+        "low-temperature plasma physics",
+        "plasma-mds",
+        "bioimaging",
+        "plasma",
+        "plasma medicine"
+    ],
+    "tools": [
+        "adamant",
+        "micro-meta app",
+        "micro-meta_app",
+        "omero"
+    ],
+    "update_time": "2026-08-06",
+    "versions": "1",
+    "workflow_class": "Jupyter"
+}

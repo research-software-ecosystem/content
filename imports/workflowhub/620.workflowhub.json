@@ -1,0 +1,42 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-10-22",
+    "creators": [
+        "Yasmmin Martins"
+    ],
+    "description": "## Summary\r\n\r\nThis pipeline contains the following functions: \r\n(1) Data processing to handle the tansformations needed to obtain the original pathway scores of the samples according to single sample analysis GSEA\r\n(2) Model training based on the disease and healthy sample pathway scores, to classify them\r\n(3) Scoring matrix weights optimization according to a gold standard list of drugs (those that went on clinical trials or are approved for the disease).It tests the weights in a range of 0 to 30 (you may change as you want). The evaluation function tests and try to maximize the number of approved drugs whose modified pathway scores for disease samples is changed from disease to healthy sample classification, according to the trained model.\r\n(4) Computation of the calibrated disease samples pathwa scores according to the interaction among drug and targets found in the sample pathways & Drug ranking based on the disease samples whose calibrated matrix were responsible to change the trained model decision from disease to healthy state.\r\n(5) Drug combination ranking evaluated the same way as in option (4) but adding the effects of multiple drugs in each sample while calculating the calibrated scoring matrix\r\n            \r\n## Input configuration file:\r\n* The pipeline only needs a configuration file and the step number you want to run.\r\n- Configuration file keys (see also the example in config.json):\r\n    - **identifier**: project identifier to be used in the result files\r\n    - **type_normalization**: normalization type (possible values: tpm, fpkm, tmm, cpm or fpkm_uq)\r\n    - **genome_assembly**: the supported assemblies are the 37 and 38 (values may be: g37 or g38)\r\n    - **pathway_geneset**: pathway-based gene sets, choose one identifier from the list in [genesets_available.txt](https://github.com/YasCoMa/caliscoma_pipeline/blob/master/genesets_available.txt)\r\n    - **folder**: working directory\r\n    - **expression_file**: compressed gene expression file for the desired icgc project, it must be separated by tabulation. The following columns are mandatory: submitted_file_id (sample names), raw_read_count (the read counts without normalization) and gene_id (genes in ensembl or hgnc symbol). File expected to be in {folder}.\r\n    - **labels_file** (optional for function 1): file with two columns, one named 'sample' corresponding to the unique values of submitted_sample_id; the second named 'label' corresponding to a disease (or confirmed tumour) (1) or a healthy (0) case. File expected to be in {folder}.\r\n    - **trained_model** (optional for function 1): file with the trained model to separate healthy and disease cases. Full path is expected.\r\n    - **means_table_file** (optional for function 1): file with the means table calculated when the model is trained by the function 3. Full path is expected.\r\n    - **samples_pathway_scores** (optional for function 1): file with the original model calculated pathway scores by function 1, in order to check the number of features expected by the original model. Full path is expected.\r\n    - **optimized_weights_file**: tab separated table file with two columns representing the weights (w1, w2, w3) and their respective values.\r\n    - **drug_list_file** (only mandatory for function 3): file with the gold standard drug list (one drugbank id per line), this file is expected to be in the in the experiment item folder results ({folder}/{identifier})\r\n    - **drug_combination_file** (only mandatory for function 5): file with the drug combination candidates list (drugbank ids concatenated with comma in each line). Full path is expected.\r\n\r\n- Observation:    \r\n    * The \"labels_file\" parameter is mandatory for the weights optimization, scoring matrix calculation, model traning and drug (or drug combination) ranking \r\n    * In case of transfer learning, \"labels_file\" may be ignored only if both \"trained_model\", \"means_table_file\" and \"samples_pathway_scores\" are present. This is only possible for the functions 2, 4 and 5. For weights optimization, only labels file is accepted.\r\n    * If type_normalization and/or genome_assembly are missing or empty, it will switch to the default fpkm_uq\r\n    * If pathway_geneset is missing or empty, it will switch to the default KEGG_2021_HUMAN\r\n    * If optimized_weights_file is missing or empty, it will switch to the default values (w1: 20, w2: 5, w3: 10)\r\n    \r\n## Usage Instructions\r\n### Preparation:\r\n1. ````git clone https://github.com/YasCoMa/caliscoma_pipeline.git````\r\n2. ````cd caliscoma_pipeline````\r\n3. Create conda environment to handle dependencies: ````conda env create -f drugresponse_env.yml````\r\n4. ````conda activate drugresponse_env````\r\n5. Setup an environment variable named \"path_workflow\" with the full path to this workflow folder\r\n\r\n### Getting data for the running example in the LICA-FR and LIRI-JP projects from ICGC\r\n1. Download the [expression file for LICA-FR](https://dcc.icgc.org/api/v1/download?fn=/current/Projects/LICA-FR/exp_seq.LICA-FR.tsv.gz) and put it in data_icgc folder\r\n2. Download the [expression file for LIRI-JP](https://dcc.icgc.org/api/v1/download?fn=/current/Projects/LIRI-JP/exp_seq.LIRI-JP.tsv.gz) and put it in data_icgc folder\r\n3. For the liri-jp project, the labels file is already processed, to given an example of a project that run all steps proposed by this workflow\r\n\r\n### Run analysis\r\n- Run all steps: ````python3 main.py -rt 0 -cf config.json````\r\n- Run all steps: ````python3 main.py -rt 0 -cf config_transfer_options.json````\r\n\r\n- Run only data processing: ````python3 main.py -rt 1 -cf config.json````\r\n- Run only data processing: ````python3 main.py -rt 1 -cf config_transfer_options.json````\r\n\r\n- Run only model training & modified pathway score matrix: ````python3 main.py -rt 2 -cf config.json````\r\n- Run only model training & modified pathway score matrix: ````python3 main.py -rt 2 -cf config_transfer_options.json````\r\n\r\n- Run only weights optimization: ````python3 main.py -rt 3 -cf config.json````\r\n\r\n- Run only drug ranking: ````python3 main.py -rt 4 -cf config.json````\r\n- Run only drug ranking: ````python3 main.py -rt 4 -cf config_transfer_options.json````\r\n\r\n- Run only drug combination evaluation: ````python3 main.py -rt 5 -cf config.json````\r\n- Run only drug combination evaluation: ````python3 main.py -rt 5 -cf config_transfer_options.json````\r\n\r\n## Reference\r\nMartins, Y. C. (2023). Multi-task analysis of gene expression data on cancer public datasets. medRxiv, 2023-09.\r\n\r\n## Bug Report\r\nPlease, use the [Issues](https://github.com/YasCoMa/caliscoma_pipeline/issues) tab to report any bug.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Gene-set enrichment analysis",
+        "Modelling and simulation",
+        "Prediction and recognition"
+    ],
+    "edam_topic": [
+        "Bioinformatics",
+        "Data management",
+        "Data mining",
+        "Drug discovery",
+        "Molecular interactions, pathways and networks"
+    ],
+    "id": "620",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/620?version=1",
+    "mapped_tools": [],
+    "name": "DReCaS - Pipeline for drug ranking based on computed pathway scores of disease and healthy samples",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "workflows",
+        "data retrieval and transformation",
+        "durg response simulation",
+        "gene set enrichment analysis",
+        "personalized medicine"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

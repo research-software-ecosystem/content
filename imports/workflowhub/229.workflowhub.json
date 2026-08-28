@@ -1,0 +1,36 @@
+{
+    "content_blobs": [],
+    "create_time": "2021-11-08",
+    "creators": [
+        "Anna Syme"
+    ],
+    "description": "Assess genome quality; can run alone or as part of a combined workflow for large genome assembly. \r\n\r\n* What it does: Assesses the quality of the genome assembly: generate some statistics and determine if expected genes are present; align contigs to a reference genome.\r\n* Inputs: polished assembly;  reference_genome.fasta (e.g. of a closely-related species, if available). \r\n* Outputs:  Busco table of genes found; Quast HTML report, and link to Icarus contigs browser,  showing contigs aligned to a reference genome\r\n* Tools used: Busco, Quast\r\n* Input parameters: None required\r\n\r\nWorkflow steps: \r\n\r\nPolished assembly => Busco\r\n* First: predict genes in the assembly: using Metaeuk\r\n* Second: compare the set of predicted genes to the set of expected genes in a particular lineage. Default setting for lineage: Eukaryota\r\n\r\nPolished assembly and a reference genome => Quast\r\n* Contigs/scaffolds file: polished assembly\r\n* Type of assembly: Genome\r\n* Use a reference genome: Yes\r\n* Reference genome: Arabidopsis genome\r\n* Is the genome large (> 100Mbp)? Yes. \r\n* All other settings as defaults, except second last setting: Distinguish contigs with more than 50% unaligned bases as a separate group of contigs?: change to No\r\n\r\nOptions\r\n\r\nGene prediction: \r\n* Change tool used by Busco to predict genes in the assembly: instead of Metaeuk, use Augustus. \r\n* To do this: select: Use Augustus; Use another predefined species model; then choose from the drop down list.\r\n* Select from a database of trained species models. list here:  https://github.com/Gaius-Augustus/Augustus/tree/master/config/species\r\n* Note: if using Augustus: it may fail if the input assembly is too small (e.g. a test-size data assembly). It can't do the training part properly. \r\n\r\nCompare genes found to other lineage: \r\n* Busco has databases of lineages and their expected genes. Option to change lineage. \r\n* Not all lineages are available - there is a mix of broader and narrower lineages. - list of lineages here: https://busco.ezlab.org/list_of_lineages.html. \r\n* To see the groups in taxonomic hierarchies: Eukaryotes:  https://busco.ezlab.org/frames/euka.htm\r\n* For example,  if you have a plant species from Fabales, you could set that as the lineage. \r\n* The narrower the taxonomic group, the more total genes are expected. \r\n\r\n\r\n\r\nInfrastructure_deployment_metadata: Galaxy Australia (Galaxy)\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.229.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "Sequence assembly"
+    ],
+    "id": "229",
+    "latest_version": "1",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/229?version=1",
+    "mapped_tools": [
+        "busco",
+        "quast"
+    ],
+    "name": "Assess genome quality",
+    "number_of_steps": 2,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "large-genome-assembly"
+    ],
+    "tools": [
+        "busco",
+        "quast"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

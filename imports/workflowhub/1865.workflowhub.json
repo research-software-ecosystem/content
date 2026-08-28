@@ -1,0 +1,33 @@
+{
+    "content_blobs": [],
+    "create_time": "2025-08-12",
+    "creators": [],
+    "description": "# WHALE: (W)orkflow for (H)uman-genome (A)nalysis of (L)ong-read (E)xperiments\r\n\r\n## Introduction\r\n\r\n**WHALE** is a bioinformatics pipeline based on Nextflow and nf-core for long-read DNA sequencing analysis. It takes a samplesheet as input and performs quality control, alignment, variant calling and annotation.\r\n\r\n## Pipeline summary\r\n\r\n1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))\r\n2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))\r\n3. Alignment ([`Minimap2`](https://github.com/lh3/minimap2))\r\n4. Variant calling\r\n    - Single Nucleotide Variant (SNV) calling ([`DeepVariant`](https://github.com/google/deepvariant), [`Clair3`](https://github.com/HKU-BAL/Clair3), [`NanoCaller`](https://github.com/WGLab/NanoCaller))\r\n    - Structural Variant (SV) calling ([`Sniffles2`](https://github.com/fritzsedlazeck/Sniffles), [`CuteSV`](https://github.com/tjiangHIT/cuteSV), [`SVIM`](https://github.com/eldariont/svim))\r\n5. Merge variant calling\r\n6. Annotation\r\n    - SNV annotation ([`VEP`](https://github.com/Ensembl/ensembl-vep))\r\n    - SV annotation ([`AnnotSV`](https://github.com/lgmgeo/AnnotSV))\r\n\r\n## Usage\r\n\r\nFirst, prepare a samplesheet with your input data. Depending on which step of the analysis you want to run, the input data type can be: fastq, bam (and bai), vcf or bed. The samplesheet should look as follows:\r\n\r\n`samplesheet.csv`:\r\n\r\n```csv\r\nsample,fastq\r\nA123,/path/to/your/input/file/A123.fastq.gz\r\nB456,/path/to/your/input/file/B456.fastq.gz\r\n```\r\n\r\nThere are two types of full analysis:\r\n- SNV analysis: -profile snv_analysis\r\n- SV analysis: -profile sv_analysis\r\n    \r\n  Each full analysis can start with:\r\n  - Alignment: --step mapping (input data type: fastq) (default)\r\n  - Variant calling: --step variant_calling (input data type: bam and bai)\r\n    \r\nA specific step of the analysis can be executed:\r\n- SNV calling (and merge): -profile snv_calling (input data type: bam and bai)\r\n- SV calling (and merge): -profile sv_calling (input data type: bam and bai)\r\n- SNV annotation: -profile snv_annotation (input data type: vcf)\r\n- SV annotation: -profile sv_annotation (input data type: bed)\r\n\r\nProfiles to use in the CCC (UAM):\r\n- -profile uam,singularity,batch\r\n- -profile uam_allcontigs,singularity,batch\r\n\r\nProfiles to use in the server:\r\n- -profile tblabserver,singularity\r\n- -profile tblabserver_allcontigs,singularity\r\n\r\n## Examples\r\n\r\nSNV and SV analysis starting with variant calling in the server:\r\n\r\n```bash\r\nnextflow run WHALE \\\r\n   -profile snv_analysis,sv_analysis,tblabserver,singularity \\\r\n   --input samplesheet.csv \\\r\n   --outdir <OUTDIR> \\\r\n   --step variant_calling\r\n```\r\n\r\nSV calling in the CCC:\r\n\r\n```bash\r\nnextflow run WHALE \\\r\n   -profile sv_calling,uam,singularity,batch \\\r\n   --input samplesheet.csv \\\r\n   --outdir <OUTDIR>\r\n```\r\n\r\n## Pipeline output\r\n\r\n**WHALE** will create the following subdirectories in the output directory:\r\n- alignment\r\n- snv_calling\r\n  - snv_merge\r\n- snv_annotation\r\n- sv_calling\r\n  - sv_merge\r\n- sv_annotation\r\n  - overlapping_sv_samples\r\n- multiqc\r\n- pipeline_info\r\n\r\n## Citations\r\n\r\nAn extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.\r\n\r\nIllustration by [Yolanda Ben\u00edtez](https://github.com/yolandabq)\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Genomics"
+    ],
+    "id": "1865",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1865?version=1",
+    "mapped_tools": [],
+    "name": "WHALE",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "genomics",
+        "impact-isciii",
+        "nextflow",
+        "long-read-sequencing"
+    ],
+    "tools": [],
+    "update_time": "2026-01-27",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}

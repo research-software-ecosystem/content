@@ -1,0 +1,46 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-04-18",
+    "creators": [
+        "Luke Silver",
+        "Anna Syme"
+    ],
+    "description": "This is part of a series of workflows to annotate a genome, tagged with `TSI-annotation`. \r\nThese workflows are based on command-line code by Luke Silver, converted into Galaxy Australia workflows. \r\n\r\nThe workflows can be run in this order: \r\n* Repeat masking\r\n* RNAseq QC and read trimming\r\n* Find transcripts\r\n* Combine transcripts\r\n* Extract transcripts\r\n* Convert formats\r\n* Fgenesh annotation\r\n\r\n****\r\n\r\nAbout this workflow:\r\n\r\n* Inputs: multiple transcriptome.gtfs from different tissues, genome.fasta, coding_seqs.fasta, non_coding_seqs.fasta \r\n* Runs StringTie merge to combine transcriptomes, with default settings except for -m = 30 and -F = 0.1, to produce a merged_transcriptomes.gtf. \r\n* Runs Convert GTF to BED12 with default settings, to produce a merged_transcriptomes.bed. \r\n* Runs bedtools getfasta with default settings except for -name = yes, -s = yes, -split - yes, to produce a merged_transcriptomes.fasta\r\n* Runs CPAT to generate seqs with high coding probability. \r\n* Filters out non-coding seqs from the merged_transcriptomes.fasta\r\n* Output: filtered_merged_transcriptomes.fasta",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.878.3",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "878",
+    "latest_version": "3",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/878?version=3",
+    "mapped_tools": [
+        "bedtools",
+        "biopython",
+        "stringtie",
+        "ucsc_genome_browser_utilities"
+    ],
+    "name": "Combine transcripts - TSI",
+    "number_of_steps": 8,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "tsi-annotation"
+    ],
+    "tools": [
+        "bedtools",
+        "bedtools_getfastabed",
+        "biopython",
+        "cpat",
+        "gtftobed12",
+        "seq_filter_by_id",
+        "skipping 1 header line\nfilter1",
+        "stringtie",
+        "stringtie_merge",
+        "tp_cut_tool",
+        "tp_sed_tool"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "3",
+    "workflow_class": "Galaxy"
+}

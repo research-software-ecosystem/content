@@ -1,0 +1,43 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-10-22",
+    "creators": [
+        "Yasmmin Martins"
+    ],
+    "description": "## Summary\r\n\r\nThe data preparation pipeline contains tasks for two distinct scenarios: [leukaemia](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE425) that contains microarray data for 119 patients and [ovarian](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140082) cancer that contains next generation sequencing data for 380 patients.\r\n\r\nThe disease outcome prediction pipeline offers two strategies for this task:\r\n\r\n**Graph kernel method**: It starts generating personalized networks for each patient using the interactome file provided and generate the patient network checking if each PPI of the interactome has both proteins up regulated or down regulated according to the gene expression table provided. The first step generate a set of graphs for the patients that are evaluated with 4 distinct kernels for graph classification, which are: Linear kernel between edge histograms, Linear kernel between vertex histograms and the Weisfeiler lehman. These kernels functions calculate a similarity matrix for the graphs and then this matrix is used by the support vector machine classifier. Then the predictions are delivered to the last task that exports a report with the accuracy reached by each kernel. It allows some customizations about the network parameters to be used, such as the DEG cutoff to determine up and down regulated based on the log2 fold change, which will determine the topology and the labels distribution in the specific sample graphs. It is also possible customize the type of node/edge attributes passed to the kernel function, which may be only label, only weight or both.\r\n\r\n**GSEA based pathway scores method**: This method is faster and do not rely on tensor inputs such as the previous method. It uses geneset enrichment analysis on the pathways from KEGG 2021 of Human, and uses the scores of the pathways found enriched for the samples to build the numerical features matrix, that is then delivered to the AdaBoost classifier. The user may choose balance the dataset using oversampling strategy provided by SMOTE.\r\n\r\n## Usage Instructions\r\n### Preparation:\r\n1. ````git clone https://github.com/YasCoMa/screendop.git````\r\n2. ````cd screendop````\r\n3. Decompress screening_ovarian/raw_expression_table.tsv.tar.xz\r\n4. Create conda environment to handle dependencies: ````conda env create -f drugresponse_env.yml````\r\n5. ````conda activate drugresponse_env````\r\n6. Setup an environment variable named \"path_workflow_screendop\" with the full path to this workflow folder\r\n\r\n### Data preparation - File ````data_preparation_for_pipeline.py```` :\r\n\r\n#### Files decompression\r\n\r\n- Decompress data_preparation/lekaemia.tar.xz\r\n- Decompress data_preparation/ovarian/GSE140082_data.tar.xz\r\n    - Put the decompressed file GSE140082_series_matrix.txt in data_preparation/ovarian/\r\n    \r\n#### Pipeline parameters\r\n\r\n- __-rt__ or __--running_type__ <br>\r\n\tUse to prepare data for the desired scenario: <br>\r\n\t1 - Run with Leukaemia data <br>\r\n\t2 - Run with Ovarian cancer data\r\n\r\n#### Running modes examples\r\n\r\n1. Run for Leukaemia data: <br>\r\n````python3 data_preparation_for_pipeline.py -rt 1 ```` \r\n\r\nIn this case, you must have [R](https://www.r-project.org/) installed and also the library [limma](https://bioconductor.org/packages/release/bioc/html/limma.html), it is used to determine DEGs from microarray data. For this dataset, the files are already prepared in the folder.\r\n\r\n2. Run for Ovarian cancer data: <br>\r\n````python3 data_preparation_for_pipeline.py -rt 2 ```` \r\n\r\nIn this case, you must have [R](https://www.r-project.org/) installed and also the library [DESeq](https://bioconductor.org/packages/release/bioc/html/DESeq.html), because this scenario treats next generation sequencing data\r\n\r\n### Disease outcome prediction execution - File ````main.py````:\r\n\r\n#### Pipeline parameters\r\n\r\n- __-rt__ or __--running_step__ <br>\r\n\tUse to prepare data for the desired scenario: <br>\r\n\t1 - Run graph kernel method <br>\r\n\t2 - Run gsea based pathway scores method\r\n\r\n- __-cf__ or __--configuration_file__ <br>\r\n\tFile with the expression values for the genes by sample/patient in tsv format<br>\r\n\t\r\n\tExample of this file: config.json\r\n\t\t\r\n#### Input configuration file\r\n\r\n- Configuration file keys (see also the example in config.json):\r\n    - **folder** (mandatory for both methods): working directory\r\n    - **identifier**: project identifier to be used in the result files\r\n    - **mask_expression_table** (mandatory for both methods): Gene expression values file with the result of the fold change normalized value of a certain gene for each sample, already pruned by the significance (p-value). \r\n    - **raw_expression_table** (mandatory for both methods): Raw gene expression values already normalized following the method pf preference of the user.\r\n    - **labels_file** (mandatory for both methods): File with the prognosis label for each sample\r\n    - **deg_cutoff_up**: Cutoff value to determine up regulated gene. Default value is 1.\r\n    - **deg_cutoff_down**: Cutoff value to determine down regulated gene. Default value is -1.\r\n    - **nodes_enrichment**: Node attributes to be used in the screening evaluation. It may be a list combining the options \"label\", \"weight\" or \"all\". Examples: [\"all\", \"weight\"], [\"label\"], [\"label\", \"weight\"]. Default value is [\"all\"].\r\n    - **edges_enrichment**: Edge attributes to be used in the screening evaluation. It may be a list combining the options \"label\", \"weight\" or \"all\". Examples: [\"all\", \"weight\"], [\"label\"], [\"label\", \"weight\"]. Default value is [\"all\"].\r\n    - **flag_balance**: Flag to indicate whether the user wants to balance the samples in each outcome class, by SMOTE oversampling. Values may be false or true. Default value is false.\r\n\r\n#### Running modes examples\r\n1. Running disease outcome prediction by graph kernel method: <br>\r\n\t````python3 main.py -rt 1 -cf config.json````\r\n\r\n2. Running disease outcome prediction by gsea enriched network method: <br>\r\n\t````python3 main.py -rt 2 -cf config.json````\r\n\r\n## Reference\r\nMartins, Y. C. (2023). Multi-task analysis of gene expression data on cancer public datasets. medRxiv, 2023-09.\r\n\r\n## Bug Report\r\nPlease, use the [Issue](https://github.com/YasCoMa/screendop/issues) tab to report any bug.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "Gene-set enrichment analysis",
+        "Modelling and simulation",
+        "Prediction and recognition"
+    ],
+    "edam_topic": [
+        "Bioinformatics",
+        "Data mining",
+        "Medical informatics",
+        "Workflows"
+    ],
+    "id": "621",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/621?version=1",
+    "mapped_tools": [],
+    "name": "ScreenDOP - Screening of strategies for disease outcome prediction",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "data transformation",
+        "data wrangling",
+        "disease outcome prediction",
+        "gene set enrichment analysis",
+        "personalized medicine",
+        "public cancer datasets exploration"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

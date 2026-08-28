@@ -1,0 +1,38 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-07-05",
+    "creators": [
+        "Konstantinos Kyritsis",
+        "Nikolaos Pechlivanis",
+        "Fotis Psomopoulos"
+    ],
+    "description": "A CWL-based pipeline for calling small germline variants, namely SNPs and small INDELs, by processing data from Whole-genome Sequencing (WGS) or Targeted Sequencing (e.g., Whole-exome sequencing; WES) experiments.\r\n\r\nOn the respective GitHub folder are available:\r\n\r\n- The CWL wrappers and subworkflows for the workflow\r\n- A pre-configured YAML template, based on validation analysis of publicly available HTS data\r\n\r\nBriefly, the workflow performs the following steps:\r\n\r\n1. Quality control of Illumina reads (FastQC)\r\n2. Trimming of the reads (e.g., removal of adapter and/or low quality sequences) (Trim galore)\r\n3. Mapping to reference genome (BWA-MEM)\r\n4. Convertion of mapped reads from SAM (Sequence Alignment Map) to BAM (Binary Alignment Map) format (samtools)\r\n5. Sorting mapped reads based on read names (samtools)\r\n6. Adding information regarding paired end reads (e.g., CIGAR field information) (samtools)\r\n7. Re-sorting mapped reads based on chromosomal coordinates (samtools)\r\n8. Adding basic Read-Group information regarding sample name, platform unit, platform (e.g., ILLUMINA), library and identifier (picard AddOrReplaceReadGroups)\r\n9. Marking PCR and/or optical duplicate reads (picard MarkDuplicates)\r\n10. Collection of summary statistics (samtools) \r\n11. Creation of indexes for coordinate-sorted BAM files to enable fast random access (samtools)\r\n12. Splitting the reference genome into a predefined number of intervals for parallel processing (GATK SplitIntervals)\r\n\r\nAt this point the application of single-sample workflow follows, during which multiple samples are accepted as input and they are not merged into a unified VCF file but are rather processed separately in each step of the workflow, leading to the production of a VCF file for each sample:\r\n\r\n13. Application of Base Quality Score Recalibration (BQSR) (GATK BaseRecalibrator, GatherBQSRReports and ApplyBQSR tools)\r\n14. Variant calling (GATK HaplotypeCaller)  \r\n15. Merging of all genomic interval-split gVCF files for each sample (GATK MergeVCFs)\r\n16. Separate annotation of SNPs and INDELs based on pretrained Convolutional Neural Network (CNN) models (GATK SelectVariants, CNNScoreVariants and FilterVariantTranches tools)\r\n17. (Optional) Independent step of hard-filtering (GATK VariantFiltration)\r\n18. Variant filtering based on the information added during VQSR and/or custom filters (bcftools)\r\n19. Normalization of INDELs (split multiallelic sites) (bcftools)\r\n20. Annotation of the final dataset of filtered variants with genomic, population-related and/or clinical information (ANNOVAR)\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.527.1",
+    "edam_operation": [
+        "Variant calling"
+    ],
+    "edam_topic": [
+        "Bioinformatics"
+    ],
+    "id": "527",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/527?version=1",
+    "mapped_tools": [],
+    "name": "CWL-based (single-sample) workflow for germline variant calling",
+    "number_of_steps": 51,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "cwl",
+        "genomics",
+        "germline",
+        "variant calling",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Common Workflow Language"
+}

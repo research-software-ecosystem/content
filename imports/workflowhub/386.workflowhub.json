@@ -1,0 +1,35 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-07-29",
+    "creators": [
+        "Natalia Poiata",
+        "Claudio Satriano",
+        "Javier Conejero"
+    ],
+    "description": "### Description\r\n\r\nBackTrackBB is a program for detection and space-time location of seismic sources based on multi-scale, frequency-selective statistical coherence of the wave field recorded by dense large-scale seismic networks and local antennas. The method is designed to enhance coherence of the signal statistical features across the array of sensors and consists of three steps. They are signal processing, space-time imaging and detection and location.\r\n\r\n### Experiment configuration\r\n\r\nThis experiment is pre-configured to use a synthetic dataset available at `/gpfs/scratch/bsc44/MN4/bsc44/bsc44755/scratch_pr1ejg00_pr1ejg19/pr1ejg19/data/2222/01`. The parameters passed to the submission script `XX_launch_provenance.sh` are:\r\n\r\n- 2222 \\ year\r\n- 01 \\ month\r\n- 1 \\ init day\r\n- 3 \\ end day\r\n- 0 \\ init hour\r\n- 24 \\ end hour\r\n- 100 \\ tw_x_task\r\n\r\nEvery hour simulated (with a total of n_days * n_hours) generates x18 `btbb_block` tasks (the most computational intensive task of the workflow).\r\n\r\nEach `btbb_block` task is configured to use 56 cores simultaneously using config file `../examples/mn5/Synthetic/BT_SyntheticExample_MN_base_ncpu56.conf`.\r\n\r\nOutputs are generated at `out_synthetic_continous_np/2222/01`.\r\n\r\nThus, for this experiment configuration, a total of 1300 tasks are generated, from which 864 are `btbb_block` tasks. Execution in Marenostrum V should take around 11 minutes using 108 nodes, or around 1.5 hours using 8 nodes.\r\n\r\n### CPU Usage\r\n\r\nCPU usage is moderated (average: 34.39 %) due to the large time transitioning between iterations, as can be seen in the CPU profiling plot:\r\n\r\n![CPU profiling, 108 nodes](https://workflowhub.eu/workflows/386/git/3/raw/profiling/cpu_aggregated.svg)\r\n        \r\n### External sources\r\n    \r\nSource with inputs and outputs included (too large for WorkflowHub): [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21701558.svg)](https://doi.org/10.5281/zenodo.21701558)\r\n\r\nMore information: https://backtrackbb.github.io/\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.386.3",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "386",
+    "latest_version": "3",
+    "license": "CECILL-2.1",
+    "link": "https://workflowhub.eu/workflows/386?version=3",
+    "mapped_tools": [],
+    "name": "BackTrackBB: multi-band array detection and location of seismic sources, using synthetic inputs, 2 days, 24 hours per day",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "compss",
+        "compss use cases",
+        "marenostrum v",
+        "supercomputer",
+        "non_data_persistence",
+        "ro-crate"
+    ],
+    "tools": [],
+    "update_time": "2026-07-30",
+    "versions": "3",
+    "workflow_class": "COMP Superscalar"
+}

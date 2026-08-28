@@ -1,0 +1,51 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-11-01",
+    "creators": [
+        "Samuel Lambert",
+        "Benjamin Wingfield",
+        "Laurent Gil"
+    ],
+    "description": "# The Polygenic Score Catalog Calculator (`pgsc_calc`)\r\n\r\n[![Documentation Status](https://readthedocs.org/projects/pgsc-calc/badge/?version=latest)](https://pgsc-calc.readthedocs.io/en/latest/?badge=latest)\r\n[![pgscatalog/pgsc_calc CI](https://github.com/PGScatalog/pgsc_calc/actions/workflows/ci.yml/badge.svg)](https://github.com/PGScatalog/pgsc_calc/actions/workflows/ci.yml)\r\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5970794.svg)](https://doi.org/10.5281/zenodo.5970794)\r\n\r\n[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-\u226523.10.0-23aa62.svg?labelColor=000000)](https://www.nextflow.io/)\r\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\r\n[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)\r\n[![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)\r\n\r\n## Introduction\r\n\r\n`pgsc_calc` is a bioinformatics best-practice analysis pipeline for calculating\r\npolygenic [risk] scores on samples with imputed genotypes using existing scoring\r\nfiles from the [Polygenic Score (PGS) Catalog](https://www.pgscatalog.org/)\r\nand/or user-defined PGS/PRS.\r\n\r\n## Pipeline summary\r\n\r\n> [!IMPORTANT]  \r\n> * Whole genome sequencing (WGS) data [are not currently supported by the calculator](https://pgsc-calc.readthedocs.io/en/latest/explanation/match.html#are-your-target-genomes-imputed-are-they-wgs)\r\n> * It\u2019s possible to [create compatible gVCFs from WGS data](https://github.com/PGScatalog/pgsc_calc/discussions/123#discussioncomment-6469422). We plan to improve support for WGS data in the near future.\r\n\r\n<p align=\"center\">\r\n  <img width=\"80%\" src=\"https://github.com/PGScatalog/pgsc_calc/assets/11425618/f766b28c-0f75-4344-abf3-3463946e36cc\">\r\n</p>\r\n\r\nThe workflow performs the following steps:\r\n\r\n* Downloading scoring files using the PGS Catalog API in a specified genome build (GRCh37 and GRCh38).\r\n* Reading custom scoring files (and performing a liftover if genotyping data is in a different build).\r\n* Automatically combines and creates scoring files for efficient parallel computation of multiple PGS\r\n    - Matching variants in the scoring files against variants in the target dataset (in plink bfile/pfile or VCF format)\r\n* Calculates PGS for all samples (linear sum of weights and dosages)\r\n* Creates a summary report to visualize score distributions and pipeline metadata (variant matching QC)\r\n\r\nAnd optionally:\r\n\r\n- Genetic Ancestry: calculate similarity of target samples to populations in a\r\n  reference dataset ([1000 Genomes (1000G)](http://www.nature.com/nature/journal/v526/n7571/full/nature15393.html)), using principal components analysis (PCA)\r\n- PGS Normalization: Using reference population data and/or PCA projections to report\r\n  individual-level PGS predictions (e.g. percentiles, z-scores) that account for genetic ancestry\r\n\r\nSee documentation for a list of planned [features under development](https://pgsc-calc.readthedocs.io/en/latest/index.html#Features-under-development).\r\n\r\n### PGS applications and libraries\r\n\r\n`pgsc_calc` uses applications and libraries internally developed at the PGS Catalog, which can do helpful things like:\r\n\r\n* Query the PGS Catalog to bulk download scoring files in a specific genome build\r\n* Match variants from scoring files to target variants\r\n* Adjust calculated PGS in the context of genetic ancestry\r\n\r\nIf you want to write Python code to work with PGS, [check out the `pygscatalog` repository to learn more](https://github.com/PGScatalog/pygscatalog).\r\n\r\nIf you want a simpler way of working with PGS, ignore this section and continue below to learn more about `pgsc_calc`.\r\n\r\n## Quick start\r\n\r\n1. Install\r\n[`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation)\r\n(`>=23.10.0`)\r\n\r\n2. Install [`Docker`](https://docs.docker.com/engine/installation/) or\r\n[`Singularity (v3.8.3 minimum)`](https://www.sylabs.io/guides/3.0/user-guide/)\r\n(please only use [`Conda`](https://conda.io/miniconda.html) as a last resort)\r\n\r\n3. Download the pipeline and test it on a minimal dataset with a single command:\r\n\r\n    ```console\r\n    nextflow run pgscatalog/pgsc_calc -profile test,<docker/singularity/conda>\r\n    ```\r\n\r\n4. Start running your own analysis!\r\n\r\n    ```console\r\n    nextflow run pgscatalog/pgsc_calc -profile <docker/singularity/conda> --input samplesheet.csv --pgs_id PGS001229\r\n    ```\r\n\r\nSee [getting\r\nstarted](https://pgsc-calc.readthedocs.io/en/latest/getting-started.html) for more\r\ndetails.\r\n\r\n## Documentation\r\n\r\n[Full documentation is available on Read the Docs](https://pgsc-calc.readthedocs.io/)\r\n\r\n## Credits\r\n\r\npgscatalog/pgsc_calc is developed as part of the PGS Catalog project, a\r\ncollaboration between the University of Cambridge\u2019s Department of Public Health\r\nand Primary Care (Michael Inouye, Samuel Lambert) and the European\r\nBioinformatics Institute (Helen Parkinson, Laura Harris).\r\n\r\nThe pipeline seeks to provide a standardized workflow for PGS calculation and\r\nancestry inference implemented in nextflow derived from an existing set of\r\ntools/scripts developed by Inouye lab (Rodrigo Canovas, Scott Ritchie, Jingqin\r\nWu) and PGS Catalog teams (Samuel Lambert, Laurent Gil).\r\n\r\nThe adaptation of the codebase, nextflow implementation, and PGS Catalog features\r\nare written by Benjamin Wingfield, Samuel Lambert, Laurent Gil with additional input\r\nfrom Aoife McMahon (EBI). Development of new features, testing, and code review\r\nis ongoing including Inouye lab members (Rodrigo Canovas, Scott Ritchie) and others. If \r\nyou use the tool we ask you to cite our paper describing software and updated PGS Catalog resource:\r\n\r\n- >Lambert, Wingfield _et al._ (2024) Enhancing the Polygenic Score Catalog with tools for score \r\n  calculation and ancestry normalization. Nature Genetics.\r\n  doi:[10.1038/s41588-024-01937-x](https://doi.org/10.1038/s41588-024-01937-x).\r\n\r\nThis pipeline is distrubuted under an [Apache License](LICENSE) amd uses code and \r\ninfrastructure developed and maintained by the [nf-core](https://nf-co.re) community \r\n(Ewels *et al. Nature Biotech* (2020) doi:[10.1038/s41587-020-0439-x](https://doi.org/10.1038/s41587-020-0439-x)), \r\nreused here under the [MIT license](https://github.com/nf-core/tools/blob/master/LICENSE).\r\n\r\nAdditional references of open-source tools and data used in this pipeline are described in\r\n[`CITATIONS.md`](CITATIONS.md).\r\n\r\nThis work has received funding from EMBL-EBI core funds, the Baker Institute,\r\nthe University of Cambridge, Health Data Research UK (HDRUK), and the European\r\nUnion\u2019s Horizon 2020 research and innovation programme under grant agreement No\r\n101016775 INTERVENE.\r\n",
+    "discussion_links": [
+        {
+            "id": "636",
+            "label": "",
+            "url": "https://github.com/PGScatalog/pgsc_calc/discussions"
+        }
+    ],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [
+        "DNA polymorphism",
+        "Genetic variation",
+        "Genomics",
+        "Human genetics"
+    ],
+    "id": "556",
+    "latest_version": "7",
+    "license": "Apache-2.0",
+    "link": "https://workflowhub.eu/workflows/556?version=7",
+    "mapped_tools": [
+        "plink"
+    ],
+    "name": "The Polygenic Score Catalog Calculator",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "gwas",
+        "nextflow",
+        "workflows",
+        "genomic ancestry",
+        "polygenic risk score",
+        "polygenic score",
+        "prediction"
+    ],
+    "tools": [
+        "plink"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "7",
+    "workflow_class": "Nextflow"
+}

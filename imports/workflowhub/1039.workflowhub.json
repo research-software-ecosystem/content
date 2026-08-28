@@ -1,0 +1,48 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-06-10",
+    "creators": [
+        "Carlos Classen"
+    ],
+    "description": "# CNVand\r\n[![Snakemake](https://img.shields.io/badge/snakemake-\u22658.0.0-brightgreen.svg?style=flat-square)](https://snakemake.bitbucket.io)\r\n[![Conda](https://img.shields.io/badge/conda-\u226523.11.0-brightgreen.svg?style=flat-square)](https://anaconda.org/conda-forge/mamba)\r\n![Docker](https://img.shields.io/badge/docker-\u226526.1.4-brightgreen.svg?style=flat-square)\r\n![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)\r\n[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) \r\n\r\nCNVand is a snakemake workflow for CNV analysis, tailored for preparing data used by the [CNVizard](https://github.com/IHGGM-Aachen/CNVizard) CNV visualization tool. Given a set of BAM and VCF files, it utilizes the tools `CNVkit` and `AnnotSV` to analyze and annotate copy number variations.\r\n\r\n## General Settings and Samplesheet\r\nTo configure this pipeline, modify the config under `config/config.yaml` as needed. Detailed explanations for each setting are provided within the file.\r\n\r\nAdd samples to the pipeline by completing `config/samplesheet.tsv`. Each `sample` should be associated with a `path` to the corresponding BAM and VCF file.\r\n\r\nFor detailed instructions on how to configure CNVand see `config/README.md`.\r\n\r\n## Reference Files\r\nTo use CNVand some external reference files are needed alongside your sample data.\r\n\r\n### Genome\r\n\r\nFor `cnvkit_fix` to work, you need to specify a reference genome in the config file. Take care to use the same reference file for your entire workflow!\r\n\r\n### Annotations\r\n\r\nFor AnnotSV to work, the annotation files must be downloaded separately and be referenced in the config file under the respective key. For human annotations, this can be done [here](https://www.lbgi.fr/~geoffroy/Annotations/Annotations_Human_3.4.2.tar.gz). In case this link is not working, check the original [AnnotSV](https://github.com/lgmgeo/AnnotSV/tree/master) repository for updates on how to obtain the annotations.\r\n\r\n## Pipeline Setup\r\nCNVand can be executed using mamba environments or a pre-built docker container.\r\n\r\n### Mamba (Snakedeploy)\r\nFor a one-click installation, snakedeploy can be used. For further information, see the entry for CNVand in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?repo=IHGGM-Aachen/CNVand)\r\n\r\n### Mamba (Manual)\r\nThis workflow can easily setup manually with the given environment file. Install Snakemake and dependencies using the command:\r\n\r\n```bash\r\nmamba env create -f environment.yml\r\n```\r\n\r\nThen activate the newly created environment with: \r\n\r\n```bash\r\nmamba activate cnvand\r\n```\r\n\r\nNow configure the pipeline and download the needed annotation and refenrece files. When everything is set up, Execute the pipeline with:\r\n\r\n```bash\r\nsnakemake --cores all --use-conda\r\n```\r\n\r\nGenerate a comprehensive execution report by running:\r\n\r\n```bash\r\nsnakemake --report report.zip\r\n```\r\n\r\n\r\n### Docker\r\n\r\nCNVand can also be used inside a Docker container. To do so, first pull the Docker image with:\r\n\r\n```bash\r\ndocker pull ghcr.io/ihggm-aachen/cnvand:latest\r\n```\r\n\r\nThen run the container with the bind mounts needed in your setup:\r\n\r\n```bash\r\ndocker run -it -v /path/to/your/data:/data ghcr.io/ihggm-aachen/cnvand:latest /bin/bash\r\n```\r\n\r\nThis command opens an interactive shell inside the Docker container. Once inside the container, you are placed inside the `/cnvand` the directory. From there then run the pipeline once you set an appropriate configuration:\r\n\r\n```bash\r\nsnakemake --cores all --use-conda\r\n```\r\n\r\n## Contributing\r\n\r\nWe welcome contributions to improve CNVand. Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.\r\n\r\n## Code of Conduct\r\n\r\nWe are committed to fostering an open and welcoming environment. Please see our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our community guidelines.\r\n\r\n## Documentation\r\n\r\nDetailed documentation for the workflow can be found in `workflow/documentation.md`.\r\n\r\n## Testing\r\n\r\nTo ensure the pipeline runs correctly, we have set up both unit and integration tests. Unit tests are generated from successful workflow runs, and integration tests are configured to run the entire workflow with test data.\r\n\r\n### Integration Tests\r\n\r\nThe integration test can be run using the data and config provided. Remember to download the correct reference/annotations (GRCh38 in case of the bundled NIST data) by yourself and adjust your local paths as necessary!\r\n\r\n### Unit Tests\r\n\r\nRun the unit tests with:\r\n\r\n```bash\r\npytest -v .tests/unit\r\n```\r\n\r\nThis will check for the correct CNVand output per rule.\r\n\r\n## License\r\n\r\nThis project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.1039.1",
+    "edam_operation": [
+        "Copy number variation detection",
+        "Gene functional annotation"
+    ],
+    "edam_topic": [
+        "Biomedical science",
+        "Copy number variation",
+        "Data visualisation"
+    ],
+    "id": "1039",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/1039?version=1",
+    "mapped_tools": [
+        "annotsv",
+        "cnvkit",
+        "snakemake"
+    ],
+    "name": "CNVand",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "cnvkit",
+        "copy number variation",
+        "magic",
+        "snakemake",
+        "annotsv"
+    ],
+    "tools": [
+        "annotsv",
+        "cnvkit",
+        "snakemake"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}

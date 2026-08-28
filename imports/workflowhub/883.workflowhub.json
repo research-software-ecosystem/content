@@ -1,0 +1,42 @@
+{
+    "content_blobs": [],
+    "create_time": "2024-05-13",
+    "creators": [
+        "Thomas Roetzer-Pejrimovsky"
+    ],
+    "description": "# GBMatch_CNN\r\nWork in progress...\r\nPredicting TS &amp; risk from glioblastoma whole slide images\r\n\r\n# Reference\r\nUpcoming paper: stay tuned...\r\n\r\n# Dependencies\r\npython 3.7.7\r\n\r\nrandaugment by Khrystyna Faryna: https://github.com/tovaroe/pathology-he-auto-augment\r\n\r\ntensorflow 2.1.0\r\n\r\nscikit-survival 0.13.1\r\n\r\npandas 1.0.3\r\n\r\nlifelines 0.25.0\r\n\r\n# Description\r\nThe pipeline implemented here predicts transcriptional subtypes and survival of glioblastoma patients based on H&E stained whole slide scans. Sample data is provided in this repository. To test the basic functionality with 5-fold-CV simply run train_model_OS.py (for survival) or train_model_TS.py (for transcriptional subtypes). Please note that this will not reproduce the results from the manuscript, as only a small fraction of the image data can be provided in this repository due to size constraints. In order to reproduce the results from the manuscript, please refer to the step by step guide below. The whole dataset can be accessed at https://www.medical-epigenomics.org/papers/GBMatch/.\r\nIf you wish to adopt this pipeline for your own use, please be sure to set the correct parameters in config.py.\r\n\r\nMoreover, we provide a fully trained model in gbm_predictor.py for predicting new samples (supported WSI formats are ndpi and svs). To use GBMPredictor, simply initialize by calling \r\n`gbm_predictor = GBMPredictor()`\r\nand predict your sample by calling\r\n`(predicted_TS, risk_group, median_riskscore) = gbm_predictor.predict(*path_to_slidescan*)`\r\nHeatmaps and detailed results will be automatically saved in a subfolder in your sample path.\r\n\r\n# Reproducing the manuscript results - step by step guide\r\n\r\n## Training the CNN model\r\n1. Clone this repository and install the dependencies in your environment. Make sure that the path for randaugment is correctly set in the config.py (should be correct by default).\r\n2. Download all included image tiles at https://doi.org/10.5281/zenodo.8358673 and replace the data/training/image_tiles folder with the image_tiles folder from zenodo.\r\n3. Run train_model_OS.py and/or train_model_TS.py to reproduce the training with 5-fold cross validation. Models and results will be saved in the data/models folder.\r\n4. Run train_final_model_OS.py and/or train_final_model_TS.py to train the final model on the whole training dataset.\r\n\r\n## Validate the CNN model on TCGA data\r\n1. Download scans and clinical data of the TCGA glioblastoma cohort from https://www.cbioportal.org/ and/or https://portal.gdc.cancer.gov/\r\n2. Copy tumor segmentations from GBMatch_CNN/data/validation/segmentation into the same folder as the TCGA slide scans\r\n3. Predict TCGA samples with gbm_predictor (see above).\r\n(You can also find all prediction results in GBMatch_CNN/data/validation/TCGA_annotation_prediction.csv.)\r\n\r\n## Evaluation of the tumor microenvironment\r\n1. Install qupath 0.3.0 (newer versions should also work): https://qupath.github.io/.\r\n2. Download immunohistochemical slides from https://www.medical-epigenomics.org/papers/GBMatch/.\r\n3. Download annotation (IHC_geojsons) from https://doi.org/10.5281/zenodo.8358673.\r\n4. Create a new project and import all immunohistochemical slides & annotations.\r\n5. Copy the CD34 and HLA-DR thresholder from GBMatch_CNN/qupath into your project.\r\n6. Run GBMatch_CNN/qupath/IHC_eval.groovy for all slides - immunohistochemistry results will be saved to a IHC_results-folder.\r\n7. Create a new project and import all HE image tiles.\r\n8. Run GBMatch_CNN/qupath/cellularity.groovy for all slides - cellularity results will be saved to a HE-results-folder.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.883.1",
+    "edam_operation": [
+        "Classification"
+    ],
+    "edam_topic": [
+        "Biomedical science",
+        "Machine learning",
+        "Oncology",
+        "Pathology",
+        "Transcriptomics"
+    ],
+    "id": "883",
+    "latest_version": "1",
+    "license": "GPL-3.0",
+    "link": "https://workflowhub.eu/workflows/883?version=1",
+    "mapped_tools": [
+        "gbmpredictor"
+    ],
+    "name": "Training a CNN model for classification of transcriptional subtypes and survival prediction in glioblastoma",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bioinformatics",
+        "pathology"
+    ],
+    "tools": [
+        "gbmatch - gbmpredictor",
+        "gbmpredictor"
+    ],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Python"
+}

@@ -1,0 +1,38 @@
+{
+    "content_blobs": [],
+    "create_time": "2023-03-21",
+    "creators": [
+        "Georgina Samaha",
+        "Tracy Chew"
+    ],
+    "description": "# IGVreport-nf \r\n\r\n- [Description](#description)\r\n  - [Diagram](#diagram)\r\n  - [User guide](#user-guide)\r\n  - [Workflow summaries](#workflow-summaries)\r\n      - [Metadata](#metadata)\r\n      - [Component tools](#component-tools)\r\n      - [Required (minimum)\r\n        inputs/parameters](#required-minimum-inputsparameters)\r\n  - [Additional notes](#additional-notes)\r\n  - [Help/FAQ/Troubleshooting](#helpfaqtroubleshooting)\r\n  - [Acknowledgements/citations/credits](#acknowledgementscitationscredits)\r\n\r\n## Description \r\n\r\nQuickly generate [IGV `.html` reports](https://github.com/igvteam/igv-reports) for a genomic region of interest in the human genome (hg38). Bcftools is used to subset a VCF to a region of interest, the subset VCF is then passed to IGV-reports, which generates a report consisting of a table of genomic sites or regions and associated IGV views for each site. The reports can be opened by any web browser as a static page.  \r\n\r\n### Diagram \r\n\r\n```mermaid\r\ngraph LR;\r\n    VCF-->|bcftools view|SubsetVCF;\r\n    SubsetVCF-->|IGVtools|HTMLreport;\r\n    AlignmentBAM-->|IGVtools|HTMLreport;\r\n```\r\n\r\n### User guide\r\n\r\nThis workflow uses containers for all steps and can run using Singularity or Docker. It requires Nextflow and either Singularity or Docker be installed. For instructions on installing Nextflow, see their [documentation](https://www.nextflow.io/docs/latest/getstarted.html).\r\n\r\n**This workflow currently only generates reports for the human reference genome assembly, Hg38.** \r\n\r\nThe workflow runs three processes: \r\n1. The provided VCF file is subset to a region of interest using Bcftools view \r\n2. The Subset VCF file is then indexed using Bcftools index \r\n3. The subset VCF and provided Bam file are used to generate the html report for the region of interest. \r\n\r\nTo start clone this repository: \r\n```\r\ngit clone https://github.com/Sydney-Informatics-Hub/IGVreport-nf.git\r\n```\r\n\r\nFrom the IGVreport-nf directory, run the pipeline: \r\n```\r\nnextflow run main.nf --sample <sampleID> \\\r\n    --bam <path/to/bam> \\\r\n    --vcf <path/to/vcf> \\\r\n    --chr <chrID> --start <begin bp> --stop <end bp>     \r\n```\r\n\r\nThis will create a report in a directory titled `./Report`. You can rename this directory at runtime using the flag `--outDir`. All runtime summary reports will be available in the `./runInfo` directory.  \r\n\r\n### Workflow summaries\r\n\r\n#### Metadata \r\n\r\n|metadata field     | workflow_name / workflow_version  |\r\n|-------------------|:---------------------------------:|\r\n|Version            | 1.0                               |\r\n|Maturity           | under development                 |\r\n|Creators           | Georgie Samaha                    |\r\n|Source             | NA                                |\r\n|License            | GPL-3.0 license                   |\r\n|Workflow manager   | NextFlow                          |\r\n|Container          | None                              |\r\n|Install method     | NA                                |\r\n|GitHub             | github.com/Sydney-Informatics-Hub/IGVreport-nf    |\r\n|bio.tools \t        | NA                                |\r\n|BioContainers      | NA                                | \r\n|bioconda           | NA                                |\r\n\r\n#### Component tools\r\n\r\n* nextflow>=20.07.1\r\n* singularity or docker\r\n* bcftools/1.16\r\n* igv-reports/1.6.1\r\n\r\n#### Required (minimum) inputs/parameters\r\n\r\n* An indexed alignment file in Bam format \r\n* A gzipped and indexed vcf file\r\n\r\n## Additional notes\r\n\r\n## Help/FAQ/troubleshooting \r\n\r\n## Acknowledgements/citations/credits\r\n\r\nThis workflow was developed by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney and the Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia. \r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [
+        "Bioinformatics",
+        "Genetic variation",
+        "Genomics",
+        "Mapping",
+        "Structural variation"
+    ],
+    "id": "440",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/440?version=1",
+    "mapped_tools": [],
+    "name": "IGVreport-nf",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "alignment",
+        "genomics",
+        "mapping",
+        "variant calling"
+    ],
+    "tools": [],
+    "update_time": "2026-05-13",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}
