@@ -363,6 +363,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # Checkout defaults to the run's head SHA rather than the current tip
+          # of master, which goes stale as soon as anything else pushes.
+          ref: master
       - name: Merge feature branches
         run: |
           git config --local user.email "tpe-bot@github.com"
@@ -389,7 +393,14 @@ jobs:
           merge_branch_if_exists "debianmed-import-branch"
           merge_branch_if_exists "bioconductor-import-branch"
           merge_branch_if_exists "workflowhub-import-branch"
-          git push origin master
+          # Only push when at least one branch merged, for the same reason as
+          # in merge-bioconductor below.
+          git fetch origin master
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/master)" ]; then
+            echo "Nothing to push, no import branch changed master."
+          else
+            git push origin HEAD:master
+          fi
   bioconductor-to-biotools:
     runs-on: ubuntu-latest
     needs:
@@ -438,6 +449,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # Without this, checkout uses the run's head SHA, which is where
+          # master stood when the run started -- before merge-imports pushed.
+          ref: master
       - name: Merge bioconductor-to-biotools branch
         run: |
           git config --local user.email "tpe-bot@github.com"
@@ -449,7 +464,15 @@ jobs:
           else
             echo "Branch bioconductor-to-biotools-branch does not exist on the remote repository."
           fi
-          git push origin master
+          # Only push when the merge actually moved master forward. Pushing
+          # unconditionally sends whatever was checked out, which fails as a
+          # non-fast-forward whenever nothing was merged.
+          git fetch origin master
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/master)" ]; then
+            echo "Nothing to push, master is unchanged."
+          else
+            git push origin HEAD:master
+          fi
   clean-branches:
     runs-on: ubuntu-latest
     needs:
