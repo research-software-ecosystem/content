@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/ArpiarSaundersLab/LongBarcodeQC
+  doc_url: https://arpiarsaunderslab.github.io/LongBarcodeQC/
+  home: https://github.com/ArpiarSaundersLab/LongBarcodeQC
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Analyze long-read barcode libraries from Oxford Nanopore sequencing and
+    generate an interactive QC report
+build:
+  entry_points:
+  - lbqc = longbarcodeqc.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - goodez
+package:
+  name: longbarcodeqc
+  version: 1.0.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - pandas >=2.1.1
+  - parasail-python >=1.3.4
+  - matplotlib-base >=3.8.4
+  - jinja2 >=3.1.4
+  - seaborn-base >=0.13.2
+  - pyarrow >=14.0
+  - tqdm >=4.66
+  - cutadapt >=5.2
+  - minimap2
+  - samtools
+source:
+  sha256: 8a47344eb776add4da2079b2a772de42064cf957bed4ae668498b5f20071bb1f
+  url: https://pypi.org/packages/source/l/longbarcodeqc/longbarcodeqc-1.0.0.tar.gz
+test:
+  commands:
+  - lbqc --version
+  - lbqc --help
+  imports:
+  - longbarcodeqc
