@@ -1,0 +1,44 @@
+about:
+  description: 'REVEAL converts BAM/SAM alignments to sequence overview (SO) format
+    and
+
+    extracts per-position coverage, SNPs, and indels. It supports coverage
+
+    normalization using single-copy genes, copy number estimation, and
+
+    generates R/ggplot2-ready plotable output for visualization.
+
+    '
+  dev_url: https://github.com/SarahSaadain/REVEAL
+  home: https://github.com/SarahSaadain/REVEAL
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Toolkit for BAM-to-sequence-overview conversion, coverage analysis, and
+    TE visualization
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - RobertKofler
+  - SarahSaadain
+package:
+  name: reveal-tools
+  version: 1.0.0
+requirements:
+  run:
+  - python >=3.7
+  - pysam
+  - numpy
+  - pandas
+  - r-base >=4.0
+  - r-tidyverse >=2.0.0
+source:
+  sha256: 93c65603a2db0bc5ee2dd551468f385fb7fdcf44cc33534d3b37ff68d0338843
+  url: https://github.com/SarahSaadain/REVEAL/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - REVEAL --help
