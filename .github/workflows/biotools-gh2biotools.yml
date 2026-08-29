@@ -6,15 +6,37 @@ on:
       - 'data/**/*.biotools.json'
     branches:
       - master
+  workflow_call:
+    inputs:
+      files:
+        description: Space-separated list of .biotools.json files to sync with bio.tools
+        type: string
+        required: true
+      ref:
+        description: Commit to check out — the commit that introduced the changes
+        type: string
+        required: true
+      base:
+        description: Commit to compare against for the protected-field check (defaults to the parent of the checked-out commit)
+        type: string
+        required: false
+        default: ''
+
+# bio.tools writes are serialised: an import run and a human push must not
+# hit the API at the same time.
+concurrency:
+  group: gh2biotools
+  cancel-in-progress: false
 
 jobs:
   run-gh2biotools:
     runs-on: ubuntu-latest
-    if: github.actor != 'biotools-bot'
-    
+    if: github.event_name != 'push' || github.actor != 'biotools-bot'
+
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.ref || github.sha }}
           sparse-checkout: '**/*.biotools.json'
           sparse-checkout-cone-mode: false
           fetch-depth: 2
@@ -22,14 +44,69 @@ jobs:
 
       - name: check changes to biotools.json files
         id: changes
+        if: github.event_name == 'push'
         uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323 # v47.0.5
         with:
-          files: | 
+          files: |
             **/*.biotools.json
 
 
-      - name: validate allowed fields
+      - name: resolve file list and base commit
+        id: resolve
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PUSH_FILES: ${{ steps.changes.outputs.all_changed_files }}
+          PUSH_BASE: ${{ github.event.before }}
+          INPUT_FILES: ${{ inputs.files }}
+          INPUT_BASE: ${{ inputs.base }}
         run: |
+          if [ "$EVENT_NAME" = "push" ]; then
+            files="$PUSH_FILES"
+            base="$PUSH_BASE"
+          else
+            files="$INPUT_FILES"
+            base="$INPUT_BASE"
+            [ -n "$base" ] || base="$(git rev-parse HEAD^)"
+          fi
+
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "$(echo $files | wc -w) file(s) to process, base commit $base"
+
+
+      - name: make base commit available
+        if: steps.resolve.outputs.files != ''
+        env:
+          BASE: ${{ steps.resolve.outputs.base }}
+        run: |
+          # The checkout is shallow (the repository is several GB), so the base
+          # commit of a multi-commit push is usually not present. Fetch just it.
+          if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "No base commit (new branch) — protected-field check will be skipped."
+            exit 0
+          fi
+
+          if ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            git fetch --depth=1 origin "$BASE"
+          fi
+
+          if ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            echo "::error ::Base commit $BASE could not be fetched; refusing to skip the protected-field check."
+            exit 1
+          fi
+
+
+      - name: validate allowed fields
+        if: steps.resolve.outputs.files != ''
+        env:
+          BASE: ${{ steps.resolve.outputs.base }}
+          FILES: ${{ steps.resolve.outputs.files }}
+        run: |
+          if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "No base commit to compare against — skipping."
+            exit 0
+          fi
+
           echo "Validating fields in changed .biotools.json files..."
           PROTECTED_FIELDS=(
             "biotoolsID"
@@ -50,21 +127,30 @@ jobs:
 
           failed=false
 
-          for file in $(echo "${{ steps.changes.outputs.all_changed_files }}"); do
+          # $FILES is a space-separated list; word splitting is intended.
+          for file in $FILES; do
             echo "Checking $file..."
-        
-            git show ${{ github.event.before }}:$file > old.json || continue
-            cat $file > new.json
+
+            if ! git cat-file -e "$BASE:$file" 2>/dev/null; then
+              echo "  new file — no previous version to compare against"
+              continue
+            fi
+
+            git show "$BASE:$file" > old.json
 
             for field in "${PROTECTED_FIELDS[@]}"; do
-              old_val=$(jq -e ".$field" old.json 2>/dev/null || echo "")
-              new_val=$(jq -e ".$field" new.json 2>/dev/null || echo "")
+              # Wrapping the value in an array keeps "absent" distinguishable
+              # from "present but null" — bare .field returns null for both.
+              old_val=$(jq -c --arg f "$field" 'if has($f) then [.[$f]] else "absent" end' old.json)
+              new_val=$(jq -c --arg f "$field" 'if has($f) then [.[$f]] else "absent" end' "$file")
               if [ "$old_val" != "$new_val" ]; then
                 echo "❌ Field '$field' has been modified in $file"
                 failed=true
               fi
             done
           done
+
+          rm -f old.json
 
           if [ "$failed" = true ]; then
             echo "::error ::One or more not allowed fields have been modified."
@@ -75,6 +161,7 @@ jobs:
 
 
       - name: checkout utils repo
+        if: steps.resolve.outputs.files != ''
         uses: actions/checkout@v4
         with:
           repository: research-software-ecosystem/utils
@@ -85,27 +172,36 @@ jobs:
 
 
       - name: set up Python
-        uses: actions/setup-python@v4
+        if: steps.resolve.outputs.files != ''
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
 
       - name: install dependencies
+        if: steps.resolve.outputs.files != ''
         working-directory: content-ecosystem-utils/scripts/runbiotools
         run: |
           pip3 install -r requirements.txt
 
 
       - name: run gh2biotools.py script
+        if: steps.resolve.outputs.files != ''
         env:
           BIOTOOLS_API_TOKEN: ${{ secrets.BIOTOOLS_API_TOKEN }}
+          FILES: ${{ steps.resolve.outputs.files }}
         run: |
-          changed_files="${{ steps.changes.outputs.all_changed_files }}"
+          set -o pipefail
 
-          command="python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py"
+          # --files takes nargs="+", so the list must reach argparse as separate
+          # arguments. Quoting it passes the whole list as a single filename,
+          # which only ever worked when exactly one file had changed.
+          python content-ecosystem-utils/scripts/runbiotools/gh2biotools.py \
+            --files $FILES 2>&1 | tee gh2biotools.log
 
-          if [[ -n "$changed_files" ]]; then
-            command="$command --files \"$changed_files\""
+          # gh2biotools.py reports per-tool failures in its summary but always
+          # exits 0. Surface them so a partly-failed sync is not a green run.
+          if grep -qE 'Tools failed[^:]*: [1-9]' gh2biotools.log; then
+            echo "::error ::gh2biotools reported failures — see the summary above."
+            exit 1
           fi
-
-          eval "$command"
