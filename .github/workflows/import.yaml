@@ -396,6 +396,7 @@ jobs:
       - merge-imports
     outputs:
       commit_hash: ${{ steps.commit-and-push-bioconductor-to-biotools.outputs.commit_hash }}
+      files: ${{ steps.changed-biotools-files.outputs.files }}
     steps:
     - name: checkout contents repository
       uses: actions/checkout@v4
@@ -420,6 +421,18 @@ jobs:
       with:
         repo-user: ${{ secrets.GITHUB_USER }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Collect changed biotools files
+      id: changed-biotools-files
+      run: |
+        # Recorded before the commit step, while the tree is still dirty.
+        # -uall so that files in newly created tool directories are listed
+        # individually rather than collapsed into the directory.
+        files=$(git status --porcelain=v1 -uall -- data/ \
+                | sed 's/^...//' \
+                | grep '\.biotools\.json$' \
+                | tr '\n' ' ')
+        echo "files=$files" >> "$GITHUB_OUTPUT"
+        echo "$(echo $files | wc -w) changed .biotools.json file(s)."
     - name: Commit and Push Changes
       id: commit-and-push-bioconductor-to-biotools
       uses: stefanzweifel/git-auto-commit-action@v5
@@ -435,10 +448,13 @@ jobs:
     needs:
       - bioconductor-to-biotools
     if: always()
+    outputs:
+      sha: ${{ steps.merge-bioconductor-branch.outputs.sha }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Merge bioconductor-to-biotools branch
+        id: merge-bioconductor-branch
         run: |
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
@@ -450,6 +466,22 @@ jobs:
             echo "Branch bioconductor-to-biotools-branch does not exist on the remote repository."
           fi
           git push origin master
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+  gh2biotools:
+    # Pushes made with GITHUB_TOKEN do not start workflow runs, so the master
+    # push above can never trigger biotools-gh2biotools.yml via `on: push`.
+    # Call it directly instead, scoped to the files this run actually converted
+    # — the merge commit also carries data imported *from* bio.tools, which
+    # must not be pushed back.
+    needs:
+      - bioconductor-to-biotools
+      - merge-bioconductor
+    if: needs.bioconductor-to-biotools.outputs.files != ''
+    uses: ./.github/workflows/biotools-gh2biotools.yml
+    with:
+      files: ${{ needs.bioconductor-to-biotools.outputs.files }}
+      ref: ${{ needs.merge-bioconductor.outputs.sha }}
+    secrets: inherit
   clean-branches:
     runs-on: ubuntu-latest
     needs:
