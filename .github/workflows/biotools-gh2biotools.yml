@@ -143,10 +143,23 @@ jobs:
               # from "present but null" — bare .field returns null for both.
               old_val=$(jq -c --arg f "$field" 'if has($f) then [.[$f]] else "absent" end' old.json)
               new_val=$(jq -c --arg f "$field" 'if has($f) then [.[$f]] else "absent" end' "$file")
-              if [ "$old_val" != "$new_val" ]; then
-                echo "❌ Field '$field' has been modified in $file"
-                failed=true
+              [ "$old_val" = "$new_val" ] && continue
+
+              # collectionID is append-only rather than frozen: an importer may
+              # add its own collection — bc2bt adds "BioConductor" by design —
+              # but nothing may drop a collection an entry already carries.
+              if [ "$field" = "collectionID" ]; then
+                removed=$(jq -rn --slurpfile a old.json --slurpfile b "$file" \
+                  '(($a[0].collectionID // []) - ($b[0].collectionID // [])) | join(", ")')
+                if [ -n "$removed" ]; then
+                  echo "❌ collectionID entries removed from $file: $removed"
+                  failed=true
+                fi
+                continue
               fi
+
+              echo "❌ Field '$field' has been modified in $file"
+              failed=true
             done
           done
 
