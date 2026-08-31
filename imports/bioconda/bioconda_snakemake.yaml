@@ -69,7 +69,7 @@ outputs:
     script: python -m pip install --no-deps --no-build-isolation --no-cache-dir .
       -vvv
     script_env:
-    - SETUPTOOLS_SCM_PRETEND_VERSION_SNAKEMAKE=9.26.0
+    - SETUPTOOLS_SCM_PRETEND_VERSION_SNAKEMAKE=9.26.1
   name: snakemake-minimal
   requirements:
     host:
@@ -116,31 +116,31 @@ outputs:
     - pip show snakemake
     - pip check
     - snakemake --version
-    - snakemake --version | grep "9.26.0"
+    - snakemake --version | grep "9.26.1"
     imports:
     - snakemake
     requires:
     - pip
 package:
   name: snakemake
-  version: 9.26.0
+  version: 9.26.1
 requirements:
   run:
-  - snakemake-minimal =9.26.0
+  - snakemake-minimal =9.26.1
   - pandas <3
   - slack_sdk
   - eido
   - peppy
   - pygments
 source:
-  sha256: 8e02617ef1a3022ab3ad707a314517f61bd781eefa58d73a8bd301abc5dfaa17
-  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.26.0.tar.gz
+  sha256: 091b5d480c0c5eb2ef75b2568e9885091f3e2f11372de358da98ef66ef66e1e0
+  url: https://pypi.io/packages/source/s/snakemake/snakemake-9.26.1.tar.gz
 test:
   commands:
   - export GIT\_PYTHON_REFRESH=warn
   - pip check
   - snakemake --version
-  - snakemake --version | grep "9.26.0"
+  - snakemake --version | grep "9.26.1"
   - printf %s\\n "rule empty:" > Snakefile && snakemake --cores 1 --report
   - rm -rf .snakemake Snakefile report.html
   imports:
