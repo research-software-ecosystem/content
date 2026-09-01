@@ -1,0 +1,49 @@
+about:
+  description: MobiOrigin assigns bacterial DNA fragments to chromosome, plasmid,
+    phage, or an explicit unclassified state and provides optional biological annotation
+    and deterministic visualization. Frozen models and biological databases are installed
+    separately with cryptographic verification.
+  dev_url: https://github.com/Raza-pl/MobiOrigin
+  doc_url: https://github.com/Raza-pl/MobiOrigin#readme
+  home: https://github.com/Raza-pl/MobiOrigin
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE
+  summary: Sequence-and-marker classification of bacterial replicons
+build:
+  entry_points:
+  - mobiorigin = mobiorigin.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - Raza-pl
+package:
+  name: mobiorigin
+  version: 0.1.5
+requirements:
+  host:
+  - python >=3.10,<3.12
+  - pip
+  - poetry-core
+  run:
+  - python >=3.10,<3.12
+  - pytorch >=2.0,<2.6
+  - numpy >=1.24
+  - pyrodigal >=3.0
+  - diamond >=2.1
+  - ncbi-amrfinderplus >=4.2.7
+source:
+  sha256: 74572b0a279ca12c3983182b167a292bc0bfbea4a35b7799400068e29b93a667
+  url: https://pypi.io/packages/source/m/mobiorigin/mobiorigin-0.1.5.tar.gz
+test:
+  commands:
+  - mobiorigin --help
+  - mobiorigin doctor --software-only
+  - diamond version
+  - amrfinder --version
+  imports:
+  - mobiorigin
