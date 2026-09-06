@@ -1,0 +1,50 @@
+about:
+  dev_url: https://github.com/Fu-Yilei/SniffCell-lite
+  home: https://github.com/Fu-Yilei/SniffCell-lite
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: SniffCell Lite annotates variants using targeted long-read methylation
+    evidence and ctDMR signals.
+build:
+  entry_points:
+  - sniffcell-lite = sniffcell.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - Fu-Yilei
+package:
+  name: sniffcell-lite
+  version: 0.9.7
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=64
+  - wheel
+  run:
+  - python >=3.10
+  - pysam >=0.21.0
+  - numpy >=2.2.0
+  - pandas >=2.3.0
+  - scipy
+  - tqdm
+  - matplotlib-base
+  run_constrained:
+  - sniffcell <0a0
+source:
+  sha256: b94f7c4871bc9b2e6b2f7d43a6165e777e19ecfa29ed19882dc874bb0f376678
+  url: https://pypi.org/packages/source/s/sniffcell-lite/sniffcell_lite-0.9.7.tar.gz
+test:
+  commands:
+  - sniffcell-lite --help
+  - sniffcell-lite find --help
+  - sniffcell-lite anno --help
+  - sniffcell-lite report --help
+  imports:
+  - sniffcell
+  - sniffcell.main

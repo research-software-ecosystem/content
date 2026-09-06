@@ -1,0 +1,80 @@
+about:
+  description: 'SATIVA (Kozlov et al. 2016) detects taxonomically mislabelled sequences
+    by placing every
+
+    reference sequence back into a tree built without it. This fork of amkozlov/sativa
+
+    v0.9.3 replaces the RAxML placement (-f O) with EPA-ng (Barbera et al. 2019) in
+    both the
+
+    leave-one-out and the final confirmation, and leaves SATIVA''s classification
+    and
+
+    decision logic alone: the EPA-ng edges are mapped back onto SATIVA''s own B= numbering
+    by
+
+    leaf bipartition.
+
+
+    Against unmodified SATIVA v0.9.3 on ITS alignments: 257 s to 15.4 s at 1600 sequences,
+
+    1536 s to 87 s at 5402, with 0.98 recall and 0.90 precision at 800 sequences.
+
+
+    The leave-one-out can also be run in three steps (-stage loo-tasks, loo-place,
+
+    loo-score), so a workflow manager can prepare the folds, place them elsewhere
+    and pass
+
+    the results back. The output is identical either way.
+
+
+    The command is `sativa-epang`; the `sativa` package provides unmodified SATIVA
+    as
+
+    `sativa.py`, and the two can be installed side by side.
+
+    '
+  doc_url: https://github.com/Aaramis/sativa-epang/blob/epa-ng/CHANGES-epa-ng.md
+  home: https://github.com/Aaramis/sativa-epang
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: SATIVA with EPA-ng as the placement engine
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1093/nar/gkw396
+  - doi:10.1093/sysbio/syy054
+  recipe-maintainers:
+  - Aaramis
+package:
+  name: sativa-epang
+  version: 0.9.3.4
+requirements:
+  build:
+  - make
+  - null
+  - null
+  - python >=3.7
+  host:
+  - python >=3.7
+  run:
+  - python >=3.7
+  - epa-ng >=0.3.8
+source:
+  sha256: 0be51d27c2b230fe8630c1981f96c18d77808332b5c6a06efddace9ec771ac78
+  url: https://github.com/Aaramis/sativa-epang/archive/refs/tags/v0.9.3.4.tar.gz
+test:
+  commands:
+  - E="${PREFIX:-${CONDA_PREFIX:-/usr/local}}/share/sativa-epang/example"; sativa-epang
+    -s "$E/test.phy" -t "$E/test.tax" -x bac -n run -T 2
+  - test -s run.mis
+  - E="${PREFIX:-${CONDA_PREFIX:-/usr/local}}/share/sativa-epang/example"; sativa-epang
+    -s "$E/test.phy" -t "$E/test.tax" -x bac -n ref -T 2 -stage reference
+  - test -s ref.refjson
+  - test -s ref.model

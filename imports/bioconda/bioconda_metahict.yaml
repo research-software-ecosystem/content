@@ -1,0 +1,46 @@
+about:
+  dev_url: https://github.com/dyxstat/METAHICT
+  doc_url: https://github.com/dyxstat/METAHICT/tree/main/docs
+  home: https://github.com/dyxstat/METAHICT
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Genome-resolved metagenomic Hi-C analysis with Nextflow DSL2
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  notes: 'This package installs the METAHICT workflow layer. Run `metahict install`
+
+    to create the exact locked scientific software environments. Reference
+
+    databases are installed separately and are not included in this package.'
+  recipe-maintainers:
+  - dyxstat
+package:
+  name: metahict
+  version: 1.1.0
+requirements:
+  build:
+  - bash
+  host:
+  - python >=3.9
+  run:
+  - bash >=5
+  - conda >=24
+  - curl
+  - git
+  - nextflow >=26.04.6,<27
+  - python >=3.9
+  - tar
+source:
+  sha256: d9839874b45736bb1df91911c012eaea67a7af58dcfbc7f00e0195e992ba6c16
+  url: https://github.com/dyxstat/METAHICT/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - conda --version
+  - metahict --version
+  - metahict --help
+  - metahict-nextflow -help
+  - test -s "${PREFIX}/share/metahict/nextflow/main_dsl2.nf"

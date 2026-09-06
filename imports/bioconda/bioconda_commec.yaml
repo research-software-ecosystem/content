@@ -1,10 +1,11 @@
 about:
-  dev_url: https://github.com/ibbis-screening/common-mechanism
-  doc_url: https://github.com/ibbis-screening/common-mechanism/wiki
-  home: https://github.com/ibbis-screening/common-mechanism
+  dev_url: https://github.com/ibbis-bio/common-mechanism
+  doc_url: https://github.com/ibbis-bio/common-mechanism/wiki
+  home: https://commec.ibbis.bio
   license: MIT
   license_family: MIT
-  summary: 'commec: a free, open-source, globally available tool for DNA sequence
+  license_file: LICENSE
+  summary: 'commec: a free, open-source, globally available tool for DNA synthesis
     screening'
 build:
   noarch: python
@@ -19,12 +20,8 @@ extra:
   - biotools:commec
 package:
   name: commec
-  version: 2.0.0
+  version: 2.1.0
 requirements:
-  build:
-  - python >=3.10
-  - pip
-  - setuptools
   host:
   - python >=3.10
   - pip
@@ -36,18 +33,25 @@ requirements:
   - pandas
   - pyyaml
   - pycountry
+  - flask
+  - werkzeug
+  - openpyxl
+  - xlrd
+  - psutil
   - blast >=2.17
   - hmmer
   - infernal
-  - wget
-  - yaml
+  - mkcert
   - tar
   - zstd
 source:
-  sha256: 1f8ab8e1c1cee5918dbcd83b2a86642c0f0945cabe078246a42cc18637b6c056
-  url: https://github.com/ibbis-screening/common-mechanism/archive/refs/tags/v2.0.0.tar.gz
+  sha256: e4657ae7ce1338c473a649a33c993fe81f79afb403a22a639c8b13558e7be55d
+  url: https://github.com/ibbis-bio/common-mechanism/archive/refs/tags/v2.1.0.tar.gz
 test:
   commands:
+  - commec --version
+  - commec setup --help
   - commec screen --help
   - commec flag --help
   - commec list --help
+  - commec gui --help
