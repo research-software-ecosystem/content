@@ -1,0 +1,36 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-09-05",
+    "creators": [
+        "Shixiang Wang"
+    ],
+    "description": "Variant calling for non-model organisms: paired FASTQ reads (or SRA accessions, or external BAMs) are trimmed and filtered with fastp, aligned with BWA-MEM, optionally duplicate-marked with sambamba, and called to per-sample gVCFs with GATK HaplotypeCaller or DeepVariant (low-coverage defaults: -ploidy 2, --min-pruning 1). Optional upstream branches are gated by config keys: joint genotyping (GenomicsDBImport + GenotypeGVCFs, or GLnexus for DeepVariant), GATK hard variant filtration, callable-sites BED (mosdepth/clam coverage + genmap mappability), the postprocess module (clean SNP/indel call sets), the qc module (PLINK PCA/relatedness, ADMIXTURE, interactive dashboard), and a cohort QC metrics report. Two runtime-fan-out branches are ported with the engine's output_pattern primitive (oxo-flow >= 0.17): interval scatter (per-interval gVCF calling and per-shard joint genotyping) and the per-region bcftools caller; both default off. Long-contig (CSI) VCF indexing is auto-selected when any reference contig exceeds the 512 Mb TBI limit (long_contig_mode config: auto/true/false), mirroring upstream's TBI_MAX_CONTIG_LENGTH decision; the postprocess module (basic/strict filtering, clean SNP/indel sets) follows the same CSI twin pattern.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2292.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2292",
+    "latest_version": "1",
+    "license": "other-open",
+    "link": "https://workflowhub.eu/workflows/2292?version=1",
+    "mapped_tools": [],
+    "name": "Variant calling for non-model organisms: trimming, alignment, per-sample gVCFs, joint genotyping, callable sites, postprocessing and QC dashboard",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "bwa",
+        "gatk",
+        "snakemake",
+        "callable-sites",
+        "deepvariant",
+        "non-model-organisms",
+        "population-genomics",
+        "sra",
+        "variant-calling"
+    ],
+    "tools": [],
+    "update_time": "2026-09-05",
+    "versions": "1",
+    "workflow_class": "Workflow Description Language"
+}
