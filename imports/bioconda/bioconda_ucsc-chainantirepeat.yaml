@@ -1,10 +1,10 @@
 about:
   dev_url: https://github.com/ucscGenomeBrowser/kent
-  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v482_base/README
-  home: https://hgdownload.cse.ucsc.edu/admin/exe
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v502_base/README
+  home: https://hgdownload.soe.ucsc.edu/admin/exe
   license: Varies; see https://genome.ucsc.edu/license
   summary: Get rid of chains that are primarily the results of repeats and degenerate
-    DNA.
+    DNA
 build:
   number: 0
   run_exports:
@@ -18,36 +18,39 @@ extra:
   - doi:10.1093/bib/bbs038
 package:
   name: ucsc-chainantirepeat
-  version: '482'
+  version: '502'
 requirements:
   build:
   - make
+  - null
   - null
   - null
   host:
   - libpng
   - libuuid
   - mysql-connector-c
-  - libopenssl-static
+  - openssl
   - clangdev
   - rsync
   - libiconv
   - bzip2
   - liblzma-devel
   - zlib
+  - libcurl
   run:
+  - gzip
   - libpng
   - libuuid
   - mysql-connector-c
-  - libopenssl-static
 source:
   patches:
   - 0001-include.patch
-  - 0002-include.linux.patch
   - 0003-common.mk.patch
   - 0004-straw.patch
-  sha256: 745d0f0a980e9f863373b0b0a6ad7961a1d0f53a9d7c446e92fc28fc4909431a
-  url: https://hgdownload.cse.ucsc.edu/admin/exe/userApps.archive/userApps.v482.src.tgz
+  sha256: 38e29dbf7c1e6d49aaf358014960c5781fd59aa3b7b406dadc9557c98e895f22
+  url:
+  - https://hgdownload.soe.ucsc.edu/admin/exe/userApps.archive/userApps.v502.src.tgz
+  - https://hgdownload-euro.soe.ucsc.edu/admin/exe/userApps.archive/userApps.v502.src.tgz
 test:
   commands:
   - test -x ${PREFIX}/bin/chainAntiRepeat

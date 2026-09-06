@@ -1,0 +1,63 @@
+about:
+  description: 'cphasing-rs provides high-performance command-line utilities used
+    by
+
+    C-Phasing to phase and scaffold polyploid genomes from Pore-C or Hi-C data.
+
+    '
+  dev_url: https://github.com/wangyibin/cphasing-rs
+  home: https://github.com/wangyibin/cphasing-rs
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Rust command-line utilities for C-Phasing
+build:
+  ignore_run_exports:
+  - bzip2
+  - libdeflate
+  - libzlib
+  number: 0
+  run_exports:
+  - null
+  script:
+  - rm -f .cargo/config.toml
+  - export CARGO_INCREMENTAL=0
+  - export CARGO_PROFILE_RELEASE_LTO=false
+  - export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=8
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --no-track --root "${PREFIX}" --path . --bin cphasing-rs
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  recipe-maintainers:
+  - wangyibin
+package:
+  name: cphasing-rs
+  version: 0.3.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - autoconf
+  - automake
+  - cargo-bundle-licenses
+  - clangdev
+  - cmake
+  - make
+  - pkg-config
+  host:
+  - bzip2
+  - libdeflate
+  - xz
+  - zlib
+source:
+  sha256: 1ddbd40b72fb8eb9ce2ac5abdc41c369455ea2b422191430a0ae743cebc75ba0
+  url: https://github.com/wangyibin/cphasing-rs/archive/refs/tags/v0.3.0.tar.gz
+test:
+  commands:
+  - cphasing-rs --help
+  - cphasing-rs --version | grep 0.3.0

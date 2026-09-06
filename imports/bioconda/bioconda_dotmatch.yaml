@@ -19,7 +19,7 @@ about:
   license_file: LICENSE
   summary: Known-target short-DNA assignment from FASTQ.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
   skip: true
@@ -31,7 +31,7 @@ extra:
   - dnncha
 package:
   name: dotmatch
-  version: 0.2.2
+  version: 0.4.1
 requirements:
   build:
   - null
@@ -46,17 +46,17 @@ requirements:
   - python
   - tomli
 source:
-  sha256: 52536b70e379f1aa09d891b3e44c7f67b02875086826f55fabe25f3bcfab89b9
-  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.2.2.tar.gz
+  sha256: f327437939456ced40fc8671ff836676f2b16e890304d75c57822dfde0870a0d
+  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.4.1.tar.gz
 test:
   commands:
   - python -c "import assaycode, dotmatch; assert assaycode.engine is dotmatch; assert
     dotmatch.distance('ACGT', 'AGGT') == 1"
   - python -c "from dotmatch.native import find_native_cli; p=find_native_cli(); assert
     p.name == 'dotmatch-native' and p.exists()"
-  - assaycode --version | grep '^assaycode 0.2.2 (DotMatch engine 0.2.2)$'
+  - assaycode --version | grep '^assaycode 0.4.1 (DotMatch engine 0.4.1)$'
   - assaycode --help | grep 'additive assay-level identity'
-  - dotmatch --version | grep '^dotmatch 0.2.2$'
+  - dotmatch --version | grep '^dotmatch 0.4.1$'
   - dotmatch dist ACGT AGGT | grep '^1$'
   - dotmatch leq 1 ACGT AGGT | grep '^true$'
   - 'dotmatch citation | grep ''Citation metadata: CITATION.cff'''

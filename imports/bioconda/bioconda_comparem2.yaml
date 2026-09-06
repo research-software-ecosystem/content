@@ -1,32 +1,56 @@
 about:
-  dev_url: https://github.com/cmkobel/comparem2
+  description: 'CompareM2 runs fourteen analysis tools over a set of microbial assemblies
+
+    and renders one self-contained HTML report: assembly statistics,
+
+    completeness, taxonomy, annotation, AMR genes, sequence types, ANI, a
+
+    pangenome, phylogenies and draft metabolic models.
+
+    '
+  dev_url: https://github.com/cmkobel/CompareM2
   doc_url: https://comparem2.readthedocs.io
-  home: https://github.com/cmkobel/comparem2
+  home: https://github.com/cmkobel/CompareM2
   license: GPL-3.0-or-later
   license_family: GPL3
   license_file: LICENSE
-  summary: CompareM2 genomes-to-report pipeline
+  summary: Rapid microbial genomes-to-report pipeline
 build:
-  noarch: generic
+  entry_points:
+  - comparem2 = comparem2.cli:main
+  - cm2 = comparem2.cli:main
+  noarch: python
   number: 0
   run_exports:
   - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
 extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btaf517
   recipe-maintainers:
   - cmkobel
 package:
   name: comparem2
-  version: 2.16.2
+  version: 3.0.0
 requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools >=77
   run:
-  - snakemake-minimal <8
-  - pulp <2.8
-  - python <3.12
-  - mamba <2
-  - pandas
+  - python >=3.11
+  - snakemake-minimal >=9,<10
+  - snakemake-executor-plugin-slurm
+  - snakemake-executor-plugin-cluster-generic
+  - textual
+  - conda
 source:
-  sha256: 5368e499c223b9967d943b4083e11ee0a9f5ec854cc4c305d2cec61409e1f058
-  url: https://github.com/cmkobel/CompareM2/archive/refs/tags/v2.16.2.tar.gz
+  sha256: f7644b3a6fdb774584d4f5246e59c43bd31dea3b572f191e3f27267afd5d05df
+  url: https://github.com/cmkobel/CompareM2/archive/refs/tags/v3.0.0.tar.gz
 test:
   commands:
-  - touch dummy.fa; comparem2 --help
+  - comparem2 --version
+  - comparem2 --help
+  - cm2 --help
+  imports:
+  - comparem2
