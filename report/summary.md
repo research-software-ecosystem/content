@@ -1,93 +1,120 @@
 # RSEc contents summary
 
-42984 tool folders, 8 sources.
+42998 tool folders, 9 sources.
 
 ## Tools per source
 
 | source | tools | share |
 | --- | --- | --- |
-| bio.tools | 34370 | 80.0% |
-| OEB Metrics | 39757 | 92.5% |
+| bio.tools | 34384 | 80.0% |
+| OEB Metrics | 40078 | 93.2% |
 | BioContainers | 9042 | 21.0% |
-| Bioconductor | 2426 | 5.6% |
+| Bioconductor | 2427 | 5.6% |
 | Bioconda | 1519 | 3.5% |
 | BIII | 1451 | 3.4% |
 | Galaxy | 524 | 1.2% |
 | Debian Med | 345 | 0.8% |
+| WorkflowHub | 417 | 1.0% |
 
 ## Tools per number of sources
 
 | sources | tools | share |
 | --- | --- | --- |
 | 0 | 8 | 0.0% |
-| 1 | 2857 | 6.6% |
-| 2 | 36061 | 83.9% |
-| 3 | 2181 | 5.1% |
-| 4 | 1557 | 3.6% |
-| 5 | 236 | 0.5% |
-| 6 | 84 | 0.2% |
+| 1 | 2856 | 6.6% |
+| 2 | 35685 | 83.0% |
+| 3 | 2470 | 5.7% |
+| 4 | 1567 | 3.6% |
+| 5 | 246 | 0.6% |
+| 6 | 109 | 0.3% |
+| 7 | 57 | 0.1% |
 
 ## Source combinations
 
 | sources present | tools |
 | --- | --- |
-| bio.tools + OEB Metrics | 29486 |
+| bio.tools + OEB Metrics | 29417 |
 | OEB Metrics + BioContainers | 6191 |
 | BIII only | 1330 |
+| bio.tools + OEB Metrics + Bioconductor | 1260 |
 | BioContainers only | 985 |
-| bio.tools + OEB Metrics + Bioconductor | 954 |
-| bio.tools + OEB Metrics + BioContainers | 687 |
-| bio.tools + OEB Metrics + Bioconductor + Bioconda | 641 |
-| bio.tools only | 531 |
-| bio.tools + OEB Metrics + BioContainers + Bioconductor | 375 |
-| bio.tools + Bioconductor | 327 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda | 274 |
-| bio.tools + OEB Metrics + Bioconda | 210 |
-| bio.tools + OEB Metrics + Galaxy | 130 |
-| bio.tools + OEB Metrics + BioContainers + Galaxy | 102 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy | 95 |
-| bio.tools + OEB Metrics + BioContainers + Debian Med | 91 |
-| bio.tools + OEB Metrics + BIII | 83 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy + Debian Med | 70 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda + Debian Med | 60 |
-| bio.tools + OEB Metrics + Debian Med | 49 |
+| bio.tools + OEB Metrics + BioContainers | 660 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda | 635 |
+| bio.tools only | 529 |
+| bio.tools + OEB Metrics + BioContainers + Bioconductor | 378 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda | 262 |
+| bio.tools + OEB Metrics + Bioconda | 202 |
+| bio.tools + OEB Metrics + BioContainers + Debian Med | 86 |
+| bio.tools + OEB Metrics + BIII | 80 |
+| bio.tools + OEB Metrics + Galaxy | 77 |
+| bio.tools + OEB Metrics + WorkflowHub | 77 |
+| bio.tools + OEB Metrics + BioContainers + Galaxy | 63 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy + WorkflowHub | 56 |
+| bio.tools + OEB Metrics + Galaxy + WorkflowHub | 53 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Debian Med | 49 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy + Debian Med + WorkflowHub | 48 |
+| bio.tools + OEB Metrics + Debian Med | 46 |
 | bio.tools + OEB Metrics + Bioconductor + Bioconda + Debian Med | 41 |
-| bio.tools + OEB Metrics + Bioconda + Galaxy | 40 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy | 39 |
+| bio.tools + OEB Metrics + BioContainers + Galaxy + WorkflowHub | 39 |
 | OEB Metrics + BioContainers + Bioconda | 37 |
-| bio.tools + Galaxy | 26 |
-| OEB Metrics + BioContainers + Bioconductor | 19 |
+| bio.tools + OEB Metrics + BioContainers + WorkflowHub | 27 |
+| bio.tools + OEB Metrics + Bioconda + Galaxy + WorkflowHub | 22 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Galaxy + Debian Med | 22 |
+| bio.tools + Galaxy | 21 |
+| bio.tools + Bioconductor | 18 |
+| bio.tools + OEB Metrics + Bioconda + Galaxy | 18 |
+| OEB Metrics + BioContainers + Bioconductor | 18 |
 | OEB Metrics + Bioconductor | 14 |
-| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy | 13 |
-| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy + Debian Med | 10 |
-| bio.tools + OEB Metrics + BioContainers + Galaxy + Debian Med | 10 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + WorkflowHub | 12 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + Debian Med + WorkflowHub | 11 |
 | OEB Metrics only | 10 |
-| bio.tools + OEB Metrics + BioContainers + BIII | 10 |
-| bio.tools + OEB Metrics + BioContainers + Bioconductor + Bioconda | 9 |
+| bio.tools + OEB Metrics + BioContainers + BIII | 9 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy + Debian Med + WorkflowHub | 8 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy | 8 |
+| bio.tools + OEB Metrics + BioContainers + Bioconductor + Bioconda | 8 |
 | (no source) | 8 |
+| bio.tools + OEB Metrics + Bioconda + WorkflowHub | 8 |
 | BioContainers + BIII | 7 |
 | bio.tools + OEB Metrics + Bioconductor + Galaxy | 7 |
-| bio.tools + OEB Metrics + BIII + Galaxy | 6 |
+| bio.tools + WorkflowHub | 7 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + WorkflowHub | 6 |
 | OEB Metrics + BioContainers + BIII | 6 |
-| bio.tools + OEB Metrics + Bioconda + Debian Med | 5 |
+| bio.tools + Galaxy + WorkflowHub | 5 |
+| bio.tools + OEB Metrics + BioContainers + Debian Med + WorkflowHub | 5 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy + WorkflowHub | 5 |
+| bio.tools + OEB Metrics + BioContainers + Galaxy + Debian Med + WorkflowHub | 5 |
+| bio.tools + OEB Metrics + BioContainers + Galaxy + Debian Med | 5 |
+| bio.tools + OEB Metrics + BIII + Galaxy | 4 |
+| bio.tools + OEB Metrics + Bioconda + Debian Med | 4 |
+| bio.tools + OEB Metrics + Bioconductor + WorkflowHub | 3 |
 | bio.tools + OEB Metrics + Bioconductor + Debian Med | 3 |
+| bio.tools + OEB Metrics + BioContainers + BIII + Galaxy + WorkflowHub | 3 |
+| bio.tools + OEB Metrics + BIII + WorkflowHub | 3 |
+| bio.tools + OEB Metrics + Debian Med + WorkflowHub | 3 |
 | OEB Metrics + Bioconda | 3 |
-| bio.tools + OEB Metrics + BioContainers + BIII + Galaxy | 3 |
-| bio.tools + BioContainers + Bioconductor | 3 |
-| bio.tools + OEB Metrics + Galaxy + Debian Med | 2 |
 | bio.tools + Bioconda | 2 |
-| bio.tools + OEB Metrics + Bioconda + Galaxy + Debian Med | 2 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor + Bioconda + Galaxy | 2 |
-| bio.tools + Bioconductor + Galaxy | 2 |
-| bio.tools + Bioconda + Galaxy | 1 |
-| bio.tools + BIII | 1 |
-| bio.tools + Bioconda + BIII + Galaxy | 1 |
-| bio.tools + OEB Metrics + Bioconductor + Bioconda + BIII | 1 |
-| OEB Metrics + BIII | 1 |
-| OEB Metrics + Galaxy | 1 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda + BIII + Debian Med | 1 |
-| BioContainers + Bioconductor | 1 |
+| bio.tools + OEB Metrics + Galaxy + Debian Med + WorkflowHub | 2 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy + Debian Med | 2 |
+| bio.tools + OEB Metrics + BIII + Galaxy + WorkflowHub | 2 |
+| bio.tools + OEB Metrics + Bioconductor + Galaxy + WorkflowHub | 2 |
+| Bioconductor only | 2 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor + Galaxy | 1 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor + BIII | 1 |
-| Bioconductor only | 1 |
+| OEB Metrics + Galaxy | 1 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda + BIII + Debian Med + WorkflowHub | 1 |
+| BioContainers + Bioconductor | 1 |
+| bio.tools + OEB Metrics + BioContainers + Bioconductor + Bioconda + WorkflowHub | 1 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor + Bioconda + Debian Med | 1 |
+| bio.tools + OEB Metrics + Bioconda + Debian Med + WorkflowHub | 1 |
+| OEB Metrics + BIII | 1 |
+| bio.tools + BIII | 1 |
+| bio.tools + OEB Metrics + BioContainers + BIII + WorkflowHub | 1 |
+| bio.tools + Bioconda + BIII + Galaxy | 1 |
 | bio.tools + BioContainers | 1 |
+| bio.tools + BioContainers + Bioconductor | 1 |
+| bio.tools + OEB Metrics + Bioconductor + Bioconda + BIII | 1 |
+| bio.tools + OEB Metrics + Bioconda + Galaxy + Debian Med + WorkflowHub | 1 |
+| bio.tools + OEB Metrics + Bioconda + Galaxy + Debian Med | 1 |
+| bio.tools + Bioconda + Galaxy | 1 |
