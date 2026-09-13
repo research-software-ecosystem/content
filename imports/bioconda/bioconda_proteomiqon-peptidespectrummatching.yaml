@@ -15,19 +15,26 @@ about:
     matches using reimplementations of SEQUEST, Andromeda and XTandem.
 build:
   noarch: generic
-  number: 1
+  number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-peptidespectrummatching
-  version: 0.0.7
+  version: 0.0.9
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - openssl =1.1
-  - dotnet-runtime =5.0
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: 720357e04484bf8ea0b5b138798cc676507c10deaf7f3461f994443d466db0d8
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.PeptideSpectrumMatching/0.0.7
+  sha256: dd8372189a4726c1f69c525b298a8569892000c2349f83b2e9e7e7886a30d44c
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.PeptideSpectrumMatching/0.0.9
 test:
   commands:
-  - proteomiqon-peptidespectrummatching --help
+  - test -x "$PREFIX/bin/proteomiqon-peptidespectrummatching"
+  - test -f "$PREFIX/lib/dotnet/tools/PeptideSpectrumMatching/ProteomIQon.PeptideSpectrumMatching.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-peptidespectrummatching"
+  - grep -q "PeptideSpectrumMatching/ProteomIQon.PeptideSpectrumMatching.dll" "$PREFIX/bin/proteomiqon-peptidespectrummatching"

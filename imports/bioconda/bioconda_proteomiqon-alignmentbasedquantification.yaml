@@ -28,18 +28,26 @@ about:
 build:
   noarch: generic
   number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-alignmentbasedquantification
-  version: 0.0.2
+  version: 0.0.4
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =5.0
-  - openssl =1.1
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: 64cfd914a7be8527e60abf2cc1faf73eb61a1f7f47f4afdaeb4b6f5c3511058e
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.AlignmentBasedQuantification/0.0.2
+  sha256: 8787adfdff3521d41c5287342147cb131c12156bd83ce6228a996c8a9309ad11
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.AlignmentBasedQuantification/0.0.4
 test:
   commands:
-  - proteomiqon-alignmentbasedquantification --help
+  - test -x "$PREFIX/bin/proteomiqon-alignmentbasedquantification"
+  - test -f "$PREFIX/lib/dotnet/tools/AlignmentBasedQuantification/ProteomIQon.AlignmentBasedQuantification.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-alignmentbasedquantification"
+  - grep -q "AlignmentBasedQuantification/ProteomIQon.AlignmentBasedQuantification.dll"
+    "$PREFIX/bin/proteomiqon-alignmentbasedquantification"

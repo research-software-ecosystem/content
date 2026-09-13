@@ -23,18 +23,25 @@ about:
 build:
   noarch: generic
   number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-psmstatistics
-  version: 0.0.8
+  version: 0.0.10
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - openssl =1.1
-  - dotnet-runtime =5.0
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: cfa9c106c852eb77dc259dab2b323976450015a049596f44fbb0048e92792342
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMStatistics/0.0.8
+  sha256: 4baaa282e0ca6683176d587927183c4b245d9cf50a53d9d9e12624aa2dc162e8
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMStatistics/0.0.10
 test:
   commands:
-  - proteomiqon-psmstatistics --help
+  - test -x "$PREFIX/bin/proteomiqon-psmstatistics"
+  - test -f "$PREFIX/lib/dotnet/tools/PSMStatistics/ProteomIQon.PSMStatistics.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-psmstatistics"
+  - grep -q "PSMStatistics/ProteomIQon.PSMStatistics.dll" "$PREFIX/bin/proteomiqon-psmstatistics"

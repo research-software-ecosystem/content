@@ -1,28 +1,28 @@
 about:
   dev_url: https://github.com/deeptools/deepTools
-  doc_url: https://deeptools.readthedocs.io/en/latest/
+  doc_url: https://deeptools.readthedocs.io/en/latest
   home: https://github.com/deeptools/deepTools
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
   summary: A set of user-friendly tools for normalization and visualzation of deep-sequencing
-    data
+    data.
 build:
   entry_points:
-  - alignmentSieve = deeptools.alignmentSieve:main
-  - bamCompare = deeptools.bamCompare:main
-  - bamCoverage = deeptools.bamCoverage:main
+  - alignmentSieve_old = deeptools.alignmentSieve:main
+  - bamCompare_old = deeptools.bamCompare:main
+  - bamCoverage_old = deeptools.bamCoverage:main
   - bamPEFragmentSize = deeptools.bamPEFragmentSize:main
   - bigwigAverage = deeptools.bigwigAverage:main
   - bigwigCompare = deeptools.bigwigCompare:main
   - computeGCBias = deeptools.computeGCBias:main
-  - computeMatrix = deeptools.computeMatrix:main
+  - computeMatrix_old = deeptools.computeMatrix:main
   - computeMatrixOperations = deeptools.computeMatrixOperations:main
   - correctGCBias = deeptools.correctGCBias:main
   - deeptools = deeptools.deeptools_list_tools:main
   - estimateReadFiltering = deeptools.estimateReadFiltering:main
   - estimateScaleFactor = deeptools.estimateScaleFactor:main
-  - multiBamSummary = deeptools.multiBamSummary:main
+  - multiBamSummary_old = deeptools.multiBamSummary:main
   - multiBigwigSummary = deeptools.multiBigwigSummary:main
   - plotCorrelation = deeptools.plotCorrelation:main
   - plotCoverage = deeptools.plotCoverage:main
@@ -31,12 +31,20 @@ build:
   - plotHeatmap = deeptools.plotHeatmap:main
   - plotPCA = deeptools.plotPCA:main
   - plotProfile = deeptools.plotProfile:main
-  noarch: python
+  - bamCoverage = deeptools.bamCoverage2:main
+  - bamCompare = deeptools.bamCompare2:main
+  - computeMatrix = deeptools.computeMatrix2:main
+  - alignmentSieve = deeptools.alignmentSieve2:main
+  - multiBamSummary = deeptools.multiBamSummary2:main
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+  skip: true
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:deeptools
   - doi:10.1093/nar/gkw257
@@ -62,27 +70,37 @@ extra:
   - usegalaxy-eu:deeptools_bigwig_average
 package:
   name: deeptools
-  version: 3.5.6
+  version: 4.0.0
 requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - make
+  - pkg-config
+  - clangdev
   host:
-  - python >=3.9
+  - python
   - pip
   - setuptools
+  - maturin >=1.0,<2.0
+  - htslib
   run:
-  - python >=3.9
-  - pybigwig >=0.2.3
+  - python
+  - pybigwig >=0.3
   - numpy >=2.0.0
   - numpydoc >=0.5
-  - scipy >=0.17.0
-  - matplotlib-base >=3.5.0
-  - pysam >=0.14.0
-  - py2bit >=0.2.0
+  - scipy >=1.13
+  - matplotlib-base >=3.10
+  - pysam >=0.23
+  - py2bit >=0.3.0
   - plotly >=4.9
-  - deeptoolsintervals >=0.1.8
+  - deeptoolsintervals >=0.1
   - importlib-metadata
 source:
-  sha256: 2f46c4234211eb3a05c99ff80586a8d89954cfd5a3f94a397cba90cade23ef02
-  url: https://github.com/deeptools/deepTools/archive/refs/tags/3.5.6.tar.gz
+  sha256: 9823dffaaa1fa73b1483ed846c1894a89a1ba790a9a812da047057e69475228a
+  url: https://github.com/deeptools/deepTools/archive/refs/tags/4.0.0.tar.gz
 test:
   commands:
   - bamCompare --version

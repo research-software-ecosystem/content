@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/leomorelli/HiCONA
+  home: https://github.com/leomorelli/HiCONA
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Network analysis toolkit for Hi-C data.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - leomorelli
+  - StefanoCretti
+package:
+  name: hicona
+  version: 0.0.2
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - hatchling
+  - hatch-vcs
+  run:
+  - python >=3.10
+  - cooler
+  - polars
+  - pyarrow
+  - bioframe
+  - seaborn
+  - coolbox ==0.4.0
+  - cooltools
+  - graph-tool
+  - oxbow >=0.4.2
+source:
+  sha256: 9a56b19dc67474dce33b98fddeaf168f2d4eb47d13d983ee75de157ed888a769
+  url: https://pypi.org/packages/source/h/hicona/hicona-0.0.2.tar.gz
+test:
+  imports:
+  - hicona

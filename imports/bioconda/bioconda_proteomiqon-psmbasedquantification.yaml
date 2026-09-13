@@ -25,18 +25,25 @@ about:
 build:
   noarch: generic
   number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-psmbasedquantification
-  version: 0.0.9
+  version: 0.0.12
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =5.0
-  - openssl =1.1
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: 8955f74b892b1e14a7dbaef3ebd57cc4f6159ed6677da3a7dcaff7fc35a0437c
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMBasedQuantification/0.0.9
+  sha256: cfec0ce447efda163789fccdf8e9c9c6436eb4ec21849ba26c6ae00af749b3fb
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMBasedQuantification/0.0.12
 test:
   commands:
-  - proteomiqon-psmbasedquantification --help
+  - test -x "$PREFIX/bin/proteomiqon-psmbasedquantification"
+  - test -f "$PREFIX/lib/dotnet/tools/PSMBasedQuantification/ProteomIQon.PSMBasedQuantification.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-psmbasedquantification"
+  - grep -q "PSMBasedQuantification/ProteomIQon.PSMBasedQuantification.dll" "$PREFIX/bin/proteomiqon-psmbasedquantification"

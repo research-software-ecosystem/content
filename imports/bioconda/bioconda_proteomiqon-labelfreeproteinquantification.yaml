@@ -23,19 +23,27 @@ about:
     quantified peptide ions.
 build:
   noarch: generic
-  number: 1
+  number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-labelfreeproteinquantification
-  version: 0.0.3
+  version: 0.0.5
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =5.0
-  - openssl =1.1
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: bf9c75ec664f8b8567fe42b73b4888c85e1d157b2db4cd39728afb974d8706a7
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.LabelFreeProteinQuantification/0.0.3
+  sha256: 23a15f8e5c51ed678f54bb22a5f89f3704423751056cee32b7d9ff6d5d522574
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.LabelFreeProteinQuantification/0.0.5
 test:
   commands:
-  - proteomiqon-labelfreeproteinquantification --help
+  - test -x "$PREFIX/bin/proteomiqon-labelfreeproteinquantification"
+  - test -f "$PREFIX/lib/dotnet/tools/LabelFreeProteinQuantification/ProteomIQon.LabelFreeProteinQuantification.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-labelfreeproteinquantification"
+  - grep -q "LabelFreeProteinQuantification/ProteomIQon.LabelFreeProteinQuantification.dll"
+    "$PREFIX/bin/proteomiqon-labelfreeproteinquantification"

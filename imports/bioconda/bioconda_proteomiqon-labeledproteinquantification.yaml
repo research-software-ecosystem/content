@@ -26,19 +26,27 @@ about:
     ProteinInference and ProteomIQon PSMBasedQuantification
 build:
   noarch: generic
-  number: 1
+  number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-labeledproteinquantification
-  version: 0.0.3
+  version: 0.0.5
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =5.0
-  - openssl =1.1
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: e6fcb6b0546de1a163fda8a1b4422a76a1bdf9c5490b63e36a980218a67b764c
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.LabeledProteinQuantification/0.0.3
+  sha256: c266d2b7f964dde71ef7c597e12bfb5ad72cc7202a145753f5f786490a6cb76e
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.LabeledProteinQuantification/0.0.5
 test:
   commands:
-  - proteomiqon-labeledproteinquantification --help
+  - test -x "$PREFIX/bin/proteomiqon-labeledproteinquantification"
+  - test -f "$PREFIX/lib/dotnet/tools/LabeledProteinQuantification/ProteomIQon.LabeledProteinQuantification.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-labeledproteinquantification"
+  - grep -q "LabeledProteinQuantification/ProteomIQon.LabeledProteinQuantification.dll"
+    "$PREFIX/bin/proteomiqon-labeledproteinquantification"

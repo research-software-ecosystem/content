@@ -1,0 +1,59 @@
+about:
+  description: 'HyphAeon is a phylogenetic foundation model for neural inference of
+
+    episodic positive selection (MEME), directional phenotype-genotype
+
+    association (phylowas), and multi-scale epistatic sector mining (ESSM).
+
+    Model weights are fetched from the Hugging Face Hub on first use.
+
+    '
+  dev_url: https://github.com/veg/HyphAeon
+  doc_url: https://github.com/veg/HyphAeon#readme
+  home: https://github.com/veg/HyphAeon
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'HyphAeon: A Deep-Time Phylogenetic Foundation Model for Multi-Scale Evolutionary,
+    Structural, and Clinical Genomics'
+build:
+  entry_points:
+  - hyphaeon = hyphaeon.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - d-callan
+package:
+  name: hyphaeon
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools
+  run:
+  - python >=3.8
+  - pytorch >=2.0.0
+  - biopython >=1.80
+  - numpy >=1.22.0
+  - scipy >=1.9.0
+  - pandas >=1.5.0
+  - psutil >=5.9.0
+  - huggingface_hub >=0.20.0
+  - safetensors >=0.4.0
+  - networkx >=3.0
+source:
+  sha256: 3bef7698502f5d0f669035479a4d6eb84cae139ce9c191a48da02739f69b5c44
+  url: https://pypi.org/packages/source/h/hyphaeon/hyphaeon-0.1.1.tar.gz
+test:
+  commands:
+  - hyphaeon --help
+  - hyphaeon meme --help
+  - hyphaeon phenotype --help
+  - hyphaeon epistasis --help
+  imports:
+  - hyphaeon

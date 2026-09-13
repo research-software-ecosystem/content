@@ -1,13 +1,13 @@
 about:
   dev_url: https://github.com/jsh58/Genrich
-  doc_url: https://github.com/jsh58/Genrich/blob/v0.6.1/README.md
+  doc_url: https://github.com/jsh58/Genrich/blob/v0.6.2/README.md
   home: https://github.com/jsh58/Genrich
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Detecting sites of genomic enrichment.
 build:
-  number: 6
+  number: 0
   run_exports:
   - null
 extra:
@@ -18,7 +18,7 @@ extra:
   - usegalaxy-eu:genrich
 package:
   name: genrich
-  version: 0.6.1
+  version: 0.6.2
 requirements:
   build:
   - make
@@ -29,12 +29,13 @@ requirements:
 source:
   patches:
   - Makefile.patch
-  - backport-upstream-master.patch
   - getlong-reject-nonpositive.patch
-  sha256: 2c70239e1caf33519b9e99142470bb4dd2f4c69e71f68cee33d6d6a1032d0e33
-  url: https://github.com/jsh58/Genrich/archive/v0.6.1.tar.gz
+  sha256: 2b5480e5b3163c67bcf49820c476a7f4c05a17c13adba0ea0577b1c2ad1c17bc
+  url: https://github.com/jsh58/Genrich/archive/v0.6.2.tar.gz
 test:
   commands:
   - which Genrich
   - Genrich -V 2>&1 | grep 'John M. Gaspar'
+  - Genrich -V 2>&1 | grep '0.6.2'
+  - Genrich -L 0 2>&1 | grep 'Genome length must be a positive int'
   - Genrich -L 1000 2>&1 | grep 'Need input/output files'

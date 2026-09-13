@@ -8,21 +8,27 @@ about:
   summary: PSM-based quantification for trapped ion mobility spectrometry data
 build:
   noarch: generic
-  number: 1
+  number: 0
   run_exports:
-  - dotnet-runtime =8.0
+  - null
 package:
   name: proteomiqon-psmbasedquantificationtims
-  version: 0.0.12
+  version: 0.0.13
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =8.0
+  - dotnet-runtime >=10.0, <11.0
   - zlib
 source:
-  sha256: 45bd4e0a585ccb828741fa53ae10bb5a1d19638e77eadc8f16ae8dbc1de49dcc
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMBasedQuantificationTIMs/0.0.12
+  sha256: afb788a825402b264b7a989eb09a323e297779cd6e8bc2eea39d3426bed2d3a3
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.PSMBasedQuantificationTIMs/0.0.13
 test:
   commands:
-  - proteomiqon-psmbasedquantificationtims --help
+  - test -x "$PREFIX/bin/proteomiqon-psmbasedquantificationtims"
+  - test -f "$PREFIX/lib/dotnet/tools/PSMBasedQuantificationTIMs/ProteomIQon.PSMBasedQuantificationTIMs.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-psmbasedquantificationtims"
+  - grep -q "PSMBasedQuantificationTIMs/ProteomIQon.PSMBasedQuantificationTIMs.dll"
+    "$PREFIX/bin/proteomiqon-psmbasedquantificationtims"

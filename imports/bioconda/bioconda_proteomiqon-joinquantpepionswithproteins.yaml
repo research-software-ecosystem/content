@@ -13,19 +13,27 @@ about:
     and PSMBasedQuantification.
 build:
   noarch: generic
-  number: 1
+  number: 0
+  run_exports:
+  - null
 package:
   name: proteomiqon-joinquantpepionswithproteins
-  version: 0.0.2
+  version: 0.0.5
 requirements:
+  build:
+  - null
   host:
   - unzip
   run:
-  - dotnet-runtime =5.0
-  - openssl =1.1
+  - dotnet-runtime >=10.0, <11.0
+  - zlib
 source:
-  sha256: 990516c5e4abaa4a80a80be0a8c1a063d99ef1bfe131b937cdd38887472ae987
-  url: https://www.nuget.org/api/v2/package/ProteomIQon.JoinQuantPepIonsWithProteins/0.0.2
+  sha256: e4076d297b4d86492b51da43a105dbfffaa2462f8dbb1dbb9b442dbe4b98ec30
+  url: https://www.nuget.org/api/v2/package/ProteomIQon.JoinQuantPepIonsWithProteins/0.0.5
 test:
   commands:
-  - proteomiqon-joinquantpepionswithproteins --help
+  - test -x "$PREFIX/bin/proteomiqon-joinquantpepionswithproteins"
+  - test -f "$PREFIX/lib/dotnet/tools/JoinQuantPepIonsWithProteins/ProteomIQon.JoinQuantPepIonsWithProteins.dll"
+  - bash -n "$PREFIX/bin/proteomiqon-joinquantpepionswithproteins"
+  - grep -q "JoinQuantPepIonsWithProteins/ProteomIQon.JoinQuantPepIonsWithProteins.dll"
+    "$PREFIX/bin/proteomiqon-joinquantpepionswithproteins"
