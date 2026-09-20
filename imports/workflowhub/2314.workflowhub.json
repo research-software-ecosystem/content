@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-09-19",
+    "creators": [
+        "Songwon Lim",
+        "Jae Woo Baek",
+        "Youngchang Seo",
+        "Nayeon Park",
+        "Shin Young Park",
+        "Jinwook Choi",
+        "Sunjae Lee"
+    ],
+    "description": "# M-SCAN RNA-to-pFBA Tutorial\r\n\r\nM-SCAN builds Human-GEM reaction-capacity constraints from RNA expression,\r\noptional deleterious mutation attenuation, predicted kcat values, and medium\r\nconstraints, then runs pFBA. The bundled three-sample CCLE example reproduces\r\nthe Figure 2 mini-reference outputs and is also a template for applying the\r\nworkflow to new datasets.\r\n\r\n## Quick Start\r\n\r\n```bash\r\nconda env create -f environment.yml\r\nconda activate M-SCAN\r\npip install -e .\r\nmscan run-all --config configs/demo_ccle.yaml\r\n```\r\n\r\nThe same demo can be run with the shell wrapper:\r\n\r\n```bash\r\nbash run_tutorial.sh\r\n```\r\n\r\nGenerated files are written to `outputs/`. The default demo runs the full\r\nRNA-to-pFBA workflow and checks the resulting Vmax and pFBA outputs against the\r\nstored Figure 2 three-sample reference subset.\r\n\r\nIf the environment already exists:\r\n\r\n```bash\r\nconda env update -n M-SCAN -f environment.yml\r\n```\r\n\r\n## What the Demo Runs\r\n\r\n```text\r\nRNA expression\r\n  -> protein-coding and Human-GEM gene filtering\r\n  -> target-sum normalization and zero-expression floor\r\n  -> optional mutation attenuation\r\n  -> GPR aggregation with or=sum and and=min\r\n  -> optional kcat scaling\r\n  -> medium-constrained Human-GEM pFBA\r\n```\r\n\r\nDefault inputs:\r\n\r\n- `data/demo/ccle_rna_depmap_3samples.csv`\r\n- `data/demo/ccle_mutation_with_prediction_final_3samples.csv`\r\n- `data/kcat/kcat_predictions.csv`\r\n- `data/media/cell_media.csv`\r\n- `data/model/Human-GEM.xlsx`\r\n- `data/model/Human-GEM.mat`\r\n\r\nDefault outputs:\r\n\r\n- `outputs/tutorial_rna_preprocessed.csv`\r\n- `outputs/tutorial_rna_for_vmax.csv`\r\n- `outputs/tutorial_applied_mutations.csv`\r\n- `outputs/tutorial_vmax.csv`\r\n- `outputs/tutorial_pfba_results.csv`\r\n\r\n## Apply M-SCAN to Another Dataset\r\n\r\nCopy the demo config and edit the paths:\r\n\r\n```bash\r\ncp configs/demo_ccle.yaml configs/my_dataset.yaml\r\n```\r\n\r\nFor a generic gene-by-sample expression matrix, set:\r\n\r\n```yaml\r\nrna_mode: gene_matrix\r\nrna: path/to/gene_by_sample_expression.csv\r\nmutation_table: path/to/mutation_factors.csv\r\ncheck_reference: false\r\n```\r\n\r\nThen run:\r\n\r\n```bash\r\nmscan run-all --config configs/my_dataset.yaml\r\n```\r\n\r\nUseful command-line overrides:\r\n\r\n```bash\r\nmscan run-all --config configs/my_dataset.yaml --skip-mutation\r\nmscan run-all --config configs/my_dataset.yaml --mutation-factor 0.10\r\nmscan run-all --config configs/my_dataset.yaml --no-kcat\r\nmscan run-all --config configs/my_dataset.yaml --no-media\r\nmscan run-all --config configs/my_dataset.yaml --solver glpk --skip-reference-check\r\n```\r\n\r\nSee [docs/input_format.md](docs/input_format.md) for required columns and\r\n[docs/step_by_step.md](docs/step_by_step.md) for manual step-by-step commands.\r\n\r\n`--mutation-factor` overrides both CCLE severe and LOF factors in the config.\r\nIn generic mode it changes the default, not explicit per-row mutation factors.\r\nDisable reference checking when changing demo settings. Reference checks require\r\nall reference samples and selected reactions, finite numeric values, and unique\r\nidentifiers; extra observed samples/reactions may be present.\r\n\r\n## Regression Tests\r\n\r\n```bash\r\npython -m unittest discover -s tests -v\r\n```\r\n\r\n## Step-Wise CLI\r\n\r\nM-SCAN can be run one step at a time:\r\n\r\n```bash\r\nmscan prepare-rna --config configs/demo_ccle.yaml\r\nmscan build-vmax --config configs/demo_ccle.yaml\r\nmscan run-pfba --config configs/demo_ccle.yaml\r\nmscan check-reference --config configs/demo_ccle.yaml\r\n```\r\n\r\nFor generic gene-matrix mode with a separate sample-gene mutation table:\r\n\r\n```bash\r\nmscan prepare-rna --config configs/my_dataset.yaml\r\nmscan apply-mutations --config configs/my_dataset.yaml\r\nmscan build-vmax --config configs/my_dataset.yaml\r\nmscan run-pfba --config configs/my_dataset.yaml\r\n```\r\n\r\n## Configuration\r\n\r\nThe config file is a simple `key: value` file read without extra YAML\r\ndependencies. Important keys include:\r\n\r\n- `rna_mode`: `ccle` or `gene_matrix`.\r\n- `rna`: RNA input table.\r\n- `rna_layout`: CCLE-mode RNA layout, either `auto`, `sample_rows`, or\r\n  `gene_rows`.\r\n- `sample_column`: CCLE-mode sample/cell-line column. Defaults to\r\n  `cell_line_display_name`; rowname-style `Unnamed: 0` input is also accepted.\r\n- `mutation_table`: optional mutation table.\r\n- `mutation_factor`: residual capacity assigned to mutation-affected genes.\r\n- `use_kcat`: whether to use `data/kcat/kcat_predictions.csv`.\r\n- `use_media`: whether to apply the exchange medium table.\r\n- `solver`: `gurobi`, `glpk`, or `auto`.\r\n- `check_reference`: should be `true` only for the bundled three-sample demo.\r\n\r\nM-SCAN does not run LoGoFunc internally. If LoGoFunc missense annotations are\r\navailable, provide them in the `final_prediction` column of the mutation table.\r\nRows with `final_prediction == LOF` are treated as deleterious when\r\n`include_lof: true`.\r\n\r\n## GPR Rule\r\n\r\nM-SCAN treats isoenzymes connected by `or` as additive and protein complexes\r\nconnected by `and` as limited by the minimum subunit value. Mixed rules are\r\nparsed recursively.\r\n\r\nExamples:\r\n\r\n- `A or B`: `A + B`\r\n- `A and B`: `min(A, B)`\r\n- `(A and B) or C`: `min(A, B) + C`\r\n- `(A or B) and C`: `min(A + B, C)`\r\n\r\n## Medium\r\n\r\nThe default medium is the Ham's F-12-derived Figure 2 benchmark medium mapped to\r\nHuman1/Human-GEM exchange reactions. It includes mapped Ham's F-12 components,\r\ncore exchange reactions (`H2O`, `O2`, `H+`), minimal feasibility\r\nadd-backs. Replace `data/media/cell_media.csv` or set `use_media:\r\nfalse` to test a different medium definition.\r\n\r\n## Notes\r\n\r\nThe bundled data are intentionally small so the repository can be tested\r\nquickly on another machine. For full-scale runs, increase `max_samples` or set\r\nit to `0` to process all sample columns in the Vmax table.\r\n\r\n## License\r\n\r\nThe tutorial code in this repository is released under the MIT License.\r\n\r\nIncluded example data and third-party model/resource files remain subject to\r\ntheir original provider licenses and terms of use.\r\n\r\nThis repository includes copies of the following Human-GEM v1.19.0 model files:\r\n\r\n- `Human-GEM.xlsx`\r\n- `Human-GEM.mat`\r\n\r\nThese files are from SysBioChalmers/Human-GEM v1.19.0 and are licensed under\r\nthe Creative Commons Attribution 4.0 International License (CC BY 4.0).\r\n\r\nSource:\r\nhttps://github.com/SysBioChalmers/Human-GEM/tree/v1.19.0\r\n\r\nLicense:\r\nhttps://creativecommons.org/licenses/by/4.0/\r\n\r\nNo modifications were made to these Human-GEM files.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2314.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2314",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2314?version=1",
+    "mapped_tools": [],
+    "name": "M-SCAN: Multi-Scale Constrained Analysis of Metabolic Networks for Genome-Scale Flux Inference in Pan-Cancer Cohorts",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "human1",
+        "multi-omics",
+        "cancer metabolism",
+        "flux balance analysis",
+        "genome-scale metabolic model",
+        "kcat",
+        "pan-cancer"
+    ],
+    "tools": [],
+    "update_time": "2026-09-19",
+    "versions": "1",
+    "workflow_class": "Shell Script"
+}
