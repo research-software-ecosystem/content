@@ -17,7 +17,7 @@ extra:
   - compiler_needs_stdlib_c
 package:
   name: sdm
-  version: '3.45'
+  version: '3.52'
 requirements:
   build:
   - null
@@ -25,9 +25,12 @@ requirements:
   - pkg-config
   host:
   - zlib
+  - htslib
 source:
-  sha256: 3945ad7dcf46fe01f25bd2d61699e082d607ed32105c48ece8ef7db69059c726
-  url: https://github.com/hildebra/sdm/archive/v3.45.tar.gz
+  patches:
+  - fix-cxx20-shared-ptr-unique.patch
+  sha256: 25489182cdbe07502c7724c74a2084b99b9f926ff6b83c6d6a669c9e1d8ad0f7
+  url: https://github.com/hildebra/sdm/archive/v3.52.tar.gz
 test:
   commands:
   - sdm

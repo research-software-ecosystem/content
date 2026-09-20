@@ -25,34 +25,32 @@ about:
     - Modular architecture with 16 processing steps
 
     '
-  dev_url: https://github.com/leoxqy/CircleSeeker
-  doc_url: https://github.com/leoxqy/CircleSeeker#readme
-  home: https://github.com/leoxqy/CircleSeeker
+  dev_url: https://github.com/YaoxinBio/CircleSeeker
+  doc_url: https://github.com/YaoxinBio/CircleSeeker#readme
+  home: https://github.com/YaoxinBio/CircleSeeker
   license: GPL-3.0-only
   license_family: GPL
   license_file: LICENSE
-  summary: Comprehensive eccDNA detection from PacBio HiFi sequencing data
+  summary: Comprehensive eccDNA detection from PacBio HiFi sequencing data.
 build:
   entry_points:
   - circleseeker = circleseeker.cli:main
-  - CircleSeeker = circleseeker.cli:main
   noarch: python
   number: 0
   run_exports:
   - null
-  script: -m pip install . -vv
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
-  - leoxqy
+  - YaoxinBio
 package:
   name: circleseeker
-  version: 1.5.1
+  version: 1.6.1
 requirements:
   host:
   - python >=3.9
   - pip
   - setuptools >=68
-  - wheel
   run:
   - python >=3.9
   - click >=8.1
@@ -72,12 +70,11 @@ requirements:
   - cd-hit
   - last
 source:
-  sha256: 3e8c8344d58fc4d0af7f02d6b39d0abd373adaffc968336089b30a5851bcc648
-  url: https://github.com/leoxqy/CircleSeeker/archive/refs/tags/v1.5.1.tar.gz
+  sha256: 49703d6728829718f3c48cc808279c387e23624dece27912bff33a9eff7aa38e
+  url: https://github.com/YaoxinBio/CircleSeeker/archive/refs/tags/v1.6.1.tar.gz
 test:
   commands:
   - circleseeker --help
-  - CircleSeeker --help
   - python -c "import circleseeker; print(circleseeker.__version__)"
   - python -c "from circleseeker.modules import ecc_summary; print('Module test passed')"
   - python -m pip check

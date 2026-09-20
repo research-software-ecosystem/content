@@ -1,0 +1,40 @@
+about:
+  home: https://github.com/matnguyen/Perseus
+  license: MIT
+  license_file: LICENSE
+  summary: 'Perseus: Lineage-aware Kraken2 refinement for long-read metagenomics'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: '-m pip install . -vv --no-deps --no-build-isolation
+
+    '
+extra:
+  recipe-maintainers:
+  - matnguyen
+package:
+  name: perseus
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.10,<3.13
+  - pip
+  - setuptools
+  - wheel
+  run:
+  - python >=3.10,<3.13
+  - numpy
+  - pandas
+  - pytorch
+  - scikit-learn
+  - ete3
+  - pyarrow
+  - alive-progress
+source:
+  sha256: fb37e5a0e1f75551143e904411f6f0e51bef8b2db3d672bd9bb2a82664796d82
+  url: https://github.com/matnguyen/Perseus/archive/refs/tags/v1.2.0.tar.gz
+test:
+  commands:
+  - perseus -h
