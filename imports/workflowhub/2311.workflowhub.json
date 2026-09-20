@@ -1,0 +1,37 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-09-15",
+    "creators": [
+        "Sonja Filiposka",
+        "Cristina Bernad",
+        "Katja Gilly",
+        "This work has been funded by the FUMD-AI project, an EOSC GRAVITY - Inter Project with Grant Number 25-EOSC-GRV-INTER-013."
+    ],
+    "description": "Turns raw SUMO (vehicle mobility) and OMNeT++/VEINS (cellular network) co-simulation output into a labeled, AI-ready dataset of cellular handover/migration events, for training and evaluating cellular handover / mobility-prediction models in vehicular (V2X) networks.\r\n\r\nThe workflow chains seven Jupyter notebooks \u2014 runnable individually or in one call via a master orchestrator notebook (run_pipeline.ipynb) built on papermill \u2014 that take a simulation from raw simulator output to a fully labeled feature matrix: parsing raw SUMO fcd-output XML and OMNeT++ .vec vector files; reconstructing per-vehicle trajectories with lagged position history; aligning SUMO and OMNeT/VEINS vehicle identities (including SUMO's teleportation behavior and OMNeT module-slot reuse, both resolved per-timestep rather than collapsed); merging mobility and radio-network metrics (SINR, CQI, RLC delay/throughput, serving cell) into a single per-vehicle-per-timestep table; and classifying every handover into one of four cases \u2014 normal handover, delayed (A-B-C), ping-pong (A-B-A), or no-prior-history \u2014 plus a diagnostic-only \"unstable\" category. An optional seventh notebook produces summary figures and diagnostics.\r\n\r\nThe workflow is dependency-light (Python \u22653.10, standard scientific-Python stack, plus sed for large-file cleaning), ships with a tiny bundled synthetic example so every notebook runs out of the box with no external data.",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2311.1",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2311",
+    "latest_version": "1",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/2311?version=1",
+    "mapped_tools": [],
+    "name": "FUMD-AI Preprocessing Workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "machine learning",
+        "dataset",
+        "handover",
+        "jupyter",
+        "mobility",
+        "prediction",
+        "urban"
+    ],
+    "tools": [],
+    "update_time": "2026-09-16",
+    "versions": "1",
+    "workflow_class": "Jupyter"
+}
