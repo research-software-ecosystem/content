@@ -22,17 +22,19 @@ about:
   summary: Rust-powered Ensembl VEP variant annotation for Python
 build:
   number: 0
+  python_version_independent: true
   run_exports:
   - null
   skip: true
 extra:
   additional-platforms:
+  - linux-aarch64
   - osx-arm64
   recipe-maintainers:
   - mwiewior
 package:
   name: vepyr
-  version: 0.6.0
+  version: 0.7.0
 requirements:
   build:
   - null
@@ -47,23 +49,24 @@ requirements:
   - cross-python_
   host:
   - python
+  - python-abi3
   - pip
   - maturin >=1.0,<2.0
   run:
-  - python
+  - python >=
   - pyarrow >=18.0
   - polars >=1.37.1
   - tqdm >=4.60
 source:
-  sha256: 7a28e6bc6f25d550e46765df0a94a7ca27a4a3d3e77ca778da0940d0c7a7a7ad
-  url: https://pypi.org/packages/source/v/vepyr/vepyr-0.6.0.tar.gz
+  sha256: 8da7b34b27e9c81ff83018f18d14aa264c839e81099e38c70408203811217f54
+  url: https://pypi.org/packages/source/v/vepyr/vepyr-0.7.0.tar.gz
 test:
   commands:
   - pip check
   - vepyr --version
   - vepyr annotate --help
-  - python -c "import vepyr; assert vepyr.__version__ == '0.6.0'; targets = vepyr.supported_vep_targets();
-    assert targets; assert all(t.get('vepyr_version') == '0.6.0' for t in targets);
+  - python -c "import vepyr; assert vepyr.__version__ == '0.7.0'; targets = vepyr.supported_vep_targets();
+    assert targets; assert all(t.get('vepyr_version') == '0.7.0' for t in targets);
     assert {t.get('cache_version') for t in targets} == {'115', '116'}; print('compiled
     VEP targets passed')"
   - python -c "import tempfile; from pathlib import Path; from vepyr._core import

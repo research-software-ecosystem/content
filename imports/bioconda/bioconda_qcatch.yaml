@@ -35,11 +35,17 @@ requirements:
   - plotly ==6.0.0
   - python-igraph ==0.11.8
   - requests
+  - hdf5plugin >=4
 source:
   sha256: 0dbb13452436bbcc69903da95206eebbfa272a516e0f83e002c96c519d031e38
   url: https://pypi.org/packages/source/q/qcatch/qcatch-0.2.14.tar.gz
 test:
   commands:
   - qcatch --help
+  - python -c "import hdf5plugin; import h5py; assert h5py.h5z.filter_avail(32001)"
+  files:
+  - test_hdf5_compression.py
   imports:
   - qcatch
+  requires:
+  - pytest

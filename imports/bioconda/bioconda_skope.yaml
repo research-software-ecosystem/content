@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/bede/skope
+  doc_url: https://github.com/bede/skope/blob/0.5.0/README.md
+  home: https://github.com/bede/skope
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Accelerated genome containment and abundance estimation.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - mv .cargo/config-portable.toml .cargo/config.toml
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.64898/2026.05.18.26353500
+  recipe-maintainers:
+  - bede
+package:
+  name: skope
+  version: 0.5.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: dc1b37e00ab19d2279dd176d134f10401f566c61945d35f998d063a2d0c17ced
+  url: https://github.com/bede/skope/archive/0.5.0.tar.gz
+test:
+  commands:
+  - skope --version

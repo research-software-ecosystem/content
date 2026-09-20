@@ -1,18 +1,30 @@
 about:
   home: https://github.com/xiezhq/ISEScan
-  license: GNU General Public License
-  summary: 'A python pipeline to identify IS (Insertion Sequence) elements in genome
-    and metagenome '
+  license: Apache-2.0
+  license_family: APACHE
+  license_file:
+  - LICENSE
+  - ssw201507/license.ssw.txt
+  summary: A python pipeline to identify IS (Insertion Sequence) elements in genomes
+    and metagenomes
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
+extra:
+  additional-platforms:
+  - osx-arm64
+  identifiers:
+  - doi:10.1093/bioinformatics/btx433
 package:
   name: isescan
   version: 1.7.3
 requirements:
   build:
   - null
+  - null
+  host:
+  - sse2neon
   run:
   - python >=3
   - numpy >=1.8
@@ -23,6 +35,8 @@ requirements:
   - blast >=2.2.31
   - biopython >=1.62
 source:
+  patches:
+  - sse2neon.patch
   sha256: cf3d7f0c272aa3527dd14565e8c7b29b8fed23a3bf880b10eda0fdfee0873fd9
   url: https://github.com/xiezhq/ISEScan/archive/refs/tags/v1.7.3.tar.gz
 test:
