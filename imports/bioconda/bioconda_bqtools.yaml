@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/ArcInstitute/bqtools
+  doc_url: https://github.com/ArcInstitute/bqtools/blob/bqtools-0.5.14/README.md
+  home: https://github.com/ArcInstitute/bqtools
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE.md
+  - THIRDPARTY.yml
+  summary: Command-line utility for working with BINSEQ files
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --locked --no-track --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1371/journal.pcbi.1014181
+  recipe-maintainers:
+  - nrminor
+package:
+  name: bqtools
+  version: 0.5.14
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - clangdev <22
+  - cmake
+  - make
+  - pkg-config
+source:
+  sha256: e68b56dd2428274d8a9b18e9dfd0da2cd470f4640f940c3787ea57127a609d42
+  url: https://github.com/ArcInstitute/bqtools/archive/refs/tags/bqtools-0.5.14.tar.gz
+test:
+  commands:
+  - bqtools --version
+  - bqtools --help
+  - bqtools encode --help
+  - bqtools decode --help

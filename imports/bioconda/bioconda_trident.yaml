@@ -1,0 +1,69 @@
+about:
+  dev_url: https://github.com/wgobrien/Trident
+  home: https://github.com/wgobrien/Trident
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - LICENSE.kraken2
+  summary: Bayesian re-estimation of taxon and accession abundances from metagenomic
+    classifier output
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - wgobrien
+package:
+  name: trident
+  version: 1.0.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - python
+  - pip
+  - setuptools >=68
+  - wheel
+  - zlib
+  run:
+  - python
+  - taxutils >=1.0.3
+  - pytorch
+  - pyro-ppl >=1.9.1
+  - numpy >=1.21
+  - pandas
+  - polars
+  - scipy
+  - scikit-learn
+  - anndata
+  - h5py <3.15
+  - h5py
+  - pysam
+  - matplotlib-base
+  - matplotlib-venn
+  - seaborn
+  - python-graphviz
+  - requests
+  - fastcluster
+  - tqdm
+  - gzip
+  - kraken2
+  - megahit
+  - minimap2
+source:
+  sha256: 136de2154b36a89cc1df17ec8e89648f680a3643731a7ddcd606a1a4fefb9133
+  url: https://github.com/wgobrien/Trident/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - trident --help
+  - trident accession --help
+  - trident check --help
+  imports:
+  - trident
+  - trident.tools
+  - trident.plot

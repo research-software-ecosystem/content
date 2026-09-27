@@ -1,0 +1,39 @@
+about:
+  home: https://github.com/bag-cnag/ga4gh-happy-report
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Generate standalone HTML benchmarking reports from GA4GH / hap.py variant-calling
+    metrics CSVs
+build:
+  noarch: python
+  number: 0
+  python:
+    entry_points:
+    - rep.py = ga4gh_happy_report.report:main
+    - ga4gh-happy-report = ga4gh_happy_report.report:main
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - georgiakes
+package:
+  name: ga4gh-happy-report
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=68
+  - pip
+  run:
+  - python >=3.9
+  - jinja2 >=3.0
+source:
+  sha256: 254c4599d082acd34e720da9b2987a556842921f2dd4ea842f61f31eea972b35
+  url: https://files.pythonhosted.org/packages/source/g/ga4gh-happy-report/ga4gh_happy_report-0.1.2.tar.gz
+test:
+  commands:
+  - rep.py --help
+  - ga4gh-happy-report --help
+  imports:
+  - ga4gh_happy_report

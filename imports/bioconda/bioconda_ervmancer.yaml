@@ -3,11 +3,12 @@ about:
     RNA sequencing expression data by aligning short reads to a curated subset of
     HERVs and then resolves ambiguity in alignment using a pre-computed HERV phylogenetic
     tree.
+  dev_url: https://github.com/AuslanderLab/ervmancer
   home: https://github.com/AuslanderLab/ervmancer
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Quantifies HERV short read RNA sequencing expression data
+  summary: Quantifies HERV short read RNA sequencing expression data.
 build:
   entry_points:
   - ervmancer = ervmancer.main:main
@@ -15,20 +16,20 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps -v'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - RNAPolymerase12
   - bryantduong
 package:
   name: ervmancer
-  version: 1.0.0
+  version: 1.0.1
 requirements:
   host:
-  - python >=3.8,<3.11
+  - python >=3.9,<3.11
   - setuptools <82
   run:
-  - python >=3.8,<3.11
+  - python >=3.9,<3.11
   - bowtie2 >=2.4.2
   - samtools >=1.20
   - bedtools >=2.29.2
@@ -38,8 +39,8 @@ requirements:
   - tqdm
   - regex
 source:
-  sha256: af66ef1891ea4f1a84027c6173baa9f048ca5ea4977542290360ad0a68235a18
-  url: https://github.com/AuslanderLab/ERVmancer/archive/refs/tags/v1.0.0.tar.gz
+  sha256: ba79f02682e174e5ce76566294393e7176a6a286110144ebabce3ea23fc8044a
+  url: https://github.com/AuslanderLab/ERVmancer/archive/refs/tags/v1.0.1.tar.gz
 test:
   commands:
   - ervmancer --help
