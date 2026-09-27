@@ -1,16 +1,16 @@
 # RSEc contents summary
 
-43019 tool folders, 9 sources.
+43021 tool folders, 9 sources.
 
 ## Tools per source
 
 | source | tools | share |
 | --- | --- | --- |
-| bio.tools | 34406 | 80.0% |
-| OEB Metrics | 40086 | 93.2% |
+| bio.tools | 34408 | 80.0% |
+| OEB Metrics | 40091 | 93.2% |
 | BioContainers | 9042 | 21.0% |
 | Bioconductor | 2427 | 5.6% |
-| Bioconda | 1522 | 3.5% |
+| Bioconda | 1524 | 3.5% |
 | BIII | 1451 | 3.4% |
 | Galaxy | 524 | 1.2% |
 | Debian Med | 345 | 0.8% |
@@ -21,10 +21,10 @@
 | sources | tools | share |
 | --- | --- | --- |
 | 0 | 8 | 0.0% |
-| 1 | 2869 | 6.7% |
-| 2 | 35689 | 83.0% |
+| 1 | 2866 | 6.7% |
+| 2 | 35693 | 83.0% |
 | 3 | 2473 | 5.7% |
-| 4 | 1568 | 3.6% |
+| 4 | 1569 | 3.6% |
 | 5 | 246 | 0.6% |
 | 6 | 109 | 0.3% |
 | 7 | 57 | 0.1% |
@@ -33,17 +33,17 @@
 
 | sources present | tools |
 | --- | --- |
-| bio.tools + OEB Metrics | 29421 |
+| bio.tools + OEB Metrics | 29425 |
 | OEB Metrics + BioContainers | 6191 |
 | BIII only | 1330 |
 | bio.tools + OEB Metrics + Bioconductor | 1261 |
 | BioContainers only | 985 |
-| bio.tools + OEB Metrics + BioContainers | 660 |
+| bio.tools + OEB Metrics + BioContainers | 659 |
 | bio.tools + OEB Metrics + Bioconductor + Bioconda | 635 |
-| bio.tools only | 543 |
+| bio.tools only | 540 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor | 378 |
-| bio.tools + OEB Metrics + BioContainers + Bioconda | 262 |
-| bio.tools + OEB Metrics + Bioconda | 205 |
+| bio.tools + OEB Metrics + BioContainers + Bioconda | 263 |
+| bio.tools + OEB Metrics + Bioconda | 206 |
 | bio.tools + OEB Metrics + BioContainers + Debian Med | 86 |
 | bio.tools + OEB Metrics + BIII | 79 |
 | bio.tools + OEB Metrics + Galaxy | 77 |
