@@ -8,33 +8,35 @@ about:
     telomere lengths from long-read sequencing data.
 build:
   entry_points:
-  - telometer=telometer:run_telometer
+  - telometer = telometer.telometer:run_telometer
   noarch: python
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - santiago-es
 package:
   name: telometer
-  version: '1.1'
+  version: 2.0.3
 requirements:
   host:
+  - python >=3.8
   - pip
-  - python >=3.7
+  - setuptools >=61,<76
   run:
-  - python >=3.7
-  - pysam
+  - python >=3.8
+  - numpy
   - pandas
+  - pysam
   - regex
+  - scipy
   - samtools
   - minimap2
-  - scipy
 source:
-  sha256: 28f3256263be23e06f68cee0ddb9a3c942dc4cd7674389ce8e5f3c09ba4e17f3
-  url: https://pypi.io/packages/source/t/telometer/telometer-1.1.tar.gz
+  sha256: a76e2f972a6766b31f17ee36b3096a00542bb88241a453fb3ca6debe8afe14f7
+  url: https://pypi.org/packages/source/t/telometer/telometer-2.0.3.tar.gz
 test:
   commands:
   - telometer --help

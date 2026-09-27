@@ -17,12 +17,13 @@ about:
 
     '
   dev_url: https://github.com/MHH-Bioinformatics-Hematology/vardictcpp
+  doc_url: https://vardictcpp.readthedocs.io/en/latest
   home: https://github.com/MHH-Bioinformatics-Hematology/vardictcpp
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Memory-lean C++ reimplementation of the VarDict variant caller, byte-identical
-    to VarDictJava
+    to VarDictJava.
 build:
   number: 0
   run_exports:
@@ -35,18 +36,23 @@ extra:
   - joachimwolff
 package:
   name: vardictcpp
-  version: '2'
+  version: '3'
 requirements:
   build:
   - null
   - null
   - cmake >=3.15
   - make
+  - pkg-config
   host:
   - htslib
+  run:
+  - htslib
 source:
-  sha256: c07aac3dc39a9f1a4e86ac28152189c3c49f7cba079e40282c4b630ea2aa5cfc
-  url: https://github.com/MHH-Bioinformatics-Hematology/vardictcpp/archive/refs/tags/v2.tar.gz
+  patches:
+  - install-rpath-macOS.patch
+  sha256: 0384b63da2a6d307b3111cfddae86c704229b1a3a7c556c0293f3b0746464bff
+  url: https://github.com/MHH-Bioinformatics-Hematology/vardictcpp/archive/refs/tags/v3.tar.gz
 test:
   commands:
   - vardictcpp --version
