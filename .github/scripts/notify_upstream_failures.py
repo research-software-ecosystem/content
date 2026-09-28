@@ -33,7 +33,9 @@ SOURCES = {
         "Bioconda",
         ["https://codeload.github.com/bioconda/bioconda-recipes/zip/master"],
     ),
-    "biii": ("BIII", ["http://biii.eu/"]),
+    # biii-import runs with `-td https://biii.eu`; the http:// form in its
+    # source is an RDF namespace, not a fetch target.
+    "biii": ("BIII", ["https://biii.eu/"]),
     "biocontainers": (
         "BioContainers",
         [
@@ -75,6 +77,7 @@ TOKEN = os.environ.get("GITHUB_TOKEN", "")
 SERVER = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
 RUN_ID = os.environ.get("GITHUB_RUN_ID", "")
 RUN_URL = f"{SERVER}/{REPO}/actions/runs/{RUN_ID}" if RUN_ID else "(no run url)"
+WORKFLOW_FILE = "import.yaml"
 DRY_RUN = os.environ.get("DRY_RUN") == "1" or not TOKEN
 
 
@@ -129,6 +132,27 @@ def api(method, path, payload=None):
     return json.loads(body) if body else {}
 
 
+def superseded_by_newer_run():
+    """True when a newer run of this workflow has already started.
+
+    Overlapping import runs are a problem in their own right, since they share
+    the *-import-branch names, but the notifier should at least not let a slow
+    older run reopen an outage that a newer run has just closed. The
+    concurrency group serialises us; it does not order us.
+    """
+    if DRY_RUN or not RUN_ID:
+        return False
+    try:
+        runs = api(
+            "GET", f"/repos/{REPO}/actions/workflows/{WORKFLOW_FILE}/runs?per_page=1"
+        )
+    except Exception as exc:  # never let this check be the thing that breaks
+        print(f"  could not check for newer runs ({exc}); proceeding")
+        return False
+    newest = (runs.get("workflow_runs") or [{}])[0].get("id") if runs else None
+    return bool(newest) and str(newest) != str(RUN_ID)
+
+
 def ensure_label():
     """Create the tracking label if the repository does not have it yet.
 
@@ -168,6 +192,10 @@ def find_issue(title):
             "GET", f"/repos/{REPO}/issues?state=open&labels={LABEL}&per_page=100"
         )
     for issue in _OPEN_ISSUES:
+        # The issues endpoint returns pull requests as well. Matching one would
+        # mean commenting on it and closing it on the recovery path.
+        if "pull_request" in issue:
+            continue
         if issue.get("title") == title:
             return issue
     return None
@@ -275,11 +303,28 @@ def main():
     if not needs:
         sys.exit("JOB_RESULTS is empty; nothing to report")
 
-    if any((needs.get(job) or {}).get("result") == "failure" for job in SOURCES):
-        ensure_label()
-
     rows = []
     failures = []
+
+    if superseded_by_newer_run():
+        write_summary(
+            [
+                (job, (needs.get(job) or {}).get("result", "missing"), "-", "-",
+                 "skipped: a newer run of this workflow has started")
+                for job in SOURCES
+            ]
+        )
+        return
+
+    if any((needs.get(job) or {}).get("result") == "failure" for job in SOURCES):
+        try:
+            ensure_label()
+        except Exception as exc:
+            # Do not abort here: that would skip the summary at exactly the
+            # moment the reporting path is in trouble.
+            reason = f"{type(exc).__name__}: {exc}"
+            print(f"  ERROR ensuring the {LABEL} label: {reason}")
+            failures.append(("label setup", reason))
     for job, (resource, targets) in SOURCES.items():
         result = (needs.get(job) or {}).get("result", "missing")
         try:
