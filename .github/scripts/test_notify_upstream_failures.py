@@ -21,10 +21,17 @@ import unittest.mock as mock
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# The module reads its configuration at import time.
-os.environ.setdefault("GITHUB_REPOSITORY", "owner/repo")
-os.environ.setdefault("GITHUB_RUN_ID", "100")
-os.environ.setdefault("GITHUB_TOKEN", "x")
+# The module reads its configuration at import time. These are set rather than
+# defaulted: on a runner the real GITHUB_RUN_ID is already present, and with
+# setdefault the suite silently tested against it -- every run then looked
+# superseded by a newer one, which passed locally and failed in CI.
+os.environ["GITHUB_REPOSITORY"] = "owner/repo"
+os.environ["GITHUB_RUN_ID"] = "100"
+os.environ["GITHUB_TOKEN"] = "x"
+os.environ["GITHUB_SERVER_URL"] = "https://github.com"
+os.environ.pop("DRY_RUN", None)
+# Never append to the runner's real job summary.
+os.environ.pop("GITHUB_STEP_SUMMARY", None)
 
 import notify_upstream_failures as notifier  # noqa: E402
 
@@ -255,13 +262,18 @@ class Wiring(unittest.TestCase):
         # real table rather than whatever ran last.
         importlib.reload(notifier)
 
+    @staticmethod
+    def read_workflow():
+        with open(WORKFLOW) as handle:
+            return handle.read()
+
     def workflow_jobs(self):
-        text = open(WORKFLOW).read()
+        text = self.read_workflow()
         body = text.split("\njobs:\n", 1)[1]
         return {m.group(1) for m in re.finditer(r"^  ([a-z0-9][a-z0-9-]*):$", body, re.M)}
 
     def notify_needs(self):
-        text = open(WORKFLOW).read()
+        text = self.read_workflow()
         block = text.split("\n  notify:\n", 1)[1].split("\n    if:", 1)[0]
         return {m.group(1) for m in re.finditer(r"^      - ([a-z0-9-]+)$", block, re.M)}
 
