@@ -364,7 +364,16 @@ jobs:
       - workflowhub
     if: always()
     permissions:
+      # A job-level permissions map sets every scope it does not mention to
+      # none, so actions/checkout needs contents spelled out here.
+      contents: read
       issues: write
+    concurrency:
+      # find-then-create is not atomic across runners, so serialise the
+      # notifier: a manual dispatch overlapping the schedule would otherwise
+      # let two runs open duplicate issues for the same outage.
+      group: notify-upstream-failures
+      cancel-in-progress: false
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4

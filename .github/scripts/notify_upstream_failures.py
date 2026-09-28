@@ -118,6 +118,34 @@ def api(method, path, payload=None):
     return json.loads(body) if body else {}
 
 
+def ensure_label():
+    """Create the tracking label if the repository does not have it yet.
+
+    find_issue() filters on this label, so an issue created before the label
+    exists could be invisible on the next run, and a duplicate would be opened
+    for an outage already being tracked.
+    """
+    if DRY_RUN:
+        print(f"    [dry-run] ensure label {LABEL} exists")
+        return
+    try:
+        api("GET", f"/repos/{REPO}/labels/{LABEL}")
+        return
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404:
+            raise
+    api(
+        "POST",
+        f"/repos/{REPO}/labels",
+        {
+            "name": LABEL,
+            "color": "d93f0b",
+            "description": "An upstream resource an importer depends on is unavailable",
+        },
+    )
+    print(f"created the {LABEL} label")
+
+
 _OPEN_ISSUES = None
 
 
@@ -171,6 +199,9 @@ def main():
     needs = json.loads(os.environ.get("JOB_RESULTS") or "{}")
     if not needs:
         sys.exit("JOB_RESULTS is empty; nothing to report")
+
+    if any((needs.get(job) or {}).get("result") == "failure" for job in SOURCES):
+        ensure_label()
 
     rows = []
     for job, (resource, targets) in SOURCES.items():
