@@ -363,10 +363,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          # Checkout defaults to the run's head SHA rather than the current tip
-          # of master, which goes stale as soon as anything else pushes.
-          ref: master
       - name: Merge feature branches
         run: |
           git config --local user.email "tpe-bot@github.com"
@@ -464,10 +460,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          # Checkout defaults to the run's head SHA rather than the current tip
-          # of master, which goes stale as soon as anything else pushes.
-          ref: master
       - name: Merge bioconductor-to-biotools branch
         id: merge-bioconductor-branch
         run: |
