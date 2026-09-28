@@ -149,7 +149,10 @@ def superseded_by_newer_run():
     except Exception as exc:  # never let this check be the thing that breaks
         print(f"  could not check for newer runs ({exc}); proceeding")
         return False
-    newest = (runs.get("workflow_runs") or [{}])[0].get("id") if runs else None
+    if not isinstance(runs, dict):
+        return False
+    listed = runs.get("workflow_runs") or []
+    newest = listed[0].get("id") if listed else None
     return bool(newest) and str(newest) != str(RUN_ID)
 
 
