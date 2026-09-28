@@ -367,6 +367,7 @@ jobs:
         run: |
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
+          head_before_merges=$(git rev-parse HEAD)
           merge_branch_if_exists() {
             local branch_name="$1"
             # Check if the branch exists on the remote repository
@@ -389,11 +390,11 @@ jobs:
           merge_branch_if_exists "debianmed-import-branch"
           merge_branch_if_exists "bioconductor-import-branch"
           merge_branch_if_exists "workflowhub-import-branch"
-          # Only push when at least one branch merged, for the same reason as
-          # in merge-bioconductor below.
-          git fetch origin master
-          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/master)" ]; then
-            echo "Nothing to push, no import branch changed master."
+          # Push only if a merge actually moved HEAD. Comparing against
+          # origin/master instead would read a master that advanced during the
+          # run as evidence that something merged, and push the stale checkout.
+          if [ "$(git rev-parse HEAD)" = "$head_before_merges" ]; then
+            echo "Nothing merged, nothing to push."
           else
             git push origin HEAD:master
           fi
@@ -465,6 +466,7 @@ jobs:
         run: |
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
+          head_before_merge=$(git rev-parse HEAD)
           if git ls-remote --exit-code --heads origin "bioconductor-to-biotools-branch" &>/dev/null; then
             git fetch origin "bioconductor-to-biotools-branch"
             git merge "origin/bioconductor-to-biotools-branch"
@@ -472,12 +474,9 @@ jobs:
           else
             echo "Branch bioconductor-to-biotools-branch does not exist on the remote repository."
           fi
-          # Only push when the merge actually moved master forward. Pushing
-          # unconditionally sends whatever was checked out, which fails as a
-          # non-fast-forward whenever nothing was merged.
-          git fetch origin master
-          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/master)" ]; then
-            echo "Nothing to push, master is unchanged."
+          # Push only if the merge above actually moved HEAD; see merge-imports.
+          if [ "$(git rev-parse HEAD)" = "$head_before_merge" ]; then
+            echo "Nothing merged, nothing to push."
           else
             git push origin HEAD:master
           fi
