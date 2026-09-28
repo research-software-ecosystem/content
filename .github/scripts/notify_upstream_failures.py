@@ -45,12 +45,23 @@ SOURCES = {
         "Galaxy Codex",
         [
             "https://raw.githubusercontent.com/galaxyproject/galaxy_codex/"
-            "refs/heads/main/communities/all/resources/tools.json"
+            "refs/heads/main/communities/all/resources/tools.json",
+            "https://raw.githubusercontent.com/galaxyproject/galaxy_codex/"
+            "refs/heads/main/communities/all/resources/workflows.json",
         ],
     ),
     "debian-med": ("Debian Med (UDD)", ["tcp://udd-mirror.debian.net:5432"]),
     "bioconductor": ("Bioconductor", ["https://bioconductor.org/config.yaml"]),
-    "workflowhub": ("WorkflowHub", ["https://workflowhub.eu/workflows.json?page=1"]),
+    # WorkflowHub's importer also reads the galaxy_codex table, to map Galaxy
+    # tool IDs onto bio.tools IDs, so an outage there fails it just as surely.
+    "workflowhub": (
+        "WorkflowHub",
+        [
+            "https://workflowhub.eu/workflows.json?page=1",
+            "https://raw.githubusercontent.com/galaxyproject/galaxy_codex/"
+            "refs/heads/main/communities/all/resources/tools.json",
+        ],
+    ),
 }
 
 LABEL = "upstream-outage"
@@ -195,6 +206,70 @@ def body_for(resource, verdict, probe_lines):
     )
 
 
+def handle(job, resource, targets, result):
+    """Report on one importer. Returns the summary row for it."""
+    title = f"import failure: {resource}"
+
+    if result == "success":
+        issue = find_issue(title)
+        if not issue:
+            return (job, result, "-", "-", "nothing to do")
+        api(
+            "POST",
+            f"/repos/{REPO}/issues/{issue['number']}/comments",
+            {"body": f"Recovered: the importer succeeded in {RUN_URL}."},
+        )
+        api("PATCH", f"/repos/{REPO}/issues/{issue['number']}", {"state": "closed"})
+        return (job, result, "-", "recovered", f"closed #{issue['number']}")
+
+    if result in ("skipped", "cancelled", "missing"):
+        return (job, result, "-", "-", "not evaluated")
+
+    # Probe each target once; both the verdict and the report come from it.
+    checked = [(target, *probe(target)) for target in targets]
+    probe_lines = [(target, detail) for target, _, detail in checked]
+    # Every target has to answer. An importer that reads two resources fails if
+    # either is down, so one reachable host is not evidence that it is our bug.
+    verdict = (
+        "needs-attention"
+        if all(ok for _, ok, _ in checked)
+        else "upstream-unavailable"
+    )
+    summary = "; ".join(detail for _, detail in probe_lines)
+
+    issue = find_issue(title)
+    if issue is None:
+        created = api(
+            "POST",
+            f"/repos/{REPO}/issues",
+            {
+                "title": title,
+                "body": body_for(resource, verdict, probe_lines),
+                "labels": [LABEL],
+            },
+        )
+        action = f"opened #{created.get('number', '?')}"
+    elif previous_verdict(issue) != verdict:
+        api(
+            "POST",
+            f"/repos/{REPO}/issues/{issue['number']}/comments",
+            {
+                "body": f"Still failing, but the picture changed "
+                f"(`{previous_verdict(issue)}` -> `{verdict}`).\n\n"
+                f"{body_for(resource, verdict, probe_lines)}"
+            },
+        )
+        api(
+            "PATCH",
+            f"/repos/{REPO}/issues/{issue['number']}",
+            {"body": body_for(resource, verdict, probe_lines)},
+        )
+        action = f"updated #{issue['number']}"
+    else:
+        action = f"#{issue['number']} already open, staying quiet"
+    return (job, result, summary, verdict, action)
+
+
 def main():
     needs = json.loads(os.environ.get("JOB_RESULTS") or "{}")
     if not needs:
@@ -204,71 +279,26 @@ def main():
         ensure_label()
 
     rows = []
+    failures = []
     for job, (resource, targets) in SOURCES.items():
         result = (needs.get(job) or {}).get("result", "missing")
-        title = f"import failure: {resource}"
-
-        if result == "success":
-            issue = find_issue(title)
-            if issue:
-                api(
-                    "POST",
-                    f"/repos/{REPO}/issues/{issue['number']}/comments",
-                    {"body": f"Recovered: the importer succeeded in {RUN_URL}."},
-                )
-                api("PATCH", f"/repos/{REPO}/issues/{issue['number']}", {"state": "closed"})
-                rows.append((job, result, "-", "recovered", f"closed #{issue['number']}"))
-            else:
-                rows.append((job, result, "-", "-", "nothing to do"))
-            continue
-
-        if result in ("skipped", "cancelled", "missing"):
-            rows.append((job, result, "-", "-", "not evaluated"))
-            continue
-
-        # Probe each target once; both the verdict and the report come from it.
-        checked = [(target, *probe(target)) for target in targets]
-        probe_lines = [(target, detail) for target, _, detail in checked]
-        verdict = (
-            "needs-attention"
-            if any(ok for _, ok, _ in checked)
-            else "upstream-unavailable"
-        )
-        summary = "; ".join(detail for _, detail in probe_lines)
-
-        issue = find_issue(title)
-        if issue is None:
-            created = api(
-                "POST",
-                f"/repos/{REPO}/issues",
-                {
-                    "title": title,
-                    "body": body_for(resource, verdict, probe_lines),
-                    "labels": [LABEL],
-                },
-            )
-            action = f"opened #{created.get('number', '?')}"
-        elif previous_verdict(issue) != verdict:
-            api(
-                "POST",
-                f"/repos/{REPO}/issues/{issue['number']}/comments",
-                {
-                    "body": f"Still failing, but the picture changed "
-                    f"(`{previous_verdict(issue)}` -> `{verdict}`).\n\n"
-                    f"{body_for(resource, verdict, probe_lines)}"
-                },
-            )
-            api(
-                "PATCH",
-                f"/repos/{REPO}/issues/{issue['number']}",
-                {"body": body_for(resource, verdict, probe_lines)},
-            )
-            action = f"updated #{issue['number']}"
-        else:
-            action = f"#{issue['number']} already open, staying quiet"
-        rows.append((job, result, summary, verdict, action))
+        try:
+            rows.append(handle(job, resource, targets, result))
+        except Exception as exc:
+            # One resource failing to report must not hide the other eight, nor
+            # lose the summary. Record it and carry on; the exit status below
+            # still makes the run red.
+            reason = f"{type(exc).__name__}: {exc}"
+            print(f"  ERROR reporting on {job}: {reason}")
+            rows.append((job, result, "-", "-", f"REPORTING FAILED - {reason[:60]}"))
+            failures.append((job, reason))
 
     write_summary(rows)
+    if failures:
+        sys.exit(
+            "could not report on: "
+            + "; ".join(f"{job} ({error})" for job, error in failures)
+        )
 
 
 def write_summary(rows):
