@@ -238,6 +238,32 @@ class Resilience(Base):
         self.assertIsNotNone(self.rows, "summary must be written anyway")
         self.assertEqual(code, 1)
 
+    def test_label_failure_holds_back_new_issues(self):
+        """An unlabelled issue would be invisible next run, and duplicated."""
+        notifier.SOURCES = {"x": ("X", ["u"])}
+        notifier.probe = lambda target: (False, "HTTP 521")
+        self.stub_api(
+            gets={"workflows": {"workflow_runs": [{"id": 100}]}}, raises=r"/labels"
+        )
+        code = self.run_main({"x": "failure"})
+        self.assertEqual(
+            [(m, p) for m, p in self.writes() if p.endswith("/issues")],
+            [],
+            "no issue may be opened while the label is unconfirmed",
+        )
+        self.assertIn("label could not be confirmed", self.rows[0][4])
+        self.assertEqual(code, 1)
+
+    def test_label_failure_still_closes_a_recovered_issue(self):
+        """Anything findable was labelled when it was opened, so recovery runs."""
+        notifier.SOURCES = {"x": ("X", ["u"])}
+        open_issue = {"number": 42, "title": "import failure: X", "body": ""}
+        self.stub_api(
+            gets={"workflows": {"workflow_runs": [{"id": 100}]}, r"issues\?": [open_issue]}
+        )
+        self.run_main({"x": "success"})
+        self.assertTrue(any("comments" in p for _, p in self.writes()))
+
     def test_a_superseded_run_changes_nothing(self):
         notifier.SOURCES = {"x": ("X", ["u"])}
         notifier.probe = lambda target: (False, "HTTP 521")

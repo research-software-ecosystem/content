@@ -242,8 +242,14 @@ def body_for(resource, verdict, probe_lines):
     )
 
 
-def handle(job, resource, targets, result):
-    """Report on one importer. Returns the summary row for it."""
+def handle(job, resource, targets, result, label_ready=True):
+    """Report on one importer. Returns the summary row for it.
+
+    With label_ready false the label could not be confirmed, so no new issue is
+    opened: find_issue() filters on that label, and an issue created without it
+    would be invisible next run and duplicated every run after. Recovery still
+    runs, since anything it finds was labelled when it was opened.
+    """
     title = f"import failure: {resource}"
 
     if result == "success":
@@ -275,6 +281,14 @@ def handle(job, resource, targets, result):
 
     issue = find_issue(title)
     if issue is None:
+        if not label_ready:
+            return (
+                job,
+                result,
+                summary,
+                verdict,
+                "not opened: the label could not be confirmed",
+            )
         created = api(
             "POST",
             f"/repos/{REPO}/issues",
@@ -324,19 +338,22 @@ def main():
         )
         return
 
+    label_ready = True
     if any((needs.get(job) or {}).get("result") == "failure" for job in SOURCES):
         try:
             ensure_label()
         except Exception as exc:
             # Do not abort here: that would skip the summary at exactly the
-            # moment the reporting path is in trouble.
+            # moment the reporting path is in trouble. Opening issues is held
+            # back instead, so a run cannot leave unlabelled ones behind.
+            label_ready = False
             reason = f"{type(exc).__name__}: {exc}"
             print(f"  ERROR ensuring the {LABEL} label: {reason}")
             failures.append(("label setup", reason))
     for job, (resource, targets) in SOURCES.items():
         result = (needs.get(job) or {}).get("result", "missing")
         try:
-            rows.append(handle(job, resource, targets, result))
+            rows.append(handle(job, resource, targets, result, label_ready))
         except Exception as exc:
             # One resource failing to report must not hide the other eight, nor
             # lose the summary. Record it and carry on; the exit status below
