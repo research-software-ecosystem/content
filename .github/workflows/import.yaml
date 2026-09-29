@@ -365,14 +365,15 @@ jobs:
     if: always()
     permissions:
       # A job-level permissions map sets every scope it does not mention to
-      # none, so each one the notifier needs is spelled out:
-      #   contents  actions/checkout
-      #   issues    reading, opening, commenting on and closing the tracking
-      #             issue, and creating its label
-      #   actions   listing this workflow's runs, to tell whether a newer one
-      #             has started. Without it that check is refused and the
-      #             stale-run guard silently does nothing.
-      contents: read
+      # none, so each one the action needs is spelled out:
+      #   issues   reading, opening, commenting on and closing the tracking
+      #            issue, and creating its label
+      #   actions  listing this workflow's runs, to tell whether a newer one
+      #            has started. Without it that check is refused; the action
+      #            carries on and says so in the job summary, but the
+      #            stale-run guard is gone.
+      # `contents` is not needed: there is no checkout, since the action
+      # brings its own script.
       issues: write
       actions: read
     concurrency:
@@ -382,15 +383,15 @@ jobs:
       group: notify-upstream-failures
       cancel-in-progress: false
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: .github/scripts
       - name: report importer outcomes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JOB_RESULTS: ${{ toJSON(needs) }}
-        run: python3 .github/scripts/notify_upstream_failures.py
+        uses: research-software-ecosystem/utils/notify-upstream-failures@main
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          # The keys are this job's `needs`, which the action matches against
+          # its table of upstream resources. A job missing from that table is
+          # reported as unprobed rather than passing unnoticed.
+          job-results: ${{ toJSON(needs) }}
+          workflow-file: import.yaml
   merge-imports:
     runs-on: ubuntu-latest
     needs:
