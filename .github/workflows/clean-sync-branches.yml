@@ -54,6 +54,15 @@ jobs:
           # Branch names carry '@', '.' and '_'; byte ordering keeps sort and comm agreeing.
           export LC_ALL=C
 
+          # `date` reads "-7 days ago" as seven days in the *future*, which would
+          # put the cutoff ahead of every branch and delete exactly the ones the
+          # age guard exists to protect. An empty value means "1 day ago". Take a
+          # whole number of days or nothing at all.
+          if ! printf '%s' "$MIN_AGE_DAYS" | grep -qE '^[0-9]+$'; then
+            echo "::error::min-age-days must be a whole number of days, not '$MIN_AGE_DAYS'"
+            exit 1
+          fi
+
           cutoff=$(date -u -d "$MIN_AGE_DAYS days ago" +%s)
           echo "Repository:   $REPO"
           echo "Dry run:      $DRY_RUN"
