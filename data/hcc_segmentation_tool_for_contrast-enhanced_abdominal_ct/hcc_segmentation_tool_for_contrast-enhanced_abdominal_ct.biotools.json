@@ -48,11 +48,11 @@
     "description": "Features an nnU-Net based segmentation tool capable of performing HCC segmentation for both arterial and portal venous phase in polyphasic contrast-enhanced abdominal CT.\n\nPlease be mindful that the usage instructions below are for the image in the EUCAIM Harbor.",
     "documentation": [
         {
-            "note": "This is the repository containing all of the code together with a comprehensive README for deployment and examplar files.",
+            "note": "Contains the documentation required to run the Docker image.",
             "type": [
                 "API documentation"
             ],
-            "url": "https://github.com/josegcpa/nnunet_serve"
+            "url": "https://gist.github.com/josegcpa/47ba1bf2bb425db111393e2c135d97e6"
         }
     ],
     "editPermission": {
@@ -60,7 +60,7 @@
     },
     "function": [
         {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict --study_path /data/input --series_folders <series-folder> --output_dir /data/output",
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" <image-name> bash nnunet-server-entrypoint.sh nnunet-predict --study_path /data/study --series_folders <path-to-series> --output_dir /out",
             "input": [
                 {
                     "data": {
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example_dataset:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" test-eucaim:latest nnunet-predict-batch {{--data_json /data/input/<dataset_json>.json|--data_dir /data/input --output_dir /data/output}}",
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" <image-name> bash nnunet-server-entrypoint.sh nnunet-predict-batch --data_dir /data",
             "input": [
                 {
                     "data": {
@@ -156,7 +156,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-11-07T18:15:59.638977Z",
+    "lastUpdate": "2026-09-29T15:47:24.113579Z",
     "license": "CC-BY-NC-4.0",
     "link": [
         {
