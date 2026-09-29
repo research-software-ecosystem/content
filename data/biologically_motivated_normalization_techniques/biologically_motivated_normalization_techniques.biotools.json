@@ -1,10 +1,12 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2025-10-30T11:34:24.728018Z",
     "biotoolsCURIE": "biotools:biologically_motivated_normalization_techniques",
     "biotoolsID": "biologically_motivated_normalization_techniques",
     "collectionID": [
         "eucaim"
     ],
+    "cost": "Free of charge",
     "credit": [
         {
             "email": "dovrou@ics.forth.gr",
@@ -12,8 +14,34 @@
             "orcidid": "https://orcid.org/0000-0001-5242-6060",
             "typeEntity": "Person",
             "typeRole": [
-                "Developer"
+                "Developer",
+                "Documentor",
+                "Primary contact",
+                "Support"
             ]
+        },
+        {
+            "email": "ssfak@ics.forth.gr",
+            "name": "Stelios Sfakianakis",
+            "orcidid": "https://orcid.org/0000-0001-8424-4157",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Support"
+            ]
+        },
+        {
+            "email": "vkalokyri@ics.forth.gr",
+            "name": "Valia Kalokyri",
+            "orcidid": "https://orcid.org/0000-0002-5245-8238",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Support"
+            ]
+        },
+        {
+            "name": "Computational BioMedicine Laboratory (CBML), Foundation for Research and Technology Hellas (FORTH)",
+            "typeEntity": "Institute",
+            "url": "https://www.ics.forth.gr/cbml/"
         }
     ],
     "description": "The tool is designed to perform normalization at the image-level. This normalization method aims to reduce the variability in the intensity values of the Magnetic Resonance (MR) prostate images due to different scanners, acquisition protocols and conditions, based on the intensity values of specific tissues. This tool implements three biologically-motivated intensity normalization techniques: (1) The fat-based normalization method, (2) The muscle-based normalization method, and (3) The single tissue (fat or muscle) piece-wise normalization method.",
@@ -23,13 +51,29 @@
                 "Quick start guide"
             ],
             "url": "https://cbml-gitlab.ics.forth.gr/adovrou/biointensitynorm/-/tree/eucaim?ref_type=heads"
+        },
+        {
+            "type": [
+                "Training material"
+            ],
+            "url": "https://youtu.be/NtwamIRRJ6o?si=95I_ieoOxLR4IcuO"
+        },
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://drive.eucaim.cancerimage.eu/s/SYLB7HYksEwaKF4"
         }
     ],
     "editPermission": {
-        "type": "private"
+        "authors": [
+            "vkalokyri"
+        ],
+        "type": "group"
     },
     "function": [
         {
+            "cmd": "docker run --rm \\\n  -v \"your_input_path:/data/input\" \\\n  -v \"your_output_path:/data/output\"\n harbor.eucaim.cancerimage.eu/processing-tools/bio_intensity_norm:1.7 /data/input /data/output [-h] [-f] [-m] [-p]",
             "input": [
                 {
                     "data": {
@@ -44,6 +88,7 @@
                     ]
                 }
             ],
+            "note": "-h, --help: show this help message and exit  \n\n  -f, --fat-based: If specified, the fat-based normalization algorithm is applied \n\n  -m, --muscle-based: If specified, the muscle-based normalization algorithm is applied  \n\n  -p, --piece-wise: If specified, the single tissue piece-wise normalization algorithm is applied, Default = fat tissue piece-wise",
             "operation": [
                 {
                     "term": "Image analysis",
@@ -66,17 +111,17 @@
             ]
         }
     ],
-    "homepage": "https://cbml-gitlab.ics.forth.gr/adovrou/biointensitynorm/-/tree/eucaim?ref_type=heads",
+    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/bio_intensity_norm/info-tab",
     "language": [
         "Python"
     ],
-    "lastUpdate": "2025-12-03T09:58:02.503844Z",
-    "license": "EUPL-1.1",
+    "lastUpdate": "2026-09-25T10:00:59.787570Z",
+    "license": "EUPL-1.2",
     "link": [
         {
             "note": "Link to EUCAIM's Harbor",
             "type": [
-                "Other"
+                "Software catalogue"
             ],
             "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/bio_intensity_norm/artifacts-tab"
         },
@@ -87,6 +132,7 @@
             "url": "https://cbml-gitlab.ics.forth.gr/adovrou/biointensitynorm/-/tree/eucaim?ref_type=heads"
         }
     ],
+    "maturity": "Emerging",
     "name": "Biologically motivated normalization techniques",
     "operatingSystem": [
         "Linux",
@@ -95,9 +141,17 @@
     ],
     "owner": "adovrou",
     "toolType": [
-        "Workflow"
+        "Command-line tool"
     ],
     "topic": [
+        {
+            "term": "Data curation and archival",
+            "uri": "http://edamontology.org/topic_0219"
+        },
+        {
+            "term": "Data management",
+            "uri": "http://edamontology.org/topic_3071"
+        },
         {
             "term": "Data visualisation",
             "uri": "http://edamontology.org/topic_0092"
@@ -108,6 +162,7 @@
         }
     ],
     "version": [
-        "1.6"
+        "1.6",
+        "1.7"
     ]
 }
