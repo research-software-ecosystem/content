@@ -147,7 +147,12 @@ def superseded_by_newer_run():
             "GET", f"/repos/{REPO}/actions/workflows/{WORKFLOW_FILE}/runs?per_page=1"
         )
     except Exception as exc:  # never let this check be the thing that breaks
-        print(f"  could not check for newer runs ({exc}); proceeding")
+        # A 403 here means the job is missing `actions: read`, which is a
+        # configuration fault rather than a blip, so name what is lost.
+        print(
+            f"  could not check for newer runs ({exc}); proceeding WITHOUT "
+            "stale-run protection"
+        )
         return False
     if not isinstance(runs, dict):
         return False

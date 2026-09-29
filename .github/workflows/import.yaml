@@ -365,9 +365,16 @@ jobs:
     if: always()
     permissions:
       # A job-level permissions map sets every scope it does not mention to
-      # none, so actions/checkout needs contents spelled out here.
+      # none, so each one the notifier needs is spelled out:
+      #   contents  actions/checkout
+      #   issues    reading, opening, commenting on and closing the tracking
+      #             issue, and creating its label
+      #   actions   listing this workflow's runs, to tell whether a newer one
+      #             has started. Without it that check is refused and the
+      #             stale-run guard silently does nothing.
       contents: read
       issues: write
+      actions: read
     concurrency:
       # find-then-create is not atomic across runners, so serialise the
       # notifier: a manual dispatch overlapping the schedule would otherwise

@@ -283,6 +283,29 @@ class Wiring(unittest.TestCase):
     def test_notify_waits_for_every_probed_source(self):
         self.assertEqual(set(notifier.SOURCES), self.notify_needs())
 
+    def notify_permissions(self):
+        text = self.read_workflow()
+        block = text.split("\n  notify:\n", 1)[1].split("\n    concurrency:", 1)[0]
+        return dict(re.findall(r"^      (\w+): (read|write)$", block, re.M))
+
+    def test_notify_job_grants_every_scope_the_script_needs(self):
+        """A job-level permissions map denies everything it does not name.
+
+        Each of these is reachable from the script, and a missing one fails at
+        runtime in a way that is easy to miss: the stale-run check catches its
+        own 403 and carries on, so losing `actions` degrades the guard silently
+        rather than failing the job.
+        """
+        needed = {
+            "contents": "actions/checkout",
+            "issues": "read, open, comment, close, and label the tracking issue",
+            "actions": "list this workflow's runs for the stale-run guard",
+        }
+        granted = self.notify_permissions()
+        for scope, why in needed.items():
+            with self.subTest(scope=scope):
+                self.assertIn(scope, granted, f"{scope} is needed to {why}")
+
     def test_every_source_has_at_least_one_target(self):
         for name, (_, targets) in notifier.SOURCES.items():
             with self.subTest(source=name):
