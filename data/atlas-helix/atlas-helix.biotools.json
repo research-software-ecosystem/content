@@ -1,210 +1,210 @@
 {
-  "accessibility": "Restricted access",
-  "additionDate": "2026-09-29T11:36:32.931431Z",
-  "biotoolsCURIE": "biotools:atlas-helix",
-  "biotoolsID": "atlas-helix",
-  "cost": "Commercial",
-  "credit": [
-    {
-      "email": "contact@helixresearch.ai",
-      "name": "Helix Research Intelligence",
-      "typeEntity": "Institute",
-      "typeRole": [
-        "Developer",
-        "Primary contact"
-      ],
-      "url": "https://helixresearch.ai"
-    }
-  ],
-  "description": "Atlas assembles an evidence base for a therapeutic research programme from public biomedical sources and keeps the reasoning built on top of it. It retrieves records from PubMed, Europe PMC, PMC Open Access, ClinicalTrials.gov, OpenAlex, Crossref, Unpaywall, CORE, EPO Open Patent Services, SureChEMBL, CORDIS and NIH RePORTER; full text is parsed from JATS or structured with GROBID. Entities found in those records (diseases, genes, proteins, molecules) are recognised, normalised and resolved to canonical identifiers in MONDO, HGNC, UniProt, ChEMBL, MeSH and GSRS, then deduplicated and reconciled across sources. Publications are linked to the clinical trials they report on. The resolved entities and their relationships form a queryable graph; retrieval combines vector search over document chunks with reranking, and every answer carries the citations it was derived from.",
-  "documentation": [
-    {
-      "type": [
-        "General"
-      ],
-      "url": "https://helixresearch.ai/about"
-    }
-  ],
-  "editPermission": {
-    "type": "private"
-  },
-  "function": [
-    {
-      "input": [
+    "accessibility": "Restricted access",
+    "additionDate": "2026-09-29T11:36:32.931431Z",
+    "biotoolsCURIE": "biotools:atlas-helix",
+    "biotoolsID": "atlas-helix",
+    "cost": "Commercial",
+    "credit": [
         {
-          "data": {
-            "term": "Keyword",
-            "uri": "http://edamontology.org/data_0968"
-          }
+            "email": "contact@helixresearch.ai",
+            "name": "Helix Research Intelligence",
+            "typeEntity": "Institute",
+            "typeRole": [
+                "Developer",
+                "Primary contact"
+            ],
+            "url": "https://helixresearch.ai"
+        }
+    ],
+    "description": "Atlas assembles an evidence base for a therapeutic research programme from public biomedical sources and keeps the reasoning built on top of it. It retrieves records from PubMed, Europe PMC, PMC Open Access, ClinicalTrials.gov, OpenAlex, Crossref, Unpaywall, CORE, EPO Open Patent Services, SureChEMBL, CORDIS and NIH RePORTER; full text is parsed from JATS or structured with GROBID. Entities found in those records (diseases, genes, proteins, molecules) are recognised, normalised and resolved to canonical identifiers in MONDO, HGNC, UniProt, ChEMBL, MeSH and GSRS, then deduplicated and reconciled across sources. Publications are linked to the clinical trials they report on. The resolved entities and their relationships form a queryable graph; retrieval combines vector search over document chunks with reranking, and every answer carries the citations it was derived from.",
+    "documentation": [
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://helixresearch.ai/about"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "Disease name",
+                        "uri": "http://edamontology.org/data_3668"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Gene name",
+                        "uri": "http://edamontology.org/data_2299"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Keyword",
+                        "uri": "http://edamontology.org/data_0968"
+                    }
+                }
+            ],
+            "note": "Retrieves publications, clinical trial records, patents and funding records from public sources (PubMed, Europe PMC, PMC Open Access, ClinicalTrials.gov, OpenAlex, Crossref, Unpaywall, CORE, EPO OPS, SureChEMBL, CORDIS, NIH RePORTER).",
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                },
+                {
+                    "term": "Literature search",
+                    "uri": "http://edamontology.org/operation_0305"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Article",
+                        "uri": "http://edamontology.org/data_0971"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Clinical trial report",
+                        "uri": "http://edamontology.org/data_3558"
+                    }
+                }
+            ]
         },
         {
-          "data": {
-            "term": "Disease name",
-            "uri": "http://edamontology.org/data_3668"
-          }
+            "input": [
+                {
+                    "data": {
+                        "term": "Keyword",
+                        "uri": "http://edamontology.org/data_0968"
+                    }
+                }
+            ],
+            "note": "Extracts structured information from trial records and full-text documents, links publications to the trials they report on, and answers questions over the resulting entity graph with cited passages.",
+            "operation": [
+                {
+                    "term": "Information extraction",
+                    "uri": "http://edamontology.org/operation_3907"
+                },
+                {
+                    "term": "Query and retrieval",
+                    "uri": "http://edamontology.org/operation_0224"
+                },
+                {
+                    "term": "Text mining",
+                    "uri": "http://edamontology.org/operation_0306"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Citation",
+                        "uri": "http://edamontology.org/data_0970"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Text mining report",
+                        "uri": "http://edamontology.org/data_0972"
+                    }
+                }
+            ]
         },
         {
-          "data": {
-            "term": "Gene name",
-            "uri": "http://edamontology.org/data_2299"
-          }
+            "input": [
+                {
+                    "data": {
+                        "term": "Text",
+                        "uri": "http://edamontology.org/data_3671"
+                    }
+                }
+            ],
+            "note": "Recognises biomedical entities in retrieved text and resolves them to canonical identifiers in MONDO, HGNC, UniProt, ChEMBL, MeSH and GSRS, with deduplication and cross-source reconciliation.",
+            "operation": [
+                {
+                    "term": "Annotation",
+                    "uri": "http://edamontology.org/operation_0226"
+                },
+                {
+                    "term": "Named-entity and concept recognition",
+                    "uri": "http://edamontology.org/operation_3280"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Identifier (by type of entity)",
+                        "uri": "http://edamontology.org/data_0976"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Ontology term",
+                        "uri": "http://edamontology.org/data_0966"
+                    }
+                }
+            ]
         }
-      ],
-      "note": "Retrieves publications, clinical trial records, patents and funding records from public sources (PubMed, Europe PMC, PMC Open Access, ClinicalTrials.gov, OpenAlex, Crossref, Unpaywall, CORE, EPO OPS, SureChEMBL, CORDIS, NIH RePORTER).",
-      "operation": [
+    ],
+    "homepage": "https://helixresearch.ai",
+    "lastUpdate": "2026-09-29T11:36:32.936312Z",
+    "license": "Proprietary",
+    "link": [
         {
-          "term": "Literature search",
-          "uri": "http://edamontology.org/operation_0305"
+            "type": [
+                "Helpdesk"
+            ],
+            "url": "https://helixresearch.ai/contact"
         },
         {
-          "term": "Data retrieval",
-          "uri": "http://edamontology.org/operation_2422"
+            "type": [
+                "Social media"
+            ],
+            "url": "https://www.linkedin.com/company/helix-research-intelligence/"
         }
-      ],
-      "output": [
+    ],
+    "maturity": "Emerging",
+    "name": "Atlas",
+    "owner": "julien.jouhault",
+    "toolType": [
+        "Web application"
+    ],
+    "topic": [
         {
-          "data": {
-            "term": "Article",
-            "uri": "http://edamontology.org/data_0971"
-          }
+            "term": "Biomedical science",
+            "uri": "http://edamontology.org/topic_3344"
         },
         {
-          "data": {
-            "term": "Clinical trial report",
-            "uri": "http://edamontology.org/data_3558"
-          }
-        }
-      ]
-    },
-    {
-      "input": [
-        {
-          "data": {
-            "term": "Text",
-            "uri": "http://edamontology.org/data_3671"
-          }
-        }
-      ],
-      "note": "Recognises biomedical entities in retrieved text and resolves them to canonical identifiers in MONDO, HGNC, UniProt, ChEMBL, MeSH and GSRS, with deduplication and cross-source reconciliation.",
-      "operation": [
-        {
-          "term": "Annotation",
-          "uri": "http://edamontology.org/operation_0226"
+            "term": "Data integration and warehousing",
+            "uri": "http://edamontology.org/topic_3366"
         },
         {
-          "term": "Named-entity and concept recognition",
-          "uri": "http://edamontology.org/operation_3280"
-        }
-      ],
-      "output": [
-        {
-          "data": {
-            "term": "Ontology term",
-            "uri": "http://edamontology.org/data_0966"
-          }
+            "term": "Literature and language",
+            "uri": "http://edamontology.org/topic_3068"
         },
         {
-          "data": {
-            "term": "Identifier (by type of entity)",
-            "uri": "http://edamontology.org/data_0976"
-          }
-        }
-      ]
-    },
-    {
-      "input": [
-        {
-          "data": {
-            "term": "Keyword",
-            "uri": "http://edamontology.org/data_0968"
-          }
-        }
-      ],
-      "note": "Extracts structured information from trial records and full-text documents, links publications to the trials they report on, and answers questions over the resulting entity graph with cited passages.",
-      "operation": [
-        {
-          "term": "Query and retrieval",
-          "uri": "http://edamontology.org/operation_0224"
+            "term": "Medicines research and development",
+            "uri": "http://edamontology.org/topic_3376"
         },
         {
-          "term": "Information extraction",
-          "uri": "http://edamontology.org/operation_3907"
+            "term": "Natural language processing",
+            "uri": "http://edamontology.org/topic_0218"
         },
         {
-          "term": "Text mining",
-          "uri": "http://edamontology.org/operation_0306"
-        }
-      ],
-      "output": [
-        {
-          "data": {
-            "term": "Text mining report",
-            "uri": "http://edamontology.org/data_0972"
-          }
+            "term": "Ontology and terminology",
+            "uri": "http://edamontology.org/topic_0089"
         },
         {
-          "data": {
-            "term": "Citation",
-            "uri": "http://edamontology.org/data_0970"
-          }
+            "term": "Preclinical and clinical studies",
+            "uri": "http://edamontology.org/topic_3379"
         }
-      ]
-    }
-  ],
-  "homepage": "https://helixresearch.ai",
-  "lastUpdate": "2026-09-29T11:36:32.936312Z",
-  "license": "Proprietary",
-  "link": [
-    {
-      "type": [
-        "Helpdesk"
-      ],
-      "url": "https://helixresearch.ai/contact"
-    },
-    {
-      "type": [
-        "Social media"
-      ],
-      "url": "https://www.linkedin.com/company/helix-research-intelligence/"
-    }
-  ],
-  "maturity": "Emerging",
-  "name": "Atlas",
-  "owner": "julien.jouhault",
-  "toolType": [
-    "Web application"
-  ],
-  "topic": [
-    {
-      "term": "Biomedical science",
-      "uri": "http://edamontology.org/topic_3344"
-    },
-    {
-      "term": "Literature and language",
-      "uri": "http://edamontology.org/topic_3068"
-    },
-    {
-      "term": "Natural language processing",
-      "uri": "http://edamontology.org/topic_0218"
-    },
-    {
-      "term": "Preclinical and clinical studies",
-      "uri": "http://edamontology.org/topic_3379"
-    },
-    {
-      "term": "Medicines research and development",
-      "uri": "http://edamontology.org/topic_3376"
-    },
-    {
-      "term": "Data integration and warehousing",
-      "uri": "http://edamontology.org/topic_3366"
-    },
-    {
-      "term": "Ontology and terminology",
-      "uri": "http://edamontology.org/topic_0089"
-    }
-  ],
-  "version": [
-    "1.11"
-  ]
+    ],
+    "version": [
+        "1.11"
+    ]
 }
