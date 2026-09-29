@@ -41,11 +41,18 @@
     "description": "This tool automatically segments the the prostate into two zones: the central and transition zones (TZ+CZ) and the peripheral zone (PZ). It takes as input a T2-weighted image and produces a segmentation in the same input format.\n\nThree datasets were used to train this model: ProstateX (n=152), Prostate158 (n=119) and ProstateNet (the ProCAncer-I dataset; n=532). We used the T2-weighted images available in each dataset and trained a standard three-class nnU-Net model with three classes: background, peripheral zone and the combination of the transition and central zones as annotated by radiologists. Using 149 cases from the three previously noted datasets, this model achieved DSC=0.81 (95% CI=[0.59, 0.92]) for PZ and 0.87 (95% CI=[0.60, 0.96]) for CZ+TZ. In a clinical validation using ProCAncer-I data, this model achieved, for PZ and TZ+CZ, DSC=0.65 and DSC=0.77, respectively, comparable to the observed between-radiologist DSC for a subset of cases (DSC=0.61 and DSC=0.73, respectively).",
     "documentation": [
         {
-            "note": "This is the repository containing all of the code together with a comprehensive README for deployment and examplar files.",
+            "note": "Contains the documentation required to run the Docker image.",
             "type": [
                 "API documentation"
             ],
-            "url": "https://github.com/josegcpa/nnunet_serve"
+            "url": "https://gist.github.com/josegcpa/47ba1bf2bb425db111393e2c135d97e6"
+        },
+        {
+            "note": "Short video on how to use.",
+            "type": [
+                "Training material"
+            ],
+            "url": "https://youtu.be/WdjWF4w_ZD8?si=ptrzfCNEUT0_uI5x"
         }
     ],
     "editPermission": {
@@ -53,7 +60,7 @@
     },
     "function": [
         {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" champ-prostate-zone-segmentation:latest nnunet-predict --study_path /data/input --series_folders <series-folder> --output_dir /data/output",
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" <image-name> bash nnunet-server-entrypoint.sh nnunet-predict --study_path /data/study --series_folders <path-to-series> --output_dir /out",
             "input": [
                 {
                     "data": {
@@ -99,7 +106,7 @@
             ]
         },
         {
-            "cmd": "docker run --shm-size=1gb -v $(pwd)/example_dataset:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" champ-prostate-zone-segmentation:latest nnunet-predict-batch {{--data_json /data/input/<dataset_json>.json|--data_dir /data/input --output_dir /data/output}}",
+            "cmd": "docker run --shm-size=1gb -v $(pwd)/example:/data/input:ro -v $(pwd)/test_output:/data/output:rw --gpus=\"all\" <image-name> bash nnunet-server-entrypoint.sh nnunet-predict-batch --data_dir /data",
             "input": [
                 {
                     "data": {
@@ -149,7 +156,7 @@
     "language": [
         "Python"
     ],
-    "lastUpdate": "2026-09-23T12:34:45.507251Z",
+    "lastUpdate": "2026-09-29T15:47:57.530578Z",
     "license": "CC-BY-NC-4.0",
     "link": [
         {
