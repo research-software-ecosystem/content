@@ -441,7 +441,31 @@ jobs:
           if [ "$(git rev-parse HEAD)" = "$head_before_merges" ]; then
             echo "Nothing merged, nothing to push."
           else
-            git push origin HEAD:master
+            # The merges above take a minute, and master can pick up a commit
+            # in that time: the push is then rejected as non-fast-forward and
+            # every merge is thrown away. Fold in whatever landed meanwhile and
+            # try again, rather than failing the job and skipping everything
+            # downstream of it. A conflict against master is not something a
+            # retry can settle, so that still stops the job.
+            pushed=false
+            for attempt in 1 2 3 4 5; do
+              if git push origin HEAD:master; then
+                pushed=true
+                break
+              fi
+              echo "Push $attempt rejected; master moved. Merging it and retrying."
+              git fetch origin master
+              if ! git merge --no-edit origin/master; then
+                echo "::error::Merging master into the import merge conflicts; resolve it by hand."
+                git merge --abort || true
+                exit 1
+              fi
+              sleep $((attempt * 5))
+            done
+            if [ "$pushed" != true ]; then
+              echo "::error::master kept moving; giving up after 5 attempts."
+              exit 1
+            fi
           fi
   bioconductor-to-biotools:
     runs-on: ubuntu-latest
