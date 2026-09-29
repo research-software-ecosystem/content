@@ -1,0 +1,43 @@
+about:
+  home: https://github.com/sanger-tol/metabintools
+  license: MIT
+  license_file: LICENSE
+  summary: A toolkit for collating and manipulating metagenome bins.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - prototaxites
+package:
+  name: metabintools
+  version: 0.2.3
+requirements:
+  host:
+  - python >=3.13
+  - hatchling
+  - pip
+  run:
+  - python >=3.13
+  - click >=8.5.0
+  - loguru >=0.7.3
+  - pydantic >=2.13.5
+  - pyfastx >=2.3.1
+  - requests >=2.34.2
+  - zstandard >=0.25.0
+source:
+  sha256: e0a87688afdbbb696081df183d0d60352a65d723217530d4c23527b006f8daf7
+  url: https://pypi.org/packages/source/m/metabintools/metabintools-0.2.3.tar.gz
+test:
+  commands:
+  - pip check
+  - bintools --help
+  - metabintools --help
+  imports:
+  - metabintools
+  requires:
+  - pip
+  - python
