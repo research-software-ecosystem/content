@@ -121,9 +121,17 @@ jobs:
               continue
             fi
 
-            # Re-ask for a pull request as late as possible: the list above is a snapshot,
-            # and the sync may have opened one since.
-            if [ "$(gh pr list --repo "$REPO" --head "$branch" --state open --json number --jq 'length')" != "0" ]; then
+            # Re-ask for a pull request as late as possible: the list above is a
+            # snapshot, and the sync may have opened one since. Take the call's
+            # status on its own. A failure substitutes an empty string, which
+            # reads as "not zero", i.e. as a pull request having appeared, so an
+            # outage would report every branch kept and finish green.
+            if ! open_now=$(gh pr list --repo "$REPO" --head "$branch" --state open \
+                              --json number --jq 'length'); then
+              echo "::warning::could not re-check pull requests for $branch; leaving it alone"
+              failed=$((failed + 1)); continue
+            fi
+            if [ "$open_now" != "0" ]; then
               echo "kept          $branch  (a pull request was opened during the sweep)"
               kept_raced=$((kept_raced + 1)); continue
             fi
