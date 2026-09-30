@@ -1,0 +1,168 @@
+name: Clean orphaned sync branches
+
+# The bio.tools sync keeps one long-lived branch per tool, named
+# <biotools-username>__<toolid>, and opens a pull request from it. It never
+# resets that branch to master, and GitHub's "automatically delete head
+# branches" only fires on merge, so a pull request closed without merging
+# leaves its branch behind. The next sync then appends to a base that is by
+# then weeks old, and its pull request arrives conflicting against the weekly
+# import, which rewrites the same files.
+#
+# Deleting the branches that no longer back an open pull request lets the sync
+# recreate each one from a current base. Nothing is lost: the content is held
+# in bio.tools and is pushed again on the next edit.
+
+on:
+  schedule:
+    # Saturdays, ahead of the Sunday import run
+    - cron: '17 3 * * 6'
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Only list what would be deleted'
+        type: boolean
+        default: true
+      min-age-days:
+        description: 'Keep branches whose last commit is newer than this many days'
+        type: string
+        default: '7'
+
+permissions:
+  contents: write       # delete the refs
+  pull-requests: read   # find which branches still back an open pull request
+
+concurrency:
+  # Two sweeps must not race, and one must not be cancelled midway through
+  # deleting. The sync that pushes these branches runs outside GitHub Actions
+  # and cannot be serialised from here, so each deletion is additionally
+  # guarded by a lease on the SHA this run observed.
+  group: clean-sync-branches
+  cancel-in-progress: false
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete sync branches with no open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          # `inputs` is null on a schedule, where the sweep runs for real
+          DRY_RUN: ${{ inputs.dry-run || 'false' }}
+          MIN_AGE_DAYS: ${{ inputs.min-age-days || '7' }}
+        run: |
+          set -euo pipefail
+
+          # Branch names carry '@', '.' and '_'; byte ordering keeps sort and comm agreeing.
+          export LC_ALL=C
+
+          # `date` reads "-7 days ago" as seven days in the *future*, which would
+          # put the cutoff ahead of every branch and delete exactly the ones the
+          # age guard exists to protect. An empty value means "1 day ago". Take a
+          # whole number of days and nothing else, empty included.
+          if ! printf '%s' "$MIN_AGE_DAYS" | grep -qE '^[0-9]+$'; then
+            echo "::error::min-age-days must be a whole number of days, not '$MIN_AGE_DAYS'"
+            exit 1
+          fi
+
+          cutoff=$(date -u -d "$MIN_AGE_DAYS days ago" +%s)
+          echo "Repository:   $REPO"
+          echo "Dry run:      $DRY_RUN"
+          echo "Keeping branches with a commit newer than $MIN_AGE_DAYS day(s): $(date -u -d "@$cutoff" '+%Y-%m-%d %H:%M UTC')"
+          echo
+
+          # The sync runs outside this workflow, so it can push to a branch or open a
+          # pull request for it at any point during the sweep. Deleting a ref through
+          # `git push --force-with-lease` names the SHA this run actually looked at, so
+          # a branch the sync has touched since is refused rather than thrown away. No
+          # clone: the repository is several GB, and pushing a ref deletion needs none
+          # of it.
+          git init -q sweep-git
+          git -C sweep-git remote add origin "https://github.com/$REPO.git"
+          auth_header="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+
+          # A branch that still backs an open pull request must be kept: deleting it
+          # closes the pull request.
+          gh pr list --repo "$REPO" --state open --limit 1000 --json headRefName \
+            --jq '.[].headRefName' | sort -u > open_heads.txt
+
+          # The sync names its branches <biotools-username>__<toolid>. A branch with no
+          # "__" is somebody's own work and is never a candidate.
+          gh api "/repos/$REPO/branches" --paginate \
+            --jq '.[] | select(.name | contains("__")) | .name' | sort -u > sync_branches.txt
+
+          comm -23 sync_branches.txt open_heads.txt > candidates.txt
+
+          echo "sync branches:            $(wc -l < sync_branches.txt)"
+          echo "  backing an open PR:     $(comm -12 sync_branches.txt open_heads.txt | wc -l)"
+          echo "  candidates:             $(wc -l < candidates.txt)"
+          echo
+
+          deleted=0; kept_young=0; kept_raced=0; failed=0
+          while read -r branch; do
+            [ -n "$branch" ] || continue
+            if [ "$branch" = "$DEFAULT_BRANCH" ]; then
+              echo "::warning::refusing to touch the default branch $branch"
+              continue
+            fi
+            if ! read -r sha committed < <(gh api "/repos/$REPO/branches/$branch" \
+                  --jq '"\(.commit.sha) \(.commit.commit.committer.date)"' 2>/dev/null); then
+              echo "::warning::could not read $branch; leaving it alone"
+              failed=$((failed + 1)); continue
+            fi
+            if [ "$(date -u -d "$committed" +%s)" -gt "$cutoff" ]; then
+              kept_young=$((kept_young + 1)); continue
+            fi
+
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "would delete  $branch  (last commit ${committed%T*})"
+              deleted=$((deleted + 1))
+              continue
+            fi
+
+            # Re-ask for a pull request as late as possible: the list above is a
+            # snapshot, and the sync may have opened one since. Check the status
+            # separately rather than testing the output, because an empty string
+            # from a failed call would read as "not zero" and claim the branch
+            # had gained a pull request, letting an outage finish green. Here a
+            # failure is an error, and the step ends non-zero.
+            if ! open_now=$(gh pr list --repo "$REPO" --head "$branch" --state open \
+                              --json number --jq 'length'); then
+              echo "::warning::could not re-check pull requests for $branch; leaving it alone"
+              failed=$((failed + 1)); continue
+            fi
+            if [ "$open_now" != "0" ]; then
+              echo "kept          $branch  (a pull request was opened during the sweep)"
+              kept_raced=$((kept_raced + 1)); continue
+            fi
+
+            if git -C sweep-git -c http.extraheader="$auth_header" push origin \
+                 --delete --force-with-lease="refs/heads/$branch:$sha" "$branch" 2>push.err; then
+              echo "deleted       $branch  (last commit ${committed%T*})"
+              deleted=$((deleted + 1))
+            elif grep -q 'stale info' push.err; then
+              echo "kept          $branch  (pushed again during the sweep; lease refused the delete)"
+              kept_raced=$((kept_raced + 1))
+            else
+              echo "::warning::failed to delete $branch"
+              sed 's/^/    /' push.err
+              failed=$((failed + 1))
+            fi
+          done < candidates.txt
+
+          verb=$([ "$DRY_RUN" = "true" ] && echo "would be deleted" || echo "deleted")
+          {
+            echo "### Orphaned sync branches"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Sync branches | $(wc -l < sync_branches.txt) |"
+            echo "| Kept, open pull request | $(comm -12 sync_branches.txt open_heads.txt | wc -l) |"
+            echo "| Kept, newer than ${MIN_AGE_DAYS}d | $kept_young |"
+            echo "| Kept, touched during the sweep | $kept_raced |"
+            echo "| ${verb^} | $deleted |"
+            echo "| Skipped after an error | $failed |"
+          } >> "${GITHUB_STEP_SUMMARY:-/dev/stdout}"
+
+          [ "$failed" -eq 0 ]
