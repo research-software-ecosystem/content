@@ -1,13 +1,73 @@
 {
+    "accessibility": "Open access",
     "additionDate": "2024-08-30T08:34:31.650917Z",
     "biotoolsCURIE": "biotools:gades",
     "biotoolsID": "gades",
+    "cost": "Commercial",
     "description": "The program is designed to calculate pairwise distances between objects that can be represented as an \"object-feature\" matrix. The program accepts a dense matrix in CSV (Comma Separated Value) format or a sparse matrix in MEX (Market EXchange) format as input and calculates a distance matrix for one of the metrics selected by the user. The result of the program is a matrix of pairwise distances that can be used for practical tasks of bioinformatics data analysis at the level of individual cells. The program supports the use of graphic processors with CUDA architecture to accelerate calculations over large matrices.",
     "editPermission": {
         "type": "private"
     },
+    "function": [
+        {
+            "cmd": "library(GADES)\nlibrary(Matrix)\n\nmtx <- rsparsematrix(nrow=100, ncol=1000, density=0.1)\n\ndist.matrix <- mtrx_distance(mtx, batch_size = 5000, metric = 'kendall', type='cpu', sparse=T, write=T)",
+            "input": [
+                {
+                    "data": {
+                        "term": "Count matrix",
+                        "uri": "http://edamontology.org/data_3917"
+                    }
+                }
+            ],
+            "note": "# python format\nimport scipy.sparse\nimport gades\n\nX = scipy.sparse.random(2000, 500, density=0.1, format=\"csc\")\nD = gades.distance(X, metric=\"euclidean\", backend=\"gpu\")",
+            "operation": [
+                {
+                    "term": "Sequence distance matrix generation",
+                    "uri": "http://edamontology.org/operation_0289"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Protein distance matrix",
+                        "uri": "http://edamontology.org/data_1546"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Sequence distance matrix",
+                        "uri": "http://edamontology.org/data_0870"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Structural distance matrix",
+                        "uri": "http://edamontology.org/data_2856"
+                    }
+                }
+            ]
+        }
+    ],
     "homepage": "https://github.com/lab-medvedeva/GADES-main",
-    "lastUpdate": "2024-08-30T08:34:31.654801Z",
+    "language": [
+        "C++",
+        "Python",
+        "R"
+    ],
+    "lastUpdate": "2026-09-30T14:15:19.125401Z",
+    "license": "GPL-3.0",
     "name": "GADES",
-    "owner": "akhtyamovpavel"
+    "owner": "akhtyamovpavel",
+    "toolType": [
+        "Library"
+    ],
+    "topic": [
+        {
+            "term": "Data mining",
+            "uri": "http://edamontology.org/topic_3473"
+        }
+    ],
+    "version": [
+        "2.0"
+    ]
 }
