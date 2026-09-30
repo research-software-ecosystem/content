@@ -1,172 +1,174 @@
 {
-    "accessibility": "Restricted access",
-    "additionDate": "2025-05-22T14:58:20.772120Z",
-    "biotoolsCURIE": "biotools:extended_a_priori_probability_tool",
-    "biotoolsID": "extended_a_priori_probability_tool",
-    "collectionID": [
-        "EUCAIM"
-    ],
-    "credit": [
-        {
-            "email": "aarias@iti.es",
-            "name": "Ana María Arias Beltrán",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Primary contact"
-            ]
-        },
-        {
-            "name": "Instituto Tecnológico de Informática (ITI)",
-            "typeEntity": "Institute",
-            "typeRole": [
-                "Provider"
-            ]
-        }
-    ],
-    "description": "The tool provides a semi-supervised metric (EAPP) for binary classification tasks that considers not only the a priori probability but also some possible bias present in the dataset, as well as other features that could provide a relatively trivial separability of the target classes. Therefore, it allows for evaluating the ease or complexity of the task or bias of the data beyond the well-established baseline for any binary classification.",
-    "documentation": [
-        {
-            "note": "Tool License Agreement in DOCX format",
-            "type": [
-                "Terms of use"
-            ],
-            "url": "https://drive.eucaim.cancerimage.eu/s/CAwxZaC4xDzkCA5"
-        },
-        {
-            "note": "Tool License Summary in TXT format",
-            "type": [
-                "Terms of use"
-            ],
-            "url": "https://drive.eucaim.cancerimage.eu/s/Z8mYAoPk2JjZLFL"
-        },
-        {
-            "type": [
-                "Quick start guide"
-            ],
-            "url": "https://drive.eucaim.cancerimage.eu/s/Ld2AgbGZmm4qcke"
-        }
-    ],
-    "editPermission": {
-        "type": "private"
+  "accessibility": "Restricted access",
+  "additionDate": "2025-05-22T14:58:20.772120Z",
+  "biotoolsCURIE": "biotools:extended_a_priori_probability_tool",
+  "biotoolsID": "extended_a_priori_probability_tool",
+  "collectionID": [
+    "EUCAIM"
+  ],
+  "credit": [
+    {
+      "email": "aarias@iti.es",
+      "name": "Ana Mar\u00eda Arias Beltr\u00e1n",
+      "typeEntity": "Person",
+      "typeRole": [
+        "Primary contact"
+      ]
     },
-    "function": [
+    {
+      "name": "Instituto Tecnol\u00f3gico de Inform\u00e1tica (ITI)",
+      "typeEntity": "Institute",
+      "typeRole": [
+        "Provider"
+      ]
+    }
+  ],
+  "description": "The tool provides a semi-supervised metric (EAPP) for binary classification tasks that considers not only the a priori probability but also some possible bias present in the dataset, as well as other features that could provide a relatively trivial separability of the target classes. Therefore, it allows for evaluating the ease or complexity of the task or bias of the data beyond the well-established baseline for any binary classification.",
+  "documentation": [
+    {
+      "type": [
+        "Quick start guide"
+      ],
+      "url": "https://drive.eucaim.cancerimage.eu/s/Ld2AgbGZmm4qcke"
+    },
+    {
+      "note": "Tool License Agreement in DOCX format",
+      "type": [
+        "Terms of use"
+      ],
+      "url": "https://drive.eucaim.cancerimage.eu/s/CAwxZaC4xDzkCA5"
+    },
+    {
+      "note": "Tool License Summary in TXT format",
+      "type": [
+        "Terms of use"
+      ],
+      "url": "https://drive.eucaim.cancerimage.eu/s/Z8mYAoPk2JjZLFL"
+    },
+    {
+      "note": "Video demonstration of how to use the tool",
+      "type": [
+        "Training material"
+      ],
+      "url": "https://www.youtube.com/watch?v=6XbariSG2Qw&list=PL3Q1XjQpjfg_GEmwPDrQeESh6nqCMnYyR&index=35"
+    }
+  ],
+  "editPermission": {
+    "type": "private"
+  },
+  "function": [
+    {
+      "cmd": "jobman submit -i image_batch_EAPP -r small gpu -- -i0 input_data_class0_path -i1 input_data_class1_path -o output_directory/results.json",
+      "input": [
         {
-            "cmd": "jobman submit -i image_batch_EAPP -r small gpu -- -i0 input_data_class0_path -i1 input_data_class1_path -o output_directory/results.json",
-            "input": [
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "DICOM format",
-                            "uri": "http://edamontology.org/format_3548"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Image",
-                        "uri": "http://edamontology.org/data_2968"
-                    },
-                    "format": [
-                        {
-                            "term": "PNG",
-                            "uri": "http://edamontology.org/format_3603"
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "term": "Structure",
-                        "uri": "http://edamontology.org/data_0883"
-                    },
-                    "format": [
-                        {
-                            "term": "CSV",
-                            "uri": "http://edamontology.org/format_3752"
-                        }
-                    ]
-                }
-            ],
-            "note": "input_data_class0_path:  Input path for class 0 data; input_data_class1_path: Input path for class 1 data. In both cases it must be a CSV file, images stored in a folder or compressed into a ZIP file, or a 3D DICOM series file; output_path: directory and filename (JSON format) where the results will be saved",
-            "operation": [
-                {
-                    "term": "Data analysis",
-                    "uri": "http://edamontology.org/operation_2945"
-                }
-            ],
-            "output": [
-                {
-                    "data": {
-                        "term": "Structure",
-                        "uri": "http://edamontology.org/data_0883"
-                    },
-                    "format": [
-                        {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/image_batch_iti-eapp",
-    "language": [
-        "Python"
-    ],
-    "lastUpdate": "2025-12-15T12:21:49.565380Z",
-    "license": "Proprietary",
-    "link": [
-        {
-            "note": "Harbor repository with the tool's Docker images",
-            "type": [
-                "Repository"
-            ],
-            "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/image_batch_iti-eapp"
-        },
-        {
-            "note": "Scientific paper",
-            "type": [
-                "Other"
-            ],
-            "url": "https://ieeexplore.ieee.org/document/9950248"
-        }
-    ],
-    "maturity": "Mature",
-    "name": "EAPP - Extended a Priori Probability tool",
-    "operatingSystem": [
-        "Linux",
-        "Mac",
-        "Windows"
-    ],
-    "owner": "dsilveira",
-    "publication": [
-        {
-            "doi": "10.1109/ACCESS.2022.3221936",
-            "metadata": {
-                "date": "2022-01-01T00:00:00Z",
-                "journal": "IEEE Access",
-                "title": "Extended a Priori Probability (EAPP): A Data-Driven Approach for Machine Learning Binary Classification Tasks"
+          "data": {
+            "term": "Structure",
+            "uri": "http://edamontology.org/data_0883"
+          },
+          "format": [
+            {
+              "term": "CSV",
+              "uri": "http://edamontology.org/format_3752"
             }
-        }
-    ],
-    "toolType": [
-        "Command-line tool"
-    ],
-    "topic": [
-        {
-            "term": "Machine learning",
-            "uri": "http://edamontology.org/topic_3474"
+          ]
         },
         {
-            "term": "Statistics and probability",
-            "uri": "http://edamontology.org/topic_2269"
+          "data": {
+            "term": "Image",
+            "uri": "http://edamontology.org/data_2968"
+          },
+          "format": [
+            {
+              "term": "DICOM format",
+              "uri": "http://edamontology.org/format_3548"
+            }
+          ]
+        },
+        {
+          "data": {
+            "term": "Image",
+            "uri": "http://edamontology.org/data_2968"
+          },
+          "format": [
+            {
+              "term": "PNG",
+              "uri": "http://edamontology.org/format_3603"
+            }
+          ]
         }
-    ],
-    "version": [
-        "v1.0.1"
-    ]
+      ],
+      "note": "input_data_class0_path:  Input path for class 0 data; input_data_class1_path: Input path for class 1 data. In both cases it must be a CSV file, images stored in a folder or compressed into a ZIP file, or a 3D DICOM series file; output_path: directory and filename (JSON format) where the results will be saved",
+      "operation": [
+        {
+          "term": "Data analysis",
+          "uri": "http://edamontology.org/operation_2945"
+        }
+      ],
+      "output": [
+        {
+          "data": {
+            "term": "Structure",
+            "uri": "http://edamontology.org/data_0883"
+          },
+          "format": [
+            {
+              "term": "JSON",
+              "uri": "http://edamontology.org/format_3464"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "homepage": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/image_batch_iti-eapp",
+  "language": [
+    "Python"
+  ],
+  "lastUpdate": "2026-09-30T14:37:34.396782Z",
+  "license": "Proprietary",
+  "link": [
+    {
+      "note": "Scientific paper",
+      "type": [
+        "Other"
+      ],
+      "url": "https://ieeexplore.ieee.org/document/9950248"
+    },
+    {
+      "note": "Harbor repository with the tool's Docker images",
+      "type": [
+        "Repository"
+      ],
+      "url": "https://harbor.eucaim.cancerimage.eu/harbor/projects/4/repositories/image_batch_iti-eapp"
+    }
+  ],
+  "maturity": "Mature",
+  "name": "EAPP - Extended a Priori Probability tool",
+  "operatingSystem": [
+    "Mac",
+    "Windows",
+    "Linux"
+  ],
+  "owner": "dsilveira",
+  "publication": [
+    {
+      "doi": "10.1109/ACCESS.2022.3221936"
+    }
+  ],
+  "toolType": [
+    "Command-line tool"
+  ],
+  "topic": [
+    {
+      "term": "Machine learning",
+      "uri": "http://edamontology.org/topic_3474"
+    },
+    {
+      "term": "Statistics and probability",
+      "uri": "http://edamontology.org/topic_2269"
+    }
+  ],
+  "version": [
+    "v1.0.1"
+  ]
 }
