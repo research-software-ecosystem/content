@@ -31,7 +31,7 @@ extra:
   - dnncha
 package:
   name: dotmatch
-  version: 0.6.3
+  version: 0.6.4
 requirements:
   build:
   - null
@@ -46,17 +46,17 @@ requirements:
   - python
   - tomli
 source:
-  sha256: 8824b7bc12c06f43a889587a8678bb93f0d5444653f632e3397ca27639ff2762
-  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.6.3.tar.gz
+  sha256: 27a51de168bcc059ae37807c96b4eeae7fb0561e68673a635e5f511cded19b53
+  url: https://github.com/dnncha/dotmatch/archive/refs/tags/v0.6.4.tar.gz
 test:
   commands:
   - python -c "import assaycode, dotmatch; assert assaycode.engine is dotmatch; assert
     dotmatch.distance('ACGT', 'AGGT') == 1"
   - python -c "from dotmatch.native import find_native_cli; p=find_native_cli(); assert
     p.name == 'dotmatch-native' and p.exists()"
-  - assaycode --version | grep '^assaycode 0.6.3 (DotMatch engine 0.6.3)$'
+  - assaycode --version | grep '^assaycode 0.6.4 (DotMatch engine 0.6.4)$'
   - assaycode --help | grep 'additive assay-level identity'
-  - dotmatch --version | grep '^dotmatch 0.6.3$'
+  - dotmatch --version | grep '^dotmatch 0.6.4$'
   - dotmatch dist ACGT AGGT | grep '^1$'
   - dotmatch leq 1 ACGT AGGT | grep '^true$'
   - 'dotmatch citation | grep ''Citation metadata: CITATION.cff'''
