@@ -122,10 +122,11 @@ jobs:
             fi
 
             # Re-ask for a pull request as late as possible: the list above is a
-            # snapshot, and the sync may have opened one since. Take the call's
-            # status on its own. A failure substitutes an empty string, which
-            # reads as "not zero", i.e. as a pull request having appeared, so an
-            # outage would report every branch kept and finish green.
+            # snapshot, and the sync may have opened one since. Check the status
+            # separately rather than testing the output, because an empty string
+            # from a failed call would read as "not zero" and claim the branch
+            # had gained a pull request, letting an outage finish green. Here a
+            # failure is an error, and the step ends non-zero.
             if ! open_now=$(gh pr list --repo "$REPO" --head "$branch" --state open \
                               --json number --jq 'length'); then
               echo "::warning::could not re-check pull requests for $branch; leaving it alone"
