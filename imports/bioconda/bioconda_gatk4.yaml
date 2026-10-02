@@ -64,6 +64,7 @@ outputs:
     - ADDITIONAL_LICENSE_INFO-openjdk.txt
     summary: GATK4 published local JAR with a compact Java 17 runtime
   build:
+    number: 1
     run_exports:
     - null
   name: gatk4-lite
@@ -80,6 +81,8 @@ outputs:
   test:
     commands:
     - test -x "$PREFIX/lib/gatk4-lite-jvm/bin/java"
+    - $PREFIX/lib/gatk4-lite-jvm/bin/java --describe-module jdk.security.auth | grep
+      -F com.sun.security.auth.module.UnixLoginModule
     - gatk --version
     - gatk --list
     - gatk --java-options '' --dry-run HaplotypeCaller
@@ -87,6 +90,7 @@ outputs:
     - gatk Mutect2 --help
     - gatk GenotypeGVCFs --help
     - gatk FilterMutectCalls --help
+    - gatk CreateReadCountPanelOfNormals --help
 package:
   name: gatk4
   version: 4.7.0.0
