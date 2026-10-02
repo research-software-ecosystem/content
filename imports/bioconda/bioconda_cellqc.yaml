@@ -1,14 +1,20 @@
 about:
-  description: "A Snakemake pipeline for quality control of single-cell RNA-Seq data.\
-    \ From\nCell Ranger output it runs ambient RNA correction (SoupX or DecontX),\n\
-    filtering on UMI count, detected genes and mitochondrial percentage,\ndoublet\
-    \ detection (DoubletFinder and/or scDblFinder), and a nuclear-fraction\nstatistic\
-    \ from the Cell Ranger BAM. Per sample it writes a cleaned .h5ad\nwith its .obs\
-    \ and .var as TSVs, plus a cohort metrics.csv, an HTML report\nand a PDF slide\
-    \ deck.\n\nDoubletFinder is GitHub-only and cannot be a conda dependency. Either\n\
-    install it after this package:\n\n    Rscript -e \"remotes::install_github('chris-mcginnis-ucsf/DoubletFinder',\
-    \ upgrade=FALSE)\"\n\nor set doublet.run: [scdblfinder] and doublet.decider: scdblfinder\
-    \ in the\nconfig, which needs nothing beyond this package.\n"
+  description: 'A Snakemake pipeline for quality control of single-cell RNA-Seq data.
+    From
+
+    Cell Ranger output it runs ambient RNA correction (SoupX or DecontX),
+
+    filtering on UMI count, detected genes and mitochondrial percentage,
+
+    doublet detection (DoubletFinder and/or scDblFinder), and a nuclear-fraction
+
+    statistic from the Cell Ranger BAM. Per sample it writes a cleaned .h5ad
+
+    with its .obs and .var as TSVs, plus a cohort metrics.csv, an HTML report
+
+    and a PDF slide deck.
+
+    '
   home: https://github.com/lijinbio/cellqc
   license: MIT
   license_family: MIT
@@ -17,7 +23,7 @@ about:
     data to render clean feature count matrices.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: ' -m pip install . --no-deps --no-build-isolation -vv'
@@ -59,10 +65,7 @@ requirements:
   - bioconductor-zellkonverter
   - bioconductor-scdblfinder
   - bioconductor-celda
-  - r-remotes
-  - r-rocr
-  - r-fields
-  - r-kernsmooth
+  - r-doubletfinder >=2.0.6
 source:
   sha256: 4106ed727110c3b66c93d16cf454b2055f5144d1b78a82269058326927759e20
   url: https://pypi.io/packages/source/c/cellqc/cellqc-0.3.6.tar.gz
