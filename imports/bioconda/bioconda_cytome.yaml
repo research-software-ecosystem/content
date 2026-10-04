@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/genecell/cytome
+  doc_url: https://github.com/genecell/cytome
+  home: https://github.com/genecell/cytome
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Single-file multi-omics data format for single-cell biology
+build:
+  entry_points:
+  - cytome = cytome.cli.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - genecell
+package:
+  name: cytome
+  version: 0.3.6
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.9
+  - numpy >=1.24
+  - scipy >=1.11
+  - pandas >=1.5
+  - lz4 >=4.0
+source:
+  sha256: f99f18666bb540bd5782d76b35e26cc6b55cb18b4bdbf4f24cc54f043b9cb345
+  url: https://pypi.org/packages/source/c/cytome/cytome-0.3.6.tar.gz
+test:
+  commands:
+  - cytome --help
+  imports:
+  - cytome

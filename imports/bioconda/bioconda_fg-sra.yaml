@@ -1,17 +1,20 @@
 about:
-  description: 'fg-sra is a high-performance replacement for NCBI''s sam-dump that
-    converts
+  description: 'fg-sra is a high-performance toolkit for converting NCBI SRA archives.
 
-    SRA data to SAM, BAM, FASTA, and FASTQ formats. It provides multi-threaded
+    `fg-sra tosam` replaces sam-dump, writing SAM, BAM, FASTA, or FASTQ with
 
-    processing, genomic region filtering, quality score quantization, and
+    multi-threaded processing, genomic region filtering, quality score
 
-    reference caching.
+    quantization, and reference caching. `fg-sra fastq` writes FASTQ in spot
+
+    order with mates paired, and `fg-sra info` describes an archive''s kind,
+
+    totals, qualities, read names, and read layout.
 
     '
-  dev_url: https://github.com/fulcrumgenomics/fg-sra
-  doc_url: https://github.com/fulcrumgenomics/fg-sra/blob/v0.1.0/README.md
-  home: https://github.com/fulcrumgenomics/fg-sra
+  dev_url: https://github.com/fg-labs/fg-sra
+  doc_url: https://github.com/fg-labs/fg-sra/blob/v0.2.0/README.md
+  home: https://github.com/fg-labs/fg-sra
   license: MIT
   license_family: MIT
   license_file:
@@ -19,7 +22,7 @@ about:
   - THIRDPARTY.yml
   summary: High-performance SRA-to-SAM/BAM/FASTQ converter.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -28,30 +31,31 @@ extra:
   - osx-arm64
   recipe-maintainers:
   - nh13
+  - tfenne
 package:
   name: fg-sra
-  version: 0.1.0
+  version: 0.2.0
 requirements:
   build:
+  - null
   - null
   - null
   - null
   - cargo-bundle-licenses
   - cmake
   - make
+  - patch
   - pkg-config
-  - clangdev
+  - clang
+  - libclang
   - flex
   - bison
-  host:
-  - zlib
 source:
-- sha256: 7294042d415e5f8dddd3ae5056e7ec2cd7f5f62ac6b8f48b5515f903e076da3b
-  url: https://github.com/fulcrumgenomics/fg-sra/archive/v0.1.0.tar.gz
-- folder: vendor/ncbi-vdb
-  sha256: 4ab29f180507ba32f32e7c2c61e9c6c4b571b611047b441eaab32f497d5ed9b9
-  url: https://github.com/ncbi/ncbi-vdb/archive/41a6b24fa8128253912fc1f0b44f06a314a59f9c.tar.gz
+  sha256: aad46ba2b86c25133a79f38955946517f4f736acacfdbe5a86b7a821aca9ee01
+  url: https://github.com/fg-labs/fg-sra/releases/download/v0.2.0/fg-sra-buildable-src-0.2.0.tar.gz
 test:
   commands:
   - fg-sra --help
   - fg-sra tosam --help
+  - fg-sra fastq --help
+  - fg-sra info --help
