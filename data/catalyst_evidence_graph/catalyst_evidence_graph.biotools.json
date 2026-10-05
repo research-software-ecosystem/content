@@ -1,0 +1,284 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2026-10-05T00:16:51.430147Z",
+    "biotoolsCURIE": "biotools:catalyst_evidence_graph",
+    "biotoolsID": "catalyst_evidence_graph",
+    "cost": "Free of charge (with restrictions)",
+    "credit": [
+        {
+            "email": "hello@catalystproject.ai",
+            "name": "Catalyst",
+            "typeEntity": "Project",
+            "typeRole": [
+                "Developer",
+                "Maintainer",
+                "Primary contact",
+                "Provider"
+            ],
+            "url": "https://catalystproject.ai"
+        }
+    ],
+    "description": "Evidence graph of findings on what compounds, supplements, nutrients and foods do in the human body. Each finding is extracted from a published study, anchored to the verbatim sentence it was drawn from, and given an evidence strength computed from the study design and population. Findings are linked to reference data on proteins, pathways and reactions, and relations inferred from reference databases are labelled as hypotheses. The graph is searchable through a web portal, a REST API and a Model Context Protocol server.",
+    "documentation": [
+        {
+            "type": [
+                "API documentation"
+            ],
+            "url": "https://catalystproject.ai/api"
+        },
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://catalystproject.ai/how-it-works"
+        },
+        {
+            "type": [
+                "Installation instructions",
+                "Quick start guide"
+            ],
+            "url": "https://catalystproject.ai/connect"
+        },
+        {
+            "type": [
+                "Terms of use"
+            ],
+            "url": "https://catalystproject.ai/terms"
+        },
+        {
+            "type": [
+                "User manual"
+            ],
+            "url": "https://catalystproject.ai/evidence-key"
+        }
+    ],
+    "download": [
+        {
+            "note": "Editor extension that registers the MCP server",
+            "type": "Binaries",
+            "url": "https://open-vsx.org/api/catalystproject/catalyst-evidence-graph/0.2.0/file/catalystproject.catalyst-evidence-graph-0.2.0.vsix",
+            "version": "0.2.0"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "ChEBI ID",
+                        "uri": "http://edamontology.org/data_1174"
+                    }
+                }
+            ],
+            "note": "Reactions a compound or protein takes part in, and the compounds reachable from a compound within three reaction steps, with the enzymes involved. Derived from Rhea and Human-GEM; reported as inferred connectivity, not measured effects.",
+            "operation": [
+                {
+                    "term": "Pathway analysis",
+                    "uri": "http://edamontology.org/operation_3928"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Pathway or network",
+                        "uri": "http://edamontology.org/data_2600"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Reaction data",
+                        "uri": "http://edamontology.org/data_2978"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "ChEBI ID",
+                        "uri": "http://edamontology.org/data_1174"
+                    }
+                }
+            ],
+            "note": "Relations that public reference databases record for a compound or protein (transporters, enzymes, pathways, expression), labelled as hypotheses, not study results.",
+            "operation": [
+                {
+                    "term": "Data retrieval",
+                    "uri": "http://edamontology.org/operation_2422"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Pathway or network",
+                        "uri": "http://edamontology.org/data_2600"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "ChEBI ID",
+                        "uri": "http://edamontology.org/data_1174"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "Compound name",
+                        "uri": "http://edamontology.org/data_0990"
+                    }
+                }
+            ],
+            "note": "Find a compound, outcome or protein by name or synonym and return its curated study findings. Each finding has a computed evidence strength (strong, moderate, limited, very limited or insufficient), the verbatim sentence it was drawn from, the source paper, the population and dose, and a permalink.",
+            "operation": [
+                {
+                    "term": "Database search",
+                    "uri": "http://edamontology.org/operation_2421"
+                },
+                {
+                    "term": "Query and retrieval",
+                    "uri": "http://edamontology.org/operation_0224"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Evidence",
+                        "uri": "http://edamontology.org/data_2042"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "homepage": "https://catalystproject.ai/",
+    "language": [
+        "SQL",
+        "TypeScript"
+    ],
+    "lastUpdate": "2026-10-05T00:17:00.457256Z",
+    "license": "Other",
+    "link": [
+        {
+            "note": "Query interface to the graph",
+            "type": [
+                "Service"
+            ],
+            "url": "https://catalystproject.ai/api"
+        },
+        {
+            "note": "Source of the assistant and editor connectors (MCP client configuration, ChatGPT/Claude plugins, VS Code extension)",
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/colorcatalyst/catalyst-mcp"
+        },
+        {
+            "note": "VS Code / Cursor extension",
+            "type": [
+                "Software catalogue"
+            ],
+            "url": "https://open-vsx.org/extension/catalystproject/catalyst-evidence-graph"
+        },
+        {
+            "note": "httpsModel Context Protocol server (streamable HTTP, read-only, no authentication)://catalystproject.ai/mcp",
+            "type": [
+                "Service"
+            ],
+            "url": "https://catalystproject.ai/mcp"
+        },
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/colorcatalyst/catalyst-mcp/issues"
+        }
+    ],
+    "maturity": "Emerging",
+    "name": "Catalyst Evidence Graph",
+    "owner": "catalystproject",
+    "relation": [
+        {
+            "biotoolsID": "chebi",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "pubmed",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "reactome",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "rhea",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "uniprotkb",
+            "type": "uses"
+        },
+        {
+            "biotoolsID": "wikipathways",
+            "type": "uses"
+        }
+    ],
+    "toolType": [
+        "Database portal",
+        "Web API"
+    ],
+    "topic": [
+        {
+            "term": "Biochemistry",
+            "uri": "http://edamontology.org/topic_3292"
+        },
+        {
+            "term": "Nutritional science",
+            "uri": "http://edamontology.org/topic_3390"
+        },
+        {
+            "term": "Pharmacology",
+            "uri": "http://edamontology.org/topic_0202"
+        },
+        {
+            "term": "Small molecules",
+            "uri": "http://edamontology.org/topic_0154"
+        },
+        {
+            "term": "Toxicology",
+            "uri": "http://edamontology.org/topic_2840"
+        }
+    ],
+    "version": [
+        "0.2.0"
+    ]
+}
