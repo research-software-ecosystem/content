@@ -1,28 +1,34 @@
 about:
   home: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
   license: GPL >=3
+  license_file: LICENSE
   summary: A quality control tool for high throughput sequence data.
 build:
   detect_binary_files_with_prefix: true
   noarch: generic
   number: 0
+  run_exports:
+  - null
 extra:
   identifiers:
   - biotools:fastqc
   - usegalaxy-eu:fastqc
 package:
   name: fastqc
-  version: 0.12.1
+  version: 0.13.0
 requirements:
+  build:
+  - ant >=1.10.0
+  - openjdk >=8.0.144
   run:
   - openjdk >=8.0.144
-  - perl
+  - python >=3
   - fontconfig
   - font-ttf-dejavu-sans-mono
   - xz =5
 source:
-  sha256: 5f4dba8780231a25a6b8e11ab2c238601920c9704caa5458d9de559575d58aa7
-  url: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.12.1.zip
+  sha256: 68c1c84775ee9e7ec41cf45ba770f217d17d5d377c3fcad13b5b4389c483e69f
+  url: https://github.com/s-andrews/FastQC/archive/refs/tags/v0.13.0.tar.gz
 test:
   commands:
   - fastqc -h

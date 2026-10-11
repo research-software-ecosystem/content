@@ -1,0 +1,52 @@
+about:
+  description: 'DiVE is a command-line visualization tool for diffusion MRI, tractography,
+    NIfTI masks, meshes, anatomical slices, and off-screen image and movie rendering.
+
+    '
+  home: https://github.com/bagari/dive
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Diffusion Visualization and Explorer for diffusion MRI and medical imaging
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps -vv'
+extra:
+  recipe-maintainers:
+  - bagari
+package:
+  name: dive-mri
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.11,<3.14
+  - pip
+  - setuptools >=68
+  run:
+  - python >=3.11,<3.14
+  - dipy
+  - distinctipy
+  - fury >=0.11,<2
+  - imageio
+  - av
+  - matplotlib-base
+  - meta-neuro >=2.1
+  - nibabel
+  - numpy
+  - pandas
+  - pillow
+  - vtk >=9.3,<9.7
+  - pyvista >=0.45
+  - scipy
+  - tqdm
+  - trx-python >=0.3
+  - tslearn
+  - webcolors
+source:
+  sha256: eb01d9f8bf4b0ba8fb264408baf5ba04e1f4b3487ee802303f52fb168d3e7eee
+  url: https://github.com/bagari/dive/archive/refs/tags/v2.0.0.tar.gz
+test:
+  commands:
+  - dive --help

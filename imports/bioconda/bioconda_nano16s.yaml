@@ -1,0 +1,70 @@
+about:
+  description: 'A Snakemake workflow for taxonomic profiling of Oxford Nanopore full-length
+
+    16S rRNA amplicon data. Runs on an ordinary laptop or workstation with a
+
+    single install command and no container or cluster requirement.
+
+
+    Includes a builder for an up-to-date Emu reference database from the current
+
+    NCBI 16S RefSeq Targeted Loci collection. The database is downloaded and
+
+    built by `nano16s db build` after installation rather than shipped in the
+
+    package, since it is refreshed on NCBI''s schedule rather than the tool''s.
+
+    '
+  dev_url: https://github.com/lz245/nano16s
+  doc_url: https://github.com/lz245/nano16s#readme
+  home: https://github.com/lz245/nano16s
+  license: MIT
+  license_file: LICENSE
+  summary: Taxonomic profiling of Oxford Nanopore full-length 16S rRNA amplicon data
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+  script: 'mkdir -p $PREFIX/bin $PREFIX/share/$PKG_NAME
+
+    # The CLI expects workflow/, config/, tools/ and test/ to sit together; it
+
+    # looks for them under ../share/nano16s relative to its own location.
+
+    cp -r workflow config tools test $PREFIX/share/$PKG_NAME/
+
+    cp bin/nano16s $PREFIX/bin/nano16s
+
+    chmod +x $PREFIX/bin/nano16s
+
+    '
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.22031297
+  recipe-maintainers:
+  - lz245
+  - adapapavandharma
+package:
+  name: nano16s
+  version: 1.2.2
+requirements:
+  run:
+  - python >=3.10
+  - snakemake >=9.0,<10
+  - nanostat >=1.6
+  - porechop_abi >=0.5
+  - chopper >=0.9
+  - emu >=3.6
+  - minimap2 >=2.28
+  - samtools >=1.19
+  - wget
+source:
+  sha256: 9d51b4a9c2cafec0b4a989689fc3ebb6dd814e34602c25e890f9654b38c19d69
+  url: https://github.com/lz245/nano16s/archive/refs/tags/v1.2.2.tar.gz
+test:
+  commands:
+  - nano16s --version
+  - nano16s --help
+  - test -f $PREFIX/share/nano16s/workflow/Snakefile
+  - nano16s db list

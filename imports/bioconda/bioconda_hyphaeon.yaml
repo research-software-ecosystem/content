@@ -23,13 +23,12 @@ build:
   number: 0
   run_exports:
   - null
-  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - d-callan
 package:
   name: hyphaeon
-  version: 0.2.0
+  version: 0.3.0
 requirements:
   host:
   - python >=3.8
@@ -37,7 +36,7 @@ requirements:
   - setuptools
   run:
   - python >=3.8
-  - hyphaeon-core >=0.1.0
+  - hyphaeon-core >=0.2.0
   - biopython >=1.80
   - numpy >=1.22.0
   - scipy >=1.9.0
@@ -46,8 +45,8 @@ requirements:
   - matplotlib-base >=3.5
   - tn93 >=1.0.16
 source:
-  sha256: 41b06b4b68c4d3043ace74734a0e0854d3588135e9ba1cb81f03a91aff66e855
-  url: https://pypi.org/packages/source/h/hyphaeon/hyphaeon-0.2.0.tar.gz
+  sha256: 7b966a6d6e1e0276005ca31ad942413d23a669bd2823d8a11062ddc39457da71
+  url: https://pypi.org/packages/source/h/hyphaeon/hyphaeon-0.3.0.tar.gz
 test:
   commands:
   - hyphaeon --version
@@ -55,5 +54,7 @@ test:
   - hyphaeon meme --help
   - hyphaeon phenotype --help
   - hyphaeon epistasis --help
+  - python -c "from huggingface_hub import hf_hub_download; hf_hub_download('datamonkey/hyphaeon',
+    'model.safetensors')"
   imports:
   - hyphaeon

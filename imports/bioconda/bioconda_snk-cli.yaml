@@ -2,20 +2,21 @@ about:
   dev_url: https://github.com/wytamma/snk-cli
   home: https://github.com/wytamma/snk-cli
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
-  summary: Dynamically generate CLIs from Snakemake configuration files
+  summary: Dynamically generate CLIs from Snakemake configuration files.
 build:
   noarch: python
   number: 0
   run_exports:
   - null
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
   recipe-maintainers:
   - Wytamma
 package:
   name: snk-cli
-  version: 0.8.0
+  version: 0.8.1
 requirements:
   host:
   - python >=3.8
@@ -24,6 +25,7 @@ requirements:
   run:
   - python >=3.8
   - snakemake-minimal >=7
+  - snakemake-minimal >=9.22
   - typer >=0.9,<1.dev0
   - shellingham >=1.3.0
   - rich >=10.11.0
@@ -32,13 +34,10 @@ requirements:
   - makefun >=1.15,<2.dev0
   - datrie >=0.8.2
   - graphviz >=2.38.0
+  - packaging
 source:
-  sha256: 6618d653e6f6e69e945ed9fc0eb35ebb220feec54cf194ff0a972b1656e29c6b
-  url: https://pypi.io/packages/source/s/snk-cli/snk_cli-0.8.0.tar.gz
+  sha256: 62339e1a45e8c06916212a91340fc49dd3fc3f3ac4aff4e9a7f283c4ab10db6f
+  url: https://pypi.org/packages/source/s/snk-cli/snk_cli-0.8.1.tar.gz
 test:
-  commands:
-  - pip check
   imports:
   - snk_cli
-  requires:
-  - pip

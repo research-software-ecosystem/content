@@ -1,15 +1,23 @@
 about:
   dev_url: https://github.com/Lioscro/pyseq-align
+  doc_url: https://github.com/Lioscro/pyseq-align/blob/v1.0.2/README.md
   home: https://github.com/Lioscro/pyseq-align
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Python interface for the seq-align C library
+  summary: Python interface for the seq-align C library.
 build:
-  number: 5
-  script: ' -m pip install . --no-deps --ignore-installed -vv '
-  skip: true
+  number: 6
+  run_exports:
+  - null
+  script:
+  - sed -i.bak 's|find_packages|find_namespace_packages|g' setup.py
+  - rm -f *.bak
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir --use-pep517 -vvv
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - Maarten-vd-Sande
 package:
@@ -19,15 +27,17 @@ requirements:
   build:
   - make
   - null
+  - null
   host:
-  - pip
   - python
+  - pip
+  - setuptools >=42
   - cython
   run:
   - python
 source:
   sha256: d9d450269d492c9a83ea9b795b14347140f12153ea93e2e5ed409606c5ac9e4d
-  url: https://pypi.io/packages/source/p/pyseq-align/pyseq-align-1.0.2.tar.gz
+  url: https://pypi.org/packages/source/p/pyseq-align/pyseq-align-1.0.2.tar.gz
 test:
   imports:
   - pyseq_align

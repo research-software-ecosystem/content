@@ -10,7 +10,6 @@ build:
   number: 1
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -22,7 +21,7 @@ extra:
   - multimeric
 package:
   name: relion
-  version: 5.1.0
+  version: 5.1.1
 requirements:
   build:
   - null
@@ -51,8 +50,10 @@ requirements:
   - pytorch
   - ghostscript
 source:
-  sha256: 4767804dd8ba2198efd1e1082b4632bc36aeca0ad09d4d2f7de956f84bbbb429
-  url: https://github.com/3dem/relion/archive/refs/tags/5.1.0.tar.gz
+  patches:
+  - 0001-osx-sincosf.patch
+  sha256: 33bfb761dc6865a73ecca9183893e0d091bccf17c4bbcd3b5c6cff278ddbf7ec
+  url: https://github.com/3dem/relion/archive/refs/tags/5.1.1.tar.gz
 test:
   commands:
   - relion_image_handler --help

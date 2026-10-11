@@ -5,8 +5,10 @@ about:
     on any external software tools and are available for all major platforms. The
     multiple sequence alignment algorithms are complemented by a function for pretty-printing
     multiple sequence alignments using the LaTeX package TeXshade.
-  home: https://bioconductor.org/packages/3.22/bioc/html/msa.html
-  license: GPL (>= 2)
+  doc_url: https://bioconductor.org/packages/3.23/bioc/html/msa.html
+  home: https://bioconductor.org/packages/3.23/bioc/html/msa.html
+  license: GPL-2.0-or-later
+  license_family: GPL
   license_file: /lib/R/share/licenses/GPL-3
   summary: Multiple Sequence Alignment
 build:
@@ -14,17 +16,20 @@ build:
   rpaths:
   - lib/R/lib/
   - lib/
-  run_exports: ''
+  run_exports: null
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:msa
 package:
   name: bioconductor-msa
-  version: 1.42.0
+  version: 1.44.1
 requirements:
   build:
+  - null
   - null
   - null
   - automake
@@ -48,12 +53,14 @@ requirements:
   - r-base
   - r-rcpp >=0.11.1
 source:
-  md5: 25fd612fbd98d45aede78f9e596998aa
+  patches:
+  - clustalw-os-fallback.patch
+  sha256: 922db8b2355196d561a7ceb5e09737460ea9d63ba311d60549253d577874e0e0
   url:
-  - https://bioconductor.org/packages/3.22/bioc/src/contrib/msa_1.42.0.tar.gz
-  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/msa/msa_1.42.0.tar.gz
-  - https://bioarchive.galaxyproject.org/msa_1.42.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-msa/bioconductor-msa_1.42.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.23/bioc/src/contrib/msa_1.44.1.tar.gz
+  - https://bioconductor.org/packages/3.23/bioc/src/contrib/Archive/msa/msa_1.44.1.tar.gz
+  - https://bioarchive.galaxyproject.org/msa_1.44.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-msa/bioconductor-msa_1.44.1_src_all.tar.gz
 test:
   commands:
   - $R -e "library('msa')"
