@@ -1,29 +1,40 @@
 about:
+  dev_url: https://bitbucket.org/genomicepidemiology/ccphylo
+  doc_url: https://bitbucket.org/genomicepidemiology/ccphylo/src/0.9.2/README.md
   home: https://bitbucket.org/genomicepidemiology/ccphylo
   license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE.txt
   summary: CCPhylo enables phylogenetic analysis of samples based on overlaps between
     nucleotide created by e.g. KMA. Input file(s) may be given as non-option arguments
     succeding all options.
 build:
-  number: 3
+  number: 0
+  run_exports:
+  - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - doi:10.1093/bioinformatics/btac774
   - doi:10.1093/biomethods/bpab008
+  - doi:10.1093/nargab/lqae106
 package:
   name: ccphylo
-  version: 0.8.2
+  version: 0.9.2
 requirements:
   build:
   - make
   - null
+  - null
   host:
   - zlib
-  run:
-  - zlib
 source:
-  sha256: 47124e72bc494b238f1a3c13a0b4ea92af07f53b7a79714f89049a144f6e37d5
-  url: https://bitbucket.org/genomicepidemiology/ccphylo/get/0.8.2.tar.gz
+  patches:
+  - 0001-makefile.patch
+  sha256: 3b54f27706ff345e196152420d2e4cc8efde16b9965ee2cd149c375e08b7ab6b
+  url: https://bitbucket.org/genomicepidemiology/ccphylo/get/0.9.2.tar.gz
 test:
   commands:
   - ccphylo --help | grep CCPhylo >/dev/null

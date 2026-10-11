@@ -39,7 +39,7 @@ about:
 
     '
   dev_url: https://github.com/iowa69/TesserACT
-  doc_url: https://github.com/iowa69/TesserACT#readme
+  doc_url: https://github.com/iowa69/TesserACT/blob/v1.4.0/README.md
   home: https://github.com/iowa69/TesserACT
   license: MIT
   license_family: MIT
@@ -58,7 +58,7 @@ extra:
   - iowa69
 package:
   name: tesseract-assembler
-  version: 1.2.5
+  version: 1.4.0
 requirements:
   build:
   - null
@@ -66,17 +66,17 @@ requirements:
   - make
   host:
   - zlib
-  run_constrained:
+  run:
+  - python
   - bowtie2
   - bwa
 source:
-  sha256: 924dde503d37f9b1279864e90aefd708b32bb210aa7c8c32f1da68fde5dceedc
-  url: https://github.com/iowa69/TesserACT/archive/refs/tags/v1.2.5.tar.gz
+  patches:
+  - tesseract-1.4.0-macos.patch
+  sha256: 6f5f476621fc6cfd70e7e404bc5f8d8c5b0b25a378320d10b494ff88faa81e75
+  url: https://github.com/iowa69/TesserACT/archive/refs/tags/v1.4.0.tar.gz
 test:
   commands:
   - tesseract-asm --version
   - tesseract-asm --help
-  - tesseract-model --help
   - tesseract-klebsiella --help
-  requires:
-  - python

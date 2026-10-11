@@ -19,10 +19,10 @@ build:
   entry_points:
   - prform = prform.cli:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
-  script: -m pip install . -vv --no-deps --no-build-isolation
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
 extra:
   recipe-maintainers:
   - khoa-yelo
@@ -44,10 +44,12 @@ requirements:
   - h5py >=3.7
 source:
   sha256: 428a834419f136ad0d9ff8d0bdc202c21b168debbf2fef488ab41849ca6b0f29
-  url: https://pypi.io/packages/source/p/prform/prform-0.3.0.tar.gz
+  url: https://pypi.org/packages/source/p/prform/prform-0.3.0.tar.gz
 test:
   commands:
   - prform --version
   - prform --help
+  - python -c "from prform import PRFormPredictor; PRFormPredictor(model='10k', device='cpu');
+    PRFormPredictor(model='2k', device='cpu')"
   imports:
   - prform

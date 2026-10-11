@@ -6,11 +6,11 @@ about:
 
     projects to per-record allele frequencies for SNPs, indels and SVs in one
 
-    pass. Supports whole-chromosome (global) and per-window (window) estimation
+    pass. Fits one mixture per chromosome (inbred/selfing pools) or per window
 
-    and optional per-bubble k-mer weighting. `kmate selftest` verifies an install
+    (recombinant pools), and builds its founder matrices from a pangenome VCF.
 
-    on a bundled fixture.
+    `kmate selftest` verifies an install on a bundled fixture.
 
     '
   dev_url: https://github.com/Tatianabellagio/kMate
@@ -32,26 +32,28 @@ extra:
   - Tatianabellagio
 package:
   name: kmate
-  version: 0.1.2
+  version: 0.1.5
 requirements:
   host:
-  - python >=3.8
+  - python >=3.9,<3.13
   - pip
   - setuptools >=61
   run:
-  - python >=3.8
+  - python >=3.9,<3.13
   - numpy
   - scipy
   - pysam
-  - kmer-jellyfish
+  - kmer-jellyfish >=2.3.1 py*
   - samtools
+  - bcftools
 source:
-  sha256: 1a509f24e71026eb0cc99350bbfc245f98bf7d83f73650f9d543e6f4934f5d13
-  url: https://pypi.io/packages/source/k/kmate/kmate-0.1.2.tar.gz
+  sha256: 7a5e103640af12000ce563d529b967a42403594abf22900ef4590138dea55dd7
+  url: https://pypi.io/packages/source/k/kmate/kmate-0.1.5.tar.gz
 test:
   commands:
   - kmate --help
   - kmate --version
+  - python -c "import dna_jellyfish"
   - kmate selftest
   imports:
   - kmate

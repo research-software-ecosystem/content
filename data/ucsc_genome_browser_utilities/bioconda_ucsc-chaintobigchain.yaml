@@ -1,0 +1,55 @@
+about:
+  dev_url: https://github.com/ucscGenomeBrowser/kent
+  doc_url: https://github.com/ucscGenomeBrowser/kent/blob/v502_base/README
+  home: https://hgdownload.soe.ucsc.edu/admin/exe
+  license: Varies; see https://genome.ucsc.edu/license
+  summary: Converts chain file to bigChain input (bed format with extra fields).
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:UCSC_Genome_Browser_Utilities
+  - doi:10.1093/bib/bbs038
+package:
+  name: ucsc-chaintobigchain
+  version: '502'
+requirements:
+  build:
+  - make
+  - null
+  - null
+  - null
+  host:
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - clangdev
+  - rsync
+  - libiconv
+  - bzip2
+  - liblzma-devel
+  - zlib
+  - libcurl
+  run:
+  - gzip
+  - libpng
+  - libuuid
+  - mysql-connector-c
+source:
+  patches:
+  - 0001-include.patch
+  - 0003-common.mk.patch
+  - 0004-straw.patch
+  sha256: 38e29dbf7c1e6d49aaf358014960c5781fd59aa3b7b406dadc9557c98e895f22
+  url:
+  - https://hgdownload.soe.ucsc.edu/admin/exe/userApps.archive/userApps.v502.src.tgz
+  - https://hgdownload-euro.soe.ucsc.edu/admin/exe/userApps.archive/userApps.v502.src.tgz
+test:
+  commands:
+  - test -x ${PREFIX}/bin/chainToBigChain

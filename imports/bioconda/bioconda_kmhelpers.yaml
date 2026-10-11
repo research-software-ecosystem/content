@@ -1,0 +1,56 @@
+about:
+  description: 'kmhelpers designs, builds, updates, and queries large collections
+    of
+
+    kmindex k-mer indexes, grouping samples by k-mer count to size Bloom
+
+    filters per group.
+
+    '
+  dev_url: https://github.com/sebllns/kmhelpers
+  doc_url: https://sebllns.github.io/kmhelpers/
+  home: https://github.com/sebllns/kmhelpers
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: A Python toolkit for managing, compressing, and querying indexes with kmindex
+build:
+  entry_points:
+  - kmhelpers = pykmhelpers.cli.kmhelpers:cli
+  - kh = pykmhelpers.cli.kmhelpers:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - sebllns
+package:
+  name: kmhelpers
+  version: 0.7.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61
+  - wheel
+  run:
+  - python >=3.8
+  - psutil >=5.8.0
+  - pyyaml >=5.4
+  - click >=8.1
+  - matplotlib-base >=3.5
+  - zstandard >=0.19
+  - kmindex >=0.6.1
+  - ntcard >=1.2.2
+source:
+  sha256: 97d2455b138a434b43dd7f96780adf346522976b91e95c4ec1fd46fba2a14afb
+  url: https://pypi.org/packages/source/k/kmhelpers/kmhelpers-0.7.1.tar.gz
+test:
+  commands:
+  - kmhelpers --help
+  - kh --version
+  imports:
+  - pykmhelpers
+  - pykmhelpers.core.build_params

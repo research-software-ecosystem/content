@@ -12,9 +12,10 @@ build:
   - null
   script:
   - export CFLAGS="${CFLAGS} -O3 -Wno-int-conversion -Wno-implicit-function-declaration"
-  - -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  - rm -f moments/*.c moments/LD/*.c
+  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=1.6.0
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.6.1
   skip: true
 extra:
   additional-platforms:
@@ -24,18 +25,17 @@ extra:
   - doi:10.1534/genetics.117.200493
   - doi:10.1371/journal.pgen.1008204
   - doi:10.1093/molbev/msz265
-  skip-lints:
-  - compiler_needs_stdlib_c
 package:
   name: moments
-  version: 1.6.0
+  version: 1.6.1
 requirements:
   build:
   - null
+  - null
   - pkg-config
   host:
-  - pip
   - python
+  - pip
   - setuptools-scm
   - numpy
   - cython >=3.1
@@ -46,8 +46,10 @@ requirements:
   - mpmath >=1.0,<1.4
   - demes >=0.2
 source:
-  sha256: cecf1be95732e047f7438c726fae75af552a280ce822efeb3505d24976f01803
-  url: https://pypi.org/packages/source/m/moments-popgen/moments_popgen-1.6.0.tar.gz
+  patches:
+  - setup.patch
+  sha256: f14c4a98e8d9f21e3701c6e1df7c83b6d06e4f0ef67c2b4eb2ca6f92e4f3aa28
+  url: https://pypi.org/packages/source/m/moments-popgen/moments_popgen-1.6.1.tar.gz
 test:
   imports:
   - moments

@@ -1,0 +1,65 @@
+about:
+  description: 'CIMA is a Python package designed to facilitate the automated detection,
+    assessment, and analysis of complex chromatin tracing experiments.
+
+    '
+  home: https://pypi.org/project/CIMA/
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Chromatin Imaging Analysis for chromatin tracing experiments
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - iagomaceda
+package:
+  name: cima
+  version: 1.2.0
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - setuptools >=78.1.1
+  run:
+  - python >=3.12
+  - h5py ==3.16.0
+  - hdbscan ==0.8.42
+  - ipykernel ==7.2.0
+  - ipywidgets
+  - jupyter-server-proxy
+  - nest-asyncio2
+  - numpy ==2.4.4
+  - pandas ==3.0.2
+  - polars ==1.40.0
+  - pyvista ==0.47.3
+  - scikit-image ==0.26.0
+  - scikit-learn ==1.8.0
+  - scikit-network ==0.33.5
+  - scipy ==1.17.1
+  - seaborn ==0.13.2
+  - tqdm ==4.67.3
+  - trame >=2.5.2,<4
+  - trame-client >=3.4,<4
+  - trame-server >=2.11.7,!=3.7.*,!=3.8.0,<4
+  - trame-vtk >=2.5.8,<2.10.3
+  - trame-vuetify >=2.3.1
+source:
+  sha256: 4b5e81a017122c5375a5b5ae4119aa0fef21b2ee70fe3e31046fa95970c628b8
+  url: https://pypi.org/packages/source/c/cima/cima-1.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - cima
+  - cima.assessment
+  - cima.detection
+  - cima.maps
+  - cima.parsers
+  - cima.segments
+  - cima.utils
+  requires:
+  - pip

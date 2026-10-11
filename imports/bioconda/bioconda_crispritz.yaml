@@ -1,8 +1,10 @@
 about:
   home: https://github.com/pinellolab/CRISPRitz
-  license: AGPL-3.0-or-later
+  license: LicenseRef-MGBOA-1.0
+  license_family: OTHER
   license_file: LICENSE
-  summary: CRISPRitz, tool package for CRISPR experiments assessment and analysis.
+  summary: CRISPRitz enumeration engine for CRISPR off-target search (index / search
+    / add-variants).
 build:
   number: 0
   run_exports:
@@ -13,9 +15,10 @@ extra:
   - linux-aarch64
   recipe-maintainers:
   - lucapinello
+  - ManuelTgn
 package:
   name: crispritz
-  version: 2.8.3
+  version: 2.9.0
 requirements:
   build:
   - null
@@ -24,32 +27,21 @@ requirements:
   - llvm-openmp
   - make
   host:
-  - boost-cpp
   - zlib
   - python >=3.11,<3.12
   run:
-  - rename
-  - bedtools
-  - bedops
-  - scikit-learn ==1.1.3
-  - numpy ==1.24.4
-  - pandas ==2.0.3
-  - scipy ==1.10.1
-  - biopython
-  - intervaltree
-  - matplotlib-base
-  - more-itertools
-  - statsmodels
+  - pandas
   - bcftools
   - boost-cpp
-  - tk
   - openmp
+  - zlib
   - python >=3.11,<3.12
-  - pysam 0.22.1
-  - htslib
 source:
-  sha256: 08e847d8a514adc4b38a5333a72783fa41c1f15950fcf911a0059ca23d302bb9
-  url: https://github.com/pinellolab/CRISPRitz/archive/v2.8.3.tar.gz
+  sha256: 57031301e8b406bab306cb161a4d76a284d95b73cc426545e83113154a1c8027
+  url: https://github.com/pinellolab/CRISPRitz/archive/v2.9.0.tar.gz
 test:
   commands:
   - crispritz.py
+  - crispritz.py index-genome help
+  - crispritz.py search help
+  - crispritz.py add-variants help
