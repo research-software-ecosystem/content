@@ -10,15 +10,19 @@
     "cost": "Free of charge",
     "credit": [
         {
-            "email": "urgi-support@inrae.fr",
-            "name": "URGI support",
+            "email": "urgi-contact@inrae.fr",
+            "name": "URGI",
+            "note": "How to cite: https://urgi.versailles.inrae.fr/Platform/How-to-cite",
+            "rorid": "04etk8241",
             "typeRole": [
-                "Primary contact",
+                "Developer",
+                "Maintainer",
+                "Provider",
                 "Support"
             ]
         }
     ],
-    "description": "FAIDARE: FAIR Data-finder for Agronomic Research. \nThe purpose of this portal is to facilitate the discoverability of public data on plant biology from a federation of established data repositories.\n\nIt is based on the Breeding API (BrAPI) specifications and facilitates the access to genotype and phenotype datasets for crop and forest plants through an easy to use web interface. It also provides a standard interface that can be accessed programatically through web services.\n\nIt is an extension of the generic DataDiscovery portal, a web portal that allows finding any type of data across several databases through a lightweight keyword based search. FAIDARE offers more detailed search and data retrieval capabilities and it takes advantage of the growing adoption of the BrAPI.",
+    "description": "FAIDARE (FAIR Data-finder for Agronomic Research) was developed to meet the needs of the ELIXIR Plant Sciences community (https://elixir-europe.org/communities/plant-sciences).\nThe goal of this portal is to facilitate the discovery of public data on plant biology from an international federation of established data repositories. It is based on the “Breeding API” (BrAPI) specifications and facilitates access to genotyping and phenotyping datasets for crop and forest plants through an easy-to-use web interface. It also provides a standard interface that can be accessed programmatically via web services.\nIt is an extension of the generic DataDiscovery portal, a web portal that aims to provide researchers with quick and easy access to relevant biological data using specific keywords and filters. FAIDARE offers more detailed search and data extraction capabilities and capitalizes on the growing adoption of BrAPI.",
     "documentation": [
         {
             "note": "Description of the API to access FAIDARE webservice following BRAPI API",
@@ -50,6 +54,18 @@
         },
         {
             "type": [
+                "General"
+            ],
+            "url": "https://hal.inrae.fr/hal-04638310v1"
+        },
+        {
+            "type": [
+                "General"
+            ],
+            "url": "https://urgi.versailles.inrae.fr/Data-Services/Data-Access/Federations"
+        },
+        {
+            "type": [
                 "Installation instructions"
             ],
             "url": "https://forgemia.inra.fr/urgi-is/faidare/blob/master/README.md"
@@ -70,6 +86,9 @@
         ],
         "type": "group"
     },
+    "elixirCommunity": [
+        "Plant Sciences"
+    ],
     "elixirNode": [
         "France"
     ],
@@ -83,8 +102,8 @@
             "input": [
                 {
                     "data": {
-                        "term": "Identifier",
-                        "uri": "http://edamontology.org/data_0842"
+                        "term": "Genotype/phenotype report",
+                        "uri": "http://edamontology.org/data_0920"
                     }
                 },
                 {
@@ -98,17 +117,15 @@
                         "term": "Ontology data",
                         "uri": "http://edamontology.org/data_2353"
                     }
+                },
+                {
+                    "data": {
+                        "term": "Resource metadata",
+                        "uri": "http://edamontology.org/data_2337"
+                    }
                 }
             ],
             "operation": [
-                {
-                    "term": "Data retrieval",
-                    "uri": "http://edamontology.org/operation_2422"
-                },
-                {
-                    "term": "Database search",
-                    "uri": "http://edamontology.org/operation_2421"
-                },
                 {
                     "term": "Indexing",
                     "uri": "http://edamontology.org/operation_0227"
@@ -122,8 +139,16 @@
                     "uri": "http://edamontology.org/operation_3559"
                 },
                 {
+                    "term": "Query and retrieval",
+                    "uri": "http://edamontology.org/operation_0224"
+                },
+                {
                     "term": "Relation extraction",
                     "uri": "http://edamontology.org/operation_3625"
+                },
+                {
+                    "term": "Visualisation",
+                    "uri": "http://edamontology.org/operation_0337"
                 }
             ],
             "output": [
@@ -158,12 +183,24 @@
                     },
                     "format": [
                         {
-                            "term": "JSON",
-                            "uri": "http://edamontology.org/format_3464"
+                            "term": "CSV",
+                            "uri": "http://edamontology.org/format_3752"
                         },
                         {
-                            "term": "xlsx",
-                            "uri": "http://edamontology.org/format_3620"
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Genotype/phenotype report",
+                        "uri": "http://edamontology.org/data_0920"
+                    },
+                    "format": [
+                        {
+                            "term": "MCPD",
+                            "uri": "http://edamontology.org/format_3777"
                         }
                     ]
                 }
@@ -176,7 +213,7 @@
         "Java",
         "JavaScript"
     ],
-    "lastUpdate": "2024-09-02T05:04:34.812991Z",
+    "lastUpdate": "2026-10-12T15:27:55.988282Z",
     "license": "BSD-3-Clause",
     "link": [
         {
@@ -192,15 +229,25 @@
                 "Repository"
             ],
             "url": "https://forgemia.inra.fr/urgi-is/faidare"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://forgemia.inra.fr/urgi-is/data-discovery"
         }
     ],
-    "maturity": "Emerging",
+    "maturity": "Mature",
     "name": "FAIDARE",
     "operatingSystem": [
         "Linux"
     ],
     "owner": "nfrancillon",
     "relation": [
+        {
+            "biotoolsID": "DataDiscovery",
+            "type": "uses"
+        },
         {
             "biotoolsID": "gnpis",
             "type": "uses"
@@ -220,10 +267,6 @@
         {
             "term": "Bioinformatics",
             "uri": "http://edamontology.org/topic_0091"
-        },
-        {
-            "term": "Biological databases",
-            "uri": "http://edamontology.org/topic_3071"
         },
         {
             "term": "Ecology",
