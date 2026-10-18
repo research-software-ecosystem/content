@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/piosierra/panteraGA
+  home: https://github.com/piosierra/panteraGA
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Generate a Transposable Elements library from a FastGA whole genome alignment.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - piosierra
+package:
+  name: panteraga
+  version: 1.4.0
+requirements:
+  run:
+  - r-base >=4.1
+  - r-getopt
+  - r-codetools
+  - r-ape
+  - r-stringi
+  - r-data.table
+  - r-xgboost
+  - r-quantmod
+  - bioconductor-biostrings
+  - mafft
+  - emboss
+  - blast
+  - cd-hit
+  - fastga
+  - alntools
+source:
+- sha256: 87f71a2d6a8086bfd7eb7a86a750d2611ad0c6384fd7f87ed71e8b3eb13957d7
+  url: https://github.com/piosierra/panteraGA/archive/refs/tags/v1.4.0.tar.gz
+- folder: zenodo_model
+  sha256: 51c7cfed52a94428e0b8f5f0777b4a77d4be839004667c4047c727d65685aa2e
+  url: https://zenodo.org/records/22990589/files/model.tar.gz
+test:
+  commands:
+  - panteraGA -h
+  - test -s $PREFIX/share/panteraga-1.4.0/libs/RepeatPeps.lib.psq
+  - test -s $PREFIX/share/panteraga-1.4.0/model/typesnames
+  - test -s $PREFIX/share/panteraga-1.4.0/model/featurenames
+  - test $(wc -c < $PREFIX/share/panteraga-1.4.0/model/xgbmodel.ubj) -gt 1000000

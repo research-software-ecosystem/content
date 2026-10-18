@@ -1,6 +1,6 @@
 about:
   dev_url: https://github.com/fulcrumgenomics/riker
-  doc_url: https://github.com/fulcrumgenomics/riker/blob/v0.4.1/README.md
+  doc_url: https://github.com/fulcrumgenomics/riker/blob/v0.5.0/README.md
   home: https://github.com/fulcrumgenomics/riker
   license: MIT
   license_family: MIT
@@ -14,6 +14,7 @@ build:
   run_exports:
   - null
   script:
+  - export LIBCLANG_PATH="${BUILD_PREFIX}/lib"
   - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
   - cargo install --locked --version '>=0.12.0' cargo-multivers
   - cargo multivers --profile dist --out-dir "${PREFIX}/bin"
@@ -27,7 +28,7 @@ extra:
   - tfenne
 package:
   name: riker
-  version: 0.4.1
+  version: 0.5.0
 requirements:
   build:
   - null
@@ -35,12 +36,13 @@ requirements:
   - null
   - null
   - cargo-bundle-licenses
-  - clangdev <22
+  - libclang 21.*
+  - clang 21.*
   - cmake
   - make
 source:
-  sha256: 4f3c73e84b50895dcccb67f2d4eb59a9e0252595c40656df771f6342b5574c1b
-  url: https://github.com/fulcrumgenomics/riker/archive/v0.4.1.tar.gz
+  sha256: d2b7d622bd53aa90f382c021701bbd5a2189d710e89c92a3fe193d9517537f55
+  url: https://github.com/fulcrumgenomics/riker/archive/v0.5.0.tar.gz
 test:
   commands:
   - riker --help

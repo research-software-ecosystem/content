@@ -1,29 +1,24 @@
 about:
-  description: 'Arachne is a fork intended to be a revival and continuation of Lariat,
-    the linked-read aware aligner created by 10X Genomics and
+  description: 'Arachne is a fork of Lariat that takes the best parts of lariat (speed,
+    usability, not being C++)
 
-    bundled in their LongRanger pipeline. Arachne does not directly support any specific
-    linked-read FASTQ format. Instead, it expects
+    and marries it with the mapping performance of EMA. Because of this and other
+    improvements and
 
-    the ''standard'' linked-read data format, which is a consistent future-proof format
-    following the internationally recognized FASTQ
-
-    and SAM specifications. The package provides a lossless converter that accepts
-    haplotagging, stLFR, and TELLseq FASTQ data to
-
-    faciliate these conversions.
+    updates, Arachne output will be different from either Lariat or EMA output, presumably
+    better.
 
     '
-  dev_url: https://github.com/pdimens/arachne
-  doc_url: https://pdimens.github.io/arachne/
-  home: https://github.com/pdimens/arachne
+  dev_url: https://github.com/blinkseq/arachne
+  doc_url: https://blinkseq.github.io/arachne
+  home: https://github.com/blinkseq/arachne
   license: MIT
   license_family: MIT
   license_file:
   - LICENSE
-  - gobwa/bwa/COPYING
+  - gominibwa/minibwa/LICENSE.txt
   - library_licenses/
-  summary: Linked-Read Alignment Tool and successor to Lariat
+  summary: Linked-Read Alignment Tool and successor to Lariat.
 build:
   number: 0
   run_exports:
@@ -32,11 +27,12 @@ build:
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - pdimens
 package:
   name: arachne
-  version: '0.2'
+  version: '0.3'
 requirements:
   build:
   - null
@@ -45,14 +41,17 @@ requirements:
   - go-licenses
   - make
   host:
+  - libgomp
+  - llvm-openmp
   - zlib
-  - jemalloc
   run:
+  - libgomp
+  - llvm-openmp
   - samtools >=1.23
-  - bwa >=0.7.19,<0.8
+  - minibwa >=0.7,<0.8
 source:
-  sha256: d55ccdc939295b4737e928734301b01fb3e627ee683aca6eb7b9d806979cf19e
-  url: https://github.com/pdimens/arachne/releases/download/0.2/arachne.0.2.tar.gz
+  sha256: 599960c3d4d88d0d180db23b5df96d64a47af46dca2441fa17d9d8e46212ee7d
+  url: https://github.com/blinkseq/arachne/releases/download/0.3/arachne.0.3.tar.gz
 test:
   commands:
   - arachne --version

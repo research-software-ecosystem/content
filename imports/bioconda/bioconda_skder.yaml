@@ -7,9 +7,19 @@ about:
   summary: 'skDER & CiDDER: efficient & high-resolution dereplication methods for
     microbial genomes'
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
+  script:
+  - set -euxo pipefail
+  - ' -m pip install . --no-deps --no-build-isolation -vvv'
+  - mkdir -p ${PREFIX}/bin
+  - export LDFLAGS=
+  - ${CXX} -std=c++11 -Wl,-headerpad_max_install_names -o ${PREFIX}/bin/skDERsum src/skDER/skDERsum.cpp
+  - ${CXX} -std=c++11 -Wl,-headerpad_max_install_names -o ${PREFIX}/bin/skDERcore
+    src/skDER/skDERcore.cpp
+  - chmod +x ${PREFIX}/bin/skDERcore
+  - chmod +x ${PREFIX}/bin/skDERsum
   skip: true
 extra:
   additional-platforms:
@@ -30,7 +40,7 @@ requirements:
   - pip
   - wget
   run:
-  - python >=3.10
+  - python >=3.11
   - biopython
   - setuptools
   - skani

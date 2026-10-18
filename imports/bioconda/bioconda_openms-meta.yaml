@@ -22,6 +22,7 @@ extra:
   skip-lints:
   - build_number_needs_reset
   - missing_run_exports
+  - should_be_noarch_generic
 outputs:
 - about:
     dev_url: https://github.com/OpenMS/OpenMS
@@ -36,14 +37,11 @@ outputs:
     ignore_run_exports_from:
     - libboost-devel
     run_exports:
-    - null
-    - null
-    - null
-    - null
-    - libopenms 3.5.0
+    - libopenms 3.6.0
   name: libopenms
   requirements:
     build:
+    - null
     - null
     - cmake
     host:
@@ -53,12 +51,15 @@ outputs:
     - coin-or-cgl
     - coin-or-cbc
     - eigen >=3.4.0
+    - libarrow =23=*_cpu
+    - libparquet =23
     - libboost-devel
+    - libcurl
     - libsvm
-    - qt6-main
+    - libzip
     - xerces-c
-    - yaml-cpp
     - zlib
+    - zstd
     - libgomp
     - sysroot_linux-64 =2.17
     - llvm-openmp
@@ -69,7 +70,9 @@ outputs:
       | grep 'R.*PATH' || echo "Mulled container.. skip tests"
     - command -v otool >/dev/null 2>&1 && otool -L ${PREFIX}/lib/libOpenMS.dylib ||
       echo "Mulled container.. skip tests"
-  version: 3.5.0
+    - test -f ${PREFIX}/share/OpenMS/TOOLS/OpenMS.tsv
+    - test -f ${PREFIX}/lib/cmake/OpenMS/OpenMSConfig.cmake
+  version: 3.6.0
 - about:
     dev_url: https://github.com/OpenMS/OpenMS
     doc_url: https://openms.readthedocs.io/en/latest/index.html
@@ -78,29 +81,19 @@ outputs:
     license_family: BSD
     license_file: LICENSE
     summary: The OpenMS TOPP tools (without GUI components and adapted thirdparty
-      tools).
+      tools) and the TOPP tool framework library OpenMS_CLI with its headers, for
+      developing own tools.
   name: openms
   requirements:
     build:
     - null
+    - null
     - cmake
     host:
     - null
-    - xerces-c
-    - eigen
-    - qt6-main
-    - libsvm
-    - libparquet
-    - libarrow =21
-    ignore_run_exports:
-    - libsvm
+    - libarrow 23.* *_cpu
+    - libparquet =23
     run:
-    - null
-    - null
-    - null
-    - null
-    - null
-    - null
     - null
   script: package_openms-tools.sh
   test:
@@ -111,7 +104,12 @@ outputs:
       "Mulled container.. skip tests"
     - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/OpenMSInfo
     - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/FileMerger --help
-  version: 3.5.0
+    - ${PREFIX}/bin/OpenMSDatabasesInfo -enzymes_out /tmp/openms_enzymes.tsv -mods_out
+      /tmp/openms_mods.tsv
+    - test "$(wc -l < /tmp/openms_mods.tsv)" -gt 100
+    - test -f ${PREFIX}/include/OpenMS/APPLICATIONS/TOPPBase.h
+    - test -f ${PREFIX}/lib/cmake/OpenMS/OpenMSCLITargets.cmake
+  version: 3.6.0
 - about:
     dev_url: https://github.com/OpenMS/OpenMS
     doc_url: https://openms.readthedocs.io/en/latest/index.html
@@ -130,7 +128,7 @@ outputs:
     - comet-ms ==2024011
     - luciphor2 ==2020_04_03
     - msgf_plus ==2024.03.26
-    - percolator ==3.7.1
+    - percolator ==3.9
     - sirius-ms >=6.1.0
     - thermorawfileparser ==1.4.3
     - sage-proteomics ==0.14.7
@@ -139,14 +137,15 @@ outputs:
   test:
     commands:
     - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/OpenMSInfo
-  version: 3.5.0
+  version: 3.6.0
 package:
   name: openms-meta
-  version: 3.5.0
+  version: 3.6.0
 requirements:
   build:
   - null
-  - cmake
+  - null
+  - cmake >=3.24
   - ninja
   host:
   - bzip2
@@ -155,20 +154,23 @@ requirements:
   - coin-or-cgl
   - coin-or-cbc
   - eigen >=3.4.0
-  - libarrow =21
+  - libarrow =23=*_cpu
+  - libparquet =23
   - libboost-devel
-  - libparquet
+  - libcurl
   - libsvm
-  - qt6-main
+  - libzip
   - xerces-c
-  - yaml-cpp
   - zlib
+  - zstd
   - libgomp
   - sysroot_linux-64 =2.17
   - llvm-openmp
 source:
-  sha256: 29ddff876b6f7e604edca962cbd2f57fe2467262db4b4f039aa43148589f2dbd
-  url: https://github.com/OpenMS/OpenMS/releases/download/release%2F3.5.0/OpenMS-3.5.0.tar.gz
+  patches:
+  - 0001-File-take-install-path-lengths-at-run-time.patch
+  sha256: 70c7f7afff938634b5e87a7c9f71856a4469ae0e45d66dd50655460dbf6d6535
+  url: https://github.com/OpenMS/OpenMS/releases/download/v3.6.0/OpenMS-3.6.0.tar.gz
 test:
   commands:
   - echo "Tests are in subpackages"

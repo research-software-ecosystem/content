@@ -17,24 +17,23 @@ about:
   dev_url: https://github.com/plinder-org/plinder
   doc_url: https://plinder-org.github.io/plinder
   home: https://www.plinder.sh
-  license: MIT AND Apache-2.0
+  license: Apache-2.0
   license_file:
   - NOTICE
   - LICENSE.txt
-  summary: 'PLINDER: The Protein-Ligand INteraction Dataset and Evaluation Resource.'
+  summary: 'PLINDER: Protein & Ligand INteraction Dataset and Evaluation Resource'
 build:
   entry_points:
   - plinder_download = plinder.core.index.utils:download_plinder_cmd
-  - plinder_eval = plinder.eval.docking.write_scores:evaluate_cmd
-  - plinder_stratify = plinder.eval.docking.stratify_test_set:stratify_cmd
-  - plinder_plot = plinder.eval.docking.make_plots:plot_cmd
+  - plinder_eval = plinder.eval.cli:main
+  - plinder_prepare_release = plinder.data.pipeline.public_release:main
   noarch: python
-  number: 1
+  number: 0
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
   script_env:
-  - SETUPTOOLS_SCM_PRETEND_VERSION=0.2.27
+  - SETUPTOOLS_SCM_PRETEND_VERSION=1.0.0
 extra:
   identifiers:
   - doi:10.1101/2024.07.17.603955
@@ -42,58 +41,58 @@ extra:
   - eunos-1128
 package:
   name: plinder
-  version: 0.2.27
+  version: 1.0.0
 requirements:
   host:
-  - python >=3.10
-  - python-build >=0.9.0
-  - setuptools >=65.4.0
-  - setuptools-scm >=7.0.5
+  - python 3.12.*
+  - python-build
+  - setuptools
+  - setuptools-scm
   - pip
   run:
   - __unix
-  - python >=3.10
-  - biotite >=1.0
+  - python >=3.12
+  - biotite >=1.2
   - numpy
+  - threadpoolctl >=3.6
   - pandas
-  - typing_extensions
   - pydantic
   - tqdm
-  - plotly
-  - nbformat
-  - google-cloud-storage
-  - gcsfs
-  - gemmi
-  - rdkit >=2024.03.6
+  - peppr >=0.13
+  - voronotalt >=1.1
+  - rdkit >=2025.09.1
   - pyarrow
   - omegaconf
-  - mmcif
-  - eval-type-backport
-  - posebusters
-  - python-duckdb
+  - python-duckdb >=1.5
   - cloudpathlib >=0.25,<0.26
-  - mols2grid
-  - six
-  - foldseek
-  - networkit >=11.0
-  - keyrings.google-artifactregistry-auth
+  - requests
+  - google-cloud-storage
+  - gcsfs
+  - numba
   - mmseqs2
-  - plip ==2.3.0
-  - reduce
-  - openbabel
-  - openstructure
-  - pytorch-cpu
+  - foldseek
+  - networkit >11.0
   - tabulate
-  - mmpdb
-  - ligand-validation
+  - mmpdb >=3.1.4,<3.2
+  - ligand-validation ==0.0.1
+  - openstructure >=2.12.0
+  - posebusters >=0.6.5
+  - pytorch-cpu
+  - matplotlib-base
+  - seaborn
+  - mols2grid
+  - matplotlib-venn
+  - scipy
 source:
-  sha256: 4019b303ec879d1e7bdaad653d796975bb932d71826d8f67d3fabe9743cafb9c
-  url: https://github.com/plinder-org/plinder/archive/refs/tags/v0.2.27.tar.gz
+  sha256: 48f6669eece102b9540b7460196d552e2a7ffbd0cc0e0b35e0751b6547ad8789
+  url: https://pypi.org/packages/source/P/PLINDER/plinder-1.0.0.tar.gz
 test:
   commands:
+  - python -m pip check
   - plinder_download --help
   - plinder_eval --help
-  - plinder_stratify --help
-  - plinder_plot --help
+  - plinder_prepare_release --help
   imports:
   - plinder
+  requires:
+  - pip

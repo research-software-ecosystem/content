@@ -32,7 +32,7 @@ extra:
   - usegalaxy-eu:antismash
 package:
   name: antismash-lite
-  version: 8.0.1
+  version: 8.0.4
 requirements:
   host:
   - python >=3.11
@@ -51,24 +51,27 @@ requirements:
   - markupsafe ==3.0.2
   - nrpys ==0.1.1
   - bcbio-gff ==0.7.1
-  - libsass ==0.22.0
+  - libsass ==0.23.0
   - matplotlib-base ==3.10.1
   - orjson ==3.10.16
   - scipy ==1.15.2
   - scikit-learn ==1.6.1
   - moods ==1.9.4.2
-  - diamond
+  - diamond >=2.1.21
   - fasttree
   - hmmer2
   - hmmer
   - blast
   - prodigal
 source:
-  sha256: e008eaeab13a92a657de82d077b2ffd782a97bc334c248ff22618c52f04fbc02
-  url: https://github.com/antismash/antismash/archive/8-0-1.tar.gz
+  sha256: ee18976631b1e0112299e865e11e62b2835be2027ac5422b0237465513b74c25
+  url: https://github.com/antismash/antismash/archive/8-0-4.tar.gz
 test:
   commands:
   - antismash --help
   - download-antismash-databases --help
+  - blastp -help
+  - fasttree -help
+  - diamond --help 2>&1 > /dev/null
   imports:
   - antismash

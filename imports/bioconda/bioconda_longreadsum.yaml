@@ -3,43 +3,54 @@ about:
 
     '
   dev_url: https://github.com/WGLab/LongReadSum
-  doc_url: https://github.com/WGLab/LongReadSum#readme
+  doc_url: https://github.com/WGLab/LongReadSum/blob/v1.6.0/README.md
   home: https://github.com/WGLab/LongReadSum
   license: MIT
-  summary: Long read sequencing data quality control tool
+  license_family: MIT
+  license_file: LICENSE
+  summary: Long read sequencing data quality control tool.
 build:
   entry_points:
   - longreadsum = entry_point:main
-  number: 3
+  number: 0
   run_exports:
   - null
 extra:
   additional-platforms:
   - linux-aarch64
   - osx-arm64
+  identifiers:
+  - doi:10.1101/2024.08.05.606643
 package:
   name: longreadsum
-  version: 1.3.1
+  version: 1.6.0
 requirements:
   build:
   - null
+  - null
   - make
+  - pkg-config
   host:
   - python
+  - pip
+  - setuptools
   - swig
   - hdf5
   - htslib
   - zlib
-  - setuptools
   run:
   - python
   - numpy
   - hdf5
   - htslib
   - plotly
+  - ont_vbz_hdf_plugin
+  - pod5
 source:
-  sha256: eb4c7677d43d80d19ddbac11900ae3a14efd6f2a3c4cc8bbc08e063a81e0e1df
-  url: https://github.com/WGLab/LongReadSum/archive/refs/tags/v1.3.1.tar.gz
+  patches:
+  - 0001-Makefile.patch
+  sha256: 4d2fbac772d70547818d9ce7ccc40f1234c4f3aec0e25b800f81005c33e0357c
+  url: https://github.com/WGLab/LongReadSum/archive/refs/tags/v1.6.0.tar.gz
 test:
   commands:
   - longreadsum --help

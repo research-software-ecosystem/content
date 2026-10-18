@@ -1,25 +1,35 @@
 about:
-  home: https://github.com/relipmoc/skewer.git
+  dev_url: https://github.com/relipmoc/skewer
+  doc_url: https://github.com/relipmoc/skewer/blob/master/README.md
+  home: https://github.com/relipmoc/skewer
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: A fast and accurate adapter trimmer for paired-end reads.
 build:
-  number: 4
+  number: 5
+  run_exports:
+  - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:skewer
+  - doi:10.1186/1471-2105-15-182
 package:
   name: skewer
   version: 0.2.2
 requirements:
   build:
   - null
+  - null
   - make
-  host: null
-  run: null
 source:
-  md5: 593b7e23881417411d1fb2b061aeac80
-  url: https://github.com/relipmoc/skewer/archive/0.2.2.zip
+  patches:
+  - 0001-Makefile.patch
+  sha256: bc37afccdf55de047502b87fe56d537cdf78674ccaec1a401b2d29552d6b2dfc
+  url: https://github.com/relipmoc/skewer/archive/refs/tags/0.2.2.tar.gz
 test:
   commands:
   - skewer 2>&1 | grep -qF 'skewer (0.2.2)'

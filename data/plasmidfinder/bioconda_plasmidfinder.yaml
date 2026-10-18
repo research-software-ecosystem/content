@@ -8,8 +8,10 @@ about:
   summary: PlasmidFinder allows identification of plasmids in total or partial sequenced
     isolates of bacteria.
 build:
+  entry_points:
+  - plasmidfinder = plasmidfinder.__main__:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -38,9 +40,14 @@ requirements:
   - cgecore
   - blast
   - kma
+  - git
 source:
+  patches:
+  - 0001-entry-point.patch
   sha256: da7474d1cebd3b69935baa0b388282e7b94f2302074034b785d34d2e34199fe1
   url: https://pypi.org/packages/source/p/plasmidfinder/plasmidfinder-3.0.3.tar.gz
 test:
+  commands:
+  - plasmidfinder -h
   imports:
   - plasmidfinder

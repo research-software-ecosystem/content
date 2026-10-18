@@ -1,16 +1,17 @@
 about:
+  dev_url: https://github.com/marghoob/AGE/tree/simple-parseable-output
   home: https://github.com/marghoob/AGE/tree/simple-parseable-output
   license: CCPL (Creative Commons Public License)
-  summary: optimal alignment of sequences with structural variants (SVs), modifiied
-    for MetaSV integration
+  summary: Optimal alignment of sequences with structural variants (SVs), modifiied
+    for MetaSV integration.
 build:
-  number: 9
+  number: 10
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
 package:
   name: age-metasv
   version: 2015.01.29.3
@@ -18,15 +19,17 @@ requirements:
   build:
   - make
   - null
+  - null
+  host:
   - llvm-openmp
   - libgomp
-  - libstdcxx-ng >=12
-  host: null
-  run: null
+  run:
+  - llvm-openmp
+  - libgomp
 source:
-  md5: ec3fd9c0046b8f4a1d5269e3e77dac86
   patches:
   - flags.patch
+  sha256: ca9f1072d3cd91858034001b4299a2ea98a7a8930d785bec2aadacbec3dbe523
   url: https://github.com/marghoob/AGE/archive/344429ccb.tar.gz
 test:
   commands:

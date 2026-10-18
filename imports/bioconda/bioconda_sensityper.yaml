@@ -1,0 +1,43 @@
+about:
+  dev_url: https://github.com/leosanbu/sensityper
+  doc_url: https://leosanbu.github.io/sensityper/
+  home: https://github.com/leosanbu/sensityper
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Genomic antimicrobial susceptibility prediction and treatment recommendation
+    for Neisseria gonorrhoeae
+build:
+  entry_points:
+  - sensityper = sensityper.sensityper:main
+  - sensityping-metrics = sensityper.sensityping_metrics:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir'
+extra:
+  recipe-maintainers:
+  - leosanbu
+package:
+  name: sensityper
+  version: 1.0.4
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.8
+  - numpy
+  - pandas
+  - scikit-learn
+  - plotly
+source:
+  sha256: d4ee6ec292b8622c2ff8f9c0de425eb0c1af3e101d215dcfc4be0ef842569a55
+  url: https://pypi.org/packages/source/s/sensityper/sensityper-1.0.4.tar.gz
+test:
+  commands:
+  - sensityper --help
+  - sensityping-metrics --help
+  imports:
+  - sensityper

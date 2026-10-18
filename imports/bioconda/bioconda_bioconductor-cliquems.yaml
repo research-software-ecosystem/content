@@ -15,7 +15,7 @@ about:
   summary: Annotation of Isotopes, Adducts and Fragmentation Adducts for in-Source
     LC/MS Metabolomics Data
 build:
-  number: 0
+  number: 1
   rpaths:
   - lib/R/lib/
   - lib/
@@ -27,14 +27,17 @@ requirements:
   build:
   - null
   - null
+  - null
   - make
   host:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-camera >=1.66.0,<1.67.0
   - bioconductor-msnbase >=2.36.0,<2.37.0
   - bioconductor-xcms >=4.8.0,<4.9.0
   - r-base
   - r-bh
   - r-coop
-  - r-igraph
+  - r-igraph >=2.1.0
   - r-matrixstats
   - r-rcpp >=0.12.15
   - r-rcpparmadillo
@@ -44,18 +47,22 @@ requirements:
   - zlib
   - liblzma-devel
   run:
+  - bioconductor-biocparallel >=1.44.0,<1.45.0
+  - bioconductor-camera >=1.66.0,<1.67.0
   - bioconductor-msnbase >=2.36.0,<2.37.0
   - bioconductor-xcms >=4.8.0,<4.9.0
   - r-base
   - r-bh
   - r-coop
-  - r-igraph
+  - r-igraph >=2.1.0
   - r-matrixstats
   - r-rcpp >=0.12.15
   - r-rcpparmadillo
   - r-slam
 source:
   md5: c015d39daf9895c5c07fde4cc93103b0
+  patches:
+  - cliquems-fixes.patch
   url:
   - https://bioconductor.org/packages/3.22/bioc/src/contrib/cliqueMS_1.24.0.tar.gz
   - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/cliqueMS/cliqueMS_1.24.0.tar.gz
