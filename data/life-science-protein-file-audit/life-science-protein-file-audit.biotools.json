@@ -1,0 +1,102 @@
+{
+    "additionDate": "2026-10-17T14:35:25.534070Z",
+    "biotoolsCURIE": "biotools:life-science-protein-file-audit",
+    "biotoolsID": "life-science-protein-file-audit",
+    "cost": "Free of charge",
+    "description": "Offline, deterministic bioinformatics command-line analysis of amino-acid composition and ambiguous residues in protein FASTA files, and observed first-model C-alpha residue inventory in PDB coordinate files. Reports source SHA-256 and bounded quality warnings. Does not infer protein structures or validate molecular geometry.",
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "ls-bio protein-fasta --input protein.fasta --output fasta-report.json",
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein sequence",
+                        "uri": "http://edamontology.org/data_2976"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Computes counts and source digests; flags uncertain codes without inferring function or sequence correctness.",
+            "operation": [
+                {
+                    "term": "Sequence analysis",
+                    "uri": "http://edamontology.org/operation_2403"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence report",
+                        "uri": "http://edamontology.org/data_2955"
+                    }
+                }
+            ]
+        },
+        {
+            "cmd": "ls-bio protein-pdb --input structure.pdb --output pdb-report.json",
+            "input": [
+                {
+                    "data": {
+                        "term": "Protein structure",
+                        "uri": "http://edamontology.org/data_1460"
+                    },
+                    "format": [
+                        {
+                            "term": "PDB",
+                            "uri": "http://edamontology.org/format_1476"
+                        }
+                    ]
+                }
+            ],
+            "note": "Counts only observed C-alpha residues in the first PDB model; not a geometry or fold quality assessment.",
+            "operation": [
+                {
+                    "term": "Protein structure analysis",
+                    "uri": "http://edamontology.org/operation_2406"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence report",
+                        "uri": "http://edamontology.org/data_2955"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/lostlight530/life-science-ecosystem-lab/tree/main/bio_tool",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2026-10-17T14:35:25.536758Z",
+    "license": "MIT",
+    "name": "Life Science Protein File Audit",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
+    "owner": "user.1791708261",
+    "toolType": [
+        "Command-line tool"
+    ],
+    "topic": [
+        {
+            "term": "Proteins",
+            "uri": "http://edamontology.org/topic_0078"
+        },
+        {
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
+        }
+    ]
+}
