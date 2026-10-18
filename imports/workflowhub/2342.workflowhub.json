@@ -1,0 +1,52 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-10-15",
+    "creators": [
+        "John Reeves",
+        "James C Douglas",
+        "Daniel Roden",
+        "Beata Myler",
+        "Victor Liu",
+        "Alexander Swarbrick"
+    ],
+    "description": "# imputation\r\n\r\n[![DOI](https://zenodo.org/badge/882188659.svg)](https://doi.org/10.5281/zenodo.23405367)\r\n\r\nA Snakemake workflow that takes **measured genotypes** (a VCF, e.g. from the\r\n[genotyping](https://github.com/swarbricklab/genotyping) workflow) and prepares\r\nthem for single-cell demultiplexing by quality-controlling the calls and\r\n**imputing** missing variants against a 1000 Genomes reference panel.\r\n\r\nIt contains two workflows that run in sequence:\r\n\r\n1. **QC** (`Snakefile_qc`, `rules/qc.smk`) \u2014 filters samples (missingness,\r\n   relatedness), checks reported sex, and assigns ancestry by comparison against\r\n   a 1000 Genomes reference.\r\n2. **Imputation** (`Snakefile_imputation`, `rules/imputation.smk`) \u2014 lifts the\r\n   genotypes to GRCh38, harmonises and fixes reference alleles, phases, imputes\r\n   missing variants against a 1000 Genomes reference panel, and filters the\r\n   result (MAF, imputation R\u00b2, exonic regions) to produce SNP profiles.\r\n\r\nThese are the second and third stages of the SNP-based demultiplexing pipeline:\r\n\r\n```\r\n[genotyping](https://github.com/swarbricklab/genotyping)  ->  imputation (this repo: QC + imputation)  ->  [snp_demux](https://github.com/swarbricklab/snp_demux) (Demuxafy)\r\n```\r\n\r\nThe final VCF of imputed SNP profiles is consumed by the [snp_demux](https://github.com/swarbricklab/snp_demux) workflow which uses\r\n[Demuxafy](https://demultiplexing-doublet-detecting-docs.readthedocs.io/) to\r\nassign cells to donors in multiplexed 10x Chromium pools.\r\n\r\n> This workflow was **adapted from the sc-eQTLGen consortium WG1 genotype-QC + imputation\r\n> pipeline** (Powell Lab / Garvan;\r\n> [sc-eQTLgen-consortium/WG1-pipeline-QC](https://github.com/sc-eQTLgen-consortium/WG1-pipeline-QC)).\r\n> See [`docs/UPSTREAM_DIFFERENCES.md`](docs/UPSTREAM_DIFFERENCES.md) for exactly how this\r\n> version differs (and how it relates to the Powell Lab's sibling `SNP_imputation_1000g_hg38`).\r\n> Citation details are in [`CITATION.cff`](CITATION.cff) and under [Attribution](#attribution) below.\r\n\r\n## Inputs (from `genotyping`)\r\n\r\n- **VCF** \u2014 genotype calls for all samples (hg19 for QC; hg38 for imputation, used only for chrX/chrY)\r\n- **psam** \u2014 a sample description file for `plink`\r\n- **id map** \u2014 maps original sample ids to the `plink`-safe ids in the `.psam`\r\n\r\n## Outputs\r\n\r\n- **QC**: a post-QC set of `plink` files (`pgen`/`pvar`/`psam`) with sex\r\n  double-checked and ancestry assigned from the 1000 Genomes reference.\r\n- **Imputation**: imputed, filtered SNP profiles ready for Demuxafy.\r\n\r\n## Rule graphs\r\n\r\n### Plink QC\r\n\r\n![QC rule graph](docs/qc_rulegraph.svg)\r\n\r\n### Imputation\r\n\r\n![Imputation rule graph](docs/imputation_rulegraph.svg)\r\n\r\n## Tools\r\n\r\nThe rules drive standard population-genetics tooling, each pinned to a specific\r\npublic version:\r\n\r\n| Step | Tool | Version |\r\n|------|------|---------|\r\n| VCF manipulation, reference fixing (`+fixref`) | `bcftools` | 1.10.2 |\r\n| QC, ancestry, format conversion | `plink` / `plink2` | 1.90b6.21 / 2.00a3.7 |\r\n| Missingness, heterozygosity, site filtering | `vcftools` | 0.1.16 |\r\n| Liftover hg19 \u2192 GRCh38 | `CrossMap` | 0.6.5 |\r\n| Strand/allele harmonisation | `GenotypeHarmonizer` | 1.4.23 |\r\n| Phasing | `Eagle` | 2.4.1 |\r\n| Imputation | `Minimac4` | 1.0.2 |\r\n| Het filter + ancestry-PCA plotting (R scripts) | `R` (`r-base`) | 4.3 |\r\n| Initial sample reheader | `bcftools` (biocontainer) | 1.21 |\r\n\r\nVersions are pinned to those the upstream monolithic `.sif` shipped \u2014 see\r\n`docs/UPSTREAM_DIFFERENCES.md`.\r\n\r\n> **Containerised, with a conda fallback.** The former monolithic image\r\n> (`SNP_imputation_1000g_hg38.sif`) has been retired. **By default** every rule runs\r\n> from a pinned, public per-rule OCI image under\r\n> [`ghcr.io/swarbricklab`](https://github.com/orgs/swarbricklab/packages) (built with\r\n> [absconda(https://github.com/swarbricklab/absconda)), selected via the `containers:` map in the config; run with\r\n> `--use-singularity` (the bundled `nci` profile already does). GenotypeHarmonizer and\r\n> Minimac4 (no bioconda package) are baked into their images; the reheader step uses\r\n> the public `quay.io/biocontainers/bcftools:1.21` image.\r\n>\r\n> **No Singularity/Apptainer?** Every rule also carries a commented `conda:` directive\r\n> pointing at `workflow/envs/*.yaml` (the same pinned versions). Uncomment the `conda:`\r\n> blocks and run with `--use-conda` instead of `--use-singularity` to build the tools\r\n> from conda \u2014 no container runtime required. See issue #23.\r\n\r\n## Reference data and provenance\r\n\r\nAll reference data is **public** and tracked via `dvc import-url` from public\r\nsources (see the `.dvc` files under `resources/`), so it can be fetched without\r\naccess to any private registry:\r\n\r\n- `resources/eQTLGenImpRef.tar.gz` \u2014 sceQTL-Gen / Powell Lab bundle (Minimac4\r\n  imputation reference, 1000 Genomes 30x-GRCh38 phasing/panel, GRCh38 QC FASTA)\r\n- `resources/1000G.tar.gz` \u2014 1000 Genomes phase-3 plink (ancestry QC)\r\n- `resources/bed/hg38exonsUCSC.bed` \u2014 hg38 exon BED\r\n- `resources/liftover/GRCh37_to_GRCh38.chain.gz` \u2014 Ensembl GRCh37\u2192GRCh38 liftover chain\r\n- `resources/genomes/chr_map/`, `resources/genomes/GRCh38_chr.fai` \u2014 small, git-tracked\r\n\r\nFetch, then extract into the paths the config/rules expect:\r\n\r\n```bash\r\n# If you have access to the project's DVC remote:\r\ndvc pull\r\n# Or, without remote access, re-download straight from the public source URLs:\r\ndvc update resources/eQTLGenImpRef.tar.gz.dvc resources/1000G.tar.gz.dvc \\\r\n           resources/bed/hg38exonsUCSC.bed.dvc \\\r\n           resources/liftover/GRCh37_to_GRCh38.chain.gz.dvc\r\n\r\n./prep.sh    # extract the archives into place; tarballs can then be deleted\r\n```\r\n\r\n## Attribution\r\n\r\nAdapted from the sc-eQTLGen consortium **WG1 genotype-QC + imputation pipeline**\r\n([sc-eQTLgen-consortium/WG1-pipeline-QC](https://github.com/sc-eQTLgen-consortium/WG1-pipeline-QC);\r\nPowell Lab / Garvan) \u2014 see [`docs/UPSTREAM_DIFFERENCES.md`](docs/UPSTREAM_DIFFERENCES.md) for\r\nthe differences, including how it relates to the Powell Lab's sibling pipeline\r\n`powellgenomicslab/SNP_imputation_1000g_hg38`. The sc-eQTLGen WG1 authors (Powell Lab) have\r\nsaid they are happy for this adapted workflow to be released under the MIT licence with\r\nattribution.\r\n\r\n**If you use this workflow \u2014 including in any publication arising from it \u2014 please cite the\r\nsc-eQTLGen sources, as requested by the WG1 authors:**\r\n\r\n- Kaptijn *et al.* (2026), *bioRxiv* \u2014 the main sc-eQTLGen consortium paper,\r\n  \"Federated single-cell QTL meta-analysis reveals novel disease mechanisms\"\r\n  ([doi:10.64898/2026.01.20.700519](https://doi.org/10.64898/2026.01.20.700519)).\r\n- van der Wijst *et al.* (2020), *eLife* \u2014 the single-cell eQTLGen consortium.\r\n- The sc-eQTLGen consortium **WG1 genotype-QC + imputation pipeline** (the upstream source\r\n  this workflow is adapted from; linked above).\r\n- Neavin *et al.* (2024), *Genome Biology* \u2014 **Demuxafy**, the downstream\r\n  demultiplexing framework these SNP profiles feed.\r\n- The reference panels and tools above per their own citation requirements\r\n  (1000 Genomes Project; Minimac4; Eagle; plink; bcftools; GenotypeHarmonizer;\r\n  CrossMap).\r\n\r\nSee `CITATION.cff` for how to cite this workflow itself.\r\n\r\n## Running\r\n\r\nEach stage has a driver script that runs from the top of a super-project that\r\nmounts this repo as a module (see\r\n[brca_mega_atlas-data](https://github.com/swarbricklab/brca_mega_atlas-data)):\r\n\r\n```bash\r\n./modules/imputation/run_qc.sh           # QC stage\r\n./modules/imputation/run_imputation.sh   # imputation stage\r\n```\r\n\r\nOn NCI the driver uses the shared PBS profile carried as a nested submodule\r\n(`profiles/global` \u2192 `swarbricklab/snakemake_config`). Check the repo out\r\nrecursively:\r\n\r\n```bash\r\ngit submodule update --init --recursive\r\n```\r\n\r\n## Status\r\n\r\nPublic, citable (`CITATION.cff`), and reproducible from public inputs \u2014 ready for the\r\n**v1.0.0** release. Runs are deterministic: reruns from identical inputs are byte-identical.\r\nDeliberate divergences from the upstream\r\nsc-eQTLGen pipeline are documented in `docs/UPSTREAM_DIFFERENCES.md`; planned\r\npost-1.0 improvements are tracked in the\r\n[issue tracker](https://github.com/swarbricklab/imputation/issues).\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "http://edamontology.org/operation_3197",
+        "http://edamontology.org/operation_3557",
+        "http://edamontology.org/operation_3454",
+        "http://edamontology.org/operation_3267",
+        "http://edamontology.org/operation_3675"
+    ],
+    "edam_topic": [
+        "http://edamontology.org/topic_2885",
+        "http://edamontology.org/topic_3517",
+        "http://edamontology.org/topic_0199",
+        "http://edamontology.org/topic_3056"
+    ],
+    "id": "2342",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2342?version=1",
+    "mapped_tools": [],
+    "name": "imputation: a genotype QC and 1000 Genomes imputation Snakemake workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "1000 genomes",
+        "eagle",
+        "minimac4",
+        "snakemake",
+        "vcf",
+        "demultiplexing",
+        "genotype qc",
+        "imputation",
+        "plink"
+    ],
+    "tools": [],
+    "update_time": "2026-10-15",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}
