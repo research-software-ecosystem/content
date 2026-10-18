@@ -1,0 +1,36 @@
+about:
+  home: https://github.com/XLeeHIT/cuteSVTrio
+  license: MIT
+  license_file: LICENSE
+  summary: Long-read-based human genomic structural variation detection with cuteSVTrio
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - XLeeHIT
+package:
+  name: cutesvtrio
+  version: 1.1.1
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - scipy
+  - pysam
+  - biopython
+  - numpy
+  - pyvcf3
+  - scikit-learn
+source:
+  sha256: 6948fa3ce5a0096d665207bf6571ceb6f6700e4460c12c91752ac18e16841777
+  url: https://pypi.io/packages/source/c/cutesvtrio/cutesvtrio-1.1.1.tar.gz
+test:
+  commands:
+  - cuteSVTrio --help

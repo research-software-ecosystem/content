@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/aquaskyline/SOAPdenovo2
+  doc_url: https://github.com/aquaskyline/SOAPdenovo2/blob/r242/README.md
+  home: https://github.com/aquaskyline/SOAPdenovo2
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: SOAPdenovo is a novel short-read assembly method that can build a de novo
+    draft assembly for the human-sized genomes.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:soapdenovo2
+  - doi:10.1093/bioinformatics/btv033
+package:
+  name: soapdenovo2
+  version: '2.42'
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - make
+  host:
+  - zlib
+  - samtools 0.1.19
+  - pthread-stubs
+  run:
+  - samtools 0.1.19
+  - pthread-stubs
+source:
+  patches:
+  - makefile.patch
+  - 0002-master.patch
+  - soapdenovo2-sources.patch
+  - sparsePregraph.main.cpp.patch
+  sha256: a0043ceb41bc17a1c3fd2b8abe4f9029a60ad3edceb2b15af3c2cfabd36aa11b
+  url: https://github.com/aquaskyline/SOAPdenovo2/archive/refs/tags/r242.tar.gz
+test:
+  commands:
+  - SOAPdenovo-127mer --help
+  - SOAPdenovo-63mer --help

@@ -1,38 +1,52 @@
 about:
-  home: http://www.chem.unc.edu/rna/software.html
+  dev_url: https://github.com/Weeks-UNC/shapemapper2
+  doc_url: https://github.com/Weeks-UNC/shapemapper2/blob/v2.3.2/README.md
+  home: https://github.com/Weeks-UNC/shapemapper2
   license: GPL
-  license_file: COPYING
+  license_family: GPL
+  license_file: LICENSE.txt
   summary: ShapeMapper converts raw sequencing files into mutational profiles, creates
     SHAPE reactivity plots, and provides extensive diagnostic information useful for
     experiment analysis and troubleshooting.
 build:
-  number: 2
-  skip: true
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1261/rna.061945.117
 package:
   name: shapemapper
-  version: '1.2'
+  version: 2.3.2
 requirements:
   build:
-  - make
   - null
+  - null
+  - null
+  - cmake <4
+  - ninja
+  - pkg-config
+  - python >=3
   host:
-  - python
-  - bowtie2
-  - matplotlib
-  - httplib2
-  - rnastructure
+  - boost-cpp
+  - zlib
   run:
-  - python
+  - python >=3
+  - boost-cpp
   - bowtie2
-  - matplotlib
+  - matplotlib-base
   - httplib2
   - rnastructure
 source:
-  md5: 640bf3f898a37ff8c5ca06f5e68c40d3
-  url: http://www.chem.unc.edu/rna/software-files/ShapeMapper_v1.2.tar.gz
+  patches:
+  - 0001-boost185.patch
+  sha256: 896675d744d774b8dda55acb01459bfc588f2988667488eaff4c6be2b43e17fc
+  url: https://github.com/Weeks-UNC/shapemapper2/archive/refs/tags/v2.3.2.tar.gz
 test:
   commands:
-  - type ShapeMapper.py
-  - type trimPhred
-  - type parseAlignment
-  - type countMutations
+  - shapemapper_mutation_counter --help
+  - shapemapper_mutation_parser --help
+  - shapemapper_read_trimmer --help

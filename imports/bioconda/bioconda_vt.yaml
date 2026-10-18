@@ -5,7 +5,7 @@ about:
   license_family: MIT
   summary: A tool set for manipulating and generating VCF files.
 build:
-  number: 13
+  number: 14
   run_exports:
   - null
 extra:
@@ -20,6 +20,7 @@ requirements:
   - make
   - null
   - null
+  - null
   - autoconf
   - automake
   - libtool
@@ -27,7 +28,8 @@ requirements:
   - gnuconfig
   host:
   - bzip2
-  - curl
+  - libcurl
+  - openssl
   - xz
   - zlib
   - libdeflate
@@ -38,3 +40,4 @@ source:
 test:
   commands:
   - test -x ${PREFIX}/bin/vt
+  - vt 2>&1 | grep "Help page"

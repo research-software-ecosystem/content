@@ -4,28 +4,30 @@ about:
     identification, and read merging. The package contains wrapper functions that
     allow for genome indexing and alignment to those indexes. The package also allows
     for the creation of .bam files via Rsamtools.
-  home: https://bioconductor.org/packages/3.22/bioc/html/Rbowtie2.html
-  license: GPL (>= 3)
+  doc_url: https://bioconductor.org/packages/3.23/bioc/html/Rbowtie2.html
+  home: https://bioconductor.org/packages/3.23/bioc/html/Rbowtie2.html
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: /lib/R/share/licenses/GPL-3
-  summary: An R Wrapper for Bowtie2 and AdapterRemoval
+  summary: An R Wrapper for Bowtie2 and AdapterRemoval.
 build:
   number: 0
   rpaths:
   - lib/R/lib/
   - lib/
-  run_exports: ''
+  run_exports: null
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:rbowtie2
-  skip-lints:
-  - version_constraints_missing_whitespace
 package:
   name: bioconductor-rbowtie2
-  version: 2.16.0
+  version: 2.18.0
 requirements:
   build:
+  - null
   - null
   - null
   - make
@@ -42,12 +44,14 @@ requirements:
   - r-base
   - r-magrittr
 source:
-  md5: 5a4fbdc3a5e7f654b15996f57fc2b4af
+  patches:
+  - 0001-Makefile.patch
+  sha256: cffe3d8151c038a7246940797c1b6115e6909f3365e5d1c8750928bfb30a2fa7
   url:
-  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Rbowtie2_2.16.0.tar.gz
-  - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/Rbowtie2/Rbowtie2_2.16.0.tar.gz
-  - https://bioarchive.galaxyproject.org/Rbowtie2_2.16.0.tar.gz
-  - https://depot.galaxyproject.org/software/bioconductor-rbowtie2/bioconductor-rbowtie2_2.16.0_src_all.tar.gz
+  - https://bioconductor.org/packages/3.23/bioc/src/contrib/Rbowtie2_2.18.0.tar.gz
+  - https://bioconductor.org/packages/3.23/bioc/src/contrib/Archive/Rbowtie2/Rbowtie2_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rbowtie2_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbowtie2/bioconductor-rbowtie2_2.18.0_src_all.tar.gz
 test:
   commands:
   - $R -e "library('Rbowtie2')"
