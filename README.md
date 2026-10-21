@@ -61,9 +61,9 @@ Aggregate metadata dumps are generated weekly on Sunday at 08:00 UTC from `maste
 Download the latest archive and its SHA-256 checksum with ORAS:
 
 ```sh
-oras pull ghcr.io/research-software-ecosystem/content-datasets:latest
-sha256sum -c content-datasets.tar.gz.sha256
-tar -xzf content-datasets.tar.gz
+oras pull ghcr.io/research-software-ecosystem/metadata-commons-datasets:latest
+sha256sum -c metadata-commons-datasets.tar.gz.sha256
+tar -xzf metadata-commons-datasets.tar.gz
 sha256sum -c datasets/SHA256SUMS
 ```
 

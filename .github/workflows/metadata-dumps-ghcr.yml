@@ -55,16 +55,16 @@ jobs:
 
       - name: Prepare datasets archive and checksums
         run: |
-          artifact_dir="${{ runner.temp }}/content-datasets"
+          artifact_dir="${{ runner.temp }}/metadata-commons-datasets"
           mkdir -p "$artifact_dir"
           cd "${{ github.workspace }}/content"
           find datasets -maxdepth 1 -type f ! -name SHA256SUMS -print0 \
             | sort -z \
             | xargs -0 -r sha256sum > datasets/SHA256SUMS
-          tar -czf "$artifact_dir/content-datasets.tar.gz" datasets
+          tar -czf "$artifact_dir/metadata-commons-datasets.tar.gz" datasets
           cd "$artifact_dir"
-          sha256sum content-datasets.tar.gz \
-            > content-datasets.tar.gz.sha256
+          sha256sum metadata-commons-datasets.tar.gz \
+            > metadata-commons-datasets.tar.gz.sha256
 
       - name: Set up ORAS
         uses: oras-project/setup-oras@v2
@@ -77,22 +77,22 @@ jobs:
 
       - name: Publish weekly datasets package and update latest
         env:
-          PACKAGE: ghcr.io/research-software-ecosystem/content-datasets
+          PACKAGE: ghcr.io/research-software-ecosystem/metadata-commons-datasets
         run: |
           week_tag="$(date -u +'%G-%V')"
           created="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          cd "${{ runner.temp }}/content-datasets"
+          cd "${{ runner.temp }}/metadata-commons-datasets"
 
           oras push \
-            --artifact-type application/vnd.research-software-ecosystem.content.datasets.v1 \
-            --annotation "org.opencontainers.image.title=RSEc Content datasets" \
-            --annotation "org.opencontainers.image.description=Weekly aggregate metadata dumps generated from content" \
+            --artifact-type application/vnd.research-software-ecosystem.metadata-commons.datasets.v1 \
+            --annotation "org.opencontainers.image.title=Metadata commons datasets" \
+            --annotation "org.opencontainers.image.description=Weekly aggregate metadata dumps from the RSEc metadata commons" \
             --annotation "org.opencontainers.image.created=$created" \
             --annotation "org.opencontainers.image.source=https://github.com/${{ github.repository }}" \
             --annotation "org.opencontainers.image.revision=$SOURCE_REVISION" \
             "$PACKAGE:$week_tag" \
-            content-datasets.tar.gz:application/gzip \
-            content-datasets.tar.gz.sha256:text/plain
+            metadata-commons-datasets.tar.gz:application/gzip \
+            metadata-commons-datasets.tar.gz.sha256:text/plain
 
           oras copy "$PACKAGE:$week_tag" "$PACKAGE:latest"
 
