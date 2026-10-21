@@ -4,7 +4,7 @@ This repository aggregates metadata about research software for exchange between
 
 Metadata are stored in source-specific representations rather than a single repository-wide schema. The Git history records changes to the aggregated records; metadata retain the provenance and terms of their respective sources.
 
-_Note_: the repository is still currently named `content` for historical reasons which are to be addresed in the future. Unless for technical purposes, this repository is the `metadata-commons` of the RSEc.
+_Note_: the repository is still currently named `content` for historical reasons which are to be addressed in the future. Unless for technical purposes, this repository is the `metadata-commons` of the RSEc.
 
 ## Repository structure
 
