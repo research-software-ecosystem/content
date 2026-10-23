@@ -1,3 +1,12 @@
+<p align="center">
+  <a href="https://research-software-ecosystem.org">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/research-software-ecosystem/graphics/main/RSEc_Logo_FULL_mono.png">
+      <img src="https://raw.githubusercontent.com/research-software-ecosystem/graphics/main/RSEc_Logo_FULL_RGB.png" alt="ELIXIR Research Software Ecosystem (RSEc)" width="300">
+    </picture>
+  </a>
+</p>
+
 # Research Software Ecosystem (RSEc) metadata commons
 
 This repository aggregates metadata about research software for exchange between registries, package repositories, container services, workflow platforms and benchmarking services. Records from different sources are grouped by software entry, with selected transformations into shared formats such as Bioschemas.
