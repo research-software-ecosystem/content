@@ -1,0 +1,66 @@
+about:
+  description: 'ROBUST mines disease modules from a protein-protein interaction network
+    and a
+
+    set of seed genes. It enumerates diverse prize-collecting Steiner trees that
+
+    connect the seeds and reports the nodes that recur across trees, written as
+
+    GraphML, CSV or an edge list.
+
+    '
+  dev_url: https://github.com/bionetslab/robust
+  home: https://github.com/bionetslab/robust
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Robust disease module mining via enumeration of diverse prize-collecting
+    Steiner trees
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab876
+  notes: 'Installs the command "robust-pcst", which takes seven positional arguments:
+
+    network edge list, seed file, output file, initial fraction (alpha),
+
+    reduction factor (beta), number of Steiner trees and threshold (theta), e.g.
+
+    robust-pcst network.txt seeds.txt out.graphml 0.25 0.9 30 0.1
+
+    A newer, study-bias-aware version of ROBUST is packaged as robust-bias-aware.'
+  recipe-maintainers:
+  - JohannesKersting
+package:
+  name: robust-pcst
+  version: 1.0.0
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools >=77
+  run:
+  - python >=
+  - numpy
+  - pandas
+  - networkx
+  - matplotlib-base
+  - pcst-fast
+source:
+  sha256: 6da47fda5bcf8140e665d63fa9218a62a1f0997ba61203eeeceef782d8dc5e29
+  url: https://github.com/bionetslab/robust/archive/refs/tags/v1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  - command -v robust-pcst
+  imports:
+  - robust_pcst
+  - robust_pcst.cli
+  requires:
+  - python
+  - pip

@@ -2,10 +2,10 @@ about:
   dev_url: https://rseqc.sourceforge.net
   doc_url: https://rseqc.sourceforge.net/#usage-information
   home: https://rseqc.sourceforge.net
-  license: GPL-2.0-or-later
-  license_family: GPL2
+  license: GPL-3.0-or-later
+  license_family: GPL3
   license_file: LICENSE
-  summary: QC package for RNA-seq data.
+  summary: Quality control package for RNA-seq data.
 build:
   noarch: python
   number: 0
@@ -18,27 +18,27 @@ extra:
   - doi:10.1093/bioinformatics/bts356
 package:
   name: rseqc
-  version: 5.0.5
+  version: 5.0.6
 requirements:
   host:
+  - python >=3.9
   - pip
-  - python >=3.5
-  - setuptools <81
+  - setuptools <82
   run:
+  - python >=3.9
+  - setuptools <82
+  - r-base
   - bx-python
   - numpy
   - pybigwig
   - pysam
-  - python >=3.5
   - logomaker
-  - r-base
 source:
-  sha256: c3f757e5f384004678c10cbc830355e841f5d5db850fc5b131c2e872afe9d516
-  url: https://pypi.org/packages/source/r/rseqc/rseqc-5.0.5.tar.gz
+  sha256: b361a45ef4a9bb90e926d19abc7801b840897ccad4627f41750972d8cf18cad7
+  url: https://pypi.org/packages/source/r/rseqc/rseqc-5.0.6.tar.gz
 test:
   commands:
   - Rscript --help
   imports:
   - qcmodule
   - qcmodule.SAM
-  - psyco_full

@@ -1,0 +1,68 @@
+about:
+  dev_url: https://github.com/kharchenkolab/Baysor
+  doc_url: https://kharchenkolab.github.io/Baysor/dev/
+  home: https://github.com/kharchenkolab/Baysor
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Bayesian segmentation of imaging-based spatial transcriptomics data (C++
+    implementation)
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: baysor-cpp
+  version: 0.8.3
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cmake >=3.24
+  - ninja
+  host:
+  - eigen
+  - spdlog
+  - fmt
+  - cgal-cpp
+  - libboost-headers
+  - gmp
+  - mpfr
+  - libarrow
+  - libparquet
+  - hdf5
+  - nlohmann_json
+  - libtiff
+  - llvm-openmp
+  run:
+  - llvm-openmp
+source:
+- sha256: 7ea3997388898cabd095df39faa8cb30551516a3c37eb010f99f29056aff0b9f
+  url: https://github.com/kharchenkolab/Baysor/archive/refs/tags/cpp-0.8.3.tar.gz
+- folder: third_party/aarand
+  sha256: 106309082292356d5ae546c24bbd2295416aaff378755ec1f1645207fce10323
+  url: https://github.com/LTLA/aarand/archive/refs/tags/v1.0.2.tar.gz
+- folder: third_party/kmeans
+  sha256: 3895fe98e16c7c20a2f0a4d07706bdb3f4e8546e55c1e83e912ad8e1c8e24067
+  url: https://github.com/LTLA/CppKmeans/archive/refs/tags/v3.1.1.tar.gz
+- folder: third_party/subpar
+  sha256: dc9c450be5176a05ce697c6feadbdd84d1fe530e414d1e0d2837e89174ecc1de
+  url: https://github.com/LTLA/subpar/archive/refs/tags/v0.3.1.tar.gz
+- folder: third_party/knncolle
+  sha256: 25a87e56d037fec491b55a39807f58c6466766200d34b6e3f54c5c2b771dddca
+  url: https://github.com/knncolle/knncolle/archive/refs/tags/v2.3.0.tar.gz
+- folder: third_party/irlba
+  sha256: c5daed5bdaf5991f324e1081f7c180c2fecc0da5bf0f60af057547d28fa56127
+  url: https://github.com/LTLA/CppIrlba/archive/refs/tags/v2.0.2.tar.gz
+- folder: third_party/umappp
+  sha256: e846b6bac2bb4e5020d76e739b792a492ed63fc27cc45bd27be238053675b5f6
+  url: https://github.com/LTLA/umappp/archive/refs/tags/v2.0.1.tar.gz
+test:
+  commands:
+  - baysor --help
+  - baysor run --help

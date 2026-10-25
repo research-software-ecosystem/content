@@ -5,7 +5,7 @@ about:
   license: GPL-3.0-only
   license_family: GPL3
   license_file: LICENSE
-  summary: Accurate inference of orthogroups, orthologues, gene trees and rooted species
+  summary: Accurate inference of orthogroups, orthologs, gene trees and rooted species
     tree made easy!
 build:
   noarch: generic
@@ -14,7 +14,7 @@ build:
   - null
 package:
   name: orthofinder
-  version: 3.1.5
+  version: '3.2'
 requirements:
   run:
   - python >=3.11,<=3.14
@@ -24,8 +24,9 @@ requirements:
   - biopython
   - ete4
   - rich
+  - pandas >=2.0
   - blast
-  - diamond <2.2|>=2.1.7
+  - diamond >=2.1.7
   - mcl
   - fastme
   - mafft
@@ -39,8 +40,8 @@ requirements:
   - aster
   - famsa
 source:
-  sha256: d292dc7ca650de6940996c980917f183366c873fe834cef81515f159e2a41bc5
-  url: https://github.com/OrthoFinder/OrthoFinder/releases/download/v3.1.5/orthofinder-3.1.5.tar.gz
+  sha256: 554cc15b4cca86e496c680cccf8697f3b0953ff25403e2ff0d585bd015071adb
+  url: https://github.com/OrthoFinder/OrthoFinder/releases/download/v3.2/orthofinder-3.2.tar.gz
 test:
   commands:
   - orthofinder -h
@@ -52,6 +53,9 @@ test:
   - create_hog_fastas -h
   - ncbi_primary_transcript -h
   - orthogroup_gene_count -h
+  - split_ortholog_files -h
+  - species_tree_alignment -h
+  - mcl_orthogroup_sequences -h
   source_files:
   - ExampleData
   - ExampleData/*

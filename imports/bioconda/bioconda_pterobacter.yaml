@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/mbhall88/pterobacter
+  doc_url: https://mbhall88.github.io/pterobacter/
+  home: https://github.com/mbhall88/pterobacter
+  license: GPL-3.0-or-later
+  license_file:
+  - LICENSE
+  - LICENSE-GPL-3.0.txt
+  - THIRDPARTY.yml
+  summary: Classify Enterobacter isolate assemblies with ANI, MLST and genomovar matching
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - mbhall88
+package:
+  name: pterobacter
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses =4.2.0
+  - python >=3.11
+  - pyyaml
+  - pkg-config
+  host:
+  - liblzma-devel
+  - libcxx
+source:
+  sha256: 42bfe3f44ab510a18a07ed89aff035589e6d5d6b0f38c6e4674c37096682e9aa
+  url: https://github.com/mbhall88/pterobacter/archive/refs/tags/0.1.1.tar.gz
+test:
+  commands:
+  - ptero --version
+  - pterobacter --version
+  - ptero --help
+  - pterobacter --help
+  - ptero database install --help
+  - test ! -e "$PREFIX/bin/pterobacter-dev"
