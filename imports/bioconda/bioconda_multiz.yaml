@@ -3,17 +3,20 @@ about:
   license: MIT
   summary: DNA multiple sequence aligner from Penn State's Miller lab.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:multiz
   - biotools:tba
   - biotools:roast
 package:
   name: multiz
-  version: '11.3'
+  version: '11.4'
 requirements:
   build:
   - make
@@ -24,10 +27,10 @@ requirements:
   - coreutils
   - grep
 source:
-  sha256: eaec5c62ca08944b5d2e10245e8785889a8ac3dbd377c71f7150e6a6924ba25d
-  url: https://github.com/multiz/multiz/archive/refs/tags/v11.3.tar.gz
+  sha256: a0e11b8ce8757359aee643f115f21ce0c0e477b1695f91454cc5b33608be945f
+  url: https://github.com/multiz/multiz/archive/refs/tags/v11.4.tar.gz
 test:
   commands:
-  - multiz 2>&1 | grep -qF 'multiz.v11.3'
-  - tba 2>&1 | grep -qF 'tba.v13'
+  - multiz 2>&1 | grep -qF 'multiz.v11.4'
+  - tba 2>&1 | grep -qF 'tba.v14'
   - roast 2>&1 | grep -qF 'roast.v4'

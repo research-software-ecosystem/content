@@ -7,7 +7,7 @@ about:
   summary: Rapid annotation of prokaryotic genomes
 build:
   noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -40,6 +40,8 @@ requirements:
   - prodigal >=2.6
   - tbl2asn-forever >=25.7
 source:
+  patches:
+  - prodigal-mode.patch
   sha256: e626d53313401d7c5fac48b41f161c2cf233c8ce6aec844d5ca419e644665df1
   url: https://github.com/tseemann/prokka/archive/v1.15.6.tar.gz
 test:
@@ -47,6 +49,6 @@ test:
   - prokka --listdb
   - prokka --version
   - blastp -help
-  - barrnap --help 2>&1 | grep Options
+  - barrnap --help
   - prodigal -h
   - tbl2asn --help

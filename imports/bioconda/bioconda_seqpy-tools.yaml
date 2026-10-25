@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/museomics/seqpy_tools
+  home: https://github.com/museomics/seqpy_tools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Python utilities for FASTQ/FASTA handling, read pairing and sample ID management
+    in sequencing pipelines
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - rvosa
+  - Kamouyiaraki
+package:
+  name: seqpy-tools
+  version: 0.1.2
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - setuptools
+  run:
+  - python >=3.12
+  - numpy
+  - pandas
+  - scipy
+  - pgzip
+  - openpyxl
+source:
+  sha256: 634854d610970df5910dbc4ce218f43faaeb6ba1dc605100cae15c123ad5529c
+  url: https://pypi.org/packages/source/s/seqpy-tools/seqpy_tools-0.1.2.tar.gz
+test:
+  commands:
+  - python -c "from seqpy_tools import find_paired_ids, setup_logging"
+  imports:
+  - seqpy_tools

@@ -15,22 +15,30 @@ about:
   license_file: LICENSE
   summary: 'Aeon-Core: Shared bioinformatics infrastructure for Aeon-family packages'
 build:
-  noarch: python
   number: 0
   run_exports:
   - null
-  script: -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv
 extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
   recipe-maintainers:
   - d-callan
 package:
   name: hyphaeon-core
-  version: 0.2.0
+  version: 0.4.0
 requirements:
+  build:
+  - null
+  - null
+  - null
+  - make
+  - cmake
+  - pkg-config
   host:
-  - python >=3.8
+  - python
   - pip
-  - setuptools
+  - maturin >=1.5,<2
   run:
   - python >=3.8
   - pytorch >=2.0.0
@@ -42,8 +50,9 @@ requirements:
   - huggingface_hub >=0.20.0
   - safetensors >=0.4.0
 source:
-  sha256: fec5110fe6e5c5e6b31f03c9e8c0fa0090210eb65458bcab2f6999b5f0afd3ba
-  url: https://pypi.org/packages/source/h/hyphaeon-core/hyphaeon_core-0.2.0.tar.gz
+  sha256: 4379750ea6135000d3b031c1b6c3c5218b5af26bf9622c2b213bb933c6b74374
+  url: https://github.com/veg/HyphAeon/archive/refs/tags/hyphaeon-core-v0.4.0.tar.gz
 test:
   imports:
   - aeon_core
+  - aeon_core._native

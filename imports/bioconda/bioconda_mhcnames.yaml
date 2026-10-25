@@ -1,28 +1,37 @@
 about:
+  description: 'DEPRECATED: mhcnames is no longer maintained. Please use mhcgnomes
+    instead, which provides
+
+    a superset of mhcnames functionality with support for more MHC nomenclature systems.
+
+    '
   home: https://github.com/hammerlab/mhcnames
-  license: Apache License Version 2.0
+  license: Apache-2.0
   summary: Python library for MHC nomenclature parsing
 build:
   noarch: python
-  number: 1
+  number: 0
+  run_exports:
+  - null
   script: ' -m pip install . --no-deps --ignore-installed -vvv '
 extra:
   recipe-maintainers:
   - lkuchenb
 package:
   name: mhcnames
-  version: 0.4.8
+  version: 0.4.9
 requirements:
   host:
   - pip
-  - python
+  - python >=3.11
   - six >=1.9.0
+  - setuptools >=64
   run:
-  - python
+  - python >=3.11
   - six >=1.9.0
 source:
-  sha256: 0a18de129eaa4bf8ce802e5e2d856806639ab17b392688ea13dc20ec6d3cc8a2
-  url: https://pypi.io/packages/source/m/mhcnames/mhcnames-0.4.8.tar.gz
+  sha256: 70194241c083e4f49c298df961fb02a3a58d721fa26c18aa19d7091fe63a55d1
+  url: https://pypi.io/packages/source/m/mhcnames/mhcnames-0.4.9.tar.gz
 test:
   imports:
   - mhcnames
