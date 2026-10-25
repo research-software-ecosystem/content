@@ -1,0 +1,32 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-10-20",
+    "creators": [
+        "Patrick Schrempf",
+        "Craig Myles for creation of raw2features"
+    ],
+    "description": "# raw2features Snakemake workflow\r\n\r\nRuns [raw2features](https://github.com/CraigMyles/raw2features) over a cohort of OME-Zarr\r\nwhole-slide images. Per slide: `raw2features embed` \u2192 `<id>.embeddings.zarr` \u2192 `validate-store`,\r\nwith an optional SpatialData export. Slides are discovered as `*.ome.zarr` in `slide_dir`.\r\n\r\nThis workflow (v1.0.0) pins raw2features 0.2.1. raw2features is MIT-licensed and copyright\r\nCraig Myles; see [CITATION.cff](CITATION.cff) for how to cite both.\r\n\r\n## Quick start\r\n\r\n```bash\r\npip install snakemake \"raw2features[zarr,image,torch,models]==0.2.1\"\r\n\r\n# smoke test on a generated synthetic slide (CPU)\r\nmkdir -p test_data && raw2features sample test_data/sample.ome.zarr\r\nsnakemake --cores 2 --configfile config/test.yaml\r\n\r\n# your cohort\r\nsnakemake --cores 8 --config slide_dir=/data/slides out_dir=/data/emb qc=grandqc\r\n```\r\n\r\n`raw2features` must be on the `PATH` of the shell Snakemake spawns (activate your venv first), or\r\nset `raw2features_cmd` to its full path. A `command not found` in\r\n`<out_dir>/logs/<slide>.embed.log` means this.\r\n\r\nDefaults are in [config/config.yaml](config/config.yaml). Re-running resumes missing slides. For Slurm use `snakemake-executor-plugin-slurm` (`--executor slurm`).\r\n\r\n## Running with Docker\r\n\r\nSnakemake itself only supports Apptainer/Singularity containers, so to use Docker, make the\r\ncommand a `docker run` of the pinned image (tested):\r\n\r\n```bash\r\nsnakemake --cores 2 --configfile config/test.yaml \\\r\n  --config raw2features_cmd=\"docker run --rm -u $(id -u):$(id -g) -e HOME=$PWD/.cache -v $PWD:$PWD -w $PWD ghcr.io/pschrempf/raw2features:0.2.1 raw2features\"\r\n```\r\n\r\nAdd `-v <dir>:<dir>` for data outside the working directory and `--gpus all` for GPUs.\r\n\r\n## Running with Apptainer/Singularity\r\n\r\n`container` in `config/config.yaml` points at the same image; Snakemake uses it when container\r\nsupport is switched on:\r\n\r\n```bash\r\nsnakemake --cores 8 --software-deployment-method apptainer   # Snakemake >= 8\r\nsnakemake --cores 8 --use-singularity                         # Snakemake 7 (tested)\r\n```\r\n\r\n## Building the image\r\n\r\n[Dockerfile](Dockerfile) installs a pinned raw2features release. Keep the image tag equal to\r\nthat version:\r\n\r\n```bash\r\ndocker build --build-arg R2F_VERSION=0.2.1 -t ghcr.io/pschrempf/raw2features:0.2.1 .\r\ndocker push ghcr.io/pschrempf/raw2features:0.2.1\r\n```\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2355",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2355?version=1",
+    "mapped_tools": [],
+    "name": "raw2features Snakemake workflow",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "ome-zarr",
+        "snakemake",
+        "digital pathology",
+        "foundation models"
+    ],
+    "tools": [],
+    "update_time": "2026-10-20",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}
