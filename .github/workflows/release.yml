@@ -1,0 +1,59 @@
+name: Publish monthly metadata commons release
+
+on:
+  workflow_dispatch:
+  schedule:
+    # The 28th of each month at 18:00 CET (fixed UTC+1).
+    - cron: '0 17 28 * *'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge master into release and publish snapshot
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # Original run date and master SHA remain stable when retrying a run.
+          created=$(gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID" --jq .created_at)
+          tag=$(date -u -d "$created" +'v%Y.%m')
+          month=$(LC_ALL=C date -u -d "$created" +'%B %Y')
+
+          # A failed API request must fail the job, not look like a missing release.
+          releases=$(gh api --paginate "repos/$GH_REPO/releases" --jq '.[].tag_name')
+          if grep -Fxq "$tag" <<< "$releases"; then
+            echo "Release $tag already exists; nothing to publish."
+            exit 0
+          fi
+
+          branches=$(gh api "repos/$GH_REPO/git/matching-refs/heads/release" --jq '.[].ref')
+          if ! grep -Fxq 'refs/heads/release' <<< "$branches"; then
+            gh api --method POST "repos/$GH_REPO/git/refs" \
+              -f ref=refs/heads/release -f sha="$GITHUB_SHA" --silent
+          fi
+          gh api --method POST "repos/$GH_REPO/merges" \
+            -f base=release -f head="$GITHUB_SHA" \
+            -f commit_message="Merge master into release for $tag" --silent
+          sha=$(gh api "repos/$GH_REPO/commits/release" --jq .sha)
+
+          cat > "$RUNNER_TEMP/release-notes.md" <<EOF
+          **$month** snapshot of the Research Software Ecosystem (RSEc) metadata commons, following the monthly merge of master into the stable release branch.
+
+          Download the repository snapshot at [commit $sha](https://github.com/$GH_REPO/commit/$sha) using the source archives below.
+
+          Aggregate datasets are also available from the [GHCR datasets package](https://github.com/orgs/research-software-ecosystem/packages/container/package/metadata-commons-datasets). These are built independently each week; they may differ from the committed datasets in this monthly snapshot. This release does not rebuild datasets.
+
+          Metadata retain the provenance and terms of their respective sources.
+          EOF
+
+          gh release create "$tag" \
+            --target "$sha" \
+            --title "$month" \
+            --notes-file "$RUNNER_TEMP/release-notes.md"
