@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/167555635.svg)](https://doi.org/10.5281/zenodo.23798642)
+<br><br>
 <p align="center">
   <a href="https://research-software-ecosystem.org">
     <picture>
