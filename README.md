@@ -63,6 +63,12 @@ fastqc.debian.yaml  # metadata for the Debian Med fastqc package (pulled by RSEc
 fastqc.bioschemas.jsonld  # metadata for the fastqc package, converted from bio.tools metadata (pulled by RSEc bot)
 ```
 
+## Monthly releases
+
+On a monthl;y basis, the [release workflow](.github/workflows/release.yml) merges `master` into the stable `release` branch and publishes the release. Release tags use calendar versioning, `vYYYY.MM` (for example, `v2026.10`), to distinguish them from weekly GHCR package tags such as `2026-44`.
+
+Run the workflow manually from `master` to publish the current month's release early, or rerun a failed run to retry it. Retries retain the original run's date and source `master` commit; an existing release is left unchanged. Releases archive committed repository contents without rebuilding datasets.
+
 ## Built dataset artifacts
 
 Aggregate metadata dumps are generated weekly on Sunday at 08:00 UTC from `master` and published to GitHub Container Registry. The workflow can also be started manually. Each run starts with an empty datasets directory in its own runner checkout and executes the `*_dump.py` generators in the RSEc utilities repository. It does not commit generated dumps back to this repository. This publisher runs independently of the existing workflows, which continue generating and committing datasets as before.
