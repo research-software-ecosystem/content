@@ -456,9 +456,25 @@ jobs:
               echo "Push $attempt rejected; master moved. Merging it and retrying."
               git fetch origin master
               if ! git merge --no-edit origin/master; then
-                echo "::error::Merging master into the import merge conflicts; resolve it by hand."
-                git merge --abort || true
-                exit 1
+                # Import branches can modify files that master removed while
+                # the imports were running. In that case, keep master's
+                # deletion; leave every other conflict for manual resolution.
+                safe_to_resolve=true
+                saw_conflict=false
+                while IFS= read -r -d '' path; do
+                  saw_conflict=true
+                  if git ls-files -u -- "$path" | awk '$3 == 2 {ours=1} $3 == 3 {theirs=1} END {exit !(ours && !theirs)}'; then
+                    git rm -f -- "$path"
+                  else
+                    safe_to_resolve=false
+                  fi
+                done < <(git diff --name-only --diff-filter=U -z)
+                if [ "$safe_to_resolve" != true ] || [ "$saw_conflict" != true ]; then
+                  echo "::error::Merging master into the import merge has conflicts other than upstream deletions; resolve them by hand."
+                  git merge --abort || true
+                  exit 1
+                fi
+                git commit --no-edit
               fi
               sleep $((attempt * 5))
             done
