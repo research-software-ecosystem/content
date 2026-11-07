@@ -25,12 +25,22 @@
   "description": "Single-file offline HTML application for quality-control review and audit of real-time PCR (qPCR) runs. It reads IXO, EDS/EDT, RDML, ZPCR and PCRD instrument files directly in a web browser, with no installation, server or network connection, and reports stored threshold cycles, amplification curves, melting results and quantity values as recorded in the source file.",
   "documentation": [
     {
+      "note": "Project wiki: command mode and voice commands, and the technical description of the build.",
       "type": [
-        "General"
+        "User manual"
+      ],
+      "url": "https://sourceforge.net/p/zpcrweb/wiki/Home/"
+    },
+    {
+      "note": "Repository README.",
+      "type": [
+        "General",
+        "Installation instructions"
       ],
       "url": "https://github.com/mihaiionitabio-alt/zpcrweb#readme"
     },
     {
+      "note": "Archived release carrying the citation and the declared licences.",
       "type": [
         "Citation instructions"
       ],
@@ -39,15 +49,32 @@
   ],
   "download": [
     {
-      "note": "Source for the single-file build",
-      "type": "Source code",
-      "url": "https://github.com/mihaiionitabio-alt/zpcrweb"
+      "note": "LATEST BUILD. Single-file unified build: selects a modern runtime (Chrome, Edge) or a compatibility runtime (ECMAScript 5) at load time.",
+      "type": "Software package",
+      "url": "https://github.com/mihaiionitabio-alt/zpcrweb/blob/missy-public-offline-2026-10-20/testing/Missy-unified.html",
+      "version": "2026.11.05.unified-modern1"
     },
     {
-      "note": "Archived, versioned release with DOI",
+      "note": "SourceForge file listing. Currently carries Missy-public.html, 28.1 MB, dated 1 November 2026.",
+      "type": "Downloads page",
+      "url": "https://sourceforge.net/projects/zpcrweb/files/"
+    },
+    {
+      "note": "Single-file modern-browser build published on SourceForge, 1 November 2026.",
+      "type": "Software package",
+      "url": "https://sourceforge.net/projects/zpcrweb/files/Missy-public.html/download",
+      "version": "2026.10.31.demolabels1"
+    },
+    {
+      "note": "Archived, citable release with DOI. Fixed and permanent; use this one when citing.",
       "type": "Software package",
       "url": "https://doi.org/10.5281/zenodo.23623413",
       "version": "2026.10.24.demo30lessons1"
+    },
+    {
+      "note": "Repository holding the source and the build inputs for the single-file releases.",
+      "type": "Source code",
+      "url": "https://github.com/mihaiionitabio-alt/zpcrweb"
     }
   ],
   "editPermission": {
@@ -55,6 +82,7 @@
   },
   "function": [
     {
+      "cmd": "lab Laboratory of molecular biology\nanalyst A. Analyst\nrun all\nonly img:curves target=all signal=stored log=yes\nselect img:plate metric=cq target=all\nzip run_review",
       "input": [
         {
           "data": {
@@ -63,7 +91,7 @@
           }
         }
       ],
-      "note": "Reads vendor and interchange real-time PCR files and presents stored cycle threshold values, amplification and melting curves and run metadata for quality-control review.",
+      "note": "Reads vendor and interchange real-time PCR files and presents stored cycle threshold values, amplification and melting curves and run metadata for quality-control review. Commands are typed in the page's Command mode overlay. Figures are addressed as 'img:<name>' with per-figure options (for example target, signal=stored|drn, log=yes|no, metric, colourby, level), or by short graph code. The command shown is one example, not an exhaustive list.",
       "operation": [
         {
           "term": "Visualisation",
@@ -98,6 +126,7 @@
       ]
     },
     {
+      "cmd": "run all\nselect data:cq_values run=all rows=200 pseudo=yes\nselect data:amplification_curves run=all rows=200 pseudo=yes\nselect data:melting_peaks run=all rows=200 pseudo=yes\nzip export_tables",
       "input": [
         {
           "data": {
@@ -106,7 +135,7 @@
           }
         }
       ],
-      "note": "Exports run contents to formats that other tools read, without altering stored values.",
+      "note": "Exports run contents to formats other tools read, without altering stored values. Tables are addressed as 'data:<name>' with options run, rows and pseudo; 'pseudo=yes' replaces sample identifiers with pseudonyms in the exported files. 'zip <name>' writes the archive: figures as SVG with their underlying CSV data, tables as CSV, the selection list and the SOP profile. The command shown is one example, not an exhaustive list.",
       "operation": [
         {
           "term": "Conversion",
@@ -127,13 +156,53 @@
           ]
         }
       ]
+    },
+    {
+      "cmd": "run all\nselect cc:efficiency type=trend x=order\nselect cc:pc_cq type=i x=order\nselect cc:ntc_rate type=p x=order\nselect cc:rep_sd type=i x=order\nzip control_charts",
+      "input": [
+        {
+          "data": {
+            "term": "Gene expression data",
+            "uri": "http://edamontology.org/data_2603"
+          }
+        }
+      ],
+      "note": "Builds statistical process-control charts across runs and assembles a quality-control report carrying laboratory, analyst, profile name and profile checksum. Charts are addressed as 'cc:<name>' with a chart type (i, ewma, cusum, trend, xbars, p, u, c or funnel), an x axis (order, date, hours or cycles) and optional phase1, lambda, L, k, h, specLo, specHi and warnAhead parameters. The command shown is one example, not an exhaustive list.",
+      "operation": [
+        {
+          "term": "Aggregation",
+          "uri": "http://edamontology.org/operation_3436"
+        },
+        {
+          "term": "Data handling",
+          "uri": "http://edamontology.org/operation_2409"
+        },
+        {
+          "term": "Statistical calculation",
+          "uri": "http://edamontology.org/operation_2238"
+        }
+      ],
+      "output": [
+        {
+          "data": {
+            "term": "Report",
+            "uri": "http://edamontology.org/data_2048"
+          },
+          "format": [
+            {
+              "term": "PDF",
+              "uri": "http://edamontology.org/format_3508"
+            }
+          ]
+        }
+      ]
     }
   ],
   "homepage": "https://mihaiionitabio-alt.github.io/zpcrweb/",
   "language": [
     "JavaScript"
   ],
-  "lastUpdate": "2026-11-07T19:36:52.785715Z",
+  "lastUpdate": "2026-11-07T19:48:57.223093Z",
   "license": "GPL-3.0",
   "link": [
     {
@@ -150,11 +219,18 @@
       "url": "https://github.com/mihaiionitabio-alt/zpcrweb/issues"
     },
     {
-      "note": "Mirror listing",
+      "note": "SourceForge project page",
       "type": [
         "Software catalogue"
       ],
       "url": "https://sourceforge.net/projects/zpcrweb/"
+    },
+    {
+      "note": "Project wiki",
+      "type": [
+        "Other"
+      ],
+      "url": "https://sourceforge.net/p/zpcrweb/wiki/Home/"
     }
   ],
   "maturity": "Emerging",
@@ -193,6 +269,8 @@
     }
   ],
   "version": [
+    "2026.11.05.unified-modern1",
+    "2026.10.31.demolabels1",
     "2026.10.24.demo30lessons1"
   ]
 }
