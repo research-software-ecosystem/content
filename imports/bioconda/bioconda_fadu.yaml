@@ -1,0 +1,52 @@
+about:
+  description: 'FADU is a quantification tool designed specifically for prokaryotic
+    RNA-Seq
+
+    analyses, with the purpose of quantifying operonic genes while minimizing the
+
+    pitfalls associated with improperly assigning fragment counts from ambiguous
+
+    transcripts. It generates fractional counts of alignments that map to the
+
+    non-overlapping portions of features in a GFF3 annotation.
+
+    '
+  dev_url: https://github.com/IGS/FADU
+  doc_url: https://igs.github.io/FADU/
+  home: https://igs.github.io/FADU/
+  license: AGPL-3.0-only
+  license_family: AGPL
+  license_file: LICENSE
+  summary: 'Feature Aggregate Depth Utility: quantification of prokaryotic RNA-Seq
+    that accounts for overlapping and operonic genes.'
+build:
+  binary_relocation: false
+  detect_binary_files_with_prefix: false
+  number: 0
+  run_exports:
+  - null
+extra:
+  container:
+    extended-base: true
+  recipe-maintainers:
+  - adkinsrs
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: fadu
+  version: 1.10.1
+requirements:
+  build:
+  - git
+  host:
+  - julia 1.12.*
+  run:
+  - null
+source:
+  sha256: 29f590a0437b9b0f35a59a0574599a4025bc7c6f4368224fcf19eabdc43e66da
+  url: https://github.com/IGS/FADU/archive/refs/tags/v1.10.1.tar.gz
+test:
+  commands:
+  - fadu --help
+  - fadu --version 2>&1 | grep 1.10.1
+  - FADU_CMD=fadu bash "${PREFIX}/share/fadu/test/run_test.sh"

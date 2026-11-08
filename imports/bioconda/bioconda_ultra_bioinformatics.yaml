@@ -1,45 +1,54 @@
 about:
-  dev_url: https://github.com/ksahlin/uLTRA
-  doc_url: https://github.com/ksahlin/uLTRA
-  home: https://github.com/ksahlin/uLTRA
-  license: GNU GPLV3
-  license_family: GPL3
-  license_file: LICENSE
-  summary: Splice aligner of long transcriptomic reads to genome.
+  description: 'uLTRA is a tool for splice alignment of long transcriptomic reads
+    to a genome, guided by a database of exon annotations. It is particularly accurate
+    when aligning to small exons. As of 0.3.0 uLTRA is implemented in Rust; the command
+    line and output files are unchanged.
+
+    '
+  dev_url: https://github.com/ksahlin/ultra
+  doc_url: https://github.com/ksahlin/ultra
+  home: https://github.com/ksahlin/ultra
+  license: GPL-3.0-only
+  license_file:
+  - LICENSE.txt
+  - THIRDPARTY.yml
+  summary: Splice alignment of long transcriptomic reads to a genome, guided by exon
+    annotations
 build:
-  noarch: python
-  number: 1
-  script: ' -m pip install . -vv'
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export LIBCLANG_PATH=$BUILD_PREFIX/lib
+  - cd rust
+  - cargo-bundle-licenses --format yaml --output ../THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
 extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btab540
   recipe-maintainers:
-  - sguizard
+  - ksahlin
 package:
   name: ultra_bioinformatics
-  version: '0.1'
+  version: 0.3.0
 requirements:
-  host:
-  - dill
-  - python-edlib
-  - gffutils
-  - intervaltree
-  - parasail-python
-  - pip
-  - pysam
-  - python
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cmake
+  - make
+  - clangdev
+  - cargo-bundle-licenses
   run:
-  - dill
-  - python-edlib
-  - gffutils
-  - intervaltree
-  - parasail-python
-  - pysam
-  - python
-  - mummer
   - minimap2
-  - namfinder
 source:
-  sha256: c477b526cba52fcaf369efb67f0d0096ea1702d7adc8457746a91ae5f750a0ef
-  url: https://pypi.io/packages/source/u/ultra_bioinformatics/ultra_bioinformatics-0.1.tar.gz
+  sha256: 05a16bc19c6dc86a8c736b100767bd21839e1f2c92debc69aa158ebf4cb3c6f6
+  url: https://github.com/ksahlin/ultra/archive/refs/tags/v0.3.0.tar.gz
 test:
-  imports:
-  - modules
+  commands:
+  - uLTRA --version
+  - uLTRA --help > /dev/null
+  - uLTRA index --help > /dev/null
+  - uLTRA align --help > /dev/null

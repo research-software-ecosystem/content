@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/jiang18/mph
+  doc_url: https://jiang18.github.io/mph/
+  home: https://jiang18.github.io/mph/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Fast REML estimation of genetic covariance components for partitioning
+    heritability
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1093/bioinformatics/btae298
+  recipe-maintainers:
+  - lyh970817
+package:
+  name: mph
+  version: 0.55.1
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - eigen >=3.4.0,<4
+  - libgomp
+  - mkl-devel >=2024,<2025
+source:
+  patches:
+  - patches/makefile-conda.patch
+  - patches/reml-mutable-indices.patch
+  sha256: 4c49ea8d8e08a7e7b132c129650bbafae54e79b8aedd3acf4106b89f1b4a7ad3
+  url: https://github.com/jiang18/mph/archive/refs/tags/v0.55.1.tar.gz
+test:
+  commands:
+  - mph 2>&1 | grep "MINQUE for Partitioning Heritability"
+  - mph 2>&1 | grep "Version 0.55.1"

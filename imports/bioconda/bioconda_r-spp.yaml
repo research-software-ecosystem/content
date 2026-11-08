@@ -1,4 +1,5 @@
 about:
+  dev_url: https://github.com/hms-dbmi/spp
   doc_url: https://CRAN.R-project.org/package=spp
   home: https://CRAN.R-project.org/package=spp
   license: GPL-2.0-only
@@ -7,7 +8,7 @@ about:
   summary: Analysis of ChIP-seq and other functional sequencing data [Kharchenko PV
     (2008) <DOI:10.1038/nbt.1508>].
 build:
-  number: 12
+  number: 13
   rpaths:
   - lib/R/lib/
   - lib/
@@ -27,6 +28,7 @@ requirements:
   build:
   - null
   - null
+  - null
   - autoconf
   - automake
   - libtool
@@ -39,6 +41,7 @@ requirements:
   - bioconductor-rsamtools
   - r-catools
   - zlib
+  - bzip2
   run:
   - r-base
   - r-bh >=1.66
@@ -46,6 +49,8 @@ requirements:
   - bioconductor-rsamtools
   - r-catools
 source:
+  patches:
+  - restore-gc-protection.patch
   sha256: 3c890f3c414183167f9643b556621dcdc14ce6a1b54a04d618c74070fdebfd23
   url:
   - /src/contrib/spp_1.16.0.tar.gz
@@ -53,4 +58,4 @@ source:
 test:
   commands:
   - $R -e "library('spp')"
-  - '"%R%" -e "library(''spp'')"'
+  - $R -e "stopifnot(packageVersion('spp') == '1.16.0')"

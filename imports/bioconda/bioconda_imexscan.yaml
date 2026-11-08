@@ -1,0 +1,40 @@
+about:
+  dev_url: https://github.com/awingzhong/imexscan
+  home: https://github.com/awingzhong/imexscan
+  license: MIT
+  license_file: LICENSE
+  summary: Mining filamentous (Inovirus) prophages and their pHVR regions from bacterial
+    genomes
+build:
+  entry_points:
+  - imexscan = imexscan.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - awingzhong
+package:
+  name: imexscan
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.9
+  - prodigal
+  - hmmer
+source:
+  sha256: 6f52cc7e5f9131d7e8d21fab226a06c011fcacbcb287bdb2406b543b6d77c51b
+  url: https://github.com/awingzhong/imexscan/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - imexscan --version
+  - imexscan run --help
+  - imexscan dif --help
+  imports:
+  - imexscan

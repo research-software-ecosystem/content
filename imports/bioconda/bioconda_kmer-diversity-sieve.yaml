@@ -1,0 +1,41 @@
+about:
+  description: 'Drops partial records, sequencing-error records (Count-Min sketch
+    admission) and
+
+    near-duplicates (MinHash/LSH novelty) in a single streaming pass, so downstream
+    analyses
+
+    only process an informative subset. This package ships the serial build,
+
+    l1_pipeline_serial.
+
+    '
+  dev_url: https://github.com/stevenweaver/kmer-diversity-sieve
+  home: https://github.com/stevenweaver/kmer-diversity-sieve
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Alignment-free, streaming k-mer sieve that reduces large FASTA collections
+    to a diversity-preserving subset.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+package:
+  name: kmer-diversity-sieve
+  version: 0.1.0
+requirements:
+  build:
+  - make
+  - null
+  - null
+source:
+  sha256: dd3a65c9e42cfc1efb9c99b0261515f31dc8f59b68bd1c32805fef2c095afb56
+  url: https://github.com/stevenweaver/kmer-diversity-sieve/archive/70022dac889ce315a938310fe49e93618e79ddc6.tar.gz
+test:
+  commands:
+  - l1_pipeline_serial 2>&1 | grep -q -- "--input required"

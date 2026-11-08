@@ -1,0 +1,51 @@
+about:
+  dev_url: https://github.com/refresh-bio/kmc
+  doc_url: https://github.com/refresh-bio/KMC/blob/v3.2.4/README.md
+  home: https://github.com/refresh-bio/kmc
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: gpl-3.0.txt
+  summary: Python API for reading KMC k-mer databases.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - biotools:kmc
+  - doi:10.1093/bioinformatics/btx304
+  - doi:10.1093/bioinformatics/btv022
+  - doi:10.1186/1471-2105-14-160
+  skip-lints:
+  - uses_vcs_url
+package:
+  name: py-kmc-api
+  version: 3.2.4
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - make
+  - cmake
+  - clangdev
+  - llvmlite
+  host:
+  - python
+  - pybind11
+  - zlib
+  run:
+  - python
+source:
+  git_rev: v3.2.4
+  git_url: https://github.com/refresh-bio/KMC.git
+  patches:
+  - 0001-master.patch
+  - 0002-cmake.patch
+  sha256: unused
+test:
+  imports:
+  - py_kmc_api

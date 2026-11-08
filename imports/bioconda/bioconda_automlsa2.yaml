@@ -1,0 +1,54 @@
+about:
+  description: 'automlsa2 builds multi-locus sequence analysis phylogenies from a
+    set of
+
+    marker gene queries and target genome FASTA files using BLAST+, MAFFT,
+
+    and IQ-TREE.
+
+    '
+  dev_url: https://github.com/davised/automlsa2
+  home: https://github.com/davised/automlsa2
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Automated Multi-Locus Sequence Analysis tool
+build:
+  entry_points:
+  - automlsa2 = automlsa2.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - davised
+package:
+  name: automlsa2
+  version: 0.10.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - biopython >=1.80
+  - numpy >=1.23
+  - packaging >=22.0
+  - pandas >=1.5
+  - psutil >=5.9
+  - rich >=12.0
+  - blast >=2.12.0
+  - mafft >=7.487
+  - iqtree >=2.1.1
+source:
+  sha256: eb9920d04a78ee6f2b151496a4b0931277428052ad1f9b5101c7a1fa43201a5c
+  url: https://pypi.org/packages/source/a/automlsa2/automlsa2-0.10.0.tar.gz
+test:
+  commands:
+  - automlsa2 --help
+  - automlsa2 --version
+  imports:
+  - automlsa2

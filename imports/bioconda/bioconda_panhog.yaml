@@ -1,0 +1,65 @@
+about:
+  description: 'PanHOG classifies and annotates Hierarchical Orthologous Groups (HOGs)
+    in
+
+    pangenomic datasets into core / shell / private compartments, then re-weights
+
+    and validates the classification with the species tree, per-HOG gene trees,
+
+    codon-based dN/dS selection, and functional annotation, producing
+
+    publication-ready figures from an OrthoFinder N0.tsv plus per-accession FASTA.
+
+    '
+  dev_url: https://github.com/yykaya/PanHOG
+  home: https://github.com/yykaya/PanHOG
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Phylogeny-aware pangenome classification toolkit
+build:
+  entry_points:
+  - panhog = PanHOG:main
+  - pangenehog = PangeneHOG:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - yykaya
+package:
+  name: panhog
+  version: 0.4.1
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - setuptools >=61
+  run:
+  - python >=3.8
+  - numpy
+  - pandas
+  - matplotlib-base
+  - seaborn
+  - biopython >=1.80
+  - pyyaml
+  - scipy
+  - blast
+  - mafft
+  - muscle
+  - pal2nal
+  - paml
+  - raxml-ng
+source:
+  sha256: 37dac8e6fc41e0b85fa713f0e1aa641ac181d61dce7e0e4638badf5288d93f33
+  url: https://github.com/yykaya/PanHOG/archive/refs/tags/v0.4.1.tar.gz
+test:
+  commands:
+  - panhog --help
+  - pangenehog --help
+  imports:
+  - panhog_dnds
+  - panhog_genetrees
+  - panhog_phylo

@@ -1,0 +1,50 @@
+about:
+  description: A computational oncology framework solving steady-state reaction-diffusion
+    transport in perivascular cords (Bessel K0) and avascular nests (Bessel I0), post-cessation
+    exponential regrowth kinetics, and clinical survival models for Osimertinib in
+    NSCLC.
+  dev_url: https://github.com/Lukecele/spatial-oncology-master
+  home: https://lukecele.github.io/spatial-oncology-master/
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Biophysical reaction-diffusion transport solver and evolutionary sanctuary
+    dynamics in EGFR-mutant lung adenocarcinoma (Osimertinib).
+build:
+  entry_points:
+  - spatial-sanctuary = spatial_sanctuary.cli:main
+  - osimertinib-sanctuary = spatial_sanctuary.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-build-isolation --no-deps --no-cache-dir -vvv'
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.23623653
+  recipe-maintainers:
+  - Lukecele
+package:
+  name: spatial-sanctuary
+  version: 2.2.2
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=61.0
+  - pip
+  run:
+  - python >=3.9
+  - numpy >=1.22.0
+  - scipy >=1.9.0
+  - pandas >=1.5.0
+  - lifelines >=0.27.0
+  - matplotlib-base >=3.6.0
+source:
+  sha256: 8e2b896ff5717284056d2abdaa32a11b9c1da748a5358b90f5627a394e5560b1
+  url: https://github.com/Lukecele/spatial-oncology-master/archive/refs/tags/v2.2.2.tar.gz
+test:
+  commands:
+  - spatial-sanctuary --help
+  - osimertinib-sanctuary --help
+  imports:
+  - spatial_sanctuary

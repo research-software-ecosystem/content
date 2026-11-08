@@ -5,15 +5,18 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Efficient and Accurate Chromosome-Scale Haplotype Reconstruction.
+  summary: Haplotype-aware assembly and T2T-level scaffolding for diploid genomes.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
   skip: true
+extra:
+  recipe-maintainers:
+  - Yichen-HNU
 package:
   name: hapfold
-  version: 0.2.0
+  version: 1.2.0
 requirements:
   build:
   - make
@@ -22,11 +25,11 @@ requirements:
   - null
   host:
   - zlib
-  run:
-  - zlib
 source:
-  sha256: 898f81ca452fa2954bed369b1dfa763b522ba721ef998bc71cd695b760827004
-  url: https://github.com/LuoGroup2023/HapFold/archive/refs/tags/v0.2.0.tar.gz
+  patches:
+  - fix-conda-flags.patch
+  sha256: 1447de36ccc75f1b089f707702fba26c16a65bc8a4995dafcaa79b1982d12810
+  url: https://github.com/LuoGroup2023/HapFold/archive/refs/tags/v1.2.0.tar.gz
 test:
   commands:
   - HapFold 2>&1 | grep 'Usage'

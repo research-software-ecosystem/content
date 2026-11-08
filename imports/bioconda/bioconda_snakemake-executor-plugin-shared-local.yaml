@@ -1,0 +1,36 @@
+about:
+  dev_url: https://github.com/yangmqglobe/snakemake-executor-plugin-shared-local
+  doc_url: https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/shared-local.html
+  home: https://github.com/yangmqglobe/snakemake-executor-plugin-shared-local
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A Snakemake executor plugin that coordinates multiple local Snakemake instances
+    sharing one machine.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - yangmqglobe
+package:
+  name: snakemake-executor-plugin-shared-local
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.11,<4.0
+  - hatchling
+  - pip
+  run:
+  - python >=3.11.0,<4.0.0
+  - snakemake-interface-common >=1.22.0,<2.0.0
+  - snakemake-interface-executor-plugins >=9.3.9,<10.0.0
+source:
+  sha256: 1ef1bb8b48023ef06d1457ad3a822f1783cfd9556993caac7bd3a310358f834a
+  url: https://pypi.org/packages/source/s/snakemake-executor-plugin-shared-local/snakemake_executor_plugin_shared_local-0.1.4.tar.gz
+test:
+  imports:
+  - snakemake_executor_plugin_shared_local

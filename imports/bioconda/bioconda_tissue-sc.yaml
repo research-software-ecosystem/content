@@ -8,7 +8,7 @@ about:
   summary: Uncertainty-calibrated prediction of single-cell spatial transcriptomics.
 build:
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
@@ -25,13 +25,20 @@ requirements:
   - anndata
   - matplotlib-base
   - numpy
-  - pandas
+  - pandas <3
   - scanpy
   - scikit-image
   - scikit-learn
   - scipy
   - squidpy >=1.2.3
 source:
+  patches:
+  - 0001-fix-anndata-dtype.patch
+  - 0002-forward-spatial-key.patch
+  - 0003-sanitize-spatial-neighbor-params.patch
+  - 0004-avoid-inplace-varname-mutation.patch
+  - 0005-fix-harmonypy-2x-compat.patch
+  - 0006-fix-wpca-sklearn-scipy-compat.patch
   sha256: 07195fdd1c502f05e7c56d46e9d421fbab94119a74166c8be5a9c9ec2d71c556
   url: https://pypi.org/packages/source/t/tissue-sc/tissue_sc-1.0.1.tar.gz
 test:

@@ -1,0 +1,48 @@
+about:
+  description: 'ldsc-rs is a compiled Rust reimplementation of Bulik-Sullivan et al.''s
+
+    LD Score Regression (LDSC): SNP heritability (h2), genetic correlation
+
+    (rg), LD score computation (l2), summary-statistics munging and
+
+    annotation building. The installed binary is named `ldsc` and also
+
+    accepts the original Python LDSC flag syntax (--h2, --rg, --l2).
+
+    '
+  dev_url: https://github.com/sharifhsn/ldsc
+  doc_url: https://github.com/sharifhsn/ldsc/blob/v0.5.0/README.md
+  home: https://github.com/sharifhsn/ldsc
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Fast Rust reimplementation of LD Score Regression (LDSC)
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - lyh970817
+package:
+  name: ldsc-rs
+  version: 0.5.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 83110eabcb83f509ac6c0af7744a663c9f279a696c287fa57f9d7f9eb3822376
+  url: https://github.com/sharifhsn/ldsc/archive/refs/tags/v0.5.0.tar.gz
+test:
+  commands:
+  - ldsc --version | grep -F "0.5.0"
+  - ldsc --help | grep -F "LD Score Regression"
+  - ldsc h2 --help | grep -F -- "--h2"

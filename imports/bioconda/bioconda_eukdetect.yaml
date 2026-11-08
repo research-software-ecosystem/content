@@ -1,7 +1,17 @@
 about:
   description: 'EukDetect detects and quantifies eukaryotic microbes in shotgun metagenomic
 
-    sequencing data using a curated database of conserved marker genes.
+    sequencing data using a curated database of conserved marker genes. Reads are
+
+    aligned to the marker database, filtered on alignment length, mapping quality,
+
+    sequence complexity and duplication, and assigned to species. Reads that are
+
+    better explained by a close relative are reassigned using a per-read sequence
+
+    identity test, and abundance is reported as reads per kilobase of marker
+
+    sequence.
 
     '
   dev_url: https://github.com/allind/EukDetect
@@ -18,34 +28,40 @@ build:
   - null
   script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
 extra:
+  identifiers:
+  - doi:10.1038/s41467-021-26210-1
   recipe-maintainers:
   - allind
 package:
   name: eukdetect
-  version: 2.1.0
+  version: 2.1.1
 requirements:
   host:
-  - python >=3.8
+  - python >=3.8,<3.14
   - pip
   - setuptools >=61.0
   run:
-  - python >=3.8
+  - python >=3.8,<3.14
   - biopython
+  - ete3
+  - six
+  - pysam
   - pyyaml
   - snakemake-minimal >=8
   - bowtie2 >=2.5
   - samtools >=1.15
-  - ete3
-  - pysam
-  - pandas
-  - numpy
 source:
-  sha256: 382e504ec8419cf59e8ebeaf3048941bbcb6766566f399c356ee767f1e5b6d0b
-  url: https://github.com/allind/EukDetect/archive/refs/tags/v2.1.0.tar.gz
+  sha256: 94c8d882a90452d74956a49dea36933b1a23249508e709c53562282baed381e3
+  url: https://github.com/allind/EukDetect/archive/refs/tags/v2.1.1.tar.gz
 test:
   commands:
+  - eukdetect --version
   - eukdetect --help
   - eukdetect-normalize --help
+  - bowtie2 --version
+  - samtools --version
+  - python -c "from importlib.resources import files; assert (files('eukdetect') /
+    'rules' / 'eukdetect.rules').is_file()"
   imports:
   - eukdetect
   - eukdetect.wrappers.main
@@ -53,3 +69,6 @@ test:
   - eukdetect.util.validate
   - eukdetect.util.execute
   - eukdetect.util.complexity_filter
+  - eukdetect.util.releuk_calc
+  - eukdetect.util.normalize_rpks
+  - eukdetect.util.reassign_eval

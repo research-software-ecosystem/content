@@ -1,0 +1,49 @@
+about:
+  dev_url: https://github.com/sagar87/spatialproteomics/
+  home: https://pypi.org/project/spatialproteomics/
+  license: MIT
+  license_file: LICENSE
+  summary: Spatialproteomics is an interoperable toolbox for analyzing highly multiplexed
+    fluorescence image data
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - MeyerBender
+  - vsuppiyar
+package:
+  name: spatialproteomics
+  version: 0.9.0
+requirements:
+  host:
+  - python >=3.11
+  - hatchling >=1.26
+  - pip
+  run:
+  - python >=3.11
+  - cffi >=1.15.0
+  - xarray >=2025.6.0
+  - scikit-image >=0.25
+  - matplotlib-base >=3.8.0
+  - tqdm >=4.64.0
+  - scikit-learn >=1.4.2
+  - zarr >=3.0.0
+  - numpy >=1.25
+  - opencv >=4.11.0
+  - pandas >=2.2.2
+  - pyyaml >=6.0
+source:
+  sha256: 23ce39e039dfef7fc90b611721bd3a9990938fe56d18c58ccb6252391e4dcc83
+  url: https://pypi.org/packages/source/s/spatialproteomics/spatialproteomics-0.9.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - spatialproteomics
+  requires:
+  - pip
+  - python

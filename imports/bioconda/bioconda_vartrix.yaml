@@ -1,28 +1,39 @@
 about:
+  dev_url: https://github.com/10XGenomics/vartrix
+  doc_url: https://github.com/10XGenomics/vartrix/blob/v1.1.23/README.md
   home: https://github.com/10XGenomics/vartrix
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'VarTrix is a software tool for extracting single cell variant information
-
+  summary: VarTrix is a software tool for extracting single cell variant information
     from 10x Genomics single cell data.
-
-    '
 build:
-  binary_has_prefix_files:
-  - vartrix
-  number: 6
+  number: 0
   run_exports:
   - null
 extra:
-  skip-lints:
-  - should_be_noarch_generic
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
 package:
   name: vartrix
-  version: 1.1.22
+  version: 1.1.23
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - clang <22
+  - clang
+  - libclang
+  - make
+  - pkg-config
+  host:
+  - zlib
 source:
-  sha256: f8a5d2fd8cb6564599ddeb51897705d57524e8b5bbe0369492729376d7ea5ea4
-  url: https://github.com/10XGenomics/vartrix/releases/download/v1.1.22/vartrix_macos
+  sha256: 88f14e2b503f2439ea3d33c478fdf9898e66ba0bbc3165b92158aaaa153e212b
+  url: https://github.com/10XGenomics/vartrix/archive/refs/tags/v1.1.23.tar.gz
 test:
   commands:
   - vartrix -h
