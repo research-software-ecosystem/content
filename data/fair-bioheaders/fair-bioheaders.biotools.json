@@ -1,0 +1,464 @@
+{
+    "accessibility": "Open access",
+    "additionDate": "2026-10-22T02:32:46.868155Z",
+    "biotoolsCURIE": "biotools:fair-bioheaders",
+    "biotoolsID": "fair-bioheaders",
+    "cost": "Free of charge",
+    "credit": [
+        {
+            "email": "molik@fhref.org",
+            "name": "David Molik",
+            "orcidid": "https://orcid.org/0000-0003-3192-6538",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer"
+            ]
+        },
+        {
+            "email": "wright@fhref.org",
+            "name": "Adam Wright",
+            "orcidid": "https://orcid.org/0000-0002-5719-4024",
+            "typeEntity": "Person",
+            "typeRole": [
+                "Developer",
+                "Maintainer",
+                "Primary contact"
+            ]
+        }
+    ],
+    "description": "Toolkit for FAIR-bioHeaders (FHR) metadata on genomic data files. It embeds validated provenance metadata headers with a checksum in FASTA, GFA and GFF3 files (combine), strips and verifies them, validates metadata against the FHR, FHP and FHGFF3 schemas, converts metadata between JSON, YAML, JSON-LD and HTML microdata, and assesses FAIRness. It ships as a Python library and command-line tool (bioheaders), with Galaxy tool wrappers, nf-core-style Nextflow modules and a Nextflow workflow.",
+    "documentation": [
+        {
+            "note": "FAIR-bioHeaders specification.",
+            "type": [
+                "General"
+            ],
+            "url": "https://fhref.org/FAIR-bioHeaders-Specification/"
+        },
+        {
+            "type": [
+                "Citation instructions"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/CITATION.cff"
+        },
+        {
+            "type": [
+                "Code of conduct"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/CODE_OF_CONDUCT.md"
+        },
+        {
+            "type": [
+                "Command-line options",
+                "Installation instructions",
+                "User manual"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools#readme"
+        },
+        {
+            "type": [
+                "Contributions policy"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/CONTRIBUTING.md"
+        },
+        {
+            "type": [
+                "Release notes"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/CHANGELOG.md"
+        }
+    ],
+    "download": [
+        {
+            "note": "Container image ghcr.io/fair-bioheaders/fair-bioheaders:0.8.1 (linux/amd64, linux/arm64).",
+            "type": "Container file",
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/pkgs/container/fair-bioheaders",
+            "version": "0.8.1"
+        },
+        {
+            "note": "pip install fair-bioheaders",
+            "type": "Software package",
+            "url": "https://pypi.org/project/fair-bioheaders/0.8.1/",
+            "version": "0.8.1"
+        },
+        {
+            "type": "Tool wrapper (Galaxy)",
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/tree/main/galaxy/tools/fair_bioheaders"
+        },
+        {
+            "type": "Source code",
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/releases/tag/v0.8.1",
+            "version": "0.8.1"
+        }
+    ],
+    "editPermission": {
+        "type": "private"
+    },
+    "function": [
+        {
+            "cmd": "bioheaders combine metadata.yaml genome.fa -o genome.fhr.fa",
+            "input": [
+                {
+                    "data": {
+                        "term": "Resource metadata",
+                        "uri": "http://edamontology.org/data_2337"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "JSON-LD",
+                            "uri": "http://edamontology.org/format_3749"
+                        },
+                        {
+                            "term": "YAML",
+                            "uri": "http://edamontology.org/format_3750"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "GFA 1",
+                            "uri": "http://edamontology.org/format_3975"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence features",
+                        "uri": "http://edamontology.org/data_1255"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ],
+            "note": "combine: embed FHR (FASTA, GFA) or FHGFF3 (GFF3) metadata as a header with a computed checksum; plain or gzip/BGZF input.",
+            "operation": [
+                {
+                    "term": "Annotation",
+                    "uri": "http://edamontology.org/operation_0226"
+                },
+                {
+                    "term": "Data formatting",
+                    "uri": "http://edamontology.org/operation_0335"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "GFA 1",
+                            "uri": "http://edamontology.org/format_3975"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence features",
+                        "uri": "http://edamontology.org/data_1255"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "bioheaders convert genome.fhr.yaml genome.fhr.json",
+            "input": [
+                {
+                    "data": {
+                        "term": "Resource metadata",
+                        "uri": "http://edamontology.org/data_2337"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "JSON-LD",
+                            "uri": "http://edamontology.org/format_3749"
+                        },
+                        {
+                            "term": "YAML",
+                            "uri": "http://edamontology.org/format_3750"
+                        }
+                    ]
+                }
+            ],
+            "note": "convert: convert FAIR-bioHeaders metadata between JSON, YAML, JSON-LD and HTML microdata, or extract it from a headed FASTA, GFA or GFF3 file.",
+            "operation": [
+                {
+                    "term": "Conversion",
+                    "uri": "http://edamontology.org/operation_3434"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Resource metadata",
+                        "uri": "http://edamontology.org/data_2337"
+                    },
+                    "format": [
+                        {
+                            "term": "HTML",
+                            "uri": "http://edamontology.org/format_2331"
+                        },
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "JSON-LD",
+                            "uri": "http://edamontology.org/format_3749"
+                        },
+                        {
+                            "term": "YAML",
+                            "uri": "http://edamontology.org/format_3750"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "cmd": "bioheaders verify genome.fhr.fa",
+            "input": [
+                {
+                    "data": {
+                        "term": "Resource metadata",
+                        "uri": "http://edamontology.org/data_2337"
+                    },
+                    "format": [
+                        {
+                            "term": "JSON",
+                            "uri": "http://edamontology.org/format_3464"
+                        },
+                        {
+                            "term": "JSON-LD",
+                            "uri": "http://edamontology.org/format_3749"
+                        },
+                        {
+                            "term": "YAML",
+                            "uri": "http://edamontology.org/format_3750"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence",
+                        "uri": "http://edamontology.org/data_2044"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence assembly",
+                        "uri": "http://edamontology.org/data_0925"
+                    },
+                    "format": [
+                        {
+                            "term": "GFA 1",
+                            "uri": "http://edamontology.org/format_3975"
+                        },
+                        {
+                            "term": "GFA 2",
+                            "uri": "http://edamontology.org/format_3976"
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "term": "Sequence features",
+                        "uri": "http://edamontology.org/data_1255"
+                    },
+                    "format": [
+                        {
+                            "term": "GFF3",
+                            "uri": "http://edamontology.org/format_1975"
+                        }
+                    ]
+                }
+            ],
+            "note": "verify and validate: check a header or metadata file against the FHR, FHP or FHGFF3 schema and check the header checksum against the file content.",
+            "operation": [
+                {
+                    "term": "Format validation",
+                    "uri": "http://edamontology.org/operation_0336"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Report",
+                        "uri": "http://edamontology.org/data_2048"
+                    }
+                }
+            ]
+        }
+    ],
+    "homepage": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools",
+    "language": [
+        "Python"
+    ],
+    "lastUpdate": "2026-10-22T04:05:31.461496Z",
+    "license": "MPL-2.0",
+    "link": [
+        {
+            "note": "Dockstore entry for the fair-bioheaders Nextflow workflow (combine, then verify)",
+            "type": [
+                "Other"
+            ],
+            "url": "https://dockstore.org/workflows/github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/fair-bioheaders"
+        },
+        {
+            "note": "Galaxy tool wrappers (combine, verify, strip, convert).",
+            "type": [
+                "Other"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/tree/main/galaxy/tools/fair_bioheaders"
+        },
+        {
+            "note": "PyPI package fair-bioheaders.",
+            "type": [
+                "Software catalogue"
+            ],
+            "url": "https://pypi.org/project/fair-bioheaders/"
+        },
+        {
+            "note": "nf-core-style Nextflow modules and a Nextflow workflow.",
+            "type": [
+                "Other"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/tree/main/nextflow"
+        },
+        {
+            "type": [
+                "Issue tracker"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/issues"
+        },
+        {
+            "type": [
+                "Repository"
+            ],
+            "url": "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools"
+        }
+    ],
+    "maturity": "Emerging",
+    "name": "FAIR-bioHeaders Tools",
+    "operatingSystem": [
+        "Linux",
+        "Mac",
+        "Windows"
+    ],
+    "otherID": [
+        {
+            "type": "doi",
+            "value": "doi:10.5281/zenodo.6762547",
+            "version": "all versions"
+        }
+    ],
+    "owner": "adam7",
+    "publication": [
+        {
+            "doi": "10.5281/zenodo.6762547",
+            "note": "Zenodo concept DOI of the toolkit (all versions).",
+            "type": [
+                "Other"
+            ]
+        },
+        {
+            "doi": "10.1093/bib/bbae122",
+            "type": [
+                "Primary"
+            ]
+        }
+    ],
+    "toolType": [
+        "Command-line tool",
+        "Library",
+        "Workflow"
+    ],
+    "topic": [
+        {
+            "term": "Data curation and archival",
+            "uri": "http://edamontology.org/topic_0219"
+        },
+        {
+            "term": "Data management",
+            "uri": "http://edamontology.org/topic_3071"
+        },
+        {
+            "term": "Sequence analysis",
+            "uri": "http://edamontology.org/topic_0080"
+        }
+    ],
+    "version": [
+        "0.8.1"
+    ]
+}

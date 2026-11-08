@@ -19,8 +19,43 @@
             ]
         }
     ],
-    "description": "Molecular Biology Tools is a free browser-based collection of molecular biology utilities for routine sequence analysis, primer design, Sanger sequencing primer planning, cloning setup, and wet-lab calculations. The site includes tools for PCR primer design, Sanger primer design and primer walking, primer binding checks, restriction site analysis, reverse complement generation, ORF and protein translation, codon optimization, ligation calculations, molarity calculations, dilution calculations, and multi-solute solution recipe preparation. The tools run in the browser and are intended for quick experimental planning, without requiring logins or uploading sequences to the server.",
+    "description": "Mol Biology Tools is a free browser-based suite for sequence analysis, primer design, plasmid editing and wet-lab calculations. Its sequence tools cover PCR and Sanger primer design, primer walking plans, binding checks, screening primers against a selected DNA reference, restriction site analysis, reverse complements, ORF finding, DNA-to-protein translation and codon optimisation. Assembly PCR, Gibson assembly and site-directed mutagenesis designers support cloning design, while Plasmid Editor lets users inspect and edit supplied DNA and annotations. Calculators cover ligation, molarity, dilution, buffer preparation and multi-solute solution recipes. The tools process input sequences locally in the browser, without requiring an account or uploading those sequences to a server.",
     "documentation": [
+        {
+            "note": "Assembly PCR Primer Designer guide, supported inputs, outputs and limitations.",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://molbiologytools.com/assembly_primer_builder_help"
+        },
+        {
+            "note": "Gibson Assembly Primer Designer guide, supported inputs, outputs and limitations.",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://molbiologytools.com/gibson_primer_designer_help"
+        },
+        {
+            "note": "Plasmid Editor guide, supported inputs, outputs and limitations.",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://molbiologytools.com/plasmid_editor_help"
+        },
+        {
+            "note": "Primer Scan guide, supported inputs, outputs and limitations.",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://molbiologytools.com/primer_scan_help"
+        },
+        {
+            "note": "Site-Directed Mutagenesis Primer Designer guide, supported inputs, outputs and limitations.",
+            "type": [
+                "User manual"
+            ],
+            "url": "https://molbiologytools.com/mutagenesis_primer_designer_help"
+        },
         {
             "type": [
                 "Quick start guide"
@@ -33,26 +68,158 @@
     },
     "function": [
         {
+            "input": [
+                {
+                    "data": {
+                        "term": "PCR primers",
+                        "uri": "http://edamontology.org/data_1240"
+                    }
+                },
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Primer Scan screens supplied primer pairs against a selected assembled DNA reference and reports candidate matches and products. Primer Binding Checker maps supplied primers on a particular template. Predictions depend on the supplied reference and settings; they do not establish PCR success.",
             "operation": [
                 {
-                    "term": "Coding region prediction",
-                    "uri": "http://edamontology.org/operation_0436"
+                    "term": "Sequence analysis",
+                    "uri": "http://edamontology.org/operation_2403"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "Sequence report",
+                        "uri": "http://edamontology.org/data_2955"
+                    }
                 }
             ]
         },
         {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        }
+                    ]
+                }
+            ],
+            "note": "Codon Optimizer edits a coding DNA sequence using selected codon preferences while preserving the translated protein. It does not predict a genetic code or guarantee expression performance.",
             "operation": [
                 {
-                    "term": "Genetic code prediction",
-                    "uri": "http://edamontology.org/operation_0489"
+                    "term": "Sequence editing",
+                    "uri": "http://edamontology.org/operation_0231"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    }
                 }
             ]
         },
         {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GenBank format",
+                            "uri": "http://edamontology.org/format_1936"
+                        }
+                    ]
+                }
+            ],
+            "note": "PCR primer design includes the PCR, Assembly PCR, Gibson Assembly and Site-Directed Mutagenesis designers. Supplied templates or fragment sequences determine the proposed primers and predicted construct; designs require template-specific review and experimental validation.",
             "operation": [
                 {
                     "term": "PCR primer design",
                     "uri": "http://edamontology.org/operation_0308"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "PCR primers",
+                        "uri": "http://edamontology.org/data_1240"
+                    }
+                }
+            ]
+        },
+        {
+            "input": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GenBank format",
+                            "uri": "http://edamontology.org/format_1936"
+                        }
+                    ]
+                }
+            ],
+            "note": "Plasmid Editor supports manual editing of supplied DNA and annotations, linked map/sequence views and sequence or map export. It does not automatically annotate missing features.",
+            "operation": [
+                {
+                    "term": "Sequence editing",
+                    "uri": "http://edamontology.org/operation_0231"
+                }
+            ],
+            "output": [
+                {
+                    "data": {
+                        "term": "DNA sequence",
+                        "uri": "http://edamontology.org/data_3494"
+                    },
+                    "format": [
+                        {
+                            "term": "FASTA",
+                            "uri": "http://edamontology.org/format_1929"
+                        },
+                        {
+                            "term": "GenBank format",
+                            "uri": "http://edamontology.org/format_1936"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "operation": [
+                {
+                    "term": "Coding region prediction",
+                    "uri": "http://edamontology.org/operation_0436"
                 }
             ]
         },
@@ -93,7 +260,7 @@
     "language": [
         "JavaScript"
     ],
-    "lastUpdate": "2026-07-19T20:27:40.768542Z",
+    "lastUpdate": "2026-11-04T18:07:58.510314Z",
     "license": "Proprietary",
     "link": [
         {
@@ -116,6 +283,27 @@
                 "Service"
             ],
             "url": "https://molbiologytools.com/ligation_calculator"
+        },
+        {
+            "note": "Design PCR primers and terminal overlaps for NEBuilder HiFi, GeneArt, In-Fusion or overlap PCR from ordered DNA fragments. Review the predicted construct and export primers and sequence results.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://molbiologytools.com/assembly_primer_builder"
+        },
+        {
+            "note": "Design primers for single or multiple nucleotide substitutions using supported overlap PCR, circular assembly or inverse PCR workflows. Review edited bases and the predicted final sequence; insertions and deletions are outside the advertised scope.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://molbiologytools.com/mutagenesis_primer_designer"
+        },
+        {
+            "note": "Design primers with terminal overlaps for Gibson assembly from a vector and ordered DNA fragments. Review overlaps, junctions and the predicted construct, then export primers and sequence results.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://molbiologytools.com/gibson_primer_designer"
         },
         {
             "note": "Free online ORF finder and DNA to protein translator for open reading frames, coding-region checks, amino acid translation, and expression planning.",
@@ -146,9 +334,15 @@
             "url": "https://molbiologytools.com/reverse_complement"
         },
         {
+            "note": "Inspect and edit supplied DNA and annotations with linked plasmid-map, sequence and feature views. Save local projects or export sequence files and maps; missing features are not annotated automatically.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://molbiologytools.com/plasmid_editor"
+        },
+        {
             "note": "Landing page with all tools listed.",
             "type": [
-                "Repository",
                 "Software catalogue"
             ],
             "url": "https://molbiologytools.com/"
@@ -173,6 +367,13 @@
                 "Service"
             ],
             "url": "https://molbiologytools.com/restriction_site_analyzer"
+        },
+        {
+            "note": "Screen named primer pairs against a selected genome or custom DNA reference. Review predicted binding sites, candidate products and available gene context within the selected reference and settings; this is not a database-wide Primer-BLAST search.",
+            "type": [
+                "Service"
+            ],
+            "url": "https://molbiologytools.com/primer_scan"
         },
         {
             "note": "Searchable FAQ covering primer design, Sanger sequencing, restriction sites, sequence checks, molarity, dilution, ligation, and connected tool workflows.",
@@ -200,7 +401,8 @@
     ],
     "owner": "rohit1",
     "toolType": [
-        "Web service"
+        "Suite",
+        "Web application"
     ],
     "topic": [
         {
