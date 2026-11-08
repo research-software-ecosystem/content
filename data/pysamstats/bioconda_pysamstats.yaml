@@ -6,11 +6,14 @@ about:
     '
   home: https://github.com/alimanfoo/pysamstats
   license: MIT
+  license_file: LICENSE
   summary: Calculate read mapping stats from SAM/BAM/CRAM
 build:
-  number: 16
+  number: 1
   run_exports:
   - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
@@ -19,29 +22,25 @@ extra:
   - biotools:pysamstats
 package:
   name: pysamstats
-  version: 1.1.2
+  version: 1.2.0
 requirements:
   build:
   - null
   - null
   host:
   - python
-  - cython
-  - pysam >=0.15
-  - setuptools
-  - zlib
+  - pip
+  - setuptools >=77
+  - cython >=3.1
+  - pysam >=0.24.1,<0.25
   run:
   - python
   - null
-  - zlib
-  - numpy
+  - numpy >=2.0
   - pytables
 source:
-  md5: 050294fe9fe99aae3b07ea28f6cbe449
-  patches:
-  - fix_numpy25.patch
-  - fix_const_ptr.patch
-  url: https://github.com/alimanfoo/pysamstats/archive/v1.1.2.tar.gz
+  sha256: 2913f0c18b35feb89196aaa50227290574fd4a8679d5e99e72eeadece91a8bcb
+  url: https://github.com/alimanfoo/pysamstats/archive/refs/tags/v1.2.0.tar.gz
 test:
   commands:
   - pysamstats --help

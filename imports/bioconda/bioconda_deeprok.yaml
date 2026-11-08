@@ -1,0 +1,54 @@
+about:
+  description: 'Predicts protein-coding genes in bacterial and archaeal genomes. A
+    CNN+BiLSTM
+
+    trained on 666 GTDB family representatives scores every base; a segmental ORF
+
+    HMM decodes complete genes; a start-site ranker self-trained on the input genome
+
+    refines translation starts. Writes GFF3, protein and CDS FASTA.
+
+    '
+  home: https://github.com/susanxu3/deeprok
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Neural prokaryotic gene finder (CNN+BiLSTM + segmental ORF HMM)
+build:
+  entry_points:
+  - deeprok = deeprok.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - susanxu3
+package:
+  name: deeprok
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.10,<3.14
+  - pip
+  - setuptools >=77
+  - wheel
+  run:
+  - python >=3.10,<3.14
+  - numpy >=1.24,<3
+  - pytorch >=2.1,<3
+source:
+  sha256: 4ac7a9ef3e66a682452792aeaf59487ba23605206f84c532c1205000122fdb1f
+  url: https://github.com/susanxu3/deeprok/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - deeprok --version
+  - deeprok --help
+  - python -c "import random;random.seed(0);open('t.fna','w').write('>t\n'+''.join(random.choice('ACGT')
+    for _ in range(30000))+'\n')"
+  - deeprok -q -p meta -i t.fna -o t.gff3 -a t.faa
+  - test -s t.gff3
+  imports:
+  - deeprok
+  - deeprok._core.hmm_duration_decode

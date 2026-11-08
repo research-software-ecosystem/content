@@ -1,0 +1,46 @@
+about:
+  description: 'CLOVERS is an ab initio protein-coding gene finder for prokaryotic
+
+    genomes. It combines Z-curve features, GC-specific heuristic MLP models,
+
+    a genome-specific RBF-SVM, and TriTISA+ start-site revision to annotate
+
+    complete or draft single genomes as well as metagenomic assemblies.
+
+    '
+  dev_url: https://github.com/zetong-zhang/clovers
+  doc_url: https://github.com/zetong-zhang/clovers/blob/main/README.md
+  home: https://github.com/zetong-zhang/clovers
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Protein-coding gene prediction for single and metagenomic prokaryotic sequences
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - zetong-zhang
+package:
+  name: clovers
+  version: 1.2.2
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - zlib
+  - llvm-openmp
+  - libgomp
+  run:
+  - zlib
+  - llvm-openmp
+  - libgomp
+source:
+  sha256: f32ceabdb1633d2594f5263c0dc20325642e097d0261a1aae758a3c4e122043c
+  url: https://github.com/zetong-zhang/clovers/archive/refs/tags/v1.2.2.tar.gz
+test:
+  commands:
+  - clovers -v
+  - clovers -h > /dev/null 2>&1

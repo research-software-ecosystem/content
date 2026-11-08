@@ -5,26 +5,29 @@ about:
   summary: table2asn is a command-line program that creates sequence records for submission
     to GenBank - replaces tbl2asn.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
+  skip: true
 extra:
+  additional-platforms:
+  - osx-arm64
+  notes: The Linux binary requires glibc >= 2.28 at runtime.
   skip-lints:
   - should_be_noarch_generic
   - should_not_be_noarch_source
 package:
   name: table2asn
-  version: 1.28.1179
+  version: 1.29.324
 requirements:
   host:
-  - libidn11
-  - zlib
-  - bzip2
+  - libsqlite
 source:
-- sha256: ccb439c328f40ef82dae12f84a5ad4f0ccd442b7e8dbef83bcbebe81efb85781
-  url: https://ftp.ncbi.nlm.nih.gov/asn1-converters/versions/2024-10-23/by_program/table2asn/mac.table2asn.gz
-- sha256: 7cdb95ccd7e025a54ad093f00c7d63f95ad2a4b0b433287657cb6a45e5125be7
-  url: https://ftp.ncbi.nlm.nih.gov/asn1-converters/versions/2024-10-23/by_program/table2asn/linux64.table2asn.gz
+- sha256: 348b9d5f1b05065f4e5e61b6c2350e5ff044de2d6dc14765be6ac02c00e59341
+  url: https://ftp.ncbi.nlm.nih.gov/asn1-converters/versions/2025-09-16/by_program/table2asn/mac.table2asn.gz
+- sha256: 785bed9880856b208ed84d9765ca094b7c7d12d2225781c2a1854b650d3984bf
+  url: https://ftp.ncbi.nlm.nih.gov/asn1-converters/versions/2025-09-16/by_program/table2asn/linux64.table2asn.gz
 test:
   commands:
+  - test -x "${PREFIX}/bin/table2asn"
   - table2asn -help

@@ -1,41 +1,19 @@
 about:
-  description: 'TesserACT assembles bacterial isolates from paired-end Illumina reads.
-    It builds a de
+  description: 'TesserACT assembles bacterial genomes from paired-end Illumina reads
+    with one command,
 
-    Bruijn graph over a ladder of k-mer sizes, simplifies it, resolves repeats with
+    `tesseract -1 R1.fq.gz -2 R2.fq.gz -o OUTDIR`. It checks the reads before assembling,
 
-    paired-end information, closes gaps and polishes the result, in C++17 with no
+    builds de Bruijn graphs over a ladder of k-mer sizes, resolves repeats with read
+    pairs,
 
-    dependencies beyond a compiler, zlib and pthreads.
+    writes verified circular replicons, and checks every output, with a plain-language
+    summary.
 
+    Optional organism models (`tesseract models download`, then `--organism NAME`)
+    lay the
 
-    Where a repeat is longer than a sequencing fragment there is no paired evidence
-    to
-
-    settle it, and TesserACT stops rather than guessing. Supplying a genus model built
-    from
-
-    closed genomes of the same organism lets it settle those junctions from independent
-
-    evidence instead. Measured on 666 Klebsiella pneumoniae isolates that each have
-    a closed
-
-    reference genome, with leave-cluster-out models so no test genome is in its own
-    panel:
-
-    higher genome fraction and fewer mismatches per 100 kb than SPAdes, longer NGA50,
-    at the
-
-    cost of slightly more redundant sequence and slightly more misassemblies.
-
-
-    With a model carrying a plasmid panel it also labels every contig chromosomal,
-    plasmid
-
-    or unknown, groups the contigs of one plasmid, and marks contigs whose two ends
-    join as
-
-    complete replicons. Pre-built Klebsiella models are attached to the GitHub releases.
+    chromosome out from the conserved gene order of closed genomes of the same species.
 
     '
   dev_url: https://github.com/iowa69/TesserACT
@@ -44,8 +22,8 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: De novo short-read assembler for bacterial isolates, with optional genus
-    models.
+  summary: De novo assembler for bacterial isolates from paired-end Illumina reads,
+    with optional organism models.
 build:
   number: 0
   run_exports:
@@ -77,5 +55,6 @@ source:
   url: https://github.com/iowa69/TesserACT/archive/refs/tags/v1.6.2.tar.gz
 test:
   commands:
-  - tesseract-asm --version
-  - tesseract-asm --help
+  - tesseract --version
+  - tesseract --help
+  - tesseract models --help

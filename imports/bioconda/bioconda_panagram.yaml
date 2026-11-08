@@ -1,0 +1,66 @@
+about:
+  dev_url: https://github.com/kjenike/panagram
+  doc_url: https://github.com/kjenike/panagram/blob/main/README.md
+  home: https://github.com/kjenike/panagram
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Alignment-free pan-genome browser.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+package:
+  name: panagram
+  version: 1.1.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - setuptools
+  run:
+  - python >=3.11
+  - kmc >=3.2.4
+  - py-kmc-api >=3.2.4
+  - mash >=2.3
+  - htslib
+  - samtools
+  - numpy
+  - simple-parsing
+  - plotly
+  - dash
+  - pysam
+  - pandas
+  - biopython
+  - scipy
+  - pyyaml
+  - toml
+  - py-bgzip
+  - matplotlib-base
+  - pillow
+  - seaborn
+  - umap-learn
+  - snakemake-minimal >=9
+  - scikit-learn
+  - python-kaleido
+  - reportlab
+source:
+  patches:
+  - 0001-system-py-kmc-api.patch
+  sha256: 0cc6d34d50ed2a90294887f935b44cf124f3c14fdfe8a497ece326ee307e3204
+  url: https://github.com/kjenike/panagram/archive/refs/tags/v1.1.0.tar.gz
+test:
+  commands:
+  - panagram --help
+  - bgzip --version
+  - samtools --version
+  - python -c "import panagram.index as i; g = i.Genome.__new__(i.Genome); g._load_kmc([]);
+    assert g.kmc.__name__ == 'py_kmc_api'"
+  - python -c "import os, panagram.index as i; os.execv(os.path.join(i.EXTRA_DIR,
+    'kmc'), ['kmc'])" 2>&1 | grep -q 'K-Mer Counter'
+  imports:
+  - panagram
+  - panagram.index
+  requires:
+  - python 3.11

@@ -1,0 +1,70 @@
+about:
+  description: 'Reconstructs in-frame coding haplotypes across many SRA runs from
+    the Logan assemblies.
+
+    The kmindex route harvests candidate accessions from a kmindex query, stratifies
+    them by
+
+    score and walks each accession''s unitig graph with logan-walker. The LexicMap
+    route tiles
+
+    LexicMap hits against Logan contigs into a codon-checked cohort. Both routes can
+    thin
+
+    near-duplicates with kmer-diversity-sieve and end in a reference-guided codon
+    alignment
+
+    (MAFFT) and a FastTree phylogeny.
+
+    '
+  dev_url: https://github.com/nekrut/disassembler
+  home: https://github.com/nekrut/disassembler
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - NOTICE
+  summary: Reconstruct coding haplotypes of a target gene from planetary sequence
+    indexes (Logan, kmindex, LexicMap).
+build:
+  entry_points:
+  - disassembler = disassembler.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - as042
+package:
+  name: disassembler
+  version: 0.1.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools >=68
+  run:
+  - python >=3.11
+  - biopython
+  - requests
+  - zstandard
+  - numpy
+  - pandas
+  - logan-walker >=0.1.0,<0.2
+  - kmer-diversity-sieve >=0.1.0,<0.2
+  - mafft
+  - fasttree
+source:
+  sha256: 8be464163a939c1a01e9d0399e72af63c0b583397945596b6d6b1c332d61c3a0
+  url: https://github.com/nekrut/disassembler/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - disassembler --version | grep -q "disassembler 0.1.1"
+  - disassembler --help
+  - disassembler walker --version | grep -q "logan-walker"
+  - l1_pipeline_serial 2>&1 | grep -q -- "--input required"
+  imports:
+  - disassembler
+  - disassembler.cli

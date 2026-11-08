@@ -67,7 +67,7 @@ extra:
   - RubenChM
 package:
   name: biobb_common
-  version: 5.3.1
+  version: 5.3.3
 requirements:
   host:
   - python >=3.10.0
@@ -76,19 +76,24 @@ requirements:
   - requests
   - biopython
   - jsonschema
+  - rocrate
   run:
-  - python >=3.9.0
+  - python >=3.10.0
   - pyyaml
   - requests
   - biopython
   - jsonschema
+  - rocrate
 source:
-  sha256: 377135d2c5322ccc4f7ce3be32e15d44523ec5c1d1d214849d0205ba29b45100
-  url: https://pypi.io/packages/source/b/biobb_common/biobb_common-5.3.1.tar.gz
+  sha256: be23364af0b9cc4684a374d4321abe0ca0ff1b3ef7b2bc9ea330975b114c6708
+  url: https://pypi.io/packages/source/b/biobb_common/biobb_common-5.3.3.tar.gz
 test:
+  commands:
+  - biobb_provenance --help
   imports:
   - biobb_common
   - biobb_common.command_wrapper
   - biobb_common.configuration
   - biobb_common.tools
   - biobb_common.generic
+  - biobb_common.provenance

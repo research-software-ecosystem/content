@@ -1,0 +1,59 @@
+about:
+  dev_url: https://github.com/Teichlab/SpatialDE
+  home: https://github.com/Teichlab/SpatialDE
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  short_description: 'SpatialDE is a method to identify genes which significantly
+    depend on spatial coordinates in non-linear and non-parametric ways.
+
+    The intended applications are spatially resolved RNA-sequencing from e.g. Spatial
+    Transcriptomics, or in situ gene expression measurements from e.g. SeqFISH or
+    MERFISH.
+
+    '
+  summary: Spatial and Temporal DE test
+build:
+  noarch: python
+  number: 1
+  run_exports:
+  - null
+  script: "sed -i \"s/HERE.parent \\/ 'README.rst'/HERE \\/ 'README.rst'/\" setup.py\n\
+    \ -m pip install . -vv --no-deps --no-build-isolation --no-cache-dir\n"
+  script_env:
+  - SETUPTOOLS_SCM_PRETEND_VERSION
+extra:
+  recipe-maintainers:
+  - nilchia
+package:
+  name: spatialde
+  version: 1.1.3
+requirements:
+  host:
+  - python
+  - pip
+  - setuptools
+  run:
+  - python
+  - numpy
+  - scipy >=1.14
+  - pandas >=0.23
+  - tqdm
+  - naivede
+  - click
+source:
+  patches:
+  - 0001-fix-scipy-compat.diff
+  - 0002-fix-scipy-alias-util.diff
+  - 0003-dedup-results.diff
+  - 0004-fix-clip-lower.diff
+  sha256: 7005e63ac7abfdbff1d50bff5a25e53050f1015dbf243627ec2c1303641eee27
+  url: https://files.pythonhosted.org/packages/source/s/spatialDE/SpatialDE-1.1.3.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - SpatialDE
+  requires:
+  - pip
+  - python

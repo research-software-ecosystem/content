@@ -1,0 +1,38 @@
+about:
+  home: https://github.com/cambroise/nem/pynem
+  license: MIT
+  license_file: LICENSE
+  summary: 'Neighborhood EM (NEM): spatial clustering on graphs with a hidden Markov
+    random field'
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - JeanMainguy
+package:
+  name: pynem
+  version: 0.6.1
+requirements:
+  host:
+  - python >=3.9
+  - setuptools >=77.0
+  - pip
+  run:
+  - python >=3.9
+  - numpy >=1.22
+  - scipy >=1.8
+  - networkx >=2.8
+source:
+  sha256: 4d1232a7a33b2890105d880336590bd7f24102c4f55a05fb13234a4d31cd0128
+  url: https://pypi.org/packages/source/p/pynem/pynem-0.6.1.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - pynem
+  requires:
+  - pip

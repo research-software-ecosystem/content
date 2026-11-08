@@ -1,0 +1,49 @@
+about:
+  description: 'annoBTD annotates plastid (chloroplast) genomes from GenBank guide
+    genomes chosen
+
+    for each target by k-mer similarity and filtered for annotation consistency, then
+
+    settles gene boundaries by the lineage''s conventions mined from every complete
+
+    plastome in GenBank. The reference database (1.5 GB) is downloaded separately
+    with
+
+    annobtd-fetch-refdb.
+
+    '
+  dev_url: https://github.com/mrmckain/annoBTD
+  doc_url: https://github.com/mrmckain/annoBTD#readme
+  home: https://github.com/mrmckain/annoBTD
+  license: AGPL-3.0-only
+  license_family: AGPL
+  license_file: LICENSE.txt
+  summary: Plastid genome annotation from GenBank guide genomes, with boundaries settled
+    by lineage conventions
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - mrmckain
+package:
+  name: annobtd
+  version: 2.0.0
+requirements:
+  run:
+  - perl >=5.26
+  - blast >=2.12
+  - aragorn =1.2.41
+  - curl
+  - tar
+  - gzip
+source:
+  sha256: 471fe2a4f3a15633f6a4158dc7be0c2fd54cace29c556b15d5522dda56a29c3c
+  url: https://github.com/mrmckain/annoBTD/archive/refs/tags/v2.0.0.tar.gz
+test:
+  commands:
+  - annobtd 2>&1 | grep -q usage
+  - annobtd-fetch-refdb --help 2>&1 | grep -q -i usage
+  - perl $PREFIX/share/annobtd/test/unit_boundary.pl

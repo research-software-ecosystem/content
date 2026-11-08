@@ -1,0 +1,52 @@
+about:
+  description: 'LDAK estimates SNP heritability, heritability enrichments and genetic
+
+    correlations from individual-level data or summary statistics (SumHer),
+
+    performs mixed-model and gene-based association testing (LDAK-KVIK,
+
+    LDAK-GBAT), and constructs polygenic scores (MegaPRS). This build links
+
+    conda-forge BLAS/LAPACK rather than Intel MKL.
+
+    '
+  dev_url: https://github.com/dougspeed/LDAK
+  doc_url: https://dougspeed.com
+  home: https://dougspeed.com
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENCE.txt
+  summary: Heritability estimation, association testing and polygenic prediction from
+    genome-wide SNP data
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  identifiers:
+  - doi:10.1016/j.ajhg.2012.10.010
+  recipe-maintainers:
+  - lyh970817
+package:
+  name: ldak
+  version: '6.3'
+requirements:
+  build:
+  - null
+  - null
+  host:
+  - libblas
+  - liblapack
+  - libgomp
+  - zlib
+  - zstd
+source:
+  sha256: cc4bf377813051d89ca05a0d2e9d95cbef679abeaf904c7db5c0fc2a816d1737
+  url: https://github.com/dougspeed/LDAK/archive/995e18753a0a9248244478b051edb25664574dd0.tar.gz
+test:
+  commands:
+  - ldak 2>&1 | grep "LDAK - Software for obtaining Linkage Disequilibrium Adjusted
+    Kinships"
+  - ldak 2>&1 | grep "Version 6 "
+  - ldak --help 2>&1 | grep "Here is a list of main arguments"

@@ -1,0 +1,47 @@
+about:
+  description: 'Streams an SRA run''s Logan unitigs, anchors a reference coding sequence
+    with shared k-mers,
+
+    extracts the local de Bruijn subgraph, aligns the reference to it with GraphAligner
+    and
+
+    walks the best path. Reports one primary haplotype per accession plus intra-host
+
+    alternative alleles (FASTA, VCF and a long SNV table). Part of the disassembler
+    suite.
+
+    '
+  dev_url: https://github.com/nekrut/disassembler
+  home: https://github.com/nekrut/disassembler
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - walker/THIRDPARTY.yml
+  summary: Reconstruct coding haplotypes from Logan unitig graphs with GraphAligner.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  recipe-maintainers:
+  - as042
+package:
+  name: logan-walker
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  run:
+  - graphaligner ==1.0.17b
+source:
+  sha256: 8774df0d6e010715958775ea2b89ae0327be2ce34e6ec5e3ea5b72c1762ccf21
+  url: https://github.com/nekrut/disassembler/archive/refs/tags/logan-walker-v0.1.1.tar.gz
+test:
+  commands:
+  - logan-walker --version | grep -q "logan-walker 0.1.1"
+  - GraphAligner --version 2>&1 | grep -q "1.0.17b"
