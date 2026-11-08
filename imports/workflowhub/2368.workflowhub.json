@@ -1,0 +1,34 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-10-30",
+    "creators": [
+        "edushinka Glush"
+    ],
+    "description": "# Sports closing-price studies (open data)\r\n\r\nGame-level data behind the free [Bet Better data studies](https://betbetter.world/studies/): every game's\r\n**no-vig closing probability** next to its **final result**, so anyone can check how well the betting market\r\npriced a season. Each study ships one CSV and the same base-R script reproduces its headline numbers.\r\n\r\n| Study | Games | Headline | Write-up | DOI |\r\n|---|---|---|---|---|\r\n| NFL 2026 home field | 97 | Home teams priced at 54.6%, won 47.4% | [nfl-home-field-2026](https://betbetter.world/studies/nfl-home-field-2026) | [10.5281/zenodo.23774214](https://doi.org/10.5281/zenodo.23774214) |\r\n| NHL 2026-27 home ice | 133 | Home teams priced at 52.2%, won 57.1% | [nhl-home-ice-2026](https://betbetter.world/studies/nhl-home-ice-2026) | [10.5281/zenodo.23774011](https://doi.org/10.5281/zenodo.23774011) |\r\n| College football 2026 favourites | 363 | 80%+ favourites won 110 of 117 | [ncaaf-favourites-2026](https://betbetter.world/studies/ncaaf-favourites-2026) | [10.5281/zenodo.23774342](https://doi.org/10.5281/zenodo.23774342) |\r\n\r\nMore leagues are added as each season's sample grows.\r\n\r\n## Columns\r\n\r\n| Column | Meaning |\r\n|---|---|\r\n| `date_utc` | Game date (UTC) |\r\n| `week` | Week of the season |\r\n| `home_team`, `away_team` | Teams |\r\n| `home_no_vig_close_prob` | Home team's chance implied by closing moneylines, each book's margin removed, averaged across books (3+ books per game) |\r\n| `home_won` | 1 if the home team won, else 0 (ties count as 0) |\r\n| `home_score`, `away_score` | Final score |\r\n| `n_books` | Number of sportsbooks averaged |\r\n\r\n## Reproduce\r\n\r\n```r\r\nRscript reproduce_study.R data/nhl_2026_closing_prices_vs_results.csv\r\n```\r\n\r\nPrints home field priced vs actual with a bootstrap 95% range (4,000 resamples), the Brier score of the\r\nclosing prices, and favourites by price band. Base R only. Bootstrap ranges can differ by a few tenths of a\r\npoint from the write-ups because of the random seed.\r\n\r\n## Method\r\n\r\nClosing moneylines from The Odds API (US and international books); for each book the two prices are turned\r\ninto chances and scaled to add up to 100% (the bookmaker's margin removed), then averaged per game. Final\r\nscores from ESPN. Regular-season games only.\r\n\r\n## Licence and credit\r\n\r\nData: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Code: MIT. Please credit\r\n**Bet Better** with a link to [betbetter.world/studies](https://betbetter.world/studies/). Cite with the DOI\r\nof each dataset or the `CITATION.cff` file.\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2368",
+    "latest_version": "2",
+    "license": "CC-BY-4.0",
+    "link": "https://workflowhub.eu/workflows/2368?version=2",
+    "mapped_tools": [],
+    "name": "Sports closing-price studies: no-vig closing probabilities vs results",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "nfl",
+        "nhl",
+        "calibration",
+        "closing line",
+        "college football",
+        "home advantage",
+        "sports betting markets"
+    ],
+    "tools": [],
+    "update_time": "2026-10-30",
+    "versions": "2",
+    "workflow_class": "Unrecognized workflow type"
+}
