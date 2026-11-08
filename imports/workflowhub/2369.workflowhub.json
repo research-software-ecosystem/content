@@ -1,0 +1,46 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-11-01",
+    "creators": [
+        "Xenia Morera Mart\u00ednez"
+    ],
+    "description": "This workflow performs strain-level metagenomic analysis of shotgun sequencing data, enabling taxonomic profiling, strain identification, and shared strain detection across samples.",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [],
+    "edam_topic": [],
+    "id": "2369",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2369?version=1",
+    "mapped_tools": [
+        "metaphlan"
+    ],
+    "name": "samestr-shared-strain-detection/main",
+    "number_of_steps": 19,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "concatenate the trimmed, host-filtered paired reads and orphaned reads of each sample for profiling\ncat1",
+        "kneaddata",
+        "map_param_value",
+        "metaphlan",
+        "motus_profiler",
+        "pick_value",
+        "remove empty filtered snv profiles (clades with insufficient coverage or no snvs) before statistics and comparison\n__filter_empty_datasets__",
+        "remove the sample name lists of clades whose filtered snv profiles are empty\n__filter_empty_datasets__",
+        "samestr_compare",
+        "samestr_convert",
+        "samestr_filter",
+        "samestr_merge",
+        "samestr_stats",
+        "samestr_summarize",
+        "samtools_view",
+        "turn the per-sample samestr convert collections into one flat list of snv profiles. the inner identifiers (<clade>.<sample>) are kept, so they stay unique and sample names may contain underscores.\n__apply_rules__",
+        "unzip collection\n__unzip_collection__"
+    ],
+    "update_time": "2026-11-06",
+    "versions": "1",
+    "workflow_class": "Galaxy"
+}

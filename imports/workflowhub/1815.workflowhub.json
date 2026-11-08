@@ -1,6 +1,6 @@
 {
     "content_blobs": [],
-    "create_time": "2026-01-06",
+    "create_time": "2026-11-02",
     "creators": [
         "Samuel Chaffron",
         "Audrey Bihouee",
@@ -9,7 +9,7 @@
         "Guillaume Fertin",
         "Hugo Lefeuvre"
     ],
-    "description": "MAGNETO is an automated snakemake workflow dedicated to MAG (Metagenome-Assembled Genomes) reconstruction from metagenomic data. \r\n\r\nIt includes a fully-automated coassembly step informed by optimal clustering of metagenomic distances, and implements complementary genome binning strategies, for improving MAG recovery.\r\n\r\n# Key Features\r\n\r\n - **Quality Control (QC)**: Automatically assesses the quality and the contamination of input reads, ensuring that low-quality data are filtered out to improve downstream analyses.\r\n\r\n - **Assembly**: MAGNETO uses high-performance assembler to construct contigs from metagenomic reads.\r\n\r\n - **Gene Collection**: Extracts and compiles gene sequences from contigs, providing a comprehensive gene catalog directly after assembly.\r\n\r\n - **Binning**: Groups contigs into probable genomes using composition signatures and abundance profiles.\r\n\r\n - **Genomes collection**: Provides taxonomic and functional annotation of reconstructed MAGs.\r\n\r\n - **Metatranscriptomic mapping**: Mapping of transcriptomic reads on genes collection and/or MAGs obtained with previous analysis.\r\n\r\n# Documentation\r\n\r\n**Full description in the [wiki pages](https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/wikis/home)**\r\n\r\n# Citing the pipeline \r\nChurcheward B, Millet M, Bihou\u00e9e A, Fertin G, Chaffron S.<br>\r\nMAGNETO: An Automated Workflow for Genome-Resolved Metagenomics.<br>\r\nmSystems. 2022 Jun 15:e0043222. doi: [10.1128/msystems.00432-22](https://doi.org/10.1128/msystems.00432-22)\r\n",
+    "description": "MAGNETO is an automated snakemake workflow dedicated to MAG (Metagenome-Assembled Genomes) reconstruction from **short**, **hybrid** and/or **long** metagenomic reads. \r\n\r\nIt includes a fully-automated assembly step informed by optimal clustering of metagenomic distances, and implements complementary genome binning strategies, for improving MAG recovery.\r\n\r\n# What's new in MAGNETO V2\r\n\r\nGeneral Configuration :\r\n - Added a slurm profile (big_dataset) with resources tailored for large datasets (samples > 5Go).\r\n - New Snakemake parameters in config: conda-prefix (reuse Conda environments), latency-wait, and keep-going.\r\n - Directly adjusted resources in the slurm profile.\r\n - Updated samples.yaml to specify assembly type (short-reads, long-reads, hybrid).\r\n - New parameters to config.yaml.\r\n\r\nRun :\r\n - Added an onstart file with Magneto command launch details + a file logging Conda tool versions.\r\n - Used pin files for environments to lock all dependencies.\r\n\r\nQC :\r\n - Added fastplong for long-reads.\r\n - Added a script to remove tags post-fastqscreen.\r\n\r\nAssembly:\r\n - Added metaflye for long-read assembly.\r\n - Added minimap2 for long-read mapping.\r\n - Added polypolish and pypolca for hybrid polishing (long-reads + short-reads).\r\n - Fixed HCA.py for co-assembly (resolved sample name mismatches when sample name and sample run sizes differed).\r\n\r\n\r\n# Key Features\r\n\r\n - **Quality Control (QC)**: Automatically assesses the quality and the contamination of input reads, ensuring that low-quality data are filtered out to improve downstream analyses.\r\n\r\n - **Assembly**: MAGNETO uses high-performance assembler to construct contigs from metagenomic short, hybrid and/or long reads.\r\n\r\n - **Gene Catalogue**: Extracts and compiles gene sequences from contigs, providing a comprehensive gene catalog directly after assembly.\r\n\r\n - **Binning**: Groups contigs into probable genomes using composition signatures and abundance profiles.\r\n\r\n - **Genomes collection**: Provides taxonomic and functional annotation of reconstructed MAGs.\r\n\r\n - **Metatranscriptomic mapping**: Mapping of transcriptomic reads on genes collection and/or MAGs obtained with previous analysis.\r\n\r\n# Documentation\r\n\r\n**Full description in the [wiki pages](https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/wikis/home)**\r\n\r\n# Citing the pipeline \r\nChurcheward B, Millet M, Bihou\u00e9e A, Fertin G, Chaffron S.<br>\r\nMAGNETO: An Automated Workflow for Genome-Resolved Metagenomics.<br>\r\nmSystems. 2022 Jun 15:e0043222. doi: [10.1128/msystems.00432-22](https://doi.org/10.1128/msystems.00432-22)\r\n",
     "discussion_links": [
         {
             "id": "2094",
@@ -17,7 +17,7 @@
             "url": "https://gitlab.univ-nantes.fr/bird_pipeline_registry/magneto/-/issues"
         }
     ],
-    "doi": "",
+    "doi": "10.48546/workflowhub.workflow.1815.7",
     "edam_operation": [
         "http://edamontology.org/operation_3672",
         "http://edamontology.org/operation_0525",
@@ -32,9 +32,9 @@
         "http://edamontology.org/topic_3941"
     ],
     "id": "1815",
-    "latest_version": "5",
+    "latest_version": "7",
     "license": "GPL-3.0",
-    "link": "https://workflowhub.eu/workflows/1815?version=5",
+    "link": "https://workflowhub.eu/workflows/1815?version=7",
     "mapped_tools": [
         "abricate",
         "amrfinderplus",
@@ -45,12 +45,17 @@
         "drep",
         "eggnog-mapper-v2",
         "fastp",
+        "fastplong",
         "fastq_screen",
+        "flye",
         "genomad",
         "gtdb-tk",
         "megahit",
         "metabat_2",
+        "metaspades",
+        "minimap2",
         "mmseqs2",
+        "polypolish",
         "semibin"
     ],
     "name": "MAGNETO (automated workflow dedicated to MAG reconstruction)",
@@ -70,17 +75,22 @@
         "eggnog-mapper v2",
         "eggnog-mapper-v2",
         "fastp",
+        "fastplong",
         "fastq screen",
         "fastq_screen",
+        "flye",
         "genomad",
         "gtdb-tk",
         "megahit",
         "metabat 2",
         "metabat_2",
+        "metaspades",
+        "minimap2",
         "mmseqs2",
+        "polypolish",
         "semibin"
     ],
-    "update_time": "2026-01-06",
-    "versions": "5",
+    "update_time": "2026-11-02",
+    "versions": "7",
     "workflow_class": "Snakemake"
 }
