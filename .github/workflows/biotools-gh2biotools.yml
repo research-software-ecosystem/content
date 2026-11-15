@@ -34,7 +34,7 @@ jobs:
     if: github.event_name != 'push' || github.actor != 'biotools-bot'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.ref || github.sha }}
           sparse-checkout: '**/*.biotools.json'
@@ -45,7 +45,7 @@ jobs:
       - name: check changes to biotools.json files
         id: changes
         if: github.event_name == 'push'
-        uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323 # v47.0.5
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
         with:
           files: |
             **/*.biotools.json
@@ -175,7 +175,7 @@ jobs:
 
       - name: checkout utils repo
         if: steps.resolve.outputs.files != ''
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: research-software-ecosystem/utils
           path: content-ecosystem-utils
@@ -186,7 +186,7 @@ jobs:
 
       - name: set up Python
         if: steps.resolve.outputs.files != ''
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.x'
 
