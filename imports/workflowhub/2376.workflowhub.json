@@ -1,0 +1,30 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-11-10",
+    "creators": [
+        "Benjamin Istace",
+        "Jean-Marc Aury"
+    ],
+    "description": "# PETRA\r\n\r\nPETRA (Predicted protein-enabled Taxonomic Rank Assignment) finds contaminants\r\nin genome assemblies. It predicts genes on each contig, aligns them to a protein\r\ndatabase with DIAMOND, and assigns the contig to a taxon when most of its genes\r\nagree. Contigs are then split by domain so the host genome can be kept apart.\r\n\r\n## Install\r\n\r\n```console\r\npip install .\r\n```\r\n\r\n`diamond` must be on `PATH`. The rRNA analyses also need Infernal (`cmscan`,\r\n`cmpress`), BLAST (`blastn`, `makeblastdb`) and `taxonkit`, the tRNA analysis\r\nneeds `tRNAscan-SE`.\r\n\r\n## Quick start\r\n\r\n```console\r\n# 1. Build the database once (downloads NCBI NR and taxonomy)\r\npetra build-db --output database --build-rna-dbs\r\n\r\n# 2. Run on an assembly\r\npetra run \\\r\n  --assembly assembly.fasta \\\r\n  --database database \\\r\n  --long-reads reads.fastq.gz \\\r\n  --output run-1\r\n\r\n# 3. Look at the split by domain and taxonomic assignments\r\nls run-1/decontaminated/\r\nls run-1/predictions.final.tsv\r\n```\r\n\r\nSet `PETRA_DB_DIR` to skip giving `--database` on every run.\r\n\r\n## How contigs are assigned\r\n\r\nA contig needs enough aligned genes before PETRA will judge it: 3 up to 50 kb,\r\nthen a few more for each tenfold increase in length (4 at 100 kb, 9 at 5 Mb).\r\nContigs below that are left unassigned (`insufficient_support`).\r\n\r\nPETRA then votes rank by rank, from domain down. A taxon wins a rank when it\r\nholds more than half of the genes (`--alpha`, default 0.5), and only genes that\r\nagreed on the ranks above take part in the next vote. If nothing wins, the\r\ncontig is unassigned (`no_consensus`).\r\n\r\nThe thresholds are adjustable with `--min-aligned-unigenes`,\r\n`--unigene-support-length` and `--unigenes-per-decade`.\r\n\r\n## Outputs\r\n\r\n| File | Content |\r\n| --- | --- |\r\n| `decontaminated/predictions.final.fasta` | Eukaryotic and unassigned contigs: what you usually keep |\r\n| `decontaminated/predictions.{eukaryota,bacteria,archaea,viruses,unassigned}.fasta` | Contigs split by domain |\r\n| `predictions.final.tsv` | One row per contig: length, GC, median coverage, lineage and why it is unassigned, if it is |\r\n| `predictions.gene_taxonomy.tsv` | The lineage of each aligned gene, grouped by contig |\r\n| `predictions.organelles.tsv` | Contigs Tiara flags as mitochondrion or plastid |\r\n| `predictions.summary.png` | GC vs coverage plot, coloured by taxon |\r\n| `rna/` | rRNA and tRNA results, with `--rrna` / `--trna` |\r\n\r\nOnly contigs of at least 5 kb are considered for the FASTA and organelle outputs.\r\n\r\n## Optional analyses\r\n\r\n- `--rrna` finds rRNA genes and classifies SSU/LSU hits against SILVA, PR2 and\r\n  EUKARYOME. With `--host-taxon \"Chelon auratus\"`, hits outside the host's\r\n  phylum are flagged as `non_host`.\r\n- `--trna` annotates tRNAs.\r\n- `--skip-taxonomic-assignment` runs only the RNA analyses and Whokaryote.\r\n- `--keep-whokaryote-euk-headers` keeps the names of sequences Whokaryote\r\n  calls eukaryotic in `whokaryote.euk.txt`.\r\n- `--keep-pyrodigal-predictions` keeps Pyrodigal's predicted proteins in\r\n  `predictions.faa`.\r\n- `--technology ont` switches read mapping from PacBio HiFi to ONT.\r\n\r\n## Looking at the results\r\n\r\n```console\r\n# Redraw the plot, colouring common eukaryotic phyla\r\npetra-plot -i run-1/predictions.final.tsv -o summary.png --theme atlasea\r\n\r\n# Filter the table\r\npetra-filter -i run-1/predictions.final.tsv -o kept.tsv \\\r\n  \"median_coverage<40 and gc_percent>59 and not phylum==Actinopteri\"\r\n\r\n# Compare several runs side by side\r\npetra-compare \\\r\n  --directory run-1 --name \"Chelon auratus\" \\\r\n  --directory run-2 --name \"Jania squamata\" \\\r\n  --output comparison.png\r\n```\r\n\r\nTwo themes are bundled: `superkingdom` (default) and `atlasea`, which gives\r\ncommon eukaryotic phyla their own colours so eukaryotic contaminants stand out\r\nfrom the host. You can also pass your own colours as a two-column TSV\r\n(`Actinopteri\t#1F78B4`) with `--colors`.\r\n\r\n## Database details\r\n\r\n`petra build-db` creates `petra.dmnd` from NCBI NR (or `--fasta` plus\r\n`--taxon-map`) and keeps the NCBI taxonomy under `database/taxonomy/`. The\r\ntaxonomy is also embedded in `petra.dmnd`, so DIAMOND's `--taxonlist` and\r\n`--taxon-exclude` work on it.\r\n\r\n- `--with-marferret` adds marine eukaryote proteins from\r\n  [MarFERReT](https://github.com/armbrustlab/marferret) v1.1.1\r\n  ([Groussman et al. 2023](https://doi.org/10.1038/s41597-023-02842-4)).\r\n- `--build-rna-dbs` adds the rRNA databases (Rfam models, SILVA + PR2 for SSU,\r\n  SILVA + EUKARYOME for LSU).\r\n- `--skip-diamond-db` rebuilds only the RNA databases and leaves `petra.dmnd`\r\n  as is.\r\n- `--taxdump` uses a local taxonomy snapshot instead of downloading one.\r\n",
+    "discussion_links": [],
+    "doi": "10.48546/workflowhub.workflow.2376.1",
+    "edam_operation": [],
+    "edam_topic": [
+        "http://edamontology.org/topic_0196",
+        "http://edamontology.org/topic_0637"
+    ],
+    "id": "2376",
+    "latest_version": "1",
+    "license": "CECILL-2.1",
+    "link": "https://workflowhub.eu/workflows/2376?version=1",
+    "mapped_tools": [],
+    "name": "Petra: Predicted protein-enabled Taxonomic Rank Assignment",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [],
+    "update_time": "2026-11-10",
+    "versions": "1",
+    "workflow_class": "Snakemake"
+}
