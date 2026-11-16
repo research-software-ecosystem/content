@@ -1,0 +1,67 @@
+about:
+  description: 'ProFIT identifies and types bacterial isolates using prophage fingerprints.
+
+    It detects prophages with geNomad and CheckV, maps detected sequences to
+
+    species-specific vOTUs with skani, and assigns sequence types using Jaccard
+
+    nearest-neighbor matching. Version 2.0.0 supports five species, with
+
+    reference databases hosted separately on Zenodo.
+
+    '
+  dev_url: https://github.com/ShiheZhang/ProFIT
+  doc_url: https://github.com/ShiheZhang/ProFIT#readme
+  home: https://github.com/ShiheZhang/ProFIT
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Prophage fingerprint-based bacterial identification and sequence typing
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vv'
+extra:
+  recipe-maintainers:
+  - ShiheZhang
+package:
+  name: profit
+  version: 2.0.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=68
+  - wheel
+  run:
+  - python >=3.10
+  - pandas
+  - numpy
+  - biopython
+  - pyarrow
+  - requests
+  - tqdm
+  - genomad
+  - checkv
+  - skani
+  - curl
+source:
+  sha256: 6743ff18292f0d66a3bacbfcfe910ad6d79e11108e663708548dbd423770a167
+  url: https://github.com/ShiheZhang/ProFIT/releases/download/v2.0.0/profit-2.0.0.tar.gz
+test:
+  commands:
+  - profit --version
+  - profit list-species
+  - profit run --help
+  - profit download-database --help
+  - profit validate-database --help
+  - profit type --help
+  imports:
+  - profit
+  - profit.cli
+  - profit.database
+  - profit.modules.prophage_prediction
+  - profit.modules.votu_determination
+  - profit.modules.similarity_report

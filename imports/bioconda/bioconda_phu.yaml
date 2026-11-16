@@ -1,8 +1,11 @@
 about:
   description: "**phu** (Phage Utilities) is a Python toolkit designed for viral bioinformatics\
-    \ workflows. \nIt provides modular commands to handle tasks such as:\n  * `seqclust`:\
-    \ dereplication and clustering of viral contigs into vOTUs and putative species-level\
-    \ groups.\n  * `taxasimplify`: simplification and parsing of viral taxonomy assignments.\n"
+    \ workflows.\nIt provides modular commands to handle tasks such as:\n  * `screen`:\
+    \ screening of contigs for protein families with profile HMMs (Pfam, KOfam, dbCAN\
+    \ or user-supplied).\n  * `jack`: iterative screening of contigs from seed protein\
+    \ sequences.\n  * `cluster`: dereplication and clustering of viral genomes into\
+    \ species- and genus-level groups.\n  * `avger`: prioritisation of auxiliary viral\
+    \ gene candidates.\n"
   dev_url: https://github.com/camilogarciabotero/phu
   doc_url: https://camilogarciabotero.github.io/phu
   home: https://github.com/camilogarciabotero/phu
@@ -24,7 +27,7 @@ extra:
   - camilogarciabotero
 package:
   name: phu
-  version: 0.8.0
+  version: 0.9.0
 requirements:
   host:
   - python >=3.10
@@ -33,20 +36,19 @@ requirements:
   - wheel
   run:
   - python >=3.10
-  - pandas
-  - typer
-  - ruff
-  - pytest
-  - mypy
+  - click >=8.1.7,<8.2
+  - rich >=13.7,<=15
+  - pandas >=2.3.2
+  - typer >=0.17.3
+  - pyhmmer >=0.11.1
+  - pyrodigal >=3.6.3.post1
+  - pyrodigal-gv >=0.3.2
   - vclust
-  - hmmer
-  - pyhmmer
   - seqkit
-  - pyrodigal
-  - pyrodigal-gv
+  - mafft
 source:
-  sha256: 76b388143e9c52e8e5756de28a9c217e30883c5df1e9586109c25b0bd68bf18c
-  url: https://github.com/camilogarciabotero/phu/archive/refs/tags/v0.8.0.tar.gz
+  sha256: 3e2724a24e88160850c21d9d5f84805082771be5e673b010b419d58a09be1971
+  url: https://github.com/camilogarciabotero/phu/archive/refs/tags/v0.9.0.tar.gz
 test:
   commands:
   - phu --help

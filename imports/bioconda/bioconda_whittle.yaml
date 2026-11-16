@@ -1,13 +1,14 @@
 about:
-  description: 'whittle trims Oxford Nanopore and PacBio long reads in FASTQ, gzipped
+  description: 'whittle filters, trims and splits Oxford Nanopore and PacBio reads
+    in
 
-    FASTQ, and unaligned BAM. It keeps position-indexed tags (MM/ML/MN base
+    FASTQ, compressed FASTQ and unaligned BAM (uBAM). It updates
 
-    modifications, per-base kinetics, and ONT signal) in register through
+    base-modification calls (MM, ML, MN) and PacBio kinetics on every trim
 
-    every trim and split, so downstream modified-base and signal analyses
+    and split, and ONT move tables with --update-moves, so each output read
 
-    stay correct after trimming.
+    stays consistent with its sequence.
 
     '
   dev_url: https://github.com/erdikilic/whittle
@@ -18,8 +19,7 @@ about:
   license_file:
   - LICENSE
   - THIRDPARTY.yml
-  summary: Fast, tag-aware long-read (ONT/PacBio) trimmer for FASTQ and unaligned
-    BAM
+  summary: Coordinate-consistent trimming of long-read uBAM and tagged FASTQ
 build:
   number: 0
   run_exports:
@@ -35,7 +35,7 @@ extra:
   - erdikilic
 package:
   name: whittle
-  version: 0.2.0
+  version: 1.0.0
 requirements:
   build:
   - null
@@ -45,8 +45,8 @@ requirements:
   - cmake
   - make
 source:
-  sha256: 3814dd773e4d1be7a91ae8c865e3e88ad14b5f52efbd7b792bd4f8952ef4aeed
-  url: https://github.com/erdikilic/whittle/archive/0.2.0.tar.gz
+  sha256: 9c285b598cd25562d5228475b9e0a05ae597c9e394ff499822aac63bf87ee599
+  url: https://github.com/erdikilic/whittle/archive/1.0.0.tar.gz
 test:
   commands:
   - whittle --version

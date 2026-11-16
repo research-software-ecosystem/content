@@ -1,0 +1,76 @@
+about:
+  description: 'Loads and validates the ABO variant panel, turns Clair3 calls and
+    BAM pileups into per-position evidence,
+
+    resolves phenotype, genotype and ISBT allele names, types samples from their reads
+    (abotyper-readtyper), and
+
+    writes the per-sample and aggregated result tables.
+
+    Research use only.
+
+    '
+  dev_url: https://github.com/fmobegi/abotyper-core
+  doc_url: https://github.com/fmobegi/abotyper-core#readme
+  home: https://github.com/fmobegi/abotyper-core
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: ABO blood group typing logic from long-read amplicon data, as used by nf-core/abotyper
+build:
+  entry_points:
+  - abotyper-panel = abotyper_core.panel:main
+  - abotyper-panel-to-bed = abotyper_core.panel_to_bed:main
+  - abotyper-clair2metrics = abotyper_core.clair2metrics:main
+  - abotyper-clair2haplotypes = abotyper_core.clair2haplotypes:main
+  - abotyper-pileup2metrics = abotyper_core.pileup2metrics:main
+  - abotyper-predict-phenotype = abotyper_core.predict_phenotype:main
+  - abotyper-aggregate = abotyper_core.aggregate:main
+  - abotyper-calibrate-panel = abotyper_core.calibrate_panel:main
+  - abotyper-rename-samples = abotyper_core.rename_samples:main
+  - abotyper-readtyper = abotyper_core.readtyper:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  identifiers:
+  - doi:10.3390/ijms26125443
+  recipe-maintainers:
+  - fmobegi
+package:
+  name: abotyper-core
+  version: 0.4.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - hatchling >=1.25
+  run:
+  - python >=3.11
+  - pandas >=2.2
+  - numpy >=1.26
+  - pyyaml >=6.0
+  - xlsxwriter >=3.1
+  - openpyxl >=3.1
+source:
+  sha256: ff56d40895bfdfa9de8e1312e34a8608e5d85c12051bb133497db11f89e923ed
+  url: https://pypi.org/packages/source/a/abotyper-core/abotyper_core-0.4.1.tar.gz
+test:
+  commands:
+  - pip check
+  - abotyper-panel --summary
+  - abotyper-panel-to-bed --help
+  - abotyper-clair2metrics --help
+  - abotyper-clair2haplotypes --help
+  - abotyper-pileup2metrics --help
+  - abotyper-predict-phenotype --help
+  - abotyper-aggregate --help
+  - abotyper-calibrate-panel --help
+  - abotyper-rename-samples --help
+  - abotyper-readtyper --help
+  imports:
+  - abotyper_core
+  requires:
+  - pip

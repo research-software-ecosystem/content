@@ -1,0 +1,41 @@
+about:
+  description: This program in pure bash takes as input a path with the results from
+    capturing UCES by phyluce and then concatenates with respect to locus. This is
+    helpful when combining multiple independent capture analyses or when combining
+    multi-probe datasets such as exon-capture and UCEs.
+  dev_url: https://github.com/gaballench/yafastac
+  home: https://github.com/gaballench/yafastac
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file: LICENSE
+  summary: 'YAFASTAC: Yet Another FASTA Concatenator'
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+  script: cp yafastac $PREFIX/bin
+package:
+  name: yafastac
+  version: 0.3.1
+requirements:
+  host:
+  - bash
+  - coreutils
+  - findutils
+  - grep
+  - sed
+  - gawk
+  run:
+  - bash
+  - coreutils
+  - findutils
+  - grep
+  - sed
+  - gawk
+source:
+  sha256: 9cded96fce4fe37fd7f286f9f455995c91e8ef90fc9380859165b75258a115d1
+  url: https://github.com/gaballench/yafastac/archive/refs/tags/v0.3.1.tar.gz
+test:
+  commands:
+  - which yafastac
