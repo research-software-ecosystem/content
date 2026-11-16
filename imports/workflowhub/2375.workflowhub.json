@@ -1,0 +1,40 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-11-10",
+    "creators": [
+        "Ziad Al-Bkhetan",
+        "Thomas Litfin"
+    ],
+    "description": "# wisps: *w*orkflow for *i*nteraction *s*creening by *p*redicting *s*tructures\r\n\r\n## Introduction\r\n\r\n**Australian-Structural-Biology-Computing/wisps** is a bioinformatics pipeline for interaction screening by structure prediction. It ingests a samplesheet of sequence entries (FASTA format) and generates interaction sets based on all-vs-all or group-based modes. The workflow then runs MSA/search and structure prediction with supported models (Boltz, ColabFold, and/or AlphaFold3), computes confidence/interface metrics (including IPSAE), and produces per-interaction result files alongside run-level reports such as MultiQC.\r\n\r\n- Validate and parse sequence inputs from the samplesheet (FASTA).\r\n- Build interaction sets in manual, all-vs-all or group-based screening mode.\r\n- Generated paired MSAs for each interaction using ColabFold Search powered by MMSeqs2.\r\n- Run structure prediction for each interaction with the configured model(s) (Boltz, ColabFold, and/or AlphaFold3).\r\n- Compute confidence and interface metrics, including IPSAE.\r\n- Aggregate run metrics and QC summaries in [`MultiQC`](http://multiqc.info/).\r\n\r\n![Workflow Diagram](docs/images/wf.jpg)\r\n\r\n## Usage\r\n\r\n> [!NOTE]\r\n> If you are new to Nextflow, please familiarise yourself with nextflow before running the workflow on actual data.\r\n\r\nBefore running the pipeline, several resources must be available on the computing infrastructure:\r\n\r\n- **All** tools require the ColabFold MMSeqs2 databases which can be set up following the instructions available [here](https://github.com/sokrypton/ColabFold/tree/main?tab=readme-ov-file#generating-msas-for-large-scale-structurecomplex-predictions)\r\n- **ColabFold** requires AlphaFold2 model parameters available from the download [link](https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar).\r\n- **Boltz** requires model parameters for the Boltz-2 structure prediction model ([link](https://huggingface.co/boltz-community/boltz-2/resolve/main/boltz2_conf.ckpt)), affinity prediction model ([link](https://huggingface.co/boltz-community/boltz-2/resolve/main/boltz2_aff.ckpt)) and CCD files ([link](https://huggingface.co/boltz-community/boltz-2/resolve/main/mols.tar))\r\n- **AlphaFold3** requires model parameters which must be requested from Google Deepmind.\r\n\r\n> [!WARNING]\r\n> Users must obtain the AlphaFold3 weights directly from DeepMind according to their [terms of use](https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md) and [prohibited use policy](https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_PROHIBITED_USE_POLICY.md). Please ensure you comply with all terms and conditions before using AlphaFold3. For more information about AlphaFold3 usage and requirements, please refer to the [official AlphaFold3 repository](https://github.com/google-deepmind/alphafold3).\r\n\r\nThe location of individual resources can be set using an infrastructure configuration file. As an alternative, resources can be set up with the following file structure:\r\n\r\n```bash\r\nWISPS-DB/\r\n\u251c\u2500\u2500 colabfold_envdb/\r\n\u251c\u2500\u2500 colabfold_uniref30/\r\n\u2514\u2500\u2500 params\r\n    \u251c\u2500\u2500 af3.bin\r\n    \u251c\u2500\u2500 alphafold_params_2022-12-06/\r\n    \u251c\u2500\u2500 boltz2_aff.ckpt\r\n    \u251c\u2500\u2500 boltz2_conf.ckpt\r\n    \u2514\u2500\u2500 mols/\r\n```\r\n\r\nUsing this structure, resources can be found by assigning `--db <PATH/TO/WISPS-DB>`\r\n\r\nTo run the pipeline with the minimum required inputs:\r\n\r\n1. Create a samplesheet CSV with at least `id` and `sequence` columns (`type` and `group` are optional).\r\n2. Put one sequence entry per row; `sequence` must point to a `.fasta` file. Each fasta file may contain multiple entities which will be considered as a single unit when building candidate interactions.\r\n3. Run `nextflow run` with `--input`, `--outdir`, and a compute `-profile`.\r\n\r\n`samplesheet.csv`:\r\n\r\n```csv\r\nid,sequence,type,group\r\nS1,./data/S1.fasta,protein,A\r\nS2,./data/S2.fasta,protein,B\r\nS3,./data/S3.fasta,rna,A\r\n```\r\n\r\nIn this file, each row represents a single unit (can contain multiple sequences) to be used to generate candidate interactions.\r\n\r\nNow, to model molecules in group A partnered with molecules in group B you can run the pipeline using:\r\n\r\n```bash\r\nnextflow run Australian-Structural-Biology-Computing/wisps \\\r\n   --input ./samplesheet.csv \\\r\n   --outdir ./results \\\r\n   --db WISPS-DB \\\r\n   --mode A-B \\\r\n   -profile docker\r\n```\r\n\r\n> [!WARNING]\r\n> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files, including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_.\r\n\r\nFor more details, further functionalities, and pipeline parameters, please refer to the [usage documentation](docs/usage.md).\r\n\r\n## Pipeline output\r\n\r\nFor more details about the output files and reports, please refer to the\r\n[output documentation](docs/output.md).\r\n\r\n## Credits\r\n\r\nAustralian-Structural-Biology-Computing/wisps was originally written by [Ziad Al-Bkhetan](https://github.com/ziadbkh) and [Thomas Litfin](https://github.com/tlitfin/).\r\n\r\nWe thank the following people for their extensive assistance in the development of this pipeline:\r\n\r\n## Contributions and Support\r\n\r\nIf you would like to contribute to this pipeline or for further information/help please reach out to us.\r\n\r\n## Citations\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "http://edamontology.org/operation_2492",
+        "http://edamontology.org/operation_0474"
+    ],
+    "edam_topic": [
+        "http://edamontology.org/topic_0128",
+        "http://edamontology.org/topic_2814",
+        "http://edamontology.org/topic_0082"
+    ],
+    "id": "2375",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2375?version=1",
+    "mapped_tools": [
+        "boltz",
+        "colabfold"
+    ],
+    "name": "wisps",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [],
+    "tools": [
+        "boltz",
+        "colabfold"
+    ],
+    "update_time": "2026-11-10",
+    "versions": "1",
+    "workflow_class": "Nextflow"
+}
