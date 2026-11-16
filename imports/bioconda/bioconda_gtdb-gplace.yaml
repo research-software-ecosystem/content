@@ -1,0 +1,70 @@
+about:
+  description: 'gPlace places aligned sequences on a fixed reference tree and gives
+    exactly pplacer''s results
+
+    (v1.1.alpha19), bit for bit, using a fraction of its memory and time. It takes
+    pplacer''s command
+
+    line: replace `pplacer` with `gplace place`.
+
+    '
+  dev_url: https://github.com/cmc-aau/gPlace
+  doc_url: https://cmc-aau.github.io/gPlace/
+  home: https://github.com/cmc-aau/gPlace
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - LICENSE
+  - gplace/engine/csrc/core-math/LICENSE
+  summary: 'Exact, memory-bounded replacement for pplacer: the same phylogenetic placements
+    with a fraction of the memory and time.'
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - pchaumeil
+  - donovan-h-parks
+  skip-lints:
+  - should_not_use_fn
+package:
+  name: gtdb-gplace
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - make
+  host:
+  - python
+  - pip
+  - setuptools >=61
+  - wheel
+  run:
+  - python
+  - numpy >=1.26
+  - tqdm >=4.67,<5
+source:
+- sha256: 4273054e112ffeb65732c5096d66b15ff21d3375c0e1bb6bacbe8021cf1beeb9
+  url: https://pypi.org/packages/source/g/gtdb-gplace/gtdb_gplace-0.1.0.tar.gz
+- fn: gsl-1.16.tar.gz.packed
+  folder: gsl
+  sha256: 73bc2f51b90d2a780e6d266d43e487b3dbd78945dd0b04b14ca5980fe28d2f53
+  url:
+  - https://ftp.gnu.org/gnu/gsl/gsl-1.16.tar.gz
+  - https://mirrors.kernel.org/gnu/gsl/gsl-1.16.tar.gz
+test:
+  commands:
+  - pip check
+  - gplace -h
+  - gplace check_install
+  - gplace test --cpus 2
+  imports:
+  - gplace
+  requires:
+  - pip

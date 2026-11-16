@@ -12,7 +12,7 @@ build:
   - null
 package:
   name: ampliconsuite
-  version: 1.6.1
+  version: 1.6.2
 requirements:
   build:
   - python >=3.9
@@ -44,19 +44,17 @@ requirements:
   - scipy
   - bedtools
 source:
-- sha256: 7a95d4bd6f1eead65842c524e4626ad8cb769178239c46cdef02f5387a374e88
-  url: https://github.com/AmpliconSuite/AmpliconSuite-pipeline/archive/v1.6.1.tar.gz
+- sha256: 366a9112061097b6c197573a4bf86805c09ca8c1920c7ff4b00557ee3299acb5
+  url: https://github.com/AmpliconSuite/AmpliconSuite-pipeline/archive/v1.6.2.tar.gz
 - folder: ampliconarchitectlib
-  sha256: 9767b7694a75145037804c5d1d87238aec644134b600e9247de45aa238d22b3a
-  url: https://github.com/AmpliconSuite/AmpliconArchitect/archive/v1.6.r1.tar.gz
+  sha256: a7a2867a0f3af2684e3828225de8d06225934a579c2c2629cc9538ffb94fcf25
+  url: https://github.com/AmpliconSuite/AmpliconArchitect/archive/v1.6.r2.tar.gz
 - folder: ampliconclassifierlib
-  sha256: 451049912bf65fa65081da0fda8fa8bad4c834105ff6f0a8d0735b2153a046cf
-  url: https://github.com/AmpliconSuite/AmpliconClassifier/archive/v2.0.0.tar.gz
+  sha256: 8959275db29e58976ff24fcf37b8342d6567da80044092ffd311126442028993
+  url: https://github.com/AmpliconSuite/AmpliconClassifier/archive/v2.0.1.tar.gz
 - folder: bfbarchitectlib
-  patches:
-  - bfba-conda-solvers.patch
-  sha256: 704ddd69756d9bb1414191dcce19bc2114d2b146660d17ff3bd8deb8f6fab94f
-  url: https://github.com/AmpliconSuite/BFBArchitect/archive/v1.0.1.tar.gz
+  sha256: 0fd5e8094ecc22170eb1868da32078fa7dbdcec01607200adaf5025832538f2c
+  url: https://github.com/AmpliconSuite/BFBArchitect/archive/v1.0.2.tar.gz
 test:
   commands:
   - python3 $(which AmpliconSuite-pipeline.py) -v
@@ -65,11 +63,11 @@ test:
   - python3 $(which feature_similarity.py) -h
   - python3 $(which make_results_table.py) -h
   - BFBArchitect.py --version
-  - python3 -c "import bfbarchitect; assert bfbarchitect.__version__ == '1.0.1'"
+  - python3 -c "import bfbarchitect; assert bfbarchitect.__version__ == '1.0.2'"
   - python3 -c "from importlib.metadata import requires; assert any(r.lower().startswith('gurobipy')
     for r in requires('BFBArchitect'))"
   - python3 -c "from importlib.metadata import version; assert version('AmpliconClassifier')
-    == '2.0.0'"
+    == '2.0.1'"
   - python3 -c "from pulp import COIN_CMD; assert COIN_CMD().available()"
   - python3 -c "from bfbarchitect.BFBSolver import reconstruct_BFB_cbc; sequence,
     objective = reconstruct_BFB_cbc([2], [0], [0], 1, max_time=30, max_threads=1);

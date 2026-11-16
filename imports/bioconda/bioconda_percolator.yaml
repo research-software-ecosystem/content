@@ -8,38 +8,36 @@ about:
   summary: Semi-supervised learning for peptide identification from shotgun proteomics
     datasets.
 build:
-  number: 1
+  number: 0
   run_exports:
   - null
-  skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:Percolator
   - doi:10.1007/s13361-016-1460-7
   - usegalaxy-eu:percolator
 package:
   name: percolator
-  version: '3.9'
+  version: 3.9.1
 requirements:
   build:
-  - make
   - null
   - null
   - cmake
+  - make
+  - git
   host:
   - libboost-devel
-  - sqlite
-  - bzip2
-  - zlib
+  - llvm-openmp
   run:
-  - libboost
-  - sqlite
-  - zlib
+  - llvm-openmp
 source:
-  sha256: 2caed6362638f401a1527b09dcb2888320dab10fe003f76f584cfd395ed30f73
-  url: https://github.com/percolator/percolator/archive/refs/tags/rel-3-09.tar.gz
+  sha256: 149bf2776c6c944a221bffd0eba352a70e5c97eda7a06d34973f1ee3d8e5f133
+  url: https://github.com/percolator/percolator/archive/refs/tags/rel-3-09-01.tar.gz
 test:
   commands:
-  - percolator $PREFIX/testdata/percolatorTab > /dev/null
+  - percolator "${PREFIX}/testdata/percolatorTab" > /dev/null
+  - test -x "${PREFIX}/bin/qvality"

@@ -5,7 +5,11 @@ about:
   summary: 'NASP: an accurate, rapid method for the identification of SNPs in WGS
     datasets that supports flexible input and output formats'
 build:
-  number: 3
+  ignore_run_exports_from:
+  - picard
+  - varscan
+  - trimmomatic
+  number: 4
   run_exports:
   - null
   skip: true
@@ -25,13 +29,31 @@ requirements:
   - python
   - pip
   - setuptools
+  - wheel
+  - gatk 3.8 hdfd78af_12
+  - picard <3
+  - varscan
+  - trimmomatic
   run:
   - python
-  - samtools >=1.1,<1.2
+  - biopython
+  - samtools ==1.3.1
+  - bcftools
+  - openjdk >=8,<9
   - trimmomatic
+  - gatk 3.8 hdfd78af_12
+  - picard <3
+  - varscan
+  - bwa
+  - bowtie2
+  - snap-aligner
   - mummer
-  - setuptools <82
 source:
+  patches:
+  - python-compat.patch
+  - current-bcftools.patch
+  - samtools13-sort.patch
+  - vcf-export.patch
   sha256: e089485a1ff11b4fa43fe5876251959fecd8cba42baa159675b7e573b25a9a30
   url: https://github.com/TGenNorth/NASP/archive/v1.2.1.tar.gz
 test:

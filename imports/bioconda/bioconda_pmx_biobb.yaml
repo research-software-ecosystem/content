@@ -35,7 +35,7 @@ about:
   summary: Toolkit for free-energy calculation setup/analysis and biomolecular structure
     handling
 build:
-  number: 2
+  number: 3
   run_exports:
   - null
   script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
@@ -60,9 +60,12 @@ requirements:
   - scipy
   - matplotlib-base
   - rdkit
+  - c-compiler
 source:
   sha256: 0f0270a4b721b2d7caccb66d05effdfecc704c7a4e296f8222763c9aedfc8961
   url: https://pypi.io/packages/source/p/pmx_biobb/pmx_biobb-5.2.2.tar.gz
 test:
+  commands:
+  - cpp --version
   imports:
   - pmx

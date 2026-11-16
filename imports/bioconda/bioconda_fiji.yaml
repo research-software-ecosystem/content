@@ -4,13 +4,11 @@ about:
   summary: "Fiji is an image processing package\u2014a \"batteries-included\" distribution\
     \ of ImageJ, bundling a lot of plugins which facilitate scientific image analysis."
 build:
-  number: 1
+  number: 2
   run_exports:
   - null
   skip: true
 extra:
-  additional-platforms:
-  - linux-aarch64
   skip-lints:
   - should_be_noarch_generic
   - should_not_be_noarch_source
@@ -20,15 +18,11 @@ package:
 requirements:
   host:
   - openjdk >=8.0
-  - openjdk >=21.0
   run:
   - openjdk >=8.0
-  - openjdk >=21.0
 source:
 - sha256: 5fc39752b42b34937d7bcf0e273d6d87db8afb8d7003e1ba04212dc698ee1530
   url: https://downloads.imagej.net/fiji/archive/20250206-1617/fiji-linux64.zip
-- sha256: 5e784e103f98a3a8847859dd6df3b0eb50eaa950b2eb9bf41fb58b579766cba4
-  url: https://downloads.imagej.net/fiji/future/fiji-future-linux-arm64-20241022.zip
 test:
   commands:
   - bunwarpj 2>&1 | grep 'Usage'
