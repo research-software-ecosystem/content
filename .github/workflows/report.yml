@@ -43,9 +43,24 @@ jobs:
         git config --local user.name "Tools Platform Ecosystem bot"
         cd report
         git add .
-        if git commit -m "generate new contents report on $(date)"; then
-          git push
-          echo "successfully created new contents report"
-        else
-            echo "nothing new to add, exiting"
+        if ! git commit -m "generate new contents report on $(date)"; then
+          echo "nothing new to add, exiting"
+          exit 0
         fi
+        # master can move while the report builds; the commit only touches
+        # report/, so rebase and retry instead of failing on a stale base.
+        for attempt in 1 2 3 4 5; do
+          if git push; then
+            echo "successfully created new contents report"
+            exit 0
+          fi
+          echo "Push $attempt rejected; master moved. Rebasing and retrying."
+          git fetch origin master
+          if ! git rebase origin/master; then
+            echo "::error::Rebasing the report onto master conflicts; resolve it by hand."
+            exit 1
+          fi
+          sleep $((attempt * 5))
+        done
+        echo "::error::master kept moving; giving up after 5 attempts."
+        exit 1
