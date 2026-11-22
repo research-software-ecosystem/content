@@ -1,0 +1,44 @@
+{
+    "content_blobs": [],
+    "create_time": "2026-11-19",
+    "creators": [
+        "Patrick May"
+    ],
+    "description": "# sRNA-IMP\r\n\r\n**sRNA-IMP** is a modular pipeline for small-RNA sequencing (sRNA-seq) of microbiome samples, integrated with the\r\nmetagenomic (and metatranscriptomic) assembly of the same samples: contigs, annotation and bins from\r\n[IMP3](https://github.com/genomeanalysislcsb/IMP3) or any other assembly workflow (`scripts/srna_prepare_inputs.py`), or\r\nannotated reference genomes when there is no metagenome or metatranscriptome (`srna_prepare_inputs.py --genomes`, e.g.\r\nMGnify catalogue genomes chosen from the library's own rRNA taxonomy with `srna_fetch_mgnify.py`).\r\nIt processes intracellular (sRNA-Int) and extracellular (sRNA-Ext) libraries, separates human from microbial reads,\r\nclassifies both against curated small-RNA databases, places the microbial small RNAs on the sample's own contigs,\r\ngenes, bins and functions, compares them with metaT and metaG, and summarises a whole cohort with group statistics.\r\n\r\n**Documentation:** <https://genomeanalysislcsb.github.io/sRNA-IMP/>\r\n\r\n## What it does\r\n\r\n| level | steps |\r\n|---|---|\r\n| per library (one sample-sheet row) | trimming + FastQC \u2192 library QC \u2192 human / non-human split \u2192 human classes (miRNA, tRNA, rRNA, other) \u2192 microbial classes (RiboDetector rRNA + Kraken 2/Bracken taxonomy, tRNA, miRNA-like, Rfam) \u2192 mapping to the sample's assembly (sense / antisense per gene and function) \u2192 novel ncRNA loci (incl. rescue of unannotated rRNA genes) \u2192 tRNA/rRNA fragments and RNA integrity \u2192 bins \u2192 CRISPR arrays |\r\n| per sample | sRNA-Ext vs sRNA-Int vs metaT vs metaG comparisons; PDF/HTML report with QC verdict, MultiQC tables and automated Methods (STAR Protocols or Nature style) |\r\n| cohort | metadata, QC-based exclusion, group tests, Bray\u2013Curtis / PERMANOVA / NMDS, miRNAs, RNA classes, KEGG/Pfam functions, antisense index, block designs (site, family), covariate-adjusted models \u2014 all in Python (no R) |\r\n\r\n## Quick start\r\n\r\n```bash\r\n# environments (micromamba or conda)\r\nmicromamba create -p envs/gut_srna_pipeline -f envs/gut_srna_pipeline.yml\r\nmicromamba create -p envs/ncrna_discovery   -f envs/ncrna_discovery.yml\r\nmicromamba create -p envs/ribodetector      -f envs/ribodetector.yml\r\nmicromamba create -p envs/multiqc           -f envs/multiqc.yml      # optional\r\n\r\n# set database / environment paths in srna_pipeline.config.sh, then\r\n./srna_pipeline.sh -s samples.tsv -o out --check                 # environment, databases, inputs\r\n./submit_srna_pipeline.sh -s samples.tsv -o out -n 16 --mem 64G  # SLURM: all rows, then --compare --report --cohort\r\n./srna_status.sh -s samples.tsv -o out                           # done / running / failed per row\r\n```\r\n\r\nOr with the container image instead of the environments (pipeline + environments in one Apptainer image):\r\n\r\n```bash\r\nMOUNTS=\"/work/projects /scratch/users\" container/build.sh srna-imp.sif     # once\r\n./submit_srna_pipeline.sh -s samples.tsv -o out -c my.config.sh --container srna-imp.sif --bind /work/projects,/scratch/users\r\n```\r\n\r\nSee [Installation](https://genomeanalysislcsb.github.io/sRNA-IMP/installation/),\r\n[Running](https://genomeanalysislcsb.github.io/sRNA-IMP/running/) and the\r\n[configuration reference](https://genomeanalysislcsb.github.io/sRNA-IMP/configuration/).\r\n\r\n## Repository layout\r\n\r\n| path | content |\r\n|---|---|\r\n| `srna_pipeline.sh` | the pipeline (modules per row, `--compare`, `--report`, `--cohort`) |\r\n| `srna_pipeline.config.sh` | databases, environments and parameters (adapt the paths to your system) |\r\n| `submit_srna_pipeline.sh`, `srna_status.sh` | SLURM submission and run status / resubmission |\r\n| `srna_make_samples.sh`, `sample.template.tsv`, `samples.example.tsv` | sample sheet from a template and an ID list |\r\n| `metadata.template.tsv`, `scripts/srna_prepare_metadata.py` | cohort metadata |\r\n| `srna_pack_summary.sh` | pack the summary tables and reports of a run |\r\n| `scripts/` | Python helpers (counting, fragments, integrity, CRISPR, comparisons, reports, cohort statistics, Methods) |\r\n| `envs/` | conda / micromamba environments |\r\n| `container/` | Apptainer image: definition and `build.sh` |\r\n| `docs/`, `mkdocs.yml` | documentation (MkDocs Material, deployed to GitHub Pages) |\r\n\r\n## Citation and license\r\n\r\nLCSB BioCore, University of Luxembourg. Please cite sRNA-IMP as given in [CITATION.cff](CITATION.cff) (GitHub:\r\n\"Cite this repository\"; the archived release has a Zenodo DOI), together with the tools listed in the Methods text of\r\nyour run. Changes per release: [CHANGELOG.md](CHANGELOG.md). License: MIT, see [LICENSE](LICENSE).\r\n\r\n## Related tools\r\n\r\n- [IMP3](https://github.com/genomeanalysislcsb/IMP3) ([docs](https://genomeanalysislcsb.github.io/IMP3/)): the metagenomic and metatranscriptomic pipeline whose assembly, annotation and bins sRNA-IMP uses\r\n- [IMP explorer](https://github.com/genomeanalysislcsb/imp-explorer) ([docs](https://genomeanalysislcsb.github.io/imp-explorer/)): interactive study-level exploration of IMP3 results\r\n",
+    "discussion_links": [],
+    "doi": "",
+    "edam_operation": [
+        "http://edamontology.org/operation_2495",
+        "http://edamontology.org/operation_3218"
+    ],
+    "edam_topic": [
+        "http://edamontology.org/topic_3174",
+        "http://edamontology.org/topic_3941",
+        "http://edamontology.org/topic_3697",
+        "http://edamontology.org/topic_3301",
+        "http://edamontology.org/topic_3170"
+    ],
+    "id": "2387",
+    "latest_version": "1",
+    "license": "MIT",
+    "link": "https://workflowhub.eu/workflows/2387?version=1",
+    "mapped_tools": [],
+    "name": "sRNA-IMP: assembly-guided analysis of host and microbial small RNAs in host-associated microbiomes",
+    "number_of_steps": 0,
+    "projects": [],
+    "source": "WorkflowHub",
+    "tags": [
+        "crispr rna",
+        "metagenomics",
+        "host-microbe separation",
+        "metatranscriptomics",
+        "microbiome",
+        "small rna sequencing",
+        "trna fragments",
+        "workflow"
+    ],
+    "tools": [],
+    "update_time": "2026-11-19",
+    "versions": "1",
+    "workflow_class": "Shell Script"
+}
