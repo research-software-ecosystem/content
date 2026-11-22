@@ -1,10 +1,10 @@
 name: generate Tools Platform Ecosystem contents report
 
 on:
-  # Weekly, six hours after the Sunday 00:00 UTC source imports in import.yaml,
-  # so the report describes the metadata those imports have just landed.
-  schedule:
-    - cron: "0 6 * * 0"
+  # Runs weekly as a job of the import.yaml pipeline, after the imports and
+  # dataset dumps have landed, so the report describes what this week's run
+  # produced. workflow_dispatch stays for one-off manual runs.
+  workflow_call:
   workflow_dispatch:
 
 permissions:

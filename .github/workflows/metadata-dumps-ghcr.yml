@@ -1,9 +1,10 @@
 name: Publish weekly metadata dumps to GHCR
 
 on:
+  # Runs weekly as a job of the import.yaml pipeline, after the dataset dumps
+  # are committed. workflow_dispatch stays for one-off manual runs.
+  workflow_call:
   workflow_dispatch:
-  schedule:
-    - cron: '0 8 * * 0'
 
 permissions:
   contents: read

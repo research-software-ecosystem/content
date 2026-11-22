@@ -1,9 +1,10 @@
 name: dump Galaxy workflows data in a single Bioschemas file
 
 on:
+  # The weekly build runs as the build-dumps job of the import.yaml pipeline,
+  # sequenced after the imports. This standalone workflow stays for one-off
+  # manual runs only; note that it commits straight to master.
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * 0'
     
 jobs:
   build-bioschemas:
@@ -41,6 +42,7 @@ jobs:
           git config --local user.name "Tools Platform Ecosystem bot"
           git add .
           if git commit -m "build bioschemas RDF dump on $(date)"; then
+              git pull --rebase || { git rebase --abort; echo "rebase failed, exiting"; exit 1; }
               git push origin HEAD
               echo "successfully created new data"
           else

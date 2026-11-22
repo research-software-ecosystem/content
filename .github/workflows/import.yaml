@@ -5,6 +5,13 @@ on:
     - cron: "0 0 * * 0"
   workflow_dispatch:
 
+# This workflow is the whole weekly pipeline: imports, dataset dumps, report
+# and GHCR publish run as sequenced jobs here, instead of separate cron
+# schedules spaced hours apart and hoping the previous stage had finished.
+concurrency:
+  group: weekly-import-pipeline
+  cancel-in-progress: false
+
 jobs:
   biotools:
     runs-on: ubuntu-latest
@@ -599,3 +606,136 @@ jobs:
           delete_branch_if_exists "bioconductor-import-branch"
           delete_branch_if_exists "workflowhub-import-branch"
           delete_branch_if_exists "bioconductor-to-biotools-branch"
+  build-dumps:
+    # Build each aggregate dataset dump right after the imports have merged,
+    # from the merged master, instead of on a separate 02:00 cron. Each matrix
+    # job uploads its changed datasets/ files as an artifact; commit-dumps
+    # lands them all in a single commit, so the dump jobs no longer race each
+    # other (or the imports) pushing to master.
+    runs-on: ubuntu-latest
+    needs:
+      - merge-bioconductor
+    if: always()
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - source: biotools
+            script: biotools_bioschemas_dump.py
+          - source: bioconda
+            script: bioconda_to_bioschemas.py
+          - source: biocontainers
+            script: biocontainers_to_bioschemas.py
+          - source: debian
+            script: debian_to_bioschemas.py
+          - source: galaxy
+            script: galaxy_to_bioschemas.py
+          - source: galaxyworkflows
+            script: galaxyworkflows_bioschemas_dump.py
+          - source: workflowhub
+            script: workflowhub_to_bioschemas.py
+          - source: biii
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The sha merge-bioconductor pushed; empty (job skipped or nothing
+          # merged) falls back to the default branch.
+          ref: ${{ needs.merge-bioconductor.outputs.sha }}
+          path: content
+      - uses: actions/checkout@v7
+        with:
+          repository: research-software-ecosystem/utils
+          path: utils
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        if: matrix.source != 'biii'
+        run: pip install -r ${{ github.workspace }}/utils/bioschemas-gen/requirements.txt
+      - name: Build ${{ matrix.source }} dump
+        if: matrix.source != 'biii'
+        run: |
+          cd ${{ github.workspace }}/utils/bioschemas-gen
+          python ${{ matrix.script }}
+      - name: Install biii dependencies
+        if: matrix.source == 'biii'
+        run: pip install -r ${{ github.workspace }}/utils/biii-import/requirements.txt
+      - name: Build biii dump
+        if: matrix.source == 'biii'
+        run: |
+          cd ${{ github.workspace }}/utils/biii-import
+          python biseEU_LD_export.py -td https://dev.biii.eurobioimaging.eu -dump
+          mv datasets/bioschemas-biii-dump.ttl ${{ github.workspace }}/content/datasets/
+      - name: Collect changed dataset files
+        run: |
+          cd ${{ github.workspace }}/content
+          mkdir -p "${{ runner.temp }}/dump-artifact"
+          git status --porcelain=v1 -uall -- datasets/ | sed 's/^...//' | while read -r f; do
+            cp --parents "$f" "${{ runner.temp }}/dump-artifact/"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dump-${{ matrix.source }}
+          path: ${{ runner.temp }}/dump-artifact
+          if-no-files-found: ignore
+          retention-days: 7
+  commit-dumps:
+    runs-on: ubuntu-latest
+    needs:
+      - build-dumps
+    if: always()
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+      - name: Download dump artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dump-*
+          merge-multiple: true
+          path: .
+      - name: Commit dataset dumps
+        run: |
+          git config --local user.email "tpe-bot@github.com"
+          git config --local user.name "Tools Platform Ecosystem bot"
+          git add datasets/
+          if ! git commit -m "build dataset dumps on $(date)"; then
+            echo "No dump changed, nothing to commit."
+            exit 0
+          fi
+          # master can move while the dumps build (e.g. a manual push); the
+          # dump commit only touches datasets/, so rebase and retry.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:master; then
+              exit 0
+            fi
+            echo "Push $attempt rejected; master moved. Rebasing and retrying."
+            git fetch origin master
+            if ! git rebase origin/master; then
+              echo "::error::Rebasing the dump commit onto master conflicts; resolve it by hand."
+              exit 1
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "::error::master kept moving; giving up after 5 attempts."
+          exit 1
+  report:
+    needs:
+      - commit-dumps
+    if: always()
+    permissions:
+      contents: write
+    uses: ./.github/workflows/report.yml
+    secrets: inherit
+  publish-ghcr:
+    # Regenerates the dumps itself from the merged master and publishes them
+    # to GHCR; ordered after commit-dumps only so the tracked datasets/ files
+    # and the published package describe the same week.
+    needs:
+      - commit-dumps
+    if: always()
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/metadata-dumps-ghcr.yml
+    secrets: inherit
