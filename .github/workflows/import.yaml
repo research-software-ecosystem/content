@@ -649,7 +649,8 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.9"
+          # ubuntu-latest (26.04) has no 3.9 build; 3.12 matches the importers.
+          python-version: "3.12"
       - name: Install dependencies
         if: matrix.source != 'biii'
         run: pip install -r ${{ github.workspace }}/utils/bioschemas-gen/requirements.txt
@@ -698,7 +699,11 @@ jobs:
         run: |
           git config --local user.email "tpe-bot@github.com"
           git config --local user.name "Tools Platform Ecosystem bot"
-          git add datasets/
+          # datasets/ is gitignored (dumps are published to GHCR); only the
+          # legacy tracked .ttl files still get committed, so stage updates to
+          # tracked files only — plain `git add datasets/` errors on the
+          # ignored directory.
+          git add -u datasets/
           if ! git commit -m "build dataset dumps on $(date)"; then
             echo "No dump changed, nothing to commit."
             exit 0
