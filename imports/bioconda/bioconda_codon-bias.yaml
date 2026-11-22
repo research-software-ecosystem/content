@@ -1,4 +1,5 @@
 about:
+  doc_url: https://codon-bias.readthedocs.io/en/latest/
   home: https://github.com/alondmnt/codon-bias
   license: MIT
   license_family: MIT
@@ -9,13 +10,13 @@ build:
   number: 0
   run_exports:
   - null
-  script: ' -m pip install . -vv --no-deps --no-build-isolation'
+  script: ' -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv'
 extra:
   recipe-maintainers:
   - RedPenguin100
 package:
   name: codon-bias
-  version: 0.3.5
+  version: 0.5.0
 requirements:
   host:
   - python >=3.9
@@ -25,12 +26,16 @@ requirements:
   run:
   - numpy
   - pandarallel
-  - pandas
+  - pandas <3
   - python >=3.9
   - scipy
 source:
-  sha256: 85a1ca74a3b847931993342282c84be19646ae5c1887ef99f21c8a385a16c706
-  url: https://pypi.io/packages/source/c/codon-bias/codon-bias-0.3.5.tar.gz
+  sha256: f2d8c9de40999b83a9d2f13af456e7ab3a91d0e18bbf2d86f5cfdd0dbd041edc
+  url: https://pypi.org/packages/source/c/codon-bias/codon_bias-0.5.0.tar.gz
 test:
+  commands:
+  - python -m pip check
   imports:
   - codonbias
+  requires:
+  - pip

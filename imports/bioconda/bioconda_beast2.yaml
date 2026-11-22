@@ -7,7 +7,7 @@ about:
     of molecular sequences.
 build:
   noarch: generic
-  number: 0
+  number: 1
   run_exports:
   - null
 package:
@@ -32,6 +32,7 @@ source:
   - beast.patch
   - applauncher.patch
   - loganalyser.patch
+  - packages-path.patch
   sha256: a866f3e5da4ef890a042f01849e32322aa0a8e16e3e1cb2c59f823de2611781a
   url: https://github.com/CompEvol/beast2/releases/download/v2.7.7/BEAST.v2.7.7.Linux.x86.tgz
 test:
@@ -43,3 +44,4 @@ test:
   - loganalyser -h
   - logcombiner -help
   - treeannotator -help
+  - _JAVA_OPTIONS="-Duser.home=/nonexistent" beast -version \| grep "BEAST v"

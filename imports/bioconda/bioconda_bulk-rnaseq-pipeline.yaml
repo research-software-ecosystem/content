@@ -1,0 +1,86 @@
+about:
+  description: 'A terminal application that takes bulk RNA-seq reads (SRA, GEO, ENA
+    or local FASTQ) to differential
+
+    expression results with DESeq2. Every stage validates its outputs independently,
+    checkpoints make
+
+    interrupted runs resumable, scientific decisions (trimming, strandedness, experimental
+    design) are always
+
+    confirmed by the user, and each analysis ends with an HTML report and a reproducibility
+    manifest.
+
+    Single-cell RNA-seq is detected and refused.
+
+    '
+  dev_url: https://github.com/vipin839/rnaseq_pipeline
+  doc_url: https://github.com/vipin839/rnaseq_pipeline/tree/main/docs
+  home: https://github.com/vipin839/rnaseq_pipeline
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Interactive, validated and resumable bulk RNA-seq pipeline (HISAT2, featureCounts,
+    StringTie2, DESeq2)
+build:
+  entry_points:
+  - rnaseq-pipeline = rnaseq_pipeline.cli:main
+  - rnaseq_pipeline = rnaseq_pipeline.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - vipin839
+package:
+  name: bulk-rnaseq-pipeline
+  version: 1.1.2
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - pyyaml >=5.4
+  - fastqc >=0.12,<0.13
+  - multiqc >=1.21
+  - fastp >=0.23
+  - hisat2 >=2.2.1
+  - samtools >=1.17
+  - stringtie >=2.2
+  - subread >=2.0.3
+  - sra-tools >=3.0
+  - rseqc >=5.0
+  - pigz
+  - curl
+  - r-base >=4.3
+  - bioconductor-deseq2
+  - bioconductor-apeglm
+  - bioconductor-enhancedvolcano
+  - r-ggplot2
+  - r-ggrepel
+  - r-pheatmap
+  - r-rcolorbrewer
+  - r-data.table
+  - r-dplyr
+  - r-tibble
+  - r-readr
+  - r-jsonlite
+source:
+  sha256: 5f6e2fe165d49ab31b4d5c4b25f59c7abcfc6849876ae12d8ba2dc41605758bc
+  url: https://github.com/vipin839/rnaseq_pipeline/archive/refs/tags/v1.1.2.tar.gz
+test:
+  commands:
+  - rnaseq-pipeline --version
+  - rnaseq_pipeline --help
+  - test -f "$(rnaseq-pipeline --runtime-env tools)"
+  - test -f "$(rnaseq-pipeline --runtime-env r)"
+  - hisat2 --version
+  - featureCounts -v
+  - Rscript -e "library(DESeq2)"
+  imports:
+  - rnaseq_pipeline
+  - rnaseq_pipeline.cli

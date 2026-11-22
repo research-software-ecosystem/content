@@ -1,0 +1,59 @@
+about:
+  description: 'HGTlong extracts molecular evidence from query-grouped ONT alignments,
+
+    calls candidate shared loci, validates supplied fixed blocks, and generates
+
+    interactive reports. This core package and its synthetic demo require no
+
+    external bioinformatics tools. Real-data mapping and sequence QC require
+
+    separately installed minimap2 and samtools; full BLAST discovery and ANI
+
+    orchestration are outside this release. Noncommercial use only under
+
+    CC BY-NC 4.0. Candidate calls do not establish transfer direction or age.
+
+    '
+  dev_url: https://github.com/whchenlab/HGTlong
+  doc_url: https://github.com/whchenlab/HGTlong#readme
+  home: https://github.com/whchenlab/HGTlong
+  license: CC-BY-NC-4.0
+  license_family: OTHER
+  license_file: LICENSE
+  summary: Read-resolved candidate horizontal gene transfer loci from ONT molecules
+build:
+  entry_points:
+  - hgtlong = hgtlong.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - whchenlab
+package:
+  name: hgtlong
+  version: 0.1.3rc3
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=61
+  - wheel
+  run:
+  - python >=3.9
+source:
+  sha256: 1e665e8bd85ac196d9a49cd74b198f377c1c98746692dc1a9319374b6880d1ad
+  url: https://github.com/whchenlab/HGTlong/releases/download/v0.1.3rc3/hgtlong-0.1.3rc3.tar.gz
+test:
+  commands:
+  - hgtlong --version
+  - hgtlong --help
+  imports:
+  - hgtlong
+  - hgtlong.blast_seeded
+  source_files:
+  - demo
+  - tests
+  - scripts/annotate_cog_v2.py

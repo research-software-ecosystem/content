@@ -1,0 +1,46 @@
+about:
+  description: 'ReadFaker simulates Oxford Nanopore reads by extracting empirical
+    read length and quality models from real sequencing data in FASTQ or BAM format.
+
+    Errors are introduced from these quality scores, and the error model can be customized
+    to adjust parameters such as substitution and indel rates.
+
+    '
+  dev_url: https://github.com/dialvarezs/readfaker
+  home: https://github.com/dialvarezs/readfaker
+  license: GPL-3.0-or-later
+  license_family: GPL3
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Simulate Oxford Nanopore reads with realistic length and quality profiles
+    learned from real data.
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install --no-track --locked --verbose --root "${PREFIX}" --path .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - dialvarezs
+package:
+  name: readfaker
+  version: 0.3.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: e3bc73d048e81510102f23cef29b50addb7504bdf89204a80865af243392bbc4
+  url: https://github.com/dialvarezs/readfaker/archive/v0.3.0.tar.gz
+test:
+  commands:
+  - readfaker --version
+  - readfaker --help

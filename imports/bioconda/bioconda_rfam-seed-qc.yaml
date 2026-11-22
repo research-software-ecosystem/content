@@ -1,0 +1,57 @@
+about:
+  description: 'rfam-seed-qc checks Stockholm multiple sequence alignments (Rfam seed
+
+    alignments) for format errors and, with --fix, corrects common problems:
+
+    missing coordinates, duplicate and overlapping sequences, and sequences
+
+    that do not match their NCBI or RNAcentral source, with a BLAST fallback
+
+    (NCBI web BLAST, or a local database with --local). Optional checks
+
+    against known Rfam families use Infernal''s cmscan.
+
+    '
+  dev_url: https://github.com/Rfam/rfam-seed-qc
+  doc_url: https://github.com/Rfam/rfam-seed-qc#readme
+  home: https://github.com/Rfam/rfam-seed-qc
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Validate and fix Stockholm seed alignments for Rfam.
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - pmb59
+package:
+  name: rfam-seed-qc
+  version: 1.3.2
+requirements:
+  run:
+  - python >=3.10
+  - biopython >=1.79
+  - infernal
+  - easel
+  - blast
+  - wget >=1.19.1
+source:
+  sha256: fb613f1b290487a00c4b356acf59c6a6def13f4871f15500952bc10171104e04
+  url: https://github.com/Rfam/rfam-seed-qc/archive/refs/tags/v1.3.2.tar.gz
+test:
+  commands:
+  - rfam-seed-qc --help
+  - rfam-seed-qc-build-live-cm --help
+  - env -i PATH=/usr/bin:/bin "${PREFIX}/bin/rfam-seed-qc" --help
+  - for t in cmscan cmpress esl-reformat blastn blastdbcmd wget; do command -v "$t";
+    done
+  - printf '# STOCKHOLM 1.0\n\nX01/1-4 ACGU\nX02/1-4 ACGU\n#=GC SS_cons <..>\n//\n'
+    > ok.sto
+  - rfam-seed-qc -v ok.sto | grep -q "Valid Stockholm file"
+  - printf '# STOCKHOLM 1.0\n\nX01/1-4 ACGU\n' > bad.sto
+  - if rfam-seed-qc bad.sto > bad.log 2>&1; then exit 1; fi
+  - grep -qF "Missing required '//' terminator" bad.log
+  - rfam-seed-qc --version | grep -qF "rfam-seed-qc 1.3.2"

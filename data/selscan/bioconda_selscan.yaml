@@ -1,5 +1,6 @@
 about:
   dev_url: https://github.com/szpiech/selscan
+  doc_url: https://github.com/szpiech/selscan/blob/v3.1.0/Selscan_Manual_v3_1_0.pdf
   home: https://github.com/szpiech/selscan
   license: GPL-3.0-only
   license_family: GPL3
@@ -16,23 +17,22 @@ extra:
   identifiers:
   - biotools:selscan
   - doi:10.1093/molbev/msu211
+  recipe-maintainers:
+  - szpiech
 package:
   name: selscan
-  version: 3.0.1
+  version: 3.1.0
 requirements:
   build:
   - make
   - null
   - null
   host:
-  - gsl
-  - zlib
-  run:
-  - gsl
   - zlib
 source:
-  sha256: e72ae9b5d9dea2b025fabb07b16a194f2a0470dc8389fc0c4ab1c3757f7648ef
-  url: https://github.com/szpiech/selscan/archive/v3.0.1.tar.gz
+  sha256: a280e608987ec051ddc441cb5656cdea92ab3d4341f7f94ad0f6ab8ff40ea189
+  url: https://github.com/szpiech/selscan/archive/v3.1.0.tar.gz
 test:
   commands:
-  - selscan 2>&1 | grep -qF 'selscan'
+  - selscan --version | grep -qF "3.1.0"
+  - selscan norm --help > /dev/null

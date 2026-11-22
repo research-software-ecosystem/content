@@ -1,0 +1,47 @@
+about:
+  dev_url: https://github.com/duartemolha/gloci
+  home: https://github.com/duartemolha/gloci
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Fast genomic interval and VCF toolkit as lazy, streaming Python pipelines
+    (in-process)
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - duartemolha
+package:
+  name: py-gloci
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python >=3.10
+  - pip
+  - maturin >=1.9.4,<2
+  run:
+  - python >=3.10
+source:
+  sha256: 8a591a5efd007a49c08d7fc4b88e383afc3b51288ae7e018321dcb01848bd212
+  url: https://github.com/duartemolha/gloci/releases/download/v0.1.0/gloci-0.1.0.tar.gz
+test:
+  commands:
+  - python -c "import gloci; assert gloci.open([('chr1', 1, 5), ('chr1', 9, 12)]).count()
+    == 2"
+  - python -c "import gloci; print(gloci.__version__)"
+  - test ! -e $PREFIX/bin/gloci
+  imports:
+  - gloci

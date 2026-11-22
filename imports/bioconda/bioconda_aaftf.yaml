@@ -1,0 +1,83 @@
+about:
+  description: 'AAFTF automates draft fungal genome assembly from Illumina reads,
+    optionally with
+
+    long reads: read trimming and contaminant filtering, SPAdes/Flye assembly, vector
+    and
+
+    contaminant screening (BLAST, sourmash), duplicate removal, polishing, contig
+    sorting
+
+    and renaming, coverage analysis and summary statistics including telomere detection.
+
+
+    Tools used only by optional steps or non-default methods are not installed with
+    this
+
+    package; add the ones you need: bowtie2, fastp, trimmomatic, megahit, unicycler,
+
+    nextpolish2, yak, novoplasty, ncbi-fcs-gx. `AAFTF dependency` lists what is missing.
+
+    '
+  dev_url: https://github.com/stajichlab/AAFTF
+  doc_url: https://aaftf.readthedocs.io
+  home: https://github.com/stajichlab/AAFTF
+  license: MIT AND GPL-3.0-only
+  license_file: LICENSE
+  summary: Automatic Assembly For The Fungi
+build:
+  entry_points:
+  - AAFTF = aaftf.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.1620526
+  recipe-maintainers:
+  - hyphaltip
+  - chtsai0105
+package:
+  name: aaftf
+  version: 0.8.1
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - hatchling
+  - hatch-vcs
+  run:
+  - python >=3.11,<3.14
+  - biopython >=1.88
+  - matplotlib-base >=3.10.9
+  - psutil >=7.2.2
+  - bbmap >=39.80,<40
+  - spades
+  - blast
+  - bwa
+  - samtools >=1.24,<2
+  - minimap2
+  - flye
+  - racon
+  - polypolish >=0.7.1,<0.8
+  - pypolca >=0.5.0,<0.6
+  - freebayes
+  - mosdepth >=0.3.10
+  - pigz
+  - sourmash >=4.8
+  - sourmash_plugin_branchwater >=0.9.15
+  - perl
+source:
+  sha256: 383df602f9e22c34965dd3a975a818914ef30a26994409c37b3d4b225f5f00c3
+  url: https://pypi.org/packages/source/a/aaftf/aaftf-0.8.1.tar.gz
+test:
+  commands:
+  - AAFTF --version
+  - AAFTF --help
+  - test -x ${PREFIX}/bin/aaftf_polca.sh
+  - test -x ${PREFIX}/bin/fix_consensus_from_vcf.pl
+  - AAFTF dependency
+  requires:
+  - python 3.11

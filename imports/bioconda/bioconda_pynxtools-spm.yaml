@@ -1,0 +1,56 @@
+about:
+  description: 'pynxtools-spm converts STM, STS and AFM data from several vendors
+    into
+
+    NeXus/HDF5 files that follow NXstm, NXsts and NXafm.
+
+    '
+  dev_url: https://github.com/FAIRmat-NFDI/pynxtools-spm
+  doc_url: https://fairmat-nfdi.github.io/pynxtools-spm/
+  home: https://github.com/FAIRmat-NFDI/pynxtools-spm
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: A pynxtools reader plugin that converts scanning probe microscopy (SPM)
+    data to NeXus.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - RubelMozumder
+package:
+  name: pynxtools-spm
+  version: 0.5.1
+requirements:
+  host:
+  - python 3.10
+  - pip
+  - setuptools >=78.1.1
+  - setuptools-scm >=6.2
+  run:
+  - python >=3.10
+  - pynxtools >=0.16.0
+  - findiff >=0.11.1
+  - matplotlib-base
+  - scipy
+  - hvplot
+  - tzlocal
+  - gwyddionpy
+  - gwyconvert
+source:
+  sha256: 7bbe7de20067d66654e8460992330b2966bfca9355235485e2ffb16d13042fb8
+  url: https://pypi.org/packages/source/p/pynxtools-spm/pynxtools_spm-0.5.1.tar.gz
+test:
+  commands:
+  - python -c "from importlib.metadata import entry_points; assert 'spm' in [e.name
+    for e in entry_points(group='pynxtools.reader')]"
+  - gwyconvert --list-formats
+  imports:
+  - pynxtools_spm
+  - pynxtools_spm.reader
+  requires:
+  - python 3.10

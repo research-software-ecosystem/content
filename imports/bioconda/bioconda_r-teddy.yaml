@@ -6,7 +6,7 @@ about:
   license_file: LICENSE
   summary: Analysis of TE-dependent gene isoforms.
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
 extra:
@@ -24,15 +24,21 @@ requirements:
   - null
   - pkg-config
   host:
-  - r-base 4.1.*
+  - r-base
   - zlib
   - xz
   - bzip2
-  - r-dplyr
+  - r-dplyr >=1.1.1
   - r-ggplot2
+  - r-readr
   - r-statmod
+  - r-stringr
+  - r-tibble
+  - r-tidyr
   - bioconductor-rtracklayer
+  - bioconductor-genomeinfodb
   - bioconductor-genomicfeatures
+  - bioconductor-txdbmaker
   - bioconductor-rsamtools
   - bioconductor-genomicalignments
   - bioconductor-genomicranges
@@ -45,12 +51,18 @@ requirements:
   - bioconductor-matrixgenerics
   - bioconductor-biostrings
   run:
-  - r-base >=4.1,<4.2
-  - r-dplyr
+  - r-base
+  - r-dplyr >=1.1.1
   - r-ggplot2
+  - r-readr
   - r-statmod
+  - r-stringr
+  - r-tibble
+  - r-tidyr
   - bioconductor-rtracklayer
+  - bioconductor-genomeinfodb
   - bioconductor-genomicfeatures
+  - bioconductor-txdbmaker
   - bioconductor-rsamtools
   - bioconductor-genomicalignments
   - bioconductor-genomicranges
@@ -63,8 +75,13 @@ requirements:
   - bioconductor-matrixgenerics
   - bioconductor-biostrings
 source:
-  sha256: 76a5d20b4e1a0a86ab38cd36a5bbcced03c314ffa3d14a18df04d3201a9123b0
-  url: https://github.com/YeehanXiao/Teddy/archive/refs/tags/v1.2.8.tar.gz
+  sha256: 61a95683cb2e95cc6bd5761e6314d6f45c1bdb59e4a77f5c18fa2052f2343872
+  url: https://github.com/YeehanXiao/Teddy/archive/2566515733806c50573fdacefe51e17fa61efce8.tar.gz
 test:
   commands:
-  - $R -e "library('Teddy')"
+  - $R -e "stopifnot(is.function(Teddy::annotateTEPosition), is.function(Teddy::formTEPositionPlot))"
+  - $R -e "for (p in c('stringtie', 'stringtie3/stringtie', 'gffcompare')) stopifnot(system2(system.file(p,
+    package='Teddy'), '--version') == 0L)"
+  source_files:
+  - demo/data
+  - demo/run_demo.R

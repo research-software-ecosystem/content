@@ -1,0 +1,59 @@
+about:
+  description: 'For one gene, isoform-dominance proposes functional isoform classes
+    from the annotation,
+
+    decides before quantification whether short reads can resolve the class contrast
+    (an exact
+
+    estimability check of the fragment-class system, with the counting SE at a stated
+    design),
+
+    aggregates Salmon quant.sf per donor and tests the contrast across donors and
+    cohorts.
+
+    '
+  dev_url: https://github.com/charliekim97/isoform-dominance-pipeline
+  doc_url: https://charliekim97.github.io/isoform-dominance-pipeline/
+  home: https://github.com/charliekim97/isoform-dominance-pipeline
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Short-read identifiability, quantification and testing of functional isoform-class
+    comparisons in bulk RNA-seq
+build:
+  entry_points:
+  - isoform-dominance = isoform_dominance.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.20672051
+  recipe-maintainers:
+  - charliekim97
+package:
+  name: isoform-dominance
+  version: 2.11.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - numpy >=1.24
+  - scipy >=1.15
+  - matplotlib-base >=3.7
+source:
+  sha256: ad13224079bb3587477685bc230bb0195d5d3be9fb0d4fd0bab85dfc22e875e9
+  url: https://pypi.org/packages/source/i/isoform-dominance/isoform_dominance-2.11.0.tar.gz
+test:
+  commands:
+  - isoform-dominance --version
+  - isoform-dominance --help
+  - isoform-dominance selftest
+  imports:
+  - isoform_dominance
+  - isoform_dominance.identifiability

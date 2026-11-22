@@ -1,0 +1,62 @@
+about:
+  description: 'DynaMIC analyzes broth microdilution assays and generates an interactive
+
+    report with fitted dose-response curves and estimated MIC values.
+
+
+    To install DynaMIC in a dedicated environment, run
+
+    `conda create -n dynamic -c conda-forge -c bioconda bioconda::dynamic`.
+
+    '
+  dev_url: https://github.com/BirolLab/DynaMIC
+  doc_url: https://github.com/BirolLab/DynaMIC#readme
+  home: https://github.com/BirolLab/DynaMIC
+  license: GPL-3.0-or-later
+  license_file:
+  - LICENSE
+  - dynamic/assets/licenses.txt
+  summary: Calibrated detection and modelling of antimicrobial dose responses
+build:
+  entry_points:
+  - dynamic = dynamic.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - i-salehi
+package:
+  name: dynamic
+  version: 1.0.0
+requirements:
+  host:
+  - python 3.12
+  - pip
+  - hatchling
+  run:
+  - python >=3.12
+  - __unix
+  - numpy >=1.26
+  - pandas >=2.2
+  - scipy >=1.15
+  - matplotlib-base >=3.9
+  - tqdm >=4.66
+source:
+  sha256: e775e1041f89fe37b6866e6b6b650f6666213b59cba65076ff1c89d3e759250f
+  url: https://github.com/BirolLab/DynaMIC/releases/download/v1.0.0/dynamic-1.0.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - dynamic.cli
+  - dynamic.normalization
+  - dynamic.calibration
+  - dynamic.classification
+  - dynamic.modelling
+  - dynamic.report
+  requires:
+  - python 3.12
+  - pip

@@ -15,6 +15,12 @@ about:
     across the
 
     sample. Reads that cross the junction give the insertion point to the base pair.
+    Nanopore and
+
+    PacBio reads are read as well, where a read crossing an integration is clipped
+    at the junction
+
+    and the clip boundary gives the position directly.
 
 
     Kraken2, KrakenUniq, Kaiju, Centrifuge, DIAMOND and BLAST tabular output are all
@@ -34,6 +40,15 @@ about:
 
     usually artefacts. "hgt-site selftest" checks an installation against data with
     known answers.
+
+
+    A vector or transgene can be found from its sequence alone with "--donor", which
+    needs no
+
+    classifier and no database, and "--control" takes the table from a matched normal
+    so that a
+
+    position found in both a tumour and its normal is flagged rather than reported.
 
     '
   dev_url: https://github.com/iraajgangavaram/hgt-site
@@ -60,7 +75,7 @@ extra:
   - iraajgangavaram
 package:
   name: hgt-site
-  version: 0.4.0
+  version: 0.5.0
 requirements:
   host:
   - python >=3.10
@@ -70,8 +85,8 @@ requirements:
   - python >=3.10
   - pysam >=0.21
 source:
-  sha256: 1824d5e166a88047ea222008be1c23a13dee50574e79e5551eb82e4b3ad31616
-  url: https://github.com/iraajgangavaram/hgt-site/archive/refs/tags/v0.4.0.tar.gz
+  sha256: b74466e06f028be686537752945927db602a8ba9990d547df977c971698b701c
+  url: https://github.com/iraajgangavaram/hgt-site/archive/refs/tags/v0.5.0.tar.gz
 test:
   commands:
   - hgt-site --help

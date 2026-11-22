@@ -15,7 +15,7 @@ extra:
   - piosierra
 package:
   name: panteraga
-  version: 1.4.0
+  version: 1.4.1
 requirements:
   run:
   - r-base >=4.1
@@ -29,20 +29,20 @@ requirements:
   - bioconductor-biostrings
   - mafft
   - emboss
-  - blast
+  - blast >=2.12
   - cd-hit
   - fastga
   - alntools
 source:
-- sha256: 87f71a2d6a8086bfd7eb7a86a750d2611ad0c6384fd7f87ed71e8b3eb13957d7
-  url: https://github.com/piosierra/panteraGA/archive/refs/tags/v1.4.0.tar.gz
+- sha256: 33156ee3507f479549da253187b53d505a7566989728544e5827065a4b22264a
+  url: https://github.com/piosierra/panteraGA/archive/refs/tags/v1.4.1.tar.gz
 - folder: zenodo_model
   sha256: 51c7cfed52a94428e0b8f5f0777b4a77d4be839004667c4047c727d65685aa2e
   url: https://zenodo.org/records/22990589/files/model.tar.gz
 test:
   commands:
   - panteraGA -h
-  - test -s $PREFIX/share/panteraga-1.4.0/libs/RepeatPeps.lib.psq
-  - test -s $PREFIX/share/panteraga-1.4.0/model/typesnames
-  - test -s $PREFIX/share/panteraga-1.4.0/model/featurenames
-  - test $(wc -c < $PREFIX/share/panteraga-1.4.0/model/xgbmodel.ubj) -gt 1000000
+  - test -s $PREFIX/share/panteraga-1.4.1/libs/RepeatPeps.lib.psq
+  - test -s $PREFIX/share/panteraga-1.4.1/model/typesnames
+  - test -s $PREFIX/share/panteraga-1.4.1/model/featurenames
+  - test $(wc -c < $PREFIX/share/panteraga-1.4.1/model/xgbmodel.ubj) -gt 1000000

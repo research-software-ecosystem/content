@@ -1,7 +1,7 @@
 about:
   home: https://github.com/algbio/BubbleFinder
   license: MIT
-  summary: BubbleFinder - detecting superbubbles/snarls in graphs
+  summary: Find superbubbles, ultrabubbles, snarls and d-bubbles in graphs
 build:
   number: 0
   run_exports:
@@ -11,7 +11,7 @@ extra:
   - algbio
 package:
   name: bubblefinder
-  version: 1.0.5
+  version: 1.1.0
 requirements:
   build:
   - null
@@ -33,11 +33,11 @@ requirements:
   - null
 source:
 - folder: .
-  sha256: a00e33cbf929a83930d9c51c8601e39f0849234850d7df0567974dae9392e7ae
-  url: https://github.com/algbio/bubblefinder/archive/refs/tags/v1.0.5.tar.gz
+  sha256: 9e3db4c948c58baf622a68fa45b0e3fb0e2ae407d70c1eeb47437ff5bcab4b5b
+  url: https://github.com/algbio/bubblefinder/archive/refs/tags/v1.1.0.tar.gz
 - folder: spqr-rust-src
-  sha256: ca4a607c737455b309540b6e035fd0a174c0e5a536a09b1b95b930c99be741bb
-  url: https://github.com/algbio/spqr-rust/archive/13377db7276843e023774f1bf614772374cff9f1.tar.gz
+  sha256: 577fd9b330ca9835ea0fa22401152dc4b65a734c7cfa7f3605b473c02045c160
+  url: https://github.com/algbio/spqr-rust/archive/e285da07890da53f424cb38a1d6ff850707914d3.tar.gz
 - folder: ogdf-src
   sha256: 3438205d3a6ff69d24c3a6db748d2a5a78688605baf3092456073901a2b623f3
   url: https://github.com/ogdf/ogdf/archive/refs/tags/elderberry-202309.tar.gz
@@ -66,4 +66,6 @@ test:
   commands:
   - BubbleFinder --version
   - BubbleFinder --help
+  - BubbleFinder d-bubbles --help
+  - BubbleFinder ultrabubbles --d-bubbles --help
   - test -x "${PREFIX}/bin/snarls_bf"

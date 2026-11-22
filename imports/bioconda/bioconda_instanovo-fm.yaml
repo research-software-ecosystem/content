@@ -1,0 +1,97 @@
+about:
+  description: 'InstaNovo-FM is an encoder-only transformer trained to reconstruct
+    masked
+
+    regions of MS/MS spectra without peptide-sequence labels. Its frozen
+
+    embeddings transfer across datasets, instruments and acquisition methods.
+
+    '
+  dev_url: https://github.com/instadeepai/InstaNovo-FM
+  doc_url: https://instadeepai.github.io/InstaNovo-FM
+  home: https://github.com/instadeepai/InstaNovo-FM
+  license: Apache-2.0
+  license_file: LICENSE.md
+  summary: A self-supervised foundation model for tandem mass spectra
+build:
+  entry_points:
+  - instanovo-fm = instanovo_fm.cli:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.64898/2026.09.03.747733
+  recipe-maintainers:
+  - BioGeek
+package:
+  name: instanovo-fm
+  version: 0.1.0
+requirements:
+  host:
+  - python >=3.11,<3.14
+  - hatchling
+  - pip
+  run:
+  - python >=3.11,<3.14
+  - instanovo ==1.2.2
+  - captum >=0.7.0
+  - click >=8.1.7
+  - faiss-cpu >=1.9.0
+  - fastexcel >=0.12.0
+  - h5py >=3.12.0
+  - lxml >=4.9.4
+  - mlflow >=2.17.0
+  - numba >=0.60.0
+  - numpy >=2.2.6
+  - openpyxl >=3.1.5
+  - pandas >=2.2.3
+  - polars >=1.12.0
+  - pyarrow >=21.0.0
+  - pyopenms >=3.4.0
+  - pyteomics >=4.7.5
+  - pytorch >=2.5,<2.9
+  - pytorch >=2.5,<2.8
+  - pyyaml >=6.0.2
+  - scikit-learn >=1.5.2
+  - tqdm >=4.67.0
+  - typer >=0.27.2
+  - umap-learn >=0.5.7
+  - xlsxwriter >=3.2.0
+source:
+  sha256: d932a3359be9068793002f73357cf59110dcf1e193fee8a0e05cea3bf21cc57f
+  url: https://pypi.org/packages/source/i/instanovo-fm/instanovo_fm-0.1.0.tar.gz
+test:
+  commands:
+  - instanovo-fm --help
+  - instanovo-fm train --help
+  - instanovo-fm evaluate --help
+  - instanovo-fm denovo --help
+  - python -c "from instanovo_fm.utils.hydra_config import compose_fm_config; [print(name,
+    'composed', len(compose_fm_config(name)), 'keys') for name in ('foundational',
+    'denovo')]"
+  - python -c "from urllib.request import urlretrieve; urlretrieve('https://raw.githubusercontent.com/instadeepai/InstaNovo/55a9a3ff7c18e2748c0ef7fc6ba3213002ad6a0f/sample_data/spectra.mgf',
+    'spectra.mgf')"
+  - HOME="$(mktemp -d)" python -c "import torch; from instanovo_fm.data import FoundationalDataProcessor;
+    from instanovo_fm.model.encoder import FoundationModel; from instanovo_fm.utils.spectrum_dataframe
+    import SpectrumDataFrame; torch.set_grad_enabled(False); sdf = SpectrumDataFrame.load('spectra.mgf',
+    is_annotated=True, shuffle=False); model, cfg = FoundationModel.from_pretrained('instanovo-fm-mcfm-90k-v0.1.0');
+    proc = FoundationalDataProcessor(use_spectrum_utils=False, masking_strategy='none');
+    batch = proc.collate_fn(list(proc.process_dataset(sdf.to_dataset(in_memory=True))));
+    emb = model.eval().encode_mean_pooled(batch['spectra']); assert emb.shape == (len(sdf),
+    model.dim_model), emb.shape; assert torch.isfinite(emb).all(); print('embedded',
+    tuple(emb.shape))"
+  - rm -f spectra.mgf
+  imports:
+  - instanovo_fm
+  - instanovo_fm.cli
+  - instanovo_fm.utils.lsh
+  - instanovo_fm.utils.theoretical_spectra
+  - instanovo_fm.eval.embedding_io
+  - instanovo_fm.eval.embed_evaluation
+  - instanovo_fm.eval.embed_eval_tasks.ig_attribution
+  - instanovo_fm.eval.embed_eval_tasks.umap_visualisation
+  requires:
+  - python

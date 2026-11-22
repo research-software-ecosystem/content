@@ -9,7 +9,7 @@ build:
   entry_points:
   - mashpit = mashpit.mashpit:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install --no-deps --no-build-isolation --no-cache-dir . -vvv
@@ -18,29 +18,41 @@ package:
   version: 1.0.0
 requirements:
   host:
-  - python >=3.9,<3.10
+  - python >=3.8,<3.11
   - pip
-  - setuptools
+  - setuptools >=75.1.0,<75.2
   run:
-  - biopython >=1.83
-  - dask-core >=2024.1
-  - flask >=3.0.3
-  - ncbi-datasets-cli >=16.10
-  - ncbi-datasets-pylib >=16.6.0
-  - numpy <2.0.0
-  - python >=3.9,<3.10
-  - pandas >=2.0.3
+  - python >=3.8,<3.11
+  - sourmash >=4.6.1,<4.7
+  - screed >=1.0.5,<1.1.3
+  - pandas >=2.0.3,<2.1
+  - numpy >=1.24.4,<1.25
+  - pyarrow >=7,<26
+  - biopython >=1.83,<2
+  - scikit-bio >=0.6.2,<0.7
+  - tqdm >=4.67.0,<4.68
+  - matplotlib-base >=3.7.3,<3.8
+  - streamlit >=1.40.1,<1.41
   - requests
-  - scikit-bio
-  - scipy >=1.0
-  - screed >=1.0.5
-  - sourmash >=4.6.1
-  - tqdm
-  - phytreeviz
-  - psutil
+  - ncbi-datasets-cli >=16.10
+  - altair >=4.0,<6
+  - setuptools <82
 source:
+  patches:
+  - matplotlib-conda.patch
   sha256: 631ed8ef56884ce46fae5708353ce81152e96a2d8966f0bd54d6f371fb4e15f4
   url: https://github.com/tongzhouxu/mashpit/archive/refs/tags/v1.0.0.tar.gz
 test:
   commands:
   - mashpit --help
+  - mashpit gui --help
+  - datasets --help
+  - python -c "from mashpit.tree_plot import render_tree; png, svg, tips = render_tree('(a:1,b:1);');
+    assert png.startswith(b'\x89PNG') and b'<svg' in svg and tips == 2"
+  imports:
+  - mashpit.mashpit
+  - mashpit.report
+  - mashpit.tree_plot
+  - pyarrow
+  - streamlit
+  - matplotlib

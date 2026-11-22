@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/BojarLab/glycorender
+  home: https://github.com/BojarLab/glycorender
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A bespoke SVG to PDF/PNG renderer for the GlycoDraw platform
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - Bribak
+package:
+  name: glycorender
+  version: 0.5.8
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=42
+  - wheel
+  run:
+  - python >=3.10
+  - numpy
+source:
+  sha256: 35a72542a67b91053bb11a3fbe9b7c1594d0c6a9f0a809f54f3d7f52e7940522
+  url: https://pypi.org/packages/source/g/glycorender/glycorender-0.5.8.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - glycorender
+  requires:
+  - pip
