@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/fg-labs/winnowr
+  doc_url: https://winnowr.readthedocs.io
+  home: https://github.com/fg-labs/winnowr
+  license: MIT AND Apache-2.0
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  - xgboost/vendor/xgboost/LICENSE
+  - xgboost/vendor/xgboost/dmlc-core/LICENSE
+  summary: Machine-learned filtering and genotyping of germline small-variant calls.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - nh13
+package:
+  name: winnowr
+  version: 0.1.2
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - cmake
+  - make
+  - clang
+  - libclang
+  host:
+  - llvm-openmp
+source:
+  sha256: 19cf873e41e531a9abf917c8ee510dcc50184ba4fb781363936d9e2978a46972
+  url: https://github.com/fg-labs/winnowr/releases/download/v0.1.2/winnowr-0.1.2-src.tar.gz
+test:
+  commands:
+  - winnowr --version | grep -F "winnowr 0.1.2"
+  - winnowr --help

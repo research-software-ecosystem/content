@@ -1,0 +1,63 @@
+about:
+  dev_url: https://github.com/SemiQuant/PrimerJinn
+  doc_url: https://github.com/SemiQuant/PrimerJinn#readme
+  home: https://github.com/SemiQuant/PrimerJinn
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: Multiplex PCR primer pool design for amplicon sequencing, with in silico
+    PCR and multiplex primer-set tools
+build:
+  entry_points:
+  - getMultiPrimerSet = primerJinn.getMultiPrimerSet:main
+  - PCRinSilico = primerJinn.PCRinSilico:main
+  - primerJinn = primerJinn.primerJinn:main
+  - primerjinn-multiplex = primerJinn.multiplex.cli:main
+  - primerjinn-gui = primerJinn.multiplex.gui:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - SemiQuant
+package:
+  name: primerjinn
+  version: 2.1.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - numpy
+  - scipy
+  - pandas
+  - biopython
+  - networkx
+  - scikit-learn
+  - requests
+  - openpyxl
+  - matplotlib-base
+  - tabulate
+  - primer3-py ==2.0.3
+  - viennarna >=2.7
+  - numba
+  - pysam
+  - blast
+  - streamlit >=1.50
+  - altair >=5
+source:
+  sha256: 923b899921df190d9319ba3594d6bbf835ed6b9c61243ec8a5c316b2c614b305
+  url: https://pypi.io/packages/source/p/primerJinn/primerjinn-2.1.0.tar.gz
+test:
+  commands:
+  - primerjinn-multiplex --help
+  - primerjinn-gui --help
+  - PCRinSilico --help
+  imports:
+  - primerJinn
+  - primerJinn.multiplex
+  - primerJinn.multiplex.cli

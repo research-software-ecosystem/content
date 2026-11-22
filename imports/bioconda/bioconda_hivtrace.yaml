@@ -2,33 +2,41 @@ about:
   dev_url: https://github.com/veg/hivtrace
   home: https://github.com/veg/hivtrace
   license: MIT
+  license_family: MIT
+  license_file: LICENSE
   summary: HIV TRACE is an application that identifies potential transmission clusters
     within a supplied FASTA file with an option to find potential links against the
     Los Alamos HIV Sequence Database.
 build:
   noarch: python
   number: 0
-  script: ' -m pip install . --ignore-installed --no-deps -vv'
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
 package:
   name: hivtrace
-  version: 1.5.0
+  version: 0.10.2
 requirements:
   host:
-  - python >=3
+  - python >=3.10
   - pip
+  - setuptools
   run:
-  - python >=3
+  - python >=3.10
   - biopython >=1.58
-  - python-bioext >=0.19.7
-  - python-hyphy-python >=0.1.6
-  - python-hppy >=0.9.8
   - tornado >=4.3
-  - python-hivclustering
+  - python-hppy >=0.9.9
+  - python-hyphy-python >=0.1.11
+  - python-hivclustering >=1.6.8
+  - cawlign
+  - tn93 >=1.0.6
 source:
-  sha256: fc18d3e446f80294d91b3933a9feb934d080e179fb7204600d261bab1b9ef245
-  url: https://github.com/veg/hivtrace/archive/1.5.0.tar.gz
+  sha256: 9236586ef0dc2fcf565b42ecad8f1f54ec1c1530293c33975be915490f2bf1f6
+  url: https://pypi.org/packages/source/h/hivtrace/hivtrace-0.10.2.tar.gz
 test:
   commands:
   - hivtrace -h 2>&1 | grep 'usage' > /dev/null
   - hivtrace_strip_drams -h 2>&1 | grep 'usage' > /dev/null
   - hivtrace_viz -h 2>&1 | grep 'Usage' > /dev/null
+  - command -v cawlign
+  - command -v tn93

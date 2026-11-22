@@ -18,7 +18,6 @@ about:
   license_file:
   - LICENSE
   - THIRDPARTY.txt
-  - thirdparty/cgranges/LICENSE.txt
   - thirdparty/catch2/LICENSE.txt
   - thirdparty/tomlplusplus/LICENSE
   summary: Caller-agnostic adjudication of long-read RNA-seq novel isoforms
@@ -34,7 +33,7 @@ extra:
   - jibeomko
 package:
   name: panisoguard
-  version: 0.0.7
+  version: 0.1.0
 requirements:
   build:
   - null
@@ -47,8 +46,8 @@ requirements:
   run:
   - htslib >=1.18
 source:
-  sha256: fd78855203a5b5725530f546f84ffff36a42d46117a6829f82a88cceebcae6ea
-  url: https://github.com/jibeomko/PanIsoGuard/archive/refs/tags/v0.0.7.tar.gz
+  sha256: e00a11ceb4a1a45367418a8a23cf631bf70e78f3eff305be3e78d362995e092f
+  url: https://github.com/jibeomko/PanIsoGuard/archive/refs/tags/v0.1.0.tar.gz
 test:
   commands:
   - panisoguard --version
@@ -62,3 +61,9 @@ test:
     "T2";\n' > mini.gtf
   - panisoguard combine --gtf flair:mini.gtf --out combine_smoke.tsv
   - test -s combine_smoke.tsv
+  - cd "$(mktemp -d)" && panisoguard example tiny && cd tiny && mkdir -p out && panisoguard
+    adjudicate --classification data/classification.tsv --isoforms-gtf data/caller.gtf
+    --ref-gtf data/reference.gtf --sj-tab data/short_read.SJ.tab --out-prefix out/sample
+    && diff -u expected/sample.adjudicated.tsv out/sample.adjudicated.tsv && diff
+    -u expected/sample.attribution.jsonl out/sample.attribution.jsonl && diff -u expected/sample.junctions.tsv
+    out/sample.junctions.tsv

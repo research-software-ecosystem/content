@@ -1,0 +1,59 @@
+about:
+  description: 'QRAFT (Quartet Regrafting for Accurate and Fast Species Tree Estimation)
+
+    infers a species tree from gene trees. It looks for the species tree that
+
+    agrees with the most gene-tree quartets, counting every quartet exactly,
+
+    and it scales to very large datasets. It reads gene trees in Newick
+
+    format, which may miss taxa or hold several copies of a taxon, and writes
+
+    the species tree in Newick format, optionally with local posterior
+
+    probabilities on its edges.
+
+    '
+  dev_url: https://github.com/risenfromashes/qraft
+  doc_url: https://github.com/risenfromashes/qraft/blob/main/README.md
+  home: https://github.com/risenfromashes/qraft
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  license_file:
+  - LICENSE
+  - external/taskflow/LICENSE
+  summary: Species trees from gene trees by quartet regrafting, at the scale of a
+    million taxa.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.64898/2026.11.05.764586
+  recipe-maintainers:
+  - risenfromashes
+package:
+  name: qraft
+  version: 1.0.3
+requirements:
+  build:
+  - null
+  - null
+  - cmake >=3.20
+  - make
+  host:
+  - jemalloc
+source:
+- sha256: 993f170b5585300332f1b930e8fadeda7a540eea4fb97d3fdf44428d31aedc41
+  url: https://github.com/risenfromashes/qraft/archive/refs/tags/v1.0.3.tar.gz
+- folder: external/taskflow
+  sha256: fc53af60d322d1b14e6628691013a71637f4c99eef2a0a840f4f97b350ef0a1c
+  url: https://github.com/taskflow/taskflow/archive/93c307d16051294eee8bebd8ce794e328add0385.tar.gz
+test:
+  commands:
+  - qraft --version | grep -F "qraft 1.0.3"
+  - qraft selftest

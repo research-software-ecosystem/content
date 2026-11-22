@@ -1,0 +1,53 @@
+about:
+  description: 'Estimates the sequencing and PCR error rate of every single-nucleotide
+    variant in a deep
+
+    mutational scanning library from false double mutants, reads that carry a programmed
+
+    multi-nucleotide codon variant together with a single-nucleotide change nearby,
+    and subtracts
+
+    the expected error reads from the variant counts. Empirical-Bayes Gamma-Poisson
+    rates with
+
+    substitution-type and trinucleotide-context priors, pooled across libraries, with
+    genuine double
+
+    mutants removed. R package fdmcorrect with the command-line tool dms-fdmcorrect;
+    the
+
+    error-correction step of nf-core/deepmutscan.
+
+    '
+  dev_url: https://github.com/MaximilianStammnitz/dms-fdmcorrect
+  doc_url: https://github.com/MaximilianStammnitz/dms-fdmcorrect#readme
+  home: https://github.com/MaximilianStammnitz/dms-fdmcorrect
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Sequencing-error correction of deep mutational scanning counts by false
+    double mutants (nf-core/deepmutscan)
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - MaximilianStammnitz
+package:
+  name: dms-fdmcorrect
+  version: 0.1.2
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  sha256: 5ce213e808c38c656d2a66d30a5e6ffcaf9f191ff0fdd92726f7bb85a4a8b737
+  url: https://github.com/MaximilianStammnitz/dms-fdmcorrect/archive/refs/tags/v0.1.2.tar.gz
+test:
+  commands:
+  - $R -e "library('fdmcorrect')"
+  - dms-fdmcorrect --version
+  - dms-fdmcorrect --help

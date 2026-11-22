@@ -1,0 +1,96 @@
+about:
+  description: 'ColabAlign runs parallel all-vs-all US-align (TM-align) structural
+
+    alignments of protein chains, builds a UPGMA structural dendrogram from
+
+    the TM-score matrix, clusters it with TreeCluster at one or more
+
+    thresholds, superposes each cluster onto its medoid, and picks a
+
+    consensus representative per cluster. Accepts .pdb and .cif files, and
+
+    .zip or tar (.tar, .tar.gz/.tgz, .tar.bz2, .tar.xz) archives of them.
+
+    '
+  dev_url: https://github.com/crfield18/ColabAlign
+  doc_url: https://github.com/crfield18/ColabAlign/blob/v1.2.3/README.md
+  home: https://github.com/crfield18/ColabAlign
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: All-vs-all US-align protein structure comparison, structural dendrograms
+    and clustering.
+build:
+  entry_points:
+  - colabalign = colabalign.pipeline:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.1101/2025.10.06.677802
+  - doi:10.5281/zenodo.14169501
+  recipe-maintainers:
+  - crfield18
+package:
+  name: colabalign
+  version: 1.2.3
+requirements:
+  host:
+  - python >=3.12
+  - pip
+  - setuptools >=77
+  - wheel
+  run:
+  - python >=3.12
+  - numpy >=2.5,<3
+  - pandas >=3.1,<4
+  - biopython >=1.88,<2
+  - scipy >=1.18,<2
+  - tqdm >=4.70,<5
+  - treecluster >=1.0.5,<2
+  - usalign >=20241201
+  - beem-bio >=1.0.1,<2
+source:
+  sha256: bfafda27fb0911564598dd77a4b45199c5e058ffe42bda9df6437ae43e0c444a
+  url: https://github.com/crfield18/ColabAlign/archive/refs/tags/v1.2.3.tar.gz
+test:
+  commands:
+  - colabalign --help
+  - colabalign --version
+  - USalign -h > /dev/null
+  - command -v BeEM > /dev/null
+  - TreeCluster.py -h > /dev/null
+  - "python -c \"\nimport pathlib, subprocess, tempfile, zipfile\nimport numpy as\
+    \ np\nimport pandas as pd\nfrom Bio.PDB import MMCIFIO, PDBParser\ndef seg(k,\
+    \ n, r):\n    if k == 'h':\n        t = np.arange(n) * np.deg2rad(100)\n     \
+    \   return np.column_stack([2.3 * np.cos(t), 2.3 * np.sin(t), 1.5 * np.arange(n)])\n\
+    \    if k == 's':\n        return np.column_stack([3.3 * np.arange(n), np.arange(n)\
+    \ % 2, np.zeros(n)])\n    v = r.normal(size=(n, 3))\n    return np.cumsum(3.8\
+    \ * v / np.linalg.norm(v, axis=1, keepdims=True), axis=0)\ndef trace(segs, seed):\n\
+    \    r, o, out = np.random.default_rng(seed), np.zeros(3), []\n    for k, n in\
+    \ segs:\n        q, _ = np.linalg.qr(r.normal(size=(3, 3)))\n        x = seg(k,\
+    \ n, r)\n        x = (x - x[0]) @ q + o\n        out.append(x)\n        o = x[-1]\
+    \ + q[0] * 3.8\n    x = np.vstack(out)\n    return x + r.normal(scale=0.3, size=x.shape)\n\
+    def write_pdb(p, x):\n    rows = list(f'ATOM  {i:5d}  CA  ALA A{i:4d}    {a:8.3f}{b:8.3f}{c:8.3f}\
+    \  1.00  0.00           C' for i, (a, b, c) in enumerate(x, 1))\n    p.write_text(chr(10).join(rows\
+    \ + ['TER', 'END', '']))\nfams = {'hh': [('h', 14), ('c', 4), ('h', 14)], 'bab':\
+    \ [('s', 6), ('c', 3), ('h', 12), ('c', 3), ('s', 6)]}\nwork = pathlib.Path(tempfile.mkdtemp())\n\
+    src, ind = work / 'src', work / 'in'\nsrc.mkdir(); ind.mkdir()\npaths = []\nfor\
+    \ f, (name, segs) in enumerate(fams.items()):\n    for v in range(3):\n      \
+    \  paths.append(src / f'{name}{v}.pdb')\n        write_pdb(paths[-1], trace(segs\
+    \ + [('c', 3 * v)] * (v > 0), 10 * f + v))\nfor p in paths[:3]:\n    (ind / p.name).write_bytes(p.read_bytes())\n\
+    with zipfile.ZipFile(ind / 'more.zip', 'w') as z:\n    for p in paths[3:5]:\n\
+    \        z.write(p, f'batch/{p.name}')\nio = MMCIFIO()\nio.set_structure(PDBParser(QUIET=True).get_structure('x',\
+    \ paths[5]))\nio.save(str(ind / f'{paths[5].stem}.cif'))\nsubprocess.run(['colabalign',\
+    \ '-i', str(ind), '-o', str(work / 'out'), '-c', '2', '-t', '0.3', '0.6'], check=True)\n\
+    res = work / 'out' / 'results'\ntm = pd.read_csv(res / 'us-align_score_matrix.csv',\
+    \ index_col=0)\nassert tm.shape == (6, 6) and not tm.isna().any().any(), tm\n\
+    assert (res / 'colabalign.tree').stat().st_size > 0\nassert all((res / 'clusters'\
+    \ / t).is_dir() for t in ('0.30', '0.60'))\nprint('colabalign smoke test passed:',\
+    \ sorted(tm.index))\n\"\n"
+  imports:
+  - colabalign
+  - colabalign.pipeline

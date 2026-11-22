@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/jmschrei/figwig
+  home: https://github.com/jmschrei/figwig
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A fast, multithreaded reader and writer of bigWig files, into and out of
+    numpy.
+build:
+  entry_points:
+  - figwig = figwig.__main__:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: ' -m pip install . --no-deps --no-build-isolation -vvv'
+extra:
+  recipe-maintainers:
+  - musharna
+package:
+  name: figwig
+  version: 0.2.0
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - hatchling >=1.27
+  run:
+  - python >=3.10
+  - numba >=0.58
+  - numpy >=1.23
+source:
+  sha256: e2708fc6a6410f9338f3df6ee857f603bad238226dcd7d45903c31a8a87b7c2e
+  url: https://pypi.org/packages/source/f/figwig/figwig-0.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  - figwig --help
+  imports:
+  - figwig
+  requires:
+  - pip

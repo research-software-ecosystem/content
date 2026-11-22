@@ -1,32 +1,34 @@
 about:
   description: This package provides the software SHAPEIT5. SHAPEIT5 estimates haplotypes
     in large datasets (WGS, WES, SNP array), with a special focus on rare variants.
-  dev_url: https://github.com/odelaneau/shapeit5
-  doc_url: https://odelaneau.github.io/shapeit5
-  home: https://odelaneau.github.io/shapeit5
+    The HMM engine uses native ARM NEON SIMD kernels on Apple Silicon (no sse2neon
+    emulation) and AVX2/FMA on x86_64.
+  dev_url: https://github.com/odelaneau/shapeit
+  doc_url: https://odelaneau.github.io/shapeit
+  home: https://odelaneau.github.io/shapeit
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Fast and accurate method for estimation of haplotypes (phasing).
 build:
-  number: 2
+  number: 0
   run_exports:
   - null
+  skip: true
 extra:
+  additional-platforms:
+  - osx-arm64
   identifiers:
   - doi:10.1101/2022.10.19.512867
   - biotools:shapeit5
-  skip-lints:
-  - uses_vcs_url
 package:
   name: shapeit5
-  version: 5.1.1
+  version: 5.1.2
 requirements:
   build:
   - null
+  - null
   - make
-  - cmake
-  - clangdev
   host:
   - boost-cpp
   - libcurl
@@ -39,14 +41,14 @@ requirements:
   - boost-cpp
   - htslib
 source:
-  git_commit: 990ed0dd0a814756c90e16d3a771bc0089b1177a
-  git_url: https://github.com/odelaneau/shapeit5
   patches:
-  - arm64.patch
-  sha256: ignored
+  - apple-silicon-port.patch
+  sha256: dcdad851e86ba01d8ddbf330e426f97c16e40cf64950dfd25d0641f1cd5f61f8
+  url: https://github.com/odelaneau/shapeit/archive/c34d4db3e99a2f7e23deb727671ae260901a5886.tar.gz
 test:
   commands:
   - SHAPEIT5_phase_common --help
   - SHAPEIT5_phase_rare --help
   - SHAPEIT5_switch --help
   - SHAPEIT5_ligate --help
+  - SHAPEIT5_xcftools

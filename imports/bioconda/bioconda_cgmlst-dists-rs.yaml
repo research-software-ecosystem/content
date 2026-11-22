@@ -1,0 +1,35 @@
+about:
+  dev_url: https://github.com/genpat-it/cgmlst-dists-rs
+  home: https://genpat-it.github.io/cgmlst-dists-rs/
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Ultra-fast pairwise cgMLST Hamming distance matrix from chewBBACA allele
+    calls (Rust)
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - andreaderuvo
+package:
+  name: cgmlst-dists-rs
+  version: 0.1.5
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: cb3c0393084dea507888669047d54267a9e7c8f8ed709755af1b9db327e5aa97
+  url: https://github.com/genpat-it/cgmlst-dists-rs/archive/refs/tags/0.1.5.tar.gz
+test:
+  commands:
+  - cgmlst-dists-rs --version | grep -F '0.1.5'
+  - printf 'id\tL1\tL2\tL3\nS1\t4294967295\t2147483648\t3000000000\nS2\t4294967295\t2147483649\t-\n'
+    > in.tab
+  - cgmlst-dists-rs -s -i in.tab > out.tsv
+  - test "$(sed -n 2p out.tsv | cut -f3)" = 1

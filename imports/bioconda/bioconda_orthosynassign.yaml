@@ -1,19 +1,18 @@
 about:
-  description: 'Ortholog Synteny Assignment Tool - A Python tool to refine orthologous
-    groups using synteny information inferred from genome
+  description: 'orthoSynAssign (Ortholog Synteny Assignment Tool) is a Python tool
+    to partition orthogroups into syntenic orthogroups (SOGs)
 
-    annotation files (BED converted from GFF3/GTF). This is a Python re-implementation
-    of the OrthoRefine, which is written in C++
+    of positional orthologs using synteny information inferred from genome annotation
+    files (BED converted from GFF3/GTF). It is a
 
-    but had some issues with sample matching and memory usage. This tool is designed
-    to be more efficient, easier to use, and more
+    Python re-implementation of OrthoRefine, addressing sample-matching and memory-usage
+    issues in the original C++ tool, with
 
-    flexible for custom analyses. In addition, to ensure optimal processing speed
-    and memory usage, the core synteny analysis is
-
-    implemented in Rust.
+    core synteny analysis implemented in Rust for speed and efficiency.
 
     '
+  dev_url: https://github.com/stajichlab/orthoSynAssign
+  doc_url: https://orthosynassign.readthedocs.io/
   home: https://github.com/stajichlab/orthoSynAssign
   license: GPL-3.0-or-later
   license_family: GPL
@@ -23,16 +22,15 @@ about:
   summary: Ortholog Synteny Assignment Tool for analyzing OrthoFinder results with
     genome annotations
 build:
-  number: 0
+  number: 1
+  python_version_independent: true
   run_exports:
   - null
-  script:
-  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-  - -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
   skip: true
 extra:
-  identifies:
-  - 10.5281/zenodo.18762979
+  identifiers:
+  - doi:10.5281/zenodo.18762979
+  - doi:10.64898/2026.08.10.744007
   recipe-maintainers:
   - chtsai0105
 package:
@@ -47,14 +45,19 @@ requirements:
   host:
   - pip
   - python
+  - python-abi3
   - maturin >=1.0,<2.0
   run:
   - pygenomeviz >=1.6.0
-  - python
+  - python >=
 source:
-  sha256: 48b742ffd02627fab54373c522814b02b26077db68ef971b31be237147279920
-  url: https://github.com/stajichlab/orthoSynAssign/archive/refs/tags/v1.4.0.tar.gz
+  sha256: db80d5a0fa13221230c323744798996f87d64e6ed0266c23091fd52671b3282a
+  url: https://github.com/stajichlab/orthoSynAssign/releases/download/v1.4.0/orthosynassign-1.4.0.tar.gz
 test:
   commands:
+  - pip check
   - orthosynassign --help
   - orthosynassign-vis --help
+  requires:
+  - python
+  - pip

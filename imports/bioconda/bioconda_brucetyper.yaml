@@ -1,0 +1,56 @@
+about:
+  description: 'Runs the Bruce-ladder, Suis-ladder and AMOS multiplex PCR assays,
+    and an RB51
+
+    wboA/IS711 junction PCR, end to end from assembled Brucella genomes. Primer
+
+    pairs are located directly in the nucleotide sequence, amplicon sizes are read
+
+    the way a gel would be read, and a genotype is called. No external PCR tool, no
+
+    alignment step and no database.
+
+    '
+  dev_url: https://github.com/duceppemo/brucetyper
+  doc_url: https://github.com/duceppemo/brucetyper/wiki
+  home: https://github.com/duceppemo/brucetyper
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: In silico Bruce-ladder, Suis-ladder, AMOS and RB51 junction PCR for Brucella
+build:
+  entry_points:
+  - brucetyper = brucetyper.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.23815138
+  recipe-maintainers:
+  - duceppemo
+package:
+  name: brucetyper
+  version: 1.1.0
+requirements:
+  host:
+  - python >=3.9
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.9
+  - biopython
+source:
+  sha256: a743e9bd8b87bb3f6b262432e33e4c13aaeb8203a51a1483dae4745866d2ead9
+  url: https://pypi.org/packages/source/b/brucetyper/brucetyper-1.1.0.tar.gz
+test:
+  commands:
+  - brucetyper --version
+  - brucetyper --help
+  imports:
+  - brucetyper
+  - brucetyper.assays
+  - brucetyper.genotype
+  - brucetyper.insilico_pcr

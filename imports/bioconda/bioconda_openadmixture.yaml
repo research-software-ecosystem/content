@@ -1,0 +1,63 @@
+about:
+  description: 'OpenADMIXTURE estimates individual ancestry proportions (Q) and population
+    allele
+
+    frequencies (P) from PLINK .bed files, with the same model and command-line
+
+    interface as ADMIXTURE 1.3 (-j, -s, -C, --cv, -B). This package bundles its own
+
+    Julia runtime and precompiled dependencies, so it runs offline.
+
+    '
+  dev_url: https://github.com/ltalignani/OpenADMIXTURE.jl
+  home: https://github.com/OpenMendel/OpenADMIXTURE.jl
+  license: MIT
+  license_family: MIT
+  license_file:
+  - OpenADMIXTURE.jl/LICENSE
+  - julia/LICENSE.md
+  summary: ADMIXTURE-compatible ancestry estimation in Julia, with a native Apple
+    Silicon build
+build:
+  binary_relocation: false
+  detect_binary_files_with_prefix: false
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - osx-arm64
+  recipe-maintainers:
+  - ltalignani
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: openadmixture
+  version: 0.2.0
+requirements:
+  build: []
+  run: []
+source:
+- folder: OpenADMIXTURE.jl
+  sha256: f24be156dca67740f5681417e6c1148ef6e95efc231f3a7ea74d5da06a502c7a
+  url: https://github.com/ltalignani/OpenADMIXTURE.jl/archive/refs/tags/v0.2.0.tar.gz
+- folder: julia
+  sha256: 8e58a1993ecbadb9a762a987eefa4e484b364a8560349609cc05e93287b9a8fe
+  url: https://julialang-s3.julialang.org/bin/mac/aarch64/1.13/julia-1.13.4-macaarch64.tar.gz
+- folder: julia
+  sha256: c84de0fcb4268841f296fd56c47c27383d81358033428389b0d1882b110b9bcd
+  url: https://julialang-s3.julialang.org/bin/mac/x64/1.13/julia-1.13.4-mac64.tar.gz
+- folder: julia
+  sha256: cf1658f13b91facccd57d41464d7125a0e48a1d24f49062d71532d04d4ec4130
+  url: https://julialang-s3.julialang.org/bin/linux/x64/1.13/julia-1.13.4-linux-x86_64.tar.gz
+- folder: julia
+  sha256: d1814cb51e49a1ecd0c95ff0e4ac267ec5ddaba051f5eed2d866d55e40274de5
+  url: https://julialang-s3.julialang.org/bin/linux/aarch64/1.13/julia-1.13.4-linux-aarch64.tar.gz
+test:
+  commands:
+  - export OPENADMIXTURE_DEPOT="$PWD/user_depot"
+  - openadmixture --help
+  - openadmixture -j2 -s 1 "$PREFIX/share/openadmixture/testdata/EUR_subset.bed" 2
+  - test -s EUR_subset.2.Q && test -s EUR_subset.2.P
+  - test ! -d "$PWD/user_depot/compiled"

@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/natera-open-source/vep-rs
+  doc_url: https://natera-open-source.github.io/vep-rs/
+  home: https://github.com/natera-open-source/vep-rs
+  license: Apache-2.0
+  license_family: APACHE
+  license_file:
+  - LICENSE
+  - NOTICE
+  - THIRDPARTY.yml
+  summary: Fast Rust reimplementation of Ensembl VEP.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - maporter-natera
+  - rborkowski-natera
+package:
+  name: vep-rs
+  version: 0.6.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - pkg-config
+  host:
+  - openssl
+source:
+  sha256: 027100a1775048f3881964cfd1f404c5d63e32264a61ce57621a613c9f9d8b2f
+  url: https://github.com/natera-open-source/vep-rs/releases/download/v0.6.0/vep-rs-0.6.0.tar.gz
+test:
+  commands:
+  - vep --version
+  - vep-cache-builder --help > /dev/null
+  - vep-cache-converter --help > /dev/null

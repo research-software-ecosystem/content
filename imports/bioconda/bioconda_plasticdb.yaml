@@ -1,0 +1,51 @@
+about:
+  description: 'plasticdb is a typed Python client (and the `plasticdb` command-line
+    tool)
+
+    for PlasticDB (https://v2.plasticdb.org), a curated database of
+
+    plastic-degrading microorganisms and enzymes. Optional extras (pandas,
+
+    polars, biopython) are not installed by this package.
+
+    '
+  dev_url: https://github.com/VictorGambarini/plasticdb-py
+  doc_url: https://victorgambarini.github.io/plasticdb-py/
+  home: https://github.com/VictorGambarini/plasticdb-py
+  license: MIT
+  license_file: LICENSE
+  summary: 'Python client and CLI for the PlasticDB API: plastic-degrading microorganisms,
+    proteins and the evidence behind them.'
+build:
+  entry_points:
+  - plasticdb = plasticdb.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+extra:
+  recipe-maintainers:
+  - VictorGambarini
+package:
+  name: plasticdb
+  version: 0.0.1
+requirements:
+  host:
+  - python 3.10.*
+  - pip
+  - hatchling >=1.24
+  run:
+  - python >=3.10
+  - httpx >=0.25,<1
+  - pydantic >=2.5,<3
+  - typing_extensions >=4.6
+  - typer >=0.12
+source:
+  sha256: 2229fa2875e4172c5c94c832d9c25204308b16c7a90706bb8872d33236d60016
+  url: https://pypi.org/packages/source/p/plasticdb/plasticdb-0.0.1.tar.gz
+test:
+  commands:
+  - plasticdb --help
+  imports:
+  - plasticdb

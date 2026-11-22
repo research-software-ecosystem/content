@@ -30,11 +30,13 @@ build:
   entry_points:
   - disassembler = disassembler.cli:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: -m pip install . --no-deps --no-build-isolation -vv
 extra:
+  autobump:
+    enable: false
   recipe-maintainers:
   - as042
 package:
@@ -49,12 +51,9 @@ requirements:
   - python >=3.11
   - biopython
   - requests
-  - zstandard
-  - numpy
-  - pandas
-  - logan-walker >=0.1.0,<0.2
+  - logan-walker >=0.1.1,<0.2
   - kmer-diversity-sieve >=0.1.0,<0.2
-  - mafft
+  - mafft >=7.526
   - fasttree
 source:
   sha256: 8be464163a939c1a01e9d0399e72af63c0b583397945596b6d6b1c332d61c3a0
@@ -68,3 +67,6 @@ test:
   imports:
   - disassembler
   - disassembler.cli
+  source_files:
+  - tests/fixture_query.fasta
+  - tests/fixture_reconstructed.fasta

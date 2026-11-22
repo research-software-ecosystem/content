@@ -1,0 +1,60 @@
+about:
+  dev_url: https://github.com/ljwharbers/scphasedcn
+  doc_url: https://ljwharbers.github.io/scphasedcn/
+  home: https://github.com/ljwharbers/scphasedcn
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.md
+  summary: Single-cell copy-number calling from SPLONGGET long-read single-cell DNA
+    data (depth + read-phased alleles)
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  run_exports:
+  - null
+  script: $R CMD INSTALL --build . && install -m 0755 inst/scripts/call_scn.R $PREFIX/bin/call_scn.R
+extra:
+  recipe-maintainers:
+  - ljwharbers
+package:
+  name: r-scphasedcn
+  version: 0.1.1
+requirements:
+  host:
+  - r-base >=4.2
+  - r-data.table
+  - r-fnn
+  - r-irlba
+  - r-mass
+  - r-matrix
+  - r-robustbase
+  - r-yaml
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-rhdf5
+  - bioconductor-rsamtools
+  run:
+  - r-base >=4.2
+  - r-data.table
+  - r-fnn
+  - r-irlba
+  - r-mass
+  - r-matrix
+  - r-robustbase
+  - r-yaml
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-rhdf5
+  - bioconductor-rsamtools
+  - htslib
+  - scphasedcn =0.1.1
+source:
+  sha256: 9161d19cf8d0b057bd91f472cb4cfcd5cf8e3967559d1fdf717eb05e331e1d46
+  url: https://github.com/ljwharbers/scphasedcn/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - $R -e "library('scphasedcn')"
+  - call_scn.R --help

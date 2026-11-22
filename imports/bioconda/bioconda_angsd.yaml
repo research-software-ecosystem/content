@@ -1,24 +1,28 @@
 about:
-  home: http://www.popgen.dk/angsd/index.php/ANGSD
+  home: https://github.com/ANGSD/angsd
   license: GPLv3, MIT
   summary: 'ANGSD: Analysis of next generation Sequencing Data'
 build:
-  number: 4
+  number: 0
   run_exports:
   - null
   skip: true
 extra:
   additional-platforms:
   - linux-aarch64
+  - osx-arm64
   identifiers:
   - biotools:angsd
   - doi:10.1186/s12859-014-0356-4
+  recipe-maintainers:
+  - ANGSD
 package:
   name: angsd
-  version: '0.94'
+  version: '0.943'
 requirements:
   build:
   - make
+  - null
   - null
   - null
   host:
@@ -32,9 +36,9 @@ requirements:
   - bzip2
   - xz
 source:
-  sha256: 11c18e8c239b9ffbbfac317008582e63cddeda85f57b8ea4e6fbcae00415dfac
-  url: http://popgen.dk/software/download/angsd/angsd0.940.tar.gz
+  sha256: 70c3f38164247d40419a0cfb0df748b177d19ac1caaf3e9bfb7c9acf42bee653
+  url: https://github.com/ANGSD/angsd/releases/download/0.943/angsd-0.943.tar.gz
 test:
   commands:
-  - angsd 2>&1 | grep "angsd version"
+  - 'angsd 2>&1 | grep "angsd version: 0.943"'
   - thetaStat 2>&1 | grep "neutrality test"

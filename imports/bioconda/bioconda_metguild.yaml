@@ -1,0 +1,33 @@
+about:
+  home: https://github.com/faithoni/MetGuild_workflow
+  license: GPL-3.0-only
+  license_file: LICENSE
+  summary: Genome-resolved workflow for identifying metabolic potential guilds
+build:
+  noarch: generic
+  number: 0
+  run_exports:
+  - null
+extra:
+  recipe-maintainers:
+  - faithoni
+package:
+  name: metguild
+  version: 0.1.0
+requirements:
+  run:
+  - bash
+  - python >=3.10,<3.14
+  - numpy >=1.24,<3
+  - pandas >=2,<4
+  - scipy >=1.10,<2
+  - scikit-learn >=1.2,<2
+  - matplotlib-base >=3.7,<4
+  - plotly >=5.18,<7
+source:
+  sha256: 3fc6a8dcd6f3fdfe50404d431e2adbcba6ef13074baaae0068d4ba7140d33d58
+  url: https://github.com/faithoni/MetGuild_workflow/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - metguild --help
+  - python -c "import numpy, pandas, scipy, sklearn, matplotlib, plotly"

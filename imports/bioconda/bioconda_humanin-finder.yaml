@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/LaBiOmicS/humaninfinder
+  doc_url: https://github.com/LaBiOmicS/humaninfinder#readme
+  home: https://github.com/LaBiOmicS/humaninfinder
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Homology-based location and annotation of Humanin and SHLP1-6 mitochondrial-derived
+    peptides
+build:
+  entry_points:
+  - humanin-finder = humanin_finder.cli:main
+  - humaninfinder = humanin_finder.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - LaBiOmicS
+package:
+  name: humanin-finder
+  version: 1.0.0b5
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=68
+  run:
+  - python >=3.10
+  - biopython >=1.83,<2
+  - click >=8.1.0,<9
+  - pyhmmer >=0.12.0,<0.13
+source:
+  sha256: 43eb0b6337b24d39b1ab9fef9e01754b5c8c2ae6681eb9d5d968c74703b48696
+  url: https://github.com/LaBiOmicS/humaninfinder/archive/refs/tags/v1.0.0b5.tar.gz
+test:
+  commands:
+  - humanin-finder --help
+  - humanin-finder --version
+  - humanin-finder setup
+  imports:
+  - humanin_finder

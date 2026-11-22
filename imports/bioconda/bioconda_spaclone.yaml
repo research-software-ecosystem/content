@@ -1,0 +1,64 @@
+about:
+  description: 'spaclone reads a spatial transcriptome and an immune-receptor table
+    from any mainstream tool, tests whether
+
+    receptor positions can be trusted, maps class-switch and somatic-hypermutation
+    hotspots with their transcriptome
+
+    identity, places lineage trees on the tissue and runs sciCSR-style class-switch
+    dynamics on spatial graphs.
+
+    '
+  dev_url: https://github.com/Reynold4k/spaclone
+  doc_url: https://github.com/Reynold4k/spaclone/tree/main/docs
+  home: https://github.com/Reynold4k/spaclone
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Spatial BCR and TCR analysis, from raw tables to biology, with every position
+    checked against random placement.
+build:
+  entry_points:
+  - spaclone = spaclone.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.23826886
+  recipe-maintainers:
+  - Reynold4k
+package:
+  name: spaclone
+  version: 1.2.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - anndata >=0.10.8
+  - h5py >=3.11
+  - python-igraph >=0.11
+  - matplotlib-base >=3.8.4
+  - numpy >=2
+  - pandas >=2.2.2
+  - pyarrow >=16
+  - scanpy >=1.10
+  - scikit-learn >=1.4.2
+  - scipy >=1.13
+source:
+  sha256: fd15598f3a28ba5966a0ee05ab65a662021621ed214d8a4032146b7e4b9ec2a3
+  url: https://pypi.org/packages/source/s/spaclone/spaclone-1.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  - spaclone --help
+  imports:
+  - spaclone
+  requires:
+  - python 3.11
+  - pip

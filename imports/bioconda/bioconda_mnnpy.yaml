@@ -5,10 +5,11 @@ about:
   license_file: LICENSE
   summary: Mutual nearest neighbors correction in python.
 build:
-  number: 9
+  number: 10
   run_exports:
   - null
-  script: -m pip install . --no-deps --ignore-installed -vv
+  script: -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
+  skip: true
 extra:
   recipe-maintainers:
   - pinin4fjords
@@ -25,18 +26,24 @@ requirements:
   - cython
   - pip
   - python
+  - setuptools
+  - wheel
   run:
-  - anndata
+  - anndata >=0.9.2,<0.13
   - numba
-  - numpy
+  - numpy >=1.23.5,<2.3
   - pandas
-  - python
-  - scipy <1.9.0
+  - python >=3.11,<3.14
+  - scipy >=1.9.3,<1.15
 source:
   patches:
   - 0001-Fix-missing-forceobj-for-numba.jit.patch
+  - 0002-Use-workers-for-scipy-cKDTree.patch
+  - 0003-Replace-deprecated-numpy-float.patch
+  - 0004-Link-the-math-library.patch
   sha256: 41cdafaf21392144b683d7acf99f7a1fc59085f9b3697cd6ace57f40dddace9c
   url: https://pypi.io/packages/source/m/mnnpy/mnnpy-0.1.9.5.tar.gz
 test:
   imports:
   - mnnpy
+  - mnnpy._utils

@@ -1,0 +1,38 @@
+about:
+  dev_url: https://github.com/rderelle/noref
+  doc_url: https://github.com/rderelle/noref/blob/0.1.0/README.md
+  home: https://github.com/rderelle/noref
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: SNP-calling and recombination detection without a reference genome
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+  - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - RUST_BACKTRACE=1 cargo install --no-track --verbose --root "${PREFIX}" --path
+    .
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+package:
+  name: noref
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: d5c06752d762cbdbef39b992c395dd0b8af0bec7175f68259cd10b03aa1126df
+  url: https://github.com/rderelle/noref/archive/0.1.0.tar.gz
+test:
+  commands:
+  - noref -h

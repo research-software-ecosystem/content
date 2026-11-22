@@ -1,0 +1,44 @@
+about:
+  dev_url: https://github.com/dpatel511/pmdshodh
+  doc_url: https://github.com/dpatel511/pmdshodh/blob/v0.3.0/README.md
+  home: https://github.com/dpatel511/pmdshodh
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Per-read post-mortem damage (PMD) scoring and filtering of ancient DNA
+    alignments, compatible with PMDtools.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - dpatel511
+package:
+  name: pmdshodh
+  version: 0.3.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: 19624c16a3f75988c48783f5a1b04cd3194c1e38c71f96f83ff57a99071904a7
+  url: https://pypi.org/packages/source/p/pmdshodh/pmdshodh-0.3.0.tar.gz
+test:
+  commands:
+  - pmdshodh --version
+  - pmdshodh filter --help
+  - printf "@SQ\tSN:c\tLN:20\nr1\t0\tc\t1\t60\t10M\t*\t0\t0\tACGTACGTAC\tIIIIIIIIII\tMD:Z:10\n"
+    > t.sam
+  - pmdshodh score --quiet t.sam -o scores.tsv
+  - test "$(wc -l < scores.tsv)" -eq 2
+  - pmdshodh damage --quiet t.sam -o damage.json
+  - pmdshodh report --quiet damage.json -o report.html
+  - grep -q "<!DOCTYPE html>" report.html

@@ -1,0 +1,58 @@
+about:
+  description: 'prophound localizes candidate integrated prophages directly from nucleotide
+
+    sequence, with no gene calling or reference database at run time. An ensemble
+
+    of three reverse-complement-symmetric CNNs scores sliding windows, and three
+
+    modes trade recall against calls per genome.
+
+    '
+  dev_url: https://github.com/SyrinxInformatics/prophound
+  doc_url: https://github.com/SyrinxInformatics/prophound/blob/main/README.md
+  home: https://github.com/SyrinxInformatics/prophound
+  license: Apache-2.0
+  license_family: APACHE
+  license_file:
+  - LICENSE
+  - NOTICE
+  summary: Recall-first, database-free prophage screen for prokaryotic genomes
+build:
+  entry_points:
+  - prophound = prophound.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - Syrinx55
+package:
+  name: prophound
+  version: 0.1.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - hatchling
+  run:
+  - python >=3.11
+  - pytorch >=2.4,<3
+  - numpy >=1.26
+  - pandas >=2.2,<3
+  - pyfaidx >=0.8,<1
+  - tqdm >=4.66,<5
+  - pyyaml >=6,<7
+  - biopython >=1.86,<2
+source:
+  sha256: 9e490993e8f22061d7ce721afa8b12184c0cc3e91594047aa886315188b9948c
+  url: https://github.com/SyrinxInformatics/prophound/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - prophound --version
+  - prophound predict --help
+  - python -c "from prophound.models.prophage.src.predict_genome import verify_bundled_model;
+    verify_bundled_model()"
+  imports:
+  - prophound

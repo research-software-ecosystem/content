@@ -1,0 +1,59 @@
+about:
+  description: 'scPCIP assigns each cell of a plant single-cell RNA-seq dataset (root,
+    leaf, flower or seed) one cell type and
+
+    its tissue system by scoring cross-species gene programs built on eggNOG orthogroups.
+
+    '
+  dev_url: https://github.com/Shipeng-Yang/scPCIP
+  doc_url: https://github.com/Shipeng-Yang/scPCIP#readme
+  home: https://github.com/Shipeng-Yang/scPCIP
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Program-based cell-type annotation for plant single-cell RNA-seq
+build:
+  entry_points:
+  - scpcip = pcip.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  recipe-maintainers:
+  - Shipeng-Yang
+package:
+  name: scpcip
+  version: 1.0.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.11
+  - numpy >=2.4,<2.5
+  - scipy >=1.17,<1.18
+  - pandas >=2.3,<2.4
+  - anndata >=0.12,<0.13
+  - scikit-learn >=1.8,<1.9
+  - pyyaml >=6.0
+  - threadpoolctl >=3.1
+  - scanpy >=1.11,<1.12
+  - numba >=0.65,<0.66
+  - matplotlib-base >=3.10,<3.11
+  - leidenalg >=0.10
+  - pynndescent >=0.5,<0.7
+  - huggingface_hub >=0.23
+source:
+  sha256: 1f6ce67036531f7fde77a542b1e92c62efd4a8f292d6f0ad58fe35921813e8f3
+  url: https://pypi.org/packages/source/s/scpcip/scpcip-1.0.0.tar.gz
+test:
+  commands:
+  - scpcip --help
+  - scpcip --version
+  imports:
+  - pcip
+  requires:
+  - python 3.11

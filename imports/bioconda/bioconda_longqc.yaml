@@ -7,9 +7,11 @@ about:
 build:
   noarch: generic
   number: 0
+  run_exports:
+  - null
 package:
   name: longqc
-  version: 1.2.0c
+  version: 1.2.3
 requirements:
   run:
   - python >=3
@@ -24,8 +26,10 @@ requirements:
   - pysam
   - python-edlib
 source:
-  sha256: 522837f655379881102233c69f8881866ef3d65116a5be61453428e7e989b01e
-  url: https://github.com/yfukasawa/LongQC/archive/refs/tags/1.2.0c.tar.gz
+  sha256: 812379c26db5f7ef5664b1d2214b0703136659c7e41332bf5309653fb6360de9
+  url: https://github.com/yfukasawa/LongQC/archive/refs/tags/v1.2.3.tar.gz
 test:
   commands:
+  - longQC.py --help
+  - longQC.py sampleqc --help
   - minimap2-coverage --help

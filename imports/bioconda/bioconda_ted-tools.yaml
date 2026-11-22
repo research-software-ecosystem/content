@@ -1,0 +1,134 @@
+about:
+  dev_url: https://github.com/sillitoe/ted-tools
+  doc_url: https://github.com/sillitoe/ted-tools/tree/main/ted_consensus_1.0
+  home: https://github.com/sillitoe/ted-tools
+  license: MIT
+  license_file: LICENSE
+  summary: Domain segmentation tools from TED (The Encyclopedia of Domains)
+build:
+  number: 0
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.1101/2024.03.18.585509
+  recipe-maintainers:
+  - FernandoDuarteF
+  skip-lints:
+  - missing_run_exports
+  - should_be_noarch_generic
+outputs:
+- about:
+    home: https://github.com/sillitoe/ted-tools
+    license: MIT AND LicenseRef-STRIDE
+    license_file:
+    - LICENSE
+    - ted_consensus_1.0/programs/chainsaw/stride/doc/stride.doc
+    summary: Chainsaw protein domain segmentation, as used in TED (The Encyclopedia
+      of Domains)
+  build:
+    run_exports:
+    - null
+  name: ted-chainsaw
+  requirements:
+    build:
+    - null
+    - null
+    - make
+    run:
+    - python >=3.10
+    - pytorch >=2.0
+    - numpy
+    - scipy
+    - pandas
+    - biopython
+    - pydantic <3
+  script: build_chainsaw.sh
+  test:
+    commands:
+    - ted-chainsaw --help
+- about:
+    home: https://github.com/sillitoe/ted-tools
+    license: GPL-3.0-only
+    license_file: ted_consensus_1.0/programs/merizo/LICENSE
+    summary: Merizo protein domain segmentation, as used in TED (The Encyclopedia
+      of Domains)
+  build:
+    run_exports:
+    - null
+  name: ted-merizo
+  requirements:
+    run:
+    - python >=3.10
+    - pytorch >=2.0
+    - numpy
+    - scipy
+    - matplotlib-base
+    - einops
+    - networkx
+    - natsort
+    - rotary-embedding-torch
+  script: build_merizo.sh
+  test:
+    commands:
+    - ted-merizo --help
+- about:
+    home: https://github.com/sillitoe/ted-tools
+    license: MIT AND LicenseRef-STRIDE
+    license_file:
+    - ted_consensus_1.0/programs/unidoc_latest/LICENSE
+    - ted_consensus_1.0/programs/chainsaw/stride/doc/stride.doc
+    summary: UniDoc protein domain segmentation, as used in TED (The Encyclopedia
+      of Domains)
+  build:
+    run_exports:
+    - null
+  name: ted-unidoc
+  requirements:
+    build:
+    - null
+    - null
+    - null
+    - make
+    run:
+    - python >=3.10
+    - natsort
+    - pdb-tools
+  script: build_unidoc.sh
+  test:
+    commands:
+    - ted-unidoc --help
+- about:
+    home: https://github.com/sillitoe/ted-tools
+    license: MIT
+    license_file: LICENSE
+    summary: Consensus of Merizo, Chainsaw and UniDoc domain choppings, as used in
+      TED (The Encyclopedia of Domains)
+  build:
+    run_exports:
+    - null
+  name: ted-consensus
+  requirements:
+    run:
+    - python >=3.10
+    - numpy
+    - pandas
+    - networkx
+    - natsort
+  script: build_consensus.sh
+  test:
+    commands:
+    - ted-consensus --help
+package:
+  name: ted-tools
+  version: 0.1.8
+source:
+- patches:
+  - unidoc-scratch-dir.patch
+  - chainsaw-pydantic2.patch
+  - command-names.patch
+  - merizo-weights-dir.patch
+  sha256: cd517af08616c83873d6613211598f6beaa70f5a2b49143b5d4fa5764f35d299
+  url: https://github.com/sillitoe/ted-tools/archive/refs/tags/v0.1.8.tar.gz

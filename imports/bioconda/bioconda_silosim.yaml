@@ -1,0 +1,65 @@
+about:
+  description: 'SILOSim profiles per-site variability of a bacterial genome against
+    closely related
+
+    genomes, inferring substitution entropy and mobile genetic elements, and uses
+    these
+
+    empirical profiles to simulate genome evolution along a time-scale phylogeny with
+
+    weighted substitution, recombination, and gene gain and loss. This package installs
+    the
+
+    command-line interface and the Snakemake workflows; tool environments (Bakta,
+    WhatsGNU,
+
+    NCBI Datasets, FastANI, MUMmer4, snp-dists and R packages) are created by Snakemake
+    on first use.
+
+    '
+  dev_url: https://github.com/microbialARC/SILOSim
+  doc_url: https://github.com/microbialARC/SILOSim/tree/main/docs
+  home: https://github.com/microbialARC/SILOSim
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Profiles per-site bacterial genome variability and simulates bacterial
+    genome evolution.
+build:
+  entry_points:
+  - silosim = silosim.bin.main:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  notes: Tool environments are built by Snakemake on the first run, so the first run
+    needs internet access. SILOSim runs on Linux; the profiler with public query genomes
+    needs at least 40 GB of RAM.
+  recipe-maintainers:
+  - qianxuans
+package:
+  name: silosim
+  version: 0.1.3
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - setuptools >=62.3
+  run:
+  - python >=3.11
+  - snakemake-minimal >=9.0,<10
+  - pandas >=2.0
+  - pyyaml >=6.0
+source:
+  sha256: f86e94eef78fc3a2be447c12ca912d7d125975b466c874d1522ff00c18c2058d
+  url: https://github.com/microbialARC/SILOSim/archive/refs/tags/v0.1.3.tar.gz
+test:
+  commands:
+  - silosim --help
+  - silosim --version
+  imports:
+  - silosim
+  requires:
+  - python 3.11

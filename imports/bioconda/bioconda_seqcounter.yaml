@@ -1,0 +1,61 @@
+about:
+  description: 'seqcounter counts how many sequencing reads (fastq) or contigs (fasta)
+    contain each sequence of a reference
+
+    fasta file, using Seal from BBTools. Reverse complements and mismatches are counted,
+    single-end and
+
+    paired-end reads and assemblies are supported, and a folder of samples gives one
+    table of counts per
+
+    reference sequence and per sample, with a per-sample summary and a JSON report.
+
+    '
+  dev_url: https://github.com/duceppemo/seqcounter
+  doc_url: https://github.com/duceppemo/seqcounter/wiki
+  home: https://github.com/duceppemo/seqcounter
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Count the occurrences of reference sequences in sequencing reads or genome
+    assemblies
+build:
+  entry_points:
+  - seqcounter = seqcounter.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.23826933
+  recipe-maintainers:
+  - duceppemo
+package:
+  name: seqcounter
+  version: 1.0.1
+requirements:
+  host:
+  - python >=3.10
+  - pip
+  - setuptools >=77
+  run:
+  - python >=3.10
+  - bbmap >=38.0
+source:
+  sha256: 8d98e4dcd32516443baf3fc485805877652ef7abebe3ea9714da9032458b6907
+  url: https://github.com/duceppemo/seqcounter/archive/refs/tags/v1.0.1.tar.gz
+test:
+  commands:
+  - seqcounter --version
+  - seqcounter --help
+  - seal.sh --version
+  - printf '>ref1\nTTCGAACGCTGACGTCAGCATCGATTGCAGCTAGCTTAGCGATCGGATCGA\n' > refs.fasta
+  - seqcounter -ref refs.fasta -r1 refs.fasta -o test_out
+  - test -s test_out/refseqcounts.json
+  - python -c "import json; c = json.load(open('test_out/refseqcounts.json'))['samples'][0]['counts'];
+    assert c['ref1'] == 1, c"
+  - rm -rf test_out refs.fasta
+  imports:
+  - seqcounter

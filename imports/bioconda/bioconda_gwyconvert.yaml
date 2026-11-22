@@ -1,0 +1,65 @@
+about:
+  description: 'Installs `gwyconvert` on `PATH`, together with the Gwyddion libraries
+    and
+
+    file modules it links. `gwyddionpy` finds the binary on `PATH`, or in
+
+    the env''s `bin` folder when the env is not activated.
+
+    '
+  dev_url: https://github.com/FAIRmat-NFDI/gwyddionPy
+  home: https://github.com/FAIRmat-NFDI/gwyddionPy
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file:
+  - gwyddionpy/gwyddionpy-converter/COPYING
+  - gwyddion/COPYING
+  summary: The gwyconvert binary that lets gwyddionpy read vendor SPM files through
+    Gwyddion.
+build:
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - RubelMozumder
+package:
+  name: gwyconvert
+  version: 0.1.1
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - gnuconfig
+  - make
+  - pkg-config
+  - glib
+  host:
+  - gtk2
+  - expat
+  - xorg-xorgproto
+  - glib
+  - fftw
+  - libxml2
+  - libpng
+  - libzip
+  - zlib
+  - bzip2
+  run:
+  - gtk2
+source:
+- folder: gwyddion
+  sha256: 2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba
+  url: https://downloads.sourceforge.net/project/gwyddion/gwyddion/2.71/gwyddion-2.71.tar.xz
+- folder: gwyddionpy
+  sha256: 2ffd320ba6c98d67bfa6c0119e578afa64f89be07d588116c9d7ead153a2e54f
+  url: https://github.com/FAIRmat-NFDI/gwyddionPy/archive/refs/tags/v0.1.1.tar.gz
+test:
+  commands:
+  - test -x "${PREFIX}/bin/gwyconvert"
+  - test "$(gwyconvert --list-formats | grep -c '"name"')" -gt 100

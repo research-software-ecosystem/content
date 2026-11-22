@@ -1,0 +1,64 @@
+about:
+  description: 'TNP, the Therapeutic Nanobody Profiler, models a nanobody''s structure
+    with
+
+    NanoBodyBuilder2 and compares its CDR lengths, compactness and surface
+
+    hydrophobicity and charge with those of clinical-stage nanobodies.  The
+
+    NanoBodyBuilder2 model weights are downloaded from Zenodo on first use.
+
+    '
+  dev_url: https://github.com/oxpig/TNP
+  home: https://tnp.opig.stats.ox.ac.uk
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENCE
+  summary: The Therapeutic Nanobody Profiler, for assessing nanobody developability
+build:
+  entry_points:
+  - TNP = theraprofnano.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.1038/s42003-026-09594-y
+  recipe-maintainers:
+  - benjaminhwilliams
+  - chris-r-taylor
+package:
+  name: tnp
+  version: 0.1.0
+requirements:
+  host:
+  - python 3.11
+  - pip
+  - uv-build >=0.12.0,<0.13.0
+  run:
+  - python >=3.11
+  - biopython >=1.83
+  - freesasa
+  - immunebuilder >=1.2
+  - numpy
+  - openmm
+  - pdbfixer
+  - scikit-learn
+  - scipy
+  - anarci
+  - dssp >=4
+source:
+  sha256: 8ddf44939d3be2e2f47c824fae18002fbe69b8f1396e195f5e86e4f342940cc9
+  url: https://github.com/oxpig/TNP/releases/download/v0.1.0/tnp-0.1.0.tar.gz
+test:
+  commands:
+  - pip check
+  - TNP --help > /dev/null
+  - mkdssp --version > /dev/null
+  imports:
+  - theraprofnano
+  requires:
+  - python 3.11
+  - pip

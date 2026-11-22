@@ -1,0 +1,48 @@
+about:
+  dev_url: https://github.com/BorgwardtLab/reComBat
+  home: https://github.com/BorgwardtLab/reComBat
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Regularised ComBat method to correct batch effects in gene expression data.
+build:
+  entry_points:
+  - reComBat = reComBat.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation --no-cache-dir -vvv
+extra:
+  identifiers:
+  - doi:10.1093/bioadv/vbac071
+  recipe-maintainers:
+  - pinin4fjords
+package:
+  name: recombat
+  version: 0.1.4
+requirements:
+  host:
+  - python >=3.8
+  - pip
+  - poetry-core >=1.0.0
+  run:
+  - python >=3.8
+  - numpy >=1.20.0
+  - scikit-learn >=0.24
+  - pandas >=1.3.4
+  - tqdm >=4.62.3
+  - fire >=0.4.0
+source:
+  patches:
+  - fix-dependencies.patch
+  sha256: 88cc878c0026b27aafe7353ce6c7790a9be4beb20deccb28cf0a64cf807f4776
+  url: https://pypi.org/packages/source/r/reComBat/reComBat-0.1.4.tar.gz
+test:
+  commands:
+  - reComBat --help
+  - pip check
+  imports:
+  - reComBat
+  requires:
+  - pip

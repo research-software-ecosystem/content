@@ -1,0 +1,63 @@
+about:
+  description: 'MitoFI scores two-dimensional fluorescence images of mitochondria
+    with a continuous
+
+    fragmentation index from 0 (elongated network) to 1 (fragmented), with a quality
+    gate
+
+    that withholds scores for fields it cannot segment. Command-line and graphical
+    interfaces.
+
+    '
+  dev_url: https://github.com/vishal9045/MitoFI
+  doc_url: https://github.com/vishal9045/MitoFI#readme
+  home: https://github.com/vishal9045/MitoFI
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A continuous, calibrated mitochondrial fragmentation index for 2D confocal
+    images
+build:
+  entry_points:
+  - mitofi = mitofi.cli:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  identifiers:
+  - doi:10.5281/zenodo.23857565
+  recipe-maintainers:
+  - vishal9045
+package:
+  name: mitofi
+  version: 1.0.0
+requirements:
+  host:
+  - python 3.10
+  - pip
+  - setuptools >=64
+  run:
+  - python >=3.10
+  - numpy >=1.21
+  - scipy >=1.7
+  - scikit-image >=0.19
+  - scikit-learn >=1.5
+  - tifffile >=2021.7
+  - imagecodecs >=2022.2
+  - joblib >=1.1
+  - tk
+source:
+  sha256: 7470e0427cc9f5eb669253e833f803c9c51b0f219eca5ee833b1ba30fca43110
+  url: https://pypi.org/packages/source/m/mitofi/mitofi-1.0.0.tar.gz
+test:
+  commands:
+  - mitofi --version | grep 1.0.0
+  - mitofi --help
+  - pip check
+  imports:
+  - mitofi
+  requires:
+  - pip
+  - python 3.10

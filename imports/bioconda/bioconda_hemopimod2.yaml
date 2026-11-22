@@ -1,0 +1,42 @@
+about:
+  dev_url: https://github.com/raghavagps/HemoPImod2
+  home: https://webs.iiitd.edu.in/raghava/hemopimod2
+  license: GPL-3.0-only
+  license_family: GPL3
+  license_file: LICENSE.txt
+  summary: Prediction and design of hemolytic peptides (natural and chemically modified)
+    using sequence, chemical, and structure models.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+extra:
+  recipe-maintainers:
+  - whodevrajverma
+package:
+  name: hemopimod2
+  version: '1.0'
+requirements:
+  host:
+  - python >=3.9,<3.13
+  - pip
+  - setuptools
+  run:
+  - python >=3.9,<3.13
+  - numpy ==1.26.4
+  - pandas ==2.2.3
+  - scipy
+  - joblib ==1.4.2
+  - scikit-learn ==1.6.1
+  - rdkit
+  - networkx ==2.8.8
+  - xgboost ==3.2.0
+  - mordred ==1.2.0
+source:
+  sha256: db024eb464a2d35542311d357d8595574381ff53858db8bf607d44d51110a358
+  url: https://pypi.org/packages/source/h/hemopimod2/hemopimod2-1.0.tar.gz
+test:
+  commands:
+  - hemopimod2 -h

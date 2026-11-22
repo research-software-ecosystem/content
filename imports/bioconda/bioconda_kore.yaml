@@ -1,0 +1,45 @@
+about:
+  dev_url: https://github.com/treangenlab/kore
+  doc_url: https://github.com/treangenlab/kore/blob/main/README.md
+  home: https://github.com/treangenlab/kore
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: 'kore: bacterial genome completeness and contamination estimation using
+    core genomes'
+build:
+  number: 0
+  run_exports:
+  - null
+  script:
+  - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+  - cargo install -v --locked --no-track --root $PREFIX --path .
+extra:
+  recipe-maintainers:
+  - rdoughty10
+package:
+  name: kore
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  - make
+  host:
+  - zlib
+  run:
+  - parsnp >=2.1
+  - skani >=0.3
+  - blast >=2.17
+source:
+  sha256: 794abab3476ec8e92e393d1a48cfdbc24f3db12d16e19249ca5c1004ec5976b8
+  url: https://github.com/treangenlab/kore/archive/refs/tags/v0.1.0.tar.gz
+test:
+  commands:
+  - kore --help
+  - kore estimate --help
+  - kore build --help

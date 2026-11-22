@@ -1,0 +1,61 @@
+about:
+  description: 'nf-meta describes a metapipeline, a directed acyclic graph of Nextflow
+    pipeline and module
+
+    steps, in a single YAML file, and comes with a browser-based editor and a command-line
+    tool
+
+    to validate and run it.
+
+    '
+  dev_url: https://github.com/bmds-tue/nf-meta
+  doc_url: https://bmds-tue.github.io/nf-meta/
+  home: https://github.com/bmds-tue/nf-meta
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: Build, validate and run metapipelines of Nextflow pipelines and nf-core
+    modules
+build:
+  entry_points:
+  - nf-meta = nf_meta.__main__:cli
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vvv
+extra:
+  recipe-maintainers:
+  - JulianFlesch
+package:
+  name: nf-meta
+  version: 0.6.1
+requirements:
+  host:
+  - python >=3.11
+  - pip
+  - setuptools >=77
+  - wheel
+  run:
+  - python >=3.11
+  - click >=8.3.1
+  - fastapi-core >=0.128.0
+  - networkx >=3.6.1
+  - packaging >=26.0
+  - pydantic >=2.12.5
+  - pyyaml >=6.0.3
+  - questionary >=2.1
+  - requests >=2.32.5
+  - rich >=14.3.3
+  - uvicorn >=0.40.0
+source:
+  sha256: b1c0b34fc6712fee8d87f14f41e9d34279120398742a53d8cda3f8416d707f9a
+  url: https://pypi.org/packages/source/n/nf_meta/nf_meta-0.6.1.tar.gz
+test:
+  commands:
+  - nf-meta --help
+  - nf-meta --version
+  - nf-meta export-schema schema.json
+  imports:
+  - nf_meta
+  - nf_meta.editor.backend

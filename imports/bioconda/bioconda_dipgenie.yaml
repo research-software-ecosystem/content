@@ -1,20 +1,22 @@
 about:
-  description: 'DipGenie is a tool designed to infer haplotypes using pangenome graphs.
+  description: 'DipGenie infers the two haplotypes of a diploid genome from a pangenome
 
-    It estimates full haplotype sequences from low-coverage short-read
+    graph and paired-end short reads, Hi-C reads, or both, scoring read
 
-    sequencing data for both haploid and diploid genomes. Users may provide
+    coverage and read-pair linkage jointly. It accepts a phased VCF or a GFA
 
-    a pangenome reference in GFA or VCF format.
+    graph (acyclic or cyclic) and outputs both haplotypes in FASTA format
+
+    and, optionally, phased variant calls in VCF format.
 
     '
   dev_url: https://github.com/gsc74/DipGenie
   doc_url: https://github.com/gsc74/DipGenie
   home: https://github.com/gsc74/DipGenie
-  license: MIT AND Apache-2.0
-  license_family: MIT
+  license: LicenseRef-Public-Domain AND MIT AND BSD-2-Clause
+  license_family: OTHER
   license_file: LICENSE
-  summary: Diploid genome inference using pangenome graphs
+  summary: Pangenome graph-based phased diploid genome inference
 build:
   number: 0
   run_exports:
@@ -25,20 +27,28 @@ extra:
   - gsc74
 package:
   name: dipgenie
-  version: '1.0'
+  version: '2.0'
 requirements:
   build:
+  - null
   - null
   - null
   - make
   host:
   - zlib
+  - libboost-headers
   - libgomp
   run:
   - zlib
 source:
-  sha256: 624de036528498de2f8ae88b1bbc5f7d571ca080a36904b4925552b01ff00a38
-  url: https://github.com/gsc74/DipGenie/archive/v1.0.tar.gz
+- sha256: b60dd81095e00042f58fdc8fca5db7684c5265bcd7eed6e73b8ad6d5bbe01a20
+  url: https://github.com/gsc74/DipGenie/archive/v2.0.tar.gz
+- folder: third_party/minimap2
+  sha256: 4ccc555359db80f0e1e285efae0be74c79230a2facc9cb480b74277627dd0c20
+  url: https://github.com/lh3/minimap2/archive/3c28777e7e2dcc90f825de1b9f17a89cca7d4452.tar.gz
+- folder: third_party/htsbox
+  sha256: 085aecc9ad28434aaa7cc61f09b17c93a0ea5c643a688ddbbc1b9ed24c2850d9
+  url: https://github.com/lh3/htsbox/archive/c901cb3a3324c119988f4bcd4412cbe48e1b5a38.tar.gz
 test:
   commands:
-  - DipGenie --version
+  - 'DipGenie --version | grep "DipGenie version: 2.0"'

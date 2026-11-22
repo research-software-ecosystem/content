@@ -10,7 +10,7 @@ build:
   entry_points:
   - miComplete = micomplete.micomplete:main
   noarch: python
-  number: 0
+  number: 1
   run_exports:
   - null
   script: ' -m pip install . -vv --no-deps --no-build-isolation'
@@ -22,17 +22,20 @@ package:
   version: 1.1.1
 requirements:
   host:
-  - python <3.12
+  - python >=3.8
   - pip
-  - numpy >=1.13
-  - biopython <=1.80
-  - matplotlib-base >=2.0.2
+  - setuptools
   run:
-  - python <3.12
+  - python >=3.8
   - numpy >=1.13
-  - biopython <=1.80
+  - biopython >=1.80
   - matplotlib-base >=2.0.2
+  - prodigal
+  - hmmer
 source:
+  patches:
+  - python312.patch
+  - biopython-seqfeature.patch
   sha256: 6fd2b6c4ec06c316799b19829c0b24944c367ae12be2658f1bc43becb78e0321
   url: https://pypi.org/packages/source/m/micomplete/micomplete-1.1.1.tar.gz
 test:

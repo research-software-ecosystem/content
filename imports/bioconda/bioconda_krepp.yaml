@@ -1,9 +1,11 @@
 about:
   dev_url: https://github.com/bo1929/krepp
   home: https://github.com/bo1929/krepp
-  license: MIT
+  license: MIT AND BSL-1.0
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+  - LICENSE
+  - LICENSE_1_0.txt
   summary: 'krepp: a k-mer-based maximum pseudo-likelihood method for estimating read
     distances and genome-wide phylogenetic placement.'
 build:
@@ -19,7 +21,7 @@ extra:
   - doi:10.5281/zenodo.15466359
 package:
   name: krepp
-  version: 0.11.1
+  version: 0.12.1
 requirements:
   build:
   - make
@@ -35,8 +37,20 @@ requirements:
   - libgomp
   - llvm-openmp
 source:
-  sha256: a69d96249c0276e74155199a5a7a91f53da67e5cc5aac50fc2ed16d72aec9c04
-  url: https://github.com/bo1929/krepp/releases/download/v0.11.1/krepp-v0.11.1.tar.gz
+  sha256: 0f1cc26ef4e0c1381767e3637f60c29b7e9653cd7828954bf5a2641a6f523145
+  url: https://github.com/bo1929/krepp/releases/download/v0.12.1/krepp-v0.12.1.tar.gz
 test:
   commands:
-  - krepp --help &> /dev/null
+  - 'krepp --help 2>&1 | grep -F "krepp version: v0.12.1"'
+  - test_dir=$(mktemp -d) && trap 'rm -rf -- "$test_dir"' EXIT && cd "$test_dir"
+  - printf '%s\n' '>contig0' 'ATTACTATTTATAGGCATGAGTCTGGGCGCGCTTGCCAGCCAATAGATCGGTGGTCCGCCTAAGG'
+    'GGCGGGGACGAACTACGGGCGAACTATAGATAGGCTTTGCATTGGTTTTTGTCATAAGGTCCAGT' 'GACTTTGTTCGTGCGGTAAGCCCGATGGGCACAGAGGACTCCCCGTACTCCGCGAGAATTCTTAGC'
+    'TATA' '>contig1' 'GGTACAAACCGCCGGTTCTCCGGGTGCACATCTGCGGGTGCGGTACCCACTCGAGATACAGAGAT'
+    'CCCAAATCCACGAACCATTTTCGATAGGGTTGTTGATGCTATTCAAGGGGCCCAGTTTAAATGGGT' 'CAGGACTCCGGTCAACCGCGTGTTAGGGATATCGCAGAAGACTGTTTACGTCTAACGTGAATGGTC'
+    'GTA' > smoke.fa
+  - krepp index -i smoke.fa -o smoke-index -k 19 -w 19 -h 9 -m 1 -r 0
+  - krepp dist -i smoke-index -q smoke.fa --no-multi -o smoke.tsv
+  - "LC_ALL=C awk -F '\\t' '$1 == \"contig0\" || $1 == \"contig1\" {\n  distance =\
+    \ $3 + 0;\n  if (NF != 3 || $2 != $1 || $3 != sprintf(\"%.5f\", distance) || distance\
+    \ < 0 || distance >= 0.01)\n    bad = 1;\n  if ($1 == \"contig0\") first++; else\
+    \ second++;\n} END { exit (bad || first != 1 || second != 1) }' smoke.tsv"
