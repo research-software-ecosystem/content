@@ -1,9 +1,10 @@
 name: dump bioconda data in a single bioschemas file
 
 on:
+  # The weekly build runs as the build-dumps job of the import.yaml pipeline,
+  # sequenced after the imports. This standalone workflow stays for one-off
+  # manual runs only; note that it commits straight to master.
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * 0'
     
 jobs:
   build-bioschemas:
