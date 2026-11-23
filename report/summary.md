@@ -1,12 +1,12 @@
 # RSEc contents summary
 
-42579 tool folders, 9 sources.
+42586 tool folders, 9 sources.
 
 ## Tools per source
 
 | source | tools | share |
 | --- | --- | --- |
-| bio.tools | 35302 | 82.9% |
+| bio.tools | 35309 | 82.9% |
 | OEB Metrics | 40869 | 96.0% |
 | BioContainers | 9042 | 21.2% |
 | Bioconductor | 2430 | 5.7% |
@@ -21,7 +21,7 @@
 | sources | tools | share |
 | --- | --- | --- |
 | 0 | 9 | 0.0% |
-| 1 | 1658 | 3.9% |
+| 1 | 1665 | 3.9% |
 | 2 | 36509 | 85.7% |
 | 3 | 2421 | 5.7% |
 | 4 | 1568 | 3.7% |
@@ -38,7 +38,7 @@
 | bio.tools + OEB Metrics + Bioconductor | 1270 |
 | BioContainers only | 992 |
 | bio.tools + OEB Metrics + BioContainers | 662 |
-| bio.tools only | 654 |
+| bio.tools only | 661 |
 | bio.tools + OEB Metrics + Bioconductor + Bioconda | 635 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor | 383 |
 | bio.tools + OEB Metrics + BioContainers + Bioconda | 259 |
