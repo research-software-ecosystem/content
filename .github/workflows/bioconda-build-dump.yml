@@ -44,9 +44,26 @@ jobs:
           git config --local user.name "Tools Platform Ecosystem bot"
           git add .
           if git commit -m "build bioschemas RDF dump on $(date)"; then
-              git pull --rebase || { git rebase --abort; echo "rebase failed, exiting"; exit 1; }
-              git push origin HEAD
-              echo "successfully created new data"
+              # master can move while the dump builds (e.g. the bio.tools
+              # auto-merge workflow): rebase and retry the push instead of
+              # failing on a stale base, as import.yaml's jobs do. A real
+              # conflict against master still stops the job.
+              for attempt in 1 2 3 4 5; do
+                  git fetch origin master
+                  if ! git rebase origin/master; then
+                      echo "::error::Rebasing the dump onto master conflicts; resolve it by hand."
+                      git rebase --abort || true
+                      exit 1
+                  fi
+                  if git push origin HEAD; then
+                      echo "successfully created new data"
+                      exit 0
+                  fi
+                  echo "Push $attempt rejected; master moved. Retrying."
+                  sleep $((attempt * 5))
+              done
+              echo "::error::master kept moving; giving up after 5 attempts."
+              exit 1
           else
               echo "nothing new to add, exiting"            
           fi
