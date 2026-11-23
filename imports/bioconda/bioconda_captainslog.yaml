@@ -1,0 +1,41 @@
+about:
+  dev_url: https://github.com/clintval/captainslog
+  doc_url: https://github.com/clintval/captainslog/blob/0.2.0/README.md
+  home: https://github.com/clintval/captainslog
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Typed dataclasses for the metrics files that Riker, fgumi, Picard, and
+    fgbio write.
+build:
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . -vv --no-deps --no-build-isolation
+extra:
+  recipe-maintainers:
+  - clintval
+package:
+  name: captainslog
+  version: 0.2.0
+requirements:
+  host:
+  - python 3.11
+  - hatchling
+  - pip
+  run:
+  - python >=3.11
+  - typeline >=3.2.0,<4
+  - typing-extensions >=4.12
+source:
+  sha256: f1267fd36d980f7006f3beac7b5571fad0c0afac3b0a91c85b89e599c7faf2f0
+  url: https://pypi.org/packages/source/c/captainslog-ngs/captainslog_ngs-0.2.0.tar.gz
+test:
+  commands:
+  - pip check
+  imports:
+  - captainslog
+  requires:
+  - pip
+  - python 3.11

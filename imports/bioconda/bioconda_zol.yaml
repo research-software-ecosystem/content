@@ -7,7 +7,7 @@ about:
   summary: 'zol (& fai): large-scale targeted detection and evolutionary investigation
     of gene clusters.'
 build:
-  number: 2
+  number: 0
   run_exports:
   - null
   script:
@@ -20,8 +20,6 @@ build:
   - ${CXX} ${CXXFLAGS} -std=c++14 -o "${PREFIX}/bin/runRBH" src/zol/orthologs/runRBH.cpp
     ${LDFLAGS}
   - ${CXX} ${CXXFLAGS} -std=c++14 -o "${PREFIX}/bin/splitDiamondResults" src/zol/orthologs/splitDiamondResults.cpp
-    ${LDFLAGS}
-  - ${CXX} ${CXXFLAGS} -std=c++14 -o "${PREFIX}/bin/splitDiamondResultsForFai" src/zol/splitDiamondResultsForFai.cpp
     ${LDFLAGS}
   - mkdir -p "${PREFIX}/share/${PKG_NAME}-${PKG_VERSION}/db" "${PREFIX}/etc/conda/activate.d"
     "${PREFIX}/etc/conda/deactivate.d"
@@ -38,7 +36,7 @@ extra:
   - raufs
 package:
   name: zol
-  version: 1.7.0
+  version: 1.8.0
 requirements:
   build:
   - null
@@ -50,8 +48,12 @@ requirements:
   run:
   - python
   - curl
-  - r-base
-  - biopython
+  - biopython >=1.80
+  - numpy
+  - scipy
+  - matplotlib-base >=3.6
+  - hmmlearn >=0.3.0
+  - zstandard
   - muscle =5.1
   - famsa >2
   - mcl
@@ -64,23 +66,16 @@ requirements:
   - prodigal-gv
   - pyhmmer =0.11.4
   - libopenblas
-  - pympler
   - pandas >=2.0
   - xlsxwriter >=3.0.3
   - scikit-learn
   - hyphy >=2.5.14
-  - pomegranate >=1.0.0
-  - r-ggplot2
-  - r-cowplot
-  - r-gggenes
-  - r-gridextra
   - skani >=0.2.2
   - slclust
   - trimal
   - gzip
   - miniprot =0.13
   - miniprot >=0.13
-  - bioconductor-ggtree
   - ete3
   - legacy-cgi
   - codoff >=1.2.3
@@ -92,18 +87,22 @@ requirements:
   - peptides
 source:
   folder: zol_folder
-  sha256: f09d575f2386f109a5cbb30eda478f5cf27b8b8fbc74f727c2ac353ea0d0ea68
-  url: https://github.com/Kalan-Lab/zol/archive/refs/tags/v1.7.0.tar.gz
+  sha256: e0f75f15f0d342f9645310bd54fe4f17f6da921c900d87b57ab2e54d1b484557
+  url: https://github.com/Kalan-Lab/zol/archive/refs/tags/v1.8.0.tar.gz
 test:
   commands:
   - pip check
   - zol -h
   - fai -h
+  - cgc -h
+  - zol-suite --version
   - test -x ${PREFIX}/bin/runRBH
   - test -x ${PREFIX}/bin/splitDiamondResults
-  - test -x ${PREFIX}/bin/splitDiamondResultsForFai
   imports:
   - zol
+  - zol.plotting
   - gravis
+  - hmmlearn
+  - zstandard
   requires:
   - pip

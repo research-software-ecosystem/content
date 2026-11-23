@@ -1,0 +1,52 @@
+about:
+  description: 'psmc-rs reimplements the pairwise sequentially Markovian coalescent
+
+    (PSMC; Li and Durbin 2011) in Rust. It infers the history of effective
+
+    population size from a single diploid genome with C psmc''s model and
+
+    defaults, reproduces C psmc''s fits, and runs sequences and bootstrap
+
+    replicates in parallel with results that do not depend on the number of
+
+    threads. It reads psmcfa, VCF and multihetsep input.
+
+    '
+  dev_url: https://github.com/larryivan/psmc-rs
+  doc_url: https://github.com/larryivan/psmc-rs/blob/v0.2.0/README.md
+  home: https://github.com/larryivan/psmc-rs
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - NOTICE
+  - THIRDPARTY.yml
+  summary: Fast PSMC inference of effective population size history that reproduces
+    the reference C psmc.
+build:
+  number: 0
+  run_exports:
+  - null
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  identifiers:
+  - doi:10.32942/X2P97K
+  recipe-maintainers:
+  - larryivan
+package:
+  name: psmc-rs
+  version: 0.2.0
+requirements:
+  build:
+  - null
+  - null
+  - cargo-bundle-licenses
+source:
+  sha256: e274b32b4bfa9f654662c1275f1330f64f95dc73901c13fd3df44a39a2d091b8
+  url: https://github.com/larryivan/psmc-rs/archive/v0.2.0.tar.gz
+test:
+  commands:
+  - psmc-rs --version
+  - psmc-rs --help
