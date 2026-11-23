@@ -1,0 +1,54 @@
+about:
+  dev_url: https://github.com/blakemeyerslab/Phasis
+  doc_url: https://github.com/blakemeyerslab/Phasis/blob/main/README.md
+  home: https://github.com/blakemeyerslab/Phasis
+  license: Artistic-2.0
+  license_file: LICENSE.txt
+  summary: Detection and register-resolved interpretation of phased small-RNA loci
+build:
+  entry_points:
+  - phasis = phasis.cli:main
+  - phasis-compare = phasis.result_comparison:main
+  noarch: python
+  number: 0
+  run_exports:
+  - null
+  script: -m pip install . --no-deps --no-build-isolation -vv
+package:
+  name: phasis
+  version: 2.8.8
+requirements:
+  host:
+  - python 3.10
+  - pip
+  - setuptools >=77.0.3
+  - wheel
+  run:
+  - python >=3.10
+  - numpy >=1.26.4
+  - pandas <3.1
+  - scipy
+  - scikit-learn >=1.3.2
+  - matplotlib-base
+  - seaborn
+  - tqdm
+  - hisat2
+  - samtools >=1.10
+source:
+  sha256: 36243865c4cc16470530968e26761258571bd6e14a6983d71e4096bfe2d86248
+  url: https://github.com/blakemeyerslab/Phasis/archive/refs/tags/v2.8.8.tar.gz
+test:
+  commands:
+  - phasis -version
+  - phasis -h
+  - phasis-compare --help
+  - hisat2 --version
+  - samtools --version
+  - python -c "from phasis import __version__; assert __version__ == '2.8.8'"
+  - python -c "from phasis.deps_check import require_dependencies; require_dependencies()"
+  imports:
+  - phasis
+  - phasis.stages.classify
+  - phasis.plot_style
+  requires:
+  - python 3.10

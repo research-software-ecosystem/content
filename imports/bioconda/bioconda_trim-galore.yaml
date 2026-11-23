@@ -1,29 +1,25 @@
 about:
-  description: 'Trim Galore v2 is a Rust rewrite of the original Perl Trim Galore.
-    Single
-
-    static binary, no Python/Perl/Cutadapt/Java/igzip/pigz dependencies. Drop-in
-
-    compatible with v0.6.x scripts and pipelines (same CLI, same output
-
-    filenames, same report format) with adapter auto-detection (Illumina,
-
-    Nextera, Small RNA, BGI/DNBSEQ), poly-G/poly-A trimming, paired-end
-
-    single-pass processing, RRBS support, and bundled FastQC integration via
-
-    fastqc-rust.
-
-    '
+  description: "Trim Galore v2 is a Rust rewrite of the original Perl Trim Galore.\
+    \ A single\nstatic binary with no external dependencies \u2014 no Python, Perl,\
+    \ Cutadapt,\nJava, igzip or pigz install. Adapter detection and trimming, quality\n\
+    trimming, filtering and compression run in one pass over the data, with\noptional\
+    \ FastQC reporting from a bundled library (fastqc-rust) afterwards;\ninput and\
+    \ output can be either FASTQ or unaligned BAM. Adapter\nauto-detection covers\
+    \ Illumina, Nextera, Small RNA and BGI/DNBSEQ, with\npoly-G/poly-A trimming and\
+    \ RRBS support alongside. Existing v0.6.x command\nlines and output filenames\
+    \ carry over, and CI checks the core flag paths\nbyte-for-byte against Perl 0.6.11.\
+    \ Deliberate departures are listed in the\nmigration notes at https://www.trimgalore.com/reference/migration/.\n"
   dev_url: https://github.com/FelixKrueger/TrimGalore
   home: https://www.trimgalore.com/
   license: GPL-3.0-only
   license_family: GPL
-  license_file: LICENSE
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
   summary: "Fast adapter and quality trimming for NGS data \u2014 Oxidized Edition\
     \ (Rust)"
 build:
-  number: 0
+  number: 1
   run_exports:
   - null
   skip: true
@@ -41,6 +37,7 @@ package:
   version: 2.6.0
 requirements:
   build:
+  - cargo-bundle-licenses
   - null
   - null
   - null

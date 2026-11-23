@@ -1,0 +1,52 @@
+about:
+  dev_url: https://github.com/clintval/annatar
+  doc_url: https://github.com/clintval/annatar/blob/0.1.0/README.md
+  home: https://github.com/clintval/annatar
+  license: MIT
+  license_family: MIT
+  license_file:
+  - LICENSE
+  - THIRDPARTY.yml
+  summary: Convert a multi-sample VCF of single cells into an AnnData h5ad.
+build:
+  binary_relocation: false
+  number: 0
+  run_exports:
+  - null
+  skip: true
+extra:
+  additional-platforms:
+  - linux-aarch64
+  - osx-arm64
+  recipe-maintainers:
+  - clintval
+package:
+  name: annatar
+  version: 0.1.0
+requirements:
+  build:
+  - null
+  - null
+  - null
+  - cargo-bundle-licenses
+  host:
+  - python
+  - maturin >=1.15,<2
+  - pip
+  run:
+  - python
+  - anndata >=0.12.7
+  - numpy >=1.26
+  - pandas >=2.2
+  - scipy >=1.13
+source:
+  sha256: a7f54e312035a2b4c37433c0e638f7ae69b36e6fbd927c78e9e4c23eb54b1a4d
+  url: https://pypi.org/packages/source/a/annatar/annatar-0.1.0.tar.gz
+test:
+  commands:
+  - annatar --help
+  - pip check
+  imports:
+  - annatar
+  requires:
+  - pip
