@@ -1,16 +1,16 @@
 # RSEc contents summary
 
-42583 tool folders, 9 sources.
+42579 tool folders, 9 sources.
 
 ## Tools per source
 
 | source | tools | share |
 | --- | --- | --- |
 | bio.tools | 35302 | 82.9% |
-| OEB Metrics | 40871 | 96.0% |
+| OEB Metrics | 40869 | 96.0% |
 | BioContainers | 9042 | 21.2% |
 | Bioconductor | 2430 | 5.7% |
-| Bioconda | 1534 | 3.6% |
+| Bioconda | 1535 | 3.6% |
 | BIII | 0 | 0.0% |
 | Galaxy | 559 | 1.3% |
 | Debian Med | 345 | 0.8% |
@@ -21,9 +21,9 @@
 | sources | tools | share |
 | --- | --- | --- |
 | 0 | 9 | 0.0% |
-| 1 | 1664 | 3.9% |
-| 2 | 36508 | 85.7% |
-| 3 | 2420 | 5.7% |
+| 1 | 1658 | 3.9% |
+| 2 | 36509 | 85.7% |
+| 3 | 2421 | 5.7% |
 | 4 | 1568 | 3.7% |
 | 5 | 245 | 0.6% |
 | 6 | 110 | 0.3% |
@@ -33,16 +33,16 @@
 
 | sources present | tools |
 | --- | --- |
-| bio.tools + OEB Metrics | 30255 |
+| bio.tools + OEB Metrics | 30256 |
 | OEB Metrics + BioContainers | 6192 |
 | bio.tools + OEB Metrics + Bioconductor | 1270 |
 | BioContainers only | 992 |
 | bio.tools + OEB Metrics + BioContainers | 662 |
-| bio.tools only | 656 |
+| bio.tools only | 654 |
 | bio.tools + OEB Metrics + Bioconductor + Bioconda | 635 |
 | bio.tools + OEB Metrics + BioContainers + Bioconductor | 383 |
 | bio.tools + OEB Metrics + BioContainers + Bioconda | 259 |
-| bio.tools + OEB Metrics + Bioconda | 209 |
+| bio.tools + OEB Metrics + Bioconda | 210 |
 | bio.tools + OEB Metrics + Galaxy | 88 |
 | bio.tools + OEB Metrics + BioContainers + Debian Med | 85 |
 | bio.tools + OEB Metrics + WorkflowHub | 81 |
@@ -62,10 +62,10 @@
 | bio.tools + Galaxy | 22 |
 | bio.tools + OEB Metrics + Bioconda + Galaxy | 20 |
 | OEB Metrics + BioContainers + Bioconductor | 16 |
-| OEB Metrics only | 15 |
 | OEB Metrics + Bioconductor | 14 |
 | bio.tools + OEB Metrics + BioContainers + Bioconda + WorkflowHub | 13 |
 | bio.tools + OEB Metrics + BioContainers + Bioconda + Debian Med + WorkflowHub | 12 |
+| OEB Metrics only | 11 |
 | bio.tools + OEB Metrics + Bioconductor + Bioconda + Galaxy | 9 |
 | bio.tools + OEB Metrics + Bioconda + WorkflowHub | 9 |
 | (no source) | 9 |
