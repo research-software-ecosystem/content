@@ -1,87 +1,218 @@
 {
-    "additionDate": "2026-10-30T13:57:00.752444Z",
-    "biotoolsCURIE": "biotools:colonycounter",
-    "biotoolsID": "colonycounter",
-    "cost": "Free of charge",
-    "credit": [
-        {
-            "name": "Spencer W. Frangou",
-            "orcidid": "https://orcid.org/0009-0008-1125-4053",
-            "typeEntity": "Person",
-            "typeRole": [
-                "Developer"
-            ]
-        }
-    ],
-    "description": "Quantifies colony-formation (clonogenic) assays from flatbed scans of stained multi-well plates. It locates each well, segments and counts colonies, measures colony size and staining intensity, and runs the comparative statistics, producing a report.",
-    "documentation": [
-        {
-            "note": "Repository README",
-            "type": [
-                "User manual"
-            ],
-            "url": "https://github.com/SpencerFrangou/ColonyCounter"
-        }
-    ],
-    "editPermission": {
-        "type": "private"
+  "accessibility": "Open access",
+  "additionDate": "2026-10-30T13:57:00.752444Z",
+  "biotoolsCURIE": "biotools:colonycounter",
+  "biotoolsID": "colonycounter",
+  "cost": "Free of charge",
+  "credit": [
+    {
+      "name": "Spencer W. Frangou",
+      "orcidid": "https://orcid.org/0009-0008-1125-4053",
+      "typeEntity": "Person",
+      "typeRole": [
+        "Developer",
+        "Maintainer",
+        "Primary contact"
+      ]
     },
-    "function": [
+    {
+      "name": "University of Toledo",
+      "typeEntity": "Institute",
+      "typeRole": [
+        "Provider"
+      ]
+    }
+  ],
+  "description": "Quantifies colony-formation (clonogenic) assays from flatbed scans of stained multi-well plates. It locates each well, segments and counts colonies, measures colony size and staining intensity, and runs the comparative statistics, producing a report.",
+  "documentation": [
+    {
+      "type": [
+        "General"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/blob/main/README.md"
+    },
+    {
+      "type": [
+        "User manual"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/blob/main/USAGE.md"
+    },
+    {
+      "note": "Methods description of the image-analysis and statistical pipeline",
+      "type": [
+        "Other"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/blob/main/docs/methods.md"
+    },
+    {
+      "note": "Recommended flatbed scanner settings",
+      "type": [
+        "Other"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/blob/main/docs/scanner_settings.md"
+    }
+  ],
+  "download": [
+    {
+      "type": "Source code",
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/releases/tag/v1.0.0",
+      "version": "1.0.0"
+    },
+    {
+      "note": "Archived release on Zenodo",
+      "type": "Source code",
+      "url": "https://doi.org/10.5281/zenodo.23780011",
+      "version": "1.0.0"
+    }
+  ],
+  "editPermission": {
+    "type": "private"
+  },
+  "function": [
+    {
+      "cmd": "python colonycounter/cfa_run.py PlateMap.xlsx --out Results",
+      "input": [
         {
-            "operation": [
-                {
-                    "term": "Image analysis",
-                    "uri": "http://edamontology.org/operation_3443"
-                },
-                {
-                    "term": "Statistical calculation",
-                    "uri": "http://edamontology.org/operation_2238"
-                }
-            ]
+          "data": {
+            "term": "Image",
+            "uri": "http://edamontology.org/data_2968"
+          },
+          "format": [
+            {
+              "term": "TIFF",
+              "uri": "http://edamontology.org/format_3591"
+            },
+            {
+              "term": "JPG",
+              "uri": "http://edamontology.org/format_3579"
+            },
+            {
+              "term": "PNG",
+              "uri": "http://edamontology.org/format_3603"
+            }
+          ]
         }
-    ],
-    "homepage": "https://github.com/SpencerFrangou/ColonyCounter",
-    "language": [
-        "Python"
-    ],
-    "lastUpdate": "2026-10-30T13:57:00.755561Z",
-    "license": "MIT",
-    "link": [
+      ],
+      "note": "Input: flatbed scans of crystal-violet-stained 6-, 12-, 24- or 96-well plates plus a filled plate map (xlsx). Output: per-well and per-colony CSV tables, statistics tables, figures (PNG, SVG, PDF), QC overlays and an HTML report.",
+      "operation": [
         {
-            "note": "GitHub repository",
-            "type": [
-                "Repository"
-            ],
-            "url": "https://github.com/SpencerFrangou/ColonyCounter"
-        }
-    ],
-    "maturity": "Emerging",
-    "name": "ColonyCounter",
-    "operatingSystem": [
-        "Linux",
-        "Mac",
-        "Windows"
-    ],
-    "owner": "spencer_winston",
-    "publication": [
-        {
-            "doi": "10.5281/zenodo.23780010",
-            "type": [
-                "Primary"
-            ]
-        }
-    ],
-    "toolType": [
-        "Command-line tool"
-    ],
-    "topic": [
-        {
-            "term": "Cell biology",
-            "uri": "http://edamontology.org/topic_2229"
+          "term": "Image analysis",
+          "uri": "http://edamontology.org/operation_3443"
         },
         {
-            "term": "Imaging",
-            "uri": "http://edamontology.org/topic_3382"
+          "term": "Statistical calculation",
+          "uri": "http://edamontology.org/operation_2238"
+        },
+        {
+          "term": "Quantification",
+          "uri": "http://edamontology.org/operation_3799"
         }
-    ]
+      ],
+      "output": [
+        {
+          "data": {
+            "term": "Image",
+            "uri": "http://edamontology.org/data_2968"
+          },
+          "format": [
+            {
+              "term": "PNG",
+              "uri": "http://edamontology.org/format_3603"
+            }
+          ]
+        },
+        {
+          "data": {
+            "term": "Report",
+            "uri": "http://edamontology.org/data_2048"
+          },
+          "format": [
+            {
+              "term": "CSV",
+              "uri": "http://edamontology.org/format_3752"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "homepage": "https://github.com/SpencerFrangou/ColonyCounter",
+  "language": [
+    "Python"
+  ],
+  "lastUpdate": "2026-11-24T19:03:34.494578Z",
+  "license": "MIT",
+  "link": [
+    {
+      "type": [
+        "Repository"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter"
+    },
+    {
+      "type": [
+        "Issue tracker"
+      ],
+      "url": "https://github.com/SpencerFrangou/ColonyCounter/issues"
+    }
+  ],
+  "maturity": "Mature",
+  "name": "ColonyCounter",
+  "operatingSystem": [
+    "Mac",
+    "Linux",
+    "Windows"
+  ],
+  "otherID": [
+    {
+      "type": "doi",
+      "value": "doi:10.5281/zenodo.23780010",
+      "version": "concept DOI (all versions)"
+    },
+    {
+      "type": "doi",
+      "value": "doi:10.5281/zenodo.23780011",
+      "version": "1.0.0"
+    }
+  ],
+  "owner": "spencer_winston",
+  "publication": [
+    {
+      "doi": "10.5281/zenodo.23780010",
+      "note": "Software archive on Zenodo (concept DOI, all versions)",
+      "type": [
+        "Primary"
+      ]
+    }
+  ],
+  "toolType": [
+    "Command-line tool",
+    "Library",
+    "Script"
+  ],
+  "topic": [
+    {
+      "term": "Imaging",
+      "uri": "http://edamontology.org/topic_3382"
+    },
+    {
+      "term": "Cell biology",
+      "uri": "http://edamontology.org/topic_2229"
+    },
+    {
+      "term": "Cell and tissue culture",
+      "uri": "http://edamontology.org/topic_0608"
+    },
+    {
+      "term": "Oncology",
+      "uri": "http://edamontology.org/topic_2640"
+    },
+    {
+      "term": "Statistics and probability",
+      "uri": "http://edamontology.org/topic_2269"
+    }
+  ],
+  "version": [
+    "1.0.0"
+  ]
 }
